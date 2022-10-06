@@ -1,5 +1,7 @@
 using System;
+using Framework.Inventory;
 using Framework.Managers;
+using Gameplay.UI;
 using Gameplay.UI.Others.MenuLogic;
 using HutongGames.PlayMaker;
 
@@ -11,8 +13,8 @@ namespace Tools.Playmaker2.Action
 	{
 		public override bool executeAction(string objectIdStting, InventoryManager.ItemType objType, int slot)
 		{
-			Core.Randomizer.Log("ItemAdditionMessage (" + objectIdStting + ")", 2);
-			Core.Randomizer.showNotification(objectIdStting);
+			BaseInventoryObject baseObjectOrTears = Core.InventoryManager.GetBaseObjectOrTears(objectIdStting, objType);
+			UIController.instance.ShowObjectPopUp(UIController.PopupItemAction.GetObejct, baseObjectOrTears.caption, baseObjectOrTears.picture, objType, 3f, true);
 			return true;
 		}
 
@@ -24,9 +26,8 @@ namespace Tools.Playmaker2.Action
 			if (string.IsNullOrEmpty(text))
 			{
 				base.LogWarning("PlayMaker Inventory Action - objectId is blank");
-				return;
 			}
-			if (!this.executeAction(text, (InventoryManager.ItemType)objType, 0) && this.onFailure != null)
+			else if (!this.executeAction(text, (InventoryManager.ItemType)objType, 0) && this.onFailure != null)
 			{
 				base.Fsm.Event(this.onFailure);
 				base.Finish();

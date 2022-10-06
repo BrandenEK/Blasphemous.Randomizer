@@ -85,7 +85,7 @@ namespace Gameplay.GameControllers.Enemies.Framework.Physics
 			Vector2 dir = (this._penitent.transform.position.x < base.transform.position.x) ? Vector2.right : (-Vector2.right);
 			while ((this._penitent.transform.position - base.transform.position).magnitude <= distance * 1.25f && this._penitent.Status.IsGrounded)
 			{
-				base.transform.parent.Translate(dir * this.bumperForce * Time.deltaTime, Space.World);
+				base.transform.parent.Translate(dir * this.bumperForce * Time.deltaTime, 0);
 				yield return new WaitForEndOfFrame();
 			}
 			this.bumperEnemy = false;

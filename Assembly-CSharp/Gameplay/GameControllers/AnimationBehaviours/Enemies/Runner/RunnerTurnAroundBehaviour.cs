@@ -60,7 +60,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Runner
 				return;
 			}
 			this._throwScream = true;
-			if (UnityEngine.Random.value > 0.3f)
+			if (Random.value > 0.3f)
 			{
 				return;
 			}

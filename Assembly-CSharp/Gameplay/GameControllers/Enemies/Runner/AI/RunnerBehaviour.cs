@@ -109,7 +109,7 @@ namespace Gameplay.GameControllers.Enemies.Runner.AI
 			}
 		}
 
-		private void OnContactDamage(UnityEngine.Object param)
+		private void OnContactDamage(Object param)
 		{
 			this.Scream();
 		}

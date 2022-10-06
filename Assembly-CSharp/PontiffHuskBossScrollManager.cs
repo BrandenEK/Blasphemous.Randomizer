@@ -72,7 +72,7 @@ public class PontiffHuskBossScrollManager : MonoBehaviour
 		Vector3 position = Core.Logic.Penitent.GetPosition();
 		float num = this.BossCamNumBound.RightBoundary - this.BossCamNumBound.LeftBoundary;
 		float num2 = 1f;
-		FakeExecution fakeExecution = UnityEngine.Object.FindObjectOfType<FakeExecution>();
+		FakeExecution fakeExecution = Object.FindObjectOfType<FakeExecution>();
 		float num3 = -0.75f;
 		DOTween.To(() => this.BossCamNumBound.LeftBoundary, delegate(float x)
 		{
@@ -88,17 +88,17 @@ public class PontiffHuskBossScrollManager : MonoBehaviour
 		}, position.y - 1f, num2);
 		int num4 = 100;
 		Sequence sequence = DOTween.Sequence();
-		sequence.AppendInterval(num2 / (float)num4);
-		sequence.OnStepComplete(delegate
+		TweenSettingsExtensions.AppendInterval(sequence, num2 / (float)num4);
+		TweenSettingsExtensions.OnStepComplete<Sequence>(sequence, delegate()
 		{
 			this.BossCamNumBound.SetBoundaries();
 		});
-		sequence.SetLoops(num4);
-		sequence.OnComplete(delegate
+		TweenSettingsExtensions.SetLoops<Sequence>(sequence, num4);
+		TweenSettingsExtensions.OnComplete<Sequence>(sequence, delegate()
 		{
 			this.BossCamNumBound.UseRightBoundary = false;
 		});
-		sequence.Play<Sequence>();
+		TweenExtensions.Play<Sequence>(sequence);
 	}
 
 	public void SetHWCamBounds()
@@ -116,13 +116,13 @@ public class PontiffHuskBossScrollManager : MonoBehaviour
 		}, position.x - 2f + num, num2);
 		int num3 = 100;
 		Sequence sequence = DOTween.Sequence();
-		sequence.AppendInterval(num2 / (float)num3);
-		sequence.OnStepComplete(delegate
+		TweenSettingsExtensions.AppendInterval(sequence, num2 / (float)num3);
+		TweenSettingsExtensions.OnStepComplete<Sequence>(sequence, delegate()
 		{
 			this.BossCamNumBound.SetBoundaries();
 		});
-		sequence.SetLoops(num3);
-		sequence.Play<Sequence>();
+		TweenSettingsExtensions.SetLoops<Sequence>(sequence, num3);
+		TweenExtensions.Play<Sequence>(sequence);
 	}
 
 	public void ActivateScroll()

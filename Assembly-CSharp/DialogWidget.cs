@@ -48,7 +48,7 @@ public class DialogWidget : MonoBehaviour
 		this.generationSettings.richText = this.dialogLine.supportRichText;
 		this.generationSettings.font = this.dialogLine.font;
 		this.generationSettings.fontSize = this.dialogLine.fontSize;
-		this.generationSettings.fontStyle = FontStyle.Normal;
+		this.generationSettings.fontStyle = 0;
 		this.generationSettings.verticalOverflow = this.dialogLine.verticalOverflow;
 		this.backgorund.SetActive(false);
 	}
@@ -95,12 +95,12 @@ public class DialogWidget : MonoBehaviour
 			{
 				this.state = DialogWidget.DialogState.ScrollScrolling;
 				float num = this.rtContentRect.rect.height - this.rtScrollViewRect.rect.height;
-				float duration = num / this.scrollSpeed;
+				float num2 = num / this.scrollSpeed;
 				this.tweenFloat = 1f;
-				this.scrollbarTween = DOTween.To(() => this.tweenFloat, delegate(float x)
+				this.scrollbarTween = TweenSettingsExtensions.SetId<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.tweenFloat, delegate(float x)
 				{
 					this.tweenFloat = x;
-				}, 0f, duration).SetEase(Ease.Linear).OnComplete(new TweenCallback(this.EndTransitionText)).SetId("AutoScroll");
+				}, 0f, num2), 1), new TweenCallback(this.EndTransitionText)), "AutoScroll");
 			}
 			break;
 		case DialogWidget.DialogState.ScrollScrolling:
@@ -160,7 +160,7 @@ public class DialogWidget : MonoBehaviour
 			this.timeToWait = 0f;
 			break;
 		case DialogWidget.DialogState.ScrollScrolling:
-			this.scrollbarTween.Complete();
+			TweenExtensions.Complete(this.scrollbarTween);
 			this.scrollbar.value = 0f;
 			break;
 		}

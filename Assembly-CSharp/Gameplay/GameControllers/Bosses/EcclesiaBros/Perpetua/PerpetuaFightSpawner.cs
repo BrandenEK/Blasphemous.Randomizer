@@ -12,7 +12,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Perpetua
 
 		private void LoadPerpetua()
 		{
-			this.perpetua = UnityEngine.Object.Instantiate<GameObject>(this.perpetuaPrefab, base.transform.position, Quaternion.identity).GetComponent<Perpetua>();
+			this.perpetua = Object.Instantiate<GameObject>(this.perpetuaPrefab, base.transform.position, Quaternion.identity).GetComponent<Perpetua>();
 			this.perpetua.transform.SetParent(base.transform.parent);
 			this.perpetua.gameObject.SetActive(false);
 		}

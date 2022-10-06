@@ -10,7 +10,7 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.AI
 		public IEnumerator Start()
 		{
 			yield return new WaitForSeconds(1f);
-			this.huskies = new List<PontiffHuskRangedBehaviour>(UnityEngine.Object.FindObjectsOfType<PontiffHuskRangedBehaviour>());
+			this.huskies = new List<PontiffHuskRangedBehaviour>(Object.FindObjectsOfType<PontiffHuskRangedBehaviour>());
 			yield break;
 		}
 

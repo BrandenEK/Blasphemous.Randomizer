@@ -47,10 +47,10 @@ namespace Gameplay.GameControllers.Entities.Traits
 		{
 			Gizmos.color = Color.black;
 			Vector2 vector = base.transform.position + this.castPoint;
-			Vector2 v = vector + Vector2.down * this.raycastDistance;
+			Vector2 vector2 = vector + Vector2.down * this.raycastDistance;
 			Gizmos.DrawWireSphere(vector, 0.2f);
-			Gizmos.DrawLine(vector, v);
-			Gizmos.DrawWireCube(v, Vector2.one);
+			Gizmos.DrawLine(vector, vector2);
+			Gizmos.DrawWireCube(vector2, Vector2.one);
 		}
 
 		public bool showShadow = true;

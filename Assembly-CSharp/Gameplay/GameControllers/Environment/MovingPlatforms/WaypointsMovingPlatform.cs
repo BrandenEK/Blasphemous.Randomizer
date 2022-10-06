@@ -80,20 +80,20 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 			}
 			if (Core.Logic.IsPaused)
 			{
-				if (this._horizontalTweener != null && this._horizontalTweener.IsPlaying() && this._verticalTweener != null && this._verticalTweener.IsPlaying())
+				if (this._horizontalTweener != null && TweenExtensions.IsPlaying(this._horizontalTweener) && this._verticalTweener != null && TweenExtensions.IsPlaying(this._verticalTweener))
 				{
-					this._horizontalTweener.Pause<Tweener>();
-					this._verticalTweener.Pause<Tweener>();
+					TweenExtensions.Pause<Tweener>(this._horizontalTweener);
+					TweenExtensions.Pause<Tweener>(this._verticalTweener);
 					return;
 				}
 			}
-			else if (this._horizontalTweener != null && !this._horizontalTweener.IsPlaying() && this._verticalTweener != null && !this._verticalTweener.IsPlaying())
+			else if (this._horizontalTweener != null && !TweenExtensions.IsPlaying(this._horizontalTweener) && this._verticalTweener != null && !TweenExtensions.IsPlaying(this._verticalTweener))
 			{
-				this._horizontalTweener.TogglePause();
-				this._verticalTweener.TogglePause();
+				TweenExtensions.TogglePause(this._horizontalTweener);
+				TweenExtensions.TogglePause(this._verticalTweener);
 			}
 			float num = Vector2.Distance(base.transform.position, this._destination);
-			float duration = num / this._speed;
+			float num2 = num / this._speed;
 			this.currentRunningTimeoutLapse -= Time.deltaTime;
 			if (!DOTween.IsTweening(base.transform, false) && this.RunningTimeoutConsumed && num > 0f)
 			{
@@ -101,8 +101,8 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 				{
 					this.DetachWaypoints();
 				}
-				this._horizontalTweener = base.transform.DOMoveX(this._destination.x, duration, false).SetEase(this._horizontalEase);
-				this._verticalTweener = base.transform.DOMoveY(this._destination.y, duration, false).SetEase(this._verticalEase);
+				this._horizontalTweener = TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(base.transform, this._destination.x, num2, false), this._horizontalEase);
+				this._verticalTweener = TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, this._destination.y, num2, false), this._verticalEase);
 				this.PlayMovementLoopFx(ref this._movementLoopFx);
 			}
 			if (num <= 0.01f)
@@ -131,16 +131,16 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 		{
 			if (hasFocus)
 			{
-				if (this._horizontalTweener != null && this._horizontalTweener.IsPlaying() && this._verticalTweener != null && this._verticalTweener.IsPlaying())
+				if (this._horizontalTweener != null && TweenExtensions.IsPlaying(this._horizontalTweener) && this._verticalTweener != null && TweenExtensions.IsPlaying(this._verticalTweener))
 				{
-					this._horizontalTweener.TogglePause();
-					this._verticalTweener.TogglePause();
+					TweenExtensions.TogglePause(this._horizontalTweener);
+					TweenExtensions.TogglePause(this._verticalTweener);
 				}
 			}
-			else if (this._horizontalTweener != null && this._horizontalTweener.IsPlaying() && this._verticalTweener != null && this._verticalTweener.IsPlaying())
+			else if (this._horizontalTweener != null && TweenExtensions.IsPlaying(this._horizontalTweener) && this._verticalTweener != null && TweenExtensions.IsPlaying(this._verticalTweener))
 			{
-				this._horizontalTweener.Pause<Tweener>();
-				this._verticalTweener.Pause<Tweener>();
+				TweenExtensions.Pause<Tweener>(this._horizontalTweener);
+				TweenExtensions.Pause<Tweener>(this._verticalTweener);
 			}
 		}
 
@@ -192,8 +192,8 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 			this._origin = base.transform.position;
 			this.StopMovementLoopFx(ref this._movementLoopFx);
 			this.PlayMovementStopFx();
-			this._horizontalTweener.Kill(false);
-			this._verticalTweener.Kill(false);
+			TweenExtensions.Kill(this._horizontalTweener, false);
+			TweenExtensions.Kill(this._verticalTweener, false);
 			this._horizontalTweener = null;
 			this._verticalTweener = null;
 			if (this.OneWayOnly)
@@ -350,7 +350,7 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 
 		private void PlayMovementStopFx()
 		{
-			if (this.MovingPlatformStop.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(this.MovingPlatformStop))
 			{
 				return;
 			}
@@ -362,13 +362,13 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 
 		private void PlayMovementLoopFx(ref EventInstance audioInstance)
 		{
-			if (this.MovingPlatformLoop.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(this.MovingPlatformLoop))
 			{
 				return;
 			}
 			if (this._movementLoopFx.isValid())
 			{
-				this._movementLoopFx.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+				this._movementLoopFx.stop(1);
 				this._movementLoopFx.release();
 				this._movementLoopFx = default(EventInstance);
 			}
@@ -383,7 +383,7 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 				return;
 			}
 			this.PlayMovementStopFx();
-			this._movementLoopFx.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+			this._movementLoopFx.stop(1);
 			this._movementLoopFx.release();
 			this._movementLoopFx = default(EventInstance);
 		}

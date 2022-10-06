@@ -31,7 +31,7 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 		{
 			this.id = EnemyAction.actionsId;
 			EnemyAction.actionsId++;
-			UnityEngine.Debug.Log(string.Format("<color=blue>[{2:D6}]/---------- EA START: ID{0}_{1}</color>", this.id, this.ToString(), Time.frameCount));
+			Debug.Log(string.Format("<color=blue>[{2:D6}]/---------- EA START: ID{0}_{1}</color>", this.id, this.ToString(), Time.frameCount));
 			this.Finished = false;
 			this.CallbackCalled = false;
 			if (this.OnActionStarts != null)
@@ -52,7 +52,7 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 
 		protected void FinishAction()
 		{
-			UnityEngine.Debug.Log(string.Format("<color=green>[{2:D6}]\\---------- EA FINISH: ID{0}_{1}</color>", this.id, this.ToString(), Time.frameCount));
+			Debug.Log(string.Format("<color=green>[{2:D6}]\\---------- EA FINISH: ID{0}_{1}</color>", this.id, this.ToString(), Time.frameCount));
 			this.Finished = true;
 			this.DoOnEnd();
 			if (this.OnActionEnds != null)
@@ -68,7 +68,7 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 				return;
 			}
 			this.Finished = true;
-			UnityEngine.Debug.Log(string.Format("<color=red>[{2:D6}]/----------!EA STOPPED: ID{0}_{1}</color>", this.id, this.ToString(), Time.frameCount));
+			Debug.Log(string.Format("<color=red>[{2:D6}]/----------!EA STOPPED: ID{0}_{1}</color>", this.id, this.ToString(), Time.frameCount));
 			this.DoOnStop();
 			if (this.OnActionIsStopped != null)
 			{

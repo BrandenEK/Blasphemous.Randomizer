@@ -163,8 +163,8 @@ namespace Gameplay.GameControllers.Enemies.Legionary.Animator
 
 		public void AnimationEvent_LightScreenShake()
 		{
-			Vector2 a = (this.OwnerEntity.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
-			Core.Logic.CameraManager.ProCamera2DShake.Shake(0.15f, a * 0.5f, 10, 0.01f, 0f, default(Vector3), 0.01f, false);
+			Vector2 vector = (this.OwnerEntity.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
+			Core.Logic.CameraManager.ProCamera2DShake.Shake(0.15f, vector * 0.5f, 10, 0.01f, 0f, default(Vector3), 0.01f, false);
 		}
 
 		public void AnimationEvent_HeavySecondScreenShake()

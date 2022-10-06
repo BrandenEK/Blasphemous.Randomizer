@@ -51,7 +51,7 @@ namespace Framework.Inventory
 		public void Add()
 		{
 			this.IsOwned = true;
-			base.SendMessage("OnAddInventoryObject", SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnAddInventoryObject", 1);
 			string text = this.id + "_OWNED";
 			if (this.AddPercentageCompletition() && !Core.Events.GetFlag(text))
 			{
@@ -81,48 +81,48 @@ namespace Framework.Inventory
 		public void Remove()
 		{
 			this.IsOwned = false;
-			base.SendMessage("OnRemoveInventoryObject", SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnRemoveInventoryObject", 1);
 		}
 
 		public void Reset()
 		{
 			this.IsOwned = false;
-			base.SendMessage("OnResetInventoryObject", SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnResetInventoryObject", 1);
 		}
 
 		public void HitEnemy(Hit hit)
 		{
-			base.SendMessage("OnHitEnemy", hit, SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnHitEnemy", hit, 1);
 		}
 
 		public void KillEnemy(Enemy e)
 		{
-			base.SendMessage("OnKillEnemy", e, SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnKillEnemy", e, 1);
 		}
 
 		public void HitReceived(Hit hit)
 		{
-			base.SendMessage("OnHitReceived", hit, SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnHitReceived", hit, 1);
 		}
 
 		public void PenitentHealthChanged(float life)
 		{
-			base.SendMessage("OnPenitentHealthChanged", life, SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnPenitentHealthChanged", life, 1);
 		}
 
 		public void BreakableBreak(BreakableObject breakable)
 		{
-			base.SendMessage("OnBreakBreakable", breakable, SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnBreakBreakable", breakable, 1);
 		}
 
 		public void PenitentDead()
 		{
-			base.SendMessage("OnPenitentDead", SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnPenitentDead", 1);
 		}
 
 		public void NumberOfCurrentFlasksChanged(float newNumberOfFlasks)
 		{
-			base.SendMessage("OnNumberOfCurrentFlasksChanged", newNumberOfFlasks, SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnNumberOfCurrentFlasksChanged", newNumberOfFlasks, 1);
 		}
 
 		public string GetBaseTranslationID()

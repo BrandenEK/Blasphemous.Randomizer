@@ -20,7 +20,7 @@ namespace Framework.BossRush
 			return this.FontRechargingScenes;
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		public void ResetDefaultMaxScoreForFailedRuns()
 		{
 			this.MaxScoreForFailedRuns = (BossRushManager.BossRushCourseScore)(this.Scenes.Count - 1);
@@ -49,13 +49,13 @@ namespace Framework.BossRush
 			}
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		public void ResetDefaultScoresInNormal()
 		{
 			this.ResetDefaultScores(this.ScoresByMinutesInNormal);
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		public void ResetDefaultScoresInHard()
 		{
 			this.ResetDefaultScores(this.ScoresByMinutesInHard);
@@ -88,13 +88,13 @@ namespace Framework.BossRush
 			}
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		public void PropagateIntervalModificationInNormal()
 		{
 			this.PropagateIntervalModification(this.ScoresByMinutesInNormal);
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		public void PropagateIntervalModificationInHard()
 		{
 			this.PropagateIntervalModification(this.ScoresByMinutesInHard);

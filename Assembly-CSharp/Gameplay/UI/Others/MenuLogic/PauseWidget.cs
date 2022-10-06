@@ -156,10 +156,10 @@ namespace Gameplay.UI.Others.MenuLogic
 			{
 				this.OptionsWidget.OnShow(false);
 			}
-			DOTween.To(() => canvasTo0.alpha, delegate(float x)
+			TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => canvasTo0.alpha, delegate(float x)
 			{
 				canvasTo0.alpha = x;
-			}, 0f, this.alphaDurantionChild).OnComplete(new TweenCallback(this.EndFading));
+			}, 0f, this.alphaDurantionChild), new TweenCallback(this.EndFading));
 			DOTween.To(() => canvasTo1.alpha, delegate(float x)
 			{
 				canvasTo1.alpha = x;

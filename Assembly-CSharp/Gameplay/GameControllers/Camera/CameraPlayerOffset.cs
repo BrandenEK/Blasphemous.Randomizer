@@ -96,15 +96,16 @@ namespace Gameplay.GameControllers.Camera
 			{
 				return;
 			}
-			Vector2 vector = new Vector2(this.XOffset, this.YOffset);
+			Vector2 vector;
+			vector..ctor(this.XOffset, this.YOffset);
 			if (orientation == EntityOrientation.Left)
 			{
 				vector.x = -this.XOffset;
 			}
-			DOTween.To(delegate(float x)
+			TweenSettingsExtensions.SetId<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(DOTween.To(delegate(float x)
 			{
 				this._proCamera2D.OverallOffset.x = x;
-			}, this._proCamera2D.OverallOffset.x, vector.x, elapsedTime).SetEase(Ease.OutSine).SetId("ForwardFocus");
+			}, this._proCamera2D.OverallOffset.x, vector.x, elapsedTime), 3), "ForwardFocus");
 		}
 
 		public static void StopCameraTween()

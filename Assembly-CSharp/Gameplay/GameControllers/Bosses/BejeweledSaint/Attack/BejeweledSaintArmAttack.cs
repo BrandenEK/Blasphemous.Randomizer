@@ -113,19 +113,19 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.Attack
 
 		public void DefaultArmAngle(float s = 0.9f)
 		{
-			base.transform.DOLocalRotate(Vector3.zero, s, RotateMode.Fast).SetEase(Ease.InOutCubic);
+			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalRotate(base.transform, Vector3.zero, s, 0), 10);
 		}
 
 		public void SetArmAngle()
 		{
-			Vector3 dir = Core.Logic.Penitent.transform.position - this.angleCastCenter.position;
-			Debug.DrawRay(this.angleCastCenter.position, dir, Color.red, 2f);
-			float num = 57.29578f * Mathf.Atan2(dir.y, dir.x);
+			Vector3 vector = Core.Logic.Penitent.transform.position - this.angleCastCenter.position;
+			Debug.DrawRay(this.angleCastCenter.position, vector, Color.red, 2f);
+			float num = 57.29578f * Mathf.Atan2(vector.y, vector.x);
 			num += 90f;
 			Debug.Log("UNCLAMPED: " + num);
 			num = Mathf.Clamp(num, -this.maxArmAngle, this.maxArmAngle);
 			Debug.Log("ANGLE:" + num);
-			base.transform.DOLocalRotate(new Vector3(0f, 0f, num), 0.4f, RotateMode.Fast).SetEase(Ease.InOutCubic);
+			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalRotate(base.transform, new Vector3(0f, 0f, num), 0.4f, 0), 10);
 		}
 
 		public void QuickAttackMode(bool mode)
@@ -143,7 +143,7 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.Attack
 		public void SetCurrentFailedAttackLimit()
 		{
 			BejeweledSaintArmAttack.FailedAttackTier failedAttackTier = this.FailedAttackTiers.First<BejeweledSaintArmAttack.FailedAttackTier>();
-			this._currentFailedAttacksLimit = UnityEngine.Random.Range(failedAttackTier.MinFailedAttackAmount, failedAttackTier.MaxFailedAttackAmount);
+			this._currentFailedAttacksLimit = Random.Range(failedAttackTier.MinFailedAttackAmount, failedAttackTier.MaxFailedAttackAmount);
 		}
 
 		public bool CanFireSweepAttack

@@ -44,7 +44,7 @@ namespace Gameplay.GameControllers.Enemies.FlyingPortrait.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("Moves", out parameterInstance);
+				eventInstance.getParameter("Moves", ref parameterInstance);
 				parameterInstance.setValue(value);
 			}
 			catch (Exception ex)

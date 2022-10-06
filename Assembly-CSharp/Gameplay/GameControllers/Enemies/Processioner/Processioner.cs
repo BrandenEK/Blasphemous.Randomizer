@@ -85,7 +85,8 @@ namespace Gameplay.GameControllers.Enemies.Processioner
 		{
 			base.SetPositionAtStart();
 			float groundDist = base.Controller.GroundDist;
-			Vector3 position = new Vector3(base.transform.position.x, base.transform.position.y - groundDist, base.transform.position.z);
+			Vector3 position;
+			position..ctor(base.transform.position.x, base.transform.position.y - groundDist, base.transform.position.z);
 			base.transform.position = position;
 		}
 
@@ -115,7 +116,7 @@ namespace Gameplay.GameControllers.Enemies.Processioner
 				return;
 			}
 			this._rootMotion = base.GetComponentInChildren<RootMotionDriver>();
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.ChainedAngelPrefab, base.transform.position, Quaternion.identity);
+			GameObject gameObject = Object.Instantiate<GameObject>(this.ChainedAngelPrefab, base.transform.position, Quaternion.identity);
 			this.ChainedAngel = gameObject.GetComponentInChildren<ChainedAngel>();
 			if (!this.ChainedAngel)
 			{

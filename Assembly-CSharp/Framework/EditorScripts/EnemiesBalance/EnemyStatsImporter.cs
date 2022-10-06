@@ -17,7 +17,7 @@ namespace Framework.EditorScripts.EnemiesBalance
 
 		public void SetEnemyStats(Enemy enemy)
 		{
-			if (!enemy || enemy.Id.IsNullOrWhitespace())
+			if (!enemy || StringExtensions.IsNullOrWhitespace(enemy.Id))
 			{
 				Debug.LogWarning("Enemy Id is empty: " + enemy.gameObject.name);
 				return;

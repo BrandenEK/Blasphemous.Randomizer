@@ -40,7 +40,7 @@ namespace Framework.Inventory
 		{
 			if (this.PortalPrefab != null && this.PortalInstantiation == null)
 			{
-				this.PortalInstantiation = UnityEngine.Object.Instantiate<GameObject>(this.PortalPrefab, this.CalculateTargetPosition(), Quaternion.identity);
+				this.PortalInstantiation = Object.Instantiate<GameObject>(this.PortalPrefab, this.CalculateTargetPosition(), Quaternion.identity);
 			}
 			else if (this.PortalInstantiation != null)
 			{

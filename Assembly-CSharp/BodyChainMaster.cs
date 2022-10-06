@@ -9,7 +9,7 @@ using UnityEngine;
 public class BodyChainMaster : MonoBehaviour
 {
 	[FoldoutGroup("Configuration", 0)]
-	[Button("Auto assign links", ButtonSizes.Small)]
+	[Button("Auto assign links", 0)]
 	public void AssignLinks()
 	{
 		for (int i = this.links.Count - 1; i >= 0; i--)
@@ -31,7 +31,7 @@ public class BodyChainMaster : MonoBehaviour
 	}
 
 	[FoldoutGroup("Debug", 0)]
-	[Button("Update chain", ButtonSizes.Small)]
+	[Button("Update chain", 0)]
 	public void UpdateChain()
 	{
 		for (int i = 0; i < this.links.Count; i++)
@@ -41,7 +41,7 @@ public class BodyChainMaster : MonoBehaviour
 	}
 
 	[FoldoutGroup("Debug", 0)]
-	[Button("Update BACKWARDS chain", ButtonSizes.Small)]
+	[Button("Update BACKWARDS chain", 0)]
 	public void UpdateBackwardsChain()
 	{
 		for (int i = this.links.Count - 2; i >= 0; i--)
@@ -53,7 +53,7 @@ public class BodyChainMaster : MonoBehaviour
 	}
 
 	[FoldoutGroup("Debug", 0)]
-	[Button("Update reverse chain", ButtonSizes.Small)]
+	[Button("Update reverse chain", 0)]
 	public void UpdateReverseChain()
 	{
 		for (int i = this.links.Count - 1; i >= 0; i--)
@@ -70,34 +70,34 @@ public class BodyChainMaster : MonoBehaviour
 	public void Repullo()
 	{
 		this.InterruptActions();
-		Vector3 a = base.transform.position - Core.Logic.Penitent.transform.position;
-		a += Vector3.up;
-		float d = 5f;
-		this.MoveWithEase(base.transform.position + a.normalized * d, 0.5f, Ease.OutBack, null);
+		Vector3 vector = base.transform.position - Core.Logic.Penitent.transform.position;
+		vector += Vector3.up;
+		float num = 5f;
+		this.MoveWithEase(base.transform.position + vector.normalized * num, 0.5f, 27, null);
 	}
 
 	[FoldoutGroup("Debug", 0)]
-	[Button("Update chain fixed point", ButtonSizes.Small)]
+	[Button("Update chain fixed point", 0)]
 	public void UpdateFixedPoint()
 	{
 		for (int i = this.links.Count - 1; i >= 0; i--)
 		{
 			float num = this.links[i].DistanceToPoint();
-			float d = num - this.links[i].distance;
+			float num2 = num - this.links[i].distance;
 			if (num > 0f)
 			{
-				Vector2 v = (this.links[i].targetLink.position - this.links[i].transform.position).normalized * d;
+				Vector2 vector = (this.links[i].targetLink.position - this.links[i].transform.position).normalized * num2;
 				for (int j = 0; j < i; j++)
 				{
-					this.links[j].transform.position -= v;
+					this.links[j].transform.position -= vector;
 				}
-				base.transform.position -= v;
+				base.transform.position -= vector;
 			}
 		}
 	}
 
 	[FoldoutGroup("Debug", 0)]
-	[Button("TEST INTRO ENTRY", ButtonSizes.Small)]
+	[Button("TEST INTRO ENTRY", 0)]
 	public void TestEntry()
 	{
 		SplineFollower component = base.GetComponent<SplineFollower>();
@@ -114,7 +114,7 @@ public class BodyChainMaster : MonoBehaviour
 
 	private void SecondaryAnimation()
 	{
-		this.spr.transform.DOLocalMoveY(this.secAnimationAmplitude, this.secAnimationDuration, false).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
+		TweenSettingsExtensions.SetLoops<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMoveY(this.spr.transform, this.secAnimationAmplitude, this.secAnimationDuration, false), 7), -1, 1);
 	}
 
 	private void OnNextPointOnSight(Vector2 obj)
@@ -178,13 +178,13 @@ public class BodyChainMaster : MonoBehaviour
 
 	public void StartBob()
 	{
-		Vector2 v = base.transform.position + Vector2.up * 3f;
-		base.transform.DOMove(v, 0.5f, false).SetLoops(5, LoopType.Yoyo).SetEase(Ease.InOutQuad);
+		Vector2 vector = base.transform.position + Vector2.up * 3f;
+		TweenSettingsExtensions.SetEase<Tweener>(TweenSettingsExtensions.SetLoops<Tweener>(ShortcutExtensions.DOMove(base.transform, vector, 0.5f, false), 5, 1), 7);
 	}
 
 	public void EndBob()
 	{
-		base.transform.DOKill(false);
+		ShortcutExtensions.DOKill(base.transform, false);
 	}
 
 	public List<Vector2> GeneratePointsAroundPoint(Vector2 p, float r, int n)
@@ -199,12 +199,12 @@ public class BodyChainMaster : MonoBehaviour
 
 	private Vector2 GenerateRandomPointInRadius(Vector2 center, float r)
 	{
-		return center + new Vector2(UnityEngine.Random.Range(-r, r), UnityEngine.Random.Range(-r, r));
+		return center + new Vector2(Random.Range(-r, r), Random.Range(-r, r));
 	}
 
 	public Tween MoveWithEase(Vector2 targetPoint, float duration, Ease easingCurve, Action<Transform> callback = null)
 	{
-		return base.transform.DOMove(targetPoint, duration, false).SetEase(easingCurve).OnComplete(delegate
+		return TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, targetPoint, duration, false), easingCurve), delegate()
 		{
 			if (callback != null)
 			{
@@ -252,14 +252,14 @@ public class BodyChainMaster : MonoBehaviour
 		maxRange = Mathf.Min(maxRange, this.maxAttackDistance);
 		Vector2 origin = base.transform.position;
 		Vector3 dir = Core.Logic.Penitent.transform.position + offset - origin;
-		Tween curTween = base.transform.DOMove(base.transform.position - dir.normalized, anticipationTweenDuration, false).SetEase(Ease.OutCubic);
-		yield return curTween.WaitForCompletion();
+		Tween curTween = TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, base.transform.position - dir.normalized, anticipationTweenDuration, false), 9);
+		yield return TweenExtensions.WaitForCompletion(curTween);
 		if (callbackBeforeAttack != null)
 		{
 			callbackBeforeAttack();
 		}
-		curTween = base.transform.DOPunchPosition(dir.normalized * maxRange, this.attackDuration, 2, 0.1f, false);
-		yield return curTween.WaitForCompletion();
+		curTween = ShortcutExtensions.DOPunchPosition(base.transform, dir.normalized * maxRange, this.attackDuration, 2, 0.1f, false);
+		yield return TweenExtensions.WaitForCompletion(curTween);
 		this.IsAttacking = false;
 		yield break;
 	}
@@ -292,23 +292,23 @@ public class BodyChainMaster : MonoBehaviour
 	{
 		for (int i = 0; i < this.links.Count; i++)
 		{
-			UnityEngine.Object.Destroy(this.links[i].gameObject);
+			Object.Destroy(this.links[i].gameObject);
 		}
-		UnityEngine.Object.Destroy(base.gameObject);
+		Object.Destroy(base.gameObject);
 	}
 
 	private void InterruptActions()
 	{
 		base.StopAllCoroutines();
-		base.transform.DOKill(false);
+		ShortcutExtensions.DOKill(base.transform, false);
 		this.IsAttacking = false;
 	}
 
 	public void LookAtTarget(Vector3 point, float rotationSpeedFactor = 5f)
 	{
 		Vector2 vector = point - base.transform.position;
-		Quaternion b = Quaternion.Euler(0f, 0f, 57.29578f * Mathf.Atan2(vector.y, vector.x));
-		base.transform.rotation = Quaternion.Slerp(base.transform.rotation, b, rotationSpeedFactor * Time.deltaTime);
+		Quaternion quaternion = Quaternion.Euler(0f, 0f, 57.29578f * Mathf.Atan2(vector.y, vector.x));
+		base.transform.rotation = Quaternion.Slerp(base.transform.rotation, quaternion, rotationSpeedFactor * Time.deltaTime);
 	}
 
 	private void OnDrawGizmosSelected()

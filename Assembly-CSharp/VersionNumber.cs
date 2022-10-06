@@ -1,5 +1,4 @@
 using System;
-using Framework.Randomizer;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +7,7 @@ public class VersionNumber : MonoBehaviour
 {
 	private void Start()
 	{
-		base.GetComponent<Text>().text = Randomizer.getVersion();
+		Text component = base.GetComponent<Text>();
+		component.text = "v. " + Application.version;
 	}
 }

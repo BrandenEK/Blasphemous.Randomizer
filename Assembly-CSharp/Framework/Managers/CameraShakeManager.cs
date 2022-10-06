@@ -15,7 +15,7 @@ namespace Framework.Managers
 		public void ShakeUsingPreset(string preset, bool shakeOverthrow = false)
 		{
 			ProCamera2DShake proCamera2DShake = Core.Logic.CameraManager.ProCamera2DShake;
-			if (proCamera2DShake == null || preset.IsNullOrWhitespace())
+			if (proCamera2DShake == null || StringExtensions.IsNullOrWhitespace(preset))
 			{
 				return;
 			}

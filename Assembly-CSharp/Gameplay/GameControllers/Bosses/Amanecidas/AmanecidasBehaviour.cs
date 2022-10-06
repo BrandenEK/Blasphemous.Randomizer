@@ -322,12 +322,12 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 		private bool DoCrystalLancesPlatformsExist()
 		{
-			return UnityEngine.Object.FindObjectsOfType<AmanecidaCrystal>().Length > 0;
+			return Object.FindObjectsOfType<AmanecidaCrystal>().Length > 0;
 		}
 
 		private void DestroyCrystalLancesPlatforms(float multiplierToTtl, float maxTtl)
 		{
-			UnityEngine.Object.FindObjectsOfType<AmanecidaCrystal>().ToList<AmanecidaCrystal>().ForEach(delegate(AmanecidaCrystal x)
+			Object.FindObjectsOfType<AmanecidaCrystal>().ToList<AmanecidaCrystal>().ForEach(delegate(AmanecidaCrystal x)
 			{
 				x.MultiplyCurrentTimeToLive(multiplierToTtl, maxTtl);
 			});
@@ -347,11 +347,11 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			Dictionary<KeyCode, AmanecidasBehaviour.AMANECIDA_ATTACKS> debugActions = amanecidaAttackScriptableConfig.debugActions;
 			if (debugActions != null)
 			{
-				foreach (KeyCode key in debugActions.Keys)
+				foreach (KeyCode keyCode in debugActions.Keys)
 				{
-					if (Input.GetKeyDown(key))
+					if (Input.GetKeyDown(keyCode))
 					{
-						this.LaunchAction(debugActions[key]);
+						this.LaunchAction(debugActions[keyCode]);
 					}
 				}
 			}
@@ -424,7 +424,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			this.floatingCounter -= Time.deltaTime;
 			if (this.floatingCounter < 0f)
 			{
-				this.floatingCounter = UnityEngine.Random.Range(this.minFloatingPointCD, this.maxFloatingPointCD);
+				this.floatingCounter = Random.Range(this.minFloatingPointCD, this.maxFloatingPointCD);
 				this.ChangeFloatingPoint(this.GetNewValidFloatPoint());
 			}
 		}
@@ -447,8 +447,9 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 		public void ApplyStuckOffset()
 		{
-			Vector3 b = new Vector3(-0.15f * (float)this.GetDirFromOrientation(), 0.5f, 0f);
-			base.transform.position += b;
+			Vector3 vector;
+			vector..ctor(-0.15f * (float)this.GetDirFromOrientation(), 0.5f, 0f);
+			base.transform.position += vector;
 		}
 
 		private void ChangeFloatingPoint(Vector2 newPoint)
@@ -459,20 +460,20 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 		private Vector2 GetNewValidFloatPoint()
 		{
 			Vector2 vector = this.RandomPointInsideRect(this.battleBounds);
-			Vector2 a = vector - this.agent.GetComponent<Arrive>().target;
+			Vector2 vector2 = vector - this.agent.GetComponent<Arrive>().target;
 			int num = 0;
 			int num2 = 10;
-			while (num < num2 && Vector2.SqrMagnitude(a) < 2f)
+			while (num < num2 && Vector2.SqrMagnitude(vector2) < 2f)
 			{
 				vector = this.RandomPointInsideRect(this.battleBounds);
-				a = vector - this.agent.GetComponent<Arrive>().target;
+				vector2 = vector - this.agent.GetComponent<Arrive>().target;
 			}
 			return vector;
 		}
 
 		private Vector2 RandomPointInsideRect(Rect r)
 		{
-			return new Vector2(UnityEngine.Random.Range(r.xMin, r.xMin + r.width), UnityEngine.Random.Range(r.yMin, r.yMin + r.height));
+			return new Vector2(Random.Range(r.xMin, r.xMin + r.width), Random.Range(r.yMin, r.yMin + r.height));
 		}
 
 		private void ResetShieldActions()
@@ -706,13 +707,13 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 		{
 			AmanecidaAttackScriptableConfig amanecidaAttackScriptableConfig = (!this.Amanecidas.IsLaudes) ? this.attackConfigData : this.laudesAttackConfigData;
 			List<float> weights = amanecidaAttackScriptableConfig.GetWeights(filteredAtks, this.currentWeapon);
-			float max = weights.Sum();
-			float num = UnityEngine.Random.Range(0f, max);
-			float num2 = 0f;
+			float num = weights.Sum();
+			float num2 = Random.Range(0f, num);
+			float num3 = 0f;
 			for (int i = 0; i < filteredAtks.Count; i++)
 			{
-				num2 += weights[i];
-				if (num2 > num)
+				num3 += weights[i];
+				if (num3 > num2)
 				{
 					return i;
 				}
@@ -889,7 +890,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 		}
 
 		[FoldoutGroup("Battle area", 0)]
-		[Button("CenterBattleAreaHere", ButtonSizes.Medium)]
+		[Button("CenterBattleAreaHere", 22)]
 		private void CenterBattleAreaHere()
 		{
 			this.battleBounds.center = base.transform.position;
@@ -909,9 +910,9 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 		public void DoDummyBackJump()
 		{
 			Debug.Log("<DUMMY ATTACK>");
-			Vector2 b = -base.transform.right * 4f;
-			Vector2 v = base.transform.position + b;
-			this.jumpAttack.Use(base.transform, v);
+			Vector2 vector = -base.transform.right * 4f;
+			Vector2 vector2 = base.transform.position + vector;
+			this.jumpAttack.Use(base.transform, vector2);
 		}
 
 		public void DoSummonWeaponAnimation()
@@ -973,7 +974,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			bool flag;
 			if (Mathf.Approximately(base.transform.position.x, this.battleBounds.center.x))
 			{
-				flag = ((double)UnityEngine.Random.value < 0.5);
+				flag = ((double)Random.value < 0.5);
 			}
 			else
 			{
@@ -982,11 +983,11 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			Vector2 zero = Vector2.zero;
 			if (flag)
 			{
-				zero = new Vector2(this.battleBounds.xMax, this.battleBounds.yMin);
+				zero..ctor(this.battleBounds.xMax, this.battleBounds.yMin);
 			}
 			else
 			{
-				zero = new Vector2(this.battleBounds.xMin, this.battleBounds.yMin);
+				zero..ctor(this.battleBounds.xMin, this.battleBounds.yMin);
 			}
 			this.jumpAttack.Use(base.transform, this.GetPointBelow(zero, false, 100f));
 			this.jumpAttack.OnJumpLanded += this.OnLavaBallJumpSmashLanded;
@@ -1066,10 +1067,10 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				}
 				for (int j = 0; j < n; j++)
 				{
-					Vector2 v = center + Vector2.right * ((float)(j + 1) * num2) * (float)num;
-					if (v.x > this.battleBounds.xMin && v.x < this.battleBounds.xMax)
+					Vector2 vector = center + Vector2.right * ((float)(j + 1) * num2) * (float)num;
+					if (vector.x > this.battleBounds.xMin && vector.x < this.battleBounds.xMax)
 					{
-						BossSpawnedGeoAttack bossSpawnedGeoAttack = this.SummonSpike(v);
+						BossSpawnedGeoAttack bossSpawnedGeoAttack = this.SummonSpike(vector);
 						float num3 = (float)j / (float)n;
 						bossSpawnedGeoAttack.SpawnGeo(num3 * totalSeconds, heightPercentage);
 					}
@@ -1240,7 +1241,8 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 		private void SetMultiFrozenArrows(int numArrows, float width)
 		{
 			Vector2 dirToPenitent = this.GetDirToPenitent(base.transform.position);
-			Vector2 vector = new Vector2(dirToPenitent.y, -dirToPenitent.x);
+			Vector2 vector;
+			vector..ctor(dirToPenitent.y, -dirToPenitent.x);
 			Vector2 normalized = vector.normalized;
 			for (int i = 0; i < numArrows; i++)
 			{
@@ -1255,9 +1257,9 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 		public void SetFrozenHail(Vector2 lancePosition)
 		{
-			Vector2 vector = lancePosition - base.transform.position + UnityEngine.Random.Range(-1.5f, 1.5f) * Vector2.down;
-			vector += UnityEngine.Random.Range(-0.5f, 0.5f) * Vector2.right;
-			Vector2 vector2 = Vector2.down + UnityEngine.Random.Range(-0.25f, 0.25f) * Vector2.right;
+			Vector2 vector = lancePosition - base.transform.position + Random.Range(-1.5f, 1.5f) * Vector2.down;
+			vector += Random.Range(-0.5f, 0.5f) * Vector2.right;
+			Vector2 vector2 = Vector2.down + Random.Range(-0.25f, 0.25f) * Vector2.right;
 			StraightProjectile straightProjectile = this.bulletTimeHailAttack.Shoot(vector2.normalized, vector, 1f);
 			this.bullets.Add(straightProjectile as BulletTimeProjectile);
 		}
@@ -1275,7 +1277,8 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 		public void ShootGhostProjectile(Vector2 startPoint, Vector2 dir)
 		{
-			Vector3 rotation = new Vector3(0f, 0f, Mathf.Atan2(dir.y, dir.x) * 57.29578f);
+			Vector3 rotation;
+			rotation..ctor(0f, 0f, Mathf.Atan2(dir.y, dir.x) * 57.29578f);
 			if (dir.x < 0f)
 			{
 				rotation.y = 180f;
@@ -1432,7 +1435,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			{
 				while (this.bullets.Count > 0)
 				{
-					BulletTimeProjectile item = this.bullets[UnityEngine.Random.Range(0, this.bullets.Count)];
+					BulletTimeProjectile item = this.bullets[Random.Range(0, this.bullets.Count)];
 					item.Accelerate(1f);
 					yield return new WaitForSeconds(delay);
 					this.bullets.Remove(item);
@@ -1568,11 +1571,11 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 		private Vector2 GetPointBelow(Vector2 p, bool stopOnOneWayDowns = false, float maxDistance = 100f)
 		{
-			float d = 0.4f;
-			LayerMask mask = (!stopOnOneWayDowns) ? this.floorMask : this.floorNOneWayDownMask;
-			if (Physics2D.RaycastNonAlloc(p, Vector2.down, this.results, maxDistance, mask) > 0)
+			float num = 0.4f;
+			LayerMask layerMask = (!stopOnOneWayDowns) ? this.floorMask : this.floorNOneWayDownMask;
+			if (Physics2D.RaycastNonAlloc(p, Vector2.down, this.results, maxDistance, layerMask) > 0)
 			{
-				return this.results[0].point + Vector2.up * d;
+				return this.results[0].point + Vector2.up * num;
 			}
 			return p;
 		}
@@ -1585,13 +1588,13 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 		private Vector2 GetPointBelowMe(bool stopOnOneWayDowns = false, float maxDistance = 100f)
 		{
-			float d = 0f;
+			float num = 0f;
 			LayerMask m = (!stopOnOneWayDowns) ? this.floorMask : this.floorNOneWayDownMask;
 			if (this.IsInsideGround(base.transform.position, m))
 			{
-				d = 2f;
+				num = 2f;
 			}
-			return this.GetPointBelow(base.transform.position + Vector2.up * d, stopOnOneWayDowns, maxDistance);
+			return this.GetPointBelow(base.transform.position + Vector2.up * num, stopOnOneWayDowns, maxDistance);
 		}
 
 		private Vector2 GetValidPointInDirection(Vector2 dir, float amount)
@@ -1616,7 +1619,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			this.StopCurrentAction();
 			this.LookAtPenitent(true);
 			this.SetGhostTrail(false);
-			base.transform.DOKill(true);
+			ShortcutExtensions.DOKill(base.transform, true);
 			this.Amanecidas.AnimatorInyector.Parry();
 			this.SetInterruptable(true);
 			this.WaitAfterParry();
@@ -1705,7 +1708,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				bool isLastHurt = false;
 				this._fsm.ChangeState(this.stHurt);
 				this.StopCurrentAction();
-				base.transform.DOKill(true);
+				ShortcutExtensions.DOKill(base.transform, true);
 				this.LookAtPenitent(true);
 				this._currentHurtHits++;
 				if (this._currentHurtHits >= this.currentFightParameters.maxHitsInHurt)
@@ -1743,7 +1746,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			this.CleanAll();
 			this.StopCurrentAction();
 			base.StopAllCoroutines();
-			base.transform.DOKill(false);
+			ShortcutExtensions.DOKill(base.transform, false);
 			this._fsm.ChangeState(this.stDeath);
 			this.LookAtPenitentUsingOrientation();
 			Core.Logic.Penitent.Status.Invulnerable = true;
@@ -1837,8 +1840,8 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 		private Vector2 GetTargetPosition(float error = 0f)
 		{
-			Vector2 a = Core.Logic.Penitent.transform.position + Vector2.up;
-			return a + new Vector2(UnityEngine.Random.Range(-error, error), UnityEngine.Random.Range(-error, error));
+			Vector2 vector = Core.Logic.Penitent.transform.position + Vector2.up;
+			return vector + new Vector2(Random.Range(-error, error), Random.Range(-error, error));
 		}
 
 		private BezierSpline CopySplineFrom(BezierSpline spline)
@@ -1908,11 +1911,11 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			Vector2 zero = Vector2.zero;
 			if (base.transform.position.x > this.battleBounds.center.x)
 			{
-				zero = new Vector2(this.battleBounds.xMax, this.battleBounds.yMin - 0.2f);
+				zero..ctor(this.battleBounds.xMax, this.battleBounds.yMin - 0.2f);
 			}
 			else
 			{
-				zero = new Vector2(this.battleBounds.xMin, this.battleBounds.yMin - 0.2f);
+				zero..ctor(this.battleBounds.xMin, this.battleBounds.yMin - 0.2f);
 			}
 			return this.meleeProjectile_EA.StartAction(this, zero, 1.5f, new Action(this.Amanecidas.Audio.PlayAxeAttack_AUDIO), this.flameBladeAttack, attackNumberOfRepetitions);
 		}
@@ -2017,13 +2020,13 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			Vector2 endPoint;
 			if (Core.Logic.Penitent.GetPosition().x > this.battleBounds.center.x)
 			{
-				originPoint = new Vector2(this.battleBounds.xMin - 0.45f, this.battleBounds.yMin - 0.55f);
-				endPoint = new Vector2(this.battleBounds.xMin + 2f, this.battleBounds.yMax + 1.7f);
+				originPoint..ctor(this.battleBounds.xMin - 0.45f, this.battleBounds.yMin - 0.55f);
+				endPoint..ctor(this.battleBounds.xMin + 2f, this.battleBounds.yMax + 1.7f);
 			}
 			else
 			{
-				originPoint = new Vector2(this.battleBounds.xMax + 0.45f, this.battleBounds.yMin - 0.55f);
-				endPoint = new Vector2(this.battleBounds.xMax - 2f, this.battleBounds.yMax + 1.7f);
+				originPoint..ctor(this.battleBounds.xMax + 0.45f, this.battleBounds.yMin - 0.55f);
+				endPoint..ctor(this.battleBounds.xMax - 2f, this.battleBounds.yMax + 1.7f);
 			}
 			return (this.Amanecidas.shieldCurrentHP > 0f) ? this.shootMineArrows_EA.StartAction(this, attackNumberOfRepetitions, originPoint, endPoint, new Action(this.ShootMineArrow), new Action(this.ActivateMines), new Action<Vector2, Vector2>(this.ShowMineArrowTrail), 2.4f, 0.55f, 1f) : this.shootMineArrows_EA.StartAction(this, attackNumberOfRepetitions + 2, originPoint, endPoint, new Action(this.ShootMineArrow), new Action(this.ActivateMines), new Action<Vector2, Vector2>(this.ShowMineArrowTrail), 2.4f, 0.45f, 0.5f);
 		}
@@ -2080,11 +2083,11 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			Vector2 zero = Vector2.zero;
 			if (this.laudesBowFightPhase == AmanecidaArena.WEAPON_FIGHT_PHASE.FIRST)
 			{
-				zero = new Vector2(-2f, 8.5f);
+				zero..ctor(-2f, 8.5f);
 			}
 			else
 			{
-				zero = new Vector2(2f, 8.5f);
+				zero..ctor(2f, 8.5f);
 			}
 			this.laudesBowFightPhase++;
 			return this.moveBattleBounds_EA.StartAction(this, zero, 0.2f, this.laudesBowFightPhase);
@@ -2099,10 +2102,14 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 		private EnemyAction LaunchAction_FreezeTimeHail()
 		{
-			Vector2 firstOriginPoint = new Vector2(this.battleBounds.center.x + 0.1f, this.battleBounds.yMax);
-			Vector2 firstEndPoint = new Vector2(this.battleBounds.xMax + 0.5f, this.battleBounds.yMax);
-			Vector2 secondOriginPoint = new Vector2(this.battleBounds.center.x - 0.1f, this.battleBounds.yMax);
-			Vector2 secondEndPoint = new Vector2(this.battleBounds.xMin - 0.5f, this.battleBounds.yMax);
+			Vector2 firstOriginPoint;
+			firstOriginPoint..ctor(this.battleBounds.center.x + 0.1f, this.battleBounds.yMax);
+			Vector2 firstEndPoint;
+			firstEndPoint..ctor(this.battleBounds.xMax + 0.5f, this.battleBounds.yMax);
+			Vector2 secondOriginPoint;
+			secondOriginPoint..ctor(this.battleBounds.center.x - 0.1f, this.battleBounds.yMax);
+			Vector2 secondEndPoint;
+			secondEndPoint..ctor(this.battleBounds.xMin - 0.5f, this.battleBounds.yMax);
 			if (this.IsPenitentInTop())
 			{
 				firstOriginPoint.y += 2f;
@@ -2125,13 +2132,13 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			Vector2 endPoint;
 			if (penitent.GetPosition().x > this.battleBounds.center.x)
 			{
-				originPoint = new Vector2(this.battleBounds.xMin + 0.5f, this.battleBounds.yMax + 2f);
-				endPoint = new Vector2(this.battleBounds.xMax - 0.5f, this.battleBounds.yMax + 2f);
+				originPoint..ctor(this.battleBounds.xMin + 0.5f, this.battleBounds.yMax + 2f);
+				endPoint..ctor(this.battleBounds.xMax - 0.5f, this.battleBounds.yMax + 2f);
 			}
 			else
 			{
-				originPoint = new Vector2(this.battleBounds.xMax - 0.5f, this.battleBounds.yMax + 2f);
-				endPoint = new Vector2(this.battleBounds.xMin + 0.5f, this.battleBounds.yMax + 2f);
+				originPoint..ctor(this.battleBounds.xMax - 0.5f, this.battleBounds.yMax + 2f);
+				endPoint..ctor(this.battleBounds.xMin + 0.5f, this.battleBounds.yMax + 2f);
 			}
 			if (this.IsPenitentInTop())
 			{
@@ -2139,7 +2146,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				endPoint.y += 2f;
 			}
 			Vector2 targetPosition = this.battleBounds.center + Vector2.up;
-			float num = UnityEngine.Random.Range(-0.1f, 0.1f);
+			float num = Random.Range(-0.1f, 0.1f);
 			originPoint.x += num;
 			endPoint.x += num;
 			AmanecidaAttackScriptableConfig amanecidaAttackScriptableConfig = (!this.Amanecidas.IsLaudes) ? this.attackConfigData : this.laudesAttackConfigData;
@@ -2152,8 +2159,10 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 		private EnemyAction LaunchAction_FreezeTimeLancesOnPenitent()
 		{
 			Vector3 position = Core.Logic.Penitent.transform.position;
-			Vector2 originPoint = new Vector2(position.x, this.battleBounds.yMax + 2f);
-			Vector2 endPoint = new Vector2(position.x, this.battleBounds.yMax + 2f);
+			Vector2 originPoint;
+			originPoint..ctor(position.x, this.battleBounds.yMax + 2f);
+			Vector2 endPoint;
+			endPoint..ctor(position.x, this.battleBounds.yMax + 2f);
 			AmanecidaAttackScriptableConfig amanecidaAttackScriptableConfig = (!this.Amanecidas.IsLaudes) ? this.attackConfigData : this.laudesAttackConfigData;
 			AmanecidaAttackScriptableConfig.AmanecidaAttackConfig attackConfig = amanecidaAttackScriptableConfig.GetAttackConfig(this.currentWeapon, AmanecidasBehaviour.AMANECIDA_ATTACKS.LANCE_FreezeTimeLancesOnPenitent);
 			this.extraRecoverySeconds = this.GetAttackRecoverySeconds(attackConfig);
@@ -2166,14 +2175,15 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				originPoint.y += 2f;
 				endPoint.y += 2f;
 			}
-			Vector2 targetPosition = new Vector2(endPoint.x - (float)this.GetDirFromOrientation(), this.battleBounds.yMax + 1f);
+			Vector2 targetPosition;
+			targetPosition..ctor(endPoint.x - (float)this.GetDirFromOrientation(), this.battleBounds.yMax + 1f);
 			return (this.Amanecidas.shieldCurrentHP > 0f) ? this.shootFrozenLances_EA.StartAction(this, attackNumberOfRepetitions, originPoint, endPoint, targetPosition, new Action<Vector2>(this.SetFrozenLance), new Action(this.ActivateFrozenLances), 0.05f, 0.2f, 0f, false) : this.shootFrozenLances_EA.StartAction(this, num, originPoint, endPoint, targetPosition, new Action<Vector2>(this.SetFrozenLance), new Action(this.ActivateFrozenLances), 0.05f, 0.1f, 0f, false);
 		}
 
 		private EnemyAction LaunchAction_LanceBlinkDash()
 		{
 			Penitent penitent = Core.Logic.Penitent;
-			float num = UnityEngine.Random.Range(0f, 1f);
+			float num = Random.Range(0f, 1f);
 			Vector2 vector = (num <= 0.5f) ? (penitent.GetPosition() + Vector3.right * 6f) : (penitent.GetPosition() + Vector3.left * 6f);
 			vector += Vector2.up * 2f;
 			BossDashAttack dashAttack = this.lanceDashAttack;
@@ -2195,9 +2205,9 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 		private EnemyAction LaunchAction_FalcataBlinkBehindAndDash()
 		{
 			Penitent penitent = Core.Logic.Penitent;
-			float d = 3f;
+			float num = 3f;
 			Vector2 pointBelowPenitent = this.GetPointBelowPenitent(true);
-			Vector2 vector = (penitent.GetOrientation() != EntityOrientation.Right) ? (pointBelowPenitent + Vector2.right * d) : (pointBelowPenitent + Vector2.left * d);
+			Vector2 vector = (penitent.GetOrientation() != EntityOrientation.Right) ? (pointBelowPenitent + Vector2.right * num) : (pointBelowPenitent + Vector2.left * num);
 			vector += Vector2.up * 1f;
 			BossDashAttack dashAttack = this.slashDashAttack;
 			return this.blinkDash_EA.StartAction(this, vector, dashAttack, 0.5f, false, false, true, 15f);
@@ -2260,18 +2270,18 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			Vector2 targetPosition;
 			if (penitent.GetPosition().x > this.battleBounds.center.x)
 			{
-				originPoint = new Vector2(this.battleBounds.xMin - 0.5f, this.battleBounds.yMax + 3f);
-				endPoint = new Vector2(this.battleBounds.xMax + 0.5f, this.battleBounds.yMax + 3f);
+				originPoint..ctor(this.battleBounds.xMin - 0.5f, this.battleBounds.yMax + 3f);
+				endPoint..ctor(this.battleBounds.xMax + 0.5f, this.battleBounds.yMax + 3f);
 				targetPosition.x = Mathf.Clamp(penitent.GetPosition().x - 8f, this.battleBounds.xMin, this.battleBounds.xMax);
 			}
 			else
 			{
-				originPoint = new Vector2(this.battleBounds.xMax + 0.5f, this.battleBounds.yMax + 3f);
-				endPoint = new Vector2(this.battleBounds.xMin - 0.5f, this.battleBounds.yMax + 3f);
+				originPoint..ctor(this.battleBounds.xMax + 0.5f, this.battleBounds.yMax + 3f);
+				endPoint..ctor(this.battleBounds.xMin - 0.5f, this.battleBounds.yMax + 3f);
 				targetPosition.x = Mathf.Clamp(penitent.GetPosition().x + 8f, this.battleBounds.xMin, this.battleBounds.xMax);
 			}
 			targetPosition.y = this.battleBounds.yMax + 1f;
-			float num = UnityEngine.Random.Range(-0.1f, 0.1f);
+			float num = Random.Range(-0.1f, 0.1f);
 			originPoint.x += num;
 			endPoint.x += num;
 			return (this.Amanecidas.CurrentLife > this.Amanecidas.Stats.Life.Final / 2f) ? this.freezeTimeNHorizontalDashes_ECA.StartAction(this, 16, originPoint, endPoint, targetPosition, new Action<Vector2>(this.SetFrozenLance), new Action(this.ActivateFrozenLances), 0.5f, 0.3f, false, 3, 0.5f, true) : this.freezeTimeNHorizontalDashes_ECA.StartAction(this, 32, originPoint, endPoint, targetPosition, new Action<Vector2>(this.SetFrozenLance), new Action(this.ActivateFrozenLances), 0.5f, 1f, true, 5, 0.3f, false);
@@ -2313,11 +2323,11 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			Vector2 zero = Vector2.zero;
 			if (base.transform.position.x > this.battleBounds.center.x)
 			{
-				zero = new Vector2(this.battleBounds.xMax, this.battleBounds.yMin - 0.2f);
+				zero..ctor(this.battleBounds.xMax, this.battleBounds.yMin - 0.2f);
 			}
 			else
 			{
-				zero = new Vector2(this.battleBounds.xMin, this.battleBounds.yMin - 0.2f);
+				zero..ctor(this.battleBounds.xMin, this.battleBounds.yMin - 0.2f);
 			}
 			return this.meleeProjectile_EA.StartAction(this, zero, 1f, new Action(this.Amanecidas.Audio.PlaySwordAttack_AUDIO), this.noxiousBladeAttack, attackNumberOfRepetitions);
 		}
@@ -2391,7 +2401,8 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 		private EnemyAction JumpSmashAttack(bool pillars)
 		{
-			Vector2 jumpOrigin = new Vector2(this.battleBounds.xMin, this.battleBounds.yMin);
+			Vector2 jumpOrigin;
+			jumpOrigin..ctor(this.battleBounds.xMin, this.battleBounds.yMin);
 			if (Core.Logic.Penitent.GetPosition().x < this.battleBounds.center.x)
 			{
 				jumpOrigin.x = this.battleBounds.xMax;
@@ -3161,7 +3172,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				yield return this.ACT_WAIT.waitForCompletion;
 				Core.Logic.Penitent.Status.Invulnerable = false;
 				base.FinishAction();
-				UnityEngine.Object.Destroy(ama.gameObject);
+				Object.Destroy(ama.gameObject);
 				yield break;
 			}
 
@@ -3221,7 +3232,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				int right = ama.GetDirFromOrientation();
 				BezierSpline spline = this.throwData.spline;
 				this.oldParent = spline.transform.parent;
-				spline.transform.localScale = new Vector3(spline.transform.localScale.x * (float)right, Mathf.Sign(UnityEngine.Random.Range(-1f, 1f)), 1f);
+				spline.transform.localScale = new Vector3(spline.transform.localScale.x * (float)right, Mathf.Sign(Random.Range(-1f, 1f)), 1f);
 				spline.transform.SetParent(null, true);
 				Vector2 controlPointOrigin = spline.points[1] - spline.points[0];
 				Vector2 controlPointEnd = spline.points[2] - spline.points[3];
@@ -3391,8 +3402,8 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				this.axes[1].SetRepositionMode(true);
 				this.axes[0].SetSeek(false);
 				this.axes[1].SetSeek(false);
-				this.ACT_MOVE_AXE1.StartAction(this.axes[0], this.axeSplines[0].GetPoint(0f), secondsToArrive, Ease.InOutQuad, null, true, null, true, true, 1.7f);
-				this.ACT_MOVE_AXE2.StartAction(this.axes[1], this.axeSplines[1].GetPoint(0f), secondsToArrive, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE_AXE1.StartAction(this.axes[0], this.axeSplines[0].GetPoint(0f), secondsToArrive, 7, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE_AXE2.StartAction(this.axes[1], this.axeSplines[1].GetPoint(0f), secondsToArrive, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE_AXE1.waitForCompletion;
 				yield return this.ACT_MOVE_AXE2.waitForCompletion;
 				this.axes[0].SetRepositionMode(false);
@@ -3634,7 +3645,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				amanecida.Behaviour.SetGhostTrail(false);
 				this.ACT_WAIT.StartAction(this.owner, this.baseBlinkoutSeconds + this.seconds);
 				yield return this.ACT_WAIT.waitForCompletion;
-				this.ACT_MOVE.StartAction(this.owner, this.targetPoint, 0.1f, Ease.InCubic, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(this.owner, this.targetPoint, 0.1f, 8, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				if (this.lookAtPenitent)
 				{
@@ -3703,10 +3714,10 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 						AmanecidaAxeBehaviour amanecidaAxeBehaviour = this.axes[j];
 						amanecidaAxeBehaviour.axeSplineFollowAction.StartAction(amanecidaAxeBehaviour, amanecidaAxeBehaviour.splineFollower, this.throwData[j], this.splines[j]);
 					}
-					Tween tw = p.DOScale(maxradius, this.throwData[0].duration / 2f).SetEase(Ease.InOutQuad);
-					yield return tw.WaitForCompletion();
-					tw = p.DOScale(1f, this.throwData[0].duration / 2f).SetEase(Ease.InOutQuad);
-					yield return tw.WaitForCompletion();
+					Tween tw = TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScale(p, maxradius, this.throwData[0].duration / 2f), 7);
+					yield return TweenExtensions.WaitForCompletion(tw);
+					tw = TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScale(p, 1f, this.throwData[0].duration / 2f), 7);
+					yield return TweenExtensions.WaitForCompletion(tw);
 				}
 				base.FinishAction();
 				yield break;
@@ -3853,9 +3864,9 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				float secondsToArrive = 0.75f;
 				this.axes[0].SetSeek(false);
 				this.axes[1].SetSeek(false);
-				this.ACT_MOVE_EASING_1.StartAction(this.axes[0], originAxePoint, secondsToArrive, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE_EASING_1.StartAction(this.axes[0], originAxePoint, secondsToArrive, 7, null, true, null, true, true, 1.7f);
 				originAxePoint += Vector2.down * 1.5f;
-				this.ACT_MOVE_EASING_2.StartAction(this.axes[1], originAxePoint, secondsToArrive, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE_EASING_2.StartAction(this.axes[1], originAxePoint, secondsToArrive, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE_EASING_1.waitForCompletion;
 				yield return this.ACT_MOVE_EASING_2.waitForCompletion;
 				this.axes[0].SetRepositionMode(false);
@@ -3961,7 +3972,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				ama.Amanecidas.AnimatorInyector.PlayMeleeAttack();
 				ama.Amanecidas.AnimatorInyector.SetMeleeHold(true);
 				ama.Amanecidas.Audio.PlayAxeSmashPreattack_AUDIO();
-				this.ACT_MOVE.StartAction(this.owner, this.owner.transform.position - dir, 0.5f, Ease.OutBack, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(this.owner, this.owner.transform.position - dir, 0.5f, 27, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				this.ACT_JUMP.StartAction(this.owner, this.jumpMethod);
 				this.ACT_WAIT.StartAction(this.owner, 0.6f);
@@ -4121,13 +4132,13 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				this.axe.SetRepositionMode(true);
 				if (this.pointA.y > ab.battleBounds.center.y)
 				{
-					this.ACT_MOVE_AXE_X.StartAction(this.axe, this.pointA, 0.6f, Ease.InBack, null, true, null, true, false, 1.7f);
-					this.ACT_MOVE_AXE_Y.StartAction(this.axe, this.pointA, 0.4f, Ease.OutBack, null, true, null, false, true, 1.7f);
+					this.ACT_MOVE_AXE_X.StartAction(this.axe, this.pointA, 0.6f, 26, null, true, null, true, false, 1.7f);
+					this.ACT_MOVE_AXE_Y.StartAction(this.axe, this.pointA, 0.4f, 27, null, true, null, false, true, 1.7f);
 				}
 				else
 				{
-					this.ACT_MOVE_AXE_X.StartAction(this.axe, this.pointA, 0.6f, Ease.OutBack, null, true, null, true, false, 1.7f);
-					this.ACT_MOVE_AXE_Y.StartAction(this.axe, this.pointA, 0.4f, Ease.InBack, null, true, null, false, true, 1.7f);
+					this.ACT_MOVE_AXE_X.StartAction(this.axe, this.pointA, 0.6f, 27, null, true, null, true, false, 1.7f);
+					this.ACT_MOVE_AXE_Y.StartAction(this.axe, this.pointA, 0.4f, 26, null, true, null, false, true, 1.7f);
 				}
 				yield return this.ACT_MOVE_AXE_Y.waitForCompletion;
 				yield return this.ACT_MOVE_AXE_X.waitForCompletion;
@@ -4199,8 +4210,8 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 						ama.verticalFastBlastAxeAttack.SummonAreaOnPoint(currentAxe.transform.position, 0f, 1f, null);
 						this.ACT_WAIT.StartAction(this.owner, 0.3f);
 						yield return this.ACT_WAIT.waitForCompletion;
-						this.ACT_MOVE_AXE_X.StartAction(currentAxe, axeStartingPos, 0.6f, Ease.InBack, null, true, null, true, false, 1.7f);
-						this.ACT_MOVE_AXE_Y.StartAction(currentAxe, axeStartingPos, 0.4f, Ease.OutBack, null, true, null, false, true, 1.7f);
+						this.ACT_MOVE_AXE_X.StartAction(currentAxe, axeStartingPos, 0.6f, 26, null, true, null, true, false, 1.7f);
+						this.ACT_MOVE_AXE_Y.StartAction(currentAxe, axeStartingPos, 0.4f, 27, null, true, null, false, true, 1.7f);
 						yield return this.ACT_MOVE_AXE_Y.waitForCompletion;
 						yield return this.ACT_MOVE_AXE_X.waitForCompletion;
 					}
@@ -4231,8 +4242,8 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					dir = ama.GetDirFromOrientation();
 					Vector2 targetPos = new Vector2(ama.transform.position.x + (float)ama.GetDirFromOrientation() * 1.5f, ama.battleBounds.yMin);
 					float travelTime = 0.3f;
-					yield return currentAxe.transform.DOPunchPosition(Vector2.up - Vector2.right * (float)dir * 0.2f, 0.1f, 2, 0.1f, false).WaitForCompletion();
-					this.ACT_MOVE_AXE_FULL.StartAction(currentAxe, targetPos, travelTime, Ease.OutQuad, null, true, null, true, true, 1.7f);
+					yield return TweenExtensions.WaitForCompletion(ShortcutExtensions.DOPunchPosition(currentAxe.transform, Vector2.up - Vector2.right * (float)dir * 0.2f, 0.1f, 2, 0.1f, false));
+					this.ACT_MOVE_AXE_FULL.StartAction(currentAxe, targetPos, travelTime, 6, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE_AXE_FULL.waitForCompletion;
 					this.ACT_WAIT.StartAction(this.owner, travelTime * 0.7f);
 					yield return this.ACT_WAIT.waitForCompletion;
@@ -4354,7 +4365,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					dir = ama.GetDirFromOrientation();
 					Vector2 targetPos = new Vector2(ama.transform.position.x + (float)ama.GetDirFromOrientation() * 1.5f, ama.battleBounds.yMin);
 					float travelTime = 0.2f;
-					this.ACT_MOVE_AXE_FULL.StartAction(currentAxe, targetPos, travelTime, Ease.InSine, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE_AXE_FULL.StartAction(currentAxe, targetPos, travelTime, 2, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE_AXE_FULL.waitForCompletion;
 					Vector2 exitDir = (ama.GetDirToPenitent(targetPos).x <= 0f) ? Vector2.left : Vector2.right;
 					int num = (exitDir.x <= 0f) ? 1 : 0;
@@ -4364,7 +4375,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					yield return this.ACT_WAIT.waitForCompletion;
 					Vector2 outOfCameraPos = exitDir * ama.battleBounds.width * 2f;
 					outOfCameraPos.y = currentAxe.transform.position.y;
-					this.ACT_MOVE_AXE_FULL.StartAction(currentAxe, outOfCameraPos, 2f, Ease.InBack, null, true, null, true, true, 1.4f);
+					this.ACT_MOVE_AXE_FULL.StartAction(currentAxe, outOfCameraPos, 2f, 26, null, true, null, true, true, 1.4f);
 					this.ACT_WAIT.StartAction(this.owner, 1f);
 					yield return this.ACT_WAIT.waitForCompletion;
 				}
@@ -4440,7 +4451,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					Vector3 throwingPos = ama.transform.position;
 					throwingPos.y = ama.battleBounds.yMin + 1f;
 					throwingPos.x = ((p.GetPosition().x <= throwingPos.x) ? (ama.battleBounds.xMax - 2f) : (ama.battleBounds.xMin + 2f));
-					this.ACT_MOVE.StartAction(this.owner, throwingPos, 0.1f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(this.owner, throwingPos, 0.1f, 7, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				for (int i = 0; i < this.numThrows; i++)
@@ -4758,11 +4769,11 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 			protected override IEnumerator BaseCoroutine()
 			{
-				this.ACT_MOVE.StartAction(this.owner, this.owner.transform.position + Vector2.up * 6f, 2f, Ease.OutCirc, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(this.owner, this.owner.transform.position + Vector2.up * 6f, 2f, 21, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				for (int i = 0; i < this.n; i++)
 				{
-					this.ACT_MOVE.StartAction(this.owner, this.distance, this.seconds, Ease.OutCirc, 1.7f);
+					this.ACT_MOVE.StartAction(this.owner, this.distance, this.seconds, 21, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					this.ACT_WAIT.StartAction(this.owner, 0.5f, 0.5f);
 					yield return this.ACT_WAIT.waitForCompletion;
@@ -4884,7 +4895,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				yield return this.ACT_WAIT.waitForCompletion;
 				if (!this.doBlinkBeforeJump && this.bounceAfterJump)
 				{
-					this.ACT_MOVE.StartAction(this.owner, ama.transform.position + Vector2.up * this.bounceHeight, 0.3f, Ease.OutQuart, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(this.owner, ama.transform.position + Vector2.up * this.bounceHeight, 0.3f, 12, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				ama.LookAtPenitentUsingOrientation();
@@ -5111,7 +5122,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					dashDir.x += (float)ama.GetDirFromOrientation();
 					dashDir.y = 0f;
 					dashDir = dashDir.normalized;
-					this.ACT_MOVE_EASE.StartAction(this.owner, this.owner.transform.position - dashDir * 1.5f, extraAnticipation + this.anticipationSeconds * 0.4f, Ease.OutQuad, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE_EASE.StartAction(this.owner, this.owner.transform.position - dashDir * 1.5f, extraAnticipation + this.anticipationSeconds * 0.4f, 6, null, true, null, true, true, 1.7f);
 					this.ACT_LUNGE.StartAction(this.owner, extraAnticipation + this.anticipationSeconds * 0.4f, 0f, 0.15f, true);
 					ama.Amanecidas.Audio.PlaySwordDashPreattack_AUDIO();
 					this.ACT_WAIT.StartAction(this.owner, extraAnticipation + this.anticipationSeconds);
@@ -5349,9 +5360,9 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				Penitent penitent = Core.Logic.Penitent;
 				Rect battleBounds = ama.battleBounds;
 				float num = (!startFromRight) ? (penitent.GetPosition().x - distanceToPlayer.x) : (penitent.GetPosition().x + distanceToPlayer.x);
-				float y = penitent.GetPosition().y + distanceToPlayer.y;
+				float num2 = penitent.GetPosition().y + distanceToPlayer.y;
 				num = Mathf.Clamp(num, battleBounds.xMin + 4f, battleBounds.xMax - 4f);
-				return new Vector2(num, y);
+				return new Vector2(num, num2);
 			}
 
 			protected override IEnumerator BaseCoroutine()
@@ -5381,7 +5392,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					yield return this.ACT_KEEPDISTANCE.waitForCompletion;
 					float easingSeconds = 0.4f;
 					Vector2 dir = (float)ama.GetDirFromOrientation() * distanceToPlayer.x * Vector2.right + Vector2.down * distanceToPlayer.y;
-					ama.transform.DOMove(ama.transform.position - dir.normalized, easingSeconds, false).SetEase(Ease.OutQuad);
+					TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(ama.transform, ama.transform.position - dir.normalized, easingSeconds, false), 6);
 					if (lastDash)
 					{
 						ama.Amanecidas.Audio.StopDashCharge_AUDIO();
@@ -5789,7 +5800,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				if (this.advanceDistance > 0f)
 				{
 					float moveTime = 0.3f;
-					this.ACT_MOVE.StartAction(this.owner, target, moveTime, Ease.OutQuad, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(this.owner, target, moveTime, 6, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				this.ACT_WAIT.StartAction(this.owner, this.afterAttackSeconds);
@@ -5865,7 +5876,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				target.x = Mathf.Clamp(target.x, o.battleBounds.xMin, o.battleBounds.xMax);
 				o.Amanecidas.AnimatorInyector.SetMeleeHold(true);
 				float moveTime = 0.8f;
-				this.ACT_MOVE.StartAction(this.owner, target, moveTime, Ease.InBack, null, true, null, true, true, 2f);
+				this.ACT_MOVE.StartAction(this.owner, target, moveTime, 26, null, true, null, true, true, 2f);
 				this.ACT_WAIT.StartAction(this.owner, moveTime * 0.1f);
 				yield return this.ACT_WAIT.waitForCompletion;
 				o.Amanecidas.Audio.PlaySwordPreattack_AUDIO();
@@ -5890,7 +5901,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				{
 					driftTarget.x -= 1f;
 				}
-				this.ACT_MOVE.StartAction(this.owner, driftTarget, 0.2f, Ease.OutExpo, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(this.owner, driftTarget, 0.2f, 18, null, true, null, true, true, 1.7f);
 				if (o.currentWeapon == AmanecidasAnimatorInyector.AMANECIDA_WEAPON.AXE)
 				{
 					this.ACT_DUST_VFX.StartAction(this.owner, target + Vector2.down * 0.2f, o.dustVFX, 0.3f);
@@ -6018,16 +6029,16 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			protected override void DoOnStop()
 			{
 				this.ACT_WAIT.StopAction();
-				this.owner.transform.DOKill(false);
+				ShortcutExtensions.DOKill(this.owner.transform, false);
 				base.DoOnStop();
 			}
 
 			protected override IEnumerator BaseCoroutine()
 			{
 				Sequence s = DOTween.Sequence();
-				s.Append(this.owner.transform.DOMove(this.owner.transform.position + this.targetDir * this.distance, 0.75f * this.easeSeconds, false).SetEase(Ease.OutCirc));
-				s.Append(this.owner.transform.DOMove(this.owner.transform.position, 0.25f * this.easeSeconds, false).SetEase(Ease.InCirc));
-				s.Play<Sequence>();
+				TweenSettingsExtensions.Append(s, TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(this.owner.transform, this.owner.transform.position + this.targetDir * this.distance, 0.75f * this.easeSeconds, false), 21));
+				TweenSettingsExtensions.Append(s, TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(this.owner.transform, this.owner.transform.position, 0.25f * this.easeSeconds, false), 20));
+				TweenExtensions.Play<Sequence>(s);
 				this.ACT_WAIT.StartAction(this.owner, this.easeSeconds);
 				yield return this.ACT_WAIT.waitForCompletion;
 				base.FinishAction();
@@ -6082,10 +6093,10 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					}
 					float delay = 0.8f;
 					Sequence s = DOTween.Sequence();
-					s.Append(this.owner.transform.DOMove(this.owner.transform.position - dir * 0.25f, 0.7f, false).SetEase(Ease.OutCirc));
-					s.Append(this.owner.transform.DOMove(this.owner.transform.position + dir * 0.75f, 0.2f, false).SetEase(Ease.InCirc));
-					s.SetDelay(delay);
-					s.Play<Sequence>();
+					TweenSettingsExtensions.Append(s, TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(this.owner.transform, this.owner.transform.position - dir * 0.25f, 0.7f, false), 21));
+					TweenSettingsExtensions.Append(s, TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(this.owner.transform, this.owner.transform.position + dir * 0.75f, 0.2f, false), 20));
+					TweenSettingsExtensions.SetDelay<Sequence>(s, delay);
+					TweenExtensions.Play<Sequence>(s);
 					o.Amanecidas.Audio.PlaySwordDash_AUDIO();
 					this.ACT_LUNGE.StartAction(this.owner, 0.5f, 0f, 0.2f, true);
 					yield return this.ACT_LUNGE.waitForCompletion;
@@ -6213,7 +6224,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				}
 				Vector2 p = ama.GetPointBelowMe(true, 100f);
 				float moveTime = Vector2.Distance(this.owner.transform.position, p) * 0.25f + 0.5f;
-				this.ACT_MOVE_EASE.StartAction(this.owner, p, moveTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE_EASE.StartAction(this.owner, p, moveTime, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE_EASE.waitForCompletion;
 				if (ama.currentWeapon == AmanecidasAnimatorInyector.AMANECIDA_WEAPON.AXE && !ama.IsWieldingAxe())
 				{
@@ -6228,12 +6239,12 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				this.ACT_METHOD.StartAction(this.owner, this.anticipationMethod);
 				float distance = 1f;
 				Vector2 explosionPoint = this.owner.transform.position + Vector3.up * distance;
-				this.ACT_MOVE_EASE.StartAction(this.owner, explosionPoint, this.anticipationTime, Ease.InCubic, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE_EASE.StartAction(this.owner, explosionPoint, this.anticipationTime, 8, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE_EASE.waitForCompletion;
 				this.ACT_METHOD.StartAction(this.owner, this.activateShieldMethod);
 				this.ACT_WAIT.StartAction(this.owner, 0.5f);
 				yield return this.ACT_WAIT.waitForCompletion;
-				this.ACT_MOVE_EASE.StartAction(this.owner, explosionPoint - Vector2.up * distance, this.anticipationTime * 0.1f, Ease.InOutCubic, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE_EASE.StartAction(this.owner, explosionPoint - Vector2.up * distance, this.anticipationTime * 0.1f, 10, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE_EASE.waitForCompletion;
 				yield return new AmanecidasBehaviour.WaitUntilIdle(ama, 5f);
 				ama.Amanecidas.AnimatorInyector.SetWeaponVisible(true);
@@ -6314,7 +6325,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				else
 				{
 					Vector2 blinkPoint = new Vector2((Core.Logic.Penitent.GetPosition().x <= battleBounds.center.x) ? battleBounds.xMax : battleBounds.xMin, battleBounds.yMin);
-					targetDirections[0] = Vector2.down + ((Core.Logic.Penitent.GetPosition().x <= battleBounds.center.x) ? (Vector2.left * UnityEngine.Random.Range(1f, 3f)) : (Vector2.right * UnityEngine.Random.Range(1f, 3f)));
+					targetDirections[0] = Vector2.down + ((Core.Logic.Penitent.GetPosition().x <= battleBounds.center.x) ? (Vector2.left * Random.Range(1f, 3f)) : (Vector2.right * Random.Range(1f, 3f)));
 					startPoints[0] = blinkPoint + Vector2.up * 0.75f;
 					this.ACT_BLINK.StartAction(this.owner, blinkPoint, 0.15f, true, true);
 					yield return this.ACT_BLINK.waitForCompletion;
@@ -6456,7 +6467,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				yield return this.ACT_MOVE_CHARACTER.waitForCompletion;
 				Vector2 startPoint = o.transform.position + new Vector2(0f, 1.75f);
 				Vector2 targetDirection = o.GetDirToPenitent(startPoint);
-				targetDirection.x += UnityEngine.Random.Range(-0.2f, 0.2f);
+				targetDirection.x += Random.Range(-0.2f, 0.2f);
 				if (Core.Logic.Penitent.IsJumping || Core.Logic.Penitent.IsDashing)
 				{
 					targetDirection.x += ((Core.Logic.Penitent.GetOrientation() != EntityOrientation.Right) ? -0.5f : 0.5f);
@@ -6585,7 +6596,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					}
 					else
 					{
-						this.ACT_MOVE.StartAction(this.owner, target, 0.2f, Ease.InCubic, null, true, null, true, true, 1.7f);
+						this.ACT_MOVE.StartAction(this.owner, target, 0.2f, 8, null, true, null, true, true, 1.7f);
 						yield return this.ACT_MOVE.waitForCompletion;
 						anim.PlayBlinkshot();
 					}
@@ -6598,7 +6609,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				yield return this.ACT_WAIT.waitForCompletion;
 				this.ACT_METHODLAUNCH.StartAction(this.owner, this.activateMinesMethod);
 				yield return this.ACT_METHODLAUNCH.waitForCompletion;
-				this.ACT_MOVE.StartAction(this.owner, o.battleBounds.center, 0.2f, Ease.InCubic, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(this.owner, o.battleBounds.center, 0.2f, 8, null, true, null, true, true, 1.7f);
 				anim.SetBlink(false);
 				o.SetGhostTrail(true);
 				this.ACT_WAIT.StartAction(this.owner, this.afterEndReachedWaitTime);
@@ -6843,9 +6854,9 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					target = Vector2.Lerp(pointA, pointB, (float)i / ((float)this.numBullets - 1f));
 					if (this.doRandomDisplacement)
 					{
-						target += Vector2.up * (float)UnityEngine.Random.Range(-1, 1) * 0.8f;
+						target += Vector2.up * (float)Random.Range(-1, 1) * 0.8f;
 					}
-					this.ACT_MOVE.StartAction(this.owner, target, 0.15f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(this.owner, target, 0.15f, 7, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					this.ACT_SETBULLET.StartAction(this.owner, this.setBulletMethod);
 					yield return this.ACT_SETBULLET.waitForCompletion;
@@ -6853,7 +6864,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					yield return this.ACT_WAIT.waitForCompletion;
 				}
 				target = Vector2.Lerp(pointA, pointB, 0.5f) + new Vector2(-0.5f, 1.75f);
-				this.ACT_MOVE.StartAction(this.owner, target, 0.5f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(this.owner, target, 0.5f, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				anim.SetBlink(false);
 				o.SetGhostTrail(true);
@@ -6937,7 +6948,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				{
 					if (i % 2 == 0)
 					{
-						this.ACT_MOVE.StartAction(this.owner, points[i], this.waitTime, Ease.OutQuad, null, true, new Action(o.AimToPenitentWithBow), true, true, 1.7f);
+						this.ACT_MOVE.StartAction(this.owner, points[i], this.waitTime, 6, null, true, new Action(o.AimToPenitentWithBow), true, true, 1.7f);
 						yield return this.ACT_MOVE.waitForCompletion;
 						anim.SetBow(false);
 						o.SetGhostTrail(true);
@@ -6950,7 +6961,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					{
 						Vector2 targetPoint = points[i];
 						targetPoint.y = (points[i - 1].y + points[i + 1].y) / 2f;
-						this.ACT_MOVE.StartAction(this.owner, targetPoint, this.waitTime, Ease.InQuad, null, true, null, true, true, 1.7f);
+						this.ACT_MOVE.StartAction(this.owner, targetPoint, this.waitTime, 5, null, true, null, true, true, 1.7f);
 						yield return this.ACT_MOVE.waitForCompletion;
 						if (i < this.numJumps - 1)
 						{
@@ -7056,7 +7067,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				o.SetGhostTrail(true);
 				this.ACT_WAIT.StartAction(this.owner, 0.12f);
 				yield return this.ACT_WAIT.waitForCompletion;
-				this.ACT_MOVE.StartAction(this.owner, o.transform.position - dir.normalized * 1.5f, 0.2f, Ease.OutBack, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(this.owner, o.transform.position - dir.normalized * 1.5f, 0.2f, 27, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				o.ClearRotationAndFlip();
 				o.Amanecidas.SetOrientation(o.Amanecidas.Status.Orientation, true, false);
@@ -7139,8 +7150,8 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 						if (this.clampHorizontally)
 						{
 							targetPoint.x = Mathf.Clamp(targetPoint.x, this.minHorizontalPos, this.maxHorizontalPos);
-							float x = Mathf.Clamp(ama.transform.position.x, this.minHorizontalPos, this.maxHorizontalPos);
-							ama.transform.position = new Vector2(x, ama.transform.position.y);
+							float num = Mathf.Clamp(ama.transform.position.x, this.minHorizontalPos, this.maxHorizontalPos);
+							ama.transform.position = new Vector2(num, ama.transform.position.y);
 						}
 					}
 					if (this.driftVertically)
@@ -7149,8 +7160,8 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 						if (this.clampVertically)
 						{
 							targetPoint.y = Mathf.Clamp(targetPoint.y, this.minVerticalPos, this.maxVerticalPos);
-							float y = Mathf.Clamp(ama.transform.position.y, this.minVerticalPos, this.maxVerticalPos);
-							ama.transform.position = new Vector2(ama.transform.position.x, y);
+							float num2 = Mathf.Clamp(ama.transform.position.y, this.minVerticalPos, this.maxVerticalPos);
+							ama.transform.position = new Vector2(ama.transform.position.x, num2);
 						}
 					}
 					arrive.target = targetPoint;
@@ -7285,7 +7296,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					BulletTimeProjectile arrow = (BulletTimeProjectile)this.attack.Shoot(dir, Vector2.up, 1f);
 					arrow.Accelerate(1.1f);
 					o.Amanecidas.Audio.PlayArrowFire_AUDIO();
-					this.ACT_MOVE.StartAction(this.owner, o.transform.position - dir.normalized * 0.8f, 0.1f, Ease.OutExpo, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(this.owner, o.transform.position - dir.normalized * 0.8f, 0.1f, 18, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					anim.SetBow(false);
 					this.ACT_WAIT.StartAction(this.owner, 0.3f);
@@ -7360,7 +7371,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				{
 					target = new Vector2(o.battleBounds.xMin - 0.5f, o.battleBounds.yMin + 0.2f);
 				}
-				this.ACT_MOVE.StartAction(this.owner, target, 0.1f, Ease.InCubic, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(this.owner, target, 0.1f, 8, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				o.ClearRotationAndFlip();
 				anim.SetBow(true);
@@ -7436,7 +7447,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				AmanecidasAnimatorInyector anim = o.Amanecidas.AnimatorInyector;
 				float minX = o.battleBounds.center.x - o.battleBounds.width / 3f;
 				float maxX = o.battleBounds.center.x + o.battleBounds.width / 3f;
-				int indexOffset = UnityEngine.Random.Range(0, this.numBlinks);
+				int indexOffset = Random.Range(0, this.numBlinks);
 				anim.SetBow(false);
 				anim.SetBlink(false);
 				yield return new AmanecidasBehaviour.WaitUntilIdle(o, 1f);
@@ -7444,7 +7455,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				{
 					float lerpPercentage = (float)((i + indexOffset) * 2 % this.numBlinks) / (float)(this.numBlinks - 1);
 					float targetX = Mathf.Lerp(minX, maxX, lerpPercentage);
-					targetX += UnityEngine.Random.Range(-0.5f, 0.5f);
+					targetX += Random.Range(-0.5f, 0.5f);
 					Vector2 target = new Vector2(targetX, o.battleBounds.yMax);
 					if (i == 0)
 					{
@@ -7453,7 +7464,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					}
 					else
 					{
-						this.ACT_MOVE.StartAction(this.owner, target, 0.2f, Ease.InCubic, null, true, null, true, true, 1.7f);
+						this.ACT_MOVE.StartAction(this.owner, target, 0.2f, 8, null, true, null, true, true, 1.7f);
 						yield return this.ACT_MOVE.waitForCompletion;
 					}
 					anim.SetBow(true);
@@ -7463,10 +7474,12 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					o.AimToPointWithBow(o.transform.position + Vector2.down);
 					if (i == 0)
 					{
-						Vector2 v = new Vector2(o.battleBounds.xMin - 0.5f, o.battleBounds.yMin);
-						Vector2 v2 = new Vector2(o.battleBounds.xMax + 0.5f, o.battleBounds.yMin);
-						o.verticalSlowBlastArrowAttack.SummonAreaOnPoint(v, 270f, 1f, null);
-						o.verticalSlowBlastArrowAttack.SummonAreaOnPoint(v2, 270f, 1f, null);
+						Vector2 vector;
+						vector..ctor(o.battleBounds.xMin - 0.5f, o.battleBounds.yMin);
+						Vector2 vector2;
+						vector2..ctor(o.battleBounds.xMax + 0.5f, o.battleBounds.yMin);
+						o.verticalSlowBlastArrowAttack.SummonAreaOnPoint(vector, 270f, 1f, null);
+						o.verticalSlowBlastArrowAttack.SummonAreaOnPoint(vector2, 270f, 1f, null);
 					}
 					o.Amanecidas.Audio.PlayVerticalPreattack_AUDIO();
 					this.ACT_WAIT.StartAction(this.owner, this.anticipationtWaitTime);
@@ -7686,7 +7699,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				Vector2 targetPos = ama.battleBounds.center;
 				targetPos.y += this.direction.y + 2f;
 				ama.Amanecidas.LaudesArena.ActivateGameObjectsByWeaponFightPhase(ama.currentWeapon, this.fightPhase);
-				this.ACT_MOVE.StartAction(this.owner, targetPos, 5f, Ease.InOutCirc, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(this.owner, targetPos, 5f, 22, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				ama.Amanecidas.AnimatorInyector.SetMeleeHold(false);
 				yield return new AmanecidasBehaviour.WaitUntilIdle(ama, 1f);
@@ -7747,7 +7760,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				float timeBetweenProjectiles = 0.4f;
 				float distance = 5f;
 				float seconds = (float)i * timeBetweenProjectiles;
-				ama.transform.DOMoveY(ama.transform.position.y + distance, seconds, false).SetEase(Ease.InOutCubic);
+				TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(ama.transform, ama.transform.position.y + distance, seconds, false), 10);
 				Vector2 dir = Vector2.up;
 				Quaternion rot = Quaternion.Euler(0f, 0f, -15f);
 				Quaternion rotQuarter = Quaternion.Euler(0f, 0f, -90f);
@@ -7799,14 +7812,14 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			{
 				AmanecidasBehaviour amanecidasBehaviour = this.owner as AmanecidasBehaviour;
 				Vector2 right = Vector2.right;
-				Quaternion rotation = Quaternion.Euler(0f, 0f, -90f);
-				Quaternion rotation2 = Quaternion.Euler(0f, 0f, -180f);
-				Quaternion rotation3 = Quaternion.Euler(0f, 0f, -270f);
+				Quaternion quaternion = Quaternion.Euler(0f, 0f, -90f);
+				Quaternion quaternion2 = Quaternion.Euler(0f, 0f, -180f);
+				Quaternion quaternion3 = Quaternion.Euler(0f, 0f, -270f);
 				Vector2 offset = Vector2.up * 0.5f;
 				amanecidasBehaviour.falcataSlashProjectileAttack.Shoot(right, offset, 1f);
-				amanecidasBehaviour.falcataSlashProjectileAttack.Shoot(rotation * right, offset, 1f);
-				amanecidasBehaviour.falcataSlashProjectileAttack.Shoot(rotation2 * right, offset, 1f);
-				amanecidasBehaviour.falcataSlashProjectileAttack.Shoot(rotation3 * right, offset, 1f);
+				amanecidasBehaviour.falcataSlashProjectileAttack.Shoot(quaternion * right, offset, 1f);
+				amanecidasBehaviour.falcataSlashProjectileAttack.Shoot(quaternion2 * right, offset, 1f);
+				amanecidasBehaviour.falcataSlashProjectileAttack.Shoot(quaternion3 * right, offset, 1f);
 			}
 
 			protected override IEnumerator BaseCoroutine()
@@ -7823,7 +7836,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 				yield return this.ACT_WAIT.waitForCompletion;
 				float singleLoopTime = 1.5f;
 				float seconds = (float)this.numberOfLoops * singleLoopTime;
-				ama.transform.DOMoveX(ama.transform.position.x - distanceFromCenter * 2f, singleLoopTime, false).SetEase(Ease.InOutCubic).SetLoops(this.numberOfLoops, LoopType.Yoyo).OnStepComplete(delegate
+				TweenSettingsExtensions.OnStepComplete<Tweener>(TweenSettingsExtensions.SetLoops<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(ama.transform, ama.transform.position.x - distanceFromCenter * 2f, singleLoopTime, false), 10), this.numberOfLoops, 1), delegate()
 				{
 					this.LaunchProjectiles();
 				});
@@ -7931,7 +7944,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					introPointStart = amanecida.battleBounds.center + Vector2.left * 5f + Vector2.up * 5.5f;
 					introPointEnd = introPointStart + Vector2.down * 7f;
 					amanecida.transform.position = introPointStart;
-					this.ACT_MOVE.StartAction(this.owner, introPointEnd, secondsFloating, Ease.OutCubic, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(this.owner, introPointEnd, secondsFloating, 9, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				else
@@ -7946,7 +7959,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 					yield return this.ACT_WAIT.waitForCompletion;
 					amanecida.ShowSprites(true);
 					float secondsFloating2 = 4f;
-					this.ACT_MOVE.StartAction(this.owner, introPointEnd, secondsFloating2, Ease.OutCubic, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(this.owner, introPointEnd, secondsFloating2, 9, null, true, null, true, true, 1.7f);
 					this.ACT_WAIT.StartAction(this.owner, 0.5f);
 					yield return this.ACT_WAIT.waitForCompletion;
 					amanecida.Amanecidas.AnimatorInyector.DeactivateIntroColor();

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Tools.Playmaker2.Action
 {
 	[ActionCategory("Blasphemous Action")]
-	[HutongGames.PlayMaker.Tooltip("Respawn from current Miriam course.")]
+	[Tooltip("Respawn from current Miriam course.")]
 	public class RespawnMiriam : FsmStateAction
 	{
 		public override void Reset()

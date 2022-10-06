@@ -61,8 +61,8 @@ namespace Gameplay.GameControllers.Environment.Traps.SpikesTrap
 
 		public bool IsVisibleFrom(Renderer renderer, Camera camera)
 		{
-			Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
-			return GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
+			Plane[] array = GeometryUtility.CalculateFrustumPlanes(camera);
+			return GeometryUtility.TestPlanesAABB(array, renderer.bounds);
 		}
 
 		private Animator deathAnimator;

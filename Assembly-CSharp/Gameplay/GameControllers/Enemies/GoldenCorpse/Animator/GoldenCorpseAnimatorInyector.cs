@@ -64,7 +64,7 @@ namespace Gameplay.GameControllers.Enemies.GoldenCorpse.Animator
 			{
 				return;
 			}
-			int num = UnityEngine.Random.Range(0, this.totalAnimationVariants);
+			int num = Random.Range(0, this.totalAnimationVariants);
 			base.EntityAnimator.SetInteger("ID", num);
 			base.EntityAnimator.Play("Sleep" + (num + 1));
 		}

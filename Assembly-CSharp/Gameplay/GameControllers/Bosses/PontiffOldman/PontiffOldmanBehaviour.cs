@@ -119,7 +119,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 
 		public void LaunchAction(PontiffOldmanBehaviour.PontiffOldman_ATTACKS atk)
 		{
-			UnityEngine.Debug.Log(string.Concat(new object[]
+			Debug.Log(string.Concat(new object[]
 			{
 				"TIME: ",
 				Time.time,
@@ -170,7 +170,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 			List<PontiffOldmanBehaviour.PontiffOldman_ATTACKS> list = new List<PontiffOldmanBehaviour.PontiffOldman_ATTACKS>(array);
 			if (this.LastAttackWasReposition())
 			{
-				UnityEngine.Debug.Log("<color=green> LAST ATTACK WAS REPOSITION, REMOVING THEM");
+				Debug.Log("<color=green> LAST ATTACK WAS REPOSITION, REMOVING THEM");
 				list.Remove(PontiffOldmanBehaviour.PontiffOldman_ATTACKS.REPOSITION);
 				list.Remove(PontiffOldmanBehaviour.PontiffOldman_ATTACKS.REPOSITION_MID);
 			}
@@ -182,7 +182,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 			{
 				list.Remove(PontiffOldmanBehaviour.PontiffOldman_ATTACKS.CAST_LIGHTNING);
 			}
-			return list[UnityEngine.Random.Range(0, list.Count)];
+			return list[Random.Range(0, list.Count)];
 		}
 
 		private bool IsInLightningPoint()
@@ -267,7 +267,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 
 		private void StartWaitingPeriod(float seconds)
 		{
-			UnityEngine.Debug.Log(">> WAITING PERIOD: " + seconds);
+			Debug.Log(">> WAITING PERIOD: " + seconds);
 			this.ChangeBossState(BOSS_STATES.WAITING);
 			this.SetCurrentCoroutine(base.StartCoroutine(this.WaitingPeriodCoroutine(seconds, new Action(this.AfterWaitingPeriod))));
 		}
@@ -281,7 +281,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 
 		private void AfterWaitingPeriod()
 		{
-			UnityEngine.Debug.Log(">> READY FOR ACTION: " + Time.time);
+			Debug.Log(">> READY FOR ACTION: " + Time.time);
 			this.ActionFinished();
 		}
 
@@ -406,7 +406,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 					this.lightningAttack.SummonAreaOnPoint(Core.Logic.Penitent.transform.position + Vector3.right * 2f, 0f, 1f, null);
 					this.lightningAttack.SummonAreaOnPoint(Core.Logic.Penitent.transform.position + Vector3.left * 2f, 0f, 1f, null);
 				}
-				yield return new WaitForSeconds(UnityEngine.Random.Range(1.25f, 2f));
+				yield return new WaitForSeconds(Random.Range(1.25f, 2f));
 				if ((float)j > (float)i / 2f)
 				{
 					this.PontiffOldman.AnimatorInyector.Cast(false);
@@ -566,13 +566,13 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 			{
 				yield return null;
 			}
-			UnityEngine.Debug.Log("<color=yellow>Melee animation ended</color>");
+			Debug.Log("<color=yellow>Melee animation ended</color>");
 			yield break;
 		}
 
 		public void OnHitReactionAnimationCompleted()
 		{
-			UnityEngine.Debug.Log("HIT REACTION COMPLETED. RECOVERING FALSE");
+			Debug.Log("HIT REACTION COMPLETED. RECOVERING FALSE");
 			this.SetRecovering(false);
 			this._currentRecoveryHits = 0;
 		}
@@ -581,12 +581,12 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 		{
 			this.SetGhostTrail(trail);
 			this.PontiffOldman.DamageByContact = false;
-			Ease ease = Ease.OutQuad;
+			Ease ease = 6;
 			float num = (this.Entity.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
 			num *= displacement;
 			Vector2 vector = Vector2.right * num;
 			vector = this.ClampToFightBoundaries(vector);
-			base.transform.DOMove(base.transform.position + vector, duration, false).SetEase(ease).OnComplete(delegate
+			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, base.transform.position + vector, duration, false), ease), delegate()
 			{
 				this.AfterDisplacement();
 			});
@@ -602,12 +602,12 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 		{
 			this.SetGhostTrail(true);
 			this.PontiffOldman.DamageByContact = false;
-			Ease ease = Ease.OutQuad;
+			Ease ease = 6;
 			float num = (this.Entity.Status.Orientation != EntityOrientation.Right) ? 1f : -1f;
 			num *= displacement;
 			Vector2 vector = Vector2.right * num;
 			vector = this.ClampToFightBoundaries(vector);
-			base.transform.DOMove(base.transform.position + vector, duration, false).SetEase(ease).OnComplete(delegate
+			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, base.transform.position + vector, duration, false), ease), delegate()
 			{
 				this.AfterDisplacement();
 			});
@@ -652,7 +652,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 			Core.Logic.Penitent.Status.Invulnerable = true;
 			this.StopAllMachineGuns();
 			GameplayUtils.DestroyAllProjectiles();
-			base.transform.DOKill(true);
+			ShortcutExtensions.DOKill(base.transform, true);
 			base.StopBehaviour();
 			this.PontiffOldman.AnimatorInyector.Death();
 			this._fsm.ChangeState(this.stDeath);
@@ -662,9 +662,9 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 		private IEnumerator TransitionCoroutine()
 		{
 			this.endingParticles.Play();
-			this.endingPanel.DOFade(0.3f, 1f).SetEase(Ease.InOutQuad).OnComplete(delegate
+			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions43.DOFade(this.endingPanel, 0.3f, 1f), 7), delegate()
 			{
-				this.endingPanel.DOFade(0.9f, 2f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
+				TweenSettingsExtensions.SetLoops<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions43.DOFade(this.endingPanel, 0.9f, 2f), 7), -1, 1);
 			});
 			yield return new WaitForSeconds(1f);
 			Core.Logic.Penitent.Status.Invulnerable = false;
@@ -710,12 +710,12 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 			{
 				base.StopAllCoroutines();
 				this.PontiffOldman.AnimatorInyector.Hurt();
-				base.transform.DOKill(true);
+				ShortcutExtensions.DOKill(base.transform, true);
 				this.LookAtPenitent();
 				float displacement = (!this.PontiffOldman.IsGuarding) ? 0.4f : 1.2f;
 				this.PontiffOldman.AnimatorInyector.Cast(false);
 				this.BackDisplacement(0.3f, displacement);
-				UnityEngine.Debug.Log(string.Concat(new object[]
+				Debug.Log(string.Concat(new object[]
 				{
 					this._currentRecoveryHits,
 					(!this._recovering) ? "FALSE" : "TRUE"
@@ -754,14 +754,14 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 		private Vector2 ClampToFightBoundaries(Vector2 dir)
 		{
 			Vector2 vector = dir;
-			UnityEngine.Debug.Log("<color=cyan>DRAWING DIR LINE IN GREEN</color>");
-			UnityEngine.Debug.DrawLine(base.transform.position, base.transform.position + vector, Color.green, 5f);
+			Debug.Log("<color=cyan>DRAWING DIR LINE IN GREEN</color>");
+			Debug.DrawLine(base.transform.position, base.transform.position + vector, Color.green, 5f);
 			if (Physics2D.RaycastNonAlloc(base.transform.position, dir, this.results, dir.magnitude, this.fightBoundariesLayerMask) > 0)
 			{
-				UnityEngine.Debug.DrawLine(base.transform.position, this.results[0].point, Color.red, 5f);
+				Debug.DrawLine(base.transform.position, this.results[0].point, Color.red, 5f);
 				vector = vector.normalized * this.results[0].distance;
 				vector *= 0.9f;
-				UnityEngine.Debug.Log("<color=cyan>CLAMPING DISPLACEMENT</color>");
+				Debug.Log("<color=cyan>CLAMPING DISPLACEMENT</color>");
 			}
 			return vector;
 		}

@@ -21,7 +21,7 @@ namespace Gameplay.GameControllers.Enemies.Ghost
 			this.ghost = base.GetComponentInParent<Ghost>();
 			if (this.ghost != null)
 			{
-				int currentWayPointId = UnityEngine.Random.Range(0, this.ghost.GhostPath.waypoints.Length);
+				int currentWayPointId = Random.Range(0, this.ghost.GhostPath.waypoints.Length);
 				this.ghost.CurrentWayPointId = currentWayPointId;
 				Vector3 randomWaypointPosition = this.GetRandomWaypointPosition();
 				this.ghost.transform.position = randomWaypointPosition;
@@ -39,9 +39,9 @@ namespace Gameplay.GameControllers.Enemies.Ghost
 		public void Floating()
 		{
 			this.index += Time.deltaTime;
-			float x = this.amplitudeX * Mathf.Cos(this.speedX * this.index);
-			float y = Mathf.Sin(this.speedY * this.index) * this.amplitudeY;
-			base.transform.localPosition = new Vector3(x, y, 0f);
+			float num = this.amplitudeX * Mathf.Cos(this.speedX * this.index);
+			float num2 = Mathf.Sin(this.speedY * this.index) * this.amplitudeY;
+			base.transform.localPosition = new Vector3(num, num2, 0f);
 		}
 
 		public void EnableFloating(bool enable = true)
@@ -95,7 +95,7 @@ namespace Gameplay.GameControllers.Enemies.Ghost
 			Vector3 result = Vector3.zero;
 			do
 			{
-				int num = UnityEngine.Random.Range(0, this.ghost.GhostPath.waypoints.Length);
+				int num = Random.Range(0, this.ghost.GhostPath.waypoints.Length);
 				this.ghost.GhostPath.NextWayPointVisitedId = num;
 				result = this.ghost.GhostPath.GetWaypointPosition(num);
 			}

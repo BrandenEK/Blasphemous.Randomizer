@@ -33,23 +33,23 @@ namespace Gameplay.GameControllers.Entities
 			{
 				this.VerticalDistanceToMove = -this.VerticalDistanceToMove;
 			}
-			float endValue = this.motionObject.position.x + this.HorizontalDistanceToMove;
+			float num = this.motionObject.position.x + this.HorizontalDistanceToMove;
 			if (this.UseAnimationCurveForHorizontalMovement)
 			{
-				this.motionObject.DOMoveX(endValue, this.MoveDuration, false).SetEase(this.HorizontalMovementAnimationCurve);
+				TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(this.motionObject, num, this.MoveDuration, false), this.HorizontalMovementAnimationCurve);
 			}
 			else
 			{
-				this.motionObject.DOMoveX(endValue, this.MoveDuration, false).SetEase(this.HorizontalMovementEase);
+				TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(this.motionObject, num, this.MoveDuration, false), this.HorizontalMovementEase);
 			}
-			float endValue2 = this.motionObject.position.y + this.VerticalDistanceToMove;
+			float num2 = this.motionObject.position.y + this.VerticalDistanceToMove;
 			if (this.UseAnimationCurveForVerticalMovement)
 			{
-				this.motionObject.DOMoveY(endValue2, this.MoveDuration, false).SetEase(this.VerticalMovementAnimationCurve);
+				TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(this.motionObject, num2, this.MoveDuration, false), this.VerticalMovementAnimationCurve);
 			}
 			else
 			{
-				this.motionObject.DOMoveY(endValue2, this.MoveDuration, false).SetEase(this.VerticalMovementEase);
+				TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(this.motionObject, num2, this.MoveDuration, false), this.VerticalMovementEase);
 			}
 		}
 

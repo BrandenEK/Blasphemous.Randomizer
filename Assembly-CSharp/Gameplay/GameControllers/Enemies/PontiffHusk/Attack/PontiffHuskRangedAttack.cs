@@ -71,8 +71,8 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.Attack
 			{
 				return;
 			}
-			Vector2 v = this._PontiffHuskRanged.FloatingMotion.transform.localPosition;
-			this._PontiffHuskRanged.AttackArea.transform.localPosition = v;
+			Vector2 vector = this._PontiffHuskRanged.FloatingMotion.transform.localPosition;
+			this._PontiffHuskRanged.AttackArea.transform.localPosition = vector;
 		}
 
 		public bool EnableWeaponAreaCollider

@@ -111,8 +111,8 @@ namespace Tools.Audio
 				{
 					return -1f;
 				}
-				Vector2 a = Core.Logic.Penitent.transform.position;
-				return Vector2.Distance(a, this.OriginPosition);
+				Vector2 vector = Core.Logic.Penitent.transform.position;
+				return Vector2.Distance(vector, this.OriginPosition);
 			}
 		}
 

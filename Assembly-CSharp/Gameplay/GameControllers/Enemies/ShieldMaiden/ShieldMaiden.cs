@@ -126,12 +126,13 @@ namespace Gameplay.GameControllers.Enemies.ShieldMaiden
 					Enemy componentInChildren = this.contacts[i].GetComponentInChildren<Enemy>();
 					if (componentInChildren != null)
 					{
-						Vector2 v = new Vector2((float)((componentInChildren.transform.position.x >= base.transform.position.x) ? -1 : 1), 0f);
-						if ((v.x == 1f && this.Status.Orientation == EntityOrientation.Left) || (v.x == -1f && this.Status.Orientation == EntityOrientation.Right))
+						Vector2 vector;
+						vector..ctor((float)((componentInChildren.transform.position.x >= base.transform.position.x) ? -1 : 1), 0f);
+						if ((vector.x == 1f && this.Status.Orientation == EntityOrientation.Left) || (vector.x == -1f && this.Status.Orientation == EntityOrientation.Right))
 						{
 							this.Behaviour.OnBouncedBackByOverlapping();
 						}
-						this.MotionLerper.StartLerping(v);
+						this.MotionLerper.StartLerping(vector);
 					}
 				}
 			}
@@ -141,7 +142,8 @@ namespace Gameplay.GameControllers.Enemies.ShieldMaiden
 		{
 			base.SetPositionAtStart();
 			float groundDist = base.Controller.GroundDist;
-			Vector3 position = new Vector3(base.transform.position.x, base.transform.position.y - groundDist, base.transform.position.z);
+			Vector3 position;
+			position..ctor(base.transform.position.x, base.transform.position.y - groundDist, base.transform.position.z);
 			base.transform.position = position;
 			base.Controller.PlatformCharacterPhysics.GravityScale = 0f;
 		}

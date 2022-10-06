@@ -17,13 +17,13 @@ namespace Gameplay.GameControllers.Enemies.BellCarrier.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("Dirt", out parameterInstance);
+				eventInstance.getParameter("Dirt", ref parameterInstance);
 				parameterInstance.setValue(this.DirtValue);
 				ParameterInstance parameterInstance2;
-				eventInstance.getParameter("Snow", out parameterInstance2);
+				eventInstance.getParameter("Snow", ref parameterInstance2);
 				parameterInstance2.setValue(this.SnowValue);
 				ParameterInstance parameterInstance3;
-				eventInstance.getParameter("Stone", out parameterInstance3);
+				eventInstance.getParameter("Stone", ref parameterInstance3);
 				parameterInstance3.setValue(this.StoneValue);
 			}
 			catch (Exception ex)

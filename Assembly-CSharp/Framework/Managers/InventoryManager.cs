@@ -43,7 +43,7 @@ namespace Framework.Managers
 		public override void Start()
 		{
 			this.language = InventoryManager.GetLanguageSource();
-			LocalizationManager.OnLocalizeEvent += this.OnLocalizationChange;
+			LocalizationManager.OnLocalizeEvent += new LocalizationManager.OnLocalizeCallback(this.OnLocalizationChange);
 			PenitentDamageArea.OnHitGlobal = (PenitentDamageArea.PlayerHitEvent)Delegate.Combine(PenitentDamageArea.OnHitGlobal, new PenitentDamageArea.PlayerHitEvent(this.OnPenitentHit));
 			this.InitializeObjects();
 		}
@@ -91,7 +91,7 @@ namespace Framework.Managers
 			if (this.mainObject == null)
 			{
 				this.mainObject = new GameObject("Inventory Objects");
-				UnityEngine.Object.DontDestroyOnLoad(this.mainObject);
+				Object.DontDestroyOnLoad(this.mainObject);
 			}
 			this.allRellics = new Dictionary<string, Relic>();
 			this.ownRellics = new List<Relic>();
@@ -151,7 +151,7 @@ namespace Framework.Managers
 
 		public override void Dispose()
 		{
-			LocalizationManager.OnLocalizeEvent -= this.OnLocalizationChange;
+			LocalizationManager.OnLocalizeEvent -= new LocalizationManager.OnLocalizeCallback(this.OnLocalizationChange);
 			PenitentDamageArea.OnHitGlobal = (PenitentDamageArea.PlayerHitEvent)Delegate.Remove(PenitentDamageArea.OnHitGlobal, new PenitentDamageArea.PlayerHitEvent(this.OnPenitentHit));
 		}
 
@@ -174,7 +174,7 @@ namespace Framework.Managers
 					{
 						object obj = enumerator.Current;
 						Transform transform2 = (Transform)obj;
-						UnityEngine.Object.Destroy(transform2.gameObject);
+						Object.Destroy(transform2.gameObject);
 					}
 				}
 				finally
@@ -186,10 +186,10 @@ namespace Framework.Managers
 					}
 				}
 			}
-			UnityEngine.Object[] array = Resources.LoadAll("Inventory/" + name);
-			foreach (UnityEngine.Object @object in array)
+			Object[] array = Resources.LoadAll("Inventory/" + name);
+			foreach (Object @object in array)
 			{
-				GameObject gameObject2 = UnityEngine.Object.Instantiate(@object, transform) as GameObject;
+				GameObject gameObject2 = Object.Instantiate(@object, transform) as GameObject;
 				if (gameObject2 == null)
 				{
 					Log.Error("Inventory", "Error instanciating prefab " + @object.name, null);
@@ -207,7 +207,7 @@ namespace Framework.Managers
 							name,
 							" component, skip"
 						}), null);
-						UnityEngine.Object.Destroy(gameObject2);
+						Object.Destroy(gameObject2);
 					}
 					else
 					{
@@ -493,7 +493,7 @@ namespace Framework.Managers
 				});
 				break;
 			default:
-				UnityEngine.Debug.LogError("Unknown AddAll param: " + itemType);
+				Debug.LogError("Unknown AddAll param: " + itemType);
 				break;
 			}
 		}
@@ -539,7 +539,7 @@ namespace Framework.Managers
 				});
 				break;
 			default:
-				UnityEngine.Debug.LogError("Unknown AddAll param: " + itemType);
+				Debug.LogError("Unknown AddAll param: " + itemType);
 				break;
 			}
 		}
@@ -1508,7 +1508,7 @@ namespace Framework.Managers
 				TermData termData = this.language.GetTermData(text2, false);
 				if (termData == null)
 				{
-					UnityEngine.Debug.LogError("Term " + text2 + " not found in Inventory Localization");
+					Debug.LogError("Term " + text2 + " not found in Inventory Localization");
 				}
 				else if (termData.Languages.ElementAtOrDefault(idxLanguage) != null)
 				{
@@ -1662,16 +1662,16 @@ namespace Framework.Managers
 			if (InventoryManager.forceReload || list.Count == 0)
 			{
 				list.Clear();
-				UnityEngine.Object[] array = Resources.LoadAll("Inventory/" + typeof(BaseClass).Name);
-				foreach (UnityEngine.Object original in array)
+				Object[] array = Resources.LoadAll("Inventory/" + typeof(BaseClass).Name);
+				foreach (Object @object in array)
 				{
-					GameObject gameObject = UnityEngine.Object.Instantiate(original) as GameObject;
+					GameObject gameObject = Object.Instantiate(@object) as GameObject;
 					BaseClass component = gameObject.GetComponent<BaseClass>();
 					if (component != null)
 					{
 						list.Add(component.id);
 					}
-					UnityEngine.Object.Destroy(gameObject);
+					Object.Destroy(gameObject);
 				}
 				list.Sort();
 			}
@@ -1830,7 +1830,7 @@ namespace Framework.Managers
 				}
 				else
 				{
-					UnityEngine.Debug.LogError("*** Inventory Persistence, missing ID:" + text);
+					Debug.LogError("*** Inventory Persistence, missing ID:" + text);
 				}
 			}
 			return list;

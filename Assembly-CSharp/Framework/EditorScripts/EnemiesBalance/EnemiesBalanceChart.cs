@@ -8,7 +8,7 @@ namespace Framework.EditorScripts.EnemiesBalance
 	[CreateAssetMenu(fileName = "EnemiesBalanceChart", menuName = "Blasphemous/Enemies Balance Chart")]
 	public class EnemiesBalanceChart : ScriptableObject
 	{
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		private void LoadBalanceChart()
 		{
 			this.ClearChart();
@@ -44,7 +44,7 @@ namespace Framework.EditorScripts.EnemiesBalance
 			}
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		private void ClearChart()
 		{
 			if (this.EnemiesBalanceItems != null && this.EnemiesBalanceItems.Count > 0)

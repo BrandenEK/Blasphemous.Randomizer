@@ -36,7 +36,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace
 		{
 			for (int i = 0; i < this.maxBeads; i++)
 			{
-				UnityEngine.Object.Instantiate<GameObject>(this.rosaryBeadPrefab, base.transform);
+				Object.Instantiate<GameObject>(this.rosaryBeadPrefab, base.transform);
 			}
 		}
 
@@ -166,9 +166,9 @@ namespace Gameplay.GameControllers.Bosses.BurntFace
 					this._lastSpeed = this._targetSpeed;
 					this._lastRadius = this._targetRadius;
 				}
-				float t = this.smoothCurve.Evaluate(this._smoothChangeCounter / this.smoothTime);
-				this.radiusOffset = Mathf.Lerp(this._lastRadius, this._targetRadius, t);
-				this.speed = Mathf.Lerp(this._lastSpeed, this._targetSpeed, t);
+				float num = this.smoothCurve.Evaluate(this._smoothChangeCounter / this.smoothTime);
+				this.radiusOffset = Mathf.Lerp(this._lastRadius, this._targetRadius, num);
+				this.speed = Mathf.Lerp(this._lastSpeed, this._targetSpeed, num);
 			}
 		}
 
@@ -189,10 +189,10 @@ namespace Gameplay.GameControllers.Bosses.BurntFace
 					this.debugLastV = num2;
 				}
 				BurntFaceRosaryBead burntFaceRosaryBead = this.beads[i];
-				Vector3 v = burntFaceRosaryBead.transform.position - this.center.position;
-				burntFaceRosaryBead.transform.position = this.spline.GetPoint(num2) + v.normalized * this.radiusOffset;
-				burntFaceRosaryBead.SetLaserParentRotation(v);
-				float num3 = Mathf.Atan2(v.y, v.x) * 57.29578f;
+				Vector3 vector = burntFaceRosaryBead.transform.position - this.center.position;
+				burntFaceRosaryBead.transform.position = this.spline.GetPoint(num2) + vector.normalized * this.radiusOffset;
+				burntFaceRosaryBead.SetLaserParentRotation(vector);
+				float num3 = Mathf.Atan2(vector.y, vector.x) * 57.29578f;
 				if (num3 < 0f)
 				{
 					num3 += 360f;

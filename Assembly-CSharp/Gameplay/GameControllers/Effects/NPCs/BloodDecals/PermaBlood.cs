@@ -11,7 +11,7 @@ namespace Gameplay.GameControllers.Effects.NPCs.BloodDecals
 
 		public GameObject Instance(Vector3 pos, Quaternion rotation)
 		{
-			return UnityEngine.Object.Instantiate<GameObject>(base.transform.gameObject, pos, rotation);
+			return Object.Instantiate<GameObject>(base.transform.gameObject, pos, rotation);
 		}
 
 		public PermaBlood.PermaBloodType permaBloodType;

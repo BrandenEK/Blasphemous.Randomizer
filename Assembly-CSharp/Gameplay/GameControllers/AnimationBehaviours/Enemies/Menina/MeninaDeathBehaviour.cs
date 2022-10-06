@@ -18,7 +18,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Menina
 		public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 		{
 			base.OnStateExit(animator, stateInfo, layerIndex);
-			UnityEngine.Object.Destroy(this._menina.gameObject);
+			Object.Destroy(this._menina.gameObject);
 		}
 
 		private Menina _menina;

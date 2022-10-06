@@ -30,8 +30,8 @@ namespace Gameplay.GameControllers.Bosses.Snake.Audio
 			if (this.eventRefsByEventId.TryGetValue("AquilonRain", out eventInstance))
 			{
 				this.fightState++;
-				string name = "State" + this.fightState;
-				eventInstance.setParameterValue(name, 1f);
+				string text = "State" + this.fightState;
+				eventInstance.setParameterValue(text, 1f);
 				this.SetBossTrackParam(this.fightState);
 			}
 		}
@@ -43,9 +43,9 @@ namespace Gameplay.GameControllers.Bosses.Snake.Audio
 			{
 				for (int i = 1; i < 4; i++)
 				{
-					float value = (i > state) ? 0f : 1f;
-					string name = "State" + i;
-					eventInstance.setParameterValue(name, value);
+					float num = (i > state) ? 0f : 1f;
+					string text = "State" + i;
+					eventInstance.setParameterValue(text, num);
 				}
 			}
 		}
@@ -124,7 +124,7 @@ namespace Gameplay.GameControllers.Bosses.Snake.Audio
 		{
 			if (this.BossFightAudio == null)
 			{
-				this.BossFightAudio = UnityEngine.Object.FindObjectOfType<BossFightAudio>();
+				this.BossFightAudio = Object.FindObjectOfType<BossFightAudio>();
 			}
 			this.BossFightAudio.SetBossTrackParam("State" + state, 1f);
 		}
@@ -203,7 +203,7 @@ namespace Gameplay.GameControllers.Bosses.Snake.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter(paramKey, out parameterInstance);
+				eventInstance.getParameter(paramKey, ref parameterInstance);
 				parameterInstance.setValue(value);
 			}
 			catch (Exception ex)

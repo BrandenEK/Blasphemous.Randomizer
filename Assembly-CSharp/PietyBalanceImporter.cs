@@ -72,7 +72,7 @@ public class PietyBalanceImporter : BossBalanceImporter
 
 	private void SetBushAttack()
 	{
-		PietyBushManager pietyBushManager = UnityEngine.Object.FindObjectOfType<PietyBushManager>();
+		PietyBushManager pietyBushManager = Object.FindObjectOfType<PietyBushManager>();
 		if (!pietyBushManager)
 		{
 			return;

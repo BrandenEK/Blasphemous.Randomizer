@@ -33,8 +33,8 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 			if (this.faceVelocityDirection)
 			{
 				Vector2 normalized = this.velocity.normalized;
-				float z = 57.29578f * Mathf.Atan2(normalized.y, normalized.x);
-				base.transform.eulerAngles = new Vector3(0f, 0f, z);
+				float num = 57.29578f * Mathf.Atan2(normalized.y, normalized.x);
+				base.transform.eulerAngles = new Vector3(0f, 0f, num);
 			}
 		}
 

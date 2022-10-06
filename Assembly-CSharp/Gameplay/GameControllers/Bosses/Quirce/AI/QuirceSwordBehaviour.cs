@@ -97,19 +97,19 @@ namespace Gameplay.GameControllers.Bosses.Quirce.AI
 			else
 			{
 				this._instantiationTimer = this.secondsBetweenInstances;
-				Vector2 origin = base.transform.position + this.collisionPoint;
-				if (Physics2D.Raycast(origin, Vector2.down, this.filter, this._results, this.collisionRadius) > 0)
+				Vector2 vector = base.transform.position + this.collisionPoint;
+				if (Physics2D.Raycast(vector, Vector2.down, this.filter, this._results, this.collisionRadius) > 0)
 				{
 					Vector2 point = this._results[0].point;
-					UnityEngine.Object.Instantiate<GameObject>(this.sparksPrefab, point, Quaternion.identity);
+					Object.Instantiate<GameObject>(this.sparksPrefab, point, Quaternion.identity);
 				}
 			}
 		}
 
 		public void UpdateFloatingOffset()
 		{
-			float y = Mathf.Sin(this.floatingFrequency * Time.time) * this.floatingAmplitude;
-			this._floatingOffset = new Vector2(0f, y);
+			float num = Mathf.Sin(this.floatingFrequency * Time.time) * this.floatingAmplitude;
+			this._floatingOffset = new Vector2(0f, num);
 		}
 
 		public void SetTargetPosition()
@@ -158,8 +158,8 @@ namespace Gameplay.GameControllers.Bosses.Quirce.AI
 
 		public void ApplyRotation()
 		{
-			Quaternion b = Quaternion.Euler(0f, 0f, this._targetAngle);
-			base.transform.rotation = Quaternion.Slerp(base.transform.rotation, b, this.smoothRotationFactor);
+			Quaternion quaternion = Quaternion.Euler(0f, 0f, this._targetAngle);
+			base.transform.rotation = Quaternion.Slerp(base.transform.rotation, quaternion, this.smoothRotationFactor);
 		}
 
 		private void OnDrawGizmosSelected()

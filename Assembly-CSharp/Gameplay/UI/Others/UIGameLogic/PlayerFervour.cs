@@ -106,9 +106,9 @@ namespace Gameplay.UI.Others.UIGameLogic
 				Image component = this.guiltBar.gameObject.GetComponent<Image>();
 				if (maxFactor >= 1f)
 				{
-					component.DOFade(0f, 1f);
-					this.guiltEnd.DOFade(0f, 1f);
-					this.guiltStart.DOFade(0f, 1f);
+					ShortcutExtensions46.DOFade(component, 0f, 1f);
+					ShortcutExtensions46.DOFade(this.guiltEnd, 0f, 1f);
+					ShortcutExtensions46.DOFade(this.guiltStart, 0f, 1f);
 				}
 				this.CalculateBarPentalty();
 			}
@@ -148,9 +148,9 @@ namespace Gameplay.UI.Others.UIGameLogic
 			yield return new WaitForSeconds(2f);
 			if (factor < 1f)
 			{
-				bar.DOFade(1f, 1f);
-				this.guiltEnd.DOFade(1f, 1f);
-				this.guiltStart.DOFade(1f, 1f);
+				ShortcutExtensions46.DOFade(bar, 1f, 1f);
+				ShortcutExtensions46.DOFade(this.guiltEnd, 1f, 1f);
+				ShortcutExtensions46.DOFade(this.guiltStart, 1f, 1f);
 			}
 			this.CalculateBarPentalty();
 			yield break;
@@ -193,8 +193,8 @@ namespace Gameplay.UI.Others.UIGameLogic
 			this.guiltRoot.SetActive(maxFactor < 1f);
 			if (maxFactor < 1f)
 			{
-				float x = (1f - maxFactor) * currentMaxWithoutFactor - (float)this.positionOcupedByBack;
-				this.guiltBar.DOSizeDelta(new Vector2(x, this.guiltBar.sizeDelta.y), 2f, false);
+				float num = (1f - maxFactor) * currentMaxWithoutFactor - (float)this.positionOcupedByBack;
+				ShortcutExtensions46.DOSizeDelta(this.guiltBar, new Vector2(num, this.guiltBar.sizeDelta.y), 2f, false);
 			}
 		}
 
@@ -211,8 +211,8 @@ namespace Gameplay.UI.Others.UIGameLogic
 				else
 				{
 					this.fillExact.fillAmount = Mathf.Lerp(this.fillExact.fillAmount, this.BarTarget, this.AddAnimationCurve.Evaluate(this._timeElapsed));
-					float x = (float)((int)Core.Logic.Penitent.Stats.Fervour.CurrentMaxWithoutFactor) * this.fillExact.fillAmount - 1f;
-					this.fervourSpark.transform.localPosition = new Vector3(x, this.fervourSpark.transform.localPosition.y);
+					float num = (float)((int)Core.Logic.Penitent.Stats.Fervour.CurrentMaxWithoutFactor) * this.fillExact.fillAmount - 1f;
+					this.fervourSpark.transform.localPosition = new Vector3(num, this.fervourSpark.transform.localPosition.y);
 				}
 				this.fillAnimable.fillAmount = this.fillExact.fillAmount;
 			}

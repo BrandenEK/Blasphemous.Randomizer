@@ -63,23 +63,23 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 
 		private void CheckGround()
 		{
-			Quaternion lhs = (this.Status.Orientation != EntityOrientation.Right) ? this.crawlDown : this.crawlUp;
-			Quaternion lhs2 = (this.Status.Orientation != EntityOrientation.Right) ? this.crawlUp : this.crawlDown;
+			Quaternion quaternion = (this.Status.Orientation != EntityOrientation.Right) ? this.crawlDown : this.crawlUp;
+			Quaternion quaternion2 = (this.Status.Orientation != EntityOrientation.Right) ? this.crawlUp : this.crawlDown;
 			if (this.motionChecker.HitsBlock)
 			{
-				base.transform.rotation = lhs * base.transform.rotation;
+				base.transform.rotation = quaternion * base.transform.rotation;
 				this.motionChecker.SnapToGround(base.transform, 2f, 0.05f);
 			}
 			else if (!this.motionChecker.HitsFloor)
 			{
-				base.transform.rotation = lhs2 * base.transform.rotation;
+				base.transform.rotation = quaternion2 * base.transform.rotation;
 				this.motionChecker.SnapToGround(base.transform, 2f, 0.05f);
 			}
 		}
 
 		private void UpdateMovement()
 		{
-			base.transform.Translate(this.velocity * Time.deltaTime, Space.Self);
+			base.transform.Translate(this.velocity * Time.deltaTime, 1);
 		}
 
 		private void UpdateRotation()

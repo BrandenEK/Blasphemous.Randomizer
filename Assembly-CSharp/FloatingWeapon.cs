@@ -89,8 +89,8 @@ public class FloatingWeapon : Entity
 	{
 		this._followPosition = this._targetPosition + this._floatingOffset;
 		base.transform.position = Vector3.Lerp(base.transform.position, this._followPosition, this.smoothFactor);
-		Quaternion b = Quaternion.Euler(0f, 0f, this.targetAngle);
-		base.transform.rotation = Quaternion.Slerp(base.transform.rotation, b, this.smoothFactor);
+		Quaternion quaternion = Quaternion.Euler(0f, 0f, this.targetAngle);
+		base.transform.rotation = Quaternion.Slerp(base.transform.rotation, quaternion, this.smoothFactor);
 	}
 
 	private void UpdateAimingAngle()
@@ -108,11 +108,11 @@ public class FloatingWeapon : Entity
 		else
 		{
 			this.instantiationTimer = this.secondsBetweenInstances;
-			Vector2 origin = base.transform.position + this.collisionPoint;
-			if (Physics2D.Raycast(origin, Vector2.down, this.filter, this.results, this.collisionRadius) > 0)
+			Vector2 vector = base.transform.position + this.collisionPoint;
+			if (Physics2D.Raycast(vector, Vector2.down, this.filter, this.results, this.collisionRadius) > 0)
 			{
 				Vector2 point = this.results[0].point;
-				UnityEngine.Object.Instantiate<GameObject>(this.sparksPrefab, point, Quaternion.identity);
+				Object.Instantiate<GameObject>(this.sparksPrefab, point, Quaternion.identity);
 			}
 		}
 	}
@@ -127,8 +127,8 @@ public class FloatingWeapon : Entity
 
 	private void UpdateFloatingOffset()
 	{
-		float y = Mathf.Sin(this.floatingFrequency * Time.time) * this.floatingAmplitude;
-		this._floatingOffset = new Vector2(0f, y);
+		float num = Mathf.Sin(this.floatingFrequency * Time.time) * this.floatingAmplitude;
+		this._floatingOffset = new Vector2(0f, num);
 	}
 
 	public void SetSpinning(bool spin)

@@ -130,7 +130,7 @@ namespace Gameplay.GameControllers.Enemies.Roller.AI
 
 		private void RollBackwards()
 		{
-			this.currentRollingTime = this.MaxRollingTime - 0.5f + UnityEngine.Random.Range(-0.1f, 0.1f);
+			this.currentRollingTime = this.MaxRollingTime - 0.5f + Random.Range(-0.1f, 0.1f);
 			this.Roller.Input.HorizontalInput = ((this.Roller.Status.Orientation != EntityOrientation.Right) ? 1f : -1f);
 			if (this.Roller.MotionChecker.RangeBlockDetection != -6f)
 			{
@@ -149,7 +149,7 @@ namespace Gameplay.GameControllers.Enemies.Roller.AI
 			this.currentHitReactionsDone++;
 			this.Roller.AnimatorInjector.Damage();
 			float num = (this.Entity.transform.position.x < attakingEntityPos.x) ? (-this.HurtDisplacement) : this.HurtDisplacement;
-			this.Roller.transform.DOMoveX(this.Roller.transform.position.x + num, 0.55f, false).OnComplete(delegate
+			TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions.DOMoveX(this.Roller.transform, this.Roller.transform.position.x + num, 0.55f, false), delegate()
 			{
 				this.IsHurting = false;
 			});

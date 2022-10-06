@@ -25,7 +25,7 @@ namespace Gameplay.GameControllers.Enemies.Runner.Attack
 			this.onSuscribeEvents = true;
 		}
 
-		private void OnContactDamage(UnityEngine.Object param)
+		private void OnContactDamage(Object param)
 		{
 			this.damageableTarget = (IDamageable)param;
 		}

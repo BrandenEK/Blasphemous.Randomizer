@@ -21,7 +21,7 @@ namespace Gameplay.GameControllers.Effects.Entity
 		{
 			if (this.applyLevelEffects)
 			{
-				LevelInitializer levelInitializer = UnityEngine.Object.FindObjectOfType<LevelInitializer>();
+				LevelInitializer levelInitializer = Object.FindObjectOfType<LevelInitializer>();
 				if (levelInitializer != null)
 				{
 					levelInitializer.ApplyLevelColorEffects(this);
@@ -30,7 +30,7 @@ namespace Gameplay.GameControllers.Effects.Entity
 		}
 
 		[FoldoutGroup("Color flash", 0)]
-		[Button("ColorFlash", ButtonSizes.Small)]
+		[Button("ColorFlash", 0)]
 		public void TriggerColorFlash()
 		{
 			if (this._waitForFlash)

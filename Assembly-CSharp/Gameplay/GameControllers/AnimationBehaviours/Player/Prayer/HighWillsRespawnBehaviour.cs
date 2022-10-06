@@ -27,11 +27,11 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Player.Prayer
 		{
 			base.OnStateExit(animator, stateInfo, layerIndex);
 			Core.Input.SetBlocker("PLAYER_LOGIC", false);
-			Tween t = DOTween.To(() => Core.Logic.Penitent.Shadow.GetShadowAlpha(), delegate(float x)
+			Tween tween = DOTween.To(() => Core.Logic.Penitent.Shadow.GetShadowAlpha(), delegate(float x)
 			{
 				Core.Logic.Penitent.Shadow.SetShadowAlpha(x);
 			}, 1f, 0.2f);
-			t.OnComplete(delegate
+			TweenSettingsExtensions.OnComplete<Tween>(tween, delegate()
 			{
 				Core.Logic.Penitent.Shadow.ManuallyControllingAlpha = false;
 			});

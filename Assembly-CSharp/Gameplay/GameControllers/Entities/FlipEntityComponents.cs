@@ -44,7 +44,8 @@ namespace Gameplay.GameControllers.Entities
 
 		private void SetXRotateScale(float xRotateScale)
 		{
-			Vector3 localScale = new Vector3(xRotateScale, 1f, 0f);
+			Vector3 localScale;
+			localScale..ctor(xRotateScale, 1f, 0f);
 			foreach (GameObject gameObject in this.EntityComponents)
 			{
 				gameObject.transform.localScale = localScale;

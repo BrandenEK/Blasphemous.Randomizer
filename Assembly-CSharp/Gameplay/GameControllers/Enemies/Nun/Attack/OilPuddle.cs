@@ -101,7 +101,7 @@ namespace Gameplay.GameControllers.Enemies.Nun.Attack
 			{
 				return;
 			}
-			this._oilPuddleBubble.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			this._oilPuddleBubble.stop(0);
 			this._oilPuddleBubble.release();
 			this._oilPuddleBubble = default(EventInstance);
 		}

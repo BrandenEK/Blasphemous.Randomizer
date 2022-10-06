@@ -20,7 +20,7 @@ namespace Tools.PlayMaker.Action
 		private IEnumerator SetActiveStandByEnemies()
 		{
 			object[] spawnPoints = this.EnemySpawnPoint.Values;
-			System.Random rnd = new System.Random();
+			Random rnd = new Random();
 			object[] shuffleArray = (from x in spawnPoints
 			orderby rnd.Next()
 			select x).ToArray<object>();
@@ -53,12 +53,12 @@ namespace Tools.PlayMaker.Action
 			float result = 0f;
 			if (spawnPoint.SpawnEnabledEnemy || spawnPoint.SpawnOnArena)
 			{
-				result = UnityEngine.Random.Range(0.1f, 0.5f);
+				result = Random.Range(0.1f, 0.5f);
 			}
 			return result;
 		}
 
-		[ArrayEditor(VariableType.GameObject, "", 0, 0, 65536)]
+		[ArrayEditor(3, "", 0, 0, 65536)]
 		public FsmArray EnemySpawnPoint;
 
 		public const string AppearFx = "event:/Key Event/HordeAppear";

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PathGrowerAttack : MonoBehaviour
 {
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	private void GrowBody()
 	{
 		base.StartCoroutine(this.GrowCoroutine(this.maxSeconds));
@@ -14,7 +14,7 @@ public class PathGrowerAttack : MonoBehaviour
 
 	private void CreatePart(Vector2 pos, Vector2 dir)
 	{
-		GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.growerPrefab, pos, Quaternion.identity);
+		GameObject gameObject = Object.Instantiate<GameObject>(this.growerPrefab, pos, Quaternion.identity);
 		gameObject.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(dir.y, dir.x) * 57.29578f);
 	}
 

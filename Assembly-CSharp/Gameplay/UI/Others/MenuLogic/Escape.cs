@@ -10,7 +10,7 @@ namespace Gameplay.UI.Others.MenuLogic
 	{
 		private void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.Escape) && !this.pressed)
+			if (Input.GetKeyDown(27) && !this.pressed)
 			{
 				base.StartCoroutine(this.Action());
 			}

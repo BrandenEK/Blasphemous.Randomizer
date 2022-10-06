@@ -20,7 +20,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 
 		private float GetDamageFactorByLevel()
 		{
-			if (base.LastUnlockedSkillId.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(base.LastUnlockedSkillId))
 			{
 				return 1f;
 			}
@@ -45,7 +45,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 
 		public float GetLungeSpeedByLevel()
 		{
-			if (base.LastUnlockedSkillId.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(base.LastUnlockedSkillId))
 			{
 				return 1f;
 			}
@@ -70,7 +70,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 
 		public float GetLungeLapseByLevel()
 		{
-			if (base.LastUnlockedSkillId.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(base.LastUnlockedSkillId))
 			{
 				return 1f;
 			}
@@ -159,7 +159,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 			this._playerController.MaxWalkingSpeed = this._penitent.Dash.DefaultMoveSetting.Speed;
 			if (this._lungeMovementFx.isValid())
 			{
-				this._lungeMovementFx.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+				this._lungeMovementFx.stop(1);
 				this._lungeMovementFx.release();
 			}
 			this.ClearHitEntityList();
@@ -265,7 +265,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 			}
 			this._playerController.WalkingDrag = this.LungeMoveSetting.Drag;
 			this._playerController.MaxWalkingSpeed = this.GetLungeSpeedByLevel();
-			this._playerController.SetActionState((this._penitent.Status.Orientation != EntityOrientation.Left) ? eControllerActions.Right : eControllerActions.Left, true);
+			this._playerController.SetActionState((this._penitent.Status.Orientation != EntityOrientation.Left) ? 1 : 2, true);
 		}
 
 		private void StopLungeForce()
@@ -287,40 +287,40 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 
 		public void PlayLungeAnimByLevelReached()
 		{
-			if (base.LastUnlockedSkillId.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(base.LastUnlockedSkillId))
 			{
 				return;
 			}
 			string lastUnlockedSkillId = base.LastUnlockedSkillId;
-			int stateNameHash;
+			int num;
 			if (lastUnlockedSkillId != null)
 			{
 				if (lastUnlockedSkillId == "LUNGE_1")
 				{
-					stateNameHash = this.LungAttackAnim;
+					num = this.LungAttackAnim;
 					goto IL_83;
 				}
 				if (lastUnlockedSkillId == "LUNGE_2")
 				{
-					stateNameHash = this.LungAttackAnimLv2;
+					num = this.LungAttackAnimLv2;
 					goto IL_83;
 				}
 				if (lastUnlockedSkillId == "LUNGE_3")
 				{
-					stateNameHash = this.LungAttackAnimLv3;
+					num = this.LungAttackAnimLv3;
 					goto IL_83;
 				}
 			}
-			stateNameHash = this.LungAttackAnim;
+			num = this.LungAttackAnim;
 			IL_83:
-			base.EntityOwner.Animator.Play(stateNameHash);
+			base.EntityOwner.Animator.Play(num);
 		}
 
 		private string GetLungeFxKeyByLevel
 		{
 			get
 			{
-				if (base.LastUnlockedSkillId.IsNullOrWhitespace())
+				if (StringExtensions.IsNullOrWhitespace(base.LastUnlockedSkillId))
 				{
 					return null;
 				}

@@ -31,7 +31,7 @@ namespace Tools.Level.Interactables
 
 		private void SetOverlappedInteractable()
 		{
-			foreach (Interactable interactable in UnityEngine.Object.FindObjectsOfType<Interactable>())
+			foreach (Interactable interactable in Object.FindObjectsOfType<Interactable>())
 			{
 				if (!interactable.Equals(this.guiltDropCollective))
 				{

@@ -147,10 +147,10 @@ namespace Gameplay.GameControllers.Bosses.PontiffGiant
 		[SerializeField]
 		protected GameObject SwordMeleeAttack;
 
-		[DetailedInfoBox("Info", "This value is used to set the PontiffSword's max health value", InfoMessageType.Info, null)]
+		[DetailedInfoBox("Info", "This value is used to set the PontiffSword's max health value", 1, null)]
 		public float SwordHealthPercentage = 0.19f;
 
-		[DetailedInfoBox("Info", "This value is used to set the PontiffSword's attack value by using the PontiffGiant LightAttackDamage and multiplying that value by this coefficient.", InfoMessageType.Info, null)]
+		[DetailedInfoBox("Info", "This value is used to set the PontiffSword's attack value by using the PontiffGiant LightAttackDamage and multiplying that value by this coefficient.", 1, null)]
 		public float SwordDamagePercentage = 0.5f;
 	}
 }

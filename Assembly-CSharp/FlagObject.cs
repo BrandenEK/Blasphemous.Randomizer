@@ -8,10 +8,26 @@ public class FlagObject
 {
 	public FlagObject()
 	{
+		ValueDropdownList<PersistentManager.PercentageType> valueDropdownList = new ValueDropdownList<PersistentManager.PercentageType>();
+		valueDropdownList.Add("BossDefeated_1", PersistentManager.PercentageType.BossDefeated_1);
+		valueDropdownList.Add("BossDefeated_2", PersistentManager.PercentageType.BossDefeated_2);
+		valueDropdownList.Add("Upgraded", PersistentManager.PercentageType.Upgraded);
+		valueDropdownList.Add("EndingA", PersistentManager.PercentageType.EndingA);
+		valueDropdownList.Add("BossDefeated_NgPlus", PersistentManager.PercentageType.BossDefeated_NgPlus);
+		this.FLagsPercentages = valueDropdownList;
+		base..ctor();
 	}
 
 	public FlagObject(FlagObject other)
 	{
+		ValueDropdownList<PersistentManager.PercentageType> valueDropdownList = new ValueDropdownList<PersistentManager.PercentageType>();
+		valueDropdownList.Add("BossDefeated_1", PersistentManager.PercentageType.BossDefeated_1);
+		valueDropdownList.Add("BossDefeated_2", PersistentManager.PercentageType.BossDefeated_2);
+		valueDropdownList.Add("Upgraded", PersistentManager.PercentageType.Upgraded);
+		valueDropdownList.Add("EndingA", PersistentManager.PercentageType.EndingA);
+		valueDropdownList.Add("BossDefeated_NgPlus", PersistentManager.PercentageType.BossDefeated_NgPlus);
+		this.FLagsPercentages = valueDropdownList;
+		base..ctor();
 		this.id = other.id;
 		this.shortDescription = other.shortDescription;
 		this.description = other.description;
@@ -43,29 +59,7 @@ public class FlagObject
 
 	public bool addToPercentage;
 
-	private ValueDropdownList<PersistentManager.PercentageType> FLagsPercentages = new ValueDropdownList<PersistentManager.PercentageType>
-	{
-		{
-			"BossDefeated_1",
-			PersistentManager.PercentageType.BossDefeated_1
-		},
-		{
-			"BossDefeated_2",
-			PersistentManager.PercentageType.BossDefeated_2
-		},
-		{
-			"Upgraded",
-			PersistentManager.PercentageType.Upgraded
-		},
-		{
-			"EndingA",
-			PersistentManager.PercentageType.EndingA
-		},
-		{
-			"BossDefeated_NgPlus",
-			PersistentManager.PercentageType.BossDefeated_NgPlus
-		}
-	};
+	private ValueDropdownList<PersistentManager.PercentageType> FLagsPercentages;
 
 	[ShowIf("addToPercentage", true)]
 	[ValueDropdown("FLagsPercentages")]

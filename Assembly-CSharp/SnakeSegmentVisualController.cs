@@ -36,7 +36,7 @@ public class SnakeSegmentVisualController : MonoBehaviour
 	}
 
 	[HideIf("IsIdle", true)]
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void GoToIdle()
 	{
 		this.currentState = SnakeSegmentVisualController.STATES.IDLE;
@@ -44,7 +44,7 @@ public class SnakeSegmentVisualController : MonoBehaviour
 	}
 
 	[ShowIf("IsIdle", true)]
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void MoveUp()
 	{
 		this.currentState = SnakeSegmentVisualController.STATES.MOVING_UP;
@@ -52,7 +52,7 @@ public class SnakeSegmentVisualController : MonoBehaviour
 	}
 
 	[ShowIf("IsIdle", true)]
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void MoveDown()
 	{
 		this.currentState = SnakeSegmentVisualController.STATES.MOVING_DOWN;
@@ -64,21 +64,21 @@ public class SnakeSegmentVisualController : MonoBehaviour
 		SnakeSegmentVisualController.SnakeSegmentVisualStateInfo snakeSegmentVisualStateInfo = this.StatesInfo.Find((SnakeSegmentVisualController.SnakeSegmentVisualStateInfo x) => x.State == this.currentState);
 		if (Application.isPlaying)
 		{
-			this.activeTween.Kill(false);
-			this.activeTween = DOTween.To(delegate(float x)
+			TweenExtensions.Kill(this.activeTween, false);
+			this.activeTween = TweenSettingsExtensions.SetDelay<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(DOTween.To(delegate(float x)
 			{
 				this.SpriteRenderer.size = new Vector2(x, this.SpriteRenderer.size.y);
-			}, snakeSegmentVisualStateInfo.SpriteWidthAtStart, snakeSegmentVisualStateInfo.SpriteWidthAtEnd, snakeSegmentVisualStateInfo.TweeningTime).SetEase(snakeSegmentVisualStateInfo.TweeningEase).SetDelay(snakeSegmentVisualStateInfo.TweeningDelay);
+			}, snakeSegmentVisualStateInfo.SpriteWidthAtStart, snakeSegmentVisualStateInfo.SpriteWidthAtEnd, snakeSegmentVisualStateInfo.TweeningTime), snakeSegmentVisualStateInfo.TweeningEase), snakeSegmentVisualStateInfo.TweeningDelay);
 			if (goesToIdle)
 			{
-				this.activeTween.OnComplete(delegate
+				TweenSettingsExtensions.OnComplete<Tween>(this.activeTween, delegate()
 				{
 					this.GoToIdle();
 				});
 			}
 			else if (snakeSegmentVisualStateInfo.ShouldLoopTween)
 			{
-				this.activeTween.SetLoops(snakeSegmentVisualStateInfo.NumLoops, snakeSegmentVisualStateInfo.LoopType);
+				TweenSettingsExtensions.SetLoops<Tween>(this.activeTween, snakeSegmentVisualStateInfo.NumLoops, snakeSegmentVisualStateInfo.LoopType);
 			}
 		}
 	}

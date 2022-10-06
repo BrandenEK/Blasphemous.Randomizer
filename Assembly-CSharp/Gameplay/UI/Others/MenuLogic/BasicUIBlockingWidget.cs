@@ -52,10 +52,10 @@ namespace Gameplay.UI.Others.MenuLogic
 				Core.Logic.PauseGame();
 				DOTween.defaultTimeScaleIndependent = true;
 			}
-			DOTween.To(() => canvas.alpha, delegate(float x)
+			TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => canvas.alpha, delegate(float x)
 			{
 				canvas.alpha = x;
-			}, 1f, this.alphaDurantion).OnComplete(new TweenCallback(this.EndFadeShow));
+			}, 1f, this.alphaDurantion), new TweenCallback(this.EndFadeShow));
 			this.OnWidgetShow();
 		}
 
@@ -74,10 +74,10 @@ namespace Gameplay.UI.Others.MenuLogic
 				Core.Logic.SetState(LogicStates.Playing);
 			}
 			DOTween.defaultTimeScaleIndependent = true;
-			DOTween.To(() => canvas.alpha, delegate(float x)
+			TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => canvas.alpha, delegate(float x)
 			{
 				canvas.alpha = x;
-			}, 0f, this.alphaDurantion).OnComplete(new TweenCallback(this.EndFadeHide));
+			}, 0f, this.alphaDurantion), new TweenCallback(this.EndFadeHide));
 		}
 
 		public void Hide()

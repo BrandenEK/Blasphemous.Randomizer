@@ -23,37 +23,37 @@ namespace Tools.DataContainer
 		public int Level3PrieDieus = 5;
 
 		[BoxGroup("Widget Sounds", true, false, 0)]
-		[InfoBox("Sound when alms added ok but no new tier reached", InfoMessageType.Info, null)]
+		[InfoBox("Sound when alms added ok but no new tier reached", 1, null)]
 		[EventRef]
 		public string SoundAddedOk;
 
 		[BoxGroup("Widget Sounds", true, false, 0)]
-		[InfoBox("Sound when change value, the timing is determned by SoundChangeUpdate", InfoMessageType.Info, null)]
+		[InfoBox("Sound when change value, the timing is determned by SoundChangeUpdate", 1, null)]
 		[EventRef]
 		public string SoundChange;
 
 		[BoxGroup("Widget Sounds", true, false, 0)]
-		[InfoBox("Time to wait curve to play sound change sound", InfoMessageType.Info, null)]
+		[InfoBox("Time to wait curve to play sound change sound", 1, null)]
 		public AnimationCurve SoundChangeUpdate;
 
 		[BoxGroup("Widget Sounds", true, false, 0)]
-		[InfoBox("Sound when alms added ok and new tier reached", InfoMessageType.Info, null)]
+		[InfoBox("Sound when alms added ok and new tier reached", 1, null)]
 		[EventRef]
 		public string SoundNewTier;
 
 		[BoxGroup("Widget", true, false, 0)]
-		[InfoBox("Time to wait until widget is showed", InfoMessageType.Info, null)]
+		[InfoBox("Time to wait until widget is showed", 1, null)]
 		public float InitialDelay = 1f;
 
 		[BoxGroup("Widget", true, false, 0)]
-		[InfoBox("Speed in numbers per second with factor 1 in NumberFactorByTime", InfoMessageType.Info, null)]
+		[InfoBox("Speed in numbers per second with factor 1 in NumberFactorByTime", 1, null)]
 		public float NumberSpeed;
 
 		[BoxGroup("Widget", true, false, 0)]
-		[InfoBox("Max number of tiers that can give in one action", InfoMessageType.Info, null)]
+		[InfoBox("Max number of tiers that can give in one action", 1, null)]
 		public int MaxNumber;
 
-		[InfoBox("Factor curve to multiply value depending on time pressing control to acelerate", InfoMessageType.Info, null)]
+		[InfoBox("Factor curve to multiply value depending on time pressing control to acelerate", 1, null)]
 		[BoxGroup("Widget", true, false, 0)]
 		public AnimationCurve NumberFactorByTime;
 

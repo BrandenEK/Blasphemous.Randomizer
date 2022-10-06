@@ -32,12 +32,12 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.Attack
 			{
 				return;
 			}
-			this.PietyMonster = UnityEngine.Object.FindObjectOfType<PietyMonster>();
+			this.PietyMonster = Object.FindObjectOfType<PietyMonster>();
 		}
 
 		public void DestroyBushes()
 		{
-			PietyBush[] array = UnityEngine.Object.FindObjectsOfType<PietyBush>();
+			PietyBush[] array = Object.FindObjectsOfType<PietyBush>();
 			for (int i = 0; i < array.Length; i++)
 			{
 				array[i].DestroyBush();
@@ -57,12 +57,13 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.Attack
 			}
 			float x = componentInChildren.transform.position.x;
 			componentInChildren.HitsOnFloor();
-			Vector2 v = new Vector2(x, this.Collider.bounds.max.y);
+			Vector2 vector;
+			vector..ctor(x, this.Collider.bounds.max.y);
 			if (this.PietyBushPrefab == null)
 			{
 				return;
 			}
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.PietyBushPrefab, v, Quaternion.identity);
+			GameObject gameObject = Object.Instantiate<GameObject>(this.PietyBushPrefab, vector, Quaternion.identity);
 			PietyBush component = gameObject.GetComponent<PietyBush>();
 			if (!component)
 			{

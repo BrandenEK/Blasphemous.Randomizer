@@ -19,7 +19,7 @@ namespace Tools.Playmaker2.Action
 			}
 			catch (NullReferenceException ex)
 			{
-				Framework.FrameworkCore.Log.Error("Playmaker", "BehaviourStop has received a non behaviour object." + ex.ToString(), null);
+				Log.Error("Playmaker", "BehaviourStop has received a non behaviour object." + ex.ToString(), null);
 			}
 		}
 

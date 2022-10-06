@@ -7,8 +7,8 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 	{
 		private void OnEnable()
 		{
-			this.amplitude = UnityEngine.Random.Range(this.minAmplitude, this.maxAmplitude);
-			this.frequency = UnityEngine.Random.Range(this.minFrequency, this.maxFrequency);
+			this.amplitude = Random.Range(this.minAmplitude, this.maxAmplitude);
+			this.frequency = Random.Range(this.minFrequency, this.maxFrequency);
 			this.origin = base.transform.position;
 		}
 

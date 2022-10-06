@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Tools.Playmaker2.Action
 {
 	[ActionCategory("Blasphemous Action")]
-	[HutongGames.PlayMaker.Tooltip("Checks current Penitence and raises that event.")]
+	[Tooltip("Checks current Penitence and raises that event.")]
 	public class PenitenceCheckCurrent : FsmStateAction
 	{
 		public override void OnEnter()

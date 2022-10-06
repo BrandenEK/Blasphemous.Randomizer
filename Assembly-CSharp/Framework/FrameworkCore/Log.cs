@@ -12,57 +12,57 @@ namespace Framework.FrameworkCore
 			UnityEngine.Debug.Log(text);
 		}
 
-		public static void Trace(string module, string text, UnityEngine.Object context = null)
+		public static void Trace(string module, string text, Object context = null)
 		{
-			string message = "[TRACE]" + Log.CustomFormat(module, text);
-			UnityEngine.Debug.Log(message, context);
+			string text2 = "[TRACE]" + Log.CustomFormat(module, text);
+			UnityEngine.Debug.Log(text2, context);
 		}
 
-		public static void Trace(string text, UnityEngine.Object context = null)
+		public static void Trace(string text, Object context = null)
 		{
-			string message = "[TRACE]" + Log.CustomFormat(string.Empty, text);
-			UnityEngine.Debug.Log(message, context);
+			string text2 = "[TRACE]" + Log.CustomFormat(string.Empty, text);
+			UnityEngine.Debug.Log(text2, context);
 		}
 
-		public static void Debug(string module, string text, UnityEngine.Object context = null)
+		public static void Debug(string module, string text, Object context = null)
 		{
-			string message = "[DEBUG]" + Log.CustomFormat(module, text);
-			UnityEngine.Debug.Log(message, context);
+			string text2 = "[DEBUG]" + Log.CustomFormat(module, text);
+			UnityEngine.Debug.Log(text2, context);
 		}
 
-		public static void Debug(string text, UnityEngine.Object context = null)
+		public static void Debug(string text, Object context = null)
 		{
-			string message = "[DEBUG]" + Log.CustomFormat(string.Empty, text);
-			UnityEngine.Debug.Log(message, context);
+			string text2 = "[DEBUG]" + Log.CustomFormat(string.Empty, text);
+			UnityEngine.Debug.Log(text2, context);
 		}
 
-		public static void Warning(string module, string text, UnityEngine.Object context = null)
+		public static void Warning(string module, string text, Object context = null)
 		{
-			string message = "[WARN]" + Log.CustomFormat(module, text);
-			UnityEngine.Debug.LogWarning(message, context);
+			string text2 = "[WARN]" + Log.CustomFormat(module, text);
+			UnityEngine.Debug.LogWarning(text2, context);
 		}
 
-		public static void Warning(string text, UnityEngine.Object context = null)
+		public static void Warning(string text, Object context = null)
 		{
-			string message = "[WARN]" + Log.CustomFormat(string.Empty, text);
-			UnityEngine.Debug.LogWarning(message, context);
+			string text2 = "[WARN]" + Log.CustomFormat(string.Empty, text);
+			UnityEngine.Debug.LogWarning(text2, context);
 		}
 
-		public static void Error(string module, string text, UnityEngine.Object context = null)
+		public static void Error(string module, string text, Object context = null)
 		{
-			string message = "[ERROR]" + Log.CustomFormat(module, text);
-			UnityEngine.Debug.LogError(message, context);
+			string text2 = "[ERROR]" + Log.CustomFormat(module, text);
+			UnityEngine.Debug.LogError(text2, context);
 		}
 
 		public static void Error(string text, GameObject context = null)
 		{
-			string message = "[ERROR]" + Log.CustomFormat(string.Empty, text);
-			UnityEngine.Debug.LogError(message, context);
+			string text2 = "[ERROR]" + Log.CustomFormat(string.Empty, text);
+			UnityEngine.Debug.LogError(text2, context);
 		}
 
 		private static string CustomFormat(string module, string text)
 		{
-			if (!module.IsNullOrWhitespace())
+			if (!StringExtensions.IsNullOrWhitespace(module))
 			{
 				module = "[" + module.ToUpper() + "] ";
 				text = text.Replace("<!", "<i><color=blue>");

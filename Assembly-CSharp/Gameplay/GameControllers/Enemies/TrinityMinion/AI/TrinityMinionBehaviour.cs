@@ -17,7 +17,7 @@ namespace Gameplay.GameControllers.Enemies.TrinityMinion.AI
 		{
 			base.OnStart();
 			this.TrinityMinion = (TrinityMinion)this.Entity;
-			float num = UnityEngine.Random.Range(-this.randomMaxSpeedRange, this.randomMaxSpeedRange);
+			float num = Random.Range(-this.randomMaxSpeedRange, this.randomMaxSpeedRange);
 			this.agent.maxSpeed += num;
 			this.agent.maxForce += num;
 		}

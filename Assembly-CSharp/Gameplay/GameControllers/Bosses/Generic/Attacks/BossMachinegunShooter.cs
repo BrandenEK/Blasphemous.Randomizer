@@ -52,16 +52,16 @@ namespace Gameplay.GameControllers.Bosses.Generic.Attacks
 
 		private void Shoot(float dispersion, bool verticalDispersion = false)
 		{
-			Vector2 a = this._currentTarget.transform.position + Vector2.up * 1.4f;
+			Vector2 vector = this._currentTarget.transform.position + Vector2.up * 1.4f;
 			if (verticalDispersion)
 			{
-				a += Vector2.up * UnityEngine.Random.Range(-1f, 1f) * dispersion;
+				vector += Vector2.up * Random.Range(-1f, 1f) * dispersion;
 			}
 			else
 			{
-				a += new Vector2(UnityEngine.Random.Range(-1f, 1f), 0f) * dispersion;
+				vector += new Vector2(Random.Range(-1f, 1f), 0f) * dispersion;
 			}
-			Vector2 dir = a - base.transform.position;
+			Vector2 dir = vector - base.transform.position;
 			StraightProjectile straightProjectile = this.projectileAttack.Shoot(dir, dir.normalized, 1f);
 			AcceleratedProjectile component = straightProjectile.GetComponent<AcceleratedProjectile>();
 			component.SetAcceleration(dir.normalized * 10f);

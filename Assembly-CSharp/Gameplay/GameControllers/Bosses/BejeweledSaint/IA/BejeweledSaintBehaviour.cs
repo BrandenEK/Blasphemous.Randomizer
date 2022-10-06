@@ -64,7 +64,7 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.IA
 			this._bejeweledSaintHead = (BejeweledSaintHead)this.Entity;
 			this._currentChaseCoolDown = this.ChaseCoolDown;
 			this.StaffRoot = this._bejeweledSaintHead.WholeBoss.AttackArm.StaffRoot;
-			this.BossFight = UnityEngine.Object.FindObjectOfType<BossFightManager>();
+			this.BossFight = Object.FindObjectOfType<BossFightManager>();
 			this.ArmAttack = this._bejeweledSaintHead.WholeBoss.GetComponentInChildren<BejeweledSaintArmAttack>();
 			this.VisualSensor.OnPenitentEnter += this.OnVisualSensorPenitentEnter;
 			this.VisualSensor.OnPenitentExit += this.OnVisualSensorPenitentExit;
@@ -74,7 +74,7 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.IA
 			BejeweledSaintBoss wholeBoss = this._bejeweledSaintHead.WholeBoss;
 			wholeBoss.OnRaised = (Core.SimpleEvent)Delegate.Combine(wholeBoss.OnRaised, new Core.SimpleEvent(this.OnRaised));
 			this._bejeweledSaintHead.OnDeath += this.BossOnDeath;
-			this.HandsAttackInterval = UnityEngine.Random.Range(this.MinHandsAttackInterval, this.MaxHandsAttackInterval);
+			this.HandsAttackInterval = Random.Range(this.MinHandsAttackInterval, this.MaxHandsAttackInterval);
 			this._bejeweledSaintHead.WholeBoss.SetIntroPosition();
 		}
 
@@ -132,27 +132,27 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.IA
 			switch (atk)
 			{
 			case BejeweledSaintBehaviour.BEJEWELLED_ATTACKS.STAFF:
-				UnityEngine.Debug.Log("STAFF");
+				Debug.Log("STAFF");
 				this.IssueStaff();
 				break;
 			case BejeweledSaintBehaviour.BEJEWELLED_ATTACKS.BEAMS:
-				UnityEngine.Debug.Log("BEAMS");
+				Debug.Log("BEAMS");
 				this.IssueBeams();
 				break;
 			case BejeweledSaintBehaviour.BEJEWELLED_ATTACKS.HANDS:
-				UnityEngine.Debug.Log("HANDS");
+				Debug.Log("HANDS");
 				this.IssueHands();
 				break;
 			case BejeweledSaintBehaviour.BEJEWELLED_ATTACKS.TRIPLE_STAFF:
-				UnityEngine.Debug.Log("TRIPLE STAFF");
+				Debug.Log("TRIPLE STAFF");
 				this.IssueMultiStaff();
 				break;
 			case BejeweledSaintBehaviour.BEJEWELLED_ATTACKS.HANDS_LINE:
-				UnityEngine.Debug.Log("HANDS LINE");
+				Debug.Log("HANDS LINE");
 				this.IssueHandsLine();
 				break;
 			case BejeweledSaintBehaviour.BEJEWELLED_ATTACKS.ONSLAUGHT:
-				UnityEngine.Debug.Log("ONSLAUGHT");
+				Debug.Log("ONSLAUGHT");
 				this.IssueOnslaught();
 				break;
 			}
@@ -182,7 +182,7 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.IA
 			{
 				list.Add(BejeweledSaintBehaviour.BEJEWELLED_ATTACKS.STAFF);
 			}
-			return list[UnityEngine.Random.Range(0, list.Count)];
+			return list[Random.Range(0, list.Count)];
 		}
 
 		public void LaunchRandomAction()
@@ -230,7 +230,7 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.IA
 
 		private void AfterWaitingPeriod()
 		{
-			UnityEngine.Debug.Log("WAIT PERIOD FINISH");
+			Debug.Log("WAIT PERIOD FINISH");
 			this.ActionFinished();
 		}
 
@@ -507,13 +507,13 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.IA
 		{
 			this.StartAttackAction();
 			this._bejeweledSaintHead.AnimatorInyector.SetCackle(true);
-			UnityEngine.Debug.Log("ISSUE MULTI: WAITING FOR RANGE");
+			Debug.Log("ISSUE MULTI: WAITING FOR RANGE");
 			this.SetCurrentCoroutine(base.StartCoroutine(this.GetIntoStaffRange(new Action(this.MultiStaffAttack))));
 		}
 
 		private void MultiStaffAttack()
 		{
-			UnityEngine.Debug.Log("MULTI STAFF ATTACK");
+			Debug.Log("MULTI STAFF ATTACK");
 			this._bejeweledSaintHead.WholeBoss.AttackArm.QuickAttackMode(true);
 			this.SetCurrentCoroutine(base.StartCoroutine(this.MultipleStaffAttackCoroutine(3)));
 		}
@@ -544,7 +544,7 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.IA
 
 		private void IssueOnslaught()
 		{
-			UnityEngine.Debug.Log("ISSUE ONSLAUGHT");
+			Debug.Log("ISSUE ONSLAUGHT");
 			this.StartAttackAction();
 			this.SetCurrentCoroutine(base.StartCoroutine(this.OnslaughtMasterCoroutine()));
 		}

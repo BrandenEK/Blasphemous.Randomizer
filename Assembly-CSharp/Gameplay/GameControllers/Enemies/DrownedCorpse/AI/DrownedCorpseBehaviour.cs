@@ -42,7 +42,7 @@ namespace Gameplay.GameControllers.Enemies.DrownedCorpse.AI
 			this.DrownedCorpse = (DrownedCorpse)this.Entity;
 			this.ResetSleepTime();
 			this.SwitchToState(DrownedCorpseBehaviour.CorpseState.Sleep);
-			if (UnityEngine.Random.value > 0.5f)
+			if (Random.value > 0.5f)
 			{
 				this.LookAtTarget(base.transform.position - Vector3.right);
 			}
@@ -89,7 +89,7 @@ namespace Gameplay.GameControllers.Enemies.DrownedCorpse.AI
 
 		public void Sleep()
 		{
-			this.currentChasingTimeAfterLostTarget = UnityEngine.Random.Range(this.MinChasingTime, this.MaxChasingTime);
+			this.currentChasingTimeAfterLostTarget = Random.Range(this.MinChasingTime, this.MaxChasingTime);
 			this.sleepTime -= Time.deltaTime;
 			if (this.TargetCanBeVisible() && this.sleepTime < 0f && this.CanSeeTarget())
 			{
@@ -220,7 +220,7 @@ namespace Gameplay.GameControllers.Enemies.DrownedCorpse.AI
 
 		private void ResetSleepTime()
 		{
-			this.sleepTime = UnityEngine.Random.Range(this.minSleepTime, this.maxSleepTime);
+			this.sleepTime = Random.Range(this.minSleepTime, this.maxSleepTime);
 		}
 
 		public override void Attack()

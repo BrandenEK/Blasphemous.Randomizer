@@ -52,8 +52,8 @@ namespace Framework.Managers
 					}).First<string>();
 					if (text2.Contains(scene.ToLower()))
 					{
-						GameObject original = assetBundle.LoadAsset(text2) as GameObject;
-						UnityEngine.Object.Instantiate<GameObject>(original);
+						GameObject gameObject = assetBundle.LoadAsset(text2) as GameObject;
+						Object.Instantiate<GameObject>(gameObject);
 					}
 				}
 			}

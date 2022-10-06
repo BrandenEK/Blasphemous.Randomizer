@@ -373,7 +373,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			case OptionsWidget.VIDEO_OPTIONS.FILTERING:
 			{
 				int length = Enum.GetValues(typeof(AnisotropicFiltering)).Length;
-				int num2 = (int)(this.currentFilter + num);
+				int num2 = this.currentFilter + num;
 				if (num2 < 0)
 				{
 					num2 = length - 1;
@@ -382,7 +382,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				{
 					num2 = 0;
 				}
-				this.currentFilter = (AnisotropicFiltering)num2;
+				this.currentFilter = num2;
 				break;
 			}
 			case OptionsWidget.VIDEO_OPTIONS.RESOLUTIONMODE:
@@ -807,9 +807,9 @@ namespace Gameplay.UI.Others.MenuLogic
 			}
 			else
 			{
-				string input = File.ReadAllText(pathOptionsSettings);
+				string text = File.ReadAllText(pathOptionsSettings);
 				fsData fsData;
-				fsResult fsResult = fsJsonParser.Parse(input, out fsData);
+				fsResult fsResult = fsJsonParser.Parse(text, ref fsData);
 				if (fsResult.Failed && !fsResult.FormattedMessages.Equals("No input"))
 				{
 					Debug.LogError("ReadOptionsFromFile: parsing error: " + fsResult.FormattedMessages);
@@ -1023,7 +1023,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				Debug.LogWarning("<color=red>Invalid render mode preset: " + this.currentRenderMode + "</color>");
 				this.currentRenderMode = -1;
 			}
-			string text = (this.currentRenderMode != -1) ? this.crtEffect.CRTEffectPresets[this.currentRenderMode].name : I2.Loc.LocalizationManager.GetTranslation("UI/DISABLED_TEXT", true, 0, true, false, null, null);
+			string text = (this.currentRenderMode != -1) ? this.crtEffect.CRTEffectPresets[this.currentRenderMode].name : LocalizationManager.GetTranslation("UI/DISABLED_TEXT", true, 0, true, false, null, null);
 			this.renderModesElements[OptionsWidget.RENDER_MODE_OPTIONS.PRESET].GetComponentInChildren<Text>().text = text;
 			this.crtEffect.enabled = (this.currentRenderMode != -1);
 			this.scanlineEffect.enabled = (this.currentRenderMode != -1);
@@ -1068,15 +1068,15 @@ namespace Gameplay.UI.Others.MenuLogic
 					disposable.Dispose();
 				}
 			}
-			foreach (GameObject obj2 in list)
+			foreach (GameObject gameObject in list)
 			{
 				if (Application.isPlaying)
 				{
-					UnityEngine.Object.Destroy(obj2);
+					Object.Destroy(gameObject);
 				}
 				else
 				{
-					UnityEngine.Object.DestroyImmediate(obj2);
+					Object.DestroyImmediate(gameObject);
 				}
 			}
 		}
@@ -1175,7 +1175,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				this.tutorialOrder.Add(tutorial.id);
 				if (!this.tutorialInstances.ContainsKey(tutorial.id))
 				{
-					GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(tutorial.prefab, Vector3.zero, Quaternion.identity, this.optionsRoot[OptionsWidget.MENU.TUTORIAL]);
+					GameObject gameObject = Object.Instantiate<GameObject>(tutorial.prefab, Vector3.zero, Quaternion.identity, this.optionsRoot[OptionsWidget.MENU.TUTORIAL]);
 					gameObject.transform.localPosition = Vector3.zero;
 					this.tutorialInstances[tutorial.id] = gameObject;
 				}
@@ -1238,9 +1238,9 @@ namespace Gameplay.UI.Others.MenuLogic
 			}
 			else
 			{
-				string input = File.ReadAllText(pathOptionsSettings);
+				string text = File.ReadAllText(pathOptionsSettings);
 				fsData fsData;
-				fsResult fsResult = fsJsonParser.Parse(input, out fsData);
+				fsResult fsResult = fsJsonParser.Parse(text, ref fsData);
 				if (fsResult.Failed && !fsResult.FormattedMessages.Equals("No input"))
 				{
 					Debug.LogError("ReadOptionsFromFile: parsing error: " + fsResult.FormattedMessages);
@@ -1462,7 +1462,7 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		private int currentResolution = -1;
 
-		private AnisotropicFiltering currentFilter = AnisotropicFiltering.Enable;
+		private AnisotropicFiltering currentFilter = 1;
 
 		private OptionsWidget.SCALING_STRATEGY currentScalingStrategy;
 

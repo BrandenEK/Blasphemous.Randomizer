@@ -22,7 +22,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora.Audio
 
 		private void Awake()
 		{
-			this.bossAudioSync = UnityEngine.Object.FindObjectOfType<BossAudioSyncHelper>();
+			this.bossAudioSync = Object.FindObjectOfType<BossAudioSyncHelper>();
 			if (this.bossAudioSync)
 			{
 				this.bossAudioSync.OnBar += this.NewBarBegins;
@@ -84,7 +84,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora.Audio
 		public bool GetIsidoraVoice()
 		{
 			float num;
-			this.bossAudioSync.bossfightAudio.GetBossTrackParam("IsidoraVoice").getValue(out num);
+			this.bossAudioSync.bossfightAudio.GetBossTrackParam("IsidoraVoice").getValue(ref num);
 			return num > 0f;
 		}
 
@@ -155,7 +155,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora.Audio
 
 		public void StopMeleeAudios()
 		{
-			UnityEngine.Debug.Log("<color=red>STOP MELEE AUDIOS</color>");
+			Debug.Log("<color=red>STOP MELEE AUDIOS</color>");
 			this.Stop_AUDIO("IsidoraSlashAnticipation");
 			this.Stop_AUDIO("IsidoraSlashAttack");
 		}

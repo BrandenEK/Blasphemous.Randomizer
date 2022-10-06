@@ -8,7 +8,7 @@ namespace Framework.Audio
 	{
 		private void Start()
 		{
-			this._eventEmitters = UnityEngine.Object.FindObjectsOfType<StudioEventEmitter>();
+			this._eventEmitters = Object.FindObjectsOfType<StudioEventEmitter>();
 		}
 
 		private void OnDestroy()

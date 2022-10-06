@@ -166,9 +166,9 @@ namespace Gameplay.UI.Console
 					if (SteamManager.Initialized)
 					{
 						bool flag5 = false;
-						foreach (string pchName in Core.AchievementsManager.Achievements.Keys)
+						foreach (string text in Core.AchievementsManager.Achievements.Keys)
 						{
-							flag5 |= SteamUserStats.ClearAchievement(pchName);
+							flag5 |= SteamUserStats.ClearAchievement(text);
 						}
 						if (!SteamUserStats.StoreStats())
 						{

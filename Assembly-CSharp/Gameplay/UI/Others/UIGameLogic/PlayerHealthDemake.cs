@@ -14,8 +14,8 @@ namespace Gameplay.UI.Others.UIGameLogic
 		{
 			get
 			{
-				float f = Core.Logic.Penitent.Stats.Life.Current / 30f;
-				return Mathf.CeilToInt(f);
+				float num = Core.Logic.Penitent.Stats.Life.Current / 30f;
+				return Mathf.CeilToInt(num);
 			}
 		}
 

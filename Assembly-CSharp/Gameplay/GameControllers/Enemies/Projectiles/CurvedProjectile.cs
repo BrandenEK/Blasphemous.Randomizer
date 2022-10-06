@@ -26,15 +26,16 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 			<Init>c__AnonStorey.$this = this;
 			this.speed = speed;
 			CurvedProjectile.<Init>c__AnonStorey0 <Init>c__AnonStorey2 = <Init>c__AnonStorey;
-			<Init>c__AnonStorey2.target.x = <Init>c__AnonStorey2.target.x + UnityEngine.Random.Range(this.xDisplacementAtTarget.x, this.xDisplacementAtTarget.y);
+			<Init>c__AnonStorey2.target.x = <Init>c__AnonStorey2.target.x + Random.Range(this.xDisplacementAtTarget.x, this.xDisplacementAtTarget.y);
 			Vector2 vector = <Init>c__AnonStorey.target - origin;
-			Vector2 vector2 = new Vector2(origin.x + vector.x / 2f, Mathf.Max(<Init>c__AnonStorey.target.y, base.transform.position.y) + this.yDisplacementAtPeak);
+			Vector2 vector2;
+			vector2..ctor(origin.x + vector.x / 2f, Mathf.Max(<Init>c__AnonStorey.target.y, base.transform.position.y) + this.yDisplacementAtPeak);
 			float num = Vector2.Distance(origin, vector2) + Vector2.Distance(vector2, <Init>c__AnonStorey.target);
 			<Init>c__AnonStorey.time = num / speed;
-			base.transform.DOMoveX(<Init>c__AnonStorey.target.x, <Init>c__AnonStorey.time, false).SetEase(Ease.Linear);
-			base.transform.DOMoveY(vector2.y, <Init>c__AnonStorey.time / 2f, false).SetEase(Ease.OutQuad).OnComplete(delegate
+			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(base.transform, <Init>c__AnonStorey.target.x, <Init>c__AnonStorey.time, false), 1);
+			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, vector2.y, <Init>c__AnonStorey.time / 2f, false), 6), delegate()
 			{
-				<Init>c__AnonStorey.$this.transform.DOMoveY(<Init>c__AnonStorey.target.y, <Init>c__AnonStorey.time / 2f, false).SetEase(Ease.InQuad);
+				TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(<Init>c__AnonStorey.$this.transform, <Init>c__AnonStorey.target.y, <Init>c__AnonStorey.time / 2f, false), 5);
 			});
 			this.lastPos = base.transform.position;
 			if (!this.trailRendererCleaner)
@@ -57,12 +58,12 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 			}
 			if (this.faceVelocityDirection)
 			{
-				float z = 57.29578f * Mathf.Atan2(this.velocity.y, this.velocity.x);
-				base.transform.eulerAngles = new Vector3(0f, 0f, z);
+				float num = 57.29578f * Mathf.Atan2(this.velocity.y, this.velocity.x);
+				base.transform.eulerAngles = new Vector3(0f, 0f, num);
 			}
 			if (!DOTween.IsTweening(base.transform, false))
 			{
-				base.transform.Translate(this.velocity * Time.deltaTime, Space.World);
+				base.transform.Translate(this.velocity * Time.deltaTime, 0);
 				this.velocity.y = this.velocity.y * 1.1f;
 			}
 			this._currentTTL -= Time.deltaTime;

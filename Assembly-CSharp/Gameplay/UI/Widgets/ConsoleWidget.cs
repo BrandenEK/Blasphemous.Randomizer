@@ -65,7 +65,7 @@ namespace Gameplay.UI.Widgets
 			{
 				this.commands[i].Update();
 			}
-			if (Input.GetKeyDown(KeyCode.F1) && Debug.isDebugBuild)
+			if (Input.GetKeyDown(282) && Debug.isDebugBuild)
 			{
 				this.SetEnabled(!this.isEnabled);
 			}
@@ -157,7 +157,7 @@ namespace Gameplay.UI.Widgets
 
 		public void Submit()
 		{
-			if (this.input.text.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(this.input.text))
 			{
 				return;
 			}
@@ -209,7 +209,7 @@ namespace Gameplay.UI.Widgets
 			int num2 = 0;
 			while ((float)num2 < num)
 			{
-				UnityEngine.Object.Destroy(this.content.GetChild(num2).gameObject);
+				Object.Destroy(this.content.GetChild(num2).gameObject);
 				num2++;
 			}
 		}
@@ -272,31 +272,31 @@ namespace Gameplay.UI.Widgets
 		private void CheckConsoleKeys()
 		{
 			string text = string.Empty;
-			if (Input.GetKeyDown(KeyCode.Return))
+			if (Input.GetKeyDown(13))
 			{
 				this.Submit();
 			}
-			if (Input.GetKeyUp(KeyCode.DownArrow))
+			if (Input.GetKeyUp(274))
 			{
 				text = this.NextCommand();
 			}
-			if (Input.GetKeyUp(KeyCode.UpArrow))
+			if (Input.GetKeyUp(273))
 			{
 				text = this.PreviousCommand();
 			}
-			if (!text.IsNullOrWhitespace())
+			if (!StringExtensions.IsNullOrWhitespace(text))
 			{
 				this.input.text = text;
 			}
-			if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
+			if (Input.GetKeyUp(273) || Input.GetKeyUp(274))
 			{
 				this.CursorToEnd();
 			}
-			if (Input.GetKeyUp(KeyCode.PageDown))
+			if (Input.GetKeyUp(281))
 			{
 				this.Scroll(-0.5f);
 			}
-			if (Input.GetKeyUp(KeyCode.PageUp))
+			if (Input.GetKeyUp(280))
 			{
 				this.Scroll(0.5f);
 			}

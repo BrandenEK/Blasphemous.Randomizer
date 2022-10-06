@@ -136,14 +136,14 @@ namespace Gameplay.GameControllers.Entities.MiriamPortal.AI
 		public Vector2 GetActionDirection(bool checkToHitGorund)
 		{
 			int num = (this.MiriamPortal.Status.Orientation != EntityOrientation.Right) ? -1 : 1;
-			float x = base.transform.position.x + this.HorizontalAttackDistance * (float)num;
-			float y = base.transform.position.y - this.VerticalAttackDistance;
+			float num2 = base.transform.position.x + this.HorizontalAttackDistance * (float)num;
+			float num3 = base.transform.position.y - this.VerticalAttackDistance;
 			if (checkToHitGorund && this.CanHitGround())
 			{
 				this.reachedGround = true;
-				y = this.results[0].point.y + 0.3f;
+				num3 = this.results[0].point.y + 0.3f;
 			}
-			return new Vector2(x, y);
+			return new Vector2(num2, num3);
 		}
 
 		private bool CanHitGround()
@@ -170,8 +170,8 @@ namespace Gameplay.GameControllers.Entities.MiriamPortal.AI
 			Core.Logic.CameraManager.ProCamera2DShake.ShakeUsingPreset("HardFall");
 			position.y += 5f;
 			this.Pillar.SetDamageStrength(this.MiriamPortal.Stats.Strength.Final * Core.Logic.Penitent.Stats.DamageMultiplier.Final * 0.2f);
-			Vector2 v = (this.MiriamPortal.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
-			this.Pillar.SummonAreas(position, v, this.MiriamPortal.Status.Orientation);
+			Vector2 vector = (this.MiriamPortal.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
+			this.Pillar.SummonAreas(position, vector, this.MiriamPortal.Status.Orientation);
 		}
 
 		public void SetInitialOrientation()

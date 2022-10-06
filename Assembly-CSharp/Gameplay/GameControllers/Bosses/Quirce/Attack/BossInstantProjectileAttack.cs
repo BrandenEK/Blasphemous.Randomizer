@@ -188,26 +188,28 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 		{
 			RaycastHit2D[] array = new RaycastHit2D[20];
 			Vector2 vector = end - origin;
-			Vector2 vector2 = new Vector2(-vector.y, vector.x);
+			Vector2 vector2;
+			vector2..ctor(-vector.y, vector.x);
 			Vector2 normalized = vector2.normalized;
 			Vector2 vector3 = origin + vector.normalized * 0.1f;
 			BossInstantProjectileAttack.DrawDebugCross(vector3, Color.cyan, 2f);
-			Vector2 size = new Vector2(width, 0.1f);
-			Vector2 vector4 = origin + normalized * width / 2f;
-			Vector2 vector5 = origin - normalized * width / 2f;
-			Debug.DrawLine(vector4, vector4 + vector, Color.green, 1f);
+			Vector2 vector4;
+			vector4..ctor(width, 0.1f);
+			Vector2 vector5 = origin + normalized * width / 2f;
+			Vector2 vector6 = origin - normalized * width / 2f;
 			Debug.DrawLine(vector5, vector5 + vector, Color.green, 1f);
-			float angle = Mathf.Atan2(vector.y, vector.x);
-			int num = Physics2D.BoxCastNonAlloc(vector3, size, angle, vector, array, vector.magnitude, this.damageMask);
-			if (num > 0)
+			Debug.DrawLine(vector6, vector6 + vector, Color.green, 1f);
+			float num = Mathf.Atan2(vector.y, vector.x);
+			int num2 = Physics2D.BoxCastNonAlloc(vector3, vector4, num, vector, array, vector.magnitude, this.damageMask);
+			if (num2 > 0)
 			{
-				for (int i = 0; i < num; i++)
+				for (int i = 0; i < num2; i++)
 				{
 					if (this.instantiateOnHit)
 					{
-						float num2 = Vector2.Distance(array[i].point, origin);
-						Vector2 v = origin + vector.normalized * (0.5f + num2);
-						GameObject gameObject = PoolManager.Instance.ReuseObject(this.instantiateOnHit, v, Quaternion.identity, false, 1).GameObject;
+						float num3 = Vector2.Distance(array[i].point, origin);
+						Vector2 vector7 = origin + vector.normalized * (0.5f + num3);
+						GameObject gameObject = PoolManager.Instance.ReuseObject(this.instantiateOnHit, vector7, Quaternion.identity, false, 1).GameObject;
 						gameObject.GetComponentInChildren<SpriteRenderer>().flipX = (vector.x < 0f);
 					}
 					if (array[i].collider.CompareTag("Penitent"))
@@ -253,9 +255,9 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 
 		private static void DrawDebugCross(Vector2 point, Color c, float seconds)
 		{
-			float d = 0.6f;
-			Debug.DrawLine(point - Vector2.up * d, point + Vector2.up * d, c, seconds);
-			Debug.DrawLine(point - Vector2.right * d, point + Vector2.right * d, c, seconds);
+			float num = 0.6f;
+			Debug.DrawLine(point - Vector2.up * num, point + Vector2.up * num, c, seconds);
+			Debug.DrawLine(point - Vector2.right * num, point + Vector2.right * num, c, seconds);
 		}
 
 		private GameObject InstantiateObject(DashAttackInstantiations objectConfig, Vector2 p, Vector2 dir)
@@ -268,7 +270,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 			}
 			else
 			{
-				gameObject = UnityEngine.Object.Instantiate<GameObject>(objectConfig.prefabToInstantiate, p, Quaternion.identity);
+				gameObject = Object.Instantiate<GameObject>(objectConfig.prefabToInstantiate, p, Quaternion.identity);
 			}
 			if (!objectConfig.keepRotation)
 			{

@@ -59,7 +59,7 @@ namespace Gameplay.UI.Others.Buttons
 
 		public virtual void OnPointerClick(PointerEventData eventData)
 		{
-			if (eventData.button != PointerEventData.InputButton.Left)
+			if (eventData.button != null)
 			{
 				return;
 			}
@@ -73,7 +73,7 @@ namespace Gameplay.UI.Others.Buttons
 			{
 				return;
 			}
-			this.DoStateTransition(Selectable.SelectionState.Pressed, false);
+			this.DoStateTransition(2, false);
 			base.StartCoroutine(this.OnFinishSubmit());
 		}
 

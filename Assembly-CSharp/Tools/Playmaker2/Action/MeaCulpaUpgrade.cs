@@ -10,7 +10,7 @@ namespace Tools.Playmaker2.Action
 	{
 		public override void OnEnter()
 		{
-			Core.Randomizer.giveReward(base.Owner.transform.position.GetHashCode().ToString(), true);
+			Core.Logic.Penitent.Stats.MeaCulpa.Upgrade();
 			base.Finish();
 		}
 	}

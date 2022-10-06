@@ -16,8 +16,8 @@ namespace Gameplay.GameControllers.Camera
 		{
 			get
 			{
-				float value = Vector2.Distance(base.transform.position, this.Target.position) - this.InternalRadius;
-				return Mathf.Clamp(value, 0f, float.PositiveInfinity);
+				float num = Vector2.Distance(base.transform.position, this.Target.position) - this.InternalRadius;
+				return Mathf.Clamp(num, 0f, float.PositiveInfinity);
 			}
 		}
 
@@ -25,8 +25,8 @@ namespace Gameplay.GameControllers.Camera
 		{
 			get
 			{
-				float value = Vector2.Distance(base.transform.position, this.GetTarget.position) - this.ExternalRadius;
-				return Mathf.Clamp(value, 0f, float.PositiveInfinity);
+				float num = Vector2.Distance(base.transform.position, this.GetTarget.position) - this.ExternalRadius;
+				return Mathf.Clamp(num, 0f, float.PositiveInfinity);
 			}
 		}
 
@@ -104,7 +104,8 @@ namespace Gameplay.GameControllers.Camera
 
 		private Vector2 AssistedPanValue(Vector2 defaultOffsetValue)
 		{
-			Vector2 result = new Vector2(defaultOffsetValue.x, defaultOffsetValue.y);
+			Vector2 result;
+			result..ctor(defaultOffsetValue.x, defaultOffsetValue.y);
 			switch (this.PanDirection)
 			{
 			case CameraAssistedPan.InfluenceDirection.Up:
@@ -163,17 +164,17 @@ namespace Gameplay.GameControllers.Camera
 			this.KillTweens();
 			if (this.PanDirection == CameraAssistedPan.InfluenceDirection.Up || this.PanDirection == CameraAssistedPan.InfluenceDirection.Down)
 			{
-				this.currentTweenY = DOTween.To(delegate(float y)
+				this.currentTweenY = TweenSettingsExtensions.SetEase<Tweener>(DOTween.To(delegate(float y)
 				{
 					this._proCamera2D.OverallOffset.y = y;
-				}, this._proCamera2D.OverallOffset.y, this._cameraPlayerOffset.DefaultTargetOffset.y, duration).SetEase(Ease.InSine);
+				}, this._proCamera2D.OverallOffset.y, this._cameraPlayerOffset.DefaultTargetOffset.y, duration), 2);
 			}
 			else
 			{
-				this.currentTweenX = DOTween.To(delegate(float x)
+				this.currentTweenX = TweenSettingsExtensions.SetEase<Tweener>(DOTween.To(delegate(float x)
 				{
 					this._proCamera2D.OverallOffset.x = x;
-				}, this._proCamera2D.OverallOffset.x, this._cameraPlayerOffset.DefaultTargetOffset.x, duration).SetEase(Ease.InSine);
+				}, this._proCamera2D.OverallOffset.x, this._cameraPlayerOffset.DefaultTargetOffset.x, duration), 2);
 			}
 		}
 
@@ -181,11 +182,11 @@ namespace Gameplay.GameControllers.Camera
 		{
 			if (this.currentTweenX != null)
 			{
-				this.currentTweenX.Kill(false);
+				TweenExtensions.Kill(this.currentTweenX, false);
 			}
 			if (this.currentTweenY != null)
 			{
-				this.currentTweenY.Kill(false);
+				TweenExtensions.Kill(this.currentTweenY, false);
 			}
 		}
 
@@ -204,19 +205,19 @@ namespace Gameplay.GameControllers.Camera
 		{
 			Gizmos.color = color;
 			float num = 0f;
-			float x = radius * Mathf.Cos(num);
-			float y = radius * Mathf.Sin(num);
-			Vector3 vector = base.transform.position + new Vector3(x, y);
-			Vector3 to = vector;
+			float num2 = radius * Mathf.Cos(num);
+			float num3 = radius * Mathf.Sin(num);
+			Vector3 vector = base.transform.position + new Vector3(num2, num3);
+			Vector3 vector2 = vector;
 			for (num = 0.1f; num < 6.2831855f; num += 0.1f)
 			{
-				x = radius * Mathf.Cos(num);
-				y = radius * Mathf.Sin(num);
-				Vector3 vector2 = base.transform.position + new Vector3(x, y);
-				Gizmos.DrawLine(vector, vector2);
-				vector = vector2;
+				num2 = radius * Mathf.Cos(num);
+				num3 = radius * Mathf.Sin(num);
+				Vector3 vector3 = base.transform.position + new Vector3(num2, num3);
+				Gizmos.DrawLine(vector, vector3);
+				vector = vector3;
 			}
-			Gizmos.DrawLine(vector, to);
+			Gizmos.DrawLine(vector, vector2);
 		}
 
 		public CircleCollider2D Collider;

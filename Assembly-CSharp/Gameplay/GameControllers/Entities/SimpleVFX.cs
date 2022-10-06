@@ -29,7 +29,7 @@ namespace Gameplay.GameControllers.Entities
 				foreach (SpriteRenderer spriteRenderer in this._spriteRenderers)
 				{
 					Color color = spriteRenderer.color;
-					color = new Color(color.r, color.g, color.b, this.originAlpha);
+					color..ctor(color.r, color.g, color.b, this.originAlpha);
 					spriteRenderer.color = color;
 				}
 			}
@@ -58,11 +58,11 @@ namespace Gameplay.GameControllers.Entities
 				base.Destroy();
 				return;
 			}
-			if (this._spriteRenderers.Length > 0 && this.currentTTL < this.alphaTime && this.fadeWithAlpha && (this.fadeTween == null || !this.fadeTween.IsPlaying()))
+			if (this._spriteRenderers.Length > 0 && this.currentTTL < this.alphaTime && this.fadeWithAlpha && (this.fadeTween == null || !TweenExtensions.IsPlaying(this.fadeTween)))
 			{
-				foreach (SpriteRenderer target in this._spriteRenderers)
+				foreach (SpriteRenderer spriteRenderer in this._spriteRenderers)
 				{
-					this.fadeTween = target.DOFade(0f, this.currentTTL);
+					this.fadeTween = ShortcutExtensions43.DOFade(spriteRenderer, 0f, this.currentTTL);
 				}
 			}
 		}

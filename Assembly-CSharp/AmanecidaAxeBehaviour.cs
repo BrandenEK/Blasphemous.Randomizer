@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using BezierSplines;
-using DG.Tweening;
 using Gameplay.GameControllers.Enemies.Framework.IA;
 using Gameplay.GameControllers.Enemies.Projectiles;
 using Gameplay.GameControllers.Entities;
@@ -232,12 +231,12 @@ public class AmanecidaAxeBehaviour : EnemyBehaviour
 		public EnemyAction StartAction(EnemyBehaviour e, SplineFollowingProjectile follower, Vector2 origin, Vector2 end, int endPointIndex, SplineThrowData throwData, BezierSpline spline)
 		{
 			spline.transform.position = origin;
-			Vector2 b = spline.GetControlPoint(endPointIndex) - spline.GetControlPoint(endPointIndex - 1);
-			Vector2 b2 = spline.GetControlPoint(endPointIndex) - spline.GetControlPoint(endPointIndex + 1);
-			Vector2 vector = spline.transform.InverseTransformPoint(end);
-			spline.SetControlPoint(endPointIndex, vector);
-			spline.SetControlPoint(endPointIndex - 1, vector - b);
-			spline.SetControlPoint(endPointIndex + 1, vector - b2);
+			Vector2 vector = spline.GetControlPoint(endPointIndex) - spline.GetControlPoint(endPointIndex - 1);
+			Vector2 vector2 = spline.GetControlPoint(endPointIndex) - spline.GetControlPoint(endPointIndex + 1);
+			Vector2 vector3 = spline.transform.InverseTransformPoint(end);
+			spline.SetControlPoint(endPointIndex, vector3);
+			spline.SetControlPoint(endPointIndex - 1, vector3 - vector);
+			spline.SetControlPoint(endPointIndex + 1, vector3 - vector2);
 			return this.StartAction(e, follower, origin, throwData, spline);
 		}
 
@@ -254,7 +253,7 @@ public class AmanecidaAxeBehaviour : EnemyBehaviour
 
 		protected override IEnumerator BaseCoroutine()
 		{
-			this.ACT_MOVE.StartAction(this.owner, this.origin, 0.1f, Ease.InOutCubic, null, true, null, true, true, 1.7f);
+			this.ACT_MOVE.StartAction(this.owner, this.origin, 0.1f, 10, null, true, null, true, true, 1.7f);
 			yield return this.ACT_MOVE.waitForCompletion;
 			this.follower.Init(this.origin, this.spline, this.duration, this.curve);
 			yield return new WaitUntil(() => !this.follower.IsFollowing());

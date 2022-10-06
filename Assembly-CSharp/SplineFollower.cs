@@ -29,8 +29,8 @@ public class SplineFollower : MonoBehaviour
 
 	public Vector2 GetDirection()
 	{
-		float t = this.movementCurve.Evaluate(this.currentCounter / this.duration);
-		return this.spline.GetDirection(t);
+		float num = this.movementCurve.Evaluate(this.currentCounter / this.duration);
+		return this.spline.GetDirection(num);
 	}
 
 	public bool HasFinished()
@@ -47,8 +47,8 @@ public class SplineFollower : MonoBehaviour
 
 	private void FollowSpline()
 	{
-		float t = this.movementCurve.Evaluate(this.currentCounter / this.duration);
-		Vector3 point = this.spline.GetPoint(t);
+		float num = this.movementCurve.Evaluate(this.currentCounter / this.duration);
+		Vector3 point = this.spline.GetPoint(num);
 		this.BeforeMoving(point);
 		base.transform.position = point;
 		if (!this.loop && this.currentCounter == this.duration)

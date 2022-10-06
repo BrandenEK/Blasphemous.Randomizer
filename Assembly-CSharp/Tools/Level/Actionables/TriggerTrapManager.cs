@@ -7,10 +7,10 @@ namespace Tools.Level.Actionables
 {
 	public class TriggerTrapManager : MonoBehaviour
 	{
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		public void LinkToSceneTraps()
 		{
-			this.traps = new List<TriggerBasedTrap>(UnityEngine.Object.FindObjectsOfType<TriggerBasedTrap>());
+			this.traps = new List<TriggerBasedTrap>(Object.FindObjectsOfType<TriggerBasedTrap>());
 		}
 
 		public float GetSceneTrapLapse()

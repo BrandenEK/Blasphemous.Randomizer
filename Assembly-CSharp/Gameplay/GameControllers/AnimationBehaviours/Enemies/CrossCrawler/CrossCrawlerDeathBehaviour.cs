@@ -12,7 +12,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.CrossCrawler
 			CrossCrawler componentInParent = animator.GetComponentInParent<CrossCrawler>();
 			if (componentInParent != null)
 			{
-				UnityEngine.Object.Destroy(componentInParent.gameObject);
+				Object.Destroy(componentInParent.gameObject);
 			}
 		}
 	}

@@ -9,7 +9,7 @@ namespace Tools.Level.Actionables
 	{
 		public bool Locked { get; set; }
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		public void Use()
 		{
 			this.Impact(1f);
@@ -22,7 +22,7 @@ namespace Tools.Level.Actionables
 			{
 				vector = (base.transform.position - (Core.Logic.Penitent.transform.position + this.forceOriginOffset)).normalized * this.force * mult;
 			}
-			base.GetComponent<Rigidbody2D>().AddForce(vector, ForceMode2D.Impulse);
+			base.GetComponent<Rigidbody2D>().AddForce(vector, 1);
 		}
 
 		public void HeavyUse()

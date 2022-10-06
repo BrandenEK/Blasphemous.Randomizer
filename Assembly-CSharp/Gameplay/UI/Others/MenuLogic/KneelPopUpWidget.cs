@@ -23,12 +23,12 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		private void OnEnable()
 		{
-			I2.Loc.LocalizationManager.OnLocalizeEvent += this.OnLanguageChanged;
+			LocalizationManager.OnLocalizeEvent += new LocalizationManager.OnLocalizeCallback(this.OnLanguageChanged);
 		}
 
 		private void OnDisable()
 		{
-			I2.Loc.LocalizationManager.OnLocalizeEvent -= this.OnLanguageChanged;
+			LocalizationManager.OnLocalizeEvent -= new LocalizationManager.OnLocalizeCallback(this.OnLanguageChanged);
 		}
 
 		private void OnLanguageChanged()
@@ -43,7 +43,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				return;
 			}
 			string localizedText = this.Config[this.CurrentMode];
-			this.text.text = Framework.Managers.LocalizationManager.ParseMeshPro(localizedText, this.Config[this.CurrentMode].mTerm, null);
+			this.text.text = LocalizationManager.ParseMeshPro(localizedText, this.Config[this.CurrentMode].mTerm, null);
 		}
 
 		public void ShowPopUp(KneelPopUpWidget.Modes mode)

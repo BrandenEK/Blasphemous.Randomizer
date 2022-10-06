@@ -55,39 +55,39 @@ namespace Gameplay.GameControllers.Bosses.HighWills.Attack
 				if (flag)
 				{
 					this.EffectRenderer.transform.position = Vector3.Lerp(this.PriorMine.transform.position, base.transform.position, 0.5f);
-					float x = Vector3.Distance(this.PriorMine.transform.position, base.transform.position);
-					this.EffectRenderer.size = new Vector2(x, this.EffectRenderer.size.y);
+					float num = Vector3.Distance(this.PriorMine.transform.position, base.transform.position);
+					this.EffectRenderer.size = new Vector2(num, this.EffectRenderer.size.y);
 					Vector2 vector = (this.EffectRenderer.transform.position - base.transform.position).normalized;
-					float z = 180f + 57.29578f * Mathf.Atan2(vector.y, vector.x);
-					this.EffectRenderer.transform.rotation = Quaternion.Euler(0f, 0f, z);
+					float num2 = 180f + 57.29578f * Mathf.Atan2(vector.y, vector.x);
+					this.EffectRenderer.transform.rotation = Quaternion.Euler(0f, 0f, num2);
 				}
 			}
 			if (this.horTween == null)
 			{
-				float num = Mathf.Lerp(this.MinMaxHorSpeed.x, this.MinMaxHorSpeed.y, UnityEngine.Random.Range(0f, 1f));
-				this.horTween = base.transform.DOMoveX(base.transform.position.x + num, 1f, false).OnComplete(delegate
+				float num3 = Mathf.Lerp(this.MinMaxHorSpeed.x, this.MinMaxHorSpeed.y, Random.Range(0f, 1f));
+				this.horTween = TweenSettingsExtensions.SetEase<Tweener>(TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions.DOMoveX(base.transform, base.transform.position.x + num3, 1f, false), delegate()
 				{
 					this.horTween = null;
-				}).SetEase(Ease.Linear);
+				}), 1);
 			}
 			if (this.verTween == null)
 			{
-				float endValue = this.initialHeight + this.MaxRelativeHeight;
-				float duration = this.VerMovementTime * 0.5f;
+				float num4 = this.initialHeight + this.MaxRelativeHeight;
+				float num5 = this.VerMovementTime * 0.5f;
 				if (base.transform.position.y < this.initialHeight)
 				{
-					endValue = this.initialHeight + this.MaxRelativeHeight;
-					duration = this.VerMovementTime;
+					num4 = this.initialHeight + this.MaxRelativeHeight;
+					num5 = this.VerMovementTime;
 				}
 				else if (base.transform.position.y > this.initialHeight)
 				{
-					endValue = this.initialHeight + this.MinRelativeHeight;
-					duration = this.VerMovementTime;
+					num4 = this.initialHeight + this.MinRelativeHeight;
+					num5 = this.VerMovementTime;
 				}
-				this.verTween = base.transform.DOMoveY(endValue, duration, false).OnComplete(delegate
+				this.verTween = TweenSettingsExtensions.SetEase<Tweener>(TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions.DOMoveY(base.transform, num4, num5, false), delegate()
 				{
 					this.verTween = null;
-				}).SetEase(Ease.InOutQuad);
+				}), 7);
 			}
 		}
 
@@ -121,10 +121,10 @@ namespace Gameplay.GameControllers.Bosses.HighWills.Attack
 		{
 			yield return new WaitForSeconds(0.2f);
 			this.currentLifeTime = 0f;
-			base.transform.DOMove(base.transform.position + this.TargetPositionAfterSpawn.localPosition, 0.4f, false).OnComplete(delegate
+			TweenSettingsExtensions.SetEase<Tweener>(TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions.DOMove(base.transform, base.transform.position + this.TargetPositionAfterSpawn.localPosition, 0.4f, false), delegate()
 			{
 				this.startTweenDone = true;
-			}).SetEase(Ease.OutBack);
+			}), 27);
 			yield break;
 		}
 

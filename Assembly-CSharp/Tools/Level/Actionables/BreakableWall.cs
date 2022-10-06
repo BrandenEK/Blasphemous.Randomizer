@@ -96,7 +96,7 @@ namespace Tools.Level.Actionables
 				if (!(this.OnDestroy[i] == null))
 				{
 					IActionable[] components = this.OnDestroy[i].GetComponents<IActionable>();
-					components.ForEach(delegate(IActionable actionable)
+					LinqExtensions.ForEach<IActionable>(components, delegate(IActionable actionable)
 					{
 						actionable.Use();
 					});
@@ -124,7 +124,8 @@ namespace Tools.Level.Actionables
 
 		private void SetColor(Color c)
 		{
-			Color color = new Color(c.r, c.g, c.b);
+			Color color;
+			color..ctor(c.r, c.g, c.b);
 			this.layoutElement.SpriteRenderer.material.color = color;
 		}
 

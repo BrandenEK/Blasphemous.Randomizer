@@ -82,8 +82,8 @@ namespace Gameplay.GameControllers.Bosses.CommonAttacks
 				{
 					return straightProjectile;
 				}
-				float z = Mathf.Atan2(dir.y, dir.x) * 57.29578f;
-				PoolManager.Instance.ReuseObject(this.muzzleFlashPrefab, straightProjectile.transform.position, Quaternion.Euler(0f, 0f, z), false, 1);
+				float num = Mathf.Atan2(dir.y, dir.x) * 57.29578f;
+				PoolManager.Instance.ReuseObject(this.muzzleFlashPrefab, straightProjectile.transform.position, Quaternion.Euler(0f, 0f, num), false, 1);
 			}
 			return straightProjectile;
 		}

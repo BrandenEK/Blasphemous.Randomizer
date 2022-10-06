@@ -10,8 +10,8 @@ public class PulseScale : MonoBehaviour
 
 	private void Update()
 	{
-		float t = (1f + Mathf.Sin(Time.time * this.speed)) / 2f;
-		base.transform.localScale = Vector2.Lerp(this.initialScale * this.minScale, this.initialScale * this.maxScale, t);
+		float num = (1f + Mathf.Sin(Time.time * this.speed)) / 2f;
+		base.transform.localScale = Vector2.Lerp(this.initialScale * this.minScale, this.initialScale * this.maxScale, num);
 	}
 
 	public float minScale = 1f;

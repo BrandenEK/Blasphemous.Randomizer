@@ -110,7 +110,7 @@ namespace Gameplay.GameControllers.Enemies.ChainedAngel
 		private Vector3 GetSpawnPosition()
 		{
 			Vector3 position = base.transform.position;
-			EnemySpawnPoint enemySpawnPoint = UnityEngine.Object.FindObjectsOfType<EnemySpawnPoint>().FirstOrDefault((EnemySpawnPoint x) => x.SpawningId == base.SpawningId);
+			EnemySpawnPoint enemySpawnPoint = Object.FindObjectsOfType<EnemySpawnPoint>().FirstOrDefault((EnemySpawnPoint x) => x.SpawningId == base.SpawningId);
 			if (enemySpawnPoint)
 			{
 				position = enemySpawnPoint.Position;

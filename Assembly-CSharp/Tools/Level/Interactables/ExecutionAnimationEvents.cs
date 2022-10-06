@@ -24,10 +24,10 @@ namespace Tools.Level.Interactables
 
 		private void SetAnimatorSpeed(float speed, float lapse)
 		{
-			DOTween.To(() => this._animator.speed, delegate(float x)
+			TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetUpdate<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this._animator.speed, delegate(float x)
 			{
 				this._animator.speed = x;
-			}, speed, lapse).SetUpdate(true).SetEase(Ease.Linear);
+			}, speed, lapse), true), 1);
 		}
 
 		private void OnSlowMotion()
@@ -86,7 +86,7 @@ namespace Tools.Level.Interactables
 			try
 			{
 				this._executionSound = Core.Audio.CreateEvent(this._execution.ActivationSound, default(Vector3));
-				this._executionSound.getParameter("Hits", out this._hitParam);
+				this._executionSound.getParameter("Hits", ref this._hitParam);
 			}
 			catch (Exception value)
 			{

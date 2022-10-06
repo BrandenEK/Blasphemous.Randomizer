@@ -24,10 +24,10 @@ public class SquashStretchInOutEffect : MonoBehaviour
 
 	private void SquashStretchOut()
 	{
-		base.transform.DOScaleX(this.squashScaleXY.x, this.scaleSeconds).SetEase(Ease.InBack);
-		base.transform.DOScaleY(this.squashScaleXY.y, this.scaleSeconds).SetEase(Ease.InBack).OnComplete(delegate
+		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScaleX(base.transform, this.squashScaleXY.x, this.scaleSeconds), 26);
+		TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScaleY(base.transform, this.squashScaleXY.y, this.scaleSeconds), 26), delegate()
 		{
-			this.sRenderer.DOFade(0f, this.fadeSeconds);
+			ShortcutExtensions43.DOFade(this.sRenderer, 0f, this.fadeSeconds);
 		});
 		this.shaderEffects.TriggerColorizeLerp(0.75f, 0f, this.colorizeSeconds, null);
 		if (this.instantiateOnDissappear != null)
@@ -40,9 +40,9 @@ public class SquashStretchInOutEffect : MonoBehaviour
 	{
 		base.transform.localScale = new Vector3(this.squashScaleXY.x, this.squashScaleXY.y, 1f);
 		this.sRenderer.color = Color.white;
-		this.sRenderer.DOFade(1f, this.fadeSeconds);
-		base.transform.DOScaleX(1f, this.scaleSeconds).SetEase(Ease.InBack);
-		base.transform.DOScaleY(1f, this.scaleSeconds).SetEase(Ease.InBack);
+		ShortcutExtensions43.DOFade(this.sRenderer, 1f, this.fadeSeconds);
+		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScaleX(base.transform, 1f, this.scaleSeconds), 26);
+		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScaleY(base.transform, 1f, this.scaleSeconds), 26);
 	}
 
 	private void OnDrawGizmosSelected()

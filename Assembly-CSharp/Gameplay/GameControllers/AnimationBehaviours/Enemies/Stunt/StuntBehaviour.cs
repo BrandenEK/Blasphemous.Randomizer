@@ -27,7 +27,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Stunt
 				{
 					component.Alive();
 				}
-				UnityEngine.Object.Destroy(animator.transform.parent.gameObject);
+				Object.Destroy(animator.transform.parent.gameObject);
 			}
 		}
 

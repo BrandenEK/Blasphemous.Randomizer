@@ -190,9 +190,9 @@ namespace Tools.Level
 					Interactable.SInteractionStarted(this);
 				}
 				Log.Trace("Interactable", "Starting using: " + base.name, null);
-				base.gameObject.SendMessage("OnUsePre", SendMessageOptions.DontRequireReceiver);
+				base.gameObject.SendMessage("OnUsePre", 1);
 				yield return base.StartCoroutine(this.OnUse());
-				base.gameObject.SendMessage("OnUsePost", SendMessageOptions.DontRequireReceiver);
+				base.gameObject.SendMessage("OnUsePost", 1);
 				Log.Trace("Interactable", "Finished using: " + base.name, null);
 				if (this.OnStopUsing != null)
 				{
@@ -224,9 +224,9 @@ namespace Tools.Level
 					Interactable.SInteractionStarted(this);
 				}
 				Log.Trace("Interactable", "Starting using: " + base.name, null);
-				base.gameObject.SendMessage("OnUsePre", SendMessageOptions.DontRequireReceiver);
+				base.gameObject.SendMessage("OnUsePre", 1);
 				yield return base.StartCoroutine(this.OnUse());
-				base.gameObject.SendMessage("OnUsePost", SendMessageOptions.DontRequireReceiver);
+				base.gameObject.SendMessage("OnUsePost", 1);
 				Log.Trace("Interactable", "Finished using: " + base.name, null);
 				if (this.OnStopUsing != null)
 				{
@@ -437,7 +437,7 @@ namespace Tools.Level
 
 		private bool HasRequiredItem()
 		{
-			if (this.needObject && this.requiredItem != null && !this.requiredItem.id.IsNullOrWhitespace())
+			if (this.needObject && this.requiredItem != null && !StringExtensions.IsNullOrWhitespace(this.requiredItem.id))
 			{
 				BaseInventoryObject invObject = this.requiredItem.GetInvObject();
 				return Core.InventoryManager.IsBaseObjectEquipped(invObject);

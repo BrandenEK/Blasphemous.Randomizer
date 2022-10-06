@@ -78,7 +78,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("end", out parameterInstance);
+				eventInstance.getParameter("end", ref parameterInstance);
 				parameterInstance.setValue(value);
 			}
 			catch (Exception ex)

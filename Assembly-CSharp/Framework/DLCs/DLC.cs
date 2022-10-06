@@ -37,19 +37,19 @@ namespace Framework.DLCs
 		}
 
 		[OnValueChanged("OnIdChanged", false)]
-		[InfoBox("Common ID for all platforms", InfoMessageType.Info, null)]
+		[InfoBox("Common ID for all platforms", 1, null)]
 		public string id = string.Empty;
 
 		public string sortDescription = string.Empty;
 
-		[InfoBox("ID of the DLC on various platforms", InfoMessageType.Info, null)]
+		[InfoBox("ID of the DLC on various platforms", 1, null)]
 		public uint steam_appid;
 
 		public string gog_appid = string.Empty;
 
 		public string epic_appid = string.Empty;
 
-		[InfoBox("Assetbundle to download, load & check", InfoMessageType.Info, null)]
+		[InfoBox("Assetbundle to download, load & check", 1, null)]
 		public string assetBundle;
 
 		[NonSerialized]

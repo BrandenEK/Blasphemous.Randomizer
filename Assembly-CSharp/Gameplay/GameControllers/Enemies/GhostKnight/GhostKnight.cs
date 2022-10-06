@@ -108,7 +108,7 @@ namespace Gameplay.GameControllers.Enemies.GhostKnight
 		{
 			get
 			{
-				EnemySpawnPoint enemySpawnPoint = UnityEngine.Object.FindObjectsOfType<EnemySpawnPoint>().First((EnemySpawnPoint x) => x.SpawningId == base.SpawningId);
+				EnemySpawnPoint enemySpawnPoint = Object.FindObjectsOfType<EnemySpawnPoint>().First((EnemySpawnPoint x) => x.SpawningId == base.SpawningId);
 				return enemySpawnPoint != null && enemySpawnPoint.SpawnOnArena;
 			}
 		}

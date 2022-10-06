@@ -48,8 +48,8 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint
 			this.Head = base.GetComponentInChildren<BejeweledSaintHead>();
 			this.AttackArm = base.GetComponentInChildren<BejeweledSaintArmAttack>();
 			this.CastArm = base.GetComponentInChildren<BejeweledSaintCastArm>();
-			this.HandsManager = UnityEngine.Object.FindObjectOfType<BejeweledSmashHandManager>();
-			this.BeamManager = UnityEngine.Object.FindObjectOfType<BsDivineBeamManager>();
+			this.HandsManager = Object.FindObjectOfType<BejeweledSmashHandManager>();
+			this.BeamManager = Object.FindObjectOfType<BsDivineBeamManager>();
 			this.HoldersManager = base.GetComponentInChildren<BsHolderManager>();
 			this.Audio = base.GetComponentInChildren<BejeweledSaintAudio>();
 		}
@@ -96,7 +96,7 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint
 
 		private void SetSmoothYPos(float yPos, float time, TweenCallback endCallback)
 		{
-			base.transform.DOLocalMoveY(yPos, time, false).SetEase(Ease.Linear).OnComplete(endCallback).SetId("VerticalMotion");
+			TweenSettingsExtensions.SetId<Tweener>(TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMoveY(base.transform, yPos, time, false), 1), endCallback), "VerticalMotion");
 		}
 
 		public void IntroRaise()

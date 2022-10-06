@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using BezierSplines;
-using DG.Tweening;
 using Framework.Managers;
 using Gameplay.GameControllers.Bosses.CommonAttacks;
 using Gameplay.GameControllers.Bosses.Quirce.Attack;
@@ -73,32 +72,32 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 
 		private void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.Alpha1))
+			if (Input.GetKeyDown(49))
 			{
 				this.LaunchNewAction();
 			}
-			if (Input.GetKeyDown(KeyCode.Alpha2))
+			if (Input.GetKeyDown(50))
 			{
 				this.currentAction.StopAction();
 			}
-			if (Input.GetKeyDown(KeyCode.Alpha3))
+			if (Input.GetKeyDown(51))
 			{
 				this.setBulletNActivate_EA.StartAction(this, 8, new Action(this.DoProjectileAttack), new Action(this.ActivateBullets), this.timeSlowCurve);
 			}
-			if (Input.GetKeyDown(KeyCode.Alpha5))
+			if (Input.GetKeyDown(53))
 			{
 				this.moveEasing_EA.StopAction();
 				Debug.Log("TESTING RANDOM MOVE");
-				this.moveEasing_EA.StartAction(this, 5f, 1f, Ease.InOutCubic, 1.7f);
+				this.moveEasing_EA.StartAction(this, 5f, 1f, 10, 1.7f);
 			}
-			if (Input.GetKeyDown(KeyCode.Alpha6))
+			if (Input.GetKeyDown(54))
 			{
 				this.moveEasing_EA.StopAction();
 				this.moveAttacking_EA.StopAction();
 				Debug.Log("TESTING ATTACK ROUTINE MOVE");
 				this.moveAttacking_EA.StartAction(this, 5, 3f, 1f, new Action(this.DoDummyAttack));
 			}
-			if (Input.GetKeyDown(KeyCode.Alpha7))
+			if (Input.GetKeyDown(55))
 			{
 				this.jumpBackNShoot_EA.StopAction();
 				Debug.Log("TESTING JUMPBACK AND SHOOT");
@@ -124,7 +123,7 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 			{
 				this.currentAction.StopAction();
 			}
-			this.currentAction = this.availableAttacks[UnityEngine.Random.Range(0, this.availableAttacks.Count)];
+			this.currentAction = this.availableAttacks[Random.Range(0, this.availableAttacks.Count)];
 			this.currentAction.OnActionEnds += this.CurrentAction_OnActionEnds;
 			this.currentAction.OnActionIsStopped += this.CurrentAction_OnActionStops;
 			this.LaunchActionWithParameters(this.currentAction);
@@ -168,9 +167,9 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 		public void DoDummyBackJump()
 		{
 			Debug.Log("<DUMMY ATTACK>");
-			Vector2 b = -base.transform.right * 4f;
-			Vector2 v = base.transform.position + b;
-			this.jumpAttack.Use(base.transform, v);
+			Vector2 vector = -base.transform.right * 4f;
+			Vector2 vector2 = base.transform.position + vector;
+			this.jumpAttack.Use(base.transform, vector2);
 		}
 
 		public void DoProjectileAttack()
@@ -338,11 +337,11 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 
 			protected override IEnumerator BaseCoroutine()
 			{
-				this.ACT_MOVE.StartAction(this.owner, this.owner.transform.position + Vector2.up * 6f, 2f, Ease.OutCirc, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(this.owner, this.owner.transform.position + Vector2.up * 6f, 2f, 21, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				for (int i = 0; i < this.n; i++)
 				{
-					this.ACT_MOVE.StartAction(this.owner, this.distance, this.seconds, Ease.OutCirc, 1.7f);
+					this.ACT_MOVE.StartAction(this.owner, this.distance, this.seconds, 21, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					this.ACT_WAIT.StartAction(this.owner, 0.5f, 0.5f);
 					yield return this.ACT_WAIT.waitForCompletion;
@@ -407,14 +406,14 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 				for (int i = 0; i < this.n; i++)
 				{
 					target = Vector2.Lerp(pointA, pointB, (float)i / (float)this.n);
-					target += Vector2.up * (float)UnityEngine.Random.Range(-1, 1) * 1f;
-					this.ACT_MOVE.StartAction(this.owner, target, 0.15f, Ease.InOutQuad, null, false, null, true, true, 1.7f);
+					target += Vector2.up * (float)Random.Range(-1, 1) * 1f;
+					this.ACT_MOVE.StartAction(this.owner, target, 0.15f, 7, null, false, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					this.ACT_SETBULLET.StartAction(this.owner, this.setBulletMethod);
 					yield return this.ACT_SETBULLET.waitForCompletion;
 				}
 				target = Vector2.Lerp(pointA, pointB, 0.5f) + Vector2.up * 2f;
-				this.ACT_MOVE.StartAction(this.owner, target, 0.5f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(this.owner, target, 0.5f, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				this.ACT_ACTIVATE.StartAction(this.owner, this.activateMethod);
 				yield return this.ACT_ACTIVATE.waitForCompletion;

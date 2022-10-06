@@ -80,13 +80,13 @@ namespace Gameplay.GameControllers.Enemies.Framework.Physics
 			if (this._enemy.Status.Orientation == EntityOrientation.Left)
 			{
 				Vector2 vector = this._topCenterBoxCollider + (base.transform.right * this._widthChecker + Vector2.up * this._heightChecker * 3f);
-				UnityEngine.Debug.DrawLine(vector, vector + base.transform.right * this.CurrentSideRangeDetection, Color.yellow);
+				Debug.DrawLine(vector, vector + base.transform.right * this.CurrentSideRangeDetection, Color.yellow);
 				this.IsSideBlocked = (Physics2D.LinecastNonAlloc(vector, vector + base.transform.right * this.CurrentSideRangeDetection, this._sideHits, this.FloorLayerMasks) > 0);
 			}
 			else
 			{
 				Vector2 vector2 = this._topCenterBoxCollider - (base.transform.right * this._widthChecker - Vector2.up * this._heightChecker * 3f);
-				UnityEngine.Debug.DrawLine(vector2, vector2 - base.transform.right * this.CurrentSideRangeDetection, Color.yellow);
+				Debug.DrawLine(vector2, vector2 - base.transform.right * this.CurrentSideRangeDetection, Color.yellow);
 				this.IsSideBlocked = (Physics2D.LinecastNonAlloc(vector2, vector2 - base.transform.right * this.CurrentSideRangeDetection, this._sideHits, this.FloorLayerMasks) > 0);
 			}
 			if (this._sideHits.Length > 0)
@@ -99,9 +99,9 @@ namespace Gameplay.GameControllers.Enemies.Framework.Physics
 		{
 			Vector2 vector = this._enemy.EntityDamageArea.Center() - this._enemy.EntityDamageArea.transform.right * this._widthChecker;
 			Vector2 vector2 = this._enemy.EntityDamageArea.Center() + this._enemy.EntityDamageArea.transform.right * this._widthChecker;
-			UnityEngine.Debug.DrawLine(vector, vector - Vector2.up * this.CurrentGroundDetection, Color.red);
+			Debug.DrawLine(vector, vector - Vector2.up * this.CurrentGroundDetection, Color.red);
 			bool flag = Physics2D.LinecastNonAlloc(vector, vector - Vector2.up * this.CurrentGroundDetection, this._leftHits, this.FloorLayerMasks) > 0;
-			UnityEngine.Debug.DrawLine(vector2, vector2 - Vector2.up * this.CurrentGroundDetection, Color.red);
+			Debug.DrawLine(vector2, vector2 - Vector2.up * this.CurrentGroundDetection, Color.red);
 			bool flag2 = Physics2D.LinecastNonAlloc(vector2, vector2 - Vector2.up * this.CurrentGroundDetection, this._rightHits, this.FloorLayerMasks) > 0;
 			return flag && flag2;
 		}

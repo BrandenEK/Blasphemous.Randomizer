@@ -14,10 +14,10 @@ namespace Gameplay.UI.Console
 				base.Console.Write("Command Timescale must be invoked with 1 parameter");
 				return;
 			}
-			float value;
-			if (float.TryParse(parameters[0], out value))
+			float num;
+			if (float.TryParse(parameters[0], out num))
 			{
-				float timeScale = Mathf.Clamp01(value);
+				float timeScale = Mathf.Clamp01(num);
 				Core.Logic.CurrentLevelConfig.TimeScale = timeScale;
 			}
 			else

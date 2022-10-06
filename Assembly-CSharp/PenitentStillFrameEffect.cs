@@ -18,9 +18,9 @@ public class PenitentStillFrameEffect : SimpleVFX
 		this._spriteRenderers[0].sprite = sprite;
 		base.transform.localScale = Vector3.one;
 		base.transform.localPosition += Vector3.down * 0.07f;
-		base.transform.DOPunchScale(Vector3.one * 0.15f, this.duration, 1, 0f).SetEase(Ease.InOutBack);
+		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOPunchScale(base.transform, Vector3.one * 0.15f, this.duration, 1, 0f), 28);
 		this._spriteRenderers[0].color = new Color(this._spriteRenderers[0].color.r, this._spriteRenderers[0].color.g, this._spriteRenderers[0].color.b, 0.3f);
-		this._spriteRenderers[0].DOFade(0f, this.duration);
+		ShortcutExtensions43.DOFade(this._spriteRenderers[0], 0f, this.duration);
 	}
 
 	public float duration = 0.3f;

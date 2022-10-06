@@ -52,7 +52,7 @@ namespace Gameplay.GameControllers.Enemies.Roller.Audio
 		{
 			if (this._disposeFlag)
 			{
-				this._rollEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+				this._rollEventInstance.stop(1);
 				this._rollEventInstance.release();
 				this._rollEventInstance = default(EventInstance);
 				this._disposeFlag = false;
@@ -64,7 +64,7 @@ namespace Gameplay.GameControllers.Enemies.Roller.Audio
 		{
 			this._disposeFlag = true;
 			ParameterInstance parameterInstance;
-			this._rollEventInstance.getParameter("End", out parameterInstance);
+			this._rollEventInstance.getParameter("End", ref parameterInstance);
 			if (parameterInstance.isValid())
 			{
 				parameterInstance.setValue(1f);

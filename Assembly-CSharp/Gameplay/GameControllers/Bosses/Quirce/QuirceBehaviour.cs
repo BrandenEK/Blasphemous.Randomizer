@@ -146,7 +146,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce
 			}
 			list.Remove(QuirceBehaviour.QUIRCE_ATTACKS.SWORD_TOSS);
 			list.Remove(QuirceBehaviour.QUIRCE_ATTACKS.SWORD_RECOVERY);
-			return list[UnityEngine.Random.Range(0, list.Count)];
+			return list[Random.Range(0, list.Count)];
 		}
 
 		public void LaunchRandomAction()
@@ -414,8 +414,8 @@ namespace Gameplay.GameControllers.Bosses.Quirce
 				if (counter / seconds > expRatio)
 				{
 					expCounter++;
-					Vector2 v = center.position + new Vector3(UnityEngine.Random.Range(-radius, radius), UnityEngine.Random.Range(-radius, radius));
-					PoolManager.Instance.ReuseObject(poolableExplosion, v, Quaternion.identity, false, 1);
+					Vector2 vector = center.position + new Vector3(Random.Range(-radius, radius), Random.Range(-radius, radius));
+					PoolManager.Instance.ReuseObject(poolableExplosion, vector, Quaternion.identity, false, 1);
 					if (OnExplosion != null)
 					{
 						OnExplosion();
@@ -476,8 +476,8 @@ namespace Gameplay.GameControllers.Bosses.Quirce
 		public void PathThrowAttack()
 		{
 			SplinePointInfo hangPointInfo = this.Quirce.BossFightPoints.GetHangPointInfo(this.currentHang);
-			Vector2 b = hangPointInfo.spline.GetPoint(2f) - hangPointInfo.spline.GetPoint(0f);
-			this.LookAtTarget(base.transform.position - b);
+			Vector2 vector = hangPointInfo.spline.GetPoint(2f) - hangPointInfo.spline.GetPoint(0f);
+			this.LookAtTarget(base.transform.position - vector);
 			this.sword.SetSpinning(true);
 			this.Quirce.Audio.PlaySpinSword();
 			this.StartAttackAction();

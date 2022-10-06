@@ -24,8 +24,8 @@ namespace Gameplay.UI.Widgets
 				if (this.filledImage != null && this.pointer != null && this.slidingdBar != null)
 				{
 					this.filledImage.fillAmount = this._currentValue;
-					float x = this.slidingdBar.sizeDelta.x * (this._currentValue - 0.5f);
-					this.pointer.localPosition = new Vector3(x, 0f, 0f);
+					float num = this.slidingdBar.sizeDelta.x * (this._currentValue - 0.5f);
+					this.pointer.localPosition = new Vector3(num, 0f, 0f);
 				}
 			}
 		}

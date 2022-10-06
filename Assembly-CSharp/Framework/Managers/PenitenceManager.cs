@@ -34,7 +34,7 @@ namespace Framework.Managers
 			this.flaskRegenerationBalance = Resources.Load<FlaskRegenerationBalance>("PE02/FlaskRegenerationBalance");
 			if (!this.flaskRegenerationBalance)
 			{
-				UnityEngine.Debug.LogErrorFormat("Can't find flask regeneration balance chart at {0}", new object[]
+				Debug.LogErrorFormat("Can't find flask regeneration balance chart at {0}", new object[]
 				{
 					"PE02/FlaskRegenerationBalance"
 				});
@@ -91,7 +91,7 @@ namespace Framework.Managers
 			}
 			else
 			{
-				UnityEngine.Debug.LogError("ActivatePenitence: Penitence with id '" + id + "' does not exist!");
+				Debug.LogError("ActivatePenitence: Penitence with id '" + id + "' does not exist!");
 			}
 		}
 
@@ -172,7 +172,7 @@ namespace Framework.Managers
 			}
 			else
 			{
-				UnityEngine.Debug.LogError("MarkPenitenceAsCompleted: penitence with id: " + id + " could not be found!");
+				Debug.LogError("MarkPenitenceAsCompleted: penitence with id: " + id + " could not be found!");
 			}
 		}
 
@@ -377,7 +377,7 @@ namespace Framework.Managers
 					}
 					else
 					{
-						UnityEngine.Debug.LogError("Invalid Penitence Index: " + i);
+						Debug.LogError("Invalid Penitence Index: " + i);
 					}
 				}
 			}

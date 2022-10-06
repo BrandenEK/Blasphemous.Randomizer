@@ -51,7 +51,7 @@ namespace Framework.Managers
 				{
 					return null;
 				}
-				return this.player.controllers.maps.GetMap(ControllerType.Mouse, this.player.controllers.Mouse.id, "Default", "Default");
+				return this.player.controllers.maps.GetMap(1, this.player.controllers.Mouse.id, "Default", "Default");
 			}
 		}
 
@@ -206,7 +206,7 @@ namespace Framework.Managers
 		public List<string> GetAllActionNamesInOrder()
 		{
 			List<string> list = new List<string>();
-			foreach (int actionId in new List<int>
+			foreach (int num in new List<int>
 			{
 				4,
 				0,
@@ -225,7 +225,7 @@ namespace Framework.Managers
 				21
 			})
 			{
-				InputAction action = ReInput.mapping.GetAction(actionId);
+				InputAction action = ReInput.mapping.GetAction(num);
 				string text = this.GetActionNameWithPolarity(action);
 				list.Add(text);
 				if (text.Contains("Pos"))
@@ -246,7 +246,7 @@ namespace Framework.Managers
 			}
 			List<ActionElementMap> list = new List<ActionElementMap>();
 			list.AddRange(this.controllerMap.AllMaps);
-			if (this.controllerMap.controllerType == ControllerType.Keyboard)
+			if (this.controllerMap.controllerType == null)
 			{
 				IList<ActionElementMap> allMaps = this.mouseControllerMap.AllMaps;
 				foreach (ActionElementMap actionElementMap in allMaps)
@@ -272,7 +272,7 @@ namespace Framework.Managers
 		public void StartListeningInput(int actionElementMapId)
 		{
 			ActionElementMap firstElementMapMatch = this.controllerMap.GetFirstElementMapMatch((ActionElementMap x) => x.id == actionElementMapId);
-			if (firstElementMapMatch == null && this.controllerMap.controllerType == ControllerType.Keyboard && this.player.controllers.hasMouse)
+			if (firstElementMapMatch == null && this.controllerMap.controllerType == null && this.player.controllers.hasMouse)
 			{
 				firstElementMapMatch = this.mouseControllerMap.GetFirstElementMapMatch((ActionElementMap x) => x.id == actionElementMapId);
 			}
@@ -282,7 +282,7 @@ namespace Framework.Managers
 				{
 					this.listeningForInput = true;
 					this.currentActionElementMapId = firstElementMapMatch.id;
-					AxisRange actionRange = (firstElementMapMatch.axisContribution != Pole.Positive) ? AxisRange.Negative : AxisRange.Positive;
+					AxisRange actionRange = (firstElementMapMatch.axisContribution != null) ? 2 : 1;
 					this.keyboardAndJoystickInputMapper.Start(new InputMapper.Context
 					{
 						actionId = firstElementMapMatch.actionId,
@@ -290,9 +290,9 @@ namespace Framework.Managers
 						actionRange = actionRange,
 						actionElementMapToReplace = this.controllerMap.GetElementMap(firstElementMapMatch.id)
 					});
-					if (this.controllerMap.controllerType == ControllerType.Keyboard && this.player.controllers.hasMouse)
+					if (this.controllerMap.controllerType == null && this.player.controllers.hasMouse)
 					{
-						ControllerMap map = this.player.controllers.maps.GetMap(ControllerType.Mouse, this.player.controllers.Mouse.id, "Default", "Default");
+						ControllerMap map = this.player.controllers.maps.GetMap(1, this.player.controllers.Mouse.id, "Default", "Default");
 						this.mouseInputMapper.Start(new InputMapper.Context
 						{
 							actionId = firstElementMapMatch.actionId,
@@ -305,7 +305,7 @@ namespace Framework.Managers
 			}
 			else
 			{
-				UnityEngine.Debug.Log("Found no action element map assigned to action element map id: " + actionElementMapId);
+				Debug.Log("Found no action element map assigned to action element map id: " + actionElementMapId);
 			}
 		}
 
@@ -318,17 +318,17 @@ namespace Framework.Managers
 		public void RestoreDefaultMaps()
 		{
 			ControllerType type = this.controller.type;
-			if (type != ControllerType.Joystick)
+			if (type != 2)
 			{
-				if (type == ControllerType.Keyboard)
+				if (type == null)
 				{
-					this.player.controllers.maps.LoadDefaultMaps(ControllerType.Keyboard);
-					this.player.controllers.maps.LoadDefaultMaps(ControllerType.Mouse);
+					this.player.controllers.maps.LoadDefaultMaps(0);
+					this.player.controllers.maps.LoadDefaultMaps(1);
 				}
 			}
 			else
 			{
-				this.player.controllers.maps.LoadDefaultMaps(ControllerType.Joystick);
+				this.player.controllers.maps.LoadDefaultMaps(2);
 			}
 		}
 
@@ -345,18 +345,18 @@ namespace Framework.Managers
 			Predicate<ActionElementMap> predicate;
 			if (actionName.Contains("Pos"))
 			{
-				predicate = ((ActionElementMap aem) => this.GetActionNameWithPolarity(aem).Equals(actionName) && aem.axisContribution == Pole.Positive);
+				predicate = ((ActionElementMap aem) => this.GetActionNameWithPolarity(aem).Equals(actionName) && aem.axisContribution == 0);
 			}
 			else if (actionName.Contains("Neg"))
 			{
-				predicate = ((ActionElementMap aem) => this.GetActionNameWithPolarity(aem).Equals(actionName) && aem.axisContribution == Pole.Negative);
+				predicate = ((ActionElementMap aem) => this.GetActionNameWithPolarity(aem).Equals(actionName) && aem.axisContribution == 1);
 			}
 			else
 			{
 				predicate = ((ActionElementMap aem) => this.GetActionNameWithPolarity(aem).Equals(actionName));
 			}
 			ControllerMap map = this.player.controllers.maps.GetMap(this.controller.type, this.controller.id, "Menu", "Default");
-			if (controllerMap.controllerType == ControllerType.Keyboard && this.player.controllers.hasMouse)
+			if (controllerMap.controllerType == null && this.player.controllers.hasMouse)
 			{
 				actionElementMap = this.FindLastElementMapMatch(mouseControllerMap, predicate);
 			}
@@ -366,7 +366,7 @@ namespace Framework.Managers
 			}
 			if (actionElementMap == null && this.player.controllers.hasMouse)
 			{
-				UnityEngine.Debug.Log("FindFirstElementMapByActionName: actionElementMap not found! actionName: " + actionName);
+				Debug.Log("FindFirstElementMapByActionName: actionElementMap not found! actionName: " + actionName);
 			}
 			return actionElementMap;
 		}
@@ -377,18 +377,18 @@ namespace Framework.Managers
 			Predicate<ActionElementMap> predicate;
 			if (actionName.Contains("Pos"))
 			{
-				predicate = ((ActionElementMap aem) => this.GetActionNameWithPolarity(aem).Equals(actionName) && aem.axisContribution == Pole.Positive);
+				predicate = ((ActionElementMap aem) => this.GetActionNameWithPolarity(aem).Equals(actionName) && aem.axisContribution == 0);
 			}
 			else if (actionName.Contains("Neg"))
 			{
-				predicate = ((ActionElementMap aem) => this.GetActionNameWithPolarity(aem).Equals(actionName) && aem.axisContribution == Pole.Negative);
+				predicate = ((ActionElementMap aem) => this.GetActionNameWithPolarity(aem).Equals(actionName) && aem.axisContribution == 1);
 			}
 			else
 			{
 				predicate = ((ActionElementMap aem) => this.GetActionNameWithPolarity(aem).Equals(actionName));
 			}
 			ControllerMap map = this.player.controllers.maps.GetMap(this.controller.type, this.controller.id, "Menu", "Default");
-			if (controllerMap.controllerType == ControllerType.Keyboard && this.player.controllers.hasMouse)
+			if (controllerMap.controllerType == null && this.player.controllers.hasMouse)
 			{
 				list = this.FindAllElementMapMatch(mouseControllerMap, predicate);
 			}
@@ -398,7 +398,7 @@ namespace Framework.Managers
 			}
 			if (list.Count == 0 && this.player.controllers.hasMouse)
 			{
-				UnityEngine.Debug.Log("actionElementMap not found! actionName: " + actionName);
+				Debug.Log("actionElementMap not found! actionName: " + actionName);
 			}
 			return list;
 		}
@@ -417,11 +417,11 @@ namespace Framework.Managers
 		{
 			if (controllerMap == null)
 			{
-				UnityEngine.Debug.Log("CountConflictingActions: controllerMap is null!");
+				Debug.Log("CountConflictingActions: controllerMap is null!");
 			}
-			else if (controllerMap.controllerType == ControllerType.Keyboard && this.player.controllers.hasMouse && mouseControllerMap == null)
+			else if (controllerMap.controllerType == null && this.player.controllers.hasMouse && mouseControllerMap == null)
 			{
-				UnityEngine.Debug.Log("CountConflictingActions: mouseControllerMap is null!");
+				Debug.Log("CountConflictingActions: mouseControllerMap is null!");
 			}
 			int num = 0;
 			using (Dictionary<string, List<string>>.KeyCollection.Enumerator enumerator = this.conflictingActions.Keys.GetEnumerator())
@@ -442,15 +442,15 @@ namespace Framework.Managers
 					controllerMap.GetElementMapMatches(predicate, list2);
 					if (list2.Count > 0)
 					{
-						UnityEngine.Debug.Log("CountConflictingActions: Conflict! actionName: " + <CountConflictingActions>c__AnonStorey.actionName);
+						Debug.Log("CountConflictingActions: Conflict! actionName: " + <CountConflictingActions>c__AnonStorey.actionName);
 						num++;
 					}
-					else if (controllerMap.controllerType == ControllerType.Keyboard && this.player.controllers.hasMouse)
+					else if (controllerMap.controllerType == null && this.player.controllers.hasMouse)
 					{
 						mouseControllerMap.GetElementMapMatches(predicate, list2);
 						if (list2.Count > 0)
 						{
-							UnityEngine.Debug.Log("CountConflictingActions: Conflict! actionName: " + <CountConflictingActions>c__AnonStorey.actionName);
+							Debug.Log("CountConflictingActions: Conflict! actionName: " + <CountConflictingActions>c__AnonStorey.actionName);
 							num++;
 						}
 					}
@@ -484,13 +484,13 @@ namespace Framework.Managers
 					};
 					List<ActionElementMap> list2 = new List<ActionElementMap>();
 					this.controllerMap.GetElementMapMatches(predicate, list2);
-					if (list2.Count == 0 && this.controllerMap.controllerType == ControllerType.Keyboard && this.player.controllers.hasMouse)
+					if (list2.Count == 0 && this.controllerMap.controllerType == null && this.player.controllers.hasMouse)
 					{
 						this.mouseControllerMap.GetElementMapMatches(predicate, list2);
 					}
 					if (list2.Count > 0)
 					{
-						UnityEngine.Debug.Log(string.Concat(new object[]
+						Debug.Log(string.Concat(new object[]
 						{
 							"Conflict! actionName: ",
 							<GetAllCurrentConflictingButtonsByAemId>c__AnonStorey.actionName,
@@ -514,21 +514,21 @@ namespace Framework.Managers
 				return;
 			}
 			int num = this.CountConflictingActions(this.prevControllerMap);
-			if (this.prevControllerMap.controllerType == ControllerType.Keyboard)
+			if (this.prevControllerMap.controllerType == null)
 			{
 				if (num > 0)
 				{
-					this.player.controllers.maps.LoadDefaultMaps(ControllerType.Keyboard);
-					this.player.controllers.maps.LoadDefaultMaps(ControllerType.Mouse);
+					this.player.controllers.maps.LoadDefaultMaps(0);
+					this.player.controllers.maps.LoadDefaultMaps(1);
 				}
 				Controller mouse = this.player.controllers.Mouse;
 				this.player.controllers.RemoveController(mouse);
 			}
-			else if (this.prevControllerMap.controllerType != ControllerType.Keyboard)
+			else if (this.prevControllerMap.controllerType != null)
 			{
 				if (num > 0)
 				{
-					this.player.controllers.maps.LoadDefaultMaps(ControllerType.Joystick);
+					this.player.controllers.maps.LoadDefaultMaps(2);
 				}
 				if (!this.player.controllers.hasMouse)
 				{
@@ -544,9 +544,9 @@ namespace Framework.Managers
 			string result = string.Empty;
 			if (inputAction == null)
 			{
-				UnityEngine.Debug.LogError("GetActionNameWithPolarity: inputAction is null!");
+				Debug.LogError("GetActionNameWithPolarity: inputAction is null!");
 			}
-			else if (inputAction.type == InputActionType.Button)
+			else if (inputAction.type == 1)
 			{
 				result = inputAction.name;
 			}
@@ -562,13 +562,13 @@ namespace Framework.Managers
 			string result = string.Empty;
 			if (inputAction == null)
 			{
-				UnityEngine.Debug.LogError("GetActionNameWithPolarity: inputAction is null!");
+				Debug.LogError("GetActionNameWithPolarity: inputAction is null!");
 			}
-			else if (inputAction.type == InputActionType.Button)
+			else if (inputAction.type == 1)
 			{
 				result = inputAction.name;
 			}
-			else if (axisRange == AxisRange.Negative)
+			else if (axisRange == 2)
 			{
 				result = inputAction.name + " Neg";
 			}
@@ -584,16 +584,16 @@ namespace Framework.Managers
 			string result = string.Empty;
 			if (actionElementMap == null)
 			{
-				UnityEngine.Debug.LogError("GetActionNameWithPolarity: actionElementMap is null!");
+				Debug.LogError("GetActionNameWithPolarity: actionElementMap is null!");
 			}
 			else
 			{
 				InputAction action = ReInput.mapping.GetAction(actionElementMap.actionId);
-				if (action.type == InputActionType.Button)
+				if (action.type == 1)
 				{
 					result = action.name;
 				}
-				else if (actionElementMap.axisContribution == Pole.Positive)
+				else if (actionElementMap.axisContribution == null)
 				{
 					result = action.name + " Pos";
 				}
@@ -613,7 +613,7 @@ namespace Framework.Managers
 			if (string.IsNullOrEmpty(text2))
 			{
 				result = text;
-				UnityEngine.Debug.LogError("Action Name: '" + text + "' has no localization term!");
+				Debug.LogError("Action Name: '" + text + "' has no localization term!");
 			}
 			else
 			{
@@ -644,8 +644,8 @@ namespace Framework.Managers
 		private void OnInputMapped(InputMapper.InputMappedEventData data)
 		{
 			ActionElementMap actionElementMap = data.actionElementMap;
-			UnityEngine.Debug.Log("Button " + actionElementMap.elementIdentifierName + " is now assigned to the Action " + ReInput.mapping.GetAction(actionElementMap.actionId).name);
-			UnityEngine.Debug.Log("It has been assigned with pole: " + actionElementMap.axisContribution);
+			Debug.Log("Button " + actionElementMap.elementIdentifierName + " is now assigned to the Action " + ReInput.mapping.GetAction(actionElementMap.actionId).name);
+			Debug.Log("It has been assigned with pole: " + actionElementMap.axisContribution);
 			if (ControlRemapManager.InputMappedEvent != null)
 			{
 				ControlRemapManager.InputMappedEvent(actionElementMap.elementIdentifierName, actionElementMap.id);
@@ -657,7 +657,7 @@ namespace Framework.Managers
 		{
 			if (data.inputMapper.Equals(this.keyboardAndJoystickInputMapper))
 			{
-				if (this.mouseInputMapper.status == InputMapper.Status.Listening)
+				if (this.mouseInputMapper.status == 1)
 				{
 					this.mouseInputMapper.Stop();
 				}
@@ -674,28 +674,28 @@ namespace Framework.Managers
 
 		private void OnConflictFound(InputMapper.ConflictFoundEventData data)
 		{
-			UnityEngine.Debug.Log("OnConflictFound: data.assignment.action.name: " + data.assignment.action.name);
-			UnityEngine.Debug.Log("OnConflictFound: data.conflicts[0].action.name: " + data.conflicts[0].action.name);
+			Debug.Log("OnConflictFound: data.assignment.action.name: " + data.assignment.action.name);
+			Debug.Log("OnConflictFound: data.conflicts[0].action.name: " + data.conflicts[0].action.name);
 			if (data.isProtected)
 			{
-				data.responseCallback(InputMapper.ConflictResponse.Cancel);
+				data.responseCallback(0);
 			}
 			else
 			{
-				data.responseCallback(InputMapper.ConflictResponse.Add);
+				data.responseCallback(2);
 			}
 		}
 
 		private bool OnIsElementAllowed(ControllerPollingInfo info)
 		{
 			bool flag = true;
-			if (info.controllerType == ControllerType.Mouse)
+			if (info.controllerType == 1)
 			{
 				string text = info.elementIdentifierName.ToUpper();
 			}
-			else if (info.controllerType == ControllerType.Keyboard)
+			else if (info.controllerType == null)
 			{
-				if (info.keyboardKey == KeyCode.Escape || info.keyboardKey == KeyCode.KeypadEnter || info.keyboardKey == KeyCode.Return)
+				if (info.keyboardKey == 27 || info.keyboardKey == 271 || info.keyboardKey == 13)
 				{
 					flag = false;
 				}
@@ -734,7 +734,7 @@ namespace Framework.Managers
 
 		private void DeleteDeprecatedControlsSettingsFiles()
 		{
-			InputManager inputManager = UnityEngine.Object.FindObjectOfType<InputManager>();
+			InputManager inputManager = Object.FindObjectOfType<InputManager>();
 			ControllerDataFiles controllerDataFiles = null;
 			if (inputManager != null)
 			{
@@ -744,7 +744,7 @@ namespace Framework.Managers
 			foreach (ControllerMap controllerMap in list)
 			{
 				string path = string.Empty;
-				if (controllerMap.controllerType == ControllerType.Joystick)
+				if (controllerMap.controllerType == 2)
 				{
 					if (controllerDataFiles == null)
 					{
@@ -773,7 +773,7 @@ namespace Framework.Managers
 			List<ControllerMap> list = new List<ControllerMap>(this.player.controllers.maps.GetAllMapsInCategory(0));
 			foreach (ControllerMap controllerMap in list)
 			{
-				if (controllerMap.controllerType != ControllerType.Joystick)
+				if (controllerMap.controllerType != 2)
 				{
 					string text = this.GetPathControlsSettings() + "_" + controllerMap.controllerType.ToString().ToLowerInvariant() + ".xml";
 					if (File.Exists(text))
@@ -781,34 +781,34 @@ namespace Framework.Managers
 						string text2 = File.ReadAllText(text);
 						if (string.IsNullOrEmpty(text2))
 						{
-							UnityEngine.Debug.LogError("LoadKeyboardAndMouseControlsSettingsFromFile: there is no data inside the controls settings file with path: " + text);
+							Debug.LogError("LoadKeyboardAndMouseControlsSettingsFromFile: there is no data inside the controls settings file with path: " + text);
 						}
 						else
 						{
-							ControllerMap map = ControllerMap.CreateFromXml(controllerMap.controllerType, text2);
+							ControllerMap controllerMap2 = ControllerMap.CreateFromXml(controllerMap.controllerType, text2);
 							ControllerType controllerType = controllerMap.controllerType;
-							if (controllerType != ControllerType.Keyboard)
+							if (controllerType != null)
 							{
-								if (controllerType == ControllerType.Mouse)
+								if (controllerType == 1)
 								{
-									this.player.controllers.maps.AddMap<MouseMap>(controllerMap.id, map);
+									this.player.controllers.maps.AddMap<MouseMap>(controllerMap.id, controllerMap2);
 								}
 							}
 							else
 							{
-								this.player.controllers.maps.AddMap<KeyboardMap>(controllerMap.controllerId, map);
+								this.player.controllers.maps.AddMap<KeyboardMap>(controllerMap.controllerId, controllerMap2);
 							}
 						}
 					}
 					else
 					{
-						UnityEngine.Debug.Log("LoadKeyboardAndMouseControlsSettingsFromFile: file not found, loading deafult maps");
+						Debug.Log("LoadKeyboardAndMouseControlsSettingsFromFile: file not found, loading deafult maps");
 						this.player.controllers.maps.LoadDefaultMaps(controllerMap.controllerType);
 					}
 				}
 			}
-			bool flag = this.FixOldActions(ControllerType.Keyboard, 64);
-			flag |= this.FixOldActions(ControllerType.Keyboard, 65);
+			bool flag = this.FixOldActions(0, 64);
+			flag |= this.FixOldActions(0, 65);
 			if (flag)
 			{
 				Core.ControlRemapManager.WriteControlsSettingsToFile();
@@ -817,9 +817,9 @@ namespace Framework.Managers
 
 		public void OnControllerConnected(ControllerStatusChangedEventArgs args)
 		{
-			if (args.controllerType == ControllerType.Joystick)
+			if (args.controllerType == 2)
 			{
-				Joystick joystick = (Joystick)this.player.controllers.GetController(ControllerType.Joystick, args.controllerId);
+				Joystick joystick = (Joystick)this.player.controllers.GetController(2, args.controllerId);
 				this.LoadJoystickControlsSettingsFromFile(joystick);
 			}
 		}
@@ -829,35 +829,35 @@ namespace Framework.Managers
 			string text = joystick.name.ToLowerInvariant().Replace(' ', '_');
 			if (this.joystickSettingsCache.ContainsKey(text))
 			{
-				ControllerMap map = ControllerMap.CreateFromXml(ControllerType.Joystick, this.joystickSettingsCache[text]);
-				this.player.controllers.maps.AddMap<JoystickMap>(joystick.id, map);
+				ControllerMap controllerMap = ControllerMap.CreateFromXml(2, this.joystickSettingsCache[text]);
+				this.player.controllers.maps.AddMap<JoystickMap>(joystick.id, controllerMap);
 			}
 			else
 			{
 				string text2 = this.GetPathControlsSettings() + "_" + text + ".xml";
 				if (File.Exists(text2))
 				{
-					UnityEngine.Debug.Log("Loading mapping definitions for :" + text);
+					Debug.Log("Loading mapping definitions for :" + text);
 					string text3 = File.ReadAllText(text2);
 					if (string.IsNullOrEmpty(text3))
 					{
-						UnityEngine.Debug.LogError("LoadJoystickControlsSettingsFromFile: there is no data inside the controls settings file with path: " + text2);
+						Debug.LogError("LoadJoystickControlsSettingsFromFile: there is no data inside the controls settings file with path: " + text2);
 					}
 					else
 					{
-						ControllerMap map2 = ControllerMap.CreateFromXml(ControllerType.Joystick, text3);
-						this.player.controllers.maps.AddMap<JoystickMap>(joystick.id, map2);
+						ControllerMap controllerMap2 = ControllerMap.CreateFromXml(2, text3);
+						this.player.controllers.maps.AddMap<JoystickMap>(joystick.id, controllerMap2);
 						this.joystickSettingsCache.Add(text, text3);
 					}
 				}
 				else
 				{
-					UnityEngine.Debug.Log("LoadJoystickControlsSettingsFromFile: file not found, loading deafult maps. path: " + text2);
-					this.player.controllers.maps.LoadDefaultMaps(ControllerType.Joystick);
+					Debug.Log("LoadJoystickControlsSettingsFromFile: file not found, loading deafult maps. path: " + text2);
+					this.player.controllers.maps.LoadDefaultMaps(2);
 				}
 			}
-			bool flag = this.FixOldActions(ControllerType.Joystick, 64);
-			flag |= this.FixOldActions(ControllerType.Joystick, 65);
+			bool flag = this.FixOldActions(2, 64);
+			flag |= this.FixOldActions(2, 65);
 			if (flag)
 			{
 				Core.ControlRemapManager.WriteControlsSettingsToFile();
@@ -877,7 +877,7 @@ namespace Framework.Managers
 			}
 			if (!flag)
 			{
-				UnityEngine.Debug.LogWarningFormat("Missing action: {0}, restoring default controls for {1}", new object[]
+				Debug.LogWarningFormat("Missing action: {0}, restoring default controls for {1}", new object[]
 				{
 					requiredAction,
 					mapType
@@ -889,7 +889,7 @@ namespace Framework.Managers
 
 		public void WriteControlsSettingsToFile()
 		{
-			InputManager inputManager = UnityEngine.Object.FindObjectOfType<InputManager>();
+			InputManager inputManager = Object.FindObjectOfType<InputManager>();
 			ControllerDataFiles controllerDataFiles = null;
 			if (inputManager != null)
 			{
@@ -902,10 +902,10 @@ namespace Framework.Managers
 					ControllerType controllerType = controllerMap.controllerType;
 					switch (controllerType)
 					{
-					case ControllerType.Keyboard:
-					case ControllerType.Mouse:
+					case 0:
+					case 1:
 						break;
-					case ControllerType.Joystick:
+					case 2:
 					{
 						if (controllerDataFiles == null)
 						{
@@ -928,7 +928,7 @@ namespace Framework.Managers
 						continue;
 					}
 					default:
-						if (controllerType != ControllerType.Custom)
+						if (controllerType != 20)
 						{
 							continue;
 						}

@@ -77,7 +77,7 @@ namespace Tools.Level.Layout
 			{
 				return;
 			}
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.selectedEnemy, this.spawnPoint.position, Quaternion.identity);
+			GameObject gameObject = Object.Instantiate<GameObject>(this.selectedEnemy, this.spawnPoint.position, Quaternion.identity);
 			gameObject.transform.parent = Core.Logic.CurrentLevelConfig.transform;
 			Enemy componentInChildren = gameObject.GetComponentInChildren<Enemy>();
 			if (componentInChildren)
@@ -231,19 +231,19 @@ namespace Tools.Level.Layout
 		{
 			Gizmos.color = color;
 			float num = 0f;
-			float x = radius * Mathf.Cos(num);
-			float y = radius * Mathf.Sin(num);
-			Vector3 vector = base.transform.position + new Vector3(x, y);
-			Vector3 to = vector;
+			float num2 = radius * Mathf.Cos(num);
+			float num3 = radius * Mathf.Sin(num);
+			Vector3 vector = base.transform.position + new Vector3(num2, num3);
+			Vector3 vector2 = vector;
 			for (num = 0.1f; num < 6.2831855f; num += 0.1f)
 			{
-				x = radius * Mathf.Cos(num);
-				y = radius * Mathf.Sin(num);
-				Vector3 vector2 = base.transform.position + new Vector3(x, y);
-				Gizmos.DrawLine(vector, vector2);
-				vector = vector2;
+				num2 = radius * Mathf.Cos(num);
+				num3 = radius * Mathf.Sin(num);
+				Vector3 vector3 = base.transform.position + new Vector3(num2, num3);
+				Gizmos.DrawLine(vector, vector3);
+				vector = vector3;
 			}
-			Gizmos.DrawLine(vector, to);
+			Gizmos.DrawLine(vector, vector2);
 		}
 
 		[FoldoutGroup("Spawning Options", 0)]
@@ -289,7 +289,7 @@ namespace Tools.Level.Layout
 		[SerializeField]
 		[BoxGroup("Design Settings", true, false, 0)]
 		[FormerlySerializedAs("enemy")]
-		[InlineEditor(InlineEditorModes.LargePreview)]
+		[InlineEditor(4)]
 		private GameObject selectedEnemy;
 
 		private bool isEnemyEventsSuscribed;
@@ -298,7 +298,7 @@ namespace Tools.Level.Layout
 		[BoxGroup("Attached References", true, false, 0)]
 		private Transform spawnPoint;
 
-		[ValidateInput("ValidateInput", "Name must have more than 3 characters!", InfoMessageType.Error)]
+		[ValidateInput("ValidateInput", "Name must have more than 3 characters!", 3)]
 		public string EntityName;
 
 		public bool EnableInfluenceArea;

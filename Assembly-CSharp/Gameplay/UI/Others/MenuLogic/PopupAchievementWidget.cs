@@ -5,7 +5,6 @@ using DG.Tweening;
 using FMODUnity;
 using Framework.Achievements;
 using Framework.Managers;
-using Framework.Randomizer;
 using I2.Loc;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -24,33 +23,30 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		public void ShowPopup(Achievement achievement)
 		{
-			if (achievement.GetType() != typeof(RewardAchievement))
-			{
-				return;
-			}
 			if (this.IsShowing)
 			{
 				this.pendingAchievement.Enqueue(achievement);
-				return;
 			}
-			base.StartCoroutine(this.ShowPopupCorrutine(achievement));
+			else
+			{
+				base.StartCoroutine(this.ShowPopupCorrutine(achievement));
+			}
 		}
 
 		private IEnumerator ShowPopupCorrutine(Achievement achievement)
 		{
 			this.IsShowing = true;
-			PopUpWidget.closeDialog();
+			this.HeaderLoc.SetTerm(achievement.GetNameLocalizationTerm());
 			this.SpriteImage.sprite = achievement.Image;
-			this.PopUp.GetChild(1).GetComponent<Text>().text = achievement.Name;
-			this.PopUp.GetChild(2).GetComponent<Text>().text = achievement.Description;
 			Core.Audio.PlayOneShot(this.ShowSound, default(Vector3));
 			this.PopUp.localPosition = this.InitialPos.localPosition;
-			Tweener t = this.PopUp.DOLocalMove(this.EndPos.localPosition, this.animationInTime, false).SetEase(this.animationInEase).SetUpdate(true);
-			yield return t.WaitForCompletion();
-			yield return new WaitForSecondsRealtime(2.5f);
-			t = this.PopUp.DOLocalMove(this.InitialPos.localPosition, this.animationOutTime, false).SetEase(this.animationOutEase).SetUpdate(true);
-			yield return t.WaitForCompletion();
-			yield return new WaitForSecondsRealtime(0.2f);
+			yield return new WaitForSecondsRealtime(this.startDelay);
+			Tweener tween = TweenSettingsExtensions.SetUpdate<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMove(this.PopUp, this.EndPos.localPosition, this.animationInTime, false), this.animationInEase), true);
+			yield return TweenExtensions.WaitForCompletion(tween);
+			yield return new WaitForSecondsRealtime(this.popupShowTime);
+			tween = TweenSettingsExtensions.SetUpdate<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMove(this.PopUp, this.InitialPos.localPosition, this.animationOutTime, false), this.animationOutEase), true);
+			yield return TweenExtensions.WaitForCompletion(tween);
+			yield return new WaitForSecondsRealtime(this.endTime);
 			if (this.pendingAchievement.Count > 0)
 			{
 				base.StartCoroutine(this.ShowPopupCorrutine(this.pendingAchievement.Dequeue()));
@@ -97,7 +93,7 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		[SerializeField]
 		[BoxGroup("Config", true, false, 0)]
-		private Ease animationInEase = Ease.OutQuad;
+		private Ease animationInEase = 6;
 
 		[SerializeField]
 		[BoxGroup("Config", true, false, 0)]
@@ -109,7 +105,7 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		[SerializeField]
 		[BoxGroup("Config", true, false, 0)]
-		private Ease animationOutEase = Ease.OutQuad;
+		private Ease animationOutEase = 6;
 
 		[SerializeField]
 		[BoxGroup("Config", true, false, 0)]

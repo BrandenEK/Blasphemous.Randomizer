@@ -21,19 +21,20 @@ namespace Tools.PlayMaker.Action
 				num2 = 0f;
 			}
 			Core.Logic.Penitent.Stats.Purge.Current = num2;
-			Core.Randomizer.Log("TearsAddition", 2);
 			if (flag)
 			{
 				PopUpWidget.OnDialogClose += this.DialogClose;
 				TearsObject tearsGenericObject = Core.InventoryManager.TearsGenericObject;
 				UIController.instance.ShowObjectPopUp(UIController.PopupItemAction.GetObejct, tearsGenericObject.caption, tearsGenericObject.picture, tearsGenericObject.GetItemType(), 3f, true);
-				return;
 			}
-			if (this.onSuccess != null)
+			else
 			{
-				base.Fsm.Event(this.onSuccess);
+				if (this.onSuccess != null)
+				{
+					base.Fsm.Event(this.onSuccess);
+				}
+				base.Finish();
 			}
-			base.Finish();
 		}
 
 		private void DialogClose()

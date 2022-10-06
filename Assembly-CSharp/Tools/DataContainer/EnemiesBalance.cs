@@ -10,7 +10,7 @@ namespace Tools.DataContainer
 	public class EnemiesBalance : ScriptableObject
 	{
 		[ButtonGroup("Controls", 0)]
-		[Button(ButtonSizes.Medium)]
+		[Button(22)]
 		private void Load()
 		{
 			this.LoadResources(this.GroundEnemies);
@@ -18,7 +18,7 @@ namespace Tools.DataContainer
 		}
 
 		[ButtonGroup("Controls", 0)]
-		[Button(ButtonSizes.Medium)]
+		[Button(22)]
 		private void Apply()
 		{
 			this.ApplyChangesOnResources(this.GroundEnemies);
@@ -62,7 +62,7 @@ namespace Tools.DataContainer
 		public struct EnemyBalance
 		{
 			[SerializeField]
-			[InlineEditor(InlineEditorModes.LargePreview)]
+			[InlineEditor(4)]
 			public GameObject Enemy;
 
 			[SerializeField]

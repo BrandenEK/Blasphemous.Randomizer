@@ -190,20 +190,20 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 			{
 				return;
 			}
-			Vector2 v = Vector2.right;
+			Vector2 vector = Vector2.right;
 			if ((this.orientationBeingForced && this.forcedOrientation == EntityOrientation.Right) || (!this.orientationBeingForced && this.guardingHitPosition.x > base.EntityOwner.transform.position.x))
 			{
-				v = Vector2.left;
+				vector = Vector2.left;
 			}
 			if (this._penitent.SlopeAngle >= 5f)
 			{
-				v.y += 0.25f;
+				vector.y += 0.25f;
 			}
 			else if (this._penitent.SlopeAngle <= -5f)
 			{
-				v.y -= 0.25f;
+				vector.y -= 0.25f;
 			}
-			this._penitent.MotionLerper.StartLerping(v);
+			this._penitent.MotionLerper.StartLerping(vector);
 		}
 
 		private void EnableParticleSystem(bool enableParticleSystem = true)
@@ -221,11 +221,11 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 
 		private void ImpactGamePause()
 		{
-			DOTween.Sequence().SetDelay(this.HitLapse).OnStart(delegate
+			TweenSettingsExtensions.OnComplete<Sequence>(TweenSettingsExtensions.OnStart<Sequence>(TweenSettingsExtensions.SetDelay<Sequence>(DOTween.Sequence(), this.HitLapse), delegate()
 			{
 				Core.Logic.CurrentLevelConfig.sleepTime = this.HitLapse;
 				Core.Logic.CurrentLevelConfig.SleepTime();
-			}).OnComplete(delegate
+			}), delegate()
 			{
 				this._currentLapseBeforeDash = 0f;
 				this._timeLerpingRemaining = this.TimeTakenDuringLerp;

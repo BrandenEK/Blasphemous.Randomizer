@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Framework.Inventory;
 using Framework.Managers;
 using Sirenix.OdinInspector;
@@ -9,7 +10,7 @@ using UnityEngine;
 public class OssuaryManager : MonoBehaviour
 {
 	[FoldoutGroup("Debug buttons", 0)]
-	[Button("Test CLAIM COLLECTIBLE ITEMS", ButtonSizes.Small)]
+	[Button("Test CLAIM COLLECTIBLE ITEMS", 0)]
 	public void ClaimCarriedItems()
 	{
 		List<string> nonClaimedCollectibles = this.GetNonClaimedCollectibles();
@@ -35,17 +36,20 @@ public class OssuaryManager : MonoBehaviour
 
 	public bool IsThereAnyCollectibleNotClaimed()
 	{
-		return this.GetNonClaimedCollectibles().Count != 0;
+		List<string> nonClaimedCollectibles = this.GetNonClaimedCollectibles();
+		return nonClaimedCollectibles.Count != 0;
 	}
 
 	private void ActivateRetrievedCollectiblesSilently()
 	{
-		using (List<string>.Enumerator enumerator = OssuaryManager.GetAlreadyRetrievedCollectibles().GetEnumerator())
+		List<string> alreadyRetrievedCollectibles = OssuaryManager.GetAlreadyRetrievedCollectibles();
+		using (List<string>.Enumerator enumerator = alreadyRetrievedCollectibles.GetEnumerator())
 		{
 			while (enumerator.MoveNext())
 			{
 				string item = enumerator.Current;
-				this.ossuaryItems.Find((OssuaryItem x) => x.itemId == item).ActivateItemSilently();
+				OssuaryItem ossuaryItem = this.ossuaryItems.Find((OssuaryItem x) => x.itemId == item);
+				ossuaryItem.ActivateItemSilently();
 			}
 		}
 		if (this.IsOssuaryComplete())
@@ -58,13 +62,14 @@ public class OssuaryManager : MonoBehaviour
 	private static void DeactivateRetrievedCollectiblesSilently()
 	{
 		List<string> alreadyRetrievedCollectibles = OssuaryManager.GetAlreadyRetrievedCollectibles();
-		OssuaryManager ossuaryManager = UnityEngine.Object.FindObjectOfType<OssuaryManager>();
+		OssuaryManager ossuaryManager = Object.FindObjectOfType<OssuaryManager>();
 		using (List<string>.Enumerator enumerator = alreadyRetrievedCollectibles.GetEnumerator())
 		{
 			while (enumerator.MoveNext())
 			{
 				string item = enumerator.Current;
-				ossuaryManager.ossuaryItems.Find((OssuaryItem x) => x.itemId == item).DeactivateItemSilently();
+				OssuaryItem ossuaryItem = ossuaryManager.ossuaryItems.Find((OssuaryItem x) => x.itemId == item);
+				ossuaryItem.DeactivateItemSilently();
 			}
 		}
 		ossuaryManager.alreadyClaimedRewards = 0;
@@ -84,14 +89,11 @@ public class OssuaryManager : MonoBehaviour
 
 	private bool IsOssuaryComplete()
 	{
-		using (List<OssuaryItem>.Enumerator enumerator = this.ossuaryItems.GetEnumerator())
+		foreach (OssuaryItem ossuaryItem in this.ossuaryItems)
 		{
-			while (enumerator.MoveNext())
+			if (!ossuaryItem.gameObject.activeInHierarchy)
 			{
-				if (!enumerator.Current.gameObject.activeInHierarchy)
-				{
-					return false;
-				}
+				return false;
 			}
 		}
 		return true;
@@ -100,7 +102,8 @@ public class OssuaryManager : MonoBehaviour
 	private static List<string> GetAlreadyRetrievedCollectibles()
 	{
 		List<string> list = new List<string>();
-		foreach (Framework.Inventory.CollectibleItem collectibleItem in Core.InventoryManager.GetCollectibleItemOwned())
+		ReadOnlyCollection<Framework.Inventory.CollectibleItem> collectibleItemOwned = Core.InventoryManager.GetCollectibleItemOwned();
+		foreach (Framework.Inventory.CollectibleItem collectibleItem in collectibleItemOwned)
 		{
 			if (collectibleItem.ClaimedInOssuary)
 			{
@@ -136,13 +139,15 @@ public class OssuaryManager : MonoBehaviour
 			}
 		}
 		OssuaryManager.DeactivateRetrievedCollectiblesSilently();
-		OssuaryManager.UnclaimInInventory(OssuaryManager.GetAlreadyRetrievedCollectibles());
+		List<string> alreadyRetrievedCollectibles = OssuaryManager.GetAlreadyRetrievedCollectibles();
+		OssuaryManager.UnclaimInInventory(alreadyRetrievedCollectibles);
 	}
 
 	private List<string> GetNonClaimedCollectibles()
 	{
 		List<string> list = new List<string>();
-		foreach (Framework.Inventory.CollectibleItem collectibleItem in Core.InventoryManager.GetCollectibleItemOwned())
+		ReadOnlyCollection<Framework.Inventory.CollectibleItem> collectibleItemOwned = Core.InventoryManager.GetCollectibleItemOwned();
+		foreach (Framework.Inventory.CollectibleItem collectibleItem in collectibleItemOwned)
 		{
 			if (!collectibleItem.ClaimedInOssuary)
 			{
@@ -182,10 +187,13 @@ public class OssuaryManager : MonoBehaviour
 		this.alreadyClaimedRewards = num;
 		for (int j = 0; j < values.Length; j++)
 		{
-			if (!array[j].isCompleted && this.CheckGroup(array[j].group))
+			if (!array[j].isCompleted)
 			{
-				Core.Events.SetFlag(array[j].flag, true, false);
-				this.pendingRewards++;
+				if (this.CheckGroup(array[j].group))
+				{
+					Core.Events.SetFlag(array[j].flag, true, false);
+					this.pendingRewards++;
+				}
 			}
 		}
 		Core.Events.LaunchEvent(this.CheckRewardsEvent, string.Empty);
@@ -202,14 +210,11 @@ public class OssuaryManager : MonoBehaviour
 			});
 			return false;
 		}
-		using (List<OssuaryItem>.Enumerator enumerator = items.GetEnumerator())
+		foreach (OssuaryItem ossuaryItem in items)
 		{
-			while (enumerator.MoveNext())
+			if (!ossuaryItem.gameObject.activeInHierarchy)
 			{
-				if (!enumerator.Current.gameObject.activeInHierarchy)
-				{
-					return false;
-				}
+				return false;
 			}
 		}
 		return true;
@@ -219,7 +224,8 @@ public class OssuaryManager : MonoBehaviour
 	{
 		foreach (string idCollectibleItem in ids)
 		{
-			Core.InventoryManager.GetCollectibleItem(idCollectibleItem).ClaimedInOssuary = true;
+			Framework.Inventory.CollectibleItem collectibleItem = Core.InventoryManager.GetCollectibleItem(idCollectibleItem);
+			collectibleItem.ClaimedInOssuary = true;
 		}
 	}
 
@@ -227,7 +233,8 @@ public class OssuaryManager : MonoBehaviour
 	{
 		foreach (string idCollectibleItem in ids)
 		{
-			Core.InventoryManager.GetCollectibleItem(idCollectibleItem).ClaimedInOssuary = false;
+			Framework.Inventory.CollectibleItem collectibleItem = Core.InventoryManager.GetCollectibleItem(idCollectibleItem);
+			collectibleItem.ClaimedInOssuary = false;
 		}
 	}
 
@@ -239,14 +246,12 @@ public class OssuaryManager : MonoBehaviour
 	private IEnumerator ClaimSequenceCoroutine(List<string> ids, Action callback)
 	{
 		float timeBetweenActivations = 0.25f;
-		int num;
-		for (int counter = 0; counter < ids.Count; counter = num + 1)
+		for (int counter = 0; counter < ids.Count; counter++)
 		{
-			OssuaryItem ossuaryItem = this.GetOssuaryItem(ids[counter]);
-			ossuaryItem.ActivateItem();
-			this.ActivationEffect(ossuaryItem.transform.position);
+			OssuaryItem oi = this.GetOssuaryItem(ids[counter]);
+			oi.ActivateItem();
+			this.ActivationEffect(oi.transform.position);
 			yield return new WaitForSeconds(timeBetweenActivations);
-			num = counter;
 		}
 		callback();
 		yield break;

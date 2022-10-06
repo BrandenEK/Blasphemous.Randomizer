@@ -14,7 +14,7 @@ namespace Effects
 
 		public void OnParticleCollision(GameObject other)
 		{
-			int num = this.ps.GetCollisionEvents(other, this.collisionEvents);
+			int num = ParticlePhysicsExtensions.GetCollisionEvents(this.ps, other, this.collisionEvents);
 		}
 
 		public ParticleSystem decalParticleSystem;

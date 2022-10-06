@@ -35,7 +35,8 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Player.ClimbClifLede
 
 		private Vector3 GetRootMotionCliffPosition(Vector3 rootMotion)
 		{
-			Vector3 result = new Vector3(rootMotion.x, this._penitent.GrabCliffLede.CliffColliderBoundaries.max.y - 0.03125f, rootMotion.z);
+			Vector3 result;
+			result..ctor(rootMotion.x, this._penitent.GrabCliffLede.CliffColliderBoundaries.max.y - 0.03125f, rootMotion.z);
 			return result;
 		}
 

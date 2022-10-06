@@ -35,19 +35,19 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 			switch (this._currentPhase)
 			{
 			case BoomerangProjectile.BOOMERANG_PHASES.TO_TARGET:
-				UnityEngine.Debug.DrawLine(base.transform.position, base.transform.position + Vector3.up * 0.1f, Color.green, this.debugMarkersDuration);
+				Debug.DrawLine(base.transform.position, base.transform.position + Vector3.up * 0.1f, Color.green, this.debugMarkersDuration);
 				this.UpdatePhaseToTarget();
 				break;
 			case BoomerangProjectile.BOOMERANG_PHASES.BRAKE:
-				UnityEngine.Debug.DrawLine(base.transform.position, base.transform.position + Vector3.up * 0.1f, Color.yellow, this.debugMarkersDuration);
+				Debug.DrawLine(base.transform.position, base.transform.position + Vector3.up * 0.1f, Color.yellow, this.debugMarkersDuration);
 				this.UpdatePhaseBrake();
 				break;
 			case BoomerangProjectile.BOOMERANG_PHASES.ACCELERATE:
-				UnityEngine.Debug.DrawLine(base.transform.position, base.transform.position - Vector3.up * 0.1f, Color.red, this.debugMarkersDuration);
+				Debug.DrawLine(base.transform.position, base.transform.position - Vector3.up * 0.1f, Color.red, this.debugMarkersDuration);
 				this.UpdatePhaseAccelerate();
 				break;
 			case BoomerangProjectile.BOOMERANG_PHASES.BACK_TO_ORIGIN:
-				UnityEngine.Debug.DrawLine(base.transform.position, base.transform.position - Vector3.up * 0.1f, Color.cyan, this.debugMarkersDuration);
+				Debug.DrawLine(base.transform.position, base.transform.position - Vector3.up * 0.1f, Color.cyan, this.debugMarkersDuration);
 				this.UpdatePhaseBackToOrigin();
 				break;
 			}
@@ -66,8 +66,8 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 
 		private void UpdatePhaseBrake()
 		{
-			float t = this.brakeCurve.Evaluate(this._counter / this.brakeSeconds);
-			Vector2 velocity = Vector2.Lerp(this.velocity, Vector2.zero, t);
+			float num = this.brakeCurve.Evaluate(this._counter / this.brakeSeconds);
+			Vector2 velocity = Vector2.Lerp(this.velocity, Vector2.zero, num);
 			this._counter += Time.deltaTime;
 			this.velocity = velocity;
 			if (this._counter >= this.brakeSeconds)
@@ -80,8 +80,8 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 
 		private void UpdatePhaseAccelerate()
 		{
-			float t = this.accelCurve.Evaluate(this._counter / this.accelerationSeconds);
-			Vector2 velocity = Vector2.Lerp(this.velocity, this.velocity.normalized * this._maxSpeed, t);
+			float num = this.accelCurve.Evaluate(this._counter / this.accelerationSeconds);
+			Vector2 velocity = Vector2.Lerp(this.velocity, this.velocity.normalized * this._maxSpeed, num);
 			this._counter += Time.deltaTime;
 			this.velocity = velocity;
 			this._distanceToTarget = (base.transform.position - this.originPosition).magnitude;
@@ -106,9 +106,9 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 
 		private void OnReachedOrigin()
 		{
-			UnityEngine.Debug.Log("BOOMERANG: BACK TO ORIGIN");
-			UnityEngine.Debug.DrawLine(base.transform.position - Vector3.up * 0.5f, base.transform.position + Vector3.up * 0.5f, Color.red, this.debugMarkersDuration);
-			UnityEngine.Debug.DrawLine(base.transform.position - Vector3.right * 0.5f, base.transform.position + Vector3.right * 0.5f, Color.red, this.debugMarkersDuration);
+			Debug.Log("BOOMERANG: BACK TO ORIGIN");
+			Debug.DrawLine(base.transform.position - Vector3.up * 0.5f, base.transform.position + Vector3.up * 0.5f, Color.red, this.debugMarkersDuration);
+			Debug.DrawLine(base.transform.position - Vector3.right * 0.5f, base.transform.position + Vector3.right * 0.5f, Color.red, this.debugMarkersDuration);
 			if (this.OnBackToOrigin != null)
 			{
 				this.OnBackToOrigin(this);

@@ -15,7 +15,7 @@ namespace Gameplay.GameControllers.Enemies.CauldronNun.AI
 			base.OnStart();
 			this.CauldronNun = (CauldronNun)this.Entity;
 			this._currentPullLapse = this.pullLapse;
-			this._cauldronTraps = new List<CauldronTrap>(UnityEngine.Object.FindObjectsOfType<CauldronTrap>());
+			this._cauldronTraps = new List<CauldronTrap>(Object.FindObjectsOfType<CauldronTrap>());
 		}
 
 		public override void OnUpdate()

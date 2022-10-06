@@ -150,9 +150,9 @@ namespace Gameplay.GameControllers.Penitent.InputSystem
 						this.m_platformCtrl.PlatformCharacterPhysics.VSpeed = 0f;
 					}
 					this.m_platformCtrl.PlatformCharacterPhysics.HSpeed = 0f;
-					this.m_platformCtrl.SetActionState(eControllerActions.Jump, false);
-					this.m_platformCtrl.SetActionState(eControllerActions.Left, false);
-					this.m_platformCtrl.SetActionState(eControllerActions.Right, false);
+					this.m_platformCtrl.SetActionState(16, false);
+					this.m_platformCtrl.SetActionState(2, false);
+					this.m_platformCtrl.SetActionState(1, false);
 					return;
 				}
 				this.ReachAxisThreshold = (num3 > this.AxisMovingThreshold);
@@ -180,16 +180,16 @@ namespace Gameplay.GameControllers.Penitent.InputSystem
 				}
 				if (this._penitent.IsGrabbingLadder || this._penitent.IsCrouched || this._penitent.BeginCrouch || this._penitent.IsCrouchAttacking || this.IsFrontBlocked)
 				{
-					this.m_platformCtrl.SetActionState(eControllerActions.Left, false);
-					this.m_platformCtrl.SetActionState(eControllerActions.Right, false);
+					this.m_platformCtrl.SetActionState(2, false);
+					this.m_platformCtrl.SetActionState(1, false);
 				}
 				else
 				{
-					this.m_platformCtrl.SetActionState(eControllerActions.Left, num <= -this.AxisMovingThreshold && flag);
-					this.m_platformCtrl.SetActionState(eControllerActions.Right, num >= this.AxisMovingThreshold && flag);
+					this.m_platformCtrl.SetActionState(2, num <= -this.AxisMovingThreshold && flag);
+					this.m_platformCtrl.SetActionState(1, num >= this.AxisMovingThreshold && flag);
 				}
-				this.m_platformCtrl.SetActionState(eControllerActions.Down, num2 <= -this.AxisMovingThreshold && flag);
-				this.m_platformCtrl.SetActionState(eControllerActions.Up, num2 >= this.AxisMovingThreshold && flag);
+				this.m_platformCtrl.SetActionState(8, num2 <= -this.AxisMovingThreshold && flag);
+				this.m_platformCtrl.SetActionState(4, num2 >= this.AxisMovingThreshold && flag);
 				if (this.Jump && !this.IsJumpOff && this.m_platformCtrl.IsGrounded && this._penitent.isJumpOffReady && !this.pressedJumpButton && !this._penitent.FloorChecker.IsOnFloorPlatform && !this._penitent.StepOnLadder && this.isJoystickDown && !Core.LevelManager.currentLevel.LevelName.Equals("D24Z01S01"))
 				{
 					this.pressedJumpButton = true;
@@ -213,8 +213,8 @@ namespace Gameplay.GameControllers.Penitent.InputSystem
 				{
 					if (!this._penitent.IsClimbingLadder)
 					{
-						bool value = this.aKey && !this.BlockJump && !this.Blocked && (!this.Rewired.GetButton(5) || !isGrounded) && !this.IsJoystickDown() && !this.Rewired.GetButtonDown(23) && !this._penitent.IsFallingStunt;
-						this.m_platformCtrl.SetActionState(eControllerActions.Jump, value);
+						bool flag2 = this.aKey && !this.BlockJump && !this.Blocked && (!this.Rewired.GetButton(5) || !isGrounded) && !this.IsJoystickDown() && !this.Rewired.GetButtonDown(23) && !this._penitent.IsFallingStunt;
+						this.m_platformCtrl.SetActionState(16, flag2);
 					}
 					else if (this._penitent.CanJumpFromLadder && this.Rewired.GetAxis(4) > -1f)
 					{
@@ -222,7 +222,7 @@ namespace Gameplay.GameControllers.Penitent.InputSystem
 						{
 							this.m_platformCtrl.ResetLadderJumpTimeThreshold();
 						}
-						this.m_platformCtrl.SetActionState(eControllerActions.Jump, this.aKey && !this.BlockJump && !this.Rewired.GetButton(5));
+						this.m_platformCtrl.SetActionState(16, this.aKey && !this.BlockJump && !this.Rewired.GetButton(5));
 					}
 				}
 				this.JumpButtonHold();
@@ -272,26 +272,26 @@ namespace Gameplay.GameControllers.Penitent.InputSystem
 
 		private IEnumerator JumpOff()
 		{
-			this.m_platformCtrl.SetActionState(eControllerActions.PlatformDropDown, false);
+			this.m_platformCtrl.SetActionState(32, false);
 			this.deltaTimeToJumpOff = 0f;
 			while (this.deltaTimeToJumpOff <= this.timeToJumpOff)
 			{
 				this.deltaTimeToJumpOff += Time.deltaTime;
 				yield return new WaitForEndOfFrame();
 			}
-			this.m_platformCtrl.SetActionState(eControllerActions.PlatformDropDown, true);
+			this.m_platformCtrl.SetActionState(32, true);
 			this.IsJumpOff = false;
 			yield break;
 		}
 
 		public void CancelPlatformDropDown()
 		{
-			this.m_platformCtrl.SetActionState(eControllerActions.PlatformDropDown, false);
+			this.m_platformCtrl.SetActionState(32, false);
 		}
 
 		public void CancelJump()
 		{
-			this.m_platformCtrl.SetActionState(eControllerActions.Jump, false);
+			this.m_platformCtrl.SetActionState(16, false);
 			this.m_platformCtrl.PlatformCharacterPhysics.VSpeed = 0f;
 		}
 
@@ -343,11 +343,11 @@ namespace Gameplay.GameControllers.Penitent.InputSystem
 			{
 				return;
 			}
-			this.m_platformCtrl.SetActionState(eControllerActions.Jump, false);
-			this.m_platformCtrl.SetActionState(eControllerActions.Up, false);
-			this.m_platformCtrl.SetActionState(eControllerActions.Down, false);
-			this.m_platformCtrl.SetActionState(eControllerActions.Left, false);
-			this.m_platformCtrl.SetActionState(eControllerActions.Right, false);
+			this.m_platformCtrl.SetActionState(16, false);
+			this.m_platformCtrl.SetActionState(4, false);
+			this.m_platformCtrl.SetActionState(8, false);
+			this.m_platformCtrl.SetActionState(2, false);
+			this.m_platformCtrl.SetActionState(1, false);
 		}
 
 		public void ResetHorizontalBlockers()

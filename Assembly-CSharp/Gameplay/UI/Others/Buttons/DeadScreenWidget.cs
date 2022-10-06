@@ -41,11 +41,11 @@ namespace Gameplay.UI.Others.Buttons
 			UIController.instance.HideBossHealth();
 			Core.Audio.PlayOneShot(this.eventSound, default(Vector3));
 			yield return new WaitForSecondsRealtime(this.DelayToAnimImage);
-			Tweener tween = this.NormalGroup.DOFade(1f, this.FadeImageTime);
-			yield return tween.WaitForCompletion();
+			Tweener tween = ShortcutExtensions46.DOFade(this.NormalGroup, 1f, this.FadeImageTime);
+			yield return TweenExtensions.WaitForCompletion(tween);
 			yield return new WaitForSecondsRealtime(this.DelayToAnimText);
-			tween = this.ContinueGroup.DOFade(1f, this.FadeImageTime);
-			yield return tween.WaitForCompletion();
+			tween = ShortcutExtensions46.DOFade(this.ContinueGroup, 1f, this.FadeImageTime);
+			yield return TweenExtensions.WaitForCompletion(tween);
 			while (!Input.anyKey)
 			{
 				yield return null;
@@ -134,11 +134,11 @@ namespace Gameplay.UI.Others.Buttons
 			Core.Audio.Ambient.StopCurrent();
 			yield return new WaitForSecondsRealtime(this.DelayToAnimImage);
 			Core.Audio.Ambient.SetSceneParams(this.eventSoundDemake, string.Empty, new AudioParam[0], string.Empty);
-			Tweener tween = this.DemakeGroup.DOFade(1f, this.FadeImageTime);
-			yield return tween.WaitForCompletion();
+			Tweener tween = ShortcutExtensions46.DOFade(this.DemakeGroup, 1f, this.FadeImageTime);
+			yield return TweenExtensions.WaitForCompletion(tween);
 			yield return new WaitForSecondsRealtime(this.DelayToAnimText);
-			tween = this.ContinueGroup.DOFade(1f, this.FadeImageTime);
-			yield return tween.WaitForCompletion();
+			tween = ShortcutExtensions46.DOFade(this.ContinueGroup, 1f, this.FadeImageTime);
+			yield return TweenExtensions.WaitForCompletion(tween);
 			while (!Input.anyKey)
 			{
 				yield return null;
@@ -157,7 +157,7 @@ namespace Gameplay.UI.Others.Buttons
 			{
 				return;
 			}
-			this.reverbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			this.reverbInstance.stop(0);
 			this.reverbInstance.release();
 			this.reverbInstance = default(EventInstance);
 		}

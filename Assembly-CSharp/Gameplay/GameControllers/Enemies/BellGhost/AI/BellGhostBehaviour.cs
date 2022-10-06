@@ -37,7 +37,7 @@ namespace Gameplay.GameControllers.Enemies.BellGhost.AI
 			this.AnimatorInyector = this._bellGhost.GetComponentInChildren<BellGhostAnimatorInyector>();
 			this.minMaxOffsetX = new Vector2(-4f, 4f);
 			this.minMaxOffsetY = new Vector2(-5f, 5f);
-			this.randomOffset = new Vector2(UnityEngine.Random.Range(this.minMaxOffsetX.x, this.minMaxOffsetX.y), UnityEngine.Random.Range(this.minMaxOffsetY.x, this.minMaxOffsetY.y));
+			this.randomOffset = new Vector2(Random.Range(this.minMaxOffsetX.x, this.minMaxOffsetX.y), Random.Range(this.minMaxOffsetY.x, this.minMaxOffsetY.y));
 		}
 
 		private void OnLerpStop()
@@ -160,22 +160,23 @@ namespace Gameplay.GameControllers.Enemies.BellGhost.AI
 			if (num > this.MinTargetDistance)
 			{
 				float num2 = Mathf.Sign(this._target.position.x - base.transform.position.x);
-				Vector2 v;
+				Vector2 vector;
 				if (this.bellGhostVariant == BELL_GHOST_TYPES.BULLET)
 				{
-					v = new Vector3(this._target.position.x + num2 * 8f + this.randomOffset.x, this._target.position.y + 2f + this.randomOffset.y);
+					vector = new Vector3(this._target.position.x + num2 * 8f + this.randomOffset.x, this._target.position.y + 2f + this.randomOffset.y);
 				}
 				else
 				{
-					v = new Vector3(this._target.position.x + num2, this._target.position.y + 5f);
+					vector = new Vector3(this._target.position.x + num2, this._target.position.y + 5f);
 				}
-				base.transform.position = Vector3.SmoothDamp(base.transform.position, v, ref this._velocity, this.ChasingElongation, this.Speed);
+				base.transform.position = Vector3.SmoothDamp(base.transform.position, vector, ref this._velocity, this.ChasingElongation, this.Speed);
 			}
 			else if (num < this.FleeDistance && this.bellGhostVariant == BELL_GHOST_TYPES.BULLET)
 			{
 				int num3 = (this.Entity.Status.Orientation != EntityOrientation.Left) ? -1 : 1;
-				Vector3 target = new Vector3(this._target.position.x + (float)(num3 * 8) + this.randomOffset.x, this._target.position.y + 1f + this.randomOffset.y);
-				base.transform.position = Vector3.SmoothDamp(base.transform.position, target, ref this._velocity, this.ChasingElongation, this.Speed * 0.5f);
+				Vector3 vector2;
+				vector2..ctor(this._target.position.x + (float)(num3 * 8) + this.randomOffset.x, this._target.position.y + 1f + this.randomOffset.y);
+				base.transform.position = Vector3.SmoothDamp(base.transform.position, vector2, ref this._velocity, this.ChasingElongation, this.Speed * 0.5f);
 			}
 			this._bellGhost.Audio.UpdateFloatingPanning();
 		}
@@ -186,8 +187,9 @@ namespace Gameplay.GameControllers.Enemies.BellGhost.AI
 			if (num < this.FleeDistance * 3f)
 			{
 				int num2 = (this.Entity.Status.Orientation != EntityOrientation.Left) ? -1 : 1;
-				Vector3 target = new Vector3(this._target.position.x + (float)(num2 * 8), this._target.position.y + 1f);
-				base.transform.position = Vector3.SmoothDamp(base.transform.position, target, ref this._velocity, this.ChasingElongation, this.Speed * 0.75f);
+				Vector3 vector;
+				vector..ctor(this._target.position.x + (float)(num2 * 8), this._target.position.y + 1f);
+				base.transform.position = Vector3.SmoothDamp(base.transform.position, vector, ref this._velocity, this.ChasingElongation, this.Speed * 0.75f);
 			}
 		}
 
@@ -319,11 +321,11 @@ namespace Gameplay.GameControllers.Enemies.BellGhost.AI
 			{
 				this._bellGhost.MotionLerper.StopLerping();
 			}
-			Vector2 v = (attackingEntity.transform.position.x < base.transform.position.x) ? Vector2.right : (-Vector2.right);
+			Vector2 vector = (attackingEntity.transform.position.x < base.transform.position.x) ? Vector2.right : (-Vector2.right);
 			this._bellGhost.GhostTrail.EnableGhostTrail = true;
 			this._bellGhost.MotionLerper.distanceToMove = 3f;
 			this._bellGhost.MotionLerper.TimeTakenDuringLerp = 0.5f;
-			this._bellGhost.MotionLerper.StartLerping(v);
+			this._bellGhost.MotionLerper.StartLerping(vector);
 		}
 
 		private IEnumerator MoveToOriginCoroutine()
@@ -365,7 +367,7 @@ namespace Gameplay.GameControllers.Enemies.BellGhost.AI
 		private void SetRndTimeAttack()
 		{
 			this._time = 0f;
-			this._attackTime = UnityEngine.Random.Range(this.MinRndTimeAttack, this.MaxRndTimeAttack);
+			this._attackTime = Random.Range(this.MinRndTimeAttack, this.MaxRndTimeAttack);
 		}
 
 		private void BellGhostOnEntityDie()

@@ -23,7 +23,7 @@ namespace Framework.Managers
 		public override void Initialize()
 		{
 			this.CreateLocaliztionDicts();
-			LocalizationManager.OnLocalizeEvent += this.OnLocalizationChange;
+			LocalizationManager.OnLocalizeEvent += new LocalizationManager.OnLocalizeCallback(this.OnLocalizationChange);
 			LevelManager.OnLevelLoaded += this.OnLevelLoaded;
 			this.CurrentLanguage = string.Empty;
 			this.CurrentScene = new ZoneKey();
@@ -34,7 +34,7 @@ namespace Framework.Managers
 
 		public override void Dispose()
 		{
-			LocalizationManager.OnLocalizeEvent -= this.OnLocalizationChange;
+			LocalizationManager.OnLocalizeEvent -= new LocalizationManager.OnLocalizeCallback(this.OnLocalizationChange);
 			LevelManager.OnLevelLoaded -= this.OnLevelLoaded;
 		}
 

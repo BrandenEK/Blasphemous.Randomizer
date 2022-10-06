@@ -10,7 +10,7 @@ namespace Tools.Util
 			this.previousState = stateInfo.fullPathHash;
 			if (stateInfo.fullPathHash != this.previousState)
 			{
-				animator.Play(stateInfo.fullPathHash, 0, UnityEngine.Random.Range(0f, 1f));
+				animator.Play(stateInfo.fullPathHash, 0, Random.Range(0f, 1f));
 			}
 		}
 

@@ -33,10 +33,10 @@ namespace Gameplay.GameControllers.Effects.Player.Protection
 		{
 			this.CircularMovingObjects.Frequency = this.Frequency;
 			this.CircularMovingObjects.Radious = 0f;
-			DOTween.To(delegate(float x)
+			TweenSettingsExtensions.SetEase<Tweener>(DOTween.To(delegate(float x)
 			{
 				this.CircularMovingObjects.Radious = x;
-			}, this.CircularMovingObjects.Radious, this.Radious, time).SetEase(Ease.Linear);
+			}, this.CircularMovingObjects.Radious, this.Radious, time), 1);
 		}
 
 		private void FollowPlayer()
@@ -46,8 +46,8 @@ namespace Gameplay.GameControllers.Effects.Player.Protection
 			{
 				return;
 			}
-			Vector3 b = penitent.GetPosition() + this.OffSetPosition;
-			base.transform.position = Vector3.Slerp(base.transform.position, b, Time.deltaTime * this.FollowSpeed);
+			Vector3 vector = penitent.GetPosition() + this.OffSetPosition;
+			base.transform.position = Vector3.Slerp(base.transform.position, vector, Time.deltaTime * this.FollowSpeed);
 		}
 
 		public void SetShieldsOwner(Entity owner)
@@ -67,10 +67,10 @@ namespace Gameplay.GameControllers.Effects.Player.Protection
 			{
 				this.CircularMovingObjects = base.GetComponent<CircularMovingObjects>();
 			}
-			DOTween.To(delegate(float x)
+			TweenSettingsExtensions.OnComplete<Tweener>(DOTween.To(delegate(float x)
 			{
 				this.CircularMovingObjects.Radious = x;
-			}, this.CircularMovingObjects.Radious, 0f, time).OnComplete(new TweenCallback(base.Destroy));
+			}, this.CircularMovingObjects.Radious, 0f, time), new TweenCallback(base.Destroy));
 		}
 
 		public Vector2 OffSetPosition;

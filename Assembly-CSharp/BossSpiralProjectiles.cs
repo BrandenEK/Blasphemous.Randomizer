@@ -24,7 +24,7 @@ public class BossSpiralProjectiles : MonoBehaviour
 		PoolManager.Instance.CreatePool(this.projectilePrefab, 20);
 	}
 
-	[Button("TEST ATTACK", ButtonSizes.Small)]
+	[Button("TEST ATTACK", 0)]
 	private void TestAttack()
 	{
 		this.ActivateAttack(this.testAttackNumber, this.testAttackDuration, this.testExtensionTime);
@@ -38,11 +38,11 @@ public class BossSpiralProjectiles : MonoBehaviour
 		this.spinningTransform.rotation = Quaternion.identity;
 		if (this.speedTween != null)
 		{
-			this.speedTween.Kill(false);
+			TweenExtensions.Kill(this.speedTween, false);
 		}
 		if (this.radiusTween != null)
 		{
-			this.radiusTween.Kill(false);
+			TweenExtensions.Kill(this.radiusTween, false);
 		}
 		this.PrepareDummies();
 		this.SetRadius(this.initialRadius);
@@ -52,26 +52,26 @@ public class BossSpiralProjectiles : MonoBehaviour
 
 	private void SetTweens()
 	{
-		float duration = this.atkDuration * 0.5f;
-		this.radiusTween = DOTween.To(new DOGetter<float>(this.GetCurrentRadius), new DOSetter<float>(this.SetRadius), this.finalRadius, this.atkDuration).SetEase(this.radiusGrowthEase).SetUpdate(UpdateType.Normal, false);
-		this.radiusTween.OnComplete(delegate
+		float num = this.atkDuration * 0.5f;
+		this.radiusTween = TweenSettingsExtensions.SetUpdate<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(DOTween.To(new DOGetter<float>(this.GetCurrentRadius), new DOSetter<float>(this.SetRadius), this.finalRadius, this.atkDuration), this.radiusGrowthEase), 0, false);
+		TweenSettingsExtensions.OnComplete<Tween>(this.radiusTween, delegate()
 		{
 			this.KeepRotating(this.extensionTime);
 		});
-		this.speedTween = DOTween.To(new DOGetter<float>(this.GetAngularSpeed), new DOSetter<float>(this.SetAngularSpeed), this.maxAngularSpeed, duration).SetUpdate(UpdateType.Normal, false).SetEase(this.angularSpeedEase);
+		this.speedTween = TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetUpdate<TweenerCore<float, float, FloatOptions>>(DOTween.To(new DOGetter<float>(this.GetAngularSpeed), new DOSetter<float>(this.SetAngularSpeed), this.maxAngularSpeed, num), 0, false), this.angularSpeedEase);
 	}
 
 	private void KeepRotating(float v)
 	{
 		Sequence sequence = DOTween.Sequence();
-		sequence.SetUpdate(UpdateType.Normal, false);
-		sequence.AppendInterval(0.016666668f);
-		sequence.OnStepComplete(delegate
+		TweenSettingsExtensions.SetUpdate<Sequence>(sequence, 0, false);
+		TweenSettingsExtensions.AppendInterval(sequence, 0.016666668f);
+		TweenSettingsExtensions.OnStepComplete<Sequence>(sequence, delegate()
 		{
 			this.UpdateAllDummies(this.finalRadius);
 		});
-		sequence.SetLoops((int)(60f * v));
-		sequence.Play<Sequence>();
+		TweenSettingsExtensions.SetLoops<Sequence>(sequence, (int)(60f * v));
+		TweenExtensions.Play<Sequence>(sequence);
 	}
 
 	private float GetAngularSpeed()
@@ -112,8 +112,8 @@ public class BossSpiralProjectiles : MonoBehaviour
 		this.currentProjectiles.Clear();
 		for (int i = 0; i < this.numberOfProjectiles; i++)
 		{
-			Quaternion rotation = Quaternion.Euler(0f, 0f, (float)(i * 360 / this.numberOfProjectiles));
-			this.dummies[i].localPosition = rotation * Vector2.right * this.initialRadius;
+			Quaternion quaternion = Quaternion.Euler(0f, 0f, (float)(i * 360 / this.numberOfProjectiles));
+			this.dummies[i].localPosition = quaternion * Vector2.right * this.initialRadius;
 			this.dummies[i].gameObject.SetActive(true);
 			GameObject gameObject = PoolManager.Instance.ReuseObject(this.projectilePrefab, this.dummies[i].transform.position, Quaternion.identity, false, 1).GameObject;
 			Projectile component = gameObject.GetComponent<Projectile>();

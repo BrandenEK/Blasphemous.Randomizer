@@ -66,8 +66,8 @@ namespace Gameplay.GameControllers.Enemies.FlyingPortrait.AI
 			}
 			this._stopChase = true;
 			bool flag = this._flyingPortrait.Status.Orientation == EntityOrientation.Right;
-			float endValue = this._flyingPortrait.transform.position.x + ((!flag) ? 0.5f : -0.5f);
-			this._flyingPortrait.transform.DOMoveX(endValue, 1f, false);
+			float num = this._flyingPortrait.transform.position.x + ((!flag) ? 0.5f : -0.5f);
+			ShortcutExtensions.DOMoveX(this._flyingPortrait.transform, num, 1f, false);
 		}
 
 		private void SetOrientation()

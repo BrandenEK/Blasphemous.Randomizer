@@ -181,11 +181,11 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 			{
 				list.Remove(MASTER_ANGUISH_ATTACKS.MERGE);
 			}
-			if (UnityEngine.Random.Range(0f, 1f) > 0.6f)
+			if (Random.Range(0f, 1f) > 0.6f)
 			{
 				list.Remove(MASTER_ANGUISH_ATTACKS.MERGE);
 			}
-			return list[UnityEngine.Random.Range(0, list.Count)];
+			return list[Random.Range(0, list.Count)];
 		}
 
 		public bool CanExecuteNewAction()
@@ -463,9 +463,9 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 		private float GetWaitingPeriodFromHP()
 		{
 			float healthPercentage = this.GetHealthPercentage();
-			float a = 0.5f;
-			float b = 3f;
-			return Mathf.Lerp(a, b, healthPercentage);
+			float num = 0.5f;
+			float num2 = 3f;
+			return Mathf.Lerp(num, num2, healthPercentage);
 		}
 
 		private void OnMergeRepositionFinished(SingleAnguishBehaviour obj)
@@ -503,7 +503,7 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 		private void TriggerTraps()
 		{
 			Core.Logic.CameraManager.ShockwaveManager.Shockwave(base.transform.position, 2.2f, 0.3f, 1.8f);
-			TriggerBasedTrap[] array = UnityEngine.Object.FindObjectsOfType<TriggerBasedTrap>();
+			TriggerBasedTrap[] array = Object.FindObjectsOfType<TriggerBasedTrap>();
 			for (int i = 0; i < array.Length; i++)
 			{
 				array[i].Use();
@@ -533,8 +533,8 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 
 		private void FollowPathUpdate()
 		{
-			float t = this.currentCurve.Evaluate(this._updateCounter / this.secondsToFullLoop);
-			Vector3 point = this.currentPath.GetPoint(t);
+			float num = this.currentCurve.Evaluate(this._updateCounter / this.secondsToFullLoop);
+			Vector3 point = this.currentPath.GetPoint(num);
 			base.transform.position = point;
 			this._updateCounter += Time.deltaTime;
 			this._updateCounter %= this.secondsToFullLoop;
@@ -565,7 +565,7 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 			else
 			{
 				Vector3 position = this.TresAngustias.bossfightPoints.beamPoints[1].position;
-				base.transform.DOMove(position, 3f, false).SetEase(Ease.InOutCubic);
+				TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, position, 3f, false), 10);
 				Debug.Log("DEAD; STARTING SEQUENCE");
 				this.StartDeathSequence();
 			}
@@ -672,8 +672,8 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 				if (counter > ((float)expCounter + 1f) / seconds)
 				{
 					expCounter++;
-					Vector2 v = center.position + new Vector3(UnityEngine.Random.Range(-radius, radius), UnityEngine.Random.Range(-radius, radius));
-					PoolManager.Instance.ReuseObject(poolableExplosion, v, Quaternion.identity, false, 1);
+					Vector2 vector = center.position + new Vector3(Random.Range(-radius, radius), Random.Range(-radius, radius));
+					PoolManager.Instance.ReuseObject(poolableExplosion, vector, Quaternion.identity, false, 1);
 					if (OnExplosion != null)
 					{
 						OnExplosion();

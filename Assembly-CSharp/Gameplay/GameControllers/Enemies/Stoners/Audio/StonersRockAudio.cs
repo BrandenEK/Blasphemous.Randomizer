@@ -22,7 +22,7 @@ namespace Gameplay.GameControllers.Enemies.Stoners.Audio
 				return;
 			}
 			this._brokenRockEventInstance = base.AudioManager.CreateCatalogEvent("StonersBrokenRock", default(Vector3));
-			this._brokenRockEventInstance.setCallback(EntityAudio.SetPanning(this._brokenRockEventInstance, base.transform.position), EVENT_CALLBACK_TYPE.CREATED);
+			this._brokenRockEventInstance.setCallback(EntityAudio.SetPanning(this._brokenRockEventInstance, base.transform.position), 1);
 			this._brokenRockEventInstance.start();
 			this._brokenRockEventInstance.release();
 		}

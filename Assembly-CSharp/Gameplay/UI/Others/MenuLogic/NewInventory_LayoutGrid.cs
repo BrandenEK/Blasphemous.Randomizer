@@ -31,7 +31,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			{
 				for (int i = 0; i < this.numGridElements; i++)
 				{
-					GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.gridElementBase);
+					GameObject gameObject = Object.Instantiate<GameObject>(this.gridElementBase);
 					gameObject.SetActive(true);
 					gameObject.name = "Grid_Element" + i.ToString();
 					gameObject.transform.SetParent(this.gridElementBase.transform.parent);
@@ -331,8 +331,8 @@ namespace Gameplay.UI.Others.MenuLogic
 				this.currentViewScroll = num2;
 				float scrollbar = (float)((this.currentViewScroll - 1) / (this.currentMaxScrolls - 1));
 				this.scrollBar.SetScrollbar(scrollbar);
-				float y = (float)((this.currentViewScroll - 1) * this.visibleRowsForScroll) * this.cellHeightForScroll;
-				this.scrollRect.content.transform.localPosition = new Vector3(this.scrollRect.content.transform.localPosition.x, y, this.scrollRect.content.transform.localPosition.z);
+				float num3 = (float)((this.currentViewScroll - 1) * this.visibleRowsForScroll) * this.cellHeightForScroll;
+				this.scrollRect.content.transform.localPosition = new Vector3(this.scrollRect.content.transform.localPosition.x, num3, this.scrollRect.content.transform.localPosition.z);
 			}
 		}
 
@@ -591,7 +591,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			component2.alpha = 0f;
 			base.StartCoroutine(this.ShowFirstSecure());
 			DOTween.defaultTimeScaleIndependent = true;
-			DOTween.Sequence().Append(component2.DOFade(1f, this.NotUnequipableFadeTime)).AppendInterval(this.NotUnequipableWaitTime).Append(component.DOFade(1f, this.NotUnequipableFadeResponseTime)).Play<Sequence>();
+			TweenExtensions.Play<Sequence>(TweenSettingsExtensions.Append(TweenSettingsExtensions.AppendInterval(TweenSettingsExtensions.Append(DOTween.Sequence(), ShortcutExtensions46.DOFade(component2, 1f, this.NotUnequipableFadeTime)), this.NotUnequipableWaitTime), ShortcutExtensions46.DOFade(component, 1f, this.NotUnequipableFadeResponseTime)));
 		}
 
 		private void HideNotUnequipableDialog()
@@ -599,7 +599,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			this.WaitingToCloseNotUnequipable = true;
 			CanvasGroup component = this.NotUnequipableRoot.GetComponent<CanvasGroup>();
 			DOTween.defaultTimeScaleIndependent = true;
-			component.DOFade(0f, this.NotUnequipableEndFadeTime).OnComplete(delegate
+			TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions46.DOFade(component, 0f, this.NotUnequipableEndFadeTime), delegate()
 			{
 				this.NotUnequipableRoot.SetActive(false);
 				this.InConfirmationNotUnequipable = false;
@@ -794,23 +794,23 @@ namespace Gameplay.UI.Others.MenuLogic
 			}
 			for (int i = 0; i < num; i++)
 			{
-				BaseInventoryObject exists = null;
+				BaseInventoryObject baseInventoryObject = null;
 				switch (this.currentItemType)
 				{
 				case InventoryManager.ItemType.Relic:
-					exists = Core.InventoryManager.GetRelicInSlot(i);
+					baseInventoryObject = Core.InventoryManager.GetRelicInSlot(i);
 					break;
 				case InventoryManager.ItemType.Prayer:
-					exists = Core.InventoryManager.GetPrayerInSlot(i);
+					baseInventoryObject = Core.InventoryManager.GetPrayerInSlot(i);
 					break;
 				case InventoryManager.ItemType.Bead:
-					exists = Core.InventoryManager.GetRosaryBeadInSlot(i);
+					baseInventoryObject = Core.InventoryManager.GetRosaryBeadInSlot(i);
 					break;
 				case InventoryManager.ItemType.Sword:
-					exists = Core.InventoryManager.GetSwordInSlot(i);
+					baseInventoryObject = Core.InventoryManager.GetSwordInSlot(i);
 					break;
 				}
-				if (!exists)
+				if (!baseInventoryObject)
 				{
 					result = i;
 					break;

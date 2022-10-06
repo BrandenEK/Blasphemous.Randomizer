@@ -21,8 +21,8 @@ namespace Framework.Util
 				{
 					if (SingletonSerialized<T>._instance == null)
 					{
-						SingletonSerialized<T>._instance = (T)((object)UnityEngine.Object.FindObjectOfType(typeof(T)));
-						if (UnityEngine.Object.FindObjectsOfType(typeof(T)).Length > 1)
+						SingletonSerialized<T>._instance = (T)((object)Object.FindObjectOfType(typeof(T)));
+						if (Object.FindObjectsOfType(typeof(T)).Length > 1)
 						{
 							Debug.LogError("[Singleton] Something went really wrong  - there should never be more than 1 singleton! Reopenning the scene might fix it.");
 							return SingletonSerialized<T>._instance;
@@ -32,7 +32,7 @@ namespace Framework.Util
 							GameObject gameObject = new GameObject();
 							SingletonSerialized<T>._instance = gameObject.AddComponent<T>();
 							gameObject.name = "(singleton) " + typeof(T).ToString();
-							UnityEngine.Object.DontDestroyOnLoad(gameObject);
+							Object.DontDestroyOnLoad(gameObject);
 						}
 						else
 						{

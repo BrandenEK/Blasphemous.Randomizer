@@ -138,11 +138,11 @@ namespace Gameplay.UI.Others.UIGameLogic
 			{
 				return;
 			}
-			float f = this.targetPoints - this.currentPoints;
-			float num = this.numbersPerSeconds * Time.unscaledDeltaTime;
-			if (Mathf.Abs(num) < Mathf.Abs(f))
+			float num = this.targetPoints - this.currentPoints;
+			float num2 = this.numbersPerSeconds * Time.unscaledDeltaTime;
+			if (Mathf.Abs(num2) < Mathf.Abs(num))
 			{
-				this.currentPoints += num;
+				this.currentPoints += num2;
 			}
 			else
 			{

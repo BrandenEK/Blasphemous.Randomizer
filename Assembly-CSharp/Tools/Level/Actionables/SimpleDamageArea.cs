@@ -63,11 +63,11 @@ namespace Tools.Level.Actionables
 			Vector2 zero = Vector2.zero;
 			if (this.horizontalDamage)
 			{
-				zero = new Vector2(base.transform.position.x, e.Collider2DArg.gameObject.transform.position.y);
+				zero..ctor(base.transform.position.x, e.Collider2DArg.gameObject.transform.position.y);
 			}
 			else
 			{
-				zero = new Vector2(e.Collider2DArg.gameObject.transform.position.x, base.transform.position.y);
+				zero..ctor(e.Collider2DArg.gameObject.transform.position.x, base.transform.position.y);
 			}
 			this._damageEntityDummy.transform.position = zero;
 			this.ResetTickCounter();
@@ -83,11 +83,11 @@ namespace Tools.Level.Actionables
 			Vector2 zero = Vector2.zero;
 			if (this.horizontalDamage)
 			{
-				zero = new Vector2(base.transform.position.x, e.Collider2DArg.gameObject.transform.position.y);
+				zero..ctor(base.transform.position.x, e.Collider2DArg.gameObject.transform.position.y);
 			}
 			else
 			{
-				zero = new Vector2(e.Collider2DArg.gameObject.transform.position.x, base.transform.position.y);
+				zero..ctor(e.Collider2DArg.gameObject.transform.position.x, base.transform.position.y);
 			}
 			this._damageEntityDummy.transform.position = zero;
 			this.ResetTickCounter();

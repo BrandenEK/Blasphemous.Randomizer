@@ -29,7 +29,7 @@ namespace Gameplay.GameControllers.Environment.Traps.FireTrap
 
 		private void Start()
 		{
-			this.Animator.Play("Burning", 0, UnityEngine.Random.value);
+			this.Animator.Play("Burning", 0, Random.value);
 			if (this.LightningPrefab)
 			{
 				PoolManager.Instance.CreatePool(this.LightningPrefab.gameObject, 1);
@@ -142,8 +142,8 @@ namespace Gameplay.GameControllers.Environment.Traps.FireTrap
 		private Quaternion GetLightningRotation(Vector3 targetPos)
 		{
 			Vector3 vector = targetPos - base.transform.position;
-			float z = Mathf.Atan2(vector.y, vector.x) * 57.29578f;
-			return Quaternion.Euler(0f, 0f, z);
+			float num = Mathf.Atan2(vector.y, vector.x) * 57.29578f;
+			return Quaternion.Euler(0f, 0f, num);
 		}
 
 		private void StartCastLightningsSequence()
@@ -156,7 +156,7 @@ namespace Gameplay.GameControllers.Environment.Traps.FireTrap
 			{
 				this.OnChargeStart(this.chargingTime);
 			}
-			DOTween.Sequence().SetDelay(this.chargingTime).OnComplete(delegate
+			TweenSettingsExtensions.OnComplete<Sequence>(TweenSettingsExtensions.SetDelay<Sequence>(DOTween.Sequence(), this.chargingTime), delegate()
 			{
 				foreach (TileableBeamLauncher tileableBeamLauncher in this.ChargedLightnings)
 				{
@@ -173,7 +173,7 @@ namespace Gameplay.GameControllers.Environment.Traps.FireTrap
 
 		private void ChargeTargetLightningsSequence()
 		{
-			DOTween.Sequence().SetDelay(this.targetLightningChargeTimeout).OnComplete(new TweenCallback(this.ChargeTargetsLightnings));
+			TweenSettingsExtensions.OnComplete<Sequence>(TweenSettingsExtensions.SetDelay<Sequence>(DOTween.Sequence(), this.targetLightningChargeTimeout), new TweenCallback(this.ChargeTargetsLightnings));
 		}
 
 		private void ChargeTargetsLightnings()

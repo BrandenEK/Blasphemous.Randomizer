@@ -21,9 +21,9 @@ namespace Gameplay.GameControllers.Environment.Traps.GhostTrap
 
 		public void PlayRandomAnim()
 		{
-			int value = UnityEngine.Random.Range(1, this.NumAnimations + 1);
-			this.Animator.SetInteger("FLY_PAGES", value);
-			this.Animator.speed = UnityEngine.Random.Range(0.5f, 1f);
+			int num = Random.Range(1, this.NumAnimations + 1);
+			this.Animator.SetInteger("FLY_PAGES", num);
+			this.Animator.speed = Random.Range(0.5f, 1f);
 		}
 
 		public void ResetAnimatorParameter()

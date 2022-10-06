@@ -12,7 +12,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.ElderBrother
 			ElderBrother componentInParent = animator.GetComponentInParent<ElderBrother>();
 			if (componentInParent != null)
 			{
-				UnityEngine.Object.Destroy(componentInParent.gameObject);
+				Object.Destroy(componentInParent.gameObject);
 			}
 		}
 	}

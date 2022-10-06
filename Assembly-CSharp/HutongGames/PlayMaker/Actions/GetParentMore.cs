@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HutongGames.PlayMaker.Actions
 {
-	[ActionCategory(ActionCategory.GameObject)]
+	[ActionCategory(4)]
 	[Tooltip("Gets the Parent of a Game Object.")]
 	public class GetParentMore : FsmStateAction
 	{
@@ -39,7 +39,7 @@ namespace HutongGames.PlayMaker.Actions
 		[RequiredField]
 		public FsmOwnerDefault gameObject;
 
-		[UIHint(UIHint.Variable)]
+		[UIHint(10)]
 		public FsmGameObject storeResult;
 
 		public FsmInt repetitions;

@@ -135,14 +135,14 @@ namespace Framework.Managers
 			this.gameRenderTexture = new RenderTexture(640, 360, 0)
 			{
 				name = "Game Texture",
-				filterMode = FilterMode.Point,
+				filterMode = 0,
 				depth = 24
 			};
 			this.gameRenderTexture.Create();
 			this.uiRenderTexture = new RenderTexture(640, 360, 0)
 			{
 				name = "UI Texture",
-				filterMode = FilterMode.Point,
+				filterMode = 0,
 				depth = 24
 			};
 			this.uiRenderTexture.Create();

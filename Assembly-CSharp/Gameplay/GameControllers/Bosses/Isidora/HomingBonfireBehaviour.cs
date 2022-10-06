@@ -51,34 +51,34 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 		public void ActivateBonfire(bool changeMask, float animDelay = 1f, float enlargeDelay = 0f)
 		{
 			Sequence sequence = DOTween.Sequence();
-			sequence.AppendInterval(animDelay);
-			sequence.OnComplete(delegate
+			TweenSettingsExtensions.AppendInterval(sequence, animDelay);
+			TweenSettingsExtensions.OnComplete<Sequence>(sequence, delegate()
 			{
 				this.SetActive(true, false);
 			});
-			sequence.Play<Sequence>();
+			TweenExtensions.Play<Sequence>(sequence);
 			if (changeMask)
 			{
 				this.HaloMaskGameObject.transform.localScale = Vector3.one * 0.01f;
 				this.RampLight.transform.localScale = Vector3.one * 0.01f;
 				this.HaloMaskGameObject.SetActive(true);
 				this.RampLight.SetActive(true);
-				Ease ease = Ease.OutCubic;
-				Ease ease2 = Ease.OutCubic;
-				float duration = 2f;
-				float duration2 = 1f;
+				Ease ease = 9;
+				Ease ease2 = 9;
+				float num = 2f;
+				float num2 = 1f;
 				Sequence sequence2 = DOTween.Sequence();
-				sequence2.SetDelay(enlargeDelay);
-				sequence2.Append(this.HaloMaskGameObject.transform.DOScale(new Vector3(2.4f, 2.5f, 1f), duration).SetEase(ease));
-				sequence2.AppendInterval(2f);
-				sequence2.Append(this.HaloMaskGameObject.transform.DOScale(Vector3.zero, duration2).SetEase(ease2));
-				sequence2.Play<Sequence>();
+				TweenSettingsExtensions.SetDelay<Sequence>(sequence2, enlargeDelay);
+				TweenSettingsExtensions.Append(sequence2, TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScale(this.HaloMaskGameObject.transform, new Vector3(2.4f, 2.5f, 1f), num), ease));
+				TweenSettingsExtensions.AppendInterval(sequence2, 2f);
+				TweenSettingsExtensions.Append(sequence2, TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScale(this.HaloMaskGameObject.transform, Vector3.zero, num2), ease2));
+				TweenExtensions.Play<Sequence>(sequence2);
 				Sequence sequence3 = DOTween.Sequence();
-				sequence3.SetDelay(enlargeDelay);
-				sequence3.Append(this.RampLight.transform.DOScale(new Vector3(2.5f, 2.5f, 1f), duration).SetEase(ease));
-				sequence3.AppendInterval(2.5f);
-				sequence3.Append(this.RampLight.transform.DOScale(Vector3.zero, duration2).SetEase(ease2));
-				sequence3.Play<Sequence>();
+				TweenSettingsExtensions.SetDelay<Sequence>(sequence3, enlargeDelay);
+				TweenSettingsExtensions.Append(sequence3, TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScale(this.RampLight.transform, new Vector3(2.5f, 2.5f, 1f), num), ease));
+				TweenSettingsExtensions.AppendInterval(sequence3, 2.5f);
+				TweenSettingsExtensions.Append(sequence3, TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScale(this.RampLight.transform, Vector3.zero, num2), ease2));
+				TweenExtensions.Play<Sequence>(sequence3);
 			}
 		}
 
@@ -97,14 +97,14 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 		{
 			this.IsFullyCharged = true;
 			this.SetActive(true, false);
-			this.HaloMaskGameObject.transform.DOKill(false);
-			this.RampLight.transform.DOKill(false);
-			float duration = 10f;
-			this.HaloMaskGameObject.transform.DOScale(Vector3.one * 100f, duration).SetEase(Ease.InQuad).OnComplete(delegate
+			ShortcutExtensions.DOKill(this.HaloMaskGameObject.transform, false);
+			ShortcutExtensions.DOKill(this.RampLight.transform, false);
+			float num = 10f;
+			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScale(this.HaloMaskGameObject.transform, Vector3.one * 100f, num), 5), delegate()
 			{
 				this.HaloMaskGameObject.transform.localScale = Vector3.one * 100f;
 			});
-			this.RampLight.transform.DOScale(Vector3.one * 100f, duration).SetEase(Ease.InQuad).OnComplete(delegate
+			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScale(this.RampLight.transform, Vector3.one * 100f, num), 5), delegate()
 			{
 				this.RampLight.transform.localScale = Vector3.one * 100f;
 			});
@@ -116,15 +116,15 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 			this.SetActive(false, explode);
 			if (changeMask)
 			{
-				this.HaloMaskGameObject.transform.DOKill(false);
-				this.RampLight.transform.DOKill(false);
-				float delay = (!explode) ? 0f : 2f;
-				float duration = 1f;
-				this.HaloMaskGameObject.transform.DOScale(Vector3.one * 0.01f, duration).SetEase(Ease.InQuad).SetDelay(delay).OnComplete(delegate
+				ShortcutExtensions.DOKill(this.HaloMaskGameObject.transform, false);
+				ShortcutExtensions.DOKill(this.RampLight.transform, false);
+				float num = (!explode) ? 0f : 2f;
+				float num2 = 1f;
+				TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetDelay<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScale(this.HaloMaskGameObject.transform, Vector3.one * 0.01f, num2), 5), num), delegate()
 				{
 					this.HaloMaskGameObject.SetActive(false);
 				});
-				this.RampLight.transform.DOScale(Vector3.one * 0.01f, duration).SetEase(Ease.InQuad).SetDelay(delay).OnComplete(delegate
+				TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetDelay<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScale(this.RampLight.transform, Vector3.one * 0.01f, num2), 5), num), delegate()
 				{
 					this.RampLight.SetActive(false);
 				});

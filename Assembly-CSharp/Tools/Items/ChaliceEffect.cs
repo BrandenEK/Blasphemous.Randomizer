@@ -110,8 +110,8 @@ namespace Tools.Items
 			}
 			else
 			{
-				Penitent exists = entity as Penitent;
-				if (!exists)
+				Penitent penitent = entity as Penitent;
+				if (!penitent)
 				{
 					return;
 				}

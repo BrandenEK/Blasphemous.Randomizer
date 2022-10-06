@@ -11,9 +11,9 @@ namespace Framework.Util
 		public static Vector2 GetGroundPosition(Vector2 pos, LayerMask layerMask, out bool groundExists)
 		{
 			RaycastHit2D[] array = new RaycastHit2D[1];
-			float d = 100f;
+			float num = 100f;
 			Vector2 vector = pos;
-			groundExists = (Physics2D.LinecastNonAlloc(vector, vector - Vector2.up * d, array, layerMask) > 0);
+			groundExists = (Physics2D.LinecastNonAlloc(vector, vector - Vector2.up * num, array, layerMask) > 0);
 			if (groundExists)
 			{
 				pos = array[0].point;
@@ -23,9 +23,9 @@ namespace Framework.Util
 
 		public static void DrawDebugCross(Vector2 point, Color c, float seconds)
 		{
-			float d = 0.6f;
-			Debug.DrawLine(point - Vector2.up * d, point + Vector2.up * d, c, seconds);
-			Debug.DrawLine(point - Vector2.right * d, point + Vector2.right * d, c, seconds);
+			float num = 0.6f;
+			Debug.DrawLine(point - Vector2.up * num, point + Vector2.up * num, c, seconds);
+			Debug.DrawLine(point - Vector2.right * num, point + Vector2.right * num, c, seconds);
 		}
 
 		public static IEnumerator LerpMoveWithCurveCoroutine(Transform t, Vector3 origin, Vector3 target, AnimationCurve animationCurve, float seconds, Action<Transform> endCallback = null, Action<float> loopCallback = null)
@@ -55,7 +55,7 @@ namespace Framework.Util
 
 		public static void DestroyAllProjectiles()
 		{
-			List<ProjectileWeapon> list = new List<ProjectileWeapon>(UnityEngine.Object.FindObjectsOfType<ProjectileWeapon>());
+			List<ProjectileWeapon> list = new List<ProjectileWeapon>(Object.FindObjectsOfType<ProjectileWeapon>());
 			foreach (ProjectileWeapon projectileWeapon in list)
 			{
 				projectileWeapon.ForceDestroy();

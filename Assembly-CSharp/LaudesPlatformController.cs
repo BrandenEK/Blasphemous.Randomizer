@@ -8,13 +8,13 @@ public class LaudesPlatformController : MonoBehaviour
 	{
 	}
 
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void GetChildrenAnimators()
 	{
 		this.animators = base.GetComponentsInChildren<Animator>();
 	}
 
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void ShowAllPlatforms()
 	{
 		if (this.animators != null)
@@ -26,7 +26,7 @@ public class LaudesPlatformController : MonoBehaviour
 		}
 	}
 
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void HideAllPlatforms()
 	{
 		if (this.animators != null)

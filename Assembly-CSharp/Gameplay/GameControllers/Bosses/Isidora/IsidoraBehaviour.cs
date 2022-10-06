@@ -29,7 +29,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 			this.Isidora = (Isidora)this.Entity;
 			this.InitAI();
 			this.InitActionDictionary();
-			this.homingBonfireBehavior = UnityEngine.Object.FindObjectOfType<HomingBonfireBehaviour>();
+			this.homingBonfireBehavior = Object.FindObjectOfType<HomingBonfireBehaviour>();
 			this.currentFightParameters = this.allFightParameters[0];
 			PoolManager.Instance.CreatePool(this.singleSparkSimpleVFX, 2);
 			PoolManager.Instance.CreatePool(this.slashLineSimpleVFX, 2);
@@ -46,7 +46,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 			{
 				return;
 			}
-			base.transform.DOPunchPosition(projectileDirection.normalized * 0.1f, 0.2f, 10, 1f, false);
+			ShortcutExtensions.DOPunchPosition(base.transform, projectileDirection.normalized * 0.1f, 0.2f, 10, 1f, false);
 			this.numberOfCharges++;
 			this.PlayFlameParticles();
 			if (this.blinkCoroutine != null)
@@ -263,11 +263,11 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 			zero.y = this.battleBounds.yMin;
 			if (this.IsIsidoraOnTheRightSide())
 			{
-				zero.x = UnityEngine.Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.1f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.4f));
+				zero.x = Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.1f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.4f));
 			}
 			else
 			{
-				zero.x = UnityEngine.Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.6f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.9f));
+				zero.x = Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.6f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.9f));
 			}
 			return zero;
 		}
@@ -278,11 +278,11 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 			zero.y = this.battleBounds.yMin;
 			if (this.IsIsidoraOnTheRightSide())
 			{
-				zero.x = UnityEngine.Random.Range(this.battleBounds.center.x, this.battleBounds.xMax);
+				zero.x = Random.Range(this.battleBounds.center.x, this.battleBounds.xMax);
 			}
 			else
 			{
-				zero.x = UnityEngine.Random.Range(this.battleBounds.xMin, this.battleBounds.center.x);
+				zero.x = Random.Range(this.battleBounds.xMin, this.battleBounds.center.x);
 			}
 			return zero;
 		}
@@ -339,7 +339,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 
 		public void SpawnOrb()
 		{
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.orbCollectible, base.transform.position + Vector3.down * 0.7f, base.transform.rotation);
+			GameObject gameObject = Object.Instantiate<GameObject>(this.orbCollectible, base.transform.position + Vector3.down * 0.7f, base.transform.rotation);
 			SpriteRenderer componentInChildren = gameObject.GetComponentInChildren<SpriteRenderer>();
 			componentInChildren.flipX = this.Isidora.SpriteRenderer.flipX;
 			this.orbSpawned = true;
@@ -421,13 +421,13 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 		{
 			float hpPercentage = this.Isidora.GetHpPercentage();
 			List<float> filteredAttacksWeights = this.attackConfigData.GetFilteredAttacksWeights(filteredAtks, true, hpPercentage);
-			float max = filteredAttacksWeights.Sum();
-			float num = UnityEngine.Random.Range(0f, max);
-			float num2 = 0f;
+			float num = filteredAttacksWeights.Sum();
+			float num2 = Random.Range(0f, num);
+			float num3 = 0f;
 			for (int i = 0; i < filteredAtks.Count; i++)
 			{
-				num2 += filteredAttacksWeights[i];
-				if (num2 > num)
+				num3 += filteredAttacksWeights[i];
+				if (num3 > num2)
 				{
 					return i;
 				}
@@ -619,8 +619,8 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 
 		public void LinearScreenshake()
 		{
-			Vector2 a = this.GetDirFromOrientation() * Vector2.right;
-			Core.Logic.CameraManager.ProCamera2DShake.Shake(0.2f, a * 1.5f, 10, 0.2f, 0.01f, default(Vector3), 0.01f, true);
+			Vector2 vector = this.GetDirFromOrientation() * Vector2.right;
+			Core.Logic.CameraManager.ProCamera2DShake.Shake(0.2f, vector * 1.5f, 10, 0.2f, 0.01f, default(Vector3), 0.01f, true);
 		}
 
 		public void BlastScreenshake()
@@ -670,11 +670,11 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 			Dictionary<KeyCode, IsidoraBehaviour.ISIDORA_ATTACKS> debugActions = this.attackConfigData.debugActions;
 			if (debugActions != null)
 			{
-				foreach (KeyCode key in debugActions.Keys)
+				foreach (KeyCode keyCode in debugActions.Keys)
 				{
-					if (Input.GetKeyDown(key))
+					if (Input.GetKeyDown(keyCode))
 					{
-						this.QueueAttack(debugActions[key]);
+						this.QueueAttack(debugActions[keyCode]);
 					}
 				}
 			}
@@ -700,21 +700,22 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 
 		private void SlashLineVFX()
 		{
-			Vector2 v = base.transform.position;
-			GameObject gameObject = PoolManager.Instance.ReuseObject(this.slashLineSimpleVFX, v, Quaternion.identity, false, 1).GameObject;
+			Vector2 vector = base.transform.position;
+			GameObject gameObject = PoolManager.Instance.ReuseObject(this.slashLineSimpleVFX, vector, Quaternion.identity, false, 1).GameObject;
 			gameObject.transform.localScale = new Vector3(this.GetDirFromOrientation(), 1f, 1f);
 		}
 
 		private void SingleSparkVFX(float yOffset = 0f)
 		{
-			Vector2 v = new Vector2(base.transform.position.x + this.singleSparkOffset.x * this.GetDirFromOrientation(), base.transform.position.y + this.singleSparkOffset.y + yOffset);
-			PoolManager.Instance.ReuseObject(this.singleSparkSimpleVFX, v, Quaternion.identity, false, 1);
+			Vector2 vector;
+			vector..ctor(base.transform.position.x + this.singleSparkOffset.x * this.GetDirFromOrientation(), base.transform.position.y + this.singleSparkOffset.y + yOffset);
+			PoolManager.Instance.ReuseObject(this.singleSparkSimpleVFX, vector, Quaternion.identity, false, 1);
 		}
 
 		private void WarningVFX(Vector2 offset)
 		{
-			Vector2 v = base.transform.position + offset;
-			PoolManager.Instance.ReuseObject(this.attackAnticipationWarningSimpleVFX, v, Quaternion.identity, false, 1);
+			Vector2 vector = base.transform.position + offset;
+			PoolManager.Instance.ReuseObject(this.attackAnticipationWarningSimpleVFX, vector, Quaternion.identity, false, 1);
 		}
 
 		public void OnMeleeAttackStarts()
@@ -771,7 +772,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 			PlayMakerFSM.BroadcastEvent("BOSS DEAD");
 			this.StopCurrentAction();
 			base.StopAllCoroutines();
-			base.transform.DOKill(false);
+			ShortcutExtensions.DOKill(base.transform, false);
 			this.ClearAll();
 			this.LaunchAction_Death();
 		}
@@ -964,10 +965,10 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 			[SuffixLabel("hits", true)]
 			public int maxHitsInHurt;
 
-			[InfoBox("If the boss phase should change after reaching this", InfoMessageType.Info, null)]
+			[InfoBox("If the boss phase should change after reaching this", 1, null)]
 			public bool advancePhase;
 
-			[InfoBox("If the boss should wait between actions in a vanished state", InfoMessageType.Info, null)]
+			[InfoBox("If the boss should wait between actions in a vanished state", 1, null)]
 			public bool waitsInVanish;
 		}
 
@@ -1065,7 +1066,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				Vector3 targetPos = o.transform.position;
 				targetPos.y = o.battleBounds.yMin + 0.2f;
 				float moveTime = Vector2.Distance(targetPos, o.transform.position) * 0.2f + 0.2f;
-				this.ACT_MOVE.StartAction(o, targetPos, moveTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, targetPos, moveTime, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				o.homingBonfireBehavior.enabled = false;
 				MasterShaderEffects effects = Core.Logic.Penitent.GetComponentInChildren<MasterShaderEffects>();
@@ -1080,7 +1081,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				yield return new WaitUntil(() => o.orbSpawned);
 				p.Status.Invulnerable = false;
 				base.FinishAction();
-				UnityEngine.Object.Destroy(o.gameObject);
+				Object.Destroy(o.gameObject);
 				yield break;
 			}
 
@@ -1107,10 +1108,10 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				isidora.Isidora.Audio.SetIsidoraVoice(true);
 				yield return null;
 				isidora.Isidora.Audio.SetIsidoraVoice(false);
-				isidora.transform.DOMoveX(isidora.transform.position.x + 3f, isidora.Isidora.Audio.GetSingleBarDuration() * 0.5f, false);
+				ShortcutExtensions.DOMoveX(isidora.transform, isidora.transform.position.x + 3f, isidora.Isidora.Audio.GetSingleBarDuration() * 0.5f, false);
 				yield return new IsidoraBehaviour.WaitUntilBarFinishes(isidora.Isidora.Audio);
 				Debug.Log(string.Format("<color=blue>Bar finished: Attack starts!</color>", new object[0]));
-				isidora.transform.DOMoveX(isidora.transform.position.x - 6f, 0.2f, false);
+				ShortcutExtensions.DOMoveX(isidora.transform, isidora.transform.position.x - 6f, 0.2f, false);
 				yield return new IsidoraBehaviour.WaitUntilBarFinishes(isidora.Isidora.Audio);
 				base.FinishAction();
 				yield break;
@@ -1134,8 +1135,8 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				IsidoraAnimatorInyector animatorInyector = isidora.Isidora.AnimatorInyector;
 				isidora.LookAtDirUsingOrientation(Vector2.left);
 				Vector2 targetPoint = isidora.ArenaGetBotRightCorner();
-				Tweener tween = isidora.transform.DOMove(targetPoint, isidora.Isidora.Audio.GetTimeUntilNextAttackAnticipationPeriod() - 0.1f, false);
-				yield return tween.WaitForCompletion();
+				Tweener tween = ShortcutExtensions.DOMove(isidora.transform, targetPoint, isidora.Isidora.Audio.GetTimeUntilNextAttackAnticipationPeriod() - 0.1f, false);
+				yield return TweenExtensions.WaitForCompletion(tween);
 				isidora.Isidora.Audio.SetIsidoraVoice(true);
 				yield return new IsidoraBehaviour.WaitUntilBarFinishes(isidora.Isidora.Audio);
 				this.ACT_WAIT.StartAction(isidora, 0.01f);
@@ -1147,14 +1148,14 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				float remainingTime = isidora.Isidora.Audio.GetTimeLeftForCurrentBar();
 				this.ACT_WAIT.StartAction(isidora, remainingTime * 0.55f);
 				yield return this.ACT_WAIT.waitForCompletion;
-				isidora.transform.DOMoveX(isidora.transform.position.x + 1f, remainingTime * 0.3f, false).SetEase(Ease.InOutCubic);
+				TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(isidora.transform, isidora.transform.position.x + 1f, remainingTime * 0.3f, false), 10);
 				yield return new IsidoraBehaviour.WaitUntilBarFinishes(isidora.Isidora.Audio);
 				Debug.Log(string.Format("<color=blue>Bar finished: Attack 1 starts!</color>", new object[0]));
 				animatorInyector.SetTwirl(true);
 				animatorInyector.SetAttackAnticipation(false);
 				targetPoint = isidora.ArenaGetBotLeftCorner();
-				Tweener t = isidora.transform.DOMove(targetPoint, dashSlashTime, false).SetEase(Ease.InOutCubic);
-				yield return t.WaitForCompletion();
+				Tweener t = TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(isidora.transform, targetPoint, dashSlashTime, false), 10);
+				yield return TweenExtensions.WaitForCompletion(t);
 				this.ACT_WAIT.StartAction(isidora, 0.33f);
 				yield return this.ACT_WAIT.waitForCompletion;
 				animatorInyector.SetTwirl(false);
@@ -1165,13 +1166,13 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				Debug.Log(string.Format("<color=blue>Bar finished: Dance starts!</color>", new object[0]));
 				remainingTime = isidora.Isidora.Audio.GetTimeLeftForCurrentBar();
 				Sequence s = DOTween.Sequence();
-				s.Append(isidora.transform.DOMoveY(isidora.transform.position.y + 1f, remainingTime * 0.5f, false).SetEase(Ease.InOutCubic));
-				s.Append(isidora.transform.DOMoveX(isidora.transform.position.x - 1f, remainingTime * 0.33f, false).SetEase(Ease.InOutCubic));
+				TweenSettingsExtensions.Append(s, TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(isidora.transform, isidora.transform.position.y + 1f, remainingTime * 0.5f, false), 10));
+				TweenSettingsExtensions.Append(s, TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(isidora.transform, isidora.transform.position.x - 1f, remainingTime * 0.33f, false), 10));
 				yield return new IsidoraBehaviour.WaitUntilBarFinishes(isidora.Isidora.Audio);
 				animatorInyector.SetAttackAnticipation(false);
 				Debug.Log(string.Format("<color=blue>Bar finished: Attack 2 starts!</color>", new object[0]));
 				targetPoint = isidora.ArenaGetBotRightCorner() + Vector2.up;
-				isidora.transform.DOMove(targetPoint, dashSlashTime, false);
+				ShortcutExtensions.DOMove(isidora.transform, targetPoint, dashSlashTime, false);
 				isidora.Isidora.Audio.SetIsidoraVoice(false);
 				yield return new IsidoraBehaviour.WaitUntilBarFinishes(isidora.Isidora.Audio);
 				base.FinishAction();
@@ -1372,7 +1373,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				IsidoraBehaviour isidoraBehaviour = this.owner as IsidoraBehaviour;
 				isidoraBehaviour.Isidora.AnimatorInyector.ResetAll();
 				isidoraBehaviour.Isidora.Audio.SetSkullsChoir(false);
-				isidoraBehaviour.transform.DOKill(false);
+				ShortcutExtensions.DOKill(isidoraBehaviour.transform, false);
 				base.DoOnStop();
 			}
 
@@ -1404,7 +1405,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				}
 				startingPosition.y = o.battleBounds.yMin - 0.5f;
 				float approachTime = (o.transform.position - startingPosition).magnitude * 0.1f + 0.2f;
-				this.ACT_MOVE.StartAction(o, startingPosition, approachTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, startingPosition, approachTime, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				this.ACT_MELEE.StartAction(o, dir, IsidoraBehaviour.ISIDORA_SLASHES.SLASH, this.slashTime, true, this.holdTime1, true, this.twirlTime1, true, delegate()
 				{
@@ -1414,16 +1415,16 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				float anticipationDistance = 1.5f;
 				Vector2 anticipationPoint = o.transform.position + Vector2.left * Mathf.Sign(dir.x) * anticipationDistance;
 				anticipationPoint = o.ClampInsideBoundaries(anticipationPoint, true, false);
-				this.ACT_MOVE.StartAction(o, anticipationPoint, this.holdTime1, Ease.OutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, anticipationPoint, this.holdTime1, 6, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				Vector2 afterSlashPosition = startingPosition + Vector2.right * this.slashDistance * Mathf.Sign(dir.x) + Vector2.down * vOffset;
 				afterSlashPosition = o.ClampInsideBoundaries(afterSlashPosition, true, false);
-				this.ACT_MOVE.StartAction(o, afterSlashPosition, this.slashTime, Ease.OutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, afterSlashPosition, this.slashTime, 6, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				Vector2 newDir = o.GetDirToPenitent();
 				Vector2 twirlTarget = o.transform.position + Vector2.left * Mathf.Sign(newDir.x) * this.twirlDistance2 + Vector2.up * vOffset;
 				twirlTarget = o.ClampInsideBoundaries(twirlTarget, true, false);
-				this.ACT_MOVE.StartAction(o, twirlTarget, this.twirlTime1, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, twirlTarget, this.twirlTime1, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				yield return this.ACT_MELEE.waitForCompletion;
 				int i = this.repetitions;
@@ -1439,7 +1440,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 						bool isFirstLoop = true;
 						Vector2 vector = o.transform.position + Vector2.left * Mathf.Sign(newDir.x) * this.twirlDistance1 * 0.8f;
 						vector = o.ClampInsideBoundaries(vector, true, false);
-						o.transform.DOMove(vector, singleBarDuration * 0.5f, false).SetEase(Ease.InOutQuad).SetLoops(2, LoopType.Yoyo).OnStepComplete(delegate
+						TweenSettingsExtensions.OnStepComplete<Tweener>(TweenSettingsExtensions.SetLoops<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(o.transform, vector, singleBarDuration * 0.5f, false), 7), 2, 1), delegate()
 						{
 							if (isFirstLoop)
 							{
@@ -1453,7 +1454,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 					{
 						Vector2 vector2 = o.transform.position + Vector2.left * Mathf.Sign(newDir.x) * this.twirlDistance1;
 						vector2 = o.ClampInsideBoundaries(vector2, true, false);
-						o.transform.DOMove(vector2, remainingTime - this.holdTime2, false).SetEase(Ease.OutQuad);
+						TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(o.transform, vector2, remainingTime - this.holdTime2, false), 6);
 					}
 					this.ACT_WAIT.StartAction(o, remainingTime - this.holdTime2);
 					yield return this.ACT_WAIT.waitForCompletion;
@@ -1463,12 +1464,12 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 					{
 						this.ACT_MOVE.StopAction();
 					});
-					this.ACT_MOVE.StartAction(o, o.transform.position + Vector2.left * Mathf.Sign(newDir.x) * anticipationDistance, this.holdTime2, Ease.OutQuad, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, o.transform.position + Vector2.left * Mathf.Sign(newDir.x) * anticipationDistance, this.holdTime2, 6, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					float nSlashDistance = o.GetDirToPenitent().magnitude + 1f;
 					Vector2 afterSlashPosition2 = o.transform.position + Vector2.right * Mathf.Sign(newDir.x) * nSlashDistance + Vector2.down * vOffset;
 					afterSlashPosition2 = o.ClampInsideBoundaries(afterSlashPosition2, true, false);
-					this.ACT_MOVE.StartAction(o, afterSlashPosition2, this.slashTime, Ease.OutQuad, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, afterSlashPosition2, this.slashTime, 6, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					o.ghostTrail.EnableGhostTrail = false;
 					if (!keepTwirl)
@@ -1479,7 +1480,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 					Vector2 twirlTarget2 = o.transform.position + Vector2.left * Mathf.Sign(newDir.x) * this.twirlDistance2 + Vector2.up * vOffset;
 					twirlTarget2 = o.ClampInsideBoundaries(twirlTarget2, true, false);
 					o.Isidora.AnimatorInyector.Decelerate(this.twirlTime2 * 0.5f);
-					this.ACT_MOVE.StartAction(o, twirlTarget2, this.twirlTime2, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, twirlTarget2, this.twirlTime2, 7, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					yield return this.ACT_MELEE.waitForCompletion;
 				}
@@ -1561,7 +1562,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				}
 				startingPosition.y = o.battleBounds.yMin - 0.5f;
 				float approachTime = (o.transform.position - startingPosition).magnitude * 0.1f + 0.2f;
-				this.ACT_MOVE.StartAction(o, startingPosition, approachTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, startingPosition, approachTime, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				this.ACT_MELEE.StartAction(o, dir, IsidoraBehaviour.ISIDORA_SLASHES.SLASH, this.slashTime, true, this.holdTime1, true, this.twirlTime1, true, delegate()
 				{
@@ -1571,16 +1572,16 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				float anticipationDistance = 1.5f;
 				Vector2 anticipationPoint = o.transform.position + Vector2.left * Mathf.Sign(dir.x) * anticipationDistance;
 				anticipationPoint = o.ClampInsideBoundaries(anticipationPoint, true, false);
-				this.ACT_MOVE.StartAction(o, anticipationPoint, this.holdTime1, Ease.OutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, anticipationPoint, this.holdTime1, 6, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				Vector2 afterSlashPosition = startingPosition + Vector2.right * this.slashDistance * Mathf.Sign(dir.x) + Vector2.down * vOffset;
 				afterSlashPosition = o.ClampInsideBoundaries(afterSlashPosition, true, false);
-				this.ACT_MOVE.StartAction(o, afterSlashPosition, this.slashTime, Ease.OutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, afterSlashPosition, this.slashTime, 6, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				Vector2 newDir = o.GetDirToPenitent();
 				Vector2 twirlTarget = o.transform.position + Vector2.left * Mathf.Sign(newDir.x) * this.twirlDistance1 + Vector2.up * vOffset;
 				twirlTarget = o.ClampInsideBoundaries(twirlTarget, true, false);
-				this.ACT_MOVE.StartAction(o, twirlTarget, this.twirlTime1, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, twirlTarget, this.twirlTime1, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				yield return this.ACT_MELEE.waitForCompletion;
 				o.ghostTrail.EnableGhostTrail = true;
@@ -1599,15 +1600,15 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				float risingSlashHeight = 4f;
 				afterSlashPosition2.y += risingSlashHeight;
 				afterSlashPosition2 = o.ClampInsideBoundaries(afterSlashPosition2, true, false);
-				this.ACT_MOVE.StartAction(o, afterSlashPosition2, this.risingSlashTime + this.holdTime2 * 0.5f, Ease.InOutQuad, null, true, null, true, false, 1.7f);
+				this.ACT_MOVE.StartAction(o, afterSlashPosition2, this.risingSlashTime + this.holdTime2 * 0.5f, 7, null, true, null, true, false, 1.7f);
 				this.ACT_WAIT.StartAction(o, this.holdTime2 * 0.5f);
 				yield return this.ACT_WAIT.waitForCompletion;
-				this.ACT_MOVE2.StartAction(o, afterSlashPosition2, this.risingSlashTime, Ease.OutQuad, null, true, null, false, true, 1.7f);
+				this.ACT_MOVE2.StartAction(o, afterSlashPosition2, this.risingSlashTime, 6, null, true, null, false, true, 1.7f);
 				yield return this.ACT_MOVE2.waitForCompletion;
 				o.ghostTrail.EnableGhostTrail = false;
 				o.Isidora.AnimatorInyector.Decelerate(this.risingSlashTime * 2.5f);
 				afterSlashPosition2.y += -risingSlashHeight + 0.5f;
-				this.ACT_MOVE2.StartAction(o, afterSlashPosition2, this.risingSlashTime * 5f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE2.StartAction(o, afterSlashPosition2, this.risingSlashTime * 5f, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE2.waitForCompletion;
 				o.Isidora.AnimatorInyector.SetTwirl(false);
 				this.ACT_WAIT.StartAction(o, 0.5f);
@@ -1668,7 +1669,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				IsidoraBehaviour isidoraBehaviour = this.owner as IsidoraBehaviour;
 				isidoraBehaviour.Isidora.AnimatorInyector.ResetAll();
 				isidoraBehaviour.Isidora.Audio.SetSkullsChoir(false);
-				isidoraBehaviour.transform.DOKill(false);
+				ShortcutExtensions.DOKill(isidoraBehaviour.transform, false);
 				base.DoOnStop();
 			}
 
@@ -1700,7 +1701,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				}
 				startingPosition.y = o.battleBounds.yMin - 0.5f;
 				float approachTime = (o.transform.position - startingPosition).magnitude * 0.1f + 0.2f;
-				this.ACT_MOVE.StartAction(o, startingPosition, approachTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, startingPosition, approachTime, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				this.ACT_MELEE.StartAction(o, dir, IsidoraBehaviour.ISIDORA_SLASHES.SLASH, this.slashTime, true, this.holdTime1, true, this.vanishTime, true, delegate()
 				{
@@ -1710,11 +1711,11 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				float anticipationDistance = 1.5f;
 				Vector2 anticipationPoint = o.transform.position + Vector2.left * Mathf.Sign(dir.x) * anticipationDistance;
 				anticipationPoint = o.ClampInsideBoundaries(anticipationPoint, true, false);
-				this.ACT_MOVE.StartAction(o, anticipationPoint, this.holdTime1, Ease.OutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, anticipationPoint, this.holdTime1, 6, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				Vector2 afterSlashPosition = startingPosition + Vector2.right * this.slashDistance * Mathf.Sign(dir.x) + Vector2.down * vOffset;
 				afterSlashPosition = o.ClampInsideBoundaries(afterSlashPosition, true, false);
-				this.ACT_MOVE.StartAction(o, afterSlashPosition, this.slashTime, Ease.OutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, afterSlashPosition, this.slashTime, 6, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				Vector2 vanishTarget = p.GetPosition() + Vector2.left * Mathf.Sign(dir.x) * this.vanishDistance;
 				vanishTarget.y = afterSlashPosition.y + vOffset;
@@ -1736,7 +1737,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 						Debug.Log("<color=magenta> ENTRANDO EN EL TWIRL DANCE </color>");
 						Vector2 vector = o.transform.position + Vector2.left * Mathf.Sign(newDir.x) * this.vanishDistance * 0.8f;
 						vector = o.ClampInsideBoundaries(vector, true, false);
-						o.transform.DOMove(vector, singleBarDuration * 0.5f, false).SetEase(Ease.InOutQuad).SetLoops(2, LoopType.Yoyo).OnStepComplete(delegate
+						TweenSettingsExtensions.OnStepComplete<Tweener>(TweenSettingsExtensions.SetLoops<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(o.transform, vector, singleBarDuration * 0.5f, false), 7), 2, 1), delegate()
 						{
 							if (isFirstLoop)
 							{
@@ -1750,8 +1751,8 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 					{
 						Vector2 vector2 = o.transform.position + Vector2.left * Mathf.Sign(newDir.x) * this.vanishDistance;
 						vector2 = o.ClampInsideBoundaries(vector2, true, false);
-						float duration = Mathf.Clamp(remainingTime - this.holdTime2, 0.75f, remainingTime - this.holdTime2);
-						o.transform.DOMove(vector2, duration, false).SetEase(Ease.OutQuad);
+						float num = Mathf.Clamp(remainingTime - this.holdTime2, 0.75f, remainingTime - this.holdTime2);
+						TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(o.transform, vector2, num, false), 6);
 					}
 					this.ACT_WAIT.StartAction(o, remainingTime - this.holdTime2);
 					yield return this.ACT_WAIT.waitForCompletion;
@@ -1763,12 +1764,12 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 					});
 					Vector2 targetPoint = o.transform.position + Vector2.left * Mathf.Sign(newDir.x) * anticipationDistance;
 					targetPoint = o.ClampInsideBoundaries(targetPoint, true, false);
-					this.ACT_MOVE.StartAction(o, targetPoint, this.holdTime2, Ease.OutQuad, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, targetPoint, this.holdTime2, 6, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					float nSlashDistance = o.GetDirToPenitent().magnitude + 1f;
 					Vector2 afterSlashPosition2 = o.transform.position + Vector2.right * Mathf.Sign(newDir.x) * nSlashDistance + Vector2.down * vOffset;
 					afterSlashPosition2 = o.ClampInsideBoundaries(afterSlashPosition2, true, false);
-					this.ACT_MOVE.StartAction(o, afterSlashPosition2, this.slashTime, Ease.OutQuad, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, afterSlashPosition2, this.slashTime, 6, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					o.ghostTrail.EnableGhostTrail = false;
 					if (!keepTwirl)
@@ -1779,7 +1780,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 					Vector2 twirlTarget2 = o.transform.position + Vector2.left * Mathf.Sign(newDir.x) * this.twirlDistance + Vector2.up * vOffset;
 					twirlTarget2 = o.ClampInsideBoundaries(twirlTarget2, true, false);
 					o.Isidora.AnimatorInyector.Decelerate(this.twirlTime * 0.5f);
-					this.ACT_MOVE.StartAction(o, twirlTarget2, this.twirlTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, twirlTarget2, this.twirlTime, 7, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					yield return this.ACT_MELEE.waitForCompletion;
 				}
@@ -1872,7 +1873,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				isidoraBehaviour.Isidora.AnimatorInyector.ResetAll();
 				isidoraBehaviour.Isidora.Audio.SetSkullsChoir(false);
 				isidoraBehaviour.Isidora.Audio.SetIsidoraVoice(false);
-				isidoraBehaviour.transform.DOKill(false);
+				ShortcutExtensions.DOKill(isidoraBehaviour.transform, false);
 				isidoraBehaviour.Isidora.AnimatorInyector.SetFadeSlash(false);
 				base.DoOnStop();
 			}
@@ -1914,13 +1915,13 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				Debug.Log(string.Format("<color=blue>[1]Accumulated remainingTime </color>" + (remainingTime - remainingTime * 0.33f), new object[0]));
 				Vector2 anticipationDir = (!o.IsIsidoraOnTheRightSide()) ? Vector2.left : Vector2.right;
 				targetPoint = o.transform.position + anticipationDir;
-				this.ACT_MOVE.StartAction(o, targetPoint, remainingTime * 0.33f, Ease.OutCubic, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, targetPoint, remainingTime * 0.33f, 9, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				Debug.Log(string.Format("<color=blue>[2]Remaining time for current bar </color>" + o.Isidora.Audio.GetTimeLeftForCurrentBar(), new object[0]));
 				Debug.Log(string.Format("<color=blue>[2]Accumulated remainingTime </color>" + (remainingTime - remainingTime * 0.66f), new object[0]));
 				float fadeSlashAnticipationSeconds = 0.25f;
 				float justWait = remainingTime * 0.33f - fadeSlashAnticipationSeconds;
-				this.ACT_MOVE.StartAction(o, targetPoint - anticipationDir, justWait, Ease.InCubic, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, targetPoint - anticipationDir, justWait, 8, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				Debug.Log(string.Format("<color=blue>[3]Remaining time for current bar </color>" + o.Isidora.Audio.GetTimeLeftForCurrentBar(), new object[0]));
 				Debug.Log(string.Format("<color=blue>[3]Accumulated remainingTime </color>" + (remainingTime - remainingTime * 0.66f - justWait), new object[0]));
@@ -1941,7 +1942,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 					o.LinearScreenshake();
 					o.SlashLineVFX();
 					o.Isidora.Audio.PlayFadeDash();
-					this.ACT_MOVE.StartAction(o, targetPoint, 0.1f, Ease.InOutCubic, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, targetPoint, 0.1f, 10, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					o.ghostTrail.EnableGhostTrail = false;
 					if (j < i - 1)
@@ -2002,7 +2003,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				isidoraBehaviour.Isidora.AnimatorInyector.ResetAll();
 				isidoraBehaviour.Isidora.Audio.SetSkullsChoir(false);
 				isidoraBehaviour.Isidora.Audio.SetIsidoraVoice(false);
-				isidoraBehaviour.transform.DOKill(false);
+				ShortcutExtensions.DOKill(isidoraBehaviour.transform, false);
 				isidoraBehaviour.Isidora.AnimatorInyector.SetFadeSlash(false);
 				base.DoOnStop();
 			}
@@ -2038,7 +2039,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				yield return this.ACT_WAIT.waitForCompletion;
 				Vector2 anticipationDir = (!o.IsIsidoraOnTheRightSide()) ? Vector2.left : Vector2.right;
 				targetPoint = o.transform.position + anticipationDir;
-				this.ACT_MOVE.StartAction(o, targetPoint, remainingTime * 0.3f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, targetPoint, remainingTime * 0.3f, 7, null, true, null, true, true, 1.7f);
 				yield return new IsidoraBehaviour.WaitUntilBarFinishes(o.Isidora.Audio);
 				Debug.Log(string.Format("<color=blue>Bar finished: Attack 1 starts!</color>", new object[0]));
 				anim.SetTwirl(true);
@@ -2050,7 +2051,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				this.ACT_WAIT.StartAction(o, fadeSlashAnticipationSeconds);
 				yield return this.ACT_WAIT.waitForCompletion;
 				o.SlashLineVFX();
-				this.ACT_MOVE.StartAction(o, targetPoint, 0.1f, Ease.InOutCubic, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, targetPoint, 0.1f, 10, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				float attackTime = o.Isidora.Audio.GetSingleBarDuration() * 0.4f;
 				Vector2 startingPos = o.transform.position;
@@ -2067,10 +2068,10 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				Debug.Log(string.Format("<color=blue>Bar finished: Dance starts!</color>", new object[0]));
 				remainingTime = o.Isidora.Audio.GetSingleBarDuration();
 				targetPoint = o.transform.position + Vector3.up * 0.75f;
-				this.ACT_MOVE.StartAction(o, targetPoint, remainingTime * 0.5f, Ease.InOutCubic, null, true, null, false, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, targetPoint, remainingTime * 0.5f, 10, null, true, null, false, true, 1.7f);
 				anticipationDir = ((!o.IsIsidoraOnTheRightSide()) ? Vector2.left : Vector2.right);
 				targetPoint.x = o.transform.position.x + anticipationDir.x;
-				this.ACT_MOVE_AUX.StartAction(o, targetPoint, remainingTime * 0.3f, Ease.InOutCubic, null, true, null, true, false, 1.7f);
+				this.ACT_MOVE_AUX.StartAction(o, targetPoint, remainingTime * 0.3f, 10, null, true, null, true, false, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				yield return this.ACT_MOVE_AUX.waitForCompletion;
 				anim.resetAnimationSpeedFlag = true;
@@ -2080,7 +2081,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				yield return new IsidoraBehaviour.WaitUntilBarFinishes(o.Isidora.Audio);
 				Debug.Log(string.Format("<color=blue>Bar finished: Attack 2 starts!</color>", new object[0]));
 				targetPoint.x = ((!o.IsIsidoraOnTheRightSide()) ? (o.ArenaGetBotRightCorner().x - 2f) : (o.ArenaGetBotLeftCorner().x + 2f));
-				this.ACT_MOVE.StartAction(o, targetPoint, attackTime, Ease.InOutCubic, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, targetPoint, attackTime, 10, null, true, null, true, true, 1.7f);
 				this.ACT_WAIT.StartAction(o, attackTime * 0.1f);
 				yield return this.ACT_WAIT.waitForCompletion;
 				o.Isidora.Audio.SetIsidoraVoice(false);
@@ -2089,7 +2090,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				float twirlTime = o.Isidora.Audio.GetSingleBarDuration() * 0.5f;
 				anim.Decelerate(twirlTime * 0.3f);
 				targetPoint.y -= 0.75f;
-				this.ACT_MOVE.StartAction(o, targetPoint, twirlTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, targetPoint, twirlTime, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				anim.SetTwirl(false);
 				base.FinishAction();
@@ -2169,7 +2170,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				this.ACT_SINGLEBLAST.StartAction(o, o.transform.position - dir * 1.5f, 0f, 0.25f, 0.5f, 0.1f, false);
 				this.ACT_WAIT.StartAction(o, this.anticipationTime);
 				yield return this.ACT_WAIT.waitForCompletion;
-				this.ACT_MOVE.StartAction(o, endPosition, this.dashDuration, Ease.InCubic, null, true, null, true, false, 1.7f);
+				this.ACT_MOVE.StartAction(o, endPosition, this.dashDuration, 8, null, true, null, true, false, 1.7f);
 				this.ACT_WAIT.StartAction(o, this.dashDuration * 0.9f);
 				yield return this.ACT_WAIT.waitForCompletion;
 				anim.SetAttackAnticipation(false);
@@ -2179,10 +2180,10 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				this.ACT_SINGLEBLAST.StartAction(o, endPosition + blastOffset, 0f, 0.2f, 0.3f, extraDelay, false);
 				this.ACT_SINGLEBLAST2.StartAction(o, endPosition + blastOffset * 2f, 0f, 0.2f, 0.3f, extraDelay + 0.2f, false);
 				this.ACT_SINGLEBLAST3.StartAction(o, endPosition + blastOffset * 3f, 0f, 0.2f, 0.3f, extraDelay + 0.4f, false);
-				this.ACT_MOVE2.StartAction(o, endPosition + Vector2.up * risingHeight, this.shoryukenDuration, Ease.OutCubic, null, true, null, false, true, 1.7f);
+				this.ACT_MOVE2.StartAction(o, endPosition + Vector2.up * risingHeight, this.shoryukenDuration, 9, null, true, null, false, true, 1.7f);
 				yield return this.ACT_MOVE2.waitForCompletion;
 				anim.Decelerate(this.floatDownDuration * 0.7f);
-				this.ACT_MOVE2.StartAction(o, endPosition, this.floatDownDuration, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE2.StartAction(o, endPosition, this.floatDownDuration, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE2.waitForCompletion;
 				anim.SetTwirl(false);
 				anim.SetFireScythe(false);
@@ -2244,8 +2245,8 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				animatorInyector.ResetAll();
 				isidoraBehaviour.floorSparksParticlesToRight.Stop();
 				isidoraBehaviour.floorSparksParticlesToLeft.Stop();
-				isidoraBehaviour.floorSparksMaskToRight.transform.DOKill(true);
-				isidoraBehaviour.floorSparksMaskToLeft.transform.DOKill(true);
+				ShortcutExtensions.DOKill(isidoraBehaviour.floorSparksMaskToRight.transform, true);
+				ShortcutExtensions.DOKill(isidoraBehaviour.floorSparksMaskToLeft.transform, true);
 				base.DoOnStop();
 			}
 
@@ -2283,7 +2284,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 					o.floorSparksMaskToLeft.gameObject.SetActive(true);
 					Vector3 prevScale = o.floorSparksMaskToLeft.transform.localScale;
 					o.floorSparksMaskToLeft.transform.localScale = Vector3.zero;
-					o.floorSparksMaskToLeft.transform.DOScale(prevScale, this.dashDuration).OnComplete(delegate
+					TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions.DOScale(o.floorSparksMaskToLeft.transform, prevScale, this.dashDuration), delegate()
 					{
 						o.floorSparksMaskToLeft.gameObject.SetActive(false);
 						o.floorSparksMaskToLeft.transform.localScale = prevScale;
@@ -2295,22 +2296,22 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 					o.floorSparksMaskToRight.gameObject.SetActive(true);
 					Vector3 prevScale = o.floorSparksMaskToRight.transform.localScale;
 					o.floorSparksMaskToRight.transform.localScale = Vector3.zero;
-					o.floorSparksMaskToRight.transform.DOScale(prevScale, this.dashDuration).OnComplete(delegate
+					TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions.DOScale(o.floorSparksMaskToRight.transform, prevScale, this.dashDuration), delegate()
 					{
 						o.floorSparksMaskToRight.gameObject.SetActive(false);
 						o.floorSparksMaskToRight.transform.localScale = prevScale;
 					});
 				}
-				this.ACT_MOVE.StartAction(o, this.endPosition, this.dashDuration, Ease.InQuart, null, true, new Action(this.CheckIfNearPenitentToAppear), true, false, 1.7f);
+				this.ACT_MOVE.StartAction(o, this.endPosition, this.dashDuration, 11, null, true, new Action(this.CheckIfNearPenitentToAppear), true, false, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				anim.SetTwirl(true);
 				anim.SetAttackAnticipation(false);
 				o.floorSparksParticlesToRight.Stop();
 				o.floorSparksParticlesToLeft.Stop();
-				o.floorSparksMaskToRight.transform.DOKill(true);
-				o.floorSparksMaskToLeft.transform.DOKill(true);
+				ShortcutExtensions.DOKill(o.floorSparksMaskToRight.transform, true);
+				ShortcutExtensions.DOKill(o.floorSparksMaskToLeft.transform, true);
 				this.endPosition = o.transform.position + dir;
-				this.ACT_MOVE.StartAction(o, this.endPosition, 0.3f, Ease.InQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, this.endPosition, 0.3f, 5, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				float extraDelay = this.shoryukenDuration * 0.5f;
 				Vector2 blastOffset = dir * 1.25f;
@@ -2319,11 +2320,11 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				this.ACT_SINGLEBLAST3.StartAction(o, this.endPosition + blastOffset * 3f, 0f, 0.2f, 0.3f, extraDelay + 0.4f, false);
 				o.ghostTrail.EnableGhostTrail = true;
 				float risingHeight = 4f;
-				this.ACT_MOVE2.StartAction(o, this.endPosition + Vector2.up * risingHeight, this.shoryukenDuration, Ease.OutCubic, null, true, null, false, true, 1.7f);
+				this.ACT_MOVE2.StartAction(o, this.endPosition + Vector2.up * risingHeight, this.shoryukenDuration, 9, null, true, null, false, true, 1.7f);
 				yield return this.ACT_MOVE2.waitForCompletion;
 				o.ghostTrail.EnableGhostTrail = false;
 				anim.Decelerate(this.floatDownDuration * 0.7f);
-				this.ACT_MOVE2.StartAction(o, this.endPosition, this.floatDownDuration, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE2.StartAction(o, this.endPosition, this.floatDownDuration, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE2.waitForCompletion;
 				anim.SetTwirl(false);
 				anim.SetFireScythe(false);
@@ -2500,7 +2501,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				animatorInyector.SetHidden(false);
 				animatorInyector.SetCasting(true);
 				targetPoint = isidora.transform.position + Vector3.up * 3f;
-				this.ACT_MOVE.StartAction(isidora, targetPoint, 2f * barTime, Ease.InOutCubic, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(isidora, targetPoint, 2f * barTime, 10, null, true, null, true, true, 1.7f);
 				Vector2 castingPos = isidora.homingBonfireBehavior.gameObject.transform.position;
 				this.ACT_BONFIRE.StartAction(isidora, isidora.Isidora.Audio.GetSingleBarDuration(), 1, true, castingPos, 0f, 0f, -1f);
 				yield return this.ACT_BONFIRE.waitForCompletion;
@@ -2525,7 +2526,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				animatorInyector.SetCasting(false);
 				targetPoint = isidora.transform.position + Vector3.down * 4f;
 				isidora.Isidora.Audio.SetIsidoraVoice(false);
-				this.ACT_MOVE.StartAction(isidora, targetPoint, 4f, Ease.InOutCubic, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(isidora, targetPoint, 4f, 10, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				base.FinishAction();
 				yield break;
@@ -2614,7 +2615,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				float delay = o.Isidora.Audio.GetSingleBarDuration() * 0.4f;
 				float intro = o.Isidora.Audio.GetSingleBarDuration() * 0.4f;
 				float outro = o.Isidora.Audio.GetSingleBarDuration() * 0.3f;
-				Tweener t = o.transform.DOMoveY(o.transform.position.y + 2f, intro + delay * (float)i + outro, false).SetEase(Ease.InOutCubic);
+				Tweener t = TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(o.transform, o.transform.position.y + 2f, intro + delay * (float)i + outro, false), 10);
 				this.ACT_WAIT.StartAction(o, intro);
 				yield return this.ACT_WAIT.waitForCompletion;
 				currentBar = o.Isidora.Audio.bossAudioSync.LastBar;
@@ -2629,8 +2630,8 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 					}
 				}
 				o.Isidora.AnimatorInyector.SetCasting(false);
-				t = o.transform.DOMoveY(o.transform.position.y - 3f, 1f, false).SetEase(Ease.InOutCubic);
-				yield return t.WaitForCompletion();
+				t = TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(o.transform, o.transform.position.y - 3f, 1f, false), 10);
+				yield return TweenExtensions.WaitForCompletion(t);
 				base.FinishAction();
 				yield break;
 			}
@@ -2845,12 +2846,12 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				isidoraBehaviour.StopFlameParticles();
 				if (this.xTween != null)
 				{
-					this.xTween.Kill(false);
+					TweenExtensions.Kill(this.xTween, false);
 					this.xTween = null;
 				}
 				if (this.yTween != null)
 				{
-					this.yTween.Kill(false);
+					TweenExtensions.Kill(this.yTween, false);
 					this.yTween = null;
 				}
 				base.DoOnStop();
@@ -2902,7 +2903,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				anim.SetCasting(true);
 				float singleBar = o.Isidora.Audio.GetSingleBarDuration();
 				Vector2 castingPosTop = o.transform.position + Vector2.up * 4f;
-				this.ACT_MOVE.StartAction(o, castingPosTop, singleBar * 0.7f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, castingPosTop, singleBar * 0.7f, 7, null, true, null, true, true, 1.7f);
 				this.ACT_BONFIRE.StartAction(o, o.homingBonfireBehavior.transform.position, singleBar * 0.5f, singleBar * 0.7f);
 				yield return this.ACT_BONFIRE.waitForCompletion;
 				yield return this.ACT_MOVE.waitForCompletion;
@@ -2911,47 +2912,47 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				float totalTime = bar * 4f;
 				Vector2 oppositePos = (castingPosTop.x <= o.battleBounds.center.x) ? (castingPosTop + o.battleBounds.width * Vector2.right * 0.8f) : (castingPosTop + o.battleBounds.width * Vector2.left * 0.8f);
 				Vector2 startingDir = (oppositePos - castingPosTop).normalized;
-				this.xTween = o.transform.DOMoveX(oppositePos.x, totalTime * 0.4f, false);
-				this.xTween.SetEase(Ease.InQuad);
-				this.xTween.OnComplete(delegate
+				this.xTween = ShortcutExtensions.DOMoveX(o.transform, oppositePos.x, totalTime * 0.4f, false);
+				TweenSettingsExtensions.SetEase<Tween>(this.xTween, 5);
+				TweenSettingsExtensions.OnComplete<Tween>(this.xTween, delegate()
 				{
-					this.xTween = o.transform.DOMoveX(oppositePos.x + startingDir.x, totalTime * 0.05f, false);
-					this.xTween.SetEase(Ease.Linear);
-					this.xTween.OnComplete(delegate
+					this.xTween = ShortcutExtensions.DOMoveX(o.transform, oppositePos.x + startingDir.x, totalTime * 0.05f, false);
+					TweenSettingsExtensions.SetEase<Tween>(this.xTween, 1);
+					TweenSettingsExtensions.OnComplete<Tween>(this.xTween, delegate()
 					{
-						this.xTween = o.transform.DOMoveX(oppositePos.x, totalTime * 0.05f, false);
-						this.xTween.SetEase(Ease.Linear);
-						this.xTween.OnComplete(delegate
+						this.xTween = ShortcutExtensions.DOMoveX(o.transform, oppositePos.x, totalTime * 0.05f, false);
+						TweenSettingsExtensions.SetEase<Tween>(this.xTween, 1);
+						TweenSettingsExtensions.OnComplete<Tween>(this.xTween, delegate()
 						{
-							this.xTween = o.transform.DOMoveX(castingPosTop.x, totalTime * 0.4f, false);
-							this.xTween.SetEase(Ease.InQuad);
-							this.xTween.OnComplete(delegate
+							this.xTween = ShortcutExtensions.DOMoveX(o.transform, castingPosTop.x, totalTime * 0.4f, false);
+							TweenSettingsExtensions.SetEase<Tween>(this.xTween, 5);
+							TweenSettingsExtensions.OnComplete<Tween>(this.xTween, delegate()
 							{
-								this.xTween = o.transform.DOMoveX(castingPosTop.x - startingDir.x, totalTime * 0.05f, false);
-								this.xTween.SetEase(Ease.Linear);
-								this.xTween.OnComplete(delegate
+								this.xTween = ShortcutExtensions.DOMoveX(o.transform, castingPosTop.x - startingDir.x, totalTime * 0.05f, false);
+								TweenSettingsExtensions.SetEase<Tween>(this.xTween, 1);
+								TweenSettingsExtensions.OnComplete<Tween>(this.xTween, delegate()
 								{
-									this.xTween = o.transform.DOMoveX(castingPosTop.x, totalTime * 0.05f, false);
-									this.xTween.SetEase(Ease.Linear);
+									this.xTween = ShortcutExtensions.DOMoveX(o.transform, castingPosTop.x, totalTime * 0.05f, false);
+									TweenSettingsExtensions.SetEase<Tween>(this.xTween, 1);
 								});
 							});
 						});
 					});
 				});
-				this.yTween = o.transform.DOMoveY(castingPosTop.y - 2f, totalTime * 0.4f, false);
-				this.yTween.SetEase(Ease.InOutQuad);
-				this.yTween.OnComplete(delegate
+				this.yTween = ShortcutExtensions.DOMoveY(o.transform, castingPosTop.y - 2f, totalTime * 0.4f, false);
+				TweenSettingsExtensions.SetEase<Tween>(this.yTween, 7);
+				TweenSettingsExtensions.OnComplete<Tween>(this.yTween, delegate()
 				{
-					this.yTween = o.transform.DOMoveY(castingPosTop.y, totalTime * 0.1f, false);
-					this.yTween.SetEase(Ease.InOutQuad);
-					this.yTween.OnComplete(delegate
+					this.yTween = ShortcutExtensions.DOMoveY(o.transform, castingPosTop.y, totalTime * 0.1f, false);
+					TweenSettingsExtensions.SetEase<Tween>(this.yTween, 7);
+					TweenSettingsExtensions.OnComplete<Tween>(this.yTween, delegate()
 					{
-						this.yTween = o.transform.DOMoveY(castingPosTop.y - 2f, totalTime * 0.4f, false);
-						this.yTween.SetEase(Ease.InOutQuad);
-						this.yTween.OnComplete(delegate
+						this.yTween = ShortcutExtensions.DOMoveY(o.transform, castingPosTop.y - 2f, totalTime * 0.4f, false);
+						TweenSettingsExtensions.SetEase<Tween>(this.yTween, 7);
+						TweenSettingsExtensions.OnComplete<Tween>(this.yTween, delegate()
 						{
-							this.yTween = o.transform.DOMoveY(castingPosTop.y, totalTime * 0.1f, false);
-							this.yTween.SetEase(Ease.InOutQuad);
+							this.yTween = ShortcutExtensions.DOMoveY(o.transform, castingPosTop.y, totalTime * 0.1f, false);
+							TweenSettingsExtensions.SetEase<Tween>(this.yTween, 7);
 						});
 					});
 				});
@@ -2979,7 +2980,7 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 				}
 				o.StopFlameParticles();
 				anim.SetCasting(false);
-				this.ACT_MOVE.StartAction(o, castingPosBottom, 3f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, castingPosBottom, 3f, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				base.FinishAction();
 				yield break;

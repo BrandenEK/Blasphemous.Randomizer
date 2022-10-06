@@ -39,7 +39,7 @@ public class CauldronTrap : MonoBehaviour, IActionable
 		base.StartCoroutine(this.GrowCoroutine(this.beam.GetDistance() + 0.2f, this.maxSeconds));
 	}
 
-	[Button("Test Activate", ButtonSizes.Small)]
+	[Button("Test Activate", 0)]
 	private void Activate()
 	{
 		this.TrapActivated = true;
@@ -48,7 +48,7 @@ public class CauldronTrap : MonoBehaviour, IActionable
 		base.StartCoroutine(this.DeactivateAfterSeconds());
 	}
 
-	[Button("Test End", ButtonSizes.Small)]
+	[Button("Test End", 0)]
 	public void Deactivate()
 	{
 		this.StopFallAudio();
@@ -118,7 +118,7 @@ public class CauldronTrap : MonoBehaviour, IActionable
 	private void StopFallAudio()
 	{
 		ParameterInstance parameterInstance;
-		this._fallAudioEvent.getParameter("End", out parameterInstance);
+		this._fallAudioEvent.getParameter("End", ref parameterInstance);
 		parameterInstance.setValue(1f);
 	}
 
@@ -128,7 +128,7 @@ public class CauldronTrap : MonoBehaviour, IActionable
 		{
 			return;
 		}
-		this._fallAudioEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+		this._fallAudioEvent.stop(0);
 		this._fallAudioEvent.release();
 		this._fallAudioEvent = default(EventInstance);
 	}

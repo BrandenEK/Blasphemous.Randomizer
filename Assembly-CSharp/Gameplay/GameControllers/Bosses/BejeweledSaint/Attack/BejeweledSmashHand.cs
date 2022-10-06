@@ -19,7 +19,7 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.Attack
 		protected override void OnAwake()
 		{
 			base.OnAwake();
-			this.WeaponOwner = UnityEngine.Object.FindObjectOfType<BejeweledSaintHead>();
+			this.WeaponOwner = Object.FindObjectOfType<BejeweledSaintHead>();
 			this.Animator = base.GetComponent<Animator>();
 			this.SpriteRender = base.GetComponent<SpriteRenderer>();
 			this.AttackArea = base.GetComponentInChildren<AttackArea>();
@@ -72,7 +72,7 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.Attack
 
 		private void SetSmoothYPos(float yPos, float time, TweenCallback endCallback)
 		{
-			base.transform.DOLocalMoveY(yPos, time, false).SetEase(this.AppearingMoveCurve).OnComplete(endCallback).SetId("VerticalMotion");
+			TweenSettingsExtensions.SetId<Tweener>(TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMoveY(base.transform, yPos, time, false), this.AppearingMoveCurve), endCallback), "VerticalMotion");
 		}
 
 		public void OnDissapear()

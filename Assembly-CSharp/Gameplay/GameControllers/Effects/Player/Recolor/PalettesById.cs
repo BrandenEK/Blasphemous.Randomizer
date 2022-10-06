@@ -15,7 +15,7 @@ namespace Gameplay.GameControllers.Effects.Player.Recolor
 		public Sprite paletteTex;
 
 		[BoxGroup("Palette data", true, false, 0)]
-		[PreviewField(50f, ObjectFieldAlignment.Left)]
+		[PreviewField(50f, 0)]
 		[LabelWidth(100f)]
 		public Sprite palettePreview;
 	}

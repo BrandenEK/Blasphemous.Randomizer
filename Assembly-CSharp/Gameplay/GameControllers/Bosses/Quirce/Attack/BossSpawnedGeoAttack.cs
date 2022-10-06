@@ -44,7 +44,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 			{
 				return;
 			}
-			int index = UnityEngine.Random.Range(0, listFromFightNumber.Count);
+			int index = Random.Range(0, listFromFightNumber.Count);
 			BossSpawnedGeoAttack.AmanecidaRockSprites amanecidaRockSprites = listFromFightNumber[index];
 			GameObject dustVFX = amanecidaRockSprites.dustVFX;
 			PoolManager.Instance.CreatePool(dustVFX, 1);

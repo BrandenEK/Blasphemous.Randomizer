@@ -8,22 +8,22 @@ public class AnguishBossfightConfig : MonoBehaviour
 {
 	public void ShowFlameWall()
 	{
-		this.flameWall.DOLocalMoveY(this.flameWall.localPosition.y + 2.5f, 4f, false).SetEase(Ease.InQuad).OnComplete(delegate
+		TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMoveY(this.flameWall, this.flameWall.localPosition.y + 2.5f, 4f, false), 5), delegate()
 		{
-			this.flameWall.DOLocalMoveY(this.flameWall.localPosition.y - 1f, 2f, false).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
+			TweenSettingsExtensions.SetLoops<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMoveY(this.flameWall, this.flameWall.localPosition.y - 1f, 2f, false), 7), -1, 1);
 		});
 	}
 
 	public void HideFlameWall()
 	{
-		this.flameWall.DOKill(false);
-		this.flameWall.DOLocalMoveY(this.flameWall.localPosition.y - 3f, 3f, false).SetEase(Ease.InOutQuad);
+		ShortcutExtensions.DOKill(this.flameWall, false);
+		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMoveY(this.flameWall, this.flameWall.localPosition.y - 3f, 3f, false), 7);
 		this.flameWall.GetComponentInParent<Collider2D>().enabled = false;
 	}
 
 	public Transform GetRandomBeamPoint()
 	{
-		return this.beamPoints[UnityEngine.Random.Range(0, this.beamPoints.Count)];
+		return this.beamPoints[Random.Range(0, this.beamPoints.Count)];
 	}
 
 	public Transform GetDifferentBeamTransform(Transform currentTransform)
@@ -43,7 +43,7 @@ public class AnguishBossfightConfig : MonoBehaviour
 
 	public List<Transform> GetSpearPoints()
 	{
-		if (UnityEngine.Random.Range(0f, 1f) > 0.5f)
+		if (Random.Range(0f, 1f) > 0.5f)
 		{
 			return this.spearComboPointsL;
 		}

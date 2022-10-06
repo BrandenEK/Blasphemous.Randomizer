@@ -37,9 +37,10 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 					this.Distance = this._defaultRayCastDistance;
 				}
 			}
-			Vector3 v = new Vector3(base.transform.position.x, base.transform.position.y + this.HookHeightFromPivotPoint, base.transform.position.z);
-			float d = (base.EntityOwner.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
-			this._wallHit = Physics2D.Raycast(v, Vector2.right * d, this.Distance, this.WallLayerMask);
+			Vector3 vector;
+			vector..ctor(base.transform.position.x, base.transform.position.y + this.HookHeightFromPivotPoint, base.transform.position.z);
+			float num = (base.EntityOwner.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
+			this._wallHit = Physics2D.Raycast(vector, Vector2.right * num, this.Distance, this.WallLayerMask);
 			if (this.Rewired.GetButton(5) && !this.CharacterController.IsGrounded && this._wallHit.collider != null && !this._stickToWall && this.EndStickCoolDown)
 			{
 				Core.Logic.Penitent.Audio.SetParametersValuesByWall(this._wallHit.collider);
@@ -49,7 +50,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 				base.EntityOwner.Animator.Play(this._wallClimbContactAnim);
 				base.EntityOwner.transform.position = this.GetClimbPosition(this._wallHit.collider);
 				Core.Input.SetBlocker("PLAYER_LOGIC", true);
-				base.EntityOwner.transform.DOMoveY(base.EntityOwner.transform.position.y - this.GravityDragDistance, this.GravityDragLapse, false).SetEase(Ease.OutSine).OnUpdate(new TweenCallback(this.CheckWallCollider));
+				TweenSettingsExtensions.OnUpdate<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.EntityOwner.transform, base.EntityOwner.transform.position.y - this.GravityDragDistance, this.GravityDragLapse, false), 3), new TweenCallback(this.CheckWallCollider));
 			}
 			if (this._stickToWall)
 			{
@@ -84,9 +85,10 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 				return;
 			}
 			Gizmos.color = Color.red;
-			Vector3 vector = new Vector3(base.transform.position.x, base.transform.position.y + this.HookHeightFromPivotPoint, base.transform.position.z);
-			float d = (base.EntityOwner.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
-			Gizmos.DrawLine(vector, vector + Vector3.right * d * this.Distance);
+			Vector3 vector;
+			vector..ctor(base.transform.position.x, base.transform.position.y + this.HookHeightFromPivotPoint, base.transform.position.z);
+			float num = (base.EntityOwner.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
+			Gizmos.DrawLine(vector, vector + Vector3.right * num * this.Distance);
 		}
 
 		private void EntityOwnerOnDamaged()
@@ -286,9 +288,10 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 
 		private Vector3 GetClimbPosition(Collider2D climbCollider)
 		{
-			float x = (base.EntityOwner.Status.Orientation != EntityOrientation.Right) ? (climbCollider.bounds.max.x + this.StickDistanceToWall) : (climbCollider.bounds.min.x - this.StickDistanceToWall);
-			Vector2 v = new Vector2(x, base.EntityOwner.transform.position.y);
-			return v;
+			float num = (base.EntityOwner.Status.Orientation != EntityOrientation.Right) ? (climbCollider.bounds.max.x + this.StickDistanceToWall) : (climbCollider.bounds.min.x - this.StickDistanceToWall);
+			Vector2 vector;
+			vector..ctor(num, base.EntityOwner.transform.position.y);
+			return vector;
 		}
 
 		private IEnumerator DisableAbility()

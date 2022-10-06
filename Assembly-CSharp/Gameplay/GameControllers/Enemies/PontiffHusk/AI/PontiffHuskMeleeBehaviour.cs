@@ -36,7 +36,7 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.AI
 			this.AnimatorInyector = this._PontiffHuskMelee.GetComponentInChildren<PontiffHuskAnimatorInyector>();
 			this.minMaxOffsetX = new Vector2(-4f, 4f);
 			this.minMaxOffsetY = new Vector2(-5f, 5f);
-			this.randomOffset = new Vector2(UnityEngine.Random.Range(this.minMaxOffsetX.x, this.minMaxOffsetX.y), UnityEngine.Random.Range(this.minMaxOffsetY.x, this.minMaxOffsetY.y));
+			this.randomOffset = new Vector2(Random.Range(this.minMaxOffsetX.x, this.minMaxOffsetX.y), Random.Range(this.minMaxOffsetY.x, this.minMaxOffsetY.y));
 		}
 
 		private void OnLerpStop()
@@ -153,8 +153,8 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.AI
 			if (num > this.MinTargetDistance)
 			{
 				float num2 = (this.Entity.Status.Orientation != EntityOrientation.Left) ? (-this.ChaseHorizontalOffset) : this.ChaseHorizontalOffset;
-				Vector2 v = new Vector3(this._target.position.x + num2, this._target.position.y + this.ChaseVerticalOffset);
-				base.transform.position = Vector3.SmoothDamp(base.transform.position, v, ref this._velocity, this.ChasingElongation, this.Speed);
+				Vector2 vector = new Vector3(this._target.position.x + num2, this._target.position.y + this.ChaseVerticalOffset);
+				base.transform.position = Vector3.SmoothDamp(base.transform.position, vector, ref this._velocity, this.ChasingElongation, this.Speed);
 			}
 			this._PontiffHuskMelee.Audio.UpdateFloatingPanning();
 		}
@@ -291,16 +291,16 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.AI
 		{
 			this.LookAtTarget(this._target.position);
 			float rammingDistance = this.RammingDistance;
-			Vector2 v = (this.Entity.Status.Orientation != EntityOrientation.Left) ? Vector2.right : Vector2.left;
+			Vector2 vector = (this.Entity.Status.Orientation != EntityOrientation.Left) ? Vector2.right : Vector2.left;
 			this._PontiffHuskMelee.MotionLerper.distanceToMove = rammingDistance;
 			this._PontiffHuskMelee.MotionLerper.TimeTakenDuringLerp = rammingDistance / this.AttackSpeed;
-			this._PontiffHuskMelee.MotionLerper.StartLerping(v);
+			this._PontiffHuskMelee.MotionLerper.StartLerping(vector);
 		}
 
 		private void SetRndTimeAttack()
 		{
 			this._time = 0f;
-			this._attackTime = UnityEngine.Random.Range(this.MinRndTimeAttack, this.MaxRndTimeAttack);
+			this._attackTime = Random.Range(this.MinRndTimeAttack, this.MaxRndTimeAttack);
 		}
 
 		private void PontiffHuskMeleeOnEntityDie()

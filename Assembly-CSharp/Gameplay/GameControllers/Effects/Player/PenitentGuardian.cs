@@ -40,7 +40,7 @@ namespace Gameplay.GameControllers.Effects.Player
 			{
 				return;
 			}
-			this.GuardianSpriteRenderer.DOFade(1f, 0.1f);
+			ShortcutExtensions43.DOFade(this.GuardianSpriteRenderer, 1f, 0.1f);
 		}
 
 		public void FadeOut()
@@ -49,7 +49,7 @@ namespace Gameplay.GameControllers.Effects.Player
 			{
 				return;
 			}
-			this.GuardianSpriteRenderer.DOFade(0f, 0.1f);
+			ShortcutExtensions43.DOFade(this.GuardianSpriteRenderer, 0f, 0.1f);
 		}
 
 		protected SpriteRenderer GuardianSpriteRenderer;

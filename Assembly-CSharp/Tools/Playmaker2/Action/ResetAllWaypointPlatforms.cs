@@ -7,14 +7,14 @@ using UnityEngine;
 namespace Tools.Playmaker2.Action
 {
 	[ActionCategory("Blasphemous Action")]
-	[HutongGames.PlayMaker.Tooltip("Resets All Waypoint Platforms.")]
+	[Tooltip("Resets All Waypoint Platforms.")]
 	public class ResetAllWaypointPlatforms : FsmStateAction
 	{
 		public override void OnEnter()
 		{
 			if (this.platforms.Count == 0)
 			{
-				this.platforms = new List<WaypointsMovingPlatform>(UnityEngine.Object.FindObjectsOfType<WaypointsMovingPlatform>());
+				this.platforms = new List<WaypointsMovingPlatform>(Object.FindObjectsOfType<WaypointsMovingPlatform>());
 			}
 			foreach (WaypointsMovingPlatform waypointsMovingPlatform in this.platforms)
 			{

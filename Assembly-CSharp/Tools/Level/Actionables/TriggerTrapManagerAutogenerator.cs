@@ -10,12 +10,12 @@ namespace Tools.Level.Actionables
 		{
 			if (!this.executedFlag)
 			{
-				TriggerTrapManager x = UnityEngine.Object.FindObjectOfType<TriggerTrapManager>();
-				if (x == null)
+				TriggerTrapManager triggerTrapManager = Object.FindObjectOfType<TriggerTrapManager>();
+				if (triggerTrapManager == null)
 				{
 					GameObject gameObject = new GameObject("----------TRIGGER TRAP MANAGER----------(auto-generated)");
-					TriggerTrapManager triggerTrapManager = gameObject.AddComponent<TriggerTrapManager>();
-					triggerTrapManager.LinkToSceneTraps();
+					TriggerTrapManager triggerTrapManager2 = gameObject.AddComponent<TriggerTrapManager>();
+					triggerTrapManager2.LinkToSceneTraps();
 				}
 				this.executedFlag = true;
 			}

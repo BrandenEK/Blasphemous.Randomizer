@@ -14,7 +14,7 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 			if (!this.turret)
 			{
 				Debug.LogError("Component requires a BasicTurret component!");
-				UnityEngine.Object.Destroy(this);
+				Object.Destroy(this);
 			}
 		}
 

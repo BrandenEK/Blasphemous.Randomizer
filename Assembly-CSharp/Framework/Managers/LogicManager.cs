@@ -29,7 +29,7 @@ namespace Framework.Managers
 		{
 			get
 			{
-				return UnityEngine.Object.FindObjectOfType<ScreenFreezeManager>();
+				return Object.FindObjectOfType<ScreenFreezeManager>();
 			}
 		}
 

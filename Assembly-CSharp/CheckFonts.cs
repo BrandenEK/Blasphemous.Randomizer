@@ -8,42 +8,42 @@ using UnityEngine.UI;
 
 public class CheckFonts : MonoBehaviour
 {
-	[Button(ButtonSizes.Medium)]
+	[Button(22)]
 	public void CheckChild()
 	{
 		Text[] componentsInChildren = base.GetComponentsInChildren<Text>(true);
 		this.CheckInternal(componentsInChildren);
 	}
 
-	[Button(ButtonSizes.Medium)]
+	[Button(22)]
 	public void CheckAll()
 	{
 		Text[] foundObjects = Resources.FindObjectsOfTypeAll<Text>();
 		this.CheckInternal(foundObjects);
 	}
 
-	[Button(ButtonSizes.Medium)]
+	[Button(22)]
 	public void CheckChildTextMesh()
 	{
 		TextMeshProUGUI[] componentsInChildren = base.GetComponentsInChildren<TextMeshProUGUI>(true);
 		this.CheckInternalPro(componentsInChildren);
 	}
 
-	[Button(ButtonSizes.Medium)]
+	[Button(22)]
 	public void CheckAllTextMesh()
 	{
 		TextMeshProUGUI[] foundObjects = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
 		this.CheckInternalPro(foundObjects);
 	}
 
-	[Button(ButtonSizes.Medium)]
+	[Button(22)]
 	public void CheckLocalizationChild()
 	{
 		Text[] componentsInChildren = base.GetComponentsInChildren<Text>(true);
 		this.CheckLocalizationInternal(componentsInChildren);
 	}
 
-	[Button(ButtonSizes.Medium)]
+	[Button(22)]
 	public void CheckLocalizationAll()
 	{
 		Text[] foundObjects = Resources.FindObjectsOfTypeAll<Text>();
@@ -152,15 +152,15 @@ public class CheckFonts : MonoBehaviour
 		}
 		Debug.Log("********************************************");
 		Debug.Log("***  NO LOCALIZATION:" + list.Count.ToString());
-		foreach (string message in list)
+		foreach (string text2 in list)
 		{
-			Debug.Log(message);
+			Debug.Log(text2);
 		}
 		Debug.Log("********************************************");
 		Debug.Log("***  ERROR SECONDARY:" + list2.Count.ToString());
-		foreach (string message2 in list2)
+		foreach (string text3 in list2)
 		{
-			Debug.Log(message2);
+			Debug.Log(text3);
 		}
 	}
 

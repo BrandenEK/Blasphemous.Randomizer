@@ -42,8 +42,8 @@ namespace Gameplay.GameControllers.Enemies.PatrollingFlyingEnemy.AI
 
 		private void FollowPathUpdate()
 		{
-			float t = this.currentCurve.Evaluate(this._updateCounter / this.secondsToFullLoop);
-			Vector3 point = this.currentPath.GetPoint(t);
+			float num = this.currentCurve.Evaluate(this._updateCounter / this.secondsToFullLoop);
+			Vector3 point = this.currentPath.GetPoint(num);
 			this.LookAtTarget(base.transform.position + (point - base.transform.position).normalized * 5f);
 			base.transform.position = point;
 			this._updateCounter += Time.deltaTime;

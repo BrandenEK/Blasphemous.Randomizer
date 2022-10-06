@@ -46,7 +46,7 @@ namespace Gameplay.UI.Widgets
 		{
 			if (this.currentTween != null)
 			{
-				this.currentTween.Kill(false);
+				TweenExtensions.Kill(this.currentTween, false);
 				this.currentTween = null;
 			}
 			if (toBlack)
@@ -72,7 +72,7 @@ namespace Gameplay.UI.Widgets
 		{
 			if (this.currentTween != null)
 			{
-				this.currentTween.Kill(false);
+				TweenExtensions.Kill(this.currentTween, false);
 				this.currentTween = null;
 			}
 			if (toBlack)
@@ -103,7 +103,7 @@ namespace Gameplay.UI.Widgets
 		private IEnumerator FadeAfterDelay(bool toBlack, float duration, float delay, Color target, Core.SimpleEvent callback)
 		{
 			yield return new WaitForSeconds(delay);
-			this.currentTween = this.black.DOColor(target, duration).OnComplete(delegate
+			this.currentTween = TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions46.DOColor(this.black, target, duration), delegate()
 			{
 				this.currentTween = null;
 				this.FadingIn = false;
@@ -197,10 +197,10 @@ namespace Gameplay.UI.Widgets
 			Core.Input.SetBlocker("FADE", true);
 			if (this.currentTween != null)
 			{
-				this.currentTween.Kill(false);
+				TweenExtensions.Kill(this.currentTween, false);
 				this.currentTween = null;
 			}
-			Tweener t = this.black.DOColor(this.ON_COLOR, duration).OnComplete(delegate
+			Tweener tweener = TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions46.DOColor(this.black, this.ON_COLOR, duration), delegate()
 			{
 				if (outEnd != null)
 				{
@@ -208,7 +208,7 @@ namespace Gameplay.UI.Widgets
 				}
 				this.ON_COLOR = this.ON_COLOR_BASE;
 			});
-			Tweener t2 = this.black.DOColor(this.OFF_COLOR, duration).OnComplete(delegate
+			Tweener tweener2 = TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions46.DOColor(this.black, this.OFF_COLOR, duration), delegate()
 			{
 				if (inEnd != null)
 				{
@@ -220,10 +220,10 @@ namespace Gameplay.UI.Widgets
 				}
 			});
 			Sequence sequence = DOTween.Sequence();
-			sequence.SetDelay(delay);
-			sequence.Append(t);
-			sequence.Append(t2);
-			sequence.Play<Sequence>();
+			TweenSettingsExtensions.SetDelay<Sequence>(sequence, delay);
+			TweenSettingsExtensions.Append(sequence, tweener);
+			TweenSettingsExtensions.Append(sequence, tweener2);
+			TweenExtensions.Play<Sequence>(sequence);
 		}
 
 		public bool Fading

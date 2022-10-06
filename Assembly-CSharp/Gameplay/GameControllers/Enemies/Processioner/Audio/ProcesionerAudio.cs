@@ -51,7 +51,7 @@ namespace Gameplay.GameControllers.Enemies.Processioner.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("Moves", out parameterInstance);
+				eventInstance.getParameter("Moves", ref parameterInstance);
 				parameterInstance.setValue(value);
 			}
 			catch (Exception ex)

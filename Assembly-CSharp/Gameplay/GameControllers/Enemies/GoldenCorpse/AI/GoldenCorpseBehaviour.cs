@@ -15,10 +15,10 @@ namespace Gameplay.GameControllers.Enemies.GoldenCorpse.AI
 			base.OnStart();
 			this.GoldenCorpse = (GoldenCorpse)this.Entity;
 			this._bottomHits = new RaycastHit2D[2];
-			int value = UnityEngine.Random.Range(0, this.totalAnimationVariants);
-			this.GoldenCorpse.Animator.SetInteger("ID", value);
-			this.GoldenCorpse.Animator.Play("sleep" + value.ToString());
-			if (UnityEngine.Random.Range(0f, 1f) < 0.5f)
+			int num = Random.Range(0, this.totalAnimationVariants);
+			this.GoldenCorpse.Animator.SetInteger("ID", num);
+			this.GoldenCorpse.Animator.Play("sleep" + num.ToString());
+			if (Random.Range(0f, 1f) < 0.5f)
 			{
 				this.LookAtTarget(base.transform.position - Vector3.right);
 			}
@@ -81,7 +81,7 @@ namespace Gameplay.GameControllers.Enemies.GoldenCorpse.AI
 			this.UnFreezeAnimation();
 			this.isNapping = true;
 			this.GoldenCorpse.AnimatorInyector.PlaySleep();
-			this.sleepTime = UnityEngine.Random.Range(this.minSleepTime, this.maxSleepTime);
+			this.sleepTime = Random.Range(this.minSleepTime, this.maxSleepTime);
 			base.BehaviourTree.StopBehaviour();
 		}
 

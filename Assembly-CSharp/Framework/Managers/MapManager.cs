@@ -22,7 +22,7 @@ namespace Framework.Managers
 
 		public override void Initialize()
 		{
-			LocalizationManager.OnLocalizeEvent += this.OnLocalizationChange;
+			LocalizationManager.OnLocalizeEvent += new LocalizationManager.OnLocalizeCallback(this.OnLocalizationChange);
 			LevelManager.OnLevelLoaded += this.OnLevelLoaded;
 			LevelManager.OnBeforeLevelLoad += this.OnBeforeLevelLoad;
 			this.CurrentDomain = string.Empty;
@@ -37,7 +37,7 @@ namespace Framework.Managers
 		public override void Dispose()
 		{
 			this.cacheObjects.Clear();
-			LocalizationManager.OnLocalizeEvent -= this.OnLocalizationChange;
+			LocalizationManager.OnLocalizeEvent -= new LocalizationManager.OnLocalizeCallback(this.OnLocalizationChange);
 			LevelManager.OnLevelLoaded -= this.OnLevelLoaded;
 			LevelManager.OnBeforeLevelLoad -= this.OnBeforeLevelLoad;
 		}
@@ -252,7 +252,7 @@ namespace Framework.Managers
 		private void FillSceneCacheObject<T>() where T : PersistentObject
 		{
 			Type typeFromHandle = typeof(T);
-			foreach (T t in UnityEngine.Object.FindObjectsOfType<T>())
+			foreach (T t in Object.FindObjectsOfType<T>())
 			{
 				if (!this.cacheObjects.ContainsKey(typeFromHandle))
 				{
@@ -338,15 +338,15 @@ namespace Framework.Managers
 			public DataMapCell(MapManager.DataMapReveal reference, Bounds cell)
 			{
 				this.worldBounds = new Bounds(new Vector3(cell.center.x, cell.center.y, 0f), new Vector3(cell.size.x, cell.size.y, 100f));
-				Vector2 b = reference.WorldToMaskCoordinates(cell.min);
-				b = new Vector2(Mathf.Floor(b.x), Mathf.Floor(b.y));
-				Vector2 a = reference.WorldToMaskCoordinates(cell.max);
-				a = new Vector2(Mathf.Ceil(a.x), Mathf.Ceil(a.y));
-				Vector2 vector = a - b;
-				this.textureBounds = new Rect(b.x, b.y, vector.x, vector.y);
-				Vector3 vector2 = reference.WorldToTexture(cell.center);
-				Vector3 vector3 = reference.WorldToTexture(cell.size);
-				this.mapBounds = new Bounds(new Vector3(vector2.x, vector2.y, 0f), new Vector3(vector3.x, vector3.y, 100f));
+				Vector2 vector = reference.WorldToMaskCoordinates(cell.min);
+				vector..ctor(Mathf.Floor(vector.x), Mathf.Floor(vector.y));
+				Vector2 vector2 = reference.WorldToMaskCoordinates(cell.max);
+				vector2..ctor(Mathf.Ceil(vector2.x), Mathf.Ceil(vector2.y));
+				Vector2 vector3 = vector2 - vector;
+				this.textureBounds = new Rect(vector.x, vector.y, vector3.x, vector3.y);
+				Vector3 vector4 = reference.WorldToTexture(cell.center);
+				Vector3 vector5 = reference.WorldToTexture(cell.size);
+				this.mapBounds = new Bounds(new Vector3(vector4.x, vector4.y, 0f), new Vector3(vector5.x, vector5.y, 100f));
 			}
 
 			public Bounds worldBounds { get; private set; }
@@ -402,21 +402,22 @@ namespace Framework.Managers
 
 			public Vector2 WorldToMaskCoordinates(Vector3 world)
 			{
-				Vector3 a = world - this.pos;
-				a *= this.orthogonalFactor;
-				a += new Vector3((float)this.width / 2f, (float)this.height / 2f, 0f);
-				return new Vector2(a.x, a.y);
+				Vector3 vector = world - this.pos;
+				vector *= this.orthogonalFactor;
+				vector += new Vector3((float)this.width / 2f, (float)this.height / 2f, 0f);
+				return new Vector2(vector.x, vector.y);
 			}
 
 			public List<MapManager.DataMapCell> MarkAndGetMapCellFromWorld(Vector3 worldPosition, bool forceUpdate = false)
 			{
 				List<MapManager.DataMapCell> list = new List<MapManager.DataMapCell>();
-				Vector3 point = new Vector3(worldPosition.x, worldPosition.y, 0f);
+				Vector3 vector;
+				vector..ctor(worldPosition.x, worldPosition.y, 0f);
 				foreach (MapManager.DataMapCell dataMapCell in this.cells)
 				{
 					if (!dataMapCell.crawled || forceUpdate)
 					{
-						if (dataMapCell.worldBounds.Contains(point))
+						if (dataMapCell.worldBounds.Contains(vector))
 						{
 							dataMapCell.crawled = true;
 							list.Add(dataMapCell);
@@ -428,14 +429,15 @@ namespace Framework.Managers
 
 			public bool CellContainsMapPos(Vector2 mapPos)
 			{
-				Vector3 point = new Vector3(mapPos.x, mapPos.y, 0f);
-				bool flag = this.mapBounds.Contains(point);
+				Vector3 vector;
+				vector..ctor(mapPos.x, mapPos.y, 0f);
+				bool flag = this.mapBounds.Contains(vector);
 				if (flag)
 				{
 					flag = false;
 					foreach (MapManager.DataMapCell dataMapCell in this.cells)
 					{
-						if (dataMapCell.mapBounds.Contains(point))
+						if (dataMapCell.mapBounds.Contains(vector))
 						{
 							flag = true;
 							break;
@@ -455,7 +457,7 @@ namespace Framework.Managers
 
 			public void UpdateElementsStatus()
 			{
-				foreach (PersistentObject persistentObject in UnityEngine.Object.FindObjectsOfType<PersistentObject>())
+				foreach (PersistentObject persistentObject in Object.FindObjectsOfType<PersistentObject>())
 				{
 					if (this.elements.ContainsKey(persistentObject.GetPersistenID()))
 					{
@@ -499,14 +501,14 @@ namespace Framework.Managers
 			private bool CheckAndGetObjectSafePoint(Bounds worldBounds, GameObject obj, out Vector3 finalPos)
 			{
 				bool result = false;
-				finalPos = new Vector3(obj.transform.position.x, obj.transform.position.y, 0f);
+				finalPos..ctor(obj.transform.position.x, obj.transform.position.y, 0f);
 				if (worldBounds.Contains(finalPos))
 				{
 					result = true;
 					Transform transform = obj.transform.Find("MAPELEMENT");
 					if (transform && transform.gameObject != null && transform.gameObject.activeInHierarchy)
 					{
-						finalPos = new Vector3(transform.position.x, transform.position.y, 0f);
+						finalPos..ctor(transform.position.x, transform.position.y, 0f);
 					}
 				}
 				return result;

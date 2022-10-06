@@ -21,7 +21,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("ShieldEnergy", out parameterInstance);
+				eventInstance.getParameter("ShieldEnergy", ref parameterInstance);
 				parameterInstance.setValue(value);
 			}
 			catch (Exception ex)

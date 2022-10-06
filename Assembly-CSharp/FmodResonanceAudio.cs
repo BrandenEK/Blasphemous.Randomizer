@@ -39,12 +39,13 @@ public static class FmodResonanceAudio
 	public static bool IsListenerInsideRoom(FmodResonanceAudioRoom room)
 	{
 		VECTOR vector;
-		RuntimeManager.LowlevelSystem.get3DListenerAttributes(0, out FmodResonanceAudio.listenerPositionFmod, out vector, out vector, out vector);
-		Vector3 a = new Vector3(FmodResonanceAudio.listenerPositionFmod.x, FmodResonanceAudio.listenerPositionFmod.y, FmodResonanceAudio.listenerPositionFmod.z);
-		Vector3 point = a - room.transform.position;
-		Quaternion rotation = Quaternion.Inverse(room.transform.rotation);
+		RuntimeManager.LowlevelSystem.get3DListenerAttributes(0, ref FmodResonanceAudio.listenerPositionFmod, ref vector, ref vector, ref vector);
+		Vector3 vector2;
+		vector2..ctor(FmodResonanceAudio.listenerPositionFmod.x, FmodResonanceAudio.listenerPositionFmod.y, FmodResonanceAudio.listenerPositionFmod.z);
+		Vector3 vector3 = vector2 - room.transform.position;
+		Quaternion quaternion = Quaternion.Inverse(room.transform.rotation);
 		FmodResonanceAudio.bounds.size = Vector3.Scale(room.transform.lossyScale, room.size);
-		return FmodResonanceAudio.bounds.Contains(rotation * point);
+		return FmodResonanceAudio.bounds.Contains(quaternion * vector3);
 	}
 
 	private static DSP ListenerPlugin
@@ -66,10 +67,10 @@ public static class FmodResonanceAudio
 
 	private static void ConvertAudioTransformFromUnity(ref Vector3 position, ref Quaternion rotation)
 	{
-		Matrix4x4 rhs = Matrix4x4.TRS(position, rotation, Vector3.one);
-		rhs = FmodResonanceAudio.flipZ * rhs * FmodResonanceAudio.flipZ;
-		position = rhs.GetColumn(3);
-		rotation = Quaternion.LookRotation(rhs.GetColumn(2), rhs.GetColumn(1));
+		Matrix4x4 matrix4x = Matrix4x4.TRS(position, rotation, Vector3.one);
+		matrix4x = FmodResonanceAudio.flipZ * matrix4x * FmodResonanceAudio.flipZ;
+		position = matrix4x.GetColumn(3);
+		rotation = Quaternion.LookRotation(matrix4x.GetColumn(2), matrix4x.GetColumn(1));
 	}
 
 	private static byte[] GetBytes(IntPtr ptr, int length)
@@ -118,36 +119,36 @@ public static class FmodResonanceAudio
 		int num = 0;
 		DSP result = default(DSP);
 		Bank[] array = null;
-		RuntimeManager.StudioSystem.getBankCount(out num);
-		RuntimeManager.StudioSystem.getBankList(out array);
+		RuntimeManager.StudioSystem.getBankCount(ref num);
+		RuntimeManager.StudioSystem.getBankList(ref array);
 		for (int i = 0; i < num; i++)
 		{
 			int num2 = 0;
 			Bus[] array2 = null;
-			array[i].getBusCount(out num2);
-			array[i].getBusList(out array2);
+			array[i].getBusCount(ref num2);
+			array[i].getBusList(ref array2);
 			RuntimeManager.StudioSystem.flushCommands();
 			for (int j = 0; j < num2; j++)
 			{
-				string path = null;
-				array2[j].getPath(out path);
-				RuntimeManager.StudioSystem.getBus(path, out array2[j]);
+				string text = null;
+				array2[j].getPath(ref text);
+				RuntimeManager.StudioSystem.getBus(text, ref array2[j]);
 				RuntimeManager.StudioSystem.flushCommands();
 				ChannelGroup channelGroup;
-				array2[j].getChannelGroup(out channelGroup);
+				array2[j].getChannelGroup(ref channelGroup);
 				RuntimeManager.StudioSystem.flushCommands();
 				if (channelGroup.hasHandle())
 				{
 					int num3 = 0;
-					channelGroup.getNumDSPs(out num3);
+					channelGroup.getNumDSPs(ref num3);
 					for (int k = 0; k < num3; k++)
 					{
-						channelGroup.getDSP(k, out result);
+						channelGroup.getDSP(k, ref result);
 						int num4 = 0;
 						uint num5 = 0U;
-						string text;
-						result.getInfo(out text, out num5, out num4, out num4, out num4);
-						if (text.ToString().Equals(FmodResonanceAudio.listenerPluginName) && result.hasHandle())
+						string text2;
+						result.getInfo(ref text2, ref num5, ref num4, ref num4, ref num4);
+						if (text2.ToString().Equals(FmodResonanceAudio.listenerPluginName) && result.hasHandle())
 						{
 							return result;
 						}
@@ -155,7 +156,7 @@ public static class FmodResonanceAudio
 				}
 			}
 		}
-		UnityEngine.Debug.LogError(FmodResonanceAudio.listenerPluginName + " not found in the FMOD project.");
+		Debug.LogError(FmodResonanceAudio.listenerPluginName + " not found in the FMOD project.");
 		return result;
 	}
 

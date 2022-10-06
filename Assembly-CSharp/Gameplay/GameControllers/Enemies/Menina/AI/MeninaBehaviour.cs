@@ -112,7 +112,7 @@ namespace Gameplay.GameControllers.Enemies.Menina.AI
 
 		public bool ShouldRepeatSmash()
 		{
-			return UnityEngine.Random.Range(0f, 1f) < this.repeatSmashProbability;
+			return Random.Range(0f, 1f) < this.repeatSmashProbability;
 		}
 
 		private void NormalSpeed()

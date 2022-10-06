@@ -105,7 +105,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 			base.OnCastEnd(castingTime);
 			if (this._rangeAttackFxInstance.isValid())
 			{
-				this._rangeAttackFxInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+				this._rangeAttackFxInstance.stop(0);
 				this._rangeAttackFxInstance.release();
 			}
 		}
@@ -119,8 +119,8 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 		{
 			Vector3 position = this._rootMotion.transform.position;
 			Vector3 localPosition = this._rootMotion.transform.localPosition;
-			float x = position.x - localPosition.x * 2f;
-			return new Vector3(x, position.y, 0f);
+			float num = position.x - localPosition.x * 2f;
+			return new Vector3(num, position.y, 0f);
 		}
 
 		public void InstanceProjectile()

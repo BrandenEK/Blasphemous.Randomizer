@@ -14,8 +14,8 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.BellCarrier
 			{
 				this._bellCarrier = animator.GetComponentInParent<BellCarrier>();
 			}
-			float d = (this._bellCarrier.Status.Orientation != EntityOrientation.Right) ? 1f : -1f;
-			this._bellCarrier.MotionLerper.StartLerping(Vector2.right * d);
+			float num = (this._bellCarrier.Status.Orientation != EntityOrientation.Right) ? 1f : -1f;
+			this._bellCarrier.MotionLerper.StartLerping(Vector2.right * num);
 			this._bellCarrier.BellCarrierBehaviour.WallHit = true;
 			animator.ResetTrigger("WALL_CRUSH");
 		}

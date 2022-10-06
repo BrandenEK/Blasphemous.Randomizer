@@ -167,27 +167,29 @@ namespace Gameplay.UI.Others.MenuLogic
 			}
 			if (this.automaticScroll)
 			{
-				Vector2 b = new Vector2(this.playerSpriteInMap.localPosition.x, this.playerSpriteInMap.localPosition.y);
-				Vector2 a = new Vector2(this.mapPosX, this.mapPosY);
-				Vector2 a2 = a - b;
-				if (a2.sqrMagnitude <= this.mapEpsilonSqrDistance)
+				Vector2 vector;
+				vector..ctor(this.playerSpriteInMap.localPosition.x, this.playerSpriteInMap.localPosition.y);
+				Vector2 vector2;
+				vector2..ctor(this.mapPosX, this.mapPosY);
+				Vector2 vector3 = vector2 - vector;
+				if (vector3.sqrMagnitude <= this.mapEpsilonSqrDistance)
 				{
 					this.automaticScroll = false;
-					this.SetMapFocusOnPosition(b.x, b.y);
+					this.SetMapFocusOnPosition(vector.x, vector.y);
 				}
 				else
 				{
-					a2.Normalize();
-					a2 *= this.automaticFactor.Evaluate(this.timeInAutomatic);
-					num = -a2.x;
-					num2 = -a2.y;
+					vector3.Normalize();
+					vector3 *= this.automaticFactor.Evaluate(this.timeInAutomatic);
+					num = -vector3.x;
+					num2 = -vector3.y;
 					if (!flag2 && ((this.prevVerticalAxis > 0f && num2 <= 0f) || (this.prevVerticalAxis < 0f && num2 >= 0f)))
 					{
-						this.SetMapFocusOnPosition(this.mapPosX, b.y);
+						this.SetMapFocusOnPosition(this.mapPosX, vector.y);
 					}
 					if (!flag2 && ((this.prevHorizontalAxis > 0f && num <= 0f) || (this.prevHorizontalAxis < 0f && num >= 0f)))
 					{
-						this.SetMapFocusOnPosition(b.x, this.mapPosY);
+						this.SetMapFocusOnPosition(vector.x, this.mapPosY);
 					}
 					this.prevVerticalAxis = num2;
 					this.prevHorizontalAxis = num;
@@ -566,7 +568,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			case MapMenuWidget.VIDEO_OPTIONS.FILTERING:
 			{
 				int length = Enum.GetValues(typeof(AnisotropicFiltering)).Length;
-				int num2 = (int)(this.currentFilter + num);
+				int num2 = this.currentFilter + num;
 				if (num2 < 0)
 				{
 					num2 = length - 1;
@@ -575,7 +577,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				{
 					num2 = 0;
 				}
-				this.currentFilter = (AnisotropicFiltering)num2;
+				this.currentFilter = num2;
 				break;
 			}
 			case MapMenuWidget.VIDEO_OPTIONS.RESOLUTIONMODE:
@@ -803,21 +805,21 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		private Vector3 SnapToMapCell(Vector3 pos, bool changeX)
 		{
-			float x = pos.x;
+			float num = pos.x;
 			if (changeX)
 			{
-				x = Mathf.Round(pos.x * this.FACTOR_X / (float)this.CELL_WIDTH) * (float)this.CELL_WIDTH;
+				num = Mathf.Round(pos.x * this.FACTOR_X / (float)this.CELL_WIDTH) * (float)this.CELL_WIDTH;
 			}
-			float num = Mathf.Round(pos.y * this.FACTOR_Y / (float)this.CELL_HEIGHT) * (float)this.CELL_HEIGHT;
+			float num2 = Mathf.Round(pos.y * this.FACTOR_Y / (float)this.CELL_HEIGHT) * (float)this.CELL_HEIGHT;
 			foreach (MapMenuWidget.RangePixels rangePixels in this.cellPixelFix)
 			{
-				if (num >= (float)rangePixels.cellMin && num <= (float)rangePixels.cellMax)
+				if (num2 >= (float)rangePixels.cellMin && num2 <= (float)rangePixels.cellMax)
 				{
-					num += (float)rangePixels.value;
+					num2 += (float)rangePixels.value;
 					break;
 				}
 			}
-			return new Vector3(x, num, pos.z);
+			return new Vector3(num, num2, pos.z);
 		}
 
 		private void UpdateZoneInfo()
@@ -1180,15 +1182,15 @@ namespace Gameplay.UI.Others.MenuLogic
 					disposable.Dispose();
 				}
 			}
-			foreach (GameObject obj2 in list)
+			foreach (GameObject gameObject in list)
 			{
 				if (Application.isPlaying)
 				{
-					UnityEngine.Object.Destroy(obj2);
+					Object.Destroy(gameObject);
 				}
 				else
 				{
-					UnityEngine.Object.DestroyImmediate(obj2);
+					Object.DestroyImmediate(gameObject);
 				}
 			}
 		}
@@ -1246,8 +1248,8 @@ namespace Gameplay.UI.Others.MenuLogic
 				}
 				if (sprite != null)
 				{
-					Vector2 v = this.SnapToMapCell(zone.WorldToTexture(keyValuePair.Value.pos), changeX);
-					RectTransform rectTransform = this.CreateUIMapImage(this.elementsRoot, keyValuePair.Key, v, sprite, false);
+					Vector2 vector = this.SnapToMapCell(zone.WorldToTexture(keyValuePair.Value.pos), changeX);
+					RectTransform rectTransform = this.CreateUIMapImage(this.elementsRoot, keyValuePair.Key, vector, sprite, false);
 					rectTransform.GetComponent<Image>().color = this.mapElementColor;
 				}
 			}
@@ -1271,7 +1273,8 @@ namespace Gameplay.UI.Others.MenuLogic
 			RectTransform rectTransform = (RectTransform)gameObject.transform;
 			rectTransform.localRotation = Quaternion.identity;
 			rectTransform.localScale = Vector3.one;
-			Vector3 localPosition = new Vector3(Mathf.Round(position.x), Mathf.Round(position.y), Mathf.Round(position.z));
+			Vector3 localPosition;
+			localPosition..ctor(Mathf.Round(position.x), Mathf.Round(position.y), Mathf.Round(position.z));
 			rectTransform.localPosition = localPosition;
 			if (sprite)
 			{
@@ -1399,7 +1402,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				this.tutorialOrder.Add(tutorial.id);
 				if (!this.tutorialInstances.ContainsKey(tutorial.id))
 				{
-					GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(tutorial.prefab, Vector3.zero, Quaternion.identity, this.optionsRoot[MapMenuWidget.MENU.TUTORIAL]);
+					GameObject gameObject = Object.Instantiate<GameObject>(tutorial.prefab, Vector3.zero, Quaternion.identity, this.optionsRoot[MapMenuWidget.MENU.TUTORIAL]);
 					gameObject.transform.localPosition = Vector3.zero;
 					this.tutorialInstances[tutorial.id] = gameObject;
 				}
@@ -1459,9 +1462,9 @@ namespace Gameplay.UI.Others.MenuLogic
 			}
 			else
 			{
-				string input = File.ReadAllText(pathOptionsSettings);
+				string text = File.ReadAllText(pathOptionsSettings);
 				fsData fsData;
-				fsResult fsResult = fsJsonParser.Parse(input, out fsData);
+				fsResult fsResult = fsJsonParser.Parse(text, ref fsData);
 				if (fsResult.Failed && !fsResult.FormattedMessages.Equals("No input"))
 				{
 					Debug.LogError("ReadOptionsFromFile: parsing error: " + fsResult.FormattedMessages);
@@ -1767,7 +1770,7 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		private int currentResolution = -1;
 
-		private AnisotropicFiltering currentFilter = AnisotropicFiltering.Enable;
+		private AnisotropicFiltering currentFilter = 1;
 
 		private MapMenuWidget.SCALING_STRATEGY currentScalingStrategy;
 

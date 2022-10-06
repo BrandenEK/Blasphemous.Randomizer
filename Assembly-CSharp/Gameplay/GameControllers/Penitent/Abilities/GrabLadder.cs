@@ -61,8 +61,8 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 				this.IsTopLadderReposition = true;
 				this.TopLadderReposition();
 			}
-			bool value = this._penitent.StepOnLadder && flag && this._penitent.CanClimbLadder;
-			base.EntityOwner.Animator.SetBool(GrabLadder.StepOnLadderHash, value);
+			bool flag2 = this._penitent.StepOnLadder && flag && this._penitent.CanClimbLadder;
+			base.EntityOwner.Animator.SetBool(GrabLadder.StepOnLadderHash, flag2);
 			base.EntityOwner.Animator.SetBool(GrabLadder.IsCollidingLadderHash, this._penitent.IsOnLadder);
 			if (!this._penitent.StepOnLadder)
 			{
@@ -132,15 +132,17 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 
 		public float DistanceToTopLadder(Vector3 playerPos)
 		{
-			Vector2 b = new Vector2(this.CurrentLadderCollider.bounds.center.x, playerPos.y);
-			return Vector2.Distance(playerPos, b);
+			Vector2 vector;
+			vector..ctor(this.CurrentLadderCollider.bounds.center.x, playerPos.y);
+			return Vector2.Distance(playerPos, vector);
 		}
 
 		public void TopLadderReposition()
 		{
 			float x = this.CurrentLadderCollider.bounds.center.x;
 			float y = this._penitent.transform.position.y;
-			Vector3 position = new Vector3(x, y, this._penitent.transform.position.z);
+			Vector3 position;
+			position..ctor(x, y, this._penitent.transform.position.z);
 			this._penitent.transform.position = position;
 		}
 
@@ -198,7 +200,8 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 		private Vector3 GetLadderCenteredPosition(Collider2D ladderCollider)
 		{
 			Vector3 position = this._penitent.transform.position;
-			Vector3 result = new Vector3(ladderCollider.bounds.center.x, position.y);
+			Vector3 result;
+			result..ctor(ladderCollider.bounds.center.x, position.y);
 			return result;
 		}
 
@@ -219,7 +222,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 			return new Vector2(x, y);
 		}
 
-		private void OnStepLadder(UnityEngine.Object param)
+		private void OnStepLadder(Object param)
 		{
 			this.CurrentLadderCollider = (param as Collider2D);
 		}
@@ -231,8 +234,8 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 
 		private void PenitentOnDamaged()
 		{
-			IEnumerator routine = this.DisabledClimbAbilityLapse(this._penitent.Animator.GetCurrentAnimatorStateInfo(0).length);
-			base.StartCoroutine(routine);
+			IEnumerator enumerator = this.DisabledClimbAbilityLapse(this._penitent.Animator.GetCurrentAnimatorStateInfo(0).length);
+			base.StartCoroutine(enumerator);
 		}
 
 		private IEnumerator DisabledClimbAbilityLapse(float lapse)

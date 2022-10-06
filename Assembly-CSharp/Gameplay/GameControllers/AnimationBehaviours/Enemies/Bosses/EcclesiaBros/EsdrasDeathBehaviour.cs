@@ -12,7 +12,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Bosses.EcclesiaBr
 			Esdras componentInParent = animator.GetComponentInParent<Esdras>();
 			if (componentInParent != null)
 			{
-				UnityEngine.Object.Destroy(componentInParent.gameObject);
+				Object.Destroy(componentInParent.gameObject);
 			}
 		}
 	}

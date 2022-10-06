@@ -7,10 +7,10 @@ namespace Gameplay.GameControllers.Enemies.GoldenCorpse.AI
 {
 	public class GoldenCorpseAwakener : MonoBehaviour
 	{
-		[Button("GetAllCorpses", ButtonSizes.Small)]
+		[Button("GetAllCorpses", 0)]
 		public void GetCorpsesInScene()
 		{
-			this.allCorpses = new List<GoldenCorpseBehaviour>(UnityEngine.Object.FindObjectsOfType<GoldenCorpseBehaviour>());
+			this.allCorpses = new List<GoldenCorpseBehaviour>(Object.FindObjectsOfType<GoldenCorpseBehaviour>());
 		}
 
 		private void Start()
@@ -42,7 +42,7 @@ namespace Gameplay.GameControllers.Enemies.GoldenCorpse.AI
 			}
 		}
 
-		[Button("Awaken Random Corpse", ButtonSizes.Small)]
+		[Button("Awaken Random Corpse", 0)]
 		public void AwakenRandomCorpse()
 		{
 			GoldenCorpseBehaviour randomAsleepCorpse = this.GetRandomAsleepCorpse();
@@ -56,7 +56,7 @@ namespace Gameplay.GameControllers.Enemies.GoldenCorpse.AI
 		{
 			if (this.asleepOnes.Count > 0)
 			{
-				return this.asleepOnes[UnityEngine.Random.Range(0, this.asleepOnes.Count)];
+				return this.asleepOnes[Random.Range(0, this.asleepOnes.Count)];
 			}
 			Debug.Log("NOT ASLEEP ONES REMAIN");
 			return null;

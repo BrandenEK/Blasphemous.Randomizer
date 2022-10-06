@@ -91,23 +91,23 @@ namespace Gameplay.GameControllers.Enemies.Roller.AI
 
 		private bool IsInTunnel()
 		{
-			Vector2 a = base.transform.position + Vector2.up * this.tunnelDetectorYOffset;
+			Vector2 vector = base.transform.position + Vector2.up * this.tunnelDetectorYOffset;
 			int mask = LayerMask.GetMask(new string[]
 			{
 				"Floor"
 			});
-			RaycastHit2D hit = Physics2D.Raycast(a + Vector2.right * this.tunnelDetectorRaySeparation / 2f, Vector2.up, this.Roller.MotionChecker.RangeGroundDetection, mask);
-			RaycastHit2D hit2 = Physics2D.Raycast(a + Vector2.left * this.tunnelDetectorRaySeparation / 2f, Vector2.up, this.Roller.MotionChecker.RangeGroundDetection, mask);
-			bool flag = (hit && hit.normal == Vector2.down) || (hit2 && hit2.normal == Vector2.down);
+			RaycastHit2D raycastHit2D = Physics2D.Raycast(vector + Vector2.right * this.tunnelDetectorRaySeparation / 2f, Vector2.up, this.Roller.MotionChecker.RangeGroundDetection, mask);
+			RaycastHit2D raycastHit2D2 = Physics2D.Raycast(vector + Vector2.left * this.tunnelDetectorRaySeparation / 2f, Vector2.up, this.Roller.MotionChecker.RangeGroundDetection, mask);
+			bool flag = (raycastHit2D && raycastHit2D.normal == Vector2.down) || (raycastHit2D2 && raycastHit2D2.normal == Vector2.down);
 			return flag && this.Roller.MotionChecker.HitsFloor;
 		}
 
 		private void OnDrawGizmosSelected()
 		{
-			Vector2 a = base.transform.position + Vector2.up * this.tunnelDetectorYOffset;
+			Vector2 vector = base.transform.position + Vector2.up * this.tunnelDetectorYOffset;
 			Gizmos.color = Color.cyan;
-			Gizmos.DrawLine(a + Vector2.right * this.tunnelDetectorRaySeparation / 2f, a + Vector2.right * this.tunnelDetectorRaySeparation / 2f + Vector2.up * this.tunnelDetectorRange);
-			Gizmos.DrawLine(a + Vector2.left * this.tunnelDetectorRaySeparation / 2f, a + Vector2.left * this.tunnelDetectorRaySeparation / 2f + Vector2.up * this.tunnelDetectorRange);
+			Gizmos.DrawLine(vector + Vector2.right * this.tunnelDetectorRaySeparation / 2f, vector + Vector2.right * this.tunnelDetectorRaySeparation / 2f + Vector2.up * this.tunnelDetectorRange);
+			Gizmos.DrawLine(vector + Vector2.left * this.tunnelDetectorRaySeparation / 2f, vector + Vector2.left * this.tunnelDetectorRaySeparation / 2f + Vector2.up * this.tunnelDetectorRange);
 		}
 
 		public void OnDisable()
@@ -148,8 +148,8 @@ namespace Gameplay.GameControllers.Enemies.Roller.AI
 
 		private float GetRandomDir()
 		{
-			float f = UnityEngine.Random.Range(-1f, 1f);
-			return Mathf.Sign(f);
+			float num = Random.Range(-1f, 1f);
+			return Mathf.Sign(num);
 		}
 
 		private bool ReachMaxTimeRolling

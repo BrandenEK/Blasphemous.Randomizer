@@ -69,13 +69,13 @@ public class AmanecidasAnimatorInyector : MonoBehaviour
 
 	public void PlayTurnAround(bool instant = false)
 	{
-		float normalizedTime = 0f;
+		float num = 0f;
 		if (instant)
 		{
-			normalizedTime = 0.96f;
+			num = 0.96f;
 		}
-		this.bodyAnimator.Play("TURN AROUND", 0, normalizedTime);
-		this.weaponAnimator.Play("TURN AROUND", 0, normalizedTime);
+		this.bodyAnimator.Play("TURN AROUND", 0, num);
+		this.weaponAnimator.Play("TURN AROUND", 0, num);
 	}
 
 	public void PlayHurt()
@@ -263,8 +263,8 @@ public class AmanecidasAnimatorInyector : MonoBehaviour
 
 	public void SetSpriteRotation(float angle, float bowAngleDifference)
 	{
-		float z = (angle <= 90f || angle >= 270f) ? (angle + bowAngleDifference) : (angle - bowAngleDifference);
-		Quaternion localRotation = Quaternion.Euler(0f, 0f, z);
+		float num = (angle <= 90f || angle >= 270f) ? (angle + bowAngleDifference) : (angle - bowAngleDifference);
+		Quaternion localRotation = Quaternion.Euler(0f, 0f, num);
 		this.rotationParent.transform.localRotation = localRotation;
 	}
 
@@ -277,9 +277,9 @@ public class AmanecidasAnimatorInyector : MonoBehaviour
 	{
 		this.bodySpr.flipY = false;
 		this.wpnSpr.flipY = false;
-		float y = -1.5f;
-		this.bodySpr.transform.localPosition = new Vector2(0f, y);
-		this.wpnSpr.transform.localPosition = new Vector2(0f, y);
+		float num = -1.5f;
+		this.bodySpr.transform.localPosition = new Vector2(0f, num);
+		this.wpnSpr.transform.localPosition = new Vector2(0f, num);
 		this.SetSpriteRotation(0f, 0f);
 	}
 

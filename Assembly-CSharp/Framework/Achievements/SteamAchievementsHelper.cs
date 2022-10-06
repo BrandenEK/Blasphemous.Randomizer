@@ -73,7 +73,7 @@ namespace Framework.Achievements
 					try
 					{
 						bool flag = false;
-						SteamUserStats.GetAchievement(Id, out flag);
+						SteamUserStats.GetAchievement(Id, ref flag);
 						if (flag)
 						{
 							evt(Id, 100f);
@@ -131,7 +131,7 @@ namespace Framework.Achievements
 			}
 			if ((ulong)this.m_GameID == pCallback.m_nGameID)
 			{
-				if (pCallback.m_eResult == EResult.k_EResultOK)
+				if (pCallback.m_eResult == 1)
 				{
 					Debug.Log("Received stats and achievements from Steam");
 					this.m_bStatsValid = true;
@@ -148,18 +148,17 @@ namespace Framework.Achievements
 		{
 			if ((ulong)this.m_GameID == pCallback.m_nGameID)
 			{
-				if (pCallback.m_eResult == EResult.k_EResultOK)
+				if (pCallback.m_eResult == 1)
 				{
 					Debug.Log("StoreStats - success");
 				}
-				else if (pCallback.m_eResult == EResult.k_EResultInvalidParam)
+				else if (pCallback.m_eResult == 8)
 				{
 					Debug.Log("StoreStats - some failed to validate");
-					this.OnUserStatsReceived(new UserStatsReceived_t
-					{
-						m_eResult = EResult.k_EResultOK,
-						m_nGameID = (ulong)this.m_GameID
-					});
+					UserStatsReceived_t pCallback2 = default(UserStatsReceived_t);
+					pCallback2.m_eResult = 1;
+					pCallback2.m_nGameID = (ulong)this.m_GameID;
+					this.OnUserStatsReceived(pCallback2);
 				}
 				else
 				{

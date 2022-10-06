@@ -13,24 +13,25 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 
 		private void LateUpdate()
 		{
-			Vector2 v = new Vector2(base.gameObject.transform.position.x, base.gameObject.transform.position.y);
+			Vector2 vector;
+			vector..ctor(base.gameObject.transform.position.x, base.gameObject.transform.position.y);
 			if (!this.FollowsParentsX)
 			{
-				v.x = this.FixedX;
+				vector.x = this.FixedX;
 			}
 			else
 			{
-				v.x = this.ReferenceTransform.position.x;
+				vector.x = this.ReferenceTransform.position.x;
 			}
 			if (!this.FollowsParentsY)
 			{
-				v.y = this.FixedY;
+				vector.y = this.FixedY;
 			}
 			else
 			{
-				v.y = this.ReferenceTransform.position.y;
+				vector.y = this.ReferenceTransform.position.y;
 			}
-			base.gameObject.transform.position = v;
+			base.gameObject.transform.position = vector;
 		}
 
 		public Transform ReferenceTransform;

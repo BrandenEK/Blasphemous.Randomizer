@@ -67,12 +67,12 @@ namespace Tools.UI
 				this.RefreshBlankIcon();
 				return;
 			}
-			Rewired.Player player = ReInput.players.GetPlayer(0);
+			Player player = ReInput.players.GetPlayer(0);
 			InputAction inputAction = ReInput.mapping.GetAction(this.action);
 			ActionElementMap actionElementMap = null;
 			if (inputAction != null)
 			{
-				AxisRange axisRange = (this.axisCheck != InputIcon.AxisCheck.Positive) ? AxisRange.Negative : AxisRange.Positive;
+				AxisRange axisRange = (this.axisCheck != InputIcon.AxisCheck.Positive) ? 2 : 1;
 				actionElementMap = Core.ControlRemapManager.FindLastElementMapByInputAction(inputAction, axisRange, Core.Input.ActiveController);
 			}
 			if (actionElementMap == null)
@@ -178,24 +178,24 @@ namespace Tools.UI
 			{
 				Image[] componentsInChildren = base.GetComponentsInChildren<Image>();
 				Text[] componentsInChildren2 = base.GetComponentsInChildren<Text>();
-				componentsInChildren.ForEach(delegate(Image render)
+				LinqExtensions.ForEach<Image>(componentsInChildren, delegate(Image render)
 				{
-					render.DOFade(value, time);
+					ShortcutExtensions46.DOFade(render, value, time);
 				});
-				componentsInChildren2.ForEach(delegate(Text text)
+				LinqExtensions.ForEach<Text>(componentsInChildren2, delegate(Text text)
 				{
-					text.DOFade(value, time);
+					ShortcutExtensions46.DOFade(text, value, time);
 				});
 			}
 			else
 			{
 				SpriteRenderer[] componentsInChildren3 = base.GetComponentsInChildren<SpriteRenderer>();
 				TextMesh[] componentsInChildren4 = base.GetComponentsInChildren<TextMesh>();
-				componentsInChildren3.ForEach(delegate(SpriteRenderer render)
+				LinqExtensions.ForEach<SpriteRenderer>(componentsInChildren3, delegate(SpriteRenderer render)
 				{
-					render.DOFade(value, time);
+					ShortcutExtensions43.DOFade(render, value, time);
 				});
-				componentsInChildren4.ForEach(delegate(TextMesh text)
+				LinqExtensions.ForEach<TextMesh>(componentsInChildren4, delegate(TextMesh text)
 				{
 					DOTween.To(() => text.color, delegate(ColorWrapper x)
 					{
@@ -211,20 +211,20 @@ namespace Tools.UI
 			JoystickType activeJoystickModel = Core.Input.ActiveJoystickModel;
 			ControllerType activeControllerType = Core.Input.ActiveControllerType;
 			string text = "Input/GenericIconLayout";
-			if (activeControllerType == ControllerType.Keyboard)
+			if (activeControllerType == null)
 			{
 				buttonsWithText = true;
 				text = "Input/KeyboardIconLayout";
 			}
-			else if (activeControllerType == ControllerType.Joystick && activeJoystickModel == JoystickType.PlayStation)
+			else if (activeControllerType == 2 && activeJoystickModel == JoystickType.PlayStation)
 			{
 				text = "Input/PSIconLayout";
 			}
-			else if (activeControllerType == ControllerType.Joystick && activeJoystickModel == JoystickType.XBOX)
+			else if (activeControllerType == 2 && activeJoystickModel == JoystickType.XBOX)
 			{
 				text = "Input/XBOXIconLayout";
 			}
-			else if (activeControllerType == ControllerType.Joystick && activeJoystickModel == JoystickType.Generic)
+			else if (activeControllerType == 2 && activeJoystickModel == JoystickType.Generic)
 			{
 				text = "Input/GenericIconLayout";
 			}
@@ -240,19 +240,19 @@ namespace Tools.UI
 			JoystickType activeJoystickModel = Core.Input.ActiveJoystickModel;
 			ControllerType activeControllerType = Core.Input.ActiveControllerType;
 			string text = "Input/XBOXIconLayout";
-			if (activeControllerType == ControllerType.Keyboard)
+			if (activeControllerType == null)
 			{
 				text = "Input/KeyboardIconLayout";
 			}
-			else if (activeControllerType == ControllerType.Joystick && activeJoystickModel == JoystickType.PlayStation)
+			else if (activeControllerType == 2 && activeJoystickModel == JoystickType.PlayStation)
 			{
 				text = "Input/PSIconLayout";
 			}
-			else if (activeControllerType == ControllerType.Joystick && activeJoystickModel == JoystickType.XBOX)
+			else if (activeControllerType == 2 && activeJoystickModel == JoystickType.XBOX)
 			{
 				text = "Input/XBOXIconLayout";
 			}
-			else if (activeControllerType == ControllerType.Joystick && activeJoystickModel == JoystickType.Generic)
+			else if (activeControllerType == 2 && activeJoystickModel == JoystickType.Generic)
 			{
 				text = "Input/GenericIconLayout";
 			}
@@ -283,7 +283,7 @@ namespace Tools.UI
 
 		[BoxGroup("Design Settings", true, false, 0)]
 		[ActionIdProperty(typeof(RewiredConsts.Action))]
-		[InfoBox("Define the icon layout in the config files placed at Assets/Design/Resources/Input", InfoMessageType.Info, null)]
+		[InfoBox("Define the icon layout in the config files placed at Assets/Design/Resources/Input", 1, null)]
 		public int action;
 
 		[BoxGroup("Design Settings", true, false, 0)]

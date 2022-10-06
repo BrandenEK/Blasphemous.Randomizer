@@ -1,6 +1,5 @@
 using System;
 using Framework.Managers;
-using UnityEngine;
 
 namespace Framework.Inventory
 {
@@ -26,20 +25,20 @@ namespace Framework.Inventory
 		public void Equip()
 		{
 			this.IsEquiped = true;
-			base.SendMessage("OnEquipInventoryObject", SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnEquipInventoryObject", 1);
 		}
 
 		public void UnEquip()
 		{
 			this.IsEquiped = false;
-			base.SendMessage("OnUnEquipInventoryObject", SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnUnEquipInventoryObject", 1);
 		}
 
 		public void Use()
 		{
 			Core.Metrics.CustomEvent("ITEM_USED", base.name, -1f);
 			Core.Metrics.HeatmapEvent("ITEM_USED", Core.Logic.Penitent.transform.position);
-			base.SendMessage("OnUseInventoryObject", SendMessageOptions.DontRequireReceiver);
+			base.SendMessage("OnUseInventoryObject", 1);
 		}
 
 		public bool UsePercentageCompletition = true;

@@ -28,7 +28,7 @@ namespace Gameplay.UI.Console
 
 		private static void ShowGraybox(bool b)
 		{
-			LayoutElement[] array = UnityEngine.Object.FindObjectsOfType<LayoutElement>();
+			LayoutElement[] array = Object.FindObjectsOfType<LayoutElement>();
 			Log.Trace("Decoration", string.Concat(new object[]
 			{
 				"Modifiying graybox visibility. Visible: ",
@@ -41,14 +41,14 @@ namespace Gameplay.UI.Console
 				SpriteRenderer[] componentsInChildren = array[i].GetComponentsInChildren<SpriteRenderer>();
 				if (componentsInChildren != null && array[i].showInGame)
 				{
-					componentsInChildren.ForEach(delegate(SpriteRenderer x)
+					LinqExtensions.ForEach<SpriteRenderer>(componentsInChildren, delegate(SpriteRenderer x)
 					{
 						x.enabled = true;
 					});
 				}
 				else if (componentsInChildren != null)
 				{
-					componentsInChildren.ForEach(delegate(SpriteRenderer x)
+					LinqExtensions.ForEach<SpriteRenderer>(componentsInChildren, delegate(SpriteRenderer x)
 					{
 						x.enabled = b;
 					});

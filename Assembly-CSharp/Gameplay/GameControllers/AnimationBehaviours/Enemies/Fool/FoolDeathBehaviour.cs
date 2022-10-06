@@ -15,7 +15,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Fool
 			{
 				this.Fool = animator.GetComponentInParent<Fool>();
 			}
-			UnityEngine.Object.Destroy(this.Fool.gameObject);
+			Object.Destroy(this.Fool.gameObject);
 		}
 	}
 }

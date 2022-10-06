@@ -33,12 +33,11 @@ namespace Gameplay.GameControllers.Entities
 
 		private void SetContactFilter()
 		{
-			this._contactFilter = new ContactFilter2D
-			{
-				layerMask = this.enemyLayerMask,
-				useLayerMask = true,
-				useTriggers = true
-			};
+			ContactFilter2D contactFilter = default(ContactFilter2D);
+			contactFilter.layerMask = this.enemyLayerMask;
+			contactFilter.useLayerMask = true;
+			contactFilter.useTriggers = true;
+			this._contactFilter = contactFilter;
 		}
 
 		private void Awake()
@@ -97,23 +96,23 @@ namespace Gameplay.GameControllers.Entities
 
 		public bool IsEnemyHit()
 		{
-			Vector2 v = (this.Entity.Status.Orientation != EntityOrientation.Left) ? Vector2.right : (-Vector2.right);
-			Vector3 vector = base.transform.TransformDirection(v);
-			float x = (this.Entity.Status.Orientation != EntityOrientation.Left) ? this.WeaponCollider.bounds.min.x : this.WeaponCollider.bounds.max.x;
-			this._topRayCastOrigin = new Vector2(x, this.WeaponCollider.bounds.max.y);
-			this._bottomRayCastOrigin = new Vector2(x, this.WeaponCollider.bounds.min.y);
-			bool flag = Physics2D.Raycast(this._topRayCastOrigin, vector, this.WeaponCollider.bounds.size.x + this.entityScopeDetection, this.enemyLayerMask);
-			bool flag2 = Physics2D.Raycast(this._bottomRayCastOrigin, vector, this.WeaponCollider.bounds.size.x + this.entityScopeDetection, this.enemyLayerMask);
-			UnityEngine.Debug.DrawRay(this._topRayCastOrigin, vector * (this.WeaponCollider.bounds.size.x + this.entityScopeDetection), Color.blue);
-			UnityEngine.Debug.DrawRay(this._bottomRayCastOrigin, vector * (this.WeaponCollider.bounds.size.x + this.entityScopeDetection), Color.blue);
+			Vector2 vector = (this.Entity.Status.Orientation != EntityOrientation.Left) ? Vector2.right : (-Vector2.right);
+			Vector3 vector2 = base.transform.TransformDirection(vector);
+			float num = (this.Entity.Status.Orientation != EntityOrientation.Left) ? this.WeaponCollider.bounds.min.x : this.WeaponCollider.bounds.max.x;
+			this._topRayCastOrigin = new Vector2(num, this.WeaponCollider.bounds.max.y);
+			this._bottomRayCastOrigin = new Vector2(num, this.WeaponCollider.bounds.min.y);
+			bool flag = Physics2D.Raycast(this._topRayCastOrigin, vector2, this.WeaponCollider.bounds.size.x + this.entityScopeDetection, this.enemyLayerMask);
+			bool flag2 = Physics2D.Raycast(this._bottomRayCastOrigin, vector2, this.WeaponCollider.bounds.size.x + this.entityScopeDetection, this.enemyLayerMask);
+			Debug.DrawRay(this._topRayCastOrigin, vector2 * (this.WeaponCollider.bounds.size.x + this.entityScopeDetection), Color.blue);
+			Debug.DrawRay(this._bottomRayCastOrigin, vector2 * (this.WeaponCollider.bounds.size.x + this.entityScopeDetection), Color.blue);
 			return flag2 || flag;
 		}
 
 		private void DrawDebugCross(Vector2 point, Color c, float seconds)
 		{
-			float d = 0.6f;
-			UnityEngine.Debug.DrawLine(point - Vector2.up * d, point + Vector2.up * d, c, seconds);
-			UnityEngine.Debug.DrawLine(point - Vector2.right * d, point + Vector2.right * d, c, seconds);
+			float num = 0.6f;
+			Debug.DrawLine(point - Vector2.up * num, point + Vector2.up * num, c, seconds);
+			Debug.DrawLine(point - Vector2.right * num, point + Vector2.right * num, c, seconds);
 		}
 
 		public GameObject[] OverlappedEntities()
@@ -132,7 +131,8 @@ namespace Gameplay.GameControllers.Entities
 		{
 			if (Math.Abs(base.transform.localPosition.y - yLocalPos) > Mathf.Epsilon)
 			{
-				Vector3 localPosition = new Vector3(base.transform.localPosition.x, yLocalPos, base.transform.localPosition.z);
+				Vector3 localPosition;
+				localPosition..ctor(base.transform.localPosition.x, yLocalPos, base.transform.localPosition.z);
 				base.transform.localPosition = localPosition;
 			}
 		}

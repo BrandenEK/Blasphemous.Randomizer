@@ -44,7 +44,7 @@ public class ShowCursor : ConsoleCommand
 
 	public static void ShowMouseCursor(bool enable = true)
 	{
-		DebugInformation debugInformation = UnityEngine.Object.FindObjectOfType<DebugInformation>();
+		DebugInformation debugInformation = Object.FindObjectOfType<DebugInformation>();
 		if (debugInformation)
 		{
 			debugInformation.showCursor = enable;

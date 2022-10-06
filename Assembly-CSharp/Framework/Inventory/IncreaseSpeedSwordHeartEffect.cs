@@ -136,7 +136,7 @@ namespace Framework.Inventory
 				{
 					if (this.beadEffect == null)
 					{
-						this.beadEffect = UnityEngine.Object.FindObjectOfType<IncreaseSpeedBeadEffect>();
+						this.beadEffect = Object.FindObjectOfType<IncreaseSpeedBeadEffect>();
 					}
 					speed = this.beadEffect.BeadMoveSettings.Speed;
 					drag = this.beadEffect.BeadMoveSettings.Drag;
@@ -252,7 +252,7 @@ namespace Framework.Inventory
 
 		private void ActivationSound()
 		{
-			if (this.prayerActivationSoundFx.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(this.prayerActivationSoundFx))
 			{
 				return;
 			}
@@ -261,7 +261,7 @@ namespace Framework.Inventory
 
 		private void StartUseLoopFx()
 		{
-			if (this._activationSoundLoopInstance.isValid() || this.prayerUseLoopSoundFx.IsNullOrWhitespace())
+			if (this._activationSoundLoopInstance.isValid() || StringExtensions.IsNullOrWhitespace(this.prayerUseLoopSoundFx))
 			{
 				return;
 			}
@@ -275,7 +275,7 @@ namespace Framework.Inventory
 			{
 				return;
 			}
-			this._activationSoundLoopInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			this._activationSoundLoopInstance.stop(0);
 			this._activationSoundLoopInstance.release();
 			this._activationSoundLoopInstance = default(EventInstance);
 		}

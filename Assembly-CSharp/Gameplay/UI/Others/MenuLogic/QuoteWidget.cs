@@ -32,10 +32,10 @@ namespace Gameplay.UI.Others.MenuLogic
 			base.gameObject.SetActive(true);
 			this.canvasGroup = base.GetComponent<CanvasGroup>();
 			this.canvasGroup.alpha = 0f;
-			DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
+			TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
 			{
 				this.canvasGroup.alpha = x;
-			}, 1f, this.fadeInTime).OnComplete(new TweenCallback(this.StartToWait));
+			}, 1f, this.fadeInTime), new TweenCallback(this.StartToWait));
 		}
 
 		public override void Close()
@@ -43,10 +43,10 @@ namespace Gameplay.UI.Others.MenuLogic
 			if (!this.IsClosing)
 			{
 				this.IsClosing = true;
-				DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
+				TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
 				{
 					this.canvasGroup.alpha = x;
-				}, 0f, this.fadeOutTime).OnComplete(new TweenCallback(this.OnClose));
+				}, 0f, this.fadeOutTime), new TweenCallback(this.OnClose));
 				base.Close();
 			}
 		}

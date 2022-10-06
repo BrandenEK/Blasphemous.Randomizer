@@ -16,18 +16,18 @@ public class EffectsOnBabyDeath : MonoBehaviour
 
 	public void ShowFlameWall(Transform flameWall)
 	{
-		flameWall.GetComponent<SpriteRenderer>().DOFade(1f, 0.5f);
-		float r = UnityEngine.Random.Range(1.5f, 3f);
-		flameWall.DOLocalMoveY(flameWall.localPosition.y + 2f, 4f, false).SetEase(Ease.InQuad).OnComplete(delegate
+		ShortcutExtensions43.DOFade(flameWall.GetComponent<SpriteRenderer>(), 1f, 0.5f);
+		float r = Random.Range(1.5f, 3f);
+		TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMoveY(flameWall, flameWall.localPosition.y + 2f, 4f, false), 5), delegate()
 		{
-			flameWall.DOLocalMoveY(flameWall.localPosition.y - 1f, r, false).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
+			TweenSettingsExtensions.SetLoops<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMoveY(flameWall, flameWall.localPosition.y - 1f, r, false), 7), -1, 1);
 		});
 	}
 
 	public void HideFlameWall(Transform flameWall)
 	{
-		flameWall.DOKill(false);
-		flameWall.DOLocalMoveY(flameWall.localPosition.y - 3f, 3f, false).SetEase(Ease.InOutQuad);
+		ShortcutExtensions.DOKill(flameWall, false);
+		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMoveY(flameWall, flameWall.localPosition.y - 3f, 3f, false), 7);
 		flameWall.GetComponentInParent<Collider2D>().enabled = false;
 	}
 

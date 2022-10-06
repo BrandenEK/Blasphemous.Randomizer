@@ -35,7 +35,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace
 
 		private void SetRosaryBeadsDamage()
 		{
-			foreach (BasicTurret projectileAttack in UnityEngine.Object.FindObjectsOfType<BasicTurret>())
+			foreach (BasicTurret projectileAttack in Object.FindObjectsOfType<BasicTurret>())
 			{
 				BurnfaceBalanceImporter.SetProjectileAttackDamage(projectileAttack, base.GetLightAttackDamage);
 			}

@@ -35,18 +35,18 @@ namespace Gameplay.GameControllers.Effects.Player.Protection
 					return;
 				}
 				GameplayUtils.DrawDebugCross(closerEnemy.transform.position, Color.cyan, 3f);
-				UnityEngine.Debug.Log("LOOKING FOR TARGET");
+				Debug.Log("LOOKING FOR TARGET");
 				bool flag = false;
 				while (this.ExistMoreEnemiesToCheck())
 				{
 					if (this.CanAttackEnemy(closerEnemy) && this.LaunchCherubToEnemy(closerEnemy))
 					{
-						UnityEngine.Debug.Log("FOUND TARGET");
+						Debug.Log("FOUND TARGET");
 						this.LevelEnemiesChecked.Clear();
 						flag = true;
 						break;
 					}
-					UnityEngine.Debug.Log("LOOKING FOR ANOTHER TARGET");
+					Debug.Log("LOOKING FOR ANOTHER TARGET");
 					this.LevelEnemiesChecked.Add(closerEnemy);
 					closerEnemy = this.GetCloserEnemy();
 					if (closerEnemy == null)
@@ -56,7 +56,7 @@ namespace Gameplay.GameControllers.Effects.Player.Protection
 				}
 				if (!flag)
 				{
-					UnityEngine.Debug.Log("DIDNT FIND ANY TARGET");
+					Debug.Log("DIDNT FIND ANY TARGET");
 					this.currentCheckEnemyLapse = this.CheckEnemyLapse * 0.9f;
 					this.LevelEnemies.Clear();
 					this.LevelEnemiesChecked.Clear();
@@ -106,7 +106,7 @@ namespace Gameplay.GameControllers.Effects.Player.Protection
 		{
 			if (this.AvailableCherubs.Count <= 0)
 			{
-				UnityEngine.Debug.Log("NO AVAILABLE CHERUBS!");
+				Debug.Log("NO AVAILABLE CHERUBS!");
 				return false;
 			}
 			AlliedCherub alliedCherub = this.AvailableCherubs[this.AvailableCherubs.Count - 1];
@@ -114,14 +114,14 @@ namespace Gameplay.GameControllers.Effects.Player.Protection
 			{
 				this.AvailableCherubs.Remove(alliedCherub);
 				alliedCherub.Behaviour.Attack(enemy);
-				UnityEngine.Debug.Log("LAUNCHING CHERUB!");
+				Debug.Log("LAUNCHING CHERUB!");
 				if (this.AvailableCherubs.Count == 0)
 				{
 					this.OnLastCherubLaunched();
 				}
 				return true;
 			}
-			UnityEngine.Debug.Log("THEY CAN'T SEE THE ENEMY");
+			Debug.Log("THEY CAN'T SEE THE ENEMY");
 			return false;
 		}
 
@@ -149,7 +149,7 @@ namespace Gameplay.GameControllers.Effects.Player.Protection
 
 		private void FindLevelEnemies()
 		{
-			foreach (Enemy enemy in UnityEngine.Object.FindObjectsOfType<Enemy>())
+			foreach (Enemy enemy in Object.FindObjectsOfType<Enemy>())
 			{
 				if (!enemy.Status.Dead && !(enemy.tag == "CherubCaptor") && !(enemy is HomingBonfire))
 				{
@@ -209,7 +209,7 @@ namespace Gameplay.GameControllers.Effects.Player.Protection
 			}
 			else
 			{
-				gameObject = UnityEngine.Object.Instantiate<GameObject>(cherubSlot.AlliedCherub, position, Quaternion.identity);
+				gameObject = Object.Instantiate<GameObject>(cherubSlot.AlliedCherub, position, Quaternion.identity);
 			}
 			AlliedCherub componentInChildren = gameObject.GetComponentInChildren<AlliedCherub>();
 			if (componentInChildren == null)

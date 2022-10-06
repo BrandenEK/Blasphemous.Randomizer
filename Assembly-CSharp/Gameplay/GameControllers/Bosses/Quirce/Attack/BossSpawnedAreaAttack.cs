@@ -229,7 +229,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 			this._cdCounter = this.firstTickDealy;
 			if (this.flipRandomly)
 			{
-				this.SpriteRenderer.flipX = (UnityEngine.Random.Range(0f, 1f) > 0.5f);
+				this.SpriteRenderer.flipX = (Random.Range(0f, 1f) > 0.5f);
 			}
 			if (this.Animator != null)
 			{

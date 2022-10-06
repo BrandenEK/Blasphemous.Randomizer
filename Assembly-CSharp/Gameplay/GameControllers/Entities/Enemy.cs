@@ -151,16 +151,16 @@ namespace Gameplay.GameControllers.Entities
 		{
 			get
 			{
-				LayerMask mask;
+				LayerMask layerMask;
 				if (this.Controller)
 				{
-					mask = this.Controller.SmartPlatformCollider.LayerCollision;
+					layerMask = this.Controller.SmartPlatformCollider.LayerCollision;
 				}
 				else
 				{
-					mask = LayerMask.NameToLayer("Floor");
+					layerMask = LayerMask.NameToLayer("Floor");
 				}
-				RaycastHit2D raycastHit2D = Physics2D.Raycast(base.transform.position, -base.transform.up, 2.5f, mask);
+				RaycastHit2D raycastHit2D = Physics2D.Raycast(base.transform.position, -base.transform.up, 2.5f, layerMask);
 				return !raycastHit2D.collider || raycastHit2D.collider.GetComponentInChildren<NonExecutionPlatform>() != null;
 			}
 		}
@@ -247,9 +247,9 @@ namespace Gameplay.GameControllers.Entities
 
 		private void InstantiateGuardEffect(float offsetSign)
 		{
-			Vector3 b = this.GuardEffectOffset;
-			b.x *= offsetSign;
-			Vector3 position = base.transform.position + b;
+			Vector3 vector = this.GuardEffectOffset;
+			vector.x *= offsetSign;
+			Vector3 position = base.transform.position + vector;
 			if (this.GuardEffect)
 			{
 				GameObject gameObject = PoolManager.Instance.ReuseObject(this.GuardEffect, position, Quaternion.identity, false, 1).GameObject;
@@ -276,10 +276,10 @@ namespace Gameplay.GameControllers.Entities
 			{
 				Gizmos.color = Color.red;
 				Gizmos.DrawWireCube(base.transform.position + this.healthOffset, new Vector3(1f, 0.125f, 1f));
-				Vector2 v = this.healthOffset;
-				v.x *= -1f;
+				Vector2 vector = this.healthOffset;
+				vector.x *= -1f;
 				Gizmos.color = Color.magenta;
-				Gizmos.DrawWireCube(base.transform.position + v, new Vector3(1f, 0.125f, 1f));
+				Gizmos.DrawWireCube(base.transform.position + vector, new Vector3(1f, 0.125f, 1f));
 			}
 		}
 

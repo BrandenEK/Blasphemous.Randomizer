@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using Framework.Managers;
 using Gameplay.GameControllers.Bosses.Generic.Attacks;
 using Gameplay.GameControllers.Bosses.HighWills.Attack;
@@ -79,7 +78,7 @@ namespace Gameplay.GameControllers.Bosses.HighWills
 			{
 				weightsSum += x.Weight;
 			});
-			float num = UnityEngine.Random.Range(0f, weightsSum);
+			float num = Random.Range(0f, weightsSum);
 			weightsSum = 0f;
 			for (int i = 0; i < this.AttacksAndWeights.Count; i++)
 			{
@@ -162,7 +161,7 @@ namespace Gameplay.GameControllers.Bosses.HighWills
 
 		private void ClearMines()
 		{
-			RangedMine[] array = UnityEngine.Object.FindObjectsOfType<RangedMine>();
+			RangedMine[] array = Object.FindObjectsOfType<RangedMine>();
 			for (int i = 0; i < array.Length; i++)
 			{
 				array[i].gameObject.SetActive(false);
@@ -343,9 +342,9 @@ namespace Gameplay.GameControllers.Bosses.HighWills
 			{
 				HighWillsBehaviour o = this.owner as HighWillsBehaviour;
 				o.HighWills.Stats.Life.SetToCurrentMax();
-				this.ACT_MOVE.StartAction(o, o.transform.position + new Vector3(-10f, 0f, 0f), 2f, Ease.OutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, o.transform.position + new Vector3(-10f, 0f, 0f), 2f, 6, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
-				this.ACT_MOVE.StartAction(o, o.transform.position + new Vector3(5f, 0f, 0f), 4f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, o.transform.position + new Vector3(5f, 0f, 0f), 4f, 7, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				base.FinishAction();
 				yield break;

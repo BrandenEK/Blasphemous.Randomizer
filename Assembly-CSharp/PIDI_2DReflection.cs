@@ -13,7 +13,7 @@ public class PIDI_2DReflection : MonoBehaviour
 		if (!this.blitMat)
 		{
 			this.blitMat = new Material(this.parallaxInternal);
-			this.blitMat.hideFlags = HideFlags.DontSave;
+			this.blitMat.hideFlags = 52;
 		}
 		SpriteRenderer component = base.GetComponent<SpriteRenderer>();
 		if (component != null)
@@ -61,7 +61,7 @@ public class PIDI_2DReflection : MonoBehaviour
 			{
 				typeof(Camera)
 			}).GetComponent<Camera>();
-			this.tempCamera.gameObject.hideFlags = HideFlags.HideAndDontSave;
+			this.tempCamera.gameObject.hideFlags = 61;
 			this.tempCamera.enabled = false;
 		}
 		float num = 1f / (float)this.downScaleValue;
@@ -84,7 +84,7 @@ public class PIDI_2DReflection : MonoBehaviour
 		}
 		else if ((int)((float)current.pixelWidth * num) != this.rt.width || (int)((float)current.pixelHeight * num) != this.rt.height)
 		{
-			UnityEngine.Object.DestroyImmediate(this.rt);
+			Object.DestroyImmediate(this.rt);
 			this.rt = new RenderTexture((int)((float)current.pixelWidth * num), (int)((float)current.pixelHeight * num), 0);
 		}
 		if (!this.mask)
@@ -93,7 +93,7 @@ public class PIDI_2DReflection : MonoBehaviour
 		}
 		else if ((int)((float)current.pixelWidth * num) != this.rt.width || (int)((float)current.pixelHeight * num) != this.rt.height)
 		{
-			UnityEngine.Object.DestroyImmediate(this.rt);
+			Object.DestroyImmediate(this.rt);
 			this.mask = new RenderTexture((int)((float)current.pixelWidth * num), (int)((float)current.pixelHeight * num), 0);
 		}
 		if (current)
@@ -116,7 +116,7 @@ public class PIDI_2DReflection : MonoBehaviour
 			this.tempCamera.aspect = current.aspect;
 			this.tempCamera.cullingMask = (this.renderLayers & -17);
 			this.tempCamera.targetTexture = this.rt;
-			this.tempCamera.clearFlags = ((current.clearFlags != CameraClearFlags.Nothing && current.clearFlags != CameraClearFlags.Depth) ? current.clearFlags : CameraClearFlags.Color);
+			this.tempCamera.clearFlags = ((current.clearFlags != 4 && current.clearFlags != 3) ? current.clearFlags : 2);
 			this.tempCamera.backgroundColor = current.backgroundColor;
 			this.tempCamera.backgroundColor = ((!this.alphaBackground && !base.GetComponent<Renderer>().sharedMaterial.HasProperty("_BackgroundReflection")) ? current.backgroundColor : Color.clear);
 			this.tempCamera.allowHDR = current.allowHDR;
@@ -147,7 +147,7 @@ public class PIDI_2DReflection : MonoBehaviour
 				}
 				if (!this.advancedParallax && base.GetComponent<Renderer>().sharedMaterial.HasProperty("_ReflectionMask"))
 				{
-					this.tempCamera.clearFlags = CameraClearFlags.Color;
+					this.tempCamera.clearFlags = 2;
 					this.tempCamera.backgroundColor = Color.clear;
 					this.tempCamera.cullingMask = this.drawOverLayers;
 					this.tempCamera.targetTexture = this.mask;
@@ -170,7 +170,7 @@ public class PIDI_2DReflection : MonoBehaviour
 						this.tempCamera.aspect = current.aspect;
 						this.tempCamera.cullingMask = (this.drawOverLayers & -17);
 						this.tempCamera.targetTexture = this.rt;
-						this.tempCamera.clearFlags = ((current.clearFlags != CameraClearFlags.Nothing && current.clearFlags != CameraClearFlags.Depth) ? current.clearFlags : CameraClearFlags.Color);
+						this.tempCamera.clearFlags = ((current.clearFlags != 4 && current.clearFlags != 3) ? current.clearFlags : 2);
 						this.tempCamera.backgroundColor = current.backgroundColor;
 						this.tempCamera.backgroundColor = ((!this.alphaBackground) ? current.backgroundColor : Color.clear);
 						this.tempCamera.allowHDR = current.allowHDR;
@@ -207,7 +207,7 @@ public class PIDI_2DReflection : MonoBehaviour
 								this.blitMat.SetFloat("_BetaReflections", 0f);
 							}
 							this.tempCamera.cullingMask = (camera.cullingMask & -17);
-							this.tempCamera.clearFlags = CameraClearFlags.Skybox;
+							this.tempCamera.clearFlags = 1;
 							this.tempCamera.backgroundColor = ((i <= 0) ? camera.backgroundColor : Color.clear);
 							this.tempCamera.depth = camera.depth;
 							this.tempCamera.allowHDR = camera.allowHDR;
@@ -246,7 +246,7 @@ public class PIDI_2DReflection : MonoBehaviour
 			{
 				typeof(Camera)
 			}).GetComponent<Camera>();
-			this.tempCamera.gameObject.hideFlags = HideFlags.HideAndDontSave;
+			this.tempCamera.gameObject.hideFlags = 61;
 			this.tempCamera.enabled = false;
 		}
 		float num = 1f / (float)this.downScaleValue;
@@ -265,7 +265,7 @@ public class PIDI_2DReflection : MonoBehaviour
 		}
 		else if ((int)((float)camera.pixelWidth * num) != this.rt.width || (int)((float)camera.pixelHeight * num) != this.rt.height)
 		{
-			UnityEngine.Object.DestroyImmediate(this.rt);
+			Object.DestroyImmediate(this.rt);
 			this.rt = new RenderTexture((int)((float)camera.pixelWidth * num), (int)((float)camera.pixelHeight * num), 0);
 		}
 		if (!this.mask)
@@ -274,7 +274,7 @@ public class PIDI_2DReflection : MonoBehaviour
 		}
 		else if ((int)((float)camera.pixelWidth * num) != this.rt.width || (int)((float)camera.pixelHeight * num) != this.rt.height)
 		{
-			UnityEngine.Object.DestroyImmediate(this.rt);
+			Object.DestroyImmediate(this.rt);
 			this.mask = new RenderTexture((int)((float)camera.pixelWidth * num), (int)((float)camera.pixelHeight * num), 0);
 		}
 		if (camera)
@@ -287,7 +287,7 @@ public class PIDI_2DReflection : MonoBehaviour
 			this.tempCamera.aspect = camera.aspect;
 			this.tempCamera.cullingMask = (this.renderLayers & -17);
 			this.tempCamera.targetTexture = this.rt;
-			this.tempCamera.clearFlags = ((camera.clearFlags != CameraClearFlags.Nothing && camera.clearFlags != CameraClearFlags.Depth) ? camera.clearFlags : CameraClearFlags.Color);
+			this.tempCamera.clearFlags = ((camera.clearFlags != 4 && camera.clearFlags != 3) ? camera.clearFlags : 2);
 			this.tempCamera.backgroundColor = camera.backgroundColor;
 			this.tempCamera.backgroundColor = ((!this.alphaBackground && !base.GetComponent<Renderer>().sharedMaterial.HasProperty("_BackgroundReflection")) ? camera.backgroundColor : Color.clear);
 			this.tempCamera.allowHDR = camera.allowHDR;
@@ -312,7 +312,7 @@ public class PIDI_2DReflection : MonoBehaviour
 				materialPropertyBlock.SetTexture("_Reflection2D", this.rt);
 				if (base.GetComponent<Renderer>().sharedMaterial.HasProperty("_ReflectionMask"))
 				{
-					this.tempCamera.clearFlags = CameraClearFlags.Color;
+					this.tempCamera.clearFlags = 2;
 					this.tempCamera.backgroundColor = Color.clear;
 					this.tempCamera.cullingMask = this.drawOverLayers;
 					this.tempCamera.targetTexture = this.mask;
@@ -335,7 +335,7 @@ public class PIDI_2DReflection : MonoBehaviour
 						this.tempCamera.aspect = camera.aspect;
 						this.tempCamera.cullingMask = (this.drawOverLayers & -17);
 						this.tempCamera.targetTexture = this.rt;
-						this.tempCamera.clearFlags = ((camera.clearFlags != CameraClearFlags.Nothing && camera.clearFlags != CameraClearFlags.Depth) ? camera.clearFlags : CameraClearFlags.Color);
+						this.tempCamera.clearFlags = ((camera.clearFlags != 4 && camera.clearFlags != 3) ? camera.clearFlags : 2);
 						this.tempCamera.backgroundColor = camera.backgroundColor;
 						this.tempCamera.backgroundColor = ((!this.alphaBackground) ? camera.backgroundColor : Color.clear);
 						this.tempCamera.allowHDR = camera.allowHDR;
@@ -360,22 +360,22 @@ public class PIDI_2DReflection : MonoBehaviour
 		{
 			if (!Application.isPlaying)
 			{
-				UnityEngine.Object.DestroyImmediate(this.rt);
+				Object.DestroyImmediate(this.rt);
 			}
 			else
 			{
-				UnityEngine.Object.Destroy(this.rt);
+				Object.Destroy(this.rt);
 			}
 		}
 		if (this.tempCamera)
 		{
 			if (!Application.isPlaying)
 			{
-				UnityEngine.Object.DestroyImmediate(this.tempCamera.gameObject);
+				Object.DestroyImmediate(this.tempCamera.gameObject);
 			}
 			else
 			{
-				UnityEngine.Object.Destroy(this.tempCamera.gameObject);
+				Object.Destroy(this.tempCamera.gameObject);
 			}
 		}
 	}
@@ -386,22 +386,22 @@ public class PIDI_2DReflection : MonoBehaviour
 		{
 			if (!Application.isPlaying)
 			{
-				UnityEngine.Object.DestroyImmediate(this.rt);
+				Object.DestroyImmediate(this.rt);
 			}
 			else
 			{
-				UnityEngine.Object.Destroy(this.rt);
+				Object.Destroy(this.rt);
 			}
 		}
 		if (this.tempCamera)
 		{
 			if (!Application.isPlaying)
 			{
-				UnityEngine.Object.DestroyImmediate(this.tempCamera.gameObject);
+				Object.DestroyImmediate(this.tempCamera.gameObject);
 			}
 			else
 			{
-				UnityEngine.Object.Destroy(this.tempCamera.gameObject);
+				Object.Destroy(this.tempCamera.gameObject);
 			}
 		}
 		SpriteRenderer component = base.GetComponent<SpriteRenderer>();

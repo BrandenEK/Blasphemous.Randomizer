@@ -71,8 +71,8 @@ namespace Gameplay.GameControllers.Enemies.BellGhost.Attack
 			{
 				return;
 			}
-			Vector2 v = this._bellGhost.FloatingMotion.transform.localPosition;
-			this._bellGhost.AttackArea.transform.localPosition = v;
+			Vector2 vector = this._bellGhost.FloatingMotion.transform.localPosition;
+			this._bellGhost.AttackArea.transform.localPosition = vector;
 		}
 
 		public bool EnableWeaponAreaCollider

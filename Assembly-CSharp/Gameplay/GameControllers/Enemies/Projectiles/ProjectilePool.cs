@@ -20,7 +20,7 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 			}
 			else
 			{
-				projectile = UnityEngine.Object.Instantiate<Projectile>(this.projectilePrefab, position, Quaternion.identity);
+				projectile = Object.Instantiate<Projectile>(this.projectilePrefab, position, Quaternion.identity);
 			}
 			projectile.owner = owner;
 			return projectile;
@@ -40,7 +40,7 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 		{
 			for (int i = 0; i < n; i++)
 			{
-				Projectile p = UnityEngine.Object.Instantiate<Projectile>(this.projectilePrefab, base.transform.position, Quaternion.identity);
+				Projectile p = Object.Instantiate<Projectile>(this.projectilePrefab, base.transform.position, Quaternion.identity);
 				this.StoreProjectile(p);
 			}
 		}

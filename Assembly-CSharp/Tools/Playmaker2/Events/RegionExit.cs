@@ -50,7 +50,7 @@ namespace Tools.Playmaker2.Events
 			}
 		}
 
-		[UIHint(UIHint.Variable)]
+		[UIHint(10)]
 		public FsmGameObject region;
 
 		public FsmBool listenOnlySelf;

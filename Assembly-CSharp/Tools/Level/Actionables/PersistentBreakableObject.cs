@@ -102,7 +102,7 @@ namespace Tools.Level.Actionables
 				if (!(this.OnDestroy[i] == null))
 				{
 					IActionable[] components = this.OnDestroy[i].GetComponents<IActionable>();
-					components.ForEach(delegate(IActionable actionable)
+					LinqExtensions.ForEach<IActionable>(components, delegate(IActionable actionable)
 					{
 						actionable.Use();
 					});
@@ -121,7 +121,8 @@ namespace Tools.Level.Actionables
 
 		private void SetColor(Color c)
 		{
-			Color color = new Color(c.r, c.g, c.b);
+			Color color;
+			color..ctor(c.r, c.g, c.b);
 			this.layoutElement.SpriteRenderer.material.color = color;
 		}
 
@@ -152,10 +153,10 @@ namespace Tools.Level.Actionables
 			where currentLife == damageEvent.TriggerValue
 			select damageEvent)
 			{
-				if (!damageEvent2.EventName.IsNullOrWhitespace())
+				if (!StringExtensions.IsNullOrWhitespace(damageEvent2.EventName))
 				{
-					string fsmEventName = damageEvent2.EventName.Trim();
-					PlayMakerFSM.BroadcastEvent(fsmEventName);
+					string text = damageEvent2.EventName.Trim();
+					PlayMakerFSM.BroadcastEvent(text);
 				}
 			}
 		}

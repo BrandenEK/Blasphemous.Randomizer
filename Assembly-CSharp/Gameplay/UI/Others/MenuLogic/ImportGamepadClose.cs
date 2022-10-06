@@ -7,7 +7,7 @@ namespace Gameplay.UI.Others.MenuLogic
 	{
 		private void Update()
 		{
-			if (Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Return))
+			if (Input.GetButtonDown("A") || Input.GetKeyDown(13))
 			{
 				this.menu.CloseImportMenu();
 			}

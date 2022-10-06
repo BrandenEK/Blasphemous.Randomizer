@@ -27,14 +27,14 @@ namespace Gameplay.GameControllers.Combat
 		public void InstantiateExecution()
 		{
 			Core.Audio.PlaySfx(this.ExecutionAwareness, 0f);
-			this.execution = UnityEngine.Object.Instantiate<GameObject>(this.ExecutionPrefab, base.EntityOwner.transform.position, Quaternion.identity);
+			this.execution = Object.Instantiate<GameObject>(this.ExecutionPrefab, base.EntityOwner.transform.position, Quaternion.identity);
 			this.ExecutionPosition = new Vector3(this.execution.transform.position.x, this.execution.transform.position.y);
 			this.execution.GetComponentInChildren<Execution>().ExecutedEntity = (base.EntityOwner as Enemy);
 			SpriteRenderer spriteRenderer = this.execution.GetComponentsInChildren<SpriteRenderer>().First((SpriteRenderer x) => x.gameObject.CompareTag("Interactable"));
 			spriteRenderer.flipX = (Core.Logic.Penitent.transform.position.x < this.execution.transform.position.x);
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		public void DestroyExecution()
 		{
 			if (this.execution == null)

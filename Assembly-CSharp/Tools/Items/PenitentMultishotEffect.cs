@@ -35,10 +35,10 @@ namespace Tools.Items
 			Vector3 projectilePosition = this._instantProjectileAttack.transform.position;
 			this._instantProjectileAttack.Shoot(projectilePosition, dir);
 			yield return new WaitForSeconds(0.15f);
-			float randomOff = UnityEngine.Random.Range(-1f, 1f) * 1f;
+			float randomOff = Random.Range(-1f, 1f) * 1f;
 			this._instantProjectileAttack.Shoot(projectilePosition + Vector3.up * randomOff, dir);
 			yield return new WaitForSeconds(0.15f);
-			randomOff = UnityEngine.Random.Range(-1f, 1f) * 1f;
+			randomOff = Random.Range(-1f, 1f) * 1f;
 			this._instantProjectileAttack.Shoot(projectilePosition + Vector3.up * randomOff, dir);
 			yield break;
 		}

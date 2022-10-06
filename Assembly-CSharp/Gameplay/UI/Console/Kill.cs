@@ -48,14 +48,14 @@ namespace Gameplay.UI.Console
 
 		private void KillAllEntities()
 		{
-			Entity[] entities = UnityEngine.Object.FindObjectsOfType<Entity>();
+			Entity[] entities = Object.FindObjectsOfType<Entity>();
 			this.KillAll(entities);
 			base.Console.Write("Killing everybody on the scene.");
 		}
 
 		private void KillAllEnemies()
 		{
-			Enemy[] entities = UnityEngine.Object.FindObjectsOfType<Enemy>();
+			Enemy[] entities = Object.FindObjectsOfType<Enemy>();
 			this.KillAll(entities);
 			base.Console.Write("Killing every enemy on the scene.");
 		}

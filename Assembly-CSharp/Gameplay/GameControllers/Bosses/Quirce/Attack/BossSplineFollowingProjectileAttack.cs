@@ -107,7 +107,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 		{
 			obj.OnSplineCompletedEvent -= this.OnSplineCompleted;
 			this.lastPosition = obj.transform.position;
-			UnityEngine.Debug.Log("ATTACK: SPLINE COMPLETED!!");
+			Debug.Log("ATTACK: SPLINE COMPLETED!!");
 			if (this.OnPathFinished != null)
 			{
 				this.OnPathFinished(this);

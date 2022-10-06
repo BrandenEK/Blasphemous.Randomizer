@@ -312,7 +312,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 		{
 			get
 			{
-				if (base.LastUnlockedSkillId.IsNullOrWhitespace())
+				if (StringExtensions.IsNullOrWhitespace(base.LastUnlockedSkillId))
 				{
 					return null;
 				}

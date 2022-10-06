@@ -29,7 +29,7 @@ namespace Gameplay.GameControllers.Enemies.ReekLeader.Attack
 			{
 				return null;
 			}
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.Reek, position, Quaternion.identity);
+			GameObject gameObject = Object.Instantiate<GameObject>(this.Reek, position, Quaternion.identity);
 			ExplodingEnemy componentInChildren = gameObject.GetComponentInChildren<ExplodingEnemy>();
 			ReekSpawner.SetStatsByGameMode(componentInChildren);
 			componentInChildren.IsSummoned = true;
@@ -68,7 +68,7 @@ namespace Gameplay.GameControllers.Enemies.ReekLeader.Attack
 
 		private void SetSpawnPoints()
 		{
-			ReekSpawnPoint[] array = UnityEngine.Object.FindObjectsOfType<ReekSpawnPoint>();
+			ReekSpawnPoint[] array = Object.FindObjectsOfType<ReekSpawnPoint>();
 			foreach (ReekSpawnPoint item in array)
 			{
 				this.ReekSpawnPoints.Add(item);

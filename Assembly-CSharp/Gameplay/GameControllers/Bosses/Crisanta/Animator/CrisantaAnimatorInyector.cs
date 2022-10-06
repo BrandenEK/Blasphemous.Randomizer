@@ -23,7 +23,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta.Animator
 
 		public void AnimationEvent_UpwardsSlashStarts()
 		{
-			UnityEngine.Debug.Log("-----UPWARDS SLASH ATTACK STARTS-----");
+			Debug.Log("-----UPWARDS SLASH ATTACK STARTS-----");
 			CrisantaBehaviour behaviour = (this.OwnerEntity as Crisanta).Behaviour;
 			behaviour.lightAttack.damageOnEnterArea = true;
 			behaviour.lightAttack.CurrentWeaponAttack();
@@ -31,14 +31,14 @@ namespace Gameplay.GameControllers.Bosses.Crisanta.Animator
 
 		public void AnimationEvent_UpwardsSlashEnds()
 		{
-			UnityEngine.Debug.Log("-----UPWARDS SLASH ATTACK ENDS-----");
+			Debug.Log("-----UPWARDS SLASH ATTACK ENDS-----");
 			CrisantaBehaviour behaviour = (this.OwnerEntity as Crisanta).Behaviour;
 			behaviour.lightAttack.damageOnEnterArea = false;
 		}
 
 		public void AnimationEvent_DownwardsSlashStarts()
 		{
-			UnityEngine.Debug.Log("-----DOWNWARDS SLASH ATTACK STARTS-----");
+			Debug.Log("-----DOWNWARDS SLASH ATTACK STARTS-----");
 			CrisantaBehaviour behaviour = (this.OwnerEntity as Crisanta).Behaviour;
 			behaviour.heavyAttack.damageOnEnterArea = true;
 			behaviour.heavyAttack.CurrentWeaponAttack();
@@ -46,7 +46,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta.Animator
 
 		public void AnimationEvent_DownwardsSlashEnds()
 		{
-			UnityEngine.Debug.Log("-----DOWNWARDS SLASH ATTACK ENDS-----");
+			Debug.Log("-----DOWNWARDS SLASH ATTACK ENDS-----");
 			CrisantaBehaviour behaviour = (this.OwnerEntity as Crisanta).Behaviour;
 			behaviour.heavyAttack.damageOnEnterArea = false;
 		}
@@ -83,8 +83,8 @@ namespace Gameplay.GameControllers.Bosses.Crisanta.Animator
 
 		public void AnimationEvent_LightScreenShake()
 		{
-			Vector2 a = (this.OwnerEntity.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
-			Core.Logic.CameraManager.ProCamera2DShake.Shake(0.15f, a * 0.5f, 10, 0.01f, 0f, default(Vector3), 0.01f, false);
+			Vector2 vector = (this.OwnerEntity.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
+			Core.Logic.CameraManager.ProCamera2DShake.Shake(0.15f, vector * 0.5f, 10, 0.01f, 0f, default(Vector3), 0.01f, false);
 		}
 
 		public void AnimationEvent_HeavyScreenShake()
@@ -206,7 +206,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta.Animator
 			{
 				return;
 			}
-			UnityEngine.Debug.Log("Setting trigger Upward Slash");
+			Debug.Log("Setting trigger Upward Slash");
 			base.EntityAnimator.SetTrigger("UPWARDS_SLASH");
 		}
 
@@ -216,7 +216,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta.Animator
 			{
 				return;
 			}
-			UnityEngine.Debug.Log("Setting trigger Downward Slash");
+			Debug.Log("Setting trigger Downward Slash");
 			base.EntityAnimator.SetTrigger("DOWNWARDS_SLASH");
 		}
 
@@ -249,7 +249,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta.Animator
 
 		public void ComboMode(bool active)
 		{
-			UnityEngine.Debug.Log("Setting combo mode " + active);
+			Debug.Log("Setting combo mode " + active);
 			if (base.EntityAnimator == null)
 			{
 				return;
@@ -274,7 +274,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta.Animator
 			}
 			if (base.EntityAnimator.GetCurrentAnimatorStateInfo(0).IsName("HURT"))
 			{
-				UnityEngine.Debug.Log("PLAY TRICK HURT");
+				Debug.Log("PLAY TRICK HURT");
 				base.EntityAnimator.Play("HURT", 0, 0f);
 			}
 			else

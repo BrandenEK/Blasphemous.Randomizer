@@ -28,45 +28,45 @@ public class BlindBabyGrabManager : MonoBehaviour
 	{
 		this.StopSway();
 		this.grabWarningAnimator.gameObject.SetActive(false);
-		base.transform.DOKill(false);
+		ShortcutExtensions.DOKill(base.transform, false);
 		base.StopAllCoroutines();
 		this.babyAnimator.SetTrigger("DEATH");
-		base.transform.DOMoveY(base.transform.position.y - 10f, 10f, false);
+		ShortcutExtensions.DOMoveY(base.transform, base.transform.position.y - 10f, 10f, false);
 	}
 
 	public void StartSway()
 	{
-		this.swayTween = base.transform.DOMoveY(base.transform.position.y - 1.5f, 5f, false).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
-		this.swayTween.OnComplete(new TweenCallback(this.OnSwayComplete));
+		this.swayTween = TweenSettingsExtensions.SetLoops<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, base.transform.position.y - 1.5f, 5f, false), 7), -1, 1);
+		TweenSettingsExtensions.OnComplete<Tween>(this.swayTween, new TweenCallback(this.OnSwayComplete));
 	}
 
 	private void OnSwayComplete()
 	{
 		if (this.moveTowardsPenitent)
 		{
-			this.swayTween.Pause<Tween>();
+			TweenExtensions.Pause<Tween>(this.swayTween);
 			Vector2 vector = Core.Logic.Penitent.transform.position - base.transform.position;
 			float num = 3f;
 			float num2 = num * Mathf.Sign(vector.x);
-			base.transform.DOMoveX(base.transform.position.x + num2, 0.5f, false).OnComplete(new TweenCallback(this.OnStepCompleted)).SetEase(Ease.InOutQuad);
+			TweenSettingsExtensions.SetEase<Tweener>(TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions.DOMoveX(base.transform, base.transform.position.x + num2, 0.5f, false), new TweenCallback(this.OnStepCompleted)), 7);
 		}
 	}
 
 	private void OnStepCompleted()
 	{
-		this.swayTween.Play<Tween>();
+		TweenExtensions.Play<Tween>(this.swayTween);
 	}
 
 	public void StopSway()
 	{
-		base.transform.DOKill(false);
+		ShortcutExtensions.DOKill(base.transform, false);
 	}
 
 	public void BabyIntro()
 	{
 		this.StopSway();
 		this.moveTowardsPenitent = true;
-		base.transform.DOMoveY(base.transform.position.y + 11f, 3f, false).SetEase(Ease.InOutQuad).OnComplete(new TweenCallback(this.StartSway));
+		TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, base.transform.position.y + 11f, 3f, false), 7), new TweenCallback(this.StartSway));
 		this.babyEffects.TriggerColorizeLerp(1f, this.hiddenLerpValue, 3f, null);
 		this.motherEffects.TriggerColorizeLerp(1f, this.hiddenLerpValue, 3f, null);
 	}
@@ -124,7 +124,7 @@ public class BlindBabyGrabManager : MonoBehaviour
 		GhostTrailGenerator.AreGhostTrailsAllowed = false;
 		this.HidePlayer();
 		this.PlayGrabAnimation();
-		base.transform.DOMoveY(base.transform.position.y + 1.5f, 1.5f, false).SetEase(Ease.OutQuad);
+		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, base.transform.position.y + 1.5f, 1.5f, false), 6);
 		float grabAnimationDuration = 3f;
 		yield return new WaitForSeconds(grabAnimationDuration);
 		this.KillPlayer();
@@ -182,14 +182,14 @@ public class BlindBabyGrabManager : MonoBehaviour
 
 	private void ReturnBabyToIdle()
 	{
-		base.transform.DOMove(this.originPoint, this.movementDuration * 2f, false).SetEase(Ease.InOutCubic);
+		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, this.originPoint, this.movementDuration * 2f, false), 10);
 		this.babyEffects.TriggerColorizeLerp(0f, this.hiddenLerpValue, this.movementDuration, null);
 		this.motherEffects.TriggerColorizeLerp(0f, this.hiddenLerpValue, this.movementDuration, null);
 	}
 
 	private void BabyMovesIntoGrab(Transform grabPoint)
 	{
-		base.transform.DOMove(grabPoint.position - this.attackCollider.offset, this.movementDuration, false).SetEase(Ease.InOutCubic);
+		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, grabPoint.position - this.attackCollider.offset, this.movementDuration, false), 10);
 		this.babyEffects.TriggerColorizeLerp(this.hiddenLerpValue, 0f, this.movementDuration, null);
 		this.motherEffects.TriggerColorizeLerp(this.hiddenLerpValue, 0f, this.movementDuration, null);
 	}

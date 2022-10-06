@@ -104,12 +104,12 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 						GameObject gameObject;
 						if (this.useDifferentRandomAreas)
 						{
-							int num = UnityEngine.Random.Range(0, this.areaPrefabs.Count);
+							int num = Random.Range(0, this.areaPrefabs.Count);
 							if (this.areaPrefabs.Count > 1)
 							{
 								while (this.lastRandomAreaIndex == num)
 								{
-									num = UnityEngine.Random.Range(0, this.areaPrefabs.Count);
+									num = Random.Range(0, this.areaPrefabs.Count);
 								}
 								this.lastRandomAreaIndex = num;
 							}

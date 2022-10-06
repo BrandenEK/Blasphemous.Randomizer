@@ -21,7 +21,7 @@ namespace Tools.Items
 
 		private void EnableMudAreas(bool enableMudAreas = true)
 		{
-			MudAreaEffect[] array = UnityEngine.Object.FindObjectsOfType<MudAreaEffect>();
+			MudAreaEffect[] array = Object.FindObjectsOfType<MudAreaEffect>();
 			foreach (MudAreaEffect mudAreaEffect in array)
 			{
 				if (!mudAreaEffect.unafectedByRelic)

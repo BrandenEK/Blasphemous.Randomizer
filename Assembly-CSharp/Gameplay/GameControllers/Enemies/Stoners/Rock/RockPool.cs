@@ -20,7 +20,7 @@ namespace Gameplay.GameControllers.Enemies.Stoners.Rock
 			}
 			else
 			{
-				gameObject = UnityEngine.Object.Instantiate<GameObject>(this.Rock, position, Quaternion.identity);
+				gameObject = Object.Instantiate<GameObject>(this.Rock, position, Quaternion.identity);
 			}
 			StonersRock componentInChildren = gameObject.GetComponentInChildren<StonersRock>();
 			componentInChildren.AttackArea.Entity = this.EnemyOwner;

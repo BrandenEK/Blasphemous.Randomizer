@@ -39,7 +39,7 @@ namespace Gameplay.GameControllers.Enemies.DrownedCorpse
 
 		public void Damage(Hit hit)
 		{
-			if (!hit.HitSoundId.IsNullOrWhitespace())
+			if (!StringExtensions.IsNullOrWhitespace(hit.HitSoundId))
 			{
 				Core.Audio.EventOneShotPanned(hit.HitSoundId, base.transform.position);
 			}
@@ -103,10 +103,10 @@ namespace Gameplay.GameControllers.Enemies.DrownedCorpse
 			{
 				return;
 			}
-			int num = UnityEngine.Random.Range(0, this.drownedCorpseHelmets.Length);
-			GameObject original = this.drownedCorpseHelmets[num];
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(original, base.transform.position, Quaternion.identity);
-			this.Helmet = gameObject.GetComponent<DrownedCorpseHelmet>();
+			int num = Random.Range(0, this.drownedCorpseHelmets.Length);
+			GameObject gameObject = this.drownedCorpseHelmets[num];
+			GameObject gameObject2 = Object.Instantiate<GameObject>(gameObject, base.transform.position, Quaternion.identity);
+			this.Helmet = gameObject2.GetComponent<DrownedCorpseHelmet>();
 			this.Helmet.Initialize(this);
 		}
 

@@ -1,0 +1,529 @@
+Albero (35)
+
+Sick house: RB01
+Outside ossuary: CO43
+Graveyard: CO16
+Warp room: QI65
+Elevator cherub: RESCUED_CHERUB_08
+Bless cloth: RE04
+Bless egg: RE10
+Bless hand: RE02
+Cleofas gift initial: QI01
+Cleofas gift final: PR11
+Tirso reward 1: QI66
+Tirso reward 2: 500.Tirso
+Tirso reward 3: 1000.Tirso
+Tirso reward 4: 2000.Tirso
+Tirso reward 5: 5000.Tirso
+Tirso reward 6: 10000.Tirso
+Tirso reward final: QI56
+Tentudia reward 1: 500.Lvdovico
+Tentudia reward 2: 1000.Lvdovico
+Tentudia reward 3: PR03
+Isidora reward: QI201
+Sword room: 741515178
+Church donation 1: RB104
+Church donation 2: RB105
+Ossuary reward 1: 250.Undertaker
+Ossuary reward 2: 500.Undertaker
+Ossuary reward 3: 750.Undertaker
+Ossuary reward 4: 1000.Undertaker
+Ossuary reward 5: 1250.Undertaker
+Ossuary reward 6: 1500.Undertaker
+Ossuary reward 7: 1750.Undertaker
+Ossuary reward 8: 2000.Undertaker
+Ossuary reward 9: 2500.Undertaker
+Ossuary reward 10: 3000.Undertaker
+Ossuary reward 11: 5000.Undertaker
+
+All the Tears of the Sea (1)
+
+Miriam gift: PR201
+
+Archcathedral Rooftops (11)
+
+Bridge fight 1: QI02
+Bridge fight 2: QI03
+Bridge fight 3: QI04
+Western shaft ledge: CO06
+Western shaft cherub: RESCUED_CHERUB_36
+Western shaft chest: PR12
+MoM east entrance: HE04
+Lady room: 1213038592
+Second checkpoint ledge: CO40
+Sword room: 1330243584
+Crisanta: BS16
+
+Bridge of the Three Calvaries (2)
+
+Esdras: BS12
+Esdras gift intial: PR09
+
+Brotherhood of the Silent Sorrow (11)
+
+Beginning gift: QI106
+Initial room cherub: RESCUED_CHERUB_06
+Initial room ledge: RB204
+Elder Brother's room: RE01
+Sword room: -865337344
+Spike gaunlet exit: CO25
+Blue candle: RB25
+Church entrance: PR203
+Esdras gift final: QI204
+Crisanta gift: QI301
+Warden of the Silent Sorrow: BS13
+
+Convent of our Lady of the Charred Visage (13)
+
+Blood platform ledge: CO05
+Ghost death room: CO15
+Central lung room: RB08
+Southwest lung room: HE03
+Lady room: -840761344
+Sword room: -835715072
+Red candle: RB18
+Blue candle: RB24
+Outside area: RB107
+Burning oil fountain: QI57
+Our Lady of the Charred Visage: BS03
+Holy Visage gift: QI40
+Mask room: QI61
+
+Deabulatory of his Holiness (3)
+
+Complete Penitence 1: RB101
+Complete Penitence 2: RB102
+Complete Penitence 3: RB103
+
+Desecrated Cistern (20)
+
+MeD lady room: -933363712
+MeD entrance: CO41
+Water room cherub: RESCUED_CHERUB_11
+Eastern lower tunnel chest: QI45
+Eastern upper tunnel chest: PR16
+Eastern upper tunnel cherub: RESCUED_CHERUB_13
+Hidden hand room: QI67
+WaBC entrance: CO09
+Oil room: -886603776
+Veil room cherub: RESCUED_CHERUB_14
+Veil room ledge: QI12
+Lung tunnel cherub: RESCUED_CHERUB_12
+Lung tunnel ledge: CO32
+Shroud puzzle: RB03
+Chalice room: QI75
+Sword room: -932151296
+GrA lady room: -831062016
+Elevator exit cherub: RESCUED_CHERUB_15
+Elevator shaft cherub: RESCUED_CHERUB_22
+Elevator shaft ledge: CO44
+
+Echoes of Salt (2)
+
+MoED entrance: RB108
+Near elevator shaft: RB202
+
+Graveyard of the Peaks (20)
+
+Shop cave cherub: RESCUED_CHERUB_31
+Shop cave hole: CO42
+Shop left: QI11
+Shop middle: RB37
+Shop right: RB02
+Guilt room: RB38
+Elevator shaft cherub: RESCUED_CHERUB_26
+Elevator shaft ledge: QI53
+Lady room: -927137792
+Bleed room: HE11
+Eastern shaft lower: QI46
+Eastern shaft middle: CO29
+Eastern shaft upper: QI08
+Amanecida ledge: RB106
+Western shaft cherub: RESCUED_CHERUB_25
+Western shaft lower: RB32
+Western shaft upper: CO01
+Center shaft cherub: RESCUED_CHERUB_24
+Center shaft ledge: RB15
+Oil room: -815923200
+
+Grievance Ascends (12)
+
+Western lung ledge: QI44
+Lung room upper: RE07
+Lung room cherub: RESCUED_CHERUB_19
+Lung room lower: CO12
+Oil room: -910753792
+Blood tunnel ledge: QI10
+Blood tunnel cherub: RESCUED_CHERUB_21
+Altasgracias cherub: RESCUED_CHERUB_20
+Altasgracias gift: QI13
+Altasgracias cacoon: RB06
+Tres Angustias: BS04
+Holy Visage gift: QI39
+
+Hall of the Dawning (1)
+
+Mirror room: QI105
+
+Jondo (13)
+
+Eastern entrance ledge: CO08
+Eastern entrance chest: PR10
+Eastern shaft bell chargers: CO33
+Eastern shaft bell trap: QI19
+Eastern shaft cherub: RESCUED_CHERUB_18
+Spike tunnel cherub: RESCUED_CHERUB_37
+Spike tunnel ledge: HE06
+EcS entrance: QI103
+Western shaft lower slide: CO07
+Western shaft bell trap: QI41
+Western shaft bell puzzle: QI52
+Western shaft root puzzle: RB28
+Western shaft cherub: RESCUED_CHERUB_17
+
+Knot of the Three Words (1)
+
+Fourth Visage gift: HE201
+
+Library of the Negated Words (18)
+
+Platform room cherub: RESCUED_CHERUB_01
+Platform room ledge: CO18
+Upper cathedral ledge: CO22
+Hidden floor: QI50
+Lung ambush chest: RB31
+Lady room: 1271136256
+Bone puzzle: PR15
+Diosdado ledge: CO28
+Platform puzzle chest: PR07
+Final shaft ledge: RB30
+Final shaft cherub: RESCUED_CHERUB_02
+Oil room: 1233780736
+Elevator cherub: RESCUED_CHERUB_32
+Mask room: QI62
+Sword room: 1189150720
+Red candle: RB19
+Diosdado gift: RB203
+Fourth Visage hidden wall: RB301
+
+Mercy Dreams (15)
+
+First section hidden wall: CO30
+Second section ghost ambush: PR01
+Second section ledge: CO03
+Second section cherub: RESCUED_CHERUB_09
+Red candle: RB17
+Shop left: QI58
+Shop middle: RB05
+Shop right: RB09
+Third section hidden wall: QI48
+Third section lower corridor: CO38
+Ten Piedad: BS01
+Holy Visage gift: QI38
+Blue candle: RB26
+SlC entrance cherub: RESCUED_CHERUB_33
+SlC entrance ledge: CO03
+
+Mother of Mothers (14)
+
+Oil room: 1203666944
+Eastern room upper: RB33
+Eastern room lower: CO35
+Western room cherub: RESCUED_CHERUB_30
+Western room ledge: CO17
+Redento prayer room: RE03
+Redento corpse: QI54
+Blood incense shaft: HE01
+Outside Cleofas room: CO34
+Center room ledge: CO20
+Center room cherub: RESCUED_CHERUB_29
+Sword room: 1240137728
+Melquiades: BS05
+Mask room: QI60
+
+Mountains of the Endless Dusk (7)
+
+DeC entrance: CO13
+Perpetua gift: RB13
+Bell gap cherub: RESCUED_CHERUB_16
+Bell gap ledge: QI47
+Redento meeting 1: RB22
+Blood platform: QI63
+Egg hatching: QI14
+
+Mourning and Havoc (3)
+
+Western chest: PR202
+Eastern chest: RB201
+Sierpes reward: QI202
+
+Patio of the Silent Steps (8)
+
+Garden 1 cherub: RESCUED_CHERUB_35
+Garden 1 ledge: CO23
+Garden 2 ledge: RB14
+Garden 3 cherub: RESCUED_CHERUB_28
+Garden 3 lower ledge: QI37
+Garden 3 upper ledge: CO39
+Northern shaft: QI102
+Redento meeting 4: RB21
+
+Petrous (1)
+
+Entrance room: QI101
+
+Resting Place of the Sister (1)
+
+Perpetua shrine: QI203
+
+Sleeping Canvases (10)
+
+Herb shaft: QI64
+Wax bleed puzzle: HE07
+Shop left: RB12
+Shop middle: QI49
+Shop right: QI71
+Low tunnel blade trap: QI104
+Expositio: BS06
+Linen drop room: CO31
+Jocinero gift intial: RE05
+Jocinero gift final: PR05
+
+The Holy Line (6)
+
+Deosgracias gift: QI31
+Mud ledge lower: PR14
+Mud ledge upper: RB07
+Mud cherub: RESCUED_CHERUB_07
+Cave ledge: CO04
+Cave chest: QI55
+
+Wall of the Holy Prohibitions (18)
+
+Q1 lift puzzle: RB11
+Q1 drop room upper: CO10
+Q1 drop room lower: QI69
+Q1 upper bronze door: RESCUED_CHERUB_03
+Q1 upper silver door: CO24
+Q1 middle gold door: QI51
+Q2 middle gold door: CO26
+Q3 lower gold door: CO02
+Q3 upper silver door: RESCUED_CHERUB_34
+Q3 upper ledge: RB16
+Q4 hidden ledge: CO27
+Q4 lower silver door: RESCUED_CHERUB_04
+Q4 upper bronze door: QI70
+Q4 upper silver door: CO37
+CoLCV entrance: RESCUED_CHERUB_05
+Oil room: 1232338944
+Quirce: BS14
+Quirce room: QI72
+
+Wasteland of the Buried Churches (8)
+
+Lower tree path: RB04
+Building slide: CO14
+Exterior ledge: CO36
+Exterior cherub: RESCUED_CHERUB_10
+Underneath MeD bridge: QI06
+Cliffside ledge: HE02
+Cliffside cherub: RESCUED_CHERUB_38
+Redento meeting 3: RB20
+
+Where Olive Trees Wither (11)
+
+WaBC entrance: CO11
+Healing cave: QI20
+White lady flower: QI68
+White lady tomb: PR04
+White lady cave cherub: RESCUED_CHERUB_27
+White lady cave ledge: CO19
+Eastern root cherub: RESCUED_CHERUB_23
+Eastern root ledge: HE05
+Death run: QI07
+Gemino gift intial: QI59
+Gemino gift final: RB10
+
+Various (15)
+
+Guilt arena 1 extra: 1000.Arena_NailManager
+Guilt arena 1 main: QI32
+Guilt arena 2 extra: HE10
+Guilt arena 2 main: QI33
+Guilt arena 3 extra: 3000.Arena_NailManager
+Guilt arena 3 main: QI34
+Guilt arena 4 extra: RB34
+Guilt arena 4 main: QI35
+Guilt arena 5 extra: 5000.Arena_NailManager
+Guilt arena 5 main: QI79
+Guilt arena 6 extra: RB35
+Guilt arena 6 main: QI80
+Guilt arena 7 extra: RB36
+Guilt arena 7 main: QI81
+Viridiana gift: PR08
+
+Unknown (6)
+
+?? amanecida: QI107
+?? amanecida: QI108
+?? amanecida: QI109
+?? amanecida: QI110
+Laudes reward: HE101
+All amanecidas: PR101
+
+
+RB01: Dove Skull
+RB02: Ember of the Holy Cremation
+RB03: Silver Grape
+RB04: Uvula of Proclamation
+RB05: Hollow Pearl
+RB06: Knot of Hair
+RB07: Painted Wood Bead
+RB08: Piece of a Golden Mask
+RB09: Moss Preserved in Glass
+RB10: Frozen Olive
+RB11: Quirce's Scorched Bead
+RB12: Wicker Knot
+RB13: Perpetva's Protection
+RB14: Thorned Symbol
+RB15: Piece of a Tombstone
+RB16: Sphere of the Sacred Smoke
+RB17: Small Bead of Red Wax
+RB18: Medium Bead of Red Wax
+RB19: Big Bead of Red Wax
+RB20: Little Toe made of Limestone
+RB21: Big Toe made of Limestone
+RB22: Fourth Toe made of Limestone
+RB24: Small Bead of Blue Wax
+RB25: Medium Bead of Blue Wax
+RB26: Big Bead of Blue Wax
+RB28: Pelican Effigy
+RB30: Drop of Coagulated Ink
+RB31: Amber Eye
+RB32: Muted Bell
+RB33: Consecrated Amythyst
+RB34: Embers of a Broken Star
+RB35: Scaly Coin
+RB36: Seashell of the Inverted Spiral
+RB37: Calcified Eye of Erudition
+RB38: Immaculate Bead
+RB101: Reliquary of the Fervent Heart
+RB102: Reliquary of the Suffering Heart
+RB103: Reliquary of the Sorrowful Heart
+RB104: Token of Appreciation
+RB105: Cloistered Ruby
+RB106: Bead of Gold Thread
+RB107: Cloistered Sapphire
+RB108: Fire Enclosed in Enamel
+RB201: Light of the Lady of the Lamp
+RB202: Scale of Burnished Alabaster
+RB203: The Young Mason's Wheel
+RB204: Crown of Gnawed Iron
+RB301: Crimson Heart of a Miura
+PR01: Seguiriya to your Eyes like Stars
+PR03: Debla of the Lights
+PR04: Saeta Dolorosa
+PR05: Companillero to the Sons of the Aurora
+PR07: Lorquiana
+PR08: Zarabanda of the Safe Haven
+PR09: Taranto to my Sister
+PR10: Solea of Excommunication
+PR11: Tiento to your Thorned Hairs
+PR12: Cante Jondo of the Three Sisters
+PR14: Verdiales of the Forsaken Hamlet
+PR15: Romance to the Crimson Mist
+PR16: Zambra to the Resplendent Crown
+PR101: Aubade of the Nameless Guardian
+PR201: Cantina of the Blue Rose
+PR202: Mirabras of the Return to Port
+PR203: Tirana of the Celstial Bastion
+RE01: Blood Perpetuated in Sand
+RE02: Incorrupt Hand of the Fraternal Master
+RE03: Nail Uprooted from Dirt
+RE04: Shroud of Dreamt Sins
+RE05: Linen of Golden Thread
+RE07: Silvered Lung of Dolphos
+RE10: Three Gnarled Tongues
+HE01: Smoking Heart of Incense
+HE02: Heart of the Virtuous Pain
+HE03: Heart of Saltpeter Blood
+HE04: Heart of Oils
+HE05: Heart of Cerulean Incense
+HE06: Heart of the Holy Purge
+HE07: Molten Heart of Boiling Blood
+HE10: Heart of the Single Tone
+HE11: Heart of the Unnamed Minstrel
+HE101: Brilliant Heart of Dawn
+HE201: Apodictic Heart of Mea Culpa
+QI01: Cord of the True Burying
+QI02: Mark of the First Refuge
+QI03: Mark of the Second Refuge
+QI04: Mark of the Third Refuge
+QI06: Tentudia's Carnal Remains
+QI07: Remains of Tentudia's Hair
+QI08: Tentudia's Skeletal Remains
+QI10: Melted Golden Coins
+QI11: Torn Bridal Ribbon
+QI12: Black Greiving Veil
+QI13: Egg of Deformity
+QI14: Hatched Egg of Deformity
+QI19: Bouquet of Rosemary
+QI20: Incense Garlic
+QI31: Thorn
+QI32: Budding Sprout
+QI33: Grown Sprout
+QI34: Thorny Briar
+QI35: Bloodstained Briar
+QI37: Olive Seeds
+QI38: Holy Wound of Attrition
+QI39: Holy Wound of Contrition
+QI40: Holy Wound of Compunction
+QI41: Empty Bile Vessel
+QI44: Knot of Rosary Rope
+QI45: Empty Bile Vessel
+QI46: Empty Bile Vessel
+QI47: Empty Bile Vessel
+QI48: Empty Bile Vessel
+QI49: Empty Bile Vessel
+QI50: Empty Bile Vessel
+QI51: Empty Bile Vessel
+QI52: Knot of Rosary Rope
+QI53: Knot of Rosary Rope
+QI54: Knot of Rosary Rope
+QI55: Knot of Rosary Rope
+QI56: Knot of Rosary Rope
+QI57: Golden Thimble Filled with Burning Oil
+QI58: Key to the Chamber of the Eldest Brother
+QI59: Empty Golden Thimble
+QI60: Deformed Mask of Orestes
+QI61: Mirrored Mask of Dolphos
+QI62: Embossed Mask of Cresente
+QI63: Dried Clove
+QI64: Sooty Garlic
+QI65: Bouquet of Thyme
+QI66: Linen Cloth
+QI67: Severed Hand
+QI68: Dried Flowers bathed in Tears
+QI69: Key of the Secular
+QI70: Key of the Scribe
+QI71: Key of the Inquisitor
+QI72: Key of the High Peaks
+QI75: Chalice of Inverted Verses
+QI79: Crimson Briar
+QI80: Vine Braided in Blood
+QI81: Cvstodia of Sin
+QI101: Quicksilver
+QI102: Quicksilver
+QI103: Quicksilver
+QI104: Quicksilver
+QI105: Quicksilver
+QI106: Petrified Bell
+QI107: Verses Spun from Gold
+QI108: Verses Spun from Gold
+QI109: Verses Spun from Gold
+QI110: Verses Spun from Gold
+QI201: Severed Right Eye of the Traitor
+QI202: Broken Left Eye of the Traitor
+QI203: Incomplete Scapular
+QI204: Key Grown from Twisted Wood
+QI301: Holy Wound of Abnegation

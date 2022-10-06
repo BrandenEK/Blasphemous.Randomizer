@@ -15,9 +15,10 @@ namespace Gameplay.GameControllers.Entities
 				this.OnLerpStart();
 			}
 			this.timeStartedLerping = Time.time;
-			Vector3 a = new Vector3(this.motionObject.position.x, this.motionObject.position.y, this.motionObject.position.z);
-			this.startPosition = a;
-			this.endPosition = a + dir * this.distanceToMove;
+			Vector3 vector;
+			vector..ctor(this.motionObject.position.x, this.motionObject.position.y, this.motionObject.position.z);
+			this.startPosition = vector;
+			this.endPosition = vector + dir * this.distanceToMove;
 			if (!this.IsLerping)
 			{
 				this.IsLerping = true;

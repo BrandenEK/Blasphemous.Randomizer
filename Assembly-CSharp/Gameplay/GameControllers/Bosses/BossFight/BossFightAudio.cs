@@ -23,7 +23,7 @@ namespace Gameplay.GameControllers.Bosses.BossFight
 			this._bossMusicInstance = this.GetEventInstanceByKey(this.BossTrackId);
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		public void PlayBossTrack()
 		{
 			if (this._bossMusicInstance.isValid())
@@ -40,7 +40,7 @@ namespace Gameplay.GameControllers.Bosses.BossFight
 		{
 			if (this._bossMusicInstance.isValid())
 			{
-				this._bossMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+				this._bossMusicInstance.stop(0);
 				this._bossMusicInstance.release();
 			}
 		}
@@ -52,7 +52,7 @@ namespace Gameplay.GameControllers.Bosses.BossFight
 				return;
 			}
 			ParameterInstance parameterInstance;
-			this._bossMusicInstance.getParameter("Intensity", out parameterInstance);
+			this._bossMusicInstance.getParameter("Intensity", ref parameterInstance);
 			float value = Mathf.Clamp(paramValue, 0f, 100f);
 			if (parameterInstance.isValid())
 			{
@@ -67,7 +67,7 @@ namespace Gameplay.GameControllers.Bosses.BossFight
 				return;
 			}
 			ParameterInstance parameterInstance;
-			this._bossMusicInstance.getParameter(paramName, out parameterInstance);
+			this._bossMusicInstance.getParameter(paramName, ref parameterInstance);
 			if (parameterInstance.isValid())
 			{
 				parameterInstance.setValue(paramValue);
@@ -79,7 +79,7 @@ namespace Gameplay.GameControllers.Bosses.BossFight
 			ParameterInstance result = default(ParameterInstance);
 			if (this._bossMusicInstance.isValid())
 			{
-				this._bossMusicInstance.getParameter(paramName, out result);
+				this._bossMusicInstance.getParameter(paramName, ref result);
 			}
 			return result;
 		}
@@ -91,7 +91,7 @@ namespace Gameplay.GameControllers.Bosses.BossFight
 				return;
 			}
 			ParameterInstance parameterInstance;
-			this._bossMusicInstance.getParameter("Ending", out parameterInstance);
+			this._bossMusicInstance.getParameter("Ending", ref parameterInstance);
 			if (parameterInstance.isValid())
 			{
 				parameterInstance.setValue(Mathf.Clamp01(paramValue));

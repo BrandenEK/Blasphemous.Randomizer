@@ -1,5 +1,4 @@
 using System;
-using CreativeSpore.SmartColliders;
 using Framework.Managers;
 using Gameplay.GameControllers.Penitent;
 using Gameplay.GameControllers.Penitent.Abilities;
@@ -21,7 +20,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Player.Jump
 			Core.Input.SetBlocker("PLAYER_LOGIC", true);
 			this.ClampHorizontalMovement(this._landingPosition);
 			this._penitent.PlatformCharacterInput.ResetInputs();
-			this._penitent.PlatformCharacterController.SetActionState(eControllerActions.Jump, false);
+			this._penitent.PlatformCharacterController.SetActionState(16, false);
 			this._penitent.PlatformCharacterInput.IsAttacking = true;
 			this._penitent.GrabLadder.EnableClimbLadderAbility(false);
 			this._penitent.Dash.enabled = false;
@@ -71,8 +70,8 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Player.Jump
 				return;
 			}
 			this._penitent.PlatformCharacterController.PlatformCharacterPhysics.HSpeed = 0f;
-			float x = (!this._penitent.FloorChecker.OnMovingPlatform) ? pos.x : this._penitent.transform.position.x;
-			this._penitent.transform.position = new Vector2(x, this._penitent.transform.position.y);
+			float num = (!this._penitent.FloorChecker.OnMovingPlatform) ? pos.x : this._penitent.transform.position.x;
+			this._penitent.transform.position = new Vector2(num, this._penitent.transform.position.y);
 		}
 
 		private Penitent _penitent;

@@ -79,17 +79,17 @@ namespace Gameplay.GameControllers.Entities
 				UnlockableSkill getMaxSkill = combo.GetMaxSkill;
 				if (getMaxSkill.id.Equals("COMBO_1"))
 				{
-					this._currentPointer = UnityEngine.Random.Range(combo.FirstUpgradeExecutionTier.MinExecutionTier, combo.FirstUpgradeExecutionTier.MaxExecutionTier);
+					this._currentPointer = Random.Range(combo.FirstUpgradeExecutionTier.MinExecutionTier, combo.FirstUpgradeExecutionTier.MaxExecutionTier);
 				}
 				else
 				{
-					this._currentPointer = UnityEngine.Random.Range(combo.SecondUpgradeExecutionTier.MinExecutionTier, combo.SecondUpgradeExecutionTier.MaxExecutionTier);
+					this._currentPointer = Random.Range(combo.SecondUpgradeExecutionTier.MinExecutionTier, combo.SecondUpgradeExecutionTier.MaxExecutionTier);
 				}
 			}
 			else
 			{
 				Combo.ExecutionTier defaulExecutionTier = combo.DefaulExecutionTier;
-				this._currentPointer = UnityEngine.Random.Range(defaulExecutionTier.MinExecutionTier, defaulExecutionTier.MaxExecutionTier);
+				this._currentPointer = Random.Range(defaulExecutionTier.MinExecutionTier, defaulExecutionTier.MaxExecutionTier);
 			}
 		}
 

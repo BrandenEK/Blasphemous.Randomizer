@@ -11,10 +11,10 @@ namespace Tools
 		private void Start()
 		{
 			bool flag = !Core.ready;
-			string sceneName = "MainMenu_LOGIC";
+			string text = "MainMenu_LOGIC";
 			if (flag)
 			{
-				SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+				SceneManager.LoadScene(text, 1);
 			}
 		}
 	}

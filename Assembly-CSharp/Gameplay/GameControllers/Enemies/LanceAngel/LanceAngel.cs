@@ -80,7 +80,8 @@ namespace Gameplay.GameControllers.Enemies.LanceAngel
 		{
 			base.SetPositionAtStart();
 			float distance = Physics2D.Raycast(base.transform.position, -base.transform.up, 5f, this.Behaviour.BlockLayerMask).distance;
-			Vector3 position = new Vector3(base.transform.position.x, base.transform.position.y - distance, base.transform.position.z);
+			Vector3 position;
+			position..ctor(base.transform.position.x, base.transform.position.y - distance, base.transform.position.z);
 			position.y += this.Behaviour.StartHeightPosition;
 			base.transform.position = position;
 		}

@@ -7,7 +7,7 @@ namespace Framework.Achievements
 	[Serializable]
 	public class AC39Enemies : SerializedScriptableObject
 	{
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		public void ResetDefaultListOfEnemies()
 		{
 			this.EnemiesList.Clear();

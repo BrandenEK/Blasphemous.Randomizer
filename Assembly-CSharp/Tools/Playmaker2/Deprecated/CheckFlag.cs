@@ -4,7 +4,7 @@ using HutongGames.PlayMaker;
 
 namespace Tools.Playmaker2.Deprecated
 {
-	[ActionCategory(ActionCategory.Events)]
+	[ActionCategory(3)]
 	[Tooltip("Checks if the flag is raised.")]
 	public class CheckFlag : FsmStateAction
 	{

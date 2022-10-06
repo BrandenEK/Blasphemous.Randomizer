@@ -99,7 +99,7 @@ namespace Gameplay.UI.Others.Buttons
 			this.OnSelectInherited(eventData);
 			if (this.useDisplacement)
 			{
-				this.displacementRect.DOAnchorPos(this.initPos + this.displacement, 0.5f, false).SetEase(Ease.InOutQuad);
+				TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions46.DOAnchorPos(this.displacementRect, this.initPos + this.displacement, 0.5f, false), 7);
 			}
 			if (this.OnMenuButtonSelected != null)
 			{
@@ -132,7 +132,7 @@ namespace Gameplay.UI.Others.Buttons
 			this.OnDeselectedInherited(eventData);
 			if (this.useDisplacement)
 			{
-				this.displacementRect.DOAnchorPos(this.initPos, 0.2f, false).SetEase(Ease.InOutQuad);
+				TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions46.DOAnchorPos(this.displacementRect, this.initPos, 0.2f, false), 7);
 			}
 		}
 
@@ -176,8 +176,8 @@ namespace Gameplay.UI.Others.Buttons
 			}
 			else
 			{
-				bool flag2 = eventData.moveDir == MoveDirection.Left || eventData.moveDir == MoveDirection.Right;
-				bool flag3 = eventData.moveDir == MoveDirection.Up || eventData.moveDir == MoveDirection.Down;
+				bool flag2 = eventData.moveDir == null || eventData.moveDir == 2;
+				bool flag3 = eventData.moveDir == 1 || eventData.moveDir == 3;
 				flag = (this.whenToSoundOnMove == MenuButton.BUTTON_MOVEMENT_SOUND.BOTH || (this.whenToSoundOnMove == MenuButton.BUTTON_MOVEMENT_SOUND.HORIZONTAL && flag2) || (this.whenToSoundOnMove == MenuButton.BUTTON_MOVEMENT_SOUND.VERTICAL && flag3));
 			}
 			if (flag)
@@ -189,7 +189,7 @@ namespace Gameplay.UI.Others.Buttons
 		private bool IsAloneButton(Navigation nav)
 		{
 			bool result = false;
-			if (nav.mode == Navigation.Mode.Explicit)
+			if (nav.mode == 4)
 			{
 				result = (nav.selectOnDown == null && nav.selectOnLeft == null && nav.selectOnRight == null && nav.selectOnUp == null);
 			}

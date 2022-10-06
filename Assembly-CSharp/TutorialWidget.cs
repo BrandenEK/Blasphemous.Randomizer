@@ -13,7 +13,7 @@ public class TutorialWidget : SerializedMonoBehaviour
 	private IList<ValueDropdownItem<string>> MyLanguages()
 	{
 		ValueDropdownList<string> valueDropdownList = new ValueDropdownList<string>();
-		string[] array = I2.Loc.LocalizationManager.GetAllLanguages(true).ToArray();
+		string[] array = LocalizationManager.GetAllLanguages(true).ToArray();
 		Array.Sort<string>(array);
 		foreach (string text in array)
 		{
@@ -23,20 +23,20 @@ public class TutorialWidget : SerializedMonoBehaviour
 	}
 
 	[BoxGroup("Debug", true, false, 0)]
-	[Button("Check menu", ButtonSizes.Small)]
+	[Button("Check menu", 0)]
 	private void CheckMenu()
 	{
-		I2.Loc.LocalizationManager.CurrentLanguage = this.Language;
+		LocalizationManager.CurrentLanguage = this.Language;
 		this.currentController = this.debugController;
 		this.currentJoystick = this.debugJoystick;
 		this.ShowInMenu(3, 10);
 	}
 
 	[BoxGroup("Debug", true, false, 0)]
-	[Button("Check InGame", ButtonSizes.Small)]
+	[Button("Check InGame", 0)]
 	private void CheckIngame()
 	{
-		I2.Loc.LocalizationManager.CurrentLanguage = this.Language;
+		LocalizationManager.CurrentLanguage = this.Language;
 		this.currentController = this.debugController;
 		this.currentJoystick = this.debugJoystick;
 		this.ShowInGame();
@@ -118,7 +118,7 @@ public class TutorialWidget : SerializedMonoBehaviour
 		foreach (TutorialWidget.LocalizationText localizationText in this.texts)
 		{
 			string localizedText = localizationText.text;
-			localizationText.mesh.text = Framework.Managers.LocalizationManager.ParseMeshPro(localizedText, localizationText.text.mTerm, localizationText.mesh);
+			localizationText.mesh.text = LocalizationManager.ParseMeshPro(localizedText, localizationText.text.mTerm, localizationText.mesh);
 		}
 	}
 

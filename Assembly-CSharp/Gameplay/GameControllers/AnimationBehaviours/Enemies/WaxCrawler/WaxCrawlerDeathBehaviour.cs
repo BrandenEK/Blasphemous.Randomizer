@@ -23,7 +23,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.WaxCrawler
 			if (stateInfo.normalizedTime >= 0.9f && !this._isDestroy)
 			{
 				this._isDestroy = true;
-				UnityEngine.Object.Destroy(this._waxCrawler.gameObject);
+				Object.Destroy(this._waxCrawler.gameObject);
 			}
 		}
 

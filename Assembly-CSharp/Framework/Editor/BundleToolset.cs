@@ -10,14 +10,14 @@ namespace Framework.Editor
 {
 	public class BundleToolset : MonoBehaviour
 	{
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		[UsedImplicitly]
 		public void ShowGreybox()
 		{
 			BundleToolset.ShowGraybox(true);
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		[UsedImplicitly]
 		public void HideGreybox()
 		{
@@ -26,7 +26,7 @@ namespace Framework.Editor
 
 		private static void ShowGraybox(bool b)
 		{
-			LayoutElement[] array = UnityEngine.Object.FindObjectsOfType<LayoutElement>();
+			LayoutElement[] array = Object.FindObjectsOfType<LayoutElement>();
 			Log.Trace("Decoration", string.Concat(new object[]
 			{
 				"Modifiying graybox visibility. Visible: ",
@@ -39,14 +39,14 @@ namespace Framework.Editor
 				SpriteRenderer[] componentsInChildren = array[i].GetComponentsInChildren<SpriteRenderer>();
 				if (componentsInChildren != null && array[i].showInGame)
 				{
-					componentsInChildren.ForEach(delegate(SpriteRenderer x)
+					LinqExtensions.ForEach<SpriteRenderer>(componentsInChildren, delegate(SpriteRenderer x)
 					{
 						x.enabled = true;
 					});
 				}
 				else if (componentsInChildren != null)
 				{
-					componentsInChildren.ForEach(delegate(SpriteRenderer x)
+					LinqExtensions.ForEach<SpriteRenderer>(componentsInChildren, delegate(SpriteRenderer x)
 					{
 						x.enabled = b;
 					});

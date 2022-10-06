@@ -18,7 +18,7 @@ namespace Gameplay.GameControllers.Enemies.NewFlagellant.AI
 		{
 			base.OnStateEnter();
 			this.NewFlagellant.NewFlagellantBehaviour.StopMovement();
-			this._counter = UnityEngine.Random.Range(1f, 2f);
+			this._counter = Random.Range(1f, 2f);
 		}
 
 		public override void OnStateExit()

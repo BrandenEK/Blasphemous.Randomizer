@@ -20,7 +20,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.PatrollingFlying
 			base.OnStateUpdate(animator, stateInfo, layerIndex);
 			if ((double)stateInfo.normalizedTime > 0.9)
 			{
-				UnityEngine.Object.Destroy(this._PatrollingFlyingEnemy.gameObject);
+				Object.Destroy(this._PatrollingFlyingEnemy.gameObject);
 			}
 		}
 

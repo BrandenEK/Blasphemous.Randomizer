@@ -24,33 +24,33 @@ public class HighWillsFacesMovementManager : MonoBehaviour
 		float num = this.LeftHW.transform.position.x - this.MiddleHW.transform.position.x;
 		if (!Mathf.Approximately(num, this.leftHWTargetHorSeparation) && !this.leftHWHorMoving)
 		{
-			float endValue = this.LeftHW.transform.position.x + (this.leftHWTargetHorSeparation - num);
+			float num2 = this.LeftHW.transform.position.x + (this.leftHWTargetHorSeparation - num);
 			this.leftHWHorMoving = true;
-			this.LeftHW.transform.DOMoveX(endValue, 0.2f, false).SetEase(Ease.InOutQuad).OnComplete(delegate
+			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(this.LeftHW.transform, num2, 0.2f, false), 7), delegate()
 			{
 				this.leftHWHorMoving = false;
 			});
 		}
-		float num2 = this.RightHW.transform.position.x - this.MiddleHW.transform.position.x;
-		if (!Mathf.Approximately(num2, this.rightHWTargetHorSeparation) && !this.rightHWHorMoving)
+		float num3 = this.RightHW.transform.position.x - this.MiddleHW.transform.position.x;
+		if (!Mathf.Approximately(num3, this.rightHWTargetHorSeparation) && !this.rightHWHorMoving)
 		{
-			float endValue2 = this.RightHW.transform.position.x + (this.rightHWTargetHorSeparation - num2);
+			float num4 = this.RightHW.transform.position.x + (this.rightHWTargetHorSeparation - num3);
 			this.rightHWHorMoving = true;
-			this.RightHW.transform.DOMoveX(endValue2, 0.2f, false).SetEase(Ease.InOutQuad).OnComplete(delegate
+			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(this.RightHW.transform, num4, 0.2f, false), 7), delegate()
 			{
 				this.rightHWHorMoving = false;
 			});
 		}
 	}
 
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void ResetFaces()
 	{
 		this.leftHWTargetHorSeparation = this.leftHWMinHorSeparation;
 		this.rightHWTargetHorSeparation = this.rightHWMinHorSeparation;
-		this.LeftHW.transform.DOKill(false);
-		this.MiddleHW.transform.DOKill(false);
-		this.RightHW.transform.DOKill(false);
+		ShortcutExtensions.DOKill(this.LeftHW.transform, false);
+		ShortcutExtensions.DOKill(this.MiddleHW.transform, false);
+		ShortcutExtensions.DOKill(this.RightHW.transform, false);
 		this.LeftHW.transform.position = this.leftHWStartPos;
 		this.MiddleHW.transform.position = this.middleHWStartPos;
 		this.RightHW.transform.position = this.rightHWStartPos;
@@ -69,38 +69,38 @@ public class HighWillsFacesMovementManager : MonoBehaviour
 		this.rightHWTargetHorSeparation = (this.RightHWMaxHorSeparation - this.rightHWMinHorSeparation) * portion + this.rightHWMinHorSeparation;
 	}
 
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void SeparateLeftFaceToMax()
 	{
 		this.SeparateLeftFace(1f);
 	}
 
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void SeparateRightFaceToMax()
 	{
 		this.SeparateRightFace(1f);
 	}
 
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void SeparateLeftFaceToMin()
 	{
 		this.SeparateLeftFace(0f);
 	}
 
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void SeparateRightFaceToMin()
 	{
 		this.SeparateRightFace(0f);
 	}
 
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void SeparateFacesToMax()
 	{
 		this.SeparateLeftFaceToMax();
 		this.SeparateRightFaceToMax();
 	}
 
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void SeparateFacesToMin()
 	{
 		this.SeparateLeftFaceToMin();
@@ -139,8 +139,8 @@ public class HighWillsFacesMovementManager : MonoBehaviour
 
 	private void StartHWVerMovement(GameObject hw, HighWillsFacesMovementManager.FaceMovement fm, TweenCallback onComplete)
 	{
-		float endValue = hw.transform.position.y + fm.Length;
-		hw.transform.DOMoveY(endValue, fm.Time, false).SetEase(fm.Ease).OnComplete(onComplete);
+		float num = hw.transform.position.y + fm.Length;
+		TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(hw.transform, num, fm.Time, false), fm.Ease), onComplete);
 	}
 
 	public GameObject LeftHW;

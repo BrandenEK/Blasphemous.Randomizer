@@ -26,9 +26,9 @@ namespace Gameplay.GameControllers.Bosses.Snake
 			if (this.goingUp)
 			{
 				float x = Core.Logic.Penitent.GetPosition().x;
-				float t = Mathf.InverseLerp(this.SnakeBehaviour.SnakeLeftCorner.position.x, this.SnakeBehaviour.SnakeRightCorner.position.x, x);
-				float d = Mathf.Lerp(0f, 3f, t);
-				ProCamera2D.Instance.ApplyInfluence(Vector2.up * d);
+				float num = Mathf.InverseLerp(this.SnakeBehaviour.SnakeLeftCorner.position.x, this.SnakeBehaviour.SnakeRightCorner.position.x, x);
+				float num2 = Mathf.Lerp(0f, 3f, num);
+				ProCamera2D.Instance.ApplyInfluence(Vector2.up * num2);
 				this.boundaries.UseTopBoundary = false;
 			}
 			else if (this.goingDown && this.CurrentStage != SnakeSegmentsMovementController.STAGES.FLOOR)
@@ -37,7 +37,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 			}
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		public void MoveToNextStage()
 		{
 			switch (this.CurrentStage)
@@ -54,7 +54,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 			}
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		public void MoveToPrevStage()
 		{
 			switch (this.CurrentStage)
@@ -117,14 +117,14 @@ namespace Gameplay.GameControllers.Bosses.Snake
 			{
 				if (Application.isPlaying)
 				{
-					Tween t = this.MoveSnakeSegment(targetStageInfo, movingUpwards, i);
+					Tween tween = this.MoveSnakeSegment(targetStageInfo, movingUpwards, i);
 					if (i == 0)
 					{
 						if (targetStage != SnakeSegmentsMovementController.STAGES.FLOOR)
 						{
 							this.SnakeBehaviour.Snake.SnakeAnimatorInyector.BackgroundAnimationSetSpeed(2f, 1f);
 						}
-						t.OnComplete(delegate
+						TweenSettingsExtensions.OnComplete<Tween>(tween, delegate()
 						{
 							if (this.curCoroutine != null)
 							{
@@ -144,8 +144,8 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				}
 				else
 				{
-					float d = targetStageInfo.PositionMarkers[i].transform.position.y - this.SnakeSegments[i].transform.position.y;
-					this.SnakeSegments[i].transform.position += Vector3.up * d;
+					float num = targetStageInfo.PositionMarkers[i].transform.position.y - this.SnakeSegments[i].transform.position.y;
+					this.SnakeSegments[i].transform.position += Vector3.up * num;
 					this.CurrentStage = targetStage;
 					this.SnakeBehaviour.BattleBounds.position = targetStageInfo.BattleBoundsCenterMarker.transform.position;
 				}
@@ -155,17 +155,17 @@ namespace Gameplay.GameControllers.Bosses.Snake
 		private Tween MoveSnakeSegment(SnakeSegmentsMovementController.SnakeSegmentsStageInfo targetStageInfo, bool movingUpwards, int i)
 		{
 			SnakeSegmentVisualController segment = this.SnakeSegments[i];
-			Tween tween = segment.transform.DOMoveY(targetStageInfo.PositionMarkers[i].transform.position.y, this.TweeningTime, false).SetEase(this.TweeningEase).SetDelay(targetStageInfo.DelaysToStartMoving[i]);
+			Tween tween = TweenSettingsExtensions.SetDelay<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(segment.transform, targetStageInfo.PositionMarkers[i].transform.position.y, this.TweeningTime, false), this.TweeningEase), targetStageInfo.DelaysToStartMoving[i]);
 			if (movingUpwards)
 			{
-				tween.OnPlay(delegate
+				TweenSettingsExtensions.OnPlay<Tween>(tween, delegate()
 				{
 					segment.MoveUp();
 				});
 			}
 			else
 			{
-				tween.OnPlay(delegate
+				TweenSettingsExtensions.OnPlay<Tween>(tween, delegate()
 				{
 					segment.MoveDown();
 				});
@@ -198,16 +198,16 @@ namespace Gameplay.GameControllers.Bosses.Snake
 
 		private void UpdateRain(SnakeSegmentsMovementController.SnakeSegmentsStageInfo targetStageInfo, bool movingUpwards)
 		{
-			Tween tween = this.RainParticlesRoot.DOMoveY(targetStageInfo.CamBounds.TopBoundary, this.TweeningTime, false).SetEase(this.TweeningEase).SetDelay(targetStageInfo.DelaysToStartMoving[0]);
+			Tween tween = TweenSettingsExtensions.SetDelay<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(this.RainParticlesRoot, targetStageInfo.CamBounds.TopBoundary, this.TweeningTime, false), this.TweeningEase), targetStageInfo.DelaysToStartMoving[0]);
 			foreach (SnakeSegmentsMovementController.RainInfo rainInfo in this.RainsInfo)
 			{
 				ParticleSystem.EmissionModule emission = rainInfo.RainSystem.emission;
 				float rateOverTimeMultiplier = emission.rateOverTimeMultiplier;
-				Tween t = DOTween.To(() => emission.rateOverTimeMultiplier, delegate(float x)
+				Tween tween2 = DOTween.To(() => emission.rateOverTimeMultiplier, delegate(float x)
 				{
 					emission.rateOverTimeMultiplier = x;
 				}, (!movingUpwards) ? (rateOverTimeMultiplier * 0.5f) : (rateOverTimeMultiplier * 2f), this.TweeningTime);
-				t.SetEase(this.TweeningEase).SetDelay(targetStageInfo.DelaysToStartMoving[0]);
+				TweenSettingsExtensions.SetDelay<Tween>(TweenSettingsExtensions.SetEase<Tween>(tween2, this.TweeningEase), targetStageInfo.DelaysToStartMoving[0]);
 			}
 		}
 
@@ -228,7 +228,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 
 		public float TweeningTime = 1f;
 
-		public Ease TweeningEase = Ease.InQuad;
+		public Ease TweeningEase = 5;
 
 		public SnakeSegmentsMovementController.STAGES CurrentStage = SnakeSegmentsMovementController.STAGES.OUT;
 

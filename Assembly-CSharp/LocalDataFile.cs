@@ -18,14 +18,14 @@ public class LocalDataFile
 	{
 		string saveGameFile = this.GetSaveGameFile();
 		Debug.Log("* Saving file " + saveGameFile);
-		fsData data;
-		fsResult fsResult = this.serializer.TrySerialize<ILocalData>(this.Data, out data);
+		fsData fsData;
+		fsResult fsResult = this.serializer.TrySerialize<ILocalData>(this.Data, ref fsData);
 		if (fsResult.Failed)
 		{
 			Debug.LogError("** Saving file error: " + fsResult.FormattedMessages);
 			return false;
 		}
-		string s = fsJsonPrinter.CompressedJson(data);
+		string s = fsJsonPrinter.CompressedJson(fsData);
 		byte[] bytes = Encoding.UTF8.GetBytes(s);
 		string encryptedData = Convert.ToBase64String(bytes);
 		FileTools.SaveSecure(saveGameFile, encryptedData);
@@ -37,13 +37,13 @@ public class LocalDataFile
 		string saveGameFile = this.GetSaveGameFile();
 		Debug.Log("* Loading file " + saveGameFile);
 		bool flag = true;
-		string input = string.Empty;
+		string text = string.Empty;
 		this.Data.Clean();
 		try
 		{
 			string s = File.ReadAllText(saveGameFile);
 			byte[] bytes = Convert.FromBase64String(s);
-			input = Encoding.UTF8.GetString(bytes);
+			text = Encoding.UTF8.GetString(bytes);
 		}
 		catch (Exception)
 		{
@@ -51,8 +51,8 @@ public class LocalDataFile
 		}
 		if (flag)
 		{
-			fsData data;
-			fsResult fsResult = fsJsonParser.Parse(input, out data);
+			fsData fsData;
+			fsResult fsResult = fsJsonParser.Parse(text, ref fsData);
 			if (fsResult.Failed)
 			{
 				Debug.LogError("** Loading file parsing error: " + fsResult.FormattedMessages);
@@ -62,7 +62,7 @@ public class LocalDataFile
 			{
 				try
 				{
-					fsResult = this.serializer.TryDeserialize<ILocalData>(data, ref this.Data);
+					fsResult = this.serializer.TryDeserialize<ILocalData>(fsData, ref this.Data);
 				}
 				catch (Exception ex)
 				{

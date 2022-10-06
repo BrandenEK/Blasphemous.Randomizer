@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace HutongGames.PlayMaker.Actions
 {
-	[ActionCategory(ActionCategory.GameObject)]
+	[ActionCategory(4)]
 	[Tooltip("Finds any GameObject(s) with a Name that contains a particular set of String and stores the count of them in an FSM Int.")]
 	public class FindGameObjectsResourcesWithNameContaining : FsmStateAction
 	{
@@ -58,16 +58,16 @@ namespace HutongGames.PlayMaker.Actions
 		public FsmString[] withNameContaining;
 
 		[Tooltip("If this bool is set to True then the String search is case insensitive.")]
-		[VariableType(VariableType.Bool)]
+		[VariableType(2)]
 		public FsmBool caseInsensitive;
 
-		[UIHint(UIHint.Variable)]
+		[UIHint(10)]
 		[Tooltip("Store the result in an FSM Int of the Count of the found GameObject(s).")]
 		public FsmInt storeCount;
 
-		[UIHint(UIHint.Variable)]
+		[UIHint(10)]
 		[Tooltip("Store the result in a GameObject variable.")]
-		[VariableType(VariableType.GameObject)]
+		[VariableType(3)]
 		public FsmArray storeResults;
 
 		private string name;

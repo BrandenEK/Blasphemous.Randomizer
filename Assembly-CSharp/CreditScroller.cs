@@ -57,7 +57,7 @@ public class CreditScroller : MonoBehaviour
 			{
 				base.CancelInvoke("PressReleased");
 				base.CancelInvoke("InitialEaseIn");
-				this.scrollbarTween.Kill(false);
+				TweenExtensions.Kill(this.scrollbarTween, false);
 				this.isAutoScrolling = false;
 				this.touchInside = true;
 			}
@@ -78,7 +78,8 @@ public class CreditScroller : MonoBehaviour
 	{
 		base.Invoke("InitialEaseIn", this.initialDelay);
 		RectTransform component = this.uguiScrollView.GetComponent<RectTransform>();
-		Vector3 size = new Vector3(component.rect.width, component.rect.height, 1f);
+		Vector3 size;
+		size..ctor(component.rect.width, component.rect.height, 1f);
 		if (this.uguiScrollRect.GetComponent<ScrollRect>() != null && this.uguiScrollRect.GetComponent<BoxCollider>() == null)
 		{
 			BoxCollider boxCollider = this.uguiScrollRect.AddComponent<BoxCollider>();
@@ -111,19 +112,19 @@ public class CreditScroller : MonoBehaviour
 	private void InitialEaseIn()
 	{
 		this.tweenFloat = this.currentStart;
-		this.scrollbarTween = DOTween.To(() => this.tweenFloat, delegate(float x)
+		this.scrollbarTween = TweenSettingsExtensions.SetId<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.tweenFloat, delegate(float x)
 		{
 			this.tweenFloat = x;
-		}, this.easeInA, 1f).SetEase(Ease.InQuad).OnComplete(new TweenCallback(this.InitialScroll)).SetId("ScrollPro");
+		}, this.easeInA, 1f), 5), new TweenCallback(this.InitialScroll)), "ScrollPro");
 	}
 
 	private void InitialScroll()
 	{
 		this.tweenFloat = this.easeInA;
-		this.scrollbarTween = DOTween.To(() => this.tweenFloat, delegate(float x)
+		this.scrollbarTween = TweenSettingsExtensions.SetId<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.tweenFloat, delegate(float x)
 		{
 			this.tweenFloat = x;
-		}, 0f, this.time).SetEase(Ease.Linear).OnComplete(new TweenCallback(this.AutoScrollEnd)).SetId("ScrollPro");
+		}, 0f, this.time), 1), new TweenCallback(this.AutoScrollEnd)), "ScrollPro");
 	}
 
 	private void PressReleased()
@@ -137,19 +138,19 @@ public class CreditScroller : MonoBehaviour
 		this.isAutoScrolling = true;
 		if (this.tweenFloat != 0f)
 		{
-			this.scrollbarTween = DOTween.To(() => this.tweenFloat, delegate(float x)
+			this.scrollbarTween = TweenSettingsExtensions.SetId<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.tweenFloat, delegate(float x)
 			{
 				this.tweenFloat = x;
-			}, this.easeStart, 1f).SetEase(Ease.InQuad).OnComplete(new TweenCallback(this.AutoScrolling)).SetId("ScrollPro");
+			}, this.easeStart, 1f), 5), new TweenCallback(this.AutoScrolling)), "ScrollPro");
 		}
 	}
 
 	private void AutoScrolling()
 	{
-		this.scrollbarTween = DOTween.To(() => this.tweenFloat, delegate(float x)
+		this.scrollbarTween = TweenSettingsExtensions.SetId<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.tweenFloat, delegate(float x)
 		{
 			this.tweenFloat = x;
-		}, 0f, this.time).SetEase(Ease.Linear).OnComplete(new TweenCallback(this.AutoScrollEnd)).SetId("ScrollPro");
+		}, 0f, this.time), 1), new TweenCallback(this.AutoScrollEnd)), "ScrollPro");
 	}
 
 	private void AutoScrollEnd()

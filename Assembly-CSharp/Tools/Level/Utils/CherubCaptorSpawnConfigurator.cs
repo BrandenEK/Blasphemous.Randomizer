@@ -26,7 +26,7 @@ namespace Tools.Level.Utils
 			EnemySpawnPoint component = base.GetComponent<EnemySpawnPoint>();
 			if (component.HasEnemySpawned)
 			{
-				UnityEngine.Object.Destroy(this.cherub.gameObject);
+				Object.Destroy(this.cherub.gameObject);
 			}
 		}
 

@@ -8,7 +8,7 @@ namespace Gameplay.GameControllers.Enemies.MeltedLady.Audio
 	{
 		private void Awake()
 		{
-			this._audio = UnityEngine.Object.FindObjectOfType<InkLadyAudio>();
+			this._audio = Object.FindObjectOfType<InkLadyAudio>();
 		}
 
 		public void PlayBeamCharge()

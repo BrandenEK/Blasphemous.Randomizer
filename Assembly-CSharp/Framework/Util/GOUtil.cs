@@ -21,9 +21,9 @@ namespace Framework.Util
 
 		public static void PixelPerfectPosition(GameObject go)
 		{
-			float x = Mathf.Floor(go.transform.position.z * 32f) / 32f;
-			float y = Mathf.Floor(go.transform.position.z * 32f) / 32f;
-			go.transform.position = new Vector3(x, y, go.transform.position.z);
+			float num = Mathf.Floor(go.transform.position.z * 32f) / 32f;
+			float num2 = Mathf.Floor(go.transform.position.z * 32f) / 32f;
+			go.transform.position = new Vector3(num, num2, go.transform.position.z);
 		}
 	}
 }

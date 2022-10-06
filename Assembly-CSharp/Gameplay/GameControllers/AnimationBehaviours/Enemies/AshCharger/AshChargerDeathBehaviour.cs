@@ -12,7 +12,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.AshCharger
 			AshCharger componentInParent = animator.GetComponentInParent<AshCharger>();
 			if (componentInParent != null)
 			{
-				UnityEngine.Object.Destroy(componentInParent.gameObject);
+				Object.Destroy(componentInParent.gameObject);
 			}
 		}
 	}

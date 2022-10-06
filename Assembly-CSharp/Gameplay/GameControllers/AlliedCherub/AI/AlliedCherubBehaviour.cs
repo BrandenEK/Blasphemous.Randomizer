@@ -88,7 +88,7 @@ namespace Gameplay.GameControllers.AlliedCherub.AI
 			float duration = 0.4f;
 			if (dir.magnitude > 2f)
 			{
-				base.transform.DOLocalMove(base.transform.position + dir.normalized * 2f, duration, false).SetEase(Ease.OutCubic);
+				TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMove(base.transform, base.transform.position + dir.normalized * 2f, duration, false), 9);
 			}
 			if (this.spriteEffects)
 			{

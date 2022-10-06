@@ -80,7 +80,7 @@ namespace Gameplay.GameControllers.Effects.Player.Sparks
 				else
 				{
 					swordSpark = this.GetCurrentSwordSpark(this.CurrentSwordSparkSpawningType);
-					gameObject = UnityEngine.Object.Instantiate<GameObject>(swordSpark.gameObject, position, Quaternion.identity);
+					gameObject = Object.Instantiate<GameObject>(swordSpark.gameObject, position, Quaternion.identity);
 				}
 			}
 			else
@@ -90,7 +90,7 @@ namespace Gameplay.GameControllers.Effects.Player.Sparks
 				{
 					return null;
 				}
-				gameObject = UnityEngine.Object.Instantiate<GameObject>(swordSpark.gameObject, position, Quaternion.identity);
+				gameObject = Object.Instantiate<GameObject>(swordSpark.gameObject, position, Quaternion.identity);
 			}
 			gameObject.transform.parent = this._levelEffectsStore.transform;
 			return swordSpark;

@@ -46,7 +46,7 @@ namespace Gameplay.GameControllers.Bosses.CommonAttacks
 			{
 				PoolManager.Instance.ReuseObject(this.spawnFX, origin, Quaternion.identity, false, 1);
 			}
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.enemyToSpawn, origin, Quaternion.identity);
+			GameObject gameObject = Object.Instantiate<GameObject>(this.enemyToSpawn, origin, Quaternion.identity);
 			this.spawnedEnemies.Add(gameObject);
 			Enemy component = gameObject.GetComponent<Enemy>();
 			component.SetOrientation((dir.x <= 0f) ? EntityOrientation.Left : EntityOrientation.Right, true, false);
@@ -75,9 +75,9 @@ namespace Gameplay.GameControllers.Bosses.CommonAttacks
 
 		private void DrawDebugCross(Vector2 point, Color c, float seconds)
 		{
-			float d = 0.6f;
-			Debug.DrawLine(point - Vector2.up * d, point + Vector2.up * d, c, seconds);
-			Debug.DrawLine(point - Vector2.right * d, point + Vector2.right * d, c, seconds);
+			float num = 0.6f;
+			Debug.DrawLine(point - Vector2.up * num, point + Vector2.up * num, c, seconds);
+			Debug.DrawLine(point - Vector2.right * num, point + Vector2.right * num, c, seconds);
 		}
 
 		private Coroutine _currentCoroutine;

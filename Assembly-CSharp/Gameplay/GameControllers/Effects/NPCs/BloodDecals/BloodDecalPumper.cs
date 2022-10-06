@@ -14,7 +14,7 @@ namespace Gameplay.GameControllers.Effects.NPCs.BloodDecals
 		{
 			this.bloodDecalsQuantity = this.bloodDecals.Length;
 			this.feedBloodDecalKeys(this.bloodDecalsQuantity);
-			this.lastBloodDecalRandomKey = UnityEngine.Random.Range(0, this.bloodDecals.Length);
+			this.lastBloodDecalRandomKey = Random.Range(0, this.bloodDecals.Length);
 			this.permaBloodSpawnPoint = base.GetComponentInChildren<SpawnPoint>();
 			this.entity = base.GetComponentInParent<Entity>();
 		}
@@ -61,7 +61,7 @@ namespace Gameplay.GameControllers.Effects.NPCs.BloodDecals
 			int num = 0;
 			if (bloodDecalsCollectionRange > 0)
 			{
-				num = UnityEngine.Random.Range(num, bloodDecalsCollectionRange);
+				num = Random.Range(num, bloodDecalsCollectionRange);
 			}
 			return num;
 		}
@@ -96,7 +96,7 @@ namespace Gameplay.GameControllers.Effects.NPCs.BloodDecals
 
 		protected int retrieveFirstRoundKey()
 		{
-			int index = UnityEngine.Random.Range(0, this.bloodDecalsKeys.Count);
+			int index = Random.Range(0, this.bloodDecalsKeys.Count);
 			int num = this.bloodDecalsKeys[index];
 			this.bloodDecalsKeys.Remove(num);
 			return num;
@@ -104,7 +104,7 @@ namespace Gameplay.GameControllers.Effects.NPCs.BloodDecals
 
 		protected GameObject instanceBloodDecal(BloodDecal bloodDecalPrefab, Vector3 pos, Quaternion rotation)
 		{
-			return UnityEngine.Object.Instantiate<GameObject>(bloodDecalPrefab.gameObject, pos, rotation);
+			return Object.Instantiate<GameObject>(bloodDecalPrefab.gameObject, pos, rotation);
 		}
 
 		public SpawnPoint PermaBloodSpawnPoint

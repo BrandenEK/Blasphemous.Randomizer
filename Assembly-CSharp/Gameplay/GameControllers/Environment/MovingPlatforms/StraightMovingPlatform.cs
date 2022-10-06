@@ -73,7 +73,7 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 			this.currentRunningTimeoutLapse -= Time.deltaTime;
 			if (num > 0f && !DOTween.IsTweening(base.transform, false) && this.TimeoutConsumed)
 			{
-				this.tweener = base.transform.DOMove(this._destination, num / this.Speed, false).SetEase(Ease.InOutSine).SetUpdate(UpdateType.Normal, false);
+				this.tweener = TweenSettingsExtensions.SetUpdate<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, this._destination, num / this.Speed, false), 4), 0, false);
 				this.PlayMovementLoopFx(ref this._movementLoopFx);
 			}
 			if (num <= 0.01f)
@@ -85,7 +85,7 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 				this._origin = base.transform.position;
 				this.StopMovementLoopFx(ref this._movementLoopFx);
 				this.PlayMovementStopFx();
-				this.tweener.Kill(false);
+				TweenExtensions.Kill(this.tweener, false);
 				this.tweener = null;
 			}
 			this.SetMotionConstraints();
@@ -240,7 +240,7 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 
 		private void PlayMovementStopFx()
 		{
-			if (this.MovingPlatformStop.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(this.MovingPlatformStop))
 			{
 				return;
 			}
@@ -252,13 +252,13 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 
 		private void PlayMovementLoopFx(ref EventInstance audioInstance)
 		{
-			if (this.MovingPlatformLoop.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(this.MovingPlatformLoop))
 			{
 				return;
 			}
 			if (this._movementLoopFx.isValid())
 			{
-				this._movementLoopFx.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+				this._movementLoopFx.stop(0);
 				this._movementLoopFx.release();
 				this._movementLoopFx = default(EventInstance);
 			}
@@ -273,7 +273,7 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 				return;
 			}
 			this.PlayMovementStopFx();
-			this._movementLoopFx.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+			this._movementLoopFx.stop(1);
 			this._movementLoopFx.release();
 			this._movementLoopFx = default(EventInstance);
 		}

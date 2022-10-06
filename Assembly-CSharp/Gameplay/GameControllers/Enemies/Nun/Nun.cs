@@ -76,7 +76,8 @@ namespace Gameplay.GameControllers.Enemies.Nun
 		{
 			base.SetPositionAtStart();
 			float groundDist = base.Controller.GroundDist;
-			Vector3 position = new Vector3(base.transform.position.x, base.transform.position.y - groundDist, base.transform.position.z);
+			Vector3 position;
+			position..ctor(base.transform.position.x, base.transform.position.y - groundDist, base.transform.position.z);
 			base.transform.position = position;
 			base.Controller.PlatformCharacterPhysics.GravityScale = 0f;
 		}

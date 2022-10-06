@@ -164,7 +164,7 @@ namespace Tools.Audio
 				return;
 			}
 			Debug.Log("** Fadeout last " + this.trackIdentifier);
-			this.audioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			this.audioInstance.stop(0);
 			this.audioInstance.release();
 			this.audioInstance = default(EventInstance);
 			this.trackIdentifier = string.Empty;
@@ -184,7 +184,7 @@ namespace Tools.Audio
 			{
 				return;
 			}
-			this.reverbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			this.reverbInstance.stop(0);
 			this.reverbInstance.release();
 			this.reverbInstance = default(EventInstance);
 			this.reverbIdentifier = string.Empty;
@@ -197,7 +197,7 @@ namespace Tools.Audio
 				if (this.audioInstance.isValid())
 				{
 					float num;
-					this.audioInstance.getVolume(out this.volume, out num);
+					this.audioInstance.getVolume(ref this.volume, ref num);
 				}
 				return this.volume;
 			}
@@ -217,7 +217,7 @@ namespace Tools.Audio
 			float num = -1f;
 			if (this.audioInstance.isValid())
 			{
-				this.audioInstance.getParameterValue(param, out result, out num);
+				this.audioInstance.getParameterValue(param, ref result, ref num);
 			}
 			return result;
 		}
@@ -291,14 +291,14 @@ namespace Tools.Audio
 				{
 					float num = -1f;
 					int num2 = 0;
-					this.audioInstance.getParameterCount(out num2);
+					this.audioInstance.getParameterCount(ref num2);
 					for (int i = 0; i < num2; i++)
 					{
 						ParameterInstance parameterInstance = default(ParameterInstance);
-						this.audioInstance.getParameterByIndex(i, out parameterInstance);
+						this.audioInstance.getParameterByIndex(i, ref parameterInstance);
 						PARAMETER_DESCRIPTION parameter_DESCRIPTION;
-						parameterInstance.getDescription(out parameter_DESCRIPTION);
-						parameterInstance.getValue(out num);
+						parameterInstance.getDescription(ref parameter_DESCRIPTION);
+						parameterInstance.getValue(ref num);
 						this.DrawTextLine(parameter_DESCRIPTION.name + ": " + num.ToString());
 					}
 				}

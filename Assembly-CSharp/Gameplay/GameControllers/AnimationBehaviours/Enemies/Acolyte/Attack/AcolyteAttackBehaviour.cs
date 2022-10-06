@@ -39,10 +39,10 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Acolyte.Attack
 
 		public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 		{
-			if (this._acolyte.RigidbodyType != RigidbodyType2D.Kinematic)
+			if (this._acolyte.RigidbodyType != 1)
 			{
 				this._acolyte.Rigidbody.velocity = Vector2.zero;
-				this._acolyte.RigidbodyType = RigidbodyType2D.Kinematic;
+				this._acolyte.RigidbodyType = 1;
 			}
 			this._behaviour.IsAttackWindowOpen = false;
 			this._acolyte.IsAttacking = false;

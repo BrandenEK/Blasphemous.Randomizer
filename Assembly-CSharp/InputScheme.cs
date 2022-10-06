@@ -1,7 +1,6 @@
 using System;
 using Framework.Managers;
 using I2.Loc;
-using Rewired;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,25 +11,25 @@ public class InputScheme : MonoBehaviour
 	{
 		Core.Input.KeyboardPressed += this.Refresh;
 		Core.Input.JoystickPressed += this.Refresh;
-		I2.Loc.LocalizationManager.OnLocalizeEvent += this.Refresh;
+		LocalizationManager.OnLocalizeEvent += new LocalizationManager.OnLocalizeCallback(this.Refresh);
 	}
 
 	private void Refresh()
 	{
-		string currentLanguage = I2.Loc.LocalizationManager.CurrentLanguage;
-		if (currentLanguage.Equals("Spanish") && Core.Input.ActiveControllerType == ControllerType.Keyboard)
+		string currentLanguage = LocalizationManager.CurrentLanguage;
+		if (currentLanguage.Equals("Spanish") && Core.Input.ActiveControllerType == null)
 		{
 			this.SetActiveScheme(this.keyboardSpanish);
 		}
-		else if (currentLanguage.Equals("English") && Core.Input.ActiveControllerType == ControllerType.Keyboard)
+		else if (currentLanguage.Equals("English") && Core.Input.ActiveControllerType == null)
 		{
 			this.SetActiveScheme(this.keyboardEnglish);
 		}
-		else if (currentLanguage.Equals("Spanish") && Core.Input.ActiveControllerType == ControllerType.Joystick)
+		else if (currentLanguage.Equals("Spanish") && Core.Input.ActiveControllerType == 2)
 		{
 			this.SetActiveScheme(this.gamepadSpanish);
 		}
-		else if (currentLanguage.Equals("English") && Core.Input.ActiveControllerType == ControllerType.Joystick)
+		else if (currentLanguage.Equals("English") && Core.Input.ActiveControllerType == 2)
 		{
 			this.SetActiveScheme(this.gamepadEnglish);
 		}
@@ -56,7 +55,7 @@ public class InputScheme : MonoBehaviour
 	{
 		Core.Input.KeyboardPressed -= this.Refresh;
 		Core.Input.JoystickPressed -= this.Refresh;
-		I2.Loc.LocalizationManager.OnLocalizeEvent -= this.Refresh;
+		LocalizationManager.OnLocalizeEvent -= new LocalizationManager.OnLocalizeCallback(this.Refresh);
 	}
 
 	[SerializeField]

@@ -7,7 +7,7 @@ public class FloatInPlace : MonoBehaviour
 	private void Start()
 	{
 		Vector2 vector = base.transform.localPosition;
-		this.swayTween = base.transform.DOLocalMoveY(vector.y - this.oscillationDistance, this.loopDuration, false).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
+		this.swayTween = TweenSettingsExtensions.SetLoops<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMoveY(base.transform, vector.y - this.oscillationDistance, this.loopDuration, false), 7), -1, 1);
 	}
 
 	private Tween swayTween;

@@ -38,8 +38,8 @@ namespace Gameplay.UI.Others.MenuLogic
 				{
 					object obj = enumerator2.Current;
 					NewInventoryWidget.TabType key = (NewInventoryWidget.TabType)obj;
-					string name = this.tabPrefix + num.ToString();
-					Transform transform = this.tabParent.transform.Find(name);
+					string text = this.tabPrefix + num.ToString();
+					Transform transform = this.tabParent.transform.Find(text);
 					this.TypeConfiguration[key].cachedButtonOn = transform.Find("ButtonOn").gameObject;
 					this.TypeConfiguration[key].cachedButtonOff = transform.Find("ButtonOff").gameObject;
 					num++;

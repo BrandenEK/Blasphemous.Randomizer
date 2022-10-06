@@ -1,5 +1,4 @@
 using System;
-using FMOD.Studio;
 using Framework.Managers;
 using Framework.Util;
 using Gameplay.GameControllers.Penitent;
@@ -87,7 +86,7 @@ namespace Gameplay.UI.Others.UIGameLogic
 		{
 			this.isTimerRunning = false;
 			this.Text.color = ((!completed) ? this.FailedColor : this.CompletedColor);
-			Core.Audio.StopNamedSound(this.lastTenSecondsEvent, FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			Core.Audio.StopNamedSound(this.lastTenSecondsEvent, 0);
 			if (this.remainingTime == 0f)
 			{
 				PlayMakerFSM.BroadcastEvent("ON TIMER RUNS OUT");

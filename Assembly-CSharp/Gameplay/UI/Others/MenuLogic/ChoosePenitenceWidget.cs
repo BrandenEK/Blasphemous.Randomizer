@@ -33,10 +33,10 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		public override void Close()
 		{
-			DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
+			TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
 			{
 				this.canvasGroup.alpha = x;
-			}, 0f, 1f).OnComplete(new TweenCallback(this.OnClose));
+			}, 0f, 1f), new TweenCallback(this.OnClose));
 			base.Close();
 		}
 
@@ -77,25 +77,25 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		public void Option_ActivatePE01()
 		{
-			this.SetButtonsNavigationMode(this.buttons, Navigation.Mode.None);
+			this.SetButtonsNavigationMode(this.buttons, 0);
 			UIController.instance.ShowConfirmationWidget(ScriptLocalization.UI_Penitences.CHOOSE_PENITENCE_CONFIRMATION, new Action(this.ActivatePenitencePE01AndClose), new Action(this.ResetButtonsNavigation));
 		}
 
 		public void Option_ActivatePE02()
 		{
-			this.SetButtonsNavigationMode(this.buttons, Navigation.Mode.None);
+			this.SetButtonsNavigationMode(this.buttons, 0);
 			UIController.instance.ShowConfirmationWidget(ScriptLocalization.UI_Penitences.CHOOSE_PENITENCE_CONFIRMATION, new Action(this.ActivatePenitencePE02AndClose), new Action(this.ResetButtonsNavigation));
 		}
 
 		public void Option_ActivatePE03()
 		{
-			this.SetButtonsNavigationMode(this.buttons, Navigation.Mode.None);
+			this.SetButtonsNavigationMode(this.buttons, 0);
 			UIController.instance.ShowConfirmationWidget(ScriptLocalization.UI_Penitences.CHOOSE_PENITENCE_CONFIRMATION, new Action(this.ActivatePenitencePE03AndClose), new Action(this.ResetButtonsNavigation));
 		}
 
 		public void Option_ContinueWithNoPenitence()
 		{
-			this.SetButtonsNavigationMode(this.buttons, Navigation.Mode.None);
+			this.SetButtonsNavigationMode(this.buttons, 0);
 			UIController.instance.ShowConfirmationWidget(ScriptLocalization.UI_Penitences.CHOOSE_NO_PENITENCE_CONFIRMATION, new Action(this.ContinueWithNoPenitenceAndClose), new Action(this.ResetButtonsNavigation));
 		}
 
@@ -128,7 +128,7 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		private void ResetButtonsNavigation()
 		{
-			this.SetButtonsNavigationMode(this.buttons, Navigation.Mode.Explicit);
+			this.SetButtonsNavigationMode(this.buttons, 4);
 		}
 
 		private void SetButtonsNavigationMode(List<Button> buttons, Navigation.Mode mode)

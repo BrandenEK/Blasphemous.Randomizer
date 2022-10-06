@@ -47,18 +47,18 @@ namespace Gameplay.GameControllers.Effects.NPCs
 
 		private void LookHorizontally()
 		{
-			float endValue;
+			float num2;
 			if (this.target.position.x > this.startingPos.x)
 			{
 				float num = this.target.position.x - this.startingPos.x;
-				endValue = Mathf.Lerp(this.startingPos.x, this.startingPos.x + this.maxHorizontalDisplacement, num / this.maxDistanceToFollow);
+				num2 = Mathf.Lerp(this.startingPos.x, this.startingPos.x + this.maxHorizontalDisplacement, num / this.maxDistanceToFollow);
 			}
 			else
 			{
-				float num2 = this.startingPos.x - this.target.position.x;
-				endValue = Mathf.Lerp(this.startingPos.x, this.startingPos.x - this.maxHorizontalDisplacement, num2 / this.maxDistanceToFollow);
+				float num3 = this.startingPos.x - this.target.position.x;
+				num2 = Mathf.Lerp(this.startingPos.x, this.startingPos.x - this.maxHorizontalDisplacement, num3 / this.maxDistanceToFollow);
 			}
-			this.horLookTween = base.transform.DOMoveX(endValue, 0.1f, false).SetEase(Ease.InQuad).OnComplete(delegate
+			this.horLookTween = TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(base.transform, num2, 0.1f, false), 5), delegate()
 			{
 				this.horLookTween = null;
 			});
@@ -67,18 +67,18 @@ namespace Gameplay.GameControllers.Effects.NPCs
 		private void LookVertically()
 		{
 			float num = this.target.position.y + this.verticalOffset;
-			float endValue;
+			float num3;
 			if (num > this.startingPos.y)
 			{
 				float num2 = num - this.startingPos.y;
-				endValue = Mathf.Lerp(this.startingPos.y, this.startingPos.y + this.maxVerticalDisplacement, num2 / this.maxDistanceToFollow);
+				num3 = Mathf.Lerp(this.startingPos.y, this.startingPos.y + this.maxVerticalDisplacement, num2 / this.maxDistanceToFollow);
 			}
 			else
 			{
-				float num3 = this.startingPos.y - num;
-				endValue = Mathf.Lerp(this.startingPos.y, this.startingPos.y - this.maxVerticalDisplacement, num3 / this.maxDistanceToFollow);
+				float num4 = this.startingPos.y - num;
+				num3 = Mathf.Lerp(this.startingPos.y, this.startingPos.y - this.maxVerticalDisplacement, num4 / this.maxDistanceToFollow);
 			}
-			this.verLookTween = base.transform.DOMoveY(endValue, 0.1f, false).SetEase(Ease.InQuad).OnComplete(delegate
+			this.verLookTween = TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, num3, 0.1f, false), 5), delegate()
 			{
 				this.verLookTween = null;
 			});
@@ -90,11 +90,11 @@ namespace Gameplay.GameControllers.Effects.NPCs
 			{
 				return;
 			}
-			this.horLookTween = base.transform.DOMoveX(this.startingPos.x, 0.5f, false).SetEase(Ease.InQuad).OnComplete(delegate
+			this.horLookTween = TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(base.transform, this.startingPos.x, 0.5f, false), 5), delegate()
 			{
 				this.horLookTween = null;
 			});
-			this.verLookTween = base.transform.DOMoveY(this.startingPos.y, 0.5f, false).SetEase(Ease.InQuad).OnComplete(delegate
+			this.verLookTween = TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, this.startingPos.y, 0.5f, false), 5), delegate()
 			{
 				this.verLookTween = null;
 			});

@@ -65,9 +65,9 @@ namespace Gameplay.GameControllers.Enemies.GhostKnight.AI
 			}
 			this.GotCloseToPlayer = true;
 			Vector3 position = this._ghostKnight.Target.transform.position;
-			float y = position.y + -1f;
+			float num = position.y + -1f;
 			float horizontalRndPositionBeforeAttack = this.GetHorizontalRndPositionBeforeAttack(position);
-			this._ghostKnight.transform.position = new Vector2(horizontalRndPositionBeforeAttack, y);
+			this._ghostKnight.transform.position = new Vector2(horizontalRndPositionBeforeAttack, num);
 			this.Appear(this.TimeBecomeVisible);
 		}
 
@@ -78,7 +78,7 @@ namespace Gameplay.GameControllers.Enemies.GhostKnight.AI
 				return;
 			}
 			this._animatorInyector.Appear();
-			this._ghostKnight.SpriteRenderer.DOFade(1f, time).OnComplete(new TweenCallback(this.BecomeVisible)).OnUpdate(new TweenCallback(this.OnTransition));
+			TweenSettingsExtensions.OnUpdate<Tweener>(TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions43.DOFade(this._ghostKnight.SpriteRenderer, 1f, time), new TweenCallback(this.BecomeVisible)), new TweenCallback(this.OnTransition));
 			this._ghostKnight.Audio.Appear();
 		}
 
@@ -92,7 +92,7 @@ namespace Gameplay.GameControllers.Enemies.GhostKnight.AI
 			{
 				this.SetSpriteInvisible();
 			}
-			this._ghostKnight.SpriteRenderer.DOFade(0f, time).OnComplete(new TweenCallback(this.BecomeInvisible)).OnUpdate(new TweenCallback(this.OnTransition));
+			TweenSettingsExtensions.OnUpdate<Tweener>(TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions43.DOFade(this._ghostKnight.SpriteRenderer, 0f, time), new TweenCallback(this.BecomeInvisible)), new TweenCallback(this.OnTransition));
 			this._ghostKnight.Audio.Disappear();
 		}
 
@@ -161,7 +161,7 @@ namespace Gameplay.GameControllers.Enemies.GhostKnight.AI
 
 		private float GetHorizontalRndPositionBeforeAttack(Vector3 targetPos)
 		{
-			float value = UnityEngine.Random.value;
+			float value = Random.value;
 			return (value < 0.5f) ? (targetPos.x - this.DistanceToPlayerBeforeAttack) : (targetPos.x + this.DistanceToPlayerBeforeAttack);
 		}
 
@@ -175,8 +175,8 @@ namespace Gameplay.GameControllers.Enemies.GhostKnight.AI
 			get
 			{
 				Vector3 position = this._ghostKnight.transform.position;
-				float x = (this._ghostKnight.Status.Orientation != EntityOrientation.Left) ? (position.x - this.FallbackDisplacement) : (position.x + this.FallbackDisplacement);
-				return new Vector2(x, this._ghostKnight.transform.position.y);
+				float num = (this._ghostKnight.Status.Orientation != EntityOrientation.Left) ? (position.x - this.FallbackDisplacement) : (position.x + this.FallbackDisplacement);
+				return new Vector2(num, this._ghostKnight.transform.position.y);
 			}
 		}
 
@@ -206,9 +206,9 @@ namespace Gameplay.GameControllers.Enemies.GhostKnight.AI
 				return;
 			}
 			this.GotRamp = true;
-			float d = (this._ghostKnight.Status.Orientation != EntityOrientation.Left) ? 1f : -1f;
+			float num = (this._ghostKnight.Status.Orientation != EntityOrientation.Left) ? 1f : -1f;
 			MotionLerper motionLerper = this._ghostKnight.MotionLerper;
-			motionLerper.StartLerping(Vector2.right * d);
+			motionLerper.StartLerping(Vector2.right * num);
 			this.Entity.IsAttacking = true;
 		}
 
@@ -251,7 +251,7 @@ namespace Gameplay.GameControllers.Enemies.GhostKnight.AI
 			this.StopMovement();
 			DOTween.Kill(base.transform, false);
 			float num = (this._ghostKnight.Status.Orientation != EntityOrientation.Right) ? 1f : -1f;
-			this._ghostKnight.transform.DOMoveX(base.transform.position.x + displacement * num, time, false).SetEase(Ease.OutSine);
+			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(this._ghostKnight.transform, base.transform.position.x + displacement * num, time, false), 3);
 		}
 
 		public override void Parry()

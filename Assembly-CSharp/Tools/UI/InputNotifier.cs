@@ -27,7 +27,7 @@ namespace Tools.UI
 				this.Showing = true;
 				this.inputIcon.Fade(1f, this.fadeTime);
 				this.inputIcon.RefreshIcon();
-				this.spriteRenderer.DOFade(1f, this.fadeTime);
+				ShortcutExtensions43.DOFade(this.spriteRenderer, 1f, this.fadeTime);
 			}
 			else
 			{
@@ -72,7 +72,7 @@ namespace Tools.UI
 
 		private void CreateInputIcon()
 		{
-			this.inputIcon = UnityEngine.Object.Instantiate<InputIcon>(this.inputIconPrefab);
+			this.inputIcon = Object.Instantiate<InputIcon>(this.inputIconPrefab);
 			SpriteRenderer componentInChildren = this.inputIcon.GetComponentInChildren<SpriteRenderer>();
 			TextMesh componentInChildren2 = this.inputIcon.GetComponentInChildren<TextMesh>();
 			Color color = componentInChildren.color;
@@ -111,7 +111,7 @@ namespace Tools.UI
 			}
 			this.inputIcon.Fade(1f, this.fadeTime);
 			this.inputIcon.RefreshIcon();
-			this.spriteRenderer.DOFade(1f, this.fadeTime);
+			ShortcutExtensions43.DOFade(this.spriteRenderer, 1f, this.fadeTime);
 		}
 
 		private void HideNotification()

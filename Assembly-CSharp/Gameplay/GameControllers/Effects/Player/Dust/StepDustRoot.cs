@@ -8,7 +8,8 @@ namespace Gameplay.GameControllers.Effects.Player.Dust
 	{
 		private void OnDrawGizmosSelected()
 		{
-			Color color = new Color(0.78f, 0.14f, 0.69f, 1f);
+			Color color;
+			color..ctor(0.78f, 0.14f, 0.69f, 1f);
 			Gizmos.color = color;
 			Gizmos.DrawSphere(base.transform.position, 0.1f);
 		}

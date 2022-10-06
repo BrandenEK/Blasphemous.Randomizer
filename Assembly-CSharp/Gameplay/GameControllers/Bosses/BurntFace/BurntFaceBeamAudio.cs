@@ -8,7 +8,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace
 	{
 		private void Awake()
 		{
-			this._audio = UnityEngine.Object.FindObjectOfType<BurntFaceAudio>();
+			this._audio = Object.FindObjectOfType<BurntFaceAudio>();
 		}
 
 		public void PlayBeamCharge()

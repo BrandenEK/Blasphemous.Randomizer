@@ -78,7 +78,8 @@ namespace Gameplay.GameControllers.Camera
 			this.ProCamera2D.VerticalFollowSmoothness = 0f;
 			Vector3 position = this.ProCamera2D.transform.position;
 			Vector3 position2 = Core.Logic.Penitent.transform.position;
-			Vector3 position3 = new Vector3(position2.x, position2.y, position.z);
+			Vector3 position3;
+			position3..ctor(position2.x, position2.y, position.z);
 			this.ProCamera2D.transform.position = position3;
 			this.Rewired = ReInput.players.GetPlayer(0);
 			this.ProCamera2DGeometryBoundaries.enabled = this.LevelHasGeometryBoundaries;

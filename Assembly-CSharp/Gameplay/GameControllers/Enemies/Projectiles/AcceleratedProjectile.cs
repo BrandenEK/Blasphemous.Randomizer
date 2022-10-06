@@ -77,26 +77,26 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 		private void AcceleratedProjectile_OnProjectileHit(ProjectileReaction obj)
 		{
 			this.acceleration = Vector2.zero;
-			Vector3 b = Core.Logic.Penitent.transform.position + Vector3.up;
-			Vector2 vector = (base.transform.position - b).normalized;
+			Vector3 vector = Core.Logic.Penitent.transform.position + Vector3.up;
+			Vector2 vector2 = (base.transform.position - vector).normalized;
 			base.GetComponent<ProjectileWeapon>().SetDamage(this._bounceBackDamage);
 			if (this.bounceBackToTarget && this._targetToBounceBack != null)
 			{
-				Vector2 vector2 = (this._targetToBounceBack.position + this._targetToBounceBackOffset - base.transform.position).normalized;
+				Vector2 vector3 = (this._targetToBounceBack.position + this._targetToBounceBackOffset - base.transform.position).normalized;
 				this._attackArea.SetLayerMask(this.layerMaskOnBounceBack);
-				if (Vector2.Angle(vector2, vector) < this.validBounceBackAngle)
+				if (Vector2.Angle(vector3, vector2) < this.validBounceBackAngle)
 				{
 					this._accel = Vector2.zero;
-					vector = vector2;
-					Debug.DrawRay(base.transform.position, vector * 10f, Color.green, 10f);
+					vector2 = vector3;
+					Debug.DrawRay(base.transform.position, vector2 * 10f, Color.green, 10f);
 				}
 			}
-			this.velocity = vector * (this.velocity.magnitude * this.deflectedVelocityMultiplier);
+			this.velocity = vector2 * (this.velocity.magnitude * this.deflectedVelocityMultiplier);
 			if (this.faceVelocityDirection)
 			{
 				Vector2 normalized = this.velocity.normalized;
-				float z = 57.29578f * Mathf.Atan2(normalized.y, normalized.x);
-				base.transform.eulerAngles = new Vector3(0f, 0f, z);
+				float num = 57.29578f * Mathf.Atan2(normalized.y, normalized.x);
+				base.transform.eulerAngles = new Vector3(0f, 0f, num);
 			}
 			if (this.changeExplosionMaskAfterDeflection)
 			{

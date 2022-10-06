@@ -70,16 +70,16 @@ public class BossHomingLaserAttack : MonoBehaviour
 	private void UpdateAimingAngle()
 	{
 		Vector2 vector = this._target.transform.position + this.targetOffset - base.transform.position;
-		float z = Mathf.Atan2(vector.y, vector.x) * 57.29578f;
-		Quaternion b = Quaternion.Euler(0f, 0f, z);
-		z = this.ClampTargetAngle(Quaternion.Slerp(base.transform.rotation, b, this.accuracy).eulerAngles.z);
-		base.transform.rotation = Quaternion.Euler(0f, 0f, z);
+		float num = Mathf.Atan2(vector.y, vector.x) * 57.29578f;
+		Quaternion quaternion = Quaternion.Euler(0f, 0f, num);
+		num = this.ClampTargetAngle(Quaternion.Slerp(base.transform.rotation, quaternion, this.accuracy).eulerAngles.z);
+		base.transform.rotation = Quaternion.Euler(0f, 0f, num);
 	}
 
 	private void DrawDebugLine(Color c)
 	{
-		Vector2 v = this._target.transform.position + this.targetOffset - base.transform.position;
-		UnityEngine.Debug.DrawLine(this._target.transform.position, this._target.transform.position + v, c, 2f);
+		Vector2 vector = this._target.transform.position + this.targetOffset - base.transform.position;
+		Debug.DrawLine(this._target.transform.position, this._target.transform.position + vector, c, 2f);
 	}
 
 	private float ClampTargetAngleAtStart(float targetAngle)

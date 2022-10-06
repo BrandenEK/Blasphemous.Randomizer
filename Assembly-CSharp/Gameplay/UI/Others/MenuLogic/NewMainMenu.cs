@@ -365,20 +365,20 @@ namespace Gameplay.UI.Others.MenuLogic
 				Core.SpawnManager.FirstSpanw = true;
 				Core.SpawnManager.SetInitialSpawn(this.sceneName);
 				Core.LevelManager.ChangeLevel(this.sceneName, false, true, false, null);
-				return;
 			}
-			if (this.isContinue)
+			else if (this.isContinue)
 			{
 				Core.Persistence.LoadGame(PersistentManager.GetAutomaticSlot());
-				return;
 			}
-			Core.Logic.ResetAllData();
-			Core.Persistence.DeleteSaveGame(PersistentManager.GetAutomaticSlot());
-			Core.SpawnManager.FirstSpanw = true;
-			Core.Randomizer.newGame();
-			Core.GameModeManager.ChangeMode(GameModeManager.GAME_MODES.NEW_GAME_PLUS);
-			Core.SpawnManager.SetInitialSpawn(this.sceneName);
-			Core.LevelManager.ChangeLevel(this.sceneName, false, true, false, null);
+			else
+			{
+				Core.Logic.ResetAllData();
+				Core.Persistence.DeleteSaveGame(PersistentManager.GetAutomaticSlot());
+				Core.SpawnManager.FirstSpanw = true;
+				Core.GameModeManager.ChangeMode(GameModeManager.GAME_MODES.NEW_GAME);
+				Core.SpawnManager.SetInitialSpawn(this.sceneName);
+				Core.LevelManager.ChangeLevel(this.sceneName, false, true, false, null);
+			}
 		}
 
 		private void InternalBossRush()
@@ -526,18 +526,16 @@ namespace Gameplay.UI.Others.MenuLogic
 			{
 			case 0:
 				this.backgroundLabel.text = ScriptLocalization.UI_Extras.BACKGROUND_0_LABEL;
-				return;
+				break;
 			case 1:
 				this.backgroundLabel.text = ScriptLocalization.UI_Extras.BACKGROUND_1_LABEL;
-				return;
+				break;
 			case 2:
 				this.backgroundLabel.text = ScriptLocalization.UI_Extras.BACKGROUND_2_LABEL;
-				return;
+				break;
 			case 3:
 				this.backgroundLabel.text = ScriptLocalization.UI_Extras.BACKGROUND_3_LABEL;
-				return;
-			default:
-				return;
+				break;
 			}
 		}
 
@@ -547,7 +545,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			this.AllButtons.ForEach(delegate(Button x)
 			{
 				Navigation navigation = x.navigation;
-				navigation.mode = Navigation.Mode.None;
+				navigation.mode = 0;
 				x.navigation = navigation;
 				x.interactable = false;
 			});
@@ -559,7 +557,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			this.AllButtons.ForEach(delegate(Button x)
 			{
 				Navigation navigation = x.navigation;
-				navigation.mode = Navigation.Mode.Explicit;
+				navigation.mode = 4;
 				x.navigation = navigation;
 				x.interactable = true;
 			});
@@ -580,7 +578,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			{
 				byte[] bytes = Convert.FromBase64String(s);
 				string @string = Encoding.UTF8.GetString(bytes);
-				fsResult fsResult = fsJsonParser.Parse(@string, out fsData);
+				fsResult fsResult = fsJsonParser.Parse(@string, ref fsData);
 				if (fsResult.Failed && !fsResult.FormattedMessages.Equals("No input"))
 				{
 					Debug.LogError("Parsing error: " + fsResult.FormattedMessages);
@@ -607,8 +605,8 @@ namespace Gameplay.UI.Others.MenuLogic
 					}
 					else if (asDictionary.ContainsKey("main_menu_background") && asDictionary["main_menu_background"].IsInt64)
 					{
-						int value = (int)asDictionary["main_menu_background"].AsInt64;
-						this.bgIndex = Mathf.Clamp(value, 0, 3);
+						int num2 = (int)asDictionary["main_menu_background"].AsInt64;
+						this.bgIndex = Mathf.Clamp(num2, 0, 3);
 					}
 				}
 			}

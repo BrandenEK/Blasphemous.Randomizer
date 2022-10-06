@@ -11,7 +11,7 @@ namespace Framework.Managers
 	{
 		public override void Start()
 		{
-			LocalizationManager.OnLocalizeEvent += this.OnLocalizationChange;
+			LocalizationManager.OnLocalizeEvent += new LocalizationManager.OnLocalizeCallback(this.OnLocalizationChange);
 			this.LoadAllSkills(false);
 		}
 

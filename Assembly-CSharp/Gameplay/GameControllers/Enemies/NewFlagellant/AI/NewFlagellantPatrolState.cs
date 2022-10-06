@@ -18,7 +18,7 @@ namespace Gameplay.GameControllers.Enemies.NewFlagellant.AI
 		{
 			base.OnStateEnter();
 			this.NewFlagellant.MotionLerper.StopLerping();
-			this._counter = UnityEngine.Random.Range(4f, 7f);
+			this._counter = Random.Range(4f, 7f);
 		}
 
 		public override void OnStateExit()

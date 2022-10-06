@@ -30,7 +30,7 @@ namespace Framework.Managers
 
 		public void AttachHealthBarToEnemy(Enemy enemy)
 		{
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.healthBarPrefab, enemy.transform);
+			GameObject gameObject = Object.Instantiate<GameObject>(this.healthBarPrefab, enemy.transform);
 			gameObject.GetComponent<EnemyHealthBar>().UpdateParent(enemy);
 		}
 
@@ -39,23 +39,23 @@ namespace Framework.Managers
 			Log.Trace("UI", "Refreshing UI widget references.", null);
 			if (this.Glow == null)
 			{
-				this.Glow = UnityEngine.Object.FindObjectOfType<GlowWidget>();
+				this.Glow = Object.FindObjectOfType<GlowWidget>();
 			}
 			if (this.Fade == null)
 			{
-				this.Fade = UnityEngine.Object.FindObjectOfType<FadeWidget>();
+				this.Fade = Object.FindObjectOfType<FadeWidget>();
 			}
 			if (this.GameplayUI == null)
 			{
-				this.GameplayUI = UnityEngine.Object.FindObjectOfType<GameplayWidget>();
+				this.GameplayUI = Object.FindObjectOfType<GameplayWidget>();
 			}
 			if (this.Cinematic == null)
 			{
-				this.Cinematic = UnityEngine.Object.FindObjectOfType<CinematicBars>();
+				this.Cinematic = Object.FindObjectOfType<CinematicBars>();
 			}
 			if (this.NavigationUI == null)
 			{
-				this.NavigationUI = UnityEngine.Object.FindObjectOfType<NavigationWidget>();
+				this.NavigationUI = Object.FindObjectOfType<NavigationWidget>();
 			}
 		}
 

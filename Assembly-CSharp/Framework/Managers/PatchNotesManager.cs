@@ -61,7 +61,7 @@ namespace Framework.Managers
 			{
 				byte[] bytes = Convert.FromBase64String(s);
 				string @string = Encoding.UTF8.GetString(bytes);
-				fsResult fsResult = fsJsonParser.Parse(@string, out fsData);
+				fsResult fsResult = fsJsonParser.Parse(@string, ref fsData);
 				if (fsResult.Failed && !fsResult.FormattedMessages.Equals("No input"))
 				{
 					Debug.LogError("Parsing error: " + fsResult.FormattedMessages);
@@ -110,7 +110,7 @@ namespace Framework.Managers
 			{
 				byte[] bytes = Convert.FromBase64String(s);
 				string @string = Encoding.UTF8.GetString(bytes);
-				fsResult fsResult = fsJsonParser.Parse(@string, out result);
+				fsResult fsResult = fsJsonParser.Parse(@string, ref result);
 				if (fsResult.Failed && !fsResult.FormattedMessages.Equals("No input"))
 				{
 					Debug.LogError("Parsing error: " + fsResult.FormattedMessages);

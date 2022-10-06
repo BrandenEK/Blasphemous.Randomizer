@@ -12,7 +12,7 @@ namespace Gameplay.GameControllers.Entities.Guardian.Audio
 	{
 		public void PlayAttack()
 		{
-			if (this.AttackFx.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(this.AttackFx))
 			{
 				return;
 			}
@@ -21,7 +21,7 @@ namespace Gameplay.GameControllers.Entities.Guardian.Audio
 
 		public void PlayAppear()
 		{
-			if (this.AppearFx.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(this.AppearFx))
 			{
 				return;
 			}
@@ -30,7 +30,7 @@ namespace Gameplay.GameControllers.Entities.Guardian.Audio
 
 		public void PlayGuard()
 		{
-			if (this.GuardFx.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(this.GuardFx))
 			{
 				return;
 			}
@@ -39,7 +39,7 @@ namespace Gameplay.GameControllers.Entities.Guardian.Audio
 
 		public void PlayFollow()
 		{
-			if (this.FollowFx.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(this.FollowFx))
 			{
 				return;
 			}
@@ -53,13 +53,13 @@ namespace Gameplay.GameControllers.Entities.Guardian.Audio
 			{
 				return;
 			}
-			this.followEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			this.followEvent.stop(0);
 			this.followEvent.release();
 		}
 
 		public void PlayVanish()
 		{
-			if (this.VanishFx.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(this.VanishFx))
 			{
 				return;
 			}
@@ -68,7 +68,7 @@ namespace Gameplay.GameControllers.Entities.Guardian.Audio
 
 		public void PlayTurn()
 		{
-			if (this.VanishFx.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(this.VanishFx))
 			{
 				return;
 			}

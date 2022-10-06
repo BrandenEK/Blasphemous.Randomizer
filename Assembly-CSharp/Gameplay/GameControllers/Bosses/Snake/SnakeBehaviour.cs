@@ -208,13 +208,13 @@ namespace Gameplay.GameControllers.Bosses.Snake
 		{
 			float hpPercentage = this.Snake.GetHpPercentage();
 			List<float> filteredAttacksWeights = this.AttackConfigData.GetFilteredAttacksWeights(filteredAtks, true, hpPercentage);
-			float max = filteredAttacksWeights.Sum();
-			float num = UnityEngine.Random.Range(0f, max);
-			float num2 = 0f;
+			float num = filteredAttacksWeights.Sum();
+			float num2 = Random.Range(0f, num);
+			float num3 = 0f;
 			for (int i = 0; i < filteredAtks.Count; i++)
 			{
-				num2 += filteredAttacksWeights[i];
-				if (num2 > num)
+				num3 += filteredAttacksWeights[i];
+				if (num3 > num2)
 				{
 					return i;
 				}
@@ -464,11 +464,11 @@ namespace Gameplay.GameControllers.Bosses.Snake
 			Dictionary<KeyCode, SnakeBehaviour.SNAKE_ATTACKS> debugActions = this.AttackConfigData.debugActions;
 			if (debugActions != null)
 			{
-				foreach (KeyCode key in debugActions.Keys)
+				foreach (KeyCode keyCode in debugActions.Keys)
 				{
-					if (Input.GetKeyDown(key))
+					if (Input.GetKeyDown(keyCode))
 					{
-						this.QueueAttack(debugActions[key]);
+						this.QueueAttack(debugActions[keyCode]);
 					}
 				}
 			}
@@ -529,11 +529,11 @@ namespace Gameplay.GameControllers.Bosses.Snake
 			zero.y = this.BattleBounds.yMin;
 			if (base.transform.position.x > this.BattleBounds.center.x)
 			{
-				zero.x = UnityEngine.Random.Range(this.BattleBounds.xMin, this.BattleBounds.center.x);
+				zero.x = Random.Range(this.BattleBounds.xMin, this.BattleBounds.center.x);
 			}
 			else
 			{
-				zero.x = UnityEngine.Random.Range(this.BattleBounds.center.x, this.BattleBounds.xMax);
+				zero.x = Random.Range(this.BattleBounds.center.x, this.BattleBounds.xMax);
 			}
 			return zero;
 		}
@@ -544,11 +544,11 @@ namespace Gameplay.GameControllers.Bosses.Snake
 			zero.y = this.BattleBounds.yMin;
 			if (base.transform.position.x < this.BattleBounds.center.x)
 			{
-				zero.x = UnityEngine.Random.Range(this.BattleBounds.xMin, this.BattleBounds.center.x);
+				zero.x = Random.Range(this.BattleBounds.xMin, this.BattleBounds.center.x);
 			}
 			else
 			{
-				zero.x = UnityEngine.Random.Range(this.BattleBounds.center.x, this.BattleBounds.xMax);
+				zero.x = Random.Range(this.BattleBounds.center.x, this.BattleBounds.xMax);
 			}
 			return zero;
 		}
@@ -626,7 +626,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 			GameplayUtils.DestroyAllProjectiles();
 			this.StopCurrentAction();
 			base.StopAllCoroutines();
-			base.transform.DOKill(false);
+			ShortcutExtensions.DOKill(base.transform, false);
 			this._fsm.ChangeState(this.stDeath);
 			Core.Logic.Penitent.Status.Invulnerable = true;
 			this.LaunchAction(SnakeBehaviour.SNAKE_ATTACKS.DEATH);
@@ -1036,7 +1036,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				Vector2 startPos = new Vector2(o.BattleBounds.xMin + 2f, o.BattleBounds.yMax - 1f);
 				leftHead.transform.position = outOfCameraPos;
 				o.Snake.Audio.PlaySnakeVanishIn();
-				this.ACT_MOVE.StartAction(o, startPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, startPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 				this.ACT_WAIT.StartAction(o, 0.1f);
 				yield return this.ACT_WAIT.waitForCompletion;
 				Core.Logic.CameraManager.ScreenEffectsManager.ScreenModeThunder(0.5f);
@@ -1100,7 +1100,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				EntityOrientation targetOrientation = (!rightHeadShowing) ? EntityOrientation.Left : EntityOrientation.Right;
 				p.DrivePlayer.MoveToPosition(tpoTargetPos, targetOrientation);
 				float timeForSnakeMove = Vector2.Distance(snakeTargetPos, headToUse.transform.position) * 0.1f;
-				this.ACT_MOVE.StartAction(o, snakeTargetPos, timeForSnakeMove, Ease.InOutQuad, headToUse.transform, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, snakeTargetPos, timeForSnakeMove, 7, headToUse.transform, true, null, true, true, 1.7f);
 				o.Snake.ShadowMaskSprites.ForEach(delegate(SpriteRenderer x)
 				{
 					x.gameObject.SetActive(false);
@@ -1130,7 +1130,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				this.ACT_WAIT.StartAction(o, 0.2f);
 				yield return this.ACT_WAIT.waitForCompletion;
 				float moveTime = 1.2f;
-				this.ACT_MOVE.StartAction(o, tpoTargetPos, 1.2f, Ease.InBack, headToUse.transform, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, tpoTargetPos, 1.2f, 26, headToUse.transform, true, null, true, true, 1.7f);
 				this.ACT_WAIT.StartAction(o, moveTime * 0.85f);
 				yield return this.ACT_WAIT.waitForCompletion;
 				o.Snake.SnakeAnimatorInyector.StopDeathBite();
@@ -1164,8 +1164,8 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				p.Shadow.ManuallyControllingAlpha = true;
 				p.Shadow.SetShadowAlpha(0f);
 				o.Snake.SnakeSegmentsMovementController.InstantSetCamAsStart();
-				UnityEngine.Object.Instantiate<GameObject>(o.DeadSnakePrefab, o.SnakePositionForExecution.position, Quaternion.identity);
-				GameObject executionGO = UnityEngine.Object.Instantiate<GameObject>(o.ExecutionPrefab, o.SnakePositionForExecution.position, Quaternion.identity);
+				Object.Instantiate<GameObject>(o.DeadSnakePrefab, o.SnakePositionForExecution.position, Quaternion.identity);
+				GameObject executionGO = Object.Instantiate<GameObject>(o.ExecutionPrefab, o.SnakePositionForExecution.position, Quaternion.identity);
 				FadeWidget.instance.StartEasyFade(Color.black, Color.clear, 2f, false);
 				this.ACT_WAIT.StartAction(o, 2f);
 				yield return this.ACT_WAIT.waitForCompletion;
@@ -1179,7 +1179,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					Core.Logic.Penitent.Shadow.SetShadowAlpha(x);
 				}, 1f, 0.2f);
-				t.OnComplete(delegate
+				TweenSettingsExtensions.OnComplete<Tween>(t, delegate()
 				{
 					Core.Logic.Penitent.Shadow.ManuallyControllingAlpha = false;
 				});
@@ -1189,7 +1189,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				PlayMakerFSM.BroadcastEvent("BOSS DEAD");
 				p.Status.Invulnerable = false;
 				base.FinishAction();
-				UnityEngine.Object.Destroy(o.gameObject);
+				Object.Destroy(o.gameObject);
 				yield break;
 			}
 
@@ -1230,7 +1230,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					Vector2 outOfCameraPos = new Vector2(o.BattleBounds.xMax + 8f, o.BattleBounds.yMin + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, 7, rightHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				if (!o.Snake.IsLeftHeadVisible)
@@ -1238,7 +1238,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 					Vector2 outOfCameraPos2 = new Vector2(o.BattleBounds.xMin - 8f, o.BattleBounds.yMax + 1f);
 					leftHead.transform.position = outOfCameraPos2;
 					o.Snake.Audio.PlaySnakeVanishIn();
-					this.ACT_MOVE.StartAction(o, startPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, startPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				o.Snake.SetOrientation(EntityOrientation.Right, false, false);
@@ -1255,21 +1255,21 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					o.Snake.Audio.PlaySnakeWind();
 					Sequence sequence = DOTween.Sequence();
-					sequence.OnStart(delegate
+					TweenSettingsExtensions.OnStart<Sequence>(sequence, delegate()
 					{
 						o.WindToTheRight.IsDisabled = false;
 					});
-					sequence.AppendInterval(1f);
-					sequence.OnComplete(delegate
+					TweenSettingsExtensions.AppendInterval(sequence, 1f);
+					TweenSettingsExtensions.OnComplete<Sequence>(sequence, delegate()
 					{
 						o.WindToTheRight.IsDisabled = true;
 					});
-					sequence.Play<Sequence>();
+					TweenExtensions.Play<Sequence>(sequence);
 				}
 				this.ACT_WAIT.StartAction(o, this.waitTime * 0.4f);
 				yield return this.ACT_WAIT.waitForCompletion;
 				anim.BackgroundAnimationSetSpeed(3f, 0.5f);
-				this.ACT_MOVE.StartAction(o, endPos, this.moveTime, Ease.InBack, leftHead.transform, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, endPos, this.moveTime, 26, leftHead.transform, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				anim.BackgroundAnimationSetSpeed(1f, 0.5f);
 				anim.StopOpenMouth();
@@ -1278,7 +1278,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				yield return this.ACT_WAIT.waitForCompletion;
 				anim.StopCloseMouth();
 				anim.BackgroundAnimationSetSpeed(-1f, 0.5f);
-				this.ACT_MOVE.StartAction(o, startPos, this.moveTime * 4f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, startPos, this.moveTime * 4f, 7, leftHead.transform, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				anim.BackgroundAnimationSetSpeed(1f, 0.5f);
 				anim.PlayCloseMouth();
@@ -1286,7 +1286,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					Vector2 leftOutPos = new Vector2(o.BattleBounds.xMin - 8f, o.BattleBounds.yMax + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, leftOutPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, leftOutPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					if (!o.queuedAttacks.Contains(SnakeBehaviour.SNAKE_ATTACKS.GO_UP))
 					{
@@ -1294,7 +1294,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 						rightHead.transform.position = rightOutPos;
 						Vector2 rightInPos = new Vector2(o.BattleBounds.xMax - 2f, o.BattleBounds.yMin + 2f);
 						o.Snake.Audio.PlaySnakeVanishIn();
-						this.ACT_MOVE.StartAction(o, rightInPos, 1.5f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+						this.ACT_MOVE.StartAction(o, rightInPos, 1.5f, 7, rightHead.transform, true, null, true, true, 1.7f);
 						yield return this.ACT_MOVE.waitForCompletion;
 					}
 				}
@@ -1348,7 +1348,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					Vector2 outOfCameraPos = new Vector2(o.BattleBounds.xMin - 8f, o.BattleBounds.yMax + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				if (!o.Snake.IsRightHeadVisible)
@@ -1356,7 +1356,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 					Vector2 outOfCameraPos2 = new Vector2(o.BattleBounds.xMax + 8f, o.BattleBounds.yMin + 1f);
 					rightHead.transform.position = outOfCameraPos2;
 					o.Snake.Audio.PlaySnakeVanishIn();
-					this.ACT_MOVE.StartAction(o, startPos, 1.5f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, startPos, 1.5f, 7, rightHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				o.Snake.SetOrientation(EntityOrientation.Left, false, false);
@@ -1373,34 +1373,34 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					o.Snake.Audio.PlaySnakeWind();
 					Sequence sequence = DOTween.Sequence();
-					sequence.OnStart(delegate
+					TweenSettingsExtensions.OnStart<Sequence>(sequence, delegate()
 					{
 						o.WindToTheLeft.IsDisabled = false;
 					});
-					sequence.AppendInterval(1f);
-					sequence.OnComplete(delegate
+					TweenSettingsExtensions.AppendInterval(sequence, 1f);
+					TweenSettingsExtensions.OnComplete<Sequence>(sequence, delegate()
 					{
 						o.WindToTheLeft.IsDisabled = true;
 					});
-					sequence.Play<Sequence>();
+					TweenExtensions.Play<Sequence>(sequence);
 				}
 				this.ACT_WAIT.StartAction(o, this.waitTime * 0.4f);
 				yield return this.ACT_WAIT.waitForCompletion;
-				this.ACT_MOVE.StartAction(o, endPos, this.moveTime, Ease.InBack, rightHead.transform, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, endPos, this.moveTime, 26, rightHead.transform, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				anim.StopOpenMouth();
 				anim.PlayCloseMouth();
 				this.ACT_WAIT.StartAction(o, this.waitTime);
 				yield return this.ACT_WAIT.waitForCompletion;
 				anim.StopCloseMouth();
-				this.ACT_MOVE.StartAction(o, startPos, this.moveTime * 4f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, startPos, this.moveTime * 4f, 7, rightHead.transform, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				anim.PlayCloseMouth();
 				if (this.changesHead)
 				{
 					Vector2 rightOutPos = new Vector2(o.BattleBounds.xMax + 8f, o.BattleBounds.yMin + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, rightOutPos, 1.5f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, rightOutPos, 1.5f, 7, rightHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 					if (!o.queuedAttacks.Contains(SnakeBehaviour.SNAKE_ATTACKS.GO_UP))
 					{
@@ -1408,7 +1408,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 						leftHead.transform.position = leftOutPos;
 						Vector2 leftInPos = new Vector2(o.BattleBounds.xMin + 2f, o.BattleBounds.yMax - 1f);
 						o.Snake.Audio.PlaySnakeVanishIn();
-						this.ACT_MOVE.StartAction(o, leftInPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+						this.ACT_MOVE.StartAction(o, leftInPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 						yield return this.ACT_MOVE.waitForCompletion;
 					}
 				}
@@ -1450,7 +1450,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					Vector2 outOfCameraPos = new Vector2(o.BattleBounds.xMax + 8f, o.BattleBounds.yMin + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, 7, rightHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				Vector2 startPos = new Vector2(o.BattleBounds.xMin + 2f, o.BattleBounds.yMax - 1f);
@@ -1459,7 +1459,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 					Vector2 outOfCameraPos2 = new Vector2(o.BattleBounds.xMin - 8f, o.BattleBounds.yMax + 1f);
 					leftHead.transform.position = outOfCameraPos2;
 					o.Snake.Audio.PlaySnakeVanishIn();
-					this.ACT_MOVE.StartAction(o, startPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, startPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				o.Snake.SetOrientation(EntityOrientation.Right, false, false);
@@ -1508,7 +1508,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					Vector2 outOfCameraPos = new Vector2(o.BattleBounds.xMin - 8f, o.BattleBounds.yMax + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				Vector2 startPos = new Vector2(o.BattleBounds.xMax - 2f, o.BattleBounds.yMin + 1f);
@@ -1517,7 +1517,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 					Vector2 outOfCameraPos2 = new Vector2(o.BattleBounds.xMax + 8f, o.BattleBounds.yMin + 3f);
 					rightHead.transform.position = outOfCameraPos2;
 					o.Snake.Audio.PlaySnakeVanishIn();
-					this.ACT_MOVE.StartAction(o, startPos, 1.5f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, startPos, 1.5f, 7, rightHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				o.Snake.SetOrientation(EntityOrientation.Left, false, false);
@@ -1568,7 +1568,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					Vector2 outOfCameraPos = new Vector2(o.BattleBounds.xMin - 8f, o.BattleBounds.yMax + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				Vector2 startPos = new Vector2(o.BattleBounds.xMax - 2f, o.BattleBounds.yMin + 1f);
@@ -1577,7 +1577,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 					Vector2 outOfCameraPos2 = new Vector2(o.BattleBounds.xMax + 8f, o.BattleBounds.yMin + 3f);
 					rightHead.transform.position = outOfCameraPos2;
 					o.Snake.Audio.PlaySnakeVanishIn();
-					this.ACT_MOVE.StartAction(o, startPos, 1.5f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, startPos, 1.5f, 7, rightHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				o.Snake.SetOrientation(EntityOrientation.Left, false, false);
@@ -1637,7 +1637,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					Vector2 outOfCameraPos = new Vector2(o.BattleBounds.xMax + 8f, o.BattleBounds.yMin + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, 7, rightHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				Vector2 startPos = new Vector2(o.BattleBounds.xMin + 2f, o.BattleBounds.yMax - 1f);
@@ -1646,7 +1646,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 					Vector2 outOfCameraPos2 = new Vector2(o.BattleBounds.xMin - 8f, o.BattleBounds.yMax + 1f);
 					leftHead.transform.position = outOfCameraPos2;
 					o.Snake.Audio.PlaySnakeVanishIn();
-					this.ACT_MOVE.StartAction(o, startPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, startPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				o.Snake.SetOrientation(EntityOrientation.Right, false, false);
@@ -1655,9 +1655,9 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				if (this.seeking)
 				{
 					Vector3 position = p.GetPosition();
-					float t = (position.x - o.SnakeLeftCorner.position.x) / (o.SnakeRightCorner.position.x - o.SnakeLeftCorner.position.x);
-					float y = Mathf.Lerp(o.SnakeLeftCorner.position.y, o.SnakeRightCorner.position.y, t);
-					this.elmFireLoopManager.transform.parent.position = new Vector2(position.x, y);
+					float num = (position.x - o.SnakeLeftCorner.position.x) / (o.SnakeRightCorner.position.x - o.SnakeLeftCorner.position.x);
+					float num2 = Mathf.Lerp(o.SnakeLeftCorner.position.y, o.SnakeRightCorner.position.y, num);
+					this.elmFireLoopManager.transform.parent.position = new Vector2(position.x, num2);
 				}
 				this.elmFireLoopManager.ShowElmFireTrapRecursively(this.elmFireLoopManager.elmFireTrapNodes[0], this.waitTimeToShowEachTrap, this.lightningChargeLapse, false);
 				yield return new WaitUntil(() => this.elmFireLoopManager.ElmFireLoopEndReached);
@@ -1724,7 +1724,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					Vector2 outOfCameraPos = new Vector2(o.BattleBounds.xMin - 8f, o.BattleBounds.yMax + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				Vector2 startPos = new Vector2(o.BattleBounds.xMax - 2f, o.BattleBounds.yMin + 1f);
@@ -1733,7 +1733,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 					Vector2 outOfCameraPos2 = new Vector2(o.BattleBounds.xMax + 8f, o.BattleBounds.yMin + 3f);
 					rightHead.transform.position = outOfCameraPos2;
 					o.Snake.Audio.PlaySnakeVanishIn();
-					this.ACT_MOVE.StartAction(o, startPos, 1.5f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, startPos, 1.5f, 7, rightHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				o.Snake.SetOrientation(EntityOrientation.Left, false, false);
@@ -1742,9 +1742,9 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				if (this.seeking)
 				{
 					Vector3 position = p.GetPosition();
-					float t = (position.x - o.SnakeLeftCorner.position.x) / (o.SnakeRightCorner.position.x - o.SnakeLeftCorner.position.x);
-					float y = Mathf.Lerp(o.SnakeLeftCorner.position.y, o.SnakeRightCorner.position.y, t);
-					this.elmFireLoopManager.transform.parent.position = new Vector2(position.x, y);
+					float num = (position.x - o.SnakeLeftCorner.position.x) / (o.SnakeRightCorner.position.x - o.SnakeLeftCorner.position.x);
+					float num2 = Mathf.Lerp(o.SnakeLeftCorner.position.y, o.SnakeRightCorner.position.y, num);
+					this.elmFireLoopManager.transform.parent.position = new Vector2(position.x, num2);
 				}
 				this.elmFireLoopManager.ShowElmFireTrapRecursively(this.elmFireLoopManager.elmFireTrapNodes[0], this.waitTimeToShowEachTrap, this.lightningChargeLapse, false);
 				yield return new WaitUntil(() => this.elmFireLoopManager.ElmFireLoopEndReached);
@@ -1816,7 +1816,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					Vector2 outOfCameraPos = new Vector2(o.BattleBounds.xMax + 8f, o.BattleBounds.yMin + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, 7, rightHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				Vector2 startPos = new Vector2(o.BattleBounds.xMin + 2f, o.BattleBounds.yMax - 1f);
@@ -1825,7 +1825,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 					Vector2 outOfCameraPos2 = new Vector2(o.BattleBounds.xMin - 8f, o.BattleBounds.yMax + 1f);
 					leftHead.transform.position = outOfCameraPos2;
 					o.Snake.Audio.PlaySnakeVanishIn();
-					this.ACT_MOVE.StartAction(o, startPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, startPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				o.Snake.SetOrientation(EntityOrientation.Right, false, false);
@@ -1922,7 +1922,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					Vector2 outOfCameraPos = new Vector2(o.BattleBounds.xMin - 8f, o.BattleBounds.yMax + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				Vector2 startPos = new Vector2(o.BattleBounds.xMax - 2f, o.BattleBounds.yMin + 1f);
@@ -1931,7 +1931,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 					Vector2 outOfCameraPos2 = new Vector2(o.BattleBounds.xMax + 8f, o.BattleBounds.yMin + 3f);
 					rightHead.transform.position = outOfCameraPos2;
 					o.Snake.Audio.PlaySnakeVanishIn();
-					this.ACT_MOVE.StartAction(o, startPos, 1.5f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, startPos, 1.5f, 7, rightHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				o.Snake.SetOrientation(EntityOrientation.Left, false, false);
@@ -2033,7 +2033,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 						leftHead.transform.position = outOfCameraPos;
 						o.Snake.Audio.PlaySnakeVanishIn();
 						Vector2 startPos = new Vector2(o.BattleBounds.xMin + 2f, o.BattleBounds.yMax - 1f);
-						this.ACT_MOVE.StartAction(o, startPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+						this.ACT_MOVE.StartAction(o, startPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 						yield return this.ACT_MOVE.waitForCompletion;
 						this.shootFromRightSide = false;
 					}
@@ -2079,7 +2079,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 					p2.timeToLive = 3f;
 					p2.ResetTTL();
 					p2.ChangeTargetToPenitent(false);
-					p2.TargetOffset = Vector3.up + UnityEngine.Random.insideUnitSphere * 0.5f;
+					p2.TargetOffset = Vector3.up + Random.insideUnitSphere * 0.5f;
 					p2.GetComponentInChildren<GhostTrailGenerator>().EnableGhostTrail = true;
 					p2.OnDisableEvent += this.DeactivateGhostTrail;
 					p2.ChangesRotatesSpeedInFlight = false;
@@ -2154,7 +2154,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 						leftHead.transform.position = outOfCameraPos;
 						o.Snake.Audio.PlaySnakeVanishIn();
 						Vector2 startPos = new Vector2(o.BattleBounds.xMin + 2f, o.BattleBounds.yMax - 1f);
-						this.ACT_MOVE.StartAction(o, startPos, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+						this.ACT_MOVE.StartAction(o, startPos, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 						yield return this.ACT_MOVE.waitForCompletion;
 						this.shootFromRightSide = false;
 					}
@@ -2252,14 +2252,14 @@ namespace Gameplay.GameControllers.Bosses.Snake
 				{
 					Vector2 outOfCameraPos = new Vector2(o.BattleBounds.xMax + 8f, o.BattleBounds.yMin + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, Ease.InOutQuad, rightHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, outOfCameraPos, 1.5f, 7, rightHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				else if (o.Snake.IsLeftHeadVisible)
 				{
 					Vector2 outOfCameraPos2 = new Vector2(o.BattleBounds.xMin - 8f, o.BattleBounds.yMax + 1f);
 					o.Snake.Audio.PlaySnakeVanishOut();
-					this.ACT_MOVE.StartAction(o, outOfCameraPos2, 1.5f, Ease.InOutQuad, leftHead.transform, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, outOfCameraPos2, 1.5f, 7, leftHead.transform, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				o.Snake.Audio.IncreaseSnakeRainState();

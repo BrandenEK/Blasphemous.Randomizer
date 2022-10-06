@@ -5,6 +5,7 @@ using Framework.Managers;
 using Gameplay.GameControllers.Entities;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Tools.Level.Actionables
@@ -14,7 +15,7 @@ namespace Tools.Level.Actionables
 	{
 		private void Start()
 		{
-			SceneManager.activeSceneChanged += this.OnActiveSceneChanged;
+			SceneManager.activeSceneChanged += new UnityAction<Scene, Scene>(this.OnActiveSceneChanged);
 			LogicManager logic = Core.Logic;
 			logic.OnUsePrieDieu = (Core.SimpleEvent)Delegate.Combine(logic.OnUsePrieDieu, new Core.SimpleEvent(this.OnUsePrieDieu));
 		}
@@ -34,7 +35,7 @@ namespace Tools.Level.Actionables
 
 		private void OnDestroy()
 		{
-			SceneManager.activeSceneChanged -= this.OnActiveSceneChanged;
+			SceneManager.activeSceneChanged -= new UnityAction<Scene, Scene>(this.OnActiveSceneChanged);
 			LogicManager logic = Core.Logic;
 			logic.OnUsePrieDieu = (Core.SimpleEvent)Delegate.Remove(logic.OnUsePrieDieu, new Core.SimpleEvent(this.OnUsePrieDieu));
 		}

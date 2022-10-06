@@ -17,7 +17,7 @@ namespace Tools.Playmaker2.Action
 		[RequiredField]
 		public FsmString achievementId;
 
-		[UIHint(UIHint.Variable)]
+		[UIHint(10)]
 		public FsmFloat achievementProgress;
 	}
 }

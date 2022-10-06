@@ -38,8 +38,8 @@ namespace Framework.Managers
 			{
 				if (easingCurve != null)
 				{
-					float t = easingCurve.Evaluate(realTimeCounter / duration);
-					timeScale = Mathf.Lerp(originTimeScale, targetTimeScale, t);
+					float num = easingCurve.Evaluate(realTimeCounter / duration);
+					timeScale = Mathf.Lerp(originTimeScale, targetTimeScale, num);
 				}
 				float clampedTimeScale = Mathf.Clamp(timeScale, 0.1f, 1f);
 				Core.Logic.CurrentLevelConfig.TimeScale = clampedTimeScale;

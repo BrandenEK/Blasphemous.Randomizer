@@ -41,7 +41,7 @@ namespace Gameplay.GameControllers.Enemies.Roller.Animator
 			{
 				return;
 			}
-			UnityEngine.Object.Destroy(this.OwnerEntity.gameObject);
+			Object.Destroy(this.OwnerEntity.gameObject);
 			base.EntityAnimator.ResetTrigger("ATTACK");
 		}
 

@@ -57,8 +57,8 @@ namespace Tools.Level.Layout
 			else
 			{
 				Vector2 popUpSidewaysPoint = this.GetPopUpSidewaysPoint();
-				Vector2 b = Core.Logic.Penitent.GetPosition();
-				Vector2 dir = popUpSidewaysPoint - b;
+				Vector2 vector = Core.Logic.Penitent.GetPosition();
+				Vector2 dir = popUpSidewaysPoint - vector;
 				if (this.RaycastToCheckForGeo(popUpSidewaysPoint, dir))
 				{
 					this.PopPenitentUp();
@@ -73,8 +73,8 @@ namespace Tools.Level.Layout
 		private Vector2 GetPopUpPoint()
 		{
 			float num = this.boxCollider.transform.position.y + this.boxCollider.offset.y;
-			float y = num + this.boxCollider.size.y / 2f + 0.05f;
-			return new Vector2(Core.Logic.Penitent.transform.position.x, y);
+			float num2 = num + this.boxCollider.size.y / 2f + 0.05f;
+			return new Vector2(Core.Logic.Penitent.transform.position.x, num2);
 		}
 
 		private Vector2 GetPopUpSidewaysPoint()
@@ -94,12 +94,12 @@ namespace Tools.Level.Layout
 
 		private bool RaycastToCheckForGeo(Vector2 point, Vector2 dir)
 		{
-			LayerMask mask = LayerMask.GetMask(new string[]
+			LayerMask layerMask = LayerMask.GetMask(new string[]
 			{
 				"Wall",
 				"Floor"
 			});
-			if (Physics2D.RaycastNonAlloc(point, dir, this.raycastHits, 0.1f, mask) > 0)
+			if (Physics2D.RaycastNonAlloc(point, dir, this.raycastHits, 0.1f, layerMask) > 0)
 			{
 				Debug.DrawLine(point, this.raycastHits[0].point, Color.cyan, 5f);
 				return true;

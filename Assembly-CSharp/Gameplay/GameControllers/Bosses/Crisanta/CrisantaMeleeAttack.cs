@@ -39,7 +39,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 
 		private void OnEnterAttackArea(object sender, Collider2DParam e)
 		{
-			UnityEngine.Debug.Log("SOMETHING ENTERS AREA");
+			Debug.Log("SOMETHING ENTERS AREA");
 			if (this.damageOnEnterArea)
 			{
 				this.CurrentWeaponAttack();

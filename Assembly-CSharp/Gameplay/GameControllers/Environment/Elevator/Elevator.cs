@@ -34,7 +34,7 @@ namespace Gameplay.GameControllers.Environment.Elevator
 			}
 			Elevator.Floor wishFloor = this.GetWishFloor(order);
 			this._wishFloor = wishFloor;
-			base.transform.DOMove(this._floorPositions[this._wishFloor.Order], this.GetDisplacementLapse(this._wishFloor), false).SetEase(this.MoveEase).OnStart(new TweenCallback(this.OnMoveStart)).OnComplete(new TweenCallback(this.OnMoveStop));
+			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.OnStart<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, this._floorPositions[this._wishFloor.Order], this.GetDisplacementLapse(this._wishFloor), false), this.MoveEase), new TweenCallback(this.OnMoveStart)), new TweenCallback(this.OnMoveStop));
 		}
 
 		private void OnMoveStart()
@@ -75,7 +75,8 @@ namespace Gameplay.GameControllers.Environment.Elevator
 		{
 			foreach (Elevator.Floor floor in this.Floors)
 			{
-				Vector2 value = new Vector2(floor.Platform.position.x, floor.Platform.position.y);
+				Vector2 value;
+				value..ctor(floor.Platform.position.x, floor.Platform.position.y);
 				this._floorPositions.Add(floor.Order, value);
 			}
 		}
@@ -126,7 +127,7 @@ namespace Gameplay.GameControllers.Environment.Elevator
 			{
 				return;
 			}
-			this._elevatorMotionAudio.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			this._elevatorMotionAudio.stop(0);
 			this._elevatorMotionAudio.release();
 			this._elevatorMotionAudio = default(EventInstance);
 		}

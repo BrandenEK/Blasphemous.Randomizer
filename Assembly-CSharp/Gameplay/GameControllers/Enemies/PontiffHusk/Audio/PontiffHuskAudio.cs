@@ -86,7 +86,7 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.Audio
 			{
 				return;
 			}
-			this._attackEventInstance.stop((!allowFade) ? FMOD.Studio.STOP_MODE.IMMEDIATE : FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			this._attackEventInstance.stop((!allowFade) ? 1 : 0);
 			this._attackEventInstance.release();
 			this._attackEventInstance = default(EventInstance);
 		}
@@ -107,7 +107,7 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.Audio
 		{
 			if (this._floatingEventInstance.isValid())
 			{
-				this._floatingEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+				this._floatingEventInstance.stop(0);
 				this._floatingEventInstance.release();
 				this._floatingEventInstance = default(EventInstance);
 			}
@@ -117,7 +117,7 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.Audio
 		{
 			if (this._chargingEventInstance.isValid())
 			{
-				this._chargingEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+				this._chargingEventInstance.stop(1);
 				this._chargingEventInstance.release();
 				this._chargingEventInstance = default(EventInstance);
 			}

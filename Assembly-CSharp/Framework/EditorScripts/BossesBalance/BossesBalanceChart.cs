@@ -16,7 +16,7 @@ namespace Framework.EditorScripts.BossesBalance
 			}
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		private void LoadBalanceChart()
 		{
 			this.ClearChart();
@@ -40,7 +40,7 @@ namespace Framework.EditorScripts.BossesBalance
 			}
 		}
 
-		[Button(ButtonSizes.Small)]
+		[Button(0)]
 		private void ClearChart()
 		{
 			if (this.LoadedBosses != null && this.LoadedBosses.Count > 0)

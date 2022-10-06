@@ -42,7 +42,7 @@ namespace Gameplay.GameControllers.Entities
 			}
 			if ((this.sensorLayerDetection.value & 1 << col.gameObject.layer) > 0)
 			{
-				if (!this.targetTag.IsNullOrWhitespace() && !col.CompareTag(this.targetTag))
+				if (!StringExtensions.IsNullOrWhitespace(this.targetTag) && !col.CompareTag(this.targetTag))
 				{
 					return;
 				}
@@ -76,7 +76,7 @@ namespace Gameplay.GameControllers.Entities
 			if ((this.sensorLayerDetection.value & 1 << col.gameObject.layer) > 0)
 			{
 				this.OnTriggerExit2DNotify(col);
-				if (!this.targetTag.IsNullOrWhitespace() && !col.CompareTag(this.targetTag))
+				if (!StringExtensions.IsNullOrWhitespace(this.targetTag) && !col.CompareTag(this.targetTag))
 				{
 					return;
 				}

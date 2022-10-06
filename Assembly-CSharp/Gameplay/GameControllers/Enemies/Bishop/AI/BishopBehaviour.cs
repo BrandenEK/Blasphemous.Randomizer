@@ -101,7 +101,7 @@ namespace Gameplay.GameControllers.Enemies.Bishop.AI
 				DOTween.To(delegate(float x)
 				{
 					this.Bishop.Controller.MaxWalkingSpeed = x;
-				}, this.Bishop.Controller.MaxWalkingSpeed, this.MaxSpeed, UnityEngine.Random.value * 5f + 0.5f);
+				}, this.Bishop.Controller.MaxWalkingSpeed, this.MaxSpeed, Random.value * 5f + 0.5f);
 			}
 			if (!base.IsChasing)
 			{
@@ -146,7 +146,7 @@ namespace Gameplay.GameControllers.Enemies.Bishop.AI
 		public void HitDisplacement(Vector3 attakingEntityPos)
 		{
 			float num = (this.Entity.transform.position.x < attakingEntityPos.x) ? (-this.HurtDisplacement) : this.HurtDisplacement;
-			this.Bishop.transform.DOMoveX(this.Bishop.transform.position.x + num, 0.55f, false);
+			ShortcutExtensions.DOMoveX(this.Bishop.transform, this.Bishop.transform.position.x + num, 0.55f, false);
 		}
 
 		public override void LookAtTarget(Vector3 targetPos)

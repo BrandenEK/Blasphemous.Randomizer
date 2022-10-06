@@ -12,11 +12,11 @@ namespace Framework.Map
 		public MapRenderer(MapRendererConfig config, Transform parent, string name)
 		{
 			this.Config = config;
-			string name2 = "RootRenderer_" + name;
-			this.Root = (RectTransform)parent.Find(name2);
+			string text = "RootRenderer_" + name;
+			this.Root = (RectTransform)parent.Find(text);
 			if (this.Root == null)
 			{
-				this.Root = this.CreateRectTranform(parent, name2);
+				this.Root = this.CreateRectTranform(parent, text);
 				this.Root.localRotation = Quaternion.identity;
 				this.Root.localScale = Vector3.one;
 				this.Root.localPosition = Vector3.zero;
@@ -136,12 +136,12 @@ namespace Framework.Map
 			}
 			foreach (KeyValuePair<CellKey, Image> keyValuePair in this.CachedImages)
 			{
-				UnityEngine.Object.Destroy(keyValuePair.Value.gameObject);
+				Object.Destroy(keyValuePair.Value.gameObject);
 			}
 			this.CachedImages = new Dictionary<CellKey, Image>(dictionary);
 			if (this.markRoot != null)
 			{
-				UnityEngine.Object.Destroy(this.markRoot.gameObject);
+				Object.Destroy(this.markRoot.gameObject);
 			}
 			this.markRoot = this.CreateRectTranform(this.Root, "Marks");
 			this.markRoot.localRotation = Quaternion.identity;
@@ -160,7 +160,7 @@ namespace Framework.Map
 				{
 					object obj = enumerator.Current;
 					Transform transform = (Transform)obj;
-					UnityEngine.Object.Destroy(transform.gameObject);
+					Object.Destroy(transform.gameObject);
 				}
 			}
 			finally

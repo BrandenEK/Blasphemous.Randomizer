@@ -20,7 +20,7 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 		{
 			base.OnUpdate();
 			this.UpdateOrientation();
-			base.transform.Translate(this.velocity * Time.deltaTime, Space.World);
+			base.transform.Translate(this.velocity * Time.deltaTime, 0);
 			this._currentTTL -= Time.deltaTime;
 			if (this._currentTTL < 0f)
 			{

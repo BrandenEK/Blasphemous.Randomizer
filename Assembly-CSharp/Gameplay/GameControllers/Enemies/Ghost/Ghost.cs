@@ -13,7 +13,7 @@ namespace Gameplay.GameControllers.Enemies.Ghost
 	{
 		protected float GetRemainTimeToNextFlight()
 		{
-			return UnityEngine.Random.Range(1f, this.maxTimeToNextFlight);
+			return Random.Range(1f, this.maxTimeToNextFlight);
 		}
 
 		public override EnemyAttack EnemyAttack()

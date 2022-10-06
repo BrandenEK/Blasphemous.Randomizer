@@ -66,7 +66,7 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster
 			this.Audio = base.GetComponentInChildren<PietyMonsterAudio>();
 			base.Controller = base.GetComponent<PlatformCharacterController>();
 			this.SpitingMouth = base.GetComponentInChildren<EntityRootMotion>();
-			this.PietyRootsManager = UnityEngine.Object.FindObjectOfType<PietyRootsManager>();
+			this.PietyRootsManager = Object.FindObjectOfType<PietyRootsManager>();
 			this.DustSpawner = base.GetComponentInChildren<StepDustSpawner>();
 			this.Collider = base.GetComponent<SmartPlatformCollider>();
 		}

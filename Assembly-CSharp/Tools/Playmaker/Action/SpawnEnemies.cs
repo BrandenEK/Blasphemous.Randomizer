@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 
 namespace Tools.PlayMaker.Action
 {
-	[ActionCategory(ActionCategory.Array)]
-	[HutongGames.PlayMaker.Tooltip("Spawns a group of enemies set in their spawn points")]
+	[ActionCategory(46)]
+	[Tooltip("Spawns a group of enemies set in their spawn points")]
 	public class SpawnEnemies : FsmStateAction
 	{
 		public override void Reset()
@@ -73,8 +73,8 @@ namespace Tools.PlayMaker.Action
 			return list;
 		}
 
-		[HutongGames.PlayMaker.Tooltip("The set of enemy spawners.")]
-		[ArrayEditor(VariableType.GameObject, "", 0, 0, 65536)]
+		[Tooltip("The set of enemy spawners.")]
+		[ArrayEditor(3, "", 0, 0, 65536)]
 		public FsmArray EnemySpawners;
 	}
 }

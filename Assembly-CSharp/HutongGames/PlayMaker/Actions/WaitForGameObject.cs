@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HutongGames.PlayMaker.Actions
 {
-	[ActionCategory(ActionCategory.GameObject)]
+	[ActionCategory(4)]
 	[Tooltip("Keep searching for a game object until it is not null.")]
 	public class WaitForGameObject : FsmStateAction
 	{
@@ -59,12 +59,12 @@ namespace HutongGames.PlayMaker.Actions
 		[Tooltip("The name of the GameObject to find. You can leave this empty if you specify a Tag.")]
 		public FsmString objectName;
 
-		[UIHint(UIHint.Tag)]
+		[UIHint(7)]
 		[Tooltip("Find a GameObject with this tag. If Object Name is specified then both name and Tag must match.")]
 		public FsmString withTag;
 
 		[RequiredField]
-		[UIHint(UIHint.Variable)]
+		[UIHint(10)]
 		[Tooltip("Store the result in a GameObject variable.")]
 		public FsmGameObject store;
 	}

@@ -109,23 +109,23 @@ public class TPOAnimatedFollower : MonoBehaviour
 		}
 	}
 
-	[Button("Test death sparks", ButtonSizes.Small)]
+	[Button("Test death sparks", 0)]
 	private void PlayDeathSparks()
 	{
-		float d = 25f;
-		float duration = 1.5f;
+		float num = 25f;
+		float num2 = 1.5f;
 		Vector3 up = Vector3.up;
 		for (int i = 0; i < 8; i++)
 		{
 			GameObject gameObject = PoolManager.Instance.ReuseObject(this.deathSparkPrefab, base.transform.position + up, Quaternion.identity, false, 1).GameObject;
-			Vector2 a = Quaternion.Euler(0f, 0f, (float)(45 * i)) * Vector2.right;
-			gameObject.transform.DOMove(gameObject.transform.position + a * d, duration, false).SetEase(Ease.InOutQuad);
+			Vector2 vector = Quaternion.Euler(0f, 0f, (float)(45 * i)) * Vector2.right;
+			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(gameObject.transform, gameObject.transform.position + vector * num, num2, false), 7);
 		}
 	}
 
 	private void ApplyDemakeCameraSettings()
 	{
-		UnityEngine.Object.FindObjectOfType<ProCamera2DPixelPerfect>().PixelsPerUnit = 16f;
+		Object.FindObjectOfType<ProCamera2DPixelPerfect>().PixelsPerUnit = 16f;
 	}
 
 	private void Target_OnAirAttackBehaviourEnters(AirAttackBehaviour obj)

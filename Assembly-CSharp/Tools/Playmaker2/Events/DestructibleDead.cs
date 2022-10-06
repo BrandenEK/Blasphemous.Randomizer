@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Tools.Playmaker2.Events
 {
 	[ActionCategory("Blasphemous Action")]
-	[HutongGames.PlayMaker.Tooltip("Event raised when a destructible is destroyed.")]
+	[Tooltip("Event raised when a destructible is destroyed.")]
 	public class DestructibleDead : FsmStateAction
 	{
 		public override void OnEnter()
@@ -27,7 +27,7 @@ namespace Tools.Playmaker2.Events
 			BreakableObject.OnDead = (Core.ObjectEvent)Delegate.Combine(BreakableObject.OnDead, new Core.ObjectEvent(this.OnDead));
 		}
 
-		[UIHint(UIHint.Variable)]
+		[UIHint(10)]
 		public GameObject destructible;
 
 		public FsmEvent onSuccess;

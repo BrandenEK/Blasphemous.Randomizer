@@ -39,7 +39,7 @@ namespace Framework.Managers
 		{
 			if (SteamManager.Initialized)
 			{
-				UnityEngine.Debug.Log("LocalizationManager::Initialize: SteamManager is Initialized!");
+				Debug.Log("LocalizationManager::Initialize: SteamManager is Initialized!");
 				Dictionary<string, string> dictionary = new Dictionary<string, string>();
 				dictionary.Add("spanish", "es");
 				dictionary.Add("english", "en");
@@ -52,24 +52,24 @@ namespace Framework.Managers
 				dictionary.Add("japanese", "ja");
 				dictionary.Add("brazilian", "pt-BR");
 				string currentGameLanguage = SteamApps.GetCurrentGameLanguage();
-				UnityEngine.Debug.Log("LocalizationManager::Initialize: SteamApps.GetCurrentGameLanguage() returns the following value: " + currentGameLanguage);
+				Debug.Log("LocalizationManager::Initialize: SteamApps.GetCurrentGameLanguage() returns the following value: " + currentGameLanguage);
 				try
 				{
 					string text = dictionary[currentGameLanguage];
-					UnityEngine.Debug.Log("LocalizationManager::Initialize: gameLanCode has the following value: " + text);
+					Debug.Log("LocalizationManager::Initialize: gameLanCode has the following value: " + text);
 					int indexByLanguageCode = Core.Localization.GetIndexByLanguageCode(text);
-					UnityEngine.Debug.Log("LocalizationManager::Initialize: Core.Localization.GetIndexByLanguageCode returns the following value: " + indexByLanguageCode);
+					Debug.Log("LocalizationManager::Initialize: Core.Localization.GetIndexByLanguageCode returns the following value: " + indexByLanguageCode);
 					Core.Localization.SetLanguageByIdx(indexByLanguageCode);
-					UnityEngine.Debug.Log("LocalizationManager::Initialize: Language setted!");
+					Debug.Log("LocalizationManager::Initialize: Language setted!");
 				}
 				catch (KeyNotFoundException)
 				{
-					UnityEngine.Debug.Log("LocalizationManager::Initialize: Language not found!");
+					Debug.Log("LocalizationManager::Initialize: Language not found!");
 				}
 			}
 			else
 			{
-				UnityEngine.Debug.Log("LocalizationManager::Initialize: SteamManager is not Initialized!");
+				Debug.Log("LocalizationManager::Initialize: SteamManager is not Initialized!");
 			}
 		}
 
@@ -148,7 +148,7 @@ namespace Framework.Managers
 			{
 				value = GameConstants.FontByLanguages[languageName];
 			}
-			foreach (Font font in languageSource.Assets.FilterCast<Font>())
+			foreach (Font font in LinqExtensions.FilterCast<Font>(languageSource.Assets))
 			{
 				if (font.name.StartsWith(value))
 				{
@@ -196,7 +196,7 @@ namespace Framework.Managers
 		public string Get(string key)
 		{
 			string translation = LocalizationManager.GetTranslation(key, true, 0, true, false, null, null);
-			if (translation.IsNullOrWhitespace())
+			if (StringExtensions.IsNullOrWhitespace(translation))
 			{
 				return "[!LOC_" + key.ToUpper() + "]";
 			}
@@ -265,7 +265,7 @@ namespace Framework.Managers
 			});
 			if (array.Length != 2)
 			{
-				UnityEngine.Debug.LogWarning("Localization PARSE error ID : " + LocalizationManager.currentId + " Tag element different 2");
+				Debug.LogWarning("Localization PARSE error ID : " + LocalizationManager.currentId + " Tag element different 2");
 			}
 			else
 			{
@@ -286,11 +286,11 @@ namespace Framework.Managers
 					}
 					if (text == "VAR")
 					{
-						UnityEngine.Debug.LogWarning("Localization PARSE error ID : " + LocalizationManager.currentId + " VAR NOT IMPLEMENTED");
+						Debug.LogWarning("Localization PARSE error ID : " + LocalizationManager.currentId + " VAR NOT IMPLEMENTED");
 						return result;
 					}
 				}
-				UnityEngine.Debug.LogWarning("Localization PARSE error ID : " + LocalizationManager.currentId + " Unknow prefix " + text);
+				Debug.LogWarning("Localization PARSE error ID : " + LocalizationManager.currentId + " Unknow prefix " + text);
 			}
 			return result;
 		}
@@ -301,7 +301,7 @@ namespace Framework.Managers
 			JoystickType activeJoystickModel = Core.Input.ActiveJoystickModel;
 			ControllerType activeControllerType = Core.Input.ActiveControllerType;
 			string str = "KB_";
-			if (activeControllerType != ControllerType.Keyboard)
+			if (activeControllerType != null)
 			{
 				switch (activeJoystickModel)
 				{
@@ -333,14 +333,14 @@ namespace Framework.Managers
 			ActionElementMap actionElementMap = null;
 			if (action2 != null)
 			{
-				AxisRange axisRange = (axisCheck != InputIcon.AxisCheck.Positive) ? AxisRange.Negative : AxisRange.Positive;
+				AxisRange axisRange = (axisCheck != InputIcon.AxisCheck.Positive) ? 2 : 1;
 				actionElementMap = Core.ControlRemapManager.FindLastElementMapByInputAction(action2, axisRange, Core.Input.ActiveController);
 			}
 			if (actionElementMap == null)
 			{
-				UnityEngine.Debug.LogWarning("Localization PARSE error ID : " + LocalizationManager.currentId + " Action not found: " + action);
+				Debug.LogWarning("Localization PARSE error ID : " + LocalizationManager.currentId + " Action not found: " + action);
 			}
-			else if (activeControllerType == ControllerType.Keyboard)
+			else if (activeControllerType == null)
 			{
 				string name = InputIcon.GetButtonDescriptionByButtonKey(actionElementMap.elementIdentifierName).icon.name;
 				if (name.Equals("KB_BLANK"))

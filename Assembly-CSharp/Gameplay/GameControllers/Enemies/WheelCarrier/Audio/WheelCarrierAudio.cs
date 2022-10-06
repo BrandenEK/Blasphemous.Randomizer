@@ -48,7 +48,7 @@ namespace Gameplay.GameControllers.Enemies.WheelCarrier.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("Moves", out parameterInstance);
+				eventInstance.getParameter("Moves", ref parameterInstance);
 				parameterInstance.setValue(value);
 			}
 			catch (Exception ex)

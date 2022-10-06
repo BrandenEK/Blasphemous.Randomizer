@@ -21,7 +21,7 @@ namespace Gameplay.GameControllers.Enemies.LanceAngel.AI
 			base.OnStart();
 			this.results = new RaycastHit2D[1];
 			this.LanceAngel = (LanceAngel)this.Entity;
-			this.TargetOffset += new Vector2(UnityEngine.Random.Range(-this.RandomTargetOffset.x, this.RandomTargetOffset.x), UnityEngine.Random.Range(-this.RandomTargetOffset.x, this.RandomTargetOffset.x));
+			this.TargetOffset += new Vector2(Random.Range(-this.RandomTargetOffset.x, this.RandomTargetOffset.x), Random.Range(-this.RandomTargetOffset.x, this.RandomTargetOffset.x));
 			if (this.LanceAngel.DashAttack)
 			{
 				this.LanceAngel.DashAttack.SetDamage((int)this.LanceAngel.Stats.Strength.Final);
@@ -129,8 +129,8 @@ namespace Gameplay.GameControllers.Enemies.LanceAngel.AI
 
 		private Vector2 GetPointBelow(Vector2 p, float maxDistance = 2f)
 		{
-			LayerMask mask = this.targetFloorMask;
-			if (Physics2D.RaycastNonAlloc(p, Vector2.down, this.results, maxDistance, mask) > 0)
+			LayerMask layerMask = this.targetFloorMask;
+			if (Physics2D.RaycastNonAlloc(p, Vector2.down, this.results, maxDistance, layerMask) > 0)
 			{
 				return this.results[0].point;
 			}
@@ -155,9 +155,9 @@ namespace Gameplay.GameControllers.Enemies.LanceAngel.AI
 		public void Floating()
 		{
 			this._index += Time.deltaTime;
-			float x = this._currentAmplitudeX * Mathf.Sin(this.SpeedX * this._index);
-			float y = Mathf.Cos(this.SpeedY * this._index) * this._currentAmplitudeY;
-			this.LanceAngel.SpriteRenderer.transform.localPosition = new Vector3(x, y, 0f);
+			float num = this._currentAmplitudeX * Mathf.Sin(this.SpeedX * this._index);
+			float num2 = Mathf.Cos(this.SpeedY * this._index) * this._currentAmplitudeY;
+			this.LanceAngel.SpriteRenderer.transform.localPosition = new Vector3(num, num2, 0f);
 		}
 
 		private void SetRepositionDirection()

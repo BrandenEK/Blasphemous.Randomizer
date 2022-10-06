@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Framework.FrameworkCore;
-using Framework.Randomizer;
 using Framework.Util;
 using Gameplay.GameControllers.Entities;
 using Tools.Level;
@@ -116,9 +115,6 @@ namespace Framework.Managers
 			DemakeManager demakeManager = new DemakeManager();
 			Core.DemakeManager = demakeManager;
 			this.AddSystem(demakeManager);
-			Randomizer randomizer = new Randomizer();
-			Core.Randomizer = randomizer;
-			this.AddSystem(randomizer);
 			Core.preinit = true;
 		}
 
@@ -289,8 +285,6 @@ namespace Framework.Managers
 
 		public static DemakeManager DemakeManager { get; private set; }
 
-		public static Randomizer Randomizer { get; private set; }
-
 		public bool debugMode;
 
 		public static bool ready;
@@ -303,7 +297,7 @@ namespace Framework.Managers
 
 		public delegate void SimpleEventParam(object param);
 
-		public delegate void GenericEvent(UnityEngine.Object param);
+		public delegate void GenericEvent(Object param);
 
 		public delegate void ObjectEvent(GameObject param);
 

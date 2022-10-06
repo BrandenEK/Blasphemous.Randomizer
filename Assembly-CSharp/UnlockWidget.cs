@@ -13,7 +13,7 @@ public class UnlockWidget : SerializedMonoBehaviour
 	private IList<ValueDropdownItem<string>> MyLanguages()
 	{
 		ValueDropdownList<string> valueDropdownList = new ValueDropdownList<string>();
-		string[] array = I2.Loc.LocalizationManager.GetAllLanguages(true).ToArray();
+		string[] array = LocalizationManager.GetAllLanguages(true).ToArray();
 		Array.Sort<string>(array);
 		foreach (string text in array)
 		{
@@ -23,10 +23,10 @@ public class UnlockWidget : SerializedMonoBehaviour
 	}
 
 	[BoxGroup("Debug", true, false, 0)]
-	[Button("Check InGame", ButtonSizes.Small)]
+	[Button("Check InGame", 0)]
 	private void CheckIngame()
 	{
-		I2.Loc.LocalizationManager.CurrentLanguage = this.Language;
+		LocalizationManager.CurrentLanguage = this.Language;
 		this.currentController = this.debugController;
 		this.currentJoystick = this.debugJoystick;
 		this.ShowInGame();
@@ -86,7 +86,7 @@ public class UnlockWidget : SerializedMonoBehaviour
 			if (localizationText.text.mTerm.Equals(text))
 			{
 				string localizedText = localizationText.text;
-				localizationText.mesh.text = Framework.Managers.LocalizationManager.ParseMeshPro(localizedText, text, null);
+				localizationText.mesh.text = LocalizationManager.ParseMeshPro(localizedText, text, null);
 			}
 		}
 	}

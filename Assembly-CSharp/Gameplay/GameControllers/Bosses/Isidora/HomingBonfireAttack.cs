@@ -117,7 +117,8 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 					num3 *= -1f;
 					num2 *= -1;
 				}
-				Vector2 vector2 = new Vector2((float)num, (float)num2);
+				Vector2 vector2;
+				vector2..ctor((float)num, (float)num2);
 				Vector2 normalized = vector2.normalized;
 				this.SetupHomingProjectile(component, normalized, num3, targetOffset);
 				if (!this.homingProjectiles.Contains(component))
@@ -139,8 +140,8 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 			HomingProjectile homingProjectile = obj as HomingProjectile;
 			homingProjectile.OnLifeEndedEvent -= this.HomingProjectile_OnLifeEndedEvent;
 			Vector3 position = homingProjectile.gameObject.transform.position;
-			Vector2 b = homingProjectile.CalculateTargetPosition();
-			if (Vector2.Distance(position, b) < 1.3f)
+			Vector2 vector = homingProjectile.CalculateTargetPosition();
+			if (Vector2.Distance(position, vector) < 1.3f)
 			{
 				this.isidoraBehaviour.ProjectileAbsortion(homingProjectile.transform.position, homingProjectile.currentDirection);
 			}

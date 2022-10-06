@@ -21,7 +21,7 @@ namespace Extras.EOS.Data
 
 		public string m_ClientSecret = "bwhmUkbD0sgyiRXqN2m8mImttkjSOqODSlj5BosHL+k";
 
-		public LoginCredentialType m_LoginCredentialType = LoginCredentialType.Developer;
+		public LoginCredentialType m_LoginCredentialType = 4;
 
 		public string m_LoginCredentialId = "localhost:12345";
 

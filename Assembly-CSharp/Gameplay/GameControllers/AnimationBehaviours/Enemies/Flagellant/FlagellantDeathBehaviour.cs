@@ -27,7 +27,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Flagellant
 			}
 			if (stateInfo.normalizedTime >= 0.95f)
 			{
-				UnityEngine.Object.Destroy(this.flagellant.gameObject);
+				Object.Destroy(this.flagellant.gameObject);
 			}
 		}
 

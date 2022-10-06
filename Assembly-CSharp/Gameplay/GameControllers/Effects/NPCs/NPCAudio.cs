@@ -36,7 +36,7 @@ namespace Gameplay.GameControllers.Effects.NPCs
 			{
 				return;
 			}
-			this.eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			this.eventInstance.stop(0);
 			this.eventInstance.release();
 			this.eventInstance = default(EventInstance);
 		}

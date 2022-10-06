@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 using Framework.Managers;
@@ -333,7 +332,7 @@ namespace Gameplay.GameControllers.Enemies.BellGhost
 				return;
 			}
 			ParameterInstance parameterInstance;
-			if (this._ghostBulletFlightAudioInstance.getParameter("End", out parameterInstance) == RESULT.OK)
+			if (this._ghostBulletFlightAudioInstance.getParameter("End", ref parameterInstance) == null)
 			{
 				parameterInstance.setValue(1f);
 			}
@@ -361,7 +360,7 @@ namespace Gameplay.GameControllers.Enemies.BellGhost
 			{
 				return;
 			}
-			this._ghostBulletFlightAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			this._ghostBulletFlightAudioInstance.stop(0);
 			this._ghostBulletFlightAudioInstance.release();
 			this._ghostBulletFlightAudioInstance = default(EventInstance);
 		}
@@ -381,7 +380,7 @@ namespace Gameplay.GameControllers.Enemies.BellGhost
 		private EVENT_CALLBACK SetPanning(EventInstance e)
 		{
 			ParameterInstance parameterInstance;
-			e.getParameter("Panning", out parameterInstance);
+			e.getParameter("Panning", ref parameterInstance);
 			if (parameterInstance.isValid())
 			{
 				float panningValueByPosition = FMODAudioManager.GetPanningValueByPosition(base.transform.position);

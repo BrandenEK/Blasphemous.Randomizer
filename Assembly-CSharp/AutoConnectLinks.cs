@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AutoConnectLinks : MonoBehaviour
 {
-	[Button(ButtonSizes.Small)]
+	[Button(0)]
 	public void ConnectAllJoints()
 	{
 		List<CharacterJoint> list = new List<CharacterJoint>(base.GetComponentsInChildren<CharacterJoint>());

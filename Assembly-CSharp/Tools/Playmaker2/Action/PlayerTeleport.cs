@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Tools.PlayMaker2.Action
 {
 	[ActionCategory("Blasphemous Action")]
-	[HutongGames.PlayMaker.Tooltip("Instantly teleports the player to the specific GO position.")]
+	[Tooltip("Instantly teleports the player to the specific GO position.")]
 	public class PlayerTeleport : FsmStateAction
 	{
 		public override void OnEnter()

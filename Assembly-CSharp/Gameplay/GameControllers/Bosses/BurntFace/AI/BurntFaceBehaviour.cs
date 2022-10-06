@@ -73,7 +73,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 			Core.Logic.CameraManager.ProCamera2DShake.Shake(0.5f, Vector3.down * 1f, 12, 0.2f, 0f, default(Vector3), 0.1f, false);
 			yield return new WaitForSeconds(1f);
 			Core.Logic.CameraManager.ProCamera2DShake.Shake(2.5f, Vector3.down * 1f, 50, 0.2f, 0f, default(Vector3), 0.1f, false);
-			base.transform.DOMoveY(base.transform.position.y + 3f, 3.5f, false);
+			ShortcutExtensions.DOMoveY(base.transform, base.transform.position.y + 3f, 3.5f, false);
 			yield return new WaitForSeconds(1.5f);
 			this._fsm.ChangeState(this.stHead);
 			this.ActivateColliders(false);
@@ -137,7 +137,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 				else if (healthPercentage < 0.5f)
 				{
 					this.ChangePhase(BurntFaceBehaviour.BURNTFACE_PHASES.LAST);
-					UnityEngine.Debug.Log("PUSHING RELEASE SECOND HAND INTO QUEUE");
+					Debug.Log("PUSHING RELEASE SECOND HAND INTO QUEUE");
 					this.PushToActionQueue(BurntFaceBehaviour.BURNTFACE_ATTACKS.RELEASE_SECOND_HAND);
 				}
 			}
@@ -257,7 +257,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 		{
 			BurntFaceBehaviour.BURNTFACE_ATTACKS burntface_ATTACKS = this.queuedActions[0];
 			this.queuedActions.Remove(burntface_ATTACKS);
-			UnityEngine.Debug.Log("<color=red> POPPING ACTION FROM QUEUE</color>");
+			Debug.Log("<color=red> POPPING ACTION FROM QUEUE</color>");
 			return burntface_ATTACKS;
 		}
 
@@ -271,7 +271,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 			this.currentlyAvailableAttacks.CopyTo(array);
 			List<BurntFaceBehaviour.BURNTFACE_ATTACKS> list = new List<BurntFaceBehaviour.BURNTFACE_ATTACKS>(array);
 			list.Remove(this.lastAttack);
-			return list[UnityEngine.Random.Range(0, list.Count)];
+			return list[Random.Range(0, list.Count)];
 		}
 
 		public void LaunchRandomAction()
@@ -302,13 +302,13 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 				BOSS_POSITIONS.CENTER
 			};
 			list.Remove(this._currentPosition);
-			return list[UnityEngine.Random.Range(0, list.Count)];
+			return list[Random.Range(0, list.Count)];
 		}
 
 		private void MoveHead(BOSS_POSITIONS newPos, float waitingPeriodOnEnd)
 		{
 			this.StartAttackAction();
-			UnityEngine.Debug.Log(">Moving head to position: " + newPos.ToString());
+			Debug.Log(">Moving head to position: " + newPos.ToString());
 			this.SetCurrentCoroutine(base.StartCoroutine(this.MovingIntoRosaryPoint(newPos, waitingPeriodOnEnd)));
 		}
 
@@ -344,13 +344,13 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 		{
 			BurntFaceHandBehaviour burntFaceHandBehaviour = (!rightHand) ? this.secondHand : this.firstHand;
 			burntFaceHandBehaviour.Hide(seconds * 0.5f);
-			UnityEngine.Debug.Log(">Moving hand out of screen");
+			Debug.Log(">Moving hand out of screen");
 			burntFaceHandBehaviour.MoveToPosition(new Vector2(burntFaceHandBehaviour.transform.position.x, this.BurntFace.bossFightPoints.transform.position.y - 15f), seconds, new Action<BurntFaceHandBehaviour>(this.AfterHandOutOfScreen));
 		}
 
 		private void AfterHandOutOfScreen(BurntFaceHandBehaviour hand)
 		{
-			UnityEngine.Debug.Log("Hand moved out of screen");
+			Debug.Log("Hand moved out of screen");
 			bool flag = hand == this.secondHand;
 			BOSS_POSITIONS currentPosition = this._currentPosition;
 			if (currentPosition != BOSS_POSITIONS.LEFT)
@@ -376,9 +376,9 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 
 		private void DrawDebugCross(Vector2 point, Color c, float seconds)
 		{
-			float d = 0.6f;
-			UnityEngine.Debug.DrawLine(point - Vector2.up * d, point + Vector2.up * d, c, seconds);
-			UnityEngine.Debug.DrawLine(point - Vector2.right * d, point + Vector2.right * d, c, seconds);
+			float num = 0.6f;
+			Debug.DrawLine(point - Vector2.up * num, point + Vector2.up * num, c, seconds);
+			Debug.DrawLine(point - Vector2.right * num, point + Vector2.right * num, c, seconds);
 		}
 
 		private void MoveHandBackIn(BurntFaceHandBehaviour hand, float seconds, bool reposition = true)
@@ -389,8 +389,9 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 			{
 				handPosition.x = this.firstHand.transform.position.x;
 			}
-			Vector2 v = new Vector2(handPosition.x, handPosition.y - 8f);
-			hand.transform.position = v;
+			Vector2 vector;
+			vector..ctor(handPosition.x, handPosition.y - 8f);
+			hand.transform.position = vector;
 			hand.MoveToPosition(handPosition, seconds, new Action<BurntFaceHandBehaviour>(this.AfterHandBackIn));
 		}
 
@@ -406,7 +407,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 
 		private void OnHeadMoveFinished(float waitingPeriod)
 		{
-			UnityEngine.Debug.Log("<color=cyan>Head move finished. Waiting period: </color>" + waitingPeriod);
+			Debug.Log("<color=cyan>Head move finished. Waiting period: </color>" + waitingPeriod);
 			this.SetCurrentCoroutine(base.StartCoroutine(this.GetIntoStateAndCallback(this.stHead, 0.3f, null)));
 			if (waitingPeriod >= 0f)
 			{
@@ -536,7 +537,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 		private void IssueReleaseSecondHand()
 		{
 			this.StartAttackAction();
-			UnityEngine.Debug.Log("RELEASING SECOND HAND");
+			Debug.Log("RELEASING SECOND HAND");
 			Vector2 handPosition = this.GetHandPosition(this.firstHand);
 			this.firstHand.MoveToPosition(handPosition, 1f, new Action<BurntFaceHandBehaviour>(this.OnHandReachedReleasePosition));
 		}
@@ -578,7 +579,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 		{
 			yield return new WaitForSeconds(0.5f);
 			int i = 8;
-			i += UnityEngine.Random.Range(-1, 3);
+			i += Random.Range(-1, 3);
 			float minrandomX = -1f;
 			float maxrandomX = 1f;
 			float minrandomY = -0.5f;
@@ -588,7 +589,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 				hand.homingBallsLauncher.projectileSource = hand.targetedBeamAttack.transform;
 				Vector2 dirToPen = this.GetDirToPenitent(hand.targetedBeamAttack.transform.position);
 				Vector2 dir = dirToPen;
-				dir += new Vector2(UnityEngine.Random.Range(minrandomX, maxrandomX), UnityEngine.Random.Range(minrandomY, maxrandomY));
+				dir += new Vector2(Random.Range(minrandomX, maxrandomX), Random.Range(minrandomY, maxrandomY));
 				StraightProjectile p = hand.homingBallsLauncher.Shoot(dir.normalized);
 				AcceleratedProjectile ap = p.GetComponent<AcceleratedProjectile>();
 				ap.SetAcceleration(dirToPen.normalized * 6f);
@@ -694,7 +695,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 			this.firstHand.Hide(4f);
 			this.secondHand.Hide(4f);
 			yield return new WaitForSeconds(3f);
-			base.transform.DOMoveY(base.transform.position.y - 25f, 7.5f, false).SetEase(Ease.InOutQuad);
+			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, base.transform.position.y - 25f, 7.5f, false), 7);
 			yield return new WaitForSeconds(5f);
 			Core.Logic.Penitent.Status.Invulnerable = false;
 			yield break;

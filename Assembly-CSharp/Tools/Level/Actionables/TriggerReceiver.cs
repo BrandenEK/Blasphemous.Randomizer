@@ -30,7 +30,7 @@ namespace Tools.Level.Actionables
 			this.DeactivateCollisions();
 			if (this.showReactionTween)
 			{
-				base.transform.DOPunchScale(Vector3.one * 0.25f, 0.5f, 10, 1f);
+				ShortcutExtensions.DOPunchScale(base.transform, Vector3.one * 0.25f, 0.5f, 10, 1f);
 			}
 		}
 

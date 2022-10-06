@@ -133,7 +133,7 @@ namespace Gameplay.GameControllers.Entities
 			this._landing = false;
 			Core.Input.SetBlocker("PLAYER_LOGIC", true);
 			base.EntityOwner.Animator.Play(this._fallingOverAnim);
-			this.SetRigidbodyType(RigidbodyType2D.Dynamic);
+			this.SetRigidbodyType(0);
 			this.Throw(this.GetGoal(this._hit));
 			if (base.EntityOwner.Shadow)
 			{
@@ -150,7 +150,7 @@ namespace Gameplay.GameControllers.Entities
 			}
 			this._controller.InstantVelocity = Vector3.zero;
 			this._rigidbody.velocity = Vector2.zero;
-			this.SetRigidbodyType(RigidbodyType2D.Kinematic);
+			this.SetRigidbodyType(1);
 			if (!base.EntityOwner.Dead)
 			{
 				base.EntityOwner.Animator.SetBool(ThrowBack.ThrowParam, false);
@@ -171,11 +171,11 @@ namespace Gameplay.GameControllers.Entities
 		{
 			float num = goal.x - base.EntityOwner.transform.position.x;
 			float num2 = goal.y - base.EntityOwner.transform.position.y;
-			float f = Mathf.Atan((num2 + 10f) / num);
-			float num3 = num / Mathf.Cos(f);
-			float x = num3 * Mathf.Cos(f);
-			float y = num3 * Mathf.Sin(f);
-			this._rigidbody.velocity = new Vector2(x, y);
+			float num3 = Mathf.Atan((num2 + 10f) / num);
+			float num4 = num / Mathf.Cos(num3);
+			float num5 = num4 * Mathf.Cos(num3);
+			float num6 = num4 * Mathf.Sin(num3);
+			this._rigidbody.velocity = new Vector2(num5, num6);
 		}
 
 		private void SetRigidbodyType(RigidbodyType2D rigidbodyType)
@@ -188,7 +188,7 @@ namespace Gameplay.GameControllers.Entities
 			{
 				this._rigidbody.bodyType = rigidbodyType;
 			}
-			if (this._rigidbody.bodyType == RigidbodyType2D.Dynamic)
+			if (this._rigidbody.bodyType == null)
 			{
 				this._rigidbody.gravityScale = 3f;
 			}

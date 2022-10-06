@@ -35,7 +35,7 @@ namespace Gameplay.GameControllers.Entities
 			this.EntityAttack.ContactAttack(damageable);
 			if (this.OnContactDamage != null)
 			{
-				this.OnContactDamage(damageable as UnityEngine.Object);
+				this.OnContactDamage(damageable as Object);
 			}
 		}
 

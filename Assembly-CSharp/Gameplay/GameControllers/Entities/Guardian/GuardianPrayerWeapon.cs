@@ -44,12 +44,13 @@ namespace Gameplay.GameControllers.Entities.Guardian
 				{
 					break;
 				}
-				float y = enemy.EntityDamageArea.DamageAreaCollider.bounds.max.y - 0.25f;
-				Vector2 v = new Vector2(enemy.transform.position.x, y);
-				bool flipX = v.x - base.transform.position.x < 0f;
+				float num = enemy.EntityDamageArea.DamageAreaCollider.bounds.max.y - 0.25f;
+				Vector2 vector;
+				vector..ctor(enemy.transform.position.x, num);
+				bool flipX = vector.x - base.transform.position.x < 0f;
 				if (this.HitVfx)
 				{
-					GameObject gameObject = PoolManager.Instance.ReuseObject(this.HitVfx, v, Quaternion.identity, false, 1).GameObject;
+					GameObject gameObject = PoolManager.Instance.ReuseObject(this.HitVfx, vector, Quaternion.identity, false, 1).GameObject;
 					SpriteRenderer component = gameObject.GetComponent<SpriteRenderer>();
 					if (component != null)
 					{

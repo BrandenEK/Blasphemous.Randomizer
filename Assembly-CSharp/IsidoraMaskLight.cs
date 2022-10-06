@@ -7,15 +7,15 @@ public class IsidoraMaskLight : MonoBehaviour
 	private void OnEnable()
 	{
 		base.transform.localScale = Vector3.one * this.initialRadius * 2f;
-		base.transform.DOScale(this.maxRadius * 2f, this.timeToMaxRadius).SetEase(Ease.OutQuad).OnComplete(delegate
+		TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOScale(base.transform, this.maxRadius * 2f, this.timeToMaxRadius), 6), delegate()
 		{
-			base.transform.DOScale((this.maxRadius - this.fluctuation) * 2f, this.fluctuationTime).SetDelay(0.6f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
+			TweenSettingsExtensions.SetLoops<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(TweenSettingsExtensions.SetDelay<Tweener>(ShortcutExtensions.DOScale(base.transform, (this.maxRadius - this.fluctuation) * 2f, this.fluctuationTime), 0.6f), 7), -1, 1);
 		});
 	}
 
 	private void OnDisable()
 	{
-		base.transform.DOKill(false);
+		ShortcutExtensions.DOKill(base.transform, false);
 	}
 
 	public float initialRadius = 1f;

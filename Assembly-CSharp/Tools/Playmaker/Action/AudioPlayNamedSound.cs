@@ -39,7 +39,7 @@ namespace Tools.Playmaker.Action
 		public void StopSound()
 		{
 			string keyName = (this.soundName == null) ? string.Empty : this.soundName.Value;
-			Core.Audio.StopNamedSound(keyName, FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			Core.Audio.StopNamedSound(keyName, 0);
 		}
 
 		public FsmString soundName;

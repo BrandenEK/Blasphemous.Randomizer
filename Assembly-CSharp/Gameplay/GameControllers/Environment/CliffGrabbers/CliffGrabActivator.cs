@@ -37,9 +37,9 @@ namespace Gameplay.GameControllers.Environment.CliffGrabbers
 
 		private bool CheckRayCastHitsPlatform()
 		{
-			RaycastHit2D hit = Physics2D.Raycast(this.RightBoundary, -Vector2.up, this.VerticalRayDistance, this.NearPlatform);
-			RaycastHit2D hit2 = Physics2D.Raycast(this.LeftBoundary, -Vector2.up, this.VerticalRayDistance, this.NearPlatform);
-			return hit || hit2;
+			RaycastHit2D raycastHit2D = Physics2D.Raycast(this.RightBoundary, -Vector2.up, this.VerticalRayDistance, this.NearPlatform);
+			RaycastHit2D raycastHit2D2 = Physics2D.Raycast(this.LeftBoundary, -Vector2.up, this.VerticalRayDistance, this.NearPlatform);
+			return raycastHit2D || raycastHit2D2;
 		}
 
 		public LayerMask NearPlatform;

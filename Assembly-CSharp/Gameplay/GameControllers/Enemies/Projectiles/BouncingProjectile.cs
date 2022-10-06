@@ -22,7 +22,7 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 
 		protected override void OnUpdate()
 		{
-			base.transform.Translate(this.velocity * Time.deltaTime, Space.World);
+			base.transform.Translate(this.velocity * Time.deltaTime, 0);
 			this.UpdateGravity();
 			this.CheckRebound();
 			base.UpdateOrientation();
@@ -86,7 +86,7 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 						this.Deactivate();
 					}
 				}
-				if (!this.BounceFxSound.IsNullOrWhitespace())
+				if (!StringExtensions.IsNullOrWhitespace(this.BounceFxSound))
 				{
 					Core.Audio.PlaySfx(this.BounceFxSound, 0f);
 				}
@@ -95,7 +95,7 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 			{
 				this.velocity.x = this.velocity.x * -1f;
 				this.currentHits--;
-				if (!this.BounceFxSound.IsNullOrWhitespace())
+				if (!StringExtensions.IsNullOrWhitespace(this.BounceFxSound))
 				{
 					Core.Audio.PlaySfx(this.BounceFxSound, 0f);
 				}
@@ -116,7 +116,7 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 			}
 			else
 			{
-				UnityEngine.Object.Destroy(base.gameObject);
+				Object.Destroy(base.gameObject);
 			}
 		}
 

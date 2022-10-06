@@ -21,7 +21,8 @@ namespace Gameplay.GameControllers.Effects.Player.Sprint
 		private void SetScaleFromOrientation()
 		{
 			Vector3 one = Vector3.one;
-			Vector3 vector = new Vector3(-1f, 1f, 1f);
+			Vector3 vector;
+			vector..ctor(-1f, 1f, 1f);
 			this.feetParticle.transform.localScale = ((Core.Logic.Penitent.Status.Orientation != EntityOrientation.Right) ? vector : one);
 		}
 

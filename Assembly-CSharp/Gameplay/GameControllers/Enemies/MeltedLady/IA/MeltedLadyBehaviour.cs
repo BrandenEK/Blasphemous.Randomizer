@@ -60,7 +60,7 @@ namespace Gameplay.GameControllers.Enemies.MeltedLady.IA
 			Vector3 position = this.MeltedLady.transform.position;
 			this.OriginPosition = new Vector2(position.x, position.y);
 			this.CurrentAttackAmount = this.AttackAmount;
-			this.TeleportPoints = UnityEngine.Object.FindObjectsOfType<MeltedLadyTeleportPoint>();
+			this.TeleportPoints = Object.FindObjectsOfType<MeltedLadyTeleportPoint>();
 			if (this.TeleportPoints.Length < 1)
 			{
 				Debug.LogError("You have to add at least one teleport point to the scene.");
@@ -147,15 +147,15 @@ namespace Gameplay.GameControllers.Enemies.MeltedLady.IA
 
 		private Vector2 GetAttackPosition()
 		{
-			Vector3 v = this.GetNearestTeleportPointToTarget().TeleportPosition;
+			Vector3 vector = this.GetNearestTeleportPointToTarget().TeleportPosition;
 			this.MeltedLady.Behaviour.IsInOrigin = false;
-			float num = Vector2.Distance(this.MeltedLady.Behaviour.OriginPosition, v);
+			float num = Vector2.Distance(this.MeltedLady.Behaviour.OriginPosition, vector);
 			if (num >= this.MeltedLady.Behaviour.MaxAttackDistance)
 			{
-				v = this.MeltedLady.Behaviour.OriginPosition;
+				vector = this.MeltedLady.Behaviour.OriginPosition;
 				this.MeltedLady.Behaviour.IsInOrigin = true;
 			}
-			return v;
+			return vector;
 		}
 
 		private MeltedLadyTeleportPoint GetNearestTeleportPointToTarget()

@@ -14,13 +14,13 @@ public class LookAtPenitent : MonoBehaviour
 		{
 			this.target = Core.Logic.Penitent.transform;
 			Vector3 vector = this.target.position - base.transform.parent.position;
-			float d = this.radius;
-			float num = Vector2.Distance(this.target.position, base.transform.parent.position);
-			if (num < this.maxDistance)
+			float num = this.radius;
+			float num2 = Vector2.Distance(this.target.position, base.transform.parent.position);
+			if (num2 < this.maxDistance)
 			{
-				d = Mathf.Lerp(0f, this.radius, num / this.maxDistance);
+				num = Mathf.Lerp(0f, this.radius, num2 / this.maxDistance);
 			}
-			base.transform.position = Vector3.Lerp(base.transform.position, base.transform.parent.position + vector.normalized * d, 0.2f);
+			base.transform.position = Vector3.Lerp(base.transform.position, base.transform.parent.position + vector.normalized * num, 0.2f);
 		}
 	}
 
