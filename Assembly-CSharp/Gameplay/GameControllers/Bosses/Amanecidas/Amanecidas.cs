@@ -45,7 +45,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			this.GhostTrail = base.GetComponentInChildren<GhostTrailGenerator>();
 			this.DamageEffect = base.GetComponentInChildren<MasterShaderEffects>();
 			this.AnimatorInyector = base.GetComponentInChildren<AmanecidasAnimatorInyector>();
-			Object.Instantiate<GameObject>(this.shieldPrefab, this.shieldParent);
+			UnityEngine.Object.Instantiate<GameObject>(this.shieldPrefab, this.shieldParent);
 			this.shield = base.GetComponentInChildren<AmanecidaShield>();
 			this.shield.amanecidas = this;
 			this.ActivateShield();

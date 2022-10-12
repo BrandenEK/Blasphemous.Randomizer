@@ -97,7 +97,7 @@ namespace Gameplay.GameControllers.Environment.Traps.FireTrap
 		public void StopIdle()
 		{
 			this.idleIsPlaying = false;
-			this.idleEventInstance.stop(0);
+			this.idleEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this.idleEventInstance.release();
 		}
 
@@ -119,7 +119,7 @@ namespace Gameplay.GameControllers.Environment.Traps.FireTrap
 		public void StopCharge()
 		{
 			this.chargeIsPlaying = false;
-			this.chargeEventInstance.stop(0);
+			this.chargeEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this.chargeEventInstance.release();
 		}
 
@@ -128,7 +128,7 @@ namespace Gameplay.GameControllers.Environment.Traps.FireTrap
 			try
 			{
 				ParameterInstance parameterInstance;
-				this.chargeEventInstance.getParameter("Charge", ref parameterInstance);
+				this.chargeEventInstance.getParameter("Charge", out parameterInstance);
 				parameterInstance.setValue(percentage);
 			}
 			catch (Exception ex)

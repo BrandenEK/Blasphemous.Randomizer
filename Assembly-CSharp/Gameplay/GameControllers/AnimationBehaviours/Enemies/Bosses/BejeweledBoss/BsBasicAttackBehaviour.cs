@@ -19,15 +19,14 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Bosses.BejeweledB
 
 		public void RotateArm(EntityOrientation orientation, Animator animator)
 		{
-			float num = (Random.value <= 0.5f) ? 30f : -30f;
-			Vector3 vector;
-			vector..ctor(0f, 0f, num);
-			ShortcutExtensions.DOLocalRotate(animator.gameObject.transform, vector, 0.5f, 0);
+			float z = (UnityEngine.Random.value <= 0.5f) ? 30f : -30f;
+			Vector3 endValue = new Vector3(0f, 0f, z);
+			animator.gameObject.transform.DOLocalRotate(endValue, 0.5f, RotateMode.Fast);
 		}
 
 		public void SetDefaultRotation(Animator animator)
 		{
-			ShortcutExtensions.DOLocalRotate(animator.gameObject.transform, Vector3.zero, 0.5f, 0);
+			animator.gameObject.transform.DOLocalRotate(Vector3.zero, 0.5f, RotateMode.Fast);
 		}
 	}
 }

@@ -30,13 +30,13 @@ namespace Gameplay.GameControllers.Enemies.Acolyte.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("Dirt", ref parameterInstance);
+				eventInstance.getParameter("Dirt", out parameterInstance);
 				parameterInstance.setValue(this.DirtValue);
 				ParameterInstance parameterInstance2;
-				eventInstance.getParameter("Snow", ref parameterInstance2);
+				eventInstance.getParameter("Snow", out parameterInstance2);
 				parameterInstance2.setValue(this.SnowValue);
 				ParameterInstance parameterInstance3;
-				eventInstance.getParameter("Stone", ref parameterInstance3);
+				eventInstance.getParameter("Stone", out parameterInstance3);
 				parameterInstance3.setValue(this.StoneValue);
 			}
 			catch (Exception ex)

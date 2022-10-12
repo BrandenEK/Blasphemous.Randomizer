@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Tools.PlayMaker.Action
 {
 	[ActionCategory("Blasphemous Action")]
-	[Tooltip("Prepares TPO for riding the elevator.")]
+	[HutongGames.PlayMaker.Tooltip("Prepares TPO for riding the elevator.")]
 	public class PenitentOnElevator : FsmStateAction
 	{
 		public override void OnEnter()

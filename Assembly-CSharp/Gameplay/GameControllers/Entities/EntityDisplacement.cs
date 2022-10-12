@@ -67,12 +67,10 @@ namespace Gameplay.GameControllers.Entities
 		public void Move(float horDisplacement, float timeLapse, Ease ease)
 		{
 			Vector3 position = base.EntityOwner.transform.position;
-			Vector2 entityPosition;
-			entityPosition..ctor(position.x, position.y);
+			Vector2 entityPosition = new Vector2(position.x, position.y);
 			horDisplacement = this.ClampHorizontalDisplacement(entityPosition, horDisplacement);
-			Vector2 vector;
-			vector..ctor(entityPosition.x + horDisplacement, entityPosition.y);
-			TweenSettingsExtensions.SetId<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(base.EntityOwner.transform, vector.x, this.DisplacementTime, false), ease), "RegularDisplacement");
+			Vector2 vector = new Vector2(entityPosition.x + horDisplacement, entityPosition.y);
+			base.EntityOwner.transform.DOMoveX(vector.x, this.DisplacementTime, false).SetEase(ease).SetId("RegularDisplacement");
 		}
 
 		private void Move(Hit hit)
@@ -80,29 +78,28 @@ namespace Gameplay.GameControllers.Entities
 			Vector3 position = base.EntityOwner.transform.position;
 			float num = this.GetHorizontalDisplacement(hit);
 			num = this.ClampHorizontalDisplacement(position, num);
-			Vector2 vector;
-			vector..ctor(position.x + num, position.y);
-			TweenSettingsExtensions.SetId<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(base.EntityOwner.transform, vector.x, this.DisplacementTime, false), this.DisplacementEase), "DamageDisplacement");
+			Vector2 vector = new Vector2(position.x + num, position.y);
+			base.EntityOwner.transform.DOMoveX(vector.x, this.DisplacementTime, false).SetEase(this.DisplacementEase).SetId("DamageDisplacement");
 		}
 
 		private float ClampHorizontalDisplacement(Vector2 entityPosition, float distance)
 		{
-			float num = 0.2f;
-			entityPosition += num * Vector2.up;
-			Vector2 vector = entityPosition + distance * Vector2.right;
-			Vector2 vector2;
-			if (this.MotionChecker.HitsBlockInPosition(entityPosition, Mathf.Sign(distance) * Vector2.right, distance, out vector2, true))
+			float d = 0.2f;
+			entityPosition += d * Vector2.up;
+			Vector2 b = entityPosition + distance * Vector2.right;
+			Vector2 b2;
+			if (this.MotionChecker.HitsBlockInPosition(entityPosition, Mathf.Sign(distance) * Vector2.right, distance, out b2, true))
 			{
-				float num2 = Vector2.Distance(entityPosition, vector2);
-				return Mathf.Floor(num2);
+				float f = Vector2.Distance(entityPosition, b2);
+				return Mathf.Floor(f);
 			}
-			int num3 = 5;
-			for (int i = 0; i < num3; i++)
+			int num = 5;
+			for (int i = 0; i < num; i++)
 			{
-				Vector2 vector3 = Vector2.Lerp(entityPosition, vector, (float)i / (float)num3);
-				if (!this.MotionChecker.HitsFloorInPosition(vector3, 0.5f, out vector2, true))
+				Vector2 vector = Vector2.Lerp(entityPosition, b, (float)i / (float)num);
+				if (!this.MotionChecker.HitsFloorInPosition(vector, 0.5f, out b2, true))
 				{
-					return Vector2.Distance(entityPosition, vector3);
+					return Vector2.Distance(entityPosition, vector);
 				}
 			}
 			return distance;

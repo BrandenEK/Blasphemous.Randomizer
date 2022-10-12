@@ -466,7 +466,7 @@ namespace Gameplay.GameControllers.Penitent.Audio
 			{
 				return;
 			}
-			eventInstance.stop(0);
+			eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			eventInstance.release();
 		}
 
@@ -576,7 +576,7 @@ namespace Gameplay.GameControllers.Penitent.Audio
 			{
 				return;
 			}
-			this._chargedAttackEventInstance.stop(0);
+			this._chargedAttackEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this._chargedAttackEventInstance.release();
 			this._chargedAttackEventInstance = default(EventInstance);
 		}
@@ -597,7 +597,7 @@ namespace Gameplay.GameControllers.Penitent.Audio
 			{
 				return;
 			}
-			this._useFlaskEventInstance.stop(0);
+			this._useFlaskEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this._useFlaskEventInstance.release();
 			this._useFlaskEventInstance = default(EventInstance);
 		}

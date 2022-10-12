@@ -115,7 +115,7 @@ namespace Gameplay.GameControllers.Bosses.Lesmes
 			{
 				list.Remove(LesmesBehaviour.Lesmes_ATTACKS.SWORD_RECOVERY);
 			}
-			return list[Random.Range(0, list.Count)];
+			return list[UnityEngine.Random.Range(0, list.Count)];
 		}
 
 		public void LaunchRandomAction()

@@ -67,10 +67,10 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 		{
 			if (this.currentCoroutine != null)
 			{
-				Debug.Log(">>>>STOPPING CURRENT COROUTINE");
+				UnityEngine.Debug.Log(">>>>STOPPING CURRENT COROUTINE");
 				base.StopCoroutine(this.currentCoroutine);
 			}
-			Debug.Log(">>NEW COROUTINE");
+			UnityEngine.Debug.Log(">>NEW COROUTINE");
 			this.currentCoroutine = c;
 		}
 
@@ -140,10 +140,10 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 			yield return new WaitForSeconds(0.22f);
 			this.attackWarning.ShowWarning(this.spear.transform.position);
 			yield return new WaitForSeconds(0.4f);
-			Debug.Log("SPEAR ATTACK");
+			UnityEngine.Debug.Log("SPEAR ATTACK");
 			this.spear.Hide(true);
 			this.spearAttack.Shoot(this.spear.transform.position, this.spear.transform.right);
-			ShortcutExtensions.DOPunchPosition(base.transform, -this.spear.transform.right * 0.5f, 0.8f, 2, 1f, false);
+			base.transform.DOPunchPosition(-this.spear.transform.right * 0.5f, 0.8f, 2, 1f, false);
 			yield return new WaitForSeconds(recoveryTime);
 			this.AfterSpearAttack(aimTime);
 			yield break;
@@ -177,7 +177,7 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 			SplinePointInfo info = this.bossfightConfig.GetMaceSplineInfo();
 			BezierSpline spline = info.spline;
 			Vector2 launchDir = spline.GetPoint(1f) - spline.GetPoint(0f);
-			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOPunchPosition(this.mace.transform, launchDir.normalized, config.preparationSeconds, 1, 1f, false), 8);
+			this.mace.transform.DOPunchPosition(launchDir.normalized, config.preparationSeconds, 1, 1f, false).SetEase(Ease.InCubic);
 			yield return new WaitForSeconds(config.preparationSeconds);
 			this.mace.Hide(false);
 			this.maceAttack.Shoot(spline, info.speedCurve, info.time, base.transform.position);
@@ -248,13 +248,13 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 
 		public void StopDancing()
 		{
-			Debug.Log("STOP DANCING");
+			UnityEngine.Debug.Log("STOP DANCING");
 			this._fsm.ChangeState(this.stAction);
 		}
 
 		public void BackToDance()
 		{
-			Debug.Log("BACK TO DANCE");
+			UnityEngine.Debug.Log("BACK TO DANCE");
 			this._fsm.ChangeState(this.stGoToDancePoint);
 		}
 
@@ -266,13 +266,13 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 		public void SetPath(BezierSpline s)
 		{
 			this.currentPath = s;
-			Debug.Log("CURRENT PATH CHANGED");
+			UnityEngine.Debug.Log("CURRENT PATH CHANGED");
 		}
 
 		public Vector3 GetNextPathPoint()
 		{
-			float num = this.currentCurve.Evaluate((this._updateCounter + this.pathOffset) % this.secondsToFullLoop / this.secondsToFullLoop);
-			return this.currentPath.GetPoint(num);
+			float t = this.currentCurve.Evaluate((this._updateCounter + this.pathOffset) % this.secondsToFullLoop / this.secondsToFullLoop);
+			return this.currentPath.GetPoint(t);
 		}
 
 		public void ForceWait(float s)
@@ -317,7 +317,7 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 		{
 			this.StartAttackAction();
 			this.SingleAnguish.Audio.PlayAppear();
-			TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions43.DOFade(this.SingleAnguish.SpriteRenderer, 1f, 3f), delegate()
+			this.SingleAnguish.SpriteRenderer.DOFade(1f, 3f).OnComplete(delegate
 			{
 				this.ActionFinished();
 			});

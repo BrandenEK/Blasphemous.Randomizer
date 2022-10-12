@@ -202,8 +202,8 @@ namespace Gameplay.GameControllers.Camera
 				this.EnableLimitDistance(false);
 				this._currentVeticalLimitRestoreLapse = 0f;
 				Vector3 targetPosition = this.CameraPlayerOffset.PlayerTarget.TargetPosition;
-				Vector3 vector2 = targetPosition + vector.normalized * offset;
-				this.ProCamera2DPan.PanTarget.position = this.GetPanningDirectionConstraints(vector2);
+				Vector3 v = targetPosition + vector.normalized * offset;
+				this.ProCamera2DPan.PanTarget.position = this.GetPanningDirectionConstraints(v);
 				this.ProCamera2DPan.CheckTargetisOutsideBounds();
 			}
 			else
@@ -248,28 +248,27 @@ namespace Gameplay.GameControllers.Camera
 
 		public Vector3 ResolvePaningValueConstraints(Vector2 panValue)
 		{
-			Vector2 vector;
-			vector..ctor(panValue.x, panValue.y);
+			Vector2 v = new Vector2(panValue.x, panValue.y);
 			if (!this.CameraNumericBoundaries.UseNumericBoundaries)
 			{
-				return vector;
+				return v;
 			}
 			if (this.CameraNumericBoundaries.UseLeftBoundary)
 			{
 				float num = Mathf.Abs(this.CameraNumericBoundaries.LeftBoundary - this._penitent.transform.position.x);
-				vector.x = ((num >= 15f) ? vector.x : 0f);
+				v.x = ((num >= 15f) ? v.x : 0f);
 			}
 			if (this.CameraNumericBoundaries.UseRightBoundary)
 			{
 				float num2 = Mathf.Abs(this.CameraNumericBoundaries.RightBoundary - this._penitent.transform.position.x);
-				vector.x = ((num2 >= 15f) ? vector.x : 0f);
+				v.x = ((num2 >= 15f) ? v.x : 0f);
 			}
 			if (this.CameraNumericBoundaries.UseBottomBoundary)
 			{
 				float num3 = Mathf.Abs(this.CameraNumericBoundaries.BottomBoundary - this._penitent.transform.position.y);
 				if (num3 < 7.5f)
 				{
-					vector.y = ((vector.y > 0f) ? vector.y : 0f);
+					v.y = ((v.y > 0f) ? v.y : 0f);
 				}
 			}
 			if (this.CameraNumericBoundaries.UseTopBoundary)
@@ -277,10 +276,10 @@ namespace Gameplay.GameControllers.Camera
 				float num4 = Mathf.Abs(this.CameraNumericBoundaries.TopBoundary - this._penitent.transform.position.y);
 				if (num4 < 7.5f)
 				{
-					vector.y = ((vector.y <= 0f) ? vector.y : 0f);
+					v.y = ((v.y <= 0f) ? v.y : 0f);
 				}
 			}
-			return vector;
+			return v;
 		}
 
 		private void SetDefaultProCameraFollowSmoothness()

@@ -70,7 +70,7 @@ namespace Framework.Managers
 				byte[] bytes = Convert.FromBase64String(s);
 				string @string = Encoding.UTF8.GetString(bytes);
 				fsData fsData;
-				fsResult fsResult = fsJsonParser.Parse(@string, ref fsData);
+				fsResult fsResult = fsJsonParser.Parse(@string, out fsData);
 				if (fsResult.Failed && !fsResult.FormattedMessages.Equals("No input"))
 				{
 					Debug.LogError("ParseCurrentSkinSettings: parsing error: " + fsResult.FormattedMessages);
@@ -106,7 +106,7 @@ namespace Framework.Managers
 				byte[] bytes = Convert.FromBase64String(s);
 				string @string = Encoding.UTF8.GetString(bytes);
 				fsData fsData;
-				fsResult fsResult = fsJsonParser.Parse(@string, ref fsData);
+				fsResult fsResult = fsJsonParser.Parse(@string, out fsData);
 				if (fsResult.Failed && !fsResult.FormattedMessages.Equals("No input"))
 				{
 					Debug.LogError("ParseCurrentSkinSettings: parsing error: " + fsResult.FormattedMessages);

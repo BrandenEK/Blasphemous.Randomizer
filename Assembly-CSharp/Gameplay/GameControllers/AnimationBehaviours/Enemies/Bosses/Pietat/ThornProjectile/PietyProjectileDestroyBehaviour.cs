@@ -37,7 +37,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Bosses.Pietat.Tho
 		{
 			if (this._projectile != null)
 			{
-				Object.Destroy(this._projectile);
+				UnityEngine.Object.Destroy(this._projectile);
 			}
 		}
 

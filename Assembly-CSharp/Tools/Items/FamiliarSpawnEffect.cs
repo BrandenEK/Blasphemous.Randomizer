@@ -36,7 +36,7 @@ namespace Tools.Items
 			{
 				return;
 			}
-			GameObject gameObject = Object.Instantiate<GameObject>(this.FamiliarPrefab, position, Quaternion.identity);
+			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.FamiliarPrefab, position, Quaternion.identity);
 			this.FamiliarEntity = gameObject.GetComponentInChildren<Familiar>();
 			if (this.FamiliarEntity)
 			{

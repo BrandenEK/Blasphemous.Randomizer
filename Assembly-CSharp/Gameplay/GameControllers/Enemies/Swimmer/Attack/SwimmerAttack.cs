@@ -46,7 +46,7 @@ namespace Gameplay.GameControllers.Enemies.Swimmer.Attack
 		{
 			Vector2[] projectileTargets = this.GetProjectileTargets();
 			Vector3 position = base.transform.position;
-			Vector2 vector = Vector2.zero;
+			Vector2 lhs = Vector2.zero;
 			for (int i = 0; i < projectileTargets.Length; i++)
 			{
 				PoolManager.ObjectInstance objectInstance = PoolManager.Instance.ReuseObject(this.Projectile, position, Quaternion.identity, false, 1);
@@ -59,13 +59,12 @@ namespace Gameplay.GameControllers.Enemies.Swimmer.Attack
 				{
 					componentInChildren.SetOwner(base.EntityOwner);
 				}
-				if (vector == Vector2.zero)
+				if (lhs == Vector2.zero)
 				{
-					vector = this.GetProjectileMotion(position, projectileTargets[i]);
+					lhs = this.GetProjectileMotion(position, projectileTargets[i]);
 				}
-				float num = (i % 2 != 0) ? (-vector.x) : vector.x;
-				Vector2 vel;
-				vel..ctor(num, vector.y);
+				float x = (i % 2 != 0) ? (-lhs.x) : lhs.x;
+				Vector2 vel = new Vector2(x, lhs.y);
 				this.SetProjectileSpeed(objectInstance.GameObject, vel);
 			}
 		}
@@ -80,20 +79,18 @@ namespace Gameplay.GameControllers.Enemies.Swimmer.Attack
 		{
 			float num = target.x - startPosition.x;
 			float num2 = target.y - startPosition.y;
-			float num3 = Mathf.Atan((num2 + this.FiringAngle) / num);
-			float num4 = num / Mathf.Cos(num3);
-			float num5 = num4 * Mathf.Cos(num3);
-			float num6 = num4 * Mathf.Sin(num3);
-			return new Vector2(num5, num6);
+			float f = Mathf.Atan((num2 + this.FiringAngle) / num);
+			float num3 = num / Mathf.Cos(f);
+			float x = num3 * Mathf.Cos(f);
+			float y = num3 * Mathf.Sin(f);
+			return new Vector2(x, y);
 		}
 
 		public Vector2[] GetProjectileTargets()
 		{
 			Vector2 vector = this.JumpPosition;
-			Vector2 vector2;
-			vector2..ctor(vector.x - this.ProjectileRange, vector.y);
-			Vector2 vector3;
-			vector3..ctor(vector.x + this.ProjectileRange, vector.y);
+			Vector2 vector2 = new Vector2(vector.x - this.ProjectileRange, vector.y);
+			Vector2 vector3 = new Vector2(vector.x + this.ProjectileRange, vector.y);
 			return new Vector2[]
 			{
 				vector2,

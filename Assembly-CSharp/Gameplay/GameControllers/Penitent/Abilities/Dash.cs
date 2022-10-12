@@ -168,18 +168,18 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 			}
 			if (this._dashDirection < 0f)
 			{
-				this._playerController.SetActionState(2, true);
+				this._playerController.SetActionState(eControllerActions.Left, true);
 				this._penitent.SetOrientation(EntityOrientation.Left, true, false);
 			}
 			else if (this._dashDirection > 0f)
 			{
-				this._playerController.SetActionState(1, true);
+				this._playerController.SetActionState(eControllerActions.Right, true);
 				this._penitent.SetOrientation(EntityOrientation.Right, true, false);
 			}
 			else
 			{
-				this._playerController.SetActionState(1, this._penitent.Status.Orientation == EntityOrientation.Right);
-				this._playerController.SetActionState(2, this._penitent.Status.Orientation == EntityOrientation.Left);
+				this._playerController.SetActionState(eControllerActions.Right, this._penitent.Status.Orientation == EntityOrientation.Right);
+				this._playerController.SetActionState(eControllerActions.Left, this._penitent.Status.Orientation == EntityOrientation.Left);
 			}
 		}
 
@@ -216,13 +216,13 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 				}
 				Vector3 position = base.EntityOwner.transform.position;
 				position.y += 0.1f;
-				Vector2 vector = position;
-				Vector2 vector2 = position;
-				vector.x = position.x - 0.25f;
-				vector2.x = position.x + 0.25f;
-				RaycastHit2D raycastHit2D = Physics2D.Raycast(vector, base.EntityOwner.transform.up, 2.5f, this.UpperBlockLayer);
-				RaycastHit2D raycastHit2D2 = Physics2D.Raycast(vector2, base.EntityOwner.transform.up, 2.5f, this.UpperBlockLayer);
-				return raycastHit2D || raycastHit2D2;
+				Vector2 origin = position;
+				Vector2 origin2 = position;
+				origin.x = position.x - 0.25f;
+				origin2.x = position.x + 0.25f;
+				RaycastHit2D hit = Physics2D.Raycast(origin, base.EntityOwner.transform.up, 2.5f, this.UpperBlockLayer);
+				RaycastHit2D hit2 = Physics2D.Raycast(origin2, base.EntityOwner.transform.up, 2.5f, this.UpperBlockLayer);
+				return hit || hit2;
 			}
 		}
 

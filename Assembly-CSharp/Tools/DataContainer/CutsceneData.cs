@@ -24,7 +24,7 @@ namespace Tools.DataContainer
 		public bool CanBeCancelled = true;
 
 		[BoxGroup("Video Settings", true, false, 0)]
-		[InfoBox("Recommended video formats are .mp4, .m4v, and .mov", 1, null)]
+		[InfoBox("Recommended video formats are .mp4, .m4v, and .mov", InfoMessageType.Info, null)]
 		public VideoClip video;
 
 		[BoxGroup("Video Settings", true, false, 0)]

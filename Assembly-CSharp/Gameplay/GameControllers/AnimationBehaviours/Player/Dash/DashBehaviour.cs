@@ -109,7 +109,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Player.Dash
 			Vector3 vector = (this._penitent.Status.Orientation != EntityOrientation.Right) ? (-this._penitent.transform.right) : this._penitent.transform.right;
 			Vector3 position = this._penitent.transform.position;
 			position.x += vector.x * 2f;
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.OnUpdate<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(this._penitent.transform, position.x, 0.3f, false), 3), delegate()
+			this._penitent.transform.DOMoveX(position.x, 0.3f, false).SetEase(Ease.OutSine).OnUpdate(delegate
 			{
 				Core.Input.SetBlocker("PLAYER_LOGIC", true);
 				if (!this._penitent.Dash.IsUpperBlocked || this._penitent.HasFlag("FRONT_BLOCKED"))
@@ -117,7 +117,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Player.Dash
 					Core.Input.SetBlocker("PLAYER_LOGIC", false);
 					DOTween.Kill(this._penitent.transform, false);
 				}
-			}), delegate()
+			}).OnComplete(delegate
 			{
 				Core.Input.SetBlocker("PLAYER_LOGIC", false);
 			});

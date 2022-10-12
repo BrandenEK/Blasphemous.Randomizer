@@ -51,13 +51,13 @@ namespace Gameplay.GameControllers.Camera
 			component.RightBoundary = this.RightBoundary;
 		}
 
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		public void SavePosition()
 		{
 			this.originPos = base.transform.position;
 		}
 
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		public void CenterHere()
 		{
 			this.TopBoundary = base.transform.position.y + 5.625f;
@@ -66,7 +66,7 @@ namespace Gameplay.GameControllers.Camera
 			this.RightBoundary = base.transform.position.x + 10f;
 		}
 
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		public void CenterKeepSize()
 		{
 			this.TopBoundary -= this.originPos.y;

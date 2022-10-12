@@ -8,21 +8,21 @@ public static class Extensions
 	public static Selectable FindSelectableFromList(this Selectable s, Vector3 dir, List<Selectable> candidates)
 	{
 		dir = dir.normalized;
-		Vector3 vector = s.transform.TransformPoint(Extensions.MyGetPointOnRectEdge(s.transform as RectTransform, Quaternion.Inverse(s.transform.rotation) * dir));
+		Vector3 b = s.transform.TransformPoint(Extensions.MyGetPointOnRectEdge(s.transform as RectTransform, Quaternion.Inverse(s.transform.rotation) * dir));
 		float num = float.NegativeInfinity;
 		Selectable result = null;
 		for (int i = 0; i < candidates.Count; i++)
 		{
 			Selectable selectable = candidates[i];
-			if (!(selectable == s) && !(selectable == null) && selectable.IsInteractable() && selectable.navigation.mode != null)
+			if (!(selectable == s) && !(selectable == null) && selectable.IsInteractable() && selectable.navigation.mode != Navigation.Mode.None)
 			{
 				RectTransform rectTransform = selectable.transform as RectTransform;
-				Vector3 vector2 = (rectTransform != null) ? rectTransform.rect.center : Vector3.zero;
-				Vector3 vector3 = selectable.transform.TransformPoint(vector2) - vector;
-				float num2 = Vector3.Dot(dir, vector3);
+				Vector3 position = (rectTransform != null) ? rectTransform.rect.center : Vector3.zero;
+				Vector3 rhs = selectable.transform.TransformPoint(position) - b;
+				float num2 = Vector3.Dot(dir, rhs);
 				if ((double)num2 > 0.0)
 				{
-					float num3 = num2 / vector3.sqrMagnitude;
+					float num3 = num2 / rhs.sqrMagnitude;
 					if ((double)num3 > (double)num)
 					{
 						num = num3;

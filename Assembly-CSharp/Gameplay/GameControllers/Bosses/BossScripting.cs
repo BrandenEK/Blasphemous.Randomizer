@@ -6,7 +6,6 @@ using Gameplay.GameControllers.Bosses.PietyMonster;
 using Gameplay.GameControllers.Entities;
 using Gameplay.UI;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Gameplay.GameControllers.Bosses
@@ -15,8 +14,8 @@ namespace Gameplay.GameControllers.Bosses
 	{
 		private void Start()
 		{
-			SceneManager.sceneLoaded += new UnityAction<Scene, LoadSceneMode>(this.OnLevelLoaded);
-			this.Boss = Object.FindObjectOfType<PietyMonster>();
+			SceneManager.sceneLoaded += this.OnLevelLoaded;
+			this.Boss = UnityEngine.Object.FindObjectOfType<PietyMonster>();
 			if (this.entity == null)
 			{
 				this.entity = this.Boss;
@@ -52,7 +51,7 @@ namespace Gameplay.GameControllers.Bosses
 		{
 			if (this.sound.isValid())
 			{
-				this.sound.stop(1);
+				this.sound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 			}
 		}
 

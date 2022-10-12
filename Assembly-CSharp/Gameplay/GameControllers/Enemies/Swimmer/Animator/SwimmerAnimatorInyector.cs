@@ -44,7 +44,7 @@ namespace Gameplay.GameControllers.Enemies.Swimmer.Animator
 
 		public void SpriteVisible(bool visible, float timeElapsed, Action callback = null)
 		{
-			TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions43.DOFade(this.OwnerEntity.SpriteRenderer, (!visible) ? 0f : 1f, timeElapsed), delegate()
+			this.OwnerEntity.SpriteRenderer.DOFade((!visible) ? 0f : 1f, timeElapsed).OnComplete(delegate
 			{
 				if (callback != null)
 				{

@@ -55,7 +55,7 @@ namespace Tools.Level.Interactables
 		protected override void InteractionStart()
 		{
 			base.InteractionStart();
-			base.gameObject.SendMessage("OnUsePre", 1);
+			base.gameObject.SendMessage("OnUsePre", SendMessageOptions.DontRequireReceiver);
 			this.interactableAnimator.SetTrigger("TAKE");
 			this.PlayVanishGuilt();
 		}
@@ -63,7 +63,7 @@ namespace Tools.Level.Interactables
 		protected override void InteractionEnd()
 		{
 			base.Consumed = true;
-			base.gameObject.SendMessage("OnUsePost", 1);
+			base.gameObject.SendMessage("OnUsePost", SendMessageOptions.DontRequireReceiver);
 			this.interactableAnimator.transform.parent.gameObject.SetActive(false);
 		}
 

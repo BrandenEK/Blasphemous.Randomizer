@@ -43,9 +43,8 @@ public class CameraOffsetTrigger : MonoBehaviour
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = this.gizmoColor;
-		Vector3 vector;
-		vector..ctor(20f, 11f, 0f);
-		Gizmos.DrawWireCube(base.transform.position + this.offset, vector);
+		Vector3 size = new Vector3(20f, 11f, 0f);
+		Gizmos.DrawWireCube(base.transform.position + this.offset, size);
 		Gizmos.DrawIcon(base.transform.position + new Vector3(0f, 2f, 0f), "Blasphemous/TPO_singleImage.png", true);
 	}
 

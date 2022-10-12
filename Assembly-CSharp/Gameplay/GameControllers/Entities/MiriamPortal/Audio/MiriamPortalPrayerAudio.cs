@@ -12,7 +12,7 @@ namespace Gameplay.GameControllers.Entities.MiriamPortal.Audio
 	{
 		public void PlayAttack()
 		{
-			if (StringExtensions.IsNullOrWhitespace(this.AttackFx))
+			if (this.AttackFx.IsNullOrWhitespace())
 			{
 				return;
 			}
@@ -21,7 +21,7 @@ namespace Gameplay.GameControllers.Entities.MiriamPortal.Audio
 
 		public void PlayAppear()
 		{
-			if (StringExtensions.IsNullOrWhitespace(this.AppearFx))
+			if (this.AppearFx.IsNullOrWhitespace())
 			{
 				return;
 			}
@@ -30,7 +30,7 @@ namespace Gameplay.GameControllers.Entities.MiriamPortal.Audio
 
 		public void PlayFollow()
 		{
-			if (StringExtensions.IsNullOrWhitespace(this.FollowFx))
+			if (this.FollowFx.IsNullOrWhitespace())
 			{
 				return;
 			}
@@ -44,13 +44,13 @@ namespace Gameplay.GameControllers.Entities.MiriamPortal.Audio
 			{
 				return;
 			}
-			this.followEvent.stop(0);
+			this.followEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this.followEvent.release();
 		}
 
 		public void PlayVanish()
 		{
-			if (StringExtensions.IsNullOrWhitespace(this.VanishFx))
+			if (this.VanishFx.IsNullOrWhitespace())
 			{
 				return;
 			}
@@ -59,7 +59,7 @@ namespace Gameplay.GameControllers.Entities.MiriamPortal.Audio
 
 		public void PlayTurn()
 		{
-			if (StringExtensions.IsNullOrWhitespace(this.VanishFx))
+			if (this.VanishFx.IsNullOrWhitespace())
 			{
 				return;
 			}

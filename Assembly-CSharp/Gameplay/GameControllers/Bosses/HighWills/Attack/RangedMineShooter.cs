@@ -14,7 +14,7 @@ namespace Gameplay.GameControllers.Bosses.HighWills.Attack
 		private void Start()
 		{
 			this.SpriteRenderer = base.GetComponent<SpriteRenderer>();
-			ShortcutExtensions43.DOFade(this.SpriteRenderer, 0f, 0f);
+			this.SpriteRenderer.DOFade(0f, 0f);
 		}
 
 		private void Update()
@@ -93,23 +93,23 @@ namespace Gameplay.GameControllers.Bosses.HighWills.Attack
 		private IEnumerator WaitAndFade()
 		{
 			yield return new WaitForSeconds(this.TimeToFadeAfterFinalMine);
-			ShortcutExtensions43.DOFade(this.SpriteRenderer, 0f, this.FadeTime);
+			this.SpriteRenderer.DOFade(0f, this.FadeTime);
 			yield break;
 		}
 
 		private void UpdatePosition(float portion)
 		{
 			float num = this.VerticalMovementWhileShooting.Evaluate(portion);
-			float num2 = num * this.EndPointRelativeHeight;
-			float num3 = this.timePassed * 3f;
-			base.transform.position = this.startPos + Vector3.up * num2 + Vector3.right * num3;
+			float d = num * this.EndPointRelativeHeight;
+			float d2 = this.timePassed * 3f;
+			base.transform.position = this.startPos + Vector3.up * d + Vector3.right * d2;
 		}
 
 		public void StartShootingMines(Vector3 startPos)
 		{
 			this.startPos = startPos;
 			base.transform.position = startPos;
-			TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions43.DOFade(this.SpriteRenderer, 1f, 0.1f), new TweenCallback(this.ShootMines));
+			this.SpriteRenderer.DOFade(1f, 0.1f).OnComplete(new TweenCallback(this.ShootMines));
 		}
 
 		private void ShootMines()

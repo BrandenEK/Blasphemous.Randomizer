@@ -51,13 +51,13 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 			this.CameraAnchor.transform.SetParent(null);
 			this.CameraAnchor.ReferenceTransform = Camera.main.transform;
 			Sequence sequence = DOTween.Sequence();
-			TweenSettingsExtensions.AppendInterval(sequence, 0.2f);
-			TweenSettingsExtensions.OnStepComplete<Sequence>(sequence, delegate()
+			sequence.AppendInterval(0.2f);
+			sequence.OnStepComplete(delegate
 			{
 				this.battleBounds.center = this.combatAreaParent.transform.position;
 			});
-			TweenSettingsExtensions.SetLoops<Sequence>(sequence, -1);
-			TweenExtensions.Play<Sequence>(sequence);
+			sequence.SetLoops(-1);
+			sequence.Play<Sequence>();
 		}
 
 		private void OnGUI()
@@ -236,11 +236,11 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 			zero.y = this.battleBounds.yMin;
 			if (this.IsBossOnTheRightSide())
 			{
-				zero.x = Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.3f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.5f));
+				zero.x = UnityEngine.Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.3f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.5f));
 			}
 			else
 			{
-				zero.x = Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.6f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.9f));
+				zero.x = UnityEngine.Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.6f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.9f));
 			}
 			return zero;
 		}
@@ -251,11 +251,11 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 			zero.y = this.battleBounds.yMin;
 			if (this.IsBossOnTheRightSide())
 			{
-				zero.x = Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.5f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 1f));
+				zero.x = UnityEngine.Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.5f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 1f));
 			}
 			else
 			{
-				zero.x = Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.2f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.5f));
+				zero.x = UnityEngine.Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.2f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.5f));
 			}
 			return zero;
 		}
@@ -266,11 +266,11 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 			zero.y = this.battleBounds.yMax;
 			if (this.IsBossOnTheRightSide())
 			{
-				zero.x = Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.3f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.5f));
+				zero.x = UnityEngine.Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.3f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.5f));
 			}
 			else
 			{
-				zero.x = Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.6f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.9f));
+				zero.x = UnityEngine.Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.6f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.9f));
 			}
 			return zero;
 		}
@@ -281,11 +281,11 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 			zero.y = this.battleBounds.yMax;
 			if (this.IsBossOnTheRightSide())
 			{
-				zero.x = Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.5f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 1f));
+				zero.x = UnityEngine.Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.5f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 1f));
 			}
 			else
 			{
-				zero.x = Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.2f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.5f));
+				zero.x = UnityEngine.Random.Range(Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.2f), Mathf.Lerp(this.battleBounds.xMin, this.battleBounds.xMax, 0.5f));
 			}
 			return zero;
 		}
@@ -370,13 +370,13 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 		{
 			float hpPercentage = this.PontiffHuskBoss.GetHpPercentage();
 			List<float> filteredAttacksWeights = this.attackConfigData.GetFilteredAttacksWeights(filteredAtks, true, hpPercentage);
-			float num = filteredAttacksWeights.Sum();
-			float num2 = Random.Range(0f, num);
-			float num3 = 0f;
+			float max = filteredAttacksWeights.Sum();
+			float num = UnityEngine.Random.Range(0f, max);
+			float num2 = 0f;
 			for (int i = 0; i < filteredAtks.Count; i++)
 			{
-				num3 += filteredAttacksWeights[i];
-				if (num3 > num2)
+				num2 += filteredAttacksWeights[i];
+				if (num2 > num)
 				{
 					return i;
 				}
@@ -420,7 +420,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 			this.StopCurrentAction();
 			if (this.sceneAudio == null)
 			{
-				this.sceneAudio = Object.FindObjectOfType<SceneAudio>();
+				this.sceneAudio = UnityEngine.Object.FindObjectOfType<SceneAudio>();
 			}
 			if (this.PontiffHuskBoss.Status.Dead)
 			{
@@ -564,7 +564,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 			this.currentAction = this.waitBetweenActions_EA.StartAction(this, min, max);
 			this.currentAction.OnActionEnds -= this.CurrentAction_OnActionEnds;
 			this.currentAction.OnActionEnds += this.CurrentAction_OnActionEnds;
-			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(base.transform, base.transform.position.x + min, min, false), 7);
+			base.transform.DOMoveX(base.transform.position.x + min, min, false).SetEase(Ease.InOutQuad);
 			this.PontiffHuskBoss.AnimatorInyector.ResetAll();
 		}
 
@@ -573,11 +573,11 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 			Dictionary<KeyCode, PontiffHuskBossBehaviour.PH_ATTACKS> debugActions = this.attackConfigData.debugActions;
 			if (debugActions != null)
 			{
-				foreach (KeyCode keyCode in debugActions.Keys)
+				foreach (KeyCode key in debugActions.Keys)
 				{
-					if (Input.GetKeyDown(keyCode))
+					if (Input.GetKeyDown(key))
 					{
-						this.QueueAttack(debugActions[keyCode]);
+						this.QueueAttack(debugActions[key]);
 					}
 				}
 			}
@@ -641,7 +641,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 		{
 			this.StopCurrentAction();
 			base.StopAllCoroutines();
-			ShortcutExtensions.DOKill(base.transform, false);
+			base.transform.DOKill(false);
 			this.ClearAll();
 			this.LaunchAction_Death();
 		}
@@ -845,7 +845,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				PontiffHuskBossBehaviour o = this.owner as PontiffHuskBossBehaviour;
 				Penitent p = Core.Logic.Penitent;
 				o.PontiffHuskBoss.AnimatorInyector.StopHide();
-				ShortcutExtensions.DOKill(o.transform, false);
+				o.transform.DOKill(false);
 				o.InstantLookAtDir(Vector3.left);
 				o.transform.position = o.bossStartPos;
 				o.DeathTrapLeft.transform.position = o.deathTrapLeftStartPos;
@@ -853,9 +853,9 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				o.DeathTrapLeft.SetActive(true);
 				o.DeathTrapRight.SetActive(true);
 				o.currentFightParameters = o.allFightParameters[0];
-				this.ACT_MOVE.StartAction(o, o.deathTrapLeftStartPos + Vector2.right, 1f, 7, o.DeathTrapLeft.transform, true, null, true, true, 1.7f);
-				this.ACT_MOVE.StartAction(o, o.deathTrapRightStartPos + Vector2.left, 1f, 7, o.DeathTrapRight.transform, true, null, true, true, 1.7f);
-				this.ACT_MOVE.StartAction(o, o.bossStartPos, 2f, 7, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, o.deathTrapLeftStartPos + Vector2.right, 1f, Ease.InOutQuad, o.DeathTrapLeft.transform, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, o.deathTrapRightStartPos + Vector2.left, 1f, Ease.InOutQuad, o.DeathTrapRight.transform, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, o.bossStartPos, 2f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				if (!o.firstTimeDialogDone)
 				{
@@ -872,11 +872,11 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				{
 					o.PontiffHuskBoss.Audio.StartCombatMusic();
 				}
-				this.ACT_MOVE.StartAction(o, o.bossStartPos, 1f, 7, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, o.bossStartPos, 1f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				Core.Dialog.StartConversation("DLG_BS203_02", false, false, true, 0, false);
 				o.PontiffHuskBossScrollManager.ActivateModules();
-				this.ACT_MOVE.StartAction(o, o.bossStartPos, 1f, 7, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, o.bossStartPos, 1f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				base.FinishAction();
 				yield break;
@@ -945,7 +945,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 					baseExecutionPos = ((platform.GetDestination().y <= platform.GetOrigin().y) ? platform.GetOrigin() : platform.GetDestination());
 					Vector2 executionPos = baseExecutionPos + Vector2.up * 6.5f + Vector2.right * 4f;
 					Vector2 moveDir = executionPos - o.transform.position;
-					this.ACT_MOVE.StartAction(o, executionPos, 3f, 7, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, executionPos, 3f, Ease.InOutQuad, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				else
@@ -965,8 +965,8 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				o.PontiffHuskBoss.Audio.PlayExecution();
 				Core.UI.ShowGamePlayUI = false;
 				o.PontiffHuskBossScrollManager.SetExecutionCamBounds();
-				this.ACT_MOVE.StartAction(o, o.DeathTrapLeft.transform.position + Vector3.left * 100f, 3f, 7, o.DeathTrapLeft.transform, true, null, true, true, 1.7f);
-				this.ACT_MOVE.StartAction(o, o.DeathTrapRight.transform.position + Vector3.right * 100f, 3f, 7, o.DeathTrapRight.transform, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, o.DeathTrapLeft.transform.position + Vector3.left * 100f, 3f, Ease.InOutQuad, o.DeathTrapLeft.transform, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, o.DeathTrapRight.transform.position + Vector3.right * 100f, 3f, Ease.InOutQuad, o.DeathTrapRight.transform, true, null, true, true, 1.7f);
 				p.Shadow.ManuallyControllingAlpha = true;
 				Tween t = DOTween.To(() => p.Shadow.GetShadowAlpha(), delegate(float x)
 				{
@@ -979,7 +979,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				{
 					p.Shadow.SetShadowAlpha(x);
 				}, 1f, 0.2f);
-				TweenSettingsExtensions.OnComplete<Tween>(t2, delegate()
+				t2.OnComplete(delegate
 				{
 					p.Shadow.ManuallyControllingAlpha = false;
 				});
@@ -996,15 +996,15 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				{
 					o.HWDialoguePlatform.transform.position = x;
 				}, hwDialoguePlatformTargetPos, platformWait);
-				TweenSettingsExtensions.SetEase<Tween>(t3, 7);
+				t3.SetEase(Ease.InOutQuad);
 				Core.Input.SetBlocker("HW_FINAL_PLATFORM_RISING", true);
 				Sequence s = DOTween.Sequence();
-				TweenSettingsExtensions.AppendInterval(s, platformWait);
-				TweenSettingsExtensions.OnComplete<Sequence>(s, delegate()
+				s.AppendInterval(platformWait);
+				s.OnComplete(delegate
 				{
 					Core.Input.SetBlocker("HW_FINAL_PLATFORM_RISING", false);
 				});
-				TweenExtensions.Play<Sequence>(s);
+				s.Play<Sequence>();
 				Vector2 hwnpcPos = new Vector2(p.GetPosition().x + o.battleBounds.width * 2f, o.HwNpc.transform.position.y);
 				o.HwNpc.transform.position = hwnpcPos + Vector2.right * o.battleBounds.width * 1.1f;
 				o.DeathTrapLeft.SetActive(false);
@@ -1046,7 +1046,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				Penitent p = Core.Logic.Penitent;
 				float moveTime = 2f;
 				Vector2 target = (Vector2.Distance(p.GetPosition(), o.transform.position) >= o.battleBounds.width / 2f) ? o.ArenaGetTopNearRandomPoint() : o.ArenaGetTopFarRandomPoint();
-				this.ACT_MOVE.StartAction(o, target, moveTime, 7, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, target, moveTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
 				this.ACT_WAIT.StartAction(o, moveTime * 0.9f);
 				yield return this.ACT_WAIT.waitForCompletion;
 				o.LookAtTarget();
@@ -1057,7 +1057,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				{
 					Vector2 dir = (i % 2 != 0) ? Vector2.down : Vector2.up;
 					o.LookAtTarget();
-					this.ACT_MOVE.StartAction(o, target + dir, this.waitTime / (float)numSteps, 7, null, true, null, true, true, 1.7f);
+					this.ACT_MOVE.StartAction(o, target + dir, this.waitTime / (float)numSteps, Ease.InOutQuad, null, true, null, true, true, 1.7f);
 					yield return this.ACT_MOVE.waitForCompletion;
 				}
 				base.FinishAction();
@@ -1148,9 +1148,9 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				o.MachinegunShooter.StartAttack(Core.Logic.Penitent.transform);
 				o.MachinegunShooter.transform.SetParent(o.transform);
 				float attackTime = 6.5f;
-				this.ACT_MOVE.StartAction(o, o.transform.position + Vector3.up, attackTime * 0.5f, 7, null, true, null, false, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, o.transform.position + Vector3.up, attackTime * 0.5f, Ease.InOutQuad, null, true, null, false, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
-				this.ACT_MOVE.StartAction(o, o.transform.position + Vector3.down, attackTime * 0.5f, 7, null, true, null, false, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, o.transform.position + Vector3.down, attackTime * 0.5f, Ease.InOutQuad, null, true, null, false, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				o.PontiffHuskBoss.AnimatorInyector.StopAltShoot();
 				waitTime = 1f;
@@ -1207,7 +1207,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				Vector2 target = new Vector2(<BaseCoroutine>c__AnonStorey.o.battleBounds.center.x, <BaseCoroutine>c__AnonStorey.o.battleBounds.yMax);
 				float moveTime = Vector2.Distance(target, <BaseCoroutine>c__AnonStorey.o.transform.position) * 0.1f + 0.2f;
 				target.x += moveTime;
-				this.ACT_MOVE.StartAction(<BaseCoroutine>c__AnonStorey.o, target, moveTime, 7, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(<BaseCoroutine>c__AnonStorey.o, target, moveTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				int numLoops = 3;
 				int numWavesPerLoop = 5;
@@ -1233,7 +1233,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 						<BaseCoroutine>c__AnonStorey2.<>f__ref$0 = this;
 						<BaseCoroutine>c__AnonStorey2.<>f__ref$1 = <BaseCoroutine>c__AnonStorey;
 						rotation.z += angleIncrement * (float)j * rotationDir;
-						ShortcutExtensions.DORotate(config, rotation, waitTime, 0);
+						config.DORotate(rotation, waitTime, RotateMode.Fast);
 						<BaseCoroutine>c__AnonStorey2.origin = config.position + orientationOffset;
 						for (int k = 0; k < config.childCount; k++)
 						{
@@ -1301,7 +1301,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				float moveTime = 2f;
 				Vector2 target = (Vector2.Distance(p.GetPosition(), o.transform.position) >= o.battleBounds.width / 2f) ? o.ArenaGetTopNearRandomPoint() : o.ArenaGetTopFarRandomPoint();
 				target.y += 1.5f;
-				this.ACT_MOVE.StartAction(o, target, moveTime, 7, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, target, moveTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
 				this.ACT_WAIT.StartAction(o, moveTime * 0.9f);
 				yield return this.ACT_WAIT.waitForCompletion;
 				o.LookAtTarget();
@@ -1365,7 +1365,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				o.PontiffHuskBoss.AnimatorInyector.StopHide();
 				Vector2 target = (o.PontiffHuskBoss.Status.Orientation != EntityOrientation.Left) ? (o.ArenaGetTopLeftCorner() + Vector2.right * Vector2.Distance(o.transform.position, o.ArenaGetTopLeftCorner()) * 0.2f) : (o.ArenaGetTopRightCorner() + Vector2.right * Vector2.Distance(o.transform.position, o.ArenaGetTopRightCorner()) * 0.2f);
 				float moveTime = Vector2.Distance(target, o.transform.position) * 0.2f + 0.5f;
-				this.ACT_MOVE.StartAction(o, target, moveTime, 7, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, target, moveTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				o.PontiffHuskBoss.AnimatorInyector.PlayCharge();
 				float chargeTime = 0.3f;
@@ -1422,7 +1422,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				}
 				Vector2 target = (o.PontiffHuskBoss.Status.Orientation != EntityOrientation.Left) ? (o.ArenaGetTopLeftCorner() + Vector2.right) : (o.ArenaGetTopRightCorner() + Vector2.left);
 				float moveTime = Vector2.Distance(target, o.transform.position) * 0.1f + 0.2f;
-				this.ACT_MOVE.StartAction(o, target, moveTime, 7, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, target, moveTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				o.transform.parent = o.CameraAnchor.transform;
 				o.PontiffHuskBoss.AnimatorInyector.PlayCharge();
@@ -1437,7 +1437,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				refTransform.position = o.WindSpiralProjectilesAttack.transform.position;
 				Vector3 refTransformPos = refTransform.position;
 				refTransformPos.x = ((o.PontiffHuskBoss.Status.Orientation != EntityOrientation.Left) ? o.ArenaGetTopRightCorner().x : o.ArenaGetTopLeftCorner().x);
-				this.ACT_MOVE.StartAction(o, refTransformPos, attackTime + extensionTime, 7, refTransform, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, refTransformPos, attackTime + extensionTime, Ease.InOutQuad, refTransform, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				o.PontiffHuskBoss.AnimatorInyector.StopCharge();
 				o.transform.parent = null;
@@ -1634,7 +1634,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				o.LookAtDir(o.battleBounds.center - target);
 				bool turnQeued = o.PontiffHuskBoss.AnimatorInyector.IsTurnQeued();
 				moveTime += ((!turnQeued) ? 0.5f : 0f);
-				this.ACT_MOVE.StartAction(o, target, moveTime, 7, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, target, moveTime, Ease.InOutQuad, null, true, null, true, true, 1.7f);
 				yield return this.ACT_MOVE.waitForCompletion;
 				Vector2 attackTarget = (!o.IsBossOnTheRightSide()) ? (o.ArenaGetTopRightCorner() + Vector2.right * 3f) : (o.ArenaGetTopLeftCorner() + Vector2.right * 6f);
 				attackTarget.y -= 1f;
@@ -1649,7 +1649,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk
 				yield return this.ACT_WAIT.waitForCompletion;
 				o.transform.parent = null;
 				target = attackTarget;
-				this.ACT_MOVE.StartAction(o, target, moveTime, 5, null, true, null, true, true, 1.7f);
+				this.ACT_MOVE.StartAction(o, target, moveTime, Ease.InQuad, null, true, null, true, true, 1.7f);
 				this.ACT_WAIT.StartAction(o, moveTime - 1f);
 				yield return this.ACT_WAIT.waitForCompletion;
 				o.LookAtDir(o.battleBounds.center - target);

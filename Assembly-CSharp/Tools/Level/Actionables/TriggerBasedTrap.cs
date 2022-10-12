@@ -30,7 +30,7 @@ namespace Tools.Level.Actionables
 			}
 			else
 			{
-				this.lastDelay = Random.Range(this.minDelay, this.maxDelay);
+				this.lastDelay = UnityEngine.Random.Range(this.minDelay, this.maxDelay);
 				base.StartCoroutine(this.DelayedActivateTrap(this.lastDelay));
 			}
 			if (this.OnUsedEvent != null)
@@ -124,7 +124,7 @@ namespace Tools.Level.Actionables
 			{
 				this.currentState = TriggerBasedTrap.TRIGGER_TRAP_STATES.CHARGING;
 				this._chargeCounter = this.chargeTime;
-				ShortcutExtensions.DOPunchScale(base.transform, Vector3.one * 0.2f, this.chargeTime, 10, 1f);
+				base.transform.DOPunchScale(Vector3.one * 0.2f, this.chargeTime, 10, 1f);
 			}
 			Core.Audio.PlayOneShot(this.OnHitSound, default(Vector3));
 		}

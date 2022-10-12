@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class AmanecidaArena : MonoBehaviour
 {
-	[Button(0)]
+	[Button(ButtonSizes.Small)]
 	public void TestInfluence()
 	{
 		if (this.currentPhaseConfig.useCameraInfluence)
@@ -71,9 +71,9 @@ public class AmanecidaArena : MonoBehaviour
 		{
 			this.tweenParent.gameObject.SetActive(true);
 			float num = 2f;
-			float num2 = 2f;
+			float duration = 2f;
 			this.tweenParent.transform.localPosition += Vector3.down * num;
-			ShortcutExtensions.DOLocalMoveY(this.tweenParent.transform, this.tweenParent.transform.localPosition.y + num, num2, false);
+			this.tweenParent.transform.DOLocalMoveY(this.tweenParent.transform.localPosition.y + num, duration, false);
 		}
 	}
 
@@ -165,7 +165,7 @@ public class AmanecidaArena : MonoBehaviour
 		}
 	}
 
-	[Button("Editor Tool: Fill deco parents", 0)]
+	[Button("Editor Tool: Fill deco parents", ButtonSizes.Small)]
 	public void FillDecoParents()
 	{
 		this.decoParentsInOrder.Clear();

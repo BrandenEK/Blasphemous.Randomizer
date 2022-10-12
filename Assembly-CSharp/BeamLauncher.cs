@@ -17,7 +17,7 @@ public class BeamLauncher : MonoBehaviour
 		int num = Mathf.RoundToInt(this.maxRange / this.distanceBetweenBodySprites);
 		for (int i = 0; i < num; i++)
 		{
-			GameObject item = Object.Instantiate<GameObject>(this.beamBodyPrefab, base.transform);
+			GameObject item = UnityEngine.Object.Instantiate<GameObject>(this.beamBodyPrefab, base.transform);
 			this.beamParts.Add(item);
 		}
 	}
@@ -27,7 +27,7 @@ public class BeamLauncher : MonoBehaviour
 		this.LaunchBeam();
 	}
 
-	[Button(0)]
+	[Button(ButtonSizes.Small)]
 	public void TriggerBeamBodyAnim()
 	{
 		foreach (GameObject gameObject in this.beamParts)
@@ -62,17 +62,17 @@ public class BeamLauncher : MonoBehaviour
 
 	private void DrawBeam(Vector2 origin, Vector2 end)
 	{
-		Vector2 vector = end - origin;
-		float magnitude = vector.magnitude;
+		Vector2 v = end - origin;
+		float magnitude = v.magnitude;
 		int num = Mathf.RoundToInt(magnitude / this.distanceBetweenBodySprites);
 		for (int i = 0; i < num; i++)
 		{
-			Vector2 vector2 = Vector2.Lerp(origin, end, (float)i / (float)num);
-			Debug.DrawLine(vector2 - vector.normalized * 0.5f, vector2 + vector.normalized * 0.5f, Color.cyan);
+			Vector2 vector = Vector2.Lerp(origin, end, (float)i / (float)num);
+			Debug.DrawLine(vector - v.normalized * 0.5f, vector + v.normalized * 0.5f, Color.cyan);
 			GameObject gameObject = this.beamParts[i];
 			gameObject.SetActive(true);
-			gameObject.transform.position = vector2;
-			gameObject.transform.right = vector;
+			gameObject.transform.position = vector;
+			gameObject.transform.right = v;
 		}
 		if (num < this.beamParts.Count)
 		{

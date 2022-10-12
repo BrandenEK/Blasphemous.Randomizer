@@ -33,7 +33,7 @@ namespace Gameplay.GameControllers.Entities.Guardian.AI
 		{
 			float attackDistance = this._guardianPrayer.Behaviour.AttackDistance;
 			float actionDirection = this._guardianPrayer.Behaviour.GetActionDirection(attackDistance);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.OnStart<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(this._guardianPrayer.transform, actionDirection, 0.2f, true), 2), new TweenCallback(this.OnStartForwardMovement)), new TweenCallback(this.OnFinishForwardMovement));
+			this._guardianPrayer.transform.DOMoveX(actionDirection, 0.2f, true).SetEase(Ease.InSine).OnStart(new TweenCallback(this.OnStartForwardMovement)).OnComplete(new TweenCallback(this.OnFinishForwardMovement));
 		}
 
 		private void Attack()

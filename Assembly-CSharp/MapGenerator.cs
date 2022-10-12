@@ -13,7 +13,7 @@ using UnityEngine.UI;
 public class MapGenerator : SerializedMonoBehaviour
 {
 	[BoxGroup("Config", true, false, 0)]
-	[Button(22)]
+	[Button(ButtonSizes.Medium)]
 	public void Refresh()
 	{
 		this.hasError = false;
@@ -94,7 +94,7 @@ public class MapGenerator : SerializedMonoBehaviour
 
 	[HorizontalGroup("Domain", 0f, 0, 0, 0)]
 	[ShowIf("CanSave", true)]
-	[Button(0)]
+	[Button(ButtonSizes.Small)]
 	public void SaveDomain()
 	{
 		this._SaveDomainMaps(this.currentDomain);
@@ -115,7 +115,7 @@ public class MapGenerator : SerializedMonoBehaviour
 
 	[HorizontalGroup("Zone", 0f, 0, 0, 0)]
 	[ShowIf("CanSave", true)]
-	[Button(0)]
+	[Button(ButtonSizes.Small)]
 	public void SaveZone()
 	{
 		this._SaveZoneMap(this.currentDomain, this.currentZone);
@@ -123,7 +123,7 @@ public class MapGenerator : SerializedMonoBehaviour
 
 	[BoxGroup("Generate", true, false, 0)]
 	[ShowIf("CanSave", true)]
-	[Button(31)]
+	[Button(ButtonSizes.Large)]
 	public void SaveAllMaps()
 	{
 		this.PrepareScene();
@@ -139,7 +139,7 @@ public class MapGenerator : SerializedMonoBehaviour
 
 	[BoxGroup("Generate", true, false, 0)]
 	[ShowIf("CanSave", true)]
-	[Button(31)]
+	[Button(ButtonSizes.Large)]
 	public void CheckAllMaps()
 	{
 		foreach (List<Transform> list in this.domainZones.Values.ToList<List<Transform>>())
@@ -158,7 +158,7 @@ public class MapGenerator : SerializedMonoBehaviour
 
 	[BoxGroup("Config", true, false, 0)]
 	[ShowIf("InCanvas", true)]
-	[Button(22)]
+	[Button(ButtonSizes.Medium)]
 	public void TestInUI()
 	{
 		MapData mapData = Resources.Load<MapData>(this.MAP_RESOURCE_CONFIG);
@@ -227,8 +227,7 @@ public class MapGenerator : SerializedMonoBehaviour
 	private bool SetCameraAndCheckMap(Transform tr)
 	{
 		Bounds maxBounds = this.GetMaxBounds(tr);
-		Vector3 localPosition;
-		localPosition..ctor(maxBounds.center.x, maxBounds.center.y, -100f);
+		Vector3 localPosition = new Vector3(maxBounds.center.x, maxBounds.center.y, -100f);
 		this.currentCamera.transform.localPosition = localPosition;
 		bool flag = this.IsFullyVisible(maxBounds);
 		if (!flag)
@@ -378,7 +377,7 @@ public class MapGenerator : SerializedMonoBehaviour
 				{
 					if (flag)
 					{
-						result..ctor(componentsInChildren[0].bounds.center, componentsInChildren[0].bounds.size);
+						result = new Bounds(componentsInChildren[0].bounds.center, componentsInChildren[0].bounds.size);
 						flag = false;
 					}
 					else
@@ -390,7 +389,7 @@ public class MapGenerator : SerializedMonoBehaviour
 		}
 		else
 		{
-			result..ctor(obj.position, Vector3.zero);
+			result = new Bounds(obj.position, Vector3.zero);
 		}
 		return result;
 	}
@@ -430,21 +429,21 @@ public class MapGenerator : SerializedMonoBehaviour
 
 	private string SaveScreenShot(string domain, string zone)
 	{
-		RenderTexture renderTexture = new RenderTexture(640, 360, 32, 0);
+		RenderTexture renderTexture = new RenderTexture(640, 360, 32, RenderTextureFormat.ARGB32);
 		this.currentCamera.targetTexture = renderTexture;
-		Texture2D texture2D = new Texture2D(640, 360, 5, false);
+		Texture2D texture2D = new Texture2D(640, 360, TextureFormat.ARGB32, false);
 		this.currentCamera.Render();
 		RenderTexture.active = renderTexture;
 		texture2D.ReadPixels(new Rect(0f, 0f, 640f, 360f), 0, 0);
 		this.currentCamera.targetTexture = null;
 		RenderTexture.active = null;
-		Object.DestroyImmediate(renderTexture);
+		UnityEngine.Object.DestroyImmediate(renderTexture);
 		return this.EditorSaveImageToDisk(texture2D, string.Format("{0}_{1}", domain, zone));
 	}
 
 	private string SaveMask(Transform tr, string domain, string zone)
 	{
-		Texture2D texture2D = new Texture2D(640, 360, 1, false);
+		Texture2D texture2D = new Texture2D(640, 360, TextureFormat.Alpha8, false);
 		byte element = 0;
 		texture2D.LoadRawTextureData(Enumerable.Repeat<byte>(element, 230400).ToArray<byte>());
 		texture2D.Apply();
@@ -453,7 +452,7 @@ public class MapGenerator : SerializedMonoBehaviour
 
 	private string EditorSaveImageToDisk(Texture2D screenShot, string name)
 	{
-		byte[] bytes = ImageConversion.EncodeToPNG(screenShot);
+		byte[] bytes = screenShot.EncodeToPNG();
 		string text = "Maps\\" + name;
 		string text2 = Application.dataPath + "\\Resources\\" + text + ".png";
 		if (!Directory.Exists(Path.GetDirectoryName(text2)))

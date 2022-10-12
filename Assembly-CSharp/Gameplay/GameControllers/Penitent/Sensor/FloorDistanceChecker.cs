@@ -81,39 +81,39 @@ namespace Gameplay.GameControllers.Penitent.Sensor
 			this.halfWidth = this.playerBoxCollider.bounds.extents.x / 2f;
 			this.myHeight = this.playerBoxCollider.bounds.extents.y;
 			this.topCenterBoxCollider = new Vector2(this.playerBoxCollider.bounds.center.x, this.playerBoxCollider.bounds.max.y);
-			float num = 1.2f;
+			float d = 1.2f;
 			if (this._penitent.Status.Orientation == EntityOrientation.Left)
 			{
 				Vector2 vector = base.transform.position + base.transform.right * this.halfWidth;
-				Debug.DrawLine(vector, vector - Vector2.up * num, Color.magenta);
-				this.IsGrounded = (Physics2D.LinecastNonAlloc(vector, vector - Vector2.up * num, this.bottomHits, this.layerGroundedCollision) > 0);
-				this.oneWayDownCollision = (Physics2D.LinecastNonAlloc(vector, vector - Vector2.up * num, this.bottomHits, this.oneWayDownLayers) > 0);
+				UnityEngine.Debug.DrawLine(vector, vector - Vector2.up * d, Color.magenta);
+				this.IsGrounded = (Physics2D.LinecastNonAlloc(vector, vector - Vector2.up * d, this.bottomHits, this.layerGroundedCollision) > 0);
+				this.oneWayDownCollision = (Physics2D.LinecastNonAlloc(vector, vector - Vector2.up * d, this.bottomHits, this.oneWayDownLayers) > 0);
 				Vector2 vector2 = this.topCenterBoxCollider - (base.transform.right * (this.halfWidth * 0.5f) + Vector2.up * this.myHeight);
-				Debug.DrawLine(vector2, vector2 - base.transform.right * this.rayLength, Color.cyan);
+				UnityEngine.Debug.DrawLine(vector2, vector2 - base.transform.right * this.rayLength, Color.cyan);
 				this.isEnemyBlocked = (Physics2D.LinecastNonAlloc(vector2, vector2 - base.transform.right * this.rayLength, this.forwardHits, this.layerEnemyCollision) > 0);
 				if (this.forwardHits.Length > 0)
 				{
 					this.isFrontBlocked = this.IsFrontBlocked(this.forwardHits[0]);
 				}
 				Vector2 vector3 = this.topCenterBoxCollider + (base.transform.right * this.halfWidth - Vector2.up * this.myHeight);
-				Debug.DrawLine(vector3, vector3 + base.transform.right * this.rayLength, Color.yellow);
+				UnityEngine.Debug.DrawLine(vector3, vector3 + base.transform.right * this.rayLength, Color.yellow);
 				this.IsSideBlocked = (Physics2D.LinecastNonAlloc(vector3, vector3 + base.transform.right * this.rayLength, this.forwardHits, this.layerGroundedCollision) > 0);
 			}
 			else
 			{
 				Vector2 vector = base.transform.position - base.transform.right * this.halfWidth;
-				Debug.DrawLine(vector, vector - Vector2.up * num, Color.magenta);
-				this.IsGrounded = (Physics2D.LinecastNonAlloc(vector, vector - Vector2.up * num, this.bottomHits, this.layerGroundedCollision) > 0);
-				this.oneWayDownCollision = (Physics2D.LinecastNonAlloc(vector, vector - Vector2.up * num, this.bottomHits, this.oneWayDownLayers) > 0);
+				UnityEngine.Debug.DrawLine(vector, vector - Vector2.up * d, Color.magenta);
+				this.IsGrounded = (Physics2D.LinecastNonAlloc(vector, vector - Vector2.up * d, this.bottomHits, this.layerGroundedCollision) > 0);
+				this.oneWayDownCollision = (Physics2D.LinecastNonAlloc(vector, vector - Vector2.up * d, this.bottomHits, this.oneWayDownLayers) > 0);
 				Vector2 vector2 = this.topCenterBoxCollider + (base.transform.right * (this.halfWidth * 0.5f) - Vector2.up * this.myHeight);
-				Debug.DrawLine(vector2, vector2 + base.transform.right * this.rayLength, Color.cyan);
+				UnityEngine.Debug.DrawLine(vector2, vector2 + base.transform.right * this.rayLength, Color.cyan);
 				this.isEnemyBlocked = (Physics2D.LinecastNonAlloc(vector2, vector2 + base.transform.right * this.rayLength, this.forwardHits, this.layerEnemyCollision) > 0);
 				if (this.forwardHits.Length > 0)
 				{
 					this.isFrontBlocked = this.IsFrontBlocked(this.forwardHits[0]);
 				}
 				Vector2 vector3 = this.topCenterBoxCollider - (base.transform.right * this.halfWidth + Vector2.up * this.myHeight);
-				Debug.DrawLine(vector3, vector3 - base.transform.right * this.rayLength, Color.yellow);
+				UnityEngine.Debug.DrawLine(vector3, vector3 - base.transform.right * this.rayLength, Color.yellow);
 				this.IsSideBlocked = (Physics2D.LinecastNonAlloc(vector3, vector3 - base.transform.right * this.rayLength, this.forwardHits, this.layerGroundedCollision) > 0);
 			}
 			if (!this._penitent.Status.Dead && this.IsGrounded && !this._penitent.IsClimbingLadder && !this._penitent.IsStickedOnWall && !this._penitent.Dash.IsUpperBlocked && !this._penitent.TrapChecker.DeathBySpike)
@@ -152,13 +152,13 @@ namespace Gameplay.GameControllers.Penitent.Sensor
 
 		private bool CheckPositionToBeSafe(Vector2 origin)
 		{
-			Debug.DrawRay(origin, -Vector2.up * 1.1f, Color.white);
-			RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, -Vector2.up, 1.1f, this.layerSearchSafeCollision);
-			if (!raycastHit2D)
+			UnityEngine.Debug.DrawRay(origin, -Vector2.up * 1.1f, Color.white);
+			RaycastHit2D hit = Physics2D.Raycast(origin, -Vector2.up, 1.1f, this.layerSearchSafeCollision);
+			if (!hit)
 			{
 				return false;
 			}
-			GameObject gameObject = raycastHit2D.collider.gameObject;
+			GameObject gameObject = hit.collider.gameObject;
 			if ((1 << gameObject.layer & this.layerSearchSafeCollision) == 0)
 			{
 				return false;

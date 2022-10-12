@@ -30,7 +30,7 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.Attack
 		{
 			if (this.PietyMonster == null)
 			{
-				this.PietyMonster = Object.FindObjectOfType<PietyMonster>();
+				this.PietyMonster = UnityEngine.Object.FindObjectOfType<PietyMonster>();
 			}
 		}
 
@@ -157,8 +157,8 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.Attack
 			bool result = false;
 			if (this._lastRootPositions.Count > 0)
 			{
-				Vector2 vector = this._lastRootPositions[this._lastRootPositions.Count - 1];
-				float num = Vector2.Distance(rootPos, vector);
+				Vector2 b = this._lastRootPositions[this._lastRootPositions.Count - 1];
+				float num = Vector2.Distance(rootPos, b);
 				result = (num < this.MinDistanceBetweenFollowingRoots);
 			}
 			return result;
@@ -166,19 +166,19 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.Attack
 
 		private Vector3 GetNearestRootToLastRoot(Vector2 targetPos)
 		{
-			Vector2 vector = targetPos;
-			Vector2 vector2 = this._lastRootPositions[this._lastRootPositions.Count - 1];
-			if (vector2.x >= targetPos.x)
+			Vector2 v = targetPos;
+			Vector2 vector = this._lastRootPositions[this._lastRootPositions.Count - 1];
+			if (vector.x >= targetPos.x)
 			{
-				float num = (vector2.x - this.MinDistanceBetweenFollowingRoots <= this.Collider.bounds.min.x) ? (vector2.x + this.MinDistanceBetweenFollowingRoots) : (vector2.x - this.MinDistanceBetweenFollowingRoots);
-				vector..ctor(num, vector2.y);
+				float x = (vector.x - this.MinDistanceBetweenFollowingRoots <= this.Collider.bounds.min.x) ? (vector.x + this.MinDistanceBetweenFollowingRoots) : (vector.x - this.MinDistanceBetweenFollowingRoots);
+				v = new Vector2(x, vector.y);
 			}
 			else
 			{
-				float num2 = (vector2.x + this.MinDistanceBetweenFollowingRoots <= this.Collider.bounds.max.x) ? (vector2.x + this.MinDistanceBetweenFollowingRoots) : (vector2.x - this.MinDistanceBetweenFollowingRoots);
-				vector..ctor(num2, vector2.y);
+				float x2 = (vector.x + this.MinDistanceBetweenFollowingRoots <= this.Collider.bounds.max.x) ? (vector.x + this.MinDistanceBetweenFollowingRoots) : (vector.x - this.MinDistanceBetweenFollowingRoots);
+				v = new Vector2(x2, vector.y);
 			}
-			return vector;
+			return v;
 		}
 
 		public float GetDominoRightStartPos()
@@ -202,7 +202,7 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.Attack
 			}
 			else
 			{
-				GameObject gameObject2 = Object.Instantiate<GameObject>(this.PietyRootPrefab, rootPosition, Quaternion.identity);
+				GameObject gameObject2 = UnityEngine.Object.Instantiate<GameObject>(this.PietyRootPrefab, rootPosition, Quaternion.identity);
 				PietyRoot component = gameObject2.GetComponent<PietyRoot>();
 				AttackArea component2 = gameObject2.GetComponent<AttackArea>();
 				component2.Entity = this.PietyMonster;

@@ -159,7 +159,7 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.IA
 				return;
 			}
 			this.Attacking = true;
-			float value = Random.value;
+			float value = UnityEngine.Random.value;
 			if (value <= 0.45f)
 			{
 				this._pietyMonster.AnimatorInyector.StompAttack();

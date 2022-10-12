@@ -28,7 +28,7 @@ namespace Gameplay.UI.Console
 			List<string> list;
 			string subcommand = base.GetSubcommand(parameters, out list);
 			Tutorial[] array = Resources.FindObjectsOfTypeAll<Tutorial>();
-			LinqExtensions.Sort<Tutorial>(array, (Tutorial t1, Tutorial t2) => (t1.order >= t2.order) ? 1 : -1);
+			array.Sort((Tutorial t1, Tutorial t2) => (t1.order >= t2.order) ? 1 : -1);
 			if (subcommand != null)
 			{
 				if (subcommand == "list")

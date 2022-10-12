@@ -1,10 +1,7 @@
 using System;
-using Framework.Inventory;
 using Framework.Managers;
-using Gameplay.UI;
 using Gameplay.UI.Others.MenuLogic;
 using HutongGames.PlayMaker;
-using UnityEngine;
 
 namespace Tools.Playmaker2.Action
 {
@@ -14,28 +11,9 @@ namespace Tools.Playmaker2.Action
 	{
 		public override bool executeAction(string objectIdStting, InventoryManager.ItemType objType, int slot)
 		{
-			BaseInventoryObject baseInventoryObject = Core.InventoryManager.GetBaseObject(objectIdStting, objType);
-			if (baseInventoryObject)
-			{
-				baseInventoryObject = Core.InventoryManager.AddBaseObjectOrTears(baseInventoryObject);
-				bool flag = this.showMessage != null && this.showMessage.Value;
-				if (flag)
-				{
-					UIController.instance.ShowObjectPopUp(UIController.PopupItemAction.GetObejct, baseInventoryObject.caption, baseInventoryObject.picture, objType, 3f, true);
-				}
-				return true;
-			}
-			Debug.LogError(string.Concat(new string[]
-			{
-				"Playmaker ItemAdition Error. object ",
-				objectIdStting,
-				" with type ",
-				objType.ToString(),
-				" not found"
-			}));
-			base.Fsm.Event(this.onSuccess);
-			base.Finish();
-			return false;
+			Core.Randomizer.Log("ItemAddition (" + objectIdStting + ")", 2);
+			Core.Randomizer.giveReward(objectIdStting, this.showMessage.Value);
+			return true;
 		}
 
 		public override void OnEnter()
@@ -51,8 +29,9 @@ namespace Tools.Playmaker2.Action
 			if (string.IsNullOrEmpty(text))
 			{
 				base.LogWarning("PlayMaker Inventory Action - objectId is blank");
+				return;
 			}
-			else if (!this.executeAction(text, (InventoryManager.ItemType)objType, 0) && this.onFailure != null)
+			if (!this.executeAction(text, (InventoryManager.ItemType)objType, 0) && this.onFailure != null)
 			{
 				base.Fsm.Event(this.onFailure);
 				base.Finish();

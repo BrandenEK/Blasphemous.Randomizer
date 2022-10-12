@@ -12,7 +12,7 @@ public class MultipleVFX : MonoBehaviour
 		PoolManager.Instance.CreatePool(this.vfx.gameObject, this.number);
 	}
 
-	[Button("Test spawn", 0)]
+	[Button("Test spawn", ButtonSizes.Small)]
 	public void Play()
 	{
 		base.StartCoroutine(this.SpawnVFX());
@@ -22,7 +22,7 @@ public class MultipleVFX : MonoBehaviour
 	{
 		for (int i = 0; i < this.number; i++)
 		{
-			Vector2 p = base.transform.position + this.offset + new Vector2(Random.Range(-this.range, this.range), Random.Range(-this.range, this.range));
+			Vector2 p = base.transform.position + this.offset + new Vector2(UnityEngine.Random.Range(-this.range, this.range), UnityEngine.Random.Range(-this.range, this.range));
 			PoolManager.Instance.ReuseObject(this.vfx.gameObject, p, Quaternion.identity, false, 1);
 			yield return new WaitForSeconds(this.delayBetweenEffects);
 		}

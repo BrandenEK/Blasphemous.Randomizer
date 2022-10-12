@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Tools.Playmaker2.Action
 {
 	[ActionCategory("Blasphemous Action")]
-	[Tooltip("Checks Candelaria Flags To Grant Achievement AC36 if all the items have been bought.")]
+	[HutongGames.PlayMaker.Tooltip("Checks Candelaria Flags To Grant Achievement AC36 if all the items have been bought.")]
 	public class CheckFlagsToGrantAchievementAC36 : FsmStateAction
 	{
 		public override void OnEnter()

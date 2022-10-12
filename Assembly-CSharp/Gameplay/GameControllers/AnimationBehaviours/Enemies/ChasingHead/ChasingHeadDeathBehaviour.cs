@@ -24,7 +24,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.ChasingHead
 			{
 				this._chasingHead.OwnHeadThrower.GetComponentInChildren<HeadThrowerBehaviour>().RemoveSpawnedHeadFromList(this._chasingHead.gameObject);
 			}
-			Object.Destroy(animator.transform.root.gameObject);
+			UnityEngine.Object.Destroy(animator.transform.root.gameObject);
 		}
 
 		private ChasingHead _chasingHead;

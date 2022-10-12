@@ -45,8 +45,8 @@ namespace Gameplay.GameControllers.Bosses.HighWills
 
 		private void StartEyesActivationSequence(SpriteRenderer eyes, float activationTime, float activatedTime, float deactivationTime)
 		{
-			Sequence sequence = DOTween.Sequence();
-			TweenSettingsExtensions.Append(TweenSettingsExtensions.AppendInterval(TweenSettingsExtensions.Append(sequence, ShortcutExtensions43.DOFade(eyes, 1f, activationTime)), activatedTime), ShortcutExtensions43.DOFade(eyes, 0f, deactivationTime));
+			Sequence s = DOTween.Sequence();
+			s.Append(eyes.DOFade(1f, activationTime)).AppendInterval(activatedTime).Append(eyes.DOFade(0f, deactivationTime));
 		}
 
 		public void DamageFlash()

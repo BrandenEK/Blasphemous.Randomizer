@@ -112,7 +112,7 @@ public class ControlsMenuScreen : BaseMenuScreen
 			else
 			{
 				Core.ControlRemapManager.LoadKeyboardAndMouseControlsSettingsFromFile();
-				if (Core.Input.ActiveController.type == 2)
+				if (Core.Input.ActiveController.type == ControllerType.Joystick)
 				{
 					Core.ControlRemapManager.LoadJoystickControlsSettingsFromFile((Joystick)Core.Input.ActiveController);
 				}
@@ -167,7 +167,7 @@ public class ControlsMenuScreen : BaseMenuScreen
 		{
 			this.ProcessScrollInput(axisRaw);
 		}
-		if (Input.GetKeyDown(27))
+		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			this.ProcessSubmitInput();
 		}
@@ -190,14 +190,14 @@ public class ControlsMenuScreen : BaseMenuScreen
 					this.elements[i].OnElementSelected();
 				}
 			}
-			else if (Core.Input.ActiveControllerType != 2 || (Core.Input.ActiveControllerType == 2 && this.editing))
+			else if (Core.Input.ActiveControllerType != ControllerType.Joystick || (Core.Input.ActiveControllerType == ControllerType.Joystick && this.editing))
 			{
 				this.elements[i].OnElementToogleGreyOut();
 			}
 		}
 		this.editLeyendButton.SetActive(!this.editing);
 		this.restoreDefaultsLeyendButton.SetActive(!this.editing);
-		if (Core.Input.ActiveControllerType == 2)
+		if (Core.Input.ActiveControllerType == ControllerType.Joystick)
 		{
 			this.acceptLeyendButton.SetActive(false);
 			this.leftStickDisclaimer.SetActive(this.editing);

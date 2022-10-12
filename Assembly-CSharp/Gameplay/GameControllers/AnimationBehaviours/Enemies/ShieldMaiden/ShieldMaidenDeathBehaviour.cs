@@ -12,7 +12,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.ShieldMaiden
 			ShieldMaiden componentInParent = animator.GetComponentInParent<ShieldMaiden>();
 			if (componentInParent != null)
 			{
-				Object.Destroy(componentInParent.gameObject);
+				UnityEngine.Object.Destroy(componentInParent.gameObject);
 			}
 		}
 	}

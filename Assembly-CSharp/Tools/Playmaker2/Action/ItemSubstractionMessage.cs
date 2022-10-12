@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Tools.Playmaker2.Action
 {
 	[ActionCategory("Blasphemous Action")]
-	[Tooltip("Shows a message indicating that the chosen item has been removed from the player inventory. This action DOES NOT removes the item, it will only show a message")]
+	[HutongGames.PlayMaker.Tooltip("Shows a message indicating that the chosen item has been removed from the player inventory. This action DOES NOT removes the item, it will only show a message")]
 	public class ItemSubstractionMessage : InventoryBase
 	{
 		public override bool executeAction(string objectIdStting, InventoryManager.ItemType objType, int slot)

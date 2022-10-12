@@ -57,14 +57,13 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint
 		{
 			this._originPosition = this.DivineBeamOrigin.OriginPosition;
 			this._divineBeamPositions.Clear();
-			int num = Random.Range(0, 4);
+			int num = UnityEngine.Random.Range(0, 4);
 			float num2 = this._originPosition.x;
 			for (int i = 0; i < 19; i++)
 			{
 				if (this.CustomCellDrawing[i, num])
 				{
-					Vector2 item;
-					item..ctor(num2, this._originPosition.y);
+					Vector2 item = new Vector2(num2, this._originPosition.y);
 					this._divineBeamPositions.Add(item);
 					num2 += 2f;
 				}
@@ -91,6 +90,6 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint
 
 		public GameObject DivineBeam;
 
-		private readonly Random rnd = new Random();
+		private readonly System.Random rnd = new System.Random();
 	}
 }

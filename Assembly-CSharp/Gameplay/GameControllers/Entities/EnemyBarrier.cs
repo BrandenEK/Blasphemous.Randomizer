@@ -76,10 +76,10 @@ namespace Gameplay.GameControllers.Entities
 			}
 			this._bottomRight = new Vector2(this._barrierCollider.bounds.max.x, this._barrierCollider.bounds.min.y + this.HeightOffset);
 			this._bottomLeft = new Vector2(this._barrierCollider.bounds.min.x, this._barrierCollider.bounds.min.y + this.HeightOffset);
-			RaycastHit2D raycastHit2D = Physics2D.Raycast(this._bottomRight, Vector2.right, this.RaycastDistance, this.TargetLayer);
-			RaycastHit2D raycastHit2D2 = Physics2D.Raycast(this._bottomLeft, -Vector2.right, this.RaycastDistance, this.TargetLayer);
-			bool flag = raycastHit2D;
-			bool flag2 = raycastHit2D2;
+			RaycastHit2D hit = Physics2D.Raycast(this._bottomRight, Vector2.right, this.RaycastDistance, this.TargetLayer);
+			RaycastHit2D hit2 = Physics2D.Raycast(this._bottomLeft, -Vector2.right, this.RaycastDistance, this.TargetLayer);
+			bool flag = hit;
+			bool flag2 = hit2;
 			if (this.OnlyForward)
 			{
 				if (base.EntityOwner.Status.Orientation == EntityOrientation.Left)
@@ -97,9 +97,8 @@ namespace Gameplay.GameControllers.Entities
 				if (this.HitVfx)
 				{
 					int num = (!flag2) ? 1 : -1;
-					Vector3 vector;
-					vector..ctor(this.HitVfxOffset.x * (float)num, this.HitVfxOffset.y, 0f);
-					GameObject gameObject = PoolManager.Instance.ReuseObject(this.HitVfx, base.transform.position + vector, Quaternion.identity, false, 1).GameObject;
+					Vector3 b = new Vector3(this.HitVfxOffset.x * (float)num, this.HitVfxOffset.y, 0f);
+					GameObject gameObject = PoolManager.Instance.ReuseObject(this.HitVfx, base.transform.position + b, Quaternion.identity, false, 1).GameObject;
 					gameObject.transform.localScale = new Vector3((float)num, 1f, 1f);
 				}
 				this._cdCounter = this.cd;
@@ -121,13 +120,11 @@ namespace Gameplay.GameControllers.Entities
 					this._barrierCollider = base.GetComponent<PolygonCollider2D>();
 				}
 			}
-			Vector2 vector;
-			vector..ctor(this._barrierCollider.bounds.max.x, this._barrierCollider.bounds.min.y + this.HeightOffset);
-			Vector2 vector2;
-			vector2..ctor(this._barrierCollider.bounds.min.x, this._barrierCollider.bounds.min.y + this.HeightOffset);
+			Vector2 v = new Vector2(this._barrierCollider.bounds.max.x, this._barrierCollider.bounds.min.y + this.HeightOffset);
+			Vector2 v2 = new Vector2(this._barrierCollider.bounds.min.x, this._barrierCollider.bounds.min.y + this.HeightOffset);
 			Gizmos.color = this.gizmoColor;
-			Gizmos.DrawRay(vector, Vector2.right * this.RaycastDistance);
-			Gizmos.DrawRay(vector2, -Vector2.right * this.RaycastDistance);
+			Gizmos.DrawRay(v, Vector2.right * this.RaycastDistance);
+			Gizmos.DrawRay(v2, -Vector2.right * this.RaycastDistance);
 		}
 
 		[FoldoutGroup("Raycast Settings", 0)]

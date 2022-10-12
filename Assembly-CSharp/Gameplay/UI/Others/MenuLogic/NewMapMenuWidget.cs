@@ -19,6 +19,30 @@ namespace Gameplay.UI.Others.MenuLogic
 {
 	public class NewMapMenuWidget : MonoBehaviour
 	{
+		public NewMapMenuWidget()
+		{
+			this.UseSpeedInTeleport = true;
+			this.TeleportSpeed = 400f;
+			this.TeleportTime = 0.4f;
+			this.TeleportEase = Ease.InOutQuad;
+			this.TeleportMovementEpsilon = 0.2f;
+			this.TeleportSoundFound = "event:/SFX/UI/ChangeTab";
+			this.TeleportSoundNotFound = "event:/SFX/UI/ChangeSelection";
+			this.AnglesToCheckNear = new List<float>
+			{
+				30f,
+				40f,
+				60f
+			};
+			this.Cells = new List<CellData>();
+			this.CellsDict = new Dictionary<CellKey, CellData>();
+			this.KeysByZone = new Dictionary<ZoneKey, List<CellKey>>();
+			this.MapRenderers = new List<MapRenderer>();
+			this.markItems = new List<NewMapMenuWidgetMarkItem>();
+			this.TeleportTarget = new CellKey(0, 0);
+			this.TeleportStart = Vector2.zero;
+		}
+
 		public PauseWidget.MapModes CurrentMapMode { get; private set; }
 
 		public void Initialize()
@@ -47,33 +71,49 @@ namespace Gameplay.UI.Others.MenuLogic
 			int num = 0;
 			if (Core.NewMapManager.GetTotalCells() != 0)
 			{
-				List<CellData> list = (from cell in this.Cells
+				num = (from cell in this.Cells
 				where !cell.IgnoredForMapPercentage
-				select cell).ToList<CellData>();
-				num = list.Count * 100 / Core.NewMapManager.GetTotalCells();
+				select cell).ToList<CellData>().Count * 100 / Core.NewMapManager.GetTotalCells();
 			}
 			this.PercentText.text = num.ToString() + "%";
 			this.CherubsText.text = CherubCaptorPersistentObject.CountRescuedCherubs() + "/" + 38;
+			if (this.itemsText == null)
+			{
+				RectTransform rectTransform = UnityEngine.Object.Instantiate<GameObject>(this.CherubsText.gameObject, base.transform).transform as RectTransform;
+				rectTransform.anchoredPosition = new Vector2(45f, -60f);
+				this.itemsText = rectTransform.GetComponentInChildren<Text>();
+				this.itemsText.alignment = TextAnchor.MiddleLeft;
+			}
+			this.itemsText.text = string.Concat(new object[]
+			{
+				"Items collected: ",
+				Core.Randomizer.itemsCollected,
+				"/",
+				Core.Randomizer.totalItems
+			});
 			if (this.MapRenderers.Count == 0)
 			{
 				int num2 = 0;
-				foreach (MapRendererConfig config in this.RendererConfigs)
+				using (List<MapRendererConfig>.Enumerator enumerator2 = this.RendererConfigs.GetEnumerator())
 				{
-					MapRenderer mapRenderer = new MapRenderer(config, this.MapContent, num2.ToString());
-					mapRenderer.Render(this.Cells, allRevealSecretsCells, allMarks, Core.NewMapManager.GetPlayerCell());
-					mapRenderer.Root.gameObject.SetActive(false);
-					this.MapRenderers.Add(mapRenderer);
-					num2++;
+					while (enumerator2.MoveNext())
+					{
+						MapRendererConfig config = enumerator2.Current;
+						MapRenderer mapRenderer = new MapRenderer(config, this.MapContent, num2.ToString());
+						mapRenderer.Render(this.Cells, allRevealSecretsCells, allMarks, Core.NewMapManager.GetPlayerCell());
+						mapRenderer.Root.gameObject.SetActive(false);
+						this.MapRenderers.Add(mapRenderer);
+						num2++;
+					}
+					goto IL_32E;
 				}
 			}
-			else
+			foreach (MapRenderer mapRenderer2 in this.MapRenderers)
 			{
-				foreach (MapRenderer mapRenderer2 in this.MapRenderers)
-				{
-					mapRenderer2.Render(this.Cells, allRevealSecretsCells, allMarks, Core.NewMapManager.GetPlayerCell());
-					mapRenderer2.Root.gameObject.SetActive(false);
-				}
+				mapRenderer2.Render(this.Cells, allRevealSecretsCells, allMarks, Core.NewMapManager.GetPlayerCell());
+				mapRenderer2.Root.gameObject.SetActive(false);
 			}
+			IL_32E:
 			this.CurrentRendererIndex = 0;
 			this.CurrentRenderer = null;
 			this.markItems.Clear();
@@ -196,6 +236,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				if (currentMapMode == PauseWidget.MapModes.TELEPORT)
 				{
 					this.TeleportPressed();
+					return;
 				}
 			}
 			else
@@ -302,7 +343,7 @@ namespace Gameplay.UI.Others.MenuLogic
 							Transform transform = (Transform)obj;
 							if (transform != this.markTemplateElement.transform)
 							{
-								Object.Destroy(transform.gameObject);
+								UnityEngine.Object.Destroy(transform.gameObject);
 							}
 						}
 					}
@@ -319,7 +360,7 @@ namespace Gameplay.UI.Others.MenuLogic
 					{
 						if (!MapData.MarkPrivate.Contains(keyValuePair.Key))
 						{
-							GameObject gameObject = Object.Instantiate<GameObject>(this.markTemplateElement, this.markTemplateElement.transform.parent);
+							GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.markTemplateElement, this.markTemplateElement.transform.parent);
 							gameObject.name = keyValuePair.Key.ToString();
 							NewMapMenuWidgetMarkItem component = gameObject.GetComponent<NewMapMenuWidgetMarkItem>();
 							component.SetInitialData(keyValuePair.Key, keyValuePair.Value, false);
@@ -369,8 +410,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				float axisRaw2 = this.Rewired.GetAxisRaw(49);
 				if (Mathf.Abs(axisRaw) >= 0.08f || Mathf.Abs(axisRaw2) >= 0.08f)
 				{
-					Vector2 vector;
-					vector..ctor(axisRaw, axisRaw2);
+					Vector2 vector = new Vector2(axisRaw, axisRaw2);
 					vector *= Time.unscaledDeltaTime * this.CurrentRenderer.Config.MovementSpeed * -1f;
 					this.CurrentRenderer.MoveCenter(vector);
 				}
@@ -402,14 +442,12 @@ namespace Gameplay.UI.Others.MenuLogic
 			if (this.CurrentMapMode == PauseWidget.MapModes.SHOW)
 			{
 				this.ControlZoom();
+				return;
 			}
-			else
-			{
-				this.ControlTeleportMovement();
-				bool flag = this.GetTeleportCell() != null;
-				this.teleportNormalButton.SetActive(flag);
-				this.teleportDisableButton.SetActive(!flag);
-			}
+			this.ControlTeleportMovement();
+			bool flag = this.GetTeleportCell() != null;
+			this.teleportNormalButton.SetActive(flag);
+			this.teleportDisableButton.SetActive(!flag);
 		}
 
 		private CellData GetTeleportCell()
@@ -465,21 +503,19 @@ namespace Gameplay.UI.Others.MenuLogic
 			}
 			float axisRaw = this.Rewired.GetAxisRaw(48);
 			float axisRaw2 = this.Rewired.GetAxisRaw(49);
-			Vector2 vector;
-			vector..ctor(axisRaw, axisRaw2);
-			if (vector.magnitude >= this.TeleportMovementEpsilon)
+			Vector2 to = new Vector2(axisRaw, axisRaw2);
+			if (to.magnitude >= this.TeleportMovementEpsilon)
 			{
-				vector.Normalize();
+				to.Normalize();
 				CellKey centerCell = this.CurrentRenderer.GetCenterCell();
-				Vector2Int vector2 = centerCell.GetVector2();
+				Vector2Int vector = centerCell.GetVector2();
 				foreach (KeyValuePair<CellKey, CellData> keyValuePair in this.CellsDict)
 				{
 					if (!centerCell.Equals(keyValuePair.Key) && keyValuePair.Value.Type == EditorMapCellData.CellType.PrieDieu)
 					{
-						Vector2Int vector3 = keyValuePair.Key.GetVector2();
-						Vector2Int vector2Int = vector3 - vector2;
-						float num = Vector2.Angle(vector2Int, vector);
-						float num2 = (float)vector2Int.sqrMagnitude;
+						Vector2Int v = keyValuePair.Key.GetVector2() - vector;
+						float num = Vector2.Angle(v, to);
+						float num2 = (float)v.sqrMagnitude;
 						for (int j = 0; j < this.AnglesToCheckNear.Count; j++)
 						{
 							if (num <= this.AnglesToCheckNear[j] && (list2[j] == 0f || num2 < list2[j]))
@@ -511,6 +547,7 @@ namespace Gameplay.UI.Others.MenuLogic
 						this.canPlayTeleportNotFoundSound = false;
 					}
 					Core.Audio.PlayOneShot(text, default(Vector3));
+					return;
 				}
 			}
 			else
@@ -529,7 +566,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				}
 				if (this.TeleportTween != null)
 				{
-					TweenExtensions.Kill(this.TeleportTween, false);
+					this.TeleportTween.Kill(false);
 				}
 			}
 			this.EndCursor();
@@ -539,18 +576,18 @@ namespace Gameplay.UI.Others.MenuLogic
 			float num = this.TeleportTime;
 			if (this.UseSpeedInTeleport)
 			{
-				Vector2 vector2 = this.CurrentRenderer.Center;
-				num = (vector - vector2).magnitude / this.TeleportSpeed;
+				Vector2 b = this.CurrentRenderer.Center;
+				num = (vector - b).magnitude / this.TeleportSpeed;
 			}
 			DOTween.defaultTimeScaleIndependent = true;
-			this.TeleportTween = TweenSettingsExtensions.SetEase<TweenerCore<Vector3Wrapper, Vector3Wrapper, VectorOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<Vector3Wrapper, Vector3Wrapper, VectorOptions>>(DOTween.To(() => this.CurrentRenderer.Center, delegate(Vector3Wrapper x)
+			this.TeleportTween = DOTween.To(() => this.CurrentRenderer.Center, delegate(Vector3Wrapper x)
 			{
 				this.CurrentRenderer.Center = x;
-			}, new Vector3(vector.x, vector.y, 0f), num), new TweenCallback(this.EndMoveTeleport)), this.TeleportEase);
-			this.TeleportCursorTween = TweenSettingsExtensions.SetLoops<TweenerCore<Vector2Wrapper, Vector2Wrapper, VectorOptions>>(DOTween.To(() => this.TeleportTransform.sizeDelta, delegate(Vector2Wrapper x)
+			}, new Vector3(vector.x, vector.y, 0f), num).OnComplete(new TweenCallback(this.EndMoveTeleport)).SetEase(this.TeleportEase);
+			this.TeleportCursorTween = DOTween.To(() => this.TeleportTransform.sizeDelta, delegate(Vector2Wrapper x)
 			{
 				this.TeleportTransform.sizeDelta = x;
-			}, this.TeleportStart * 2f, num / 2f), 2, 1);
+			}, this.TeleportStart * 2f, num / 2f).SetLoops(2, LoopType.Yoyo);
 		}
 
 		private void EndMoveTeleport()
@@ -560,9 +597,9 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		private void EndCursor()
 		{
-			if (this.TeleportCursorTween != null && TweenExtensions.IsActive(this.TeleportCursorTween))
+			if (this.TeleportCursorTween != null && this.TeleportCursorTween.IsActive())
 			{
-				TweenExtensions.Kill(this.TeleportCursorTween, false);
+				this.TeleportCursorTween.Kill(false);
 			}
 			this.TeleportTransform.sizeDelta = this.TeleportStart;
 		}
@@ -592,20 +629,17 @@ namespace Gameplay.UI.Others.MenuLogic
 			{
 				this.DistrictText.text = string.Empty;
 				this.ZoneText.text = string.Empty;
+				return;
 			}
-			else
-			{
-				this.DistrictText.text = Core.NewMapManager.GetDistrictName(this.CurrentCell.ZoneId.District).ToUpper();
-				this.ZoneText.text = Core.NewMapManager.GetZoneName(this.CurrentCell.ZoneId);
-			}
+			this.DistrictText.text = Core.NewMapManager.GetDistrictName(this.CurrentCell.ZoneId.District).ToUpper();
+			this.ZoneText.text = Core.NewMapManager.GetZoneName(this.CurrentCell.ZoneId);
 		}
 
 		private void UpdateScrollToCurrent()
 		{
 			Canvas.ForceUpdateCanvases();
-			int num = Mathf.FloorToInt((float)(this.currentMarkItem / this.visibleMarksInScroll));
-			float num2 = (float)(num * this.visibleMarksInScroll) * this.markUISize;
-			this.scrollRect.content.anchoredPosition = new Vector2(-num2, this.scrollRect.content.anchoredPosition.y);
+			float num = (float)(Mathf.FloorToInt((float)(this.currentMarkItem / this.visibleMarksInScroll)) * this.visibleMarksInScroll) * this.markUISize;
+			this.scrollRect.content.anchoredPosition = new Vector2(-num, this.scrollRect.content.anchoredPosition.y);
 		}
 
 		private void SetSelection(ZoneKey zone, bool value)
@@ -683,48 +717,43 @@ namespace Gameplay.UI.Others.MenuLogic
 		public GameObject teleportDisableButton;
 
 		[BoxGroup("Config Teleport", true, false, 0)]
-		public bool UseSpeedInTeleport = true;
+		public bool UseSpeedInTeleport;
 
 		[BoxGroup("Config Teleport", true, false, 0)]
 		[ShowIf("UseSpeedInTeleport", true)]
-		public float TeleportSpeed = 400f;
+		public float TeleportSpeed;
 
 		[HideIf("UseSpeedInTeleport", true)]
 		[BoxGroup("Config Teleport", true, false, 0)]
-		public float TeleportTime = 0.4f;
+		public float TeleportTime;
 
 		[BoxGroup("Config Teleport", true, false, 0)]
 		public bool AllowChangeInTween;
 
 		[BoxGroup("Config Teleport", true, false, 0)]
-		public Ease TeleportEase = 7;
+		public Ease TeleportEase;
 
 		[BoxGroup("Config Teleport", true, false, 0)]
-		public float TeleportMovementEpsilon = 0.2f;
-
-		[BoxGroup("Config Teleport", true, false, 0)]
-		[EventRef]
-		public string TeleportSoundFound = "event:/SFX/UI/ChangeTab";
+		public float TeleportMovementEpsilon;
 
 		[BoxGroup("Config Teleport", true, false, 0)]
 		[EventRef]
-		public string TeleportSoundNotFound = "event:/SFX/UI/ChangeSelection";
+		public string TeleportSoundFound;
 
 		[BoxGroup("Config Teleport", true, false, 0)]
-		public List<float> AnglesToCheckNear = new List<float>
-		{
-			30f,
-			40f,
-			60f
-		};
+		[EventRef]
+		public string TeleportSoundNotFound;
 
-		private List<CellData> Cells = new List<CellData>();
+		[BoxGroup("Config Teleport", true, false, 0)]
+		public List<float> AnglesToCheckNear;
 
-		private Dictionary<CellKey, CellData> CellsDict = new Dictionary<CellKey, CellData>();
+		private List<CellData> Cells;
 
-		private Dictionary<ZoneKey, List<CellKey>> KeysByZone = new Dictionary<ZoneKey, List<CellKey>>();
+		private Dictionary<CellKey, CellData> CellsDict;
 
-		private List<MapRenderer> MapRenderers = new List<MapRenderer>();
+		private Dictionary<ZoneKey, List<CellKey>> KeysByZone;
+
+		private List<MapRenderer> MapRenderers;
 
 		private int CurrentRendererIndex;
 
@@ -744,7 +773,7 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		private bool IsEnableMarkSelector;
 
-		private List<NewMapMenuWidgetMarkItem> markItems = new List<NewMapMenuWidgetMarkItem>();
+		private List<NewMapMenuWidgetMarkItem> markItems;
 
 		private int currentMarkItem;
 
@@ -758,7 +787,7 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		private bool teleportMoving;
 
-		private CellKey TeleportTarget = new CellKey(0, 0);
+		private CellKey TeleportTarget;
 
 		private Tweener TeleportTween;
 
@@ -766,12 +795,14 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		private RectTransform TeleportTransform;
 
-		private Vector2 TeleportStart = Vector2.zero;
+		private Vector2 TeleportStart;
 
 		private bool canPlayTeleportNotFoundSound;
 
 		private float markCurrentCooldownTime;
 
 		private const float MARK_MAX_COOLDOWN_TIME = 0.5f;
+
+		private Text itemsText;
 	}
 }

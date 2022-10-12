@@ -17,7 +17,7 @@ public class ElderBrotherIntroDummy : MonoBehaviour
 	{
 	}
 
-	[Button("TEST ANIMATION", 0)]
+	[Button("TEST ANIMATION", ButtonSizes.Small)]
 	public void TriggerIntro()
 	{
 		base.StartCoroutine(this.IntroDummyJump());
@@ -45,7 +45,7 @@ public class ElderBrotherIntroDummy : MonoBehaviour
 		yield return new WaitForSeconds(1.6f);
 		this.SetMidAir(true);
 		yield return new WaitForSeconds(0.7f);
-		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, base.transform.position.y + 12f, 0.8f, false), 9);
+		base.transform.DOMoveY(base.transform.position.y + 12f, 0.8f, false).SetEase(Ease.OutCubic);
 		yield return new WaitForSeconds(0.1f);
 		this.elderBro.IntroJump();
 		yield break;

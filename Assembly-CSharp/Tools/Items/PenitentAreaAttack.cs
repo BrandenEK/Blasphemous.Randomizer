@@ -81,7 +81,7 @@ namespace Tools.Items
 			Vector3 playerPos = penitent.GetPosition();
 			for (int j = 0; j < max; j++)
 			{
-				Debug.DrawLine(playerPos, playerPos + v, Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f, 1f, 1f), 5f);
+				Debug.DrawLine(playerPos, playerPos + v, UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f, 1f, 1f), 5f);
 				v = rot * v;
 			}
 			this.ShakeWave();

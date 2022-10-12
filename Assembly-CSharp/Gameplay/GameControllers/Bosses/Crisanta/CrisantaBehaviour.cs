@@ -122,7 +122,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 
 		public void LaunchAction(CrisantaBehaviour.Crisanta_ATTACKS atk)
 		{
-			Debug.Log(string.Concat(new object[]
+			UnityEngine.Debug.Log(string.Concat(new object[]
 			{
 				"TIME: ",
 				Time.time,
@@ -251,7 +251,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 				list.Remove(CrisantaBehaviour.Crisanta_ATTACKS.RIGHT_HORIZONTAL_BLINK);
 				list.Remove(CrisantaBehaviour.Crisanta_ATTACKS.CORNER_SHOCKWAVES);
 			}
-			return list[Random.Range(0, list.Count)];
+			return list[UnityEngine.Random.Range(0, list.Count)];
 		}
 
 		public IEnumerator WaitForState(State<CrisantaBehaviour> st)
@@ -350,7 +350,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 
 		private void StartWaitingPeriod(float seconds)
 		{
-			Debug.Log(">> WAITING PERIOD: " + seconds);
+			UnityEngine.Debug.Log(">> WAITING PERIOD: " + seconds);
 			this.ChangeBossState(BOSS_STATES.WAITING);
 			this.SetCurrentCoroutine(base.StartCoroutine(this.WaitingPeriodCoroutine(seconds, new Action(this.AfterWaitingPeriod))));
 		}
@@ -364,7 +364,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 
 		private void AfterWaitingPeriod()
 		{
-			Debug.Log(">> READY FOR ACTION: " + Time.time);
+			UnityEngine.Debug.Log(">> READY FOR ACTION: " + Time.time);
 			this.ActionFinished();
 		}
 
@@ -902,13 +902,13 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 			yield return new WaitForSeconds(0.1f);
 			if (diagonal)
 			{
-				Debug.Log("DIAGONAL BLINK");
+				UnityEngine.Debug.Log("DIAGONAL BLINK");
 				this.Crisanta.Audio.PlayAirAttack_AUDIO();
 				this.Crisanta.AnimatorInyector.AirAttack(true);
 			}
 			else
 			{
-				Debug.Log("HORIZONTAL_BLINK");
+				UnityEngine.Debug.Log("HORIZONTAL_BLINK");
 				this.Crisanta.Audio.PlayAirAttack_AUDIO();
 				this.Crisanta.AnimatorInyector.Blinkslash(true);
 			}
@@ -956,16 +956,16 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 
 		private void BlinkSlashEnds()
 		{
-			Debug.Log("<color=red> BLINK SLASH ENDS</color>");
+			UnityEngine.Debug.Log("<color=red> BLINK SLASH ENDS</color>");
 			Vector3 position = this.fightCenterTransform.transform.position;
 			bool flag = Core.Logic.Penitent.GetPosition().x > this.fightCenterTransform.transform.position.x;
 			if (flag)
 			{
-				position.x -= Random.Range(3f, 5f);
+				position.x -= UnityEngine.Random.Range(3f, 5f);
 			}
 			else
 			{
-				position.x += Random.Range(3f, 5f);
+				position.x += UnityEngine.Random.Range(3f, 5f);
 			}
 			position.y += 0.1f;
 			this.Crisanta.Controller.SmartPlatformCollider.enabled = false;
@@ -993,14 +993,14 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 
 		private void RightCornerShockwaves()
 		{
-			Vector3 vector = this.fightCenterTransform.position + Vector3.right * 8f;
-			this.SetCurrentCoroutine(base.StartCoroutine(this.CornerShockwavesCoroutine(vector, Vector2.left, 4)));
+			Vector3 v = this.fightCenterTransform.position + Vector3.right * 8f;
+			this.SetCurrentCoroutine(base.StartCoroutine(this.CornerShockwavesCoroutine(v, Vector2.left, 4)));
 		}
 
 		private void LeftCornerShockwaves()
 		{
-			Vector3 vector = this.fightCenterTransform.position - Vector3.right * 8f;
-			this.SetCurrentCoroutine(base.StartCoroutine(this.CornerShockwavesCoroutine(vector, Vector2.right, 4)));
+			Vector3 v = this.fightCenterTransform.position - Vector3.right * 8f;
+			this.SetCurrentCoroutine(base.StartCoroutine(this.CornerShockwavesCoroutine(v, Vector2.right, 4)));
 		}
 
 		private IEnumerator CornerShockwavesCoroutine(Vector2 pos, Vector2 dir, int numShockWaves)
@@ -1083,7 +1083,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 
 		public void OnExitMeleeAttack()
 		{
-			Debug.Log("TIME: " + Time.time + " OnExitMeleeAttack called.");
+			UnityEngine.Debug.Log("TIME: " + Time.time + " OnExitMeleeAttack called.");
 			this._waitingForAnimationFinish = false;
 		}
 
@@ -1094,19 +1094,19 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 			{
 				yield return null;
 			}
-			Debug.Log("<color=yellow>Melee animation ended</color>");
+			UnityEngine.Debug.Log("<color=yellow>Melee animation ended</color>");
 			yield break;
 		}
 
 		public void CounterImpactShockwave()
 		{
-			float num = (this.Entity.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
-			this.instantLightningAttack.SummonAreaOnPoint(base.transform.position - num * Vector3.right, 0f, 1f, null);
+			float d = (this.Entity.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
+			this.instantLightningAttack.SummonAreaOnPoint(base.transform.position - d * Vector3.right, 0f, 1f, null);
 		}
 
 		public void OnHitReactionAnimationCompleted()
 		{
-			Debug.Log("HIT REACTION COMPLETED. RECOVERING FALSE");
+			UnityEngine.Debug.Log("HIT REACTION COMPLETED. RECOVERING FALSE");
 			this.SetRecovering(false);
 			this._currentRecoveryHits = 0;
 			this.QueueRecoveryAction();
@@ -1118,13 +1118,12 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 			if (this.DistanceToPenitent() < 3f)
 			{
 				float dirFromOrientation = this.GetDirFromOrientation();
-				Vector2 vector;
-				vector..ctor(-dirFromOrientation, 0f);
-				if (this.HasSpaceInDirection(vector * 3f))
+				Vector2 a = new Vector2(-dirFromOrientation, 0f);
+				if (this.HasSpaceInDirection(a * 3f))
 				{
 					this.QueuedActionsPush(CrisantaBehaviour.Crisanta_ATTACKS.BACKFLIP_LOW);
 				}
-				else if (Random.Range(0f, 1f) < 0.5f)
+				else if (UnityEngine.Random.Range(0f, 1f) < 0.5f)
 				{
 					this.QueuedActionsPush(CrisantaBehaviour.Crisanta_ATTACKS.FORWARD_FLIP);
 				}
@@ -1145,12 +1144,12 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 			displacement *= this.shortDisplLengthFactor;
 			this.SetGhostTrail(trail);
 			this.Crisanta.DamageByContact = false;
-			Ease ease = 6;
+			Ease ease = Ease.OutQuad;
 			float num = (this.Entity.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
 			num *= displacement;
 			Vector2 vector = Vector2.right * num;
 			vector = this.ClampToFightBoundaries(vector);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, base.transform.position + vector, duration, false), ease), delegate()
+			base.transform.DOMove(base.transform.position + vector, duration, false).SetEase(ease).OnComplete(delegate
 			{
 				this.AfterDisplacement();
 			});
@@ -1163,20 +1162,20 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 			this.SetGhostTrail(trail);
 			this.sparkParticles.Play();
 			this.Crisanta.DamageByContact = false;
-			Ease ease = 6;
+			Ease ease = Ease.OutQuad;
 			this.LookAtTarget(point);
-			float num = (this.Entity.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
-			point -= Vector2.right * num * offset;
+			float d = (this.Entity.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
+			point -= Vector2.right * d * offset;
 			Vector2 vector = point - base.transform.position;
-			float num2 = Vector2.Distance(point, base.transform.position);
-			if (num2 < 2f)
+			float num = Vector2.Distance(point, base.transform.position);
+			if (num < 2f)
 			{
-				num2 = 0f;
+				num = 0f;
 			}
-			Vector2 vector2 = Vector2.right * num * num2;
-			float num3 = num2 / baseSpeed;
+			Vector2 vector2 = Vector2.right * d * num;
+			float duration = num / baseSpeed;
 			vector2 = this.ClampToFightBoundaries(vector2);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, base.transform.position + vector2, num3, false), ease), delegate()
+			base.transform.DOMove(base.transform.position + vector2, duration, false).SetEase(ease).OnComplete(delegate
 			{
 				this.AfterDisplacement();
 			});
@@ -1193,12 +1192,12 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 		{
 			this.SetGhostTrail(true);
 			this.Crisanta.DamageByContact = false;
-			Ease ease = 6;
+			Ease ease = Ease.OutQuad;
 			float num = (this.Entity.Status.Orientation != EntityOrientation.Right) ? 1f : -1f;
 			num *= displacement;
 			Vector2 vector = Vector2.right * num;
 			vector = this.ClampToFightBoundaries(vector);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, base.transform.position + vector, duration, false), ease), delegate()
+			base.transform.DOMove(base.transform.position + vector, duration, false).SetEase(ease).OnComplete(delegate
 			{
 				this.AfterDisplacement();
 			});
@@ -1340,7 +1339,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 		{
 			base.StopBehaviour();
 			base.StopAllCoroutines();
-			ShortcutExtensions.DOKill(base.transform, true);
+			base.transform.DOKill(true);
 			FadeWidget.instance.ClearFade();
 			if (!this.Crisanta.Controller.SmartPlatformCollider.EnableCollision2D)
 			{
@@ -1369,7 +1368,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 			{
 				if (this.Crisanta.IsCrisantaRedux)
 				{
-					GameObject gameObject = Object.Instantiate<GameObject>(this.trueEndingExecutionPrefab, base.transform.position, base.transform.rotation);
+					GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.trueEndingExecutionPrefab, base.transform.position, base.transform.rotation);
 					SpriteRenderer componentInChildren = gameObject.GetComponentInChildren<SpriteRenderer>();
 					componentInChildren.flipX = (this.Crisanta.Status.Orientation == EntityOrientation.Left);
 					FakeExecution component = gameObject.GetComponent<FakeExecution>();
@@ -1390,7 +1389,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 			}
 			else
 			{
-				GameObject gameObject2 = Object.Instantiate<GameObject>(this.executionPrefab, base.transform.position, base.transform.rotation);
+				GameObject gameObject2 = UnityEngine.Object.Instantiate<GameObject>(this.executionPrefab, base.transform.position, base.transform.rotation);
 				gameObject2.transform.localScale = ((this.Crisanta.Status.Orientation != EntityOrientation.Left) ? new Vector3(-1f, 1f, 1f) : new Vector3(1f, 1f, 1f));
 			}
 			base.gameObject.SetActive(false);
@@ -1414,7 +1413,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 			{
 				p.Shadow.SetShadowAlpha(x);
 			}, 1f, 0.2f);
-			TweenSettingsExtensions.OnComplete<Tween>(t, delegate()
+			t.OnComplete(delegate
 			{
 				p.Shadow.ManuallyControllingAlpha = false;
 			});
@@ -1451,7 +1450,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 				this.CancelCombo();
 				base.StopAllCoroutines();
 				this.SetGhostTrail(false);
-				ShortcutExtensions.DOKill(base.transform, false);
+				base.transform.DOKill(false);
 				FadeWidget.instance.ClearFade();
 				this.IssueBackflip();
 			}
@@ -1464,7 +1463,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 				this.CancelCombo();
 				base.StopAllCoroutines();
 				this.SetGhostTrail(false);
-				ShortcutExtensions.DOKill(base.transform, false);
+				base.transform.DOKill(false);
 				FadeWidget.instance.ClearFade();
 				this.Crisanta.AnimatorInyector.Parry();
 				if (this.Crisanta.IsCrisantaRedux)
@@ -1523,11 +1522,11 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 				this.CancelAttacks();
 				base.StopAllCoroutines();
 				this.Crisanta.AnimatorInyector.Hurt();
-				ShortcutExtensions.DOKill(base.transform, true);
+				base.transform.DOKill(true);
 				FadeWidget.instance.ClearFade();
 				this.LookAtPenitent();
 				this.BackDisplacement(0.3f, 0.4f);
-				Debug.Log(string.Concat(new object[]
+				UnityEngine.Debug.Log(string.Concat(new object[]
 				{
 					this._currentRecoveryHits,
 					(!this._recovering) ? "FALSE" : "TRUE"
@@ -1535,7 +1534,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 				this._currentRecoveryHits++;
 				if (this._currentRecoveryHits >= this.maxHitsInRecovery)
 				{
-					Debug.Log("<color=magenta>COUNTER</color>");
+					UnityEngine.Debug.Log("<color=magenta>COUNTER</color>");
 					this._currentRecoveryHits = 0;
 					this.LaunchAction(CrisantaBehaviour.Crisanta_ATTACKS.BACKFLIP_LOW);
 				}
@@ -1554,7 +1553,7 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 				this.Crisanta.Audio.PlayParry_AUDIO();
 				base.StopAllCoroutines();
 				this.CancelCombo();
-				ShortcutExtensions.DOKill(base.transform, true);
+				base.transform.DOKill(true);
 				FadeWidget.instance.ClearFade();
 				this.LookAtPenitent();
 				if (this.queuedActions != null)
@@ -1591,22 +1590,22 @@ namespace Gameplay.GameControllers.Bosses.Crisanta
 		private Vector2 ClampToFightBoundaries(Vector2 dir)
 		{
 			Vector2 vector = dir;
-			Debug.Log("<color=cyan>DRAWING DIR LINE IN GREEN</color>");
-			Debug.DrawLine(base.transform.position, base.transform.position + vector, Color.green, 5f);
+			UnityEngine.Debug.Log("<color=cyan>DRAWING DIR LINE IN GREEN</color>");
+			UnityEngine.Debug.DrawLine(base.transform.position, base.transform.position + vector, Color.green, 5f);
 			if (Physics2D.RaycastNonAlloc(base.transform.position, dir, this.results, dir.magnitude, this.fightBoundariesLayerMask) > 0)
 			{
-				Debug.DrawLine(base.transform.position, this.results[0].point, Color.red, 5f);
+				UnityEngine.Debug.DrawLine(base.transform.position, this.results[0].point, Color.red, 5f);
 				vector = vector.normalized * this.results[0].distance;
 				vector *= 0.9f;
-				Debug.Log("<color=cyan>CLAMPING DISPLACEMENT</color>");
+				UnityEngine.Debug.Log("<color=cyan>CLAMPING DISPLACEMENT</color>");
 			}
 			return vector;
 		}
 
 		public bool HasSpaceInDirection(Vector2 dir)
 		{
-			Vector2 vector = dir;
-			Debug.DrawLine(base.transform.position, base.transform.position + vector, Color.green, 5f);
+			Vector2 v = dir;
+			UnityEngine.Debug.DrawLine(base.transform.position, base.transform.position + v, Color.green, 5f);
 			return Physics2D.RaycastNonAlloc(base.transform.position, dir, this.results, dir.magnitude, this.fightBoundariesLayerMask) <= 0;
 		}
 

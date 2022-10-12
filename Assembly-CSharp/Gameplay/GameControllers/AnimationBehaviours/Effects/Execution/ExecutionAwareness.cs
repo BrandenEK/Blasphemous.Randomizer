@@ -8,7 +8,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Effects.Execution
 		public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 		{
 			base.OnStateExit(animator, stateInfo, layerIndex);
-			Object.Destroy(animator.gameObject);
+			UnityEngine.Object.Destroy(animator.gameObject);
 		}
 	}
 }

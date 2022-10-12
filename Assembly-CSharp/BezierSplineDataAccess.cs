@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class BezierSplineDataAccess : MonoBehaviour
 {
-	[Button(0)]
+	[Button(ButtonSizes.Small)]
 	public void LoadSpline()
 	{
-		BezierSplineData bezierSplineData = this.database.LoadSpline(this.splineReference);
-		this.spline.FromData(bezierSplineData);
+		BezierSplineData bsp = this.database.LoadSpline(this.splineReference);
+		this.spline.FromData(bsp);
 	}
 
-	[Button(0)]
+	[Button(ButtonSizes.Small)]
 	public void SaveSpline()
 	{
 		this.database.SaveSpline(this.spline, this.splineReference);

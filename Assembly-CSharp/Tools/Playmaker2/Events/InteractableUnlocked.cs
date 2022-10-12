@@ -50,7 +50,7 @@ namespace Tools.Playmaker2.Events
 			}
 		}
 
-		[UIHint(10)]
+		[UIHint(UIHint.Variable)]
 		public FsmGameObject interactable;
 
 		public FsmBool listenOnlySelf;

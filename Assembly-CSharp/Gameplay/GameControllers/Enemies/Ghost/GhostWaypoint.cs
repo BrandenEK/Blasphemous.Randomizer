@@ -21,16 +21,15 @@ namespace Gameplay.GameControllers.Enemies.Ghost
 		{
 			this.index = 0f;
 			this.ghostPath = base.GetComponentInParent<GhostPath>();
-			this.speedY = Random.Range(0f, this.maxSpeedY);
+			this.speedY = UnityEngine.Random.Range(0f, this.maxSpeedY);
 		}
 
 		private void Update()
 		{
 			this.index += Time.deltaTime;
-			float num = Mathf.Sin(this.speedY * this.index) * this.amplitudeY;
-			Vector2 vector;
-			vector..ctor(base.transform.localPosition.x, num);
-			base.transform.localPosition = vector;
+			float y = Mathf.Sin(this.speedY * this.index) * this.amplitudeY;
+			Vector2 v = new Vector2(base.transform.localPosition.x, y);
+			base.transform.localPosition = v;
 		}
 
 		private void OnDrawGizmos()

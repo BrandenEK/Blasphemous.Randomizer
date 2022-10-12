@@ -42,7 +42,7 @@ namespace Tools.Level.Actionables
 			for (int i = 0; i < this.OnHitUse.Length; i++)
 			{
 				IActionable[] components = this.OnHitUse[i].GetComponents<IActionable>();
-				LinqExtensions.ForEach<IActionable>(components, delegate(IActionable actionable)
+				components.ForEach(delegate(IActionable actionable)
 				{
 					if (!(actionable is SlashReceiver))
 					{

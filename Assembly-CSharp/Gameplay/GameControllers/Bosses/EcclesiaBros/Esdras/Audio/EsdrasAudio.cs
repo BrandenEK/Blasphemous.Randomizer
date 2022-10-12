@@ -51,7 +51,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras.Audio
 
 		public void ChangeEsdrasMusic()
 		{
-			BossFightAudio bossFightAudio = Object.FindObjectOfType<BossFightAudio>();
+			BossFightAudio bossFightAudio = UnityEngine.Object.FindObjectOfType<BossFightAudio>();
 			bossFightAudio.SetBossTrackParam("Mixdown", 1f);
 		}
 
@@ -94,7 +94,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras.Audio
 			}
 		}
 
-		[Button("Stop events", 0)]
+		[Button("Stop events", ButtonSizes.Small)]
 		public void StopAll()
 		{
 			base.StopEvent(ref this.queuedEvent);
@@ -110,7 +110,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("End", ref parameterInstance);
+				eventInstance.getParameter("End", out parameterInstance);
 				parameterInstance.setValue(value);
 			}
 			catch (Exception ex)

@@ -331,7 +331,7 @@ namespace Framework.Inventory
 				bool flag = true;
 				if (this.CanBeTriggeredMultiple() && this.percentToExecute < 100)
 				{
-					flag = (Random.Range(0, 100) <= this.percentToExecute);
+					flag = (UnityEngine.Random.Range(0, 100) <= this.percentToExecute);
 				}
 				if (flag)
 				{

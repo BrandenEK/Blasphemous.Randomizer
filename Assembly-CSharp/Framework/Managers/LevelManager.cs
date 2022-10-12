@@ -15,7 +15,6 @@ using Gameplay.UI.Widgets;
 using Tools.Level.Effects;
 using Tools.Level.Interactables;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Framework.Managers
@@ -86,7 +85,7 @@ namespace Framework.Managers
 					}
 				}
 			}
-			Application.backgroundLoadingPriority = 0;
+			Application.backgroundLoadingPriority = ThreadPriority.Low;
 			this.InCinematicsChangeLevel = LevelManager.CinematicsChangeLevel.No;
 			this.InsideChangeLevel = false;
 		}
@@ -99,7 +98,7 @@ namespace Framework.Managers
 			}
 			else
 			{
-				Debug.LogError("Calling a ChangeLevel when a change level is in progress");
+				UnityEngine.Debug.LogError("Calling a ChangeLevel when a change level is in progress");
 			}
 		}
 
@@ -114,7 +113,7 @@ namespace Framework.Managers
 			}
 			else
 			{
-				Debug.LogError("Calling a ChangeLevel when a change level is in progress");
+				UnityEngine.Debug.LogError("Calling a ChangeLevel when a change level is in progress");
 			}
 		}
 
@@ -129,7 +128,7 @@ namespace Framework.Managers
 			this.InsideChangeLevel = true;
 			if (!startFromEditor && !this.levels.ContainsKey(levelName))
 			{
-				Debug.LogError("LevelManager: Try to load level '" + levelName + "' that it's not in build");
+				UnityEngine.Debug.LogError("LevelManager: Try to load level '" + levelName + "' that it's not in build");
 			}
 			else
 			{
@@ -143,7 +142,7 @@ namespace Framework.Managers
 				{
 					if (this.currentLevel.CurrentStatus != LevelManager.LevelStatus.Activated)
 					{
-						Debug.LogError("LevelManager: Load new level and current status is " + this.currentLevel.CurrentStatus);
+						UnityEngine.Debug.LogError("LevelManager: Load new level and current status is " + this.currentLevel.CurrentStatus);
 					}
 					else
 					{
@@ -213,19 +212,19 @@ namespace Framework.Managers
 			RuntimePlatform platform = Application.platform;
 			switch (platform)
 			{
-			case 0:
-			case 1:
+			case RuntimePlatform.OSXEditor:
+			case RuntimePlatform.OSXPlayer:
 				result = "OSX";
 				break;
-			case 2:
-			case 7:
+			case RuntimePlatform.WindowsPlayer:
+			case RuntimePlatform.WindowsEditor:
 				result = "Windows";
 				break;
 			default:
 				switch (platform)
 				{
-				case 13:
-				case 16:
+				case RuntimePlatform.LinuxPlayer:
+				case RuntimePlatform.LinuxEditor:
 					result = "Linux";
 					break;
 				}
@@ -270,7 +269,7 @@ namespace Framework.Managers
 
 		private IEnumerator LoadAndActivateLevel(Level level, bool useFade, Color? background = null)
 		{
-			Debug.Log("---> LevelManager:  Load and activate level " + level.LevelName);
+			UnityEngine.Debug.Log("---> LevelManager:  Load and activate level " + level.LevelName);
 			yield return new WaitForEndOfFrame();
 			this.ClearOldLevelParams();
 			Core.Logic.SetState(LogicStates.Unresponsive);
@@ -370,7 +369,7 @@ namespace Framework.Managers
 		{
 			Core.Logic.CameraManager.UpdateNewCameraParams();
 			Core.Logic.CameraManager.CameraPlayerOffset.UpdateNewParams();
-			CameraNumericBoundaries[] array = Object.FindObjectsOfType<CameraNumericBoundaries>();
+			CameraNumericBoundaries[] array = UnityEngine.Object.FindObjectsOfType<CameraNumericBoundaries>();
 			if (array.Length > 0)
 			{
 				bool flag = false;
@@ -380,7 +379,7 @@ namespace Framework.Managers
 					{
 						if (flag)
 						{
-							Debug.LogWarning("UpdateNewCameraParams " + array.Length.ToString() + " CameraNumericBoundaries found, only first applied");
+							UnityEngine.Debug.LogWarning("UpdateNewCameraParams " + array.Length.ToString() + " CameraNumericBoundaries found, only first applied");
 							break;
 						}
 						flag = true;
@@ -437,7 +436,7 @@ namespace Framework.Managers
 		{
 			if (scene.name == "GenericElements")
 			{
-				SceneManager.sceneLoaded -= new UnityAction<Scene, LoadSceneMode>(this.OnBaseSceneLoaded);
+				SceneManager.sceneLoaded -= this.OnBaseSceneLoaded;
 				if (LevelManager.OnGenericsElementsLoaded != null)
 				{
 					LevelManager.OnGenericsElementsLoaded();
@@ -447,11 +446,11 @@ namespace Framework.Managers
 
 		private void InjectGenericElements()
 		{
-			SceneManager.sceneLoaded += new UnityAction<Scene, LoadSceneMode>(this.OnBaseSceneLoaded);
+			SceneManager.sceneLoaded += this.OnBaseSceneLoaded;
 			bool flag = true;
 			if (flag)
 			{
-				SceneManager.LoadScene("GenericElements", 1);
+				SceneManager.LoadScene("GenericElements", LoadSceneMode.Additive);
 			}
 		}
 

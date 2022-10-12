@@ -20,7 +20,7 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 
 		protected override IEnumerator BaseCoroutine()
 		{
-			float waitSeconds = Random.Range(this.minSeconds, this.maxSeconds);
+			float waitSeconds = UnityEngine.Random.Range(this.minSeconds, this.maxSeconds);
 			yield return new WaitForSeconds(waitSeconds);
 			base.FinishAction();
 			yield break;

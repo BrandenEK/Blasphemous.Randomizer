@@ -33,11 +33,11 @@ public class SnakeBackgroundAnimator : MonoBehaviour
 
 	public void LerpSpeed(float spd, float seconds = 0.5f)
 	{
-		if (this.currentTween != null && TweenExtensions.IsPlaying(this.currentTween))
+		if (this.currentTween != null && this.currentTween.IsPlaying())
 		{
-			TweenExtensions.Kill(this.currentTween, false);
+			this.currentTween.Kill(false);
 		}
-		this.currentTween = TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetUpdate<TweenerCore<float, float, FloatOptions>>(DOTween.To(new DOGetter<float>(this.GetAnimatorSpeed), new DOSetter<float>(this.SetAnimatorsSpeed), spd, seconds), 0, false), 5);
+		this.currentTween = DOTween.To(new DOGetter<float>(this.GetAnimatorSpeed), new DOSetter<float>(this.SetAnimatorsSpeed), spd, seconds).SetUpdate(UpdateType.Normal, false).SetEase(Ease.InQuad);
 	}
 
 	public List<Animator> animators;

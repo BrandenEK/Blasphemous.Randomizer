@@ -18,14 +18,14 @@ namespace Framework.Audio
 				this.eventDescription.loadSampleData();
 				RuntimeManager.StudioSystem.update();
 				LOADING_STATE loading_STATE;
-				this.eventDescription.getSampleLoadingState(ref loading_STATE);
-				while (loading_STATE == 2)
+				this.eventDescription.getSampleLoadingState(out loading_STATE);
+				while (loading_STATE == LOADING_STATE.LOADING)
 				{
 					Thread.Sleep(1);
-					this.eventDescription.getSampleLoadingState(ref loading_STATE);
+					this.eventDescription.getSampleLoadingState(out loading_STATE);
 				}
 			}
-			this.HandleGameEvent(1);
+			this.HandleGameEvent(EmitterGameEvent.ObjectStart);
 		}
 
 		private void OnApplicationQuit()
@@ -37,7 +37,7 @@ namespace Framework.Audio
 		{
 			if (!this.isQuitting)
 			{
-				this.HandleGameEvent(2);
+				this.HandleGameEvent(EmitterGameEvent.ObjectDestroy);
 				if (this.instance.isValid())
 				{
 					RuntimeManager.DetachInstanceFromGameObject(this.instance);
@@ -52,19 +52,19 @@ namespace Framework.Audio
 
 		private void OnEnable()
 		{
-			this.HandleGameEvent(11);
+			this.HandleGameEvent(EmitterGameEvent.ObjectEnable);
 		}
 
 		private void OnDisable()
 		{
-			this.HandleGameEvent(12);
+			this.HandleGameEvent(EmitterGameEvent.ObjectDisable);
 		}
 
 		private void OnTriggerEnter(Collider other)
 		{
 			if (string.IsNullOrEmpty(this.CollisionTag) || other.CompareTag(this.CollisionTag))
 			{
-				this.HandleGameEvent(3);
+				this.HandleGameEvent(EmitterGameEvent.TriggerEnter);
 			}
 		}
 
@@ -72,7 +72,7 @@ namespace Framework.Audio
 		{
 			if (string.IsNullOrEmpty(this.CollisionTag) || other.CompareTag(this.CollisionTag))
 			{
-				this.HandleGameEvent(4);
+				this.HandleGameEvent(EmitterGameEvent.TriggerExit);
 			}
 		}
 
@@ -80,7 +80,7 @@ namespace Framework.Audio
 		{
 			if (string.IsNullOrEmpty(this.CollisionTag) || other.CompareTag(this.CollisionTag))
 			{
-				this.HandleGameEvent(5);
+				this.HandleGameEvent(EmitterGameEvent.TriggerEnter2D);
 			}
 		}
 
@@ -88,28 +88,28 @@ namespace Framework.Audio
 		{
 			if (string.IsNullOrEmpty(this.CollisionTag) || other.CompareTag(this.CollisionTag))
 			{
-				this.HandleGameEvent(6);
+				this.HandleGameEvent(EmitterGameEvent.TriggerExit2D);
 			}
 		}
 
 		private void OnCollisionEnter()
 		{
-			this.HandleGameEvent(7);
+			this.HandleGameEvent(EmitterGameEvent.CollisionEnter);
 		}
 
 		private void OnCollisionExit()
 		{
-			this.HandleGameEvent(8);
+			this.HandleGameEvent(EmitterGameEvent.CollisionExit);
 		}
 
 		private void OnCollisionEnter2D()
 		{
-			this.HandleGameEvent(9);
+			this.HandleGameEvent(EmitterGameEvent.CollisionEnter2D);
 		}
 
 		private void OnCollisionExit2D()
 		{
-			this.HandleGameEvent(10);
+			this.HandleGameEvent(EmitterGameEvent.CollisionExit2D);
 		}
 
 		private void HandleGameEvent(EmitterGameEvent gameEvent)
@@ -146,10 +146,10 @@ namespace Framework.Audio
 			bool flag = false;
 			if (!this.Event.StartsWith("snapshot", StringComparison.CurrentCultureIgnoreCase))
 			{
-				this.eventDescription.isOneshot(ref flag);
+				this.eventDescription.isOneshot(out flag);
 			}
 			bool flag2;
-			this.eventDescription.is3D(ref flag2);
+			this.eventDescription.is3D(out flag2);
 			if (!this.instance.isValid())
 			{
 				this.instance = default(EventInstance);
@@ -161,7 +161,7 @@ namespace Framework.Audio
 			}
 			if (this.instance.isValid())
 			{
-				this.eventDescription.createInstance(ref this.instance);
+				this.eventDescription.createInstance(out this.instance);
 				if (flag2)
 				{
 					Rigidbody component = base.GetComponent<Rigidbody>();
@@ -185,8 +185,8 @@ namespace Framework.Audio
 			}
 			if (flag2 && this.OverrideAttenuation)
 			{
-				this.instance.setProperty(3, this.OverrideMinDistance);
-				this.instance.setProperty(4, this.OverrideMaxDistance);
+				this.instance.setProperty(EVENT_PROPERTY.MINIMUM_DISTANCE, this.OverrideMinDistance);
+				this.instance.setProperty(EVENT_PROPERTY.MAXIMUM_DISTANCE, this.OverrideMaxDistance);
 			}
 			this.instance.start();
 			this.hasTriggered = true;
@@ -196,7 +196,7 @@ namespace Framework.Audio
 		{
 			if (this.instance.isValid())
 			{
-				this.instance.stop((!this.AllowFadeout) ? 1 : 0);
+				this.instance.stop((!this.AllowFadeout) ? FMOD.Studio.STOP_MODE.IMMEDIATE : FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 				this.instance.release();
 				this.instance = default(EventInstance);
 			}
@@ -215,8 +215,8 @@ namespace Framework.Audio
 			if (this.instance.isValid())
 			{
 				PLAYBACK_STATE playback_STATE;
-				this.instance.getPlaybackState(ref playback_STATE);
-				return playback_STATE != 2;
+				this.instance.getPlaybackState(out playback_STATE);
+				return playback_STATE != PLAYBACK_STATE.STOPPED;
 			}
 			return false;
 		}

@@ -66,7 +66,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras.Animator
 		public void AnimationEvent_CloseAttackWindow()
 		{
 			EsdrasBehaviour behaviour = (this.OwnerEntity as Esdras).Behaviour;
-			Debug.Log("CLOSING ATTACK WINDOW");
+			UnityEngine.Debug.Log("CLOSING ATTACK WINDOW");
 			behaviour.SetRecovering(false);
 		}
 
@@ -88,8 +88,8 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras.Animator
 
 		public void AnimationEvent_LightScreenShake()
 		{
-			Vector2 vector = (this.OwnerEntity.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
-			Core.Logic.CameraManager.ProCamera2DShake.Shake(0.15f, vector * 0.5f, 10, 0.01f, 0f, default(Vector3), 0.01f, false);
+			Vector2 a = (this.OwnerEntity.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
+			Core.Logic.CameraManager.ProCamera2DShake.Shake(0.15f, a * 0.5f, 10, 0.01f, 0f, default(Vector3), 0.01f, false);
 		}
 
 		public void AnimationEvent_HeavySecondScreenShake()
@@ -142,7 +142,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras.Animator
 
 		public void SpinAttack()
 		{
-			Debug.Log("AnimIn: SPIN ATK");
+			UnityEngine.Debug.Log("AnimIn: SPIN ATK");
 			if (base.EntityAnimator == null)
 			{
 				return;
@@ -203,7 +203,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras.Animator
 			}
 			if (base.EntityAnimator.GetCurrentAnimatorStateInfo(0).IsName("HURT"))
 			{
-				Debug.Log("PLAY TRICK HURT");
+				UnityEngine.Debug.Log("PLAY TRICK HURT");
 				base.EntityAnimator.Play("HURT", 0, 0f);
 			}
 			else

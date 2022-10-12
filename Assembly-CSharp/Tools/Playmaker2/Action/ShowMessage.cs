@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Tools.Playmaker2.Action
 {
 	[ActionCategory("Blasphemous Action")]
-	[Tooltip("Show a Message")]
+	[HutongGames.PlayMaker.Tooltip("Show a Message")]
 	public class ShowMessage : FsmStateAction
 	{
 		public override void OnEnter()
@@ -16,6 +16,12 @@ namespace Tools.Playmaker2.Action
 			if (string.IsNullOrEmpty(text))
 			{
 				base.LogWarning("PlayMaker Action Show Message - textId title is blank");
+				base.Finish();
+				return;
+			}
+			Core.Randomizer.Log(text, 2);
+			if ("MSG_0501,MSG_BAPTISMAL,MSG_1801,MSG_2101,MSG_10101".Contains(text))
+			{
 				base.Finish();
 				return;
 			}
@@ -31,11 +37,9 @@ namespace Tools.Playmaker2.Action
 			if (num2 <= 0f && (!flag || !this.IsModal))
 			{
 				base.Finish();
+				return;
 			}
-			else
-			{
-				this.timeLeft = num2;
-			}
+			this.timeLeft = num2;
 		}
 
 		public override void OnUpdate()

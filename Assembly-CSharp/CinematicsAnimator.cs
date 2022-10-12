@@ -46,7 +46,7 @@ public class CinematicsAnimator : MonoBehaviour
 		Core.Cinematics.OnCinematicsAnimationEnd();
 	}
 
-	[InfoBox("You must add an animation event called OnCinematicsEnd", 1, null)]
+	[InfoBox("You must add an animation event called OnCinematicsEnd", InfoMessageType.Info, null)]
 	public string TriggerName = "NEXT";
 
 	private Animator animator;

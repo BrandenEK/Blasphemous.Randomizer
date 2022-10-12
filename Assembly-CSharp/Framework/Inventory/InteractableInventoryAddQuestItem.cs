@@ -28,7 +28,7 @@ namespace Framework.Inventory
 		[InventoryId(InventoryManager.ItemType.Quest)]
 		public string questItem;
 
-		[InfoBox("Este componente está deprecado!! Usa InteractableInvAdd.", 2, null)]
+		[InfoBox("Este componente está deprecado!! Usa InteractableInvAdd.", InfoMessageType.Warning, null)]
 		public bool showMessage = true;
 
 		public string sound = "event:/Key Event/Quest Item";

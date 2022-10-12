@@ -21,7 +21,7 @@ namespace Tools.Items
 
 		private void EnablePoisonAreas(bool enablePoisonAreas = true)
 		{
-			PoisonAreaEffect[] array = Object.FindObjectsOfType<PoisonAreaEffect>();
+			PoisonAreaEffect[] array = UnityEngine.Object.FindObjectsOfType<PoisonAreaEffect>();
 			foreach (PoisonAreaEffect poisonAreaEffect in array)
 			{
 				poisonAreaEffect.EnableEffect(enablePoisonAreas);

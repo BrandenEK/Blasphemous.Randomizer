@@ -28,8 +28,8 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 		{
 			if (this.play)
 			{
-				float num = this.elapsedSeconds / this.totalSeconds;
-				Vector3 point = this._spline.GetPoint(this._curve.Evaluate(num));
+				float time = this.elapsedSeconds / this.totalSeconds;
+				Vector3 point = this._spline.GetPoint(this._curve.Evaluate(time));
 				base.transform.position = point;
 				if (this.OnSplineAdvancedEvent != null)
 				{

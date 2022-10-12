@@ -31,15 +31,15 @@ namespace Gameplay.GameControllers.AlliedCherub.AI
 				this.AlliedCherub.Behaviour.OnTargetLost();
 				return;
 			}
-			Vector2 vector = this.lastTargetPos;
+			Vector2 v = this.lastTargetPos;
 			float chasingEnemyElongation = this.AlliedCherub.Behaviour.ChasingEnemyElongation;
 			float chasingEnemySpeed = this.AlliedCherub.Behaviour.ChasingEnemySpeed;
 			DamageArea damageArea = this.GetDamageArea(this.Target);
 			if (damageArea != null)
 			{
-				vector = damageArea.DamageAreaCollider.bounds.center;
+				v = damageArea.DamageAreaCollider.bounds.center;
 			}
-			this.AlliedCherub.Behaviour.ChaseEntity(vector, chasingEnemyElongation, chasingEnemySpeed);
+			this.AlliedCherub.Behaviour.ChaseEntity(v, chasingEnemyElongation, chasingEnemySpeed);
 		}
 
 		public override void LateUpdate()

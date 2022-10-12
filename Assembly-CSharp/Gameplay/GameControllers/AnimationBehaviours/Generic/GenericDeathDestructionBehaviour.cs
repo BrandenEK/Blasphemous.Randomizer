@@ -14,7 +14,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Generic
 		public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 		{
 			base.OnStateExit(animator, stateInfo, layerIndex);
-			Object.Destroy(this.root);
+			UnityEngine.Object.Destroy(this.root);
 		}
 
 		public GameObject root;

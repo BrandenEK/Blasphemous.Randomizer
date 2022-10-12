@@ -47,10 +47,10 @@ namespace Gameplay.UI.Others.MenuLogic
 			base.gameObject.SetActive(true);
 			this.canvasGroup = base.GetComponent<CanvasGroup>();
 			this.canvasGroup.alpha = 0f;
-			TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
+			DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
 			{
 				this.canvasGroup.alpha = x;
-			}, 1f, 1f), new TweenCallback(this.OnOpen));
+			}, 1f, 1f).OnComplete(new TweenCallback(this.OnOpen));
 			yield break;
 		}
 
@@ -63,10 +63,10 @@ namespace Gameplay.UI.Others.MenuLogic
 		public override void Close()
 		{
 			base.Close();
-			TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
+			DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
 			{
 				this.canvasGroup.alpha = x;
-			}, 0f, 0.2f), new TweenCallback(this.OnClose));
+			}, 0f, 0.2f).OnComplete(new TweenCallback(this.OnClose));
 		}
 
 		protected override void OnClose()
@@ -101,7 +101,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			{
 				byte[] bytes = Convert.FromBase64String(s);
 				string @string = Encoding.UTF8.GetString(bytes);
-				fsResult fsResult = fsJsonParser.Parse(@string, ref fsData);
+				fsResult fsResult = fsJsonParser.Parse(@string, out fsData);
 				if (fsResult.Failed && !fsResult.FormattedMessages.Equals("No input"))
 				{
 					Debug.LogError("Parsing error: " + fsResult.FormattedMessages);

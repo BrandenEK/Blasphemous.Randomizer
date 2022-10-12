@@ -12,7 +12,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Bosses.EcclesiaBr
 			Perpetua componentInParent = animator.GetComponentInParent<Perpetua>();
 			if (componentInParent != null)
 			{
-				Object.Destroy(componentInParent.gameObject);
+				UnityEngine.Object.Destroy(componentInParent.gameObject);
 			}
 		}
 	}

@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using Framework.FrameworkCore;
 using Framework.Managers;
 using Gameplay.GameControllers.Enemies.Framework.IA;
@@ -81,14 +82,14 @@ namespace Gameplay.GameControllers.Enemies.NewFlagellant.AI
 			{
 				return false;
 			}
-			Vector2 vector = base.transform.position + Vector2.up * 0.25f;
-			Vector2 vector2 = p;
-			vector2.y = vector.y;
+			Vector2 a = base.transform.position + Vector2.up * 0.25f;
+			Vector2 b = p;
+			b.y = a.y;
 			for (int i = 0; i < num; i++)
 			{
-				Vector2 pos = Vector2.Lerp(vector, vector2, (float)i / (float)num);
-				Vector2 vector3;
-				if (!this.NewFlagellant.MotionChecker.HitsFloorInPosition(pos, 1f, out vector3, true))
+				Vector2 pos = Vector2.Lerp(a, b, (float)i / (float)num);
+				Vector2 vector;
+				if (!this.NewFlagellant.MotionChecker.HitsFloorInPosition(pos, 1f, out vector, true))
 				{
 					return false;
 				}
@@ -174,22 +175,22 @@ namespace Gameplay.GameControllers.Enemies.NewFlagellant.AI
 				return;
 			}
 			this.NewFlagellant.MotionLerper.distanceToMove = this.NewFlagellant.DistanceToTarget - 1f;
-			Vector2 vector = (this.NewFlagellant.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
-			this.NewFlagellant.MotionLerper.StartLerping(vector);
+			Vector2 v = (this.NewFlagellant.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
+			this.NewFlagellant.MotionLerper.StartLerping(v);
 		}
 
 		public bool CanGoDownToReachPlayer()
 		{
 			bool result = false;
-			Vector2 vector = (this.NewFlagellant.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
-			Vector2 vector2 = Core.Logic.Penitent.transform.position;
-			if (Math.Sign((vector2 - base.transform.position).x) != Math.Sign(vector.x) || vector2.y > base.transform.position.y)
+			Vector2 b = (this.NewFlagellant.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
+			Vector2 a = Core.Logic.Penitent.transform.position;
+			if (Math.Sign((a - base.transform.position).x) != Math.Sign(b.x) || a.y > base.transform.position.y)
 			{
 				return false;
 			}
-			Vector2 pos = base.transform.position + vector;
-			Vector2 vector3;
-			if (this.NewFlagellant.MotionChecker.HitsFloorInPosition(pos, 2f, out vector3, false))
+			Vector2 pos = base.transform.position + b;
+			Vector2 vector;
+			if (this.NewFlagellant.MotionChecker.HitsFloorInPosition(pos, 2f, out vector, false))
 			{
 				result = true;
 			}
@@ -234,7 +235,7 @@ namespace Gameplay.GameControllers.Enemies.NewFlagellant.AI
 		public void AttackDisplacement()
 		{
 			Vector2 vector = (this.NewFlagellant.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
-			this.NewFlagellant.EntityDisplacement.Move(1.2f * vector.x, 0.25f, 9);
+			this.NewFlagellant.EntityDisplacement.Move(1.2f * vector.x, 0.25f, Ease.OutCubic);
 		}
 
 		public void Patrol()

@@ -98,10 +98,11 @@ namespace Gameplay.GameControllers.Enemies.Jumper
 				return;
 			}
 			Bounds bounds = this.DamageArea.DamageAreaCollider.bounds;
-			Vector2 vector = default(Vector2);
-			vector.x = ((this.Status.Orientation != EntityOrientation.Left) ? bounds.max.x : bounds.min.x);
-			vector.y = bounds.max.y;
-			Vector2 position = vector;
+			Vector2 position = new Vector2
+			{
+				x = ((this.Status.Orientation != EntityOrientation.Left) ? bounds.max.x : bounds.min.x),
+				y = bounds.max.y
+			};
 			penitentSword.GetSwordSparks(position);
 		}
 
@@ -109,8 +110,7 @@ namespace Gameplay.GameControllers.Enemies.Jumper
 		{
 			base.SetPositionAtStart();
 			float groundDist = base.Controller.GroundDist;
-			Vector3 position;
-			position..ctor(base.transform.position.x, base.transform.position.y - groundDist, base.transform.position.z);
+			Vector3 position = new Vector3(base.transform.position.x, base.transform.position.y - groundDist, base.transform.position.z);
 			base.transform.position = position;
 		}
 

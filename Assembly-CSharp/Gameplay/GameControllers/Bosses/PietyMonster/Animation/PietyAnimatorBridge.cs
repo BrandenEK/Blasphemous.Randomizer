@@ -161,7 +161,7 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.Animation
 
 		public void DestroyBushes()
 		{
-			PietyBushManager pietyBushManager = Object.FindObjectOfType<PietyBushManager>();
+			PietyBushManager pietyBushManager = UnityEngine.Object.FindObjectOfType<PietyBushManager>();
 			if (pietyBushManager != null)
 			{
 				pietyBushManager.DestroyBushes();

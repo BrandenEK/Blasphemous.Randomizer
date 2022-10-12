@@ -157,7 +157,7 @@ namespace Tools.Level.Actionables
 			{
 				return;
 			}
-			ShortcutExtensions43.DOFade(this._spriteRenderer, 0f, 0.1f);
+			this._spriteRenderer.DOFade(0f, 0.1f);
 		}
 
 		public void SpriteFadeIn()
@@ -166,7 +166,7 @@ namespace Tools.Level.Actionables
 			{
 				return;
 			}
-			ShortcutExtensions43.DOFade(this._spriteRenderer, 1f, 0.1f);
+			this._spriteRenderer.DOFade(1f, 0.1f);
 		}
 
 		public void Use()
@@ -212,7 +212,7 @@ namespace Tools.Level.Actionables
 		private void PlayFxAudio(string idEvent)
 		{
 			this._soundEventInstance = Core.Audio.CreateCatalogEvent(idEvent, default(Vector3));
-			this._soundEventInstance.setCallback(EntityAudio.SetPanning(this._soundEventInstance, base.transform.position), 1);
+			this._soundEventInstance.setCallback(EntityAudio.SetPanning(this._soundEventInstance, base.transform.position), EVENT_CALLBACK_TYPE.CREATED);
 			this._soundEventInstance.start();
 			this._soundEventInstance.release();
 		}

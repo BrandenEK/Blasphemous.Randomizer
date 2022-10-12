@@ -20,8 +20,8 @@ namespace Framework.Util
 				{
 					if (Singleton<T>._instance == null)
 					{
-						Singleton<T>._instance = (T)((object)Object.FindObjectOfType(typeof(T)));
-						if (Object.FindObjectsOfType(typeof(T)).Length > 1)
+						Singleton<T>._instance = (T)((object)UnityEngine.Object.FindObjectOfType(typeof(T)));
+						if (UnityEngine.Object.FindObjectsOfType(typeof(T)).Length > 1)
 						{
 							Debug.LogError("[Singleton] Something went really wrong  - there should never be more than 1 singleton! Reopenning the scene might fix it.");
 							return Singleton<T>._instance;
@@ -33,7 +33,7 @@ namespace Framework.Util
 							gameObject.name = "(singleton) " + typeof(T).ToString();
 							if (Application.isPlaying)
 							{
-								Object.DontDestroyOnLoad(gameObject);
+								UnityEngine.Object.DontDestroyOnLoad(gameObject);
 							}
 							Debug.Log("[Singleton] Created: " + Singleton<T>._instance.gameObject.name);
 						}

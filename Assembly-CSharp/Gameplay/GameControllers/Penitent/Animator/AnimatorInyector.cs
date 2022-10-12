@@ -396,8 +396,8 @@ namespace Gameplay.GameControllers.Penitent.Animator
 			this._penitent.Physics.EnablePhysics(true);
 			this._penitent.CanLowerCliff = true;
 			float num = (this._penitent.Status.Orientation != EntityOrientation.Left) ? -0.5f : 0.5f;
-			float num2 = this._penitent.transform.position.x + num;
-			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(this._penitent.transform, num2, 0.1f, false), 3);
+			float endValue = this._penitent.transform.position.x + num;
+			this._penitent.transform.DOMoveX(endValue, 0.1f, false).SetEase(Ease.OutSine);
 		}
 
 		private void IsClimbingLadder()

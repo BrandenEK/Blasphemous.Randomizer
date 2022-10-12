@@ -68,11 +68,11 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 				{
 					this.m_platformCtrl.VerticalSpeedScale = ((!this.UseAxisAsSpeedFactor) ? 1f : num4);
 				}
-				this.m_platformCtrl.SetActionState(2, num <= -this.AxisMovingThreshold);
-				this.m_platformCtrl.SetActionState(1, num >= this.AxisMovingThreshold);
-				this.m_platformCtrl.SetActionState(8, num2 <= -this.AxisMovingThreshold);
-				this.m_platformCtrl.SetActionState(4, num2 >= this.AxisMovingThreshold);
-				this.m_platformCtrl.SetActionState(16, this.Jump);
+				this.m_platformCtrl.SetActionState(eControllerActions.Left, num <= -this.AxisMovingThreshold);
+				this.m_platformCtrl.SetActionState(eControllerActions.Right, num >= this.AxisMovingThreshold);
+				this.m_platformCtrl.SetActionState(eControllerActions.Down, num2 <= -this.AxisMovingThreshold);
+				this.m_platformCtrl.SetActionState(eControllerActions.Up, num2 >= this.AxisMovingThreshold);
+				this.m_platformCtrl.SetActionState(eControllerActions.Jump, this.Jump);
 			}
 		}
 
@@ -116,12 +116,12 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 
 		public void CancelPlatformDropDown()
 		{
-			this.m_platformCtrl.SetActionState(32, false);
+			this.m_platformCtrl.SetActionState(eControllerActions.PlatformDropDown, false);
 		}
 
 		public void CancelJump()
 		{
-			this.m_platformCtrl.SetActionState(16, false);
+			this.m_platformCtrl.SetActionState(eControllerActions.Jump, false);
 			this.m_platformCtrl.PlatformCharacterPhysics.VSpeed = 0f;
 		}
 

@@ -43,7 +43,7 @@ namespace Framework.FrameworkCore
 			}
 			this.InOperation = true;
 			this.fistTimeLoaded = false;
-			this.operation = SceneManager.LoadSceneAsync(this.SceneName, 1);
+			this.operation = SceneManager.LoadSceneAsync(this.SceneName, LoadSceneMode.Additive);
 			while (!this.operation.isDone)
 			{
 				yield return null;
@@ -90,7 +90,7 @@ namespace Framework.FrameworkCore
 			{
 				try
 				{
-					LinqExtensions.ForEach<GameObject>(this.Scene.GetRootGameObjects(), delegate(GameObject obj)
+					this.Scene.GetRootGameObjects().ForEach(delegate(GameObject obj)
 					{
 						obj.SetActive(true);
 					});
@@ -116,7 +116,7 @@ namespace Framework.FrameworkCore
 			}
 			try
 			{
-				LinqExtensions.ForEach<GameObject>(this.Scene.GetRootGameObjects(), delegate(GameObject obj)
+				this.Scene.GetRootGameObjects().ForEach(delegate(GameObject obj)
 				{
 					obj.SetActive(false);
 				});

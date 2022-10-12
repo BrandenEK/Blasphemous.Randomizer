@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace Tools.Playmaker2.Action
 {
-	[ActionCategory(46)]
-	[Tooltip("Find all active GameObjects with a specific name and store them in an array.")]
+	[ActionCategory(ActionCategory.Array)]
+	[HutongGames.PlayMaker.Tooltip("Find all active GameObjects with a specific name and store them in an array.")]
 	public class ArrayFindGameObjectsByName : FsmStateAction
 	{
 		public override void Reset()
@@ -31,17 +31,17 @@ namespace Tools.Playmaker2.Action
 			{
 				return;
 			}
-			this.array.Values = (from go in Object.FindObjectsOfType<GameObject>()
+			this.array.Values = (from go in UnityEngine.Object.FindObjectsOfType<GameObject>()
 			where go.name.Contains(this.ObjectName.Value) && !go.GetComponentInChildren<Enemy>().Status.Dead
 			select go).ToArray<GameObject>();
 		}
 
 		[RequiredField]
-		[UIHint(10)]
-		[Tooltip("The Array Variable to use.")]
+		[UIHint(UIHint.Variable)]
+		[HutongGames.PlayMaker.Tooltip("The Array Variable to use.")]
 		public FsmArray array;
 
-		[Tooltip("the name")]
+		[HutongGames.PlayMaker.Tooltip("the name")]
 		public FsmString ObjectName;
 	}
 }

@@ -291,7 +291,7 @@ namespace Gameplay.UI
 
 		private bool IsInIsidoraBossfight()
 		{
-			return (Core.LevelManager.currentLevel.LevelName.Equals("D01BZ08S01") || Core.LevelManager.currentLevel.LevelName.Equals("D22Z01S18")) && Object.FindObjectOfType<IsidoraBehaviour>();
+			return (Core.LevelManager.currentLevel.LevelName.Equals("D01BZ08S01") || Core.LevelManager.currentLevel.LevelName.Equals("D22Z01S18")) && UnityEngine.Object.FindObjectOfType<IsidoraBehaviour>();
 		}
 
 		internal void ShowJoysticksButtons()
@@ -546,13 +546,13 @@ namespace Gameplay.UI
 				keyValuePair.Value.SetActive(keyValuePair.Key == message);
 			}
 			this.fullMessages.SetActive(true);
-			Tweener myTween = ShortcutExtensions46.DOFade(this.fullMessageCanvas, 1f, fadeInTime);
-			yield return TweenExtensions.WaitForCompletion(myTween);
+			Tweener myTween = this.fullMessageCanvas.DOFade(1f, fadeInTime);
+			yield return myTween.WaitForCompletion();
 			yield return new WaitForSeconds(totalTime);
 			if (fadeOutTime >= 0f)
 			{
-				myTween = ShortcutExtensions46.DOFade(this.fullMessageCanvas, 0f, fadeOutTime);
-				yield return TweenExtensions.WaitForCompletion(myTween);
+				myTween = this.fullMessageCanvas.DOFade(0f, fadeOutTime);
+				yield return myTween.WaitForCompletion();
 				this.fullMessages.SetActive(false);
 			}
 			yield break;

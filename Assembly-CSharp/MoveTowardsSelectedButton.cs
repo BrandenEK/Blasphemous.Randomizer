@@ -18,15 +18,15 @@ public class MoveTowardsSelectedButton : SerializedMonoBehaviour
 
 	private void Item_OnMenuButtonSelected(MenuButton obj)
 	{
-		ShortcutExtensions.DOKill(this.rt, false);
+		this.rt.DOKill(false);
 		RectTransform rectTransform = this.buttonsAndPositionMarkers[obj];
 		base.transform.SetParent(rectTransform.parent, false);
-		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions46.DOAnchorPos(this.rt, rectTransform.anchoredPosition, this.travelSeconds, false), 7);
+		this.rt.DOAnchorPos(rectTransform.anchoredPosition, this.travelSeconds, false).SetEase(Ease.InOutQuad);
 	}
 
 	public float travelSeconds = 0.2f;
 
-	[DictionaryDrawerSettings(DisplayMode = 2, IsReadOnly = false)]
+	[DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.CollapsedFoldout, IsReadOnly = false)]
 	public Dictionary<MenuButton, RectTransform> buttonsAndPositionMarkers;
 
 	private RectTransform rt;

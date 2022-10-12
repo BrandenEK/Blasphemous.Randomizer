@@ -9,16 +9,6 @@ namespace Framework.FrameworkCore
 	[CreateAssetMenu(fileName = "teleport", menuName = "Blasphemous/Teleport Destination")]
 	public class TeleportDestination : ScriptableObject
 	{
-		public TeleportDestination()
-		{
-			ValueDropdownList<PersistentManager.PercentageType> valueDropdownList = new ValueDropdownList<PersistentManager.PercentageType>();
-			valueDropdownList.Add("Teleport_A_1.5", PersistentManager.PercentageType.Teleport_A);
-			valueDropdownList.Add("Teleport_B_3", PersistentManager.PercentageType.Teleport_B);
-			this.TeleportPercentages = valueDropdownList;
-			this.percentageType = PersistentManager.PercentageType.Teleport_A;
-			base..ctor();
-		}
-
 		private IList<string> ScenesList()
 		{
 			return null;
@@ -72,12 +62,22 @@ namespace Framework.FrameworkCore
 		[BoxGroup("General", true, false, 0)]
 		public bool useInCompletition;
 
-		private ValueDropdownList<PersistentManager.PercentageType> TeleportPercentages;
+		private ValueDropdownList<PersistentManager.PercentageType> TeleportPercentages = new ValueDropdownList<PersistentManager.PercentageType>
+		{
+			{
+				"Teleport_A_1.5",
+				PersistentManager.PercentageType.Teleport_A
+			},
+			{
+				"Teleport_B_3",
+				PersistentManager.PercentageType.Teleport_B
+			}
+		};
 
 		[BoxGroup("General", true, false, 0)]
 		[ShowIf("useInCompletition", true)]
 		[ValueDropdown("TeleportPercentages")]
-		public PersistentManager.PercentageType percentageType;
+		public PersistentManager.PercentageType percentageType = PersistentManager.PercentageType.Teleport_A;
 
 		private static List<string> scenesCache = new List<string>();
 	}

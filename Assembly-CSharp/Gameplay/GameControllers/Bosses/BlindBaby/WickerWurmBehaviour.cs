@@ -220,7 +220,7 @@ namespace Gameplay.GameControllers.Bosses.BlindBaby
 			this.currentlyAvailableAttacks.CopyTo(array);
 			List<WickerWurmBehaviour.WICKERWURM_ATTACKS> list = new List<WickerWurmBehaviour.WICKERWURM_ATTACKS>(array);
 			list.Remove(this.lastAttack);
-			WickerWurmBehaviour.WICKERWURM_ATTACKS result = list[Random.Range(0, list.Count)];
+			WickerWurmBehaviour.WICKERWURM_ATTACKS result = list[UnityEngine.Random.Range(0, list.Count)];
 			if (this.multiAttackCounter == 2)
 			{
 				result = WickerWurmBehaviour.WICKERWURM_ATTACKS.BABY_GRAB;
@@ -344,8 +344,8 @@ namespace Gameplay.GameControllers.Bosses.BlindBaby
 			{
 				if (first)
 				{
-					Tween tween = this.ChainMaster.MoveWithEase(point2, 0.5f, 6, null);
-					yield return TweenExtensions.WaitForCompletion(tween);
+					Tween tween = this.ChainMaster.MoveWithEase(point2, 0.5f, Ease.OutQuad, null);
+					yield return tween.WaitForCompletion();
 					first = false;
 				}
 				this.StartNewHeadbobLoop();
@@ -373,7 +373,7 @@ namespace Gameplay.GameControllers.Bosses.BlindBaby
 			}
 			vector += Vector2.up * 0.2f;
 			this.bouncingAttack.Shoot(vector);
-			ShortcutExtensions.DOPunchPosition(base.transform, -vector, 0.2f, 10, 1f, false);
+			base.transform.DOPunchPosition(-vector, 0.2f, 10, 1f, false);
 		}
 
 		private IEnumerator ShootBallCoroutine(int balls, float delayBeforeBall, float delayBeforeClosingMouth)
@@ -422,7 +422,7 @@ namespace Gameplay.GameControllers.Bosses.BlindBaby
 			{
 				Vector2 tailPoint = Core.Logic.Penitent.transform.position;
 				this.tailAttack.ShowTail(tailPoint, right, 0f);
-				float r = Random.Range(minSecondsToAttack, maxSecondsToAttack);
+				float r = UnityEngine.Random.Range(minSecondsToAttack, maxSecondsToAttack);
 				yield return new WaitForSeconds(r - 1f);
 				this.lookAtPlayer = false;
 				yield return base.StartCoroutine(this.ShootBallCoroutine(3, 0.75f, 0.4f));
@@ -441,7 +441,7 @@ namespace Gameplay.GameControllers.Bosses.BlindBaby
 			bool right = this.currentSide == WickerWurmBehaviour.WICKERWURM_SIDES.RIGHT;
 			float maxSecondsToAttack = 5f;
 			float minSecondsToAttack = 3f;
-			float counter = Random.Range(minSecondsToAttack, maxSecondsToAttack);
+			float counter = UnityEngine.Random.Range(minSecondsToAttack, maxSecondsToAttack);
 			while (i < loops)
 			{
 				headbobSpline.spline.gameObject.transform.position = base.transform.position;
@@ -472,22 +472,22 @@ namespace Gameplay.GameControllers.Bosses.BlindBaby
 
 		private void AttackWithTailStingToPoint(bool right, Vector2 p)
 		{
-			Vector2 vector = Vector2.right * 2f * (float)((!right) ? 1 : -1);
+			Vector2 b = Vector2.right * 2f * (float)((!right) ? 1 : -1);
 			base.StartCoroutine(this.DelayedFunction(new Action(this.WickerWurm.Audio.PlayScorpion1_AUDIO), 0f));
 			base.StartCoroutine(this.DelayedFunction(new Action(this.WickerWurm.Audio.PlayScorpion2_AUDIO), 1.5f));
 			base.StartCoroutine(this.DelayedFunction(new Action(this.WickerWurm.Audio.PlayScorpionHit_AUDIO), 2f));
 			base.StartCoroutine(this.DelayedTailAttack(this.tailAttack, p, 0f, right, 4f));
-			base.StartCoroutine(this.DelayedTailAttack(this.tailAttackTop, p + vector, 1f, right, 1f));
+			base.StartCoroutine(this.DelayedTailAttack(this.tailAttackTop, p + b, 1f, right, 1f));
 		}
 
 		private void AttackWithTailSting(bool right)
 		{
-			Vector3 vector = Vector2.right * 2f * (float)((!right) ? 1 : -1);
+			Vector3 b = Vector2.right * 2f * (float)((!right) ? 1 : -1);
 			base.StartCoroutine(this.DelayedFunction(new Action(this.WickerWurm.Audio.PlayScorpion1_AUDIO), 0f));
 			base.StartCoroutine(this.DelayedFunction(new Action(this.WickerWurm.Audio.PlayScorpion2_AUDIO), 1.5f));
 			base.StartCoroutine(this.DelayedFunction(new Action(this.WickerWurm.Audio.PlayScorpionHit_AUDIO), 2f));
 			base.StartCoroutine(this.DelayedTailAttack(this.tailAttack, Core.Logic.Penitent.transform.position, 0f, right, 4f));
-			base.StartCoroutine(this.DelayedTailAttack(this.tailAttackTop, Core.Logic.Penitent.transform.position + vector, 1f, right, 1f));
+			base.StartCoroutine(this.DelayedTailAttack(this.tailAttackTop, Core.Logic.Penitent.transform.position + b, 1f, right, 1f));
 		}
 
 		private void QuickStingAttack(bool right)
@@ -548,13 +548,13 @@ namespace Gameplay.GameControllers.Bosses.BlindBaby
 
 		private void SetFirstPointToPosition(BezierSpline spline, bool alsoLast = false)
 		{
-			Vector2 vector = spline.points[1] - spline.points[0];
+			Vector2 v = spline.points[1] - spline.points[0];
 			spline.points[0] = spline.transform.InverseTransformPoint(base.transform.position);
-			spline.points[1] = spline.points[0] + vector;
+			spline.points[1] = spline.points[0] + v;
 			if (alsoLast)
 			{
 				int num = spline.points.Length - 1;
-				Vector2 vector2 = spline.points[num - 1] - spline.points[num];
+				Vector2 vector = spline.points[num - 1] - spline.points[num];
 				spline.points[num] = spline.transform.InverseTransformPoint(base.transform.position);
 			}
 		}
@@ -631,21 +631,21 @@ namespace Gameplay.GameControllers.Bosses.BlindBaby
 			Vector2 point = allPoints[0].position;
 			Vector2 point2 = allPoints[1].position;
 			Vector2 point3 = allPoints[2].position;
-			Debug.DrawLine(point, point + Vector2.up, Color.red, 2f);
-			Debug.DrawLine(point2, point2 + Vector2.up, Color.yellow, 2f);
-			Debug.DrawLine(point3, point3 + Vector2.up, Color.green, 2f);
+			UnityEngine.Debug.DrawLine(point, point + Vector2.up, Color.red, 2f);
+			UnityEngine.Debug.DrawLine(point2, point2 + Vector2.up, Color.yellow, 2f);
+			UnityEngine.Debug.DrawLine(point3, point3 + Vector2.up, Color.green, 2f);
 			List<Vector2> points = new List<Vector2>
 			{
 				point,
 				point2,
 				point3
 			};
-			int r = Random.Range(0, this.availableMultiAttacks.Count);
+			int r = UnityEngine.Random.Range(0, this.availableMultiAttacks.Count);
 			for (int i = 0; i < counter; i++)
 			{
 				this.WickerWurm.Audio.PlaySnakeMove_AUDIO();
-				Tween tween = this.ChainMaster.MoveWithEase(points[i], 0.5f, 7, null);
-				yield return TweenExtensions.WaitForCompletion(tween);
+				Tween tween = this.ChainMaster.MoveWithEase(points[i], 0.5f, Ease.InOutQuad, null);
+				yield return tween.WaitForCompletion();
 				WickerWurmBehaviour.MULTI_ATTACKS curAttack = this.availableMultiAttacks[r];
 				if (curAttack == WickerWurmBehaviour.MULTI_ATTACKS.BOUNCING)
 				{
@@ -697,10 +697,10 @@ namespace Gameplay.GameControllers.Bosses.BlindBaby
 
 		public void UpdateLookAtPlayer()
 		{
-			Vector2 vector = Core.Logic.Penitent.transform.position + Vector3.up * 3.5f;
-			if ((this.currentSide == WickerWurmBehaviour.WICKERWURM_SIDES.RIGHT && vector.x < base.transform.position.x - 2f) || (this.currentSide == WickerWurmBehaviour.WICKERWURM_SIDES.LEFT && vector.x < base.transform.position.x + 2f))
+			Vector2 v = Core.Logic.Penitent.transform.position + Vector3.up * 3.5f;
+			if ((this.currentSide == WickerWurmBehaviour.WICKERWURM_SIDES.RIGHT && v.x < base.transform.position.x - 2f) || (this.currentSide == WickerWurmBehaviour.WICKERWURM_SIDES.LEFT && v.x < base.transform.position.x + 2f))
 			{
-				this.ChainMaster.LookAtTarget(vector, 2f);
+				this.ChainMaster.LookAtTarget(v, 2f);
 			}
 			else
 			{
@@ -745,7 +745,7 @@ namespace Gameplay.GameControllers.Bosses.BlindBaby
 
 		private IEnumerator DeathSequenceCoroutine()
 		{
-			Debug.Log("STARTING DEATH SEQUENCE");
+			UnityEngine.Debug.Log("STARTING DEATH SEQUENCE");
 			this.StartAttackAction();
 			this.WickerWurm.Behaviour.StopBehaviour();
 			this.ChainMaster.StartDeathSequence();

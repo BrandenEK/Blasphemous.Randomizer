@@ -20,7 +20,7 @@ Tirso reward final: QI56
 Tentudia reward 1: 500.Lvdovico
 Tentudia reward 2: 1000.Lvdovico
 Tentudia reward 3: PR03
-Isidora reward: QI201
+Isidora reward main: QI201
 Sword room: 741515178
 Church donation 1: RB104
 Church donation 2: RB105
@@ -54,10 +54,11 @@ Second checkpoint ledge: CO40
 Sword room: 1330243584
 Crisanta: BS16
 
-Bridge of the Three Calvaries (2)
+Bridge of the Three Calvaries (3)
 
 Esdras: BS12
 Esdras gift intial: PR09
+Amanecida core: HE101
 
 Brotherhood of the Silent Sorrow (11)
 
@@ -123,7 +124,7 @@ Echoes of Salt (2)
 MoED entrance: RB108
 Near elevator shaft: RB202
 
-Graveyard of the Peaks (20)
+Graveyard of the Peaks (21)
 
 Shop cave cherub: RESCUED_CHERUB_31
 Shop cave hole: CO42
@@ -145,6 +146,7 @@ Western shaft upper: CO01
 Center shaft cherub: RESCUED_CHERUB_24
 Center shaft ledge: RB15
 Oil room: -815923200
+Bow Amanecida: 18000.D02Z02S14
 
 Grievance Ascends (12)
 
@@ -161,9 +163,10 @@ Altasgracias cacoon: RB06
 Tres Angustias: BS04
 Holy Visage gift: QI39
 
-Hall of the Dawning (1)
+Hall of the Dawning (2)
 
 Mirror room: QI105
+Laudes: 30000.LaudesBossTrigger
 
 Jondo (13)
 
@@ -241,7 +244,7 @@ Sword room: 1240137728
 Melquiades: BS05
 Mask room: QI60
 
-Mountains of the Endless Dusk (7)
+Mountains of the Endless Dusk (8)
 
 DeC entrance: CO13
 Perpetua gift: RB13
@@ -250,14 +253,16 @@ Bell gap ledge: QI47
 Redento meeting 1: RB22
 Blood platform: QI63
 Egg hatching: QI14
+Axe Amanecida: 18000.D03Z01S03
 
-Mourning and Havoc (3)
+Mourning and Havoc (4)
 
 Western chest: PR202
 Eastern chest: RB201
 Sierpes reward: QI202
+Sierpes: 5000.BossTrigger
 
-Patio of the Silent Steps (8)
+Patio of the Silent Steps (9)
 
 Garden 1 cherub: RESCUED_CHERUB_35
 Garden 1 ledge: CO23
@@ -267,6 +272,7 @@ Garden 3 lower ledge: QI37
 Garden 3 upper ledge: CO39
 Northern shaft: QI102
 Redento meeting 4: RB21
+Falcata Amanecida: 18000.D04Z01S04
 
 Petrous (1)
 
@@ -298,7 +304,7 @@ Mud cherub: RESCUED_CHERUB_07
 Cave ledge: CO04
 Cave chest: QI55
 
-Wall of the Holy Prohibitions (18)
+Wall of the Holy Prohibitions (19)
 
 Q1 lift puzzle: RB11
 Q1 drop room upper: CO10
@@ -318,6 +324,7 @@ CoLCV entrance: RESCUED_CHERUB_05
 Oil room: 1232338944
 Quirce: BS14
 Quirce room: QI72
+Lance Amanecida: 18000.D09Z01S01
 
 Wasteland of the Buried Churches (8)
 
@@ -344,7 +351,7 @@ Death run: QI07
 Gemino gift intial: QI59
 Gemino gift final: RB10
 
-Various (15)
+Various (20)
 
 Guilt arena 1 extra: 1000.Arena_NailManager
 Guilt arena 1 main: QI32
@@ -361,15 +368,11 @@ Guilt arena 6 main: QI80
 Guilt arena 7 extra: RB36
 Guilt arena 7 main: QI81
 Viridiana gift: PR08
-
-Unknown (6)
-
-?? amanecida: QI107
-?? amanecida: QI108
-?? amanecida: QI109
-?? amanecida: QI110
-Laudes reward: HE101
-All amanecidas: PR101
+Amanecida 1: QI107
+Amanecida 2: QI108
+Amanecida 3: QI109
+Amanecida 4: QI110
+All amanecidas reward: PR101
 
 
 RB01: Dove Skull

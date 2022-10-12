@@ -47,11 +47,14 @@ namespace Framework.Managers
 
 		public bool GameModeExists(string mode)
 		{
-			foreach (string text in GameModeManager.GetAllGameModesNames())
+			using (List<string>.Enumerator enumerator = GameModeManager.GetAllGameModesNames().GetEnumerator())
 			{
-				if (text.Equals(mode.ToUpperInvariant()))
+				while (enumerator.MoveNext())
 				{
-					return true;
+					if (enumerator.Current.Equals(mode.ToUpperInvariant()))
+					{
+						return true;
+					}
 				}
 			}
 			return false;
@@ -99,14 +102,8 @@ namespace Framework.Managers
 
 		public EnemiesBalanceChart GetCurrentEnemiesBalanceChart()
 		{
-			GameModeManager.GAME_MODES game_MODES = this.currentMode;
-			if (game_MODES == GameModeManager.GAME_MODES.NEW_GAME)
+			if (!Core.Randomizer.gameConfig.hardMode)
 			{
-				return this.newGameEnemiesBalanceChart;
-			}
-			if (game_MODES != GameModeManager.GAME_MODES.NEW_GAME_PLUS)
-			{
-				Debug.Log("GetCurrentEnemiesBalanceChart: current Game Mode is '" + this.currentMode + "'! Returning base game Enemies Balance Chart by default");
 				return this.newGameEnemiesBalanceChart;
 			}
 			return this.newGamePlusEnemiesBalanceChart;
@@ -114,21 +111,21 @@ namespace Framework.Managers
 
 		public BossesBalanceChart GetCurrentBossesBalanceChart()
 		{
-			switch (this.currentMode)
+			if (this.currentMode != GameModeManager.GAME_MODES.BOSS_RUSH)
 			{
-			case GameModeManager.GAME_MODES.NEW_GAME:
-				return this.newGameBossesBalanceChart;
-			case GameModeManager.GAME_MODES.NEW_GAME_PLUS:
+				if (!Core.Randomizer.gameConfig.hardMode)
+				{
+					return this.newGameBossesBalanceChart;
+				}
 				return this.newGamePlusBossesBalanceChart;
-			case GameModeManager.GAME_MODES.BOSS_RUSH:
+			}
+			else
+			{
 				if (Core.BossRushManager.GetCurrentBossRushMode() == BossRushManager.BossRushCourseMode.NORMAL)
 				{
 					return this.bossRushNormalBalanceChart;
 				}
 				return this.bossRushHardBalanceChart;
-			default:
-				Debug.Log("GetCurrentEnemiesBossesChart: current Game Mode is '" + this.currentMode + "'! Returning base game Bosses Balance Chart by default");
-				return this.newGameBossesBalanceChart;
 			}
 		}
 
@@ -169,16 +166,20 @@ namespace Framework.Managers
 			{
 			case GameModeManager.GAME_MODES.MENU:
 				this.OnEnterMenu();
-				break;
+				return;
 			case GameModeManager.GAME_MODES.NEW_GAME:
 				this.OnEnterNewGame();
-				break;
+				return;
 			case GameModeManager.GAME_MODES.NEW_GAME_PLUS:
 				this.OnEnterNewGamePlus();
+				return;
+			case GameModeManager.GAME_MODES.BOSS_RUSH:
 				break;
 			case GameModeManager.GAME_MODES.DEMAKE:
 				this.OnEnterDemake();
 				break;
+			default:
+				return;
 			}
 		}
 
@@ -220,16 +221,20 @@ namespace Framework.Managers
 			{
 			case GameModeManager.GAME_MODES.MENU:
 				this.OnExitMenu();
-				break;
+				return;
 			case GameModeManager.GAME_MODES.NEW_GAME:
 				this.OnExitNewGame();
-				break;
+				return;
 			case GameModeManager.GAME_MODES.NEW_GAME_PLUS:
 				this.OnExitNewGamePlus();
+				return;
+			case GameModeManager.GAME_MODES.BOSS_RUSH:
 				break;
 			case GameModeManager.GAME_MODES.DEMAKE:
 				this.OnExitDemake();
 				break;
+			default:
+				return;
 			}
 		}
 

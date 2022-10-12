@@ -79,7 +79,7 @@ public class TeleportWidget : BasicUIBlockingWidget
 	private void UpdateNavigationFor(Selectable s, List<Selectable> selectables)
 	{
 		Navigation navigation = s.navigation;
-		navigation.mode = 4;
+		navigation.mode = Navigation.Mode.Explicit;
 		navigation.selectOnUp = s.FindSelectableFromList(Vector2.up, selectables);
 		navigation.selectOnDown = s.FindSelectableFromList(Vector2.down, selectables);
 		navigation.selectOnLeft = s.FindSelectableFromList(Vector2.left, selectables);
@@ -116,12 +116,12 @@ public class TeleportWidget : BasicUIBlockingWidget
 		int targetIdx = elementNumber;
 		Transform transform = this.teleports[targetIdx].image.transform;
 		Vector2 sizeDelta = this.travelButton.sizeDelta;
-		Vector3 vector = (!this.teleports[targetIdx].destination.labelUnderIcon) ? this.travelButtonOffset : new Vector3(-sizeDelta.x * 0.5f, -sizeDelta.y - 8f);
-		Vector3 vector2 = transform.position + vector;
+		Vector3 b = (!this.teleports[targetIdx].destination.labelUnderIcon) ? this.travelButtonOffset : new Vector3(-sizeDelta.x * 0.5f, -sizeDelta.y - 8f);
+		Vector3 vector = transform.position + b;
 		if (this.displaceTravelButon && !this.firstSelectionAfterShow)
 		{
-			ShortcutExtensions.DOKill(this.travelButton, false);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(this.travelButton, vector2, this.movementTime, false), this.movementEaseType), delegate()
+			this.travelButton.DOKill(false);
+			this.travelButton.DOMove(vector, this.movementTime, false).SetEase(this.movementEaseType).OnComplete(delegate
 			{
 				foreach (TeleportWidget.TeleportObject teleportObject2 in this.teleports)
 				{
@@ -133,7 +133,7 @@ public class TeleportWidget : BasicUIBlockingWidget
 		}
 		else
 		{
-			this.travelButton.position = vector2;
+			this.travelButton.position = vector;
 			this.UpdateOnDestination(targetIdx);
 		}
 		this.firstSelectionAfterShow = false;
@@ -198,7 +198,7 @@ public class TeleportWidget : BasicUIBlockingWidget
 	public Vector2 travelButtonOffset = new Vector2(4f, 0f);
 
 	[BoxGroup("UI Effects", true, false, 0)]
-	public Ease movementEaseType = 1;
+	public Ease movementEaseType = Ease.Linear;
 
 	[BoxGroup("UI Effects", true, false, 0)]
 	public float movementTime = 0.2f;

@@ -10,7 +10,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 	{
 		public void ClearAll()
 		{
-			ShortcutExtensions.DOKill(base.transform, false);
+			base.transform.DOKill(false);
 			this.SetMuzzleFlash(false);
 			this.rosary.Clear();
 			this.homingBallsLauncher.Clear();
@@ -32,10 +32,10 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 
 		public void MoveToPosition(Vector2 pos, float seconds, Action<BurntFaceHandBehaviour> callback)
 		{
-			TweenSettingsExtensions.SetEase<Tweener>(TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions.DOMove(base.transform, pos, seconds, false), delegate()
+			base.transform.DOMove(pos, seconds, false).OnComplete(delegate
 			{
 				callback(this);
-			}), 28);
+			}).SetEase(Ease.InOutBack);
 		}
 
 		public void SetFlipX(bool flip)
@@ -45,13 +45,13 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.AI
 
 		public void Show(float seconds)
 		{
-			ShortcutExtensions43.DOFade(this.spr, 1f, seconds);
+			this.spr.DOFade(1f, seconds);
 		}
 
 		public void Hide(float seconds)
 		{
 			this.SetMuzzleFlash(false);
-			ShortcutExtensions43.DOFade(this.spr, 0f, seconds);
+			this.spr.DOFade(0f, seconds);
 		}
 
 		public SpriteRenderer spr;

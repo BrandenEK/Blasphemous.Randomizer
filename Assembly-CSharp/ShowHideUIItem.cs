@@ -16,7 +16,7 @@ public class ShowHideUIItem : MonoBehaviour
 		if (this.canvasGroup != null)
 		{
 			this.IsShowing = true;
-			TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions46.DOFade(this.canvasGroup, 1f, this.showSeconds), delegate()
+			this.canvasGroup.DOFade(1f, this.showSeconds).OnComplete(delegate
 			{
 				this.DoOnShown();
 			});
@@ -28,7 +28,7 @@ public class ShowHideUIItem : MonoBehaviour
 		if (this.canvasGroup != null)
 		{
 			this.IsShowing = false;
-			TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions46.DOFade(this.canvasGroup, 0f, this.hideSeconds), delegate()
+			this.canvasGroup.DOFade(0f, this.hideSeconds).OnComplete(delegate
 			{
 				this.DoOnHidden();
 			});

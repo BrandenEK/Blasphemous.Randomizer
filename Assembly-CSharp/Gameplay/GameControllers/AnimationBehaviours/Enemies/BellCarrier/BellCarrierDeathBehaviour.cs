@@ -20,7 +20,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.BellCarrier
 			base.OnStateUpdate(animator, stateInfo, layerIndex);
 			if ((double)stateInfo.normalizedTime > 0.9)
 			{
-				Object.Destroy(this._bellCarrier.gameObject);
+				UnityEngine.Object.Destroy(this._bellCarrier.gameObject);
 			}
 		}
 

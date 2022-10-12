@@ -74,28 +74,27 @@ namespace Gameplay.GameControllers.Bosses.PontiffSword
 
 		private void UpdateFlyingAround()
 		{
-			Vector2 vector;
-			vector..ctor(-Mathf.Sign((Core.Logic.Penitent.transform.position - base.transform.position).x) * this.chasingOffset.x, this.chasingOffset.y);
-			Vector2 vector2 = Core.Logic.Penitent.transform.position + vector;
+			Vector2 b = new Vector2(-Mathf.Sign((Core.Logic.Penitent.transform.position - base.transform.position).x) * this.chasingOffset.x, this.chasingOffset.y);
+			Vector2 vector = Core.Logic.Penitent.transform.position + b;
 			this._flyAroundCounter += Time.deltaTime;
-			Vector2 normalized = (vector2 - base.transform.position).normalized;
-			GameplayUtils.DrawDebugCross(vector2, Color.magenta, 0.1f);
-			float num = Mathf.Sin(this._flyAroundCounter * this.rotatingFreq) * this.maxAngle;
-			base.transform.rotation = Quaternion.Slerp(base.transform.rotation, Quaternion.Euler(0f, 0f, num), this.rotationDampFactor);
-			float num2 = (float)((Mathf.Sign(this.velocity.x) != Mathf.Sign(normalized.x)) ? 2 : 1);
-			float num3 = Vector2.Distance(base.transform.position, vector2);
-			float num4 = 2f;
-			if (num3 < num4)
+			Vector2 normalized = (vector - base.transform.position).normalized;
+			GameplayUtils.DrawDebugCross(vector, Color.magenta, 0.1f);
+			float z = Mathf.Sin(this._flyAroundCounter * this.rotatingFreq) * this.maxAngle;
+			base.transform.rotation = Quaternion.Slerp(base.transform.rotation, Quaternion.Euler(0f, 0f, z), this.rotationDampFactor);
+			float d = (float)((Mathf.Sign(this.velocity.x) != Mathf.Sign(normalized.x)) ? 2 : 1);
+			float num = Vector2.Distance(base.transform.position, vector);
+			float num2 = 2f;
+			if (num < num2)
 			{
 				this.velocity -= this.velocity * 0.5f * Time.deltaTime;
 			}
 			else
 			{
-				this.velocity += normalized.normalized * this.accel * Time.deltaTime * num2;
+				this.velocity += normalized.normalized * this.accel * Time.deltaTime * d;
 			}
 			this.velocity = Vector2.ClampMagnitude(this.velocity, this.maxSpeed);
-			Vector3 vector3 = this.velocity * Time.deltaTime;
-			base.transform.position += vector3;
+			Vector3 b2 = this.velocity * Time.deltaTime;
+			base.transform.position += b2;
 		}
 
 		private bool IsPointOutsideBattleBoundaries(Vector2 p)
@@ -113,16 +112,16 @@ namespace Gameplay.GameControllers.Bosses.PontiffSword
 		{
 			float postSlashAngle = 360f + -1f * this.preSlashAngle;
 			float sign = Mathf.Sign(this.GetDirToPenitent(base.transform.position).x);
-			ShortcutExtensions.DOKill(base.transform, false);
-			this.currentXTween = TweenSettingsExtensions.OnUpdate<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(base.transform, base.transform.position.x + this.slashXMovement * sign, this.anticipationDuration + this.attackDuration * 0.5f, false), 26), new TweenCallback(this.CheckCollision));
-			TweenSettingsExtensions.SetLoops<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, base.transform.position.y + this.slashYMovement, this.anticipationDuration + this.attackDuration * 0.25f, false), 7), 2, 1);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DORotate(base.transform, new Vector3(0f, 0f, this.preSlashAngle * sign), this.anticipationDuration, 3), this.anticipationEasing), delegate()
+			base.transform.DOKill(false);
+			this.currentXTween = base.transform.DOMoveX(base.transform.position.x + this.slashXMovement * sign, this.anticipationDuration + this.attackDuration * 0.5f, false).SetEase(Ease.InBack).OnUpdate(new TweenCallback(this.CheckCollision));
+			base.transform.DOMoveY(base.transform.position.y + this.slashYMovement, this.anticipationDuration + this.attackDuration * 0.25f, false).SetEase(Ease.InOutQuad).SetLoops(2, LoopType.Yoyo);
+			base.transform.DORotate(new Vector3(0f, 0f, this.preSlashAngle * sign), this.anticipationDuration, RotateMode.LocalAxisAdd).SetEase(this.anticipationEasing).OnComplete(delegate
 			{
 				this.PontiffSword.Audio.PlaySlash_AUDIO();
 				this.ActivateTrails(true);
 				this.meleeAttack.damageOnEnterArea = true;
 				this.meleeAttack.OnMeleeAttackGuarded += this.OnMeleeAttackGuarded;
-				TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DORotate(this.transform, new Vector3(0f, 0f, postSlashAngle * sign), this.attackDuration, 3), this.attackEasing), delegate()
+				this.transform.DORotate(new Vector3(0f, 0f, postSlashAngle * sign), this.attackDuration, RotateMode.LocalAxisAdd).SetEase(this.attackEasing).OnComplete(delegate
 				{
 					this.OnMeleeAttackFinished();
 				});
@@ -133,17 +132,17 @@ namespace Gameplay.GameControllers.Bosses.PontiffSword
 		{
 			if (this.motionChecker.HitsBlock)
 			{
-				TweenExtensions.Kill(this.currentXTween, true);
+				this.currentXTween.Kill(true);
 			}
 		}
 
 		private void OnMeleeAttackGuarded()
 		{
 			this.meleeAttack.OnMeleeAttackGuarded -= this.OnMeleeAttackGuarded;
-			ShortcutExtensions.DOKill(base.transform, false);
+			base.transform.DOKill(false);
 			float num = Mathf.Sign(this.GetDirToPenitent(base.transform.position).x);
-			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(base.transform, base.transform.position.x - this.slashXMovement * num, this.anticipationDuration + this.attackDuration * 0.5f, false), 26);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DORotate(base.transform, new Vector3(0f, 0f, -90f * num), 0.3f, 3), 27), delegate()
+			base.transform.DOMoveX(base.transform.position.x - this.slashXMovement * num, this.anticipationDuration + this.attackDuration * 0.5f, false).SetEase(Ease.InBack);
+			base.transform.DORotate(new Vector3(0f, 0f, -90f * num), 0.3f, RotateMode.LocalAxisAdd).SetEase(Ease.OutBack).OnComplete(delegate
 			{
 				this.OnMeleeAttackFinished();
 			});
@@ -151,11 +150,11 @@ namespace Gameplay.GameControllers.Bosses.PontiffSword
 
 		private void Repullo()
 		{
-			ShortcutExtensions.DOKill(base.transform, false);
+			base.transform.DOKill(false);
 			Vector2 dirToPenitent = this.GetDirToPenitent(base.transform.position);
 			this.ChangeSwordState(SWORD_STATES.STUN);
 			this.velocity = Vector2.zero;
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, base.transform.position - dirToPenitent.normalized * 3f, 0.4f, false), 6), delegate()
+			base.transform.DOMove(base.transform.position - dirToPenitent.normalized * 3f, 0.4f, false).SetEase(Ease.OutQuad).OnComplete(delegate
 			{
 				this.ChangeSwordState(SWORD_STATES.FLYING_AROUND);
 			});
@@ -174,17 +173,17 @@ namespace Gameplay.GameControllers.Bosses.PontiffSword
 
 		public void Plunge()
 		{
-			ShortcutExtensions.DOKill(base.transform, false);
-			ShortcutExtensions.DORotate(base.transform, Vector3.zero, 0.5f, 0);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, base.transform.position.y + 3f, this.anticipationDuration, false), 7), delegate()
+			base.transform.DOKill(false);
+			base.transform.DORotate(Vector3.zero, 0.5f, RotateMode.Fast);
+			base.transform.DOMoveY(base.transform.position.y + 3f, this.anticipationDuration, false).SetEase(Ease.InOutQuad).OnComplete(delegate
 			{
 				this.meleeAttack.damageOnEnterArea = true;
 				this.PontiffSword.Audio.PlayPlunge_AUDIO();
 				Physics2D.Raycast(base.transform.position, Vector2.down, this.filter, this.groundHits, 30f);
 				float num = this.groundHits[0].distance - 1.5f;
-				Debug.DrawLine(base.transform.position, this.groundHits[0].point, Color.green, 5f);
+				UnityEngine.Debug.DrawLine(base.transform.position, this.groundHits[0].point, Color.green, 5f);
 				this.ActivateTrails(true);
-				TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, base.transform.position.y - num, this.plungeDuration, false), 17), delegate()
+				base.transform.DOMoveY(base.transform.position.y - num, this.plungeDuration, false).SetEase(Ease.InExpo).OnComplete(delegate
 				{
 					this.PlungeFinished();
 				});
@@ -208,18 +207,18 @@ namespace Gameplay.GameControllers.Bosses.PontiffSword
 
 		public void BackToFlyingAround()
 		{
-			ShortcutExtensions.DOKill(base.transform, false);
+			base.transform.DOKill(false);
 			float baseHeight = this.GetBaseHeight();
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, baseHeight, 2.5f, false), 14), delegate()
+			base.transform.DOMoveY(baseHeight, 2.5f, false).SetEase(Ease.InQuint).OnComplete(delegate
 			{
 				this.ChangeSwordState(SWORD_STATES.FLYING_AROUND);
 			});
-			ShortcutExtensions.DORotate(base.transform, Vector3.zero, 0.5f, 0);
+			base.transform.DORotate(Vector3.zero, 0.5f, RotateMode.Fast);
 		}
 
 		public void Move(Vector2 pos, float duration = 0.5f, TweenCallback callback = null)
 		{
-			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, pos, duration, false), 7).onComplete = callback;
+			base.transform.DOMove(pos, duration, false).SetEase(Ease.InOutQuad).onComplete = callback;
 		}
 
 		public override void Attack()
@@ -250,8 +249,8 @@ namespace Gameplay.GameControllers.Bosses.PontiffSword
 			this.meleeAttack.OnMeleeAttackGuarded -= this.OnMeleeAttackGuarded;
 			this.meleeAttack.damageOnEnterArea = false;
 			this.ActivateTrails(false);
-			ShortcutExtensions.DOKill(base.transform, false);
-			TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions.DORotate(base.transform, Vector3.zero, 0.3f, 0), delegate()
+			base.transform.DOKill(false);
+			base.transform.DORotate(Vector3.zero, 0.3f, RotateMode.Fast).OnComplete(delegate
 			{
 				this.PontiffSword.animatorInyector.Alive(false);
 			});
@@ -290,11 +289,11 @@ namespace Gameplay.GameControllers.Bosses.PontiffSword
 
 		public float anticipationDuration = 1.5f;
 
-		public Ease anticipationEasing = 6;
+		public Ease anticipationEasing = Ease.OutQuad;
 
 		public float attackDuration = 1.4f;
 
-		public Ease attackEasing = 7;
+		public Ease attackEasing = Ease.InOutQuad;
 
 		public float plungeDuration = 0.25f;
 

@@ -46,8 +46,8 @@ namespace Gameplay.GameControllers.Entities.MiriamPortal.AI
 				return;
 			}
 			float num = Mathf.Lerp(this._behaviour.FollowSpeed.x, this._behaviour.FollowSpeed.y, this.GetFollowSpeedFactor);
-			float num2 = num * Time.deltaTime;
-			this.Machine.transform.position = Vector3.SmoothDamp(this.Machine.transform.position, this._behaviour.GetMasterOffSetPosition, ref this._refVelocity, this._behaviour.SmoothDampElongation, num2);
+			float maxSpeed = num * Time.deltaTime;
+			this.Machine.transform.position = Vector3.SmoothDamp(this.Machine.transform.position, this._behaviour.GetMasterOffSetPosition, ref this._refVelocity, this._behaviour.SmoothDampElongation, maxSpeed);
 		}
 
 		private void Float()
@@ -58,16 +58,16 @@ namespace Gameplay.GameControllers.Entities.MiriamPortal.AI
 			}
 			Vector3 position = this._behaviour.transform.position;
 			float x = position.x;
-			float num = position.y + (float)Math.Sin((double)(Time.time * this._behaviour.FloatingSpeed)) * this._behaviour.FloatingVerticalElongation;
-			this._behaviour.transform.position = new Vector2(x, num);
+			float y = position.y + (float)Math.Sin((double)(Time.time * this._behaviour.FloatingSpeed)) * this._behaviour.FloatingVerticalElongation;
+			this._behaviour.transform.position = new Vector2(x, y);
 		}
 
 		private float GetFollowSpeedFactor
 		{
 			get
 			{
-				float num = (this._behaviour.GetMasterDistance - this._behaviour.FollowDistance.x) / (this._behaviour.FollowDistance.y - this._behaviour.FollowDistance.x);
-				return Mathf.Clamp01(num);
+				float value = (this._behaviour.GetMasterDistance - this._behaviour.FollowDistance.x) / (this._behaviour.FollowDistance.y - this._behaviour.FollowDistance.x);
+				return Mathf.Clamp01(value);
 			}
 		}
 

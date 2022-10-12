@@ -9,7 +9,7 @@ namespace Tools.Level.Actionables
 		{
 			if (this.trapManager == null)
 			{
-				this.trapManager = Object.FindObjectOfType<TriggerTrapManager>();
+				this.trapManager = UnityEngine.Object.FindObjectOfType<TriggerTrapManager>();
 			}
 		}
 

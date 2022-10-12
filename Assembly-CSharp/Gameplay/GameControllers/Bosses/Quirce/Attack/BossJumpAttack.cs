@@ -53,9 +53,9 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 
 		public bool IsInsideWall(Vector2 p)
 		{
-			RaycastHit2D[] array = new RaycastHit2D[1];
+			RaycastHit2D[] results = new RaycastHit2D[1];
 			p += Vector2.up;
-			int num = Physics2D.LinecastNonAlloc(p + Vector2.right * 0.1f, p, array, this.groundLayerMask);
+			int num = Physics2D.LinecastNonAlloc(p + Vector2.right * 0.1f, p, results, this.groundLayerMask);
 			return num > 0;
 		}
 
@@ -73,13 +73,13 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 				if (num2 > 0)
 				{
 					vector = array[0].point;
-					Debug.DrawLine(vector, targetPoint, Color.red, 6f);
+					UnityEngine.Debug.DrawLine(vector, targetPoint, Color.red, 6f);
 					targetPoint += dir * skinWidth;
 				}
 				else
 				{
 					vector += dir * skinWidth;
-					Debug.DrawLine(vector, targetPoint, Color.green, 6f);
+					UnityEngine.Debug.DrawLine(vector, targetPoint, Color.green, 6f);
 					flag = true;
 				}
 			}
@@ -98,22 +98,22 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 			int num = Physics2D.LinecastNonAlloc(targetPoint + Vector2.up * 2f, targetPoint + Vector2.down * 10f, array, this.groundLayerMask);
 			if (num > 0)
 			{
-				Debug.DrawLine(targetPoint + Vector3.up, targetPoint + Vector3.down * 10f, Color.green);
+				UnityEngine.Debug.DrawLine(targetPoint + Vector3.up, targetPoint + Vector3.down * 10f, Color.green);
 				targetPoint = array[0].point;
 				this._lastPoint = targetPoint;
-				Vector3 vector = this.jumpCurve.GetControlPoint(2) - this.jumpCurve.GetControlPoint(3);
+				Vector3 b = this.jumpCurve.GetControlPoint(2) - this.jumpCurve.GetControlPoint(3);
 				this.jumpCurve.SetControlPoint(3, parentToMove.InverseTransformPoint(targetPoint));
-				this.jumpCurve.SetControlPoint(2, parentToMove.InverseTransformPoint(targetPoint) + vector);
+				this.jumpCurve.SetControlPoint(2, parentToMove.InverseTransformPoint(targetPoint) + b);
 				base.StartCoroutine(this.JumpCoroutine(parentToMove, new Action(this.OnLanded)));
 			}
 			else
 			{
-				Debug.DrawLine(targetPoint + Vector3.up, targetPoint + Vector3.down * 10f, Color.red);
+				UnityEngine.Debug.DrawLine(targetPoint + Vector3.up, targetPoint + Vector3.down * 10f, Color.red);
 				GameplayUtils.DrawDebugCross(targetPoint + Vector3.down * 10f, Color.red, 5f);
 				GameplayUtils.DrawDebugCross(targetPoint + Vector3.up * 2f, Color.yellow, 5f);
 				GameObject gameObject = new GameObject("DEBUG_JUMP_ERROR");
 				gameObject.transform.position = targetPoint;
-				Debug.LogError("COULDNT JUMP, THERES NO FLOOR");
+				UnityEngine.Debug.LogError("COULDNT JUMP, THERES NO FLOOR");
 				this.OnLanded();
 			}
 		}
@@ -136,7 +136,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 				this.OnJumpAdvanced(normalized);
 				float eased = this.easingCurve.Evaluate(normalized);
 				parentToMove.position = originPos + parentToMove.InverseTransformPoint(this.jumpCurve.GetPoint(eased));
-				Debug.DrawLine(base.transform.position, parentToMove.position + Vector3.up * 0.1f, Color.green);
+				UnityEngine.Debug.DrawLine(base.transform.position, parentToMove.position + Vector3.up * 0.1f, Color.green);
 				counter += Time.deltaTime;
 				yield return null;
 			}
@@ -180,7 +180,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 			}
 			else
 			{
-				gameObject = Object.Instantiate<GameObject>(objectConfig.prefabToInstantiate, this._parentToMove.position + objectConfig.offset, Quaternion.identity);
+				gameObject = UnityEngine.Object.Instantiate<GameObject>(objectConfig.prefabToInstantiate, this._parentToMove.position + objectConfig.offset, Quaternion.identity);
 			}
 			BossSpawnedAreaAttack component2 = gameObject.GetComponent<BossSpawnedAreaAttack>();
 			if (component2 != null)
@@ -223,7 +223,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 
 		private void InstantiateArea(GameObject toInstantiate)
 		{
-			GameObject gameObject = Object.Instantiate<GameObject>(toInstantiate, this._parentToMove.position, Quaternion.identity);
+			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(toInstantiate, this._parentToMove.position, Quaternion.identity);
 			BossSpawnedAreaAttack component = gameObject.GetComponent<BossSpawnedAreaAttack>();
 			if (component != null)
 			{
@@ -233,7 +233,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 
 		private void OnPenitentEntersArea(object sender, Collider2DParam e)
 		{
-			Debug.Log("ON PENITENT ENTERS THIS OBJECT AREA: " + base.gameObject.name);
+			UnityEngine.Debug.Log("ON PENITENT ENTERS THIS OBJECT AREA: " + base.gameObject.name);
 			GameObject gameObject = e.Collider2DArg.gameObject;
 			this._hit.OnGuardCallback = new Action<Hit>(this.OnGuard);
 			gameObject.GetComponentInParent<IDamageable>().Damage(this._hit);

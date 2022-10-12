@@ -14,7 +14,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 		protected override void OnAwake()
 		{
 			base.OnAwake();
-			this.WeaponOwner = ((!(this.BeamAttackOwner == null)) ? this.BeamAttackOwner : Object.FindObjectOfType<Amanecidas>());
+			this.WeaponOwner = ((!(this.BeamAttackOwner == null)) ? this.BeamAttackOwner : UnityEngine.Object.FindObjectOfType<Amanecidas>());
 			this.AttackArea = base.GetComponentInChildren<AttackArea>();
 		}
 

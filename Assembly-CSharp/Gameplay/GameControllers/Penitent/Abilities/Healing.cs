@@ -1,4 +1,5 @@
 using System;
+using CreativeSpore.SmartColliders;
 using Framework.FrameworkCore;
 using Framework.Inventory;
 using Framework.Managers;
@@ -29,11 +30,11 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 			}
 			else
 			{
-				this._healingAura = Object.Instantiate<GameObject>(this.HealingAura).GetComponent<HealingAura>();
+				this._healingAura = UnityEngine.Object.Instantiate<GameObject>(this.HealingAura).GetComponent<HealingAura>();
 			}
 			base.EntityOwner.OnDeath += this.EntityOwnerOnEntityDie;
 			base.EntityOwner.OnDamaged += this.OnOwnerDamaged;
-			this.CameraPan = Object.FindObjectOfType<CameraPan>();
+			this.CameraPan = UnityEngine.Object.FindObjectOfType<CameraPan>();
 			this.swordHeart06 = Core.InventoryManager.GetSword("HE06");
 		}
 
@@ -76,7 +77,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 			bool result = false;
 			if (this.CameraPan != null)
 			{
-				result = (base.Rewired.GetButtonDown(23) && !Core.Logic.Penitent.PlatformCharacterController.GetActionState(16));
+				result = (base.Rewired.GetButtonDown(23) && !Core.Logic.Penitent.PlatformCharacterController.GetActionState(eControllerActions.Jump));
 			}
 			return result;
 		}
@@ -157,7 +158,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 			{
 				return;
 			}
-			Object.Destroy(this._healingAura.gameObject);
+			UnityEngine.Object.Destroy(this._healingAura.gameObject);
 			base.enabled = false;
 		}
 

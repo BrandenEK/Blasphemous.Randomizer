@@ -56,7 +56,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter(paramKey, ref parameterInstance);
+				eventInstance.getParameter(paramKey, out parameterInstance);
 				parameterInstance.setValue(value);
 			}
 			catch (Exception ex)

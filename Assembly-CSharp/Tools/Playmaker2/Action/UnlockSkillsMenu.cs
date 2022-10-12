@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Tools.Playmaker2.Action
 {
 	[ActionCategory("Blasphemous Action")]
-	[Tooltip("Show a Unlock skills UI")]
+	[HutongGames.PlayMaker.Tooltip("Show a Unlock skills UI")]
 	public class UnlockSkillsMenu : FsmStateAction
 	{
 		public override void OnEnter()

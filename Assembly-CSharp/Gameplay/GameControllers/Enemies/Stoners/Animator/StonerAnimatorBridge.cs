@@ -54,8 +54,8 @@ namespace Gameplay.GameControllers.Enemies.Stoners.Animator
 			{
 				return;
 			}
-			Object.Instantiate<GameObject>(this.StonersGrave, this._stoners.Animator.transform.position, Quaternion.identity);
-			Object.Destroy(this._stoners.gameObject);
+			UnityEngine.Object.Instantiate<GameObject>(this.StonersGrave, this._stoners.Animator.transform.position, Quaternion.identity);
+			UnityEngine.Object.Destroy(this._stoners.gameObject);
 		}
 
 		private Stoners _stoners;

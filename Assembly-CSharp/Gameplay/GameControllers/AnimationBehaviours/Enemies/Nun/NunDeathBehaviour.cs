@@ -12,7 +12,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Nun
 			Nun componentInParent = animator.GetComponentInParent<Nun>();
 			if (componentInParent != null)
 			{
-				Object.Destroy(componentInParent.gameObject);
+				UnityEngine.Object.Destroy(componentInParent.gameObject);
 			}
 		}
 	}

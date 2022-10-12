@@ -211,7 +211,7 @@ namespace Gameplay.GameControllers.Enemies.Flagellant.IA
 
 		private float GetMaxWanderingLapse()
 		{
-			return Random.Range(0f, 4f);
+			return UnityEngine.Random.Range(0f, 4f);
 		}
 
 		private void FlagellantOnEntityDie()

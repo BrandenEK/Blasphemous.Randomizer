@@ -75,7 +75,7 @@ namespace Gameplay.GameControllers.Enemies.CrossCrawler.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("Moves", ref parameterInstance);
+				eventInstance.getParameter("Moves", out parameterInstance);
 				parameterInstance.setValue(value);
 			}
 			catch (Exception ex)

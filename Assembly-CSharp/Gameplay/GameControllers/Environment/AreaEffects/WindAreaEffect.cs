@@ -27,7 +27,7 @@ namespace Gameplay.GameControllers.Environment.AreaEffects
 		protected override void OnStart()
 		{
 			base.OnStart();
-			this.CurrentRandomWindDirection = (((double)Random.value <= 0.5) ? Vector3.left : Vector3.right);
+			this.CurrentRandomWindDirection = (((double)UnityEngine.Random.value <= 0.5) ? Vector3.left : Vector3.right);
 			this.CurrentAlternateWindDirection = Vector3.right;
 			this.AmbientMusic = Core.Audio.Ambient;
 		}
@@ -165,7 +165,7 @@ namespace Gameplay.GameControllers.Environment.AreaEffects
 				else
 				{
 					this.SetDynamicMode(rigidbody2D, true);
-					rigidbody2D.AddForce(this.GetWindForce().normalized * this.WindImpulse, 0);
+					rigidbody2D.AddForce(this.GetWindForce().normalized * this.WindImpulse, ForceMode2D.Force);
 					rigidbody2D.velocity = Vector2.ClampMagnitude(rigidbody2D.velocity, 3.5f);
 				}
 			}
@@ -213,10 +213,10 @@ namespace Gameplay.GameControllers.Environment.AreaEffects
 
 		private void SetWindForce(float finalWindForce)
 		{
-			TweenSettingsExtensions.SetEase<Tweener>(TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.OnStart<Tweener>(DOTween.To(delegate(float x)
+			DOTween.To(delegate(float x)
 			{
 				this.CurrentWindForce = x;
-			}, this.CurrentWindForce, finalWindForce, this.WindAccelerationTime), new TweenCallback(this.OnAccelerationWindForce)), new TweenCallback(this.OnStopAccelerationWindForce)), 3);
+			}, this.CurrentWindForce, finalWindForce, this.WindAccelerationTime).OnStart(new TweenCallback(this.OnAccelerationWindForce)).OnComplete(new TweenCallback(this.OnStopAccelerationWindForce)).SetEase(Ease.OutSine);
 		}
 
 		private void OnAccelerationWindForce()
@@ -233,7 +233,7 @@ namespace Gameplay.GameControllers.Environment.AreaEffects
 			}
 			this.CurrentWindGustTime = 0f;
 			this.CurrentWindPauseTime = 0f;
-			this.CurrentRandomWindDirection = (((double)Random.value < 0.5) ? Vector3.left : Vector3.right);
+			this.CurrentRandomWindDirection = (((double)UnityEngine.Random.value < 0.5) ? Vector3.left : Vector3.right);
 			this.CurrentAlternateWindDirection = ((!(this.CurrentAlternateWindDirection == Vector3.right)) ? Vector3.right : Vector3.left);
 		}
 
@@ -249,7 +249,7 @@ namespace Gameplay.GameControllers.Environment.AreaEffects
 				return;
 			}
 			ParameterInstance parameterInstance;
-			audioInstance.getParameter("Wind", ref parameterInstance);
+			audioInstance.getParameter("Wind", out parameterInstance);
 			if (parameterInstance.isValid())
 			{
 				parameterInstance.setValue(value);

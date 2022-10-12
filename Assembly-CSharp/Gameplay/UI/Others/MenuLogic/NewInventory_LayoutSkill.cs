@@ -230,7 +230,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			{
 				return;
 			}
-			eventInstance.stop(0);
+			eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			eventInstance.release();
 		}
 

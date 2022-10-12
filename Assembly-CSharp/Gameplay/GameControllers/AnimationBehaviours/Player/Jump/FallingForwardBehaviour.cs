@@ -47,8 +47,8 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Player.Jump
 			{
 				return;
 			}
-			RaycastHit2D raycastHit2D = Physics2D.Raycast(Core.Logic.Penitent.transform.position, Vector2.down, 1.5f, this.RayCastLayerDetection);
-			if (raycastHit2D && raycastHit2D.transform.GetComponent<Slope>())
+			RaycastHit2D hit = Physics2D.Raycast(Core.Logic.Penitent.transform.position, Vector2.down, 1.5f, this.RayCastLayerDetection);
+			if (hit && hit.transform.GetComponent<Slope>())
 			{
 				this.SetDefaultCollider();
 			}

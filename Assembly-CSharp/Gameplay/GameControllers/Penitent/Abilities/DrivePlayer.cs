@@ -30,12 +30,12 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 			{
 				return;
 			}
-			eControllerActions eControllerActions = (this._destination.x < base.EntityOwner.transform.position.x) ? 2 : 1;
+			eControllerActions eControllerActions = (this._destination.x < base.EntityOwner.transform.position.x) ? eControllerActions.Left : eControllerActions.Right;
 			if (Mathf.Abs(this._penitent.transform.position.x - this._destination.x) > 0.1f)
 			{
 				this.SetAnimatorRunning(true);
 				this._penitent.PlatformCharacterController.SetActionState(eControllerActions, true);
-				this._penitent.SetOrientation((eControllerActions != 1) ? EntityOrientation.Left : EntityOrientation.Right, true, false);
+				this._penitent.SetOrientation((eControllerActions != eControllerActions.Right) ? EntityOrientation.Left : EntityOrientation.Right, true, false);
 			}
 			else
 			{

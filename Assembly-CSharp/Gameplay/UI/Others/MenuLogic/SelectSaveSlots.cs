@@ -99,7 +99,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			}
 			foreach (SaveSlot saveSlot in this.slots)
 			{
-				string zoneName = string.Empty;
+				string text = string.Empty;
 				string info = string.Empty;
 				float num2 = 0f;
 				PersistentManager.PublicSlotData slotData = Core.Persistence.GetSlotData(num);
@@ -111,20 +111,27 @@ namespace Gameplay.UI.Others.MenuLogic
 				{
 					int num3 = (int)(slotData.persistence.Time / 3600f);
 					int num4 = (int)(slotData.persistence.Time % 3600f / 60f);
-					string text = string.Empty;
+					string text2 = string.Empty;
 					if (num3 > 0)
 					{
-						text = num3.ToString() + "h ";
+						text2 = num3.ToString() + "h ";
 					}
-					text = text + num4.ToString() + "m";
+					text2 = text2 + num4.ToString() + "m";
+					bool flag3 = false;
+					if (slotData.persistence.CurrentZone.EndsWith("r"))
+					{
+						flag3 = true;
+						slotData.persistence.CurrentZone = slotData.persistence.CurrentZone.Substring(0, slotData.persistence.CurrentZone.Length - 1);
+					}
 					ZoneKey sceneKey = new ZoneKey(slotData.persistence.CurrentDomain, slotData.persistence.CurrentZone, string.Empty);
-					zoneName = Core.NewMapManager.GetZoneName(sceneKey);
+					text = Core.NewMapManager.GetZoneName(sceneKey);
+					text += (flag3 ? "   (Randomized)" : "   (Vanilla)");
 					float num5 = Mathf.Min(slotData.persistence.Percent, 150f);
 					info = Core.Localization.GetValueWithParams(ScriptLocalization.UI_Slot.TEXT_SLOT_INFO, new Dictionary<string, string>
 					{
 						{
 							"playtime",
-							text
+							text2
 						},
 						{
 							"completed",
@@ -133,7 +140,7 @@ namespace Gameplay.UI.Others.MenuLogic
 					});
 					num2 = slotData.persistence.Purge;
 					isPlus = slotData.persistence.IsNewGamePlus;
-					canConvert = slotData.persistence.CanConvertToNewGamePlus;
+					canConvert = false;
 					newGamePlusUpgrades = slotData.persistence.NewGamePlusUpgrades;
 					saveSlot.SetPenitenceData(slotData.penitence);
 				}
@@ -141,17 +148,15 @@ namespace Gameplay.UI.Others.MenuLogic
 				{
 					flag = true;
 				}
-				saveSlot.SetData(zoneName, info, (int)num2, flag2, isPlus, canConvert, newGamePlusUpgrades, this.CurrentSlotsMode);
+				saveSlot.SetData(text, info, (int)num2, flag2, isPlus, canConvert, newGamePlusUpgrades, this.CurrentSlotsMode);
 				num++;
 			}
 			if (flag)
 			{
 				base.StartCoroutine(this.ShowCorruptedMenssage());
+				return;
 			}
-			else
-			{
-				this.OnSelectedSlots(0);
-			}
+			this.OnSelectedSlots(0);
 		}
 
 		public void OnSelectedSlots(int idxSlot)
@@ -235,7 +240,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			this.AllSlots.ForEach(delegate(EventsButton x)
 			{
 				Navigation navigation = x.navigation;
-				navigation.mode = 0;
+				navigation.mode = Navigation.Mode.None;
 				x.navigation = navigation;
 			});
 			this.corruptedSaveMessage.Show();
@@ -251,7 +256,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			this.AllSlots.ForEach(delegate(EventsButton x)
 			{
 				Navigation navigation = x.navigation;
-				navigation.mode = 4;
+				navigation.mode = Navigation.Mode.Explicit;
 				x.navigation = navigation;
 			});
 			this.OnSelectedSlots(0);

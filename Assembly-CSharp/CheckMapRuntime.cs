@@ -6,7 +6,7 @@ using UnityEngine;
 public class CheckMapRuntime : MonoBehaviour
 {
 	[HideInEditorMode]
-	[Button(0)]
+	[Button(ButtonSizes.Small)]
 	private void TestMap()
 	{
 		Core.Persistence.DEBUG_SaveAllData(this.slot, this.mapReveals, this.elementPerScene);

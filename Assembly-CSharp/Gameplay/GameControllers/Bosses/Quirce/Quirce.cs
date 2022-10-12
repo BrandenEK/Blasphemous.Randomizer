@@ -62,8 +62,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce
 		public override void SetPositionAtStart()
 		{
 			base.SetPositionAtStart();
-			Vector3 position;
-			position..ctor(base.transform.position.x, base.transform.position.y, base.transform.position.z);
+			Vector3 position = new Vector3(base.transform.position.x, base.transform.position.y, base.transform.position.z);
 			base.transform.position = position;
 		}
 

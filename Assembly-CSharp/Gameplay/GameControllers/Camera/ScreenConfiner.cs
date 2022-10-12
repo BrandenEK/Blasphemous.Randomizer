@@ -24,18 +24,16 @@ namespace Gameplay.GameControllers.Camera
 
 		private void Start()
 		{
-			Vector2 vector;
-			vector..ctor(this.cameraNumericBoundaries.LeftBoundary, this.cameraNumericBoundaries.TopBoundary / 2f);
-			this.levelLeftBoundary = Object.Instantiate<GameObject>(this.levelLeftBoundaryPrefab, vector, Quaternion.identity);
+			Vector2 v = new Vector2(this.cameraNumericBoundaries.LeftBoundary, this.cameraNumericBoundaries.TopBoundary / 2f);
+			this.levelLeftBoundary = UnityEngine.Object.Instantiate<GameObject>(this.levelLeftBoundaryPrefab, v, Quaternion.identity);
 			this.levelLeftBoundary.transform.SetParent(base.transform, true);
 			this.DisableBoundary();
 		}
 
 		private void LateUpdate()
 		{
-			Vector2 vector;
-			vector..ctor(this.cameraNumericBoundaries.LeftBoundary, this.cameraNumericBoundaries.TopBoundary / 2f);
-			this.levelLeftBoundary.transform.position = vector;
+			Vector2 v = new Vector2(this.cameraNumericBoundaries.LeftBoundary, this.cameraNumericBoundaries.TopBoundary / 2f);
+			this.levelLeftBoundary.transform.position = v;
 		}
 
 		[SerializeField]

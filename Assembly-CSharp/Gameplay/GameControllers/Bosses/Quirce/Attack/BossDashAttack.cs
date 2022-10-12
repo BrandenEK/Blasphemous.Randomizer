@@ -90,9 +90,9 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 			}
 			this._parentToMove = parentToMove;
 			this._targetPoint = point;
-			Vector3 vector = this._targetPoint - parentToMove.transform.position;
-			this._dashDir = vector;
-			this._screenShakeDir = vector;
+			Vector3 v = this._targetPoint - parentToMove.transform.position;
+			this._dashDir = v;
+			this._screenShakeDir = v;
 			this.willStopOnCollision = false;
 			if (this.checkCollisions)
 			{
@@ -100,23 +100,23 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 				bool flag = Physics2D.LinecastNonAlloc(parentToMove.transform.position, this._targetPoint, array, this.collisionMask) > 0;
 				if (flag)
 				{
-					Debug.DrawLine(array[0].point, array[0].point + Vector2.up * 0.25f, Color.red, 1f);
-					this._targetPoint = array[0].point - vector.normalized * offset;
+					UnityEngine.Debug.DrawLine(array[0].point, array[0].point + Vector2.up * 0.25f, Color.red, 1f);
+					this._targetPoint = array[0].point - v.normalized * offset;
 					this.willStopOnCollision = true;
 				}
 			}
 			if (this.dashAlongGround)
 			{
 				RaycastHit2D[] array2 = new RaycastHit2D[1];
-				Vector2 vector2 = parentToMove.transform.position + Vector3.up * 0.1f;
-				bool flag2 = Physics2D.LinecastNonAlloc(vector2, vector2 - Vector2.up, array2, this.collisionMask) > 0;
+				Vector2 vector = parentToMove.transform.position + Vector3.up * 0.1f;
+				bool flag2 = Physics2D.LinecastNonAlloc(vector, vector - Vector2.up, array2, this.collisionMask) > 0;
 				if (flag2)
 				{
 					base.transform.position = array2[0].point;
 					this._targetPoint.y = base.transform.position.y;
 				}
 			}
-			Debug.DrawLine(this._parentToMove.position, this._targetPoint, Color.red);
+			UnityEngine.Debug.DrawLine(this._parentToMove.position, this._targetPoint, Color.red);
 			if (this.rotateTowardsDirection && this.currentRotatingFunction != null)
 			{
 				this.currentRotatingFunction(parentToMove, this._targetPoint);
@@ -165,7 +165,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 			}
 			this._dashDir = direction;
 			this._screenShakeDir = direction;
-			Debug.DrawLine(this._parentToMove.position, this._targetPoint, Color.red, 15f);
+			UnityEngine.Debug.DrawLine(this._parentToMove.position, this._targetPoint, Color.red, 15f);
 			if (this.rotateTowardsDirection && this.currentRotatingFunction != null)
 			{
 				this.currentRotatingFunction(parentToMove, this._targetPoint);
@@ -217,7 +217,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 
 		private void OnDashGuarded(Hit h)
 		{
-			Debug.Log("<color=cyan>DASH GUARDED</color>");
+			UnityEngine.Debug.Log("<color=cyan>DASH GUARDED</color>");
 			if (this.OnDashBlockedEvent != null)
 			{
 				this.OnDashBlockedEvent(this);
@@ -285,7 +285,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 			}
 			else
 			{
-				gameObject = Object.Instantiate<GameObject>(objectConfig.prefabToInstantiate, this._parentToMove.position + objectConfig.offset, Quaternion.identity);
+				gameObject = UnityEngine.Object.Instantiate<GameObject>(objectConfig.prefabToInstantiate, this._parentToMove.position + objectConfig.offset, Quaternion.identity);
 			}
 			if (!objectConfig.keepRotation)
 			{

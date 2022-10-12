@@ -48,14 +48,14 @@ public class AmanecidasFightSpawner : MonoBehaviour
 		Penitent penitent = Core.Logic.Penitent;
 		if (penitent != null)
 		{
-			Vector2 vector = this.GetPenitentSpawnPoint();
-			penitent.transform.position = vector;
+			Vector2 v = this.GetPenitentSpawnPoint();
+			penitent.transform.position = v;
 		}
 	}
 
 	public void SpawnBoss()
 	{
-		this.currentBoss = Object.Instantiate<GameObject>(this.bossPrefab);
+		this.currentBoss = UnityEngine.Object.Instantiate<GameObject>(this.bossPrefab);
 		this.amanecida = this.currentBoss.GetComponent<Amanecidas>();
 		this.amanecida.transform.position = base.transform.position + Vector3.up * 25f;
 		AmanecidasFightSpawner.AMANECIDAS_FIGHTS fightType = this.GetCurrentFightFromFlags();
@@ -71,7 +71,7 @@ public class AmanecidasFightSpawner : MonoBehaviour
 			{
 				if (gameObject2 != null)
 				{
-					GameObject gameObject3 = Object.Instantiate<GameObject>(gameObject2);
+					GameObject gameObject3 = UnityEngine.Object.Instantiate<GameObject>(gameObject2);
 					gameObject3.transform.SetParent(gameObject.transform, false);
 					gameObject3.transform.localPosition = Vector3.zero;
 					CameraNumericBoundaries componentInChildren = gameObject3.GetComponentInChildren<CameraNumericBoundaries>();
@@ -103,7 +103,7 @@ public class AmanecidasFightSpawner : MonoBehaviour
 		}
 	}
 
-	[Button("TEST START FIGHT", 31)]
+	[Button("TEST START FIGHT", ButtonSizes.Large)]
 	public void StartAmanecidaFight()
 	{
 		this.bossMgr.StartBossFight();
@@ -114,7 +114,7 @@ public class AmanecidasFightSpawner : MonoBehaviour
 		}
 	}
 
-	[Button("TEST START INTRO", 31)]
+	[Button("TEST START INTRO", ButtonSizes.Large)]
 	public void StartIntro()
 	{
 		this.amanecida.Behaviour.StartIntro();

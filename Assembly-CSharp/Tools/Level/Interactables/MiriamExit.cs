@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Com.LuisPedroFonseca.ProCamera2D;
+using FMOD.Studio;
 using FMODUnity;
 using Framework.FrameworkCore;
 using Framework.Managers;
@@ -78,7 +79,7 @@ namespace Tools.Level.Interactables
 			Core.Audio.PlayOneShot(this.SharkSound, default(Vector3));
 			this.interactableAnimator.SetTrigger(this.InteractableAnimationTrigger);
 			yield return new WaitForSeconds(this.FadeDelay);
-			Core.Audio.StopNamedSound("TeleportAltarMiriam", 0);
+			Core.Audio.StopNamedSound("TeleportAltarMiriam", FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			FadeWidget.OnFadeShowEnd += this.OnFadeShowEnd;
 			FadeWidget.instance.Fade(true, this.FadeTime, 0f, null);
 			yield break;

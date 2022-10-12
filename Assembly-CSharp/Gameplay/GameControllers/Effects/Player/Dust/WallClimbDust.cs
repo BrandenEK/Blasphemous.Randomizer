@@ -76,7 +76,7 @@ namespace Gameplay.GameControllers.Effects.Player.Dust
 			}
 			else
 			{
-				gameObject = Object.Instantiate<GameObject>(this.WallClimbDustPrefab, base.EntityOwner.transform.position, Quaternion.identity);
+				gameObject = UnityEngine.Object.Instantiate<GameObject>(this.WallClimbDustPrefab, base.EntityOwner.transform.position, Quaternion.identity);
 			}
 			if (gameObject != null)
 			{

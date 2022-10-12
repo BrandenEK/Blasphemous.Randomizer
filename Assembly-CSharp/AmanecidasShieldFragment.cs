@@ -15,11 +15,11 @@ public class AmanecidasShieldFragment : MonoBehaviour
 
 	public void GoToShieldTransform(float delay)
 	{
-		TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetDelay<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, this.shieldTransform.position, this.timeToShieldTransform, false), 8), delay), delegate()
+		base.transform.DOMove(this.shieldTransform.position, this.timeToShieldTransform, false).SetEase(Ease.InCubic).SetDelay(delay).OnComplete(delegate
 		{
 			this.OnReachedShield();
 		});
-		TweenSettingsExtensions.SetDelay<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DORotate(base.transform, this.shieldTransform.rotation.eulerAngles, this.timeToShieldTransform, 0), 8), delay);
+		base.transform.DORotate(this.shieldTransform.rotation.eulerAngles, this.timeToShieldTransform, RotateMode.Fast).SetEase(Ease.InCubic).SetDelay(delay);
 	}
 
 	private void OnReachedShield()
@@ -46,10 +46,10 @@ public class AmanecidasShieldFragment : MonoBehaviour
 	{
 		this.currentState = AmanecidasShieldFragment.AMA_SHIELD_FRAGMENT_STATES.RISING;
 		base.transform.SetParent(null);
-		float num = Random.Range(0.5f, 2f);
+		float num = UnityEngine.Random.Range(0.5f, 2f);
 		base.transform.position = originPoint;
 		this.SetAlpha(0f);
-		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, originPoint.y + num, timeToRaise, false), 10);
+		base.transform.DOMoveY(originPoint.y + num, timeToRaise, false).SetEase(Ease.InOutCubic);
 		this.FadeIn(0.2f);
 	}
 
@@ -57,7 +57,7 @@ public class AmanecidasShieldFragment : MonoBehaviour
 	{
 		this.currentState = AmanecidasShieldFragment.AMA_SHIELD_FRAGMENT_STATES.BROKEN;
 		base.transform.SetParent(null);
-		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, base.transform.position + dir, 0.6f, false), 9);
+		base.transform.DOMove(base.transform.position + dir, 0.6f, false).SetEase(Ease.OutCubic);
 		this.FadeOut(0.2f);
 	}
 
@@ -73,20 +73,20 @@ public class AmanecidasShieldFragment : MonoBehaviour
 
 	public void FadeOut(float seconds = 0.2f)
 	{
-		ShortcutExtensions43.DOFade(this.spr, 0f, 0.2f);
+		this.spr.DOFade(0f, 0.2f);
 	}
 
 	public void BlinkAlpha()
 	{
-		TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions43.DOFade(this.spr, 1f, 0.01f), delegate()
+		this.spr.DOFade(1f, 0.01f).OnComplete(delegate
 		{
-			ShortcutExtensions43.DOFade(this.spr, 0f, 0.5f);
+			this.spr.DOFade(0f, 0.5f);
 		});
 	}
 
 	public void FadeIn(float seconds = 0.2f)
 	{
-		ShortcutExtensions43.DOFade(this.spr, 1f, seconds);
+		this.spr.DOFade(1f, seconds);
 	}
 
 	public Transform shieldTransform;

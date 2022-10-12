@@ -45,9 +45,9 @@ namespace Gameplay.GameControllers.Entities
 
 		private void Update()
 		{
-			if (this.IsEnabled || (this.tweenOut != null && TweenExtensions.IsActive(this.tweenOut)))
+			if (this.IsEnabled || (this.tweenOut != null && this.tweenOut.IsActive()))
 			{
-				if (this.tweenOut == null || !TweenExtensions.IsActive(this.tweenOut))
+				if (this.tweenOut == null || !this.tweenOut.IsActive())
 				{
 					this.SpritesAlpha = this.Owner.SpriteRenderer.color.a;
 				}
@@ -116,8 +116,7 @@ namespace Gameplay.GameControllers.Entities
 			set
 			{
 				this._spritesAlpha = value;
-				Color color;
-				color..ctor(1f, 1f, 1f, this._spritesAlpha);
+				Color color = new Color(1f, 1f, 1f, this._spritesAlpha);
 				this.backgroundSprite.color = color;
 				this.instantBarSprite.color = color;
 				this.animatedBarSprite.color = color;

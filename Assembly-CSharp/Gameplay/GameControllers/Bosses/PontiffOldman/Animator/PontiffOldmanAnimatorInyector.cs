@@ -26,8 +26,8 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman.Animator
 
 		public void AnimationEvent_LightScreenShake()
 		{
-			Vector2 vector = (this.OwnerEntity.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
-			Core.Logic.CameraManager.ProCamera2DShake.Shake(0.15f, vector * 0.5f, 10, 0.01f, 0f, default(Vector3), 0.01f, false);
+			Vector2 a = (this.OwnerEntity.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
+			Core.Logic.CameraManager.ProCamera2DShake.Shake(0.15f, a * 0.5f, 10, 0.01f, 0f, default(Vector3), 0.01f, false);
 		}
 
 		public void AnimationEvent_HeavyScreenShake()
@@ -102,7 +102,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman.Animator
 			}
 			if (base.EntityAnimator.GetCurrentAnimatorStateInfo(0).IsName("HURT"))
 			{
-				Debug.Log("PLAY TRICK HURT");
+				UnityEngine.Debug.Log("PLAY TRICK HURT");
 				base.EntityAnimator.Play("HURT", 0, 0f);
 			}
 			else

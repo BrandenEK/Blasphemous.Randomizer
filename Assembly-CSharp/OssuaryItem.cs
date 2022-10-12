@@ -17,7 +17,7 @@ public class OssuaryItem : MonoBehaviour
 	public void ActivateItem()
 	{
 		base.gameObject.SetActive(true);
-		ShortcutExtensions.DOPunchScale(base.transform, Vector3.one, 0.3f, 2, 1f);
+		base.transform.DOPunchScale(Vector3.one, 0.3f, 2, 1f);
 	}
 
 	public string itemId;

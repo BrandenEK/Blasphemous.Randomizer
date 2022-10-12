@@ -13,11 +13,11 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		private void Update()
 		{
-			if (Input.GetKeyDown(27) && this.group.alpha == 0f)
+			if (Input.GetKeyDown(KeyCode.Escape) && this.group.alpha == 0f)
 			{
 				base.StartCoroutine(this.Show());
 			}
-			else if (Input.GetKeyDown(27) && this.group.alpha == 1f)
+			else if (Input.GetKeyDown(KeyCode.Escape) && this.group.alpha == 1f)
 			{
 				base.StartCoroutine(this.Hide());
 			}

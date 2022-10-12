@@ -73,12 +73,12 @@ namespace Gameplay.GameControllers.Enemies.Acolyte.Animator
 
 		public void StopAttackDisplacement()
 		{
-			if (this._acolyte.RigidbodyType != null)
+			if (this._acolyte.RigidbodyType != RigidbodyType2D.Dynamic)
 			{
 				return;
 			}
 			this._acolyte.Rigidbody.velocity = Vector2.zero;
-			this._acolyte.RigidbodyType = 1;
+			this._acolyte.RigidbodyType = RigidbodyType2D.Kinematic;
 		}
 
 		public void AttackDisplacement()
@@ -94,8 +94,8 @@ namespace Gameplay.GameControllers.Enemies.Acolyte.Animator
 
 		private bool AttackAreaOverlapsPlayer(EntityOrientation playerOrientation)
 		{
-			Vector2 vector = this._penitent.DamageArea.DamageAreaCollider.bounds.center;
-			return this._acolyte.AttackArea.WeaponCollider.OverlapPoint(vector);
+			Vector2 point = this._penitent.DamageArea.DamageAreaCollider.bounds.center;
+			return this._acolyte.AttackArea.WeaponCollider.OverlapPoint(point);
 		}
 
 		public override void Rebound()

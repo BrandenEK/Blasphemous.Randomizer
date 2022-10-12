@@ -7,8 +7,7 @@ namespace Gameplay.GameControllers.Environment
 	{
 		private void OnDrawGizmosSelected()
 		{
-			Color color;
-			color..ctor(0.21f, 0.8f, 0.2f, 1f);
+			Color color = new Color(0.21f, 0.8f, 0.2f, 1f);
 			Gizmos.color = color;
 			Gizmos.DrawSphere(base.transform.position, 0.1f);
 		}

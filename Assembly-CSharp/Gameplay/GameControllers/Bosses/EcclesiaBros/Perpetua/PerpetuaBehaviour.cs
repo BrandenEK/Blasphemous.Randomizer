@@ -34,11 +34,12 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Perpetua
 			this._fsm = new StateMachine<PerpetuaBehaviour>(this, this.stIntro, null, null);
 			this.Perpetua = (Perpetua)this.Entity;
 			this.colliders = new Collider2D[1];
-			ContactFilter2D contactFilter2D = default(ContactFilter2D);
-			contactFilter2D.layerMask = LayerMask.NameToLayer("Penitent");
-			contactFilter2D.useLayerMask = true;
-			contactFilter2D.useTriggers = true;
-			this.contactFilter = contactFilter2D;
+			this.contactFilter = new ContactFilter2D
+			{
+				layerMask = LayerMask.NameToLayer("Penitent"),
+				useLayerMask = true,
+				useTriggers = true
+			};
 			this.collider = base.GetComponent<BoxCollider2D>();
 		}
 
@@ -157,7 +158,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Perpetua
 			{
 				list.Remove(this.lastAttack);
 			}
-			return list[Random.Range(0, list.Count)];
+			return list[UnityEngine.Random.Range(0, list.Count)];
 		}
 
 		public void LaunchRandomAction()
@@ -247,8 +248,8 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Perpetua
 		{
 			get
 			{
-				float num = (this.Entity.Status.Orientation != EntityOrientation.Left) ? (-this.dashOffset.x) : this.dashOffset.x;
-				return new Vector2(num, this.dashOffset.y);
+				float x = (this.Entity.Status.Orientation != EntityOrientation.Left) ? (-this.dashOffset.x) : this.dashOffset.x;
+				return new Vector2(x, this.dashOffset.y);
 			}
 		}
 
@@ -302,7 +303,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Perpetua
 		{
 			Vector2 centerPos = this.Perpetua.PerpetuaPoints.GetCenterPos();
 			float num = 5f;
-			return centerPos + Vector2.right * (Random.Range(-1f, 1f) * num);
+			return centerPos + Vector2.right * (UnityEngine.Random.Range(-1f, 1f) * num);
 		}
 
 		private IEnumerator PrepareSpearSummon()
@@ -376,9 +377,9 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Perpetua
 
 		public void ChooseSide()
 		{
-			float num = Random.Range(0f, 1f);
+			float num = UnityEngine.Random.Range(0f, 1f);
 			float num2 = (float)((num <= 0.5f) ? -1 : 1);
-			this.followPlayerOffset = new Vector2(Random.Range(this.followPlayerMinOffset.x, this.followPlayerMaxOffset.x), Random.Range(this.followPlayerMinOffset.y, this.followPlayerMaxOffset.y));
+			this.followPlayerOffset = new Vector2(UnityEngine.Random.Range(this.followPlayerMinOffset.x, this.followPlayerMaxOffset.x), UnityEngine.Random.Range(this.followPlayerMinOffset.y, this.followPlayerMaxOffset.y));
 			this.followPlayerOffset.x = Mathf.Abs(this.followPlayerOffset.x) * num2;
 		}
 
@@ -388,31 +389,31 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Perpetua
 			{
 				return;
 			}
-			Vector2 vector = base.GetTarget().position + this.followPlayerOffset;
-			Vector2 vector2 = (vector - base.transform.position).normalized * this.followPlayerAcceleration * Time.deltaTime;
-			if (Vector2.Distance(vector, base.transform.position) < this.followBrakeRadius)
+			Vector2 a = base.GetTarget().position + this.followPlayerOffset;
+			Vector2 b = (a - base.transform.position).normalized * this.followPlayerAcceleration * Time.deltaTime;
+			if (Vector2.Distance(a, base.transform.position) < this.followBrakeRadius)
 			{
-				vector2 = -this.followPlayerVelocity * Time.deltaTime * (1f / this.followBrakeSeconds);
+				b = -this.followPlayerVelocity * Time.deltaTime * (1f / this.followBrakeSeconds);
 			}
-			this.followPlayerVelocity += vector2;
+			this.followPlayerVelocity += b;
 			this.followPlayerVelocity = Vector2.ClampMagnitude(this.followPlayerVelocity, this.followPlayerMaxSpeed);
-			Vector3 vector3 = this.followPlayerVelocity * Time.deltaTime;
-			base.transform.position += vector3;
+			Vector3 b2 = this.followPlayerVelocity * Time.deltaTime;
+			base.transform.position += b2;
 		}
 
 		private void SetFirstPointToPosition(BezierSpline spline, Vector2 position)
 		{
-			Vector2 vector = spline.points[1] - spline.points[0];
+			Vector2 v = spline.points[1] - spline.points[0];
 			spline.points[0] = spline.transform.InverseTransformPoint(position);
-			spline.points[1] = spline.points[0] + vector;
+			spline.points[1] = spline.points[0] + v;
 		}
 
 		private void SetLastPointToPosition(BezierSpline spline, Vector2 position)
 		{
 			int num = spline.points.Length - 1;
-			Vector2 vector = spline.points[num - 1] - spline.points[num];
+			Vector2 v = spline.points[num - 1] - spline.points[num];
 			spline.points[num] = spline.transform.InverseTransformPoint(position);
-			spline.points[num - 1] = spline.points[num] + vector;
+			spline.points[num - 1] = spline.points[num] + v;
 		}
 
 		public void FlapToPoint(Vector2 point, bool rightCurve)

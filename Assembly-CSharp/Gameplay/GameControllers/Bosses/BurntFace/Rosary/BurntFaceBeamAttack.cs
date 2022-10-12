@@ -14,7 +14,7 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.Rosary
 		protected override void OnAwake()
 		{
 			base.OnAwake();
-			this.WeaponOwner = ((!(this.BeamAttackOwner == null)) ? this.BeamAttackOwner : Object.FindObjectOfType<BurntFace>());
+			this.WeaponOwner = ((!(this.BeamAttackOwner == null)) ? this.BeamAttackOwner : UnityEngine.Object.FindObjectOfType<BurntFace>());
 			this.AttackArea = base.GetComponentInChildren<AttackArea>();
 		}
 

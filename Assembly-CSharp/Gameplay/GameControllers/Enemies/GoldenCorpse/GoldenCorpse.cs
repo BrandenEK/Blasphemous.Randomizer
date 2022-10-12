@@ -66,8 +66,7 @@ namespace Gameplay.GameControllers.Enemies.GoldenCorpse
 			base.SetPositionAtStart();
 			Vector3 position = base.transform.position;
 			float groundDist = base.Controller.GroundDist;
-			Vector3 position2;
-			position2..ctor(position.x, position.y - groundDist, position.z);
+			Vector3 position2 = new Vector3(position.x, position.y - groundDist, position.z);
 			base.transform.position = position2;
 			base.Controller.PlatformCharacterPhysics.GravityScale = 0f;
 		}

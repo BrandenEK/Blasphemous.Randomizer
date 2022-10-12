@@ -6,7 +6,7 @@ namespace LevelEditor
 {
 	public class ChainHook : MonoBehaviour
 	{
-		[Button("Update Chain", 0)]
+		[Button("Update Chain", ButtonSizes.Small)]
 		private void UpdateChainLink()
 		{
 			this.CleanupChain();
@@ -19,7 +19,7 @@ namespace LevelEditor
 			int childCount = base.transform.childCount;
 			for (int i = 0; i < childCount; i++)
 			{
-				Object.DestroyImmediate(base.transform.GetChild(0).gameObject);
+				UnityEngine.Object.DestroyImmediate(base.transform.GetChild(0).gameObject);
 			}
 		}
 
@@ -29,7 +29,7 @@ namespace LevelEditor
 			Rigidbody2D component = base.GetComponent<Rigidbody2D>();
 			for (int i = 0; i < this.numLinks; i++)
 			{
-				GameObject gameObject = Object.Instantiate<GameObject>(this.chainLinkPrefab, base.transform);
+				GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.chainLinkPrefab, base.transform);
 				gameObject.transform.localPosition = vector;
 				gameObject.name = string.Format("Chain Link #{0:00}", i);
 				vector += Vector2.down * this.linkVerticalOffset;
@@ -38,7 +38,7 @@ namespace LevelEditor
 			}
 			if (this.lastLinkPrefab != null)
 			{
-				GameObject gameObject2 = Object.Instantiate<GameObject>(this.lastLinkPrefab, base.transform);
+				GameObject gameObject2 = UnityEngine.Object.Instantiate<GameObject>(this.lastLinkPrefab, base.transform);
 				gameObject2.transform.localPosition = vector + Vector2.down * this.lastLinkVerticalOffset;
 				gameObject2.name = "Last Chain Link";
 				gameObject2.GetComponent<HingeJoint2D>().connectedBody = component;

@@ -76,18 +76,18 @@ namespace Gameplay.GameControllers.Entities
 			}
 			Vector2 vector = base.transform.position + this.sightOffset;
 			Vector2 vector2 = Quaternion.Euler(0f, 0f, this.visionAngle) * Vector2.right * this.sightDistance * (float)num;
-			Vector2 vector3 = vector + vector2;
-			Vector2 vector4 = Quaternion.Euler(0f, 0f, -this.visionAngle) * Vector2.right * this.sightDistance * (float)num;
-			Vector2 vector5 = vector + vector4;
+			Vector2 v = vector + vector2;
+			Vector2 b = Quaternion.Euler(0f, 0f, -this.visionAngle) * Vector2.right * this.sightDistance * (float)num;
+			Vector2 v2 = vector + b;
 			Gizmos.DrawWireSphere(base.transform.position + this.sightOffset, this.closeRadius);
-			Gizmos.DrawLine(vector, vector3);
-			Gizmos.DrawLine(vector, vector5);
+			Gizmos.DrawLine(vector, v);
+			Gizmos.DrawLine(vector, v2);
 			int num2 = this.gizmoNumberOfRays;
 			Gizmos.color = this.gizmoRayColor;
 			for (int i = 1; i < num2; i++)
 			{
-				Vector2 vector6 = vector + Quaternion.Euler(0f, 0f, (float)i * -this.visionAngle * 2f / (float)num2) * vector2;
-				Gizmos.DrawLine(vector, vector6);
+				Vector2 v3 = vector + Quaternion.Euler(0f, 0f, (float)i * -this.visionAngle * 2f / (float)num2) * vector2;
+				Gizmos.DrawLine(vector, v3);
 			}
 		}
 

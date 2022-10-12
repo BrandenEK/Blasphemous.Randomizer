@@ -40,8 +40,7 @@ public class CustomInteraction : Interactable
 		{
 			return this.Waypoint.position;
 		}
-		Vector2 result;
-		result..ctor(base.transform.position.x, base.transform.position.y);
+		Vector2 result = new Vector2(base.transform.position.x, base.transform.position.y);
 		if (this.orientation == EntityOrientation.Right)
 		{
 			result.x -= 1f;

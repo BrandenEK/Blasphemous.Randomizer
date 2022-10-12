@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Framework.Managers;
+using Rewired;
 using UnityEngine;
 
 namespace Tools.UI
@@ -22,7 +23,7 @@ namespace Tools.UI
 
 		private void RefreshLists()
 		{
-			bool IsPad = Core.Input.ActiveControllerType == 2;
+			bool IsPad = Core.Input.ActiveControllerType == ControllerType.Joystick;
 			this.keyboardControls.ForEach(delegate(GameObject p)
 			{
 				p.SetActive(!IsPad);

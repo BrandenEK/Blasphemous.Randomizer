@@ -45,13 +45,13 @@ public class WickerWurmTailAttack : MonoBehaviour
 		this.tailMaster.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(vector.y, vector.x) * 57.29578f);
 	}
 
-	[Button("Debug_TestShow", 0)]
+	[Button("Debug_TestShow", ButtonSizes.Small)]
 	public void TestShow()
 	{
 		this.ShowTail(base.transform.position, true, 0f);
 	}
 
-	[Button("Debug_TestAttac", 0)]
+	[Button("Debug_TestAttac", ButtonSizes.Small)]
 	public void TestAttack()
 	{
 		this.TailAttack(base.transform.position, true, 0f);
@@ -68,7 +68,7 @@ public class WickerWurmTailAttack : MonoBehaviour
 	{
 		yield return new WaitForSeconds(this.retractDelay);
 		this.tailMaster.chainMode = BodyChainMaster.CHAIN_UPDATE_MODES.BACKWARDS;
-		TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(this.tailEnd.transform, this.tailEnd.transform.position.y - 20f * this.pathConfig.spline.transform.localScale.y, 2f, false), 7);
+		this.tailEnd.transform.DOMoveY(this.tailEnd.transform.position.y - 20f * this.pathConfig.spline.transform.localScale.y, 2f, false).SetEase(Ease.InOutQuad);
 		yield break;
 	}
 

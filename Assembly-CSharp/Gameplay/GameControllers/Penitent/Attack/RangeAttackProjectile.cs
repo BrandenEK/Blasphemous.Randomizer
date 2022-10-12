@@ -171,18 +171,18 @@ namespace Gameplay.GameControllers.Penitent.Attack
 			}
 			else
 			{
-				Vector3 vector = Core.Logic.Penitent.DamageArea.Center();
-				vector.y = Core.Logic.Penitent.DamageArea.Center().y + 0.2f;
-				base.transform.Translate((vector - base.transform.position).normalized * this.Speed * Time.deltaTime);
+				Vector3 a = Core.Logic.Penitent.DamageArea.Center();
+				a.y = Core.Logic.Penitent.DamageArea.Center().y + 0.2f;
+				base.transform.Translate((a - base.transform.position).normalized * this.Speed * Time.deltaTime);
 			}
 		}
 
 		private void Deceleration(float decelerationTime, TweenCallback callback)
 		{
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetId<Tweener>(DOTween.To(delegate(float x)
+			DOTween.To(delegate(float x)
 			{
 				this.Speed = x;
-			}, this.Speed, 0f, decelerationTime), "Deceleration"), callback);
+			}, this.Speed, 0f, decelerationTime).SetId("Deceleration").OnComplete(callback);
 		}
 
 		private void OnDecelerationFinish()
@@ -220,7 +220,7 @@ namespace Gameplay.GameControllers.Penitent.Attack
 			{
 				return;
 			}
-			this._rangeAttackFlightAudioInstance.stop(0);
+			this._rangeAttackFlightAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this._rangeAttackFlightAudioInstance.release();
 			this._rangeAttackFlightAudioInstance = default(EventInstance);
 		}

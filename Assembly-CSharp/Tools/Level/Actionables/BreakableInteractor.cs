@@ -19,7 +19,7 @@ namespace Tools.Level.Actionables
 
 		private void OnBroken()
 		{
-			TweenSettingsExtensions.OnComplete<Sequence>(TweenSettingsExtensions.SetDelay<Sequence>(DOTween.Sequence(), this.InteractionTimeout), delegate()
+			DOTween.Sequence().SetDelay(this.InteractionTimeout).OnComplete(delegate
 			{
 				this.ActivateActionable(this.InteractionTargets);
 			});

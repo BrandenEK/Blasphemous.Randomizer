@@ -63,8 +63,8 @@ namespace Framework.Penitences
 		{
 			if (hit.DamageAmount > 0f)
 			{
-				float num = Core.Logic.Penitent.Stats.Fervour.Current - this.balance.fervourLostAmount;
-				Core.Logic.Penitent.Stats.Fervour.Current = Mathf.Max(num, 0f);
+				float a = Core.Logic.Penitent.Stats.Fervour.Current - this.balance.fervourLostAmount;
+				Core.Logic.Penitent.Stats.Fervour.Current = Mathf.Max(a, 0f);
 			}
 		}
 

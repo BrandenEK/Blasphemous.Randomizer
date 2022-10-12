@@ -121,7 +121,7 @@ namespace Gameplay.GameControllers.Enemies.BellGhost.Animator
 			{
 				return;
 			}
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.OnStart<Tweener>(ShortcutExtensions43.DOFade(this.SpriteRenderer, fadeValue, time), new TweenCallback(this.OnFadeStart)), new TweenCallback(this.OnFadeCompleted));
+			this.SpriteRenderer.DOFade(fadeValue, time).OnStart(new TweenCallback(this.OnFadeStart)).OnComplete(new TweenCallback(this.OnFadeCompleted));
 		}
 
 		public void OnFadeStart()

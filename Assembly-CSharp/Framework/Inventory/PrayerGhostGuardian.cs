@@ -34,7 +34,7 @@ namespace Framework.Inventory
 			if (this.GhostGuardianPrefab != null && this.GhostGuardianInstantiation == null)
 			{
 				Vector3 position = Core.Logic.Penitent.transform.position;
-				this.GhostGuardianInstantiation = Object.Instantiate<GameObject>(this.GhostGuardianPrefab, position, Quaternion.identity);
+				this.GhostGuardianInstantiation = UnityEngine.Object.Instantiate<GameObject>(this.GhostGuardianPrefab, position, Quaternion.identity);
 			}
 			else if (this.GhostGuardianInstantiation != null)
 			{

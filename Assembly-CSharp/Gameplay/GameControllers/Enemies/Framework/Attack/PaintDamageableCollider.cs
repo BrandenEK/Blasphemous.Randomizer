@@ -15,14 +15,14 @@ namespace Gameplay.GameControllers.Enemies.Framework.Attack
 		{
 			Gizmos.color = ((!this.polygonCollider2D.enabled) ? Color.gray : Color.cyan);
 			Vector2[] points = this.polygonCollider2D.points;
-			Vector3 vector = base.transform.TransformPoint(points[points.Length - 1] + this.polygonCollider2D.offset);
-			Vector3 vector2 = base.transform.TransformPoint(points[0] + this.polygonCollider2D.offset);
-			Gizmos.DrawLine(vector, vector2);
+			Vector3 from = base.transform.TransformPoint(points[points.Length - 1] + this.polygonCollider2D.offset);
+			Vector3 to = base.transform.TransformPoint(points[0] + this.polygonCollider2D.offset);
+			Gizmos.DrawLine(from, to);
 			for (int i = 0; i < points.Length - 1; i++)
 			{
-				vector = base.transform.TransformPoint(points[i] + this.polygonCollider2D.offset);
-				vector2 = base.transform.TransformPoint(points[i + 1] + this.polygonCollider2D.offset);
-				Gizmos.DrawLine(vector, vector2);
+				from = base.transform.TransformPoint(points[i] + this.polygonCollider2D.offset);
+				to = base.transform.TransformPoint(points[i + 1] + this.polygonCollider2D.offset);
+				Gizmos.DrawLine(from, to);
 			}
 		}
 

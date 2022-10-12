@@ -32,7 +32,7 @@ namespace Gameplay.GameControllers.Bosses.Snake
 		{
 			if (this.bgAnimator == null)
 			{
-				this.bgAnimator = Object.FindObjectOfType<SnakeBackgroundAnimator>();
+				this.bgAnimator = UnityEngine.Object.FindObjectOfType<SnakeBackgroundAnimator>();
 			}
 		}
 

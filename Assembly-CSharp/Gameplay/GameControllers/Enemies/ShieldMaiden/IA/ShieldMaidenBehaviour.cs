@@ -70,7 +70,7 @@ namespace Gameplay.GameControllers.Enemies.ShieldMaiden.IA
 
 		private void SetRandomWait()
 		{
-			this._waitPeriod = Random.Range(0.3f, 0.5f);
+			this._waitPeriod = UnityEngine.Random.Range(0.3f, 0.5f);
 		}
 
 		public override void Idle()
@@ -114,7 +114,7 @@ namespace Gameplay.GameControllers.Enemies.ShieldMaiden.IA
 		{
 			if (this.ShieldMaiden.Input.HorizontalInput != 0f && this.CanSeePenitent() && this.CanSeePenitent())
 			{
-				this._currentAttackLapse = Random.Range(0f, this.AttackCoolDown / 2f);
+				this._currentAttackLapse = UnityEngine.Random.Range(0f, this.AttackCoolDown / 2f);
 			}
 		}
 
@@ -190,7 +190,7 @@ namespace Gameplay.GameControllers.Enemies.ShieldMaiden.IA
 
 		private float GetRandomAttackLapse()
 		{
-			return Random.Range(-0.3f, 0f);
+			return UnityEngine.Random.Range(-0.3f, 0f);
 		}
 
 		private bool IsBeingParried()

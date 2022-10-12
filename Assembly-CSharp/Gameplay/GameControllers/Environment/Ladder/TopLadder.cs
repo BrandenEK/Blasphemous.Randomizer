@@ -44,8 +44,7 @@ namespace Gameplay.GameControllers.Environment.Ladder
 			}
 			if (this.Penitent.Status.IsGrounded && this.Penitent.PlatformCharacterInput.isJoystickDown)
 			{
-				Vector3 position;
-				position..ctor(this.Collider2D.bounds.center.x, this.Penitent.transform.position.y, this.Penitent.transform.position.z);
+				Vector3 position = new Vector3(this.Collider2D.bounds.center.x, this.Penitent.transform.position.y, this.Penitent.transform.position.z);
 				this.Penitent.transform.position = position;
 			}
 		}

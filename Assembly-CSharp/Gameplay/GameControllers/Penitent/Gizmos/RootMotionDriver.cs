@@ -11,8 +11,8 @@ namespace Gameplay.GameControllers.Penitent.Gizmos
 			{
 				Vector3 position = base.transform.position;
 				Vector3 localPosition = base.transform.localPosition;
-				float num = position.x - localPosition.x * 2f;
-				return new Vector3(num, position.y, 0f);
+				float x = position.x - localPosition.x * 2f;
+				return new Vector3(x, position.y, 0f);
 			}
 		}
 
@@ -21,10 +21,9 @@ namespace Gameplay.GameControllers.Penitent.Gizmos
 			get
 			{
 				Vector3 localPosition = base.transform.localPosition;
-				Vector2 vector;
-				vector..ctor(-localPosition.x, localPosition.y);
-				Vector3 vector2 = base.transform.TransformPoint(vector);
-				return new Vector2(vector2.x, vector2.y - localPosition.y);
+				Vector2 v = new Vector2(-localPosition.x, localPosition.y);
+				Vector3 vector = base.transform.TransformPoint(v);
+				return new Vector2(vector.x, vector.y - localPosition.y);
 			}
 		}
 

@@ -18,7 +18,7 @@ namespace Gameplay.GameControllers.Enemies.Stoners.Rock
 				this._timeInvisible += Time.deltaTime;
 				if (this._timeInvisible >= 2f)
 				{
-					Object.Destroy(base.gameObject);
+					UnityEngine.Object.Destroy(base.gameObject);
 				}
 			}
 			else

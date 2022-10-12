@@ -40,7 +40,7 @@ namespace Framework.Managers
 				float result = -1f;
 				if (this.audio.isValid())
 				{
-					this.audio.getVolume(ref num, ref result);
+					this.audio.getVolume(out num, out result);
 				}
 				return result;
 			}
@@ -122,7 +122,7 @@ namespace Framework.Managers
 			}
 			if (this.currentData.cinematicType == CinematicType.Video)
 			{
-				this.player.loopPointReached -= new VideoPlayer.EventHandler(this.OnVideoEnd);
+				this.player.loopPointReached -= this.OnVideoEnd;
 			}
 			Log.Trace("Cutscene", "Ending cinematic video.", null);
 			if (this.VideoEnded != null)
@@ -196,8 +196,8 @@ namespace Framework.Managers
 			}
 			if (this.audio.isValid())
 			{
-				Debug.Log("*** EndCinematic, stop audio");
-				this.audio.stop(0);
+				UnityEngine.Debug.Log("*** EndCinematic, stop audio");
+				this.audio.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 				this.audio.release();
 				this.audio.clearHandle();
 				this.audio = default(EventInstance);
@@ -208,7 +208,7 @@ namespace Framework.Managers
 			}
 			if (this.CurrentPrefabInstance != null)
 			{
-				Object.Destroy(this.CurrentPrefabInstance);
+				UnityEngine.Object.Destroy(this.CurrentPrefabInstance);
 				this.CurrentPrefabInstance = null;
 			}
 			this.cinematicRunning = false;
@@ -267,7 +267,7 @@ namespace Framework.Managers
 			}
 			if (text.Length > 0)
 			{
-				Debug.Log("Cutscene: Create audio " + text);
+				UnityEngine.Debug.Log("Cutscene: Create audio " + text);
 				this.audio = Core.Audio.CreateEvent(text, default(Vector3));
 			}
 			this.videoImage = UIController.instance.GetSubtitleWidget().videoRaw;
@@ -295,12 +295,12 @@ namespace Framework.Managers
 					try
 					{
 						this.player.clip = data.video;
-						this.player.started += new VideoPlayer.EventHandler(this.OnVideoStart);
-						this.player.loopPointReached += new VideoPlayer.EventHandler(this.OnVideoEnd);
+						this.player.started += this.OnVideoStart;
+						this.player.loopPointReached += this.OnVideoEnd;
 						this.player.playbackSpeed = data.reproductionSpeed;
-						this.player.prepareCompleted += new VideoPlayer.EventHandler(this.OnVideoPrepared);
+						this.player.prepareCompleted += this.OnVideoPrepared;
 						this.player.playOnAwake = false;
-						this.player.renderMode = 2;
+						this.player.renderMode = VideoRenderMode.RenderTexture;
 						this.videoImage.texture = this.renderTexture;
 						this.player.targetTexture = this.renderTexture;
 						this.player.Prepare();
@@ -324,7 +324,7 @@ namespace Framework.Managers
 
 		private void OnVideoPrepared(VideoPlayer source)
 		{
-			this.player.prepareCompleted -= new VideoPlayer.EventHandler(this.OnVideoPrepared);
+			this.player.prepareCompleted -= this.OnVideoPrepared;
 			try
 			{
 				if (this.StartFade > 0f)
@@ -367,7 +367,7 @@ namespace Framework.Managers
 
 		private void OnVideoStart(VideoPlayer source)
 		{
-			this.player.started -= new VideoPlayer.EventHandler(this.OnVideoStart);
+			this.player.started -= this.OnVideoStart;
 			Log.Trace("Cutscene", "Video Start", null);
 			if (this.VideoStarted != null)
 			{
@@ -404,7 +404,7 @@ namespace Framework.Managers
 		private void ShowAnimationCutscene()
 		{
 			this.videoImage.enabled = false;
-			this.CurrentPrefabInstance = Object.Instantiate<GameObject>(this.currentData.AnimationObject);
+			this.CurrentPrefabInstance = UnityEngine.Object.Instantiate<GameObject>(this.currentData.AnimationObject);
 			Vector3 position = Core.Logic.CameraManager.ProCamera2D.transform.position;
 			position.z = 0f;
 			this.CurrentPrefabInstance.transform.position = position;
@@ -451,7 +451,7 @@ namespace Framework.Managers
 				TermData termData = Core.Dialog.Language.GetTermData(text, false);
 				if (termData == null)
 				{
-					Debug.LogWarning("Term " + text + " not found in Cutscene Localization");
+					UnityEngine.Debug.LogWarning("Term " + text + " not found in Cutscene Localization");
 				}
 				else
 				{

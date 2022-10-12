@@ -142,7 +142,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras
 			}
 			else
 			{
-				result = list[Random.Range(0, list.Count)];
+				result = list[UnityEngine.Random.Range(0, list.Count)];
 			}
 			this.firstAttackDone = true;
 			return result;
@@ -327,8 +327,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras
 			yield return new WaitForSeconds(0.3f);
 			if (this._currentPhase == EsdrasBehaviour.ESDRAS_PHASES.SECOND)
 			{
-				Vector2 vector;
-				vector..ctor(dir.x, 0f);
+				Vector2 vector = new Vector2(dir.x, 0f);
 				this.LaunchArcProjectile(vector.normalized);
 			}
 			this._keepRunningAnimation = false;
@@ -585,8 +584,8 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras
 
 		public void CounterImpactShockwave()
 		{
-			float num = (this.Entity.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
-			this.instantLightningAttack.SummonAreaOnPoint(base.transform.position - num * Vector3.right, 0f, 1f, null);
+			float d = (this.Entity.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
+			this.instantLightningAttack.SummonAreaOnPoint(base.transform.position - d * Vector3.right, 0f, 1f, null);
 			PoolManager.Instance.ReuseObject(this.shockwave, base.transform.position, Quaternion.identity, false, 1);
 		}
 
@@ -600,12 +599,12 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras
 		{
 			this.SetGhostTrail(trail);
 			this.Esdras.DamageByContact = false;
-			Ease ease = 6;
+			Ease ease = Ease.OutQuad;
 			float num = (this.Entity.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
 			num *= displacement;
 			Vector2 vector = Vector2.right * num;
 			vector = this.ClampToFightBoundaries(vector);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, base.transform.position + vector, duration, false), ease), delegate()
+			base.transform.DOMove(base.transform.position + vector, duration, false).SetEase(ease).OnComplete(delegate
 			{
 				this.AfterDisplacement();
 			});
@@ -621,12 +620,12 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras
 		{
 			this.SetGhostTrail(true);
 			this.Esdras.DamageByContact = false;
-			Ease ease = 6;
+			Ease ease = Ease.OutQuad;
 			float num = (this.Entity.Status.Orientation != EntityOrientation.Right) ? 1f : -1f;
 			num *= displacement;
 			Vector2 vector = Vector2.right * num;
 			vector = this.ClampToFightBoundaries(vector);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(base.transform, base.transform.position + vector, duration, false), ease), delegate()
+			base.transform.DOMove(base.transform.position + vector, duration, false).SetEase(ease).OnComplete(delegate
 			{
 				this.AfterDisplacement();
 			});
@@ -686,7 +685,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras
 			this.SetGhostTrail(false);
 			this.perpetuaSummoner.DismissPerpetua();
 			base.StopAllCoroutines();
-			ShortcutExtensions.DOKill(base.transform, true);
+			base.transform.DOKill(true);
 			base.StopBehaviour();
 			this.Esdras.AnimatorInyector.Death();
 			this._fsm.ChangeState(this.stDeath);
@@ -708,7 +707,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras
 			base.StopAllCoroutines();
 			this.SetGhostTrail(false);
 			this.isBeingParried = true;
-			ShortcutExtensions.DOKill(base.transform, false);
+			base.transform.DOKill(false);
 			this.Esdras.AnimatorInyector.Parry();
 			this.BackDisplacement(0.5f, 1f);
 			this.SetRecovering(true);
@@ -745,7 +744,7 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras
 				base.StopAllCoroutines();
 				this.Esdras.Audio.StopAll();
 				this.Esdras.AnimatorInyector.Hurt();
-				ShortcutExtensions.DOKill(base.transform, true);
+				base.transform.DOKill(true);
 				this.LookAtPenitent();
 				this.BackDisplacement(0.3f, 0.4f);
 				this._currentRecoveryHits++;
@@ -778,10 +777,10 @@ namespace Gameplay.GameControllers.Bosses.EcclesiaBros.Esdras
 		private Vector2 ClampToFightBoundaries(Vector2 dir)
 		{
 			Vector2 vector = dir;
-			Debug.DrawLine(base.transform.position, base.transform.position + vector, Color.green, 5f);
+			UnityEngine.Debug.DrawLine(base.transform.position, base.transform.position + vector, Color.green, 5f);
 			if (Physics2D.RaycastNonAlloc(base.transform.position, dir, this.results, dir.magnitude, this.fightBoundariesLayerMask) > 0)
 			{
-				Debug.DrawLine(base.transform.position, this.results[0].point, Color.red, 5f);
+				UnityEngine.Debug.DrawLine(base.transform.position, this.results[0].point, Color.red, 5f);
 				vector = vector.normalized * this.results[0].distance;
 			}
 			return vector;

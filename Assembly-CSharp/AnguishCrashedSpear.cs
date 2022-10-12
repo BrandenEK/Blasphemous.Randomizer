@@ -14,7 +14,7 @@ public class AnguishCrashedSpear : MonoBehaviour
 	{
 		obj.OnUsedEvent -= this.OnUsed;
 		base.GetComponentInChildren<BreakableDamageArea>().DamageAreaCollider.enabled = false;
-		TweenSettingsExtensions.OnComplete<Tweener>(ShortcutExtensions.DOPunchPosition(obj.transform, Vector3.up * 0.2f, obj.lastDelay, 20, 1f, false), delegate()
+		obj.transform.DOPunchPosition(Vector3.up * 0.2f, obj.lastDelay, 20, 1f, false).OnComplete(delegate
 		{
 			this.breakable.Use();
 		});

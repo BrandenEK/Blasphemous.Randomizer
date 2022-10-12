@@ -91,10 +91,8 @@ namespace Gameplay.GameControllers.Penitent.Damage
 		private void SetTopSmallDamageArea()
 		{
 			this._damageAreaResized = true;
-			Vector2 size;
-			size..ctor(this._damageAreaCollider.size.x, 0.6f);
-			Vector2 offset;
-			offset..ctor(this._damageAreaCollider.offset.x, 1.1f);
+			Vector2 size = new Vector2(this._damageAreaCollider.size.x, 0.6f);
+			Vector2 offset = new Vector2(this._damageAreaCollider.offset.x, 1.1f);
 			this._damageAreaCollider.size = size;
 			this._damageAreaCollider.offset = offset;
 		}

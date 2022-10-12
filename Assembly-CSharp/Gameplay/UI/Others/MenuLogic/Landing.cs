@@ -21,7 +21,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			this.timeWaiting = 0f;
 			Time.maximumDeltaTime = 0.033f;
 			Settings instance = Settings.Instance;
-			if (instance.AutomaticEventLoading || instance.ImportType != null)
+			if (instance.AutomaticEventLoading || instance.ImportType != ImportType.StreamingAssets)
 			{
 				Debug.LogError("*** FMODAudioManager, setting must be AutomaticEventLoading=false and ImportType=StreamingAssets");
 			}
@@ -43,9 +43,9 @@ namespace Gameplay.UI.Others.MenuLogic
 					}
 					RuntimeManager.WaitForAllLoads();
 				}
-				catch (BankLoadException ex)
+				catch (BankLoadException exception)
 				{
-					Debug.LogException(ex);
+					Debug.LogException(exception);
 				}
 			}
 			Cursor.visible = false;
@@ -53,8 +53,8 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		private void Start()
 		{
-			string text = "MainMenu_MAIN";
-			this.preloadMenu = SceneManager.LoadSceneAsync(text, 0);
+			string sceneName = "MainMenu_MAIN";
+			this.preloadMenu = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
 			this.preloadMenu.allowSceneActivation = false;
 			if (!Core.preinit && this.preInitCore)
 			{

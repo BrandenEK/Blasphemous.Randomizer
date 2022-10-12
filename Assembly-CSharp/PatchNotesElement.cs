@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PatchNotesElement : MonoBehaviour
 {
-	[Button(0)]
+	[Button(ButtonSizes.Small)]
 	public void GetReferences()
 	{
 		foreach (Text text in base.transform.GetComponentsInChildren<Text>())

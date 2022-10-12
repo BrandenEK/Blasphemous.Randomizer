@@ -12,7 +12,7 @@ namespace Tools.Level.Actionables
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action<ActionableSwitch> OnSwitchUsed;
 
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		public void Use()
 		{
 			this.ChangeState(!this.isOn);
@@ -21,7 +21,7 @@ namespace Tools.Level.Actionables
 		public void ChangeState(bool turnOn)
 		{
 			this.isOn = turnOn;
-			Debug.Log("SWITCH USED");
+			UnityEngine.Debug.Log("SWITCH USED");
 			if (this.OnSwitchUsed != null)
 			{
 				this.OnSwitchUsed(this);

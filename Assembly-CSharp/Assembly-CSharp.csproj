@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{87AD0032-0C3E-4351-A3DF-552A31CE0E2A}</ProjectGuid>
+    <ProjectGuid>{27AB2983-5622-416E-9C7E-F8C552061C62}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Assembly-CSharp</RootNamespace>
@@ -33,32 +33,87 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp-firstpass" />
-    <Reference Include="DOTween" />
-    <Reference Include="DOTween43" />
-    <Reference Include="DOTween46" />
-    <Reference Include="PlayMaker" />
-    <Reference Include="Rewired_Core" />
-    <Reference Include="Sirenix.OdinInspector.Attributes" />
-    <Reference Include="Sirenix.Serialization" />
-    <Reference Include="Sirenix.Utilities" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="TextMeshPro-2017.3-Runtime" />
-    <Reference Include="UnityEngine.AnimationModule" />
-    <Reference Include="UnityEngine.AudioModule" />
-    <Reference Include="UnityEngine.CoreModule" />
-    <Reference Include="UnityEngine.DirectorModule" />
-    <Reference Include="UnityEngine.ImageConversionModule" />
-    <Reference Include="UnityEngine.IMGUIModule" />
-    <Reference Include="UnityEngine.ParticleSystemModule" />
-    <Reference Include="UnityEngine.Physics2DModule" />
-    <Reference Include="UnityEngine.PhysicsModule" />
-    <Reference Include="UnityEngine.TextRenderingModule" />
-    <Reference Include="UnityEngine.UI" />
-    <Reference Include="UnityEngine.UIModule" />
-    <Reference Include="UnityEngine.UnityAnalyticsModule" />
-    <Reference Include="UnityEngine.VideoModule" />
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="PlayMaker">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\PlayMaker.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\Sirenix.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="TextMeshPro-2017.3-Runtime">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\TextMeshPro-2017.3-Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>..\..\..\Blasphemous\Blasphemous_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
@@ -339,6 +394,17 @@
     <Compile Include="Framework\Penitences\PenitencePE02.cs" />
     <Compile Include="Framework\Penitences\PenitencePE03.cs" />
     <Compile Include="Framework\Pooling\PoolObject.cs" />
+    <Compile Include="Framework\Randomizer\Config.cs" />
+    <Compile Include="Framework\Randomizer\FileIO.cs" />
+    <Compile Include="Framework\Randomizer\ForwardFiller.cs" />
+    <Compile Include="Framework\Randomizer\ItemData.cs" />
+    <Compile Include="Framework\Randomizer\Location.cs" />
+    <Compile Include="Framework\Randomizer\Logger.cs" />
+    <Compile Include="Framework\Randomizer\Randomizer.cs" />
+    <Compile Include="Framework\Randomizer\RandomizerPersistenceData.cs" />
+    <Compile Include="Framework\Randomizer\Reward.cs" />
+    <Compile Include="Framework\Randomizer\RewardAchievement.cs" />
+    <Compile Include="Framework\Randomizer\Spoiler.cs" />
     <Compile Include="Framework\Util\AnimatorEvent.cs" />
     <Compile Include="Framework\Util\Collider2DParam.cs" />
     <Compile Include="Framework\Util\CompletionCommandHelper\CompletionAssets.cs" />

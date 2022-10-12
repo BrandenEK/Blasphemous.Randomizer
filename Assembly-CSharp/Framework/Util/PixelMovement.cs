@@ -33,9 +33,9 @@ namespace Framework.Util
 
 		private void PixelPerfectPosition()
 		{
-			float num = Mathf.Floor(base.transform.position.x * 32f) / 32f;
-			float num2 = Mathf.Floor(base.transform.position.y * 32f) / 32f;
-			base.transform.position = new Vector3(num, num2, base.transform.position.z);
+			float x = Mathf.Floor(base.transform.position.x * 32f) / 32f;
+			float y = Mathf.Floor(base.transform.position.y * 32f) / 32f;
+			base.transform.position = new Vector3(x, y, base.transform.position.z);
 		}
 
 		private Vector3 realPosition;

@@ -20,7 +20,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.ChimeRinger
 		public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 		{
 			base.OnStateExit(animator, stateInfo, layerIndex);
-			Object.Destroy(this.ChimeRinger.gameObject);
+			UnityEngine.Object.Destroy(this.ChimeRinger.gameObject);
 		}
 	}
 }

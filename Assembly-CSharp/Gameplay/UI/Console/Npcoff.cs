@@ -9,7 +9,7 @@ namespace Gameplay.UI.Console
 		public override void Execute(string command, string[] parameters)
 		{
 			this.enabled = !this.enabled;
-			DamageArea[] array = Object.FindObjectsOfType<DamageArea>();
+			DamageArea[] array = UnityEngine.Object.FindObjectsOfType<DamageArea>();
 			foreach (DamageArea damageArea in array)
 			{
 				damageArea.enabled = this.enabled;

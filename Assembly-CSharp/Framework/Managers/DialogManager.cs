@@ -31,7 +31,7 @@ namespace Framework.Managers
 		{
 			this.Language = DialogManager.GetLanguageSource();
 			Core.Localization.AddLanguageSource("Dialog/Languages");
-			LocalizationManager.OnLocalizeEvent += new LocalizationManager.OnLocalizeCallback(this.OnLocalizationChange);
+			LocalizationManager.OnLocalizeEvent += this.OnLocalizationChange;
 			LocalizationManager.OnLocalizeAudioEvent += this.OnAudioLocalizationChange;
 			this.InDialog = false;
 			DialogObject[] array = Resources.LoadAll<DialogObject>("Dialog/");
@@ -46,7 +46,7 @@ namespace Framework.Managers
 				{
 					if (!this.allDialogs.ContainsKey(keyValuePair.Value.externalAnswersId))
 					{
-						Debug.LogError("** Dialog " + keyValuePair.Key + " references missing external id: " + keyValuePair.Value.externalAnswersId);
+						UnityEngine.Debug.LogError("** Dialog " + keyValuePair.Key + " references missing external id: " + keyValuePair.Value.externalAnswersId);
 					}
 					else
 					{
@@ -169,7 +169,7 @@ namespace Framework.Managers
 			}
 			if (dialogLines.StopAudio && this.currentSound.isValid() && this.currentSound.isValid())
 			{
-				this.currentSound.stop(0);
+				this.currentSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			}
 			if (!string.IsNullOrEmpty(dialogLines.AudioKey) && dialogLines.Text.Length > 0)
 			{
@@ -209,7 +209,7 @@ namespace Framework.Managers
 		{
 			if (this.currentSound.isValid())
 			{
-				this.currentSound.stop(0);
+				this.currentSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 				this.currentSound = default(EventInstance);
 			}
 			if (!this.endDialogSafeRunning)
@@ -420,7 +420,7 @@ namespace Framework.Managers
 					RuntimeManager.UnloadBank(text);
 				}
 				RuntimeManager.LoadBank(this.currentBankName, true);
-				Debug.Log("Audio localization event, new bank " + this.currentBankName);
+				UnityEngine.Debug.Log("Audio localization event, new bank " + this.currentBankName);
 			}
 		}
 
@@ -460,7 +460,7 @@ namespace Framework.Managers
 				TermData termData = this.Language.GetTermData(text, false);
 				if (termData == null)
 				{
-					Debug.LogWarning("Term " + text + " not found in Dialog Localization");
+					UnityEngine.Debug.LogWarning("Term " + text + " not found in Dialog Localization");
 				}
 				else if (termData.Languages.ElementAtOrDefault(idxLanguage) != null)
 				{

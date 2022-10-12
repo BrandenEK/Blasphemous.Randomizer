@@ -30,7 +30,7 @@ namespace Framework.Managers
 		public void CustomEvent(string eventId, string name = "", float amount = -1f)
 		{
 			Dictionary<string, object> dictionary = new Dictionary<string, object>();
-			if (!StringExtensions.IsNullOrWhitespace(name))
+			if (!name.IsNullOrWhitespace())
 			{
 				dictionary.Add("NAME", name);
 			}

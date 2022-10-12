@@ -20,10 +20,7 @@ public class CherubCaptorPersistentObject : PersistentObject
 			this.OnCherubDestroyed(this.cherubId);
 		}
 		this.spawner.DisableCherubSpawn();
-		string id = this.cherubId;
-		Core.Events.SetFlag(id, true, false);
-		this.AddProgressToAC13();
-		Camera.main.GetComponent<MonoBehaviour>().StartCoroutine(this.ShowPopUp());
+		Core.Randomizer.giveReward(this.cherubId, true);
 	}
 
 	public override PersistentManager.PersistentData GetCurrentPersistentState(string dataPath, bool fullSave)
@@ -31,7 +28,7 @@ public class CherubCaptorPersistentObject : PersistentObject
 		CherubCaptorPersistentObject.CherubSpawnPersistenceData cherubSpawnPersistenceData = base.CreatePersistentData<CherubCaptorPersistentObject.CherubSpawnPersistenceData>();
 		cherubSpawnPersistenceData.cherubId = this.cherubId;
 		cherubSpawnPersistenceData.destroyed = this.destroyed;
-		Debug.Log(string.Format("<color=red>SAVING CHERUB OF ID:{0}. Destroyed = {1}</color>", this.cherubId, this.destroyed));
+		UnityEngine.Debug.Log(string.Format("<color=red>SAVING CHERUB OF ID:{0}. Destroyed = {1}</color>", this.cherubId, this.destroyed));
 		return cherubSpawnPersistenceData;
 	}
 

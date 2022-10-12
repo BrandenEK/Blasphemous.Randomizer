@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Diagnostics;
 using CreativeSpore.SmartColliders;
 using Framework.FrameworkCore;
 using Framework.Managers;
@@ -49,10 +48,8 @@ namespace Gameplay.GameControllers.Penitent
 
 		public PenitentAudio Audio { get; private set; }
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action<AttackBehaviour> OnAttackBehaviourEnters;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action OnJump;
 
 		public void OnAttackBehaviour_OnEnter(AttackBehaviour attackBehaviour)
@@ -63,7 +60,6 @@ namespace Gameplay.GameControllers.Penitent
 			}
 		}
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action<AirAttackBehaviour> OnAirAttackBehaviourEnters;
 
 		public void OnAirAttackBehaviour_OnEnter(AirAttackBehaviour airAttackBehaviour)
@@ -100,8 +96,7 @@ namespace Gameplay.GameControllers.Penitent
 			{
 				this.GetPurge(enemy);
 			}
-			Penitent penitent = entity as Penitent;
-			if (penitent == null)
+			if (entity as Penitent == null)
 			{
 				return;
 			}
@@ -113,6 +108,12 @@ namespace Gameplay.GameControllers.Penitent
 
 		private void GetPurge(Enemy enemy)
 		{
+			if (enemy.Id != "" && "BS01BS03BS04BS05BS06BS12BS13BS14BS16".Contains(enemy.Id))
+			{
+				Core.Randomizer.Log("GetPurge", 2);
+				Core.Randomizer.giveReward(enemy.Id, true);
+				return;
+			}
 			float num = this.Stats.PurgeStrength.Final * enemy.purgePointsWhenDead;
 			num *= Core.GuiltManager.GetPurgeGainFactor();
 			if (this.IsOnExecution)
@@ -217,31 +218,29 @@ namespace Gameplay.GameControllers.Penitent
 		{
 			do
 			{
-				float direction = targetPosition.x - base.transform.position.x;
-				if (Mathf.Sign(direction) < 0f)
+				float num = targetPosition.x - base.transform.position.x;
+				if (Mathf.Sign(num) < 0f)
 				{
 					break;
 				}
-				Core.Logic.Penitent.PlatformCharacterInput.forceHorizontalMovement = direction;
+				Core.Logic.Penitent.PlatformCharacterInput.forceHorizontalMovement = num;
 				yield return new WaitForFixedUpdate();
 			}
 			while (base.transform.position.x < targetPosition.x + 0.2f);
 			do
 			{
-				IL_D4:
-				float direction = targetPosition.x - base.transform.position.x;
-				if (Mathf.Sign(direction) > 0f)
+				float num2 = targetPosition.x - base.transform.position.x;
+				if (Mathf.Sign(num2) > 0f)
 				{
 					break;
 				}
-				Core.Logic.Penitent.PlatformCharacterInput.forceHorizontalMovement = direction;
+				Core.Logic.Penitent.PlatformCharacterInput.forceHorizontalMovement = num2;
 				yield return new WaitForFixedUpdate();
 			}
 			while (base.transform.position.x > targetPosition.x - 0.2f);
 			yield return new WaitForSeconds(0.5f);
 			Core.Logic.Penitent.PlatformCharacterInput.forceHorizontalMovement = 0f;
 			yield break;
-			goto IL_D4;
 		}
 
 		public bool IsChargingAttack { get; set; }
@@ -289,9 +288,10 @@ namespace Gameplay.GameControllers.Penitent
 			{
 				return;
 			}
-			foreach (Trait trait in base.GetComponentsInChildren<Trait>())
+			Trait[] componentsInChildren = base.GetComponentsInChildren<Trait>();
+			for (int i = 0; i < componentsInChildren.Length; i++)
 			{
-				trait.enabled = enableTraits;
+				componentsInChildren[i].enabled = enableTraits;
 			}
 		}
 
@@ -355,7 +355,11 @@ namespace Gameplay.GameControllers.Penitent
 
 		public EntityOrientation GetOrientation()
 		{
-			return (!this.PlatformCharacterInput.faceRight) ? EntityOrientation.Left : EntityOrientation.Right;
+			if (this.PlatformCharacterInput.faceRight)
+			{
+				return EntityOrientation.Right;
+			}
+			return EntityOrientation.Left;
 		}
 
 		public Healing Healing { get; private set; }
@@ -518,6 +522,7 @@ namespace Gameplay.GameControllers.Penitent
 				if (!this.Parry.CheckParry(hit))
 				{
 					this.DamageArea.TakeDamage(hit, false);
+					return;
 				}
 			}
 			else if (this.Parry.IsOnParryChance && !hit.Unblockable && (hit.DamageType == Gameplay.GameControllers.Entities.DamageArea.DamageType.Heavy || hit.forceGuardslide))
@@ -527,11 +532,10 @@ namespace Gameplay.GameControllers.Penitent
 				if (!hit.CheckOrientationsForGuardslide || penitentSword.IsEnemySameDirection(enemy))
 				{
 					this.GuardSlide.CastSlide(hit);
+					return;
 				}
-				else
-				{
-					this.DamageArea.TakeDamage(hit, false);
-				}
+				this.DamageArea.TakeDamage(hit, false);
+				return;
 			}
 			else
 			{

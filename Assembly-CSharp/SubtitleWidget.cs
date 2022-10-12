@@ -55,7 +55,7 @@ public class SubtitleWidget : MonoBehaviour
 	{
 		if (this.currentSound.isValid())
 		{
-			this.currentSound.stop(0);
+			this.currentSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this.currentSound.release();
 			this.currentSound.clearHandle();
 			this.currentSound = default(EventInstance);

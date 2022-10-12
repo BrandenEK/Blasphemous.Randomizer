@@ -42,7 +42,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 
 		private void OnTeleportOut()
 		{
-			Debug.Log("TELEPORT OUT");
+			UnityEngine.Debug.Log("TELEPORT OUT");
 			if (this.instantiateOnTeleportOut != null)
 			{
 				this.InstantiateArea(this.instantiateOnTeleportOut);
@@ -51,7 +51,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 
 		private void OnTeleportIn()
 		{
-			Debug.Log("TELEPORT IN");
+			UnityEngine.Debug.Log("TELEPORT IN");
 			if (this.instantiateOnTeleportIn != null)
 			{
 				this.InstantiateArea(this.instantiateOnTeleportIn);
@@ -64,7 +64,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 
 		private void InstantiateArea(GameObject toInstantiate)
 		{
-			GameObject gameObject = Object.Instantiate<GameObject>(toInstantiate, this._parentToMove.position, Quaternion.identity);
+			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(toInstantiate, this._parentToMove.position, Quaternion.identity);
 			BossSpawnedAreaAttack component = gameObject.GetComponent<BossSpawnedAreaAttack>();
 			if (component != null)
 			{

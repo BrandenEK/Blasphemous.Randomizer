@@ -29,10 +29,10 @@ namespace Gameplay.UI.Others.MenuLogic
 			this.rewiredPlayer = ReInput.players.GetPlayer(0);
 			this.UpdatePenitenceTextsAndDisplayedMedal();
 			this.canvasGroup = base.GetComponent<CanvasGroup>();
-			TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
+			DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
 			{
 				this.canvasGroup.alpha = x;
-			}, 1f, 1f), new TweenCallback(this.OnOpen));
+			}, 1f, 1f).OnComplete(new TweenCallback(this.OnOpen));
 		}
 
 		protected override void OnOpen()
@@ -43,10 +43,10 @@ namespace Gameplay.UI.Others.MenuLogic
 		public override void Close()
 		{
 			this.isOpen = false;
-			TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
+			DOTween.To(() => this.canvasGroup.alpha, delegate(float x)
 			{
 				this.canvasGroup.alpha = x;
-			}, 0f, 1f), new TweenCallback(this.OnClose));
+			}, 0f, 1f).OnComplete(new TweenCallback(this.OnClose));
 			base.Close();
 		}
 

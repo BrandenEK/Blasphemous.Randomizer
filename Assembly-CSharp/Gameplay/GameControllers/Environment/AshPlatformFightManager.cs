@@ -124,8 +124,8 @@ namespace Gameplay.GameControllers.Environment
 					Gizmos.color = Color.yellow;
 					break;
 				}
-				Vector2 vector = base.transform.position + Vector2.down * 6f - Vector2.right * 2f + Vector2.right * (float)i;
-				Gizmos.DrawSphere(vector, 0.25f);
+				Vector2 v = base.transform.position + Vector2.down * 6f - Vector2.right * 2f + Vector2.right * (float)i;
+				Gizmos.DrawSphere(v, 0.25f);
 			}
 		}
 

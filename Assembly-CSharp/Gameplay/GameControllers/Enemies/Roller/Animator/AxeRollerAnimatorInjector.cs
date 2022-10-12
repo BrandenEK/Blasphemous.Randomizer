@@ -62,7 +62,7 @@ namespace Gameplay.GameControllers.Enemies.Roller.Animator
 			{
 				return;
 			}
-			Object.Destroy(this.OwnerEntity.gameObject);
+			UnityEngine.Object.Destroy(this.OwnerEntity.gameObject);
 			base.EntityAnimator.ResetTrigger("ATTACK");
 		}
 

@@ -145,10 +145,10 @@ namespace Tools.Level.Interactables
 		private IEnumerator ReActivationLogic()
 		{
 			this.ShallowActivationLogic();
-			LogicManager coreLogic = Core.Logic;
+			LogicManager logic = Core.Logic;
 			Core.Audio.PlaySfxOnCatalog(this.kneeStartId, this.kneeStartDelay);
-			coreLogic.Penitent.SpriteRenderer.enabled = false;
-			coreLogic.Penitent.DamageArea.enabled = false;
+			logic.Penitent.SpriteRenderer.enabled = false;
+			logic.Penitent.DamageArea.enabled = false;
 			if (this.entityRenderer != null)
 			{
 				this.entityRenderer.flipX = (Core.Logic.Penitent.Status.Orientation == EntityOrientation.Left);
@@ -161,11 +161,11 @@ namespace Tools.Level.Interactables
 				yield return 0;
 			}
 			Core.Logic.EnemySpawner.RespawnDeadEnemies();
-			bool canUseInventory = this.HaveAnySwordHearts();
-			bool canUseTeleport = Core.Alms.GetPrieDieuLevel() >= 3;
-			if (canUseInventory || canUseTeleport)
+			bool flag = this.HaveAnySwordHearts();
+			bool flag2 = Core.Alms.GetPrieDieuLevel() >= 3 || Core.Randomizer.gameConfig.unlockTeleportation;
+			if (flag || flag2)
 			{
-				yield return base.StartCoroutine(this.KneeledMenuCoroutine(canUseInventory, canUseTeleport));
+				yield return base.StartCoroutine(this.KneeledMenuCoroutine(flag, flag2));
 			}
 			this.interactorAnimator.SetTrigger("KNEE_END");
 			Core.Audio.PlaySfxOnCatalog(this.kneeEndId, this.kneeEndDelay);
@@ -253,9 +253,9 @@ namespace Tools.Level.Interactables
 
 		public void ShallowUse()
 		{
-			base.gameObject.SendMessage("OnUsePre", 1);
+			base.gameObject.SendMessage("OnUsePre", SendMessageOptions.DontRequireReceiver);
 			this.ShallowActivationLogic();
-			base.gameObject.SendMessage("OnUsePost", 1);
+			base.gameObject.SendMessage("OnUsePost", SendMessageOptions.DontRequireReceiver);
 		}
 
 		public override bool IsOpenOrActivated()

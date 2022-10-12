@@ -47,7 +47,7 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.Attack
 			int num;
 			do
 			{
-				num = Random.Range(0, this.HandsSpawnPoint.Length);
+				num = UnityEngine.Random.Range(0, this.HandsSpawnPoint.Length);
 			}
 			while (this._pickedUpPositions.Contains(num));
 			this._pickedUpPositions.Add(num);

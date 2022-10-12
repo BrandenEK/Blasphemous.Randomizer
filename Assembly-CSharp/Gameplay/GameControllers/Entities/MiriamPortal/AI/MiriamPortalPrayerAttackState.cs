@@ -29,7 +29,7 @@ namespace Gameplay.GameControllers.Entities.MiriamPortal.AI
 		public override void OnStateExit()
 		{
 			base.OnStateExit();
-			ShortcutExtensions.DOKill(this._miriamPortalPrayer.transform, false);
+			this._miriamPortalPrayer.transform.DOKill(false);
 		}
 
 		public override void Update()
@@ -44,21 +44,21 @@ namespace Gameplay.GameControllers.Entities.MiriamPortal.AI
 			float num = Mathf.Abs(actionDirection.y - position.y);
 			float num2 = 0.1f;
 			float descendingTime = Mathf.Lerp(0.1f, 0.5f, num / this._miriamPortalPrayer.Behaviour.MaxDistanceToHitGround);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(this._miriamPortalPrayer.transform, position.y + 1f, num2, false), 5), delegate()
+			this._miriamPortalPrayer.transform.DOMoveY(position.y + 1f, num2, false).SetEase(Ease.InQuad).OnComplete(delegate
 			{
-				TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(this._miriamPortalPrayer.transform, actionDirection.y, descendingTime, false), 5), delegate()
+				this._miriamPortalPrayer.transform.DOMoveY(actionDirection.y, descendingTime, false).SetEase(Ease.InQuad).OnComplete(delegate
 				{
 					this.FinishAttack(actionDirection);
 				});
 			});
-			TweenSettingsExtensions.OnStart<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(this._miriamPortalPrayer.transform, actionDirection.x, num2 + descendingTime, false), 6), new TweenCallback(this.StartAttack));
+			this._miriamPortalPrayer.transform.DOMoveX(actionDirection.x, num2 + descendingTime, false).SetEase(Ease.OutQuad).OnStart(new TweenCallback(this.StartAttack));
 			Sequence sequence = DOTween.Sequence();
-			TweenSettingsExtensions.AppendInterval(sequence, descendingTime);
-			TweenSettingsExtensions.AppendCallback(sequence, delegate()
+			sequence.AppendInterval(descendingTime);
+			sequence.AppendCallback(delegate
 			{
 				this.ResumeAnimation();
 			});
-			TweenExtensions.Play<Sequence>(sequence);
+			sequence.Play<Sequence>();
 		}
 
 		private void StartAttack()
@@ -75,7 +75,7 @@ namespace Gameplay.GameControllers.Entities.MiriamPortal.AI
 
 		private void FinishAttack(Vector2 actionDirection)
 		{
-			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(this._miriamPortalPrayer.transform, actionDirection.y - 0.3f, 1f, false), 5);
+			this._miriamPortalPrayer.transform.DOMoveY(actionDirection.y - 0.3f, 1f, false).SetEase(Ease.InQuad);
 			this._miriamPortalPrayer.Behaviour.CheckAndSpawnLandingVfx();
 			this._miriamPortalPrayer.GhostTrail.EnableGhostTrail = false;
 			this.ResumeAnimation();

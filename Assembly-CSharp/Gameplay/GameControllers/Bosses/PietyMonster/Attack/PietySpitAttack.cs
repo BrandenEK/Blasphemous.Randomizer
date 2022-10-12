@@ -55,15 +55,14 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.Attack
 		{
 			if (this.SpitPrefab != null)
 			{
-				GameObject gameObject = Object.Instantiate<GameObject>(this.SpitPrefab, this._pietyMonster.SpitingMouth.GetPosition(), Quaternion.identity);
+				GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.SpitPrefab, this._pietyMonster.SpitingMouth.GetPosition(), Quaternion.identity);
 				ThornProjectile component = gameObject.GetComponent<ThornProjectile>();
 				component.GetComponentInChildren<IProjectileAttack>().SetProjectileWeaponDamage((int)this.SpitDamage);
 				component.Target = this.Target.transform;
 				component.SetOwner(this._pietyMonster);
 				float horSpitPosition = this.GetHorSpitPosition();
-				Vector2 vector;
-				vector..ctor(horSpitPosition, this._pietyMonster.PietyRootsManager.Collider.bounds.min.y);
-				component.Throw(vector);
+				Vector2 v = new Vector2(horSpitPosition, this._pietyMonster.PietyRootsManager.Collider.bounds.min.y);
+				component.Throw(v);
 			}
 		}
 
@@ -87,8 +86,7 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.Attack
 		public void RefillSpitPositions()
 		{
 			this.HorPositions.Clear();
-			Vector2 vector;
-			vector..ctor(this.Target.transform.position.x, this.Target.transform.position.y);
+			Vector2 vector = new Vector2(this.Target.transform.position.x, this.Target.transform.position.y);
 			for (int i = 0; i < this.CurrentSpitAmount; i++)
 			{
 				if (i == 0)
@@ -97,11 +95,11 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.Attack
 				}
 				else if (i % 2 != 0)
 				{
-					this.HorPositions.Add(vector.x + (float)i * Random.Range(1f, 2.5f));
+					this.HorPositions.Add(vector.x + (float)i * UnityEngine.Random.Range(1f, 2.5f));
 				}
 				else
 				{
-					this.HorPositions.Add(vector.x - (float)i * Random.Range(1f, 2.5f));
+					this.HorPositions.Add(vector.x - (float)i * UnityEngine.Random.Range(1f, 2.5f));
 				}
 			}
 		}
@@ -111,7 +109,7 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.Attack
 			float result = this.Target.transform.position.x;
 			if (this.HorPositions.Count > 0)
 			{
-				int index = Random.Range(0, this.HorPositions.Count);
+				int index = UnityEngine.Random.Range(0, this.HorPositions.Count);
 				result = this.HorPositions[index];
 				this.HorPositions.RemoveAt(index);
 			}

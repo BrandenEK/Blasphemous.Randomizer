@@ -73,7 +73,7 @@ namespace Gameplay.GameControllers.Bosses.ElderBrother
 			{
 				list.Remove(this.lastAttack);
 			}
-			return list[Random.Range(0, list.Count)];
+			return list[UnityEngine.Random.Range(0, list.Count)];
 		}
 
 		public void LaunchRandomAction()
@@ -166,9 +166,9 @@ namespace Gameplay.GameControllers.Bosses.ElderBrother
 		private Vector3 GetTargetPredictedPos()
 		{
 			Penitent penitent = Core.Logic.Penitent;
-			Vector2 vector = penitent.transform.position;
-			vector.x += penitent.GetVelocity().x;
-			return vector;
+			Vector2 v = penitent.transform.position;
+			v.x += penitent.GetVelocity().x;
+			return v;
 		}
 
 		public void JumpAttack()
@@ -233,7 +233,7 @@ namespace Gameplay.GameControllers.Bosses.ElderBrother
 
 		private float GetExtraWaitTime()
 		{
-			return Random.Range(this.minExtraWaitTime, this.maxExtraWaitTime);
+			return UnityEngine.Random.Range(this.minExtraWaitTime, this.maxExtraWaitTime);
 		}
 
 		private void UnsubscribeFromEverything()

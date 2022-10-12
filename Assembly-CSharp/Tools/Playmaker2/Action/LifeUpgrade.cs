@@ -10,8 +10,7 @@ namespace Tools.Playmaker2.Action
 	{
 		public override void OnEnter()
 		{
-			Core.Logic.Penitent.Stats.Life.Upgrade();
-			Core.Logic.Penitent.Stats.Life.SetToCurrentMax();
+			Core.Randomizer.giveReward(base.Owner.transform.position.GetHashCode().ToString(), true);
 			base.Finish();
 		}
 	}

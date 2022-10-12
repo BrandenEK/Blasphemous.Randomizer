@@ -32,7 +32,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.BellGhost
 			if (stateInfo.normalizedTime >= 0.95f && !this._destroy)
 			{
 				this._destroy = true;
-				Object.Destroy(this._bellGhost.gameObject);
+				UnityEngine.Object.Destroy(this._bellGhost.gameObject);
 			}
 		}
 

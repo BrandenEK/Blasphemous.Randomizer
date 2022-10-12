@@ -100,9 +100,9 @@ namespace Gameplay.GameControllers.Penitent.Attack
 		private void SetAttackAreaSize()
 		{
 			Bounds bounds = this._penitent.AttackArea.WeaponCollider.bounds;
-			float num = (!this.IsDemakeMode) ? bounds.size.x : 2f;
-			float num2 = (!this.IsDemakeMode) ? bounds.size.y : 2f;
-			this._defaultWeaponColliderSize = new Vector2(num, num2);
+			float x = (!this.IsDemakeMode) ? bounds.size.x : 2f;
+			float y = (!this.IsDemakeMode) ? bounds.size.y : 2f;
+			this._defaultWeaponColliderSize = new Vector2(x, y);
 		}
 
 		private void SetAttackAreaOffset()
@@ -371,7 +371,7 @@ namespace Gameplay.GameControllers.Penitent.Attack
 
 		private bool CheckCriticalHit()
 		{
-			float num = Random.Range(0f, 1f);
+			float num = UnityEngine.Random.Range(0f, 1f);
 			return num <= base.EntityOwner.Stats.CriticalChance.Final;
 		}
 
@@ -426,9 +426,8 @@ namespace Gameplay.GameControllers.Penitent.Attack
 		{
 			if (!this._penitent.PlatformCharacterController.IsGrounded && (float)this._currentImpulses < base.EntityOwner.Stats.AirImpulses.Final && this.HitImpulseTriggered)
 			{
-				Vector2 vector;
-				vector..ctor(this._penitent.PlatformCharacterController.InstantVelocity.x, 1f);
-				this._penitent.PlatformCharacterController.PlatformCharacterPhysics.Velocity = vector * this.airAttackImpulse;
+				Vector2 a = new Vector2(this._penitent.PlatformCharacterController.InstantVelocity.x, 1f);
+				this._penitent.PlatformCharacterController.PlatformCharacterPhysics.Velocity = a * this.airAttackImpulse;
 				this._currentImpulses++;
 			}
 		}

@@ -44,7 +44,7 @@ public class TileableBeamLauncher : PoolObject
 		}
 	}
 
-	[Button(0)]
+	[Button(ButtonSizes.Small)]
 	public void TriggerBeamBodyAnim()
 	{
 		Animator componentInChildren = this.bodySprite.GetComponentInChildren<Animator>();
@@ -156,7 +156,7 @@ public class TileableBeamLauncher : PoolObject
 			{
 				this.permanentEndSprite.transform.position = vector;
 			}
-			Color c = Color.HSVToRGB(Random.Range(0f, 1f), 1f, 1f);
+			Color c = Color.HSVToRGB(UnityEngine.Random.Range(0f, 1f), 1f, 1f);
 			GizmoExtensions.DrawDebugCross(base.transform.position, c, 0.1f);
 			GizmoExtensions.DrawDebugCross(vector, c, 0.1f);
 		}

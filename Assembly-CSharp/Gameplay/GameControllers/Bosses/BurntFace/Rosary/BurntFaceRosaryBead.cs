@@ -236,32 +236,32 @@ namespace Gameplay.GameControllers.Bosses.BurntFace.Rosary
 
 		private void DrawGizmoSection(BurntFaceRosaryAngles angle)
 		{
-			Quaternion quaternion = Quaternion.Euler(0f, 0f, angle.startAngle);
-			Quaternion quaternion2 = Quaternion.Euler(0f, 0f, angle.endAngle);
+			Quaternion rotation = Quaternion.Euler(0f, 0f, angle.startAngle);
+			Quaternion rotation2 = Quaternion.Euler(0f, 0f, angle.endAngle);
 			Vector2 right = Vector2.right;
-			Vector2 vector = quaternion * right;
-			Vector2 vector2 = quaternion2 * right;
+			Vector2 a = rotation * right;
+			Vector2 a2 = rotation2 * right;
 			Gizmos.DrawSphere(this.managerPosition, 0.1f);
 			Gizmos.color = Color.cyan;
-			Gizmos.DrawRay(this.managerPosition, vector * 5f);
+			Gizmos.DrawRay(this.managerPosition, a * 5f);
 			Gizmos.color = Color.blue;
-			Gizmos.DrawRay(this.managerPosition, vector2 * 5f);
+			Gizmos.DrawRay(this.managerPosition, a2 * 5f);
 			int num = Mathf.RoundToInt((angle.endAngle - angle.startAngle) / 2f);
 			for (int i = 0; i < num; i++)
 			{
-				float num2 = (float)i / (float)num;
-				Gizmos.color = Color.Lerp(Color.cyan, Color.blue, num2);
-				Quaternion quaternion3 = Quaternion.Euler(0f, 0f, Mathf.Lerp(angle.startAngle, angle.endAngle, num2));
-				Gizmos.DrawRay(this.managerPosition, quaternion3 * Vector2.right * 4f);
+				float t = (float)i / (float)num;
+				Gizmos.color = Color.Lerp(Color.cyan, Color.blue, t);
+				Quaternion rotation3 = Quaternion.Euler(0f, 0f, Mathf.Lerp(angle.startAngle, angle.endAngle, t));
+				Gizmos.DrawRay(this.managerPosition, rotation3 * Vector2.right * 4f);
 			}
-			Vector2 vector3 = Quaternion.Euler(0f, 0f, this.currentAngle) * Vector2.right;
+			Vector2 a3 = Quaternion.Euler(0f, 0f, this.currentAngle) * Vector2.right;
 			Color color = Color.red;
 			if (this.IsInsideActiveAngle())
 			{
 				color = Color.green;
 			}
 			Gizmos.color = color;
-			Gizmos.DrawRay(this.managerPosition, vector3 * 5f);
+			Gizmos.DrawRay(this.managerPosition, a3 * 5f);
 		}
 
 		public Vector3 GetPosition()

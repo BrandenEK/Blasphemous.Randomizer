@@ -22,16 +22,16 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		public IEnumerator PlayBossRushRankAudio(bool complete)
 		{
-			BossFightManager BossFight = Object.FindObjectOfType<BossFightManager>();
-			if (BossFight)
+			BossFightManager bossFightManager = UnityEngine.Object.FindObjectOfType<BossFightManager>();
+			if (bossFightManager)
 			{
-				BossFight.Audio.StopBossTrack();
+				bossFightManager.Audio.StopBossTrack();
 			}
 			yield return new WaitForSeconds(0.2f);
-			string audio = (!complete) ? this.looseMusic : this.winMusic;
-			if (audio != string.Empty)
+			string text = (!complete) ? this.looseMusic : this.winMusic;
+			if (text != string.Empty)
 			{
-				Core.Audio.Ambient.SetSceneParams(audio, string.Empty, new AudioParam[0], string.Empty);
+				Core.Audio.Ambient.SetSceneParams(text, string.Empty, new AudioParam[0], string.Empty);
 			}
 			yield break;
 		}
@@ -56,11 +56,9 @@ namespace Gameplay.UI.Others.MenuLogic
 			if (this.scoreShown.Score > BossRushManager.BossRushCourseScore.A_PLUS)
 			{
 				Core.Audio.PlayOneShot(this.lowGradeSfx, default(Vector3));
+				return;
 			}
-			else
-			{
-				Core.Audio.PlayOneShot(this.highGradeSfx, default(Vector3));
-			}
+			Core.Audio.PlayOneShot(this.highGradeSfx, default(Vector3));
 		}
 
 		public void ShowHighScore(BossRushHighScore score, bool pauseGame, bool complete, bool unlockHard)
@@ -72,9 +70,9 @@ namespace Gameplay.UI.Others.MenuLogic
 			this.IsUnlockHard = unlockHard;
 			this.RetryPressed = false;
 			this.IsFailed = !complete;
-			int num = (int)(score.CourseId + 1);
 			BossRushManager.BossRushCourseId courseId = score.CourseId;
-			switch (courseId)
+			BossRushManager.BossRushCourseId courseId2 = score.CourseId;
+			switch (courseId2)
 			{
 			case BossRushManager.BossRushCourseId.COURSE_A_1:
 				this.CourseName.text = ScriptLocalization.UI_BossRush.COURSE_A_1;
@@ -86,11 +84,11 @@ namespace Gameplay.UI.Others.MenuLogic
 				this.CourseName.text = ScriptLocalization.UI_BossRush.COURSE_A_3;
 				break;
 			default:
-				if (courseId != BossRushManager.BossRushCourseId.COURSE_B_1)
+				if (courseId2 != BossRushManager.BossRushCourseId.COURSE_B_1)
 				{
-					if (courseId != BossRushManager.BossRushCourseId.COURSE_C_1)
+					if (courseId2 != BossRushManager.BossRushCourseId.COURSE_C_1)
 					{
-						if (courseId == BossRushManager.BossRushCourseId.COURSE_D_1)
+						if (courseId2 == BossRushManager.BossRushCourseId.COURSE_D_1)
 						{
 							this.CourseName.text = ScriptLocalization.UI_BossRush.COURSE_D_1;
 						}
@@ -122,16 +120,16 @@ namespace Gameplay.UI.Others.MenuLogic
 			}
 			this.ButtonRetry.SetActive(!complete);
 			Sprite sprite = this.Course_A_1;
-			BossRushManager.BossRushCourseId courseId2 = score.CourseId;
-			if (courseId2 != BossRushManager.BossRushCourseId.COURSE_A_2)
+			BossRushManager.BossRushCourseId courseId3 = score.CourseId;
+			if (courseId3 != BossRushManager.BossRushCourseId.COURSE_A_2)
 			{
-				if (courseId2 != BossRushManager.BossRushCourseId.COURSE_A_3)
+				if (courseId3 != BossRushManager.BossRushCourseId.COURSE_A_3)
 				{
-					if (courseId2 != BossRushManager.BossRushCourseId.COURSE_B_1)
+					if (courseId3 != BossRushManager.BossRushCourseId.COURSE_B_1)
 					{
-						if (courseId2 != BossRushManager.BossRushCourseId.COURSE_C_1)
+						if (courseId3 != BossRushManager.BossRushCourseId.COURSE_C_1)
 						{
-							if (courseId2 == BossRushManager.BossRushCourseId.COURSE_D_1)
+							if (courseId3 == BossRushManager.BossRushCourseId.COURSE_D_1)
 							{
 								sprite = this.Course_D_1;
 							}
@@ -164,8 +162,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				while (enumerator.MoveNext())
 				{
 					object obj = enumerator.Current;
-					Transform transform = (Transform)obj;
-					Object.Destroy(transform.gameObject);
+					UnityEngine.Object.Destroy(((Transform)obj).gameObject);
 				}
 			}
 			finally
@@ -182,8 +179,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				while (enumerator2.MoveNext())
 				{
 					object obj2 = enumerator2.Current;
-					Transform transform2 = (Transform)obj2;
-					Object.Destroy(transform2.gameObject);
+					UnityEngine.Object.Destroy(((Transform)obj2).gameObject);
 				}
 			}
 			finally
@@ -194,12 +190,12 @@ namespace Gameplay.UI.Others.MenuLogic
 					disposable2.Dispose();
 				}
 			}
-			int num2 = 28;
-			int num3 = 0;
-			while (num3 < score.NumFlasksUsed && num3 < num2)
+			int num = 28;
+			int num2 = 0;
+			while (num2 < score.NumFlasksUsed && num2 < num)
 			{
-				GameObject gameObject = Object.Instantiate<GameObject>(this.FlaskElement, Vector3.zero, Quaternion.identity);
-				if (num3 < num2 / 2)
+				GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.FlaskElement, Vector3.zero, Quaternion.identity);
+				if (num2 < num / 2)
 				{
 					gameObject.transform.SetParent(this.FlaskBase.transform);
 				}
@@ -212,7 +208,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				rectTransform.localScale = Vector3.one;
 				rectTransform.localPosition = new Vector3(rectTransform.localPosition.x, rectTransform.localPosition.y, 0f);
 				gameObject.SetActive(true);
-				num3++;
+				num2++;
 			}
 			this.FlaskElement.SetActive(false);
 			this.DogesText.text = score.NumDodgesAchieved.ToString();
@@ -272,14 +268,12 @@ namespace Gameplay.UI.Others.MenuLogic
 				if (this.IsUnlockHard)
 				{
 					base.StartCoroutine(this.ShowPopUp());
+					return;
 				}
-				else
+				FadeWidget.instance.Fade(true, 1f, 0f, delegate
 				{
-					FadeWidget.instance.Fade(true, 1f, 0f, delegate
-					{
-						base.Hide();
-					});
-				}
+					base.Hide();
+				});
 			}
 		}
 
@@ -289,9 +283,9 @@ namespace Gameplay.UI.Others.MenuLogic
 			CanvasGroup group = this.TextUnlocked.GetComponent<CanvasGroup>();
 			group.alpha = 0f;
 			this.FalseFade.gameObject.SetActive(true);
-			Tweener tween = ShortcutExtensions46.DOColor(this.FalseFade, Color.black, 0.5f);
-			yield return TweenExtensions.WaitForCompletion(tween);
-			tween = ShortcutExtensions46.DOFade(group, 1f, 0.4f);
+			Tweener t = this.FalseFade.DOColor(Color.black, 0.5f);
+			yield return t.WaitForCompletion();
+			t = group.DOFade(1f, 0.4f);
 			yield return new WaitForSecondsRealtime(4f);
 			FadeWidget.instance.Fade(true, 1f, 0f, delegate
 			{

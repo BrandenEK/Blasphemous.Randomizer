@@ -25,7 +25,7 @@ namespace Tools.Playmaker2.Events
 			Entity.Death -= this.Dead;
 		}
 
-		[UIHint(10)]
+		[UIHint(UIHint.Variable)]
 		public FsmGameObject entity;
 
 		public FsmEvent onSuccess;

@@ -136,8 +136,8 @@ namespace Gameplay.GameControllers.Penitent.Attack
 					text += string.Empty;
 				}
 			}
-			string text2 = attackLabel + attackLevel + text;
-			this.SwordAnimator.Play(text2, 0, desiredTime);
+			string stateName = attackLabel + attackLevel + text;
+			this.SwordAnimator.Play(stateName, 0, desiredTime);
 			this.ResetParameters();
 		}
 

@@ -76,9 +76,9 @@ namespace Gameplay.GameControllers.Familiar.AI
 		public void Floating()
 		{
 			this._index += Time.deltaTime;
-			float num = this._currentAmplitudeX * Mathf.Sin(this.SpeedX * this._index);
-			float num2 = Mathf.Cos(this.SpeedY * this._index) * this._currentAmplitudeY;
-			this.Familiar.SpriteRenderer.transform.localPosition = new Vector3(num, num2, 0f);
+			float x = this._currentAmplitudeX * Mathf.Sin(this.SpeedX * this._index);
+			float y = Mathf.Cos(this.SpeedY * this._index) * this._currentAmplitudeY;
+			this.Familiar.SpriteRenderer.transform.localPosition = new Vector3(x, y, 0f);
 		}
 
 		private void LookForCherub()
@@ -91,7 +91,7 @@ namespace Gameplay.GameControllers.Familiar.AI
 
 		private bool FindCherub()
 		{
-			Enemy[] array = Object.FindObjectsOfType<Enemy>();
+			Enemy[] array = UnityEngine.Object.FindObjectsOfType<Enemy>();
 			bool result = false;
 			for (int i = 0; i < array.Length; i++)
 			{

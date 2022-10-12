@@ -18,8 +18,7 @@ namespace Gameplay.GameControllers.Entities.EntityGizmos
 
 		private Vector3 GetReversePosition()
 		{
-			Vector3 result;
-			result..ctor(base.transform.position.x - base.transform.localPosition.x * 2f, base.transform.position.y, 0f);
+			Vector3 result = new Vector3(base.transform.position.x - base.transform.localPosition.x * 2f, base.transform.position.y, 0f);
 			return result;
 		}
 

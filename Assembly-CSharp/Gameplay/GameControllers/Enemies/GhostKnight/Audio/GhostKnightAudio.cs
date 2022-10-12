@@ -55,7 +55,7 @@ namespace Gameplay.GameControllers.Enemies.GhostKnight.Audio
 			{
 				return;
 			}
-			this._attackEventInstance.stop(1);
+			this._attackEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 			this._attackEventInstance.release();
 			this._attackEventInstance = default(EventInstance);
 		}

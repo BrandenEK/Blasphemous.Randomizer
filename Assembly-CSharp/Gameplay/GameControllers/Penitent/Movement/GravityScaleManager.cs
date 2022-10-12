@@ -63,8 +63,7 @@ namespace Gameplay.GameControllers.Penitent.Movement
 		{
 			if (!Mathf.Approximately(this._platformCharacterController.PlatformCharacterPhysics.Gravity.y, gravity))
 			{
-				Vector3 gravity2;
-				gravity2..ctor(0f, gravity, 0f);
+				Vector3 gravity2 = new Vector3(0f, gravity, 0f);
 				this._platformCharacterController.PlatformCharacterPhysics.Gravity = gravity2;
 			}
 		}

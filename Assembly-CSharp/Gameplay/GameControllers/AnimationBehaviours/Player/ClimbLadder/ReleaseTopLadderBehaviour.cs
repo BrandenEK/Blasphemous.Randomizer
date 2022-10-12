@@ -21,9 +21,8 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Player.ClimbLadder
 		public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 		{
 			this._penitent.Physics.EnablePhysics(true);
-			Vector2 vector;
-			vector..ctor(this._penitent.transform.position.x, this._penitent.transform.position.y - this._penitent.PlatformCharacterController.GroundDist);
-			this._penitent.transform.position = vector;
+			Vector2 v = new Vector2(this._penitent.transform.position.x, this._penitent.transform.position.y - this._penitent.PlatformCharacterController.GroundDist);
+			this._penitent.transform.position = v;
 			this._penitent.IsGrabbingLadder = false;
 			this._penitent.DamageArea.EnableEnemyAttack(true);
 		}

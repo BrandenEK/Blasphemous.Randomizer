@@ -20,7 +20,7 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 			base.ResetTTL();
 			this.Randomize();
 			this.Accelerate();
-			this.crossColorHue = Random.Range(0f, 1f);
+			this.crossColorHue = UnityEngine.Random.Range(0f, 1f);
 		}
 
 		private void OnDisable()
@@ -43,8 +43,8 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 
 		private void Randomize()
 		{
-			this.instanceRotationSpeed = this.RotateSpeed + Random.Range(-this.rotateSpeedRandomRange, this.rotateSpeedRandomRange);
-			this.instanceSpeed = this.Speed + Random.Range(-this.speedRandomRange, this.speedRandomRange);
+			this.instanceRotationSpeed = this.RotateSpeed + UnityEngine.Random.Range(-this.rotateSpeedRandomRange, this.rotateSpeedRandomRange);
+			this.instanceSpeed = this.Speed + UnityEngine.Random.Range(-this.speedRandomRange, this.speedRandomRange);
 		}
 
 		protected override void OnAwake()
@@ -100,30 +100,30 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 
 		private void HomingDisplacement()
 		{
-			Vector2 vector = this.CalculateTargetPosition();
-			Vector2 normalized = (base.transform.position - vector).normalized;
+			Vector2 b = this.CalculateTargetPosition();
+			Vector2 normalized = (base.transform.position - b).normalized;
 			float num = Mathf.Sign(Vector3.Cross(normalized, this.velocity).z);
-			float num2 = this.instanceRotationSpeed * num * Time.deltaTime;
-			Quaternion quaternion = Quaternion.Euler(0f, 0f, num2);
-			this.currentDirection = quaternion * this.currentDirection;
+			float z = this.instanceRotationSpeed * num * Time.deltaTime;
+			Quaternion rotation = Quaternion.Euler(0f, 0f, z);
+			this.currentDirection = rotation * this.currentDirection;
 			this.velocity = this.currentDirection * this.currentSpeed;
 			base.transform.position += this.velocity * Time.deltaTime;
 		}
 
 		public Vector2 CalculateTargetPosition()
 		{
-			Vector2 vector = this.TargetOffset * (1f + this.TargetOffsetFactor * Mathf.Pow(this._currentTTL / this.timeToLive, 5f));
-			Vector2 vector2 = (!this.TargetsPenitent) ? this.AlternativeTarget.position : Core.Logic.Penitent.GetPosition();
-			return vector2 + vector;
+			Vector2 b = this.TargetOffset * (1f + this.TargetOffsetFactor * Mathf.Pow(this._currentTTL / this.timeToLive, 5f));
+			Vector2 a = (!this.TargetsPenitent) ? this.AlternativeTarget.position : Core.Logic.Penitent.GetPosition();
+			return a + b;
 		}
 
 		private void OnDrawGizmos()
 		{
 			if (Application.isPlaying)
 			{
-				Vector2 vector = this.CalculateTargetPosition();
-				Gizmos.DrawSphere(vector, 0.5f);
-				Gizmos.DrawLine(vector, base.transform.position);
+				Vector2 v = this.CalculateTargetPosition();
+				Gizmos.DrawSphere(v, 0.5f);
+				Gizmos.DrawLine(v, base.transform.position);
 				Gizmos.DrawLine(base.transform.position + this.velocity, base.transform.position);
 			}
 		}
@@ -155,31 +155,31 @@ namespace Gameplay.GameControllers.Enemies.Projectiles
 
 		private void Accelerate()
 		{
-			ShortcutExtensions.DOKill(base.transform, false);
+			base.transform.DOKill(false);
 			if (this.currentSpeed == 0f)
 			{
 				this.currentSpeed = this.instanceSpeed * this.InitialSpeedFactor;
 			}
-			float num = this.currentSpeed;
-			TweenSettingsExtensions.SetEase<Tweener>(DOTween.To(delegate(float x)
+			float startValue = this.currentSpeed;
+			DOTween.To(delegate(float x)
 			{
 				this.currentSpeed = x;
-			}, num, this.instanceSpeed, this.Acceleration), this.AccelerationEase);
+			}, startValue, this.instanceSpeed, this.Acceleration).SetEase(this.AccelerationEase);
 		}
 
 		private void AccelerateAlternative(float speedFactor, float accelerationTimeFactor, float rorateSpeedFactor)
 		{
-			ShortcutExtensions.DOKill(base.transform, false);
+			base.transform.DOKill(false);
 			this.instanceRotationSpeed = this.RotateSpeed * rorateSpeedFactor;
 			if (this.currentSpeed == 0f)
 			{
 				this.currentSpeed = this.instanceSpeed * this.InitialSpeedFactor;
 			}
-			float num = this.currentSpeed;
-			TweenSettingsExtensions.SetEase<Tweener>(DOTween.To(delegate(float x)
+			float startValue = this.currentSpeed;
+			DOTween.To(delegate(float x)
 			{
 				this.currentSpeed = x;
-			}, num, this.instanceSpeed * speedFactor, this.Acceleration * accelerationTimeFactor), this.AccelerationEase);
+			}, startValue, this.instanceSpeed * speedFactor, this.Acceleration * accelerationTimeFactor).SetEase(this.AccelerationEase);
 		}
 
 		[Header("Speed")]

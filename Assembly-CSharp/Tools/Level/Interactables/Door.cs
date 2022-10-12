@@ -272,7 +272,7 @@ namespace Tools.Level.Interactables
 			this.OnBlocked(base.Locked);
 		}
 
-		[InfoBox("This level is not in the build index.This door may not work as expected.", 3, "SceneNotInBuildIndex")]
+		[InfoBox("This level is not in the build index.This door may not work as expected.", InfoMessageType.Error, "SceneNotInBuildIndex")]
 		[BoxGroup("Design Settings", true, false, 0)]
 		[FormerlySerializedAs("doorId")]
 		public string identificativeName;

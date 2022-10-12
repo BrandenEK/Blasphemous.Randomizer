@@ -24,14 +24,14 @@ namespace Tools.DataContainer
 		}
 
 		[HideInEditorMode]
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		private void TestRummble()
 		{
 			SingletonSerialized<RumbleSystem>.Instance.ApplyRumble(this);
 		}
 
 		[HideInEditorMode]
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		private void StopRummble()
 		{
 			SingletonSerialized<RumbleSystem>.Instance.StopAllRumbles();

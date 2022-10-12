@@ -21,8 +21,8 @@ namespace Gameplay.GameControllers.Bosses.HighWills
 		}
 
 		[BoxGroup("Setup Button", true, false, 0)]
-		[InfoBox("Use this button to add more color segments,as it automatically sets the Starting Color of the new segment and the same Ease as the previous one.", 1, null)]
-		[Button(0)]
+		[InfoBox("Use this button to add more color segments,as it automatically sets the Starting Color of the new segment and the same Ease as the previous one.", InfoMessageType.Info, null)]
+		[Button(ButtonSizes.Small)]
 		private void AddNewColorSegment()
 		{
 			HighWillsPlayerBarsColorController.ColorSegment item = default(HighWillsPlayerBarsColorController.ColorSegment);
@@ -36,16 +36,16 @@ namespace Gameplay.GameControllers.Bosses.HighWills
 		}
 
 		[BoxGroup("Debugging Buttons", true, false, 0)]
-		[InfoBox("This button serves debugging purpouses, as the Gameobject should be deactivated when not in use.", 1, null)]
-		[Button(0)]
+		[InfoBox("This button serves debugging purpouses, as the Gameobject should be deactivated when not in use.", InfoMessageType.Info, null)]
+		[Button(ButtonSizes.Small)]
 		public void StopColorTweening()
 		{
 			this.stoppingColorTweening = true;
 		}
 
 		[BoxGroup("Debugging Buttons", true, false, 0)]
-		[InfoBox("This button serves debugging purpouses, as the color tweening should start with the Gameobject's Start.", 1, null)]
-		[Button(0)]
+		[InfoBox("This button serves debugging purpouses, as the color tweening should start with the Gameobject's Start.", InfoMessageType.Info, null)]
+		[Button(ButtonSizes.Small)]
 		public void StartColorTweening()
 		{
 			this.RecursiveColorTweening();
@@ -65,7 +65,7 @@ namespace Gameplay.GameControllers.Bosses.HighWills
 			}
 			HighWillsPlayerBarsColorController.ColorSegment colorSegment = this.ColorSegments[this.colorSegmentIndex];
 			this.image.color = colorSegment.StartColor;
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions46.DOColor(this.image, colorSegment.EndColor, colorSegment.TweeningTime), colorSegment.Ease), new TweenCallback(this.RecursiveColorTweening));
+			this.image.DOColor(colorSegment.EndColor, colorSegment.TweeningTime).SetEase(colorSegment.Ease).OnComplete(new TweenCallback(this.RecursiveColorTweening));
 		}
 
 		[SerializeField]

@@ -35,8 +35,8 @@ namespace Gameplay.GameControllers.Environment.MovingPlatforms
 
 		private void SetSpeed(Material m)
 		{
-			float num = this.ConvertSpeed(this.plat.GetVelocity());
-			m.SetFloat("_Speed", num);
+			float value = this.ConvertSpeed(this.plat.GetVelocity());
+			m.SetFloat("_Speed", value);
 		}
 
 		public List<Material> materialsLinkedToSpeed;

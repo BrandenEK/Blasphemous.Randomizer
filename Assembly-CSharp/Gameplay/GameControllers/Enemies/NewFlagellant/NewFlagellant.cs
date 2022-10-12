@@ -70,8 +70,8 @@ namespace Gameplay.GameControllers.Enemies.NewFlagellant
 		{
 			base.OnStart();
 			this.Status.CastShadow = true;
-			this.MAX_SPEED += Random.Range(-0.2f, 0.1f);
-			this.MIN_SPEED += Random.Range(-0.2f, 0.1f);
+			this.MAX_SPEED += UnityEngine.Random.Range(-0.2f, 0.1f);
+			this.MIN_SPEED += UnityEngine.Random.Range(-0.2f, 0.1f);
 		}
 
 		protected override void OnUpdate()
@@ -109,13 +109,12 @@ namespace Gameplay.GameControllers.Enemies.NewFlagellant
 					Enemy componentInChildren = this.contacts[i].GetComponentInChildren<Enemy>();
 					if (componentInChildren != null)
 					{
-						Vector2 vector;
-						vector..ctor((float)((componentInChildren.transform.position.x >= base.transform.position.x) ? -1 : 1), 0f);
-						if ((vector.x == 1f && this.Status.Orientation == EntityOrientation.Left) || (vector.x == -1f && this.Status.Orientation == EntityOrientation.Right))
+						Vector2 v = new Vector2((float)((componentInChildren.transform.position.x >= base.transform.position.x) ? -1 : 1), 0f);
+						if ((v.x == 1f && this.Status.Orientation == EntityOrientation.Left) || (v.x == -1f && this.Status.Orientation == EntityOrientation.Right))
 						{
 							this.NewFlagellantBehaviour.OnBouncedBackByOverlapping();
 						}
-						this.MotionLerper.StartLerping(vector);
+						this.MotionLerper.StartLerping(v);
 					}
 				}
 			}
@@ -125,8 +124,7 @@ namespace Gameplay.GameControllers.Enemies.NewFlagellant
 		{
 			base.SetPositionAtStart();
 			float groundDist = base.Controller.GroundDist;
-			Vector3 position;
-			position..ctor(base.transform.position.x, base.transform.position.y - groundDist, base.transform.position.z);
+			Vector3 position = new Vector3(base.transform.position.x, base.transform.position.y - groundDist, base.transform.position.z);
 			base.transform.position = position;
 		}
 

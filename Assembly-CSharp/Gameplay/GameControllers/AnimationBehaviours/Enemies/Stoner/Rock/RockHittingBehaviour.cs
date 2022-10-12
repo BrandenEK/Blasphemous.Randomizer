@@ -10,7 +10,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Stoner.Rock
 			base.OnStateUpdate(animator, stateInfo, layerIndex);
 			if (stateInfo.normalizedTime > 0.9f)
 			{
-				Object.Destroy(animator.transform.parent.gameObject);
+				UnityEngine.Object.Destroy(animator.transform.parent.gameObject);
 			}
 		}
 	}

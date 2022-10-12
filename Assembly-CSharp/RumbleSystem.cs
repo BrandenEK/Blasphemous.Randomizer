@@ -32,20 +32,20 @@ public class RumbleSystem : SingletonSerialized<RumbleSystem>
 					activeRumble.currentTime -= activeRumble.rumble.duration;
 				}
 			}
-			float num3 = activeRumble.currentTime / activeRumble.rumble.duration;
+			float time = activeRumble.currentTime / activeRumble.rumble.duration;
 			if (activeRumble.rumble.type == RumbleData.RumbleType.All || activeRumble.rumble.type == RumbleData.RumbleType.Left)
 			{
-				num += activeRumble.rumble.left.Evaluate(num3);
+				num += activeRumble.rumble.left.Evaluate(time);
 			}
 			if (activeRumble.rumble.type == RumbleData.RumbleType.All || activeRumble.rumble.type == RumbleData.RumbleType.Rigth)
 			{
 				if (activeRumble.rumble.type == RumbleData.RumbleType.All && activeRumble.rumble.sameCurve)
 				{
-					num2 += activeRumble.rumble.left.Evaluate(num3);
+					num2 += activeRumble.rumble.left.Evaluate(time);
 				}
 				else
 				{
-					num2 += activeRumble.rumble.right.Evaluate(num3);
+					num2 += activeRumble.rumble.right.Evaluate(time);
 				}
 			}
 		}

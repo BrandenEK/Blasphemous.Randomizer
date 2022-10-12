@@ -37,13 +37,13 @@ public class BossAudioSyncHelper : MonoBehaviour
 		this.musicInstance = this.bossfightAudio.GetCurrentMusicInstance();
 		this.timelineHandle = GCHandle.Alloc(this.timelineInfo, GCHandleType.Pinned);
 		this.musicInstance.setUserData(GCHandle.ToIntPtr(this.timelineHandle));
-		this.musicInstance.setCallback(this.beatCallback, 6144);
+		this.musicInstance.setCallback(this.beatCallback, EVENT_CALLBACK_TYPE.TIMELINE_MARKER | EVENT_CALLBACK_TYPE.TIMELINE_BEAT);
 	}
 
 	private void OnDestroy()
 	{
 		this.musicInstance.setUserData(IntPtr.Zero);
-		this.musicInstance.stop(1);
+		this.musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 		this.musicInstance.release();
 		this.timelineHandle.Free();
 	}
@@ -78,17 +78,17 @@ public class BossAudioSyncHelper : MonoBehaviour
 	private static RESULT BeatEventCallback(EVENT_CALLBACK_TYPE type, EventInstance instance, IntPtr parameterPtr)
 	{
 		IntPtr intPtr;
-		RESULT userData = instance.getUserData(ref intPtr);
-		if (userData != null)
+		RESULT userData = instance.getUserData(out intPtr);
+		if (userData != RESULT.OK)
 		{
-			Debug.LogError("Timeline Callback error: " + userData);
+			UnityEngine.Debug.LogError("Timeline Callback error: " + userData);
 		}
 		else if (intPtr != IntPtr.Zero)
 		{
 			BossAudioSyncHelper.TimelineInfo timelineInfo = (BossAudioSyncHelper.TimelineInfo)GCHandle.FromIntPtr(intPtr).Target;
-			if (type != 4096)
+			if (type != EVENT_CALLBACK_TYPE.TIMELINE_BEAT)
 			{
-				if (type == 2048)
+				if (type == EVENT_CALLBACK_TYPE.TIMELINE_MARKER)
 				{
 					timelineInfo.lastMarker = ((TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(TIMELINE_MARKER_PROPERTIES))).name;
 					timelineInfo.updatedMarker = true;
@@ -99,7 +99,7 @@ public class BossAudioSyncHelper : MonoBehaviour
 				timelineInfo.currentMusicBar = ((TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(TIMELINE_BEAT_PROPERTIES))).bar;
 			}
 		}
-		return 0;
+		return RESULT.OK;
 	}
 
 	private BossAudioSyncHelper.TimelineInfo timelineInfo;

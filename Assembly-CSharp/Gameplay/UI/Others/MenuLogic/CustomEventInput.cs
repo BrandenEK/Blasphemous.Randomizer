@@ -22,22 +22,22 @@ namespace Gameplay.UI.Others.MenuLogic
 				this.currentButton = EventSystem.current.currentSelectedGameObject;
 				if (Input.GetAxisRaw("Vertical") > 0f)
 				{
-					this.currentAxis.moveDir = 1;
+					this.currentAxis.moveDir = MoveDirection.Up;
 					ExecuteEvents.Execute<IMoveHandler>(this.currentButton, this.currentAxis, ExecuteEvents.moveHandler);
 				}
 				else if (Input.GetAxisRaw("Vertical") < 0f)
 				{
-					this.currentAxis.moveDir = 3;
+					this.currentAxis.moveDir = MoveDirection.Down;
 					ExecuteEvents.Execute<IMoveHandler>(this.currentButton, this.currentAxis, ExecuteEvents.moveHandler);
 				}
 				else if (Input.GetAxis("Horizontal") > this.deadZone)
 				{
-					this.currentAxis.moveDir = 2;
+					this.currentAxis.moveDir = MoveDirection.Right;
 					ExecuteEvents.Execute<IMoveHandler>(this.currentButton, this.currentAxis, ExecuteEvents.moveHandler);
 				}
 				else if (Input.GetAxis("Horizontal") < -this.deadZone)
 				{
-					this.currentAxis.moveDir = 0;
+					this.currentAxis.moveDir = MoveDirection.Left;
 					ExecuteEvents.Execute<IMoveHandler>(this.currentButton, this.currentAxis, ExecuteEvents.moveHandler);
 				}
 				this.timer = this.timeBetweenInputs;

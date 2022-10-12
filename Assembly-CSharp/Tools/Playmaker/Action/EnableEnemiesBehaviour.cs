@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace Tools.PlayMaker.Action
 {
-	[ActionCategory(46)]
-	[Tooltip("Enables de behaviour of a group of enemies.")]
+	[ActionCategory(ActionCategory.Array)]
+	[HutongGames.PlayMaker.Tooltip("Enables de behaviour of a group of enemies.")]
 	public class EnableEnemiesBehaviour : FsmStateAction
 	{
 		public override void Reset()
@@ -26,7 +26,7 @@ namespace Tools.PlayMaker.Action
 			{
 				return;
 			}
-			Enemy[] array = Object.FindObjectsOfType<Enemy>();
+			Enemy[] array = UnityEngine.Object.FindObjectsOfType<Enemy>();
 			foreach (object obj in this.array.Values)
 			{
 				foreach (Enemy enemy in array)
@@ -48,13 +48,13 @@ namespace Tools.PlayMaker.Action
 			}
 		}
 
-		[Tooltip("The set of enemies.")]
-		[ArrayEditor(3, "", 0, 0, 65536)]
+		[HutongGames.PlayMaker.Tooltip("The set of enemies.")]
+		[ArrayEditor(VariableType.GameObject, "", 0, 0, 65536)]
 		public FsmArray EnemySpawners;
 
 		[RequiredField]
-		[UIHint(10)]
-		[Tooltip("The Array Variable to use.")]
+		[UIHint(UIHint.Variable)]
+		[HutongGames.PlayMaker.Tooltip("The Array Variable to use.")]
 		public FsmArray array;
 
 		public FsmBool EnableBehaviour;

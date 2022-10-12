@@ -53,14 +53,14 @@ namespace Tools.Items
 		protected override bool OnApplyEffect()
 		{
 			this.CreateAudioInstance();
-			this.secrets = Object.FindObjectsOfType<BreakableWall>().ToList<BreakableWall>().FindAll((BreakableWall x) => !x.Destroyed);
+			this.secrets = UnityEngine.Object.FindObjectsOfType<BreakableWall>().ToList<BreakableWall>().FindAll((BreakableWall x) => !x.Destroyed);
 			this.UpdateLapse = 3f;
 			return true;
 		}
 
 		protected override void OnRemoveEffect()
 		{
-			this.instance.stop(0);
+			this.instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 		}
 
 		protected override void OnUpdate()
@@ -106,7 +106,7 @@ namespace Tools.Items
 			}
 			if (this.SecretsInRange && !Core.Logic.Penitent.Status.Dead && this.closestTarget != null)
 			{
-				this.instance.stop(0);
+				this.instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 				this.instance.start();
 				Core.UI.Glow.color = this.haloColor;
 				Core.UI.Glow.Show(this.haloDuration, 1);
@@ -189,7 +189,7 @@ namespace Tools.Items
 			get
 			{
 				PLAYBACK_STATE result;
-				this.instance.getPlaybackState(ref result);
+				this.instance.getPlaybackState(out result);
 				return result;
 			}
 		}

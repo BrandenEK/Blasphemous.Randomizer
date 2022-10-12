@@ -22,7 +22,7 @@ namespace Gameplay.GameControllers.Environment
 			float num2 = this.targetReference.position.x - this.scrollArea.x * 0.5f + this.elementSize.x * 0.5f;
 			for (int i = 0; i < num; i++)
 			{
-				this.elements[i] = Object.Instantiate<Transform>(this.elementToRepeat, base.transform);
+				this.elements[i] = UnityEngine.Object.Instantiate<Transform>(this.elementToRepeat, base.transform);
 				Vector3 position = this.elements[i].position;
 				position.x = num2 + (float)i * this.elementSize.x;
 				this.elements[i].position = position;
@@ -42,10 +42,10 @@ namespace Gameplay.GameControllers.Environment
 		{
 			Vector3 vector = this.targetReference.position - this.oldTargetPosition;
 			this.oldTargetPosition = this.targetReference.position;
-			float num = vector.x * (float)this.speed * this.influenceX;
+			float x = vector.x * (float)this.speed * this.influenceX;
 			for (int i = 0; i < this.elements.Length; i++)
 			{
-				this.elements[i].Translate(num, 0f, 0f);
+				this.elements[i].Translate(x, 0f, 0f);
 			}
 			this.CheckBounds();
 		}
@@ -53,40 +53,38 @@ namespace Gameplay.GameControllers.Environment
 		private void CheckBounds()
 		{
 			Vector2 vector = this.targetReference.position;
-			Rect rect;
-			rect..ctor(vector - this.scrollArea * 0.5f, this.scrollArea);
-			Vector3 vector2 = this.targetReference.position;
-			Vector3 vector3 = this.targetReference.position;
+			Rect rect = new Rect(vector - this.scrollArea * 0.5f, this.scrollArea);
+			Vector3 lhs = this.targetReference.position;
+			Vector3 lhs2 = this.targetReference.position;
 			int num = -1;
 			for (int i = 0; i < this.elements.Length; i++)
 			{
 				vector = this.elements[i].position;
-				Rect rect2;
-				rect2..ctor(vector - this.elementSize * 0.5f, this.elementSize);
-				if (!rect.Overlaps(rect2))
+				Rect other = new Rect(vector - this.elementSize * 0.5f, this.elementSize);
+				if (!rect.Overlaps(other))
 				{
 					num = i;
 				}
 				else
 				{
-					vector2 = Vector3.Min(vector2, rect2.min);
-					vector3 = Vector3.Max(vector3, rect2.max);
+					lhs = Vector3.Min(lhs, other.min);
+					lhs2 = Vector3.Max(lhs2, other.max);
 				}
 			}
 			if (num == -1)
 			{
 				return;
 			}
-			if (vector2.x > rect.min.x)
+			if (lhs.x > rect.min.x)
 			{
-				float x = vector2.x - this.elementSize.x * 0.5f;
+				float x = lhs.x - this.elementSize.x * 0.5f;
 				vector = this.elements[num].position;
 				vector.x = x;
 				this.elements[num].position = vector;
 			}
-			else if (vector3.x < rect.max.x)
+			else if (lhs2.x < rect.max.x)
 			{
-				float x2 = vector3.x + this.elementSize.x * 0.5f;
+				float x2 = lhs2.x + this.elementSize.x * 0.5f;
 				vector = this.elements[num].position;
 				vector.x = x2;
 				this.elements[num].position = vector;
@@ -96,9 +94,9 @@ namespace Gameplay.GameControllers.Environment
 
 		private void PixelPerfectPosition(Transform transform, int ppu)
 		{
-			float num = Mathf.Floor(transform.position.x * (float)ppu) / (float)ppu;
-			float num2 = Mathf.Floor(transform.position.y * (float)ppu) / (float)ppu;
-			transform.position = new Vector3(num, num2, transform.position.z);
+			float x = Mathf.Floor(transform.position.x * (float)ppu) / (float)ppu;
+			float y = Mathf.Floor(transform.position.y * (float)ppu) / (float)ppu;
+			transform.position = new Vector3(x, y, transform.position.z);
 		}
 
 		private void OnDrawGizmosSelected()

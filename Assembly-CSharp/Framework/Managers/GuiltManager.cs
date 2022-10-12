@@ -184,10 +184,10 @@ namespace Framework.Managers
 				Core.GuiltManager.DroppedTears = 0f;
 			}
 			this.guiltDrops.Clear();
-			InteractableGuiltDrop[] array = Object.FindObjectsOfType<InteractableGuiltDrop>();
+			InteractableGuiltDrop[] array = UnityEngine.Object.FindObjectsOfType<InteractableGuiltDrop>();
 			foreach (InteractableGuiltDrop interactableGuiltDrop in array)
 			{
-				Object.Destroy(interactableGuiltDrop.gameObject);
+				UnityEngine.Object.Destroy(interactableGuiltDrop.gameObject);
 			}
 			this.UpdateGuilt(true);
 		}
@@ -289,7 +289,7 @@ namespace Framework.Managers
 		{
 			if (drop != null && !drop.isLinked && drop.scene == Core.LevelManager.currentLevel.LevelName)
 			{
-				GameObject gameObject = Object.Instantiate<GameObject>(this.guiltConfig.dropPrefab, drop.position, Quaternion.identity);
+				GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.guiltConfig.dropPrefab, drop.position, Quaternion.identity);
 				gameObject.GetComponent<InteractableGuiltDrop>().SetDropId(drop.id);
 			}
 		}

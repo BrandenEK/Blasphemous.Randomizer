@@ -12,9 +12,9 @@ namespace Gameplay.GameControllers.Enemies.MeltedLady.Attack
 			get
 			{
 				Vector3 position = base.transform.position;
-				float num = position.x + Random.Range(-this.RndHorizontalTeleportPosition, this.RndHorizontalTeleportPosition);
-				float num2 = position.y + Random.Range(-this.RndVerticalTeleportPosition, this.RndVerticalTeleportPosition);
-				return new Vector3(num, num2, position.z);
+				float x = position.x + UnityEngine.Random.Range(-this.RndHorizontalTeleportPosition, this.RndHorizontalTeleportPosition);
+				float y = position.y + UnityEngine.Random.Range(-this.RndVerticalTeleportPosition, this.RndVerticalTeleportPosition);
+				return new Vector3(x, y, position.z);
 			}
 		}
 
@@ -31,19 +31,19 @@ namespace Gameplay.GameControllers.Enemies.MeltedLady.Attack
 		{
 			Gizmos.color = color;
 			float num = 0f;
-			float num2 = radius * Mathf.Cos(num);
-			float num3 = radius * Mathf.Sin(num);
-			Vector3 vector = base.transform.position + new Vector3(num2, num3);
-			Vector3 vector2 = vector;
+			float x = radius * Mathf.Cos(num);
+			float y = radius * Mathf.Sin(num);
+			Vector3 vector = base.transform.position + new Vector3(x, y);
+			Vector3 to = vector;
 			for (num = 0.1f; num < 6.2831855f; num += 0.1f)
 			{
-				num2 = radius * Mathf.Cos(num);
-				num3 = radius * Mathf.Sin(num);
-				Vector3 vector3 = base.transform.position + new Vector3(num2, num3);
-				Gizmos.DrawLine(vector, vector3);
-				vector = vector3;
+				x = radius * Mathf.Cos(num);
+				y = radius * Mathf.Sin(num);
+				Vector3 vector2 = base.transform.position + new Vector3(x, y);
+				Gizmos.DrawLine(vector, vector2);
+				vector = vector2;
 			}
-			Gizmos.DrawLine(vector, vector2);
+			Gizmos.DrawLine(vector, to);
 		}
 
 		[FoldoutGroup("Attack Settings", true, 0)]

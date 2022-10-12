@@ -38,7 +38,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffGiant
 
 		private void OnEnterAttackArea(object sender, Collider2DParam e)
 		{
-			Debug.Log("SOMETHING ENTERS AREA");
+			UnityEngine.Debug.Log("SOMETHING ENTERS AREA");
 			if (this.damageOnEnterArea)
 			{
 				this.CurrentWeaponAttack();

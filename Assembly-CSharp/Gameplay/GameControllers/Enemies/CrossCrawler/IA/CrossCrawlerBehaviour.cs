@@ -255,10 +255,10 @@ namespace Gameplay.GameControllers.Enemies.CrossCrawler.IA
 		{
 			Gizmos.color = Color.magenta;
 			Vector2 vector = base.transform.position + this.sightOffset;
-			Vector2 vector2 = vector + Quaternion.Euler(0f, 0f, this.visionAngle) * Vector2.right * this.sightDistance;
-			Vector2 vector3 = vector + Quaternion.Euler(0f, 0f, -this.visionAngle) * Vector2.right * this.sightDistance;
-			Gizmos.DrawLine(vector, vector2);
-			Gizmos.DrawLine(vector, vector3);
+			Vector2 v = vector + Quaternion.Euler(0f, 0f, this.visionAngle) * Vector2.right * this.sightDistance;
+			Vector2 v2 = vector + Quaternion.Euler(0f, 0f, -this.visionAngle) * Vector2.right * this.sightDistance;
+			Gizmos.DrawLine(vector, v);
+			Gizmos.DrawLine(vector, v2);
 		}
 
 		[FoldoutGroup("Activation Settings", true, 0)]

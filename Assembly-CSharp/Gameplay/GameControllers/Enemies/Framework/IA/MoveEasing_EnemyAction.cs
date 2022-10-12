@@ -23,10 +23,9 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 
 		public EnemyAction StartAction(EnemyBehaviour e, float distance, float _seconds, Ease _easing, float _overShootOrAmplitude = 1.7f)
 		{
-			Vector2 vector = e.transform.position;
-			Vector2 vector2;
-			vector2..ctor(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-			this.point = vector + vector2.normalized * distance;
+			Vector2 a = e.transform.position;
+			Vector2 vector = new Vector2(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
+			this.point = a + vector.normalized * distance;
 			Vector2 target = this.point;
 			return this.StartAction(e, target, _seconds, _easing, null, true, null, true, true, _overShootOrAmplitude);
 		}
@@ -38,7 +37,7 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 
 		protected override void DoOnStop()
 		{
-			TweenExtensions.Kill(this.t, false);
+			this.t.Kill(false);
 			base.DoOnStop();
 		}
 
@@ -47,15 +46,15 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 			Transform transform = this.transformToMove ?? this.owner.transform;
 			if (this.tweenOnX && this.tweenOnY)
 			{
-				this.t = TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(transform, this.point, this.seconds, false), this.easingCurve);
+				this.t = transform.DOMove(this.point, this.seconds, false).SetEase(this.easingCurve);
 			}
 			else if (this.tweenOnX && !this.tweenOnY)
 			{
-				this.t = TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(transform, this.point.x, this.seconds, false), this.easingCurve);
+				this.t = transform.DOMoveX(this.point.x, this.seconds, false).SetEase(this.easingCurve);
 			}
 			else if (!this.tweenOnX && this.tweenOnY)
 			{
-				this.t = TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(transform, this.point.y, this.seconds, false), this.easingCurve);
+				this.t = transform.DOMoveY(this.point.y, this.seconds, false).SetEase(this.easingCurve);
 			}
 			else
 			{
@@ -64,13 +63,13 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 			this.t.easeOvershootOrAmplitude = this.overShootOrAmplitude;
 			if (this.doOnTweenUpdate != null)
 			{
-				TweenSettingsExtensions.OnUpdate<Tween>(this.t, delegate()
+				this.t.OnUpdate(delegate
 				{
 					this.doOnTweenUpdate();
 				});
 			}
-			TweenSettingsExtensions.SetUpdate<Tween>(this.t, !this.timeScaled);
-			yield return TweenExtensions.WaitForCompletion(this.t);
+			this.t.SetUpdate(!this.timeScaled);
+			yield return this.t.WaitForCompletion();
 			base.FinishAction();
 			yield break;
 		}

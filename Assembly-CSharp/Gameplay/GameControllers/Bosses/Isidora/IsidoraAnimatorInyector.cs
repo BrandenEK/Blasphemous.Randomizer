@@ -127,30 +127,30 @@ namespace Gameplay.GameControllers.Bosses.Isidora
 		public void Accelerate(float seconds)
 		{
 			this.resetAnimationSpeedFlag = false;
-			this.EaseTwirl(this.GetAnimatorSpeed(), this.maxSpeed, seconds, 8);
+			this.EaseTwirl(this.GetAnimatorSpeed(), this.maxSpeed, seconds, Ease.InCubic);
 		}
 
 		public void Decelerate(float seconds)
 		{
 			this.resetAnimationSpeedFlag = false;
-			this.EaseTwirl(this.GetAnimatorSpeed(), this.minSpeed, seconds, 8);
+			this.EaseTwirl(this.GetAnimatorSpeed(), this.minSpeed, seconds, Ease.InCubic);
 		}
 
 		public void EaseTwirl(float minVal, float maxVal, float duration, Ease easingFunction)
 		{
 			if (this.easeTween != null)
 			{
-				TweenExtensions.Kill(this.easeTween, false);
+				this.easeTween.Kill(false);
 			}
 			this.SetAnimatorSpeed(minVal);
-			this.easeTween = TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(DOTween.To(new DOGetter<float>(this.GetAnimatorSpeed), new DOSetter<float>(this.SetAnimatorSpeed), maxVal, duration), easingFunction);
+			this.easeTween = DOTween.To(new DOGetter<float>(this.GetAnimatorSpeed), new DOSetter<float>(this.SetAnimatorSpeed), maxVal, duration).SetEase(easingFunction);
 		}
 
 		public void ResetAnimationSpeed()
 		{
 			if (this.easeTween != null)
 			{
-				TweenExtensions.Kill(this.easeTween, false);
+				this.easeTween.Kill(false);
 			}
 			this.resetAnimationSpeedFlag = false;
 			this.SetAnimatorSpeed(1f);

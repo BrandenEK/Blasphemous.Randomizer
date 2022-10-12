@@ -135,9 +135,9 @@ namespace Gameplay.GameControllers.Enemies.AshCharger.AI
 
 		private void DashAttack_OnDashAdvancedEvent(float value)
 		{
-			float num = 0.5f;
-			float num2 = 3f;
-			this.AshCharger.AnimatorInyector.SetSpeed(Mathf.Lerp(num, num2, value));
+			float a = 0.5f;
+			float b = 3f;
+			this.AshCharger.AnimatorInyector.SetSpeed(Mathf.Lerp(a, b, value));
 		}
 
 		private void DashAttack_OnDashFinishedEvent()

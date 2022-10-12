@@ -43,7 +43,7 @@ public class SimpleDamageableObject : PoolObject, IDamageable
 		this.currentHp = this.hpMax;
 		if (this.usesRandomDurationRange)
 		{
-			this.durationToUse = Random.Range(this.durationRange.x, this.durationRange.y);
+			this.durationToUse = UnityEngine.Random.Range(this.durationRange.x, this.durationRange.y);
 		}
 		else
 		{

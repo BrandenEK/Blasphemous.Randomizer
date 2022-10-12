@@ -26,7 +26,7 @@ public class BodyChainLink : MonoBehaviour
 
 	private void SecondaryAnimation()
 	{
-		TweenSettingsExtensions.SetLoops<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMoveY(this.spriteChild.transform, this.secAnimationAmplitude, this.secAnimationDuration, false), 7), -1, 1);
+		this.spriteChild.transform.DOLocalMoveY(this.secAnimationAmplitude, this.secAnimationDuration, false).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
 	}
 
 	public void UpdateChainLink()
@@ -36,15 +36,15 @@ public class BodyChainLink : MonoBehaviour
 			return;
 		}
 		Vector2 normalized = (this.targetLink.position - base.transform.position).normalized;
-		float num = 57.29578f * Mathf.Atan2(normalized.y, normalized.x);
+		float z = 57.29578f * Mathf.Atan2(normalized.y, normalized.x);
 		if (!this.fixedRotation)
 		{
-			base.transform.rotation = Quaternion.Euler(0f, 0f, num);
+			base.transform.rotation = Quaternion.Euler(0f, 0f, z);
 		}
 		if (!this.fixedPoint && Vector2.Distance(this.targetLink.position, base.transform.position) > this.distance)
 		{
-			Vector2 vector = this.targetLink.position - normalized * this.distance;
-			base.transform.position = vector;
+			Vector2 v = this.targetLink.position - normalized * this.distance;
+			base.transform.position = v;
 		}
 	}
 
@@ -55,29 +55,29 @@ public class BodyChainLink : MonoBehaviour
 			return;
 		}
 		Vector2 normalized = (this.previousLink.position - base.transform.position).normalized;
-		float num = 180f + 57.29578f * Mathf.Atan2(normalized.y, normalized.x);
+		float z = 180f + 57.29578f * Mathf.Atan2(normalized.y, normalized.x);
 		if (!this.fixedRotation)
 		{
-			base.transform.rotation = Quaternion.Euler(0f, 0f, num);
+			base.transform.rotation = Quaternion.Euler(0f, 0f, z);
 		}
 		if (!this.fixedPoint && Vector2.Distance(this.previousLink.position, base.transform.position) > this.distance)
 		{
-			Vector2 vector = this.previousLink.position - normalized * this.distance * 0.9f;
-			base.transform.position = vector;
+			Vector2 v = this.previousLink.position - normalized * this.distance * 0.9f;
+			base.transform.position = v;
 		}
 	}
 
 	public void ReverseUpdateChainLink()
 	{
 		Vector2 normalized = (this.targetLink.position - base.transform.position).normalized;
-		float num = 57.29578f * Mathf.Atan2(normalized.y, normalized.x);
-		float num2 = Mathf.Sign(num);
+		float f = 57.29578f * Mathf.Atan2(normalized.y, normalized.x);
+		float num = Mathf.Sign(f);
 		if (!this.fixedPoint)
 		{
 			bool flag = this.ClampedLookAt(this.targetLink.position);
 		}
-		Vector3 vector = base.transform.position + base.transform.right * this.distance;
-		this.targetLink.parent.position = vector - this.targetLink.localPosition;
+		Vector3 a = base.transform.position + base.transform.right * this.distance;
+		this.targetLink.parent.position = a - this.targetLink.localPosition;
 	}
 
 	public bool ClampedLookAt(Vector2 point)
@@ -90,8 +90,8 @@ public class BodyChainLink : MonoBehaviour
 		{
 			flag = true;
 		}
-		Quaternion quaternion = Quaternion.Euler(0f, 0f, (!flag) ? num : (this.baseAngle + num2 * this.limitAngle));
-		base.transform.rotation = Quaternion.Slerp(base.transform.rotation, quaternion, this.rotationDamp);
+		Quaternion b = Quaternion.Euler(0f, 0f, (!flag) ? num : (this.baseAngle + num2 * this.limitAngle));
+		base.transform.rotation = Quaternion.Slerp(base.transform.rotation, b, this.rotationDamp);
 		return flag;
 	}
 
@@ -115,8 +115,8 @@ public class BodyChainLink : MonoBehaviour
 		Gizmos.color = Color.red;
 		Gizmos.DrawLine(base.transform.position, this.targetLink.position);
 		Gizmos.color = Color.green;
-		Vector3 vector = (this.targetLink.position - base.transform.position).normalized * this.distance;
-		Gizmos.DrawLine(base.transform.position, base.transform.position + vector);
+		Vector3 b = (this.targetLink.position - base.transform.position).normalized * this.distance;
+		Gizmos.DrawLine(base.transform.position, base.transform.position + b);
 	}
 
 	public float DistanceToPoint()

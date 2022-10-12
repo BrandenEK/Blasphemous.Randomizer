@@ -25,7 +25,7 @@ namespace Tools.Playmaker2.Events
 			Entity.Started -= this.Started;
 		}
 
-		[UIHint(10)]
+		[UIHint(UIHint.Variable)]
 		public FsmGameObject entity;
 
 		public FsmEvent onSuccess;

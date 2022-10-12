@@ -28,7 +28,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.ExplodingEnemy
 			{
 				this.ExplodingEnemy.ReekLeader.Behaviour.ReekSpawner.DisposeReek(this.ExplodingEnemy.gameObject);
 			}
-			Object.Destroy(this.ExplodingEnemy.gameObject);
+			UnityEngine.Object.Destroy(this.ExplodingEnemy.gameObject);
 		}
 	}
 }

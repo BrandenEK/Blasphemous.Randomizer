@@ -18,7 +18,7 @@ namespace Gameplay.GameControllers.Enemies.ChasingHead.AI
 			base.OnStart();
 			this._chasingHead = (ChasingHead)this.Entity;
 			this.AnimatorInyector = this._chasingHead.GetComponentInChildren<ChasingHeadAnimatorInyector>();
-			this._clockWise = (Random.value > 0.5f);
+			this._clockWise = (UnityEngine.Random.value > 0.5f);
 			DOTween.To(delegate(float x)
 			{
 				this._currentAmplitudeX = x;
@@ -63,9 +63,8 @@ namespace Gameplay.GameControllers.Enemies.ChasingHead.AI
 				base.IsChasing = true;
 				this._chasingHead.GhostSprites.EnableGhostTrail = true;
 			}
-			Vector3 vector;
-			vector..ctor(targetPosition.position.x, targetPosition.position.y);
-			base.transform.position = Vector3.SmoothDamp(base.transform.position, vector, ref this._velocity, this.ChasingElongation, this.Speed);
+			Vector3 target = new Vector3(targetPosition.position.x, targetPosition.position.y);
+			base.transform.position = Vector3.SmoothDamp(base.transform.position, target, ref this._velocity, this.ChasingElongation, this.Speed);
 		}
 
 		public override void Attack()
@@ -89,7 +88,7 @@ namespace Gameplay.GameControllers.Enemies.ChasingHead.AI
 		public void HurtDisplacement(GameObject attackingEntity, TweenCallback onCompleteCallback)
 		{
 			float num = (this._chasingHead.Status.Orientation != EntityOrientation.Right) ? this.hurtDisplacement : (-this.hurtDisplacement);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.OnStart<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(this._chasingHead.transform, base.transform.position.x + num, 0.3f, false), 3), new TweenCallback(this.OnStartDisplacement)), onCompleteCallback);
+			this._chasingHead.transform.DOMoveX(base.transform.position.x + num, 0.3f, false).SetEase(Ease.OutSine).OnStart(new TweenCallback(this.OnStartDisplacement)).OnComplete(onCompleteCallback);
 		}
 
 		private void OnStartDisplacement()
@@ -108,19 +107,19 @@ namespace Gameplay.GameControllers.Enemies.ChasingHead.AI
 		public void Floating(bool clockWise = true)
 		{
 			this._index += Time.deltaTime;
-			float num;
-			float num2;
+			float x;
+			float y;
 			if (clockWise)
 			{
-				num = this._currentAmplitudeX * Mathf.Sin(this.speedX * this._index);
-				num2 = Mathf.Cos(this.speedY * this._index) * this._currentAmplitudeY;
+				x = this._currentAmplitudeX * Mathf.Sin(this.speedX * this._index);
+				y = Mathf.Cos(this.speedY * this._index) * this._currentAmplitudeY;
 			}
 			else
 			{
-				num = this._currentAmplitudeX * Mathf.Cos(this.speedX * this._index);
-				num2 = Mathf.Sin(this.speedY * this._index) * this._currentAmplitudeY;
+				x = this._currentAmplitudeX * Mathf.Cos(this.speedX * this._index);
+				y = Mathf.Sin(this.speedY * this._index) * this._currentAmplitudeY;
 			}
-			this._chasingHead.SpriteRenderer.transform.localPosition = new Vector3(num, num2, 0f);
+			this._chasingHead.SpriteRenderer.transform.localPosition = new Vector3(x, y, 0f);
 		}
 
 		public Core.SimpleEvent OnHurtDisplacement;

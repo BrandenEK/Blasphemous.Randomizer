@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using Framework.Dialog;
 using Framework.FrameworkCore;
@@ -13,10 +12,8 @@ namespace Framework.Managers
 {
 	public class EventManager : GameSystem, PersistentInterface
 	{
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventManager.StandardEvent OnEventLaunched;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventManager.StandardFlag OnFlagChanged;
 
 		public GameObject LastCreatedObject { get; private set; }
@@ -44,11 +41,11 @@ namespace Framework.Managers
 
 		public void LaunchEvent(string id, string parameter = "")
 		{
-			if (!StringExtensions.IsNullOrWhitespace(id) && this.OnEventLaunched != null)
+			if (!id.IsNullOrWhitespace() && this.OnEventLaunched != null)
 			{
 				string text = id.Replace(' ', '_').ToUpper();
 				string text2 = parameter.Replace(' ', '_').ToUpper();
-				if (StringExtensions.IsNullOrWhitespace(parameter))
+				if (parameter.IsNullOrWhitespace())
 				{
 					text2 = "NO_PARAMS";
 				}
@@ -69,6 +66,10 @@ namespace Framework.Managers
 			if (string.IsNullOrEmpty(id))
 			{
 				return;
+			}
+			if (id != "REVEAL_FAITH_PLATFORMS")
+			{
+				Core.Randomizer.Log(id + ": " + b.ToString(), 1);
 			}
 			string formattedId = this.GetFormattedId(id);
 			if (!this.flags.ContainsKey(formattedId))
@@ -165,6 +166,7 @@ namespace Framework.Managers
 				if (inCinematicsChangeLevel == LevelManager.CinematicsChangeLevel.Outro)
 				{
 					PlayMakerFSM.BroadcastEvent("POST CUTSCENE");
+					return;
 				}
 			}
 			else
@@ -235,7 +237,7 @@ namespace Framework.Managers
 			bool result = false;
 			if (this.CheckStatusMiriamQuest())
 			{
-				if (!StringExtensions.IsNullOrWhitespace(this.MiriamCurrentScenePortal))
+				if (!this.MiriamCurrentScenePortal.IsNullOrWhitespace())
 				{
 					Debug.LogWarning("ActivateMiriamPortalAndTeleport and have current portal " + this.MiriamCurrentScenePortal);
 				}
@@ -334,23 +336,21 @@ namespace Framework.Managers
 
 		public bool CancelMiriamPortalAndReturn(bool useFade = true)
 		{
-			bool result = false;
+			int num = 0;
 			if (this.CheckStatusMiriamQuest())
 			{
 				if (!this.AreInMiriamLevel())
 				{
 					Debug.LogError("CancelMiriamPortalAndReturn and don't have current portal");
+					return num != 0;
 				}
-				else
-				{
-					string miriamCurrentScenePortalToReturn = this.MiriamCurrentScenePortalToReturn;
-					this.MiriamCurrentScenePortal = string.Empty;
-					this.MiriamCurrentSceneDestination = string.Empty;
-					UIController.instance.HideMiriamTimer();
-					Core.SpawnManager.SpawnFromMiriam(miriamCurrentScenePortalToReturn, string.Empty, useFade);
-				}
+				string miriamCurrentScenePortalToReturn = this.MiriamCurrentScenePortalToReturn;
+				this.MiriamCurrentScenePortal = string.Empty;
+				this.MiriamCurrentSceneDestination = string.Empty;
+				UIController.instance.HideMiriamTimer();
+				Core.SpawnManager.SpawnFromMiriam(miriamCurrentScenePortalToReturn, string.Empty, useFade);
 			}
-			return result;
+			return num != 0;
 		}
 
 		public bool IsMiriamPortalEnabled(string levelName)
@@ -365,7 +365,7 @@ namespace Framework.Managers
 
 		public bool AreInMiriamLevel()
 		{
-			return this.IsMiriamQuestStarted && !StringExtensions.IsNullOrWhitespace(this.MiriamCurrentScenePortal);
+			return this.IsMiriamQuestStarted && !this.MiriamCurrentScenePortal.IsNullOrWhitespace();
 		}
 
 		private bool CheckStatusMiriamQuest()
@@ -428,7 +428,7 @@ namespace Framework.Managers
 		public void SetCurrentPersistentState(PersistentManager.PersistentData data, bool isloading, string dataPath)
 		{
 			EventManager.FlagPersistenceData flagPersistenceData = (EventManager.FlagPersistenceData)data;
-			LinqExtensions.ForEach<KeyValuePair<string, FlagObject>>(this.flags, delegate(KeyValuePair<string, FlagObject> p)
+			this.flags.ForEach(delegate(KeyValuePair<string, FlagObject> p)
 			{
 				p.Value.value = false;
 			});
@@ -466,8 +466,7 @@ namespace Framework.Managers
 		{
 			this.flags.Clear();
 			Log.Trace("Events", "The event manager has been reseted sucessfully.", null);
-			FlagObjectList[] array = Resources.LoadAll<FlagObjectList>("Dialog/");
-			foreach (FlagObjectList flagObjectList in array)
+			foreach (FlagObjectList flagObjectList in Resources.LoadAll<FlagObjectList>("Dialog/"))
 			{
 				foreach (FlagObject flagObject in flagObjectList.flagList)
 				{

@@ -23,9 +23,9 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Player.Prayer
 			this._penitent.Status.Invulnerable = true;
 			Core.Input.SetBlocker("PLAYER_LOGIC", true);
 			Sequence sequence = DOTween.Sequence();
-			TweenSettingsExtensions.AppendInterval(sequence, this.delay);
-			TweenSettingsExtensions.OnComplete<Sequence>(sequence, new TweenCallback(this.SpawnVfx));
-			TweenExtensions.Play<Sequence>(sequence);
+			sequence.AppendInterval(this.delay);
+			sequence.OnComplete(new TweenCallback(this.SpawnVfx));
+			sequence.Play<Sequence>();
 		}
 
 		private void SpawnVfx()
@@ -43,11 +43,11 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Player.Prayer
 		{
 			base.OnStateExit(animator, stateInfo, layerIndex);
 			Core.Input.SetBlocker("PLAYER_LOGIC", false);
-			Tween tween = DOTween.To(() => Core.Logic.Penitent.Shadow.GetShadowAlpha(), delegate(float x)
+			Tween t = DOTween.To(() => Core.Logic.Penitent.Shadow.GetShadowAlpha(), delegate(float x)
 			{
 				Core.Logic.Penitent.Shadow.SetShadowAlpha(x);
 			}, 1f, 0.2f);
-			TweenSettingsExtensions.OnComplete<Tween>(tween, delegate()
+			t.OnComplete(delegate
 			{
 				Core.Logic.Penitent.Shadow.ManuallyControllingAlpha = false;
 			});

@@ -28,10 +28,10 @@ namespace Gameplay.GameControllers.Effects.NPCs.BloodDecals
 				{
 					for (int i = 0; i < permaBloodSceneList.Count; i++)
 					{
-						GameObject gameObject = this.permaBloodDic[permaBloodSceneList[i].type];
+						GameObject original = this.permaBloodDic[permaBloodSceneList[i].type];
 						Vector2 position = permaBloodSceneList[i].position;
 						Quaternion rotation = permaBloodSceneList[i].rotation;
-						Object.Instantiate<GameObject>(gameObject, position, rotation);
+						UnityEngine.Object.Instantiate<GameObject>(original, position, rotation);
 					}
 				}
 			}

@@ -85,14 +85,14 @@ namespace Gameplay.GameControllers.Enemies.MeltedLady.Animator
 		public void SetTargetRotation(float timeLapse)
 		{
 			MeltedLady meltedLady = (MeltedLady)this.OwnerEntity;
-			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DORotateQuaternion(meltedLady.SpriteRenderer.transform, this.GetShotRotation(), timeLapse), this.AttackAnimationCurve);
+			meltedLady.SpriteRenderer.transform.DORotateQuaternion(this.GetShotRotation(), timeLapse).SetEase(this.AttackAnimationCurve);
 		}
 
 		public void SetDefaultRotation(float timeLapse)
 		{
 			MeltedLady meltedLady = (MeltedLady)this.OwnerEntity;
 			DOTween.Kill(meltedLady.SpriteRenderer.transform, false);
-			ShortcutExtensions.DORotateQuaternion(meltedLady.SpriteRenderer.transform, Quaternion.identity, timeLapse);
+			meltedLady.SpriteRenderer.transform.DORotateQuaternion(Quaternion.identity, timeLapse);
 		}
 
 		public void GetTarget()
@@ -115,7 +115,7 @@ namespace Gameplay.GameControllers.Enemies.MeltedLady.Animator
 
 		private void Recoil(Vector2 dir)
 		{
-			ShortcutExtensions.DOMove(this.OwnerEntity.transform, dir, this.RecoilLapse, false);
+			this.OwnerEntity.transform.DOMove(dir, this.RecoilLapse, false);
 		}
 
 		public void ResetCoolDownAttack()

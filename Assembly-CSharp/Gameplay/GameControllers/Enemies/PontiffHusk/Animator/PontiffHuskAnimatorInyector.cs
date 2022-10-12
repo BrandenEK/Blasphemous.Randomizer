@@ -145,14 +145,14 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.Animator
 			{
 				return;
 			}
-			Tweener tweener = TweenSettingsExtensions.SetEase<Tweener>(TweenSettingsExtensions.OnStart<Tweener>(ShortcutExtensions43.DOFade(this.SpriteRenderer, fadeValue, time), new TweenCallback(this.OnFadeStart)), 20);
+			Tweener t = this.SpriteRenderer.DOFade(fadeValue, time).OnStart(new TweenCallback(this.OnFadeStart)).SetEase(Ease.InCirc);
 			if (fadeValue > 0.5f)
 			{
-				TweenSettingsExtensions.OnComplete<Tweener>(tweener, new TweenCallback(this.OnFadeInCompleted));
+				t.OnComplete(new TweenCallback(this.OnFadeInCompleted));
 			}
 			else
 			{
-				TweenSettingsExtensions.OnComplete<Tweener>(tweener, new TweenCallback(this.OnFadeOutCompleted));
+				t.OnComplete(new TweenCallback(this.OnFadeOutCompleted));
 			}
 		}
 

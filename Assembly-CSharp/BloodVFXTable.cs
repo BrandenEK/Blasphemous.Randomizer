@@ -9,7 +9,7 @@ public class BloodVFXTable : ScriptableObject
 	public BloodFXTableElement GetRandomElementOfType(BloodSpawner.BLOOD_FX_TYPES type)
 	{
 		List<BloodFXTableElement> list = this.bloodVFXList.FindAll((BloodFXTableElement x) => x.type == type);
-		return list[Random.Range(0, list.Count)];
+		return list[UnityEngine.Random.Range(0, list.Count)];
 	}
 
 	public List<BloodFXTableElement> bloodVFXList;

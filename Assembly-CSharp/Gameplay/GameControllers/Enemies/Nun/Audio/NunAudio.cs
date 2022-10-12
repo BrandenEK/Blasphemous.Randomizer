@@ -68,7 +68,7 @@ namespace Gameplay.GameControllers.Enemies.Nun.Audio
 			{
 				return;
 			}
-			this._attackEventInstance.stop(1);
+			this._attackEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 			this._attackEventInstance.release();
 		}
 
@@ -82,7 +82,7 @@ namespace Gameplay.GameControllers.Enemies.Nun.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("Moves", ref parameterInstance);
+				eventInstance.getParameter("Moves", out parameterInstance);
 				parameterInstance.setValue(value);
 			}
 			catch (Exception ex)

@@ -10,7 +10,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce.Attack
 		[Range(0f, 1f)]
 		public float dashMoment;
 
-		[InlineEditor(4)]
+		[InlineEditor(InlineEditorModes.LargePreview)]
 		public GameObject prefabToInstantiate;
 
 		public bool keepRotation;

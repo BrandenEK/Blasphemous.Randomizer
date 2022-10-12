@@ -7,7 +7,7 @@ public class AnimatorOffset : MonoBehaviour
 	private void Awake()
 	{
 		this._animator = base.GetComponent<Animator>();
-		this._animator.speed = 1f + Random.Range(this.minOffset, this.maxOffset);
+		this._animator.speed = 1f + UnityEngine.Random.Range(this.minOffset, this.maxOffset);
 	}
 
 	private Animator _animator;

@@ -19,7 +19,7 @@ namespace Tools.PlayMaker.Action
 			base.Finish();
 		}
 
-		[UIHint(10)]
+		[UIHint(UIHint.Variable)]
 		public FsmString storeName;
 	}
 }

@@ -58,7 +58,7 @@ namespace Gameplay.GameControllers.Entities.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("Death", ref parameterInstance);
+				eventInstance.getParameter("Death", out parameterInstance);
 				if (parameterInstance.isValid())
 				{
 					parameterInstance.setValue(this.DeathValue);
@@ -76,7 +76,7 @@ namespace Gameplay.GameControllers.Entities.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("Dirt", ref parameterInstance);
+				eventInstance.getParameter("Dirt", out parameterInstance);
 				if (parameterInstance.isValid())
 				{
 					parameterInstance.setValue(this.DirtValue);
@@ -93,10 +93,10 @@ namespace Gameplay.GameControllers.Entities.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("Wood", ref parameterInstance);
+				eventInstance.getParameter("Wood", out parameterInstance);
 				parameterInstance.setValue(this.WallWoodValue);
 				ParameterInstance parameterInstance2;
-				eventInstance.getParameter("Stone", ref parameterInstance2);
+				eventInstance.getParameter("Stone", out parameterInstance2);
 				parameterInstance2.setValue(this.WallStoneValue);
 			}
 			catch
@@ -109,46 +109,46 @@ namespace Gameplay.GameControllers.Entities.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("Dirt", ref parameterInstance);
+				eventInstance.getParameter("Dirt", out parameterInstance);
 				parameterInstance.setValue(this.DirtValue);
 				ParameterInstance parameterInstance2;
-				eventInstance.getParameter("Water", ref parameterInstance2);
+				eventInstance.getParameter("Water", out parameterInstance2);
 				parameterInstance2.setValue(this.WaterValue);
 				ParameterInstance parameterInstance3;
-				eventInstance.getParameter("Snow", ref parameterInstance3);
+				eventInstance.getParameter("Snow", out parameterInstance3);
 				parameterInstance3.setValue(this.SnowValue);
 				ParameterInstance parameterInstance4;
-				eventInstance.getParameter("Stone", ref parameterInstance4);
+				eventInstance.getParameter("Stone", out parameterInstance4);
 				parameterInstance4.setValue(this.StoneValue);
 				ParameterInstance parameterInstance5;
-				eventInstance.getParameter("Wood", ref parameterInstance5);
+				eventInstance.getParameter("Wood", out parameterInstance5);
 				parameterInstance5.setValue(this.WoodValue);
 				ParameterInstance parameterInstance6;
-				eventInstance.getParameter("Marble", ref parameterInstance6);
+				eventInstance.getParameter("Marble", out parameterInstance6);
 				parameterInstance6.setValue(this.MarbleValue);
 				ParameterInstance parameterInstance7;
-				eventInstance.getParameter("Flesh", ref parameterInstance7);
+				eventInstance.getParameter("Flesh", out parameterInstance7);
 				parameterInstance7.setValue(this.FleshValue);
 				ParameterInstance parameterInstance8;
-				eventInstance.getParameter("Metal", ref parameterInstance8);
+				eventInstance.getParameter("Metal", out parameterInstance8);
 				parameterInstance8.setValue(this.MetalValue);
 				ParameterInstance parameterInstance9;
-				eventInstance.getParameter("Mud", ref parameterInstance9);
+				eventInstance.getParameter("Mud", out parameterInstance9);
 				parameterInstance9.setValue(this.MudValue);
 				ParameterInstance parameterInstance10;
-				eventInstance.getParameter("SecretFloor", ref parameterInstance10);
+				eventInstance.getParameter("SecretFloor", out parameterInstance10);
 				parameterInstance10.setValue(this.SecretValue);
 				ParameterInstance parameterInstance11;
-				eventInstance.getParameter("Grass", ref parameterInstance11);
+				eventInstance.getParameter("Grass", out parameterInstance11);
 				parameterInstance11.setValue(this.GrassValue);
 				ParameterInstance parameterInstance12;
-				eventInstance.getParameter("Demake", ref parameterInstance12);
+				eventInstance.getParameter("Demake", out parameterInstance12);
 				parameterInstance12.setValue(this.DemakeValue);
 				ParameterInstance parameterInstance13;
-				eventInstance.getParameter("Palio", ref parameterInstance13);
+				eventInstance.getParameter("Palio", out parameterInstance13);
 				parameterInstance13.setValue(this.PalioValue);
 				ParameterInstance parameterInstance14;
-				eventInstance.getParameter("Snake", ref parameterInstance14);
+				eventInstance.getParameter("Snake", out parameterInstance14);
 				parameterInstance14.setValue(this.SnakeValue);
 			}
 			catch
@@ -168,7 +168,7 @@ namespace Gameplay.GameControllers.Entities.Audio
 				Debug.LogError(string.Format("ERROR: Couldn't find catalog sound event called <{0}>", eventKey));
 				return;
 			}
-			eventInstance.setCallback(this.SetPanning(eventInstance), 1);
+			eventInstance.setCallback(this.SetPanning(eventInstance), EVENT_CALLBACK_TYPE.CREATED);
 			switch (fxSoundCategory)
 			{
 			case EntityAudio.FxSoundCategory.Motion:
@@ -200,7 +200,7 @@ namespace Gameplay.GameControllers.Entities.Audio
 			{
 				if (this.EventInstances[i].isValid())
 				{
-					this.EventInstances[i].stop(1);
+					this.EventInstances[i].stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 					this.EventInstances[i].release();
 				}
 			}
@@ -265,7 +265,7 @@ namespace Gameplay.GameControllers.Entities.Audio
 			{
 				return;
 			}
-			eventInstance.stop(0);
+			eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			eventInstance.release();
 			eventInstance = default(EventInstance);
 		}
@@ -277,7 +277,7 @@ namespace Gameplay.GameControllers.Entities.Audio
 				return null;
 			}
 			ParameterInstance parameterInstance;
-			e.getParameter("Panning", ref parameterInstance);
+			e.getParameter("Panning", out parameterInstance);
 			if (parameterInstance.isValid() && this.Owner)
 			{
 				float panningValueByPosition = FMODAudioManager.GetPanningValueByPosition(this.Owner.transform.position);
@@ -289,7 +289,7 @@ namespace Gameplay.GameControllers.Entities.Audio
 		public static EVENT_CALLBACK SetPanning(EventInstance e, Vector3 pos)
 		{
 			ParameterInstance parameterInstance;
-			e.getParameter("Panning", ref parameterInstance);
+			e.getParameter("Panning", out parameterInstance);
 			if (parameterInstance.isValid())
 			{
 				float panningValueByPosition = FMODAudioManager.GetPanningValueByPosition(pos);

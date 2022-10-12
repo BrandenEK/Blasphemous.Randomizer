@@ -8,7 +8,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 {
 	public class PontiffOldmanBossfightPoints : MonoBehaviour
 	{
-		[Button("Load all lists", 31)]
+		[Button("Load all lists", ButtonSizes.Large)]
 		public void LoadListsFromParents()
 		{
 			this.repositionPoints.Clear();
@@ -35,13 +35,13 @@ namespace Gameplay.GameControllers.Bosses.PontiffOldman
 		public Transform GetRandomToxicPoint()
 		{
 			int childCount = this.toxicPointsParent.childCount;
-			int num = Random.Range(0, childCount);
-			return this.toxicPointsParent.GetChild(num);
+			int index = UnityEngine.Random.Range(0, childCount);
+			return this.toxicPointsParent.GetChild(index);
 		}
 
 		public Transform GetPointInCenter()
 		{
-			return this.midPoints[Random.Range(0, this.midPoints.Count)];
+			return this.midPoints[UnityEngine.Random.Range(0, this.midPoints.Count)];
 		}
 
 		public Transform GetPointAwayOfPenitent(Vector2 p_position)

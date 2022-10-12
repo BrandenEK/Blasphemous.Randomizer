@@ -75,14 +75,14 @@ namespace Gameplay.GameControllers.Environment.Traps.Turrets
 
 		public void LaunchProjectile()
 		{
-			Vector2 vector = this.GetDirectionFromEnum(this.direction);
+			Vector2 v = this.GetDirectionFromEnum(this.direction);
 			if (this.useTurretRightAsDirection)
 			{
-				vector = base.transform.right;
+				v = base.transform.right;
 			}
 			StraightProjectile component = PoolManager.Instance.ReuseObject(this.projectilePrefab.gameObject, base.transform.position + this.projectileLaunchOffset, Quaternion.identity, false, 1).GameObject.GetComponent<StraightProjectile>();
 			this.SetProjectileWeaponDamage(component, this.ProjectileDamageAmount);
-			component.Init(vector, this.projectileSpeed);
+			component.Init(v, this.projectileSpeed);
 			component.timeToLive = this.destructionDistance / this.projectileSpeed;
 			component.ResetTTL();
 			if (this.onProjectileFired != null)
@@ -123,20 +123,20 @@ namespace Gameplay.GameControllers.Environment.Traps.Turrets
 			}
 			Gizmos.color = Color.red;
 			Vector3 vector = base.transform.position + this.projectileLaunchOffset;
-			float num = this.fireRate * this.projectileSpeed;
+			float d = this.fireRate * this.projectileSpeed;
 			Gizmos.DrawSphere(vector, 0.25f);
-			Vector3 vector2 = this.GetDirectionFromEnum(this.direction);
-			Vector3 vector3 = vector + vector2 * this.destructionDistance;
+			Vector3 a = this.GetDirectionFromEnum(this.direction);
+			Vector3 vector2 = vector + a * this.destructionDistance;
 			for (int i = 1; i <= this.projectilesShown; i++)
 			{
-				Gizmos.DrawSphere(vector + vector2 * num * (float)i, 0.1f);
+				Gizmos.DrawSphere(vector + a * d * (float)i, 0.1f);
 			}
 			Gizmos.color = Color.yellow;
 			if (this.showLine)
 			{
-				Gizmos.DrawLine(vector, vector3);
+				Gizmos.DrawLine(vector, vector2);
 			}
-			Gizmos.DrawSphere(vector3, 0.25f);
+			Gizmos.DrawSphere(vector2, 0.25f);
 		}
 
 		public bool Locked
@@ -159,7 +159,7 @@ namespace Gameplay.GameControllers.Environment.Traps.Turrets
 			}
 			if (this._shootAudioInstance.isValid())
 			{
-				this._shootAudioInstance.stop(0);
+				this._shootAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			}
 			this._shootAudioInstance = Core.Audio.CreateEvent(this.shootSound, default(Vector3));
 			this._shootAudioInstance.start();

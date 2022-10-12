@@ -142,8 +142,8 @@ namespace Gameplay.GameControllers.Bosses.BossFight
 			Penitent penitent = Core.Logic.Penitent;
 			if (penitent != null)
 			{
-				Vector2 vector = this.GetPenitentSpawnPoint();
-				penitent.transform.position = vector;
+				Vector2 v = this.GetPenitentSpawnPoint();
+				penitent.transform.position = v;
 			}
 		}
 

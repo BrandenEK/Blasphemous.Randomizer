@@ -43,8 +43,8 @@ namespace Tools.Level.Actionables
 			Vector2 originPos = this.childBridge.position;
 			Vector2 targetPosition = this.Destination.position;
 			float angle = this.Destination.localEulerAngles.z;
-			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(this.childBridge, targetPosition, this.interpolationSeconds, false), this.translationCurve);
-			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalRotate(this.childBridge, new Vector3(0f, 0f, angle), this.interpolationSeconds, 0), this.rotationCurve);
+			this.childBridge.DOMove(targetPosition, this.interpolationSeconds, false).SetEase(this.translationCurve);
+			this.childBridge.DOLocalRotate(new Vector3(0f, 0f, angle), this.interpolationSeconds, RotateMode.Fast).SetEase(this.rotationCurve);
 			this.childBridge.GetComponentInChildren<Collider2D>().enabled = true;
 			this.alreadyUsed = true;
 			yield return null;
@@ -81,7 +81,7 @@ namespace Tools.Level.Actionables
 		{
 			if (this._audioInstance.isValid())
 			{
-				this._audioInstance.stop(0);
+				this._audioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			}
 			this._audioInstance = Core.Audio.CreateEvent(this.bridgeFallingSound, default(Vector3));
 			this._audioInstance.start();

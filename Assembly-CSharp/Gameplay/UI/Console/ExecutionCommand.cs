@@ -46,7 +46,7 @@ namespace Gameplay.UI.Console
 
 		public static void EnableDebugExecution(bool enable = true)
 		{
-			Enemy[] array = Object.FindObjectsOfType<Enemy>();
+			Enemy[] array = UnityEngine.Object.FindObjectsOfType<Enemy>();
 			foreach (Enemy enemy in array)
 			{
 				enemy.DebugExecutionActive = enable;

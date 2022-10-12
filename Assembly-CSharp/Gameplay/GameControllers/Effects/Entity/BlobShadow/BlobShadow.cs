@@ -97,9 +97,8 @@ namespace Gameplay.GameControllers.Effects.Entity.BlobShadow
 			{
 				return;
 			}
-			Vector2 vector;
-			vector..ctor(this._entityCollider.bounds.center.x, this._entityCollider.bounds.min.y);
-			base.transform.position = vector;
+			Vector2 v = new Vector2(this._entityCollider.bounds.center.x, this._entityCollider.bounds.min.y);
+			base.transform.position = v;
 		}
 
 		public void SetShadowAlpha(float alpha)
@@ -136,15 +135,13 @@ namespace Gameplay.GameControllers.Effects.Entity.BlobShadow
 			if (reduce && !this._isScaleReduce)
 			{
 				this._isScaleReduce = true;
-				Vector3 localScale;
-				localScale..ctor(0.5f, 0.5f, 1f);
+				Vector3 localScale = new Vector3(0.5f, 0.5f, 1f);
 				base.transform.localScale = localScale;
 			}
 			else if (!reduce && this._isScaleReduce)
 			{
 				this._isScaleReduce = false;
-				Vector3 localScale2;
-				localScale2..ctor(1f, 1f, 1f);
+				Vector3 localScale2 = new Vector3(1f, 1f, 1f);
 				base.transform.localScale = localScale2;
 			}
 		}
@@ -175,12 +172,10 @@ namespace Gameplay.GameControllers.Effects.Entity.BlobShadow
 			{
 				return;
 			}
-			Vector2 vector;
-			vector..ctor(this._entityCollider.bounds.min.x + this._entityShadow.ShadowXOffset, this._entityCollider.bounds.min.y + this._entityShadow.ShadowYOffset + this._blobHeight);
+			Vector2 vector = new Vector2(this._entityCollider.bounds.min.x + this._entityShadow.ShadowXOffset, this._entityCollider.bounds.min.y + this._entityShadow.ShadowYOffset + this._blobHeight);
 			Debug.DrawLine(vector, vector - Vector2.up * 0.5f, Color.white);
 			bool flag = Physics2D.LinecastNonAlloc(vector, vector - Vector2.up * 1f, this._bottomHits, this.floorLayer) > 0;
-			Vector2 vector2;
-			vector2..ctor(this._entityCollider.bounds.max.x - this._entityShadow.ShadowXOffset, this._entityCollider.bounds.min.y + this._entityShadow.ShadowYOffset + this._blobHeight);
+			Vector2 vector2 = new Vector2(this._entityCollider.bounds.max.x - this._entityShadow.ShadowXOffset, this._entityCollider.bounds.min.y + this._entityShadow.ShadowYOffset + this._blobHeight);
 			Debug.DrawLine(vector2, vector2 - Vector2.up * 0.5f, Color.white);
 			bool flag2 = Physics2D.LinecastNonAlloc(vector2, vector2 - Vector2.up * 1f, this._bottomHits, this.floorLayer) > 0;
 			this._isOnFloor = (flag2 && flag);

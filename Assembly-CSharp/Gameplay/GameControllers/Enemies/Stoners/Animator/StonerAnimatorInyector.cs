@@ -27,8 +27,8 @@ namespace Gameplay.GameControllers.Enemies.Stoners.Animator
 
 		private void SetRaiseOrientation(Vector3 targetPos)
 		{
-			string text = (targetPos.x < base.transform.position.x) ? "RisingLeft" : "RisingRight";
-			base.EntityAnimator.Play(text);
+			string stateName = (targetPos.x < base.transform.position.x) ? "RisingLeft" : "RisingRight";
+			base.EntityAnimator.Play(stateName);
 		}
 
 		public void Attack()

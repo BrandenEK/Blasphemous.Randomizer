@@ -64,7 +64,7 @@ namespace Framework.Audio
 		private IEnumerable<Type> GetLevelEnemyTypes()
 		{
 			List<Type> list = new List<Type>();
-			EnemySpawnPoint[] array = Object.FindObjectsOfType<EnemySpawnPoint>();
+			EnemySpawnPoint[] array = UnityEngine.Object.FindObjectsOfType<EnemySpawnPoint>();
 			foreach (EnemySpawnPoint enemySpawnPoint in array)
 			{
 				if (!(enemySpawnPoint.SelectedEnemy == null))

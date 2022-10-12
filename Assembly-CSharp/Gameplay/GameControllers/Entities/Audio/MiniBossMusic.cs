@@ -25,7 +25,7 @@ namespace Gameplay.GameControllers.Entities.Audio
 			{
 				return;
 			}
-			this._eventInstance.stop(0);
+			this._eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this._eventInstance.release();
 			this._eventInstance = default(EventInstance);
 		}
@@ -40,7 +40,7 @@ namespace Gameplay.GameControllers.Entities.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				this._eventInstance.getParameter(this.ParamName, ref parameterInstance);
+				this._eventInstance.getParameter(this.ParamName, out parameterInstance);
 				if (parameterInstance.isValid())
 				{
 					parameterInstance.setValue(paramValue);

@@ -95,7 +95,7 @@ namespace Framework.Managers
 					{
 						object obj = enumerator.Current;
 						Transform transform = (Transform)obj;
-						Object.Destroy(transform.gameObject);
+						UnityEngine.Object.Destroy(transform.gameObject);
 					}
 				}
 				finally
@@ -106,7 +106,7 @@ namespace Framework.Managers
 						disposable.Dispose();
 					}
 				}
-				GameObject tutObj = Object.Instantiate<GameObject>(tut.prefab, Vector3.zero, Quaternion.identity, uiroot.transform);
+				GameObject tutObj = UnityEngine.Object.Instantiate<GameObject>(tut.prefab, Vector3.zero, Quaternion.identity, uiroot.transform);
 				tutObj.transform.localPosition = Vector3.zero;
 				TutorialWidget widget = tutObj.GetComponent<TutorialWidget>();
 				widget.ShowInGame();

@@ -18,7 +18,7 @@ public class BlindBabyPoints : MonoBehaviour
 	public BlindBabyPoints.WickerWurmPathConfig GetPathConfig(BlindBabyPoints.WURM_PATHS name)
 	{
 		List<BlindBabyPoints.WickerWurmPathConfig> list = this.paths.FindAll((BlindBabyPoints.WickerWurmPathConfig x) => x.pathName == name);
-		int index = Random.Range(0, list.Count);
+		int index = UnityEngine.Random.Range(0, list.Count);
 		return list[index];
 	}
 

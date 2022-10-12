@@ -72,8 +72,8 @@ namespace Gameplay.GameControllers.Enemies.ViciousDasher.AI
 				return;
 			}
 			this.ViciousDasher.MotionLerper.distanceToMove = this.ViciousDasher.DistanceToTarget - 1f;
-			Vector2 vector = (this.ViciousDasher.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
-			this.ViciousDasher.MotionLerper.StartLerping(vector);
+			Vector2 v = (this.ViciousDasher.Status.Orientation != EntityOrientation.Right) ? Vector2.left : Vector2.right;
+			this.ViciousDasher.MotionLerper.StartLerping(v);
 		}
 
 		private void OnPlayerDead()

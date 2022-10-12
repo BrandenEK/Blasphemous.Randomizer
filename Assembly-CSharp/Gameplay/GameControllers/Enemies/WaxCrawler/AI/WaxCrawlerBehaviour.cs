@@ -48,8 +48,7 @@ namespace Gameplay.GameControllers.Enemies.WaxCrawler.AI
 			}
 			if (this.Entity.Status.Orientation == EntityOrientation.Left)
 			{
-				Vector2 vector;
-				vector..ctor(this._damageArea.DamageAreaCollider.bounds.min.x, this._damageArea.DamageAreaCollider.bounds.center.y);
+				Vector2 vector = new Vector2(this._damageArea.DamageAreaCollider.bounds.min.x, this._damageArea.DamageAreaCollider.bounds.center.y);
 				Vector2 vector2 = vector;
 				Debug.DrawLine(vector2, vector2 - Vector2.up * this.CurrentGroundDetection, Color.yellow);
 				base.SensorHitsFloor = (Physics2D.LinecastNonAlloc(vector2, vector2 - Vector2.up * this.CurrentGroundDetection, this._bottomHits, this.BlockLayerMask) > 0);
@@ -58,8 +57,7 @@ namespace Gameplay.GameControllers.Enemies.WaxCrawler.AI
 			}
 			else
 			{
-				Vector2 vector3;
-				vector3..ctor(this._damageArea.DamageAreaCollider.bounds.max.x, this._damageArea.DamageAreaCollider.bounds.center.y);
+				Vector2 vector3 = new Vector2(this._damageArea.DamageAreaCollider.bounds.max.x, this._damageArea.DamageAreaCollider.bounds.center.y);
 				Vector2 vector2 = vector3;
 				Debug.DrawLine(vector2, vector2 - Vector2.up * this.CurrentGroundDetection, Color.yellow);
 				base.SensorHitsFloor = (Physics2D.LinecastNonAlloc(vector2, vector2 - Vector2.up * this.CurrentGroundDetection, this._bottomHits, this.BlockLayerMask) > 0);
@@ -131,8 +129,8 @@ namespace Gameplay.GameControllers.Enemies.WaxCrawler.AI
 			if (!base.IsHurt)
 			{
 				EntityOrientation orientation = this._waxCrawler.Status.Orientation;
-				Vector2 vector = (orientation != EntityOrientation.Left) ? Vector2.right : (-Vector2.right);
-				base.transform.Translate(vector * this.Speed * Time.deltaTime, 0);
+				Vector2 a = (orientation != EntityOrientation.Left) ? Vector2.right : (-Vector2.right);
+				base.transform.Translate(a * this.Speed * Time.deltaTime, Space.World);
 			}
 		}
 

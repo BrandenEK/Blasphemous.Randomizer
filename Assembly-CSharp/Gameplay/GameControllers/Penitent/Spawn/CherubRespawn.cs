@@ -74,7 +74,7 @@ namespace Gameplay.GameControllers.Penitent.Spawn
 
 		public void SetPlayerVisible(bool visible = true)
 		{
-			this._penitent = Object.FindObjectOfType<Penitent>();
+			this._penitent = UnityEngine.Object.FindObjectOfType<Penitent>();
 			if (this._penitent == null)
 			{
 				return;
@@ -133,7 +133,7 @@ namespace Gameplay.GameControllers.Penitent.Spawn
 			{
 				return;
 			}
-			this._soundInstance.stop(0);
+			this._soundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this._soundInstance.release();
 			this._soundInstance = default(EventInstance);
 		}

@@ -1,4 +1,5 @@
 using System;
+using FMOD.Studio;
 using FMODUnity;
 using Framework.Managers;
 using Gameplay.UI.Widgets;
@@ -71,7 +72,7 @@ namespace Gameplay.UI.Others.MenuLogic
 				this.isClosing = true;
 				this.onAccept();
 				Core.Audio.PlaySfx(this.soundOnAccept, 0f);
-				Core.Audio.StopNamedSound("DEMAKE_INTRO", 0);
+				Core.Audio.StopNamedSound("DEMAKE_INTRO", FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 				this.animator.SetTrigger("PRESS_START");
 			}
 		}

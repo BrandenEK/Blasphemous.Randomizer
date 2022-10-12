@@ -43,8 +43,8 @@ namespace Gameplay.GameControllers.Bosses.CommonAttacks
 					return curvedProjectile;
 				}
 				Vector2 vector = target - curvedProjectile.transform.position;
-				float num = Mathf.Atan2(vector.y, vector.x) * 57.29578f;
-				PoolManager.Instance.ReuseObject(this.muzzleFlashPrefab, curvedProjectile.transform.position, Quaternion.Euler(0f, 0f, num), false, 1);
+				float z = Mathf.Atan2(vector.y, vector.x) * 57.29578f;
+				PoolManager.Instance.ReuseObject(this.muzzleFlashPrefab, curvedProjectile.transform.position, Quaternion.Euler(0f, 0f, z), false, 1);
 			}
 			return curvedProjectile;
 		}

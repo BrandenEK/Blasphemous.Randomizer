@@ -11,7 +11,7 @@ namespace Gameplay.GameControllers.Penitent.Gizmos
 			GameObject result = null;
 			if (this.PenitentPrefab != null)
 			{
-				result = Object.Instantiate<GameObject>(this.PenitentPrefab, base.transform.position, Quaternion.identity);
+				result = UnityEngine.Object.Instantiate<GameObject>(this.PenitentPrefab, base.transform.position, Quaternion.identity);
 			}
 			else
 			{

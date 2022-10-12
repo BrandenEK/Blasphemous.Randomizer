@@ -8,7 +8,7 @@ namespace Extras.EOS
 	{
 		private void Awake()
 		{
-			Object.Destroy(base.gameObject);
+			UnityEngine.Object.Destroy(base.gameObject);
 		}
 
 		[SerializeField]

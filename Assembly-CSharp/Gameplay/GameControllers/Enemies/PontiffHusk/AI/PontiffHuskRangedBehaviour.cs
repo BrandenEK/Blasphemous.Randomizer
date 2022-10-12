@@ -35,7 +35,7 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.AI
 
 		public PontiffHuskAnimatorInyector AnimatorInyector { get; private set; }
 
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		public void AddAnotherSegmentToShootingSequence()
 		{
 			PontiffHuskRangedBehaviour.ShootAndMove item = new PontiffHuskRangedBehaviour.ShootAndMove
@@ -43,8 +43,8 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.AI
 				Movement = Vector2.right,
 				HorMovementTime = 1f,
 				VerMovementTime = 1f,
-				HorMovementEase = 27,
-				VerMovementEase = 7,
+				HorMovementEase = Ease.OutBack,
+				VerMovementEase = Ease.InOutQuad,
 				WaitTimeAfterMovement = 1f
 			};
 			this.ShootingSequence.Add(item);
@@ -153,8 +153,8 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.AI
 			if (this.normalHorMove == null)
 			{
 				int num = (this.Entity.Status.Orientation != EntityOrientation.Left) ? -1 : 1;
-				float num2 = base.transform.position.x + (float)num * this.Speed;
-				this.normalHorMove = TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(base.transform, num2, 1f, false), 1), delegate()
+				float endValue = base.transform.position.x + (float)num * this.Speed;
+				this.normalHorMove = base.transform.DOMoveX(endValue, 1f, false).SetEase(Ease.Linear).OnComplete(delegate
 				{
 					this.normalHorMove = null;
 				});
@@ -170,21 +170,21 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.AI
 			}
 			if (this.normalHorMove != null)
 			{
-				TweenExtensions.Kill(this.normalHorMove, true);
+				this.normalHorMove.Kill(true);
 			}
 			int index = this.numMinesShooted - 1;
 			PontiffHuskRangedBehaviour.ShootAndMove shootAndMove = this.ShootingSequence[index];
-			float num = base.transform.position.x + shootAndMove.Movement.x;
+			float endValue = base.transform.position.x + shootAndMove.Movement.x;
 			float horMovementTime = shootAndMove.HorMovementTime;
 			Ease horMovementEase = shootAndMove.HorMovementEase;
-			this.attackingHorMove = TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(base.transform, num, horMovementTime, false), horMovementEase), delegate()
+			this.attackingHorMove = base.transform.DOMoveX(endValue, horMovementTime, false).SetEase(horMovementEase).OnComplete(delegate
 			{
 				this.attackingHorMove = null;
 			});
-			float num2 = base.transform.position.y + shootAndMove.Movement.y;
+			float endValue2 = base.transform.position.y + shootAndMove.Movement.y;
 			float verMovementTime = shootAndMove.VerMovementTime;
 			Ease verMovementEase = shootAndMove.VerMovementEase;
-			this.attackingVerMove = TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveY(base.transform, num2, verMovementTime, false), verMovementEase), delegate()
+			this.attackingVerMove = base.transform.DOMoveY(endValue2, verMovementTime, false).SetEase(verMovementEase).OnComplete(delegate
 			{
 				this.attackingVerMove = null;
 			});
@@ -307,11 +307,11 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.AI
 			{
 				position = Core.Logic.Penitent.GetPosition();
 			}
-			Vector2 vector = (position.x < base.transform.position.x) ? Vector2.right : Vector2.left;
+			Vector2 v = (position.x < base.transform.position.x) ? Vector2.right : Vector2.left;
 			this._PontiffHuskRanged.GhostTrail.EnableGhostTrail = true;
 			this._PontiffHuskRanged.MotionLerper.distanceToMove = 3f;
 			this._PontiffHuskRanged.MotionLerper.TimeTakenDuringLerp = 0.5f;
-			this._PontiffHuskRanged.MotionLerper.StartLerping(vector);
+			this._PontiffHuskRanged.MotionLerper.StartLerping(v);
 		}
 
 		public void Shoot()
@@ -396,7 +396,7 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.AI
 		private IEnumerator AfterDisappearResetState(float disappearTime)
 		{
 			yield return new WaitForSeconds(disappearTime);
-			ShortcutExtensions.DOKill(base.transform, true);
+			base.transform.DOKill(true);
 			base.transform.position = this.origin;
 			this.AnimatorInyector.EntityAnimator.Play("IDLE");
 			yield break;
@@ -449,7 +449,7 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk.AI
 		[Serializable]
 		public struct ShootAndMove
 		{
-			[Title("~ Segment ~", null, 0, true, true)]
+			[Title("~ Segment ~", null, TitleAlignments.Left, true, true)]
 			public GameObject MinePrefabToShoot;
 
 			public Vector2 Movement;

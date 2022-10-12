@@ -92,7 +92,7 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 		public override void Kill()
 		{
 			base.Kill();
-			Debug.Log("KILL OVERRIDE");
+			UnityEngine.Debug.Log("KILL OVERRIDE");
 			this.DamageArea.TakeDamage(new Hit
 			{
 				DamageAmount = 9999f

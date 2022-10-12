@@ -35,8 +35,8 @@ namespace Tools.Level.Actionables
 			if (Core.Logic.Penitent != null)
 			{
 				string idRelic = "RE10";
-				Vector2 vector = Core.Logic.Penitent.transform.position;
-				float num = Vector2.Distance(vector, base.transform.position);
+				Vector2 a = Core.Logic.Penitent.transform.position;
+				float num = Vector2.Distance(a, base.transform.position);
 				if (num < this.relicEffectiveRadius && this.currentState == TileableGeo.TILEABLE_GEO_STATES.HIDDEN && Core.InventoryManager.IsRelicEquipped(idRelic))
 				{
 					this.Show();
@@ -62,27 +62,27 @@ namespace Tools.Level.Actionables
 
 		private void SetDirection(TileableGeo.TILEABLE_GEO_DIRECTIONS dir)
 		{
-			float num = 0f;
+			float z = 0f;
 			switch (dir)
 			{
 			case TileableGeo.TILEABLE_GEO_DIRECTIONS.UP:
-				num = 180f;
+				z = 180f;
 				break;
 			case TileableGeo.TILEABLE_GEO_DIRECTIONS.RIGHT:
-				num = 90f;
+				z = 90f;
 				break;
 			case TileableGeo.TILEABLE_GEO_DIRECTIONS.DOWN:
-				num = 0f;
+				z = 0f;
 				break;
 			case TileableGeo.TILEABLE_GEO_DIRECTIONS.LEFT:
-				num = -90f;
+				z = -90f;
 				break;
 			}
-			this.rotationParent.transform.rotation = Quaternion.Euler(0f, 0f, num);
+			this.rotationParent.transform.rotation = Quaternion.Euler(0f, 0f, z);
 		}
 
 		[BoxGroup("Design Settings", true, false, 0)]
-		[Button("Apply direction and size", 31)]
+		[Button("Apply direction and size", ButtonSizes.Large)]
 		public void SetGrownState()
 		{
 			this.SetDirection(this.geoDirection);
@@ -188,7 +188,7 @@ namespace Tools.Level.Actionables
 			int num = this.maxSize / this.distanceBetweenBodySprites;
 			for (int i = 0; i < num; i++)
 			{
-				GameObject gameObject = Object.Instantiate<GameObject>(this.bodyPartPrefab, this.bodyPartsParent);
+				GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.bodyPartPrefab, this.bodyPartsParent);
 				this.bodyParts.Add(gameObject);
 				gameObject.transform.localPosition = new Vector3((float)(i * this.distanceBetweenBodySprites), 0f);
 				gameObject.GetComponentInChildren<SpriteRenderer>().flipY = this.flipGraphic;
@@ -244,7 +244,7 @@ namespace Tools.Level.Actionables
 			{
 				return;
 			}
-			this.grownAnimationAudioInstance.stop(0);
+			this.grownAnimationAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this.grownAnimationAudioInstance.release();
 			this.grownAnimationAudioInstance = default(EventInstance);
 		}

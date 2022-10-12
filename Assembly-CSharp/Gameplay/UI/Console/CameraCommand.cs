@@ -81,7 +81,7 @@ namespace Gameplay.UI.Console
 
 		private void ShowSceneCameras()
 		{
-			foreach (Camera cam in Object.FindObjectsOfType<Camera>())
+			foreach (Camera cam in UnityEngine.Object.FindObjectsOfType<Camera>())
 			{
 				this.ShowCamera(cam);
 			}

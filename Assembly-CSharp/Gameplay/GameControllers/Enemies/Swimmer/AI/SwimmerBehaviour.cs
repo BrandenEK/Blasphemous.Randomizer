@@ -32,7 +32,7 @@ namespace Gameplay.GameControllers.Enemies.Swimmer.AI
 			{
 				PoolManager.Instance.CreatePool(this.SwimmerTerrainEffects, 1);
 			}
-			this.Swimmer.Controller.MaxWalkingSpeed = Random.Range(this.ChasingSpeed.x, this.ChasingSpeed.y);
+			this.Swimmer.Controller.MaxWalkingSpeed = UnityEngine.Random.Range(this.ChasingSpeed.x, this.ChasingSpeed.y);
 			this.SetVisible(true);
 		}
 
@@ -170,7 +170,7 @@ namespace Gameplay.GameControllers.Enemies.Swimmer.AI
 
 		private IEnumerator JumpPress()
 		{
-			yield return new WaitForSeconds(Random.Range(this.LapseBeforeJump.x, this.LapseBeforeJump.y));
+			yield return new WaitForSeconds(UnityEngine.Random.Range(this.LapseBeforeJump.x, this.LapseBeforeJump.y));
 			this.Swimmer.Input.Jump = true;
 			yield return new WaitForSeconds(1f);
 			this.Swimmer.Input.Jump = false;

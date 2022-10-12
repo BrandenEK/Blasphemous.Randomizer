@@ -32,8 +32,8 @@ public class NavigationWidget : UIWidget
 
 	private void GenerateList()
 	{
-		PrieDieu[] array = Object.FindObjectsOfType<PrieDieu>();
-		Door[] array2 = Object.FindObjectsOfType<Door>();
+		PrieDieu[] array = UnityEngine.Object.FindObjectsOfType<PrieDieu>();
+		Door[] array2 = UnityEngine.Object.FindObjectsOfType<Door>();
 		this.firstButton = null;
 		this.previousButton = null;
 		if (array.Length > 0 || array2.Length > 0)
@@ -60,13 +60,13 @@ public class NavigationWidget : UIWidget
 		this.firstButton = null;
 		for (int i = 0; i < this.list.childCount; i++)
 		{
-			Object.Destroy(this.list.GetChild(i).gameObject);
+			UnityEngine.Object.Destroy(this.list.GetChild(i).gameObject);
 		}
 	}
 
 	private void CreateButton(string identificativeName, Vector3 position)
 	{
-		GameObject gameObject = Object.Instantiate<GameObject>(this.buttonPrefab);
+		GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.buttonPrefab);
 		gameObject.transform.SetParent(this.list);
 		gameObject.transform.localScale = Vector3.one;
 		Text componentInChildren = gameObject.GetComponentInChildren<Text>();

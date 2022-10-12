@@ -20,7 +20,7 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 		public void SpawnEnemiesOnLoad()
 		{
 			Log.Trace("Spawn", "Spawning enemies on level.", null);
-			EnemySpawnPoint[] array = Object.FindObjectsOfType<EnemySpawnPoint>();
+			EnemySpawnPoint[] array = UnityEngine.Object.FindObjectsOfType<EnemySpawnPoint>();
 			foreach (EnemySpawnPoint enemySpawnPoint in array)
 			{
 				enemySpawnPoint.CreateEnemy();
@@ -30,7 +30,7 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 		public void RespawnDeadEnemies()
 		{
 			Log.Trace("Spawn", "Respawning dead enemies on level.", null);
-			EnemySpawnPoint[] array = Object.FindObjectsOfType<EnemySpawnPoint>();
+			EnemySpawnPoint[] array = UnityEngine.Object.FindObjectsOfType<EnemySpawnPoint>();
 			this.consumedSpawns.Clear();
 			foreach (EnemySpawnPoint enemySpawnPoint in array)
 			{
@@ -65,7 +65,7 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 
 		public bool IsSpawnerConsumed(string spawnPointName)
 		{
-			EnemySpawnPoint[] source = Object.FindObjectsOfType<EnemySpawnPoint>();
+			EnemySpawnPoint[] source = UnityEngine.Object.FindObjectsOfType<EnemySpawnPoint>();
 			return this.IsSpawnerConsumed(source.First((EnemySpawnPoint p) => p.gameObject.name == spawnPointName));
 		}
 
@@ -76,13 +76,13 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 
 		public bool AreAllSpawnersConsumed()
 		{
-			EnemySpawnPoint[] source = Object.FindObjectsOfType<EnemySpawnPoint>();
+			EnemySpawnPoint[] source = UnityEngine.Object.FindObjectsOfType<EnemySpawnPoint>();
 			return source.All((EnemySpawnPoint p) => this.IsSpawnerConsumed(p));
 		}
 
 		public bool IsAnySpawnerLeft()
 		{
-			EnemySpawnPoint[] source = Object.FindObjectsOfType<EnemySpawnPoint>();
+			EnemySpawnPoint[] source = UnityEngine.Object.FindObjectsOfType<EnemySpawnPoint>();
 			return source.Any((EnemySpawnPoint p) => !this.IsSpawnerConsumed(p));
 		}
 

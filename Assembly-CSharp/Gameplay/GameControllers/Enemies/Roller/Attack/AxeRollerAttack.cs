@@ -34,8 +34,8 @@ namespace Gameplay.GameControllers.Enemies.Roller.Attack
 			Vector2 result = penitentPosition;
 			if (Vector2.Distance(base.transform.position, penitentPosition) > this.MaxProjectileDistance)
 			{
-				Vector2 vector = (penitentPosition - base.transform.position).normalized * this.MaxProjectileDistance;
-				result = vector + base.transform.position;
+				Vector2 a = (penitentPosition - base.transform.position).normalized * this.MaxProjectileDistance;
+				result = a + base.transform.position;
 			}
 			return result;
 		}

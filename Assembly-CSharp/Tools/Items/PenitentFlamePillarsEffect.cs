@@ -17,9 +17,9 @@ namespace Tools.Items
 			this._owner = Core.Logic.Penitent;
 			this._areaSummonAttack = this._owner.GetComponentInChildren<PrayerUse>().flamePillarsPrayer;
 			Core.Logic.CameraManager.ProCamera2DShake.ShakeUsingPreset("SimpleHit");
-			Vector2 vector = Vector2.right * (float)((this._owner.Status.Orientation != EntityOrientation.Right) ? -1 : 1);
+			Vector2 v = Vector2.right * (float)((this._owner.Status.Orientation != EntityOrientation.Right) ? -1 : 1);
 			this._areaSummonAttack.totalAreas = 8;
-			this._areaSummonAttack.SummonAreas(vector);
+			this._areaSummonAttack.SummonAreas(v);
 			return base.OnApplyEffect();
 		}
 

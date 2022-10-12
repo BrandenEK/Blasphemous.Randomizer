@@ -6,6 +6,7 @@ using System.Text;
 using Framework.FrameworkCore;
 using Framework.Map;
 using Framework.Penitences;
+using Framework.Randomizer;
 using FullSerializer;
 using Gameplay.GameControllers.Entities;
 using Sirenix.Utilities;
@@ -53,8 +54,7 @@ namespace Framework.Managers
 			}
 			if (Core.Logic.Penitent)
 			{
-				EntityStats stats = Core.Logic.Penitent.Stats;
-				stats.ResetPersistence();
+				Core.Logic.Penitent.Stats.ResetPersistence();
 			}
 		}
 
@@ -123,12 +123,10 @@ namespace Framework.Managers
 			if (PersistentManager.GetAutomaticSlot() == -1)
 			{
 				Debug.LogError("Trying to save slot without initializing");
+				return;
 			}
-			else
-			{
-				string dataPath = this.CreateAndGetSaveGameInternalDir(slot);
-				this.SaveSnapShot(this.currentSnapshot, Core.LevelManager.currentLevel.LevelName, fullSave, dataPath);
-			}
+			string dataPath = this.CreateAndGetSaveGameInternalDir(slot);
+			this.SaveSnapShot(this.currentSnapshot, Core.LevelManager.currentLevel.LevelName, fullSave, dataPath);
 		}
 
 		public void SaveGame(bool fullSave = true)
@@ -187,14 +185,12 @@ namespace Framework.Managers
 
 		public bool ExistSlot(int slot)
 		{
-			string saveGameFile = this.GetSaveGameFile(slot);
-			return File.Exists(saveGameFile);
+			return File.Exists(this.GetSaveGameFile(slot));
 		}
 
 		public bool ExistBackupSlot(int slot)
 		{
-			string saveGameBackupFile = this.GetSaveGameBackupFile(slot);
-			return File.Exists(saveGameBackupFile);
+			return File.Exists(this.GetSaveGameBackupFile(slot));
 		}
 
 		public PersistentManager.PublicSlotData GetSlotData(int slot)
@@ -219,7 +215,7 @@ namespace Framework.Managers
 					if (!Core.NewMapManager.ZoneHasName(sceneKey))
 					{
 						SpawnManager.CheckPointPersistenceData checkPointPersistenceData = (SpawnManager.CheckPointPersistenceData)snapShot.commonElements["ID_CHECKPOINT_MANAGER"];
-						if (!StringExtensions.IsNullOrWhitespace(checkPointPersistenceData.activePrieDieuScene))
+						if (!checkPointPersistenceData.activePrieDieuScene.IsNullOrWhitespace())
 						{
 							publicSlotData.persistence.CurrentDomain = checkPointPersistenceData.activePrieDieuScene.Substring(0, 3);
 							publicSlotData.persistence.CurrentZone = checkPointPersistenceData.activePrieDieuScene.Substring(3, 3);
@@ -232,21 +228,27 @@ namespace Framework.Managers
 					publicSlotData.persistence.CanConvertToNewGamePlus = Core.GameModeManager.CanConvertToNewGamePlus(snapShot);
 					publicSlotData.persistence.Corrupted = corrupted;
 					publicSlotData.persistence.HasBackup = flag2;
+					string persistenID = Core.Randomizer.GetPersistenID();
+					if (snapShot.commonElements.ContainsKey(persistenID) && ((RandomizerPersistenceData)snapShot.commonElements[persistenID]).startedInRando)
+					{
+						PersistentManager.PersitentPersistenceData persistence = publicSlotData.persistence;
+						persistence.CurrentZone += "r";
+					}
 				}
-				string persistenID = Core.PenitenceManager.GetPersistenID();
-				if (snapShot.commonElements.ContainsKey(persistenID))
+				string persistenID2 = Core.PenitenceManager.GetPersistenID();
+				if (snapShot.commonElements.ContainsKey(persistenID2))
 				{
-					publicSlotData.penitence = (PenitenceManager.PenitencePersistenceData)snapShot.commonElements[persistenID];
+					publicSlotData.penitence = (PenitenceManager.PenitencePersistenceData)snapShot.commonElements[persistenID2];
 				}
-				persistenID = Core.Events.GetPersistenID();
-				if (snapShot.commonElements.ContainsKey(persistenID))
+				persistenID2 = Core.Events.GetPersistenID();
+				if (snapShot.commonElements.ContainsKey(persistenID2))
 				{
-					publicSlotData.flags = (EventManager.FlagPersistenceData)snapShot.commonElements[persistenID];
+					publicSlotData.flags = (EventManager.FlagPersistenceData)snapShot.commonElements[persistenID2];
 				}
-				persistenID = Core.AchievementsManager.GetPersistenID();
-				if (snapShot.commonElements.ContainsKey(persistenID))
+				persistenID2 = Core.AchievementsManager.GetPersistenID();
+				if (snapShot.commonElements.ContainsKey(persistenID2))
 				{
-					publicSlotData.achievement = (AchievementsManager.AchievementPersistenceData)snapShot.commonElements[persistenID];
+					publicSlotData.achievement = (AchievementsManager.AchievementPersistenceData)snapShot.commonElements[persistenID2];
 				}
 			}
 			else if (this.ExistSlot(slot))
@@ -295,13 +297,11 @@ namespace Framework.Managers
 			if (PersistentManager.GetAutomaticSlot() == -1)
 			{
 				Debug.LogError("Trying to save slot without initializing");
+				return;
 			}
-			else
-			{
-				this.SaveSnapShot(this.currentSnapshot, oldLevel.LevelName, false, this.CreateAndGetSaveGameInternalDir(PersistentManager.GetAutomaticSlot()));
-				this.InsideLoadLevelProcess = true;
-				Log.Trace("Persistence", "Persistence SAVE: " + oldLevel.LevelName, null);
-			}
+			this.SaveSnapShot(this.currentSnapshot, oldLevel.LevelName, false, this.CreateAndGetSaveGameInternalDir(PersistentManager.GetAutomaticSlot()));
+			this.InsideLoadLevelProcess = true;
+			Log.Trace("Persistence", "Persistence SAVE: " + oldLevel.LevelName, null);
 		}
 
 		public void OnLevelLoaded(Level oldLevel, Level newLevel)
@@ -392,8 +392,7 @@ namespace Framework.Managers
 			{
 				File.Copy(this.GetSaveGameBackupFile(slot), this.GetSaveGameFile(slot), true);
 				string saveGameInternalName = this.GetSaveGameInternalName(slot);
-				string saveGameBackupInternalName = this.GetSaveGameBackupInternalName(slot);
-				FileTools.DirectoryCopy(saveGameBackupInternalName, saveGameInternalName, true, true);
+				FileTools.DirectoryCopy(this.GetSaveGameBackupInternalName(slot), saveGameInternalName, true, true);
 			}
 			catch (Exception)
 			{
@@ -425,12 +424,11 @@ namespace Framework.Managers
 		private bool LoadGameSnapShotInternal(string path, ref PersistentManager.SnapShot snap)
 		{
 			bool flag = true;
-			string text = string.Empty;
+			string input = string.Empty;
 			try
 			{
-				string s = File.ReadAllText(path);
-				byte[] bytes = Convert.FromBase64String(s);
-				text = Encoding.UTF8.GetString(bytes);
+				byte[] bytes = Convert.FromBase64String(File.ReadAllText(path));
+				input = Encoding.UTF8.GetString(bytes);
 			}
 			catch (Exception)
 			{
@@ -438,8 +436,8 @@ namespace Framework.Managers
 			}
 			if (flag)
 			{
-				fsData fsData;
-				fsResult fsResult = fsJsonParser.Parse(text, ref fsData);
+				fsData data;
+				fsResult fsResult = fsJsonParser.Parse(input, out data);
 				if (fsResult.Failed)
 				{
 					Debug.LogError("** LoadGame parsing error: " + fsResult.FormattedMessages);
@@ -449,7 +447,7 @@ namespace Framework.Managers
 				{
 					try
 					{
-						fsResult = this.serializer.TryDeserialize<PersistentManager.SnapShot>(fsData, ref snap);
+						fsResult = this.serializer.TryDeserialize<PersistentManager.SnapShot>(data, ref snap);
 					}
 					catch (Exception ex)
 					{
@@ -479,16 +477,15 @@ namespace Framework.Managers
 				" to file ",
 				saveGameFile
 			}));
-			fsData fsData;
-			fsResult fsResult = this.serializer.TrySerialize<PersistentManager.SnapShot>(this.currentSnapshot, ref fsData);
+			fsData data;
+			fsResult fsResult = this.serializer.TrySerialize<PersistentManager.SnapShot>(this.currentSnapshot, out data);
 			if (fsResult.Failed)
 			{
 				Debug.LogError("** SaveGame error: " + fsResult.FormattedMessages);
 				return false;
 			}
-			string s = fsJsonPrinter.CompressedJson(fsData);
-			byte[] bytes = Encoding.UTF8.GetBytes(s);
-			string encryptedData = Convert.ToBase64String(bytes);
+			string s = fsJsonPrinter.CompressedJson(data);
+			string encryptedData = Convert.ToBase64String(Encoding.UTF8.GetBytes(s));
 			FileTools.SaveSecure(saveGameFile, encryptedData);
 			return true;
 		}
@@ -505,8 +502,7 @@ namespace Framework.Managers
 
 		private string GetSaveGameInternalName(int slot)
 		{
-			string fileName = "savegame_" + slot;
-			return PersistentManager.GetPathAppSettings(fileName);
+			return PersistentManager.GetPathAppSettings("savegame_" + slot);
 		}
 
 		private string GetSaveGameFile(int slot)
@@ -541,8 +537,7 @@ namespace Framework.Managers
 			{
 				snapShot.sceneElements[sceneKeyName] = new Dictionary<string, PersistentManager.PersistentData>();
 			}
-			PersistentObject[] array = Object.FindObjectsOfType<PersistentObject>();
-			foreach (PersistentObject persistentObject in array)
+			foreach (PersistentObject persistentObject in UnityEngine.Object.FindObjectsOfType<PersistentObject>())
 			{
 				if (!persistentObject.IsIgnoringPersistence())
 				{
@@ -617,8 +612,7 @@ namespace Framework.Managers
 			if (snapShot.sceneElements.ContainsKey(sceneKeyName))
 			{
 				Dictionary<string, PersistentManager.PersistentData> dictionary = snapShot.sceneElements[sceneKeyName];
-				PersistentObject[] array = Object.FindObjectsOfType<PersistentObject>();
-				foreach (PersistentObject persistentObject in array)
+				foreach (PersistentObject persistentObject in UnityEngine.Object.FindObjectsOfType<PersistentObject>())
 				{
 					if (!persistentObject.IsIgnoringPersistence())
 					{
@@ -775,10 +769,15 @@ namespace Framework.Managers
 					flag2 = this.LoadGameBackupSnapShot(slotIndex, ref snapshot);
 				}
 				IPenitence currentPenitence = Core.PenitenceManager.GetCurrentPenitence();
-				if (flag2 && Core.GameModeManager.CanConvertToNewGamePlus(snapshot) && currentPenitence != null)
+				if (!flag2 || !Core.GameModeManager.CanConvertToNewGamePlus(snapshot) || currentPenitence == null)
 				{
-					foreach (KeyValuePair<string, string> keyValuePair in PersistentManager.SkinsAndObjects)
+					goto IL_1BE;
+				}
+				using (Dictionary<string, string>.Enumerator enumerator = PersistentManager.SkinsAndObjects.GetEnumerator())
+				{
+					while (enumerator.MoveNext())
 					{
+						KeyValuePair<string, string> keyValuePair = enumerator.Current;
 						if (Core.ColorPaletteManager.IsColorPaletteUnlocked(keyValuePair.Key) && !Core.InventoryManager.IsRosaryBeadOwned(keyValuePair.Value) && keyValuePair.Key.EndsWith(currentPenitence.Id))
 						{
 							flag = true;
@@ -786,9 +785,10 @@ namespace Framework.Managers
 							Core.PenitenceManager.MarkCurrentPenitenceAsCompleted();
 						}
 					}
+					goto IL_1BE;
 				}
 			}
-			else if (Core.GameModeManager.GetNewGamePlusUpgrades() > 1)
+			if (Core.GameModeManager.GetNewGamePlusUpgrades() > 1)
 			{
 				foreach (KeyValuePair<string, string> keyValuePair2 in PersistentManager.SkinsAndObjects)
 				{
@@ -800,7 +800,7 @@ namespace Framework.Managers
 						{
 							'_'
 						});
-						if (array.Length > 0)
+						if (array.Length != 0)
 						{
 							string id = array[1];
 							Core.PenitenceManager.MarkPenitenceAsCompleted(id);
@@ -812,6 +812,7 @@ namespace Framework.Managers
 					}
 				}
 			}
+			IL_1BE:
 			if (flag)
 			{
 				Core.Persistence.SaveGame(slotIndex, false);
@@ -824,22 +825,20 @@ namespace Framework.Managers
 			string pathAppSettings = PersistentManager.GetPathAppSettings("/app_settings");
 			if (File.Exists(pathAppSettings))
 			{
-				Dictionary<string, fsData> dictionary = new Dictionary<string, fsData>();
-				string s = File.ReadAllText(pathAppSettings);
-				byte[] bytes = Convert.FromBase64String(s);
-				string @string = Encoding.UTF8.GetString(bytes);
+				new Dictionary<string, fsData>();
+				byte[] bytes = Convert.FromBase64String(File.ReadAllText(pathAppSettings));
 				fsData fsData;
-				fsResult fsResult = fsJsonParser.Parse(@string, ref fsData);
+				fsResult fsResult = fsJsonParser.Parse(Encoding.UTF8.GetString(bytes), out fsData);
 				if (fsResult.Failed && !fsResult.FormattedMessages.Equals("No input"))
 				{
 					Debug.LogError("CheckInFileIfBeadsRewarded: parsing error: " + fsResult.FormattedMessages);
 				}
 				else if (fsData != null)
 				{
-					dictionary = fsData.AsDictionary;
+					Dictionary<string, fsData> asDictionary = fsData.AsDictionary;
 					string key = "REWARDS_FIX";
 					fsData fsData2;
-					if (dictionary.TryGetValue(key, out fsData2))
+					if (asDictionary.TryGetValue(key, out fsData2))
 					{
 						result = fsData2.AsBool;
 					}
@@ -859,8 +858,7 @@ namespace Framework.Managers
 			string key = "REWARDS_FIX";
 			fsData.AsDictionary[key] = new fsData(true);
 			string s = fsJsonPrinter.CompressedJson(fsData);
-			byte[] bytes = Encoding.UTF8.GetBytes(s);
-			string encryptedData = Convert.ToBase64String(bytes);
+			string encryptedData = Convert.ToBase64String(Encoding.UTF8.GetBytes(s));
 			FileTools.SaveSecure(pathAppSettings, encryptedData);
 		}
 
@@ -876,7 +874,7 @@ namespace Framework.Managers
 			{
 				Directory.CreateDirectory(text);
 			}
-			if (!StringExtensions.IsNullOrWhitespace(fileName))
+			if (!fileName.IsNullOrWhitespace())
 			{
 				text += fileName;
 			}
@@ -887,12 +885,10 @@ namespace Framework.Managers
 		{
 			fsData result = new fsData();
 			string s;
-			bool flag = PersistentManager.TryToReadFile(filePath, out s);
-			if (flag)
+			if (PersistentManager.TryToReadFile(filePath, out s))
 			{
 				byte[] bytes = Convert.FromBase64String(s);
-				string @string = Encoding.UTF8.GetString(bytes);
-				fsResult fsResult = fsJsonParser.Parse(@string, ref result);
+				fsResult fsResult = fsJsonParser.Parse(Encoding.UTF8.GetString(bytes), out result);
 				if (fsResult.Failed && !fsResult.FormattedMessages.Equals("No input"))
 				{
 					Debug.LogError("Parsing error: " + fsResult.FormattedMessages);

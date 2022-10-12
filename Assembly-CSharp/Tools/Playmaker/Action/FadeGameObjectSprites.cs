@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Tools.Playmaker.Action
 {
 	[ActionCategory("Blasphemous Action")]
-	[Tooltip("Plays an audio.")]
+	[HutongGames.PlayMaker.Tooltip("Plays an audio.")]
 	public class FadeGameObjectSprites : FsmStateAction
 	{
 		public override void OnEnter()
@@ -15,7 +15,7 @@ namespace Tools.Playmaker.Action
 			List<SpriteRenderer> list = new List<SpriteRenderer>(this.go.GetComponentsInChildren<SpriteRenderer>());
 			list.ForEach(delegate(SpriteRenderer x)
 			{
-				ShortcutExtensions43.DOFade(x, this.targetAlpha.Value, this.fadeTime.Value);
+				x.DOFade(this.targetAlpha.Value, this.fadeTime.Value);
 			});
 			base.Finish();
 		}

@@ -146,12 +146,12 @@ namespace Gameplay.GameControllers.Bosses.PietyMonster.ThornProjectile
 		{
 			float num = target.x - base.transform.position.x;
 			float num2 = target.y - base.transform.position.y;
-			float num3 = Mathf.Atan((num2 + 7f) / num);
-			float num4 = num / Mathf.Cos(num3);
-			float num5 = num4 * Mathf.Cos(num3);
-			float num6 = num4 * Mathf.Sin(num3);
+			float f = Mathf.Atan((num2 + 7f) / num);
+			float num3 = num / Mathf.Cos(f);
+			float x = num3 * Mathf.Cos(f);
+			float y = num3 * Mathf.Sin(f);
 			Rigidbody2D component = base.GetComponent<Rigidbody2D>();
-			component.velocity = new Vector2(num5, num6);
+			component.velocity = new Vector2(x, y);
 		}
 
 		private IEnumerator ParabolicThrowCoroutine(Vector3 target)

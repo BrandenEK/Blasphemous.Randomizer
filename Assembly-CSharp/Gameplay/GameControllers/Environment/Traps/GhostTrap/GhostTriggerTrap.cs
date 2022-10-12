@@ -72,7 +72,7 @@ namespace Gameplay.GameControllers.Environment.Traps.GhostTrap
 			Vector3 position2 = this.GetSpawnPagesPosition(position) + this.Offset;
 			this.OldSpawnPosition = new Vector2(position2.x, position2.y);
 			this._currentTriggerLapse = this.TriggerTimeOffset;
-			int num = Random.Range(1, this.NumPages + 1);
+			int num = UnityEngine.Random.Range(1, this.NumPages + 1);
 			this.PlayBlowPaperSheets();
 			byte b = 0;
 			while ((int)b < num)
@@ -84,9 +84,9 @@ namespace Gameplay.GameControllers.Environment.Traps.GhostTrap
 
 		private Vector3 GetSpawnPagesPosition(Vector3 targetPosition)
 		{
-			float num = this.TrapCollider.bounds.min.x + 0.1f;
-			float num2 = this.TrapCollider.bounds.max.x - 0.1f;
-			targetPosition.x = Mathf.Clamp(targetPosition.x, num, num2);
+			float min = this.TrapCollider.bounds.min.x + 0.1f;
+			float max = this.TrapCollider.bounds.max.x - 0.1f;
+			targetPosition.x = Mathf.Clamp(targetPosition.x, min, max);
 			return targetPosition;
 		}
 

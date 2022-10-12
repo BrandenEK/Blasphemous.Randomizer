@@ -123,9 +123,8 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 		{
 			Vector3 position = base.EntityOwner.transform.position;
 			EntityOrientation orientation = base.EntityOwner.Status.Orientation;
-			float num = (orientation != EntityOrientation.Left) ? (position.x + this.RiposteEffectOffset.x) : (position.x - this.RiposteEffectOffset.x);
-			Vector2 result;
-			result..ctor(num, position.y + this.RiposteEffectOffset.y);
+			float x = (orientation != EntityOrientation.Left) ? (position.x + this.RiposteEffectOffset.x) : (position.x - this.RiposteEffectOffset.x);
+			Vector2 result = new Vector2(x, position.y + this.RiposteEffectOffset.y);
 			return result;
 		}
 

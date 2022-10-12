@@ -78,7 +78,7 @@ public class BoomerangBlade : Weapon
 		{
 			return;
 		}
-		this._flyingBladeAudioInstance.stop(0);
+		this._flyingBladeAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 		this._flyingBladeAudioInstance.release();
 		this._flyingBladeAudioInstance = default(EventInstance);
 	}

@@ -10,7 +10,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Bosses.Pietat.Tho
 			base.OnStateUpdate(animator, stateInfo, layerIndex);
 			if (stateInfo.normalizedTime > 0.95f)
 			{
-				Object.Destroy(animator.gameObject);
+				UnityEngine.Object.Destroy(animator.gameObject);
 			}
 		}
 	}

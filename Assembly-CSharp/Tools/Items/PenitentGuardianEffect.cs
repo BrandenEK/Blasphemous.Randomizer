@@ -77,7 +77,7 @@ namespace Tools.Items
 			{
 				if (this.PenitentGuardianPrefab != null)
 				{
-					this._penitentGuardian = Object.Instantiate<GameObject>(this.PenitentGuardianPrefab, position, Quaternion.identity);
+					this._penitentGuardian = UnityEngine.Object.Instantiate<GameObject>(this.PenitentGuardianPrefab, position, Quaternion.identity);
 					PenitentGuardian component = this._penitentGuardian.GetComponent<PenitentGuardian>();
 					component.SetOrientation(this.currentHit);
 				}

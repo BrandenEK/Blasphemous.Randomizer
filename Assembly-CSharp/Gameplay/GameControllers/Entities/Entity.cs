@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Framework.FrameworkCore;
 using Framework.Managers;
 using Gameplay.GameControllers.Effects.Entity.BlobShadow;
@@ -17,38 +16,29 @@ namespace Gameplay.GameControllers.Entities
 	[SelectionBase]
 	public class Entity : MonoBehaviour
 	{
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		public void KillEntity()
 		{
 			Debug.Log("TRYING TO KILL ENTITY");
 			this.Kill();
 		}
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Core.SimpleEvent OnDamaged;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action<float> OnDamageTaken;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Core.SimpleEvent OnDeath;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Core.SimpleEvent OnDestroyEntity;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Core.EntityEvent OnEntityDeath;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Entity.EntityFlagEvent FlagChanged;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public static event Core.EntityEvent Started;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public static event Core.EntityEvent Death;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public static event Core.EntityEvent Damaged;
 
 		public Animator Animator { get; private set; }
@@ -255,7 +245,7 @@ namespace Gameplay.GameControllers.Entities
 
 		public void Damage(float amount, string impactAudioId = "")
 		{
-			if (!StringExtensions.IsNullOrWhitespace(impactAudioId) && !this.Mute)
+			if (!impactAudioId.IsNullOrWhitespace() && !this.Mute)
 			{
 				Core.Audio.EventOneShotPanned(impactAudioId, base.transform.position);
 				Log.Trace("Audio", "Playing audio hit. " + impactAudioId, null);
@@ -304,6 +294,11 @@ namespace Gameplay.GameControllers.Entities
 		{
 			this.Status.Dead = true;
 			this.Stats.Life.Current = 0f;
+			Enemy enemy = this as Enemy;
+			if (enemy != null)
+			{
+				Core.Randomizer.Log(enemy.Id + ": " + enemy.purgePointsWhenDead, 2);
+			}
 			if (Entity.Death != null)
 			{
 				Entity.Death(this);
@@ -342,6 +337,7 @@ namespace Gameplay.GameControllers.Entities
 						throw new ArgumentOutOfRangeException();
 					}
 					this.spriteRenderer.flipX = false;
+					return;
 				}
 				else
 				{
@@ -382,8 +378,7 @@ namespace Gameplay.GameControllers.Entities
 
 		public Vector3 GetForwardTangent(Vector3 dir, Vector3 up)
 		{
-			Vector3 vector = Vector3.Cross(up, dir);
-			return Vector3.Cross(vector, up);
+			return Vector3.Cross(Vector3.Cross(up, dir), up);
 		}
 
 		protected static bool IsVisibleFrom(Renderer entityRenderer, Camera mainCamera)
@@ -399,6 +394,7 @@ namespace Gameplay.GameControllers.Entities
 				if (this.FlagChanged != null)
 				{
 					this.FlagChanged(flag, true);
+					return;
 				}
 			}
 			else if (!active && this.HasFlag(flag))
@@ -424,10 +420,10 @@ namespace Gameplay.GameControllers.Entities
 
 		private bool invulnerable;
 
-		[TitleGroup("Entity Id", "A code which uniquely identifies an entity the documentation.", 0, true, true, false, 0)]
+		[TitleGroup("Entity Id", "A code which uniquely identifies an entity the documentation.", TitleAlignments.Left, true, true, false, 0)]
 		public string Id;
 
-		[TitleGroup("Entity Name", "The name of the entity in the documentation.", 0, true, true, false, 0)]
+		[TitleGroup("Entity Name", "The name of the entity in the documentation.", TitleAlignments.Left, true, true, false, 0)]
 		public string EntityName;
 
 		[SerializeField]

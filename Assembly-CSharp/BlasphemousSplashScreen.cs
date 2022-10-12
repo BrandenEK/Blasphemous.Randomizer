@@ -10,7 +10,7 @@ public class BlasphemousSplashScreen : MonoBehaviour
 		VideoPlayer component = base.GetComponent<VideoPlayer>();
 		component.loopPointReached += delegate(VideoPlayer source)
 		{
-			SceneManager.LoadScene(this.postSplashScene, 0);
+			SceneManager.LoadScene(this.postSplashScene, LoadSceneMode.Single);
 		};
 		component.prepareCompleted += delegate(VideoPlayer source)
 		{

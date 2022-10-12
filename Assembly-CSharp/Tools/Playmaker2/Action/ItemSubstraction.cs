@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Tools.Playmaker2.Action
 {
 	[ActionCategory("Blasphemous Action")]
-	[Tooltip("Removes the chosen item form player's inventory.")]
+	[HutongGames.PlayMaker.Tooltip("Removes the chosen item form player's inventory.")]
 	public class ItemSubstraction : InventoryBase
 	{
 		public override bool executeAction(string objectIdStting, InventoryManager.ItemType objType, int slot)
@@ -16,6 +16,7 @@ namespace Tools.Playmaker2.Action
 			bool flag = false;
 			string itemName = string.Empty;
 			Sprite image = null;
+			Core.Randomizer.Log("ItemSubtraction", 2);
 			switch (objType)
 			{
 			case InventoryManager.ItemType.Relic:

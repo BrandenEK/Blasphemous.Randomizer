@@ -52,10 +52,10 @@ namespace Gameplay.GameControllers.Effects.Player.Dash
 			{
 				return Vector3.zero;
 			}
-			float num = this._penitent.DamageArea.DamageAreaCollider.bounds.min.y - this._penitent.PlatformCharacterController.GroundDist;
-			float num2 = (this._penitent.Status.Orientation != EntityOrientation.Right) ? (this._penitent.DamageArea.DamageAreaCollider.bounds.min.x - 0.2f) : (this._penitent.DamageArea.DamageAreaCollider.bounds.max.x + 0.2f);
+			float y = this._penitent.DamageArea.DamageAreaCollider.bounds.min.y - this._penitent.PlatformCharacterController.GroundDist;
+			float num = (this._penitent.Status.Orientation != EntityOrientation.Right) ? (this._penitent.DamageArea.DamageAreaCollider.bounds.min.x - 0.2f) : (this._penitent.DamageArea.DamageAreaCollider.bounds.max.x + 0.2f);
 			this.StopDustSpawnOffsetPos *= ((this._penitent.Status.Orientation != EntityOrientation.Right) ? -1f : 1f);
-			return new Vector2(num2 + this.StopDustSpawnOffsetPos, num);
+			return new Vector2(num + this.StopDustSpawnOffsetPos, y);
 		}
 
 		private Penitent _penitent;

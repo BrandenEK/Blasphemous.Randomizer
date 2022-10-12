@@ -40,7 +40,7 @@ namespace Gameplay.GameControllers.Enemies.NewFlagellant.AI
 			{
 				this.NewFlagellant.AnimatorInyector.OnAttackAnimationFinished -= this.AnimatorInjector_OnAttackAnimationFinished;
 				this.NewFlagellant.AnimatorInyector.OnAttackAnimationFinished += this.AnimatorInjector_OnAttackAnimationFinished;
-				float num = Random.Range(0f, 1f);
+				float num = UnityEngine.Random.Range(0f, 1f);
 				if ((double)num < 0.33)
 				{
 					this.NewFlagellant.AnimatorInyector.FastAttack();

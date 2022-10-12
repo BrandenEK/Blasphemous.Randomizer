@@ -53,7 +53,7 @@ namespace Gameplay.GameControllers.Enemies.GhostKnight.Animator
 
 		public void DestroyEnemy()
 		{
-			Object.Destroy(this.GhostKnight.gameObject);
+			UnityEngine.Object.Destroy(this.GhostKnight.gameObject);
 		}
 	}
 }

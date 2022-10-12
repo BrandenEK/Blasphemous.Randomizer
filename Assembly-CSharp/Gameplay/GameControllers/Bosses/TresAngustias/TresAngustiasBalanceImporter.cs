@@ -51,7 +51,7 @@ namespace Gameplay.GameControllers.Bosses.TresAngustias
 
 		private void SetScrollableSpeed()
 		{
-			ScrollableModulesManager scrollableModulesManager = Object.FindObjectOfType<ScrollableModulesManager>();
+			ScrollableModulesManager scrollableModulesManager = UnityEngine.Object.FindObjectOfType<ScrollableModulesManager>();
 			if (!scrollableModulesManager)
 			{
 				return;

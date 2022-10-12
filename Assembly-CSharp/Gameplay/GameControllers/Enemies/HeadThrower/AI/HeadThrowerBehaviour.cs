@@ -84,7 +84,7 @@ namespace Gameplay.GameControllers.Enemies.HeadThrower.AI
 			{
 				return;
 			}
-			GameObject gameObject = Object.Instantiate<GameObject>(this.HeadPrefab, this.SpawningRootPoint.transform.position, Quaternion.identity);
+			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.HeadPrefab, this.SpawningRootPoint.transform.position, Quaternion.identity);
 			if (gameObject != null)
 			{
 				this.AddSpawnedHeadToList(gameObject);

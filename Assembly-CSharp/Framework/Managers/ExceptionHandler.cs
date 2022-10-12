@@ -10,7 +10,7 @@ namespace Framework.Managers
 			base.Initialize();
 			if (!Application.isEditor)
 			{
-				Application.logMessageReceived += new Application.LogCallback(this.HandleException);
+				Application.logMessageReceived += this.HandleException;
 			}
 		}
 
@@ -18,15 +18,15 @@ namespace Framework.Managers
 		{
 			switch (type)
 			{
-			case 0:
+			case LogType.Error:
 				break;
-			case 1:
+			case LogType.Assert:
 				break;
-			case 2:
+			case LogType.Warning:
 				break;
-			case 3:
+			case LogType.Log:
 				break;
-			case 4:
+			case LogType.Exception:
 				Debug.LogError("Ups! There was an unhandled exception: " + condition + "\n" + stackTrace);
 				break;
 			default:
@@ -37,7 +37,7 @@ namespace Framework.Managers
 		public override void Update()
 		{
 			base.Update();
-			if (Debug.developerConsoleVisible && Input.GetKeyDown(283))
+			if (Debug.developerConsoleVisible && Input.GetKeyDown(KeyCode.F2))
 			{
 				Debug.ClearDeveloperConsole();
 			}
@@ -46,7 +46,7 @@ namespace Framework.Managers
 		public override void Dispose()
 		{
 			base.Dispose();
-			Application.logMessageReceived -= new Application.LogCallback(this.HandleException);
+			Application.logMessageReceived -= this.HandleException;
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Acolyte.Hurt
 			{
 				componentInChildren.RemoveBlobShadow();
 			}
-			Object.Destroy(this._acolyte.gameObject);
+			UnityEngine.Object.Destroy(this._acolyte.gameObject);
 		}
 
 		private Acolyte _acolyte;

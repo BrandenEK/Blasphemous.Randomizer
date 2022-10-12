@@ -38,8 +38,8 @@ namespace Gameplay.GameControllers.Enemies.CrossCanyon
 
 		private void Rotate()
 		{
-			Quaternion quaternion = Quaternion.Euler(0f, 0f, -45f);
-			base.transform.rotation *= quaternion;
+			Quaternion rhs = Quaternion.Euler(0f, 0f, -45f);
+			base.transform.rotation *= rhs;
 		}
 
 		private void ShootCannons()

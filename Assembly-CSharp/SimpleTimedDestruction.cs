@@ -8,7 +8,7 @@ public class SimpleTimedDestruction : MonoBehaviour
 		this.TTL -= Time.deltaTime;
 		if (this.TTL < 0f)
 		{
-			Object.Destroy(base.gameObject);
+			UnityEngine.Object.Destroy(base.gameObject);
 		}
 	}
 

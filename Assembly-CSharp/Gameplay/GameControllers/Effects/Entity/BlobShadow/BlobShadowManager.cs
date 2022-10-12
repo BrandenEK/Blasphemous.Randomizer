@@ -20,7 +20,7 @@ namespace Gameplay.GameControllers.Effects.Entity.BlobShadow
 			}
 			else
 			{
-				gameObject = Object.Instantiate<GameObject>(this.blobShadowPrefab, position, Quaternion.identity);
+				gameObject = UnityEngine.Object.Instantiate<GameObject>(this.blobShadowPrefab, position, Quaternion.identity);
 			}
 			if (gameObject.transform.parent != base.transform)
 			{

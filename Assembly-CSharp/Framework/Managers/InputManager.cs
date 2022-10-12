@@ -59,7 +59,7 @@ namespace Framework.Managers
 				Joystick device = null;
 				if (this.JoystickConnected)
 				{
-					Joystick joystick = (Joystick)ReInput.players.GetPlayer(0).controllers.GetLastActiveController(2);
+					Joystick joystick = (Joystick)ReInput.players.GetPlayer(0).controllers.GetLastActiveController(ControllerType.Joystick);
 					Joystick joystick2 = (ReInput.players.GetPlayer(0).controllers.joystickCount <= 0) ? null : ReInput.players.GetPlayer(0).controllers.Joysticks[0];
 					device = (joystick ?? joystick2);
 				}
@@ -93,15 +93,15 @@ namespace Framework.Managers
 			get
 			{
 				ControllerType activeControllerType = this.ActiveControllerType;
-				if (activeControllerType == null)
+				if (activeControllerType == ControllerType.Keyboard)
 				{
 					return this.Keyboard;
 				}
-				if (activeControllerType != 2)
+				if (activeControllerType != ControllerType.Joystick)
 				{
 					return this.Keyboard;
 				}
-				Joystick joystick = (Joystick)ReInput.players.GetPlayer(0).controllers.GetLastActiveController(2);
+				Joystick joystick = (Joystick)ReInput.players.GetPlayer(0).controllers.GetLastActiveController(ControllerType.Joystick);
 				Joystick joystick2 = (ReInput.players.GetPlayer(0).controllers.joystickCount <= 0) ? null : ReInput.players.GetPlayer(0).controllers.Joysticks[0];
 				Joystick joystick3;
 				if ((joystick3 = joystick) == null)
@@ -117,7 +117,7 @@ namespace Framework.Managers
 		{
 			get
 			{
-				Joystick joystick = (Joystick)ReInput.controllers.GetLastActiveController(2);
+				Joystick joystick = (Joystick)ReInput.controllers.GetLastActiveController(ControllerType.Joystick);
 				if (joystick != null)
 				{
 					IList<Controller.Axis> axes = joystick.Axes;
@@ -143,9 +143,9 @@ namespace Framework.Managers
 		{
 			PlayMakerGUI.LockCursor = false;
 			PlayMakerGUI.HideCursor = true;
-			Debug.LogWarning("BLOCKING INPUT until main menu is fully shown");
+			UnityEngine.Debug.LogWarning("BLOCKING INPUT until main menu is fully shown");
 			this.SetBlocker("InitialBlocker", true);
-			this.ActiveControllerType = ((!this.JoystickConnected) ? 0 : 2);
+			this.ActiveControllerType = ((!this.JoystickConnected) ? ControllerType.Keyboard : ControllerType.Joystick);
 			this.Keyboard = ReInput.players.GetPlayer(0).controllers.Keyboard;
 			IList<Joystick> joysticks = ReInput.players.GetPlayer(0).controllers.Joysticks;
 			this.Joystick = ((joysticks.Count <= 0) ? null : joysticks[0]);
@@ -167,7 +167,7 @@ namespace Framework.Managers
 
 		private void UpdateMainInput()
 		{
-			Joystick joystick = (Joystick)ReInput.players.GetPlayer(0).controllers.GetLastActiveController(2);
+			Joystick joystick = (Joystick)ReInput.players.GetPlayer(0).controllers.GetLastActiveController(ControllerType.Joystick);
 			if (this.PrevJoystick == null)
 			{
 				this.PrevJoystick = (this.Joystick ?? joystick);
@@ -178,12 +178,12 @@ namespace Framework.Managers
 			}
 			if (ReInput.controllers.Keyboard.GetAnyButton() || ReInput.controllers.Mouse.GetAnyButton())
 			{
-				this.SetMainInput(0, this.Keyboard.id);
+				this.SetMainInput(ControllerType.Keyboard, this.Keyboard.id);
 				this.PrevKeyboard = this.Keyboard;
 			}
 			else if (this.JoystickConnected && joystick != null && (joystick.GetAnyButton() || this.AxisTouched))
 			{
-				this.SetMainInput(2, this.PrevJoystick.id);
+				this.SetMainInput(ControllerType.Joystick, this.PrevJoystick.id);
 				this.PrevJoystick = this.Joystick;
 			}
 		}
@@ -241,11 +241,11 @@ namespace Framework.Managers
 
 		private void SendInputChangedEvent()
 		{
-			if (this.ActiveControllerType == 2 && this.JoystickPressed != null)
+			if (this.ActiveControllerType == ControllerType.Joystick && this.JoystickPressed != null)
 			{
 				this.JoystickPressed();
 			}
-			if (this.ActiveControllerType == null && this.KeyboardPressed != null)
+			if (this.ActiveControllerType == ControllerType.Keyboard && this.KeyboardPressed != null)
 			{
 				this.KeyboardPressed();
 			}

@@ -13,11 +13,11 @@ public class CameraTextureHolder : MonoBehaviour
 
 	private void OnRenderImage(RenderTexture src, RenderTexture dest)
 	{
-		int num = Mathf.RoundToInt((float)src.height * this.distanceFactor);
-		int num2 = Mathf.RoundToInt((float)src.height * (1f - this.distanceFactor));
+		int srcY = Mathf.RoundToInt((float)src.height * this.distanceFactor);
+		int srcHeight = Mathf.RoundToInt((float)src.height * (1f - this.distanceFactor));
 		if (this._renderTexture)
 		{
-			Graphics.CopyTexture(src, 0, 0, 0, num, src.width, num2, this._renderTexture, 0, 0, 0, 0);
+			Graphics.CopyTexture(src, 0, 0, 0, srcY, src.width, srcHeight, this._renderTexture, 0, 0, 0, 0);
 		}
 		Graphics.Blit(src, dest);
 	}

@@ -97,7 +97,7 @@ namespace Tools.Level.Actionables
 			Vector3 position = base.transform.position;
 			Vector3 position2 = p.transform.position;
 			GameObject gameObject = PoolManager.Instance.ReuseObject(this.nextPlatformParticles, position, Quaternion.identity, false, 1).GameObject;
-			TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMove(gameObject.transform, position2, 0.2f, false), 9);
+			gameObject.transform.DOMove(position2, 0.2f, false).SetEase(Ease.OutCubic);
 		}
 
 		public List<GameObject> GetTargets()

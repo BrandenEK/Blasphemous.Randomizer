@@ -69,8 +69,8 @@ public class PontiffHuskiesCombatTrigger : MonoBehaviour
 	}
 
 	[BoxGroup("Friendly Reminder", true, false, 0)]
-	[InfoBox("This Button only serves debugging purposes.", 1, null)]
-	[Button(0)]
+	[InfoBox("This Button only serves debugging purposes.", InfoMessageType.Info, null)]
+	[Button(ButtonSizes.Small)]
 	public void ResetState()
 	{
 		Debug.LogError("ResetState!");
@@ -137,7 +137,7 @@ public class PontiffHuskiesCombatTrigger : MonoBehaviour
 	private EnemySpawnPoint[] ShuffleEnemiesArray()
 	{
 		EnemySpawnPoint[] enemies = this.Enemies;
-		Random rnd = new Random();
+		System.Random rnd = new System.Random();
 		return (from x in enemies
 		orderby rnd.Next()
 		select x).ToArray<EnemySpawnPoint>();
@@ -173,7 +173,7 @@ public class PontiffHuskiesCombatTrigger : MonoBehaviour
 		float result = 0f;
 		if (spawnPoint.SpawnEnabledEnemy || spawnPoint.SpawnOnArena)
 		{
-			result = Random.Range(0.1f, 0.5f);
+			result = UnityEngine.Random.Range(0.1f, 0.5f);
 		}
 		return result;
 	}

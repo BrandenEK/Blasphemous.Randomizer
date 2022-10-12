@@ -32,9 +32,9 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 		public void FlashShieldFromPenitent()
 		{
-			Vector2 vector = Core.Logic.Penitent.transform.position;
-			Vector2 vector2 = vector - base.transform.position + Vector2.up;
-			Vector2 p = base.transform.position + vector2.normalized * this.radius;
+			Vector2 a = Core.Logic.Penitent.transform.position;
+			Vector2 vector = a - base.transform.position + Vector2.up;
+			Vector2 p = base.transform.position + vector.normalized * this.radius;
 			base.StopAllCoroutines();
 			base.StartCoroutine(this.FlashAllFragmentsRoutine(p, 0.3f));
 		}
@@ -53,7 +53,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 		public void BreakShield()
 		{
-			ShortcutExtensions.DOKill(base.transform, false);
+			base.transform.DOKill(false);
 			this.brokenFragmentParticles.transform.position = base.transform.position;
 			this.brokenFragmentParticles.Emit(50);
 			foreach (AmanecidasShieldFragment amanecidasShieldFragment in this.shieldFragments)
@@ -78,14 +78,14 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			float rising = secondsRising / (float)this.shieldFragments.Count;
 			foreach (AmanecidasShieldFragment item in this.shieldFragments)
 			{
-				Vector2 p = new Vector2(base.transform.position.x + (float)Random.Range(-6, 6), base.transform.position.y);
+				Vector2 p = new Vector2(base.transform.position.x + (float)UnityEngine.Random.Range(-6, 6), base.transform.position.y);
 				item.RaiseFromGround(p, rising);
 				yield return new WaitForSeconds(rising);
 			}
 			yield return new WaitForSeconds(secondsWait);
 			foreach (AmanecidasShieldFragment amanecidasShieldFragment in this.shieldFragments)
 			{
-				amanecidasShieldFragment.GoToShieldTransform(Random.Range(0.1f, maxSecondsToTransform));
+				amanecidasShieldFragment.GoToShieldTransform(UnityEngine.Random.Range(0.1f, maxSecondsToTransform));
 			}
 			yield return new WaitForSeconds(maxSecondsToTransform);
 			this.SlowPunchShieldTransforms(timeToPunchTransform);
@@ -98,16 +98,16 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 
 		public void SlowPunchShieldTransforms(float totalTime)
 		{
-			float num = 3f;
+			float d = 3f;
 			foreach (AmanecidasShieldFragment amanecidasShieldFragment in this.shieldFragments)
 			{
 				Vector2 vector = amanecidasShieldFragment.shieldTransform.localPosition;
-				Vector2 vector2 = vector + vector.normalized * num;
+				Vector2 v = vector + vector.normalized * d;
 				Debug.DrawLine(amanecidasShieldFragment.shieldTransform.TransformPoint(vector), amanecidasShieldFragment.shieldTransform.TransformPoint(vector), Color.red, 10f);
 				Sequence sequence = DOTween.Sequence();
-				TweenSettingsExtensions.Append(sequence, TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMove(amanecidasShieldFragment.shieldTransform, vector2, totalTime * 0.8f, false), 10));
-				TweenSettingsExtensions.Append(sequence, TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOLocalMove(amanecidasShieldFragment.shieldTransform, vector, totalTime * 0.2f, false), 8));
-				TweenExtensions.Play<Sequence>(sequence);
+				sequence.Append(amanecidasShieldFragment.shieldTransform.DOLocalMove(v, totalTime * 0.8f, false).SetEase(Ease.InOutCubic));
+				sequence.Append(amanecidasShieldFragment.shieldTransform.DOLocalMove(vector, totalTime * 0.2f, false).SetEase(Ease.InCubic));
+				sequence.Play<Sequence>();
 			}
 		}
 
@@ -135,7 +135,7 @@ namespace Gameplay.GameControllers.Bosses.Amanecidas
 			select x).ToList<AmanecidasShieldFragment>();
 			if (list.Count > 0)
 			{
-				AmanecidasShieldFragment amanecidasShieldFragment = list[Random.Range(0, list.Count)];
+				AmanecidasShieldFragment amanecidasShieldFragment = list[UnityEngine.Random.Range(0, list.Count)];
 				amanecidasShieldFragment.BreakFromShield(amanecidasShieldFragment.transform.position - base.transform.position);
 				this.brokenFragmentParticles.transform.position = amanecidasShieldFragment.transform.position;
 				this.brokenFragmentParticles.Emit(30);

@@ -13,7 +13,7 @@ namespace Framework.Audio
 		{
 			get
 			{
-				this._volumeParameter.getValue(ref this.volume);
+				this._volumeParameter.getValue(out this.volume);
 				return this.volume;
 			}
 			set
@@ -36,7 +36,7 @@ namespace Framework.Audio
 			}
 			try
 			{
-				this._eventInstance.getParameter("Volume", ref this._volumeParameter);
+				this._eventInstance.getParameter("Volume", out this._volumeParameter);
 				this.volume = 1f;
 				this._volumeParameter.setValue(this.volume);
 				this._eventInstance.start();
@@ -99,7 +99,7 @@ namespace Framework.Audio
 			{
 				return;
 			}
-			this._eventInstance.stop(0);
+			this._eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this._eventInstance.release();
 		}
 

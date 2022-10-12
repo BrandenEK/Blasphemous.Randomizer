@@ -14,7 +14,7 @@ namespace Gameplay.GameControllers.Bosses.BejeweledSaint.Attack
 		protected override void OnAwake()
 		{
 			base.OnAwake();
-			this.WeaponOwner = Object.FindObjectOfType<BejeweledSaintHead>();
+			this.WeaponOwner = UnityEngine.Object.FindObjectOfType<BejeweledSaintHead>();
 			this.AttackArea = base.GetComponentInChildren<AttackArea>();
 		}
 

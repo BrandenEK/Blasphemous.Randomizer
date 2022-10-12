@@ -185,7 +185,7 @@ namespace Gameplay.GameControllers.Bosses.PontiffGiant
 			{
 				list.Remove(this.lastAttack);
 			}
-			return list[Random.Range(0, list.Count)];
+			return list[UnityEngine.Random.Range(0, list.Count)];
 		}
 
 		public IEnumerator WaitForState(State<PontiffGiantBehaviour> st)
@@ -532,20 +532,19 @@ namespace Gameplay.GameControllers.Bosses.PontiffGiant
 
 		private void MagicProyectileExplosion(Vector2 point)
 		{
-			Vector2 vector;
-			vector..ctor(-1f, 0f);
+			Vector2 vector = new Vector2(-1f, 0f);
 			this.magicProjectileLauncher.projectileSource = this.magicProjectileLauncher.transform;
 			this.magicProjectileLauncher.transform.position = point;
 			this.magicProjectileLauncher.Shoot(vector.normalized);
-			vector..ctor(1f, 0f);
+			vector = new Vector2(1f, 0f);
 			this.magicProjectileLauncher.Shoot(vector.normalized);
-			vector..ctor(1f, 1f);
+			vector = new Vector2(1f, 1f);
 			this.magicProjectileLauncher.Shoot(vector.normalized);
-			vector..ctor(-1f, 1f);
+			vector = new Vector2(-1f, 1f);
 			this.magicProjectileLauncher.Shoot(vector.normalized);
-			vector..ctor(1f, -1f);
+			vector = new Vector2(1f, -1f);
 			this.magicProjectileLauncher.Shoot(vector.normalized);
-			vector..ctor(-1f, -1f);
+			vector = new Vector2(-1f, -1f);
 			this.magicProjectileLauncher.Shoot(vector.normalized);
 		}
 
@@ -596,8 +595,8 @@ namespace Gameplay.GameControllers.Bosses.PontiffGiant
 		private void OnSwordPlungeFinished()
 		{
 			this.sword.OnPlungeFinished -= this.OnSwordPlungeFinished;
-			Vector2 vector = this.sword.transform.position;
-			this.magicShockwave.transform.position = vector + Vector2.up;
+			Vector2 a = this.sword.transform.position;
+			this.magicShockwave.transform.position = a + Vector2.up;
 			this.magicShockwave.SummonAreas(Vector2.right);
 			this.magicShockwave.SummonAreas(Vector2.left);
 			if (this.sword.currentSwordState != SWORD_STATES.DESTROYED)
@@ -669,13 +668,13 @@ namespace Gameplay.GameControllers.Bosses.PontiffGiant
 
 		private Vector2 GetPointAroundPenitent()
 		{
-			float num = 5f;
-			return Core.Logic.Penitent.transform.position + this.GetRandomVector(-0.8f, 0.8f, 0f, 1f).normalized * num;
+			float d = 5f;
+			return Core.Logic.Penitent.transform.position + this.GetRandomVector(-0.8f, 0.8f, 0f, 1f).normalized * d;
 		}
 
 		private Vector2 GetRandomVector(float minRandomX, float maxRandomX, float minRandomY, float maxRandomY)
 		{
-			return new Vector2(Random.Range(minRandomX, maxRandomX), Random.Range(minRandomY, maxRandomY));
+			return new Vector2(UnityEngine.Random.Range(minRandomX, maxRandomX), UnityEngine.Random.Range(minRandomY, maxRandomY));
 		}
 
 		private IEnumerator CastToxicCoroutine()
@@ -734,15 +733,15 @@ namespace Gameplay.GameControllers.Bosses.PontiffGiant
 			int num = 6;
 			up = Vector2.up;
 			vector = Vector2.zero;
-			float num2 = 170f;
+			float b = 170f;
 			for (int i = 0; i < num; i++)
 			{
-				float num3 = Mathf.Lerp(0f, num2, (float)i / (float)num);
-				Quaternion quaternion = Quaternion.Euler(0f, 0f, num3);
-				Quaternion quaternion2 = Quaternion.Euler(0f, 0f, -num3);
-				vector = quaternion * up;
+				float num2 = Mathf.Lerp(0f, b, (float)i / (float)num);
+				Quaternion rotation = Quaternion.Euler(0f, 0f, num2);
+				Quaternion rotation2 = Quaternion.Euler(0f, 0f, -num2);
+				vector = rotation * up;
 				this.magicProjectileLauncher.Shoot(vector.normalized);
-				vector = quaternion2 * up;
+				vector = rotation2 * up;
 				this.magicProjectileLauncher.Shoot(vector.normalized);
 			}
 		}
@@ -779,13 +778,13 @@ namespace Gameplay.GameControllers.Bosses.PontiffGiant
 			this._fsm.ChangeState(this.stAction);
 		}
 
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		public void Death()
 		{
 			this.StopAllAttacks();
 			base.StopAllCoroutines();
 			Core.Logic.Penitent.Status.Invulnerable = true;
-			ShortcutExtensions.DOKill(base.transform, true);
+			base.transform.DOKill(true);
 			base.StopBehaviour();
 			GameplayUtils.DestroyAllProjectiles();
 			this._fsm.ChangeState(this.stDeath);
@@ -833,8 +832,8 @@ namespace Gameplay.GameControllers.Bosses.PontiffGiant
 				if (counter > ((float)expCounter + 1f) / seconds)
 				{
 					expCounter++;
-					Vector2 vector = center.position + new Vector3(Random.Range(-radius, radius), Random.Range(-radius, radius));
-					PoolManager.Instance.ReuseObject(poolableExplosion, vector, Quaternion.identity, false, 1);
+					Vector2 v = center.position + new Vector3(UnityEngine.Random.Range(-radius, radius), UnityEngine.Random.Range(-radius, radius));
+					PoolManager.Instance.ReuseObject(poolableExplosion, v, Quaternion.identity, false, 1);
 					if (OnExplosion != null)
 					{
 						OnExplosion();

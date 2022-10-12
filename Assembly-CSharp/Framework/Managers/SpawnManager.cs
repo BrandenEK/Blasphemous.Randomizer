@@ -55,7 +55,7 @@ namespace Framework.Managers
 			}
 			else
 			{
-				Debug.LogError("The key " + teleportId + "is not present in the teleports dictionary!");
+				UnityEngine.Debug.LogError("The key " + teleportId + "is not present in the teleports dictionary!");
 			}
 		}
 
@@ -120,9 +120,9 @@ namespace Framework.Managers
 
 		public void Respawn()
 		{
-			if (StringExtensions.IsNullOrWhitespace(this.activePrieDieuScene))
+			if (this.activePrieDieuScene.IsNullOrWhitespace())
 			{
-				Debug.LogError("Respawn: Respawn without scene, loading initial");
+				UnityEngine.Debug.LogError("Respawn: Respawn without scene, loading initial");
 				this.activePrieDieuScene = this.InitialScene;
 			}
 			this.SpawnPlayer(this.activePrieDieuScene, SpawnManager.PosibleSpawnPoints.PrieDieu, this.activePrieDieuId, true, true, null);
@@ -256,7 +256,7 @@ namespace Framework.Managers
 		public void SpawnPlayerOnLevelLoad(bool createNewInstance = true)
 		{
 			bool flag = false;
-			PrieDieu[] array = Object.FindObjectsOfType<PrieDieu>();
+			PrieDieu[] array = UnityEngine.Object.FindObjectsOfType<PrieDieu>();
 			this.currentDoor = null;
 			string text = string.Empty;
 			Vector3 position = Vector3.zero;
@@ -264,14 +264,14 @@ namespace Framework.Managers
 			switch (this.pendingSpawn)
 			{
 			case SpawnManager.PosibleSpawnPoints.None:
-				Debug.LogWarning("SpawnManager: Pending spawn IS NONE");
+				UnityEngine.Debug.LogWarning("SpawnManager: Pending spawn IS NONE");
 				break;
 			case SpawnManager.PosibleSpawnPoints.Menu:
 				flag = true;
 				break;
 			case SpawnManager.PosibleSpawnPoints.Editor:
 			{
-				DebugSpawn debugSpawn = Object.FindObjectOfType<DebugSpawn>();
+				DebugSpawn debugSpawn = UnityEngine.Object.FindObjectOfType<DebugSpawn>();
 				if (debugSpawn)
 				{
 					position = debugSpawn.transform.position;
@@ -300,7 +300,7 @@ namespace Framework.Managers
 			}
 			case SpawnManager.PosibleSpawnPoints.Teleport:
 			{
-				Teleport[] source = Object.FindObjectsOfType<Teleport>();
+				Teleport[] source = UnityEngine.Object.FindObjectsOfType<Teleport>();
 				Teleport teleport = source.FirstOrDefault((Teleport p) => p.telportName == this.spawnId);
 				if (teleport)
 				{
@@ -312,7 +312,7 @@ namespace Framework.Managers
 			}
 			case SpawnManager.PosibleSpawnPoints.Door:
 			{
-				Door[] source2 = Object.FindObjectsOfType<Door>();
+				Door[] source2 = UnityEngine.Object.FindObjectsOfType<Door>();
 				this.currentDoor = source2.FirstOrDefault((Door p) => p.identificativeName == this.spawnId);
 				if (this.currentDoor)
 				{
@@ -344,7 +344,7 @@ namespace Framework.Managers
 				break;
 			case SpawnManager.PosibleSpawnPoints.Miriam:
 			{
-				MiriamStart[] array2 = Object.FindObjectsOfType<MiriamStart>();
+				MiriamStart[] array2 = UnityEngine.Object.FindObjectsOfType<MiriamStart>();
 				MiriamStart miriamStart = null;
 				if (array2.Length > 0)
 				{
@@ -352,7 +352,7 @@ namespace Framework.Managers
 				}
 				if (!miriamStart)
 				{
-					MiriamPortal[] array3 = Object.FindObjectsOfType<MiriamPortal>();
+					MiriamPortal[] array3 = UnityEngine.Object.FindObjectsOfType<MiriamPortal>();
 					if (array3 != null && array3.Length > 0)
 					{
 						position = array3[0].transform.position;
@@ -371,7 +371,7 @@ namespace Framework.Managers
 			}
 			if (!flag)
 			{
-				Debug.LogWarning(string.Concat(new string[]
+				UnityEngine.Debug.LogWarning(string.Concat(new string[]
 				{
 					"SpawnManager: Pending spawn ",
 					this.pendingSpawn.ToString(),
@@ -386,7 +386,7 @@ namespace Framework.Managers
 				}
 				else
 				{
-					DebugSpawn debugSpawn2 = Object.FindObjectOfType<DebugSpawn>();
+					DebugSpawn debugSpawn2 = UnityEngine.Object.FindObjectOfType<DebugSpawn>();
 					if (debugSpawn2)
 					{
 						position = debugSpawn2.transform.position;
@@ -429,7 +429,7 @@ namespace Framework.Managers
 			}
 			if (createNewInstance)
 			{
-				Core.Logic.Penitent = Object.Instantiate<Penitent>(this.penitentPrefab, position, Quaternion.identity);
+				Core.Logic.Penitent = UnityEngine.Object.Instantiate<Penitent>(this.penitentPrefab, position, Quaternion.identity);
 			}
 			else
 			{
@@ -487,7 +487,7 @@ namespace Framework.Managers
 				}
 				else
 				{
-					Teleport[] source = Object.FindObjectsOfType<Teleport>();
+					Teleport[] source = UnityEngine.Object.FindObjectsOfType<Teleport>();
 					Teleport teleport = source.FirstOrDefault((Teleport p) => p.telportName == this.spawnId);
 					if (teleport)
 					{
@@ -500,7 +500,7 @@ namespace Framework.Managers
 					}
 					else
 					{
-						Debug.LogWarning("** TELEPORT inside level " + this.spawnId + " Not found");
+						UnityEngine.Debug.LogWarning("** TELEPORT inside level " + this.spawnId + " Not found");
 					}
 				}
 			}
@@ -523,9 +523,9 @@ namespace Framework.Managers
 		public PersistentManager.PersistentData GetCurrentPersistentState(string dataPath, bool fullSave)
 		{
 			SpawnManager.CheckPointPersistenceData checkPointPersistenceData = new SpawnManager.CheckPointPersistenceData();
-			if (StringExtensions.IsNullOrWhitespace(this.activePrieDieuScene))
+			if (this.activePrieDieuScene.IsNullOrWhitespace())
 			{
-				Debug.LogWarning("PersistentManager get activePrieDieuScene, no scene yet");
+				UnityEngine.Debug.LogWarning("PersistentManager get activePrieDieuScene, no scene yet");
 				checkPointPersistenceData.activePrieDieuScene = this.InitialScene;
 			}
 			else
@@ -533,7 +533,7 @@ namespace Framework.Managers
 				checkPointPersistenceData.activePrieDieuScene = this.activePrieDieuScene;
 			}
 			checkPointPersistenceData.activePrieDieuId = this.activePrieDieuId;
-			Debug.Log(string.Format("<color=red> Active priedieu scene: {0}\n activePriedieuId{1}</color>", this.activePrieDieuScene, this.activePrieDieuId));
+			UnityEngine.Debug.Log(string.Format("<color=red> Active priedieu scene: {0}\n activePriedieuId{1}</color>", this.activePrieDieuScene, this.activePrieDieuId));
 			checkPointPersistenceData.pendingSpawn = this.pendingSpawn;
 			checkPointPersistenceData.spawnId = this.spawnId;
 			foreach (TeleportDestination teleportDestination in this.TeleportList)
@@ -573,7 +573,7 @@ namespace Framework.Managers
 				this.spawnId = checkPointPersistenceData.spawnId;
 				if (this.pendingSpawn == SpawnManager.PosibleSpawnPoints.TeleportPrieDieu)
 				{
-					PrieDieu[] array = Object.FindObjectsOfType<PrieDieu>();
+					PrieDieu[] array = UnityEngine.Object.FindObjectsOfType<PrieDieu>();
 					if (array.Length > 0)
 					{
 						this.ActivePrieDieu = array[0];

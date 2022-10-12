@@ -40,8 +40,8 @@ namespace Framework.Util
 		{
 			int width = Screen.width;
 			int height = Screen.height;
-			float num = (float)(height * 2) / 100f;
-			return new Rect(0f, 0f, (float)width, num);
+			float height2 = (float)(height * 2) / 100f;
+			return new Rect(0f, 0f, (float)width, height2);
 		}
 
 		private void SetFontSize(GUIStyle style)
@@ -50,7 +50,7 @@ namespace Framework.Util
 			{
 				return;
 			}
-			style.alignment = 2;
+			style.alignment = TextAnchor.UpperRight;
 			style.fontSize = Screen.height * 2 / 100;
 		}
 

@@ -52,7 +52,7 @@ namespace Framework.Managers
 				{
 					array[i] = new Color(0f, 0f, 0f, 0.2f);
 				}
-				GameSystem.background = new Texture2D(num, num, 5, false);
+				GameSystem.background = new Texture2D(num, num, TextureFormat.ARGB32, false);
 				GameSystem.background.SetPixels(array);
 				GameSystem.background.Apply();
 				GameSystem.logStyle = new GUIStyle();
@@ -61,9 +61,8 @@ namespace Framework.Managers
 				GameSystem.logStyle.normal.background = GameSystem.background;
 				GameSystem.logStyle.fontSize = 10;
 			}
-			Rect rect;
-			rect..ctor((float)posx, (float)this.posYGUI, (float)sizex, 13f);
-			GUI.Label(rect, text, GameSystem.logStyle);
+			Rect position = new Rect((float)posx, (float)this.posYGUI, (float)sizex, 13f);
+			GUI.Label(position, text, GameSystem.logStyle);
 			this.posYGUI += 13;
 		}
 

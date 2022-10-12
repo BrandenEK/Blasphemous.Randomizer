@@ -70,25 +70,23 @@ namespace Gameplay.GameControllers.Enemies.Stoners.Attack
 
 		private void SetProjectileMotion(GameObject rock, Vector3 target)
 		{
-			Vector2 vector;
-			vector..ctor(Random.Range(target.x - this.RndThrowHorOffset, target.x + this.RndThrowHorOffset), target.y);
+			Vector2 vector = new Vector2(UnityEngine.Random.Range(target.x - this.RndThrowHorOffset, target.x + this.RndThrowHorOffset), target.y);
 			float num = vector.x - rock.transform.position.x;
 			float num2 = vector.y - rock.transform.position.y;
-			float num3 = Mathf.Atan((num2 + 7f) / num);
-			float num4 = num / Mathf.Cos(num3);
-			float num5 = num4 * Mathf.Cos(num3);
-			float num6 = num4 * Mathf.Sin(num3);
+			float f = Mathf.Atan((num2 + 7f) / num);
+			float num3 = num / Mathf.Cos(f);
+			float x = num3 * Mathf.Cos(f);
+			float y = num3 * Mathf.Sin(f);
 			Rigidbody2D component = rock.GetComponent<Rigidbody2D>();
-			component.velocity = new Vector2(num5, num6);
+			component.velocity = new Vector2(x, y);
 		}
 
 		private void SetStraightMotion(GameObject rock, Vector3 target)
 		{
-			Vector3 vector;
-			vector..ctor(Random.Range(target.x - this.RndThrowHorOffset, target.x + this.RndThrowHorOffset), target.y + this.TargetHeightOffset);
-			Vector3 normalized = (vector - rock.transform.position).normalized;
+			Vector3 a = new Vector3(UnityEngine.Random.Range(target.x - this.RndThrowHorOffset, target.x + this.RndThrowHorOffset), target.y + this.TargetHeightOffset);
+			Vector3 normalized = (a - rock.transform.position).normalized;
 			Rigidbody2D component = rock.GetComponent<Rigidbody2D>();
-			component.AddForce(normalized * this.StraightImpulseForce, 1);
+			component.AddForce(normalized * this.StraightImpulseForce, ForceMode2D.Impulse);
 		}
 
 		private void VisualSensorOnEntityEnter(Entity entity)

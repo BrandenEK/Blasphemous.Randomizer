@@ -112,7 +112,7 @@ namespace Framework.Map
 		public Color PlayerBackgoundColor = new Color(0f, 0f, 0f);
 
 		[BoxGroup("Movement", true, false, 0)]
-		[InfoBox("In pixels per second", 1, null)]
+		[InfoBox("In pixels per second", InfoMessageType.Info, null)]
 		public float MovementSpeed = 100f;
 
 		[BoxGroup("Movement", true, false, 0)]

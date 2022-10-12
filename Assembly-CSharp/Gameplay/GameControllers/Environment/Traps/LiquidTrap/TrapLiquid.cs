@@ -12,13 +12,13 @@ namespace Gameplay.GameControllers.Environment.Traps.LiquidTrap
 		{
 			while (this.origin.childCount > 0)
 			{
-				Object.DestroyImmediate(this.origin.GetChild(0).gameObject);
+				UnityEngine.Object.DestroyImmediate(this.origin.GetChild(0).gameObject);
 			}
 			this.bodyAnimators.Clear();
 		}
 
 		[FoldoutGroup("Design", 0)]
-		[Button("AUTO CONFIGURE", 22)]
+		[Button("AUTO CONFIGURE", ButtonSizes.Medium)]
 		public void AutoConfigureLength()
 		{
 			this.ClearAllOriginChildren();
@@ -30,7 +30,7 @@ namespace Gameplay.GameControllers.Environment.Traps.LiquidTrap
 				int num3 = Mathf.RoundToInt(num2 / this.liquidBodyHeight);
 				for (int i = 0; i < num3; i++)
 				{
-					GameObject gameObject = Object.Instantiate<GameObject>(this.liquidBodyPrefab, this.origin);
+					GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.liquidBodyPrefab, this.origin);
 					gameObject.transform.position = this.origin.position + Vector3.down * ((float)i * this.liquidBodyHeight);
 					this.bodyAnimators.Add(gameObject.GetComponent<Animator>());
 				}
@@ -41,7 +41,7 @@ namespace Gameplay.GameControllers.Environment.Traps.LiquidTrap
 		{
 		}
 
-		[Button("ACTIVATE", 0)]
+		[Button("ACTIVATE", ButtonSizes.Small)]
 		public void ActivateTrap()
 		{
 			this.trapanimator.SetBool("ATTACK", true);
@@ -49,7 +49,7 @@ namespace Gameplay.GameControllers.Environment.Traps.LiquidTrap
 			this.TestToWiden();
 		}
 
-		[Button("DEACTIVATE", 0)]
+		[Button("DEACTIVATE", ButtonSizes.Small)]
 		public void DeactivateTrap()
 		{
 			this.trapanimator.SetBool("ATTACK", false);
@@ -58,21 +58,21 @@ namespace Gameplay.GameControllers.Environment.Traps.LiquidTrap
 		}
 
 		[FoldoutGroup("Test animation", 0)]
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		public void TestStartToFall()
 		{
 			this.TriggerAllDelayed("FALL", this.fallDelay);
 		}
 
 		[FoldoutGroup("Test animation", 0)]
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		public void TestToWiden()
 		{
 			this.TriggerAllDelayed("WIDEN", this.widenDelay);
 		}
 
 		[FoldoutGroup("Test animation", 0)]
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		public void TestToStretch()
 		{
 			this.TriggerAllDelayed("STRETCH", this.stretchDelay);

@@ -6,7 +6,7 @@ public class SetRandomSprite : MonoBehaviour
 {
 	public void OnEnable()
 	{
-		this.sprRenderer.sprite = this.sprites[Random.Range(0, this.sprites.Count)];
+		this.sprRenderer.sprite = this.sprites[UnityEngine.Random.Range(0, this.sprites.Count)];
 	}
 
 	public List<Sprite> sprites;

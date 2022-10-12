@@ -69,8 +69,8 @@ namespace Gameplay.UI.Others.Screen
 				this.deltaTimeShowing = 0f;
 				this.isShowing = false;
 			}
-			float num = Mathf.PingPong(Time.time, this.changeTime) / this.changeTime;
-			this.currentAlpha = Mathf.Lerp(0f, 1f, num);
+			float t = Mathf.PingPong(Time.time, this.changeTime) / this.changeTime;
+			this.currentAlpha = Mathf.Lerp(0f, 1f, t);
 			if (this.currentAlpha < 0.03f && !this.hasCountCycle)
 			{
 				this.hasCountCycle = true;

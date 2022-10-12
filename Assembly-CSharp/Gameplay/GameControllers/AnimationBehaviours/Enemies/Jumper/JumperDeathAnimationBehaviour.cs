@@ -18,7 +18,7 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Jumper
 			Enemy componentInParent = animator.GetComponentInParent<Enemy>();
 			if (componentInParent != null)
 			{
-				Object.Destroy(componentInParent.gameObject);
+				UnityEngine.Object.Destroy(componentInParent.gameObject);
 			}
 		}
 	}

@@ -42,7 +42,7 @@ namespace Gameplay.GameControllers.Penitent.Attack
 			this.SlashAnimator = base.GetComponentInChildren<SwordAnimatorInyector>();
 			if (this.SlashAnimator == null)
 			{
-				Debug.LogError("A sword slash animator is needed");
+				UnityEngine.Debug.LogError("A sword slash animator is needed");
 			}
 		}
 
@@ -134,7 +134,7 @@ namespace Gameplay.GameControllers.Penitent.Attack
 			else
 			{
 				float num = 0.33f;
-				float num2 = Random.Range(0f, 1f);
+				float num2 = UnityEngine.Random.Range(0f, 1f);
 				if (num2 < num)
 				{
 					result = BloodSpawner.BLOOD_FX_TYPES.MEDIUM;
@@ -148,7 +148,7 @@ namespace Gameplay.GameControllers.Penitent.Attack
 			BloodSpawner.BLOOD_FX_TYPES bloodType = this.GetBloodType(hit);
 			GameObject bloodFX = this._bloodSpawner.GetBloodFX(bloodType);
 			bloodFX.transform.localScale = new Vector3((float)((hitOrientation != EntityOrientation.Right) ? -1 : 1), 1f, 1f);
-			position += new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), 0f);
+			position += new Vector3(UnityEngine.Random.Range(-0.2f, 0.2f), UnityEngine.Random.Range(-0.2f, 0.2f), 0f);
 			bloodFX.transform.position = position;
 		}
 

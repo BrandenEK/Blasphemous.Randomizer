@@ -27,7 +27,7 @@ namespace Gameplay.GameControllers.Enemies.ReekLeader.Audio
 			{
 				return;
 			}
-			this._idleEventInstance.stop(0);
+			this._idleEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this._idleEventInstance.release();
 			this._idleEventInstance = default(EventInstance);
 		}
@@ -52,7 +52,7 @@ namespace Gameplay.GameControllers.Enemies.ReekLeader.Audio
 			{
 				return;
 			}
-			this._callEventInstance.stop(0);
+			this._callEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this._callEventInstance.release();
 			this._callEventInstance = default(EventInstance);
 		}

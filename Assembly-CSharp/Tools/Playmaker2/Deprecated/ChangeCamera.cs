@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Tools.Playmaker2.Deprecated
 {
 	[ActionCategory("Blasphemous Deprecated")]
-	[Tooltip("Changes the current main camera.")]
+	[HutongGames.PlayMaker.Tooltip("Changes the current main camera.")]
 	public class ChangeCamera : FsmStateAction
 	{
 		public override void OnEnter()
@@ -26,20 +26,20 @@ namespace Tools.Playmaker2.Deprecated
 		{
 			if (!Core.ready)
 			{
-				Log.Error("Playmaker", "Framework not initialized yet.", null);
+				Framework.FrameworkCore.Log.Error("Playmaker", "Framework not initialized yet.", null);
 				base.Finish();
 				return;
 			}
 			if (this.camera.Value == null)
 			{
-				Log.Error("Playmaker", "The selected camera is null.", null);
+				Framework.FrameworkCore.Log.Error("Playmaker", "The selected camera is null.", null);
 				base.Finish();
 				return;
 			}
 			Camera component = this.camera.Value.GetComponent<Camera>();
 			if (component == null)
 			{
-				Log.Error("Playmaker", "The selected object has no camera component.", null);
+				Framework.FrameworkCore.Log.Error("Playmaker", "The selected object has no camera component.", null);
 				base.Finish();
 				return;
 			}

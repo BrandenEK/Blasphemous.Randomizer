@@ -40,7 +40,7 @@ namespace Gameplay.GameControllers.Entities.Guardian.AI
 		{
 			float shieldDistance = this._guardianPrayer.Behaviour.ShieldDistance;
 			float actionDirection = this._guardianPrayer.Behaviour.GetActionDirection(shieldDistance);
-			TweenSettingsExtensions.OnComplete<Tweener>(TweenSettingsExtensions.OnStart<Tweener>(TweenSettingsExtensions.SetEase<Tweener>(ShortcutExtensions.DOMoveX(this._guardianPrayer.transform, actionDirection, 0.1f, true), 2), new TweenCallback(this.OnStartForwardMovement)), new TweenCallback(this.OnFinishForwardMovement));
+			this._guardianPrayer.transform.DOMoveX(actionDirection, 0.1f, true).SetEase(Ease.InSine).OnStart(new TweenCallback(this.OnStartForwardMovement)).OnComplete(new TweenCallback(this.OnFinishForwardMovement));
 		}
 
 		private void OnStartForwardMovement()

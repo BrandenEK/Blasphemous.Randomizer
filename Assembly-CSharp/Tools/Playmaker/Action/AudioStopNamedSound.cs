@@ -26,6 +26,6 @@ namespace Tools.Playmaker.Action
 
 		public FsmString soundName;
 
-		public STOP_MODE stopMode;
+		public FMOD.Studio.STOP_MODE stopMode;
 	}
 }

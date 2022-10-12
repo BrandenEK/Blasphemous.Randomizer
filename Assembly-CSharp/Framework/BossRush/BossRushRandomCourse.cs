@@ -31,7 +31,7 @@ namespace Framework.BossRush
 			return list;
 		}
 
-		[Button(0)]
+		[Button(ButtonSizes.Small)]
 		private void RandomizeScenesList()
 		{
 			this.RandomizedScenes.Clear();
@@ -46,7 +46,7 @@ namespace Framework.BossRush
 				if (!this.FixedScenesIndexes.Contains(i))
 				{
 					string value = scenes[i];
-					int num = Random.Range(i, scenes.Count);
+					int num = UnityEngine.Random.Range(i, scenes.Count);
 					if (!this.FixedScenesIndexes.Contains(num))
 					{
 						scenes[i] = scenes[num];
@@ -57,13 +57,13 @@ namespace Framework.BossRush
 			return scenes;
 		}
 
-		[InfoBox("Put here all the scenes of the course, fixed in place or not.", 1, null)]
+		[InfoBox("Put here all the scenes of the course, fixed in place or not.", InfoMessageType.Info, null)]
 		public List<string> ScenesPool = new List<string>();
 
-		[InfoBox("The indexes of these scenes should consider all the scenes in total, and these indexes refer to the scenes pool.", 1, null)]
+		[InfoBox("The indexes of these scenes should consider all the scenes in total, and these indexes refer to the scenes pool.", InfoMessageType.Info, null)]
 		public List<int> FixedScenesIndexes = new List<int>();
 
-		[InfoBox("The indexes of these scenes should consider all the scenes in total. These indexes will refer to the randomized result.", 1, null)]
+		[InfoBox("The indexes of these scenes should consider all the scenes in total. These indexes will refer to the randomized result.", InfoMessageType.Info, null)]
 		public List<int> FontRechargingScenesIndexes = new List<int>();
 
 		[HideInInspector]

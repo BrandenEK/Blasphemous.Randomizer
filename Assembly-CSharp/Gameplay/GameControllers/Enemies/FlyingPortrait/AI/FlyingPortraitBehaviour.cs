@@ -41,8 +41,8 @@ namespace Gameplay.GameControllers.Enemies.FlyingPortrait.AI
 
 		public override void Wander()
 		{
-			float num = (this.Entity.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
-			base.transform.Translate(Vector2.right * num * Time.deltaTime, 0);
+			float d = (this.Entity.Status.Orientation != EntityOrientation.Right) ? -1f : 1f;
+			base.transform.Translate(Vector2.right * d * Time.deltaTime, Space.World);
 		}
 
 		public override void Chase(Transform targetPosition)
@@ -51,8 +51,8 @@ namespace Gameplay.GameControllers.Enemies.FlyingPortrait.AI
 			{
 				return;
 			}
-			float num = (targetPosition.transform.position.x <= this.Entity.transform.position.x) ? -1f : 1f;
-			base.transform.Translate(Vector2.right * num * this.ChasingSpeed * Time.deltaTime, 0);
+			float d = (targetPosition.transform.position.x <= this.Entity.transform.position.x) ? -1f : 1f;
+			base.transform.Translate(Vector2.right * d * this.ChasingSpeed * Time.deltaTime, Space.World);
 		}
 
 		public override void Parry()

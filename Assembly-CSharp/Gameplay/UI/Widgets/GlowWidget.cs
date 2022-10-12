@@ -16,10 +16,10 @@ namespace Gameplay.UI.Widgets
 
 		public void Show(float duration = 1f, int loops = 1)
 		{
-			TweenExtensions.Play<Sequence>(TweenSettingsExtensions.OnComplete<Sequence>(TweenSettingsExtensions.SetLoops<Sequence>(TweenSettingsExtensions.Append(TweenSettingsExtensions.Append(DOTween.Sequence(), ShortcutExtensions46.DOColor(this.image, this.color, duration)), ShortcutExtensions46.DOColor(this.image, this.OFF_COLOR, duration)), loops), delegate()
+			DOTween.Sequence().Append(this.image.DOColor(this.color, duration)).Append(this.image.DOColor(this.OFF_COLOR, duration)).SetLoops(loops).OnComplete(delegate
 			{
 				this.color = Color.white;
-			}));
+			}).Play<Sequence>();
 		}
 
 		private Image image;

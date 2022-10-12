@@ -93,15 +93,15 @@ namespace Gameplay.GameControllers.Bosses.Snake
 			EntityOrientation orientation = (!this.IsLeftHeadVisible) ? EntityOrientation.Left : EntityOrientation.Right;
 			this.SetOrientation(orientation, false, false);
 			Sequence sequence = DOTween.Sequence();
-			TweenSettingsExtensions.AppendInterval(sequence, 0.2f);
-			TweenSettingsExtensions.OnComplete<Sequence>(sequence, delegate()
+			sequence.AppendInterval(0.2f);
+			sequence.OnComplete(delegate
 			{
 				Behaviour barrierLeftHead = this.BarrierLeftHead;
 				bool enabled2 = !attacking;
 				this.BarrierRightHead.enabled = enabled2;
 				barrierLeftHead.enabled = enabled2;
 			});
-			TweenExtensions.Play<Sequence>(sequence);
+			sequence.Play<Sequence>();
 		}
 
 		public bool IsCurrentlyDamageable()
@@ -170,8 +170,8 @@ namespace Gameplay.GameControllers.Bosses.Snake
 		private void SetGuardEffectOffset(Hit hit)
 		{
 			GameObject gameObject = (!this.HeadLeftSprite.IsVisibleFrom(Camera.main)) ? this.HeadRight : this.HeadLeft;
-			Vector3 vector = Vector3.Lerp(hit.AttackingEntity.transform.position, gameObject.transform.position, 0.3f);
-			this.GuardEffectOffset = this.baseGuardEffectOffset + (vector - base.transform.position);
+			Vector3 a = Vector3.Lerp(hit.AttackingEntity.transform.position, gameObject.transform.position, 0.3f);
+			this.GuardEffectOffset = this.baseGuardEffectOffset + (a - base.transform.position);
 			this.GuardEffectOffset.x = this.GuardEffectOffset.x * -1f;
 		}
 

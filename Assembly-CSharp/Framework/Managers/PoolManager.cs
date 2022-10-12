@@ -13,7 +13,7 @@ namespace Framework.Managers
 			{
 				if (PoolManager._instance == null)
 				{
-					PoolManager._instance = Object.FindObjectOfType<PoolManager>();
+					PoolManager._instance = UnityEngine.Object.FindObjectOfType<PoolManager>();
 				}
 				return PoolManager._instance;
 			}
@@ -29,7 +29,7 @@ namespace Framework.Managers
 				gameObject.transform.parent = base.transform;
 				for (int i = 0; i < poolSize; i++)
 				{
-					PoolManager.ObjectInstance objectInstance = new PoolManager.ObjectInstance(Object.Instantiate<GameObject>(prefab));
+					PoolManager.ObjectInstance objectInstance = new PoolManager.ObjectInstance(UnityEngine.Object.Instantiate<GameObject>(prefab));
 					this.poolDictionary[instanceID].Enqueue(objectInstance);
 					objectInstance.SetParent(gameObject.transform);
 				}
@@ -43,7 +43,7 @@ namespace Framework.Managers
 				}
 				for (int j = 0; j < poolSize; j++)
 				{
-					PoolManager.ObjectInstance objectInstance2 = new PoolManager.ObjectInstance(Object.Instantiate<GameObject>(prefab));
+					PoolManager.ObjectInstance objectInstance2 = new PoolManager.ObjectInstance(UnityEngine.Object.Instantiate<GameObject>(prefab));
 					this.poolDictionary[instanceID].Enqueue(objectInstance2);
 					objectInstance2.SetParent(gameObject2.transform);
 				}

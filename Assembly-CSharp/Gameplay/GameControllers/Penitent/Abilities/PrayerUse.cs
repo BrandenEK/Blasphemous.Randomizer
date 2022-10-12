@@ -47,7 +47,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 		{
 			if (this.audioInstance.isValid())
 			{
-				this.audioInstance.stop(0);
+				this.audioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			}
 		}
 
@@ -106,7 +106,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 		{
 			if (this.audioInstance.isValid())
 			{
-				this.audioInstance.stop(1);
+				this.audioInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 				this.audioInstance.release();
 				this.audioInstance = default(EventInstance);
 			}
@@ -150,7 +150,7 @@ namespace Gameplay.GameControllers.Penitent.Abilities
 			base.StopCast();
 			if (this.audioInstance.isValid() && !this.soundEventLaunched)
 			{
-				this.audioInstance.stop(0);
+				this.audioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			}
 		}
 

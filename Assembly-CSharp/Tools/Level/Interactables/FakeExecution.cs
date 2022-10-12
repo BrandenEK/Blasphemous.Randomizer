@@ -77,7 +77,7 @@ namespace Tools.Level.Interactables
 				yield return lapse;
 			}
 			this.Penitent.transform.position = this.GetRootMotionPosition(base.PlayerDirection);
-			Object.Destroy(base.gameObject);
+			UnityEngine.Object.Destroy(base.gameObject);
 			this.ShowPlayer(true);
 			Core.Input.SetBlocker("EXECUTION", false);
 			yield break;
@@ -130,7 +130,7 @@ namespace Tools.Level.Interactables
 			}
 			if (this.InstantiatesSomethingAfterExecution && this.PrefabToInstantiateAfterExecution != null)
 			{
-				GameObject gameObject = Object.Instantiate<GameObject>(this.PrefabToInstantiateAfterExecution, base.transform.position, base.transform.rotation);
+				GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.PrefabToInstantiateAfterExecution, base.transform.position, base.transform.rotation);
 				gameObject.transform.localScale = ((this.InstanceOrientation != EntityOrientation.Left) ? new Vector3(-1f, 1f, 1f) : new Vector3(1f, 1f, 1f));
 			}
 		}
@@ -177,18 +177,18 @@ namespace Tools.Level.Interactables
 
 		public void DoSlowmotion()
 		{
-			TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnStart<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetUpdate<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this._currentLevel.TimeScale, delegate(float x)
+			DOTween.To(() => this._currentLevel.TimeScale, delegate(float x)
 			{
 				this._currentLevel.TimeScale = x;
-			}, 0.25f, this._slowMotionTimeLapse), true), new TweenCallback(this.OnCameraZoomIn)), 3), new TweenCallback(this.SlowMotionStart)), new TweenCallback(this.SlowMotionCallBack));
+			}, 0.25f, this._slowMotionTimeLapse).SetUpdate(true).OnComplete(new TweenCallback(this.OnCameraZoomIn)).SetEase(Ease.OutSine).OnStart(new TweenCallback(this.SlowMotionStart)).OnComplete(new TweenCallback(this.SlowMotionCallBack));
 		}
 
 		public void StopSlowMotion()
 		{
-			TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetUpdate<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this._currentLevel.TimeScale, delegate(float x)
+			DOTween.To(() => this._currentLevel.TimeScale, delegate(float x)
 			{
 				this._currentLevel.TimeScale = x;
-			}, 1f, this._slowMotionTimeLapse), true), new TweenCallback(this.OnCameraZoomIn)), 3), new TweenCallback(this.NormalTimeCallback));
+			}, 1f, this._slowMotionTimeLapse).SetUpdate(true).OnComplete(new TweenCallback(this.OnCameraZoomIn)).SetEase(Ease.OutSine).OnComplete(new TweenCallback(this.NormalTimeCallback));
 		}
 
 		private void SlowMotionStart()
@@ -227,10 +227,10 @@ namespace Tools.Level.Interactables
 				this._cameraZoom.AllowZoom = true;
 			}
 			this.CenterCamera();
-			TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetUpdate<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnStart<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this._cameraZoom.ZoomInput, delegate(float x)
+			DOTween.To(() => this._cameraZoom.ZoomInput, delegate(float x)
 			{
 				this._cameraZoom.ZoomInput = x;
-			}, -this._maxZoomInput, this._zoomTimeLapse), new TweenCallback(this.PlayZoomIn)), true), new TweenCallback(this.OnCameraZoomIn)), 3);
+			}, -this._maxZoomInput, this._zoomTimeLapse).OnStart(new TweenCallback(this.PlayZoomIn)).SetUpdate(true).OnComplete(new TweenCallback(this.OnCameraZoomIn)).SetEase(Ease.OutSine);
 		}
 
 		private void OnCameraZoomIn()
@@ -245,10 +245,10 @@ namespace Tools.Level.Interactables
 			{
 				return;
 			}
-			TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetUpdate<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this._cameraZoom.ZoomInput, delegate(float x)
+			DOTween.To(() => this._cameraZoom.ZoomInput, delegate(float x)
 			{
 				this._cameraZoom.ZoomInput = x;
-			}, this._maxZoomInput, this._zoomTimeLapse), true), new TweenCallback(this.OnCameraZoomOut)), 3);
+			}, this._maxZoomInput, this._zoomTimeLapse).SetUpdate(true).OnComplete(new TweenCallback(this.OnCameraZoomOut)).SetEase(Ease.OutSine);
 		}
 
 		private void OnCameraZoomOut()
@@ -266,15 +266,14 @@ namespace Tools.Level.Interactables
 			}
 			ProCamera2D proCamera = Core.Logic.CameraManager.ProCamera2D;
 			this._currentCameraPosition = new Vector3(proCamera.transform.position.x, proCamera.transform.position.y, proCamera.transform.position.z);
-			Vector3 vector;
-			vector..ctor(Core.Logic.Penitent.transform.position.x, this._currentCameraPosition.y, this._currentCameraPosition.z);
-			TweenSettingsExtensions.SetEase<TweenerCore<Vector3Wrapper, Vector3Wrapper, VectorOptions>>(TweenSettingsExtensions.OnStart<TweenerCore<Vector3Wrapper, Vector3Wrapper, VectorOptions>>(TweenSettingsExtensions.SetUpdate<TweenerCore<Vector3Wrapper, Vector3Wrapper, VectorOptions>>(DOTween.To(() => proCamera.transform.position, delegate(Vector3Wrapper x)
+			Vector3 endValue = new Vector3(Core.Logic.Penitent.transform.position.x, this._currentCameraPosition.y, this._currentCameraPosition.z);
+			DOTween.To(() => proCamera.transform.position, delegate(Vector3Wrapper x)
 			{
 				proCamera.transform.position = x;
-			}, vector, this._zoomTimeLapse), true), delegate()
+			}, endValue, this._zoomTimeLapse).SetUpdate(true).OnStart(delegate
 			{
 				this.CameraFollowTarget(false);
-			}), 2);
+			}).SetEase(Ease.InSine);
 		}
 
 		private void CameraFollowTarget(bool follow)
@@ -296,10 +295,10 @@ namespace Tools.Level.Interactables
 				return;
 			}
 			ProCamera2D proCamera = Core.Logic.CameraManager.ProCamera2D;
-			TweenSettingsExtensions.SetEase<TweenerCore<Vector3Wrapper, Vector3Wrapper, VectorOptions>>(TweenSettingsExtensions.SetUpdate<TweenerCore<Vector3Wrapper, Vector3Wrapper, VectorOptions>>(DOTween.To(() => proCamera.transform.position, delegate(Vector3Wrapper x)
+			DOTween.To(() => proCamera.transform.position, delegate(Vector3Wrapper x)
 			{
 				proCamera.transform.position = x;
-			}, this._currentCameraPosition, 1f), true), 2);
+			}, this._currentCameraPosition, 1f).SetUpdate(true).SetEase(Ease.InSine);
 		}
 
 		public void PlayZoomIn()

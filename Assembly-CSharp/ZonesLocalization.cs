@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class ZonesLocalization : MonoBehaviour
 {
-	[Button(0)]
+	[Button(ButtonSizes.Small)]
 	public void GenerateLocalization()
 	{
 		List<Transform> list = (from gObj in base.gameObject.scene.GetRootGameObjects()

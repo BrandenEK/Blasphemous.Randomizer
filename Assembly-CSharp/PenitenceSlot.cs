@@ -92,15 +92,15 @@ public class PenitenceSlot : MonoBehaviour
 				disposable.Dispose();
 			}
 		}
-		foreach (GameObject gameObject in list)
+		foreach (GameObject obj2 in list)
 		{
-			Object.Destroy(gameObject);
+			UnityEngine.Object.Destroy(obj2);
 		}
 	}
 
 	private void CreateElement(string name, Sprite sprite)
 	{
-		GameObject gameObject = Object.Instantiate<GameObject>(this.childElement, this.childElement.transform.parent);
+		GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.childElement, this.childElement.transform.parent);
 		gameObject.name = "Penitence_" + name;
 		gameObject.SetActive(true);
 		Image component = gameObject.GetComponent<Image>();

@@ -36,10 +36,10 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Enemies.Flagellant
 
 		public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 		{
-			if (this._flagellant.RigidBody.bodyType != 1)
+			if (this._flagellant.RigidBody.bodyType != RigidbodyType2D.Kinematic)
 			{
 				this._flagellant.RigidBody.velocity = Vector3.zero;
-				this._flagellant.RigidBody.bodyType = 1;
+				this._flagellant.RigidBody.bodyType = RigidbodyType2D.Kinematic;
 			}
 			if (this._flagellant.Status.IsHurt)
 			{

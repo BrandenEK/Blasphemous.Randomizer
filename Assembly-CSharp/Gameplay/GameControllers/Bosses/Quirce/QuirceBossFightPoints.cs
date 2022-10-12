@@ -13,14 +13,14 @@ namespace Gameplay.GameControllers.Bosses.Quirce
 
 		public Transform GetTeleportPlungeTransform()
 		{
-			return this.teleportPlungePoints[Random.Range(0, this.teleportPlungePoints.Count)];
+			return this.teleportPlungePoints[UnityEngine.Random.Range(0, this.teleportPlungePoints.Count)];
 		}
 
 		public Transform GetHangTransform(List<QuirceBossFightPoints.QUIRCE_FIGHT_SIDES> valid)
 		{
 			List<SplinePointInfo> list = this.ceilingHangPoints.FindAll((SplinePointInfo x) => valid.Contains(x.fightSide));
 			list.RemoveAll((SplinePointInfo x) => !x.active);
-			return list[Random.Range(0, list.Count)].point;
+			return list[UnityEngine.Random.Range(0, list.Count)].point;
 		}
 
 		public SplinePointInfo GetHangPointInfo(Transform t)
@@ -32,7 +32,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce
 		{
 			List<SplinePointInfo> list = this.startDashPoint.FindAll((SplinePointInfo x) => valid.Contains(x.fightSide));
 			list.RemoveAll((SplinePointInfo x) => !x.active);
-			return list[Random.Range(0, list.Count)].point;
+			return list[UnityEngine.Random.Range(0, list.Count)].point;
 		}
 
 		public SplinePointInfo GetDashPointInfo(Transform t)
@@ -47,7 +47,7 @@ namespace Gameplay.GameControllers.Bosses.Quirce
 
 		public Vector3 GetTossPoint()
 		{
-			return this.spiralPoint[Random.Range(0, this.spiralPoint.Count)].position;
+			return this.spiralPoint[UnityEngine.Random.Range(0, this.spiralPoint.Count)].position;
 		}
 
 		public void ActivateWallMask(bool v)

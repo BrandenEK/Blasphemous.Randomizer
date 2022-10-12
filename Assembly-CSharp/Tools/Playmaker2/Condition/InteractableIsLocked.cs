@@ -15,7 +15,7 @@ namespace Tools.Playmaker2.Condition
 			base.Finish();
 		}
 
-		[UIHint(10)]
+		[UIHint(UIHint.Variable)]
 		public GameObject interactable;
 
 		public FsmEvent onSuccess;

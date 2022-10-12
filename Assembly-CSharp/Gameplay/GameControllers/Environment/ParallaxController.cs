@@ -39,12 +39,12 @@ namespace Gameplay.GameControllers.Environment
 			{
 				float num = Mathf.Floor(this.layers[i].speed * (float)this.gridSize) / (float)this.gridSize;
 				GameObject layer = this.layers[i].layer;
-				float num2 = vector.x * num * this.influenceX;
-				float num3 = vector.y * num * this.influenceY;
+				float x = vector.x * num * this.influenceX;
+				float y = vector.y * num * this.influenceY;
 				if (layer != null)
 				{
 					layer.transform.position = this.prePixelPerfect[i];
-					layer.transform.Translate(num2, num3, 0f);
+					layer.transform.Translate(x, y, 0f);
 					this.prePixelPerfect[i] = layer.transform.position;
 					this.PixelPerfectPosition(layer.transform);
 				}
@@ -53,9 +53,9 @@ namespace Gameplay.GameControllers.Environment
 
 		private void PixelPerfectPosition(Transform transform)
 		{
-			float num = Mathf.Floor(transform.position.x * (float)this.gridSize) / (float)this.gridSize;
-			float num2 = Mathf.Floor(transform.position.y * (float)this.gridSize) / (float)this.gridSize;
-			transform.position = new Vector3(num, num2, transform.position.z);
+			float x = Mathf.Floor(transform.position.x * (float)this.gridSize) / (float)this.gridSize;
+			float y = Mathf.Floor(transform.position.y * (float)this.gridSize) / (float)this.gridSize;
+			transform.position = new Vector3(x, y, transform.position.z);
 		}
 
 		public ParallaxData[] Layers

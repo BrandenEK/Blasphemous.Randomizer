@@ -48,7 +48,7 @@ namespace Gameplay.GameControllers.Enemies.Legionary.Audio
 			try
 			{
 				ParameterInstance parameterInstance;
-				eventInstance.getParameter("End", ref parameterInstance);
+				eventInstance.getParameter("End", out parameterInstance);
 				parameterInstance.setValue(value);
 			}
 			catch (Exception ex)

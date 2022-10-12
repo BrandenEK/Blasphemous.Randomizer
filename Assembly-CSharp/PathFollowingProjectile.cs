@@ -103,7 +103,7 @@ public class PathFollowingProjectile : Weapon
 		{
 			Vector2 point = this.results[0].point;
 			this.instantiationTimer = this.secondsBetweenInstances;
-			GameObject gameObject = Object.Instantiate<GameObject>(this.sparksPrefab, point, Quaternion.identity);
+			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.sparksPrefab, point, Quaternion.identity);
 			gameObject.transform.up = -dir;
 		}
 	}

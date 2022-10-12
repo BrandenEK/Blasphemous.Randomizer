@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Framework.FrameworkCore;
 using Framework.Managers;
 using Rewired;
@@ -13,7 +12,6 @@ namespace Gameplay.UI.Others.MenuLogic
 {
 	public class PopUpWidget : SerializedMonoBehaviour
 	{
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public static event Core.SimpleEvent OnDialogClose;
 
 		public bool IsShowing { get; private set; }
@@ -49,8 +47,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			if (this.waitingForKey && this.IsShowing && !this.waitingEnd)
 			{
 				Player player = ReInput.players.GetPlayer(0);
-				bool flag = player.GetButtonDown(8) || player.GetButtonDown(5) || player.GetButtonDown(7) || player.GetButtonDown(6);
-				if (flag)
+				if (player.GetButtonDown(8) || player.GetButtonDown(5) || player.GetButtonDown(7) || player.GetButtonDown(6))
 				{
 					this.waitingEnd = true;
 					this.waitingForKey = false;
@@ -119,20 +116,28 @@ namespace Gameplay.UI.Others.MenuLogic
 
 		public void ShowItemGet(string message, string itemName, Sprite image, InventoryManager.ItemType objType, float timeToWait = 3f, bool blockPlayer = false)
 		{
-			switch (objType)
+			if (objType != InventoryManager.ItemType.Relic)
 			{
-			case InventoryManager.ItemType.Relic:
-				this.pendingTutorial = this.TutorialRelic;
-				goto IL_67;
-			case InventoryManager.ItemType.Bead:
-				this.pendingTutorial = this.TutorialBead;
-				goto IL_67;
-			case InventoryManager.ItemType.Sword:
-				this.pendingTutorial = this.TutorialSword;
-				goto IL_67;
+				if (objType != InventoryManager.ItemType.Bead)
+				{
+					if (objType != InventoryManager.ItemType.Sword)
+					{
+						this.pendingTutorial = string.Empty;
+					}
+					else
+					{
+						this.pendingTutorial = this.TutorialSword;
+					}
+				}
+				else
+				{
+					this.pendingTutorial = this.TutorialBead;
+				}
 			}
-			this.pendingTutorial = string.Empty;
-			IL_67:
+			else
+			{
+				this.pendingTutorial = this.TutorialRelic;
+			}
 			if (this.pendingTutorial != string.Empty && !Core.TutorialManager.IsTutorialUnlocked(this.pendingTutorial))
 			{
 				blockPlayer = true;
@@ -197,6 +202,14 @@ namespace Gameplay.UI.Others.MenuLogic
 			yield return new WaitForSecondsRealtime(0.2f);
 			this.waitingForKey = true;
 			yield break;
+		}
+
+		public static void closeDialog()
+		{
+			if (PopUpWidget.OnDialogClose != null)
+			{
+				PopUpWidget.OnDialogClose();
+			}
 		}
 
 		[SerializeField]

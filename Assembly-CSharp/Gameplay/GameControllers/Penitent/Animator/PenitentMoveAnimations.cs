@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using CreativeSpore.SmartColliders;
 using Framework.FrameworkCore;
 using Framework.Managers;
 using Gameplay.GameControllers.Effects.Player.Dust;
@@ -131,11 +132,11 @@ namespace Gameplay.GameControllers.Penitent.Animator
 			float jat = this._penitent.PlatformCharacterController.JumpingAccTime;
 			this._penitent.PlatformCharacterController.JumpingSpeed *= 1.6f;
 			this._penitent.PlatformCharacterController.JumpingAccTime *= 1f;
-			this._penitent.PlatformCharacterController.SetActionState(16, true);
+			this._penitent.PlatformCharacterController.SetActionState(eControllerActions.Jump, true);
 			yield return new WaitForSeconds(1f);
 			this._penitent.PlatformCharacterController.JumpingSpeed = js;
 			this._penitent.PlatformCharacterController.JumpingAccTime = jat;
-			this._penitent.PlatformCharacterController.SetActionState(16, false);
+			this._penitent.PlatformCharacterController.SetActionState(eControllerActions.Jump, false);
 			yield break;
 		}
 

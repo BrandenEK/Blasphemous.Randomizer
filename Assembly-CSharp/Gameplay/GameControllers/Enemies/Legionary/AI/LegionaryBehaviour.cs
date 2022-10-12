@@ -136,7 +136,7 @@ namespace Gameplay.GameControllers.Enemies.Legionary.AI
 
 		public void RandMeleeAttack()
 		{
-			int num = Random.Range(0, this.AttackRatio);
+			int num = UnityEngine.Random.Range(0, this.AttackRatio);
 			if ((num -= this.LightMeleeAttackWeight) < 0)
 			{
 				this.MeleeLightAttack();

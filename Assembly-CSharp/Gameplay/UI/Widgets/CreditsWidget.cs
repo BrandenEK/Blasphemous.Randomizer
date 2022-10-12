@@ -3,6 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using FMOD.Studio;
 using Framework.Managers;
 using Rewired;
 using Sirenix.OdinInspector;
@@ -72,7 +73,7 @@ namespace Gameplay.UI.Widgets
 			Vector3 localPosition = this.uguiContent.transform.localPosition;
 			localPosition.y = 0f;
 			this.uguiContent.transform.localPosition = localPosition;
-			TweenExtensions.Kill(this.scrollbarTween, false);
+			this.scrollbarTween.Kill(false);
 			Core.Input.SetBlocker("CREDITS", false);
 		}
 
@@ -169,8 +170,7 @@ namespace Gameplay.UI.Widgets
 		{
 			base.Invoke("InitialEaseIn", this.initialDelay);
 			this.rtScrollRect = this.uguiScrollView.GetComponent<RectTransform>();
-			Vector3 size;
-			size..ctor(this.rtScrollRect.rect.width, this.rtScrollRect.rect.height, 1f);
+			Vector3 size = new Vector3(this.rtScrollRect.rect.width, this.rtScrollRect.rect.height, 1f);
 			if (this.uguiScrollRect.GetComponent<ScrollRect>() != null && this.uguiScrollRect.GetComponent<BoxCollider>() == null)
 			{
 				BoxCollider boxCollider = this.uguiScrollRect.AddComponent<BoxCollider>();
@@ -221,17 +221,17 @@ namespace Gameplay.UI.Widgets
 			{
 				this.isScrollingDown = true;
 				num = 1f;
-				if (TweenExtensions.IsBackwards(this.scrollbarTween))
+				if (this.scrollbarTween.IsBackwards())
 				{
-					TweenExtensions.PlayForward(this.scrollbarTween);
+					this.scrollbarTween.PlayForward();
 				}
 				else
 				{
-					TweenExtensions.PlayBackwards(this.scrollbarTween);
+					this.scrollbarTween.PlayBackwards();
 				}
 			}
 			this.UpdateScrollSpeedIndicators(num);
-			ShortcutExtensions.DOTimeScale(this.scrollbarTween, num, 0f);
+			this.scrollbarTween.DOTimeScale(num, 0f);
 		}
 
 		private void ProcessScrollUpwards()
@@ -255,13 +255,13 @@ namespace Gameplay.UI.Widgets
 				{
 					this.isScrollingDown = false;
 					num = 1f;
-					if (TweenExtensions.IsBackwards(this.scrollbarTween))
+					if (this.scrollbarTween.IsBackwards())
 					{
-						TweenExtensions.PlayForward(this.scrollbarTween);
+						this.scrollbarTween.PlayForward();
 					}
 					else
 					{
-						TweenExtensions.PlayBackwards(this.scrollbarTween);
+						this.scrollbarTween.PlayBackwards();
 					}
 				}
 			}
@@ -274,7 +274,7 @@ namespace Gameplay.UI.Widgets
 				num = this.scrollbarTween.timeScale * 2f;
 			}
 			this.UpdateScrollSpeedIndicators(num);
-			ShortcutExtensions.DOTimeScale(this.scrollbarTween, num, 0f);
+			this.scrollbarTween.DOTimeScale(num, 0f);
 		}
 
 		private void UpdateScrollSpeedIndicators(float newTimeScale)
@@ -299,10 +299,10 @@ namespace Gameplay.UI.Widgets
 		private void InitialEaseIn()
 		{
 			this.tweenFloat = 1f;
-			this.scrollbarTween = TweenSettingsExtensions.SetId<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.tweenFloat, delegate(float x)
+			this.scrollbarTween = DOTween.To(() => this.tweenFloat, delegate(float x)
 			{
 				this.tweenFloat = x;
-			}, this.easeInA, 1f), 5), new TweenCallback(this.InitialScroll)), "InitialScroll");
+			}, this.easeInA, 1f).SetEase(Ease.InQuad).OnComplete(new TweenCallback(this.InitialScroll)).SetId("InitialScroll");
 		}
 
 		private void InitialScroll()
@@ -310,11 +310,11 @@ namespace Gameplay.UI.Widgets
 			this.isScrollingDown = true;
 			this.isAutoScrolling = true;
 			this.tweenFloat = this.easeInA;
-			float num = this.time * this.tweenFloat;
-			this.scrollbarTween = TweenSettingsExtensions.SetId<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnRewind<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.tweenFloat, delegate(float x)
+			float duration = this.time * this.tweenFloat;
+			this.scrollbarTween = DOTween.To(() => this.tweenFloat, delegate(float x)
 			{
 				this.tweenFloat = x;
-			}, 0f, num), 1), new TweenCallback(this.AutoScrollEnd)), new TweenCallback(this.StartScrollAgain)), "ScrollPro");
+			}, 0f, duration).SetEase(Ease.Linear).OnComplete(new TweenCallback(this.AutoScrollEnd)).OnRewind(new TweenCallback(this.StartScrollAgain)).SetId("ScrollPro");
 		}
 
 		private void StartScrollAgain()
@@ -327,12 +327,12 @@ namespace Gameplay.UI.Widgets
 		{
 			this.isScrollingDown = true;
 			this.tweenFloat = scrollbarValue;
-			float num = this.time * this.tweenFloat;
-			TweenExtensions.Kill(this.scrollbarTween, false);
-			this.scrollbarTween = TweenSettingsExtensions.SetId<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnRewind<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.tweenFloat, delegate(float x)
+			float duration = this.time * this.tweenFloat;
+			this.scrollbarTween.Kill(false);
+			this.scrollbarTween = DOTween.To(() => this.tweenFloat, delegate(float x)
 			{
 				this.tweenFloat = x;
-			}, 0f, num), 1), new TweenCallback(this.AutoScrollEnd)), new TweenCallback(this.ScrollToStart)), "ScrollPro");
+			}, 0f, duration).SetEase(Ease.Linear).OnComplete(new TweenCallback(this.AutoScrollEnd)).OnRewind(new TweenCallback(this.ScrollToStart)).SetId("ScrollPro");
 			this.UpdateScrollSpeedIndicators(1f);
 		}
 
@@ -340,13 +340,13 @@ namespace Gameplay.UI.Widgets
 		{
 			this.isScrollingDown = true;
 			float timeScale = this.scrollbarTween.timeScale;
-			float num = this.time * this.tweenFloat;
-			TweenExtensions.Kill(this.scrollbarTween, false);
-			this.scrollbarTween = TweenSettingsExtensions.SetId<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnRewind<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.tweenFloat, delegate(float x)
+			float duration = this.time * this.tweenFloat;
+			this.scrollbarTween.Kill(false);
+			this.scrollbarTween = DOTween.To(() => this.tweenFloat, delegate(float x)
 			{
 				this.tweenFloat = x;
-			}, 0f, num), 1), new TweenCallback(this.AutoScrollEnd)), new TweenCallback(this.ScrollToStart)), "ScrollPro");
-			TweenExtensions.ForceInit(this.scrollbarTween);
+			}, 0f, duration).SetEase(Ease.Linear).OnComplete(new TweenCallback(this.AutoScrollEnd)).OnRewind(new TweenCallback(this.ScrollToStart)).SetId("ScrollPro");
+			this.scrollbarTween.ForceInit();
 			this.scrollbarTween.timeScale = timeScale;
 			this.UpdateScrollSpeedIndicators(timeScale);
 		}
@@ -355,13 +355,13 @@ namespace Gameplay.UI.Widgets
 		{
 			this.isScrollingDown = false;
 			float timeScale = this.scrollbarTween.timeScale;
-			float num = this.time * (1f - this.tweenFloat);
-			TweenExtensions.Kill(this.scrollbarTween, false);
-			this.scrollbarTween = TweenSettingsExtensions.SetId<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnRewind<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.OnComplete<TweenerCore<float, float, FloatOptions>>(TweenSettingsExtensions.SetEase<TweenerCore<float, float, FloatOptions>>(DOTween.To(() => this.tweenFloat, delegate(float x)
+			float duration = this.time * (1f - this.tweenFloat);
+			this.scrollbarTween.Kill(false);
+			this.scrollbarTween = DOTween.To(() => this.tweenFloat, delegate(float x)
 			{
 				this.tweenFloat = x;
-			}, 1f, num), 1), new TweenCallback(this.AutoScrollEnd)), new TweenCallback(this.ScrollToEnd)), "ScrollPro");
-			TweenExtensions.ForceInit(this.scrollbarTween);
+			}, 1f, duration).SetEase(Ease.Linear).OnComplete(new TweenCallback(this.AutoScrollEnd)).OnRewind(new TweenCallback(this.ScrollToEnd)).SetId("ScrollPro");
+			this.scrollbarTween.ForceInit();
 			this.scrollbarTween.timeScale = timeScale;
 			this.UpdateScrollSpeedIndicators(timeScale);
 		}
@@ -387,7 +387,7 @@ namespace Gameplay.UI.Widgets
 
 		private void EndOfCredits()
 		{
-			Core.Audio.Music.stopAllEvents(0);
+			Core.Audio.Music.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			this.isAutoScrolling = false;
 			this.HasEnded = true;
 			if (this.autoDisable)

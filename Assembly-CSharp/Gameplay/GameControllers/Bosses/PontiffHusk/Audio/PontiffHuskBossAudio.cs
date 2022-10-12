@@ -67,9 +67,9 @@ namespace Gameplay.GameControllers.Bosses.PontiffHusk.Audio
 				Debug.LogError(string.Format("ERROR: Couldn't find catalog sound event called <{0}>", eventId));
 				return;
 			}
-			float num = (!Core.Localization.GetCurrentAudioLanguageCode().ToUpper().StartsWith("ES")) ? 0f : 1f;
-			panning.setParameterValue("spanish", num);
-			panning.setCallback(base.SetPanning(panning), 1);
+			float value = (!Core.Localization.GetCurrentAudioLanguageCode().ToUpper().StartsWith("ES")) ? 0f : 1f;
+			panning.setParameterValue("spanish", value);
+			panning.setCallback(base.SetPanning(panning), EVENT_CALLBACK_TYPE.CREATED);
 			panning.start();
 			panning.release();
 		}

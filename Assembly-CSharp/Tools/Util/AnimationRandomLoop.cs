@@ -12,7 +12,7 @@ namespace Tools.Util
 			bool flag = this.anim.HasState(0, Animator.StringToHash(this.initialState));
 			if (this.anim && flag)
 			{
-				this.anim.Play(this.initialState, 0, Random.Range(0f, 1f));
+				this.anim.Play(this.initialState, 0, UnityEngine.Random.Range(0f, 1f));
 			}
 		}
 

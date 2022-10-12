@@ -10,7 +10,7 @@ namespace VisualEffects.Scripts
 	{
 		[BoxGroup("Generate from Gradient", true, false, 0)]
 		[ShowIf("ShouldShowGenerateButton", true)]
-		[Button("Generate", 22)]
+		[Button("Generate", ButtonSizes.Medium)]
 		private void Generate()
 		{
 			int width = this.paletteTexture.width;

@@ -19,10 +19,8 @@ namespace Gameplay.GameControllers.AnimationBehaviours.Player.Attack
 			this._joyStickBuffer = 0f;
 			this._allowFinisherCombo = false;
 			this._comboDirection = FinishingComboStarterBehaviour.JoyStickDirection.Center;
-			Vector2 size;
-			size..ctor(3.57f, 2.25f);
-			Vector2 offset;
-			offset..ctor(1.69f, 1.75f);
+			Vector2 size = new Vector2(3.57f, 2.25f);
+			Vector2 offset = new Vector2(1.69f, 1.75f);
 			this._penitent.AttackArea.SetSize(size);
 			this._penitent.AttackArea.SetOffset(offset);
 		}

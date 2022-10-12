@@ -29,7 +29,7 @@ namespace Tools.Level.Interactables
 			yield break;
 		}
 
-		[Button("RESET LEVER UP", 31)]
+		[Button("RESET LEVER UP", ButtonSizes.Large)]
 		public void SetLeverUp()
 		{
 			Debug.Log(base.gameObject.name + ": SET LEVER UP");
@@ -38,7 +38,7 @@ namespace Tools.Level.Interactables
 			base.StartCoroutine(this.DelayedCallback(new Action(this.OnLeverUpFinished), this.animationDelay));
 		}
 
-		[Button("SET LEVER UP INSTANTLY", 31)]
+		[Button("SET LEVER UP INSTANTLY", ButtonSizes.Large)]
 		public void SetLeverUpInstantly()
 		{
 			Debug.Log(base.gameObject.name + ": SET LEVER UP instant");
@@ -47,7 +47,7 @@ namespace Tools.Level.Interactables
 			base.Consumed = false;
 		}
 
-		[Button("BLOCK LEVER DOWN", 31)]
+		[Button("BLOCK LEVER DOWN", ButtonSizes.Large)]
 		public void SetLeverDown()
 		{
 			Debug.Log(base.gameObject.name + ": SET LEVER DOWN");
@@ -57,7 +57,7 @@ namespace Tools.Level.Interactables
 			base.StartCoroutine(this.DelayedCallback(new Action(this.OnLeverDownFinished), this.animationDelay));
 		}
 
-		[Button("SET LEVER DOWN INSTANTLY", 31)]
+		[Button("SET LEVER DOWN INSTANTLY", ButtonSizes.Large)]
 		public void SetLeverDownInstantly()
 		{
 			Debug.Log(base.gameObject.name + ": SET LEVER DOWN instant");

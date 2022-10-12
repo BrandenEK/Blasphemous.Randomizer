@@ -10,7 +10,7 @@ namespace Tools.Level.Actionables
 		public void Use()
 		{
 			SpriteRenderer component = base.GetComponent<SpriteRenderer>();
-			ShortcutExtensions43.DOFade(component, 0f, this.time);
+			component.DOFade(0f, this.time);
 		}
 
 		public bool Locked { get; set; }

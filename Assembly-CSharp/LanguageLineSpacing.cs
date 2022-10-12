@@ -11,7 +11,7 @@ public class LanguageLineSpacing : MonoBehaviour
 	{
 		this.textComponent = null;
 		this.textProComponent = null;
-		LocalizationManager.OnLocalizeEvent += new LocalizationManager.OnLocalizeCallback(this.OnLocalize);
+		LocalizationManager.OnLocalizeEvent += this.OnLocalize;
 		this.textComponent = base.GetComponent<Text>();
 		if (this.textComponent != null)
 		{
@@ -30,7 +30,7 @@ public class LanguageLineSpacing : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		LocalizationManager.OnLocalizeEvent -= new LocalizationManager.OnLocalizeCallback(this.OnLocalize);
+		LocalizationManager.OnLocalizeEvent -= this.OnLocalize;
 	}
 
 	private void OnLocalize()

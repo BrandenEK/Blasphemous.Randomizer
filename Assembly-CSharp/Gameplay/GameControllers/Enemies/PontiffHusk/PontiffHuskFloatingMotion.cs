@@ -20,9 +20,9 @@ namespace Gameplay.GameControllers.Enemies.PontiffHusk
 		private void Floating()
 		{
 			this.index += Time.deltaTime;
-			float num = this.amplitudeX * Mathf.Cos(this.speedX * this.index);
-			float num2 = Mathf.Sin(this.speedY * this.index) * this.amplitudeY;
-			Vector3 vector = new Vector3(num, num2, 0f) + this.Offset;
+			float x = this.amplitudeX * Mathf.Cos(this.speedX * this.index);
+			float y = Mathf.Sin(this.speedY * this.index) * this.amplitudeY;
+			Vector3 vector = new Vector3(x, y, 0f) + this.Offset;
 			base.transform.localPosition = ((!this.UseSlerp) ? vector : Vector3.Slerp(base.transform.localPosition, vector, Time.deltaTime));
 		}
 
