@@ -102,7 +102,7 @@ namespace Framework.Managers
 
 		public EnemiesBalanceChart GetCurrentEnemiesBalanceChart()
 		{
-			if (!Core.Randomizer.gameConfig.hardMode)
+			if (!Core.Randomizer.gameConfig.general.hardMode)
 			{
 				return this.newGameEnemiesBalanceChart;
 			}
@@ -113,7 +113,7 @@ namespace Framework.Managers
 		{
 			if (this.currentMode != GameModeManager.GAME_MODES.BOSS_RUSH)
 			{
-				if (!Core.Randomizer.gameConfig.hardMode)
+				if (!Core.Randomizer.gameConfig.general.hardMode)
 				{
 					return this.newGameBossesBalanceChart;
 				}

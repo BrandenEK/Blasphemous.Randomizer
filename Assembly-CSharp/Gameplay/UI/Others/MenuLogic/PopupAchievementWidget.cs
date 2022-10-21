@@ -28,6 +28,7 @@ namespace Gameplay.UI.Others.MenuLogic
 			{
 				return;
 			}
+			PopUpWidget.closeDialog();
 			if (this.IsShowing)
 			{
 				this.pendingAchievement.Enqueue(achievement);
@@ -39,7 +40,6 @@ namespace Gameplay.UI.Others.MenuLogic
 		private IEnumerator ShowPopupCorrutine(Achievement achievement)
 		{
 			this.IsShowing = true;
-			PopUpWidget.closeDialog();
 			this.SpriteImage.sprite = achievement.Image;
 			this.PopUp.GetChild(1).GetComponent<Text>().text = achievement.Name;
 			this.PopUp.GetChild(2).GetComponent<Text>().text = achievement.Description;

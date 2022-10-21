@@ -59,7 +59,7 @@ namespace Framework.Randomizer
 			List<Reward> list = new List<Reward>();
 			for (int i = 0; i < locations.Count; i++)
 			{
-				if (!this.randoSettings.Contains(locations[i].type))
+				if (!FileIO.arrayContains(this.randoSettings, locations[i].type))
 				{
 					locations[i].reward = rewards[i];
 					if (rewards[i].progression)
@@ -435,13 +435,13 @@ namespace Framework.Randomizer
 			locations.Add(new Location("RB14", "item", (ItemData d) => d.bridge));
 			locations.Add(new Location("RB15", "item", (ItemData d) => true));
 			locations.Add(new Location("RB16", "item", (ItemData d) => d.bridge && d.masks > 0 && d.bronzeKey && d.silverKey));
-			locations.Add(new Location("RB17", "item", (ItemData d) => true));
+			locations.Add(new Location("RB17", "candle", (ItemData d) => true));
 			locations.Add(new Location("RB18", "candle", (ItemData d) => d.redWax > 0));
 			locations.Add(new Location("RB19", "candle", (ItemData d) => d.bridge && d.redWax > 0));
 			locations.Add(new Location("RB20", "redento1", (ItemData d) => true));
 			locations.Add(new Location("RB21", "redento1", (ItemData d) => d.bridge));
 			locations.Add(new Location("RB22", "redento1", (ItemData d) => true));
-			locations.Add(new Location("RB24", "item", (ItemData d) => true));
+			locations.Add(new Location("RB24", "candle", (ItemData d) => true));
 			locations.Add(new Location("RB25", "candle", (ItemData d) => d.blueWax > 0));
 			locations.Add(new Location("RB26", "candle", (ItemData d) => d.bridge && d.blueWax > 0));
 			locations.Add(new Location("RB28", "item", (ItemData d) => d.root));
@@ -908,7 +908,7 @@ namespace Framework.Randomizer
 			rewards.Add(new Reward(10, 2500, false));
 			rewards.Add(new Reward(10, 3000, false));
 			rewards.Add(new Reward(10, 5000, false));
-			bool hardMode = Core.Randomizer.gameConfig.hardMode;
+			bool hardMode = Core.Randomizer.gameConfig.general.hardMode;
 			rewards.Add(new Reward(10, hardMode ? 750 : 625, false));
 			rewards.Add(new Reward(10, hardMode ? 3120 : 2600, false));
 			rewards.Add(new Reward(10, hardMode ? 2520 : 2100, false));
@@ -926,7 +926,7 @@ namespace Framework.Randomizer
 			rewards.Add(new Reward(10, 5000, false));
 		}
 
-		public ForwardFiller(List<string> randoSettings, bool newGame)
+		public ForwardFiller(string[] randoSettings, bool newGame)
 		{
 			this.randoSettings = randoSettings;
 			this.newGame = newGame;
@@ -934,8 +934,8 @@ namespace Framework.Randomizer
 
 		private Random random;
 
-		private List<string> randoSettings;
-
 		private bool newGame;
+
+		private string[] randoSettings;
 	}
 }

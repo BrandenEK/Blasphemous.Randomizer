@@ -1,49 +1,15 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
+using Framework.Randomizer.Config;
 using UnityEngine;
 
 namespace Framework.Randomizer
 {
 	public class FileIO
 	{
-		public string read(string fileName)
+		public FileIO()
 		{
-			if (File.Exists(fileName))
-			{
-				return File.ReadAllText(fileName);
-			}
-			return "";
-		}
-
-		public Config loadConfig()
-		{
-			string text = this.read("config.json");
-			Config result;
-			if (text == "")
-			{
-				result = this.createNewConfig();
-			}
-			else
-			{
-				result = JsonUtility.FromJson<Config>(text);
-			}
-			return result;
-		}
-
-		public void writeLine(string text, string fileName)
-		{
-			File.AppendAllText(Environment.CurrentDirectory + "/" + fileName, text);
-		}
-
-		public void writeAll(string text, string fileName)
-		{
-			File.WriteAllText(Environment.CurrentDirectory + "/" + fileName, text);
-		}
-
-		public Config createNewConfig()
-		{
-			Config config = new Config(false, false, false, true, true, 0, Randomizer.getVersion(), new List<string>
+			this.randoLocations = new string[]
 			{
 				"item",
 				"cherub",
@@ -63,9 +29,64 @@ namespace Framework.Randomizer
 				"guiltBead",
 				"ossuary",
 				"boss"
-			});
-			this.writeAll(JsonUtility.ToJson(config, true), "config.json");
-			return config;
+			};
 		}
+
+		public string read(string fileName)
+		{
+			if (File.Exists(Environment.CurrentDirectory + "/" + fileName))
+			{
+				return File.ReadAllText(Environment.CurrentDirectory + "/" + fileName);
+			}
+			return "";
+		}
+
+		public void writeLine(string text, string fileName)
+		{
+			File.AppendAllText(Environment.CurrentDirectory + "/" + fileName, text);
+		}
+
+		public void writeAll(string text, string fileName)
+		{
+			File.WriteAllText(Environment.CurrentDirectory + "/" + fileName, text);
+		}
+
+		public MainConfig loadConfig()
+		{
+			string text = this.read("randomizer.cfg");
+			MainConfig result;
+			if (text == "")
+			{
+				result = this.createNewConfig();
+			}
+			else
+			{
+				result = JsonUtility.FromJson<MainConfig>(text);
+			}
+			return result;
+		}
+
+		public MainConfig createNewConfig()
+		{
+			MainConfig mainConfig = new MainConfig(Randomizer.getVersion(), new GeneralConfig(true, true, false, false, 0), new ItemConfig(1, true, this.randoLocations), new EnemyConfig(1, true), new PrayerConfig(2, false));
+			this.writeAll(JsonUtility.ToJson(mainConfig, true), "randomizer.cfg");
+			return mainConfig;
+		}
+
+		public static bool arrayContains(string[] arr, string id)
+		{
+			for (int i = 0; i < arr.Length; i++)
+			{
+				if (arr[i] == id)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		private string[] randoLocations;
+
+		private const string configPath = "randomizer.cfg";
 	}
 }

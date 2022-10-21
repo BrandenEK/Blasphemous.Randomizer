@@ -68,7 +68,7 @@ namespace Tools.Level.Layout
 			{
 				return;
 			}
-			this.Consumed = Core.Logic.EnemySpawner.IsSpawnerConsumed(this);
+			this.Consumed = Core.Logic.EnemySpawner.IsSpawnerConsumed(base.gameObject.name);
 			if (!this.EnablePersistence)
 			{
 				this.Consumed = false;
@@ -77,7 +77,9 @@ namespace Tools.Level.Layout
 			{
 				return;
 			}
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.selectedEnemy, this.spawnPoint.position, Quaternion.identity);
+			string id = this.selectedEnemy.GetComponentInChildren<Enemy>().Id;
+			GameObject enemy = Core.Randomizer.enemizer.getEnemy(id);
+			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>((enemy == null) ? this.selectedEnemy : enemy, this.spawnPoint.position, Quaternion.identity);
 			gameObject.transform.parent = Core.Logic.CurrentLevelConfig.transform;
 			Enemy componentInChildren = gameObject.GetComponentInChildren<Enemy>();
 			if (componentInChildren)
@@ -103,6 +105,7 @@ namespace Tools.Level.Layout
 			else
 			{
 				Log.Warning("Level", "Triying to create an enemy whitout entity component.", null);
+				Core.Randomizer.Log("Enemy does not have an entity component!");
 			}
 			EnemyStatsImporter enemyStatsImporter = Core.Logic.CurrentLevelConfig.EnemyStatsImporter;
 			if (enemyStatsImporter != null)

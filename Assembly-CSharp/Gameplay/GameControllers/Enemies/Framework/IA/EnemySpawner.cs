@@ -21,9 +21,9 @@ namespace Gameplay.GameControllers.Enemies.Framework.IA
 		{
 			Log.Trace("Spawn", "Spawning enemies on level.", null);
 			EnemySpawnPoint[] array = UnityEngine.Object.FindObjectsOfType<EnemySpawnPoint>();
-			foreach (EnemySpawnPoint enemySpawnPoint in array)
+			for (int i = 0; i < array.Length; i++)
 			{
-				enemySpawnPoint.CreateEnemy();
+				array[i].CreateEnemy();
 			}
 		}
 

@@ -1458,12 +1458,7 @@ namespace Framework.Managers
 
 		public float GetPercentageCompletition()
 		{
-			float num = this.GetPercentageCompletitionList<Relic>(this.ownRellics);
-			num += this.GetPercentageCompletitionList<RosaryBead>(this.ownBeads);
-			num += this.GetPercentageCompletitionList<QuestItem>(this.ownQuestItems);
-			num += this.GetPercentageCompletitionList<Framework.Inventory.CollectibleItem>(this.ownCollectibleItems);
-			num += this.GetPercentageCompletitionList<Prayer>(this.ownPrayers);
-			return num + this.GetPercentageCompletitionList<Sword>(this.ownSwords);
+			return this.GetPercentageCompletitionList<Relic>(this.ownRellics) + this.GetPercentageCompletitionList<RosaryBead>(this.ownBeads) + this.GetPercentageCompletitionList<QuestItem>(this.ownQuestItems) + this.GetPercentageCompletitionList<Framework.Inventory.CollectibleItem>(this.ownCollectibleItems) + this.GetPercentageCompletitionList<Prayer>(this.ownPrayers) + this.GetPercentageCompletitionList<Sword>(this.ownSwords);
 		}
 
 		private float GetPercentageCompletitionList<T>(List<T> ownObj) where T : BaseInventoryObject

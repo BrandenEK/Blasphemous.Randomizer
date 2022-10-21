@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Framework.FrameworkCore;
 using Framework.Inventory;
 using Framework.Managers;
+using Framework.Randomizer.Config;
 using Gameplay.GameControllers.Entities;
 using Gameplay.UI;
 using UnityEngine;
@@ -28,32 +30,49 @@ namespace Framework.Randomizer
 				seed = this.seed,
 				itemsCollected = this.itemsCollected,
 				startedInRando = this.startedInRando,
-				randomizerSettings = this.gameConfig
+				config = this.gameConfig
 			};
 		}
 
 		public void SetCurrentPersistentState(PersistentManager.PersistentData data, bool isloading, string dataPath)
 		{
-			RandomizerPersistenceData randomizerPersistenceData = (RandomizerPersistenceData)data;
-			this.seed = randomizerPersistenceData.seed;
-			this.startedInRando = randomizerPersistenceData.startedInRando;
-			this.itemsCollected = randomizerPersistenceData.itemsCollected;
-			this.gameConfig = randomizerPersistenceData.randomizerSettings;
+			if (data != null)
+			{
+				RandomizerPersistenceData randomizerPersistenceData = (RandomizerPersistenceData)data;
+				this.seed = randomizerPersistenceData.seed;
+				this.startedInRando = randomizerPersistenceData.startedInRando;
+				this.itemsCollected = randomizerPersistenceData.itemsCollected;
+				this.gameConfig = randomizerPersistenceData.config;
+			}
 			if (!this.inGame)
 			{
 				this.Log("Loading seed: " + this.seed, 0);
-				if (PersistentManager.GetAutomaticSlot() != this.lastSlotLoaded)
+				if (this.seed == -1)
+				{
+					this.newItems = null;
+					this.gameConfig = this.fileConfig;
+					this.errorOnLoad = "This save file was not created in randomizer.  Item locations are invalid!";
+				}
+				else if (!this.isConfigVersionValid(this.gameConfig.versionCreated))
+				{
+					this.newItems = null;
+					this.gameConfig = this.fileConfig;
+					this.errorOnLoad = "This save file was created in an older version of the randomizer.  Item locations are invalid!";
+				}
+				else if (PersistentManager.GetAutomaticSlot() != this.lastSlotLoaded)
 				{
 					this.Randomize(this.seed, true);
 				}
 				this.inGame = true;
 				this.lastSlotLoaded = PersistentManager.GetAutomaticSlot();
+				this.enemizer = new Enemizer(this.seed);
 			}
 		}
 
 		public void ResetPersistence()
 		{
 			this.itemsCollected = 0;
+			this.totalItems = 0;
 			this.seed = -1;
 			this.startedInRando = false;
 			this.lastReward = null;
@@ -63,6 +82,9 @@ namespace Framework.Randomizer
 				this.logs[i].Clear();
 			}
 			this.inGame = false;
+			this.errorOnLoad = "";
+			Enemizer.resetStatus();
+			this.enemizer = null;
 		}
 
 		public int itemsCollected { get; private set; }
@@ -74,6 +96,7 @@ namespace Framework.Randomizer
 			Core.Persistence.AddPersistentManager(this);
 			this.inGame = false;
 			this.lastSlotLoaded = -1;
+			this.errorOnLoad = "";
 		}
 
 		private Reward getRewardFromId(string id)
@@ -289,17 +312,12 @@ namespace Framework.Randomizer
 				UIController.instance.ShowPopUp(message, "", 0f, false);
 				return;
 			}
-			if (Input.GetKeyDown(KeyCode.Keypad3) && this.seed == -1)
-			{
-				this.giveReward(new Reward(0, 203, true));
-				UIController.instance.ShowPopUp("Giving the Speed rosary", "", 0f, false);
-				return;
-			}
 		}
 
 		public void Log(string message)
 		{
 			this.logs[0].Log(message);
+			this.file.writeLine(message + "\n", "log.txt");
 		}
 
 		public void LogFile(string message)
@@ -309,9 +327,9 @@ namespace Framework.Randomizer
 
 		private int generateSeed()
 		{
-			if (this.gameConfig.customSeed > 0)
+			if (this.gameConfig.general.customSeed > 0)
 			{
-				return this.gameConfig.customSeed;
+				return this.gameConfig.general.customSeed;
 			}
 			return new System.Random().Next();
 		}
@@ -325,6 +343,7 @@ namespace Framework.Randomizer
 			this.seed = this.generateSeed();
 			this.Log("Generating new seed: " + this.seed, 0);
 			this.Randomize(this.seed, true);
+			this.enemizer = new Enemizer(this.seed);
 			this.lastSlotLoaded = PersistentManager.GetAutomaticSlot();
 		}
 
@@ -340,7 +359,7 @@ namespace Framework.Randomizer
 		{
 			this.file = new FileIO();
 			this.fileConfig = this.file.loadConfig();
-			if (this.fileConfig.versionCreated != Randomizer.getVersion())
+			if (!this.isConfigVersionValid(this.fileConfig.versionCreated))
 			{
 				this.fileConfig = this.file.createNewConfig();
 			}
@@ -375,34 +394,29 @@ namespace Framework.Randomizer
 
 		private void setupExtras()
 		{
-			if (!this.gameConfig.allowPenitence)
+			if (!this.gameConfig.general.enablePenitence)
 			{
 				Core.Events.SetFlag("PENITENCE_EVENT_FINISHED", true, false);
 				Core.Events.SetFlag("PENITENCE_NO_PENITENCE", true, false);
 			}
-			if (this.gameConfig.skipCutscenes)
+			if (this.gameConfig.general.skipCutscenes)
 			{
 				this.setCutsceneFlags();
 			}
 		}
-
-		public Config gameConfig { get; private set; }
 
 		public void Log(string message, int type)
 		{
 			if (type >= 0 && type < this.logs.Length)
 			{
 				this.logs[type].Log(message);
-				if (type == 999)
-				{
-					this.file.writeLine(message + "\n", "log.txt");
-				}
+				this.file.writeLine(message + "\n", "log.txt");
 			}
 		}
 
 		public static string getVersion()
 		{
-			return "v0.2.0";
+			return "v0.3.1";
 		}
 
 		private bool checkForDuplicate(string id)
@@ -429,7 +443,16 @@ namespace Framework.Randomizer
 
 		private void onLevelLoaded(Level oldLevel, Level newLevel)
 		{
-			this.Log(newLevel.LevelName, 0);
+			if (this.errorOnLoad != "")
+			{
+				this.Log(this.errorOnLoad, 0);
+				UIController.instance.StartCoroutine(this.showErrorMessage(2.1f));
+			}
+			Enemizer.loadEnemies();
+			if (this.inGame && this.enemizer != null)
+			{
+				this.enemizer.onSceneLoaded();
+			}
 		}
 
 		public override void Dispose()
@@ -444,14 +467,8 @@ namespace Framework.Randomizer
 
 		private void Randomize(int seed, bool newGame)
 		{
-			if (seed == -1)
-			{
-				this.seed = -1;
-				this.newItems = null;
-				return;
-			}
 			this.newItems = new Dictionary<string, Reward>();
-			ForwardFiller forwardFiller = new ForwardFiller(this.gameConfig.randomizerSettings, newGame);
+			ForwardFiller forwardFiller = new ForwardFiller(this.gameConfig.items.randomizedLocations, newGame);
 			while (!forwardFiller.Fill(seed, this.newItems))
 			{
 				seed++;
@@ -459,6 +476,20 @@ namespace Framework.Randomizer
 			}
 			this.seed = seed;
 			this.totalItems = this.newItems.Count;
+		}
+
+		private IEnumerator showErrorMessage(float waitTime)
+		{
+			yield return new WaitForSecondsRealtime(waitTime);
+			UIController.instance.ShowPopUp(this.errorOnLoad, "", 0f, false);
+			this.errorOnLoad = "";
+			yield break;
+		}
+
+		private bool isConfigVersionValid(string configVersion)
+		{
+			string version = Randomizer.getVersion();
+			return version.Substring(version.IndexOf('.') + 1, 1) == configVersion.Substring(configVersion.IndexOf('.') + 1, 1);
 		}
 
 		private int seed;
@@ -471,8 +502,6 @@ namespace Framework.Randomizer
 
 		private string[] cutsceneFlags;
 
-		private Config fileConfig;
-
 		private Logger[] logs;
 
 		public Reward lastReward;
@@ -484,5 +513,13 @@ namespace Framework.Randomizer
 		private FileIO file;
 
 		private int lastSlotLoaded;
+
+		private string errorOnLoad;
+
+		public Enemizer enemizer;
+
+		private MainConfig fileConfig;
+
+		public MainConfig gameConfig;
 	}
 }

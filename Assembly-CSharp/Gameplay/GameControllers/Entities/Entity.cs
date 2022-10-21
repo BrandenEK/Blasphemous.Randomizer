@@ -294,11 +294,6 @@ namespace Gameplay.GameControllers.Entities
 		{
 			this.Status.Dead = true;
 			this.Stats.Life.Current = 0f;
-			Enemy enemy = this as Enemy;
-			if (enemy != null)
-			{
-				Core.Randomizer.Log(enemy.Id + ": " + enemy.purgePointsWhenDead, 2);
-			}
 			if (Entity.Death != null)
 			{
 				Entity.Death(this);

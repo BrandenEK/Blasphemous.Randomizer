@@ -1,5 +1,6 @@
 using System;
 using Framework.Managers;
+using Framework.Randomizer.Config;
 
 namespace Framework.Randomizer
 {
@@ -16,6 +17,6 @@ namespace Framework.Randomizer
 
 		public bool startedInRando;
 
-		public Config randomizerSettings;
+		public MainConfig config;
 	}
 }

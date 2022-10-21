@@ -11,7 +11,10 @@ namespace Tools.Level.Utils
 		protected override void OnSpawn(Enemy e)
 		{
 			base.OnSpawn(e);
-			((PatrollingFlyingEnemy)e).SetConfig(this.path, this.curve, this.secondsToCompletePatrol);
+			if (e.GetType() == typeof(PatrollingFlyingEnemy))
+			{
+				((PatrollingFlyingEnemy)e).SetConfig(this.path, this.curve, this.secondsToCompletePatrol);
+			}
 		}
 
 		public BezierSpline path;

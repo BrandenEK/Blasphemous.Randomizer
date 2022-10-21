@@ -162,7 +162,7 @@ namespace Tools.Level.Interactables
 			}
 			Core.Logic.EnemySpawner.RespawnDeadEnemies();
 			bool flag = this.HaveAnySwordHearts();
-			bool flag2 = Core.Alms.GetPrieDieuLevel() >= 3 || Core.Randomizer.gameConfig.unlockTeleportation;
+			bool flag2 = Core.Alms.GetPrieDieuLevel() >= 3 || Core.Randomizer.gameConfig.general.teleportationAlwaysUnlocked;
 			if (flag || flag2)
 			{
 				yield return base.StartCoroutine(this.KneeledMenuCoroutine(flag, flag2));

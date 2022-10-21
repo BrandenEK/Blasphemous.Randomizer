@@ -650,12 +650,18 @@ namespace Framework.Managers
 					try
 					{
 						persistentInterface.SetCurrentPersistentState(data, isloading, dataPath);
+						continue;
 					}
 					catch (Exception ex2)
 					{
 						Debug.LogError("** LoadSnapShot, error item.SetCurrentPersistentState: " + ex2.Message);
 						Debug.LogException(ex2);
+						continue;
 					}
+				}
+				if (persistentInterface.GetPersistenID() == Core.Randomizer.GetPersistenID())
+				{
+					persistentInterface.SetCurrentPersistentState(null, isloading, dataPath);
 				}
 			}
 			EntityStats stats = Core.Logic.Penitent.Stats;
