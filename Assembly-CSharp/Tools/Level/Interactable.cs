@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Diagnostics;
 using Framework.FrameworkCore;
 using Framework.Inventory;
 using Framework.Managers;
@@ -22,40 +21,28 @@ namespace Tools.Level
 
 		public bool OverlappedInteractor { get; set; }
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public static event Core.InteractableEvent SConsumed;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public static event Core.InteractableEvent Created;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public static event Core.InteractableEvent SPenitentExit;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public static event Core.InteractableEvent SPenitentEnter;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public static event Core.InteractableEvent SLocked;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public static event Core.InteractableEvent SUnlocked;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public static event Core.InteractableEvent SInteractionStarted;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public static event Core.InteractableEvent SInteractionEnded;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Core.SimpleEvent OnStartUsing;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Core.SimpleEvent OnStopUsing;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Core.SimpleEvent OnLocked;
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Core.SimpleEvent OnUnlocked;
 
 		public bool BeingUsed { get; private set; }
@@ -106,7 +93,11 @@ namespace Tools.Level
 		{
 			get
 			{
-				return (base.transform.InverseTransformPoint(Core.Logic.Penitent.transform.position).x >= 0f) ? EntityOrientation.Right : EntityOrientation.Left;
+				if (base.transform.InverseTransformPoint(Core.Logic.Penitent.transform.position).x < 0f)
+				{
+					return EntityOrientation.Left;
+				}
+				return EntityOrientation.Right;
 			}
 		}
 
@@ -276,6 +267,10 @@ namespace Tools.Level
 
 		protected virtual void OnUpdate()
 		{
+			if (Input.GetKeyDown(KeyCode.Keypad3))
+			{
+				Core.Randomizer.Log(base.GetPersistenID(), 0);
+			}
 		}
 
 		protected virtual void OnEditorValidate()
@@ -371,8 +366,9 @@ namespace Tools.Level
 				this.BeingUsed = true;
 				Core.Input.SetBlocker("INTERACTABLE", true);
 				this.InteractionStart();
+				return;
 			}
-			else if (id == "INTERACTION_END")
+			if (id == "INTERACTION_END")
 			{
 				this.BeingUsed = false;
 				Core.Input.SetBlocker("INTERACTABLE", false);
@@ -521,7 +517,7 @@ namespace Tools.Level
 
 		private bool blocked;
 
-		protected class InteractablePersistence : PersistentManager.PersistentData
+		public class InteractablePersistence : PersistentManager.PersistentData
 		{
 			public InteractablePersistence(string id) : base(id)
 			{

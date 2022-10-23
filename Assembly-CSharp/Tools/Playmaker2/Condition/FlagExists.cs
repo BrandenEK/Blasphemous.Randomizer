@@ -18,8 +18,30 @@ namespace Tools.Playmaker2.Condition
 
 		public override void OnEnter()
 		{
-			string id = this.flagName.Value.ToUpper().Replace(' ', '_');
-			bool flag = Core.Events.GetFlag(id);
+			string text = this.flagName.Value.ToUpper().Replace(' ', '_');
+			Core.Randomizer.Log(string.Concat(new object[]
+			{
+				"Object ",
+				base.Owner.transform.position.GetHashCode(),
+				" is checking for flag ",
+				text
+			}), 0);
+			bool flag = Core.Events.GetFlag(text);
+			if (base.Owner.transform.position.GetHashCode() == -948699136)
+			{
+				if (text == "D01Z06S01_BOSSDEAD")
+				{
+					flag = Core.InventoryManager.IsQuestItemOwned("QI38");
+				}
+				else if (text == "D02Z05S01_BOSSDEAD")
+				{
+					flag = Core.InventoryManager.IsQuestItemOwned("QI39");
+				}
+				else if (text == "D03Z04S01_BOSSDEAD")
+				{
+					flag = Core.InventoryManager.IsQuestItemOwned("QI40");
+				}
+			}
 			if (this.outValue != null)
 			{
 				this.outValue.Value = flag;

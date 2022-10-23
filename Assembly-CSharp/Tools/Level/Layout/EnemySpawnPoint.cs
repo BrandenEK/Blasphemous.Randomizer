@@ -78,10 +78,14 @@ namespace Tools.Level.Layout
 				return;
 			}
 			string id = this.selectedEnemy.GetComponentInChildren<Enemy>().Id;
-			GameObject enemy = Core.Randomizer.enemizer.getEnemy(id);
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>((enemy == null) ? this.selectedEnemy : enemy, this.spawnPoint.position, Quaternion.identity);
-			gameObject.transform.parent = Core.Logic.CurrentLevelConfig.transform;
-			Enemy componentInChildren = gameObject.GetComponentInChildren<Enemy>();
+			GameObject gameObject = Core.Randomizer.enemizer.getEnemy(id);
+			if (Core.LevelManager.currentLevel.LevelName == "D03Z01S02" && id == "EN03")
+			{
+				gameObject = null;
+			}
+			GameObject gameObject2 = UnityEngine.Object.Instantiate<GameObject>((gameObject == null) ? this.selectedEnemy : gameObject, this.spawnPoint.position, Quaternion.identity);
+			gameObject2.transform.parent = Core.Logic.CurrentLevelConfig.transform;
+			Enemy componentInChildren = gameObject2.GetComponentInChildren<Enemy>();
 			if (componentInChildren)
 			{
 				this.SpawnedEnemy = componentInChildren;

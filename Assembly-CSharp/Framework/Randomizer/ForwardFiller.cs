@@ -93,25 +93,7 @@ namespace Framework.Randomizer
 			List<Location> list = new List<Location>();
 			List<Reward> list2 = new List<Reward>();
 			this.shuffleList<Reward>(progressionRewards);
-			int num = -1;
-			for (int i = 0; i < progressionRewards.Count; i++)
-			{
-				if (progressionRewards[i].type == 2 && progressionRewards[i].id == 1)
-				{
-					num = i;
-					break;
-				}
-			}
-			if (num >= 0)
-			{
-				Reward item = progressionRewards[num];
-				progressionRewards.RemoveAt(num);
-				progressionRewards.Add(item);
-			}
-			else
-			{
-				Core.Randomizer.Log("Blood item could not be found", 0);
-			}
+			this.prioritizeRewards(progressionRewards);
 			this.findReachable(locations, vanillaLocations, list, list2);
 			while (list.Count > 0 && progressionRewards.Count > 0)
 			{
@@ -930,6 +912,23 @@ namespace Framework.Randomizer
 		{
 			this.randoSettings = randoSettings;
 			this.newGame = newGame;
+		}
+
+		private void prioritizeRewards(List<Reward> progressionRewards)
+		{
+			int count = 0;
+			for (int i = 0; i < progressionRewards.Count - count; i++)
+			{
+				Reward reward = progressionRewards[i];
+				if ((reward.type == 2 && reward.id == 1) || (reward.type == 5 && (reward.id == 38 || reward.id == 39 || reward.id == 40)))
+				{
+					progressionRewards.RemoveAt(i);
+					progressionRewards.Add(reward);
+					count++;
+					i--;
+				}
+			}
+			Core.Randomizer.Log(count + " items were seeded first!", 0);
 		}
 
 		private Random random;

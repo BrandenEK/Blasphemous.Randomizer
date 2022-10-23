@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9C282C42-850E-4921-808B-87A85A1CB472}</ProjectGuid>
+    <ProjectGuid>{69582E3E-829A-447C-B167-5CB65F6BF8CE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Assembly-CSharp</RootNamespace>
@@ -400,6 +400,7 @@
     <Compile Include="Framework\Randomizer\Config\MainConfig.cs" />
     <Compile Include="Framework\Randomizer\Config\PrayerConfig.cs" />
     <Compile Include="Framework\Randomizer\Enemizer.cs" />
+    <Compile Include="Framework\Randomizer\EnemyLocation.cs" />
     <Compile Include="Framework\Randomizer\FileIO.cs" />
     <Compile Include="Framework\Randomizer\ForwardFiller.cs" />
     <Compile Include="Framework\Randomizer\ItemData.cs" />

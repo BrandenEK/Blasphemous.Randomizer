@@ -23,50 +23,6 @@ namespace Framework.Randomizer
 			return null;
 		}
 
-		private void Randomize()
-		{
-			if (Enemizer.loadStatus != 1 || Core.Randomizer.gameConfig.enemies.type == 0)
-			{
-				return;
-			}
-			Core.Randomizer.Log("Randomizing enemies!", 0);
-			this.newEnemies = new Dictionary<string, GameObject>();
-			List<string> list = new List<string>(Enemizer.enemyIds);
-			List<GameObject> list2 = new List<GameObject>(Enemizer.allEnemies.Values);
-			foreach (string text in new string[]
-			{
-				"EN10",
-				"EN27",
-				"EV05",
-				"EV17",
-				"EV18",
-				"EV29"
-			})
-			{
-				this.newEnemies.Add(text, Enemizer.allEnemies[text]);
-				list.Remove(text);
-				list2.Remove(Enemizer.allEnemies[text]);
-			}
-			string text2 = "Random enemies:\n\n";
-			while (list.Count > 0)
-			{
-				int index = this.random.Next(list.Count);
-				this.newEnemies.Add(list[index], list2[list2.Count - 1]);
-				text2 = string.Concat(new string[]
-				{
-					text2,
-					list[index],
-					" turns into ",
-					list2[list2.Count - 1].name,
-					"\n"
-				});
-				list.RemoveAt(index);
-				list2.RemoveAt(list2.Count - 1);
-			}
-			Core.Randomizer.LogFile(text2);
-			Enemizer.loadStatus = 2;
-		}
-
 		public static void loadEnemies()
 		{
 			if (Enemizer.loadStatus > 0)
@@ -106,6 +62,167 @@ namespace Framework.Randomizer
 		public static void resetStatus()
 		{
 			Enemizer.loadStatus = ((Enemizer.allEnemies.Count == Enemizer.enemyIds.Length) ? 1 : 0);
+		}
+
+		private void Randomize()
+		{
+			if (Enemizer.loadStatus != 1 || Core.Randomizer.gameConfig.enemies.type == 0)
+			{
+				return;
+			}
+			Core.Randomizer.Log("Randomizing enemies!", 0);
+			this.newEnemies = new Dictionary<string, GameObject>();
+			List<EnemyLocation> list = new List<EnemyLocation>();
+			List<GameObject> list2 = new List<GameObject>();
+			this.getLists(list, list2);
+			if (list.Count != list2.Count)
+			{
+				Core.Randomizer.Log("Enemizer lists are invalid lengths!", 0);
+				return;
+			}
+			this.fillVanillaLocations(list, list2);
+			if (Core.Randomizer.gameConfig.enemies.type == 1)
+			{
+				List<EnemyLocation> list3 = new List<EnemyLocation>();
+				List<GameObject> list4 = new List<GameObject>();
+				while (list.Count > 0)
+				{
+					int enemyType = list[0].enemyType;
+					this.getLocationsOfType(list, list2, list3, list4, enemyType);
+					this.fillEnemyLocations(list3, list4);
+					list3.Clear();
+					list4.Clear();
+				}
+			}
+			else if (Core.Randomizer.gameConfig.enemies.type == 2)
+			{
+				this.fillEnemyLocations(list, list2);
+			}
+			else
+			{
+				this.fillEnemyLocations(list, list2);
+			}
+			Enemizer.loadStatus = 2;
+			string text = "Random Enemies:\n\n";
+			foreach (string text2 in this.newEnemies.Keys)
+			{
+				text = string.Concat(new string[]
+				{
+					text,
+					text2,
+					" turns into ",
+					this.newEnemies[text2].name,
+					"\n"
+				});
+			}
+			Core.Randomizer.LogFile(text);
+		}
+
+		private void addToDictionary(string id, GameObject enemy)
+		{
+			this.newEnemies.Add(id, enemy);
+		}
+
+		private void fillVanillaLocations(List<EnemyLocation> locations, List<GameObject> enemies)
+		{
+			List<EnemyLocation> list = new List<EnemyLocation>();
+			List<GameObject> list2 = new List<GameObject>();
+			this.getLocationsOfType(locations, enemies, list, list2, -1);
+			for (int i = 0; i < list.Count; i++)
+			{
+				this.addToDictionary(list[i].enemyId, list2[i]);
+			}
+		}
+
+		private void fillEnemyLocations(List<EnemyLocation> locations, List<GameObject> enemies)
+		{
+			while (locations.Count > 0)
+			{
+				int index = this.random.Next(locations.Count);
+				this.addToDictionary(locations[index].enemyId, enemies[enemies.Count - 1]);
+				locations.RemoveAt(index);
+				enemies.RemoveAt(enemies.Count - 1);
+			}
+		}
+
+		private void getLocationsOfType(List<EnemyLocation> allLocations, List<GameObject> allEnemies, List<EnemyLocation> typeLocations, List<GameObject> typeEnemies, int type)
+		{
+			for (int i = 0; i < allLocations.Count; i++)
+			{
+				if (allLocations[i].enemyType == type)
+				{
+					typeLocations.Add(allLocations[i]);
+					typeEnemies.Add(allEnemies[i]);
+					allLocations.RemoveAt(i);
+					allEnemies.RemoveAt(i);
+					i--;
+				}
+			}
+		}
+
+		private void getLists(List<EnemyLocation> locations, List<GameObject> enemies)
+		{
+			locations.Clear();
+			locations.Add(new EnemyLocation(0, "EN01", 1, false));
+			locations.Add(new EnemyLocation(0, "EN02", 0, false));
+			locations.Add(new EnemyLocation(0, "EN03", 0, false));
+			locations.Add(new EnemyLocation(0, "EN04", 0, false));
+			locations.Add(new EnemyLocation(0, "EN05", 1, false));
+			locations.Add(new EnemyLocation(0, "EN06", 1, false));
+			locations.Add(new EnemyLocation(0, "EN07", 0, false));
+			locations.Add(new EnemyLocation(0, "EN08", 1, false));
+			locations.Add(new EnemyLocation(0, "EN09", 0, false));
+			locations.Add(new EnemyLocation(0, "EN10", -1, false));
+			locations.Add(new EnemyLocation(0, "EN11", 0, false));
+			locations.Add(new EnemyLocation(0, "EN12", 0, false));
+			locations.Add(new EnemyLocation(0, "EN13", 0, false));
+			locations.Add(new EnemyLocation(0, "EN14", 0, false));
+			locations.Add(new EnemyLocation(0, "EN15", 2, false));
+			locations.Add(new EnemyLocation(0, "EN16", 2, false));
+			locations.Add(new EnemyLocation(0, "EN17", 0, false));
+			locations.Add(new EnemyLocation(0, "EN18", 0, false));
+			locations.Add(new EnemyLocation(0, "EN20", 0, false));
+			locations.Add(new EnemyLocation(0, "EN21", 0, false));
+			locations.Add(new EnemyLocation(0, "EN22", 1, false));
+			locations.Add(new EnemyLocation(0, "EN23", 0, false));
+			locations.Add(new EnemyLocation(0, "EN24", 0, false));
+			locations.Add(new EnemyLocation(0, "EN26", 0, false));
+			locations.Add(new EnemyLocation(0, "EN27", -1, false));
+			locations.Add(new EnemyLocation(0, "EN28", 0, false));
+			locations.Add(new EnemyLocation(0, "EN29", 0, false));
+			locations.Add(new EnemyLocation(0, "EN31", 0, false));
+			locations.Add(new EnemyLocation(0, "EN32", 0, false));
+			locations.Add(new EnemyLocation(0, "EN33", 0, false));
+			locations.Add(new EnemyLocation(0, "EV01", 0, false));
+			locations.Add(new EnemyLocation(0, "EV02", 0, false));
+			locations.Add(new EnemyLocation(0, "EV03", 0, false));
+			locations.Add(new EnemyLocation(0, "EV05", -1, false));
+			locations.Add(new EnemyLocation(0, "EV08", 1, false));
+			locations.Add(new EnemyLocation(0, "EV10", 0, false));
+			locations.Add(new EnemyLocation(0, "EV11", 1, false));
+			locations.Add(new EnemyLocation(0, "EV12", 1, false));
+			locations.Add(new EnemyLocation(0, "EV13", 0, false));
+			locations.Add(new EnemyLocation(0, "EV14", 0, false));
+			locations.Add(new EnemyLocation(0, "EV15", 0, false));
+			locations.Add(new EnemyLocation(0, "EV17", -1, false));
+			locations.Add(new EnemyLocation(0, "EV18", -1, false));
+			locations.Add(new EnemyLocation(0, "EV19", 2, false));
+			locations.Add(new EnemyLocation(0, "EV20", 4, false));
+			locations.Add(new EnemyLocation(0, "EV21", 0, false));
+			locations.Add(new EnemyLocation(0, "EV22", 0, false));
+			locations.Add(new EnemyLocation(0, "EV23", 2, false));
+			locations.Add(new EnemyLocation(0, "EV24", 0, false));
+			locations.Add(new EnemyLocation(0, "EV26", 2, false));
+			locations.Add(new EnemyLocation(0, "EV27", 0, false));
+			locations.Add(new EnemyLocation(0, "EV29", -1, false));
+			locations.Add(new EnemyLocation(0, "EN201", 0, false));
+			locations.Add(new EnemyLocation(0, "EN202", 2, false));
+			locations.Add(new EnemyLocation(0, "EN203", 4, false));
+			enemies.Clear();
+			foreach (string key in Enemizer.enemyIds)
+			{
+				enemies.Add(Enemizer.allEnemies[key]);
+			}
 		}
 
 		private System.Random random;

@@ -7,6 +7,7 @@ using Framework.Managers;
 using Framework.Randomizer.Config;
 using Gameplay.GameControllers.Entities;
 using Gameplay.UI;
+using Tools.Level;
 using UnityEngine;
 
 namespace Framework.Randomizer
@@ -51,12 +52,14 @@ namespace Framework.Randomizer
 				{
 					this.newItems = null;
 					this.gameConfig = this.fileConfig;
+					this.totalItems = 0;
 					this.errorOnLoad = "This save file was not created in randomizer.  Item locations are invalid!";
 				}
 				else if (!this.isConfigVersionValid(this.gameConfig.versionCreated))
 				{
 					this.newItems = null;
 					this.gameConfig = this.fileConfig;
+					this.totalItems = 0;
 					this.errorOnLoad = "This save file was created in an older version of the randomizer.  Item locations are invalid!";
 				}
 				else if (PersistentManager.GetAutomaticSlot() != this.lastSlotLoaded)
@@ -72,7 +75,6 @@ namespace Framework.Randomizer
 		public void ResetPersistence()
 		{
 			this.itemsCollected = 0;
-			this.totalItems = 0;
 			this.seed = -1;
 			this.startedInRando = false;
 			this.lastReward = null;
@@ -312,12 +314,15 @@ namespace Framework.Randomizer
 				UIController.instance.ShowPopUp(message, "", 0f, false);
 				return;
 			}
+			if (Input.GetKeyDown(KeyCode.Keypad3))
+			{
+				this.itemsCollected = this.itemsCollected;
+			}
 		}
 
 		public void Log(string message)
 		{
 			this.logs[0].Log(message);
-			this.file.writeLine(message + "\n", "log.txt");
 		}
 
 		public void LogFile(string message)
@@ -379,6 +384,12 @@ namespace Framework.Randomizer
 			this.cutsceneFlags = new string[]
 			{
 				"PONTIFF_ALBERO_EVENT",
+				"PONTIFF_BRIDGE_EVENT",
+				"PONTIFF_ARCHDEACON1_EVENT",
+				"PONTIFF_ARCHDEACON2_EVENT",
+				"PONTIFF_KEY1_USED",
+				"PONTIFF_KEY2_USED",
+				"PONTIFF_KEY3_USED",
 				"BROTHERS_EVENT1_COMPLETED",
 				"BROTHERS_EVENT2_COMPLETED",
 				"BROTHERS_GRAVEYARD_EVENT",
@@ -388,6 +399,12 @@ namespace Framework.Randomizer
 			{
 				"BS13",
 				"BS16",
+				"QI38",
+				"QI39",
+				"QI40",
+				"QI60",
+				"QI61",
+				"QI62",
 				"QI201"
 			};
 		}
@@ -410,13 +427,16 @@ namespace Framework.Randomizer
 			if (type >= 0 && type < this.logs.Length)
 			{
 				this.logs[type].Log(message);
-				this.file.writeLine(message + "\n", "log.txt");
+				if (this.seed == 5)
+				{
+					this.file.writeLine(message + "\n", "log.txt");
+				}
 			}
 		}
 
 		public static string getVersion()
 		{
-			return "v0.3.1";
+			return "v0.3.3";
 		}
 
 		private bool checkForDuplicate(string id)
@@ -453,6 +473,7 @@ namespace Framework.Randomizer
 			{
 				this.enemizer.onSceneLoaded();
 			}
+			this.checkForSpecialItems(newLevel.LevelName);
 		}
 
 		public override void Dispose()
@@ -490,6 +511,43 @@ namespace Framework.Randomizer
 		{
 			string version = Randomizer.getVersion();
 			return version.Substring(version.IndexOf('.') + 1, 1) == configVersion.Substring(configVersion.IndexOf('.') + 1, 1);
+		}
+
+		private void checkForSpecialItems(string scene)
+		{
+			if (scene == "D01Z04S19")
+			{
+				this.giveReward("QI38", true);
+				Core.Events.SetFlag("ATTRITION_ALTAR_DONE", true, false);
+				this.disableAltar("22c0f081-b3a0-4310-8a40-9506d4a1315c");
+				return;
+			}
+			if (scene == "D03Z03S16")
+			{
+				this.giveReward("QI39", true);
+				Core.Events.SetFlag("CONTRITION_ALTAR_DONE", true, false);
+				this.disableAltar("27213fd3-b05b-4157-b067-5206321cacb7");
+				return;
+			}
+			if (scene == "D02Z03S21")
+			{
+				this.giveReward("QI40", true);
+				Core.Events.SetFlag("COMPUNCTION_ALTAR_DONE", true, false);
+				this.disableAltar("bc2b17e1-5c8c-4a90-b7c8-160eacdd538d");
+			}
+		}
+
+		private void disableAltar(string id)
+		{
+			foreach (Interactable interactable in UnityEngine.Object.FindObjectsOfType<Interactable>())
+			{
+				Core.Randomizer.Log(interactable.gameObject.name + ": " + interactable.GetPersistenID(), 0);
+				if (interactable.GetPersistenID() == id)
+				{
+					interactable.gameObject.SetActive(false);
+					return;
+				}
+			}
 		}
 
 		private int seed;

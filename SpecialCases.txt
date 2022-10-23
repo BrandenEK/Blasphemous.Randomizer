@@ -1,0 +1,30 @@
+
+Randomizer - OnSceneLoaded()
+{
+	if (scene is holy visage room) x 3
+	{
+		Give visage reward;
+		Set flag altar_done;
+		Disable altar trigger;
+	}
+}
+
+FlagExists - OnEnter()
+{
+	if (owner is esdras) x 3
+	{
+		flag is equal to ifQuestItemOwned;
+	}
+}
+
+ItemIsOwned - executeAction()
+{
+	if (scene is first 3 boss room) x 3
+	{
+		return true;
+	}
+	if (scene is mask room) x 3
+	{
+		return if get flag "LOCATION_" + id;
+	}
+}
