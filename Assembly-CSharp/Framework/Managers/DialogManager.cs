@@ -85,6 +85,7 @@ namespace Framework.Managers
 			{
 				return false;
 			}
+			Core.Randomizer.Log("Conversation: " + conversiationId, 0);
 			UIController.instance.GetDialog().SetBackgound(useBackground);
 			Core.UI.Fade.ClearFade();
 			this.hideWidgetAtEnd = hideWidget;

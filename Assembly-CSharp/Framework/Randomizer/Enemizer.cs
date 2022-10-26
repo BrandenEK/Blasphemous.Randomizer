@@ -35,7 +35,8 @@ namespace Framework.Randomizer
 				string id = array[i].Id;
 				if (!Enemizer.allEnemies.ContainsKey(id) && id != "" && FileIO.arrayContains(Enemizer.enemyIds, id))
 				{
-					Enemizer.allEnemies.Add(array[i].Id, array[i].transform.root.gameObject);
+					Enemizer.changeHitbox(array[i].transform, id);
+					Enemizer.allEnemies.Add(array[i].Id, array[i].transform.gameObject);
 				}
 			}
 			if (Enemizer.allEnemies.Count == Enemizer.enemyIds.Length)
@@ -207,7 +208,7 @@ namespace Framework.Randomizer
 			locations.Add(new EnemyLocation(0, "EV17", -1, false));
 			locations.Add(new EnemyLocation(0, "EV18", -1, false));
 			locations.Add(new EnemyLocation(0, "EV19", 2, false));
-			locations.Add(new EnemyLocation(0, "EV20", 4, false));
+			locations.Add(new EnemyLocation(0, "EV20", -1, false));
 			locations.Add(new EnemyLocation(0, "EV21", 0, false));
 			locations.Add(new EnemyLocation(0, "EV22", 0, false));
 			locations.Add(new EnemyLocation(0, "EV23", 2, false));
@@ -217,11 +218,45 @@ namespace Framework.Randomizer
 			locations.Add(new EnemyLocation(0, "EV29", -1, false));
 			locations.Add(new EnemyLocation(0, "EN201", 0, false));
 			locations.Add(new EnemyLocation(0, "EN202", 2, false));
-			locations.Add(new EnemyLocation(0, "EN203", 4, false));
+			locations.Add(new EnemyLocation(0, "EN203", -1, false));
 			enemies.Clear();
 			foreach (string key in Enemizer.enemyIds)
 			{
 				enemies.Add(Enemizer.allEnemies[key]);
+			}
+		}
+
+		private static void changeHitbox(Transform transform, string id)
+		{
+			if (id == "EN16" || id == "EV23")
+			{
+				Transform transform2 = transform.Find("#Constitution/Canopy");
+				if (transform2 != null)
+				{
+					BoxCollider2D component = transform2.GetComponent<BoxCollider2D>();
+					component.offset = new Vector2(component.offset.x, 1.5f);
+					component.size = new Vector2(component.size.x, 3f);
+					return;
+				}
+				Core.Randomizer.Log("Enemy " + id + " had no hitbox to change!", 0);
+				return;
+			}
+			else
+			{
+				if (!(id == "EN15") && !(id == "EV19") && !(id == "EV26"))
+				{
+					return;
+				}
+				Transform transform3 = transform.Find("#Constitution/Sprite");
+				if (transform3 != null)
+				{
+					BoxCollider2D component2 = transform3.GetComponent<BoxCollider2D>();
+					component2.offset = new Vector2(component2.offset.x, 2f);
+					component2.size = new Vector2(component2.size.x, 3.75f);
+					return;
+				}
+				Core.Randomizer.Log("Enemy " + id + " had no hitbox to change!", 0);
+				return;
 			}
 		}
 

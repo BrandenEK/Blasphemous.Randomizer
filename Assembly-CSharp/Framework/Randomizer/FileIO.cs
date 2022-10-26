@@ -18,17 +18,20 @@ namespace Framework.Randomizer
 				"sword",
 				"blessing",
 				"guiltArena",
-				"tirso2",
+				"tirso",
 				"miriam",
-				"redento1",
+				"redento",
 				"jocinero",
-				"altasgracias2",
+				"altasgracias",
 				"tentudia",
-				"gemino2",
-				"amanecida1",
+				"gemino",
 				"guiltBead",
 				"ossuary",
-				"boss"
+				"boss",
+				"visage",
+				"mask",
+				"herb",
+				"church"
 			};
 		}
 
@@ -68,7 +71,7 @@ namespace Framework.Randomizer
 
 		public MainConfig createNewConfig()
 		{
-			MainConfig mainConfig = new MainConfig(Randomizer.getVersion(), new GeneralConfig(true, true, false, false, 0), new ItemConfig(1, true, this.randoLocations), new EnemyConfig(1, true), new PrayerConfig(2, false));
+			MainConfig mainConfig = new MainConfig(Randomizer.getVersion(), new GeneralConfig(true, true, false, false, 0), new ItemConfig(1, true, true, this.randoLocations), new EnemyConfig(1, true), new PrayerConfig(1, false), new RoomConfig(0), new DebugConfig(0));
 			this.writeAll(JsonUtility.ToJson(mainConfig, true), "randomizer.cfg");
 			return mainConfig;
 		}

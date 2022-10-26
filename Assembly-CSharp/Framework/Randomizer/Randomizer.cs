@@ -101,29 +101,9 @@ namespace Framework.Randomizer
 			this.errorOnLoad = "";
 		}
 
-		private Reward getRewardFromId(string id)
-		{
-			if (this.newItems == null)
-			{
-				UIController.instance.ShowPopUp("Error: Rewards list not initialized!", "", 0f, false);
-				return null;
-			}
-			if (!this.newItems.ContainsKey(id))
-			{
-				this.Log("Location " + id + " was not loaded!");
-				return null;
-			}
-			if (this.checkForDuplicate(id))
-			{
-				this.Log("Location " + id + " is already retrieved!");
-				return null;
-			}
-			return this.newItems[id];
-		}
-
 		public void giveReward(string id, bool showMessage)
 		{
-			Reward rewardFromId = this.getRewardFromId(id);
+			Reward rewardFromId = this.getRewardFromId(id, true);
 			if (rewardFromId != null)
 			{
 				this.giveReward(rewardFromId);
@@ -276,7 +256,7 @@ namespace Framework.Randomizer
 
 		public void showNotification(string id)
 		{
-			Reward reward = (id == "QI78") ? this.lastReward : this.getRewardFromId(id);
+			Reward reward = (id == "QI78") ? this.lastReward : this.getRewardFromId(id, false);
 			if (reward != null)
 			{
 				this.displayReward(reward);
@@ -290,25 +270,25 @@ namespace Framework.Randomizer
 
 		public override void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.Keypad7))
+			if (Input.GetKeyDown(KeyCode.Keypad7) && this.gameConfig.debug.type > 0)
 			{
 				string log = this.logs[0].getLog();
 				UIController.instance.ShowPopUp(log, "", 0f, false);
 				return;
 			}
-			if (Input.GetKeyDown(KeyCode.Keypad8))
+			if (Input.GetKeyDown(KeyCode.Keypad8) && this.gameConfig.debug.type > 0)
 			{
 				string log2 = this.logs[1].getLog();
 				UIController.instance.ShowPopUp(log2, "", 0f, false);
 				return;
 			}
-			if (Input.GetKeyDown(KeyCode.Keypad9))
+			if (Input.GetKeyDown(KeyCode.Keypad9) && this.gameConfig.debug.type > 0)
 			{
 				string log3 = this.logs[2].getLog();
 				UIController.instance.ShowPopUp(log3, "", 0f, false);
 				return;
 			}
-			if (Input.GetKeyDown(KeyCode.Keypad2))
+			if (Input.GetKeyDown(KeyCode.Keypad6))
 			{
 				string message = "Current Seed: " + this.seed;
 				UIController.instance.ShowPopUp(message, "", 0f, false);
@@ -322,12 +302,15 @@ namespace Framework.Randomizer
 
 		public void Log(string message)
 		{
-			this.logs[0].Log(message);
+			this.logs[0].Log("Using wrong log function: " + message);
 		}
 
 		public void LogFile(string message)
 		{
-			new FileIO().writeAll(message, "data.txt");
+			if (this.gameConfig.debug.type > 1)
+			{
+				new FileIO().writeAll(message, "data.txt");
+			}
 		}
 
 		private int generateSeed()
@@ -381,31 +364,27 @@ namespace Framework.Randomizer
 				Core.AchievementsManager.Achievements["AC43"].Image,
 				Core.AchievementsManager.Achievements["AC42"].Image
 			};
+			this.cutsceneNames = new string[]
+			{
+				"IntroBrotherhood",
+				"IntroDeosgracias",
+				"CTS12-Intro2",
+				"CTS07-Deosgracias",
+				"MeaCulpa"
+			};
 			this.cutsceneFlags = new string[]
 			{
 				"PONTIFF_ALBERO_EVENT",
 				"PONTIFF_BRIDGE_EVENT",
-				"PONTIFF_ARCHDEACON1_EVENT",
-				"PONTIFF_ARCHDEACON2_EVENT",
 				"PONTIFF_KEY1_USED",
 				"PONTIFF_KEY2_USED",
 				"PONTIFF_KEY3_USED",
+				"PONTIFF_ARCHDEACON1_EVENT",
+				"PONTIFF_ARCHDEACON2_EVENT",
 				"BROTHERS_EVENT1_COMPLETED",
 				"BROTHERS_EVENT2_COMPLETED",
 				"BROTHERS_GRAVEYARD_EVENT",
 				"BROTHERS_WASTELAND_EVENT"
-			};
-			this.potentialDuplicates = new string[]
-			{
-				"BS13",
-				"BS16",
-				"QI38",
-				"QI39",
-				"QI40",
-				"QI60",
-				"QI61",
-				"QI62",
-				"QI201"
 			};
 		}
 
@@ -427,7 +406,7 @@ namespace Framework.Randomizer
 			if (type >= 0 && type < this.logs.Length)
 			{
 				this.logs[type].Log(message);
-				if (this.seed == 5)
+				if (this.gameConfig.debug.type > 1)
 				{
 					this.file.writeLine(message + "\n", "log.txt");
 				}
@@ -436,28 +415,16 @@ namespace Framework.Randomizer
 
 		public static string getVersion()
 		{
-			return "v0.3.3";
+			return "v0.3.4";
 		}
 
 		private bool checkForDuplicate(string id)
 		{
-			int i = 0;
-			while (i < this.potentialDuplicates.Length)
+			if (Core.Events.GetFlag("Location_" + id))
 			{
-				if (id == this.potentialDuplicates[i])
-				{
-					if (Core.Events.GetFlag("Location_" + id))
-					{
-						return true;
-					}
-					Core.Events.SetFlag("Location_" + id, true, false);
-					return false;
-				}
-				else
-				{
-					i++;
-				}
+				return true;
 			}
+			Core.Events.SetFlag("Location_" + id, true, false);
 			return false;
 		}
 
@@ -550,6 +517,31 @@ namespace Framework.Randomizer
 			}
 		}
 
+		private Reward getRewardFromId(string id, bool avoidDuplicate)
+		{
+			if (this.newItems == null)
+			{
+				UIController.instance.ShowPopUp("Error: Rewards list not initialized!", "", 0f, false);
+				return null;
+			}
+			if (!this.newItems.ContainsKey(id))
+			{
+				this.Log("Location " + id + " was not loaded!");
+				return null;
+			}
+			if (avoidDuplicate && this.checkForDuplicate(id))
+			{
+				this.Log("Location " + id + " is already retrieved!");
+				return null;
+			}
+			return this.newItems[id];
+		}
+
+		public bool shouldSkipCutscene(string id)
+		{
+			return this.gameConfig.general.skipCutscenes && FileIO.arrayContains(this.cutsceneNames, id);
+		}
+
 		private int seed;
 
 		private Dictionary<string, Reward> newItems;
@@ -558,15 +550,11 @@ namespace Framework.Randomizer
 
 		private bool inGame;
 
-		private string[] cutsceneFlags;
-
 		private Logger[] logs;
 
 		public Reward lastReward;
 
 		private Sprite[] customImages;
-
-		private string[] potentialDuplicates;
 
 		private FileIO file;
 
@@ -579,5 +567,9 @@ namespace Framework.Randomizer
 		private MainConfig fileConfig;
 
 		public MainConfig gameConfig;
+
+		private string[] cutsceneNames;
+
+		private string[] cutsceneFlags;
 	}
 }

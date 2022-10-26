@@ -4,6 +4,27 @@ namespace Framework.Randomizer
 {
 	public struct ItemData
 	{
+		public bool canBreakHoles
+		{
+			get
+			{
+				return this.swordLevel > 0 || (this.cherubBits & 131071) > 0;
+			}
+		}
+
+		public bool bridgeAccess
+		{
+			get
+			{
+				return this.holyWounds >= 3 && this.blood && this.scapular;
+			}
+		}
+
+		public bool hasCherubBit(int bitfield)
+		{
+			return (this.cherubBits & bitfield) > 0;
+		}
+
 		public bool blood;
 
 		public bool root;
@@ -87,5 +108,17 @@ namespace Framework.Randomizer
 		public bool bell;
 
 		public int verses;
+
+		public int tears;
+
+		public int fervourLevel;
+
+		public int cherubBits;
+
+		public int holyWounds;
+
+		public bool wheel;
+
+		public bool dawnHeart;
 	}
 }

@@ -3,17 +3,57 @@ Randomizer - OnSceneLoaded()
 {
 	if (scene is holy visage room) x 3
 	{
+		//Give visage reward
 		Give visage reward;
 		Set flag altar_done;
 		Disable altar trigger;
 	}
 }
 
+FlagModification - OnEnter()
+{
+	if (scene is albero sick house)
+	{
+		set if doesn't contain "_DEAD";
+	}
+}
+
 FlagExists - OnEnter()
 {
-	if (owner is esdras) x 3
+	if (scene is bridge fight) x 3
 	{
+		//Spawn fight if 3 wounds are owned
 		flag is equal to ifQuestItemOwned;
+	}
+	if (scene is albero sick house)
+	{
+		//Only give last reward if all herbs delivered
+		flag is equal to ifAllHerbsDelivered;
+	}
+	if (scene is gemino area)
+	{
+		//Make gemino never turn wooden
+		flag is false if text is "_bossdead";
+	}
+	if (scene is redento corpse room)
+	{
+		//Remove duplicate redento item
+		return if get flag "LOCATION_" + id;
+	}
+	if (scene is altasgracias room)
+	{
+		//Remove duplicate altasgracias item
+		return if get flag "LOCATION_" + id;
+	}
+	if (scene is gemino area or gemino cave)
+	{
+		//Remove frozen olive duplicate
+		return if get flag "LOCATION_" + id;
+	}
+	if (scene is gemino area or gemino cave)
+	{
+		//Remove dried flowers duplicate
+		return if get flag "LOCATION_" + id;
 	}
 }
 
@@ -21,10 +61,102 @@ ItemIsOwned - executeAction()
 {
 	if (scene is first 3 boss room) x 3
 	{
-		return true;
+		//Remove barricades if collected item
+		return if get flag "LOCATION_" + id;
 	}
 	if (scene is mask room) x 3
 	{
+		//Leave room if collected item
+		return if get flag "LOCATION_" + id;
+	}
+	if (scene is albero graveyard)
+	{
+		//Never spawn graveyard item
+		return true;
+	}
+	if (scene is albero sick house)
+	{
+		//Allow first reward to be collected
+		return false;
+	}
+	if (scene is bridge fight)
+	{
+		//Remove duplicate Esdras item
+		return if get flag "LOCATION_" + id;
+	}
+	if (scene is isidora fight)
+	{
+		//Remove duplicate isidora item
+		return if get flag "LOCATION_" + id;
+	}
+	if (scene is redento room)
+	{
+		//Remove duplicate redento corpse item
+		return if get flag "LOCATION_" + id;
+	}
+	if (scene is gemino area)
+	{
+		//Remove thimble duplicate if not talked to before boss)
+		return if get flag "LOCATION_" + id;
+	}
+	if (scene is gemino area or gemino cave)
+	{
+		//Remove frozen olive duplicate
 		return if get flag "LOCATION_" + id;
 	}
 }
+
+private static Dictionary<string, string> itemRedirects = new Dictionary<string, string>
+		{
+			//Holy wounds
+			{ "D01Z04S18", "QI38" },
+			{ "D03Z03S15", "QI39" },
+			{ "D02Z03S20", "QI40" },
+			//Masks
+			{ "D04BZ03S01", "QI60" },
+			{ "D02Z03S19", "QI61" },
+			{ "D05Z01S15", "QI62" },
+			//Esdras
+			{ "D08Z01S01", "PR09" },
+			//Isidora
+			{ "D01BZ08S01", "QI201" },
+			//Redento
+			{ "D04BZ02S01", "QI54" },
+			//Gemino flowers outside
+			{ "D02Z01S01", "QI68" },
+			//Gemino flowers cave
+			{ "D02Z01S04", "QI68" }
+		};
+
+Others:
+{ "D02Z01S01", "QI59" } - Location
+{ "D01Z02S05", "QI66" } - True
+{ "D01Z02S02", "QI66" } - False
+
+Candles:
+if (levelName == "D01Z04S08" && "RB17RB18RB19".Contains(objectIdStting))
+			{
+				return Core.Events.GetFlag("LOCATION_RB17");
+			}
+			if (levelName == "D02Z03S06")
+			{
+				if (objectIdStting == "RB17")
+				{
+					return Core.InventoryManager.IsRosaryBeadOwned("RB17") || Core.InventoryManager.IsRosaryBeadOwned("RB18") || Core.InventoryManager.IsRosaryBeadOwned("RB19");
+				}
+				if (objectIdStting == "RB18")
+				{
+					return false;
+				}
+			}
+			if (levelName == "D05Z01S02")
+			{
+				if (objectIdStting == "RB17")
+				{
+					return false;
+				}
+				if (objectIdStting == "RB18")
+				{
+					return Core.InventoryManager.IsRosaryBeadOwned("RB17") || Core.InventoryManager.IsRosaryBeadOwned("RB18") || Core.InventoryManager.IsRosaryBeadOwned("RB19");
+				}
+			}

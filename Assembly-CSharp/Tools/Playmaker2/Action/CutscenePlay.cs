@@ -49,6 +49,14 @@ namespace Tools.Playmaker2.Action
 			bool useBackground = this.useSubtitleBackground == null || this.useSubtitleBackground.Value;
 			if (this.cutscene != null)
 			{
+				if (Core.Randomizer.shouldSkipCutscene(this.cutscene.name))
+				{
+					Core.Randomizer.Log("Skipping cutscene: " + this.cutscene.name, 0);
+					base.Finish();
+					this.OnCinematicEnded(true);
+					return;
+				}
+				Core.Randomizer.Log("Playing cutscene: " + this.cutscene.name, 0);
 				Core.Cinematics.CinematicEnded += this.OnCinematicEnded;
 				Core.Cinematics.StartCutscene(this.cutscene, flag, fadeStart, fadeEnd, useBackground);
 			}

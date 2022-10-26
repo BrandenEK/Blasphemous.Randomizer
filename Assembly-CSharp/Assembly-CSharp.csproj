@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{69582E3E-829A-447C-B167-5CB65F6BF8CE}</ProjectGuid>
+    <ProjectGuid>{2403FB5E-6187-4FEB-8843-2F9E16D14DF8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Assembly-CSharp</RootNamespace>
@@ -394,11 +394,13 @@
     <Compile Include="Framework\Penitences\PenitencePE02.cs" />
     <Compile Include="Framework\Penitences\PenitencePE03.cs" />
     <Compile Include="Framework\Pooling\PoolObject.cs" />
+    <Compile Include="Framework\Randomizer\Config\DebugConfig.cs" />
     <Compile Include="Framework\Randomizer\Config\EnemyConfig.cs" />
     <Compile Include="Framework\Randomizer\Config\GeneralConfig.cs" />
     <Compile Include="Framework\Randomizer\Config\ItemConfig.cs" />
     <Compile Include="Framework\Randomizer\Config\MainConfig.cs" />
     <Compile Include="Framework\Randomizer\Config\PrayerConfig.cs" />
+    <Compile Include="Framework\Randomizer\Config\RoomConfig.cs" />
     <Compile Include="Framework\Randomizer\Enemizer.cs" />
     <Compile Include="Framework\Randomizer\EnemyLocation.cs" />
     <Compile Include="Framework\Randomizer\FileIO.cs" />

@@ -10,7 +10,10 @@ namespace Tools.Playmaker2.Action
 	{
 		public override void OnEnter()
 		{
-			Core.Events.SetFlag(this.flagName.Value, this.state.Value, false);
+			if (!Core.Randomizer.gameConfig.items.disableNPCDeath || !(Core.LevelManager.currentLevel.LevelName == "D01Z02S02") || !this.flagName.Value.Contains("_DEAD"))
+			{
+				Core.Events.SetFlag(this.flagName.Value, this.state.Value, false);
+			}
 			base.Finish();
 		}
 

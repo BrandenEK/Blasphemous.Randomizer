@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Diagnostics;
 using Framework.EditorScripts.EnemiesBalance;
 using Framework.FrameworkCore;
 using Framework.Managers;
@@ -32,7 +31,6 @@ namespace Tools.Level.Layout
 
 		public bool HasEnemySpawned { get; private set; }
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action<EnemySpawnPoint, Enemy> OnEnemySpawned;
 
 		public GameObject SelectedEnemy
@@ -178,7 +176,7 @@ namespace Tools.Level.Layout
 		{
 			if (this.SpawnVfx)
 			{
-				PoolManager.Instance.ReuseObject(this.SpawnVfx, this.Position + this.SpawnEffectOffsetPosition, Quaternion.identity, false, 1);
+				PoolManager.Instance.ReuseObject(this.SpawnVfx, new Vector2(this.Position.x, this.Position.y) + this.SpawnEffectOffsetPosition, Quaternion.identity, false, 1);
 			}
 			base.StartCoroutine(this.SetEnemyActive(true));
 		}

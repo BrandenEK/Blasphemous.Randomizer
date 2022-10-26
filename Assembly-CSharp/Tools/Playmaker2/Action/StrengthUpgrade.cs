@@ -1,5 +1,4 @@
 using System;
-using Framework.Managers;
 using HutongGames.PlayMaker;
 
 namespace Tools.Playmaker2.Action
@@ -10,7 +9,6 @@ namespace Tools.Playmaker2.Action
 	{
 		public override void OnEnter()
 		{
-			Core.Logic.Penitent.Stats.Strength.Upgrade();
 			base.Finish();
 		}
 	}
