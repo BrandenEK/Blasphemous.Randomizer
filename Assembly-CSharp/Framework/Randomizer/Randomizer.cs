@@ -188,68 +188,8 @@ namespace Framework.Randomizer
 
 		private void displayReward(Reward reward)
 		{
-			InventoryManager inventoryManager = Core.InventoryManager;
-			EntityStats stats = Core.Logic.Penitent.Stats;
-			RewardAchievement achievement;
-			switch (reward.type)
-			{
-			case 0:
-			{
-				BaseInventoryObject baseObject = inventoryManager.GetBaseObject("RB" + reward.id.ToString("00"), InventoryManager.ItemType.Bead);
-				achievement = new RewardAchievement(baseObject.caption, "New rosary bead obtained!", baseObject.picture);
-				break;
-			}
-			case 1:
-			{
-				BaseInventoryObject baseObject2 = inventoryManager.GetBaseObject("PR" + reward.id.ToString("00"), InventoryManager.ItemType.Prayer);
-				achievement = new RewardAchievement(baseObject2.caption, "New prayer obtained!", baseObject2.picture);
-				break;
-			}
-			case 2:
-			{
-				BaseInventoryObject baseObject3 = inventoryManager.GetBaseObject("RE" + reward.id.ToString("00"), InventoryManager.ItemType.Relic);
-				achievement = new RewardAchievement(baseObject3.caption, "New relic obtained!", baseObject3.picture);
-				break;
-			}
-			case 3:
-			{
-				BaseInventoryObject baseObject4 = inventoryManager.GetBaseObject("HE" + reward.id.ToString("00"), InventoryManager.ItemType.Sword);
-				achievement = new RewardAchievement(baseObject4.caption, "New sword heart obtained!", baseObject4.picture);
-				break;
-			}
-			case 4:
-			{
-				BaseInventoryObject baseObject5 = inventoryManager.GetBaseObject("CO" + reward.id.ToString("00"), InventoryManager.ItemType.Collectible);
-				achievement = new RewardAchievement(baseObject5.caption, "New collectible obtained!", baseObject5.picture);
-				break;
-			}
-			case 5:
-			{
-				BaseInventoryObject baseObject6 = inventoryManager.GetBaseObject("QI" + reward.id.ToString("00"), InventoryManager.ItemType.Quest);
-				achievement = new RewardAchievement(baseObject6.caption, "New quest item obtained!", baseObject6.picture);
-				break;
-			}
-			case 6:
-				achievement = new RewardAchievement("Cherub " + CherubCaptorPersistentObject.CountRescuedCherubs() + "/38", "Cherub rescued!", this.customImages[0]);
-				break;
-			case 7:
-				achievement = new RewardAchievement("Life Upgrade " + stats.Life.GetUpgrades() + "/6", "Stat increased!", this.customImages[1]);
-				break;
-			case 8:
-				achievement = new RewardAchievement("Fervour Upgrade " + stats.Fervour.GetUpgrades() + "/6", "Stat increased!", this.customImages[2]);
-				break;
-			case 9:
-				achievement = new RewardAchievement("Mea Culpa Upgrade " + stats.MeaCulpa.GetUpgrades() + "/7", "Stat increased!", this.customImages[3]);
-				break;
-			case 10:
-			{
-				TearsObject tearsGenericObject = inventoryManager.TearsGenericObject;
-				achievement = new RewardAchievement(tearsGenericObject.caption, reward.id + " tears added!", tearsGenericObject.picture);
-				break;
-			}
-			default:
-				return;
-			}
+			RewardInfo info = this.GetRewardInfo(reward);
+			RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
 			Core.AchievementsManager.ShowPopUp = true;
 			UIController.instance.ShowPopupAchievement(achievement);
 		}
@@ -270,19 +210,19 @@ namespace Framework.Randomizer
 
 		public override void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.Keypad7) && this.gameConfig.debug.type > 0)
+			if (Input.GetKeyDown(KeyCode.Keypad7) && this.fileConfig.debug.type > 0)
 			{
 				string log = this.logs[0].getLog();
 				UIController.instance.ShowPopUp(log, "", 0f, false);
 				return;
 			}
-			if (Input.GetKeyDown(KeyCode.Keypad8) && this.gameConfig.debug.type > 0)
+			if (Input.GetKeyDown(KeyCode.Keypad8) && this.fileConfig.debug.type > 0)
 			{
 				string log2 = this.logs[1].getLog();
 				UIController.instance.ShowPopUp(log2, "", 0f, false);
 				return;
 			}
-			if (Input.GetKeyDown(KeyCode.Keypad9) && this.gameConfig.debug.type > 0)
+			if (Input.GetKeyDown(KeyCode.Keypad9) && this.fileConfig.debug.type > 0)
 			{
 				string log3 = this.logs[2].getLog();
 				UIController.instance.ShowPopUp(log3, "", 0f, false);
@@ -297,6 +237,7 @@ namespace Framework.Randomizer
 			if (Input.GetKeyDown(KeyCode.Keypad3))
 			{
 				this.itemsCollected = this.itemsCollected;
+				this.LogFile(Roomemizer.getData());
 			}
 		}
 
@@ -307,7 +248,7 @@ namespace Framework.Randomizer
 
 		public void LogFile(string message)
 		{
-			if (this.gameConfig.debug.type > 1)
+			if (this.fileConfig.debug.type > 1)
 			{
 				new FileIO().writeAll(message, "data.txt");
 			}
@@ -406,7 +347,7 @@ namespace Framework.Randomizer
 			if (type >= 0 && type < this.logs.Length)
 			{
 				this.logs[type].Log(message);
-				if (this.gameConfig.debug.type > 1)
+				if (this.fileConfig.debug.type > 1)
 				{
 					this.file.writeLine(message + "\n", "log.txt");
 				}
@@ -415,7 +356,7 @@ namespace Framework.Randomizer
 
 		public static string getVersion()
 		{
-			return "v0.3.4";
+			return "v0.4.0";
 		}
 
 		private bool checkForDuplicate(string id)
@@ -502,6 +443,17 @@ namespace Framework.Randomizer
 				Core.Events.SetFlag("COMPUNCTION_ALTAR_DONE", true, false);
 				this.disableAltar("bc2b17e1-5c8c-4a90-b7c8-160eacdd538d");
 			}
+			if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
+			{
+				foreach (SpriteRenderer renderer in UnityEngine.Object.FindObjectsOfType<SpriteRenderer>())
+				{
+					if (renderer.name == "Body" && renderer.sprite != null && "qi11rb02rb37qi58rb09rb05qi49rb12qi71".Contains(renderer.sprite.name))
+					{
+						RewardInfo info = Core.Randomizer.GetRewardInfo(Core.Randomizer.getRewardFromId(renderer.sprite.name.ToUpper(), false));
+						renderer.sprite = ((info == null) ? null : info.sprite);
+					}
+				}
+			}
 		}
 
 		private void disableAltar(string id)
@@ -517,7 +469,7 @@ namespace Framework.Randomizer
 			}
 		}
 
-		private Reward getRewardFromId(string id, bool avoidDuplicate)
+		public Reward getRewardFromId(string id, bool avoidDuplicate)
 		{
 			if (this.newItems == null)
 			{
@@ -540,6 +492,64 @@ namespace Framework.Randomizer
 		public bool shouldSkipCutscene(string id)
 		{
 			return this.gameConfig.general.skipCutscenes && FileIO.arrayContains(this.cutsceneNames, id);
+		}
+
+		public RewardInfo GetRewardInfo(Reward reward)
+		{
+			if (reward == null)
+			{
+				return null;
+			}
+			InventoryManager inventoryManager = Core.InventoryManager;
+			EntityStats stats = Core.Logic.Penitent.Stats;
+			switch (reward.type)
+			{
+			case 0:
+			{
+				BaseInventoryObject baseObject = inventoryManager.GetBaseObject("RB" + reward.id.ToString("00"), InventoryManager.ItemType.Bead);
+				return new RewardInfo(baseObject.caption, baseObject.description, "New rosary bead obtained!", baseObject.picture);
+			}
+			case 1:
+			{
+				BaseInventoryObject baseObject2 = inventoryManager.GetBaseObject("PR" + reward.id.ToString("00"), InventoryManager.ItemType.Prayer);
+				return new RewardInfo(baseObject2.caption, baseObject2.description, "New prayer obtained!", baseObject2.picture);
+			}
+			case 2:
+			{
+				BaseInventoryObject baseObject3 = inventoryManager.GetBaseObject("RE" + reward.id.ToString("00"), InventoryManager.ItemType.Relic);
+				return new RewardInfo(baseObject3.caption, baseObject3.description, "New relic obtained!", baseObject3.picture);
+			}
+			case 3:
+			{
+				BaseInventoryObject baseObject4 = inventoryManager.GetBaseObject("HE" + reward.id.ToString("00"), InventoryManager.ItemType.Sword);
+				return new RewardInfo(baseObject4.caption, baseObject4.description, "New sword heart obtained!", baseObject4.picture);
+			}
+			case 4:
+			{
+				BaseInventoryObject baseObject5 = inventoryManager.GetBaseObject("CO" + reward.id.ToString("00"), InventoryManager.ItemType.Collectible);
+				return new RewardInfo(baseObject5.caption, baseObject5.description, "New collectible obtained!", baseObject5.picture);
+			}
+			case 5:
+			{
+				BaseInventoryObject baseObject6 = inventoryManager.GetBaseObject("QI" + reward.id.ToString("00"), InventoryManager.ItemType.Quest);
+				return new RewardInfo(baseObject6.caption, baseObject6.description, "New quest item obtained!", baseObject6.picture);
+			}
+			case 6:
+				return new RewardInfo("Cherub " + CherubCaptorPersistentObject.CountRescuedCherubs() + "/38", "A little floating baby that you rescued from a cage.", "Cherub rescued!", this.customImages[0]);
+			case 7:
+				return new RewardInfo("Life Upgrade " + stats.Life.GetUpgrades() + "/6", "An increase to your maximum health.", "Stat increased!", this.customImages[1]);
+			case 8:
+				return new RewardInfo("Fervour Upgrade " + stats.Fervour.GetUpgrades() + "/6", "An increase to your maximum fervour.", "Stat increased!", this.customImages[2]);
+			case 9:
+				return new RewardInfo("Mea Culpa Upgrade " + stats.MeaCulpa.GetUpgrades() + "/7", "An increase to the strength of your sword.", "Stat increased!", this.customImages[3]);
+			case 10:
+			{
+				TearsObject tearsGenericObject = inventoryManager.TearsGenericObject;
+				return new RewardInfo(tearsGenericObject.caption, "A bundle of " + reward.id + " tears.", reward.id + " tears added!", tearsGenericObject.picture);
+			}
+			default:
+				return null;
+			}
 		}
 
 		private int seed;

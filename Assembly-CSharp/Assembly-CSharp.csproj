@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2403FB5E-6187-4FEB-8843-2F9E16D14DF8}</ProjectGuid>
+    <ProjectGuid>{7DABF0E6-72AA-4EA7-A285-9543F17CD299}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Assembly-CSharp</RootNamespace>
@@ -413,6 +413,8 @@
     <Compile Include="Framework\Randomizer\RandomizerPersistenceData.cs" />
     <Compile Include="Framework\Randomizer\Reward.cs" />
     <Compile Include="Framework\Randomizer\RewardAchievement.cs" />
+    <Compile Include="Framework\Randomizer\RewardInfo.cs" />
+    <Compile Include="Framework\Randomizer\Roomemizer.cs" />
     <Compile Include="Framework\Randomizer\Spoiler.cs" />
     <Compile Include="Framework\Util\AnimatorEvent.cs" />
     <Compile Include="Framework\Util\Collider2DParam.cs" />

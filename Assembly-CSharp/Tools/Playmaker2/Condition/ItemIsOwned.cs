@@ -30,56 +30,50 @@ namespace Tools.Playmaker2.Condition
 			{
 				return false;
 			}
+			if (levelName == "D01Z01S07" && (objectIdStting == "QI38" || objectIdStting == "QI39" || objectIdStting == "QI40"))
+			{
+				return Core.Events.GetFlag("LOCATION_QI31");
+			}
+			if (levelName == "D01BZ02S01" && (objectIdStting == "QI58" || objectIdStting == "RB05" || objectIdStting == "RB09"))
+			{
+				return Core.Events.GetFlag("LOCATION_" + objectIdStting);
+			}
+			if (levelName == "D02BZ02S01" && (objectIdStting == "QI11" || objectIdStting == "RB02" || objectIdStting == "RB37"))
+			{
+				return Core.Events.GetFlag("LOCATION_" + objectIdStting);
+			}
+			if (levelName == "D05BZ02S01" && (objectIdStting == "QI49" || objectIdStting == "RB12" || objectIdStting == "QI71"))
+			{
+				return Core.Events.GetFlag("LOCATION_" + objectIdStting);
+			}
 			if (levelName == "D01Z04S08" && "RB17RB18RB19".Contains(objectIdStting))
 			{
 				return Core.Events.GetFlag("LOCATION_RB17");
 			}
-			if (levelName == "D02Z03S06")
+			if (levelName == "D02Z03S06" || levelName == "D05Z01S02")
 			{
 				if (objectIdStting == "RB17")
 				{
-					return Core.InventoryManager.IsRosaryBeadOwned("RB17") || Core.InventoryManager.IsRosaryBeadOwned("RB18") || Core.InventoryManager.IsRosaryBeadOwned("RB19");
+					return !Core.Events.GetFlag("LOCATION_RB18") && (Core.InventoryManager.IsRosaryBeadOwned("RB17") || Core.InventoryManager.IsRosaryBeadOwned("RB18") || Core.InventoryManager.IsRosaryBeadOwned("RB19"));
 				}
 				if (objectIdStting == "RB18")
 				{
-					return false;
-				}
-			}
-			if (levelName == "D05Z01S02")
-			{
-				if (objectIdStting == "RB17")
-				{
-					return false;
-				}
-				if (objectIdStting == "RB18")
-				{
-					return Core.InventoryManager.IsRosaryBeadOwned("RB17") || Core.InventoryManager.IsRosaryBeadOwned("RB18") || Core.InventoryManager.IsRosaryBeadOwned("RB19");
+					return Core.Events.GetFlag("LOCATION_RB18");
 				}
 			}
 			if (levelName == "D02Z03S17" && "RB24RB25RB26".Contains(objectIdStting))
 			{
 				return Core.Events.GetFlag("LOCATION_RB24");
 			}
-			if (levelName == "D17Z01S04")
+			if (levelName == "D17Z01S04" || levelName == "D01Z04S16")
 			{
 				if (objectIdStting == "RB24")
 				{
-					return Core.InventoryManager.IsRosaryBeadOwned("RB24") || Core.InventoryManager.IsRosaryBeadOwned("RB25") || Core.InventoryManager.IsRosaryBeadOwned("RB26");
+					return !Core.Events.GetFlag("LOCATION_RB25") && (Core.InventoryManager.IsRosaryBeadOwned("RB24") || Core.InventoryManager.IsRosaryBeadOwned("RB25") || Core.InventoryManager.IsRosaryBeadOwned("RB26"));
 				}
 				if (objectIdStting == "RB25")
 				{
-					return false;
-				}
-			}
-			if (levelName == "D01Z04S16")
-			{
-				if (objectIdStting == "RB24")
-				{
-					return false;
-				}
-				if (objectIdStting == "RB25")
-				{
-					return Core.InventoryManager.IsRosaryBeadOwned("RB24") || Core.InventoryManager.IsRosaryBeadOwned("RB25") || Core.InventoryManager.IsRosaryBeadOwned("RB26");
+					return Core.Events.GetFlag("LOCATION_RB25");
 				}
 			}
 			switch (objType)

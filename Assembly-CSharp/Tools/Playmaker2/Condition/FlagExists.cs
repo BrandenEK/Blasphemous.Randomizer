@@ -61,6 +61,22 @@ namespace Tools.Playmaker2.Condition
 			{
 				flag = Core.Events.GetFlag("LOCATION_QI68");
 			}
+			if (levelName == "D01BZ02S01" && text == "QI58_USED")
+			{
+				flag = Core.Events.GetFlag("LOCATION_QI58");
+			}
+			if (levelName == "D02BZ02S01" && text == "QI11_USED")
+			{
+				flag = Core.Events.GetFlag("LOCATION_QI11");
+			}
+			if (levelName == "D05BZ02S01" && text == "QI49_USED")
+			{
+				flag = Core.Events.GetFlag("LOCATION_QI49");
+			}
+			if (levelName == "D05BZ02S01" && text == "QI71_USED")
+			{
+				flag = Core.Events.GetFlag("LOCATION_QI71");
+			}
 			if (this.outValue != null)
 			{
 				this.outValue.Value = flag;

@@ -10,6 +10,7 @@ using FMODUnity;
 using Framework.Dialog;
 using Framework.FrameworkCore;
 using Framework.Inventory;
+using Framework.Randomizer;
 using Gameplay.UI;
 using I2.Loc;
 using UnityEngine;
@@ -257,74 +258,85 @@ namespace Framework.Managers
 			string text = string.Empty;
 			string value = string.Empty;
 			Sprite sprite = null;
-			switch (this.currentDialog.itemType)
+			string scene = Core.LevelManager.currentLevel.LevelName;
+			if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
 			{
-			case InventoryManager.ItemType.Relic:
-			{
-				Relic relic = Core.InventoryManager.GetRelic(this.currentDialog.item);
-				if (relic)
-				{
-					text = relic.caption;
-					sprite = relic.picture;
-					value = relic.description;
-				}
-				break;
+				RewardInfo rewardInfo = Core.Randomizer.GetRewardInfo(Core.Randomizer.getRewardFromId(this.currentDialog.item, false));
+				text = rewardInfo.name;
+				value = rewardInfo.description;
+				sprite = rewardInfo.sprite;
 			}
-			case InventoryManager.ItemType.Prayer:
+			else
 			{
-				Prayer prayer = Core.InventoryManager.GetPrayer(this.currentDialog.item);
-				if (prayer)
+				switch (this.currentDialog.itemType)
 				{
-					text = prayer.caption;
-					sprite = prayer.picture;
-					value = prayer.description;
-				}
-				break;
-			}
-			case InventoryManager.ItemType.Bead:
-			{
-				RosaryBead rosaryBead = Core.InventoryManager.GetRosaryBead(this.currentDialog.item);
-				if (rosaryBead)
+				case InventoryManager.ItemType.Relic:
 				{
-					text = rosaryBead.caption;
-					sprite = rosaryBead.picture;
-					value = rosaryBead.description;
+					Relic relic = Core.InventoryManager.GetRelic(this.currentDialog.item);
+					if (relic)
+					{
+						text = relic.caption;
+						sprite = relic.picture;
+						value = relic.description;
+					}
+					break;
 				}
-				break;
-			}
-			case InventoryManager.ItemType.Quest:
-			{
-				QuestItem questItem = Core.InventoryManager.GetQuestItem(this.currentDialog.item);
-				if (questItem)
+				case InventoryManager.ItemType.Prayer:
 				{
-					text = questItem.caption;
-					sprite = questItem.picture;
-					value = questItem.description;
+					Prayer prayer = Core.InventoryManager.GetPrayer(this.currentDialog.item);
+					if (prayer)
+					{
+						text = prayer.caption;
+						sprite = prayer.picture;
+						value = prayer.description;
+					}
+					break;
 				}
-				break;
-			}
-			case InventoryManager.ItemType.Collectible:
-			{
-				Framework.Inventory.CollectibleItem collectibleItem = Core.InventoryManager.GetCollectibleItem(this.currentDialog.item);
-				if (collectibleItem)
+				case InventoryManager.ItemType.Bead:
 				{
-					text = collectibleItem.caption;
-					sprite = collectibleItem.picture;
-					value = collectibleItem.description;
+					RosaryBead rosaryBead = Core.InventoryManager.GetRosaryBead(this.currentDialog.item);
+					if (rosaryBead)
+					{
+						text = rosaryBead.caption;
+						sprite = rosaryBead.picture;
+						value = rosaryBead.description;
+					}
+					break;
 				}
-				break;
-			}
-			case InventoryManager.ItemType.Sword:
-			{
-				Sword sword = Core.InventoryManager.GetSword(this.currentDialog.item);
-				if (sword)
+				case InventoryManager.ItemType.Quest:
 				{
-					text = sword.caption;
-					sprite = sword.picture;
-					value = sword.description;
+					QuestItem questItem = Core.InventoryManager.GetQuestItem(this.currentDialog.item);
+					if (questItem)
+					{
+						text = questItem.caption;
+						sprite = questItem.picture;
+						value = questItem.description;
+					}
+					break;
 				}
-				break;
-			}
+				case InventoryManager.ItemType.Collectible:
+				{
+					Framework.Inventory.CollectibleItem collectibleItem = Core.InventoryManager.GetCollectibleItem(this.currentDialog.item);
+					if (collectibleItem)
+					{
+						text = collectibleItem.caption;
+						sprite = collectibleItem.picture;
+						value = collectibleItem.description;
+					}
+					break;
+				}
+				case InventoryManager.ItemType.Sword:
+				{
+					Sword sword = Core.InventoryManager.GetSword(this.currentDialog.item);
+					if (sword)
+					{
+						text = sword.caption;
+						sprite = sword.picture;
+						value = sword.description;
+					}
+					break;
+				}
+				}
 			}
 			Dictionary<string, string> additional = new Dictionary<string, string>
 			{

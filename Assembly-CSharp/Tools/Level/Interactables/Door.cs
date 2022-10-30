@@ -6,6 +6,7 @@ using FMODUnity;
 using Framework.FrameworkCore;
 using Framework.Inventory;
 using Framework.Managers;
+using Framework.Randomizer;
 using Gameplay.GameControllers.Penitent;
 using Gameplay.UI;
 using Gameplay.UI.Widgets;
@@ -99,6 +100,18 @@ namespace Tools.Level.Interactables
 			{
 				this.interactorAnimator.SetTrigger("CLOSED_ENTER");
 			}
+			Core.Randomizer.Log(string.Concat(new string[]
+			{
+				"Entering door ",
+				Core.LevelManager.currentLevel.LevelName,
+				"[",
+				this.identificativeName,
+				"] which leads to ",
+				this.targetScene,
+				"[",
+				this.targetDoor,
+				"]"
+			}), 0);
 			this.objectUsed = true;
 			Core.Input.SetBlocker("DOOR", true);
 			FadeWidget.OnFadeShowEnd += this.OnFadeShowEnd;
@@ -197,6 +210,7 @@ namespace Tools.Level.Interactables
 		private void OnDoorActivated()
 		{
 			Log.Trace("Door", "Door has been activated.", null);
+			Roomemizer.addDoor(Core.LevelManager.currentLevel.LevelName, this.identificativeName, this.targetScene, this.targetDoor);
 			Core.SpawnManager.SpawnFromDoor(this.targetScene, this.targetDoor, this.useFade);
 		}
 
