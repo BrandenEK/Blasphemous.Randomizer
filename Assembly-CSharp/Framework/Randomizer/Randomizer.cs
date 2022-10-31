@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Framework.Dialog;
 using Framework.FrameworkCore;
 using Framework.Inventory;
 using Framework.Managers;
@@ -51,6 +52,7 @@ namespace Framework.Randomizer
 				if (this.seed == -1)
 				{
 					this.newItems = null;
+					this.enemizer = null;
 					this.gameConfig = this.fileConfig;
 					this.totalItems = 0;
 					this.errorOnLoad = "This save file was not created in randomizer.  Item locations are invalid!";
@@ -58,6 +60,7 @@ namespace Framework.Randomizer
 				else if (!this.isConfigVersionValid(this.gameConfig.versionCreated))
 				{
 					this.newItems = null;
+					this.enemizer = null;
 					this.gameConfig = this.fileConfig;
 					this.totalItems = 0;
 					this.errorOnLoad = "This save file was created in an older version of the randomizer.  Item locations are invalid!";
@@ -68,7 +71,6 @@ namespace Framework.Randomizer
 				}
 				this.inGame = true;
 				this.lastSlotLoaded = PersistentManager.GetAutomaticSlot();
-				this.enemizer = new Enemizer(this.seed);
 			}
 		}
 
@@ -85,8 +87,6 @@ namespace Framework.Randomizer
 			}
 			this.inGame = false;
 			this.errorOnLoad = "";
-			Enemizer.resetStatus();
-			this.enemizer = null;
 		}
 
 		public int itemsCollected { get; private set; }
@@ -103,14 +103,24 @@ namespace Framework.Randomizer
 
 		public void giveReward(string id, bool showMessage)
 		{
-			Reward rewardFromId = this.getRewardFromId(id, true);
-			if (rewardFromId != null)
+			Reward reward = this.getRewardFromId(id, true);
+			if (reward != null)
 			{
-				this.giveReward(rewardFromId);
-				this.lastReward = rewardFromId;
+				if (reward.type == 99)
+				{
+					ProgressiveReward progressiveReward = reward as ProgressiveReward;
+					reward = progressiveReward.getLevel(true);
+					this.giveReward(reward);
+					progressiveReward.removeItem();
+				}
+				else
+				{
+					this.giveReward(reward);
+				}
+				this.lastReward = reward;
 				if (showMessage)
 				{
-					this.displayReward(rewardFromId);
+					this.displayReward(reward);
 				}
 			}
 		}
@@ -188,15 +198,19 @@ namespace Framework.Randomizer
 
 		private void displayReward(Reward reward)
 		{
-			RewardInfo info = this.GetRewardInfo(reward);
-			RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
+			RewardInfo rewardInfo = this.GetRewardInfo(reward, false);
+			if (rewardInfo == null)
+			{
+				return;
+			}
+			RewardAchievement achievement = new RewardAchievement(rewardInfo.name, rewardInfo.notification, rewardInfo.sprite);
 			Core.AchievementsManager.ShowPopUp = true;
 			UIController.instance.ShowPopupAchievement(achievement);
 		}
 
 		public void showNotification(string id)
 		{
-			Reward reward = (id == "QI78") ? this.lastReward : this.getRewardFromId(id, false);
+			Reward reward = "QI78RB17RB18RB19RB24RB25RB26".Contains(id) ? this.lastReward : this.getRewardFromId(id, false);
 			if (reward != null)
 			{
 				this.displayReward(reward);
@@ -272,7 +286,6 @@ namespace Framework.Randomizer
 			this.seed = this.generateSeed();
 			this.Log("Generating new seed: " + this.seed, 0);
 			this.Randomize(this.seed, true);
-			this.enemizer = new Enemizer(this.seed);
 			this.lastSlotLoaded = PersistentManager.GetAutomaticSlot();
 		}
 
@@ -356,7 +369,7 @@ namespace Framework.Randomizer
 
 		public static string getVersion()
 		{
-			return "v0.4.0";
+			return "v0.5.0";
 		}
 
 		private bool checkForDuplicate(string id)
@@ -376,11 +389,7 @@ namespace Framework.Randomizer
 				this.Log(this.errorOnLoad, 0);
 				UIController.instance.StartCoroutine(this.showErrorMessage(2.1f));
 			}
-			Enemizer.loadEnemies();
-			if (this.inGame && this.enemizer != null)
-			{
-				this.enemizer.onSceneLoaded();
-			}
+			EnemyLoader.loadEnemies();
 			this.checkForSpecialItems(newLevel.LevelName);
 		}
 
@@ -405,6 +414,8 @@ namespace Framework.Randomizer
 			}
 			this.seed = seed;
 			this.totalItems = this.newItems.Count;
+			this.enemizer = new Enemizer(seed);
+			this.enemizer.Randomize();
 		}
 
 		private IEnumerator showErrorMessage(float waitTime)
@@ -443,17 +454,7 @@ namespace Framework.Randomizer
 				Core.Events.SetFlag("COMPUNCTION_ALTAR_DONE", true, false);
 				this.disableAltar("bc2b17e1-5c8c-4a90-b7c8-160eacdd538d");
 			}
-			if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
-			{
-				foreach (SpriteRenderer renderer in UnityEngine.Object.FindObjectsOfType<SpriteRenderer>())
-				{
-					if (renderer.name == "Body" && renderer.sprite != null && "qi11rb02rb37qi58rb09rb05qi49rb12qi71".Contains(renderer.sprite.name))
-					{
-						RewardInfo info = Core.Randomizer.GetRewardInfo(Core.Randomizer.getRewardFromId(renderer.sprite.name.ToUpper(), false));
-						renderer.sprite = ((info == null) ? null : info.sprite);
-					}
-				}
-			}
+			this.updateShop(scene);
 		}
 
 		private void disableAltar(string id)
@@ -494,7 +495,7 @@ namespace Framework.Randomizer
 			return this.gameConfig.general.skipCutscenes && FileIO.arrayContains(this.cutsceneNames, id);
 		}
 
-		public RewardInfo GetRewardInfo(Reward reward)
+		public RewardInfo GetRewardInfo(Reward reward, bool upgraded)
 		{
 			if (reward == null)
 			{
@@ -502,7 +503,8 @@ namespace Framework.Randomizer
 			}
 			InventoryManager inventoryManager = Core.InventoryManager;
 			EntityStats stats = Core.Logic.Penitent.Stats;
-			switch (reward.type)
+			int type = reward.type;
+			switch (type)
 			{
 			case 0:
 			{
@@ -535,21 +537,54 @@ namespace Framework.Randomizer
 				return new RewardInfo(baseObject6.caption, baseObject6.description, "New quest item obtained!", baseObject6.picture);
 			}
 			case 6:
-				return new RewardInfo("Cherub " + CherubCaptorPersistentObject.CountRescuedCherubs() + "/38", "A little floating baby that you rescued from a cage.", "Cherub rescued!", this.customImages[0]);
+				return new RewardInfo("Cherub " + (CherubCaptorPersistentObject.CountRescuedCherubs() + (upgraded ? 1 : 0)) + "/38", "A little floating baby that you rescued from a cage.", "Cherub rescued!", this.customImages[0]);
 			case 7:
-				return new RewardInfo("Life Upgrade " + stats.Life.GetUpgrades() + "/6", "An increase to your maximum health.", "Stat increased!", this.customImages[1]);
+				return new RewardInfo("Life Upgrade " + (stats.Life.GetUpgrades() + (upgraded ? 1 : 0)) + "/6", "An increase to your maximum health.", "Stat increased!", this.customImages[1]);
 			case 8:
-				return new RewardInfo("Fervour Upgrade " + stats.Fervour.GetUpgrades() + "/6", "An increase to your maximum fervour.", "Stat increased!", this.customImages[2]);
+				return new RewardInfo("Fervour Upgrade " + (stats.Fervour.GetUpgrades() + (upgraded ? 1 : 0)) + "/6", "An increase to your maximum fervour.", "Stat increased!", this.customImages[2]);
 			case 9:
-				return new RewardInfo("Mea Culpa Upgrade " + stats.MeaCulpa.GetUpgrades() + "/7", "An increase to the strength of your sword.", "Stat increased!", this.customImages[3]);
+				return new RewardInfo("Mea Culpa Upgrade " + (stats.MeaCulpa.GetUpgrades() + (upgraded ? 1 : 0)) + "/7", "An increase to the strength of your sword.", "Stat increased!", this.customImages[3]);
 			case 10:
 			{
 				TearsObject tearsGenericObject = inventoryManager.TearsGenericObject;
 				return new RewardInfo(tearsGenericObject.caption, "A bundle of " + reward.id + " tears.", reward.id + " tears added!", tearsGenericObject.picture);
 			}
 			default:
-				return null;
+			{
+				if (type != 99)
+				{
+					return null;
+				}
+				Reward level = (reward as ProgressiveReward).getLevel(upgraded);
+				return this.GetRewardInfo(level, false);
 			}
+			}
+		}
+
+		private void updateShop(string scene)
+		{
+			if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
+			{
+				foreach (SpriteRenderer spriteRenderer in UnityEngine.Object.FindObjectsOfType<SpriteRenderer>())
+				{
+					if (spriteRenderer.name == "Body" && spriteRenderer.sprite != null && "qi11rb02rb37qi58rb09rb05qi49rb12qi71".Contains(spriteRenderer.sprite.name))
+					{
+						RewardInfo rewardInfo = Core.Randomizer.GetRewardInfo(Core.Randomizer.getRewardFromId(spriteRenderer.sprite.name.ToUpper(), false), true);
+						spriteRenderer.sprite = ((rewardInfo == null) ? null : rewardInfo.sprite);
+					}
+				}
+			}
+		}
+
+		public void updateDialog(string id, DialogObject @object)
+		{
+			if (id != "DLG_2010" && id != "DLG_2029")
+			{
+				return;
+			}
+			List<string> dialogLines = @object.dialogLines;
+			dialogLines.Clear();
+			dialogLines.Add("This corpse is saying something custom.");
 		}
 
 		private int seed;

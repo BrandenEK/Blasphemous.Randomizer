@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Framework.Managers;
-using Gameplay.GameControllers.Entities;
 using UnityEngine;
 
 namespace Framework.Randomizer
@@ -11,142 +10,98 @@ namespace Framework.Randomizer
 		public Enemizer(int seed)
 		{
 			this.random = new System.Random(seed);
-			this.Randomize();
 		}
 
 		public GameObject getEnemy(string id)
 		{
-			if (Core.Randomizer.gameConfig.enemies.type > 0 && this.newEnemies != null && this.newEnemies.ContainsKey(id) && !FileIO.arrayContains(this.bannedScenes, Core.LevelManager.currentLevel.LevelName))
+			if (EnemyLoader.loaded && Core.Randomizer.gameConfig.enemies.type > 0 && this.shuffledEnemies != null && this.shuffledEnemies.ContainsKey(id) && !FileIO.arrayContains(this.bannedScenes, Core.LevelManager.currentLevel.LevelName))
 			{
-				return this.newEnemies[id];
+				return EnemyLoader.getEnemy(this.shuffledEnemies[id]);
 			}
 			return null;
 		}
 
-		public static void loadEnemies()
-		{
-			if (Enemizer.loadStatus > 0)
-			{
-				return;
-			}
-			Enemy[] array = Resources.FindObjectsOfTypeAll<Enemy>();
-			for (int i = 0; i < array.Length; i++)
-			{
-				string id = array[i].Id;
-				if (!Enemizer.allEnemies.ContainsKey(id) && id != "" && FileIO.arrayContains(Enemizer.enemyIds, id))
-				{
-					Enemizer.changeHitbox(array[i].transform, id);
-					Enemizer.allEnemies.Add(array[i].Id, array[i].transform.gameObject);
-				}
-			}
-			if (Enemizer.allEnemies.Count == Enemizer.enemyIds.Length)
-			{
-				Enemizer.loadStatus = 1;
-				Core.Randomizer.Log("All enemies loaded!", 0);
-				return;
-			}
-			Core.Randomizer.Log(string.Concat(new object[]
-			{
-				"Not all enemies loaded yet! (",
-				Enemizer.allEnemies.Count,
-				"/",
-				Enemizer.enemyIds.Length,
-				")"
-			}), 0);
-		}
-
-		public void onSceneLoaded()
-		{
-			this.Randomize();
-		}
-
-		public static void resetStatus()
-		{
-			Enemizer.loadStatus = ((Enemizer.allEnemies.Count == Enemizer.enemyIds.Length) ? 1 : 0);
-		}
-
 		private void Randomize()
 		{
-			if (Enemizer.loadStatus != 1 || Core.Randomizer.gameConfig.enemies.type == 0)
+			if (Core.Randomizer.gameConfig.enemies.type < 1)
 			{
 				return;
 			}
 			Core.Randomizer.Log("Randomizing enemies!", 0);
-			this.newEnemies = new Dictionary<string, GameObject>();
-			List<EnemyLocation> list = new List<EnemyLocation>();
-			List<GameObject> list2 = new List<GameObject>();
-			this.getLists(list, list2);
-			if (list.Count != list2.Count)
+			this.shuffledEnemies = new Dictionary<string, string>();
+			List<EnemyLocation> allLocations = new List<EnemyLocation>();
+			List<string> allEnemies = new List<string>();
+			this.getLists(allLocations, allEnemies);
+			if (allLocations.Count != allEnemies.Count)
 			{
 				Core.Randomizer.Log("Enemizer lists are invalid lengths!", 0);
 				return;
 			}
-			this.fillVanillaLocations(list, list2);
+			this.fillVanillaLocations(allLocations, allEnemies);
 			if (Core.Randomizer.gameConfig.enemies.type == 1)
 			{
-				List<EnemyLocation> list3 = new List<EnemyLocation>();
-				List<GameObject> list4 = new List<GameObject>();
-				while (list.Count > 0)
+				List<EnemyLocation> typeLocations = new List<EnemyLocation>();
+				List<string> typeEnemies = new List<string>();
+				while (allLocations.Count > 0)
 				{
-					int enemyType = list[0].enemyType;
-					this.getLocationsOfType(list, list2, list3, list4, enemyType);
-					this.fillEnemyLocations(list3, list4);
-					list3.Clear();
-					list4.Clear();
+					int type = allLocations[0].enemyType;
+					this.getLocationsOfType(allLocations, allEnemies, typeLocations, typeEnemies, type);
+					this.fillEnemyLocations(typeLocations, typeEnemies);
+					typeLocations.Clear();
+					typeEnemies.Clear();
 				}
 			}
 			else if (Core.Randomizer.gameConfig.enemies.type == 2)
 			{
-				this.fillEnemyLocations(list, list2);
+				this.fillEnemyLocations(allLocations, allEnemies);
 			}
 			else
 			{
-				this.fillEnemyLocations(list, list2);
+				this.fillEnemyLocations(allLocations, allEnemies);
 			}
-			Enemizer.loadStatus = 2;
 			string text = "Random Enemies:\n\n";
-			foreach (string text2 in this.newEnemies.Keys)
+			foreach (string id in this.shuffledEnemies.Keys)
 			{
 				text = string.Concat(new string[]
 				{
 					text,
-					text2,
+					id,
 					" turns into ",
-					this.newEnemies[text2].name,
+					this.shuffledEnemies[id],
 					"\n"
 				});
 			}
 			Core.Randomizer.LogFile(text);
 		}
 
-		private void addToDictionary(string id, GameObject enemy)
+		private void addToDictionary(string id, string enemy)
 		{
-			this.newEnemies.Add(id, enemy);
+			this.shuffledEnemies.Add(id, enemy);
 		}
 
-		private void fillVanillaLocations(List<EnemyLocation> locations, List<GameObject> enemies)
+		private void fillVanillaLocations(List<EnemyLocation> locations, List<string> enemies)
 		{
-			List<EnemyLocation> list = new List<EnemyLocation>();
-			List<GameObject> list2 = new List<GameObject>();
-			this.getLocationsOfType(locations, enemies, list, list2, -1);
-			for (int i = 0; i < list.Count; i++)
+			List<EnemyLocation> vanillaLocations = new List<EnemyLocation>();
+			List<string> vanillaEnemies = new List<string>();
+			this.getLocationsOfType(locations, enemies, vanillaLocations, vanillaEnemies, -1);
+			for (int i = 0; i < vanillaLocations.Count; i++)
 			{
-				this.addToDictionary(list[i].enemyId, list2[i]);
+				this.addToDictionary(vanillaLocations[i].enemyId, vanillaEnemies[i]);
 			}
 		}
 
-		private void fillEnemyLocations(List<EnemyLocation> locations, List<GameObject> enemies)
+		private void fillEnemyLocations(List<EnemyLocation> locations, List<string> enemies)
 		{
 			while (locations.Count > 0)
 			{
-				int index = this.random.Next(locations.Count);
-				this.addToDictionary(locations[index].enemyId, enemies[enemies.Count - 1]);
-				locations.RemoveAt(index);
+				int randIdx = this.random.Next(locations.Count);
+				this.addToDictionary(locations[randIdx].enemyId, enemies[enemies.Count - 1]);
+				locations.RemoveAt(randIdx);
 				enemies.RemoveAt(enemies.Count - 1);
 			}
 		}
 
-		private void getLocationsOfType(List<EnemyLocation> allLocations, List<GameObject> allEnemies, List<EnemyLocation> typeLocations, List<GameObject> typeEnemies, int type)
+		private void getLocationsOfType(List<EnemyLocation> allLocations, List<string> allEnemies, List<EnemyLocation> typeLocations, List<string> typeEnemies, int type)
 		{
 			for (int i = 0; i < allLocations.Count; i++)
 			{
@@ -161,7 +116,7 @@ namespace Framework.Randomizer
 			}
 		}
 
-		private void getLists(List<EnemyLocation> locations, List<GameObject> enemies)
+		private void getLists(List<EnemyLocation> locations, List<string> enemies)
 		{
 			locations.Clear();
 			locations.Add(new EnemyLocation(0, "EN01", 1, false));
@@ -220,112 +175,13 @@ namespace Framework.Randomizer
 			locations.Add(new EnemyLocation(0, "EN202", 2, false));
 			locations.Add(new EnemyLocation(0, "EN203", -1, false));
 			enemies.Clear();
-			foreach (string key in Enemizer.enemyIds)
+			foreach (string id in EnemyLoader.enemyIds)
 			{
-				enemies.Add(Enemizer.allEnemies[key]);
-			}
-		}
-
-		private static void changeHitbox(Transform transform, string id)
-		{
-			if (id == "EN16" || id == "EV23")
-			{
-				Transform transform2 = transform.Find("#Constitution/Canopy");
-				if (transform2 != null)
-				{
-					BoxCollider2D component = transform2.GetComponent<BoxCollider2D>();
-					component.offset = new Vector2(component.offset.x, 1.5f);
-					component.size = new Vector2(component.size.x, 3f);
-					return;
-				}
-				Core.Randomizer.Log("Enemy " + id + " had no hitbox to change!", 0);
-				return;
-			}
-			else
-			{
-				if (!(id == "EN15") && !(id == "EV19") && !(id == "EV26"))
-				{
-					return;
-				}
-				Transform transform3 = transform.Find("#Constitution/Sprite");
-				if (transform3 != null)
-				{
-					BoxCollider2D component2 = transform3.GetComponent<BoxCollider2D>();
-					component2.offset = new Vector2(component2.offset.x, 2f);
-					component2.size = new Vector2(component2.size.x, 3.75f);
-					return;
-				}
-				Core.Randomizer.Log("Enemy " + id + " had no hitbox to change!", 0);
-				return;
+				enemies.Add(id);
 			}
 		}
 
 		private System.Random random;
-
-		private Dictionary<string, GameObject> newEnemies;
-
-		private static Dictionary<string, GameObject> allEnemies = new Dictionary<string, GameObject>();
-
-		private static string[] enemyIds = new string[]
-		{
-			"EN01",
-			"EN02",
-			"EN03",
-			"EN04",
-			"EN05",
-			"EN06",
-			"EN07",
-			"EN08",
-			"EN09",
-			"EN10",
-			"EN11",
-			"EN12",
-			"EN13",
-			"EN14",
-			"EN15",
-			"EN16",
-			"EN17",
-			"EN18",
-			"EN20",
-			"EN21",
-			"EN22",
-			"EN23",
-			"EN24",
-			"EN26",
-			"EN27",
-			"EN28",
-			"EN29",
-			"EN31",
-			"EN32",
-			"EN33",
-			"EV01",
-			"EV02",
-			"EV03",
-			"EV05",
-			"EV08",
-			"EV10",
-			"EV11",
-			"EV12",
-			"EV13",
-			"EV14",
-			"EV15",
-			"EV17",
-			"EV18",
-			"EV19",
-			"EV20",
-			"EV21",
-			"EV22",
-			"EV23",
-			"EV24",
-			"EV26",
-			"EV27",
-			"EV29",
-			"EN201",
-			"EN202",
-			"EN203"
-		};
-
-		private static int loadStatus = 0;
 
 		private string[] bannedScenes = new string[]
 		{
@@ -344,7 +200,10 @@ namespace Framework.Randomizer
 			"D19Z01S04",
 			"D19Z01S05",
 			"D19Z01S06",
-			"D19Z01S07"
+			"D19Z01S07",
+			"D03Z02S13"
 		};
+
+		private Dictionary<string, string> shuffledEnemies;
 	}
 }

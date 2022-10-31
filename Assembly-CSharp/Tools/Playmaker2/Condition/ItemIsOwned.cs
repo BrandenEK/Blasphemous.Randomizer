@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Framework.Managers;
+using Framework.Randomizer;
 using HutongGames.PlayMaker;
 
 namespace Tools.Playmaker2.Condition
@@ -17,6 +18,41 @@ namespace Tools.Playmaker2.Condition
 			if (ItemIsOwned.itemRedirects.ContainsKey(levelName) && objectIdStting == ItemIsOwned.itemRedirects[levelName])
 			{
 				return Core.Events.GetFlag("LOCATION_" + objectIdStting);
+			}
+			if (levelName.Contains("D19") || FileIO.arrayContains(ItemIsOwned.thornScenes, levelName))
+			{
+				if (objectIdStting == "QI31")
+				{
+					return !Core.Events.GetFlag("LOCATION_QI32");
+				}
+				if (objectIdStting == "QI32")
+				{
+					return Core.Events.GetFlag("LOCATION_QI32") && !Core.Events.GetFlag("LOCATION_QI33");
+				}
+				if (objectIdStting == "QI33")
+				{
+					return Core.Events.GetFlag("LOCATION_QI33") && !Core.Events.GetFlag("LOCATION_QI34");
+				}
+				if (objectIdStting == "QI34")
+				{
+					return Core.Events.GetFlag("LOCATION_QI34") && !Core.Events.GetFlag("LOCATION_QI35");
+				}
+				if (objectIdStting == "QI35")
+				{
+					return Core.Events.GetFlag("LOCATION_QI35") && !Core.Events.GetFlag("LOCATION_QI79");
+				}
+				if (objectIdStting == "QI79")
+				{
+					return Core.Events.GetFlag("LOCATION_QI79") && !Core.Events.GetFlag("LOCATION_QI80");
+				}
+				if (objectIdStting == "QI80")
+				{
+					return Core.Events.GetFlag("LOCATION_QI80") && !Core.Events.GetFlag("LOCATION_QI81");
+				}
+				if (objectIdStting == "QI81")
+				{
+					return Core.Events.GetFlag("LOCATION_QI81");
+				}
 			}
 			if (levelName == "D02Z01S01" && objectIdStting == "QI59")
 			{
@@ -146,6 +182,17 @@ namespace Tools.Playmaker2.Condition
 				"D02Z01S04",
 				"QI68"
 			}
+		};
+
+		private static string[] thornScenes = new string[]
+		{
+			"D01Z04S17",
+			"D17Z01S12",
+			"D03Z03S14",
+			"D02Z02S06",
+			"D04Z02S17",
+			"D05Z01S17",
+			"D09Z01S13"
 		};
 	}
 }

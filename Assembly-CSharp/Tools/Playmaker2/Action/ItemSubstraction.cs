@@ -17,6 +17,10 @@ namespace Tools.Playmaker2.Action
 			string itemName = string.Empty;
 			Sprite image = null;
 			Core.Randomizer.Log("ItemSubtraction", 2);
+			if ("RB17RB18RB19RB24RB25RB26QI31QI32QI33QI34QI35QI79QI80QI81".Contains(objectIdStting))
+			{
+				return true;
+			}
 			switch (objType)
 			{
 			case InventoryManager.ItemType.Relic:

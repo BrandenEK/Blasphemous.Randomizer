@@ -16,13 +16,29 @@ namespace Tools.Playmaker2.Action
 			if (num > 0f)
 			{
 				bool showMessage = this.ShowMessage != null && this.ShowMessage.Value;
+				if (num == 30000f || num == 18000f || num == 5000f)
+				{
+					showMessage = true;
+				}
 				if (num == 18000f)
 				{
-					Core.Randomizer.giveReward(num + "." + Core.LevelManager.lastLevel.LevelName, showMessage);
+					Core.Randomizer.giveReward(string.Concat(new object[]
+					{
+						Core.LevelManager.lastLevel.LevelName,
+						"[",
+						num,
+						"]"
+					}), showMessage);
 				}
 				else
 				{
-					Core.Randomizer.giveReward(num + "." + base.Owner.name, showMessage);
+					Core.Randomizer.giveReward(string.Concat(new object[]
+					{
+						base.Owner.name,
+						"[",
+						num,
+						"]"
+					}), showMessage);
 				}
 			}
 			else

@@ -31,7 +31,10 @@ namespace Framework.Randomizer
 				"visage",
 				"mask",
 				"herb",
-				"church"
+				"church",
+				"shop",
+				"thorn",
+				"candle"
 			};
 		}
 

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7DABF0E6-72AA-4EA7-A285-9543F17CD299}</ProjectGuid>
+    <ProjectGuid>{1B9EC235-80C0-4918-89D3-364613869A5B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Assembly-CSharp</RootNamespace>
@@ -402,6 +402,7 @@
     <Compile Include="Framework\Randomizer\Config\PrayerConfig.cs" />
     <Compile Include="Framework\Randomizer\Config\RoomConfig.cs" />
     <Compile Include="Framework\Randomizer\Enemizer.cs" />
+    <Compile Include="Framework\Randomizer\EnemyLoader.cs" />
     <Compile Include="Framework\Randomizer\EnemyLocation.cs" />
     <Compile Include="Framework\Randomizer\FileIO.cs" />
     <Compile Include="Framework\Randomizer\ForwardFiller.cs" />
@@ -409,6 +410,7 @@
     <Compile Include="Framework\Randomizer\Location.cs" />
     <Compile Include="Framework\Randomizer\Logger.cs" />
     <Compile Include="Framework\Randomizer\OldEnemizer.cs" />
+    <Compile Include="Framework\Randomizer\ProgressiveReward.cs" />
     <Compile Include="Framework\Randomizer\Randomizer.cs" />
     <Compile Include="Framework\Randomizer\RandomizerPersistenceData.cs" />
     <Compile Include="Framework\Randomizer\Reward.cs" />

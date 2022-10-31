@@ -94,6 +94,7 @@ namespace Framework.Managers
 			this.currentLine = -1;
 			int num = 0;
 			this.currentDialog = this.allDialogs[conversiationId];
+			Core.Randomizer.updateDialog(conversiationId, this.currentDialog);
 			switch (this.currentDialog.dialogType)
 			{
 			case DialogObject.DialogType.Lines:
@@ -258,13 +259,16 @@ namespace Framework.Managers
 			string text = string.Empty;
 			string value = string.Empty;
 			Sprite sprite = null;
-			string scene = Core.LevelManager.currentLevel.LevelName;
-			if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
+			string levelName = Core.LevelManager.currentLevel.LevelName;
+			if (levelName == "D02BZ02S01" || levelName == "D01BZ02S01" || levelName == "D05BZ02S01")
 			{
-				RewardInfo rewardInfo = Core.Randomizer.GetRewardInfo(Core.Randomizer.getRewardFromId(this.currentDialog.item, false));
-				text = rewardInfo.name;
-				value = rewardInfo.description;
-				sprite = rewardInfo.sprite;
+				RewardInfo rewardInfo = Core.Randomizer.GetRewardInfo(Core.Randomizer.getRewardFromId(this.currentDialog.item, false), true);
+				if (rewardInfo != null)
+				{
+					text = rewardInfo.name;
+					value = rewardInfo.description;
+					sprite = rewardInfo.sprite;
+				}
 			}
 			else
 			{

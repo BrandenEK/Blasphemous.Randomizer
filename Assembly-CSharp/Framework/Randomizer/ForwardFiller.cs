@@ -176,318 +176,7 @@ namespace Framework.Randomizer
 			for (int i = 0; i < itemsOwned.Count; i++)
 			{
 				Reward reward = itemsOwned[i];
-				if (reward.type == 0)
-				{
-					int id = reward.id;
-					switch (id)
-					{
-					case 17:
-					case 18:
-					case 19:
-						itemData.redWax++;
-						break;
-					case 20:
-					case 21:
-					case 22:
-						itemData.limestones++;
-						break;
-					case 23:
-						break;
-					case 24:
-					case 25:
-					case 26:
-						itemData.blueWax++;
-						break;
-					default:
-						if (id != 105)
-						{
-							if (id != 203)
-							{
-								if (id == 38)
-								{
-									itemData.guiltBead = true;
-								}
-							}
-							else
-							{
-								itemData.wheel = true;
-								itemData.cherubBits |= 524288;
-							}
-						}
-						else
-						{
-							itemData.cherubBits |= 131072;
-						}
-						break;
-					}
-				}
-				else if (reward.type == 1)
-				{
-					int id2 = reward.id;
-					switch (id2)
-					{
-					case 1:
-						itemData.cherubBits |= 1;
-						break;
-					case 2:
-					case 6:
-					case 13:
-						break;
-					case 3:
-						itemData.cherubBits |= 2;
-						break;
-					case 4:
-						itemData.cherubBits |= 4;
-						break;
-					case 5:
-						itemData.cherubBits |= 8;
-						break;
-					case 7:
-						itemData.cherubBits |= 16;
-						break;
-					case 8:
-						itemData.cherubBits |= 32;
-						break;
-					case 9:
-						itemData.cherubBits |= 64;
-						break;
-					case 10:
-						itemData.cherubBits |= 128;
-						break;
-					case 11:
-						itemData.cherubBits |= 256;
-						break;
-					case 12:
-						itemData.cherubBits |= 512;
-						break;
-					case 14:
-						itemData.cherubBits |= 1024;
-						break;
-					case 15:
-						itemData.cherubBits |= 2048;
-						break;
-					case 16:
-						itemData.cherubBits |= 4096;
-						break;
-					default:
-						if (id2 != 101)
-						{
-							switch (id2)
-							{
-							case 201:
-								itemData.cherubBits |= 16384;
-								break;
-							case 202:
-								itemData.cherubBits |= 32768;
-								break;
-							case 203:
-								itemData.cherubBits |= 65536;
-								break;
-							}
-						}
-						else
-						{
-							itemData.cherubBits |= 8192;
-						}
-						break;
-					}
-				}
-				else if (reward.type == 2)
-				{
-					switch (reward.id)
-					{
-					case 1:
-						itemData.blood = true;
-						break;
-					case 3:
-						itemData.nail = true;
-						break;
-					case 4:
-						itemData.shroud = true;
-						break;
-					case 5:
-						itemData.linen = true;
-						break;
-					case 7:
-						itemData.lung = true;
-						break;
-					case 10:
-						itemData.root = true;
-						break;
-					}
-				}
-				else if (reward.type == 3)
-				{
-					if (reward.id == 201)
-					{
-						itemData.trueHeart = true;
-					}
-					else if (reward.id == 101)
-					{
-						itemData.dawnHeart = true;
-						itemData.cherubBits |= 524288;
-					}
-				}
-				else if (reward.type == 4)
-				{
-					itemData.bones++;
-				}
-				else if (reward.type == 5)
-				{
-					int id3 = reward.id;
-					switch (id3)
-					{
-					case 1:
-						itemData.cord = true;
-						goto IL_739;
-					case 2:
-					case 3:
-					case 4:
-						itemData.marksOfRefuge++;
-						goto IL_739;
-					case 5:
-					case 9:
-					case 15:
-					case 16:
-					case 17:
-					case 18:
-						goto IL_739;
-					case 6:
-					case 7:
-					case 8:
-						itemData.tentudiaRemains++;
-						goto IL_739;
-					case 10:
-					case 11:
-					case 12:
-						itemData.ceremonyItems++;
-						goto IL_739;
-					case 13:
-						itemData.egg = true;
-						goto IL_739;
-					case 14:
-						itemData.hatchedEgg = true;
-						goto IL_739;
-					case 19:
-					case 20:
-						break;
-					default:
-						switch (id3)
-						{
-						case 37:
-						case 63:
-						case 64:
-						case 65:
-							goto IL_6CA;
-						case 38:
-						case 39:
-						case 40:
-							itemData.holyWounds++;
-							goto IL_739;
-						case 41:
-						case 42:
-						case 43:
-						case 44:
-						case 45:
-						case 46:
-						case 47:
-						case 48:
-						case 49:
-						case 50:
-						case 51:
-						case 52:
-						case 53:
-						case 54:
-						case 55:
-						case 56:
-						case 73:
-						case 74:
-							goto IL_739;
-						case 57:
-							itemData.fullThimble = true;
-							goto IL_739;
-						case 58:
-							itemData.elderKey = true;
-							goto IL_739;
-						case 59:
-							itemData.emptyThimble = true;
-							goto IL_739;
-						case 60:
-						case 61:
-						case 62:
-							itemData.masks++;
-							goto IL_739;
-						case 66:
-							itemData.cloth = true;
-							goto IL_739;
-						case 67:
-							itemData.hand = true;
-							goto IL_739;
-						case 68:
-							itemData.driedFlowers = true;
-							goto IL_739;
-						case 69:
-							itemData.bronzeKey = true;
-							goto IL_739;
-						case 70:
-							itemData.silverKey = true;
-							goto IL_739;
-						case 71:
-							itemData.goldKey = true;
-							goto IL_739;
-						case 72:
-							itemData.peaksKey = true;
-							goto IL_739;
-						case 75:
-							itemData.chalice = true;
-							goto IL_739;
-						case 106:
-							itemData.bell = true;
-							goto IL_739;
-						case 107:
-						case 108:
-						case 109:
-						case 110:
-							itemData.verses++;
-							goto IL_739;
-						}
-						switch (id3)
-						{
-						case 201:
-						case 202:
-							itemData.traitorEyes++;
-							goto IL_739;
-						case 203:
-							itemData.scapular = true;
-							goto IL_739;
-						case 204:
-							itemData.woodKey = true;
-							goto IL_739;
-						default:
-							goto IL_739;
-						}
-						break;
-					}
-					IL_6CA:
-					itemData.herbs++;
-				}
-				else if (reward.type == 6)
-				{
-					itemData.cherubs++;
-				}
-				else if (reward.type == 8)
-				{
-					itemData.fervourLevel++;
-				}
-				else if (reward.type == 9)
-				{
-					itemData.swordLevel++;
-				}
-				else if (reward.type == 10)
-				{
-					itemData.tears += reward.id;
-				}
-				IL_739:;
+				itemData.addItem(reward);
 			}
 			itemData.lungDamage = true;
 			if (itemData.swordLevel > 1)
@@ -517,7 +206,7 @@ namespace Framework.Randomizer
 			locations.Add(new Location("RB11", "item", (ItemData d) => d.bridgeAccess && d.masks > 0));
 			locations.Add(new Location("RB12", "shop", (ItemData d) => d.bridgeAccess && d.tears >= 65000));
 			locations.Add(new Location("RB13", "item", (ItemData d) => true));
-			locations.Add(new Location("RB14", "item", (ItemData d) => d.bridgeAccess));
+			locations.Add(new Location("RB14", "item", (ItemData d) => d.bridgeAccess && ((d.wheel && d.swordLevel > 1) || d.dawnHeart || d.root)));
 			locations.Add(new Location("RB15", "item", (ItemData d) => true));
 			locations.Add(new Location("RB16", "item", (ItemData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey));
 			locations.Add(new Location("RB17", "candle", (ItemData d) => true));
@@ -547,7 +236,7 @@ namespace Framework.Randomizer
 			locations.Add(new Location("RB106", "item", (ItemData d) => d.blood && d.root));
 			locations.Add(new Location("RB107", "item", (ItemData d) => true));
 			locations.Add(new Location("RB108", "item", (ItemData d) => true));
-			locations.Add(new Location("RB201", "item", (ItemData d) => d.bridgeAccess && d.root));
+			locations.Add(new Location("RB201", "item", (ItemData d) => d.bridgeAccess && (d.root || (d.dawnHeart && d.swordLevel > 1))));
 			locations.Add(new Location("RB202", "item", (ItemData d) => true));
 			locations.Add(new Location("RB203", "item", (ItemData d) => d.bridgeAccess));
 			locations.Add(new Location("RB204", "item", (ItemData d) => d.blood && d.linen));
@@ -565,7 +254,7 @@ namespace Framework.Randomizer
 			locations.Add(new Location("PR14", "item", (ItemData d) => true));
 			locations.Add(new Location("PR15", "item", (ItemData d) => d.bridgeAccess));
 			locations.Add(new Location("PR16", "item", (ItemData d) => d.nail || d.linen));
-			locations.Add(new Location("PR101", "item", (ItemData d) => d.bell && d.canBreakHoles && d.bridgeAccess && d.blood && d.root && d.masks > 0 && d.bronzeKey && d.silverKey));
+			locations.Add(new Location("PR101", "verse", (ItemData d) => d.bell && d.canBreakHoles && d.bridgeAccess && d.blood && d.root && d.masks > 0 && d.bronzeKey && d.silverKey));
 			locations.Add(new Location("PR201", "miriam", (ItemData d) => d.bridgeAccess && d.masks > 1 && d.linen && d.blood && d.root && d.lung));
 			locations.Add(new Location("PR202", "item", (ItemData d) => d.blood || d.bridgeAccess));
 			locations.Add(new Location("PR203", "item", (ItemData d) => d.blood));
@@ -588,7 +277,7 @@ namespace Framework.Randomizer
 			locations.Add(new Location("HE101", "item", (ItemData d) => d.bridgeAccess && d.verses >= 4));
 			locations.Add(new Location("HE201", "crisanta", (ItemData d) => d.bridgeAccess && d.woodKey && d.traitorEyes >= 2));
 			locations.Add(new Location("CO01", "item", (ItemData d) => true));
-			locations.Add(new Location("CO02", "item", (ItemData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.goldKey));
+			locations.Add(new Location("CO02", "item", (ItemData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.goldKey && d.blood && d.root && d.lung));
 			locations.Add(new Location("CO03", "item", (ItemData d) => true));
 			locations.Add(new Location("CO04", "item", (ItemData d) => d.swordLevel > 0));
 			locations.Add(new Location("CO05", "item", (ItemData d) => true));
@@ -621,11 +310,11 @@ namespace Framework.Randomizer
 			locations.Add(new Location("CO32", "item", (ItemData d) => d.nail && d.lung));
 			locations.Add(new Location("CO33", "item", (ItemData d) => true));
 			locations.Add(new Location("CO34", "item", (ItemData d) => d.bridgeAccess));
-			locations.Add(new Location("CO35", "item", (ItemData d) => d.bridgeAccess));
+			locations.Add(new Location("CO35", "item", (ItemData d) => d.bridgeAccess && (d.blood || d.dawnHeart || (d.wheel && d.swordLevel > 1))));
 			locations.Add(new Location("CO36", "item", (ItemData d) => true));
 			locations.Add(new Location("CO37", "item", (ItemData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey));
 			locations.Add(new Location("CO38", "item", (ItemData d) => true));
-			locations.Add(new Location("CO39", "item", (ItemData d) => d.bridgeAccess && ((d.wheel && d.dawnHeart) || d.root)));
+			locations.Add(new Location("CO39", "item", (ItemData d) => d.bridgeAccess && ((d.wheel && d.swordLevel > 1) || d.dawnHeart || d.root)));
 			locations.Add(new Location("CO40", "item", (ItemData d) => d.bridgeAccess && d.masks > 0 && d.lung && d.root && d.blood));
 			locations.Add(new Location("CO41", "item", (ItemData d) => true));
 			locations.Add(new Location("CO42", "item", (ItemData d) => d.blood || d.canBreakHoles));
@@ -699,7 +388,7 @@ namespace Framework.Randomizer
 			locations.Add(new Location("QI109", "verse", (ItemData d) => d.bell && d.canBreakHoles && d.bridgeAccess && ((d.blood && d.root) || (d.masks > 0 && d.bronzeKey && d.silverKey))));
 			locations.Add(new Location("QI110", "verse", (ItemData d) => d.bell && d.canBreakHoles && d.bridgeAccess && d.blood && d.root && d.masks > 0 && d.bronzeKey && d.silverKey));
 			locations.Add(new Location("QI201", "crisanta", (ItemData d) => d.bones >= 30));
-			locations.Add(new Location("QI202", "crisanta", (ItemData d) => d.bridgeAccess && d.root));
+			locations.Add(new Location("QI202", "crisanta", (ItemData d) => d.bridgeAccess && (d.root || d.nail || (d.hasCherubBit(786432) && d.swordLevel > 1))));
 			locations.Add(new Location("QI203", "crisanta", (ItemData d) => d.blood || d.bridgeAccess));
 			locations.Add(new Location("QI204", "crisanta", (ItemData d) => d.bridgeAccess && d.blood && d.scapular));
 			locations.Add(new Location("QI301", "crisanta", (ItemData d) => d.bridgeAccess && d.masks >= 3 && d.trueHeart && d.blood));
@@ -741,46 +430,46 @@ namespace Framework.Randomizer
 			locations.Add(new Location("RESCUED_CHERUB_36", "cherub", (ItemData d) => d.bridgeAccess && d.masks > 0));
 			locations.Add(new Location("RESCUED_CHERUB_37", "cherub", (ItemData d) => true));
 			locations.Add(new Location("RESCUED_CHERUB_38", "cherub", (ItemData d) => d.hasCherubBit(942608)));
-			locations.Add(new Location("-933363712", "lady", (ItemData d) => true));
-			locations.Add(new Location("-927137792", "lady", (ItemData d) => true));
-			locations.Add(new Location("-840761344", "lady", (ItemData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey && d.peaksKey));
-			locations.Add(new Location("-831062016", "lady", (ItemData d) => true));
-			locations.Add(new Location("1213038592", "lady", (ItemData d) => d.bridgeAccess && d.lung && d.root && d.blood));
-			locations.Add(new Location("1271136256", "lady", (ItemData d) => d.bridgeAccess));
-			locations.Add(new Location("-910753792", "oil", (ItemData d) => d.blood));
-			locations.Add(new Location("-886603776", "oil", (ItemData d) => true));
-			locations.Add(new Location("-815923200", "oil", (ItemData d) => true));
-			locations.Add(new Location("1203666944", "oil", (ItemData d) => d.bridgeAccess));
-			locations.Add(new Location("1232338944", "oil", (ItemData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey));
-			locations.Add(new Location("1233780736", "oil", (ItemData d) => d.bridgeAccess));
-			locations.Add(new Location("-932151296", "sword", (ItemData d) => d.bridgeAccess && d.chalice && d.masks > 0 && d.bronzeKey && ((d.lung && d.nail && (d.root || d.hasCherubBit(786432))) || (d.linen && d.swordLevel > 1))));
-			locations.Add(new Location("-865337344", "sword", (ItemData d) => true));
-			locations.Add(new Location("-835715072", "sword", (ItemData d) => true));
-			locations.Add(new Location("741515178", "sword", (ItemData d) => true));
-			locations.Add(new Location("1189150720", "sword", (ItemData d) => d.bridgeAccess));
-			locations.Add(new Location("1240137728", "sword", (ItemData d) => d.bridgeAccess));
-			locations.Add(new Location("1330243584", "sword", (ItemData d) => d.bridgeAccess && d.masks > 1 && d.blood && d.lung));
-			locations.Add(new Location("500.Tirso", "tirso", (ItemData d) => d.herbs >= 2));
-			locations.Add(new Location("1000.Tirso", "tirso", (ItemData d) => d.herbs >= 3));
-			locations.Add(new Location("2000.Tirso", "tirso", (ItemData d) => d.herbs >= 4));
-			locations.Add(new Location("5000.Tirso", "tirso", (ItemData d) => d.herbs >= 5));
-			locations.Add(new Location("10000.Tirso", "tirso", (ItemData d) => d.herbs >= 6));
-			locations.Add(new Location("500.Lvdovico", "tentudia", (ItemData d) => d.tentudiaRemains >= 1));
-			locations.Add(new Location("1000.Lvdovico", "tentudia", (ItemData d) => d.tentudiaRemains >= 2));
-			locations.Add(new Location("1000.Arena_NailManager", "guiltArena", (ItemData d) => d.guiltBead));
-			locations.Add(new Location("3000.Arena_NailManager", "guiltArena", (ItemData d) => d.guiltBead));
-			locations.Add(new Location("5000.Arena_NailManager", "guiltArena", (ItemData d) => d.guiltBead && d.bridgeAccess));
-			locations.Add(new Location("250.Undertaker", "ossuary", (ItemData d) => d.bones >= 4));
-			locations.Add(new Location("500.Undertaker", "ossuary", (ItemData d) => d.bones >= 8));
-			locations.Add(new Location("750.Undertaker", "ossuary", (ItemData d) => d.bones >= 12));
-			locations.Add(new Location("1000.Undertaker", "ossuary", (ItemData d) => d.bones >= 16));
-			locations.Add(new Location("1250.Undertaker", "ossuary", (ItemData d) => d.bones >= 20));
-			locations.Add(new Location("1500.Undertaker", "ossuary", (ItemData d) => d.bones >= 24));
-			locations.Add(new Location("1750.Undertaker", "ossuary", (ItemData d) => d.bones >= 28));
-			locations.Add(new Location("2000.Undertaker", "ossuary", (ItemData d) => d.bones >= 32));
-			locations.Add(new Location("2500.Undertaker", "ossuary", (ItemData d) => d.bones >= 36));
-			locations.Add(new Location("3000.Undertaker", "ossuary", (ItemData d) => d.bones >= 40));
-			locations.Add(new Location("5000.Undertaker", "ossuary", (ItemData d) => d.bones >= 44));
+			locations.Add(new Location("Lady[D01Z05S22]", "lady", (ItemData d) => true));
+			locations.Add(new Location("Lady[D02Z02S12]", "lady", (ItemData d) => true));
+			locations.Add(new Location("Lady[D02Z03S15]", "lady", (ItemData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey && d.peaksKey));
+			locations.Add(new Location("Lady[D01Z05S26]", "lady", (ItemData d) => true));
+			locations.Add(new Location("Lady[D06Z01S24]", "lady", (ItemData d) => d.bridgeAccess && d.lung && d.root && d.blood));
+			locations.Add(new Location("Lady[D05Z01S14]", "lady", (ItemData d) => d.bridgeAccess));
+			locations.Add(new Location("Oil[D03Z03S13]", "oil", (ItemData d) => d.blood));
+			locations.Add(new Location("Oil[D01Z05S07]", "oil", (ItemData d) => true));
+			locations.Add(new Location("Oil[D02Z02S10]", "oil", (ItemData d) => true));
+			locations.Add(new Location("Oil[D04Z02S14]", "oil", (ItemData d) => d.bridgeAccess));
+			locations.Add(new Location("Oil[D09Z01S12]", "oil", (ItemData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey));
+			locations.Add(new Location("Oil[D05Z01S19]", "oil", (ItemData d) => d.bridgeAccess));
+			locations.Add(new Location("Sword[D01Z05S24]", "sword", (ItemData d) => d.bridgeAccess && d.chalice && d.masks > 0 && d.bronzeKey && ((d.lung && d.nail && (d.root || d.hasCherubBit(786432))) || (d.linen && d.swordLevel > 1))));
+			locations.Add(new Location("Sword[D17Z01S08]", "sword", (ItemData d) => true));
+			locations.Add(new Location("Sword[D02Z03S13]", "sword", (ItemData d) => true));
+			locations.Add(new Location("Sword[D01Z02S06]", "sword", (ItemData d) => true));
+			locations.Add(new Location("Sword[D05Z01S13]", "sword", (ItemData d) => d.bridgeAccess));
+			locations.Add(new Location("Sword[D04Z02S12]", "sword", (ItemData d) => d.bridgeAccess));
+			locations.Add(new Location("Sword[D06Z01S11]", "sword", (ItemData d) => d.bridgeAccess && d.masks > 1 && d.blood && d.lung));
+			locations.Add(new Location("Tirso[500]", "tirso", (ItemData d) => d.herbs >= 2));
+			locations.Add(new Location("Tirso[1000]", "tirso", (ItemData d) => d.herbs >= 3));
+			locations.Add(new Location("Tirso[2000]", "tirso", (ItemData d) => d.herbs >= 4));
+			locations.Add(new Location("Tirso[5000]", "tirso", (ItemData d) => d.herbs >= 5));
+			locations.Add(new Location("Tirso[10000]", "tirso", (ItemData d) => d.herbs >= 6));
+			locations.Add(new Location("Lvdovico[500]", "tentudia", (ItemData d) => d.tentudiaRemains >= 1));
+			locations.Add(new Location("Lvdovico[1000]", "tentudia", (ItemData d) => d.tentudiaRemains >= 2));
+			locations.Add(new Location("Arena_NailManager[1000]", "guiltArena", (ItemData d) => d.guiltBead));
+			locations.Add(new Location("Arena_NailManager[3000]", "guiltArena", (ItemData d) => d.guiltBead));
+			locations.Add(new Location("Arena_NailManager[5000]", "guiltArena", (ItemData d) => d.guiltBead && d.bridgeAccess));
+			locations.Add(new Location("Undertaker[250]", "ossuary", (ItemData d) => d.bones >= 4));
+			locations.Add(new Location("Undertaker[500]", "ossuary", (ItemData d) => d.bones >= 8));
+			locations.Add(new Location("Undertaker[750]", "ossuary", (ItemData d) => d.bones >= 12));
+			locations.Add(new Location("Undertaker[1000]", "ossuary", (ItemData d) => d.bones >= 16));
+			locations.Add(new Location("Undertaker[1250]", "ossuary", (ItemData d) => d.bones >= 20));
+			locations.Add(new Location("Undertaker[1500]", "ossuary", (ItemData d) => d.bones >= 24));
+			locations.Add(new Location("Undertaker[1750]", "ossuary", (ItemData d) => d.bones >= 28));
+			locations.Add(new Location("Undertaker[2000]", "ossuary", (ItemData d) => d.bones >= 32));
+			locations.Add(new Location("Undertaker[2500]", "ossuary", (ItemData d) => d.bones >= 36));
+			locations.Add(new Location("Undertaker[3000]", "ossuary", (ItemData d) => d.bones >= 40));
+			locations.Add(new Location("Undertaker[5000]", "ossuary", (ItemData d) => d.bones >= 44));
 			locations.Add(new Location("BS01", "boss", (ItemData d) => true));
 			locations.Add(new Location("BS03", "boss", (ItemData d) => true));
 			locations.Add(new Location("BS04", "boss", (ItemData d) => true));
@@ -790,13 +479,35 @@ namespace Framework.Randomizer
 			locations.Add(new Location("BS13", "boss", (ItemData d) => true));
 			locations.Add(new Location("BS14", "boss", (ItemData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey));
 			locations.Add(new Location("BS16", "boss", (ItemData d) => d.bridgeAccess && d.masks >= 3 && d.trueHeart));
-			locations.Add(new Location("18000.D03Z01S03", "boss", (ItemData d) => d.bell && d.canBreakHoles));
-			locations.Add(new Location("18000.D02Z02S14", "boss", (ItemData d) => d.bell && d.canBreakHoles && d.blood && d.root));
-			locations.Add(new Location("18000.D04Z01S04", "boss", (ItemData d) => d.bell && d.canBreakHoles && d.bridgeAccess));
-			locations.Add(new Location("18000.D09Z01S01", "boss", (ItemData d) => d.bell && d.canBreakHoles && d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey));
-			locations.Add(new Location("30000.LaudesBossTrigger", "boss", (ItemData d) => d.bridgeAccess && d.verses >= 4));
-			locations.Add(new Location("5000.BossTrigger", "boss", (ItemData d) => d.bridgeAccess && d.root));
+			locations.Add(new Location("D03Z01S03[18000]", "boss", (ItemData d) => d.bell && d.canBreakHoles));
+			locations.Add(new Location("D02Z02S14[18000]", "boss", (ItemData d) => d.bell && d.canBreakHoles && d.blood && d.root));
+			locations.Add(new Location("D04Z01S04[18000]", "boss", (ItemData d) => d.bell && d.canBreakHoles && d.bridgeAccess));
+			locations.Add(new Location("D09Z01S01[18000]", "boss", (ItemData d) => d.bell && d.canBreakHoles && d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey));
+			locations.Add(new Location("LaudesBossTrigger[30000]", "boss", (ItemData d) => d.bridgeAccess && d.verses >= 4));
+			locations.Add(new Location("BossTrigger[5000]", "boss", (ItemData d) => d.bridgeAccess && (d.root || d.nail || (d.hasCherubBit(786432) && d.swordLevel > 1))));
 			rewards.Clear();
+			ProgressiveReward item = new ProgressiveReward(0, new string[]
+			{
+				"RB17",
+				"RB18",
+				"RB19"
+			}, new Reward[]
+			{
+				new Reward(0, 17, true),
+				new Reward(0, 18, true),
+				new Reward(0, 19, true)
+			}, true);
+			ProgressiveReward item2 = new ProgressiveReward(0, new string[]
+			{
+				"RB24",
+				"RB25",
+				"RB26"
+			}, new Reward[]
+			{
+				new Reward(0, 24, true),
+				new Reward(0, 25, true),
+				new Reward(0, 26, true)
+			}, true);
 			rewards.Add(new Reward(0, 1, false));
 			rewards.Add(new Reward(0, 2, false));
 			rewards.Add(new Reward(0, 3, false));
@@ -813,15 +524,15 @@ namespace Framework.Randomizer
 			rewards.Add(new Reward(0, 14, false));
 			rewards.Add(new Reward(0, 15, false));
 			rewards.Add(new Reward(0, 16, false));
-			rewards.Add(new Reward(0, 17, true));
-			rewards.Add(new Reward(0, 18, true));
-			rewards.Add(new Reward(0, 19, true));
+			rewards.Add(item);
+			rewards.Add(item);
+			rewards.Add(item);
 			rewards.Add(new Reward(0, 20, true));
 			rewards.Add(new Reward(0, 21, true));
 			rewards.Add(new Reward(0, 22, true));
-			rewards.Add(new Reward(0, 24, true));
-			rewards.Add(new Reward(0, 25, true));
-			rewards.Add(new Reward(0, 26, true));
+			rewards.Add(item2);
+			rewards.Add(item2);
+			rewards.Add(item2);
 			rewards.Add(new Reward(0, 28, false));
 			rewards.Add(new Reward(0, 30, false));
 			rewards.Add(new Reward(0, 31, false));
@@ -831,7 +542,7 @@ namespace Framework.Randomizer
 			rewards.Add(new Reward(0, 35, false));
 			rewards.Add(new Reward(0, 36, false));
 			rewards.Add(new Reward(0, 37, false));
-			rewards.Add(new Reward(0, 38, true));
+			rewards.Add(new Reward(0, 41, true));
 			rewards.Add(new Reward(0, 101, false));
 			rewards.Add(new Reward(0, 102, false));
 			rewards.Add(new Reward(0, 103, false));
@@ -884,6 +595,27 @@ namespace Framework.Randomizer
 			{
 				rewards.Add(new Reward(4, i, true));
 			}
+			ProgressiveReward item3 = new ProgressiveReward(5, new string[]
+			{
+				"QI31",
+				"QI32",
+				"QI33",
+				"QI34",
+				"QI35",
+				"QI79",
+				"QI80",
+				"QI81"
+			}, new Reward[]
+			{
+				new Reward(5, 31, false),
+				new Reward(5, 32, false),
+				new Reward(5, 33, false),
+				new Reward(5, 34, false),
+				new Reward(5, 35, false),
+				new Reward(5, 79, false),
+				new Reward(5, 80, false),
+				new Reward(5, 81, false)
+			}, true);
 			rewards.Add(new Reward(5, 1, true));
 			rewards.Add(new Reward(5, 2, true));
 			rewards.Add(new Reward(5, 3, true));
@@ -898,11 +630,11 @@ namespace Framework.Randomizer
 			rewards.Add(new Reward(5, 14, true));
 			rewards.Add(new Reward(5, 19, true));
 			rewards.Add(new Reward(5, 20, true));
-			rewards.Add(new Reward(5, 31, true));
-			rewards.Add(new Reward(5, 32, true));
-			rewards.Add(new Reward(5, 33, true));
-			rewards.Add(new Reward(5, 34, true));
-			rewards.Add(new Reward(5, 35, true));
+			rewards.Add(item3);
+			rewards.Add(item3);
+			rewards.Add(item3);
+			rewards.Add(item3);
+			rewards.Add(item3);
 			rewards.Add(new Reward(5, 37, true));
 			rewards.Add(new Reward(5, 38, true));
 			rewards.Add(new Reward(5, 39, true));
@@ -938,9 +670,9 @@ namespace Framework.Randomizer
 			rewards.Add(new Reward(5, 71, true));
 			rewards.Add(new Reward(5, 72, true));
 			rewards.Add(new Reward(5, 75, true));
-			rewards.Add(new Reward(5, 79, true));
-			rewards.Add(new Reward(5, 80, true));
-			rewards.Add(new Reward(5, 81, true));
+			rewards.Add(item3);
+			rewards.Add(item3);
+			rewards.Add(item3);
 			rewards.Add(new Reward(5, 101, false));
 			rewards.Add(new Reward(5, 102, false));
 			rewards.Add(new Reward(5, 103, false));
@@ -962,7 +694,7 @@ namespace Framework.Randomizer
 			}
 			for (int k = 0; k < 6; k++)
 			{
-				rewards.Add(new Reward(7, 0, false));
+				rewards.Add(new Reward(7, 0, true));
 			}
 			for (int l = 0; l < 6; l++)
 			{

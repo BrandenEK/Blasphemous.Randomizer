@@ -11,30 +11,30 @@ Bless hand: RE02
 Cleofas gift initial: QI01
 Cleofas gift final: PR11
 Tirso reward 1: QI66
-Tirso reward 2: 500.Tirso
-Tirso reward 3: 1000.Tirso
-Tirso reward 4: 2000.Tirso
-Tirso reward 5: 5000.Tirso
-Tirso reward 6: 10000.Tirso
+Tirso reward 2: Tirso[500]
+Tirso reward 3: Tirso[1000]
+Tirso reward 4: Tirso[2000]
+Tirso reward 5: Tirso[5000]
+Tirso reward 6: Tirso[10000]
 Tirso reward final: QI56
-Tentudia reward 1: 500.Lvdovico
-Tentudia reward 2: 1000.Lvdovico
+Tentudia reward 1: Lvdovico[500]
+Tentudia reward 2: Lvdovico[1000]
 Tentudia reward 3: PR03
 Isidora reward main: QI201
-Sword room: 741515178
+Sword room: Sword[D01Z02S06]
 Church donation 1: RB104
 Church donation 2: RB105
-Ossuary reward 1: 250.Undertaker
-Ossuary reward 2: 500.Undertaker
-Ossuary reward 3: 750.Undertaker
-Ossuary reward 4: 1000.Undertaker
-Ossuary reward 5: 1250.Undertaker
-Ossuary reward 6: 1500.Undertaker
-Ossuary reward 7: 1750.Undertaker
-Ossuary reward 8: 2000.Undertaker
-Ossuary reward 9: 2500.Undertaker
-Ossuary reward 10: 3000.Undertaker
-Ossuary reward 11: 5000.Undertaker
+Ossuary reward 1: Undertaker[250]
+Ossuary reward 2: Undertaker[500]
+Ossuary reward 3: Undertaker[750]
+Ossuary reward 4: Undertaker[1000]
+Ossuary reward 5: Undertaker[1250]
+Ossuary reward 6: Undertaker[1500]
+Ossuary reward 7: Undertaker[1750]
+Ossuary reward 8: Undertaker[2000]
+Ossuary reward 9: Undertaker[2500]
+Ossuary reward 10: Undertaker[3000]
+Ossuary reward 11: Undertaker[5000]
 
 All the Tears of the Sea (1)
 
@@ -49,9 +49,9 @@ Western shaft ledge: CO06
 Western shaft cherub: RESCUED_CHERUB_36
 Western shaft chest: PR12
 MoM east entrance: HE04
-Lady room: 1213038592
+Lady room: Lady[D06Z01S24]
 Second checkpoint ledge: CO40
-Sword room: 1330243584
+Sword room: Sword[D06Z01S11]
 Crisanta: BS16
 
 Bridge of the Three Calvaries (3)
@@ -66,7 +66,7 @@ Beginning gift: QI106
 Initial room cherub: RESCUED_CHERUB_06
 Initial room ledge: RB204
 Elder Brother's room: RE01
-Sword room: -865337344
+Sword room: Sword[D17Z01S08]
 Spike gaunlet exit: CO25
 Blue candle: RB25
 Church entrance: PR203
@@ -80,8 +80,8 @@ Blood platform ledge: CO05
 Ghost death room: CO15
 Central lung room: RB08
 Southwest lung room: HE03
-Lady room: -840761344
-Sword room: -835715072
+Lady room: Lady[D02Z03S15]
+Sword room: Sword[D02Z03S13]
 Red candle: RB18
 Blue candle: RB24
 Outside area: RB107
@@ -98,7 +98,7 @@ Complete Penitence 3: RB103
 
 Desecrated Cistern (20)
 
-MeD lady room: -933363712
+MeD lady room: Lady[D01Z05S22]
 MeD entrance: CO41
 Water room cherub: RESCUED_CHERUB_11
 Eastern lower tunnel chest: QI45
@@ -106,15 +106,15 @@ Eastern upper tunnel chest: PR16
 Eastern upper tunnel cherub: RESCUED_CHERUB_13
 Hidden hand room: QI67
 WaBC entrance: CO09
-Oil room: -886603776
+Oil room: Oil[D01Z05S07]
 Veil room cherub: RESCUED_CHERUB_14
 Veil room ledge: QI12
 Lung tunnel cherub: RESCUED_CHERUB_12
 Lung tunnel ledge: CO32
 Shroud puzzle: RB03
 Chalice room: QI75
-Sword room: -932151296
-GrA lady room: -831062016
+Sword room: Sword[D01Z05S24]
+GrA lady room: Lady[D01Z05S26]
 Elevator exit cherub: RESCUED_CHERUB_15
 Elevator shaft cherub: RESCUED_CHERUB_22
 Elevator shaft ledge: CO44
@@ -134,7 +134,7 @@ Shop right: RB02
 Guilt room: RB38
 Elevator shaft cherub: RESCUED_CHERUB_26
 Elevator shaft ledge: QI53
-Lady room: -927137792
+Lady room: Lady[D02Z02S12]
 Bleed room: HE11
 Eastern shaft lower: QI46
 Eastern shaft middle: CO29
@@ -145,8 +145,8 @@ Western shaft lower: RB32
 Western shaft upper: CO01
 Center shaft cherub: RESCUED_CHERUB_24
 Center shaft ledge: RB15
-Oil room: -815923200
-Bow Amanecida: 18000.D02Z02S14
+Oil room: Oil[D02Z02S10]
+Bow Amanecida: D02Z02S14[18000]
 
 Grievance Ascends (12)
 
@@ -154,7 +154,7 @@ Western lung ledge: QI44
 Lung room upper: RE07
 Lung room cherub: RESCUED_CHERUB_19
 Lung room lower: CO12
-Oil room: -910753792
+Oil room: Oil[D03Z03S13]
 Blood tunnel ledge: QI10
 Blood tunnel cherub: RESCUED_CHERUB_21
 Altasgracias cherub: RESCUED_CHERUB_20
@@ -166,7 +166,7 @@ Holy Visage gift: QI39
 Hall of the Dawning (2)
 
 Mirror room: QI105
-Laudes: 30000.LaudesBossTrigger
+Laudes: LaudesBossTrigger[30000]
 
 Jondo (13)
 
@@ -195,16 +195,16 @@ Platform room ledge: CO18
 Upper cathedral ledge: CO22
 Hidden floor: QI50
 Lung ambush chest: RB31
-Lady room: 1271136256
+Lady room: Lady[D05Z01S14]
 Bone puzzle: PR15
 Diosdado ledge: CO28
 Platform puzzle chest: PR07
 Final shaft ledge: RB30
 Final shaft cherub: RESCUED_CHERUB_02
-Oil room: 1233780736
+Oil room: Oil[D05Z01S19]
 Elevator cherub: RESCUED_CHERUB_32
 Mask room: QI62
-Sword room: 1189150720
+Sword room: Sword[D05Z01S13]
 Red candle: RB19
 Diosdado gift: RB203
 Fourth Visage hidden wall: RB301
@@ -229,7 +229,7 @@ SlC entrance ledge: CO03
 
 Mother of Mothers (14)
 
-Oil room: 1203666944
+Oil room: Oil[D04Z02S14]
 Eastern room upper: RB33
 Eastern room lower: CO35
 Western room cherub: RESCUED_CHERUB_30
@@ -240,7 +240,7 @@ Blood incense shaft: HE01
 Outside Cleofas room: CO34
 Center room ledge: CO20
 Center room cherub: RESCUED_CHERUB_29
-Sword room: 1240137728
+Sword room: Sword[D04Z02S12]
 Melquiades: BS05
 Mask room: QI60
 
@@ -253,14 +253,14 @@ Bell gap ledge: QI47
 Redento meeting 1: RB22
 Blood platform: QI63
 Egg hatching: QI14
-Axe Amanecida: 18000.D03Z01S03
+Axe Amanecida: D03Z01S03[18000]
 
 Mourning and Havoc (4)
 
 Western chest: PR202
 Eastern chest: RB201
 Sierpes reward: QI202
-Sierpes: 5000.BossTrigger
+Sierpes: BossTrigger[5000]
 
 Patio of the Silent Steps (9)
 
@@ -272,7 +272,7 @@ Garden 3 lower ledge: QI37
 Garden 3 upper ledge: CO39
 Northern shaft: QI102
 Redento meeting 4: RB21
-Falcata Amanecida: 18000.D04Z01S04
+Falcata Amanecida: D04Z01S04[18000]
 
 Petrous (1)
 
@@ -321,10 +321,10 @@ Q4 lower silver door: RESCUED_CHERUB_04
 Q4 upper bronze door: QI70
 Q4 upper silver door: CO37
 CoLCV entrance: RESCUED_CHERUB_05
-Oil room: 1232338944
+Oil room: Oil[D09Z01S12]
 Quirce: BS14
 Quirce room: QI72
-Lance Amanecida: 18000.D09Z01S01
+Lance Amanecida: D09Z01S01[18000]
 
 Wasteland of the Buried Churches (8)
 
@@ -353,15 +353,15 @@ Gemino gift final: RB10
 
 Various (20)
 
-Guilt arena 1 extra: 1000.Arena_NailManager
+Guilt arena 1 extra: Arena_NailManager[1000]
 Guilt arena 1 main: QI32
 Guilt arena 2 extra: HE10
 Guilt arena 2 main: QI33
-Guilt arena 3 extra: 3000.Arena_NailManager
+Guilt arena 3 extra: Arena_NailManager[3000]
 Guilt arena 3 main: QI34
 Guilt arena 4 extra: RB34
 Guilt arena 4 main: QI35
-Guilt arena 5 extra: 5000.Arena_NailManager
+Guilt arena 5 extra: Arena_NailManager[5000]
 Guilt arena 5 main: QI79
 Guilt arena 6 extra: RB35
 Guilt arena 6 main: QI80
@@ -410,6 +410,9 @@ RB35: Scaly Coin
 RB36: Seashell of the Inverted Spiral
 RB37: Calcified Eye of Erudition
 RB38: Immaculate Bead
+RB39: Bead Marked by Guilt
+RB40: Bead Tainted by Guilt
+RB41: Weight of True Guilt
 RB101: Reliquary of the Fervent Heart
 RB102: Reliquary of the Suffering Heart
 RB103: Reliquary of the Sorrowful Heart
