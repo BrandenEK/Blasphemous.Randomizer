@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using UnityEngine.UI;
 using Tools.Playmaker2.Action;
+using Gameplay.UI.Others.MenuLogic;
 
 namespace BlasphemousRandomizer.Patches
 {
@@ -25,6 +26,20 @@ namespace BlasphemousRandomizer.Patches
             {
                 __instance.Finish();
                 return false;
+            }
+            return true;
+        }
+    }
+
+    // Can be used to close dialog
+    [HarmonyPatch(typeof(PopUpWidget), "ShowAreaPopUp")]
+    public class PopUpWidget_Patch
+    {
+        public static bool Prefix(string area, PopUpWidget __instance)
+        {
+            if (area == "closeDialog")
+            {
+                //PopUpWidget.OnDialogClose();
             }
             return true;
         }
