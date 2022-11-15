@@ -11,7 +11,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(VersionNumber __instance)
         {
-            __instance.GetComponent<Text>().text = "Randomizer " + MyPluginInfo.PLUGIN_VERSION;
+            __instance.GetComponent<Text>().text = "Randomizer v" + MyPluginInfo.PLUGIN_VERSION;
             return false;
         }
     }

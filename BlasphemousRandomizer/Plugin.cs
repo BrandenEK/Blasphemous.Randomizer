@@ -15,6 +15,7 @@ namespace BlasphemousRandomizer
             if (main == null)
                 main = this;
 
+            randomizer = new Randomizer();
             console = new ConsoleOverride();
             Patch();
         }
@@ -28,6 +29,7 @@ namespace BlasphemousRandomizer
         private void Update()
         {
             console.update();
+            randomizer.update();
         }
 
         public void Log(string message)
@@ -42,6 +44,8 @@ namespace BlasphemousRandomizer
         }
 
         ConsoleOverride console;
+        Randomizer randomizer;
+
         public static Plugin main;
     }
 }

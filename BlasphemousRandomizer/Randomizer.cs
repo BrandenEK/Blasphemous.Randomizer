@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Gameplay.UI.Others.MenuLogic;
+﻿using UnityEngine;
+using Gameplay.UI;
 
 namespace BlasphemousRandomizer
 {
     class Randomizer
     {
-        public void closeDialog()
+        public void update()
         {
-            if (PopUpWidget.OnDialogClose != null)
+            if (Input.GetKeyDown(KeyCode.Keypad7))
             {
-                PopUpWidget.OnDialogClose();
+                UIController.instance.ShowPopUp("Test", "", 0, false);
             }
         }
     }
