@@ -32,16 +32,12 @@ namespace BlasphemousRandomizer.Patches
     }
 
     // Can be used to close dialog
-    [HarmonyPatch(typeof(PopUpWidget), "ShowAreaPopUp")]
+    [HarmonyPatch(typeof(PopUpWidget), "HideAreaPopup")]
     public class PopUpWidget_Patch
     {
-        public static bool Prefix(string area, PopUpWidget __instance)
+        public static void Postfix(PopUpWidget __instance)
         {
-            if (area == "closeDialog")
-            {
-                //PopUpWidget.OnDialogClose();
-            }
-            return true;
+            
         }
     }
 }

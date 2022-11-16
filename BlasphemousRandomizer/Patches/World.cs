@@ -1,6 +1,8 @@
 ﻿using HarmonyLib;
 using Tools.Level;
 using Tools.Level.Interactables;
+using Gameplay.UI;
+using Gameplay.UI.Others.MenuLogic;
 using Framework.Managers;
 
 namespace BlasphemousRandomizer.Patches
@@ -8,13 +10,21 @@ namespace BlasphemousRandomizer.Patches
     class World
     {
         // Always allow teleportation if enabled in config
-        [HarmonyPatch(typeof(PrieDieu), "KneeledMenuCoroutine", MethodType.Enumerator)]
+        [HarmonyPatch(typeof(PrieDieu), "HaveAnySwordHearts")]
         public class PrieDieu_Patch
         {
-            public static void Prefix(ref bool canUseTeleport)
+            public static bool Prefix(ref bool __result)
             {
-                if (Main.Randomizer.gameConfig.general.teleportationAlwaysUnlocked)
-                    canUseTeleport = true;
+                __result = true;
+                return false;
+            }
+        }
+        [HarmonyPatch(typeof(UIController), "ShowKneelMenu")]
+        public class UIController_Patch
+        {
+            public static void Prefix(ref KneelPopUpWidget.Modes mode)
+            {
+                mode = KneelPopUpWidget.Modes.PrieDieu_all;
             }
         }
 

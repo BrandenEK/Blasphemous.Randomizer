@@ -39,6 +39,7 @@ namespace BlasphemousRandomizer
 
             // Load config
             fileConfig = MainConfig.Default();//FileUtil.loadConfig();
+            Log(fileConfig.general.teleportationAlwaysUnlocked.ToString());
             if (!isConfigVersionValid(fileConfig.versionCreated))
             {
                 fileConfig = MainConfig.Default();

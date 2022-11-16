@@ -22,28 +22,10 @@ namespace BlasphemousRandomizer
 			return false;
 		}
 
-		// Loads the config file from the root directory
-		public static MainConfig loadConfig()
-        {
-			if (read("randomizer.cfg", false, out string json))
-            {
-				return JsonUtility.FromJson<MainConfig>(json);
-            }
-			MainConfig config = MainConfig.Default();
-			saveConfig(config);
-			return config;
-        }
-
-		// Saves the config file to the root directory
-		public static void saveConfig(MainConfig config)
-        {
-			writeFull("randomizer.cfg", JsonUtility.ToJson(config, true));
-        }
-
 		// Read all text from file in the root directory or the data folder
 		public static bool read(string fileName, bool data, out string text)
 		{
-			string path = (data ? Paths.PluginPath + "/BlasphemousRandomizer" : Paths.GameRootPath) + "/" + fileName;
+			string path = (data ? Paths.PluginPath + "/BlasphemousRandomizer/data" : Paths.GameRootPath) + "/" + fileName;
 			if (File.Exists(path))
 			{
 				text = File.ReadAllText(path);
@@ -56,7 +38,7 @@ namespace BlasphemousRandomizer
 		// Read bytes from file in data folder
 		public static bool readBytes(string fileName, out byte[] data)
 		{
-			string path = Paths.PluginPath + "/BlasphemousRandomizer/" + fileName;
+			string path = Paths.PluginPath + "/BlasphemousRandomizer/data/" + fileName;
 			if (File.Exists(path))
 			{
 				data = File.ReadAllBytes(path);
@@ -104,6 +86,24 @@ namespace BlasphemousRandomizer
 			text = text.Replace("\r", string.Empty);
 			output = text.Split('\n');
 			return true;
+		}
+
+		// Loads the config file from the root directory
+		public static MainConfig loadConfig()
+		{
+			if (read("randomizer.cfg", false, out string json))
+			{
+				return JsonUtility.FromJson<MainConfig>(json);
+			}
+			MainConfig config = MainConfig.Default();
+			saveConfig(config);
+			return config;
+		}
+
+		// Saves the config file to the root directory
+		public static void saveConfig(MainConfig config)
+		{
+			writeFull("randomizer.cfg", JsonUtility.ToJson(config, true));
 		}
 
 		// Reads list of objects from json file in data folder
