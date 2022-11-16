@@ -43,6 +43,19 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
+    // Call load data even if loading vanilla game
+    [HarmonyPatch(typeof(PersistentManager), "LoadSnapShot")]
+    public class PersistentManager_Patch
+    {
+        public static void Postfix(PersistentManager __instance, PersistentManager.SnapShot snapShot)
+        {
+            if (!snapShot.commonElements.ContainsKey(Main.Randomizer.GetPersistenID()))
+            {
+                Main.Randomizer.SetCurrentPersistentState(null, false, "");
+            }
+        }
+    }
+
     // Set up new game when select new save file
     [HarmonyPatch(typeof(NewMainMenu), "InternalPlay")]
     public class NewMainMenu_Patch
