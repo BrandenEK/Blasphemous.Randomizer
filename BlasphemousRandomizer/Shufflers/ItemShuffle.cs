@@ -10,7 +10,7 @@ namespace BlasphemousRandomizer.Shufflers
 
         public void giveItem(string locationId)
         {
-
+            Main.Randomizer.Log("Giving item from location: " + locationId);
         }
 
     }

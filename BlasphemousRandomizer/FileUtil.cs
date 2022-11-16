@@ -37,7 +37,7 @@ namespace BlasphemousRandomizer
 		// Saves the config file to the root directory
 		public static void saveConfig(MainConfig config)
         {
-			writeFull("randomizer.cfg", JsonUtility.ToJson(config));
+			writeFull("randomizer.cfg", JsonUtility.ToJson(config, true));
         }
 
 		// Read all text from file in the root directory or the data folder

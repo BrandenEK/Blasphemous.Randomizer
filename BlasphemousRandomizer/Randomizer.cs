@@ -49,6 +49,7 @@ namespace BlasphemousRandomizer
             // Set up data
             Core.Persistence.AddPersistentManager(this);
             lastLoadedSlot = -1;
+            Log("Randomizer has been initialized!");
         }
 
         // When game is saved
@@ -155,7 +156,7 @@ namespace BlasphemousRandomizer
         // Log message to file
         public void Log(string message)
         {
-            if (fileConfig.debug.type > 0)
+            //if (fileConfig.debug.type > 0)
                 FileUtil.writeLine("log.txt", message + "\n");
         }
 

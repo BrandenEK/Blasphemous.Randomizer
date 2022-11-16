@@ -13,7 +13,7 @@ namespace BlasphemousRandomizer.Patches
         {
             public static void Prefix(ref bool canUseTeleport)
             {
-                if (Main.Randomizer.gameConfig.general.teleportationAlwaysUnlocked)
+                //if (Main.Randomizer.gameConfig.general.teleportationAlwaysUnlocked)
                     canUseTeleport = true;
             }
         }

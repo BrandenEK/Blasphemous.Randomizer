@@ -49,6 +49,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void PostFix(bool ___isContinue)
         {
+            Main.Randomizer.Log("InternalPlay");
             if (!___isContinue)
             {
                 Core.GameModeManager.ChangeMode(GameModeManager.GAME_MODES.NEW_GAME_PLUS);
