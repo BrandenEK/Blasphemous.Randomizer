@@ -52,7 +52,7 @@ namespace BlasphemousRandomizer.Patches
             if (!___isContinue)
             {
                 Core.GameModeManager.ChangeMode(GameModeManager.GAME_MODES.NEW_GAME_PLUS);
-                // Call randomizer newGame function
+                Main.Randomizer.newGame();
             }
         }
     }
@@ -67,14 +67,13 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
-    /* Initialize Randomizer class
+    // Initialize Randomizer class
     [HarmonyPatch(typeof(AchievementsManager), "AllInitialized")]
     public class AchievementsManager_Patch
     {
         public static void Postfix()
         {
-
+            Main.Randomizer.Initialize();
         }
     }
-    */
 }

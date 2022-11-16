@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Gameplay.UI;
+using System.Diagnostics;
 using BlasphemousRandomizer.Shufflers;
 using BlasphemousRandomizer.Config;
 using Framework.FrameworkCore;
@@ -28,7 +29,7 @@ namespace BlasphemousRandomizer
         private bool inGame;
         private int lastLoadedSlot;
 
-        public Randomizer()
+        public void Initialize()
         {
             // Create main shufflers
             itemShuffler = new ItemShuffle();
@@ -41,6 +42,7 @@ namespace BlasphemousRandomizer
             if (!isConfigVersionValid(fileConfig.versionCreated))
             {
                 fileConfig = MainConfig.Default();
+                FileUtil.saveConfig(fileConfig);
             }
             gameConfig = fileConfig;
 
@@ -78,6 +80,7 @@ namespace BlasphemousRandomizer
                 itemsCollected = randomizerPersistenceData.itemsCollected;
                 startedInRando = randomizerPersistenceData.startedInRando;
                 gameConfig = randomizerPersistenceData.config;
+                Log("Loading seed: " + seed);
                 Randomize(false);
             }
             else
@@ -88,6 +91,7 @@ namespace BlasphemousRandomizer
                 totalItems = 0;
                 startedInRando = false;
                 gameConfig = fileConfig;
+                Log("Loaded invalid game!");
                 //Display error message
                 //Reset shufflers
             }
@@ -104,7 +108,17 @@ namespace BlasphemousRandomizer
 
         private void Randomize(bool newGame)
         {
-
+            Stopwatch watch = Stopwatch.StartNew();
+            //Fill doors
+            //Fill items
+            //Fill hints
+            //Fill enemies
+            if (newGame)
+            {
+                //Generate spoiler
+            }
+            watch.Stop();
+            Log("Time to fill seed: " + watch.ElapsedMilliseconds + " ms");
         }
 
         public void newGame()
@@ -113,6 +127,7 @@ namespace BlasphemousRandomizer
             itemsCollected = 0;
             startedInRando = true;
             gameConfig = fileConfig;
+            Log("Generating new seed: " + seed);
             Randomize(true);
 
             inGame = true;

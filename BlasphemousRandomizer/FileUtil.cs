@@ -29,7 +29,15 @@ namespace BlasphemousRandomizer
             {
 				return JsonUtility.FromJson<MainConfig>(json);
             }
-			return MainConfig.Default();
+			MainConfig config = MainConfig.Default();
+			saveConfig(config);
+			return config;
+        }
+
+		// Saves the config file to the root directory
+		public static void saveConfig(MainConfig config)
+        {
+			writeFull("randomizer.cfg", JsonUtility.ToJson(config));
         }
 
 		// Read all text from file in the root directory or the data folder
