@@ -4,9 +4,23 @@ using Framework.EditorScripts.EnemiesBalance;
 using Framework.EditorScripts.BossesBalance;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Widgets;
+using UnityEngine;
 
 namespace BlasphemousRandomizer.Patches
 {
+    // Allow console commands
+    [HarmonyPatch(typeof(ConsoleWidget), "Update")]
+    public class ConsoleWidget_Patch
+    {
+        public static void PostFix(ConsoleWidget __instance, bool ___isEnabled)
+        {
+            if (Input.GetKeyDown(KeyCode.Backslash))
+            {
+                __instance.SetEnabled(!___isEnabled);
+            }
+        }
+    }
+
     // Make enemies stay as ng
     [HarmonyPatch(typeof(GameModeManager), "GetCurrentEnemiesBalanceChart")]
     public class GameModeEnemies_Patch
