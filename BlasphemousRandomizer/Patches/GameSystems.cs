@@ -12,7 +12,7 @@ namespace BlasphemousRandomizer.Patches
     [HarmonyPatch(typeof(ConsoleWidget), "Update")]
     public class ConsoleWidget_Patch
     {
-        public static void PostFix(ConsoleWidget __instance, bool ___isEnabled)
+        public static void Postfix(ConsoleWidget __instance, bool ___isEnabled)
         {
             if (Input.GetKeyDown(KeyCode.Backslash))
             {
@@ -47,9 +47,8 @@ namespace BlasphemousRandomizer.Patches
     [HarmonyPatch(typeof(NewMainMenu), "InternalPlay")]
     public class NewMainMenu_Patch
     {
-        public static void PostFix(bool ___isContinue)
+        public static void Postfix(bool ___isContinue)
         {
-            Main.Randomizer.Log("InternalPlay");
             if (!___isContinue)
             {
                 Core.GameModeManager.ChangeMode(GameModeManager.GAME_MODES.NEW_GAME_PLUS);

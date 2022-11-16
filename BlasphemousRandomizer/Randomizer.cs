@@ -38,7 +38,7 @@ namespace BlasphemousRandomizer
             hintShuffler = new HintShuffle();
 
             // Load config
-            fileConfig = FileUtil.loadConfig();
+            fileConfig = MainConfig.Default();//FileUtil.loadConfig();
             if (!isConfigVersionValid(fileConfig.versionCreated))
             {
                 fileConfig = MainConfig.Default();
@@ -101,6 +101,25 @@ namespace BlasphemousRandomizer
             lastLoadedSlot = PersistentManager.GetAutomaticSlot();
         }
 
+        // When new game is started
+        public void newGame()
+        {
+            seed = generateSeed();
+            itemsCollected = 0;
+            startedInRando = true;
+            gameConfig = fileConfig;
+            Log("Generating new seed: " + seed);
+            Randomize(true);
+
+            inGame = true;
+            lastLoadedSlot = PersistentManager.GetAutomaticSlot();
+        }
+
+        private int generateSeed()
+        {
+            return fileConfig.general.customSeed > 0 ? fileConfig.general.customSeed : new System.Random().Next();
+        }
+
         // Returned to title screen
         public void ResetPersistence()
         {
@@ -122,23 +141,6 @@ namespace BlasphemousRandomizer
             Log("Time to fill seed: " + watch.ElapsedMilliseconds + " ms");
         }
 
-        public void newGame()
-        {
-            seed = generateSeed();
-            itemsCollected = 0;
-            startedInRando = true;
-            gameConfig = fileConfig;
-            Log("Generating new seed: " + seed);
-            Randomize(true);
-
-            inGame = true;
-            lastLoadedSlot = PersistentManager.GetAutomaticSlot();
-        }
-
-        private int generateSeed()
-        {
-            return fileConfig.general.customSeed > 0 ? fileConfig.general.customSeed : new System.Random().Next();
-        }
 
         // Keyboard input
         public void update()
