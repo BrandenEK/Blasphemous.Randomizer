@@ -8,12 +8,12 @@ namespace BlasphemousRandomizer.Patches
     class World
     {
         // Always allow teleportation if enabled in config
-        [HarmonyPatch(typeof(PrieDieu), "KneeledMenuCoroutine")]
+        [HarmonyPatch(typeof(PrieDieu), "KneeledMenuCoroutine", MethodType.Enumerator)]
         public class PrieDieu_Patch
         {
             public static void Prefix(ref bool canUseTeleport)
             {
-                //if (Main.Randomizer.gameConfig.general.teleportationAlwaysUnlocked)
+                if (Main.Randomizer.gameConfig.general.teleportationAlwaysUnlocked)
                     canUseTeleport = true;
             }
         }

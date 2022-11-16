@@ -108,6 +108,7 @@ namespace BlasphemousRandomizer
             itemsCollected = 0;
             startedInRando = true;
             gameConfig = fileConfig;
+            setUpExtras();
             Log("Generating new seed: " + seed);
             Randomize(true);
 
@@ -142,6 +143,25 @@ namespace BlasphemousRandomizer
         }
 
 
+        // Set up a new game
+        private void setUpExtras()
+        {
+            // Set flags relating to choosing a penitence
+            if (!fileConfig.general.enablePenitence)
+            {
+                Core.Events.SetFlag("PENITENCE_EVENT_FINISHED", true, false);
+                Core.Events.SetFlag("PENITENCE_NO_PENITENCE", true, false);
+            }
+            // Set flags relating to various cutscenes
+            if (fileConfig.general.skipCutscenes && FileUtil.parseFiletoArray("cutscenes_flags.dat", out string[] flags))
+            {
+                foreach (string id in flags)
+                {
+                    Core.Events.SetFlag(id, true, false);
+                }
+            }
+        }
+
         // Keyboard input
         public void update()
         {
@@ -158,7 +178,7 @@ namespace BlasphemousRandomizer
         // Log message to file
         public void Log(string message)
         {
-            //if (fileConfig.debug.type > 0)
+            if (fileConfig.debug.type > 0)
                 FileUtil.writeLine("log.txt", message + "\n");
         }
 
