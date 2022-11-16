@@ -6,18 +6,20 @@ namespace BlasphemousRandomizer
 {
     [BepInPlugin("damocles.blasphemous.randomizer", "Blasphemous Randomizer", "1.0.0")]
     [BepInProcess("Blasphemous.exe")]
-    public class Plugin : BaseUnityPlugin
+    public class Main : BaseUnityPlugin
     {
+        public static Randomizer Randomizer;
+
         private void Awake()
         {
-            // Plugin startup logic
             Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
-            if (main == null)
-                main = this;
-
-            randomizer = new Randomizer();
-            console = new ConsoleOverride();
+            Randomizer = new Randomizer();
             Patch();
+        }
+
+        private void Update()
+        {
+            Randomizer.update();
         }
 
         private void Patch()
@@ -25,27 +27,5 @@ namespace BlasphemousRandomizer
             Harmony harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
             harmony.PatchAll();
         }
-
-        private void Update()
-        {
-            console.update();
-            randomizer.update();
-        }
-
-        public void Log(string message)
-        {
-            Logger.LogInfo(message);
-        }
-
-        //Temporary
-        public void giveItem(string id)
-        {
-            main.Log("Giving item: " + id);
-        }
-
-        ConsoleOverride console;
-        Randomizer randomizer;
-
-        public static Plugin main;
     }
 }

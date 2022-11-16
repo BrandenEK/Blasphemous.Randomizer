@@ -16,7 +16,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(string ___item)
         {
-            Plugin.main.giveItem(___item);
+            Main.Randomizer.itemShuffler.giveItem(___item);
             return false;
         }
     }
@@ -27,7 +27,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(string ___item)
         {
-            Plugin.main.giveItem(___item);
+            Main.Randomizer.itemShuffler.giveItem(___item);
             return false;
         }
     }
@@ -38,7 +38,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(string objectIdStting, FsmBool ___showMessage, ref bool __result)
         {
-            Plugin.main.giveItem(objectIdStting);
+            Main.Randomizer.itemShuffler.giveItem(objectIdStting);
             __result = true;
             return false;
         }
@@ -64,7 +64,7 @@ namespace BlasphemousRandomizer.Patches
         {
             __instance.destroyed = true;
             __instance.spawner.DisableCherubSpawn();
-            Plugin.main.giveItem(__instance.cherubId);
+            Main.Randomizer.itemShuffler.giveItem(__instance.cherubId);
             return false;
         }
     }
@@ -75,7 +75,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(LifeUpgrade __instance)
         {
-            Plugin.main.giveItem($"Lady[{Core.LevelManager.currentLevel.LevelName}]");
+            Main.Randomizer.itemShuffler.giveItem($"Lady[{Core.LevelManager.currentLevel.LevelName}]");
             __instance.Finish();
             return false;
         }
@@ -87,7 +87,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(FervourUpgrade __instance)
         {
-            Plugin.main.giveItem($"Oil[{Core.LevelManager.currentLevel.LevelName}]");
+            Main.Randomizer.itemShuffler.giveItem($"Oil[{Core.LevelManager.currentLevel.LevelName}]");
             __instance.Finish();
             return false;
         }
@@ -99,7 +99,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(MeaCulpaUpgrade __instance)
         {
-            Plugin.main.giveItem($"Sword[{Core.LevelManager.currentLevel.LevelName}]");
+            Main.Randomizer.itemShuffler.giveItem($"Sword[{Core.LevelManager.currentLevel.LevelName}]");
             __instance.Finish();
             return false;
         }
@@ -132,11 +132,11 @@ namespace BlasphemousRandomizer.Patches
 
                 if (tears == 18000)
                 {
-                    Plugin.main.giveItem($"{Core.LevelManager.currentLevel.LevelName}[18000]");
+                    Main.Randomizer.itemShuffler.giveItem($"{Core.LevelManager.currentLevel.LevelName}[18000]");
                 }
                 else
                 {
-                    Plugin.main.giveItem($"{__instance.Owner.name}[{tears}]");
+                    Main.Randomizer.itemShuffler.giveItem($"{__instance.Owner.name}[{tears}]");
                 }
             }
             else
@@ -158,7 +158,7 @@ namespace BlasphemousRandomizer.Patches
         {
             if (enemy.Id != "" && "BS01BS03BS04BS05BS06BS12BS13BS14BS16".Contains(enemy.Id))
             {
-                Plugin.main.giveItem(enemy.Id);
+                Main.Randomizer.itemShuffler.giveItem(enemy.Id);
                 return false;
             }
             return true;

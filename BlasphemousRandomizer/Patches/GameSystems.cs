@@ -52,4 +52,15 @@ namespace BlasphemousRandomizer.Patches
             canConvert = false;
         }
     }
+
+    /* Initialize Randomizer class
+    [HarmonyPatch(typeof(AchievementsManager), "AllInitialized")]
+    public class AchievementsManager_Patch
+    {
+        public static void Postfix()
+        {
+
+        }
+    }
+    */
 }
