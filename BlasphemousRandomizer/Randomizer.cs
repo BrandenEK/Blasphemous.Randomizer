@@ -22,7 +22,7 @@ namespace BlasphemousRandomizer
 
         // Save file info
         private int seed;
-        public int itemsCollected { get; private set; }
+        public int itemsCollected;
         public int totalItems { get; private set; }
         public bool startedInRando { get; private set; }
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BlasphemousRandomizer.Structures
 {
-    class ItemLocation
+    public class ItemLocation
     {
         // Permanent data
         public string id;

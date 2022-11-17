@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BlasphemousRandomizer.Structures
 {
-    class EnemyLocation
+    public class EnemyLocation
     {
         public int locationId;
         public int enemyType;
