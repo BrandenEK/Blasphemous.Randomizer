@@ -122,7 +122,8 @@ namespace BlasphemousRandomizer.Shufflers
         private void displayItem(Item item)
         {
             RewardInfo info = item.getRewardInfo(false);
-            //Crete achievement & show it
+            RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
+            UIController.instance.ShowPopupAchievement(achievement);
         }
     }
 }

@@ -1,7 +1,10 @@
 ﻿using HarmonyLib;
 using UnityEngine.UI;
 using Tools.Playmaker2.Action;
+using Framework.Achievements;
+using Gameplay.UI;
 using Gameplay.UI.Others.MenuLogic;
+using BlasphemousRandomizer.Structures;
 
 namespace BlasphemousRandomizer.Patches
 {
@@ -28,6 +31,18 @@ namespace BlasphemousRandomizer.Patches
                 return false;
             }
             return true;
+        }
+    }
+
+    // Allow all achievement messages to go through
+    [HarmonyPatch(typeof(UIController), "ShowPopopAchievement")]
+    public class UIController_Patch
+    {
+        public static bool Prefix(Achievement achievement, PopupAchievementWidget ___popupAchievementWidget)
+        {
+            if (achievement.GetType() == typeof(RewardAchievement))
+                ___popupAchievementWidget.ShowPopup(achievement);
+            return false;
         }
     }
 
