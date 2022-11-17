@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using BlasphemousRandomizer.Structures;
 using Framework.Managers;
-using Framework.Inventory;
 using Gameplay.GameControllers.Entities;
 using Gameplay.UI;
 
@@ -13,6 +12,22 @@ namespace BlasphemousRandomizer.Shufflers
         private Dictionary<string, Item> newItems;
 
         private Item lastItem;
+
+        // Gets the item held at the specified location
+        public Item getItemAtLocation(string locationId)
+        {
+            if (newItems == null)
+            {
+                UIController.instance.ShowPopUp("Error: Rewards list not initialized!", "", 0f, false);
+                return null;
+            }
+            if (!newItems.ContainsKey(locationId))
+            {
+                Main.Randomizer.Log("Location " + locationId + " was not loaded!");
+                return null;
+            }
+            return newItems[locationId];
+        }
 
         // Item has been collected from a location
         public void giveItem(string locationId, bool display)
@@ -33,31 +48,30 @@ namespace BlasphemousRandomizer.Shufflers
             // Logic for if its a progressive item
 
             // Add & maybe display the item
-            addItem(item);
+            giveItem(item);
             if (display)
             {
                 displayItem(item);
             }
         }
 
-        // Gets the item held at the specified location
-        public Item getItemAtLocation(string locationId)
+        // Item has been collected, but display is delayed
+        public void displayItem(string locationId)
         {
-            if (newItems == null)
-            {
-                UIController.instance.ShowPopUp("Error: Rewards list not initialized!", "", 0f, false);
-                return null;
-            }
-            if (!newItems.ContainsKey(locationId))
-            {
-                Main.Randomizer.Log("Location " + locationId + " was not loaded!");
-                return null;
-            }
-            return newItems[locationId];
+            string specialItems = "QI78RB17RB18RB19RB24RB25RB26";
+            Item item = specialItems.Contains(locationId) ? lastItem : getItemAtLocation(locationId);
+            if (item == null)
+                return;
+
+            displayItem(item);
+
+            //Temporary
+            if (locationId == "QI110")
+                Main.Randomizer.itemsCollected++;
         }
 
         // Add the item to inventory
-        private void addItem(Item item)
+        private void giveItem(Item item)
         {
             Main.Randomizer.Log($"Giving item [{item.type}]({item.id})");
             Main.Randomizer.itemsCollected++;
@@ -104,9 +118,11 @@ namespace BlasphemousRandomizer.Shufflers
             }
         }
 
+        // Open a pop up to display the item
         private void displayItem(Item item)
         {
-
+            RewardInfo info = item.getRewardInfo(false);
+            //Crete achievement & show it
         }
     }
 }
