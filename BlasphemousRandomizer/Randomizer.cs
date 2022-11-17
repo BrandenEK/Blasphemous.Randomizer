@@ -132,7 +132,7 @@ namespace BlasphemousRandomizer
         {
             Stopwatch watch = Stopwatch.StartNew();
             //Fill doors
-            //Fill items
+            itemShuffler.Shuffle(seed);
             //Fill hints
             //Fill enemies
             if (newGame)

@@ -35,7 +35,7 @@ namespace BlasphemousRandomizer.Patches
     }
 
     // Allow all achievement messages to go through
-    [HarmonyPatch(typeof(UIController), "ShowPopopAchievement")]
+    [HarmonyPatch(typeof(UIController), "ShowPopupAchievement")]
     public class UIController_Patch
     {
         public static bool Prefix(Achievement achievement, PopupAchievementWidget ___popupAchievementWidget)
@@ -43,6 +43,16 @@ namespace BlasphemousRandomizer.Patches
             if (achievement.GetType() == typeof(RewardAchievement))
                 ___popupAchievementWidget.ShowPopup(achievement);
             return false;
+        }
+    }
+
+    // Change achievement message & time
+    [HarmonyPatch(typeof(PopupAchievementWidget), "ShowPopupCorrutine")]
+    public class PopupAchievementWidget_Patch
+    {
+        public static void Prefix()
+        {
+            Main.Randomizer.Log("Showing item notification!");
         }
     }
 

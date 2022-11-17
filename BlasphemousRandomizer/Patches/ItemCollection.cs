@@ -53,8 +53,8 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(string objectIdStting, ref bool __result)
         {
-            //Show message
             Main.Randomizer.Log("ItemAdditionMessage(" + objectIdStting + ")");
+            Main.Randomizer.itemShuffler.displayItem(objectIdStting);
             __result = true;
             return false;
         }

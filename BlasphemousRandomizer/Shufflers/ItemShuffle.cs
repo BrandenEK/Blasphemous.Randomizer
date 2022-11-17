@@ -125,5 +125,15 @@ namespace BlasphemousRandomizer.Shufflers
             RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
             UIController.instance.ShowPopupAchievement(achievement);
         }
+
+        public void Shuffle(int seed)
+        {
+            newItems = new Dictionary<string, Item>()
+            {
+                { "QI106", new Item(0, 1) },
+                { "BS13", new Item(10, 9000) },
+                { "QI31", new Item(4, 23) }
+            };
+        }
     }
 }
