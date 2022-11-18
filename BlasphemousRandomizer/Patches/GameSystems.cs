@@ -21,6 +21,35 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
+    // Change functionality of the Ossuary
+    [HarmonyPatch(typeof(OssuaryManager), "CheckGroupCompletion")]
+    public class OssuaryManager_Patch
+    {
+        public static bool Prefix(OssuaryManager __instance)
+        {
+            __instance.pendingRewards = 0;
+            int collected = OssuaryManager.CountAlreadyRetrievedCollectibles();
+            int alreadyClaimed = 0;
+
+            for (int i = 0; i < 11; i++)
+            {
+                string id = "OSSUARY_REWARD_" + (i + 1);
+                if (Core.Events.GetFlag(id))
+                {
+                    alreadyClaimed++;
+                }
+                else if (collected >= (i + 1) * 4)
+                {
+                    Core.Events.SetFlag(id, true, false);
+                    __instance.pendingRewards++;
+                }
+            }
+            __instance.alreadyClaimedRewards = alreadyClaimed;
+            Core.Events.LaunchEvent(__instance.CheckRewardsEvent, string.Empty);
+            return false;
+        }
+    }
+
     // Make enemies stay as ng
     [HarmonyPatch(typeof(GameModeManager), "GetCurrentEnemiesBalanceChart")]
     public class GameModeEnemies_Patch
