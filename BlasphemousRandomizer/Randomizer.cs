@@ -23,8 +23,8 @@ namespace BlasphemousRandomizer
         // Save file info
         private int seed;
         public int itemsCollected;
-        public int totalItems { get; private set; }
-        public bool startedInRando { get; private set; }
+        public int totalItems;
+        private bool startedInRando;
 
         private bool inGame;
         private int lastLoadedSlot;

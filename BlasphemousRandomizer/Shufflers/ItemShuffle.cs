@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BlasphemousRandomizer.Structures;
+using BlasphemousRandomizer.Fillers;
 using Framework.Managers;
 using Gameplay.GameControllers.Entities;
 using Gameplay.UI;
@@ -10,8 +11,14 @@ namespace BlasphemousRandomizer.Shufflers
     public class ItemShuffle
     {
         private Dictionary<string, Item> newItems;
+        private ItemFiller filler;
 
         private Item lastItem;
+
+        public ItemShuffle()
+        {
+            filler = new ItemFiller();
+        }
 
         // Gets the item held at the specified location
         public Item getItemAtLocation(string locationId)
@@ -49,6 +56,7 @@ namespace BlasphemousRandomizer.Shufflers
 
             // Add & maybe display the item
             giveItem(item);
+            lastItem = item;
             if (display)
             {
                 displayItem(item);
@@ -126,14 +134,17 @@ namespace BlasphemousRandomizer.Shufflers
             UIController.instance.ShowPopupAchievement(achievement);
         }
 
+        // Shuffle the items - called when loading a game
         public void Shuffle(int seed)
         {
-            newItems = new Dictionary<string, Item>()
+            while (!filler.Fill(seed, Main.Randomizer.gameConfig.items, newItems))
             {
-                { "QI106", new Item(0, 1) },
-                { "BS13", new Item(10, 9000) },
-                { "QI31", new Item(4, 23) }
-            };
+                Main.Randomizer.Log($"Seed {seed} was invalid! Trying next...");
+                seed++;
+            }
+
+            Main.Randomizer.totalItems = newItems.Count;
+            Main.Randomizer.Log(newItems.Count + " items have been shuffled!");
         }
     }
 }
