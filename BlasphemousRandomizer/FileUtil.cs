@@ -44,7 +44,7 @@ namespace BlasphemousRandomizer
 				data = File.ReadAllBytes(path);
 				return true;
 			}
-			data = null;
+			data = new byte[0];
 			return false;
 		}
 
@@ -80,7 +80,7 @@ namespace BlasphemousRandomizer
 		{
 			if (!read(fileName, true, out string text))
 			{
-				output = null;
+				output = new string[0];
 				return false;
 			}
 			text = text.Replace("\r", string.Empty);
@@ -115,7 +115,7 @@ namespace BlasphemousRandomizer
 				list = wrapper.Items;
 				return true;
 			}
-			list = null;
+			list = new List<T>();
 			return false;
 		}
 
