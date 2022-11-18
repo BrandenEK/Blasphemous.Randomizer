@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using UnityEngine;
 using UnityEngine.UI;
 using Tools.Playmaker2.Action;
 using Framework.Achievements;
@@ -48,11 +49,15 @@ namespace BlasphemousRandomizer.Patches
 
     // Change achievement message & time
     [HarmonyPatch(typeof(PopupAchievementWidget), "ShowPopupCorrutine")]
-    public class PopupAchievementWidget_Patch
+    public class PopupAchievementWidget_Show_Patch
     {
-        public static void Prefix()
+        public static void Prefix(RectTransform ___PopUp, ref float ___startDelay, ref float ___popupShowTime, ref float ___endTime, Achievement achievement)
         {
-            Main.Randomizer.Log("Showing item notification!");
+            ___startDelay = 0.1f;
+            ___popupShowTime = 2f;
+            ___endTime = 0.1f;
+            ___PopUp.GetChild(1).GetComponent<Text>().text = achievement.Name;
+            ___PopUp.GetChild(2).GetComponent<Text>().text = achievement.Description;
         }
     }
 

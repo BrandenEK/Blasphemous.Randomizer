@@ -49,19 +49,19 @@ namespace BlasphemousRandomizer.Structures
 					return new RewardInfo(baseObject.caption, baseObject.description, "New rosary bead obtained!", baseObject.picture);
 				case 1:
 					baseObject = inventoryManager.GetBaseObject("PR" + id.ToString("00"), InventoryManager.ItemType.Prayer);
-					return new RewardInfo(baseObject.caption, baseObject.description, "New rosary bead obtained!", baseObject.picture);
+					return new RewardInfo(baseObject.caption, baseObject.description, "New prayer obtained!", baseObject.picture);
 				case 2:
 					baseObject = inventoryManager.GetBaseObject("RE" + id.ToString("00"), InventoryManager.ItemType.Relic);
-					return new RewardInfo(baseObject.caption, baseObject.description, "New rosary bead obtained!", baseObject.picture);
+					return new RewardInfo(baseObject.caption, baseObject.description, "New relic obtained!", baseObject.picture);
 				case 3:
 					baseObject = inventoryManager.GetBaseObject("HE" + id.ToString("00"), InventoryManager.ItemType.Sword);
-					return new RewardInfo(baseObject.caption, baseObject.description, "New rosary bead obtained!", baseObject.picture);
+					return new RewardInfo(baseObject.caption, baseObject.description, "New sword heart obtained!", baseObject.picture);
 				case 4:
 					baseObject = inventoryManager.GetBaseObject("CO" + id.ToString("00"), InventoryManager.ItemType.Collectible);
-					return new RewardInfo(baseObject.caption, baseObject.description, "New rosary bead obtained!", baseObject.picture);
+					return new RewardInfo(baseObject.caption, baseObject.description, "New collectible obtained!", baseObject.picture);
 				case 5:
 					baseObject = inventoryManager.GetBaseObject("QI" + id.ToString("00"), InventoryManager.ItemType.Quest);
-					return new RewardInfo(baseObject.caption, baseObject.description, "New rosary bead obtained!", baseObject.picture);
+					return new RewardInfo(baseObject.caption, baseObject.description, "New quest item obtained!", baseObject.picture);
 				case 6:
 					return new RewardInfo("Cherub " + (CherubCaptorPersistentObject.CountRescuedCherubs() + (upgraded ? 1 : 0)) + "/38", "A little floating baby that you rescued from a cage.", "Cherub rescued!", null);
 				case 7:
