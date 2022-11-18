@@ -6,6 +6,7 @@ using Framework.Achievements;
 using Gameplay.UI;
 using Gameplay.UI.Others.MenuLogic;
 using BlasphemousRandomizer.Structures;
+using System.Collections;
 
 namespace BlasphemousRandomizer.Patches
 {
@@ -42,7 +43,10 @@ namespace BlasphemousRandomizer.Patches
         public static bool Prefix(Achievement achievement, PopupAchievementWidget ___popupAchievementWidget)
         {
             if (achievement.GetType() == typeof(RewardAchievement))
+            {
                 ___popupAchievementWidget.ShowPopup(achievement);
+                UIController.instance.ShowPopUp("", "", 0.001f, false);
+            }
             return false;
         }
     }
@@ -80,13 +84,14 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
-    // Can be used to close dialog
-    [HarmonyPatch(typeof(PopUpWidget), "HideAreaPopup")]
+    // Slight workaround to have CloseDialog event called when showing notification
+    [HarmonyPatch(typeof(PopUpWidget), "ShowPopUp")]
     public class PopUpWidget_Patch
     {
-        public static void Postfix(PopUpWidget __instance)
+        public static void Postfix(GameObject ___messageRoot, float timeToWait)
         {
-            
+            if (timeToWait == 0.001f)
+                ___messageRoot.SetActive(false);
         }
     }
 }

@@ -135,6 +135,7 @@ namespace BlasphemousRandomizer
             itemShuffler.Shuffle(seed);
             //Fill hints
             //Fill enemies
+            totalItems = 5;
             if (newGame)
             {
                 //Generate spoiler
