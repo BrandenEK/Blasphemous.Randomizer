@@ -61,6 +61,25 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
+    // Show number of items collected on map screen
+    [HarmonyPatch(typeof(NewMapMenuWidget), "Initialize")]
+    public class NewMapMenuWidget_Patch
+    {
+        public static void Postfix(NewMapMenuWidget __instance)
+        {
+            Transform items = __instance.transform.Find("ItemsText");
+            if (items == null)
+            {
+                RectTransform rect = Object.Instantiate(__instance.CherubsText.gameObject, __instance.transform).transform as RectTransform;
+                rect.name = "ItemsText";
+                rect.anchoredPosition = new Vector2(45f, -60f);
+                rect.GetComponentInChildren<Text>().alignment = TextAnchor.MiddleLeft;
+                items = rect;
+            }
+            items.GetComponentInChildren<Text>().text = $"Items collected: {Main.Randomizer.itemsCollected}/{Main.Randomizer.totalItems}";
+        }
+    }
+
     // Can be used to close dialog
     [HarmonyPatch(typeof(PopUpWidget), "HideAreaPopup")]
     public class PopUpWidget_Patch
