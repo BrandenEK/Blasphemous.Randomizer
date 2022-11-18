@@ -29,6 +29,8 @@ namespace BlasphemousRandomizer
         private bool inGame;
         private int lastLoadedSlot;
 
+        private string[] cutsceneNames;
+
         public void Initialize()
         {
             // Create main shufflers
@@ -46,6 +48,10 @@ namespace BlasphemousRandomizer
                 FileUtil.saveConfig(fileConfig);
             }
             gameConfig = fileConfig;
+
+            // Load external data
+            if (!FileUtil.parseFiletoArray("cutscenes_names.dat", out cutsceneNames))
+                cutsceneNames = new string[0];
 
             // Set up data
             Core.Persistence.AddPersistentManager(this);
@@ -182,6 +188,11 @@ namespace BlasphemousRandomizer
         {
             if (fileConfig.debug.type > 0)
                 FileUtil.writeLine("log.txt", message + "\n");
+        }
+
+        public bool shouldSkipCutscene(string id)
+        {
+            return gameConfig.general.skipCutscenes && FileUtil.arrayContains(cutsceneNames, id);
         }
 
         private bool isConfigVersionValid(string configVersion)

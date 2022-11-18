@@ -36,6 +36,22 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
+    // Skip certain cutscenes
+    [HarmonyPatch(typeof(CutscenePlay), "OnEnter")]
+    public class CutscenePlay_Patch
+    {
+        public static bool Prefix(CutscenePlay __instance)
+        {
+            if (__instance.cutscene != null && Main.Randomizer.shouldSkipCutscene(__instance.cutscene.name))
+            {
+                __instance.Finish();
+                __instance.Fsm.Event(__instance.onSuccess);
+                return false;
+            }
+            return true;
+        }
+    }
+
     // Allow all achievement messages to go through
     [HarmonyPatch(typeof(UIController), "ShowPopupAchievement")]
     public class UIController_Patch
