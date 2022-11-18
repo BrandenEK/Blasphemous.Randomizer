@@ -6,8 +6,10 @@ namespace BlasphemousRandomizer.Structures
 {
     public class Item
     {
+		public string name;
         public int type;
         public int id;
+		public bool progression;
 
 		public Item(int type, int id)
         {

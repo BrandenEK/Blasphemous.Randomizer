@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BlasphemousRandomizer.Structures;
 using BlasphemousRandomizer.Fillers;
 using Framework.Managers;
@@ -137,6 +136,13 @@ namespace BlasphemousRandomizer.Shufflers
         // Shuffle the items - called when loading a game
         public void Shuffle(int seed)
         {
+            if (!filler.isValid())
+            {
+                Main.Randomizer.Log("Error: Item data could not be loaded!");
+                return;
+            }
+
+            newItems = new Dictionary<string, Item>();
             while (!filler.Fill(seed, Main.Randomizer.gameConfig.items, newItems))
             {
                 Main.Randomizer.Log($"Seed {seed} was invalid! Trying next...");

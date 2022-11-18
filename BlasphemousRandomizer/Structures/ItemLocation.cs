@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BlasphemousRandomizer.Structures
+﻿namespace BlasphemousRandomizer.Structures
 {
     public class ItemLocation
     {
@@ -14,5 +9,15 @@ namespace BlasphemousRandomizer.Structures
 
         // Temporary data
         public Item item;
+
+        //Until json
+        public delegate bool reachable(InventoryData data);
+        public reachable isReachable;
+        public ItemLocation(string id, string type, reachable isReachable)
+        {
+            this.id = id;
+            this.type = type;
+            this.isReachable = isReachable;
+        }
     }
 }

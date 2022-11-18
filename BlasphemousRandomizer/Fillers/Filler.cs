@@ -28,5 +28,10 @@ namespace BlasphemousRandomizer.Fillers
             }
             list.AddRange(list2);
         }
+
+        public virtual bool isValid()
+        {
+            return true;
+        }
     }
 }
