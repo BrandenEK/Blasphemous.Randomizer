@@ -138,10 +138,16 @@ namespace BlasphemousRandomizer.Shufflers
             }
 
             newItems = new Dictionary<string, Item>();
-            while (!filler.Fill(seed, Main.Randomizer.gameConfig.items, newItems))
+            int attempt = 0;
+            while (!filler.Fill(seed + attempt, Main.Randomizer.gameConfig.items, newItems) && attempt < 10)
             {
-                Main.Randomizer.Log($"Seed {seed} was invalid! Trying next...");
-                seed++;
+                Main.Randomizer.Log($"Seed {seed + attempt} was invalid! Trying next...");
+                attempt++;
+            }
+            if (attempt >= 10)
+            {
+                Main.Randomizer.Log("Error: Failed to fill items in 10 tries!");
+                return;
             }
 
             Main.Randomizer.totalItems = newItems.Count;

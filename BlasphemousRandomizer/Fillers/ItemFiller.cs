@@ -56,6 +56,12 @@ namespace BlasphemousRandomizer.Fillers
 				output.Add(locations[i].id, locations[i].item);
             }
 
+			// Remove temporary location data
+			for (int i = 0; i < locations.Count; i++)
+            {
+				locations[i].item = null;
+            }
+
 			// Seed is filled & validated
 			return true;
         }
