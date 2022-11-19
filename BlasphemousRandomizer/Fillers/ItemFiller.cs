@@ -64,9 +64,10 @@ namespace BlasphemousRandomizer.Fillers
         private void fillVanillaItems(List<ItemLocation> locations, List<ItemLocation> vanillaLocations, List<Item> items)
         {
             List<Item> rewardsToRemove = new List<Item>();
+			string[] randomLocations = config.type > 0 ? config.randomizedLocations : new string[0];
             for (int i = 0; i < locations.Count; i++)
             {
-                if (!FileUtil.arrayContains(config.randomizedLocations, locations[i].type))
+				if (!FileUtil.arrayContains(randomLocations, locations[i].type))
                 {
                     locations[i].item = items[i];
                     if (items[i].progression)

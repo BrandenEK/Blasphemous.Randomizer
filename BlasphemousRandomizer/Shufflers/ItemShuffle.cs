@@ -7,17 +7,12 @@ using Gameplay.UI;
 
 namespace BlasphemousRandomizer.Shufflers
 {
-    public class ItemShuffle
+    public class ItemShuffle : IShuffle
     {
         private Dictionary<string, Item> newItems;
         private ItemFiller filler;
 
         private Item lastItem;
-
-        public ItemShuffle()
-        {
-            filler = new ItemFiller();
-        }
 
         // Gets the item held at the specified location
         public Item getItemAtLocation(string locationId)
@@ -151,6 +146,16 @@ namespace BlasphemousRandomizer.Shufflers
 
             Main.Randomizer.totalItems = newItems.Count;
             Main.Randomizer.Log(newItems.Count + " items have been shuffled!");
+        }
+
+        public void Init()
+        {
+            filler = new ItemFiller();
+        }
+
+        public void Reset()
+        {
+            newItems = null;
         }
     }
 }
