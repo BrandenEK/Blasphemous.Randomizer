@@ -2,7 +2,6 @@
 using BlasphemousRandomizer.Structures;
 using BlasphemousRandomizer.Fillers;
 using Framework.Managers;
-using Gameplay.GameControllers.Entities;
 using Gameplay.UI;
 
 namespace BlasphemousRandomizer.Shufflers
@@ -46,44 +45,34 @@ namespace BlasphemousRandomizer.Shufflers
             if (item == null)
                 return;
 
-            // Add & maybe display the item
-            giveItem(item);
+            // Add the item to inventory
+            Main.Randomizer.Log($"Giving item [{item.type}]({item.id})");
+            Main.Randomizer.itemsCollected++;
+            item.addToInventory();
             lastItem = item;
+
+            // Possibly display the item
             if (display)
-            {
-                displayItem(item);
-            }
+                displayItem(locationId);
         }
 
-        // Item has been collected, but display is delayed
+        // Display the item in a pop up
         public void displayItem(string locationId)
         {
+            // Get item
             string specialItems = "QI78RB17RB18RB19RB24RB25RB26";
             Item item = specialItems.Contains(locationId) ? lastItem : getItemAtLocation(locationId);
             if (item == null)
                 return;
 
-            displayItem(item);
+            // Create info & show pop up
+            RewardInfo info = item.getRewardInfo(false);
+            RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
+            UIController.instance.ShowPopupAchievement(achievement);
 
             //Temporary
             if (locationId == "QI110")
                 Main.Randomizer.itemsCollected++;
-        }
-
-        // Add the item to inventory
-        private void giveItem(Item item)
-        {
-            Main.Randomizer.Log($"Giving item [{item.type}]({item.id})");
-            Main.Randomizer.itemsCollected++;
-            item.addToInventory();
-        }
-
-        // Open a pop up to display the item
-        private void displayItem(Item item)
-        {
-            RewardInfo info = item.getRewardInfo(false);
-            RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
-            UIController.instance.ShowPopupAchievement(achievement);
         }
 
         // Shuffle the items - called when loading a game

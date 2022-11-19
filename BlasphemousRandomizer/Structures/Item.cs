@@ -12,13 +12,13 @@ namespace BlasphemousRandomizer.Structures
         public int id;
 		public bool progression;
 
-		/*public Item(string name, int type, int id, bool progression)
+		public Item(string name, int type, int id, bool progression)
 		{
 			this.name = name;
 			this.type = type;
 			this.id = id;
 			this.progression = progression;
-		}*/
+		}
 
 		/*public virtual string getDescriptor()
 		{

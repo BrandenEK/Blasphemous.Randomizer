@@ -7,12 +7,8 @@ namespace BlasphemousRandomizer.Structures
         public Item[] items;
         public bool removePrevious;
 
-        public ProgressiveItem(string name, int type, int id, bool progression, Item[] items, bool removePrevious)
+        public ProgressiveItem(string name, int type, int id, bool progression, Item[] items, bool removePrevious) : base(name, type, id, progression)
         {
-            this.name = name;
-            this.type = type;
-            this.id = id;
-            this.progression = progression;
             this.items = items;
             this.removePrevious = removePrevious;
         }
