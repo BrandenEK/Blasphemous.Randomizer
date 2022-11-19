@@ -23,5 +23,10 @@ namespace BlasphemousRandomizer.Shufflers
         {
             // Shuffle doors
         }
+
+        public string GetSpoiler()
+        {
+            return "";
+        }
     }
 }

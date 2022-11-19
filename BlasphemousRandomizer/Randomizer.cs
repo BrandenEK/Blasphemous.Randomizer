@@ -30,8 +30,9 @@ namespace BlasphemousRandomizer
         private bool inGame;
         private int lastLoadedSlot;
 
+        // Randomizer data
         private string[] cutsceneNames;
-        private Sprite[] customImages;
+        private Sprite[] customImages;          private bool forceSpoiler = true;
 
         public void Initialize()
         {
@@ -150,14 +151,22 @@ namespace BlasphemousRandomizer
             //Fill doors
             //Fill hints
             //Fill enemies
+
+            // Shuffle everything
             for (int i = 0; i < shufflers.Length; i++)
             {
                 shufflers[i].Shuffle(seed);
             }
 
-            if (newGame)
+            // Generate spoiler on new game
+            if (newGame || forceSpoiler)
             {
-                //Generate spoiler
+                string spoiler = "";
+                for (int i = 0; i < shufflers.Length; i++)
+                {
+                    spoiler += shufflers[i].GetSpoiler();
+                }
+                FileUtil.writeFull($"spoiler{PersistentManager.GetAutomaticSlot() + 1}.txt", spoiler);
             }
             watch.Stop();
             Log("Time to fill seed: " + watch.ElapsedMilliseconds + " ms");

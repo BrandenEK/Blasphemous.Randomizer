@@ -10,5 +10,8 @@
 
         // Load dictionary with randomized data
         void Shuffle(int seed);
+
+        // Calculate spoiler text based on shuffle
+        string GetSpoiler();
     }
 }

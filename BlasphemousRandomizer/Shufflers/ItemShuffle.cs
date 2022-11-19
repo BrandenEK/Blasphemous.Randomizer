@@ -163,5 +163,34 @@ namespace BlasphemousRandomizer.Shufflers
         {
             newItems = null;
         }
+
+        public string GetSpoiler()
+        {
+            string spoiler = "================\nItems\n================\n\n";
+            string template;
+            Dictionary<string, string> itemNames = new Dictionary<string, string>();
+
+            // Ensure data is valid
+            if (!FileUtil.read("spoiler_items.dat", true, out template) || !FileUtil.parseFileToDictionary("names_items.dat", itemNames) || newItems == null)
+            {
+                return spoiler + "Failed to generate item spoiler.\n\n";
+            }
+
+            for (int left = template.IndexOf("{"); left > 0; left = template.IndexOf("{"))
+            {
+                int right = template.IndexOf("}");
+                string location = template.Substring(left + 1, right - left - 1);
+                string item = "???";
+                if (newItems.ContainsKey(location))
+                {
+                    string desc = newItems[location].getDescriptor();
+                    if (itemNames.ContainsKey(desc))
+                        item = itemNames[desc];
+                }
+                template = template.Substring(0, left) + item + template.Substring(right + 1);
+            }
+
+            return spoiler + template + "\n";
+        }
     }
 }
