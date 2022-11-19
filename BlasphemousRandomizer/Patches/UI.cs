@@ -1,12 +1,13 @@
 ﻿using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
+using Tools.Items;
 using Tools.Playmaker2.Action;
 using Framework.Achievements;
 using Gameplay.UI;
 using Gameplay.UI.Others.MenuLogic;
 using BlasphemousRandomizer.Structures;
-using System.Collections;
+using Framework.Managers;
 
 namespace BlasphemousRandomizer.Patches
 {
@@ -49,6 +50,29 @@ namespace BlasphemousRandomizer.Patches
                 return false;
             }
             return true;
+        }
+    }
+
+    // Allow unequipping true heart
+    [HarmonyPatch(typeof(ItemTemporalEffect), "ContainsEffect")]
+    public class ItemTemporalEffect_ContainsPatch
+    {
+        public static bool Prefix(ref bool __result, ItemTemporalEffect.PenitentEffects effect)
+        {
+            if (effect == ItemTemporalEffect.PenitentEffects.DisableUnEquipSword)
+            {
+                __result = false;
+                return false;
+            }
+            return true;
+        }
+    }
+    [HarmonyPatch(typeof(ItemTemporalEffect), "OnApplyEffect")]
+    public class ItemTemporalEffect_ApplyPatch
+    {
+        public static void Postfix()
+        {
+            Core.Logic.Penitent.AllowEquipSwords = true;
         }
     }
 
