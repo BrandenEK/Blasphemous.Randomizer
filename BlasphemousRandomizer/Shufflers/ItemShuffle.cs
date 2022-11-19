@@ -46,8 +46,6 @@ namespace BlasphemousRandomizer.Shufflers
             if (item == null)
                 return;
 
-            // Logic for if its a progressive item
-
             // Add & maybe display the item
             giveItem(item);
             lastItem = item;
@@ -77,47 +75,7 @@ namespace BlasphemousRandomizer.Shufflers
         {
             Main.Randomizer.Log($"Giving item [{item.type}]({item.id})");
             Main.Randomizer.itemsCollected++;
-
-            InventoryManager inv = Core.InventoryManager;
-            EntityStats stats = Core.Logic.Penitent.Stats;
-            switch (item.type)
-            {
-                case 0:
-                    inv.AddBaseObjectOrTears(inv.GetBaseObject("RB" + item.id.ToString("00"), InventoryManager.ItemType.Bead));
-                    return;
-                case 1:
-                    inv.AddBaseObjectOrTears(inv.GetBaseObject("PR" + item.id.ToString("00"), InventoryManager.ItemType.Prayer));
-                    return;
-                case 2:
-                    inv.AddBaseObjectOrTears(inv.GetBaseObject("RE" + item.id.ToString("00"), InventoryManager.ItemType.Relic));
-                    return;
-                case 3:
-                    inv.AddBaseObjectOrTears(inv.GetBaseObject("HE" + item.id.ToString("00"), InventoryManager.ItemType.Sword));
-                    return;
-                case 4:
-                    inv.AddBaseObjectOrTears(inv.GetBaseObject("CO" + item.id.ToString("00"), InventoryManager.ItemType.Collectible));
-                    return;
-                case 5:
-                    inv.AddBaseObjectOrTears(inv.GetBaseObject("QI" + item.id.ToString("00"), InventoryManager.ItemType.Quest));
-                    return;
-                case 6:
-                    Core.Events.SetFlag("RESCUED_CHERUB_" + item.id.ToString("00"), true, false);
-                    return;
-                case 7:
-                    stats.Life.Upgrade(); stats.Life.SetToCurrentMax();
-                    return;
-                case 8:
-                    stats.Fervour.Upgrade(); stats.Fervour.SetToCurrentMax();
-                    return;
-                case 9:
-                    stats.MeaCulpa.Upgrade(); stats.Strength.Upgrade();
-                    return;
-                case 10:
-                    stats.Purge.Current += item.id;
-                    return;
-                default:
-                    return;
-            }
+            item.addToInventory();
         }
 
         // Open a pop up to display the item
@@ -183,7 +141,7 @@ namespace BlasphemousRandomizer.Shufflers
                 string item = "???";
                 if (newItems.ContainsKey(location))
                 {
-                    string desc = newItems[location].getDescriptor();
+                    string desc = newItems[location].name;
                     if (itemNames.ContainsKey(desc))
                         item = itemNames[desc];
                 }

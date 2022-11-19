@@ -16,6 +16,7 @@ namespace BlasphemousRandomizer.Fillers
 			allLocations = new List<ItemLocation>();
 			fillLocations(allLocations); // Change to load from json
             FileUtil.loadJson("items.json", out allItems);
+			replaceProgressionItems(allItems);
         }
 
         public override bool isValid()
@@ -203,6 +204,41 @@ namespace BlasphemousRandomizer.Fillers
                     newItems.Add(vanillaLocations[i].item);
                     vanillaLocations.RemoveAt(i);
                     i--;
+                }
+            }
+        }
+
+		// Add progression items to the items list
+		private void replaceProgressionItems(List<Item> items)
+        {
+			ProgressiveItem[] progressiveItems = new ProgressiveItem[]
+			{
+				new ProgressiveItem("RW", 0, 17, true, new Item[3], true),
+				new ProgressiveItem("BW", 0, 24, true, new Item[3], true),
+				new ProgressiveItem("TH", 5, 31, true, new Item[8], true)
+			};
+			string[][] itemNames = new string[][]
+			{
+				new string[] { "RB17", "RB18", "RB19" },
+				new string[] { "RB24", "RB25", "RB26" },
+				new string[] { "QI31", "QI32", "QI33", "QI34", "QI35", "QI79", "QI80", "QI81" }
+			};
+
+			int lastIdx = 0;
+			for (int i = 0; i < progressiveItems.Length; i++)
+            {
+				for (int j = 0; j < itemNames[i].Length; j++)
+                {
+					for (; lastIdx < items.Count; lastIdx++)
+                    {
+						// This item in the list is supposed to be a progressive item
+						if (itemNames[i][j] == items[lastIdx].name)
+                        {
+							progressiveItems[i].items[j] = items[lastIdx];
+							items[lastIdx] = progressiveItems[i];
+							break;
+                        }
+                    }
                 }
             }
         }

@@ -20,7 +20,7 @@ namespace BlasphemousRandomizer.Structures
 			this.progression = progression;
 		}*/
 
-		public virtual string getDescriptor()
+		/*public virtual string getDescriptor()
 		{
 			switch (type)
 			{
@@ -39,6 +39,40 @@ namespace BlasphemousRandomizer.Structures
 					if (id <= 2000) return "TS";
 					return "TM";
 				default: return "X";
+			}
+		}*/
+
+		public virtual void addToInventory()
+        {
+			InventoryManager inv = Core.InventoryManager;
+			EntityStats stats = Core.Logic.Penitent.Stats;
+
+			switch (type)
+			{
+				case 0:
+					inv.AddBaseObjectOrTears(inv.GetBaseObject("RB" + id.ToString("00"), InventoryManager.ItemType.Bead)); return;
+				case 1:
+					inv.AddBaseObjectOrTears(inv.GetBaseObject("PR" + id.ToString("00"), InventoryManager.ItemType.Prayer)); return;
+				case 2:
+					inv.AddBaseObjectOrTears(inv.GetBaseObject("RE" + id.ToString("00"), InventoryManager.ItemType.Relic)); return;
+				case 3:
+					inv.AddBaseObjectOrTears(inv.GetBaseObject("HE" + id.ToString("00"), InventoryManager.ItemType.Sword)); return;
+				case 4:
+					inv.AddBaseObjectOrTears(inv.GetBaseObject("CO" + id.ToString("00"), InventoryManager.ItemType.Collectible)); return;
+				case 5:
+					inv.AddBaseObjectOrTears(inv.GetBaseObject("QI" + id.ToString("00"), InventoryManager.ItemType.Quest)); return;
+				case 6:
+					Core.Events.SetFlag("RESCUED_CHERUB_" + id.ToString("00"), true, false); return;
+				case 7:
+					stats.Life.Upgrade(); stats.Life.SetToCurrentMax(); return;
+				case 8:
+					stats.Fervour.Upgrade(); stats.Fervour.SetToCurrentMax(); return;
+				case 9:
+					stats.MeaCulpa.Upgrade(); stats.Strength.Upgrade(); return;
+				case 10:
+					stats.Purge.Current += id; return;
+				default:
+					return;
 			}
 		}
 
