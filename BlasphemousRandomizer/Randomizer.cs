@@ -33,12 +33,6 @@ namespace BlasphemousRandomizer
 
         public void Initialize()
         {
-            // Create main shufflers
-            itemShuffler = new ItemShuffle();
-            enemyShuffler = new EnemyShuffle();
-            doorShuffler = new DoorShuffle();
-            hintShuffler = new HintShuffle();
-
             // Load config
             fileConfig = MainConfig.Default();//FileUtil.loadConfig();
             Log(fileConfig.general.teleportationAlwaysUnlocked.ToString());
@@ -48,6 +42,12 @@ namespace BlasphemousRandomizer
                 FileUtil.saveConfig(fileConfig);
             }
             gameConfig = fileConfig;
+
+            // Create main shufflers
+            itemShuffler = new ItemShuffle();
+            enemyShuffler = new EnemyShuffle();
+            doorShuffler = new DoorShuffle();
+            hintShuffler = new HintShuffle();
 
             // Load external data
             if (!FileUtil.parseFiletoArray("cutscenes_names.dat", out cutsceneNames))
@@ -141,7 +141,6 @@ namespace BlasphemousRandomizer
             itemShuffler.Shuffle(seed);
             //Fill hints
             //Fill enemies
-            totalItems = 5;
             if (newGame)
             {
                 //Generate spoiler
