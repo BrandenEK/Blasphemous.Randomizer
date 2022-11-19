@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using BepInEx;
-using UnityEngine;
 using BlasphemousRandomizer.Config;
+using Newtonsoft.Json;
 
 namespace BlasphemousRandomizer
 {
@@ -93,7 +92,7 @@ namespace BlasphemousRandomizer
 		{
 			if (read("randomizer.cfg", false, out string json))
 			{
-				return JsonUtility.FromJson<MainConfig>(json);
+				return JsonConvert.DeserializeObject<MainConfig>(json);
 			}
 			MainConfig config = MainConfig.Default();
 			saveConfig(config);
@@ -103,29 +102,28 @@ namespace BlasphemousRandomizer
 		// Saves the config file to the root directory
 		public static void saveConfig(MainConfig config)
 		{
-			writeFull("randomizer.cfg", JsonUtility.ToJson(config, true));
+			writeFull("randomizer.cfg", JsonConvert.SerializeObject(config, Formatting.Indented));
 		}
 
-		// Reads list of objects from json file in data folder
-		public static bool loadJson<T>(string fileName, out List<T> list)
+		// Reads object from json file in data folder
+		public static bool loadJson<T>(string fileName, out T obj)
 		{
-			if (read(fileName, true, out string json))
+			if (!read(fileName, true, out string json))
 			{
-				Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-				list = wrapper.Items;
-				return true;
+				obj = default(T);
+				return false;
 			}
-			list = new List<T>();
-			return false;
+			obj = JsonConvert.DeserializeObject<T>(json);
+			return true;
 		}
 
-		// Writes list of objects to json file in data folder
-		public static void saveJson<T>(string fileName, List<T> list)
+		// Writes object to json file in data folder
+		public static void saveJson<T>(string fileName, T obj)
 		{
-			writeFull(fileName, JsonUtility.ToJson(new Wrapper<T>(list), true));
+			writeFull(fileName, JsonConvert.SerializeObject(obj, Formatting.Indented));
 		}
 
-		[Serializable]
+		/*[Serializable]
 		private class Wrapper<T>
 		{
 			public List<T> Items;
@@ -134,6 +132,6 @@ namespace BlasphemousRandomizer
             {
 				Items = list;
             }
-		}
+		}*/
 	}
 }

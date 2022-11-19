@@ -13,22 +13,13 @@ namespace BlasphemousRandomizer.Fillers
 
         public ItemFiller()
         {
-			Main.Randomizer.Log("Ctor");
 			allLocations = new List<ItemLocation>();
 			fillLocations(allLocations); // Change to load from json
-            allItems = new List<Item>();
             FileUtil.loadJson("items.json", out allItems);
         }
 
         public override bool isValid()
         {
-			if (allItems == null)
-            {
-				Main.Randomizer.Log("Items list is null");
-            }
-			if (allLocations == null)
-				Main.Randomizer.Log("locations list is null");
-			return false;
             return allItems.Count > 0 && allLocations.Count > 0 && allItems.Count == allLocations.Count;
         }
 
