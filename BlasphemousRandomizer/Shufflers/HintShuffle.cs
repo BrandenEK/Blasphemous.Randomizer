@@ -1,11 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using BlasphemousRandomizer.Fillers;
 
 namespace BlasphemousRandomizer.Shufflers
 {
-    public class HintShuffle
+    public class HintShuffle : IShuffle
     {
+        private Dictionary<string, string> newHints;
+        private HintFiller filler;
+
+        public void Init()
+        {
+            filler = new HintFiller();
+        }
+
+        public void Reset()
+        {
+            newHints = null;
+        }
+
+        public void Shuffle(int seed)
+        {
+            //Shuffle hints
+        }
     }
 }

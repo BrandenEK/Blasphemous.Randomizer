@@ -68,13 +68,13 @@ namespace BlasphemousRandomizer.Structures
 					baseObject = inventoryManager.GetBaseObject("QI" + id.ToString("00"), InventoryManager.ItemType.Quest);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New quest item obtained!", baseObject.picture);
 				case 6:
-					return new RewardInfo("Cherub " + (CherubCaptorPersistentObject.CountRescuedCherubs() + (upgraded ? 1 : 0)) + "/38", "A little floating baby that you rescued from a cage.", "Cherub rescued!", null);
+					return new RewardInfo("Cherub " + (CherubCaptorPersistentObject.CountRescuedCherubs() + (upgraded ? 1 : 0)) + "/38", "A little floating baby that you rescued from a cage.", "Cherub rescued!", Main.Randomizer.getImage(0));
 				case 7:
-					return new RewardInfo("Life Upgrade " + (stats.Life.GetUpgrades() + (upgraded ? 1 : 0)) + "/6", "An increase to your maximum health.", "Stat increased!", null);
+					return new RewardInfo("Life Upgrade " + (stats.Life.GetUpgrades() + (upgraded ? 1 : 0)) + "/6", "An increase to your maximum health.", "Stat increased!", Main.Randomizer.getImage(1));
 				case 8:
-					return new RewardInfo("Fervour Upgrade " + (stats.Fervour.GetUpgrades() + (upgraded ? 1 : 0)) + "/6", "An increase to your maximum fervour.", "Stat increased!", null);
+					return new RewardInfo("Fervour Upgrade " + (stats.Fervour.GetUpgrades() + (upgraded ? 1 : 0)) + "/6", "An increase to your maximum fervour.", "Stat increased!", Main.Randomizer.getImage(2));
 				case 9:
-					return new RewardInfo("Mea Culpa Upgrade " + (stats.MeaCulpa.GetUpgrades() + (upgraded ? 1 : 0)) + "/7", "An increase to the strength of your sword.", "Stat increased!", null);
+					return new RewardInfo("Mea Culpa Upgrade " + (stats.MeaCulpa.GetUpgrades() + (upgraded ? 1 : 0)) + "/7", "An increase to the strength of your sword.", "Stat increased!", Main.Randomizer.getImage(3));
 				case 10:
 					TearsObject tearsGenericObject = inventoryManager.TearsGenericObject;
 					return new RewardInfo(tearsGenericObject.caption, "A bundle of " + id + " tears.", id + " tears added!", tearsGenericObject.picture);

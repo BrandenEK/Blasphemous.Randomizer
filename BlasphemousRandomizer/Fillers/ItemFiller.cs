@@ -32,16 +32,16 @@ namespace BlasphemousRandomizer.Fillers
             List<ItemLocation> locations = new List<ItemLocation>(allLocations);
             List<ItemLocation> vanillaLocations = new List<ItemLocation>();
             List<Item> items = new List<Item>(allItems);
-            List<Item> progrsssionItems = new List<Item>();
+            List<Item> progressionItems = new List<Item>();
 
             // Place vanilla items & get list of locations that are vanilla
             fillVanillaItems(locations, vanillaLocations, items);
             // Get list of items that are progression
-            getProgressionItems(items, progrsssionItems);
+            getProgressionItems(items, progressionItems);
 
 			// Fill all progression items
-			fillProgressionItems(locations, vanillaLocations, progrsssionItems);
-			if (progrsssionItems.Count > 0)
+			fillProgressionItems(locations, vanillaLocations, progressionItems);
+			if (progressionItems.Count > 0)
 				return false;
 
 			// Fill all extra items
@@ -160,7 +160,7 @@ namespace BlasphemousRandomizer.Fillers
             {
                 data.addItem(itemsOwned[i]);
             }
-            data.lungDamage = config.lungDamage;
+            data.lungDamage = config.lungDamage || data.lung;
             if (data.swordLevel > 1)
                 data.cherubBits |= 262144;
             if (data.fervourLevel < 2)

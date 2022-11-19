@@ -15,6 +15,7 @@ namespace BlasphemousRandomizer
         public EnemyShuffle enemyShuffler;
         public DoorShuffle doorShuffler;
         public HintShuffle hintShuffler;
+        private IShuffle[] shufflers;
 
         // Config
         public MainConfig gameConfig;
@@ -30,12 +31,12 @@ namespace BlasphemousRandomizer
         private int lastLoadedSlot;
 
         private string[] cutsceneNames;
+        private Sprite[] customImages;
 
         public void Initialize()
         {
             // Load config
             fileConfig = FileUtil.loadConfig();
-            Log(fileConfig.general.teleportationAlwaysUnlocked.ToString());
             if (!isConfigVersionValid(fileConfig.versionCreated))
             {
                 fileConfig = MainConfig.Default();
@@ -48,10 +49,16 @@ namespace BlasphemousRandomizer
             enemyShuffler = new EnemyShuffle();
             doorShuffler = new DoorShuffle();
             hintShuffler = new HintShuffle();
+            shufflers = new IShuffle[] { itemShuffler, enemyShuffler, doorShuffler, hintShuffler };
+            for (int i = 0; i < shufflers.Length; i++)
+            {
+                shufflers[i].Init();
+            }
 
             // Load external data
             if (!FileUtil.parseFiletoArray("cutscenes_names.dat", out cutsceneNames))
                 cutsceneNames = new string[0];
+            loadCustomImages();
 
             // Set up data
             Core.Persistence.AddPersistentManager(this);
@@ -99,9 +106,12 @@ namespace BlasphemousRandomizer
                 totalItems = 0;
                 startedInRando = false;
                 gameConfig = fileConfig;
+                for (int i = 0; i < shufflers.Length; i++)
+                {
+                    shufflers[i].Reset();
+                }
                 Log("Loaded invalid game!");
                 //Display error message
-                //Reset shufflers
             }
 
             inGame = true;
@@ -138,9 +148,13 @@ namespace BlasphemousRandomizer
         {
             Stopwatch watch = Stopwatch.StartNew();
             //Fill doors
-            itemShuffler.Shuffle(seed);
             //Fill hints
             //Fill enemies
+            for (int i = 0; i < shufflers.Length; i++)
+            {
+                shufflers[i].Shuffle(seed);
+            }
+
             if (newGame)
             {
                 //Generate spoiler
@@ -194,10 +208,43 @@ namespace BlasphemousRandomizer
             return gameConfig.general.skipCutscenes && FileUtil.arrayContains(cutsceneNames, id);
         }
 
+        public Sprite getImage(int idx)
+        {
+            return (customImages != null && idx >= 0 && idx < customImages.Length) ? customImages[idx] : null;
+        }
+
         private bool isConfigVersionValid(string configVersion)
         {
             string version = MyPluginInfo.PLUGIN_VERSION;
             return version.Substring(version.IndexOf('.') + 1, 1) == configVersion.Substring(configVersion.IndexOf('.') + 1, 1);
+        }
+
+        private void loadCustomImages()
+        {
+            // Read bytes from file
+            if (!FileUtil.readBytes("custom_images.png", out byte[] data))
+            {
+                Log("Error: Custom images could not be loaded!");
+                return; 
+            }
+
+            // Convert to texture
+            Texture2D tex = new Texture2D(2, 2);
+            tex.LoadImage(data);
+            int w = tex.width, h = tex.height;
+            customImages = new Sprite[w * h / 1024];
+
+            // Insert each 32x32 image into the array (T-B, L-R)
+            int count = 0;
+            for (int i = h - 32; i >= 0; i -= 32)
+            {
+                for (int j = 0; j < w; j += 32)
+                {
+                    Sprite sprite = Sprite.Create(tex, new Rect(j, i, 32f, 32f), Vector2.zero);
+                    customImages[count] = sprite;
+                    count++;
+                }
+            }
         }
 
         public string GetPersistenID()
