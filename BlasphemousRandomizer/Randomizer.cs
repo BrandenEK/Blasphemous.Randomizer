@@ -184,8 +184,10 @@ namespace BlasphemousRandomizer
         private void onLevelLoaded(Level oldLevel, Level newLevel)
         {
             string scene = newLevel.LevelName;
-            // Load enemies
             // Error on load
+
+            // Load enemies
+            EnemyLoader.loadEnemies();
 
             // Update images of shop items
             if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
