@@ -3,6 +3,9 @@ using Tools.Level.Interactables;
 using Tools.Level.Layout;
 using Framework.Managers;
 using Gameplay.GameControllers.Entities;
+using Gameplay.GameControllers.Enemies.Framework.Attack;
+using Framework.EditorScripts.EnemiesBalance;
+using Framework.FrameworkCore.Attributes;
 using UnityEngine;
 
 namespace BlasphemousRandomizer.Patches
@@ -39,6 +42,41 @@ namespace BlasphemousRandomizer.Patches
                     ___selectedEnemy = newEnemy;
 
                 // Can modify spawn position here too
+            }
+        }
+
+        // Scale enemy stats based on area
+        [HarmonyPatch(typeof(EnemyStatsImporter), "SetEnemyStats")]
+        public class EnemyStatsImporter_Patch
+        {
+            public static void Postfix(Enemy enemy)
+            {
+                if (enemy == null || enemy.Id == "")
+                    return;
+
+                // Get ratings of enemy & area
+                string scene = Core.LevelManager.currentLevel.LevelName;
+                if (scene.Substring(0, 6) != "D19Z01")
+                {
+                    scene = scene.Substring(0, 6);
+                }
+                int areaRating = Main.Randomizer.enemyShuffler.getRating(scene);
+                int enemyRating = Main.Randomizer.enemyShuffler.getRating(enemy.Id);
+                float percent = 0.07f;
+
+                // If areaScaling is enabled, calculate percent scaling
+                if (areaRating != 0 && enemyRating != 0 && Main.Randomizer.gameConfig.enemies.type > 0 && Main.Randomizer.gameConfig.enemies.areaScaling)
+                {
+                    percent *= areaRating - enemyRating;
+                }
+
+                // Change stats
+                enemy.Stats.Strength = new Strength(enemy.Stats.Strength.Base + enemy.Stats.Strength.Base * percent, enemy.Stats.StrengthUpgrade, 1f);
+                enemy.Stats.Life = new Life(enemy.Stats.Life.Base + enemy.Stats.Life.Base * percent, enemy.Stats.LifeUpgrade, enemy.Stats.LifeMaximun, 1f);
+                enemy.purgePointsWhenDead += enemy.purgePointsWhenDead * percent;
+                EnemyAttack attack = enemy.GetComponentInChildren<EnemyAttack>();
+                if (attack != null)
+                    attack.ContactDamageAmount += attack.ContactDamageAmount * percent;
             }
         }
 
