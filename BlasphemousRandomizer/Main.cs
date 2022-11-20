@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BlasphemousRandomizer
 {
-    [BepInPlugin("damocles.blasphemous.randomizer", "Blasphemous Randomizer", "1.0.0")]
+    [BepInPlugin("damocles.blasphemous.randomizer", "Blasphemous Randomizer", MyPluginInfo.PLUGIN_VERSION)]
     [BepInProcess("Blasphemous.exe")]
     public class Main : BaseUnityPlugin
     {

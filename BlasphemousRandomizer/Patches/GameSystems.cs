@@ -128,6 +128,21 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
+    // Log what flags are being set
+    [HarmonyPatch(typeof(EventManager), "SetFlag")]
+    public class EventManager_Patch
+    {
+        public static bool Prefix(string id, bool b)
+        {
+            if (id == "REVEAL_FAITH_PLATFORMS")
+                return true;
+
+            string text = b ? "Setting" : "Clearing";
+            Main.Randomizer.Log(text + " flag: " + id);
+            return true;
+        }
+    }
+
     // Initialize Randomizer class
     [HarmonyPatch(typeof(AchievementsManager), "AllInitialized")]
     public class AchievementsManager_InitializePatch
