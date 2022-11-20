@@ -76,6 +76,25 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
+    // Update shop dialog when buying items
+    [HarmonyPatch(typeof(DialogWidget), "ShowBuy")]
+    public class DialogWidget_Patch
+    {
+        public static void Prefix(ref string caption, ref string description, ref Sprite image)
+        {
+            // Can also use this to show different cost
+            Main.Randomizer.Log(image.name.ToUpper());
+            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(image.name.ToUpper());
+            if (item != null)
+            {
+                RewardInfo info = item.getRewardInfo(true);
+                caption = info.name;
+                description = info.description;
+                image = info.sprite;
+            }
+        }
+    }
+
     // Allow all achievement messages to go through
     [HarmonyPatch(typeof(UIController), "ShowPopupAchievement")]
     public class UIController_Patch

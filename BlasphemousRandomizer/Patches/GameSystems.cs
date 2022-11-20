@@ -4,6 +4,9 @@ using Framework.EditorScripts.EnemiesBalance;
 using Framework.EditorScripts.BossesBalance;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Widgets;
+using Framework.Dialog;
+using System.Collections.Generic;
+using BlasphemousRandomizer.Structures;
 using UnityEngine;
 
 namespace BlasphemousRandomizer.Patches
@@ -108,6 +111,29 @@ namespace BlasphemousRandomizer.Patches
             canConvert = false;
         }
     }
+
+    // Update shop text for new items
+    //[HarmonyPatch(typeof(DialogManager), "CalculateLines_Object")]
+    //public class DialogManager_ShopPatch
+    //{
+    //    public static bool Prefix(ref DialogObject ___currentDialog)
+    //    {
+    //        string scene = Core.LevelManager.currentLevel.LevelName;
+    //        if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
+    //        {
+    //            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(___currentDialog.item);
+    //            if (item != null)
+    //            {
+    //                RewardInfo info = item.getRewardInfo(true);
+    //                text = info.name;
+    //                value = info.description;
+    //                sprite = info.sprite;
+    //            }
+    //            return false;
+    //        }
+    //        return true;
+    //    }
+    //}
 
     // Initialize Randomizer class
     [HarmonyPatch(typeof(AchievementsManager), "AllInitialized")]
