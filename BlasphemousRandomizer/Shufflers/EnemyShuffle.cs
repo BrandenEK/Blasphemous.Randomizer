@@ -62,7 +62,7 @@ namespace BlasphemousRandomizer.Shufflers
             }
 
             newEnemies = new Dictionary<string, string>();
-            filler.Fill(seed, Main.Randomizer.gameConfig.enemies);
+            filler.Fill(seed, Main.Randomizer.gameConfig.enemies, newEnemies);
             Main.Randomizer.Log(newEnemies.Count + " enemies have been shuffled!");
         }
 
