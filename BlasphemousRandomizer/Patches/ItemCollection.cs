@@ -174,4 +174,20 @@ namespace BlasphemousRandomizer.Patches
             return true;
         }
     }
+
+    // Prevent progressive items from being removed from the inventory
+    [HarmonyPatch(typeof(ItemSubstraction), "executeAction")]
+    public class ItemSubstraction_Patch
+    {
+        public static bool Prefix(string objectIdStting, ref bool __result)
+        {
+            string invalidItems = "RB17RB18RB19RB24RB25RB26QI31QI32QI33QI34QI35QI79QI80QI81";
+            if (invalidItems.Contains(objectIdStting))
+            {
+                __result = true;
+                return false;
+            }
+            return true;
+        }
+    }
 }
