@@ -1,0 +1,375 @@
+Albero (35)
+
+Sick house: {RB01}
+Outside ossuary: {CO43}
+Graveyard: {CO16}
+Warp room: {QI65}
+Elevator cherub: {RESCUED_CHERUB_08}
+Bless cloth: {RE04}
+Bless egg: {RE10}
+Bless hand: {RE02}
+Cleofas gift initial: {QI01}
+Cleofas gift final: {PR11}
+Tirso reward 1: {QI66}
+Tirso reward 2: {Tirso[500]}
+Tirso reward 3: {Tirso[1000]}
+Tirso reward 4: {Tirso[2000]}
+Tirso reward 5: {Tirso[5000]}
+Tirso reward 6: {Tirso[10000]}
+Tirso reward final: {QI56}
+Tentudia reward 1: {Lvdovico[500]}
+Tentudia reward 2: {Lvdovico[1000]}
+Tentudia reward 3: {PR03}
+Isidora reward main: {QI201}
+Sword room: {Sword[D01Z02S06]}
+Church donation 1: {RB104}
+Church donation 2: {RB105}
+Ossuary reward 1: {Undertaker[250]}
+Ossuary reward 2: {Undertaker[500]}
+Ossuary reward 3: {Undertaker[750]}
+Ossuary reward 4: {Undertaker[1000]}
+Ossuary reward 5: {Undertaker[1250]}
+Ossuary reward 6: {Undertaker[1500]}
+Ossuary reward 7: {Undertaker[1750]}
+Ossuary reward 8: {Undertaker[2000]}
+Ossuary reward 9: {Undertaker[2500]}
+Ossuary reward 10: {Undertaker[3000]}
+Ossuary reward 11: {Undertaker[5000]}
+
+All the Tears of the Sea (1)
+
+Miriam gift: {PR201}
+
+Archcathedral Rooftops (11)
+
+Bridge fight 1: {QI02}
+Bridge fight 2: {QI03}
+Bridge fight 3: {QI04}
+Western shaft ledge: {CO06}
+Western shaft cherub: {RESCUED_CHERUB_36}
+Western shaft chest: {PR12}
+MoM east entrance: {HE04}
+Lady room: {Lady[D06Z01S24]}
+Second checkpoint ledge: {CO40}
+Sword room: {Sword[D06Z01S11]}
+Crisanta: {BS16}
+
+Bridge of the Three Calvaries (3)
+
+Esdras: {BS12}
+Esdras gift intial: {PR09}
+Amanecida core: {HE101}
+
+Brotherhood of the Silent Sorrow (11)
+
+Beginning gift: {QI106}
+Initial room cherub: {RESCUED_CHERUB_06}
+Initial room ledge: {RB204}
+Elder Brother's room: {RE01}
+Sword room: {Sword[D17Z01S08]}
+Spike gaunlet exit: {CO25}
+Blue candle: {RB25}
+Church entrance: {PR203}
+Esdras gift final: {QI204}
+Crisanta gift: {QI301}
+Warden of the Silent Sorrow: {BS13}
+
+Convent of our Lady of the Charred Visage (13)
+
+Blood platform ledge: {CO05}
+Ghost death room: {CO15}
+Central lung room: {RB08}
+Southwest lung room: {HE03}
+Lady room: {Lady[D02Z03S15]}
+Sword room: {Sword[D02Z03S13]}
+Red candle: {RB18}
+Blue candle: {RB24}
+Outside area: {RB107}
+Burning oil fountain: {QI57}
+Our Lady of the Charred Visage: {BS03}
+Holy Visage gift: {QI40}
+Mask room: {QI61}
+
+Deabulatory of his Holiness (3)
+
+Complete Penitence 1: {RB101}
+Complete Penitence 2: {RB102}
+Complete Penitence 3: {RB103}
+
+Desecrated Cistern (20)
+
+MeD lady room: {Lady[D01Z05S22]}
+MeD entrance: {CO41}
+Water room cherub: {RESCUED_CHERUB_11}
+Eastern lower tunnel chest: {QI45}
+Eastern upper tunnel chest: {PR16}
+Eastern upper tunnel cherub: {RESCUED_CHERUB_13}
+Hidden hand room: {QI67}
+WaBC entrance: {CO09}
+Oil room: {Oil[D01Z05S07]}
+Veil room cherub: {RESCUED_CHERUB_14}
+Veil room ledge: {QI12}
+Lung tunnel cherub: {RESCUED_CHERUB_12}
+Lung tunnel ledge: {CO32}
+Shroud puzzle: {RB03}
+Chalice room: {QI75}
+Sword room: {Sword[D01Z05S24]}
+GrA lady room: {Lady[D01Z05S26]}
+Elevator exit cherub: {RESCUED_CHERUB_15}
+Elevator shaft cherub: {RESCUED_CHERUB_22}
+Elevator shaft ledge: {CO44}
+
+Echoes of Salt (2)
+
+MoED entrance: {RB108}
+Near elevator shaft: {RB202}
+
+Graveyard of the Peaks (21)
+
+Shop cave cherub: {RESCUED_CHERUB_31}
+Shop cave hole: {CO42}
+Shop left: {QI11}
+Shop middle: {RB37}
+Shop right: {RB02}
+Guilt room: {RB38}
+Elevator shaft cherub: {RESCUED_CHERUB_26}
+Elevator shaft ledge: {QI53}
+Lady room: {Lady[D02Z02S12]}
+Bleed room: {HE11}
+Eastern shaft lower: {QI46}
+Eastern shaft middle: {CO29}
+Eastern shaft upper: {QI08}
+Amanecida ledge: {RB106}
+Western shaft cherub: {RESCUED_CHERUB_25}
+Western shaft lower: {RB32}
+Western shaft upper: {CO01}
+Center shaft cherub: {RESCUED_CHERUB_24}
+Center shaft ledge: {RB15}
+Oil room: {Oil[D02Z02S10]}
+Bow Amanecida: {D02Z02S14[18000]}
+
+Grievance Ascends (12)
+
+Western lung ledge: {QI44}
+Lung room upper: {RE07}
+Lung room cherub: {RESCUED_CHERUB_19}
+Lung room lower: {CO12}
+Oil room: {Oil[D03Z03S13]}
+Blood tunnel ledge: {QI10}
+Blood tunnel cherub: {RESCUED_CHERUB_21}
+Altasgracias cherub: {RESCUED_CHERUB_20}
+Altasgracias gift: {QI13}
+Altasgracias cacoon: {RB06}
+Tres Angustias: {BS04}
+Holy Visage gift: {QI39}
+
+Hall of the Dawning (2)
+
+Mirror room: {QI105}
+Laudes: {LaudesBossTrigger[30000]}
+
+Jondo (13)
+
+Eastern entrance ledge: {CO08}
+Eastern entrance chest: {PR10}
+Eastern shaft bell chargers: {CO33}
+Eastern shaft bell trap: {QI19}
+Eastern shaft cherub: {RESCUED_CHERUB_18}
+Spike tunnel cherub: {RESCUED_CHERUB_37}
+Spike tunnel ledge: {HE06}
+EcS entrance: {QI103}
+Western shaft lower slide: {CO07}
+Western shaft bell trap: {QI41}
+Western shaft bell puzzle: {QI52}
+Western shaft root puzzle: {RB28}
+Western shaft cherub: {RESCUED_CHERUB_17}
+
+Knot of the Three Words (1)
+
+Fourth Visage gift: {HE201}
+
+Library of the Negated Words (18)
+
+Platform room cherub: {RESCUED_CHERUB_01}
+Platform room ledge: {CO18}
+Upper cathedral ledge: {CO22}
+Hidden floor: {QI50}
+Lung ambush chest: {RB31}
+Lady room: {Lady[D05Z01S14]}
+Bone puzzle: {PR15}
+Diosdado ledge: {CO28}
+Platform puzzle chest: {PR07}
+Final shaft ledge: {RB30}
+Final shaft cherub: {RESCUED_CHERUB_02}
+Oil room: {Oil[D05Z01S19]}
+Elevator cherub: {RESCUED_CHERUB_32}
+Mask room: {QI62}
+Sword room: {Sword[D05Z01S13]}
+Red candle: {RB19}
+Diosdado gift: {RB203}
+Fourth Visage hidden wall: {RB301}
+
+Mercy Dreams (15)
+
+First section hidden wall: {CO30}
+Second section ghost ambush: {PR01}
+Second section ledge: {CO03}
+Second section cherub: {RESCUED_CHERUB_09}
+Red candle: {RB17}
+Shop left: {QI58}
+Shop middle: {RB05}
+Shop right: {RB09}
+Third section hidden wall: {QI48}
+Third section lower corridor: {CO38}
+Ten Piedad: {BS01}
+Holy Visage gift: {QI38}
+Blue candle: {RB26}
+SlC entrance cherub: {RESCUED_CHERUB_33}
+SlC entrance ledge: {CO03}
+
+Mother of Mothers (14)
+
+Oil room: {Oil[D04Z02S14]}
+Eastern room upper: {RB33}
+Eastern room lower: {CO35}
+Western room cherub: {RESCUED_CHERUB_30}
+Western room ledge: {CO17}
+Redento prayer room: {RE03}
+Redento corpse: {QI54}
+Blood incense shaft: {HE01}
+Outside Cleofas room: {CO34}
+Center room ledge: {CO20}
+Center room cherub: {RESCUED_CHERUB_29}
+Sword room: {Sword[D04Z02S12]}
+Melquiades: {BS05}
+Mask room: {QI60}
+
+Mountains of the Endless Dusk (8)
+
+DeC entrance: {CO13}
+Perpetua gift: {RB13}
+Bell gap cherub: {RESCUED_CHERUB_16}
+Bell gap ledge: {QI47}
+Redento meeting 1: {RB22}
+Blood platform: {QI63}
+Egg hatching: {QI14}
+Axe Amanecida: {D03Z01S03[18000]}
+
+Mourning and Havoc (4)
+
+Western chest: {PR202}
+Eastern chest: {RB201}
+Sierpes reward: {QI202}
+Sierpes: {BossTrigger[5000]}
+
+Patio of the Silent Steps (9)
+
+Garden 1 cherub: {RESCUED_CHERUB_35}
+Garden 1 ledge: {CO23}
+Garden 2 ledge: {RB14}
+Garden 3 cherub: {RESCUED_CHERUB_28}
+Garden 3 lower ledge: {QI37}
+Garden 3 upper ledge: {CO39}
+Northern shaft: {QI102}
+Redento meeting 4: {RB21}
+Falcata Amanecida: {D04Z01S04[18000]}
+
+Petrous (1)
+
+Entrance room: {QI101}
+
+Resting Place of the Sister (1)
+
+Perpetua shrine: {QI203}
+
+Sleeping Canvases (10)
+
+Herb shaft: {QI64}
+Wax bleed puzzle: {HE07}
+Shop left: {RB12}
+Shop middle: {QI49}
+Shop right: {QI71}
+Low tunnel blade trap: {QI104}
+Expositio: {BS06}
+Linen drop room: {CO31}
+Jocinero gift intial: {RE05}
+Jocinero gift final: {PR05}
+
+The Holy Line (6)
+
+Deosgracias gift: {QI31}
+Mud ledge lower: {PR14}
+Mud ledge upper: {RB07}
+Mud cherub: {RESCUED_CHERUB_07}
+Cave ledge: {CO04}
+Cave chest: {QI55}
+
+Wall of the Holy Prohibitions (19)
+
+Q1 lift puzzle: {RB11}
+Q1 drop room upper: {CO10}
+Q1 drop room lower: {QI69}
+Q1 upper bronze door: {RESCUED_CHERUB_03}
+Q1 upper silver door: {CO24}
+Q1 middle gold door: {QI51}
+Q2 middle gold door: {CO26}
+Q3 lower gold door: {CO02}
+Q3 upper silver door: {RESCUED_CHERUB_34}
+Q3 upper ledge: {RB16}
+Q4 hidden ledge: {CO27}
+Q4 lower silver door: {RESCUED_CHERUB_04}
+Q4 upper bronze door: {QI70}
+Q4 upper silver door: {CO37}
+CoLCV entrance: {RESCUED_CHERUB_05}
+Oil room: {Oil[D09Z01S12]}
+Quirce: {BS14}
+Quirce room: {QI72}
+Lance Amanecida: {D09Z01S01[18000]}
+
+Wasteland of the Buried Churches (8)
+
+Lower tree path: {RB04}
+Building slide: {CO14}
+Exterior ledge: {CO36}
+Exterior cherub: {RESCUED_CHERUB_10}
+Underneath MeD bridge: {QI06}
+Cliffside ledge: {HE02}
+Cliffside cherub: {RESCUED_CHERUB_38}
+Redento meeting 3: {RB20}
+
+Where Olive Trees Wither (11)
+
+WaBC entrance: {CO11}
+Healing cave: {QI20}
+White lady flower: {QI68}
+White lady tomb: {PR04}
+White lady cave cherub: {RESCUED_CHERUB_27}
+White lady cave ledge: {CO19}
+Eastern root cherub: {RESCUED_CHERUB_23}
+Eastern root ledge: {HE05}
+Death run: {QI07}
+Gemino gift intial: {QI59}
+Gemino gift final: {RB10}
+
+Various (20)
+
+Guilt arena 1 extra: {Arena_NailManager[1000]}
+Guilt arena 1 main: {QI32}
+Guilt arena 2 extra: {HE10}
+Guilt arena 2 main: {QI33}
+Guilt arena 3 extra: {Arena_NailManager[3000]}
+Guilt arena 3 main: {QI34}
+Guilt arena 4 extra: {RB34}
+Guilt arena 4 main: {QI35}
+Guilt arena 5 extra: {Arena_NailManager[5000]}
+Guilt arena 5 main: {QI79}
+Guilt arena 6 extra: {RB35}
+Guilt arena 6 main: {QI80}
+Guilt arena 7 extra: {RB36}
+Guilt arena 7 main: {QI81}
+Viridiana gift: {PR08}
+Amanecida 1: {QI107}
+Amanecida 2: {QI108}
+Amanecida 3: {QI109}
+Amanecida 4: {QI110}
+All amanecidas reward: {PR101}

@@ -1,0 +1,293 @@
+RE02,* requires a blessing
+RE04,* requires a blessing
+RE10,* requires a blessing
+QI11,* can be purchased
+QI49,* can be purchased
+QI58,* can be purchased
+QI71,* can be purchased
+RB02,* can be purchased
+RB05,* can be purchased
+RB09,* can be purchased
+RB12,* can be purchased
+RB37,* can be purchased
+QI106,* is already owned
+QI02,* is guarded by a Legionary
+QI03,* is guarded by a Legionary
+QI04,* is guarded by a Legionary
+PR101,* is guarded by an Amanecida
+QI107,* is guarded by an Amanecida
+QI108,* is guarded by an Amanecida
+QI109,* is guarded by an Amanecida
+QI110,* is guarded by an Amanecida
+BS16,* is guarded by Crisanta
+BS12,* is guarded by Esdras
+PR09,* is guarded by Esdras
+BS06,* is guarded by Exposito
+QI201,* is guarded by Isidora
+LaudesBossTrigger[30000],* is guarded by Laudes
+BS05,* is guarded by Melquiades
+BS03,* is guarded by Our Lady of the Charred Visage
+RB13,* is guarded by Perpetva
+BS14,* is guarded by Quirce
+BossTrigger[5000],* is guarded by Sierpes
+QI202,* is guarded by Sierpes
+BS01,* is guarded by Ten Piedad
+D02Z02S14[18000],* is guarded by the Bejeweled Arrow
+D04Z01S04[18000],* is guarded by the Chiselled Steel
+D03Z01S03[18000],* is guarded by the Golden Blades
+D09Z01S01[18000],* is guarded by the Molten Thorn
+BS13,* is guarded by the Warden
+BS04,* is guarded by Tres Angustias
+CO02,* is locked away in a room
+CO24,* is locked away in a room
+CO26,* is locked away in a room
+CO37,* is locked away in a room
+QI51,* is locked away in a room
+QI70,* is locked away in a room
+RB301,* is locked away in a room
+RE01,* is locked away in a room
+RE03,* is locked away in a room
+RB104,* requires a donation
+RB105,* requires a donation
+CO16,* resides in Albero
+CO43,* resides in Albero
+QI65,* resides in Albero
+RB01,* resides in Albero
+RESCUED_CHERUB_08,* resides in Albero
+CO03,* resides in Mercy
+CO21,* resides in Mercy
+CO30,* resides in Mercy
+CO38,* resides in Mercy
+PR01,* resides in Mercy
+QI38,* resides in Mercy
+QI48,* resides in Mercy
+RESCUED_CHERUB_09,* resides in Mercy
+RESCUED_CHERUB_33,* resides in Mercy
+PR202,* resides in Mourning
+RB201,* resides in Mourning
+QI101,* resides in Petrous
+CO07,* resides in the Bell
+CO08,* resides in the Bell
+CO33,* resides in the Bell
+HE06,* resides in the Bell
+PR10,* resides in the Bell
+QI103,* resides in the Bell
+QI19,* resides in the Bell
+QI41,* resides in the Bell
+QI52,* resides in the Bell
+RB28,* resides in the Bell
+RESCUED_CHERUB_17,* resides in the Bell
+RESCUED_CHERUB_18,* resides in the Bell
+RESCUED_CHERUB_37,* resides in the Bell
+CO25,* resides in the Brotherhood
+PR203,* resides in the Brotherhood
+RB204,* resides in the Brotherhood
+RESCUED_CHERUB_06,* resides in the Brotherhood
+CO31,* resides in the Canvases
+HE07,* requires large beads of wax
+QI104,* resides in the Canvases
+QI64,* resides in the Canvases
+CO09,* resides in the Cistern
+CO32,* resides in the Cistern
+CO41,* resides in the Cistern
+CO44,* resides in the Cistern
+PR16,* resides in the Cistern
+QI12,* resides in the Cistern
+QI45,* resides in the Cistern
+QI67,* resides in the Cistern
+QI75,* resides in the Cistern
+RB03,* resides in the Cistern
+RESCUED_CHERUB_11,* resides in the Cistern
+RESCUED_CHERUB_12,* resides in the Cistern
+RESCUED_CHERUB_13,* resides in the Cistern
+RESCUED_CHERUB_14,* resides in the Cistern
+RESCUED_CHERUB_15,* resides in the Cistern
+RESCUED_CHERUB_22,* resides in the Cistern
+CO05,* resides in the Convent
+CO15,* resides in the Convent
+HE03,* resides in the Convent
+RB08,* resides in the Convent
+RB107,* resides in the Convent
+CO01,* resides in the Graveyard
+CO29,* resides in the Graveyard
+CO42,* resides in the Graveyard
+HE11,* resides in the Graveyard
+QI08,* resides in the Graveyard
+QI46,* resides in the Graveyard
+QI53,* resides in the Graveyard
+RB106,* resides in the Graveyard
+RB15,* resides in the Graveyard
+RB32,* resides in the Graveyard
+RB38,* resides in the Graveyard
+RESCUED_CHERUB_24,* resides in the Graveyard
+RESCUED_CHERUB_25,* resides in the Graveyard
+RESCUED_CHERUB_26,* resides in the Graveyard
+RESCUED_CHERUB_31,* resides in the Graveyard
+CO12,* resides in the Grievance
+QI10,* resides in the Grievance
+QI44,* resides in the Grievance
+RE07,* resides in the Grievance
+RESCUED_CHERUB_19,* resides in the Grievance
+RESCUED_CHERUB_20,* resides in the Grievance
+RESCUED_CHERUB_21,* resides in the Grievance
+QI105,* resides in the Hall
+CO04,* resides in the Holy Line
+PR14,* resides in the Holy Line
+QI55,* resides in the Holy Line
+RB07,* resides in the Holy Line
+RESCUED_CHERUB_07,* resides in the Holy Line
+CO18,* resides in the Library
+CO22,* resides in the Library
+CO28,* resides in the Library
+PR07,* resides in the Library
+PR15,* resides in the Library
+QI50,* resides in the Library
+RB30,* resides in the Library
+RB31,* resides in the Library
+RESCUED_CHERUB_01,* resides in the Library
+RESCUED_CHERUB_02,* resides in the Library
+RESCUED_CHERUB_32,* resides in the Library
+CO17,* resides in the Mother
+CO20,* resides in the Mother
+CO34,* resides in the Mother
+CO35,* resides in the Mother
+HE01,* resides in the Mother
+RB33,* resides in the Mother
+RESCUED_CHERUB_29,* resides in the Mother
+RESCUED_CHERUB_30,* resides in the Mother
+CO13,* resides in the Mountains
+QI47,* resides in the Mountains
+QI63,* resides in the Mountains
+RESCUED_CHERUB_16,* resides in the Mountains
+CO23,* resides in the Patio
+CO39,* resides in the Patio
+QI102,* resides in the Patio
+QI37,* resides in the Patio
+RB14,* resides in the Patio
+RESCUED_CHERUB_28,* resides in the Patio
+RESCUED_CHERUB_35,* resides in the Patio
+CO06,* resides in the Rooftops
+CO40,* resides in the Rooftops
+HE04,* resides in the Rooftops
+PR12,* resides in the Rooftops
+RESCUED_CHERUB_36,* resides in the Rooftops
+RB108,* resides in the salts
+RB202,* resides in the salts
+CO10,* resides in the Wall
+CO27,* resides in the Wall
+QI69,* resides in the Wall
+QI72,* resides in the Wall
+RB11,* resides in the Wall
+RB16,* resides in the Wall
+RESCUED_CHERUB_03,* resides in the Wall
+RESCUED_CHERUB_04,* resides in the Wall
+RESCUED_CHERUB_05,* resides in the Wall
+RESCUED_CHERUB_34,* resides in the Wall
+CO14,* resides in the Wastelands
+CO36,* resides in the Wastelands
+HE02,* resides in the Wastelands
+QI06,* resides in the Wastelands
+RB04,* resides in the Wastelands
+RESCUED_CHERUB_10,* resides in the Wastelands
+RESCUED_CHERUB_38,* resides in the Wastelands
+HE101,* resides on the Bridge
+CO11,* resides with the Olive Trees
+CO19,* resides with the Olive Trees
+HE05,* resides with the Olive Trees
+QI07,* resides with the Olive Trees
+QI20,* resides with the Olive Trees
+RESCUED_CHERUB_23,* resides with the Olive Trees
+RESCUED_CHERUB_27,* resides with the Olive Trees
+RB17,A candle holds *
+RB18,A candle holds *
+RB19,A candle holds *
+RB24,A candle holds *
+RB25,A candle holds *
+RB26,A candle holds *
+Arena_NailManager[1000],A guilt statue holds *
+Arena_NailManager[3000],A guilt statue holds *
+Arena_NailManager[5000],A guilt statue holds *
+HE10,A guilt statue holds *
+QI32,A guilt statue holds *
+QI33,A guilt statue holds *
+QI34,A guilt statue holds *
+QI35,A guilt statue holds *
+QI79,A guilt statue holds *
+QI80,A guilt statue holds *
+QI81,A guilt statue holds *
+RB34,A guilt statue holds *
+RB35,A guilt statue holds *
+RB36,A guilt statue holds *
+QI14,A hatching tree holds *
+QI39,A Holy Visage holds *
+QI40,A Holy Visage holds *
+PR04,A lady's tomb holds *
+Sword[D01Z02S06],A Mea Culpa Shrine holds *
+Sword[D01Z05S24],* requires a golden chalice
+Sword[D02Z03S13],A Mea Culpa Shrine holds *
+Sword[D04Z02S12],A Mea Culpa Shrine holds *
+Sword[D05Z01S13],A Mea Culpa Shrine holds *
+Sword[D06Z01S11],A Mea Culpa Shrine holds *
+Sword[D17Z01S08],A Mea Culpa Shrine holds *
+RB101,A pentitence holds *
+RB102,A pentitence holds *
+RB103,A pentitence holds *
+QI13,Altasgracias holds *
+RB06,Altasgracias holds *
+Oil[D01Z05S07],An oil fountain holds *
+Oil[D02Z02S10],An oil fountain holds *
+Oil[D03Z03S13],An oil fountain holds *
+Oil[D04Z02S14],An oil fountain holds *
+Oil[D05Z01S19],An oil fountain holds *
+Oil[D09Z01S12],An oil fountain holds *
+PR11,Cleofas holds *
+QI62,Cresente holds *
+QI301,Crisanta holds *
+QI31,Deosgracias holds *
+RB203,Diosdado holds *
+QI61,Dolphos holds *
+QI204,Esdras holds *
+QI59,Gemino holds *
+QI68,Gemino holds *
+RB10,Gemino holds *
+PR05,Jocinero holds *
+RE05,Jocinero holds *
+Lvdovico[1000],Lvdovico holds *
+Lvdovico[500],Lvdovico holds *
+PR03,Lvdovico holds *
+QI01,Lvdovico holds *
+PR201,Miriam holds *
+QI60,Orestes holds *
+QI203,Perpetva holds *
+QI54,Redento holds *
+RB20,Redento holds *
+RB21,Redento holds *
+RB22,Redento holds *
+QI57,The fountain of burning oil holds *
+HE201,The Fourth Visage holds *
+Lady[D01Z05S22],The Lady of Sorrows holds *
+Lady[D01Z05S26],The Lady of Sorrows holds *
+Lady[D02Z02S12],The Lady of Sorrows holds *
+Lady[D02Z03S15],The Lady of Sorrows holds *
+Lady[D05Z01S14],The Lady of Sorrows holds *
+Lady[D06Z01S24],The Lady of Sorrows holds *
+Undertaker[1000],The Undertaker holds *
+Undertaker[1250],The Undertaker holds *
+Undertaker[1500],The Undertaker holds *
+Undertaker[1750],The Undertaker holds *
+Undertaker[2000],The Undertaker holds *
+Undertaker[250],The Undertaker holds *
+Undertaker[2500],The Undertaker holds *
+Undertaker[3000],The Undertaker holds *
+Undertaker[500],The Undertaker holds *
+Undertaker[5000],The Undertaker holds *
+Undertaker[750],The Undertaker holds *
+QI56,Tirso holds *
+QI66,Tirso holds *
+Tirso[1000],Tirso holds *
+Tirso[10000],Tirso holds *
+Tirso[2000],Tirso holds *
+Tirso[500],Tirso holds *
+Tirso[5000],Tirso holds *
+PR08,Viridiana holds *
+X,??? holds *

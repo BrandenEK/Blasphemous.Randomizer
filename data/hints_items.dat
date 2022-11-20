@@ -1,0 +1,170 @@
+RB01,a bead of physical defense
+RB02,a bead of physical defense
+RB03,a bead of physical defense
+RB04,a bead of wealth
+RB05,a bead of magic
+RB06,a bead of strength
+RB07,a bead of life
+RB08,a bead of fiery defense
+RB09,a bead of toxic defense
+RB10,a bead of conditional defense
+RB11,a bead of fiery defense
+RB12,a bead of toxic defense
+RB13,a bead of electric defense
+RB14,a bead of contact defense
+RB15,a stone bead
+RB16,a bead of life
+RB17,a piece of wax
+RB18,a piece of wax
+RB19,a piece of wax
+RB20,a limestone bead
+RB21,a limestone bead
+RB22,a limestone bead
+RB24,a piece of wax
+RB25,a piece of wax
+RB26,a piece of wax
+RB28,a bead of conditional defense
+RB30,a bead of intellect
+RB31,a bead of electric defense
+RB32,a bead of magical defense
+RB33,a bead of magical defense
+RB34,a bead of magic
+RB35,a bead of wealth
+RB36,a bead of universal defense
+RB37,a calcium bead
+RB38,a bead of guilt
+RB39,a bead of guilt
+RB40,a bead of guilt
+RB41,a bead of guilt
+RB101,a reliquary bead
+RB102,a reliquary bead
+RB103,a reliquary bead
+RB104,a bead of conditional strength
+RB105,a red gemstone
+RB106,a bead of life
+RB107,a blue gemstone
+RB108,a bead of intellect
+RB201,a bead of conditional defense
+RB202,a bead of parrying
+RB203,a wheel
+RB204,a bead of magic
+RB301,a bead of conditional strength
+PR01,a prayer of speed
+PR03,a lightning prayer
+PR04,a prayer of life
+PR05,a companion prayer
+PR07,a lightning prayer
+PR08,a prayer of defense
+PR09,a lightning prayer
+PR10,a prayer of strength
+PR11,a prayer of defense
+PR12,a prayer of destruction
+PR14,a lightning prayer
+PR15,a prayer of poison
+PR16,a prayer of wealth
+PR101,a companion prayer
+PR201,a companion prayer
+PR202,a completely useless prayer
+PR203,a lightning prayer
+RE01,a pile of bloody sand
+RE02,a working hand
+RE03,a dirty nail
+RE04,a dreamy shroud
+RE05,a golden cloth
+RE07,a silver lung
+RE10,a set of tongues
+HE01,a heart of intellect
+HE02,a heart of parrying
+HE03,a heart of conditional strngth
+HE04,a heart of strength
+HE05,a heart of magic
+HE06,a heart of wealth
+HE07,a heart of life
+HE10,a heart of defense
+HE11,a heart of parrying
+HE101,a heart of speed
+HE201,an apodictic heart
+QI01,a cord
+QI02,a mark of refuge
+QI03,a mark of refuge
+QI04,a mark of refuge
+QI06,a piece of Tentudia
+QI07,a piece of Tentudia
+QI08,a piece of Tentudia
+QI10,a ceremony piece
+QI11,a ceremony piece
+QI12,a ceremony piece
+QI13,an egg
+QI14,a hatched egg
+QI19,an herb
+QI20,an herb
+QI31,a thorn
+QI32,a thorn
+QI33,a thorn
+QI34,a thorn
+QI35,a thorn
+QI37,an herb
+QI38,a holy wound
+QI39,a holy wound
+QI40,a holy wound
+QI41,an empty flask
+QI44,a rosary knot
+QI45,an empty flask
+QI46,an empty flask
+QI47,an empty flask
+QI48,an empty flask
+QI49,an empty flask
+QI50,an empty flask
+QI51,an empty flask
+QI52,a rosary knot
+QI53,a rosary knot
+QI54,a rosary knot
+QI55,a rosary knot
+QI56,a rosary knot
+QI57,a full thimble
+QI58,a brother's key
+QI59,an empty thimble
+QI60,a mask
+QI61,a mask
+QI62,a mask
+QI63,an herb
+QI64,an herb
+QI65,an herb
+QI66,a gray cloth
+QI67,a broken hand
+QI68,a bouqet of flowers
+QI69,a bronze key
+QI70,a silver key
+QI71,a golden key
+QI72,a large key
+QI75,a golden chalice
+QI79,a thorn
+QI80,a thorn
+QI81,a thorn
+QI101,a silvery ball
+QI102,a silvery ball
+QI103,a silvery ball
+QI104,a silvery ball
+QI105,a silvery ball
+QI106,a peculiar bell
+QI107,a golden verse
+QI108,a golden verse
+QI109,a golden verse
+QI110,a golden verse
+QI201,a severed eye
+QI202,a broken eye
+QI203,a scapular
+QI204,a wooden key
+QI301,a special holy wound
+CO,a collectible
+CH,a cherub
+LU,a life upgrade
+FU,a fervour upgrade
+SU,a mea culpa upgrade
+TS,a small bundle of tears
+TM,a medium bundle of tears
+TL,a large bundle of tears
+RW,a waxy bead
+BW,a waxy bead
+TH,a thorn
+X,???
