@@ -112,28 +112,21 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
-    // Update shop text for new items
-    //[HarmonyPatch(typeof(DialogManager), "CalculateLines_Object")]
-    //public class DialogManager_ShopPatch
-    //{
-    //    public static bool Prefix(ref DialogObject ___currentDialog)
-    //    {
-    //        string scene = Core.LevelManager.currentLevel.LevelName;
-    //        if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
-    //        {
-    //            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(___currentDialog.item);
-    //            if (item != null)
-    //            {
-    //                RewardInfo info = item.getRewardInfo(true);
-    //                text = info.name;
-    //                value = info.description;
-    //                sprite = info.sprite;
-    //            }
-    //            return false;
-    //        }
-    //        return true;
-    //    }
-    //}
+    // Show new hint text instead of corpse dialog
+    [HarmonyPatch(typeof(DialogManager), "StartConversation")]
+    public class DialogManager_Patch
+    {
+        public static void Prefix(string conversiationId, Dictionary<string, DialogObject> ___allDialogs)
+        {
+            if (conversiationId.Length == 8 && int.TryParse(conversiationId.Substring(4), out int id) && id > 2000 && id < 2035)
+            {
+                string hint = Main.Randomizer.hintShuffler.getHint(conversiationId);
+                DialogObject current = ___allDialogs[conversiationId];
+                current.dialogLines.Clear();
+                current.dialogLines.Add(hint);
+            }
+        }
+    }
 
     // Initialize Randomizer class
     [HarmonyPatch(typeof(AchievementsManager), "AllInitialized")]

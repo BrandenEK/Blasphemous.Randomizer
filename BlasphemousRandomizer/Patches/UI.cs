@@ -83,7 +83,6 @@ namespace BlasphemousRandomizer.Patches
         public static void Prefix(ref string caption, ref string description, ref Sprite image)
         {
             // Can also use this to show different cost
-            Main.Randomizer.Log(image.name.ToUpper());
             Item item = Main.Randomizer.itemShuffler.getItemAtLocation(image.name.ToUpper());
             if (item != null)
             {
