@@ -80,6 +80,7 @@ namespace BlasphemousRandomizer.Fillers
 		// Fill output by matching random enemies with the location
 		private void fillRandomLocations(Dictionary<string, string> output, List<EnemyLocation> locations, List<string> enemies)
 		{
+			shuffleList(enemies);
 			while (locations.Count > 0)
 			{
 				int index = rand(locations.Count);

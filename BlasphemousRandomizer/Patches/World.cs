@@ -1,6 +1,9 @@
 ﻿using HarmonyLib;
 using Tools.Level.Interactables;
+using Tools.Level.Layout;
 using Framework.Managers;
+using Gameplay.GameControllers.Entities;
+using UnityEngine;
 
 namespace BlasphemousRandomizer.Patches
 {
@@ -18,6 +21,24 @@ namespace BlasphemousRandomizer.Patches
                     return false;
                 }
                 return true;
+            }
+        }
+
+        // Replace enemy with random one
+        [HarmonyPatch(typeof(EnemySpawnPoint), "Start")]
+        public class EnemySpawnPoint_Patch
+        {
+            public static void Postfix(ref GameObject ___selectedEnemy)
+            {
+                string id = ___selectedEnemy.GetComponentInChildren<Enemy>().Id;
+                if (Main.Randomizer.gameConfig.enemies.type < 1 || (Core.LevelManager.currentLevel.LevelName == "D03Z01S02" && id == "EN03"))
+                    return;
+
+                GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(id);
+                if (newEnemy != null)
+                    ___selectedEnemy = newEnemy;
+
+                // Can modify spawn position here too
             }
         }
 
