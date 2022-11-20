@@ -35,7 +35,7 @@ namespace BlasphemousRandomizer.Shufflers
             // Make sure this location hasn't already been collected
             if (Core.Events.GetFlag("Location_" + locationId))
             {
-                Main.Randomizer.Log("This location has already been collected!");
+                Main.Randomizer.Log($"Location {locationId} has already been collected!");
                 return;
             }
             Core.Events.SetFlag("Location_" + locationId, true, false);

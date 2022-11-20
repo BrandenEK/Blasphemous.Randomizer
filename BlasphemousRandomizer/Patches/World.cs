@@ -51,7 +51,7 @@ namespace BlasphemousRandomizer.Patches
         {
             public static void Postfix(Enemy enemy)
             {
-                if (enemy == null || enemy.Id == "")
+                if (enemy == null || enemy.Id == "" || enemy.Id == "EV09")
                     return;
 
                 // Get ratings of enemy & area
