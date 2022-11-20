@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Gameplay.UI;
 using System.Diagnostics;
+using System.Collections;
 using BlasphemousRandomizer.Shufflers;
 using BlasphemousRandomizer.Config;
 using BlasphemousRandomizer.Structures;
@@ -31,10 +32,11 @@ namespace BlasphemousRandomizer
 
         private bool inGame;
         private int lastLoadedSlot;
+        private string errorOnLoad;
 
         // Randomizer data
         private string[] cutsceneNames;
-        private Sprite[] customImages;          private bool forceSpoiler = true;
+        private Sprite[] customImages;
 
         public void Initialize()
         {
@@ -67,6 +69,7 @@ namespace BlasphemousRandomizer
             Core.Persistence.AddPersistentManager(this);
             LevelManager.OnLevelLoaded += onLevelLoaded;
             lastLoadedSlot = -1;
+            errorOnLoad = "";
             Log("Randomizer has been initialized!");
         }
 
@@ -120,7 +123,7 @@ namespace BlasphemousRandomizer
                     shufflers[i].Reset();
                 }
                 Log("Loaded invalid game!");
-                //Display error message
+                errorOnLoad = "This save file was not created in randomizer or used an older version.  Item locations are invalid!";
             }
 
             inGame = true;
@@ -156,9 +159,6 @@ namespace BlasphemousRandomizer
         private void Randomize(bool newGame)
         {
             Stopwatch watch = Stopwatch.StartNew();
-            //Fill doors
-            //Fill hints
-            //Fill enemies
 
             // Shuffle everything
             for (int i = 0; i < shufflers.Length; i++)
@@ -166,8 +166,12 @@ namespace BlasphemousRandomizer
                 shufflers[i].Shuffle(seed);
             }
 
+            // Show error message if item shuffler failed
+            if (itemShuffler.getNewItems().Count == 0)
+                errorOnLoad = "Item shuffler failed to generate valid game.  Item locations are invalid!";
+
             // Generate spoiler on new game
-            if (newGame || forceSpoiler)
+            if (newGame)
             {
                 string spoiler = "";
                 for (int i = 0; i < shufflers.Length; i++)
@@ -184,7 +188,10 @@ namespace BlasphemousRandomizer
         private void onLevelLoaded(Level oldLevel, Level newLevel)
         {
             string scene = newLevel.LevelName;
-            // Error on load
+
+            // Display delayed error message
+            if (errorOnLoad != "")
+                UIController.instance.StartCoroutine(showErrorMessage(2.1f));
 
             // Load enemies
             EnemyLoader.loadEnemies();
@@ -271,6 +278,13 @@ namespace BlasphemousRandomizer
         {
             if (fileConfig.debug.type > 0)
                 FileUtil.writeLine("log.txt", message + "\n");
+        }
+
+        private IEnumerator showErrorMessage(float waitTime)
+        {
+            yield return new WaitForSecondsRealtime(waitTime);
+            UIController.instance.ShowPopUp(errorOnLoad, "", 0, true);
+            errorOnLoad = "";
         }
 
         public bool shouldSkipCutscene(string id)

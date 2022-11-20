@@ -1,5 +1,5 @@
 ﻿using HarmonyLib;
-using Tools.Level;
+using Tools.Level.Interactables;
 using Framework.Managers;
 
 namespace BlasphemousRandomizer.Patches
@@ -32,6 +32,21 @@ namespace BlasphemousRandomizer.Patches
         //        {
         //            __instance.gameObject.SetActive(false);
         //        }
+        //    }
+        //}
+
+        //[HarmonyPatch(typeof(PrieDieu), "KneeledMenuCoroutine")]
+        //public class PrieDieu_Patch
+        //{
+        //    public static void Prefix(ref bool canUseTeleport)
+        //    {
+        //        Main.Randomizer.Log("Setting use teleport to true");
+        //        canUseTeleport = true;
+        //    }
+
+        //    public static void Postfix(bool canUseTeleport)
+        //    {
+        //        Main.Randomizer.Log(canUseTeleport.ToString());
         //    }
         //}
     }
