@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BlasphemousRandomizer.Fillers;
 
 namespace BlasphemousRandomizer.Shufflers
@@ -8,6 +7,15 @@ namespace BlasphemousRandomizer.Shufflers
     {
         private Dictionary<string, string> newHints;
         private HintFiller filler;
+
+        public string getHint(string id)
+        {
+            if (newHints != null && newHints.ContainsKey(id))
+            {
+                return newHints[id];
+            }
+            return "Error!";
+        }
 
         public void Init()
         {
@@ -21,7 +29,14 @@ namespace BlasphemousRandomizer.Shufflers
 
         public void Shuffle(int seed)
         {
-            //Shuffle hints
+            if (!filler.isValid())
+            {
+                Main.Randomizer.Log("Error: Hint data could not be loaded!");
+                return;
+            }
+            newHints = new Dictionary<string, string>();
+            filler.Fill(seed, newHints);
+            Main.Randomizer.Log(newHints.Count + " hints have been shuffled!");
         }
 
         public string GetSpoiler()

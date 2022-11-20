@@ -75,6 +75,12 @@ namespace BlasphemousRandomizer.Shufflers
                 Main.Randomizer.itemsCollected++;
         }
 
+        // Used by hint filler to generate new hints
+        public Dictionary<string, Item> getNewItems()
+        {
+            return newItems;
+        }
+
         // Shuffle the items - called when loading a game
         public void Shuffle(int seed)
         {
