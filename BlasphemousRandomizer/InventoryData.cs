@@ -37,6 +37,10 @@ namespace BlasphemousRandomizer
         public bool hand;
         public bool hatchedEgg;
 
+        // Helpful items
+        public int flasks;
+        public int quicksilver;
+
         // Speed items
         public bool wheel;
         public bool dawnHeart;
@@ -84,7 +88,7 @@ namespace BlasphemousRandomizer
 
         public bool bridgeAccess
         {
-            get { return holyWounds >= 3 && blood && scapular; }
+            get { return holyWounds >= 3 && blood && scapular && canBeatBoss("esdras"); }
         }
 
         public bool canBreakHoles
@@ -92,9 +96,33 @@ namespace BlasphemousRandomizer
             get { return swordLevel > 0 || cherubAttack(131071); }
         }
 
+        public int power
+        {
+            get { return healthLevel + swordLevel + flasks + quicksilver; }
+        }
+
         public bool cherubAttack(int bitfield)
         {
             return (cherubBits & bitfield) > 0;
+        }
+
+        public bool canBeatBoss(string boss)
+        {
+            // First five bosses are not used as requirements yet
+            if (boss == "warden") return power >= 0;
+            else if (boss == "ten-piedad") return power >= 0;
+            else if (boss == "charred-lady") return power >= 0;
+            else if (boss == "tres-angustias") return power >= 0;
+            else if (boss == "esdras") return power >= 0; // would change first seeding
+            else if (boss == "melquiades") return power >= 4;
+            else if (boss == "exposito") return power >= 4;
+            else if (boss == "quirce") return power >= 4;
+            else if (boss == "crisanta") return power >= 8;
+            else if (boss == "amanecida") return power >= 10;
+            else if (boss == "laudes") return power >= 10;
+            else if (boss == "sierpes") return power >= 5;
+            else if (boss == "isidora") return power >= 12;
+            else return false;
         }
 
         public void addItem(Item item)
@@ -156,6 +184,7 @@ namespace BlasphemousRandomizer
 				if (item.id == 14) { hatchedEgg = true; return; }
                 if (item.id == 19 || item.id == 20 || item.id == 37 || item.id == 63 || item.id == 64 || item.id == 65) { herbs++; return; }
                 if (item.id == 38 || item.id == 39 || item.id == 40) { holyWounds++; return; }
+                if (item.id == 41 || item.id == 45 || item.id == 46 || item.id == 47|| item.id == 48 || item.id == 49 || item.id == 50 || item.id == 51) { flasks++; return; }
 				if (item.id == 57) { fullThimble = true; return; }
 				if (item.id == 58) { elderKey = true; return; }
 				if (item.id == 59) { emptyThimble = true; return; }
@@ -168,6 +197,7 @@ namespace BlasphemousRandomizer
 				if (item.id == 71) { goldKey = true; return; }
 				if (item.id == 72) { peaksKey = true; return; }
 				if (item.id == 75) { chalice = true; return; }
+                if (item.id == 101 || item.id == 102 || item.id == 103 || item.id == 104 || item.id == 105) { quicksilver++; return; }
 				if (item.id == 106) { bell = true; return; }
 				if (item.id == 107 || item.id == 108 || item.id == 109 || item.id == 110) { verses++; return; }
 				if (item.id == 201 || item.id == 202) { traitorEyes++; return; }
