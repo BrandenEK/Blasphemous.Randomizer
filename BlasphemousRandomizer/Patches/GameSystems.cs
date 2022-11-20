@@ -111,11 +111,20 @@ namespace BlasphemousRandomizer.Patches
 
     // Initialize Randomizer class
     [HarmonyPatch(typeof(AchievementsManager), "AllInitialized")]
-    public class AchievementsManager_Patch
+    public class AchievementsManager_InitializePatch
     {
         public static void Postfix()
         {
             Main.Randomizer.Initialize();
+        }
+    }
+    // Dispose Randomizer class
+    [HarmonyPatch(typeof(AchievementsManager), "Dispose")]
+    public class AchievementsManager_DisposePatch
+    {
+        public static void Postfix()
+        {
+            Main.Randomizer.Dispose();
         }
     }
 }

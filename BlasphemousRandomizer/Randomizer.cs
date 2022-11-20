@@ -3,8 +3,10 @@ using Gameplay.UI;
 using System.Diagnostics;
 using BlasphemousRandomizer.Shufflers;
 using BlasphemousRandomizer.Config;
+using BlasphemousRandomizer.Structures;
 using Framework.FrameworkCore;
 using Framework.Managers;
+using Tools.Level;
 
 namespace BlasphemousRandomizer
 {
@@ -63,8 +65,14 @@ namespace BlasphemousRandomizer
 
             // Set up data
             Core.Persistence.AddPersistentManager(this);
+            LevelManager.OnLevelLoaded += onLevelLoaded;
             lastLoadedSlot = -1;
             Log("Randomizer has been initialized!");
+        }
+
+        public void Dispose()
+        {
+            LevelManager.OnLevelLoaded -= onLevelLoaded;
         }
 
         // When game is saved
@@ -172,6 +180,57 @@ namespace BlasphemousRandomizer
             Log("Time to fill seed: " + watch.ElapsedMilliseconds + " ms");
         }
 
+        // Specific actions need to be taken when a certain scene is loaded
+        private void onLevelLoaded(Level oldLevel, Level newLevel)
+        {
+            string scene = newLevel.LevelName;
+            // Load enemies
+            // Error on load
+
+            // Update images of shop items
+            if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
+            {
+                foreach (SpriteRenderer spriteRenderer in Object.FindObjectsOfType<SpriteRenderer>())
+                {
+                    if (spriteRenderer.name == "Body" && spriteRenderer.sprite != null && "qi11rb02rb37qi58rb09rb05qi49rb12qi71".Contains(spriteRenderer.sprite.name))
+                    {
+                        Item item = itemShuffler.getItemAtLocation(spriteRenderer.sprite.name.ToUpper());
+                        spriteRenderer.sprite = item == null ? null : item.getRewardInfo(true).sprite;
+                    }
+                }
+            }
+            // Give holy visage reward & disable altar
+            else if (scene == "D01Z04S19")
+            {
+                itemShuffler.giveItem("QI38", true);
+                Core.Events.SetFlag("ATTRITION_ALTAR_DONE", true, false);
+                disableAltar("22c0f081-b3a0-4310-8a40-9506d4a1315c");
+            }
+            else if (scene == "D03Z03S16")
+            {
+                itemShuffler.giveItem("QI39", true);
+                Core.Events.SetFlag("CONTRITION_ALTAR_DONE", true, false);
+                disableAltar("27213fd3-b05b-4157-b067-5206321cacb7");
+            }
+            else if (scene == "D02Z03S21")
+            {
+                itemShuffler.giveItem("QI40", true);
+                Core.Events.SetFlag("COMPUNCTION_ALTAR_DONE", true, false);
+                disableAltar("bc2b17e1-5c8c-4a90-b7c8-160eacdd538d");
+            }
+
+            void disableAltar(string id)
+            {
+                foreach (Interactable interactable in Object.FindObjectsOfType<Interactable>())
+                {
+                    if (interactable.GetPersistenID() == id)
+                    {
+                        interactable.gameObject.SetActive(false);
+                        return;
+                    }
+                }
+            }
+        }
 
         // Set up a new game
         private void setUpExtras()
