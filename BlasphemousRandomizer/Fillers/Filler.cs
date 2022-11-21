@@ -19,14 +19,15 @@ namespace BlasphemousRandomizer.Fillers
 
         protected void shuffleList<T>(List<T> list)
         {
-            List<T> list2 = new List<T>();
-            while (list.Count > 0)
+            int upperIdx = list.Count;
+            while (upperIdx > 1)
             {
-                int index = rand(list.Count);
-                list2.Add(list[index]);
-                list.RemoveAt(index);
+                upperIdx--;
+                int randIdx = rand(upperIdx + 1);
+                T value = list[randIdx];
+                list[randIdx] = list[upperIdx];
+                list[upperIdx] = value;
             }
-            list.AddRange(list2);
         }
 
         public virtual bool isValid()
