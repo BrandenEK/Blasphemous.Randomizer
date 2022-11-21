@@ -94,7 +94,7 @@ namespace BlasphemousRandomizer.Fillers
 		private void fillLocations(List<EnemyLocation> locations)
         {
 			locations.Clear();
-			locations.Add(new EnemyLocation(0, "EN01", 1, false));
+			locations.Add(new EnemyLocation(0, "EN01", -1, false));
 			locations.Add(new EnemyLocation(0, "EN02", 0, false));
 			locations.Add(new EnemyLocation(0, "EN03", 0, false));
 			locations.Add(new EnemyLocation(0, "EN04", 0, false));
