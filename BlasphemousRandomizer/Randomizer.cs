@@ -2,6 +2,7 @@
 using Gameplay.UI;
 using System.Diagnostics;
 using System.Collections;
+using System.Collections.Generic;
 using BlasphemousRandomizer.Shufflers;
 using BlasphemousRandomizer.Config;
 using BlasphemousRandomizer.Structures;
@@ -36,6 +37,7 @@ namespace BlasphemousRandomizer
 
         // Randomizer data
         private string[] cutsceneNames;
+        private string[] interactableIds;
         private Sprite[] customImages;
 
         public void Initialize()
@@ -63,6 +65,8 @@ namespace BlasphemousRandomizer
             // Load external data
             if (!FileUtil.parseFiletoArray("cutscenes_names.dat", out cutsceneNames))
                 cutsceneNames = new string[0];
+            if (!FileUtil.parseFiletoArray("interactable_ids.dat", out interactableIds))
+                interactableIds = new string[0];
             loadCustomImages();
 
             // Set up data
@@ -196,15 +200,19 @@ namespace BlasphemousRandomizer
             // Load enemies
             EnemyLoader.loadEnemies();
 
+            // Test shroud
+            //Core.InventoryManager.GetRelic("RE04").Equip();
+
             // Update images of shop items
             if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
             {
-                foreach (SpriteRenderer spriteRenderer in Object.FindObjectsOfType<SpriteRenderer>())
+                foreach (GameObject interactable in getInteractables())
                 {
-                    if (spriteRenderer.name == "Body" && spriteRenderer.sprite != null && "qi11rb02rb37qi58rb09rb05qi49rb12qi71".Contains(spriteRenderer.sprite.name))
+                    SpriteRenderer render = interactable.transform.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
+                    if (render != null)
                     {
-                        Item item = itemShuffler.getItemAtLocation(spriteRenderer.sprite.name.ToUpper());
-                        spriteRenderer.sprite = item == null ? null : item.getRewardInfo(true).sprite;
+                        Item item = itemShuffler.getItemAtLocation(render.sprite.name.ToUpper());
+                        render.sprite = item == null ? null : item.getRewardInfo(true).sprite;
                     }
                 }
             }
@@ -213,31 +221,34 @@ namespace BlasphemousRandomizer
             {
                 itemShuffler.giveItem("QI38", true);
                 Core.Events.SetFlag("ATTRITION_ALTAR_DONE", true, false);
-                disableAltar("22c0f081-b3a0-4310-8a40-9506d4a1315c");
+                foreach (GameObject altar in getInteractables())
+                    altar.SetActive(false);
             }
             else if (scene == "D03Z03S16")
             {
                 itemShuffler.giveItem("QI39", true);
                 Core.Events.SetFlag("CONTRITION_ALTAR_DONE", true, false);
-                disableAltar("27213fd3-b05b-4157-b067-5206321cacb7");
+                foreach (GameObject altar in getInteractables())
+                    altar.SetActive(false);
             }
             else if (scene == "D02Z03S21")
             {
                 itemShuffler.giveItem("QI40", true);
                 Core.Events.SetFlag("COMPUNCTION_ALTAR_DONE", true, false);
-                disableAltar("bc2b17e1-5c8c-4a90-b7c8-160eacdd538d");
+                foreach (GameObject altar in getInteractables())
+                    altar.SetActive(false);
             }
 
-            void disableAltar(string id)
+            List<GameObject> getInteractables()
             {
+                List<GameObject> interactables = new List<GameObject>();
                 foreach (Interactable interactable in Object.FindObjectsOfType<Interactable>())
                 {
-                    if (interactable.GetPersistenID() == id)
-                    {
-                        interactable.gameObject.SetActive(false);
-                        return;
-                    }
+                    Log(interactable.transform.parent.name + ": " + interactable.GetPersistenID());
+                    if (FileUtil.arrayContains(interactableIds, interactable.GetPersistenID()))
+                        interactables.Add(interactable.gameObject);
                 }
+                return interactables;
             }
         }
 
@@ -324,7 +335,7 @@ namespace BlasphemousRandomizer
             {
                 for (int j = 0; j < w; j += 32)
                 {
-                    Sprite sprite = Sprite.Create(tex, new Rect(j, i, 32f, 32f), Vector2.zero);
+                    Sprite sprite = Sprite.Create(tex, new Rect(j, i, 32f, 32f), new Vector2(0.5f, 0.5f), 32f);
                     customImages[count] = sprite;
                     count++;
                 }

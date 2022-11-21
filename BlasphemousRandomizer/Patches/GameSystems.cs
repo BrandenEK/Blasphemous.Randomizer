@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System;
+using HarmonyLib;
 using Framework.Managers;
 using Framework.EditorScripts.EnemiesBalance;
 using Framework.EditorScripts.BossesBalance;
@@ -128,13 +129,44 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
+    // Always allow talking to corpses
+    //[HarmonyPatch(typeof(InventoryManager), "IsRelicEquipped", new Type[] { typeof(string) })]
+    //public class InventoryManager_Patch
+    //{
+    //    public static bool Prefix(string idRelic, ref bool __result)
+    //    {
+    //        Main.Randomizer.Log("Checking equipped" + idRelic);
+    //        if (idRelic == "RE04")
+    //        {
+    //            __result = true;
+    //            return false;
+    //        }
+    //        return true;
+    //    }
+    //}
+    //// Always allow talking to corpses
+    //[HarmonyPatch(typeof(InventoryManager), "IsRelicOwned", new Type[] { typeof(string) })]
+    //public class InventoryManager_OwnedPatch
+    //{
+    //    public static bool Prefix(string idRelic, ref bool __result)
+    //    {
+    //        Main.Randomizer.Log("Checking owned" + idRelic);
+    //        if (idRelic == "RE04")
+    //        {
+    //            __result = true;
+    //            return false;
+    //        }
+    //        return true;
+    //    }
+    //}
+
     // Log what flags are being set
     [HarmonyPatch(typeof(EventManager), "SetFlag")]
     public class EventManager_Patch
     {
         public static bool Prefix(string id, bool b)
         {
-            if (id == "REVEAL_FAITH_PLATFORMS")
+            if (id == "" || id == "REVEAL_FAITH_PLATFORMS")
                 return true;
 
             string text = b ? "Setting" : "Clearing";

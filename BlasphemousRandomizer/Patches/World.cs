@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using Tools.Level.Interactables;
 using Tools.Level.Layout;
+using Tools.Playmaker2.Condition;
 using Framework.Managers;
 using Gameplay.GameControllers.Entities;
 using Gameplay.GameControllers.Enemies.Framework.Attack;
@@ -79,6 +80,21 @@ namespace BlasphemousRandomizer.Patches
                     attack.ContactDamageAmount += attack.ContactDamageAmount * percent;
             }
         }
+
+        // Always allow hint corpses to be active
+        //[HarmonyPatch(typeof(ItemIsEquiped), "executeAction")]
+        //public class ItemIsEquiped_Patch
+        //{
+        //    public static bool Prefix(string objectIdStting, ref bool __result)
+        //    {
+        //        if (objectIdStting == "RE04")
+        //        {
+        //            __result = true;
+        //            return false;
+        //        }
+        //        return true;
+        //    }
+        //}
 
         // Disable holy visage altars
         //[HarmonyPatch(typeof(Interactable), "OnAwake")]
