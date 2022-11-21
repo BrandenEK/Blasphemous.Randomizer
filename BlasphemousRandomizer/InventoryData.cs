@@ -40,6 +40,7 @@ namespace BlasphemousRandomizer
         // Helpful items
         public int flasks;
         public int quicksilver;
+        public int knots;
 
         // Speed items
         public bool wheel;
@@ -185,7 +186,8 @@ namespace BlasphemousRandomizer
                 if (item.id == 19 || item.id == 20 || item.id == 37 || item.id == 63 || item.id == 64 || item.id == 65) { herbs++; return; }
                 if (item.id == 38 || item.id == 39 || item.id == 40) { holyWounds++; return; }
                 if (item.id == 41 || item.id == 45 || item.id == 46 || item.id == 47|| item.id == 48 || item.id == 49 || item.id == 50 || item.id == 51) { flasks++; return; }
-				if (item.id == 57) { fullThimble = true; return; }
+				if (item.id == 44 || item.id == 52 || item.id == 53 || item.id == 54 || item.id == 55 || item.id == 56 ) { knots++; return; }
+                if (item.id == 57) { fullThimble = true; return; }
 				if (item.id == 58) { elderKey = true; return; }
 				if (item.id == 59) { emptyThimble = true; return; }
 				if (item.id == 60 || item.id == 61 || item.id == 62) { masks++; return; }

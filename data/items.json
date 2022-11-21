@@ -909,7 +909,7 @@
 		"name": "QI44",
 		"type": 5,
 		"id": 44,
-		"progression": false
+		"progression": true
 	},
 	{
 		"name": "QI45",
@@ -957,31 +957,31 @@
 		"name": "QI52",
 		"type": 5,
 		"id": 52,
-		"progression": false
+		"progression": true
 	},
 	{
 		"name": "QI53",
 		"type": 5,
 		"id": 53,
-		"progression": false
+		"progression": true
 	},
 	{
 		"name": "QI54",
 		"type": 5,
 		"id": 54,
-		"progression": false
+		"progression": true
 	},
 	{
 		"name": "QI55",
 		"type": 5,
 		"id": 55,
-		"progression": false
+		"progression": true
 	},
 	{
 		"name": "QI56",
 		"type": 5,
 		"id": 56,
-		"progression": false
+		"progression": true
 	},
 	{
 		"name": "QI57",

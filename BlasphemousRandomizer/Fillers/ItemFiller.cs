@@ -320,7 +320,7 @@ namespace BlasphemousRandomizer.Fillers
 			//Relics
 			locations.Add(new ItemLocation("RE01", "item", (InventoryData d) => d.elderKey));
 			locations.Add(new ItemLocation("RE02", "blessing", (InventoryData d) => d.hand));
-			locations.Add(new ItemLocation("RE03", "redento", (InventoryData d) => d.bridgeAccess && d.limestones >= 3));
+			locations.Add(new ItemLocation("RE03", "redento", (InventoryData d) => d.bridgeAccess && d.limestones >= 3 && d.knots >= 3));
 			locations.Add(new ItemLocation("RE04", "blessing", (InventoryData d) => d.cloth));
 			locations.Add(new ItemLocation("RE05", "jocinero", (InventoryData d) => d.bridgeAccess && d.cherubs >= 20));
 			locations.Add(new ItemLocation("RE07", "item", (InventoryData d) => true));
@@ -420,7 +420,7 @@ namespace BlasphemousRandomizer.Fillers
 			locations.Add(new ItemLocation("QI51", "item", (InventoryData d) => d.bridgeAccess && d.masks > 0 && d.goldKey));
 			locations.Add(new ItemLocation("QI52", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("QI53", "item", (InventoryData d) => true));
-			locations.Add(new ItemLocation("QI54", "redento", (InventoryData d) => d.bridgeAccess && d.limestones >= 3));
+			locations.Add(new ItemLocation("QI54", "redento", (InventoryData d) => d.bridgeAccess && d.limestones >= 3 && d.knots >= 3));
 			locations.Add(new ItemLocation("QI55", "item", (InventoryData d) => d.nail && d.blood));
 			locations.Add(new ItemLocation("QI56", "tirso", (InventoryData d) => d.herbs >= 6 && d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey && d.canBeatBoss("quirce")));
 			locations.Add(new ItemLocation("QI57", "fountain", (InventoryData d) => d.emptyThimble));
