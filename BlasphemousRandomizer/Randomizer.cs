@@ -200,9 +200,6 @@ namespace BlasphemousRandomizer
             // Load enemies
             EnemyLoader.loadEnemies();
 
-            // Test shroud
-            //Core.InventoryManager.GetRelic("RE04").Equip();
-
             // Update images of shop items
             if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
             {
@@ -282,6 +279,13 @@ namespace BlasphemousRandomizer
             {
                 //enemyShuffler.Shuffle(new System.Random().Next());
                 //UIController.instance.ShowPopUp("Shuffling enemies temporarily!", "", 0, false);
+            }
+            else if (Input.GetKeyDown(KeyCode.Keypad8))
+            {
+                
+            }
+            else if (Input.GetKeyDown(KeyCode.Keypad9))
+            {
             }
         }
 

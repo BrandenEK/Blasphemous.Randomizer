@@ -69,7 +69,7 @@ namespace BlasphemousRandomizer.Patches
                 attack.ContactDamageAmount += attack.ContactDamageAmount * percent;
         }
 
-        // Always enable climbable walls
+        // Prevent wall enemies from disabling climbable walls
         [HarmonyPatch(typeof(WallEnemy), "OnTriggerEnter2D")]
         public class WallEnemy_Patch
         {
