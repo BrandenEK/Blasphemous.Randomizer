@@ -118,11 +118,11 @@ namespace BlasphemousRandomizer
             else if (boss == "melquiades") return power >= 4;
             else if (boss == "exposito") return power >= 4;
             else if (boss == "quirce") return power >= 4;
-            else if (boss == "crisanta") return power >= 8;
-            else if (boss == "amanecida") return power >= 10;
-            else if (boss == "laudes") return power >= 10;
-            else if (boss == "sierpes") return power >= 5;
-            else if (boss == "isidora") return power >= 12;
+            else if (boss == "crisanta") return power >= 10;
+            else if (boss == "amanecida") return power >= 12;
+            else if (boss == "laudes") return power >= 12;
+            else if (boss == "sierpes") return power >= 7;
+            else if (boss == "isidora") return power >= 15;
             else return false;
         }
 

@@ -313,7 +313,7 @@ namespace BlasphemousRandomizer.Fillers
 			locations.Add(new ItemLocation("PR15", "item", (InventoryData d) => d.bridgeAccess));
 			locations.Add(new ItemLocation("PR16", "item", (InventoryData d) => d.nail || d.linen));
 			locations.Add(new ItemLocation("PR101", "verse", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && d.bridgeAccess && d.blood && d.root && d.masks > 0 && d.bronzeKey && d.silverKey));
-			locations.Add(new ItemLocation("PR201", "miriam", (InventoryData d) => d.bridgeAccess && d.masks > 1 && d.linen && d.blood && d.root && d.lung && d.shroud));
+			locations.Add(new ItemLocation("PR201", "miriam", (InventoryData d) => d.bridgeAccess && d.masks > 1 && d.linen && d.blood && d.root && d.lung));
 			locations.Add(new ItemLocation("PR202", "item", (InventoryData d) => d.blood || d.bridgeAccess));
 			locations.Add(new ItemLocation("PR203", "item", (InventoryData d) => d.blood));
 
@@ -516,7 +516,7 @@ namespace BlasphemousRandomizer.Fillers
 			locations.Add(new ItemLocation("Oil[D05Z01S19]", "oil", (InventoryData d) => d.bridgeAccess));
 
 			//Mea Culpa Shrines
-			locations.Add(new ItemLocation("Sword[D01Z05S24]", "sword", (InventoryData d) => d.bridgeAccess && d.chalice && d.shroud && d.masks > 0 && d.bronzeKey && ((d.lung && d.nail && (d.root || d.cherubAttack(786432))) || (d.linen && d.swordLevel > 1))));
+			locations.Add(new ItemLocation("Sword[D01Z05S24]", "sword", (InventoryData d) => d.bridgeAccess && d.chalice && d.masks > 0 && d.bronzeKey && ((d.lung && d.nail && (d.root || d.cherubAttack(786432))) || (d.linen && d.swordLevel > 1))));
 			locations.Add(new ItemLocation("Sword[D17Z01S08]", "sword", (InventoryData d) => true));
 			locations.Add(new ItemLocation("Sword[D02Z03S13]", "sword", (InventoryData d) => true));
 			locations.Add(new ItemLocation("Sword[D01Z02S06]", "sword", (InventoryData d) => true));
