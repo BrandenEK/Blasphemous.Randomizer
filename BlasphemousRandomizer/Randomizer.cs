@@ -280,7 +280,8 @@ namespace BlasphemousRandomizer
             }
             else if (Input.GetKeyDown(KeyCode.Keypad7))
             {
-                UIController.instance.ShowPopUp("Test", "", 0, false);
+                //enemyShuffler.Shuffle(new System.Random().Next());
+                //UIController.instance.ShowPopUp("Shuffling enemies temporarily!", "", 0, false);
             }
         }
 

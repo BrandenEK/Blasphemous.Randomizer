@@ -5,6 +5,7 @@ using Gameplay.GameControllers.Entities;
 using Gameplay.GameControllers.Enemies.Framework.Attack;
 using Framework.EditorScripts.EnemiesBalance;
 using Framework.FrameworkCore.Attributes;
+using Gameplay.GameControllers.Enemies.WallEnemy;
 using UnityEngine;
 
 namespace BlasphemousRandomizer.Patches
@@ -66,6 +67,16 @@ namespace BlasphemousRandomizer.Patches
             EnemyAttack attack = enemy.GetComponentInChildren<EnemyAttack>();
             if (attack != null)
                 attack.ContactDamageAmount += attack.ContactDamageAmount * percent;
+        }
+
+        // Always enable climbable walls
+        [HarmonyPatch(typeof(WallEnemy), "OnTriggerEnter2D")]
+        public class WallEnemy_Patch
+        {
+            public static bool Prefix()
+            {
+                return false;
+            }
         }
     }
 }
