@@ -17,20 +17,27 @@ namespace BlasphemousRandomizer.Patches
         public static void Postfix(ref GameObject ___selectedEnemy, Transform ___spawnPoint)
         {
             // Temporary logging & data collection
-            Main.Randomizer.Log($"Id: {Core.LevelManager.currentLevel.LevelName}[{(int)___spawnPoint.position.x},{(int)___spawnPoint.position.y}]");
             Enemy enemy = ___selectedEnemy.GetComponentInChildren<Enemy>();
             if (enemy == null)
             {
                 Main.Randomizer.Log("Enemy didn't have enemy component!");
                 return;
             }
-            string id = enemy.Id;
-            Main.Randomizer.Log("Original enemy: " + id);
 
             string locationId = $"{Core.LevelManager.currentLevel.LevelName}[{(int)___spawnPoint.position.x},{(int)___spawnPoint.position.y}]";
             GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(locationId);
             if (newEnemy != null)
                 ___selectedEnemy = newEnemy;
+
+            Main.Randomizer.Log($"Id: " + locationId);
+            Main.Randomizer.Log("Original enemy: " + enemy.Id);
+
+            string output = "{\r\n\t\"locationId:\": \"";
+            output += locationId;
+            output += "\",\r\n\t\"originalEnemy\": \"";
+            output += enemy.Id;
+            output += "\"\r\n},\r\n";
+            Shufflers.EnemyShuffle.enemyData += output;
 
             // Can modify spawn position here too
         }

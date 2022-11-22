@@ -161,5 +161,8 @@ namespace BlasphemousRandomizer.Shufflers
             //}
             //return spoiler + "\n";
         }
+
+        // temp
+        public static string enemyData = "";
     }
 }

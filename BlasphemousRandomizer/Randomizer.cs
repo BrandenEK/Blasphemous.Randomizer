@@ -282,7 +282,7 @@ namespace BlasphemousRandomizer
             }
             else if (Input.GetKeyDown(KeyCode.Keypad8))
             {
-                
+                LogFile(EnemyShuffle.enemyData);
             }
             else if (Input.GetKeyDown(KeyCode.Keypad9))
             {
@@ -294,6 +294,13 @@ namespace BlasphemousRandomizer
         {
             if (fileConfig.debug.type > 0)
                 FileUtil.writeLine("log.txt", message + "\n");
+        }
+
+        // Log data to file
+        public void LogFile(string data)
+        {
+            if (fileConfig.debug.type > 0)
+                FileUtil.writeFull("data.txt", data);
         }
 
         private IEnumerator showErrorMessage(float waitTime)
