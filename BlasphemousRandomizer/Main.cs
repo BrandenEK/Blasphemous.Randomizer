@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BlasphemousRandomizer
 {
-    [BepInPlugin("damocles.blasphemous.randomizer", "Blasphemous Randomizer", MyPluginInfo.PLUGIN_VERSION)]
+    [BepInPlugin("com.damocles.blasphemous.randomizer", "Blasphemous Randomizer", MyPluginInfo.PLUGIN_VERSION)]
     [BepInProcess("Blasphemous.exe")]
     public class Main : BaseUnityPlugin
     {
@@ -12,7 +12,6 @@ namespace BlasphemousRandomizer
 
         private void Awake()
         {
-            Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
             Randomizer = new Randomizer();
             Patch();
         }
@@ -24,7 +23,7 @@ namespace BlasphemousRandomizer
 
         private void Patch()
         {
-            Harmony harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
+            Harmony harmony = new Harmony("com.damocles.blasphemous.randomizer");
             harmony.PatchAll();
         }
     }
