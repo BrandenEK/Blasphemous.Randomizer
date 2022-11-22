@@ -11,23 +11,24 @@ using UnityEngine;
 namespace BlasphemousRandomizer.Patches
 {
     // Replace enemy with random one
-    [HarmonyPatch(typeof(EnemySpawnPoint), "Start")]
+    [HarmonyPatch(typeof(EnemySpawnPoint), "Awake")]
     public class EnemySpawnPoint_Patch
     {
-        public static void Postfix(ref GameObject ___selectedEnemy)
+        public static void Postfix(ref GameObject ___selectedEnemy, Transform ___spawnPoint)
         {
+            // Temporary logging & data collection
+            Main.Randomizer.Log($"Id: {Core.LevelManager.currentLevel.LevelName}[{(int)___spawnPoint.position.x},{(int)___spawnPoint.position.y}]");
             Enemy enemy = ___selectedEnemy.GetComponentInChildren<Enemy>();
             if (enemy == null)
             {
                 Main.Randomizer.Log("Enemy didn't have enemy component!");
                 return;
             }
-
             string id = enemy.Id;
-            if (Main.Randomizer.gameConfig.enemies.type < 1 || (Core.LevelManager.currentLevel.LevelName == "D03Z01S02" && id == "EN03"))
-                return;
+            Main.Randomizer.Log("Original enemy: " + id);
 
-            GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(id);
+            string locationId = $"{Core.LevelManager.currentLevel.LevelName}[{(int)___spawnPoint.position.x},{(int)___spawnPoint.position.y}]";
+            GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(locationId);
             if (newEnemy != null)
                 ___selectedEnemy = newEnemy;
 

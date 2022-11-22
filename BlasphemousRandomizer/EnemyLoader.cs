@@ -31,7 +31,7 @@ namespace BlasphemousRandomizer
 				string id = array[i].Id;
 				if (id != "" && !allEnemies.ContainsKey(id) && FileUtil.arrayContains(enemyIds, id))
 				{
-					Main.Randomizer.Log($"Loading enemy {id}: {array[i].name}");
+					//Main.Randomizer.Log($"Loading enemy {id}: {array[i].name}");
 					changeHitbox(array[i].transform, id);
 					allEnemies.Add(array[i].Id, array[i].gameObject);
 				}

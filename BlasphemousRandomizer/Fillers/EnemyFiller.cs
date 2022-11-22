@@ -6,149 +6,160 @@ namespace BlasphemousRandomizer.Fillers
 {
     public class EnemyFiller : Filler
     {
+		private List<EnemyLocation> allLocations;
+
         public EnemyFiller()
         {
-            // Load enemy location data from json
+			FileUtil.loadJson("locations_enemies.json", out allLocations);
         }
 
         public override bool isValid()
         {
-            return base.isValid();
+			return allLocations.Count > 0;
         }
 
-        public void Fill(int seed, EnemyConfig config, Dictionary<string, string> output)
-        {
-            initialize(seed);
+		public void Fill(int seed, EnemyConfig config, Dictionary<string, string> output)
+		{
+			initialize(seed);
 
 			// Get lists
-            List<EnemyLocation> locations = new List<EnemyLocation>();
-            List<string> enemyIds = new List<string>(EnemyLoader.enemyIds);
-			fillLocations(locations);
+			List<EnemyLocation> locations = new List<EnemyLocation>(allLocations);
+			List<string> enemyIds = new List<string>(EnemyLoader.enemyIds);
 
-			// Fill vanilla enemy locations
-			fillVanillaLocations(output, locations, enemyIds);
+			// Get each list of enemies of each type
+			List<string>[] enemyIdsByType = new List<string>[] { new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>() };
+			for (int i = 0; i < enemyIds.Count; i++)
+            {
+				enemyIdsByType[enemyTypes[enemyIds[i]]].Add(enemyIds[i]);
+            }
 
+			// Each enemy id is randomized to a random id
 			if (config.type == 1)
             {
-				// Randomize enemies only with locations of the matching type
-				List<EnemyLocation> typeLocations = new List<EnemyLocation>();
-				List<string> typeEnemies = new List<string>();
-				while (locations.Count > 0)
+				// Create dictionary to hold new id matchings
+				Dictionary<string, string> newEnemyIds = new Dictionary<string, string>();
+				List<string> possibleIds = new List<string>(enemyIds);
+				shuffleList(enemyIds);
+				
+				// Assign a new enemy id to this original one
+				foreach (string originalId in enemyIds)
                 {
-					int type = locations[0].enemyType;
-					getLocationsOfType(locations, enemyIds, typeLocations, typeEnemies, type);
-					fillRandomLocations(output, typeLocations, typeEnemies);
-					typeLocations.Clear();
-					typeEnemies.Clear();
+					int type = enemyTypes[originalId];
+					if (type == 4)
+                    {
+						// If vanilla or arena enemy, leave it as original
+						newEnemyIds.Add(originalId, originalId);
+                    }
+					else if (config.groupByType)
+                    {
+						// Get new enemy id from the same type as original (Unless vanilla)
+						int randIdx = rand(enemyIdsByType[type].Count);
+						newEnemyIds.Add(originalId, enemyIdsByType[type][randIdx]);
+						enemyIdsByType[type].RemoveAt(randIdx);
+					}
+                    else
+                    {
+						// Get new enemy id from any remaining type
+						int randIdx = rand(possibleIds.Count);
+						newEnemyIds.Add(originalId, possibleIds[randIdx]);
+						possibleIds.RemoveAt(randIdx);
+                    }
+                }
+
+				// Assign each location a new enemy id based on its original enemy id
+				for (int i = 0; i < locations.Count; i++)
+                {
+					string newEnemy = locations[i].arena ? locations[i].originalEnemy : newEnemyIds[locations[i].originalEnemy];
+					output.Add(locations[i].locationId, newEnemy);
                 }
             }
-            else
+			// Each enemy location is randomized to a random id
+            else if (config.type == 2)
             {
-				// Randomize all remaining enemies with all locations
-				fillRandomLocations(output, locations, enemyIds);
-            }
-        }
+				shuffleList(enemyIds);
 
-		// Transfer locations & enemies of certain type to new lists
-		private void getLocationsOfType(List<EnemyLocation> allLocations, List<string> allEnemies, List<EnemyLocation> typeLocations, List<string> typeEnemies, int type)
-		{
-			for (int i = 0; i < allLocations.Count; i++)
-			{
-				if (allLocations[i].enemyType == type)
+				for (int i = 0; i < locations.Count; i++)
 				{
-					typeLocations.Add(allLocations[i]);
-					typeEnemies.Add(allEnemies[i]);
-					allLocations.RemoveAt(i);
-					allEnemies.RemoveAt(i);
-					i--;
+					int type = enemyTypes[locations[i].originalEnemy];
+					if (type == 4 || locations[i].arena)
+                    {
+						// If vanilla enemy, leave it as original
+						output.Add(locations[i].locationId, locations[i].originalEnemy);
+                    }
+					else if (config.groupByType)
+                    {
+						// Get random id only from same type
+						int randIdx = rand(enemyIdsByType[type].Count);
+						output.Add(locations[i].locationId, enemyIdsByType[type][randIdx]);
+					}
+                    else
+                    {
+						// Get random id from all ids
+						int randIdx = rand(enemyIds.Count);
+						output.Add(locations[i].locationId, enemyIds[randIdx]);
+                    }
 				}
 			}
-		}
+        }
 
-		// Fill output with vanilla locations & enemies
-		private void fillVanillaLocations(Dictionary<string, string> output, List<EnemyLocation> locations, List<string> enemies)
+		// 0 - normal, 1 - weak, 2 - large, 3 - flying (unused), 4 - vanilla (for now)
+		private Dictionary<string, int> enemyTypes = new Dictionary<string, int>()
 		{
-			List<EnemyLocation> vanillaLocations = new List<EnemyLocation>();
-			List<string> vanillaEnemies = new List<string>();
-			getLocationsOfType(locations, enemies, vanillaLocations, vanillaEnemies, -1);
-			for (int i = 0; i < vanillaLocations.Count; i++)
-			{
-				output.Add(vanillaLocations[i].enemy, vanillaEnemies[i]);
-			}
-		}
-
-		// Fill output by matching random enemies with the location
-		private void fillRandomLocations(Dictionary<string, string> output, List<EnemyLocation> locations, List<string> enemies)
-		{
-			shuffleList(enemies);
-			while (locations.Count > 0)
-			{
-				int index = rand(locations.Count);
-				output.Add(locations[index].enemy, enemies[enemies.Count - 1]);
-				locations.RemoveAt(index);
-				enemies.RemoveAt(enemies.Count - 1);
-			}
-		}
-
-		// Temporary until data is loaded from json
-		private void fillLocations(List<EnemyLocation> locations)
-        {
-			locations.Clear();
-			locations.Add(new EnemyLocation(0, "EN01", -1, false));
-			locations.Add(new EnemyLocation(0, "EN02", 0, false));
-			locations.Add(new EnemyLocation(0, "EN03", 0, false));
-			locations.Add(new EnemyLocation(0, "EN04", 0, false));
-			locations.Add(new EnemyLocation(0, "EN05", 1, false));
-			locations.Add(new EnemyLocation(0, "EN06", 1, false));
-			locations.Add(new EnemyLocation(0, "EN07", 0, false));
-			locations.Add(new EnemyLocation(0, "EN08", 1, false));
-			locations.Add(new EnemyLocation(0, "EN09", 0, false));
-			locations.Add(new EnemyLocation(0, "EN10", -1, false));
-			locations.Add(new EnemyLocation(0, "EN11", 0, false));
-			locations.Add(new EnemyLocation(0, "EN12", 0, false));
-			locations.Add(new EnemyLocation(0, "EN13", 0, false));
-			locations.Add(new EnemyLocation(0, "EN14", 0, false));
-			locations.Add(new EnemyLocation(0, "EN15", 2, false));
-			locations.Add(new EnemyLocation(0, "EN16", 2, false));
-			locations.Add(new EnemyLocation(0, "EN17", 0, false));
-			locations.Add(new EnemyLocation(0, "EN18", 0, false));
-			locations.Add(new EnemyLocation(0, "EN20", 0, false));
-			locations.Add(new EnemyLocation(0, "EN21", 0, false));
-			locations.Add(new EnemyLocation(0, "EN22", 1, false));
-			locations.Add(new EnemyLocation(0, "EN23", 0, false));
-			locations.Add(new EnemyLocation(0, "EN24", 0, false));
-			locations.Add(new EnemyLocation(0, "EN26", 0, false));
-			locations.Add(new EnemyLocation(0, "EN27", -1, false));
-			locations.Add(new EnemyLocation(0, "EN28", 0, false));
-			locations.Add(new EnemyLocation(0, "EN29", 0, false));
-			locations.Add(new EnemyLocation(0, "EN31", 0, false));
-			locations.Add(new EnemyLocation(0, "EN32", 0, false));
-			locations.Add(new EnemyLocation(0, "EN33", 0, false));
-			locations.Add(new EnemyLocation(0, "EV01", 0, false));
-			locations.Add(new EnemyLocation(0, "EV02", 0, false));
-			locations.Add(new EnemyLocation(0, "EV03", 0, false));
-			locations.Add(new EnemyLocation(0, "EV05", -1, false));
-			locations.Add(new EnemyLocation(0, "EV08", 1, false));
-			locations.Add(new EnemyLocation(0, "EV10", 0, false));
-			locations.Add(new EnemyLocation(0, "EV11", 1, false));
-			locations.Add(new EnemyLocation(0, "EV12", 1, false));
-			locations.Add(new EnemyLocation(0, "EV13", 0, false));
-			locations.Add(new EnemyLocation(0, "EV14", 0, false));
-			locations.Add(new EnemyLocation(0, "EV15", 0, false));
-			locations.Add(new EnemyLocation(0, "EV17", -1, false));
-			locations.Add(new EnemyLocation(0, "EV18", -1, false));
-			locations.Add(new EnemyLocation(0, "EV19", 2, false));
-			locations.Add(new EnemyLocation(0, "EV20", -1, false));
-			locations.Add(new EnemyLocation(0, "EV21", 0, false));
-			locations.Add(new EnemyLocation(0, "EV22", 0, false));
-			locations.Add(new EnemyLocation(0, "EV23", 2, false));
-			locations.Add(new EnemyLocation(0, "EV24", 0, false));
-			locations.Add(new EnemyLocation(0, "EV26", 2, false));
-			locations.Add(new EnemyLocation(0, "EV27", 0, false));
-			locations.Add(new EnemyLocation(0, "EV29", -1, false));
-			locations.Add(new EnemyLocation(0, "EN201", 0, false));
-			locations.Add(new EnemyLocation(0, "EN202", 2, false));
-			locations.Add(new EnemyLocation(0, "EN203", -1, false));
-		}
+			{ "EN01", 4 },
+			{ "EN02", 0 },
+			{ "EN03", 0 },
+			{ "EN04", 0 },
+			{ "EN05", 1 },
+			{ "EN06", 1 },
+			{ "EN07", 0 },
+			{ "EN08", 1 },
+			{ "EN09", 0 },
+			{ "EN10", 4 },
+			{ "EN11", 0 },
+			{ "EN12", 0 },
+			{ "EN13", 0 },
+			{ "EN14", 0 },
+			{ "EN15", 2 },
+			{ "EN16", 2 },
+			{ "EN17", 0 },
+			{ "EN18", 0 },
+			{ "EN20", 0 },
+			{ "EN21", 0 },
+			{ "EN22", 1 },
+			{ "EN23", 0 },
+			{ "EN24", 0 },
+			{ "EN26", 0 },
+			{ "EN27", 4 },
+			{ "EN28", 0 },
+			{ "EN29", 0 },
+			{ "EN31", 0 },
+			{ "EN32", 0 },
+			{ "EN33", 0 },
+			{ "EV01", 0 },
+			{ "EV02", 0 },
+			{ "EV03", 0 },
+			{ "EV05", 4 },
+			{ "EV08", 1 },
+			{ "EV10", 0 },
+			{ "EV11", 1 },
+			{ "EV12", 1 },
+			{ "EV13", 0 },
+			{ "EV14", 0 },
+			{ "EV15", 0 },
+			{ "EV17", 4 },
+			{ "EV18", 4 },
+			{ "EV19", 2 },
+			{ "EV20", 4 },
+			{ "EV21", 0 },
+			{ "EV22", 0 },
+			{ "EV23", 2 },
+			{ "EV24", 0 },
+			{ "EV26", 2 },
+			{ "EV27", 0 },
+			{ "EV29", 4 },
+			{ "EN201", 0 },
+			{ "EN202", 2 },
+			{ "EN203", 4 }
+		};
     }
 }
