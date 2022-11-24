@@ -1,0 +1,1186 @@
+[
+	{
+		"locationId": "D01Z01S01[-689,11]",
+		"originalEnemy": "EV10"
+	},
+	{
+		"locationId": "D01Z01S01[-697,12]",
+		"originalEnemy": "EV10"
+	},
+	{
+		"locationId": "D01Z01S01[-715,10]",
+		"originalEnemy": "EV11"
+	},
+	{
+		"locationId": "D01Z01S01[-683,10]",
+		"originalEnemy": "EV11"
+	},
+	{
+		"locationId": "D01Z01S01[-680,10]",
+		"originalEnemy": "EV11"
+	},
+	{
+		"locationId": "D01Z01S02[-645,9]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S02[-661,8]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S02[-626,10]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S02[-633,10]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S02[-655,8]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S02[-619,10]",
+		"originalEnemy": "EV10"
+	},
+	{
+		"locationId": "D01Z01S02[-641,11]",
+		"originalEnemy": "EV11"
+	},
+	{
+		"locationId": "D01Z01S02[-639,11]",
+		"originalEnemy": "EV11"
+	},
+	{
+		"locationId": "D01Z01S02[-622,9]",
+		"originalEnemy": "EV11"
+	},
+	{
+		"locationId": "D01Z01S03[-603,0]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-563,8]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-583,8]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-566,8]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-579,-2]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-577,-2]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-601,0]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-577,8]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-579,8]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-589,-2]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-570,8]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-584,-2]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-567,8]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-586,-2]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-561,8]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-597,0]",
+		"originalEnemy": "EV08"
+	},
+	{
+		"locationId": "D01Z01S03[-550,11]",
+		"originalEnemy": "EV10"
+	},
+	{
+		"locationId": "D01Z01S03[-586,15]",
+		"originalEnemy": "EV10"
+	},
+	{
+		"locationId": "D01Z01S03[-573,9]",
+		"originalEnemy": "EV10"
+	},
+	{
+		"locationId": "D01Z01S03[-545,11]",
+		"originalEnemy": "EV10"
+	},
+	{
+		"locationId": "D01Z01S03[-555,11]",
+		"originalEnemy": "EV11"
+	},
+	{
+		"locationId": "D01Z01S03[-553,11]",
+		"originalEnemy": "EV11"
+	},
+	{
+		"locationId": "D01Z03S01[-350,0]",
+		"originalEnemy": "EN15"
+	},
+	{
+		"locationId": "D01Z03S01[-373,12]",
+		"originalEnemy": "EN05"
+	},
+	{
+		"locationId": "D01Z03S01[-350,8]",
+		"originalEnemy": "EN05"
+	},
+	{
+		"locationId": "D01Z03S01[-358,7]",
+		"originalEnemy": "EN13"
+	},
+	{
+		"locationId": "D01Z03S01[-376,0]",
+		"originalEnemy": "EN05"
+	},
+	{
+		"locationId": "D01Z03S01[-392,7]",
+		"originalEnemy": "EN13"
+	},
+	{
+		"locationId": "D01Z03S02[-294,22]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S02[-321,13]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S02[-307,-2]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S02[-313,22]",
+		"originalEnemy": "EN13"
+	},
+	{
+		"locationId": "D01Z03S02[-319,-2]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S02[-320,22]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S03[-223,9]",
+		"originalEnemy": "EN13"
+	},
+	{
+		"locationId": "D01Z03S03[-272,8]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S03[-257,11]",
+		"originalEnemy": "EN05"
+	},
+	{
+		"locationId": "D01Z03S03[-259,6]",
+		"originalEnemy": "EN13"
+	},
+	{
+		"locationId": "D01Z03S03[-238,13]",
+		"originalEnemy": "EN05"
+	},
+	{
+		"locationId": "D01Z03S03[-228,8]",
+		"originalEnemy": "EN05"
+	},
+	{
+		"locationId": "D01Z03S03[-249,6]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S04[-195,23]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S04[-202,23]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S05[-171,-1]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S05[-153,-11]",
+		"originalEnemy": "EN13"
+	},
+	{
+		"locationId": "D01Z03S05[-165,-1]",
+		"originalEnemy": "EN13"
+	},
+	{
+		"locationId": "D01Z03S05[-160,-1]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S05[-159,-11]",
+		"originalEnemy": "EN13"
+	},
+	{
+		"locationId": "D01Z03S06[-134,12]",
+		"originalEnemy": "EN05"
+	},
+	{
+		"locationId": "D01Z03S06[-129,7]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S06[-138,13]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S06[-136,7]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S06[-162,13]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z03S06[-154,15]",
+		"originalEnemy": "EN05"
+	},
+	{
+		"locationId": "D01Z03S06[-158,8]",
+		"originalEnemy": "EN15"
+	},
+	{
+		"locationId": "D01Z04S05[-94,-35]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S05[-73,-27]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S05[-99,-35]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S05[-88,-35]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S05[-104,-35]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S05[-96,-23]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S05[-73,-21]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S05[-83,-27]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S06[-68,-57]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S06[-94,-44]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S06[-69,-44]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S06[-91,-43]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S06[-92,-52]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S06[-96,-43]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S06[-65,-42]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S06[-96,-58]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S06[-90,-56]",
+		"originalEnemy": "EN14"
+	},
+	{
+		"locationId": "D01Z04S07[-45,-53]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S07[-47,-55]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S07[-36,-53]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S07[-33,-55]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S10[-80,-65]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S10[-57,-65]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S10[-74,-69]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S10[-53,-64]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S10[-45,-73]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S10[-65,-69]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S10[-70,-67]",
+		"originalEnemy": "EN14"
+	},
+	{
+		"locationId": "D01Z04S10[-41,-67]",
+		"originalEnemy": "EN14"
+	},
+	{
+		"locationId": "D01Z04S10[-41,-73]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S10[-35,-69]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S10[-50,-65]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S10[-45,-69]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S10[-93,-65]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S11[-87,-89]",
+		"originalEnemy": "EN14"
+	},
+	{
+		"locationId": "D01Z04S11[-81,-88]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S11[-67,-88]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S11[-65,-89]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S11[-92,-88]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S11[-56,-90]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S11[-93,-89]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S11[-79,-89]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S11[-71,-88]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D01Z04S11[-60,-90]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S11[-74,-88]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S13[2,-110]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S13[-4,-110]",
+		"originalEnemy": "EN02"
+	},
+	{
+		"locationId": "D01Z04S13[2,-100]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S13[0,-98]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S15[-115,-68]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z04S15[-123,-68]",
+		"originalEnemy": "EV03"
+	},
+	{
+		"locationId": "D01Z05S02[-397,-21]",
+		"originalEnemy": "EN18"
+	},
+	{
+		"locationId": "D01Z05S03[-386,-29]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z05S03[-378,-66]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z05S03[-379,-38]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S03[-378,-29]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z05S04[-353,-21]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S04[-317,-21]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S04[-355,-21]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S04[-344,-21]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S04[-326,-21]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S04[-322,-21]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S04[-360,-21]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S04[-336,-21]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S05[-301,-37]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z05S06[-250,-23]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S06[-282,-23]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S06[-248,-23]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z05S06[-246,-23]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S06[-273,-23]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S06[-279,-23]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z05S06[-244,-23]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S06[-276,-23]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S08[-345,-56]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S08[-339,-56]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S09[-286,-53]",
+		"originalEnemy": "EN18"
+	},
+	{
+		"locationId": "D01Z05S09[-263,-45]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z05S11[-206,-43]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z05S11[-186,-44]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S11[-188,-44]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S11[-182,-44]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S11[-220,-44]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S11[-177,-41]",
+		"originalEnemy": "EN18"
+	},
+	{
+		"locationId": "D01Z05S11[-190,-44]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S11[-200,-43]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z05S11[-218,-44]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S12[-188,-68]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S12[-196,-68]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S12[-175,-65]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z05S12[-212,-68]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z05S12[-205,-67]",
+		"originalEnemy": "EN24"
+	},
+	{
+		"locationId": "D01Z05S12[-182,-68]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S12[-179,-67]",
+		"originalEnemy": "EN18"
+	},
+	{
+		"locationId": "D01Z05S13[-366,-80]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S13[-371,-78]",
+		"originalEnemy": "EN18"
+	},
+	{
+		"locationId": "D01Z05S13[-342,-76]",
+		"originalEnemy": "EN18"
+	},
+	{
+		"locationId": "D01Z05S13[-333,-80]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S13[-350,-80]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S13[-329,-80]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S14[-274,-89]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S14[-250,-89]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S14[-247,-89]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S14[-233,-78]",
+		"originalEnemy": "EN18"
+	},
+	{
+		"locationId": "D01Z05S14[-270,-89]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S14[-266,-89]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S19[-188,-101]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D01Z05S19[-183,-101]",
+		"originalEnemy": "EV12"
+	},
+	{
+		"locationId": "D03Z01S01[-475,-21]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z01S01[-524,-21]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z01S01[-514,-21]",
+		"originalEnemy": "EN20"
+	},
+	{
+		"locationId": "D03Z01S01[-468,-26]",
+		"originalEnemy": "EN20"
+	},
+	{
+		"locationId": "D03Z01S01[-520,-21]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z01S01[-494,-21]",
+		"originalEnemy": "EN20"
+	},
+	{
+		"locationId": "D03Z01S01[-486,-21]",
+		"originalEnemy": "EN20"
+	},
+	{
+		"locationId": "D03Z01S01[-503,-22]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z01S02[-576,-34]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z01S02[-572,-34]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z01S02[-612,-31]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z01S02[-594,-37]",
+		"originalEnemy": "EN20"
+	},
+	{
+		"locationId": "D03Z01S02[-554,-37]",
+		"originalEnemy": "EN20"
+	},
+	{
+		"locationId": "D03Z01S02[-558,-37]",
+		"originalEnemy": "EN20"
+	},
+	{
+		"locationId": "D03Z01S02[-606,-37]",
+		"originalEnemy": "EN20"
+	},
+	{
+		"locationId": "D03Z01S02[-565,-37]",
+		"originalEnemy": "EN03"
+	},
+	{
+		"locationId": "D03Z01S02[-601,-31]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z01S03[-682,-44]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z01S03[-734,-43]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z01S04[-814,-30]",
+		"originalEnemy": "EN20"
+	},
+	{
+		"locationId": "D03Z01S04[-805,-41]",
+		"originalEnemy": "EN03"
+	},
+	{
+		"locationId": "D03Z01S04[-808,-28]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z01S04[-802,-30]",
+		"originalEnemy": "EN20"
+	},
+	{
+		"locationId": "D03Z01S04[-811,-41]",
+		"originalEnemy": "EN03"
+	},
+	{
+		"locationId": "D03Z02S01[-687,-72]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S01[-675,-57]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S01[-675,-78]",
+		"originalEnemy": "EV13"
+	},
+	{
+		"locationId": "D03Z02S01[-667,-68]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S01[-653,-76]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S01[-679,-62]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S01[-677,-68]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S01[-655,-76]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S01[-673,-68]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S01[-664,-76]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S01[-667,-63]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S01[-664,-72]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S01[-664,-74]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S02[-725,-64]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S02[-739,-74]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S02[-716,-75]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S02[-735,-76]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S02[-698,-64]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S02[-693,-73]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S02[-716,-77]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S02[-717,-68]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S02[-728,-64]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S02[-741,-52]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S02[-696,-59]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S02[-726,-77]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S02[-716,-70]",
+		"originalEnemy": "EV13"
+	},
+	{
+		"locationId": "D03Z02S02[-739,-64]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S02[-731,-64]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S02[-713,-68]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S03[-707,-96]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S03[-707,-100]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S03[-736,-97]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S03[-741,-93]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S03[-730,-97]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S03[-745,-90]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S03[-745,-97]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S03[-736,-93]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S04[-688,-110]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S04[-702,-117]",
+		"originalEnemy": "EN03"
+	},
+	{
+		"locationId": "D03Z02S04[-688,-118]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S04[-682,-116]",
+		"originalEnemy": "EN03"
+	},
+	{
+		"locationId": "D03Z02S04[-698,-122]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S04[-700,-112]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S04[-694,-122]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S04[-682,-111]",
+		"originalEnemy": "EN03"
+	},
+	{
+		"locationId": "D03Z02S05[-668,-101]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S05[-685,-96]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S05[-662,-101]",
+		"originalEnemy": "EN03"
+	},
+	{
+		"locationId": "D03Z02S05[-664,-94]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S05[-679,-96]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S05[-661,-89]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S05[-653,-94]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S05[-668,-90]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S05[-654,-101]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S06[-683,-130]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S06[-687,-135]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S06[-677,-136]",
+		"originalEnemy": "EV13"
+	},
+	{
+		"locationId": "D03Z02S07[-745,-123]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S07[-746,-111]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S07[-734,-116]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S07[-746,-117]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S07[-734,-121]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S08[-761,-114]",
+		"originalEnemy": "EV13"
+	},
+	{
+		"locationId": "D03Z02S09[-774,-85]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S09[-767,-93]",
+		"originalEnemy": "EV13"
+	},
+	{
+		"locationId": "D03Z02S09[-774,-83]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S09[-770,-95]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S09[-774,-94]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S09[-767,-78]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S09[-759,-94]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S09[-774,-99]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S09[-785,-89]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S09[-767,-99]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S09[-778,-76]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S09[-774,-87]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S09[-760,-99]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S10[-767,-53]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S10[-771,-68]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S10[-781,-64]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S10[-781,-55]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S10[-756,-65]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S10[-765,-65]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S10[-760,-56]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S10[-773,-61]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S11[-591,-77]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S11[-621,-86]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S11[-629,-79]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S11[-631,-84]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S11[-592,-86]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S11[-584,-86]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S11[-604,-79]",
+		"originalEnemy": "EV17"
+	},
+	{
+		"locationId": "D03Z02S13[-806,-58]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S13[-797,-58]",
+		"originalEnemy": "EN01"
+	},
+	{
+		"locationId": "D03Z02S13[-795,-63]",
+		"originalEnemy": "EN17"
+	},
+	{
+		"locationId": "D03Z02S13[-794,-58]",
+		"originalEnemy": "EN03"
+	},
+	{
+		"locationId": "D03Z02S13[-804,-58]",
+		"originalEnemy": "EN01"
+	},
+]
