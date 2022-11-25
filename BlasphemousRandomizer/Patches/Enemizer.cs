@@ -1,11 +1,13 @@
 ﻿using HarmonyLib;
 using Tools.Level.Layout;
+using Tools.Level.Utils;
 using Framework.Managers;
 using Gameplay.GameControllers.Entities;
 using Gameplay.GameControllers.Enemies.Framework.Attack;
 using Framework.EditorScripts.EnemiesBalance;
 using Framework.FrameworkCore.Attributes;
 using Gameplay.GameControllers.Enemies.WallEnemy;
+using Gameplay.GameControllers.Enemies.PatrollingFlyingEnemy;
 using UnityEngine;
 
 namespace BlasphemousRandomizer.Patches
@@ -29,10 +31,10 @@ namespace BlasphemousRandomizer.Patches
             if (newEnemy != null)
                 ___selectedEnemy = newEnemy;
 
-            Main.Randomizer.Log($"Id: " + locationId);
-            Main.Randomizer.Log("Original enemy: " + enemy.Id);
+            //Main.Randomizer.Log($"Id: " + locationId);
+            //Main.Randomizer.Log("Original enemy: " + enemy.Id);
 
-            string output = "{\r\n\t\"locationId:\": \"";
+            string output = "{\r\n\t\"locationId\": \"";
             output += locationId;
             output += "\",\r\n\t\"originalEnemy\": \"";
             output += enemy.Id;
@@ -84,6 +86,16 @@ namespace BlasphemousRandomizer.Patches
             public static bool Prefix()
             {
                 return false;
+            }
+        }
+
+        // Don't hard cast flying patrolling enemies
+        [HarmonyPatch(typeof(FlyingPatrollingEnemySpawnConfigurator), "OnSpawn")]
+        public class FlyingPatrollingEnemySpawnConfigurator_Patch
+        {
+            public static bool Prefix(Enemy e)
+            {
+                return e.GetType() == typeof(PatrollingFlyingEnemy);
             }
         }
     }
