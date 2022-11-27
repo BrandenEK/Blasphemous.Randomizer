@@ -94,6 +94,7 @@ namespace BlasphemousRandomizer.Shufflers
                 { "EN31", 9 },
                 { "EN32", 3 },
                 { "EN33", 10 },
+                { "EN34", 9 },
                 { "EV01", 8 },
                 { "EV02", 7 },
                 { "EV03", 3 },

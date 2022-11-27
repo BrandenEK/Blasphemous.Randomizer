@@ -3510,6 +3510,11 @@
 		"arena": true
 	},
 	{
+		"locationId": "D19Z01S01[-2,5](SPAWN (25))",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
 		"locationId": "D19Z01S01[-5,4](SPAWN (26))",
 		"originalEnemy": "EV03",
 		"arena": true
@@ -3796,11 +3801,6 @@
 	},
 	{
 		"locationId": "D19Z01S04[-7,0](WAVE5)",
-		"originalEnemy": "EN05",
-		"arena": true
-	},
-	{
-		"locationId": "D19Z01S04[0,0](WAVE5)",
 		"originalEnemy": "EN05",
 		"arena": true
 	},

@@ -108,6 +108,7 @@ namespace BlasphemousRandomizer
 			"EN31",
 			"EN32",
 			"EN33",
+			"EN34",
 			"EV01",
 			"EV02",
 			"EV03",
