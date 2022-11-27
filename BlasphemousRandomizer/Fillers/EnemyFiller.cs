@@ -33,12 +33,19 @@ namespace BlasphemousRandomizer.Fillers
 				enemyIdsByType[enemyTypes[enemyIds[i]]].Add(enemyIds[i]);
             }
 
+			// Get list of ids to place - vanilla enemies are removed
+			List<string> possibleIds = new List<string>();
+			for (int i = 0; i < enemyIds.Count; i++)
+            {
+				if (enemyTypes[enemyIds[i]] != 4)
+					possibleIds.Add(enemyIds[i]);
+            }
+
 			// Each enemy id is randomized to a random id
 			if (config.type == 1)
             {
 				// Create dictionary to hold new id matchings
 				Dictionary<string, string> newEnemyIds = new Dictionary<string, string>();
-				List<string> possibleIds = new List<string>(enemyIds);
 				shuffleList(enemyIds);
 				
 				// Assign a new enemy id to this original one
@@ -96,9 +103,9 @@ namespace BlasphemousRandomizer.Fillers
 					}
                     else
                     {
-						// Get random id from all ids
-						int randIdx = rand(enemyIds.Count);
-						output.Add(locations[i].locationId, enemyIds[randIdx]);
+						// Get random id from all possible ids
+						int randIdx = rand(possibleIds.Count);
+						output.Add(locations[i].locationId, possibleIds[randIdx]);
                     }
 				}
 			}
