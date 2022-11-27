@@ -69,6 +69,7 @@ namespace BlasphemousRandomizer.Fillers
 				// Assign each location a new enemy id based on its original enemy id
 				for (int i = 0; i < locations.Count; i++)
                 {
+					Main.Randomizer.Log(locations[i].locationId);
 					string newEnemy = locations[i].arena ? locations[i].originalEnemy : newEnemyIds[locations[i].originalEnemy];
 					output.Add(locations[i].locationId, newEnemy);
                 }
@@ -80,6 +81,7 @@ namespace BlasphemousRandomizer.Fillers
 
 				for (int i = 0; i < locations.Count; i++)
 				{
+					Main.Randomizer.Log(locations[i].locationId);
 					int type = enemyTypes[locations[i].originalEnemy];
 					if (type == 4 || locations[i].arena)
                     {
@@ -135,6 +137,7 @@ namespace BlasphemousRandomizer.Fillers
 			{ "EN31", 0 },
 			{ "EN32", 0 },
 			{ "EN33", 0 },
+			{ "EN34", 4 },
 			{ "EV01", 0 },
 			{ "EV02", 0 },
 			{ "EV03", 0 },

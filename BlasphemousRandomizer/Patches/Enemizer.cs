@@ -16,7 +16,7 @@ namespace BlasphemousRandomizer.Patches
     [HarmonyPatch(typeof(EnemySpawnPoint), "Awake")]
     public class EnemySpawnPoint_Patch
     {
-        public static void Postfix(ref GameObject ___selectedEnemy, Transform ___spawnPoint)
+        public static void Postfix(EnemySpawnPoint __instance, ref GameObject ___selectedEnemy, Transform ___spawnPoint)
         {
             // Temporary logging & data collection
             Enemy enemy = ___selectedEnemy.GetComponentInChildren<Enemy>();
@@ -25,15 +25,22 @@ namespace BlasphemousRandomizer.Patches
                 Main.Randomizer.Log("Enemy didn't have enemy component!");
                 return;
             }
+            string scene = Core.LevelManager.currentLevel.LevelName;
+            string locationId = $"{scene}[{(int)___spawnPoint.position.x},{(int)___spawnPoint.position.y}]";
+            // If this is a special arena, add to locationId to prevent duplicates
+            if (__instance.SpawnOnArena && scene.Contains("D19") || scene == "D03Z03S03")
+                locationId += $"({__instance.name})";
 
-            string locationId = $"{Core.LevelManager.currentLevel.LevelName}[{(int)___spawnPoint.position.x},{(int)___spawnPoint.position.y}]";
             GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(locationId);
             if (newEnemy != null)
                 ___selectedEnemy = newEnemy;
 
+            // Extra data collection stuff
+
+            else if (enemy.Id != "EV09")
+                Main.Randomizer.LogDisplay("Enemy location doesn't exist in the dictionary: " + locationId);
             //Main.Randomizer.Log($"Id: " + locationId);
             //Main.Randomizer.Log("Original enemy: " + enemy.Id);
-
             string output = "{\r\n\t\"locationId\": \"";
             output += locationId;
             output += "\",\r\n\t\"originalEnemy\": \"";

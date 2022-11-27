@@ -345,19 +345,23 @@
 	},
 	{
 		"locationId": "D01Z04S07[-45,-53]",
-		"originalEnemy": "EV03"
+		"originalEnemy": "EV03",
+		"arena": true
 	},
 	{
 		"locationId": "D01Z04S07[-47,-55]",
-		"originalEnemy": "EV03"
+		"originalEnemy": "EV03",
+		"arena": true
 	},
 	{
 		"locationId": "D01Z04S07[-36,-53]",
-		"originalEnemy": "EV03"
+		"originalEnemy": "EV03",
+		"arena": true
 	},
 	{
 		"locationId": "D01Z04S07[-33,-55]",
-		"originalEnemy": "EV03"
+		"originalEnemy": "EV03",
+		"arena": true
 	},
 	{
 		"locationId": "D01Z04S10[-80,-65]",
@@ -413,7 +417,8 @@
 	},
 	{
 		"locationId": "D01Z04S11[-87,-89]",
-		"originalEnemy": "EN14"
+		"originalEnemy": "EN14",
+		"arena": true
 	},
 	{
 		"locationId": "D01Z04S11[-81,-88]",
@@ -437,11 +442,13 @@
 	},
 	{
 		"locationId": "D01Z04S11[-93,-89]",
-		"originalEnemy": "EN02"
+		"originalEnemy": "EN02",
+		"arena": true
 	},
 	{
 		"locationId": "D01Z04S11[-79,-89]",
-		"originalEnemy": "EN02"
+		"originalEnemy": "EN02",
+		"arena": true
 	},
 	{
 		"locationId": "D01Z04S11[-71,-88]",
@@ -1232,7 +1239,7 @@
 		"originalEnemy": "EN20"
 	},
 	{
-		"locationId": "D03Z01S01[-468,-26]",
+		"locationId": "D03Z01S01[-468,-26](Vanilla)",
 		"originalEnemy": "EN20"
 	},
 	{
@@ -1280,7 +1287,7 @@
 		"originalEnemy": "EN20"
 	},
 	{
-		"locationId": "D03Z01S02[-565,-37]",
+		"locationId": "D03Z01S02[-565,-37](Vanilla)",
 		"originalEnemy": "EN03"
 	},
 	{
@@ -1540,7 +1547,7 @@
 		"originalEnemy": "EV17"
 	},
 	{
-		"locationId": "D03Z02S06[-677,-136]",
+		"locationId": "D03Z02S06[-677,-136](Vanilla)",
 		"originalEnemy": "EV13"
 	},
 	{
@@ -1681,11 +1688,13 @@
 	},
 	{
 		"locationId": "D03Z02S13[-806,-58]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"arena": true
 	},
 	{
 		"locationId": "D03Z02S13[-797,-58]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"arena": true
 	},
 	{
 		"locationId": "D03Z02S13[-795,-63]",
@@ -1693,11 +1702,13 @@
 	},
 	{
 		"locationId": "D03Z02S13[-794,-58]",
-		"originalEnemy": "EN03"
+		"originalEnemy": "EN03",
+		"arena": true
 	},
 	{
 		"locationId": "D03Z02S13[-804,-58]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"arena": true
 	},
 	{
 		"locationId": "D03Z03S01[-712,-162]",
@@ -1764,19 +1775,21 @@
 		"originalEnemy": "EN22"
 	},
 	{
-		"locationId": "D03Z03S03[-664,-199]",
-		"originalEnemy": "EN07"
+		"locationId": "D03Z03S03[-664,-199](SPAWN)",
+		"originalEnemy": "EN07",
+		"arena": true
 	},
 	{
 		"locationId": "D03Z03S03[-660,-197]",
 		"originalEnemy": "EN07"
 	},
 	{
-		"locationId": "D03Z03S03[-656,-199]",
-		"originalEnemy": "EN07"
+		"locationId": "D03Z03S03[-656,-199](SPAWN (1))",
+		"originalEnemy": "EN07",
+		"arena": true
 	},
 	{
-		"locationId": "D03Z03S03[-656,-199](1)",
+		"locationId": "D03Z03S03[-656,-199](SPAWN (2))",
 		"originalEnemy": "EN07",
 		"arena": true
 	},
@@ -1837,44 +1850,50 @@
 		"originalEnemy": "EN22"
 	},
 	{
-		"locationId": "D03Z03S05[-624,-183]",
-		"originalEnemy": "EN04"
+		"locationId": "D03Z03S05[-615,-183]",
+		"originalEnemy": "EN04",
+		"arena": true
+	},
+	{
+		"locationId": "D03Z03S05[-616,-183]",
+		"originalEnemy": "EN04",
+		"arena": true
 	},
 	{
 		"locationId": "D03Z03S05[-622,-183]",
 		"originalEnemy": "EN04"
 	},
 	{
+		"locationId": "D03Z03S05[-624,-183]",
+		"originalEnemy": "EN04",
+		"arena": true
+	},
+	{
 		"locationId": "D03Z03S05[-614,-188]",
-		"originalEnemy": "EN07"
+		"originalEnemy": "EN07",
+		"arena": true
 	},
 	{
 		"locationId": "D03Z03S05[-616,-188]",
-		"originalEnemy": "EN07"
+		"originalEnemy": "EN07",
+		"arena": true
 	},
 	{
 		"locationId": "D03Z03S05[-618,-188]",
 		"originalEnemy": "EN07"
 	},
 	{
-		"locationId": "D03Z03S05[-622,-214]",
-		"originalEnemy": "EN04"
+		"locationId": "D03Z03S05[-625,-188]",
+		"originalEnemy": "EN07",
+		"arena": true
 	},
 	{
-		"locationId": "D03Z03S05[-616,-183]",
+		"locationId": "D03Z03S05[-622,-214]",
 		"originalEnemy": "EN04"
 	},
 	{
 		"locationId": "D03Z03S05[-618,-217]",
 		"originalEnemy": "EN07"
-	},
-	{
-		"locationId": "D03Z03S05[-625,-188]",
-		"originalEnemy": "EN07"
-	},
-	{
-		"locationId": "D03Z03S05[-615,-183]",
-		"originalEnemy": "EN04"
 	},
 	{
 		"locationId": "D03Z03S07[-593,-219]",
@@ -1921,6 +1940,10 @@
 		"originalEnemy": "EN22"
 	},
 	{
+		"locationId": "D03Z03S08[-576,-194]",
+		"originalEnemy": "EN22"
+	},
+	{
 		"locationId": "D03Z03S08[-530,-194]",
 		"originalEnemy": "EN07"
 	},
@@ -1934,7 +1957,8 @@
 	},
 	{
 		"locationId": "D03Z03S12[-696,-173]",
-		"originalEnemy": "EN04"
+		"originalEnemy": "EN04",
+		"arena": true
 	},
 	{
 		"locationId": "D03Z03S12[-695,-173]",
@@ -1942,7 +1966,8 @@
 	},
 	{
 		"locationId": "D03Z03S12[-695,-172]",
-		"originalEnemy": "EN04"
+		"originalEnemy": "EN04",
+		"arena": true
 	},
 	{
 		"locationId": "D03Z03S12[-704,-173]",
@@ -1950,7 +1975,8 @@
 	},
 	{
 		"locationId": "D03Z03S12[-705,-172]",
-		"originalEnemy": "EN04"
+		"originalEnemy": "EN04",
+		"arena": true
 	},
 	{
 		"locationId": "D04Z01S01[38,33]",
@@ -2377,7 +2403,7 @@
 		"originalEnemy": "EN23"
 	},
 	{
-		"locationId": "D05Z02S01[167,-98]",
+		"locationId": "D05Z02S01[167,-98](Vanilla)",
 		"originalEnemy": "EV26"
 	},
 	{
@@ -2486,7 +2512,8 @@
 	},
 	{
 		"locationId": "D06Z01S03[426,98]",
-		"originalEnemy": "EN34"
+		"originalEnemy": "EN34",
+		"arena": true
 	},
 	{
 		"locationId": "D06Z01S03[419,98]",
@@ -2522,11 +2549,13 @@
 	},
 	{
 		"locationId": "D06Z01S06[419,133]",
-		"originalEnemy": "EN31"
+		"originalEnemy": "EN31",
+		"arena": true
 	},
 	{
 		"locationId": "D06Z01S06[425,130]",
-		"originalEnemy": "EN34"
+		"originalEnemy": "EN34",
+		"arena": true
 	},
 	{
 		"locationId": "D06Z01S07[369,130]",
@@ -2658,11 +2687,13 @@
 	},
 	{
 		"locationId": "D06Z01S20[413,84]",
-		"originalEnemy": "EV02"
+		"originalEnemy": "EV02",
+		"arena": true
 	},
 	{
 		"locationId": "D06Z01S20[425,87]",
-		"originalEnemy": "EN31"
+		"originalEnemy": "EN31",
+		"arena": true
 	},
 	{
 		"locationId": "D06Z01S20[419,84]",
@@ -2674,15 +2705,18 @@
 	},
 	{
 		"locationId": "D06Z01S21[453,175]",
-		"originalEnemy": "EN31"
+		"originalEnemy": "EN31",
+		"arena": true
 	},
 	{
 		"locationId": "D06Z01S21[464,175]",
-		"originalEnemy": "EN31"
+		"originalEnemy": "EN31",
+		"arena": true
 	},
 	{
 		"locationId": "D06Z01S21[465,173]",
-		"originalEnemy": "EN34"
+		"originalEnemy": "EN34",
+		"arena": true
 	},
 	{
 		"locationId": "D06Z01S22[379,86]",
@@ -2749,7 +2783,7 @@
 		"originalEnemy": "EN33"
 	},
 	{
-		"locationId": "D09Z01S07[111,86]",
+		"locationId": "D09Z01S07[111,86](Vanilla)",
 		"originalEnemy": "EV19"
 	},
 	{
@@ -3077,6 +3111,38 @@
 		"originalEnemy": "EV21"
 	},
 	{
+		"locationId": "D20Z02S01[536,-165]",
+		"originalEnemy": "EN203"
+	},
+	{
+		"locationId": "D20Z02S01[536,-159]",
+		"originalEnemy": "EN203"
+	},
+	{
+		"locationId": "D20Z02S01[555,-165]",
+		"originalEnemy": "EN203"
+	},
+	{
+		"locationId": "D20Z02S01[533,-165]",
+		"originalEnemy": "EN203"
+	},
+	{
+		"locationId": "D20Z02S01[543,-159]",
+		"originalEnemy": "EN203"
+	},
+	{
+		"locationId": "D20Z02S01[518,-165]",
+		"originalEnemy": "EN203"
+	},
+	{
+		"locationId": "D20Z02S01[541,-165]",
+		"originalEnemy": "EN203"
+	},
+	{
+		"locationId": "D20Z02S01[548,-155]",
+		"originalEnemy": "EN203"
+	},
+	{
 		"locationId": "D20Z02S03[477,-142]",
 		"originalEnemy": "EN203"
 	},
@@ -3347,5 +3413,685 @@
 	{
 		"locationId": "D20Z02S12[-334,-165]",
 		"originalEnemy": "EN203"
+	},
+	{
+		"locationId": "D19Z01S01[-5,0](SPAWN (33))",
+		"originalEnemy": "EV11",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[-4,0](SPAWN (34))",
+		"originalEnemy": "EV11",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[3,0](SPAWN (32))",
+		"originalEnemy": "EV11",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[4,0](SPAWN (31))",
+		"originalEnemy": "EV11",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[-9,0](SPAWN (10))",
+		"originalEnemy": "EV10",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[8,0](SPAWN (11))",
+		"originalEnemy": "EV10",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[6,4](SPAWN (12))",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[-7,4](SPAWN (13))",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[-8,0](SPAWN (14))",
+		"originalEnemy": "EN02",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[7,0](SPAWN (15))",
+		"originalEnemy": "EN02",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[0,4](SPAWN (16))",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[-7,0](SPAWN (17))",
+		"originalEnemy": "EN13",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[6,0](SPAWN (18))",
+		"originalEnemy": "EN13",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[-8,3](SPAWN (20))",
+		"originalEnemy": "EN05",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[7,3](SPAWN (19))",
+		"originalEnemy": "EN05",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[-8,0](SPAWN (21))",
+		"originalEnemy": "EN01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[0,0](SPAWN (22))",
+		"originalEnemy": "EN24",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[7,0](SPAWN (23))",
+		"originalEnemy": "EN01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[0,3](SPAWN (24))",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[-5,4](SPAWN (26))",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[-6,0](SPAWN (27))",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[1,5](SPAWN (28))",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[4,4](SPAWN (29))",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S01[5,0](SPAWN (30))",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[-9,0](WAVE1)",
+		"originalEnemy": "EV01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[8,0](WAVE1)",
+		"originalEnemy": "EV01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[0,3](WAVE1)",
+		"originalEnemy": "EN05",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[-3,0](WAVE2)",
+		"originalEnemy": "EV01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[2,0](WAVE2)",
+		"originalEnemy": "EV01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[-6,0](WAVE2)",
+		"originalEnemy": "EN32",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[5,0](WAVE2)",
+		"originalEnemy": "EN32",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[-6,3](WAVE3)",
+		"originalEnemy": "EN04",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[5,3](WAVE3)",
+		"originalEnemy": "EN04",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[-8,0](WAVE3)",
+		"originalEnemy": "EN13",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[7,0](WAVE3)",
+		"originalEnemy": "EN13",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[8,1](WAVE4)",
+		"originalEnemy": "EN22",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[-3,3](WAVE4)",
+		"originalEnemy": "EN22",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[-9,1](WAVE4)",
+		"originalEnemy": "EN22",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[2,3](WAVE4)",
+		"originalEnemy": "EN22",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[0,4](WAVE4)",
+		"originalEnemy": "EN21",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[0,4](WAVE5)",
+		"originalEnemy": "EN27",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[7,0](WAVE5)",
+		"originalEnemy": "EN12",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S02[-8,0](WAVE5)",
+		"originalEnemy": "EN12",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[-7,0](WAVE1)",
+		"originalEnemy": "EN01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[0,0](WAVE1)",
+		"originalEnemy": "EN20",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[6,0](WAVE1)",
+		"originalEnemy": "EN01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[5,0](WAVE2)",
+		"originalEnemy": "EN03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[-7,0](WAVE3)",
+		"originalEnemy": "EN01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[-4,0](WAVE3)",
+		"originalEnemy": "EN17",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[3,0](WAVE3)",
+		"originalEnemy": "EN17",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[6,0](WAVE3)",
+		"originalEnemy": "EN01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[-7,0](WAVE4)",
+		"originalEnemy": "EN03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[-4,3](WAVE4)",
+		"originalEnemy": "EN04",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[3,3](WAVE4)",
+		"originalEnemy": "EN04",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[-3,3](WAVE5)",
+		"originalEnemy": "EN04",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[2,3](WAVE5)",
+		"originalEnemy": "EN04",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[-3,0](WAVE5)",
+		"originalEnemy": "EN07",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S03[2,0](WAVE5)",
+		"originalEnemy": "EN07",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[-8,0](WAVE1)",
+		"originalEnemy": "EN01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[7,0](WAVE1)",
+		"originalEnemy": "EN01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[-5,0](WAVE1)",
+		"originalEnemy": "EN20",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[4,0](WAVE1)",
+		"originalEnemy": "EN20",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[0,1](WAVE2)",
+		"originalEnemy": "EN03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[-6,1](WAVE2)",
+		"originalEnemy": "EN17",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[5,1](WAVE2)",
+		"originalEnemy": "EN17",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[0,4](WAVE3)",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[-8,1](WAVE3)",
+		"originalEnemy": "EV10",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[-3,1](WAVE3)",
+		"originalEnemy": "EV10",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[2,1](WAVE3)",
+		"originalEnemy": "EV10",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[7,1](WAVE3)",
+		"originalEnemy": "EV10",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[-6,0](WAVE4)",
+		"originalEnemy": "EN13",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[5,0](WAVE4)",
+		"originalEnemy": "EN13",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[-1,1](WAVE4)",
+		"originalEnemy": "EN14",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[0,1](WAVE4)",
+		"originalEnemy": "EN14",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[-1,0](WAVE5)",
+		"originalEnemy": "EN20",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[0,0](WAVE5)",
+		"originalEnemy": "EN20",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[-7,0](WAVE5)",
+		"originalEnemy": "EN05",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[0,0](WAVE5)",
+		"originalEnemy": "EN05",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[6,0](WAVE5)",
+		"originalEnemy": "EN05",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S04[9,0](WAVE6)",
+		"originalEnemy": "EN15",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[-3,0](WAVE1)",
+		"originalEnemy": "EV01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[2,0](WAVE1)",
+		"originalEnemy": "EV01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[0,0](WAVE1)",
+		"originalEnemy": "EN32",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[0,0](WAVE2)",
+		"originalEnemy": "EV02",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[-9,0](WAVE2)",
+		"originalEnemy": "EV24",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[-7,0](WAVE2)",
+		"originalEnemy": "EV24",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[6,0](WAVE2)",
+		"originalEnemy": "EV24",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[8,0](WAVE2)",
+		"originalEnemy": "EV24",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[-8,0](WAVE3)",
+		"originalEnemy": "EV02",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[7,0](WAVE3)",
+		"originalEnemy": "EV02",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[3,1](WAVE3)",
+		"originalEnemy": "EN14",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[-9,0](WAVE4)",
+		"originalEnemy": "EN03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[8,0](WAVE4)",
+		"originalEnemy": "EN03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[-9,0](WAVE5)",
+		"originalEnemy": "EN26",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[8,0](WAVE5)",
+		"originalEnemy": "EN26",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[-6,1](WAVE5)",
+		"originalEnemy": "EN14",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[5,1](WAVE5)",
+		"originalEnemy": "EN14",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[7,0](WAVE6Left)",
+		"originalEnemy": "EV23",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S05[-8,0](WAVE6Right)",
+		"originalEnemy": "EV23",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[-7,0](ENEMY_W1)",
+		"originalEnemy": "EV01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[6,0](ENEMY_W1)",
+		"originalEnemy": "EV01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[5,5](ENEMY_W1)",
+		"originalEnemy": "EN09",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[0,0](ENEMY_W2)",
+		"originalEnemy": "EV21",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[-6,5](ENEMY_W2)",
+		"originalEnemy": "EN09",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[5,5](ENEMY_W2)",
+		"originalEnemy": "EN09",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[-8,0](ENEMY_W3)",
+		"originalEnemy": "EN01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[-4,0](ENEMY_W3)",
+		"originalEnemy": "EN01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[3,0](ENEMY_W3)",
+		"originalEnemy": "EN01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[7,0](ENEMY_W3)",
+		"originalEnemy": "EN01",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[-6,4](ENEMY_W3)",
+		"originalEnemy": "EN09",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[-3,4](ENEMY_W4)",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[2,4](ENEMY_W4)",
+		"originalEnemy": "EV03",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[-6,0](ENEMY_W4)",
+		"originalEnemy": "EV22",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[5,0](ENEMY_W4)",
+		"originalEnemy": "EV22",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[-7,0](ENEMY_W5)",
+		"originalEnemy": "EV21",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[6,0](ENEMY_W5)",
+		"originalEnemy": "EV21",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[0,3](ENEMY_W5)",
+		"originalEnemy": "EV22",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[5,5](ENEMY_W5)",
+		"originalEnemy": "EV22",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[0,5](ENEMY_W6)",
+		"originalEnemy": "EV18",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[-8,0](ENEMY_W6)",
+		"originalEnemy": "EN09",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S06[7,0](ENEMY_W6)",
+		"originalEnemy": "EN09",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[-8,0](ENEMY_W1)",
+		"originalEnemy": "EV02",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[6,0](ENEMY_W1)",
+		"originalEnemy": "EV02",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[-7,0](ENEMY_W2)",
+		"originalEnemy": "EN33",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[-5,0](ENEMY_W2)",
+		"originalEnemy": "EN33",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[4,0](ENEMY_W2)",
+		"originalEnemy": "EN33",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[6,0](ENEMY_W2)",
+		"originalEnemy": "EN33",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[-6,2](ENEMY_W3)",
+		"originalEnemy": "EN31",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[5,2](ENEMY_W3)",
+		"originalEnemy": "EN31",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[-9,1](ENEMY_W4)",
+		"originalEnemy": "EV26",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[8,1](ENEMY_W4)",
+		"originalEnemy": "EV26",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[-7,0](ENEMY_W5)",
+		"originalEnemy": "EN33",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[7,0](ENEMY_W5)",
+		"originalEnemy": "EN33",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[-8,1](ENEMY_W5)",
+		"originalEnemy": "EN14",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[8,1](ENEMY_W5)",
+		"originalEnemy": "EN14",
+		"arena": true
+	},
+	{
+		"locationId": "D19Z01S07[0,0](ENEMY_W6)",
+		"originalEnemy": "EN34",
+		"arena": true
 	}
 ]

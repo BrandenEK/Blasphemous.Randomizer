@@ -273,7 +273,7 @@ namespace BlasphemousRandomizer
         {
             if (Input.GetKeyDown(KeyCode.Keypad6))
             {
-                UIController.instance.ShowPopUp("Current seed: " + seed, "", 0, false);
+                LogDisplay("Current seed: " + seed);
             }
             else if (Input.GetKeyDown(KeyCode.Keypad7))
             {
@@ -296,6 +296,13 @@ namespace BlasphemousRandomizer
                 FileUtil.writeLine("log.txt", message + "\n");
         }
 
+        // Log message to UI display
+        public void LogDisplay(string message, bool block = false)
+        {
+            Log(message);
+            UIController.instance.ShowPopUp(message, "", 0, block);
+        }
+
         // Log data to file
         public void LogFile(string data)
         {
@@ -306,7 +313,7 @@ namespace BlasphemousRandomizer
         private IEnumerator showErrorMessage(float waitTime)
         {
             yield return new WaitForSecondsRealtime(waitTime);
-            UIController.instance.ShowPopUp(errorOnLoad, "", 0, true);
+            LogDisplay(errorOnLoad, true);
             errorOnLoad = "";
         }
 
