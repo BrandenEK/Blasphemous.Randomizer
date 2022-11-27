@@ -16,8 +16,8 @@ namespace BlasphemousRandomizer.Shufflers
         {
             if (EnemyLoader.loaded && newEnemies != null && newEnemies.ContainsKey(id))
             {
-                if (Main.Randomizer.gameConfig.enemies.type == 2)
-                    return EnemyLoader.getEnemy("EN23");
+                //if (Main.Randomizer.gameConfig.enemies.type == 2)
+                //    return EnemyLoader.getEnemy("EN23");
                 return EnemyLoader.getEnemy(newEnemies[id]);
             }
             return null;

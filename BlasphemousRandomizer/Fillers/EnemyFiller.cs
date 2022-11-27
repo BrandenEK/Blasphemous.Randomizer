@@ -57,7 +57,7 @@ namespace BlasphemousRandomizer.Fillers
 						// If vanilla or arena enemy, leave it as original
 						newEnemyIds.Add(originalId, originalId);
                     }
-					else if (config.groupByType)
+					else if (config.maintainClass)
                     {
 						// Get new enemy id from the same type as original (Unless vanilla)
 						int randIdx = rand(enemyIdsByType[type].Count);
@@ -76,7 +76,6 @@ namespace BlasphemousRandomizer.Fillers
 				// Assign each location a new enemy id based on its original enemy id
 				for (int i = 0; i < locations.Count; i++)
                 {
-					Main.Randomizer.Log(locations[i].locationId);
 					string newEnemy = locations[i].arena ? locations[i].originalEnemy : newEnemyIds[locations[i].originalEnemy];
 					output.Add(locations[i].locationId, newEnemy);
                 }
@@ -88,14 +87,13 @@ namespace BlasphemousRandomizer.Fillers
 
 				for (int i = 0; i < locations.Count; i++)
 				{
-					Main.Randomizer.Log(locations[i].locationId);
 					int type = enemyTypes[locations[i].originalEnemy];
 					if (type == 4 || locations[i].arena)
                     {
 						// If vanilla enemy, leave it as original
 						output.Add(locations[i].locationId, locations[i].originalEnemy);
                     }
-					else if (config.groupByType)
+					else if (config.maintainClass)
                     {
 						// Get random id only from same type
 						int randIdx = rand(enemyIdsByType[type].Count);
@@ -121,7 +119,7 @@ namespace BlasphemousRandomizer.Fillers
 			{ "EN05", 1 },
 			{ "EN06", 1 },
 			{ "EN07", 0 },
-			{ "EN08", 1 },
+			{ "EN08", 4 },
 			{ "EN09", 0 },
 			{ "EN10", 4 },
 			{ "EN11", 0 },
