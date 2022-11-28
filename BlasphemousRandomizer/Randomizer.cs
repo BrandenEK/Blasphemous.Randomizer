@@ -9,6 +9,7 @@ using BlasphemousRandomizer.Structures;
 using Framework.FrameworkCore;
 using Framework.Managers;
 using Tools.Level;
+using Framework.Audio;
 
 namespace BlasphemousRandomizer
 {
@@ -199,6 +200,17 @@ namespace BlasphemousRandomizer
 
             // Load enemies
             EnemyLoader.loadEnemies();
+
+            // Reload enemy audio catalogs
+            AudioLoader audio = Object.FindObjectOfType<AudioLoader>();
+            if (audio != null)
+            {
+                enemyShuffler.audioCatalogs = new FMODAudioCatalog[audio.AudioCatalogs.Length];
+                audio.AudioCatalogs.CopyTo(enemyShuffler.audioCatalogs, 0);
+                GameObject obj = audio.gameObject;
+                Object.Destroy(audio);
+                obj.AddComponent<AudioLoader>();
+            }
 
             // Update images of shop items
             if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")

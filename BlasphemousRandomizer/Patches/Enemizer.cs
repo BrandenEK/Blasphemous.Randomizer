@@ -9,9 +9,23 @@ using Framework.FrameworkCore.Attributes;
 using Gameplay.GameControllers.Enemies.WallEnemy;
 using Gameplay.GameControllers.Enemies.PatrollingFlyingEnemy;
 using UnityEngine;
+using Framework.Audio;
 
 namespace BlasphemousRandomizer.Patches
 {
+    //temp
+    [HarmonyPatch(typeof(AudioLoader), "Awake")]
+    public class AudioLoad
+    {
+        public static void Prefix(AudioLoader __instance)
+        {
+            if (Main.Randomizer.enemyShuffler.audioCatalogs != null)
+                __instance.AudioCatalogs = Main.Randomizer.enemyShuffler.audioCatalogs;
+            Main.Randomizer.enemyShuffler.audioCatalogs = null;
+            Main.Randomizer.Log("Audio loader awake");
+        }
+    }
+
     // Replace enemy with random one
     [HarmonyPatch(typeof(EnemySpawnPoint), "Awake")]
     public class EnemySpawnPoint_Patch
@@ -26,7 +40,7 @@ namespace BlasphemousRandomizer.Patches
                 return;
             }
             string scene = Core.LevelManager.currentLevel.LevelName;
-            string locationId = $"{scene}[{(int)___spawnPoint.position.x},{(int)___spawnPoint.position.y}]";
+            string locationId = $"{scene}[{Mathf.RoundToInt(___spawnPoint.position.x)},{Mathf.RoundToInt(___spawnPoint.position.y)}]";
             // If this is a special arena, add to locationId to prevent duplicates
             if (__instance.SpawnOnArena && scene.Contains("D19") || scene == "D03Z03S03")
                 locationId += $"({__instance.name})";
@@ -37,10 +51,11 @@ namespace BlasphemousRandomizer.Patches
 
             // Extra data collection stuff
 
-            else if (enemy.Id != "EV09")
-                Main.Randomizer.LogDisplay("Enemy location doesn't exist in the dictionary: " + locationId);
+            //else if (enemy.Id != "EV09")
+            //    Main.Randomizer.LogDisplay("Enemy location doesn't exist in the dictionary: " + locationId);
             //Main.Randomizer.Log($"Id: " + locationId);
             //Main.Randomizer.Log("Original enemy: " + enemy.Id);
+            if (enemy.Id == "EV09") return;
             string output = "{\r\n\t\"locationId\": \"";
             output += locationId;
             output += "\",\r\n\t\"originalEnemy\": \"";

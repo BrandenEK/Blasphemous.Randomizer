@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BlasphemousRandomizer.Fillers;
 using Framework.Managers;
+using Framework.Audio;
 using UnityEngine;
 
 namespace BlasphemousRandomizer.Shufflers
@@ -12,12 +13,14 @@ namespace BlasphemousRandomizer.Shufflers
         private Dictionary<string, int> difficultyRatings;
         private EnemyFiller filler;
 
+        public FMODAudioCatalog[] audioCatalogs;
+
         public GameObject getEnemy(string id)
         {
             if (EnemyLoader.loaded && newEnemies != null && newEnemies.ContainsKey(id))
             {
-                //if (Main.Randomizer.gameConfig.enemies.type == 2)
-                //    return EnemyLoader.getEnemy("EN23");
+                if (Main.Randomizer.gameConfig.enemies.type == 2)
+                    return EnemyLoader.getEnemy("EN23");
                 return EnemyLoader.getEnemy(newEnemies[id]);
             }
             return null;
