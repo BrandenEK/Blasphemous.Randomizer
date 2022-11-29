@@ -32,17 +32,10 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Postfix(EnemySpawnPoint __instance, ref GameObject ___selectedEnemy, Transform ___spawnPoint)
         {
-            // Temporary logging & data collection
-            Enemy enemy = ___selectedEnemy.GetComponentInChildren<Enemy>();
-            if (enemy == null)
-            {
-                Main.Randomizer.Log("Enemy didn't have enemy component!");
-                return;
-            }
             string scene = Core.LevelManager.currentLevel.LevelName;
             string locationId = $"{scene}[{Mathf.RoundToInt(___spawnPoint.position.x)},{Mathf.RoundToInt(___spawnPoint.position.y)}]";
             // If this is a special arena, add to locationId to prevent duplicates
-            if (__instance.SpawnOnArena && scene.Contains("D19") || scene == "D03Z03S03")
+            if (__instance.SpawnOnArena && (scene.Contains("D19") || scene == "D03Z03S03"))
                 locationId += $"({__instance.name})";
 
             GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(locationId);
@@ -50,18 +43,12 @@ namespace BlasphemousRandomizer.Patches
                 ___selectedEnemy = newEnemy;
 
             // Extra data collection stuff
-
-            //else if (enemy.Id != "EV09")
-            //    Main.Randomizer.LogDisplay("Enemy location doesn't exist in the dictionary: " + locationId);
-            //Main.Randomizer.Log($"Id: " + locationId);
-            //Main.Randomizer.Log("Original enemy: " + enemy.Id);
-            if (enemy.Id == "EV09") return;
-            string output = "{\r\n\t\"locationId\": \"";
-            output += locationId;
-            output += "\",\r\n\t\"originalEnemy\": \"";
-            output += enemy.Id;
-            output += "\"\r\n},\r\n";
-            Shufflers.EnemyShuffle.enemyData += output;
+            //string output = "{\r\n\t\"locationId\": \"";
+            //output += locationId;
+            //output += "\",\r\n\t\"originalEnemy\": \"";
+            //output += ___selectedEnemy.GetComponentInChildren<Enemy>().Id;
+            //output += "\"\r\n},\r\n";
+            //Shufflers.EnemyShuffle.enemyData += output;
 
             // Can modify spawn position here too
         }
