@@ -1,34 +1,54 @@
 ﻿using HarmonyLib;
 using Tools.Level.Layout;
+using Tools.Level.Utils;
 using Framework.Managers;
 using Gameplay.GameControllers.Entities;
 using Gameplay.GameControllers.Enemies.Framework.Attack;
 using Framework.EditorScripts.EnemiesBalance;
 using Framework.FrameworkCore.Attributes;
+using Gameplay.GameControllers.Enemies.WallEnemy;
+using Gameplay.GameControllers.Enemies.PatrollingFlyingEnemy;
 using UnityEngine;
+using Framework.Audio;
 
 namespace BlasphemousRandomizer.Patches
 {
+    //temp
+    [HarmonyPatch(typeof(AudioLoader), "Awake")]
+    public class AudioLoad
+    {
+        public static void Prefix(AudioLoader __instance)
+        {
+            if (Main.Randomizer.enemyShuffler.audioCatalogs != null)
+                __instance.AudioCatalogs = Main.Randomizer.enemyShuffler.audioCatalogs;
+            Main.Randomizer.enemyShuffler.audioCatalogs = null;
+            Main.Randomizer.Log("Audio loader awake");
+        }
+    }
+
     // Replace enemy with random one
-    [HarmonyPatch(typeof(EnemySpawnPoint), "Start")]
+    [HarmonyPatch(typeof(EnemySpawnPoint), "Awake")]
     public class EnemySpawnPoint_Patch
     {
-        public static void Postfix(ref GameObject ___selectedEnemy)
+        public static void Postfix(EnemySpawnPoint __instance, ref GameObject ___selectedEnemy, Transform ___spawnPoint)
         {
-            Enemy enemy = ___selectedEnemy.GetComponentInChildren<Enemy>();
-            if (enemy == null)
-            {
-                Main.Randomizer.Log("Enemy didn't have enemy component!");
-                return;
-            }
+            string scene = Core.LevelManager.currentLevel.LevelName;
+            string locationId = $"{scene}[{Mathf.RoundToInt(___spawnPoint.position.x)},{Mathf.RoundToInt(___spawnPoint.position.y)}]";
+            // If this is a special arena, add to locationId to prevent duplicates
+            if (__instance.SpawnOnArena && (scene.Contains("D19") || scene == "D03Z03S03"))
+                locationId += $"({__instance.name})";
 
-            string id = enemy.Id;
-            if (Main.Randomizer.gameConfig.enemies.type < 1 || (Core.LevelManager.currentLevel.LevelName == "D03Z01S02" && id == "EN03"))
-                return;
-
-            GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(id);
+            GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(locationId);
             if (newEnemy != null)
                 ___selectedEnemy = newEnemy;
+
+            // Extra data collection stuff
+            //string output = "{\r\n\t\"locationId\": \"";
+            //output += locationId;
+            //output += "\",\r\n\t\"originalEnemy\": \"";
+            //output += ___selectedEnemy.GetComponentInChildren<Enemy>().Id;
+            //output += "\"\r\n},\r\n";
+            //Shufflers.EnemyShuffle.enemyData += output;
 
             // Can modify spawn position here too
         }
@@ -66,6 +86,26 @@ namespace BlasphemousRandomizer.Patches
             EnemyAttack attack = enemy.GetComponentInChildren<EnemyAttack>();
             if (attack != null)
                 attack.ContactDamageAmount += attack.ContactDamageAmount * percent;
+        }
+
+        // Prevent wall enemies from disabling climbable walls
+        [HarmonyPatch(typeof(WallEnemy), "OnTriggerEnter2D")]
+        public class WallEnemy_Patch
+        {
+            public static bool Prefix()
+            {
+                return false;
+            }
+        }
+
+        // Don't hard cast flying patrolling enemies
+        [HarmonyPatch(typeof(FlyingPatrollingEnemySpawnConfigurator), "OnSpawn")]
+        public class FlyingPatrollingEnemySpawnConfigurator_Patch
+        {
+            public static bool Prefix(Enemy e)
+            {
+                return e.GetType() == typeof(PatrollingFlyingEnemy);
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ using BlasphemousRandomizer.Structures;
 using Framework.FrameworkCore;
 using Framework.Managers;
 using Tools.Level;
+using Framework.Audio;
 
 namespace BlasphemousRandomizer
 {
@@ -200,8 +201,16 @@ namespace BlasphemousRandomizer
             // Load enemies
             EnemyLoader.loadEnemies();
 
-            // Test shroud
-            //Core.InventoryManager.GetRelic("RE04").Equip();
+            // Reload enemy audio catalogs
+            AudioLoader audio = Object.FindObjectOfType<AudioLoader>();
+            if (audio != null)
+            {
+                enemyShuffler.audioCatalogs = new FMODAudioCatalog[audio.AudioCatalogs.Length];
+                audio.AudioCatalogs.CopyTo(enemyShuffler.audioCatalogs, 0);
+                GameObject obj = audio.gameObject;
+                Object.Destroy(audio);
+                obj.AddComponent<AudioLoader>();
+            }
 
             // Update images of shop items
             if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
@@ -276,11 +285,19 @@ namespace BlasphemousRandomizer
         {
             if (Input.GetKeyDown(KeyCode.Keypad6))
             {
-                UIController.instance.ShowPopUp("Current seed: " + seed, "", 0, false);
+                LogDisplay("Current seed: " + seed);
             }
             else if (Input.GetKeyDown(KeyCode.Keypad7))
             {
-                UIController.instance.ShowPopUp("Test", "", 0, false);
+                //enemyShuffler.Shuffle(new System.Random().Next());
+                //UIController.instance.ShowPopUp("Shuffling enemies temporarily!", "", 0, false);
+            }
+            else if (Input.GetKeyDown(KeyCode.Keypad8))
+            {
+                //LogFile(EnemyShuffle.enemyData);
+            }
+            else if (Input.GetKeyDown(KeyCode.Keypad9))
+            {
             }
         }
 
@@ -291,10 +308,24 @@ namespace BlasphemousRandomizer
                 FileUtil.writeLine("log.txt", message + "\n");
         }
 
+        // Log message to UI display
+        public void LogDisplay(string message, bool block = false)
+        {
+            Log(message);
+            UIController.instance.ShowPopUp(message, "", 0, block);
+        }
+
+        // Log data to file
+        public void LogFile(string data)
+        {
+            if (fileConfig.debug.type > 0)
+                FileUtil.writeFull("data.txt", data);
+        }
+
         private IEnumerator showErrorMessage(float waitTime)
         {
             yield return new WaitForSecondsRealtime(waitTime);
-            UIController.instance.ShowPopUp(errorOnLoad, "", 0, true);
+            LogDisplay(errorOnLoad, true);
             errorOnLoad = "";
         }
 
