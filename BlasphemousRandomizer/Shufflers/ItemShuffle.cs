@@ -53,7 +53,7 @@ namespace BlasphemousRandomizer.Shufflers
 
             // Possibly display the item
             if (display)
-                displayItem(locationId);
+                showItemPopUp(item);
         }
 
         // Display the item in a pop up
@@ -65,14 +65,20 @@ namespace BlasphemousRandomizer.Shufflers
             if (item == null)
                 return;
 
-            // Create info & show pop up
-            RewardInfo info = item.getRewardInfo(false);
-            RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
-            UIController.instance.ShowPopupAchievement(achievement);
+            // Call pop up method
+            showItemPopUp(item);
 
             //Temporary
             if (locationId == "QI110")
                 Main.Randomizer.itemsCollected++;
+        }
+
+        // Actually trigger the pop up
+        public void showItemPopUp(Item item)
+        {
+            RewardInfo info = item.getRewardInfo(false);
+            RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
+            UIController.instance.ShowPopupAchievement(achievement);
         }
 
         // Used by hint filler to generate new hints
