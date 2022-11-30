@@ -13,16 +13,16 @@ using Framework.Audio;
 
 namespace BlasphemousRandomizer.Patches
 {
-    //temp
     [HarmonyPatch(typeof(AudioLoader), "Awake")]
-    public class AudioLoad
+    public class AudioLoader_Patch
     {
         public static void Prefix(AudioLoader __instance)
         {
             if (Main.Randomizer.enemyShuffler.audioCatalogs != null)
+            {
                 __instance.AudioCatalogs = Main.Randomizer.enemyShuffler.audioCatalogs;
-            Main.Randomizer.enemyShuffler.audioCatalogs = null;
-            Main.Randomizer.Log("Audio loader awake");
+                Main.Randomizer.enemyShuffler.audioCatalogs = null;
+            }
         }
     }
 
