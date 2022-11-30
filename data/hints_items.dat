@@ -108,7 +108,7 @@ QI38,a holy wound
 QI39,a holy wound
 QI40,a holy wound
 QI41,an empty flask
-QI44,a rosary knot
+QI44,a knotted rope
 QI45,an empty flask
 QI46,an empty flask
 QI47,an empty flask
@@ -116,11 +116,11 @@ QI48,an empty flask
 QI49,an empty flask
 QI50,an empty flask
 QI51,an empty flask
-QI52,a rosary knot
-QI53,a rosary knot
-QI54,a rosary knot
-QI55,a rosary knot
-QI56,a rosary knot
+QI52,a knotted rope
+QI53,a knotted rope
+QI54,a knotted rope
+QI55,a knotted rope
+QI56,a knotted rope
 QI57,a full thimble
 QI58,a brother's key
 QI59,an empty thimble
@@ -161,10 +161,32 @@ CH,a cherub
 LU,a life upgrade
 FU,a fervour upgrade
 SU,a mea culpa upgrade
-TS,a small bundle of tears
-TM,a medium bundle of tears
-TL,a large bundle of tears
+Tears[250],a small bundle of tears
+Tears[300],a small bundle of tears
+Tears[500],a small bundle of tears
+Tears[625],a small bundle of tears
+Tears[750],a small bundle of tears
+Tears[1000],a small bundle of tears
+Tears[1250],a small bundle of tears
+Tears[1500],a small bundle of tears
+Tears[1750],a small bundle of tears
+Tears[2000],a medium bundle of tears
+Tears[2100],a medium bundle of tears
+Tears[2500],a medium bundle of tears
+Tears[2600],a medium bundle of tears
+Tears[3000],a medium bundle of tears
+Tears[4300],a medium bundle of tears
+Tears[5000],a medium bundle of tears
+Tears[5500],a medium bundle of tears
+Tears[9000],a medium bundle of tears
+Tears[10000],a large bundle of tears
+Tears[11250],a large bundle of tears
+Tears[18000],a large bundle of tears
+Tears[30000],a large bundle of tears
 RW,a waxy bead
 BW,a waxy bead
 TH,a thorn
+RK,a knotted rope
+BV,an empty flask
+QS,a silvery ball
 X,???

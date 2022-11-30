@@ -161,9 +161,31 @@ CH,Cherub
 LU,Life Upgrade
 FU,Fervour Upgrade
 SU,Mea Culpa Upgrade
-TS,Tears (Small)
-TM,Tears (Medium)
-TL,Tears (Large)
+Tears[250],Tears (250)
+Tears[300],Tears (300)
+Tears[500],Tears (500)
+Tears[625],Tears (625)
+Tears[750],Tears (750)
+Tears[1000],Tears (1000)
+Tears[1250],Tears (1250)
+Tears[1500],Tears (1500)
+Tears[1750],Tears (1750)
+Tears[2000],Tears (2000)
+Tears[2100],Tears (2100)
+Tears[2500],Tears (2500)
+Tears[2600],Tears (2600)
+Tears[3000],Tears (3000)
+Tears[4300],Tears (4300)
+Tears[5000],Tears (5000)
+Tears[5500],Tears (5500)
+Tears[9000],Tears (9000)
+Tears[10000],Tears (10000)
+Tears[11250],Tears (11250)
+Tears[18000],Tears (18000)
+Tears[30000],Tears (30000)
 RW,Bead of Red Wax
 BW,Bead of Blue Wax
 TH,Thorn Upgrade
+RK,Knot of Rosary Rope
+BV,Empty Bile Vessel
+QS,Quicksilver

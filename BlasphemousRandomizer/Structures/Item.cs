@@ -40,7 +40,7 @@ namespace BlasphemousRandomizer.Structures
 				case 5:
 					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Quest)); return;
 				case 6:
-					Core.Events.SetFlag("RESCUED_CHERUB_" + id.ToString("00"), true, false); return;
+					Core.Events.SetFlag("RESCUED_CHERUB_" + name.Substring(2), true, false); return;
 				case 7:
 					stats.Life.Upgrade(); stats.Life.SetToCurrentMax(); return;
 				case 8:
