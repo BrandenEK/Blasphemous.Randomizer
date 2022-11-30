@@ -11,14 +11,16 @@ using Framework.Managers;
 
 namespace BlasphemousRandomizer.Patches
 {
-    // Change version number on main menu to randomizer version
+    // Add randomizer version to main menu
     [HarmonyPatch(typeof(VersionNumber), "Start")]
     public class VersionNumberPatch
     {
-        public static bool Prefix(VersionNumber __instance)
+        public static void Postfix(VersionNumber __instance)
         {
-            __instance.GetComponent<Text>().text = "Randomizer v" + MyPluginInfo.PLUGIN_VERSION;
-            return false;
+            Text version = __instance.GetComponent<Text>();
+            if (version.text.Contains("v."))
+                version.text = "";
+            version.text += "Randomizer v" + MyPluginInfo.PLUGIN_VERSION + "\n";
         }
     }
 
