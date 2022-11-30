@@ -20,28 +20,6 @@ namespace BlasphemousRandomizer.Structures
 			this.progression = progression;
 		}
 
-		/*public virtual string getDescriptor()
-		{
-			switch (type)
-			{
-				case 0: return "RB" + id.ToString("00");
-				case 1: return "PR" + id.ToString("00");
-				case 2: return "RE" + id.ToString("00");
-				case 3: return "HE" + id.ToString("00");
-				case 4: return "CO";
-				case 5: return "QI" + id.ToString("00");
-				case 6: return "CH";
-				case 7: return "LU";
-				case 8: return "FU";
-				case 9: return "SU";
-				case 10:
-					if (id >= 10000) return "TL";
-					if (id <= 2000) return "TS";
-					return "TM";
-				default: return "X";
-			}
-		}*/
-
 		public virtual void addToInventory()
         {
 			InventoryManager inv = Core.InventoryManager;
@@ -50,17 +28,17 @@ namespace BlasphemousRandomizer.Structures
 			switch (type)
 			{
 				case 0:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject("RB" + id.ToString("00"), InventoryManager.ItemType.Bead)); return;
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Bead)); return;
 				case 1:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject("PR" + id.ToString("00"), InventoryManager.ItemType.Prayer)); return;
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Prayer)); return;
 				case 2:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject("RE" + id.ToString("00"), InventoryManager.ItemType.Relic)); return;
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Relic)); return;
 				case 3:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject("HE" + id.ToString("00"), InventoryManager.ItemType.Sword)); return;
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Sword)); return;
 				case 4:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject("CO" + id.ToString("00"), InventoryManager.ItemType.Collectible)); return;
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Collectible)); return;
 				case 5:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject("QI" + id.ToString("00"), InventoryManager.ItemType.Quest)); return;
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Quest)); return;
 				case 6:
 					Core.Events.SetFlag("RESCUED_CHERUB_" + id.ToString("00"), true, false); return;
 				case 7:
@@ -84,22 +62,22 @@ namespace BlasphemousRandomizer.Structures
 			switch (type)
 			{
 				case 0:
-					BaseInventoryObject baseObject = inventoryManager.GetBaseObject("RB" + id.ToString("00"), InventoryManager.ItemType.Bead);
+					BaseInventoryObject baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Bead);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New rosary bead obtained!", baseObject.picture);
 				case 1:
-					baseObject = inventoryManager.GetBaseObject("PR" + id.ToString("00"), InventoryManager.ItemType.Prayer);
+					baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Prayer);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New prayer obtained!", baseObject.picture);
 				case 2:
-					baseObject = inventoryManager.GetBaseObject("RE" + id.ToString("00"), InventoryManager.ItemType.Relic);
+					baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Relic);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New relic obtained!", baseObject.picture);
 				case 3:
-					baseObject = inventoryManager.GetBaseObject("HE" + id.ToString("00"), InventoryManager.ItemType.Sword);
+					baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Sword);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New sword heart obtained!", baseObject.picture);
 				case 4:
-					baseObject = inventoryManager.GetBaseObject("CO" + id.ToString("00"), InventoryManager.ItemType.Collectible);
+					baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Collectible);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New collectible obtained!", baseObject.picture);
 				case 5:
-					baseObject = inventoryManager.GetBaseObject("QI" + id.ToString("00"), InventoryManager.ItemType.Quest);
+					baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Quest);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New quest item obtained!", baseObject.picture);
 				case 6:
 					return new RewardInfo("Cherub " + (CherubCaptorPersistentObject.CountRescuedCherubs() + (upgraded ? 1 : 0)) + "/38", "A little floating baby that you rescued from a cage.", "Cherub rescued!", Main.Randomizer.getImage(0));

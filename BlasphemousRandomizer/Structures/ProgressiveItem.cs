@@ -7,22 +7,13 @@ namespace BlasphemousRandomizer.Structures
         public Item[] items;
         public bool removePrevious;
 
+        // Used for wax beads and the thorn, as these items have different levels to them
+
         public ProgressiveItem(string name, int type, int id, bool progression, Item[] items, bool removePrevious) : base(name, type, id, progression)
         {
             this.items = items;
             this.removePrevious = removePrevious;
         }
-
-        /*public override string getDescriptor()
-        {
-            switch (id)
-            {
-                case 17: return "RW";
-                case 24: return "BW";
-                case 31: return "TH";
-                default: return "X";
-            }
-        }*/
 
         public override void addToInventory()
         {

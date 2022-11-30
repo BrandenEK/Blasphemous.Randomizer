@@ -16,7 +16,7 @@ namespace BlasphemousRandomizer.Fillers
 			allLocations = new List<ItemLocation>();
 			fillLocations(allLocations); // Change to load from json
             FileUtil.loadJson("items.json", out allItems);
-			replaceProgressionItems(allItems);
+			replaceSpecialItems(allItems);
         }
 
         public override bool isValid()
@@ -208,9 +208,9 @@ namespace BlasphemousRandomizer.Fillers
             }
         }
 
-		// Add progression items to the items list
-		private void replaceProgressionItems(List<Item> items)
+		private void replaceSpecialItems(List<Item> items)
         {
+			// Create progression items
 			ProgressiveItem[] progressiveItems = new ProgressiveItem[]
 			{
 				new ProgressiveItem("RW", 0, 17, true, new Item[3], true),
@@ -224,6 +224,7 @@ namespace BlasphemousRandomizer.Fillers
 				new string[] { "QI31", "QI32", "QI33", "QI34", "QI35", "QI79", "QI80", "QI81" }
 			};
 
+			// Replace them in list
 			int lastIdx = 0;
 			for (int i = 0; i < progressiveItems.Length; i++)
             {
@@ -241,6 +242,14 @@ namespace BlasphemousRandomizer.Fillers
                     }
                 }
             }
+
+			// Create numerous items
+			NumerousItem[] numerousItems = new NumerousItem[]
+			{
+				new NumerousItem("RK", 5, 0, true, 6, new string[] { "QI44", "QI52", "QI53", "QI54", "QI55", "QI56" }),
+				new NumerousItem("BV", 5, 0, true, 7, new string[] { "QI45", "QI46", "QI47", "QI48", "QI49", "QI50", "QI51" }),
+				new NumerousItem("QS", 5, 0, true, 5, new string[] { "QI101", "QI102", "QI103", "QI104", "QI105" })
+			};
         }
 
         // Temporary until they can be loaded from json

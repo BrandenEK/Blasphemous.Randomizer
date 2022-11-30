@@ -46,7 +46,7 @@ namespace BlasphemousRandomizer.Shufflers
                 return;
 
             // Add the item to inventory
-            Main.Randomizer.Log($"Giving item [{item.type}]({item.id})");
+            Main.Randomizer.Log($"Giving item [{item.name})");
             Main.Randomizer.itemsCollected++;
             item.addToInventory();
             lastItem = item;
