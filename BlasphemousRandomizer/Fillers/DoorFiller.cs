@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BlasphemousRandomizer.Fillers
 {
-    class DoorFiller
+    public class DoorFiller
     {
     }
 }

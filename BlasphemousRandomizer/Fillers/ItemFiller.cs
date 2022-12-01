@@ -4,7 +4,7 @@ using BlasphemousRandomizer.Structures;
 
 namespace BlasphemousRandomizer.Fillers
 {
-    class ItemFiller : Filler
+    public class ItemFiller : Filler
     {
         private List<ItemLocation> allLocations;
         private List<Item> allItems;
@@ -229,9 +229,9 @@ namespace BlasphemousRandomizer.Fillers
 				new ProgressiveItem("CH", 6, 0, true, new string[38], false),
 				new ProgressiveItem("CO", 4, 0, true, new string[44], false)
 			};
-			for (int i = 0; i < 38; i++)
+			for (int i = 1; i <= 38; i++)
 				progressiveItems[6].items[i] = "CH" + i.ToString("00");
-			for (int i = 0; i < 44; i++)
+			for (int i = 1; i <= 44; i++)
 				progressiveItems[7].items[i] = "CO" + i.ToString("00");
 			// Shuffle list of collectibles
 
