@@ -164,8 +164,8 @@ namespace BlasphemousRandomizer.Patches
                 string type = "(Vanilla)";
                 if (slotData.flags.flags.ContainsKey(majorVersion))
                     type = "(Randomized)";
-                else if (slotData.flags.flags.ContainsKey("randomized"))
-                    type = "Outdated";
+                else if (slotData.flags.flags.ContainsKey("RANDOMIZED"))
+                    type = "(Outdated)";
 
                 // Send extra info to the slot
                 ___slots[i].SetData("ignore", type, 0, false, false, false, 0, SelectSaveSlots.SlotsModes.Normal);

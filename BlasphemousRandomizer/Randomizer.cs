@@ -281,7 +281,7 @@ namespace BlasphemousRandomizer
             // Set randomized flags
             string majorVersion = MyPluginInfo.PLUGIN_VERSION;
             majorVersion = majorVersion.Substring(0, majorVersion.LastIndexOf('.'));
-            Core.Events.SetFlag("randomized", true, false);
+            Core.Events.SetFlag("RANDOMIZED", true, false);
             Core.Events.SetFlag(majorVersion, true, false);
         }
 
