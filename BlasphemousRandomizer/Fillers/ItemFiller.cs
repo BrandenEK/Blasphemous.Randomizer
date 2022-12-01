@@ -230,9 +230,9 @@ namespace BlasphemousRandomizer.Fillers
 				new ProgressiveItem("CO", 4, 0, true, new string[44], false)
 			};
 			for (int i = 1; i <= 38; i++)
-				progressiveItems[6].items[i] = "CH" + i.ToString("00");
+				progressiveItems[6].items[i - 1] = "CH" + i.ToString("00");
 			for (int i = 1; i <= 44; i++)
-				progressiveItems[7].items[i] = "CO" + i.ToString("00");
+				progressiveItems[7].items[i - 1] = "CO" + i.ToString("00");
 			// Shuffle list of collectibles
 
 			// Add them to list
