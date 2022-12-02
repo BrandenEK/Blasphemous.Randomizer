@@ -14,8 +14,10 @@ using Gameplay.GameControllers.Enemies.JarThrower;
 using Gameplay.GameControllers.Enemies.MeltedLady;
 using Gameplay.GameControllers.Enemies.MeltedLady.Attack;
 using Gameplay.GameControllers.Enemies.MeltedLady.IA;
+using Gameplay.GameControllers.Enemies.RangedBoomerang.IA;
 using Gameplay.GameControllers.Effects.Entity;
 using UnityEngine;
+using System.Collections.Generic;
 using Framework.Audio;
 
 namespace BlasphemousRandomizer.Patches
@@ -141,12 +143,16 @@ namespace BlasphemousRandomizer.Patches
         }
 
         // Prevent Bell / Chime Ringer trigger error
-        [HarmonyPatch(typeof(GlobalTrapTriggerer), "TriggerAllTrapsInTheScene")]
+        [HarmonyPatch(typeof(GlobalTrapTriggerer), "Awake")]
         public class GlobalTrapTriggerer_Patch
         {
-            public static bool Prefix(GlobalTrapTriggerer __instance)
+            public static void Postfix(GlobalTrapTriggerer __instance)
             {
-                return __instance.trapManager != null;
+                if (__instance.trapManager == null)
+                {
+                    __instance.trapManager = new TriggerTrapManager();
+                    __instance.trapManager.traps = new List<TriggerBasedTrap>();
+                }
             }
         }
 
@@ -177,6 +183,18 @@ namespace BlasphemousRandomizer.Patches
                 GameObject obj = new GameObject(__instance.OriginPosition.ToString());
                 obj.transform.position = new Vector3(__instance.transform.position.x, __instance.transform.position.y, __instance.transform.position.z);
                 obj.AddComponent<MeltedLadyTeleportPoint>();
+            }
+        }
+
+        // Prevent Librarian walking error
+        [HarmonyPatch(typeof(RangedBoomerangBehaviour), "ReadSpawnerConfig")]
+        public class RangedBoomerangBehaviour_Patch
+        {
+            public static bool Prefix(RangedBoomerangBehaviour __instance)
+            {
+                if (__instance.RangedBoomerang.Id == "EV22")
+                    __instance.doPatrol = false;
+                return false;
             }
         }
     }
