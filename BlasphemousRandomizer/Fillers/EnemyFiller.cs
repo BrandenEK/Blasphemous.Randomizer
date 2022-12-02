@@ -154,7 +154,7 @@ namespace BlasphemousRandomizer.Fillers
 			{ "EV13", 0 },
 			{ "EV14", 0 },
 			{ "EV15", 0 },
-			{ "EV17", 4 },
+			{ "EV17", 0 },
 			{ "EV18", 4 },
 			{ "EV19", 2 },
 			{ "EV20", 4 },
@@ -164,7 +164,7 @@ namespace BlasphemousRandomizer.Fillers
 			{ "EV24", 0 },
 			{ "EV26", 2 },
 			{ "EV27", 0 },
-			{ "EV29", 4 },
+			{ "EV29", 0 },
 			{ "EN201", 0 },
 			{ "EN202", 2 },
 			{ "EN203", 4 }

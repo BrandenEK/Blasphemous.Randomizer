@@ -6,8 +6,10 @@ using Gameplay.GameControllers.Entities;
 using Gameplay.GameControllers.Enemies.Framework.Attack;
 using Framework.EditorScripts.EnemiesBalance;
 using Framework.FrameworkCore.Attributes;
+using Gameplay.GameControllers.Penitent;
 using Gameplay.GameControllers.Enemies.WallEnemy;
 using Gameplay.GameControllers.Enemies.PatrollingFlyingEnemy;
+using Gameplay.GameControllers.Enemies.JarThrower;
 using Gameplay.GameControllers.Effects.Entity;
 using UnityEngine;
 using Framework.Audio;
@@ -99,7 +101,7 @@ namespace BlasphemousRandomizer.Patches
             }
         }
 
-        // Don't hard cast flying patrolling enemies
+        // Prevent flying patrolling enemy casting error
         [HarmonyPatch(typeof(FlyingPatrollingEnemySpawnConfigurator), "OnSpawn")]
         public class FlyingPatrollingEnemySpawnConfigurator_Patch
         {
@@ -116,6 +118,21 @@ namespace BlasphemousRandomizer.Patches
             public static bool Prefix(MasterShaderEffects __instance, Material effectMaterial)
             {
                 return effectMaterial != null || __instance.damageEffectTestMaterial != null;
+            }
+        }
+
+        // Prevent Jar thrower loading error
+        [HarmonyPatch(typeof(JarThrower), "OnPlayerSpawn")]
+        public class JarThrower_Patch
+        {
+            public static bool Prefix(JarThrower __instance)
+            {
+                if (__instance.Behaviour == null)
+                {
+                    Object.Destroy(__instance);
+                    return false;
+                }
+                return true;
             }
         }
     }
