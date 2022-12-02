@@ -13,6 +13,7 @@ namespace BlasphemousRandomizer.Shufflers
         private Dictionary<string, int> difficultyRatings;
         private EnemyFiller filler;
 
+        // Enemizer fixes
         public FMODAudioCatalog[] audioCatalogs;
 
         public GameObject getEnemy(string id)

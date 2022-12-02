@@ -8,6 +8,7 @@ using Framework.EditorScripts.EnemiesBalance;
 using Framework.FrameworkCore.Attributes;
 using Gameplay.GameControllers.Enemies.WallEnemy;
 using Gameplay.GameControllers.Enemies.PatrollingFlyingEnemy;
+using Gameplay.GameControllers.Effects.Entity;
 using UnityEngine;
 using Framework.Audio;
 
@@ -105,6 +106,16 @@ namespace BlasphemousRandomizer.Patches
             public static bool Prefix(Enemy e)
             {
                 return e.GetType() == typeof(PatrollingFlyingEnemy);
+            }
+        }
+
+        // Prevent New Flagellant material error
+        [HarmonyPatch(typeof(MasterShaderEffects), "DamageEffectBlink")]
+        public class MasterShaderEffects_Patch
+        {
+            public static bool Prefix(MasterShaderEffects __instance, Material effectMaterial)
+            {
+                return effectMaterial != null || __instance.damageEffectTestMaterial != null;
             }
         }
     }
