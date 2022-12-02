@@ -11,6 +11,9 @@ using Gameplay.GameControllers.Penitent;
 using Gameplay.GameControllers.Enemies.WallEnemy;
 using Gameplay.GameControllers.Enemies.PatrollingFlyingEnemy;
 using Gameplay.GameControllers.Enemies.JarThrower;
+using Gameplay.GameControllers.Enemies.MeltedLady;
+using Gameplay.GameControllers.Enemies.MeltedLady.Attack;
+using Gameplay.GameControllers.Enemies.MeltedLady.IA;
 using Gameplay.GameControllers.Effects.Entity;
 using UnityEngine;
 using Framework.Audio;
@@ -144,6 +147,36 @@ namespace BlasphemousRandomizer.Patches
             public static bool Prefix(GlobalTrapTriggerer __instance)
             {
                 return __instance.trapManager != null;
+            }
+        }
+
+        // Prevent Melted Lady teleporting error
+        [HarmonyPatch(typeof(MeltedLadyBehaviour), "GetNearestTeleportPointToTarget")]
+        public class MeltedLadyBehaviourTeleport_Patch
+        {
+            public static bool Prefix(MeltedLadyBehaviour __instance, ref MeltedLadyTeleportPoint __result)
+            {
+                foreach (MeltedLadyTeleportPoint point in Object.FindObjectsOfType<MeltedLadyTeleportPoint>())
+                {
+                    if (point.name == __instance.OriginPosition.ToString())
+                    {
+                        __result = point;
+                        return false;
+                    }
+                }
+                __result = null;
+                return false;
+            }
+        }
+        [HarmonyPatch(typeof(MeltedLadyBehaviour), "OnStart")]
+        public class MeltedLadyBehaviourStart_Patch
+        {
+            public static void Postfix(MeltedLadyBehaviour __instance)
+            {
+                __instance.gameObject.SetActive(true);
+                GameObject obj = new GameObject(__instance.OriginPosition.ToString());
+                obj.transform.position = new Vector3(__instance.transform.position.x, __instance.transform.position.y, __instance.transform.position.z);
+                obj.AddComponent<MeltedLadyTeleportPoint>();
             }
         }
     }

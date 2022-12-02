@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BlasphemousRandomizer.Fillers;
 using Framework.Managers;
 using Framework.Audio;
