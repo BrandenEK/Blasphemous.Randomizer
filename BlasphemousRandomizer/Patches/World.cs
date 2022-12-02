@@ -5,6 +5,7 @@ using Tools.Level.Layout;
 using Tools.Playmaker2.Condition;
 using Framework.Inventory;
 using Framework.Managers;
+using UnityEngine;
 
 namespace BlasphemousRandomizer.Patches
 {
@@ -52,6 +53,27 @@ namespace BlasphemousRandomizer.Patches
                 return true;
             }
         }
+
+        // Open WaHP gate faster
+        //[HarmonyPatch(typeof(Lever), "Start")]
+        //public class Lever_Patch
+        //{
+        //    public static void Postfix(LeverAction ___action, GameObject[] ___target)
+        //    {
+        //        string output = "";
+        //        output += "Action: " + ___action.ToString() + "\n";
+        //        output += "Targets: " + ___target.Length + "\n";
+        //        foreach (GameObject obj in ___target)
+        //        {
+        //            output += "Components: \n";
+        //            foreach (Component c in obj.GetComponents<Component>())
+        //            {
+        //                output += c.ToString() + "\n";
+        //            }
+        //        }
+        //        Main.Randomizer.Log(output);
+        //    }
+        //}
 
         //[HarmonyPatch(typeof(PrieDieu), "KneeledMenuCoroutine")]
         //public class PrieDieu_Patch
