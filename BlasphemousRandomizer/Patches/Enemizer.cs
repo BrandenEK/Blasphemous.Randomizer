@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using Tools.Level.Layout;
 using Tools.Level.Utils;
+using Tools.Level.Actionables;
 using Framework.Managers;
 using Gameplay.GameControllers.Entities;
 using Gameplay.GameControllers.Enemies.Framework.Attack;
@@ -91,7 +92,7 @@ namespace BlasphemousRandomizer.Patches
                 attack.ContactDamageAmount += attack.ContactDamageAmount * percent;
         }
 
-        // Prevent wall enemies from disabling climbable walls
+        // Prevent Wall Enemy climbable error
         [HarmonyPatch(typeof(WallEnemy), "OnTriggerEnter2D")]
         public class WallEnemy_Patch
         {
@@ -101,7 +102,7 @@ namespace BlasphemousRandomizer.Patches
             }
         }
 
-        // Prevent flying patrolling enemy casting error
+        // Prevent Flying Patrolling Enemy casting error
         [HarmonyPatch(typeof(FlyingPatrollingEnemySpawnConfigurator), "OnSpawn")]
         public class FlyingPatrollingEnemySpawnConfigurator_Patch
         {
@@ -121,7 +122,7 @@ namespace BlasphemousRandomizer.Patches
             }
         }
 
-        // Prevent Jar thrower loading error
+        // Prevent Jar Thrower loading error
         [HarmonyPatch(typeof(JarThrower), "OnPlayerSpawn")]
         public class JarThrower_Patch
         {
@@ -133,6 +134,16 @@ namespace BlasphemousRandomizer.Patches
                     return false;
                 }
                 return true;
+            }
+        }
+
+        // Prevent Bell / Chime Ringer trigger error
+        [HarmonyPatch(typeof(GlobalTrapTriggerer), "TriggerAllTrapsInTheScene")]
+        public class GlobalTrapTriggerer_Patch
+        {
+            public static bool Prefix(GlobalTrapTriggerer __instance)
+            {
+                return __instance.trapManager != null;
             }
         }
     }
