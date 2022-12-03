@@ -15,6 +15,8 @@ using Gameplay.GameControllers.Enemies.MeltedLady;
 using Gameplay.GameControllers.Enemies.MeltedLady.Attack;
 using Gameplay.GameControllers.Enemies.MeltedLady.IA;
 using Gameplay.GameControllers.Enemies.RangedBoomerang.IA;
+using Gameplay.GameControllers.Enemies.GhostKnight;
+using Gameplay.GameControllers.Enemies.GhostKnight.AI;
 using Gameplay.GameControllers.Effects.Entity;
 using UnityEngine;
 using System.Collections.Generic;
@@ -202,6 +204,16 @@ namespace BlasphemousRandomizer.Patches
                 if (__instance.RangedBoomerang.Id == "EV22")
                     __instance.doPatrol = false;
                 return false;
+            }
+        }
+
+        // Prevent Ghost Knight disappear error
+        [HarmonyPatch(typeof(GhostKnightBehaviour), "Damage")]
+        public class GhostKnightBehaviour_Patch
+        {
+            public static void Postfix(GhostKnightBehaviour __instance)
+            {
+                __instance.GetComponent<GhostKnight>().EntityDamageArea.DamageAreaCollider.enabled = true;
             }
         }
     }

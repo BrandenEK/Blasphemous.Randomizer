@@ -37,8 +37,11 @@ namespace BlasphemousRandomizer
 
 				if (baseId == "EN11" || baseId == "EV15")
                 {
-					fullId += array[i].name.Substring(array[i].name.IndexOf('_'));
-                }
+					if (array[i].name.Contains("_L"))
+						fullId += "_L";
+					else if (array[i].name.Contains("_R"))
+						fullId += "_R";
+				}
 
 				if (baseId != "" && !allEnemies.ContainsKey(fullId) && FileUtil.arrayContains(enemyIds, baseId))
 				{
