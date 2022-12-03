@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BlasphemousRandomizer.Fillers;
 using Framework.Managers;
 using Framework.Audio;
@@ -13,13 +12,14 @@ namespace BlasphemousRandomizer.Shufflers
         private Dictionary<string, int> difficultyRatings;
         private EnemyFiller filler;
 
+        // Enemizer fixes
         public FMODAudioCatalog[] audioCatalogs;
 
-        public GameObject getEnemy(string id)
+        public GameObject getEnemy(string id, bool facingLeft)
         {
             if (EnemyLoader.loaded && newEnemies != null && newEnemies.ContainsKey(id))
             {
-                return EnemyLoader.getEnemy(newEnemies[id]);
+                return EnemyLoader.getEnemy(newEnemies[id], facingLeft);
             }
             return null;
         }

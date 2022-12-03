@@ -1,14 +1,26 @@
 ﻿using HarmonyLib;
 using Tools.Level.Layout;
 using Tools.Level.Utils;
+using Tools.Level.Actionables;
 using Framework.Managers;
 using Gameplay.GameControllers.Entities;
 using Gameplay.GameControllers.Enemies.Framework.Attack;
 using Framework.EditorScripts.EnemiesBalance;
 using Framework.FrameworkCore.Attributes;
+using Gameplay.GameControllers.Penitent;
 using Gameplay.GameControllers.Enemies.WallEnemy;
+using Gameplay.GameControllers.Enemies.WallEnemy.AI;
 using Gameplay.GameControllers.Enemies.PatrollingFlyingEnemy;
+using Gameplay.GameControllers.Enemies.JarThrower;
+using Gameplay.GameControllers.Enemies.MeltedLady;
+using Gameplay.GameControllers.Enemies.MeltedLady.Attack;
+using Gameplay.GameControllers.Enemies.MeltedLady.IA;
+using Gameplay.GameControllers.Enemies.RangedBoomerang.IA;
+using Gameplay.GameControllers.Enemies.GhostKnight;
+using Gameplay.GameControllers.Enemies.GhostKnight.AI;
+using Gameplay.GameControllers.Effects.Entity;
 using UnityEngine;
+using System.Collections.Generic;
 using Framework.Audio;
 
 namespace BlasphemousRandomizer.Patches
@@ -32,13 +44,20 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Postfix(EnemySpawnPoint __instance, ref GameObject ___selectedEnemy, Transform ___spawnPoint)
         {
+            // Calculate location id
             string scene = Core.LevelManager.currentLevel.LevelName;
             string locationId = $"{scene}[{Mathf.RoundToInt(___spawnPoint.position.x)},{Mathf.RoundToInt(___spawnPoint.position.y)}]";
+
             // If this is a special arena, add to locationId to prevent duplicates
             if (__instance.SpawnOnArena && (scene.Contains("D19") || scene == "D03Z03S03"))
                 locationId += $"({__instance.name})";
 
-            GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(locationId);
+            // Get facing direction of this spawn point
+            EnemySpawnConfigurator config = __instance.GetComponent<EnemySpawnConfigurator>();
+            bool facingLeft = config == null ? true : config.facingLeft;
+
+            // Retrieve new enemy
+            GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(locationId, facingLeft);
             if (newEnemy != null)
                 ___selectedEnemy = newEnemy;
 
@@ -88,23 +107,130 @@ namespace BlasphemousRandomizer.Patches
                 attack.ContactDamageAmount += attack.ContactDamageAmount * percent;
         }
 
-        // Prevent wall enemies from disabling climbable walls
+        // Prevent Wall Enemy climbable & attack error
         [HarmonyPatch(typeof(WallEnemy), "OnTriggerEnter2D")]
-        public class WallEnemy_Patch
+        public class WallEnemyTrigger_Patch
         {
             public static bool Prefix()
             {
                 return false;
             }
         }
+        [HarmonyPatch(typeof(WallEnemyBehaviour), "OnDestroy")]
+        public class WallEnemyDestroy_Patch
+        {
+            public static bool Prefix(WallEnemyBehaviour __instance)
+            {
+                return __instance.CollisionSensor != null;
+            }
+        }
+        [HarmonyPatch(typeof(Entity), "SetOrientation")]
+        public class Entity_Patch
+        {
+            public static bool Prefix(Entity __instance)
+            {
+                return __instance.Id != "EN11" && __instance.Id != "EV15";
+            }
+        }
 
-        // Don't hard cast flying patrolling enemies
+        // Prevent Flying Patrolling Enemy casting error
         [HarmonyPatch(typeof(FlyingPatrollingEnemySpawnConfigurator), "OnSpawn")]
         public class FlyingPatrollingEnemySpawnConfigurator_Patch
         {
             public static bool Prefix(Enemy e)
             {
                 return e.GetType() == typeof(PatrollingFlyingEnemy);
+            }
+        }
+
+        // Prevent New Flagellant material error
+        [HarmonyPatch(typeof(MasterShaderEffects), "DamageEffectBlink")]
+        public class MasterShaderEffects_Patch
+        {
+            public static bool Prefix(MasterShaderEffects __instance, Material effectMaterial)
+            {
+                return effectMaterial != null || __instance.damageEffectTestMaterial != null;
+            }
+        }
+
+        // Prevent Jar Thrower loading error
+        [HarmonyPatch(typeof(JarThrower), "OnPlayerSpawn")]
+        public class JarThrower_Patch
+        {
+            public static bool Prefix(JarThrower __instance)
+            {
+                if (__instance.Behaviour == null)
+                {
+                    Object.Destroy(__instance);
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        // Prevent Bell / Chime Ringer trigger error
+        [HarmonyPatch(typeof(GlobalTrapTriggerer), "Awake")]
+        public class GlobalTrapTriggerer_Patch
+        {
+            public static void Postfix(GlobalTrapTriggerer __instance)
+            {
+                if (__instance.trapManager == null)
+                {
+                    __instance.trapManager = new TriggerTrapManager();
+                    __instance.trapManager.traps = new List<TriggerBasedTrap>();
+                }
+            }
+        }
+
+        // Prevent Melted Lady teleporting error
+        [HarmonyPatch(typeof(MeltedLadyBehaviour), "GetNearestTeleportPointToTarget")]
+        public class MeltedLadyBehaviourTeleport_Patch
+        {
+            public static bool Prefix(MeltedLadyBehaviour __instance, ref MeltedLadyTeleportPoint __result)
+            {
+                foreach (MeltedLadyTeleportPoint point in Object.FindObjectsOfType<MeltedLadyTeleportPoint>())
+                {
+                    if (point.name == __instance.OriginPosition.ToString())
+                    {
+                        __result = point;
+                        return false;
+                    }
+                }
+                __result = null;
+                return false;
+            }
+        }
+        [HarmonyPatch(typeof(MeltedLadyBehaviour), "OnStart")]
+        public class MeltedLadyBehaviourStart_Patch
+        {
+            public static void Postfix(MeltedLadyBehaviour __instance)
+            {
+                __instance.gameObject.SetActive(true);
+                GameObject obj = new GameObject(__instance.OriginPosition.ToString());
+                obj.transform.position = new Vector3(__instance.transform.position.x, __instance.transform.position.y, __instance.transform.position.z);
+                obj.AddComponent<MeltedLadyTeleportPoint>();
+            }
+        }
+
+        // Prevent Librarian walking error
+        [HarmonyPatch(typeof(RangedBoomerangBehaviour), "ReadSpawnerConfig")]
+        public class RangedBoomerangBehaviour_Patch
+        {
+            public static bool Prefix(RangedBoomerangBehaviour __instance)
+            {
+                if (__instance.RangedBoomerang.Id == "EV22")
+                    __instance.doPatrol = false;
+                return false;
+            }
+        }
+
+        // Prevent Ghost Knight disappear error
+        [HarmonyPatch(typeof(GhostKnightBehaviour), "Damage")]
+        public class GhostKnightBehaviour_Patch
+        {
+            public static void Postfix(GhostKnightBehaviour __instance)
+            {
+                __instance.GetComponent<GhostKnight>().EntityDamageArea.DamageAreaCollider.enabled = true;
             }
         }
     }

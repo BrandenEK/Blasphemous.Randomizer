@@ -21,8 +21,8 @@ namespace BlasphemousRandomizer.Config
 			string[] random = new string[] { "item","cherub","lady","oil","sword","blessing","guiltArena","tirso","miriam","redento","jocinero","altasgracias","tentudia","gemino","guiltBead","ossuary","boss","visage","mask","herb","church","shop","thorn","candle","viridiana" };
 			return new MainConfig(MyPluginInfo.PLUGIN_VERSION,
 				new GeneralConfig(true, true, false, false, 0),
-				new ItemConfig(1, true, true, random),
-				new EnemyConfig(1, true, true),
+				new ItemConfig(1, true, false, random),
+				new EnemyConfig(0, true, true),
 				new PrayerConfig(0, false),
 				new DoorConfig(0),
 				new DebugConfig(0));
