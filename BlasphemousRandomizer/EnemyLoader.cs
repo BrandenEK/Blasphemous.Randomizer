@@ -37,13 +37,12 @@ namespace BlasphemousRandomizer
 
 				if (baseId == "EN11" || baseId == "EV15")
                 {
-					if (array[i].name.Contains("_L"))
+					if (array[i].name.EndsWith("_L"))
 						fullId += "_L";
-					else if (array[i].name.Contains("_R"))
+					else if (array[i].name.EndsWith("_R"))
 						fullId += "_R";
 				}
-
-				if (baseId != "" && !allEnemies.ContainsKey(fullId) && FileUtil.arrayContains(enemyIds, baseId))
+				if (baseId != "" && array[i].gameObject.scene.name == null && !allEnemies.ContainsKey(fullId) && FileUtil.arrayContains(enemyIds, baseId))
 				{
 					//Main.Randomizer.Log($"Loading enemy {baseId}({fullId}): {array[i].name}");
 					changeHitbox(array[i].transform, baseId);

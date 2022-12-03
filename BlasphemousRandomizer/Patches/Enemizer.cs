@@ -9,6 +9,7 @@ using Framework.EditorScripts.EnemiesBalance;
 using Framework.FrameworkCore.Attributes;
 using Gameplay.GameControllers.Penitent;
 using Gameplay.GameControllers.Enemies.WallEnemy;
+using Gameplay.GameControllers.Enemies.WallEnemy.AI;
 using Gameplay.GameControllers.Enemies.PatrollingFlyingEnemy;
 using Gameplay.GameControllers.Enemies.JarThrower;
 using Gameplay.GameControllers.Enemies.MeltedLady;
@@ -53,7 +54,7 @@ namespace BlasphemousRandomizer.Patches
 
             // Get facing direction of this spawn point
             EnemySpawnConfigurator config = __instance.GetComponent<EnemySpawnConfigurator>();
-            bool facingLeft = config == null ? false : config.facingLeft;
+            bool facingLeft = config == null ? true : config.facingLeft;
 
             // Retrieve new enemy
             GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(locationId, facingLeft);
@@ -106,13 +107,29 @@ namespace BlasphemousRandomizer.Patches
                 attack.ContactDamageAmount += attack.ContactDamageAmount * percent;
         }
 
-        // Prevent Wall Enemy climbable error
+        // Prevent Wall Enemy climbable & attack error
         [HarmonyPatch(typeof(WallEnemy), "OnTriggerEnter2D")]
-        public class WallEnemy_Patch
+        public class WallEnemyTrigger_Patch
         {
             public static bool Prefix()
             {
                 return false;
+            }
+        }
+        [HarmonyPatch(typeof(WallEnemyBehaviour), "OnDestroy")]
+        public class WallEnemyDestroy_Patch
+        {
+            public static bool Prefix(WallEnemyBehaviour __instance)
+            {
+                return __instance.CollisionSensor != null;
+            }
+        }
+        [HarmonyPatch(typeof(Entity), "SetOrientation")]
+        public class Entity_Patch
+        {
+            public static bool Prefix(Entity __instance)
+            {
+                return __instance.Id != "EN11" && __instance.Id != "EV15";
             }
         }
 
