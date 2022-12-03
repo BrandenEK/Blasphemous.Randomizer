@@ -45,4 +45,12 @@ Progress board: [Trello](https://trello.com/b/FJ42w6X1/blasphemous-randomizer)
 
 ### v1.1.0 (Enemizer Improvements)
 - Full enemy randomization
+- Add flying class of enemies
+- Misc. enemy improvements
+	- Fix flagellant hitbox
+	- Fix librarian animation
+	- Fix wall enemy attack
+	- Fix Tizona softlock
+	- Fix inconsistent crashes
+	- Randomize Flying Patrollers & Melted Ladies
 
