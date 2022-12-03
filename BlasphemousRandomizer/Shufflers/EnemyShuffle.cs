@@ -15,11 +15,11 @@ namespace BlasphemousRandomizer.Shufflers
         // Enemizer fixes
         public FMODAudioCatalog[] audioCatalogs;
 
-        public GameObject getEnemy(string id)
+        public GameObject getEnemy(string id, bool facingLeft)
         {
             if (EnemyLoader.loaded && newEnemies != null && newEnemies.ContainsKey(id))
             {
-                return EnemyLoader.getEnemy(newEnemies[id]);
+                return EnemyLoader.getEnemy(newEnemies[id], facingLeft);
             }
             return null;
         }

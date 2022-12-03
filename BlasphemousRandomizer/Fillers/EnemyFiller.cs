@@ -113,7 +113,7 @@ namespace BlasphemousRandomizer.Fillers
 		private Dictionary<string, int> enemyTypes = new Dictionary<string, int>()
 		{
 			{ "EN01", 1 },
-			{ "EN02", 0 },
+			{ "EN02", 1 },
 			{ "EN03", 0 },
 			{ "EN04", 3 },
 			{ "EN05", 1 },
@@ -134,7 +134,7 @@ namespace BlasphemousRandomizer.Fillers
 			{ "EN21", 0 },
 			{ "EN22", 1 },
 			{ "EN23", 3 },
-			{ "EN24", 0 },
+			{ "EN24", 1 },
 			{ "EN26", 0 },
 			{ "EN27", 3 },
 			{ "EN28", 0 },
@@ -148,7 +148,7 @@ namespace BlasphemousRandomizer.Fillers
 			{ "EV03", 3 },
 			{ "EV05", 4 },
 			{ "EV08", 1 },
-			{ "EV10", 0 },
+			{ "EV10", 1 },
 			{ "EV11", 1 },
 			{ "EV12", 1 },
 			{ "EV13", 1 },

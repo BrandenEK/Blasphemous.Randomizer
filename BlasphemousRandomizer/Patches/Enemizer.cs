@@ -41,13 +41,20 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Postfix(EnemySpawnPoint __instance, ref GameObject ___selectedEnemy, Transform ___spawnPoint)
         {
+            // Calculate location id
             string scene = Core.LevelManager.currentLevel.LevelName;
             string locationId = $"{scene}[{Mathf.RoundToInt(___spawnPoint.position.x)},{Mathf.RoundToInt(___spawnPoint.position.y)}]";
+
             // If this is a special arena, add to locationId to prevent duplicates
             if (__instance.SpawnOnArena && (scene.Contains("D19") || scene == "D03Z03S03"))
                 locationId += $"({__instance.name})";
 
-            GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(locationId);
+            // Get facing direction of this spawn point
+            EnemySpawnConfigurator config = __instance.GetComponent<EnemySpawnConfigurator>();
+            bool facingLeft = config == null ? false : config.facingLeft;
+
+            // Retrieve new enemy
+            GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(locationId, facingLeft);
             if (newEnemy != null)
                 ___selectedEnemy = newEnemy;
 

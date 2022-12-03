@@ -10,8 +10,12 @@ namespace BlasphemousRandomizer
         public static bool loaded = false;
 
 		// Get the gameobject for a certain enemy id
-		public static GameObject getEnemy(string id)
+		public static GameObject getEnemy(string id, bool facingLeft)
 		{
+			if (id == "EN11" || id == "EV15")
+            {
+				id += facingLeft ? "_L" : "_R";
+            }
 			if (allEnemies.ContainsKey(id))
 			{
 				return allEnemies[id];
@@ -28,22 +32,31 @@ namespace BlasphemousRandomizer
 			Enemy[] array = Resources.FindObjectsOfTypeAll<Enemy>();
 			for (int i = 0; i < array.Length; i++)
 			{
-				string id = array[i].Id;
-				if (id != "" && !allEnemies.ContainsKey(id) && FileUtil.arrayContains(enemyIds, id))
+				string baseId = array[i].Id;
+				string fullId = baseId;
+
+				if (baseId == "EN11" || baseId == "EV15")
+                {
+					fullId += array[i].name.Substring(array[i].name.IndexOf('_'));
+                }
+
+				if (baseId != "" && !allEnemies.ContainsKey(fullId) && FileUtil.arrayContains(enemyIds, baseId))
 				{
-					//Main.Randomizer.Log($"Loading enemy {id}: {array[i].name}");
-					changeHitbox(array[i].transform, id);
-					allEnemies.Add(array[i].Id, array[i].gameObject);
+					//Main.Randomizer.Log($"Loading enemy {baseId}({fullId}): {array[i].name}");
+					changeHitbox(array[i].transform, baseId);
+					allEnemies.Add(fullId, array[i].gameObject);
 				}
 			}
-			if (allEnemies.Count != enemyIds.Length)
+
+			int totalEnemies = enemyIds.Length + 2;
+			if (allEnemies.Count != totalEnemies)
             {
-				Main.Randomizer.Log($"Not all enemies loaded yet! ({allEnemies.Count}/{enemyIds.Length})");
+				Main.Randomizer.Log($"Not all enemies loaded yet! ({allEnemies.Count}/{totalEnemies})");
             }
 			else
 			{
 				loaded = true;
-				Main.Randomizer.Log("All enemies loaded!");
+				Main.Randomizer.Log($"All {totalEnemies} enemies loaded!");
 			}
 		}
 
