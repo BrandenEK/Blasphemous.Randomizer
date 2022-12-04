@@ -5,5 +5,6 @@
         public string locationId;
         public string originalEnemy;
         public bool arena;
+        public float yOffset;
     }
 }

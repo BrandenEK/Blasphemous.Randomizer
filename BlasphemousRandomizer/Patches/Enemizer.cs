@@ -42,8 +42,11 @@ namespace BlasphemousRandomizer.Patches
     [HarmonyPatch(typeof(EnemySpawnPoint), "Awake")]
     public class EnemySpawnPoint_Patch
     {
-        public static void Postfix(EnemySpawnPoint __instance, ref GameObject ___selectedEnemy, Transform ___spawnPoint)
+        public static void Postfix(EnemySpawnPoint __instance, ref GameObject ___selectedEnemy, ref Transform ___spawnPoint)
         {
+            //if (Main.Randomizer.gameConfig.enemies.type < 1)
+            //    return;
+
             // Calculate location id
             string scene = Core.LevelManager.currentLevel.LevelName;
             string locationId = $"{scene}[{Mathf.RoundToInt(___spawnPoint.position.x)},{Mathf.RoundToInt(___spawnPoint.position.y)}]";
@@ -61,13 +64,21 @@ namespace BlasphemousRandomizer.Patches
             if (newEnemy != null)
                 ___selectedEnemy = newEnemy;
 
+            // Modify spawnpoint position
+            RaycastHit2D hit = Physics2D.Raycast(___spawnPoint.position, Vector2.down, 30, (1 << 19 | 1 << 13));
+            float testDiff = ___spawnPoint.position.y - hit.point.y;
+            float locationOffset = Main.Randomizer.enemyShuffler.getLocationOffset(locationId);
+            float enemyOffset = Main.Randomizer.enemyShuffler.getEnemyOffset(___selectedEnemy.GetComponent<Enemy>().Id);
+            ___spawnPoint.position = new Vector3(___spawnPoint.position.x, ___spawnPoint.position.y - locationOffset, ___spawnPoint.position.z);
+
             // Extra data collection stuff
             //string output = "{\r\n\t\"locationId\": \"";
             //output += locationId;
             //output += "\",\r\n\t\"originalEnemy\": \"";
             //output += ___selectedEnemy.GetComponentInChildren<Enemy>().Id;
             //output += "\"\r\n},\r\n";
-            //Shufflers.EnemyShuffle.enemyData += output;
+            string output = locationId + ": " + testDiff + "\n";
+            Shufflers.EnemyShuffle.enemyData += output;
 
             // Can modify spawn position here too
         }
@@ -231,6 +242,29 @@ namespace BlasphemousRandomizer.Patches
             public static void Postfix(GhostKnightBehaviour __instance)
             {
                 __instance.GetComponent<GhostKnight>().EntityDamageArea.DamageAreaCollider.enabled = true;
+            }
+        }
+
+        // Testing
+        [HarmonyPatch(typeof(EnemySpawnPoint), "CreateEnemy")]
+        public class SpawnPointTest
+        {
+            public static void Postfix(EnemySpawnPoint __instance, Transform ___spawnPoint)
+            {
+                create(Main.Randomizer.getImage(1), __instance.transform, ___spawnPoint.position);
+                if (__instance.SpawnedEnemy != null)
+                    create(Main.Randomizer.getImage(0), __instance.SpawnedEnemy.transform, __instance.SpawnedEnemy.transform.position);
+            }
+
+            private static void create(Sprite sprite, Transform parent, Vector3 position)
+            {
+                GameObject obj = new GameObject();
+                SpriteRenderer render = obj.AddComponent<SpriteRenderer>();
+                render.sprite = sprite;
+                render.sortingGroupOrder = -5;
+                render.sortingOrder = -5;
+                obj.transform.position = position;
+                obj.transform.parent = parent;
             }
         }
     }

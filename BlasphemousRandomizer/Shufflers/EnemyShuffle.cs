@@ -9,6 +9,7 @@ namespace BlasphemousRandomizer.Shufflers
     public class EnemyShuffle : IShuffle
     {
         private Dictionary<string, string> newEnemies;
+        private Dictionary<string, float> locationOffsets;
         private Dictionary<string, int> difficultyRatings;
         private EnemyFiller filler;
 
@@ -39,9 +40,32 @@ namespace BlasphemousRandomizer.Shufflers
             return 0;
         }
 
+        // Gets the y offset of certain enemies 
+        public float getEnemyOffset(string id)
+        {
+            if (id == "EN02") return 1.5f;
+            if (id == "EN03") return 1.5f;
+            if (id == "EN05") return 1.5f;
+            if (id == "EN14") return 2.5f;
+            if (id == "EV01") return 1.5f;
+            if (id == "EV02") return 1.5f;
+            if (id == "EV27") return 1.5f;
+            return 0f;
+        }
+
+        // Gets the y offset of certain locations
+        public float getLocationOffset(string id)
+        {
+            if (locationOffsets.ContainsKey(id))
+                return locationOffsets[id];
+            return 0;
+        }
+
         public void Init()
         {
             filler = new EnemyFiller();
+            locationOffsets = new Dictionary<string, float>();
+            filler.fillEnemyOffsets(locationOffsets);
 
             // Load from json
             difficultyRatings = new Dictionary<string, int>()
@@ -167,6 +191,6 @@ namespace BlasphemousRandomizer.Shufflers
         }
 
         // temp
-        //public static string enemyData = "";
+        public static string enemyData = "";
     }
 }

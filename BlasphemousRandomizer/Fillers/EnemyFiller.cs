@@ -109,6 +109,16 @@ namespace BlasphemousRandomizer.Fillers
 			}
         }
 
+		// Should probably find a better way of holding this data
+		public void fillEnemyOffsets(Dictionary<string, float> offsets)
+        {
+			offsets.Clear();
+			for (int i = 0; i < allLocations.Count; i++)
+            {
+				offsets.Add(allLocations[i].locationId, allLocations[i].yOffset);
+            }
+        }
+
 		// 0 - normal, 1 - weak, 2 - large, 3 - flying, 4 - vanilla (for now)
 		private Dictionary<string, int> enemyTypes = new Dictionary<string, int>()
 		{
