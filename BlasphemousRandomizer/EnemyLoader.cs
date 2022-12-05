@@ -46,7 +46,12 @@ namespace BlasphemousRandomizer
 				{
 					//Main.Randomizer.Log($"Loading enemy {baseId}({fullId}): {array[i].name}");
 					changeHitbox(array[i].transform, baseId);
-					allEnemies.Add(fullId, array[i].gameObject);
+
+					// Chained Angels are nested
+					if (baseId == "EV27")
+						allEnemies.Add(fullId, array[i].transform.parent.gameObject);
+					else
+						allEnemies.Add(fullId, array[i].gameObject);
 				}
 			}
 

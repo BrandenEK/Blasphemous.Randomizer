@@ -20,6 +20,7 @@ namespace BlasphemousRandomizer.Shufflers
         {
             if (EnemyLoader.loaded && newEnemies != null && newEnemies.ContainsKey(id))
             {
+                //return EnemyLoader.getEnemy("EN23", false);
                 return EnemyLoader.getEnemy(newEnemies[id], facingLeft);
             }
             return null;
@@ -46,9 +47,17 @@ namespace BlasphemousRandomizer.Shufflers
             if (id == "EN02") return 1.7f;
             if (id == "EN03") return 1.65f;
             if (id == "EN05") return 0.9f;
-            if (id == "EN14") return 2f;
+            if (id == "EN09") return -0.19f;
+            if (id == "EN14") return 3.2f;
+            if (id == "EN15") return 0.18f;
+            if (id == "EN16") return 0.1f;
+            if (id == "EN34") return 0.18f;
             if (id == "EV01") return 1.75f;
             if (id == "EV02") return 1.7f;
+            if (id == "EV13") return -0.19f;
+            if (id == "EV14") return -0.19f;
+            if (id == "EV19") return 0.1f;
+            if (id == "EV23") return 0.1f;
             if (id == "EV27") return 2f;
             return 0f;
         }

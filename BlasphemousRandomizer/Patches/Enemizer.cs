@@ -18,6 +18,8 @@ using Gameplay.GameControllers.Enemies.MeltedLady.IA;
 using Gameplay.GameControllers.Enemies.RangedBoomerang.IA;
 using Gameplay.GameControllers.Enemies.GhostKnight;
 using Gameplay.GameControllers.Enemies.GhostKnight.AI;
+using Gameplay.GameControllers.Enemies.CauldronNun.AI;
+using Gameplay.GameControllers.Enemies.ChimeRinger.AI;
 using Gameplay.GameControllers.Effects.Entity;
 using UnityEngine;
 using System.Collections.Generic;
@@ -61,26 +63,31 @@ namespace BlasphemousRandomizer.Patches
 
             // Retrieve new enemy
             GameObject newEnemy = Main.Randomizer.enemyShuffler.getEnemy(locationId, facingLeft);
+            string enemyId = "";
             if (newEnemy != null)
+            {
                 ___selectedEnemy = newEnemy;
+                enemyId = ___selectedEnemy.GetComponentInChildren<Enemy>().Id;
+            }
+            else
+                Main.Randomizer.Log("Enemy component is null!");
+            Main.Randomizer.Log(locationId + ": " + enemyId);
 
             // Modify spawnpoint position
-            RaycastHit2D hit = Physics2D.Raycast(___spawnPoint.position + Vector3.up * (___selectedEnemy.GetComponent<Enemy>().Id == "EV14" ? 1 : 0), Vector2.down, 30, (1 << 19 | 1 << 13));
-            float testDiff = ___spawnPoint.position.y - hit.point.y;
             float locationOffset = Main.Randomizer.enemyShuffler.getLocationOffset(locationId);
-            float enemyOffset = Main.Randomizer.enemyShuffler.getEnemyOffset(___selectedEnemy.GetComponent<Enemy>().Id);
-            ___spawnPoint.position = new Vector3(___spawnPoint.position.x, ___spawnPoint.position.y - locationOffset, ___spawnPoint.position.z);
+            float enemyOffset = Main.Randomizer.enemyShuffler.getEnemyOffset(enemyId);
+            ___spawnPoint.position = new Vector3(___spawnPoint.position.x, ___spawnPoint.position.y - locationOffset + enemyOffset, ___spawnPoint.position.z);
 
             // Extra data collection stuff
             //string output = "{\r\n\t\"locationId\": \"";
             //output += locationId;
             //output += "\",\r\n\t\"originalEnemy\": \"";
-            //output += ___selectedEnemy.GetComponentInChildren<Enemy>().Id;
+            //output += enemyId;
             //output += "\"\r\n},\r\n";
-            string output = locationId + ": " + testDiff + "\n";
-            Shufflers.EnemyShuffle.enemyData += output;
-
-            // Can modify spawn position here too
+            //RaycastHit2D hit = Physics2D.Raycast(___spawnPoint.position, Vector2.down, 30, (1 << 19 | 1 << 13));
+            //float testDiff = ___spawnPoint.position.y - hit.point.y;
+            //string output = locationId + ": " + testDiff + "\n";
+            //Shufflers.EnemyShuffle.enemyData += output;
         }
     }
 
@@ -190,6 +197,23 @@ namespace BlasphemousRandomizer.Patches
                     __instance.trapManager = new TriggerTrapManager();
                     __instance.trapManager.traps = new List<TriggerBasedTrap>();
                 }
+            }
+        }
+        [HarmonyPatch(typeof(CauldronNunBehaviour), "ReadSpawnerConfig")]
+        public class CauldronNun_Patch
+        {
+            public static bool Prefix(CauldronNunBehaviour __instance)
+            {
+                __instance.pullLapse = 10f;
+                return false;
+            }
+        }
+        [HarmonyPatch(typeof(ChimeRingerBehaviour), "OnStart")]
+        public class ChimeRinger_Patch
+        {
+            public static void Postfix(ChimeRingerBehaviour __instance)
+            {
+                __instance.ringLapse = 5f;
             }
         }
 
