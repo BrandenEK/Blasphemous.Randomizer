@@ -131,6 +131,7 @@ namespace BlasphemousRandomizer.Fillers
 			{ "EN07", 3 },
 			{ "EN08", 4 },
 			{ "EN09", 0 },
+			{ "EN09_E", 0 },
 			{ "EN10", 4 },
 			{ "EN11", 0 },
 			{ "EN12", 0 },

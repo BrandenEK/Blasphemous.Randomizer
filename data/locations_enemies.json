@@ -2731,22 +2731,22 @@
 	},
 	{
 		"locationId": "D05Z01S06[122,-23]",
-		"originalEnemy": "EN09",
+		"originalEnemy": "EN09_E",
 		"yOffset": -0.19
 	},
 	{
 		"locationId": "D05Z01S06[112,-20]",
-		"originalEnemy": "EN09",
+		"originalEnemy": "EN09_E",
 		"yOffset": -0.19
 	},
 	{
 		"locationId": "D05Z01S06[112,-25]",
-		"originalEnemy": "EN09",
+		"originalEnemy": "EN09_E",
 		"yOffset": -0.19
 	},
 	{
 		"locationId": "D05Z01S06[132,-25]",
-		"originalEnemy": "EN09",
+		"originalEnemy": "EN09_E",
 		"yOffset": -0.19
 	},
 	{
@@ -2795,7 +2795,7 @@
 	},
 	{
 		"locationId": "D05Z01S10[144,-54]",
-		"originalEnemy": "EN09",
+		"originalEnemy": "EN09_E",
 		"yOffset": -0.19
 	},
 	{

@@ -7,12 +7,10 @@ using Gameplay.GameControllers.Entities;
 using Gameplay.GameControllers.Enemies.Framework.Attack;
 using Framework.EditorScripts.EnemiesBalance;
 using Framework.FrameworkCore.Attributes;
-using Gameplay.GameControllers.Penitent;
 using Gameplay.GameControllers.Enemies.WallEnemy;
 using Gameplay.GameControllers.Enemies.WallEnemy.AI;
 using Gameplay.GameControllers.Enemies.PatrollingFlyingEnemy;
 using Gameplay.GameControllers.Enemies.JarThrower;
-using Gameplay.GameControllers.Enemies.MeltedLady;
 using Gameplay.GameControllers.Enemies.MeltedLady.Attack;
 using Gameplay.GameControllers.Enemies.MeltedLady.IA;
 using Gameplay.GameControllers.Enemies.RangedBoomerang.IA;
@@ -46,8 +44,8 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Postfix(EnemySpawnPoint __instance, ref GameObject ___selectedEnemy, ref Transform ___spawnPoint)
         {
-            //if (Main.Randomizer.gameConfig.enemies.type < 1)
-            //    return;
+            if (Main.Randomizer.gameConfig.enemies.type < 1)
+                return;
 
             // Calculate location id
             string scene = Core.LevelManager.currentLevel.LevelName;
@@ -70,15 +68,16 @@ namespace BlasphemousRandomizer.Patches
                 enemyId = ___selectedEnemy.GetComponentInChildren<Enemy>().Id;
             }
             else
-                Main.Randomizer.Log("Enemy component is null!");
-            Main.Randomizer.Log(locationId + ": " + enemyId);
+                Main.Randomizer.Log("Enemy to spawn is null!");
 
             // Modify spawnpoint position
             float locationOffset = Main.Randomizer.enemyShuffler.getLocationOffset(locationId);
             float enemyOffset = Main.Randomizer.enemyShuffler.getEnemyOffset(enemyId);
-            ___spawnPoint.position = new Vector3(___spawnPoint.position.x, ___spawnPoint.position.y - locationOffset + enemyOffset, ___spawnPoint.position.z);
+            if (locationOffset != 99)
+                ___spawnPoint.position = new Vector3(___spawnPoint.position.x, ___spawnPoint.position.y - locationOffset + enemyOffset, ___spawnPoint.position.z);
 
             // Extra data collection stuff
+            //Main.Randomizer.Log(locationId + ": " + enemyId);
             //string output = "{\r\n\t\"locationId\": \"";
             //output += locationId;
             //output += "\",\r\n\t\"originalEnemy\": \"";
@@ -270,26 +269,26 @@ namespace BlasphemousRandomizer.Patches
         }
 
         // Testing
-        [HarmonyPatch(typeof(EnemySpawnPoint), "CreateEnemy")]
-        public class SpawnPointTest
-        {
-            public static void Postfix(EnemySpawnPoint __instance, Transform ___spawnPoint)
-            {
-                create(Main.Randomizer.getImage(1), __instance.transform, ___spawnPoint.position);
-                if (__instance.SpawnedEnemy != null)
-                    create(Main.Randomizer.getImage(0), __instance.SpawnedEnemy.transform, __instance.SpawnedEnemy.transform.position);
-            }
+        //[HarmonyPatch(typeof(EnemySpawnPoint), "CreateEnemy")]
+        //public class SpawnPointTest
+        //{
+        //    public static void Postfix(EnemySpawnPoint __instance, Transform ___spawnPoint)
+        //    {
+        //        create(Main.Randomizer.getImage(1), __instance.transform, ___spawnPoint.position);
+        //        if (__instance.SpawnedEnemy != null)
+        //            create(Main.Randomizer.getImage(0), __instance.SpawnedEnemy.transform, __instance.SpawnedEnemy.transform.position);
+        //    }
 
-            private static void create(Sprite sprite, Transform parent, Vector3 position)
-            {
-                GameObject obj = new GameObject();
-                SpriteRenderer render = obj.AddComponent<SpriteRenderer>();
-                render.sprite = sprite;
-                render.sortingGroupOrder = -5;
-                render.sortingOrder = -5;
-                obj.transform.position = position;
-                obj.transform.parent = parent;
-            }
-        }
+        //    private static void create(Sprite sprite, Transform parent, Vector3 position)
+        //    {
+        //        GameObject obj = new GameObject();
+        //        SpriteRenderer render = obj.AddComponent<SpriteRenderer>();
+        //        render.sprite = sprite;
+        //        render.sortingGroupOrder = -5;
+        //        render.sortingOrder = -5;
+        //        obj.transform.position = position;
+        //        obj.transform.parent = parent;
+        //    }
+        //}
     }
 }

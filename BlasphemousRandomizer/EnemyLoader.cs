@@ -35,6 +35,7 @@ namespace BlasphemousRandomizer
 				string baseId = array[i].Id;
 				string fullId = baseId;
 
+				// Load separate objects for left/right wall enemies
 				if (baseId == "EN11" || baseId == "EV15")
                 {
 					if (array[i].name.EndsWith("_L"))
@@ -42,6 +43,17 @@ namespace BlasphemousRandomizer
 					else if (array[i].name.EndsWith("_R"))
 						fullId += "_R";
 				}
+				// Load separate objects for normal/exploding heads
+				if (baseId == "EN09")
+                {
+					if (array[i].name.Contains("_Exploding"))
+                    {
+						baseId += "_E";
+						fullId += "_E";
+                    }
+                }
+				//Main.Randomizer.Log($"Processing enemy {baseId}({fullId}): {array[i].name}");
+
 				if (baseId != "" && array[i].gameObject.scene.name == null && !allEnemies.ContainsKey(fullId) && FileUtil.arrayContains(enemyIds, baseId))
 				{
 					//Main.Randomizer.Log($"Loading enemy {baseId}({fullId}): {array[i].name}");
@@ -107,6 +119,7 @@ namespace BlasphemousRandomizer
 			"EN07",
 			//"EN08",
 			"EN09",
+			"EN09_E",
 			//"EN10",
 			"EN11",
 			"EN12",

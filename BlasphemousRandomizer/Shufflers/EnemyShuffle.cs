@@ -20,7 +20,6 @@ namespace BlasphemousRandomizer.Shufflers
         {
             if (EnemyLoader.loaded && newEnemies != null && newEnemies.ContainsKey(id))
             {
-                //return EnemyLoader.getEnemy("EN23", false);
                 return EnemyLoader.getEnemy(newEnemies[id], facingLeft);
             }
             return null;
@@ -48,6 +47,7 @@ namespace BlasphemousRandomizer.Shufflers
             if (id == "EN03") return 1.65f;
             if (id == "EN05") return 0.9f;
             if (id == "EN09") return -0.19f;
+            if (id == "EN09_E") return -0.19f;
             if (id == "EN14") return 3.2f;
             if (id == "EN15") return 0.18f;
             if (id == "EN16") return 0.1f;
@@ -67,7 +67,7 @@ namespace BlasphemousRandomizer.Shufflers
         {
             if (locationOffsets.ContainsKey(id))
                 return locationOffsets[id];
-            return 0;
+            return 99;
         }
 
         public void Init()
@@ -107,6 +107,7 @@ namespace BlasphemousRandomizer.Shufflers
                 { "EN07", 6 },
                 { "EN08", 3 },
                 { "EN09", 8 },
+                { "EN09_E", 8 },
                 { "EN10", 8 },
                 { "EN11", 6 },
                 { "EN12", 6 },
