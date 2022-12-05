@@ -43,13 +43,13 @@ namespace BlasphemousRandomizer.Shufflers
         // Gets the y offset of certain enemies 
         public float getEnemyOffset(string id)
         {
-            if (id == "EN02") return 1.5f;
-            if (id == "EN03") return 1.5f;
-            if (id == "EN05") return 1.5f;
-            if (id == "EN14") return 2.5f;
-            if (id == "EV01") return 1.5f;
-            if (id == "EV02") return 1.5f;
-            if (id == "EV27") return 1.5f;
+            if (id == "EN02") return 1.7f;
+            if (id == "EN03") return 1.65f;
+            if (id == "EN05") return 0.9f;
+            if (id == "EN14") return 2f;
+            if (id == "EV01") return 1.75f;
+            if (id == "EV02") return 1.7f;
+            if (id == "EV27") return 2f;
             return 0f;
         }
 

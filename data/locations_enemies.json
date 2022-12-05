@@ -885,55 +885,68 @@
 	},
 	{
 		"locationId": "D02Z01S02[-284,59]",
-		"originalEnemy": "EV01"
+		"originalEnemy": "EV01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S02[-288,64]",
-		"originalEnemy": "EN05"
+		"originalEnemy": "EN05",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z01S02[-298,71]",
-		"originalEnemy": "EV01"
+		"originalEnemy": "EV01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S02[-302,70]",
-		"originalEnemy": "EN05"
+		"originalEnemy": "EN05",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z01S03[-328,80]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S03[-353,80]",
-		"originalEnemy": "EN32"
+		"originalEnemy": "EN32",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S03[-340,86]",
-		"originalEnemy": "EV01"
+		"originalEnemy": "EV01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S03[-347,94]",
-		"originalEnemy": "EN32"
+		"originalEnemy": "EN32",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S03[-341,81]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z01S03[-346,81]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z01S03[-352,93]",
-		"originalEnemy": "EN05"
+		"originalEnemy": "EN05",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z01S03[-358,85]",
-		"originalEnemy": "EN05"
+		"originalEnemy": "EN05",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z01S05[-393,74]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S05[-396,80]",
@@ -945,19 +958,23 @@
 	},
 	{
 		"locationId": "D02Z01S05[-417,74]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S05[-381,74]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S05[-408,74]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S05[-399,74]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S05[-385,79]",
@@ -969,7 +986,8 @@
 	},
 	{
 		"locationId": "D02Z01S06[-312,33]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S06[-311,44]",
@@ -985,23 +1003,28 @@
 	},
 	{
 		"locationId": "D02Z01S06[-267,32]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S06[-289,32]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S06[-273,32]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S06[-303,33]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S06[-279,32]",
-		"originalEnemy": "EN28"
+		"originalEnemy": "EN28",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z01S06[-273,44]",
@@ -1029,11 +1052,13 @@
 	},
 	{
 		"locationId": "D02Z02S01[-375,118]",
-		"originalEnemy": "EV15"
+		"originalEnemy": "EV15",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z02S01[-386,113]",
-		"originalEnemy": "EV21"
+		"originalEnemy": "EV21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z02S02[-400,124]",
@@ -1045,7 +1070,8 @@
 	},
 	{
 		"locationId": "D02Z02S02[-392,128]",
-		"originalEnemy": "EV15"
+		"originalEnemy": "EV15",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z02S03[-379,154]",
@@ -1065,7 +1091,8 @@
 	},
 	{
 		"locationId": "D02Z02S04[-421,176]",
-		"originalEnemy": "EV21"
+		"originalEnemy": "EV21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z02S04[-428,176]",
@@ -1081,11 +1108,13 @@
 	},
 	{
 		"locationId": "D02Z02S04[-424,176]",
-		"originalEnemy": "EV21"
+		"originalEnemy": "EV21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z02S04[-425,142]",
-		"originalEnemy": "EV21"
+		"originalEnemy": "EV21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z02S05[-396,201]",
@@ -1109,7 +1138,8 @@
 	},
 	{
 		"locationId": "D02Z02S05[-400,164]",
-		"originalEnemy": "EV21"
+		"originalEnemy": "EV21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z02S05[-403,186]",
@@ -1117,107 +1147,133 @@
 	},
 	{
 		"locationId": "D02Z03S01[-481,205]",
-		"originalEnemy": "EN12"
+		"originalEnemy": "EN12",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z03S02[-462,236]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S02[-460,240]",
-		"originalEnemy": "EV14"
+		"originalEnemy": "EV14",
+		"yOffset": -0.19
 	},
 	{
 		"locationId": "D02Z03S02[-455,231]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D02Z03S02[-459,241]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z03S03[-500,240]",
-		"originalEnemy": "EV14"
+		"originalEnemy": "EV14",
+		"yOffset": -0.19
 	},
 	{
 		"locationId": "D02Z03S03[-485,234]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S03[-481,234]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S03[-483,241]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z03S03[-499,242]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S03[-494,234]",
-		"originalEnemy": "EN12"
+		"originalEnemy": "EN12",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S05[-520,230]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D02Z03S05[-532,236]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S05[-532,227]",
-		"originalEnemy": "EV14"
+		"originalEnemy": "EV14",
+		"yOffset": -0.19
 	},
 	{
 		"locationId": "D02Z03S05[-523,238]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S05[-561,229]",
-		"originalEnemy": "EN21"
+		"originalEnemy": "EN21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S05[-557,229]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S05[-559,236]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S05[-522,230]",
-		"originalEnemy": "EN21"
+		"originalEnemy": "EN21",
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D02Z03S05[-561,236]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S05[-564,242]",
-		"originalEnemy": "EN12"
+		"originalEnemy": "EN12",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S05[-520,242]",
-		"originalEnemy": "EN21"
+		"originalEnemy": "EN21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S05[-546,235]",
-		"originalEnemy": "EN21"
+		"originalEnemy": "EN21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S05[-513,236]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S05[-539,242]",
-		"originalEnemy": "EN12"
+		"originalEnemy": "EN12",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S05[-553,236]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S06[-593,236]",
@@ -1229,47 +1285,58 @@
 	},
 	{
 		"locationId": "D02Z03S06[-586,236]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S06[-596,236]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S06[-578,240]",
-		"originalEnemy": "EV14"
+		"originalEnemy": "EV14",
+		"yOffset": -0.19
 	},
 	{
 		"locationId": "D02Z03S06[-603,237]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D02Z03S06[-581,241]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z03S06[-587,243]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D02Z03S07[-559,214]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S07[-567,220]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S07[-550,208]",
-		"originalEnemy": "EN21"
+		"originalEnemy": "EN21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S07[-565,220]",
-		"originalEnemy": "EN21"
+		"originalEnemy": "EN21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S07[-553,208]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S07[-537,208]",
@@ -1281,11 +1348,13 @@
 	},
 	{
 		"locationId": "D02Z03S07[-576,220]",
-		"originalEnemy": "EN12"
+		"originalEnemy": "EN12",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S07[-582,214]",
-		"originalEnemy": "EN12"
+		"originalEnemy": "EN12",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S07[-566,212]",
@@ -1293,59 +1362,73 @@
 	},
 	{
 		"locationId": "D02Z03S07[-575,214]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S07[-547,208]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S07[-561,210]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S12[-570,198]",
-		"originalEnemy": "EN12"
+		"originalEnemy": "EN12",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S12[-564,198]",
-		"originalEnemy": "EN12"
+		"originalEnemy": "EN12",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S12[-580,196]",
-		"originalEnemy": "EV14"
+		"originalEnemy": "EV14",
+		"yOffset": -0.19
 	},
 	{
 		"locationId": "D02Z03S12[-544,198]",
-		"originalEnemy": "EN12"
+		"originalEnemy": "EN12",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S14[-480,197]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S14[-499,197]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S14[-490,197]",
-		"originalEnemy": "EN21"
+		"originalEnemy": "EN21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S14[-484,197]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S14[-495,197]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S16[-485,220]",
-		"originalEnemy": "EN21"
+		"originalEnemy": "EN21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S16[-454,218]",
-		"originalEnemy": "EV14"
+		"originalEnemy": "EV14",
+		"yOffset": -0.19
 	},
 	{
 		"locationId": "D02Z03S17[-619,209]",
@@ -1357,7 +1440,8 @@
 	},
 	{
 		"locationId": "D02Z03S17[-623,210]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z03S17[-609,211]",
@@ -1365,27 +1449,33 @@
 	},
 	{
 		"locationId": "D02Z03S17[-604,210]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z03S17[-614,209]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S17[-614,212]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D02Z03S18[-626,234]",
-		"originalEnemy": "EN21"
+		"originalEnemy": "EN21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S18[-624,245]",
-		"originalEnemy": "EN21"
+		"originalEnemy": "EN21",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D02Z03S18[-616,251]",
-		"originalEnemy": "EV14"
+		"originalEnemy": "EV14",
+		"yOffset": -0.19
 	},
 	{
 		"locationId": "D03Z01S01[-475,-21]",
@@ -1397,11 +1487,13 @@
 	},
 	{
 		"locationId": "D03Z01S01[-514,-21]",
-		"originalEnemy": "EN20"
+		"originalEnemy": "EN20",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z01S01[-468,-26](Vanilla)",
-		"originalEnemy": "EN20"
+		"originalEnemy": "EN20",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z01S01[-520,-21]",
@@ -1409,11 +1501,13 @@
 	},
 	{
 		"locationId": "D03Z01S01[-494,-21]",
-		"originalEnemy": "EN20"
+		"originalEnemy": "EN20",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z01S01[-486,-21]",
-		"originalEnemy": "EN20"
+		"originalEnemy": "EN20",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z01S01[-503,-22]",
@@ -1429,27 +1523,33 @@
 	},
 	{
 		"locationId": "D03Z01S02[-612,-31]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z01S02[-594,-37]",
-		"originalEnemy": "EN20"
+		"originalEnemy": "EN20",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z01S02[-554,-37]",
-		"originalEnemy": "EN20"
+		"originalEnemy": "EN20",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z01S02[-558,-37]",
-		"originalEnemy": "EN20"
+		"originalEnemy": "EN20",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z01S02[-606,-37]",
-		"originalEnemy": "EN20"
+		"originalEnemy": "EN20",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z01S02[-565,-37](Vanilla)",
-		"originalEnemy": "EN03"
+		"originalEnemy": "EN03",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z01S02[-601,-31]",
@@ -1465,23 +1565,28 @@
 	},
 	{
 		"locationId": "D03Z01S04[-814,-30]",
-		"originalEnemy": "EN20"
+		"originalEnemy": "EN20",
+		"yOffset": 3.8
 	},
 	{
 		"locationId": "D03Z01S04[-805,-41]",
-		"originalEnemy": "EN03"
+		"originalEnemy": "EN03",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z01S04[-808,-28]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z01S04[-802,-30]",
-		"originalEnemy": "EN20"
+		"originalEnemy": "EN20",
+		"yOffset": 3.8
 	},
 	{
 		"locationId": "D03Z01S04[-811,-41]",
-		"originalEnemy": "EN03"
+		"originalEnemy": "EN03",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S01[-687,-72]",
@@ -1493,31 +1598,38 @@
 	},
 	{
 		"locationId": "D03Z02S01[-675,-78]",
-		"originalEnemy": "EV13"
+		"originalEnemy": "EV13",
+		"yOffset": 0
 	},
 	{
 		"locationId": "D03Z02S01[-667,-68]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S01[-653,-76]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S01[-679,-62]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S01[-677,-68]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S01[-655,-76]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S01[-673,-68]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S01[-664,-76]",
@@ -1549,11 +1661,13 @@
 	},
 	{
 		"locationId": "D03Z02S02[-735,-76]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S02[-698,-64]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S02[-693,-73]",
@@ -1565,7 +1679,8 @@
 	},
 	{
 		"locationId": "D03Z02S02[-717,-68]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S02[-728,-64]",
@@ -1585,7 +1700,8 @@
 	},
 	{
 		"locationId": "D03Z02S02[-716,-70]",
-		"originalEnemy": "EV13"
+		"originalEnemy": "EV13",
+		"yOffset": -0.19
 	},
 	{
 		"locationId": "D03Z02S02[-739,-64]",
@@ -1597,7 +1713,8 @@
 	},
 	{
 		"locationId": "D03Z02S02[-713,-68]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S03[-707,-96]",
@@ -1609,27 +1726,33 @@
 	},
 	{
 		"locationId": "D03Z02S03[-736,-97]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S03[-741,-93]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S03[-730,-97]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S03[-745,-90]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S03[-745,-97]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S03[-736,-93]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S04[-688,-110]",
@@ -1637,7 +1760,8 @@
 	},
 	{
 		"locationId": "D03Z02S04[-702,-117]",
-		"originalEnemy": "EN03"
+		"originalEnemy": "EN03",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S04[-688,-118]",
@@ -1645,11 +1769,13 @@
 	},
 	{
 		"locationId": "D03Z02S04[-682,-116]",
-		"originalEnemy": "EN03"
+		"originalEnemy": "EN03",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S04[-698,-122]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S04[-700,-112]",
@@ -1657,15 +1783,18 @@
 	},
 	{
 		"locationId": "D03Z02S04[-694,-122]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S04[-682,-111]",
-		"originalEnemy": "EN03"
+		"originalEnemy": "EN03",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S05[-668,-101]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S05[-685,-96]",
@@ -1673,11 +1802,13 @@
 	},
 	{
 		"locationId": "D03Z02S05[-662,-101]",
-		"originalEnemy": "EN03"
+		"originalEnemy": "EN03",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S05[-664,-94]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S05[-679,-96]",
@@ -1689,7 +1820,8 @@
 	},
 	{
 		"locationId": "D03Z02S05[-653,-94]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S05[-668,-90]",
@@ -1697,7 +1829,8 @@
 	},
 	{
 		"locationId": "D03Z02S05[-654,-101]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S06[-683,-130]",
@@ -1709,31 +1842,38 @@
 	},
 	{
 		"locationId": "D03Z02S06[-677,-136](Vanilla)",
-		"originalEnemy": "EV13"
+		"originalEnemy": "EV13",
+		"yOffset": -0.19
 	},
 	{
 		"locationId": "D03Z02S07[-745,-123]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S07[-746,-111]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S07[-734,-116]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S07[-746,-117]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S07[-734,-121]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S08[-761,-114]",
-		"originalEnemy": "EV13"
+		"originalEnemy": "EV13",
+		"yOffset": -0.19
 	},
 	{
 		"locationId": "D03Z02S09[-774,-85]",
@@ -1741,7 +1881,8 @@
 	},
 	{
 		"locationId": "D03Z02S09[-767,-93]",
-		"originalEnemy": "EV13"
+		"originalEnemy": "EV13",
+		"yOffset": -0.19
 	},
 	{
 		"locationId": "D03Z02S09[-774,-83]",
@@ -1749,7 +1890,8 @@
 	},
 	{
 		"locationId": "D03Z02S09[-770,-95]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S09[-774,-94]",
@@ -1757,7 +1899,8 @@
 	},
 	{
 		"locationId": "D03Z02S09[-767,-78]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S09[-759,-94]",
@@ -1765,7 +1908,8 @@
 	},
 	{
 		"locationId": "D03Z02S09[-774,-99]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S09[-785,-89]",
@@ -1773,7 +1917,8 @@
 	},
 	{
 		"locationId": "D03Z02S09[-767,-99]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S09[-778,-76]",
@@ -1785,7 +1930,8 @@
 	},
 	{
 		"locationId": "D03Z02S09[-760,-99]",
-		"originalEnemy": "EN01"
+		"originalEnemy": "EN01",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S10[-767,-53]",
@@ -1850,50 +1996,61 @@
 	{
 		"locationId": "D03Z02S13[-806,-58]",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S13[-797,-58]",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S13[-795,-63]",
-		"originalEnemy": "EN17"
+		"originalEnemy": "EN17",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S13[-794,-58]",
 		"originalEnemy": "EN03",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z02S13[-804,-58]",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S01[-712,-162]",
-		"originalEnemy": "EN11"
+		"originalEnemy": "EN11",
+		"yOffset": 0
 	},
 	{
 		"locationId": "D03Z03S01[-721,-167]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S01[-723,-154]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S01[-720,-154]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S01[-719,-160]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 3.8
 	},
 	{
 		"locationId": "D03Z03S01[-728,-155]",
-		"originalEnemy": "EN11"
+		"originalEnemy": "EN11",
+		"yOffset": 0
 	},
 	{
 		"locationId": "D03Z03S02[-683,-207]",
@@ -1901,7 +2058,8 @@
 	},
 	{
 		"locationId": "D03Z03S02[-679,-183]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D03Z03S02[-677,-207]",
@@ -1909,7 +2067,8 @@
 	},
 	{
 		"locationId": "D03Z03S02[-673,-211]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S02[-673,-173]",
@@ -1917,7 +2076,8 @@
 	},
 	{
 		"locationId": "D03Z03S02[-681,-195]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S02[-682,-163]",
@@ -1925,15 +2085,18 @@
 	},
 	{
 		"locationId": "D03Z03S02[-687,-195]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S02[-685,-211]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S02[-677,-172]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D03Z03S03[-664,-199](SPAWN)",
@@ -1956,11 +2119,13 @@
 	},
 	{
 		"locationId": "D03Z03S04[-632,-198]",
-		"originalEnemy": "EN11"
+		"originalEnemy": "EN11",
+		"yOffset": 0
 	},
 	{
 		"locationId": "D03Z03S04[-648,-192]",
-		"originalEnemy": "EN11"
+		"originalEnemy": "EN11",
+		"yOffset": 0
 	},
 	{
 		"locationId": "D03Z03S04[-640,-229]",
@@ -1968,7 +2133,8 @@
 	},
 	{
 		"locationId": "D03Z03S04[-637,-204]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D03Z03S04[-640,-219]",
@@ -1976,7 +2142,8 @@
 	},
 	{
 		"locationId": "D03Z03S04[-633,-211]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S04[-647,-205]",
@@ -1984,7 +2151,8 @@
 	},
 	{
 		"locationId": "D03Z03S04[-644,-204]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D03Z03S04[-639,-197]",
@@ -1992,15 +2160,18 @@
 	},
 	{
 		"locationId": "D03Z03S04[-641,-185]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S04[-643,-185]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S04[-633,-227]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S04[-637,-212]",
@@ -2008,7 +2179,8 @@
 	},
 	{
 		"locationId": "D03Z03S04[-637,-221]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S05[-615,-183]",
@@ -2058,15 +2230,18 @@
 	},
 	{
 		"locationId": "D03Z03S07[-593,-219]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S07[-592,-210]",
-		"originalEnemy": "EN11"
+		"originalEnemy": "EN11",
+		"yOffset": 0
 	},
 	{
 		"locationId": "D03Z03S07[-593,-202]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S07[-607,-228]",
@@ -2074,11 +2249,13 @@
 	},
 	{
 		"locationId": "D03Z03S07[-608,-210]",
-		"originalEnemy": "EN11"
+		"originalEnemy": "EN11",
+		"yOffset": 0
 	},
 	{
 		"locationId": "D03Z03S07[-607,-202]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S07[-600,-207]",
@@ -2086,23 +2263,28 @@
 	},
 	{
 		"locationId": "D03Z03S07[-599,-217]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S07[-596,-218]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S08[-552,-194]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S08[-572,-194]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S08[-576,-194]",
-		"originalEnemy": "EN22"
+		"originalEnemy": "EN22",
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D03Z03S08[-530,-194]",

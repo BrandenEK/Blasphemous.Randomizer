@@ -65,7 +65,7 @@ namespace BlasphemousRandomizer.Patches
                 ___selectedEnemy = newEnemy;
 
             // Modify spawnpoint position
-            RaycastHit2D hit = Physics2D.Raycast(___spawnPoint.position, Vector2.down, 30, (1 << 19 | 1 << 13));
+            RaycastHit2D hit = Physics2D.Raycast(___spawnPoint.position + Vector3.up * (___selectedEnemy.GetComponent<Enemy>().Id == "EV14" ? 1 : 0), Vector2.down, 30, (1 << 19 | 1 << 13));
             float testDiff = ___spawnPoint.position.y - hit.point.y;
             float locationOffset = Main.Randomizer.enemyShuffler.getLocationOffset(locationId);
             float enemyOffset = Main.Randomizer.enemyShuffler.getEnemyOffset(___selectedEnemy.GetComponent<Enemy>().Id);

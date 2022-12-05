@@ -128,6 +128,7 @@ namespace BlasphemousRandomizer.Patches
 			string text = __instance.flagName.Value.ToUpper().Replace(' ', '_');
 			bool flag = Core.Events.GetFlag(text);
 			string scene = Core.LevelManager.currentLevel.LevelName;
+			Main.Randomizer.Log("Checking for flag: " + text);
 
 			// Bridge - Make Esdras appear once you have 3 holy wounds
 			if (scene == "D08Z01S01")
@@ -222,6 +223,7 @@ namespace BlasphemousRandomizer.Patches
 			// Get item name & scene name
 			string item = objectIdStting;
 			string scene = Core.LevelManager.currentLevel.LevelName;
+			Main.Randomizer.Log("Checking for item: " + item);
 
 			// If any standard scene-item pair
 			for (int i = 0; i < ItemFlags.duplicateScenes.Length; i++)
