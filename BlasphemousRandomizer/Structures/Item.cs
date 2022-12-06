@@ -28,7 +28,10 @@ namespace BlasphemousRandomizer.Structures
 			switch (type)
 			{
 				case 0:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Bead)); return;
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Bead));
+					if (name == "RB203" && Main.Randomizer.gameConfig.items.startWithWheel)
+						inv.SetRosaryBeadInSlot(0, "RB203");
+					return;
 				case 1:
 					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Prayer)); return;
 				case 2:

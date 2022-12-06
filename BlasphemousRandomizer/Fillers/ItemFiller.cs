@@ -81,21 +81,44 @@ namespace BlasphemousRandomizer.Fillers
             {
 				if (!FileUtil.arrayContains(randomLocations, locations[i].type))
                 {
-					// Really slow, but works for now
-					for (int j = 0; j < items.Count; j++)
+					// If this location is vanilla, set its item to original game item
+					Item vanillaItem = getItem(items, locations[i].originalItem);
+					if (vanillaItem != null)
                     {
-						if (items[j].name == locations[i].originalItem)
+						locations[i].item = vanillaItem;
+						if (vanillaItem.progression)
+							vanillaLocations.Add(locations[i]);
+						rewardsToRemove.Add(vanillaItem);
+					}
+                }
+                else
+                {
+					// If starting gift location is random & start with wheel is enabled
+					if (config.startWithWheel && locations[i].id == "QI106")
+                    {
+						Item wheel = getItem(items, "RB203");
+						if (wheel != null)
                         {
-							locations[i].item = items[j];
-							if (items[j].progression)
-								vanillaLocations.Add(locations[i]);
-							rewardsToRemove.Add(items[j]);
-						}
+							locations[i].item = wheel;
+							vanillaLocations.Add(locations[i]);
+							rewardsToRemove.Add(wheel);
+                        }
                     }
                 }
             }
-            for (int i = 0; i < rewardsToRemove.Count; i++)
+            for (int i = rewardsToRemove.Count - 1; i >= 0; i--)
                 items.Remove(rewardsToRemove[i]);
+        }
+
+		// Really slow, but works for now
+		private Item getItem(List<Item> items, string itemName)
+        {
+			for (int i = 0; i < items.Count; i++)
+            {
+				if (items[i].name == itemName)
+					return items[i];
+            }
+			return null;
         }
         
         // Fill progression items list while removing them from the items list
