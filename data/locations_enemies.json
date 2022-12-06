@@ -3003,7 +3003,8 @@
 	},
 	{
 		"locationId": "D06Z01S06[454,134]",
-		"originalEnemy": "EN31"
+		"originalEnemy": "EN31",
+		"arena": true
 	},
 	{
 		"locationId": "D06Z01S06[420,131]",
@@ -3012,7 +3013,8 @@
 	},
 	{
 		"locationId": "D06Z01S06[466,134]",
-		"originalEnemy": "EN31"
+		"originalEnemy": "EN31",
+		"arena": true
 	},
 	{
 		"locationId": "D06Z01S06[420,134]",
