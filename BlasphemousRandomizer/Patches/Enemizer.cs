@@ -78,15 +78,16 @@ namespace BlasphemousRandomizer.Patches
 
             // Extra data collection stuff
             //Main.Randomizer.Log(locationId + ": " + enemyId);
+            //RaycastHit2D hit = Physics2D.Raycast(___spawnPoint.position, Vector2.down, 30, (1 << 19 | 1 << 13));
+            //float testDiff = ___spawnPoint.position.y - hit.point.y;
+            //string output = locationId + ": " + testDiff + "\n";
+            //Shufflers.EnemyShuffle.enemyData += output;
             //string output = "{\r\n\t\"locationId\": \"";
             //output += locationId;
             //output += "\",\r\n\t\"originalEnemy\": \"";
             //output += enemyId;
             //output += "\"\r\n},\r\n";
-            //RaycastHit2D hit = Physics2D.Raycast(___spawnPoint.position, Vector2.down, 30, (1 << 19 | 1 << 13));
-            //float testDiff = ___spawnPoint.position.y - hit.point.y;
-            //string output = locationId + ": " + testDiff + "\n";
-            //Shufflers.EnemyShuffle.enemyData += output;
+
         }
     }
 

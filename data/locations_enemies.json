@@ -4063,32 +4063,38 @@
 	{
 		"locationId": "D19Z01S01[-5,1](SPAWN (33))",
 		"originalEnemy": "EV11",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[-4,1](SPAWN (34))",
 		"originalEnemy": "EV11",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[4,1](SPAWN (32))",
 		"originalEnemy": "EV11",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[5,1](SPAWN (31))",
 		"originalEnemy": "EV11",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[-9,1](SPAWN (10))",
 		"originalEnemy": "EV10",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[9,1](SPAWN (11))",
 		"originalEnemy": "EV10",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[7,5](SPAWN (12))",
@@ -4103,12 +4109,14 @@
 	{
 		"locationId": "D19Z01S01[-8,1](SPAWN (14))",
 		"originalEnemy": "EN02",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[8,1](SPAWN (15))",
 		"originalEnemy": "EN02",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[0,5](SPAWN (16))",
@@ -4118,37 +4126,44 @@
 	{
 		"locationId": "D19Z01S01[-7,1](SPAWN (17))",
 		"originalEnemy": "EN13",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[7,1](SPAWN (18))",
 		"originalEnemy": "EN13",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[-8,4](SPAWN (20))",
 		"originalEnemy": "EN05",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S01[8,4](SPAWN (19))",
 		"originalEnemy": "EN05",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S01[-8,1](SPAWN (21))",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[0,1](SPAWN (22))",
 		"originalEnemy": "EN24",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[8,1](SPAWN (23))",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S01[0,4](SPAWN (24))",
@@ -4188,37 +4203,44 @@
 	{
 		"locationId": "D19Z01S02[-9,1](WAVE1)",
 		"originalEnemy": "EV01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S02[9,1](WAVE1)",
 		"originalEnemy": "EV01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S02[0,4](WAVE1)",
 		"originalEnemy": "EN05",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S02[-3,1](WAVE2)",
 		"originalEnemy": "EV01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S02[3,1](WAVE2)",
 		"originalEnemy": "EV01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S02[-6,1](WAVE2)",
 		"originalEnemy": "EN32",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S02[6,1](WAVE2)",
 		"originalEnemy": "EN32",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S02[-6,4](WAVE3)",
@@ -4233,37 +4255,44 @@
 	{
 		"locationId": "D19Z01S02[-8,1](WAVE3)",
 		"originalEnemy": "EN13",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S02[8,1](WAVE3)",
 		"originalEnemy": "EN13",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S02[9,2](WAVE4)",
 		"originalEnemy": "EN22",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S02[-3,4](WAVE4)",
 		"originalEnemy": "EN22",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S02[-9,2](WAVE4)",
 		"originalEnemy": "EN22",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S02[3,4](WAVE4)",
 		"originalEnemy": "EN22",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S02[0,5](WAVE4)",
 		"originalEnemy": "EN21",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S02[1,5](WAVE5)",
@@ -4273,57 +4302,68 @@
 	{
 		"locationId": "D19Z01S02[8,1](WAVE5)",
 		"originalEnemy": "EN12",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S02[-8,1](WAVE5)",
 		"originalEnemy": "EN12",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S03[-7,1](WAVE1)",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S03[0,1](WAVE1)",
 		"originalEnemy": "EN20",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S03[7,1](WAVE1)",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S03[6,1](WAVE2)",
 		"originalEnemy": "EN03",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S03[-7,1](WAVE3)",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S03[-4,1](WAVE3)",
 		"originalEnemy": "EN17",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S03[4,1](WAVE3)",
 		"originalEnemy": "EN17",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S03[7,1](WAVE3)",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S03[-7,1](WAVE4)",
 		"originalEnemy": "EN03",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S03[-4,4](WAVE4)",
@@ -4358,37 +4398,44 @@
 	{
 		"locationId": "D19Z01S04[-8,1](WAVE1)",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S04[8,1](WAVE1)",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S04[-5,1](WAVE1)",
 		"originalEnemy": "EN20",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S04[5,1](WAVE1)",
 		"originalEnemy": "EN20",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S04[0,2](WAVE2)",
 		"originalEnemy": "EN03",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S04[-6,2](WAVE2)",
 		"originalEnemy": "EN17",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S04[6,2](WAVE2)",
 		"originalEnemy": "EN17",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S04[0,5](WAVE3)",
@@ -4398,222 +4445,266 @@
 	{
 		"locationId": "D19Z01S04[-8,2](WAVE3)",
 		"originalEnemy": "EV10",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S04[-3,2](WAVE3)",
 		"originalEnemy": "EV10",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S04[3,2](WAVE3)",
 		"originalEnemy": "EV10",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S04[8,2](WAVE3)",
 		"originalEnemy": "EV10",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S04[-6,1](WAVE4)",
 		"originalEnemy": "EN13",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S04[6,1](WAVE4)",
 		"originalEnemy": "EN13",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S04[-1,2](WAVE4)",
 		"originalEnemy": "EN14",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S04[1,2](WAVE4)",
 		"originalEnemy": "EN14",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S04[-1,1](WAVE5)",
 		"originalEnemy": "EN20",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S04[1,1](WAVE5)",
 		"originalEnemy": "EN20",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S04[-7,0](WAVE5)",
 		"originalEnemy": "EN05",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S04[0,0](WAVE5)",
 		"originalEnemy": "EN05",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S04[7,0](WAVE5)",
 		"originalEnemy": "EN05",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S04[10,1](WAVE6)",
 		"originalEnemy": "EN15",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[-3,1](WAVE1)",
 		"originalEnemy": "EV01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[3,1](WAVE1)",
 		"originalEnemy": "EV01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[0,1](WAVE1)",
 		"originalEnemy": "EN32",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[0,1](WAVE2)",
 		"originalEnemy": "EV02",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[-9,1](WAVE2)",
 		"originalEnemy": "EV24",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[-7,1](WAVE2)",
 		"originalEnemy": "EV24",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[7,1](WAVE2)",
 		"originalEnemy": "EV24",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[9,1](WAVE2)",
 		"originalEnemy": "EV24",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[-8,1](WAVE3)",
 		"originalEnemy": "EV02",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[8,1](WAVE3)",
 		"originalEnemy": "EV02",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[4,2](WAVE3)",
 		"originalEnemy": "EN14",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S05[-9,1](WAVE4)",
 		"originalEnemy": "EN03",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[9,1](WAVE4)",
 		"originalEnemy": "EN03",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[-9,1](WAVE5)",
 		"originalEnemy": "EN26",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[9,1](WAVE5)",
 		"originalEnemy": "EN26",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[-6,2](WAVE5)",
 		"originalEnemy": "EN14",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S05[6,2](WAVE5)",
 		"originalEnemy": "EN14",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S05[8,1](WAVE6Left)",
 		"originalEnemy": "EV23",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S05[-8,1](WAVE6Right)",
 		"originalEnemy": "EV23",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S06[-7,1](ENEMY_W1)",
 		"originalEnemy": "EV01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S06[7,1](ENEMY_W1)",
 		"originalEnemy": "EV01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S06[6,6](ENEMY_W1)",
 		"originalEnemy": "EN09",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S06[0,1](ENEMY_W2)",
 		"originalEnemy": "EV21",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S06[-6,6](ENEMY_W2)",
 		"originalEnemy": "EN09",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S06[6,6](ENEMY_W2)",
 		"originalEnemy": "EN09",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S06[-8,1](ENEMY_W3)",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 0
 	},
 	{
 		"locationId": "D19Z01S06[-4,1](ENEMY_W3)",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S06[4,1](ENEMY_W3)",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S06[8,1](ENEMY_W3)",
 		"originalEnemy": "EN01",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S06[-6,5](ENEMY_W3)",
 		"originalEnemy": "EN09",
-		"arena": true
+		"arena": true,
+		"yOffset": -0.19
 	},
 	{
 		"locationId": "D19Z01S06[-3,5](ENEMY_W4)",
@@ -4628,32 +4719,38 @@
 	{
 		"locationId": "D19Z01S06[-6,1](ENEMY_W4)",
 		"originalEnemy": "EV22",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S06[6,1](ENEMY_W4)",
 		"originalEnemy": "EV22",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S06[-7,1](ENEMY_W5)",
 		"originalEnemy": "EV21",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S06[7,1](ENEMY_W5)",
 		"originalEnemy": "EV21",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S06[0,4](ENEMY_W5)",
 		"originalEnemy": "EV22",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S06[6,6](ENEMY_W5)",
 		"originalEnemy": "EV22",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S06[0,6](ENEMY_W6)",
@@ -4663,42 +4760,50 @@
 	{
 		"locationId": "D19Z01S06[-8,0](ENEMY_W6)",
 		"originalEnemy": "EN09",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S06[8,0](ENEMY_W6)",
 		"originalEnemy": "EN09",
-		"arena": true
+		"arena": true,
+		"yOffset": 0.8
 	},
 	{
 		"locationId": "D19Z01S07[-8,1](ENEMY_W1)",
 		"originalEnemy": "EV02",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S07[7,1](ENEMY_W1)",
 		"originalEnemy": "EV02",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S07[-7,1](ENEMY_W2)",
 		"originalEnemy": "EN33",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S07[-5,1](ENEMY_W2)",
 		"originalEnemy": "EN33",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S07[5,1](ENEMY_W2)",
 		"originalEnemy": "EN33",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S07[7,1](ENEMY_W2)",
 		"originalEnemy": "EN33",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S07[-6,3](ENEMY_W3)",
@@ -4713,36 +4818,43 @@
 	{
 		"locationId": "D19Z01S07[-9,2](ENEMY_W4)",
 		"originalEnemy": "EV26",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S07[9,2](ENEMY_W4)",
 		"originalEnemy": "EV26",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S07[-7,1](ENEMY_W5)",
 		"originalEnemy": "EN33",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S07[8,1](ENEMY_W5)",
 		"originalEnemy": "EN33",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	},
 	{
 		"locationId": "D19Z01S07[-8,2](ENEMY_W5)",
 		"originalEnemy": "EN14",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S07[9,2](ENEMY_W5)",
 		"originalEnemy": "EN14",
-		"arena": true
+		"arena": true,
+		"yOffset": 2.8
 	},
 	{
 		"locationId": "D19Z01S07[0,1](ENEMY_W6)",
 		"originalEnemy": "EN34",
-		"arena": true
+		"arena": true,
+		"yOffset": 1.8
 	}
 ]
