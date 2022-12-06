@@ -71,7 +71,12 @@ namespace BlasphemousRandomizer.Fillers
         private void fillVanillaItems(List<ItemLocation> locations, List<ItemLocation> vanillaLocations, List<Item> items)
         {
             List<Item> rewardsToRemove = new List<Item>();
-			string[] randomLocations = config.type > 0 ? config.randomizedLocations : new string[0];
+			string[] randomLocations;
+			if (config.type > 0)
+				randomLocations = new string[] { "item", "cherub", "lady", "oil", "sword", "blessing", "guiltArena", "tirso", "miriam", "redento", "jocinero", "altasgracias", "tentudia", "gemino", "guiltBead", "ossuary", "boss", "visage", "mask", "herb", "church", "shop", "thorn", "candle", "viridiana" };
+			else
+				randomLocations = new string[0];
+
             for (int i = 0; i < locations.Count; i++)
             {
 				if (!FileUtil.arrayContains(randomLocations, locations[i].type))
