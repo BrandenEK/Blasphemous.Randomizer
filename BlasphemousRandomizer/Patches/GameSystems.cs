@@ -114,14 +114,24 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
-    // Show new hint text instead of corpse dialog
+    // Update dialogs
     [HarmonyPatch(typeof(DialogManager), "StartConversation")]
     public class DialogManager_Patch
     {
         public static void Prefix(string conversiationId, Dictionary<string, DialogObject> ___allDialogs)
         {
-            if (conversiationId.Length == 8 && int.TryParse(conversiationId.Substring(4), out int id) && id > 2000 && id < 2035)
+            Main.Randomizer.Log("Starting dialog: " + conversiationId);
+
+            if (conversiationId == "DLG_QT_0904" && Main.Randomizer.gameConfig.items.disableNPCDeath)
             {
+                // Change socorro options for cleofas quest
+                DialogObject current = ___allDialogs[conversiationId];
+                if (current.answersLines.Count > 1)
+                    current.answersLines.RemoveAt(1);
+            }
+            else if (conversiationId.Length == 8 && int.TryParse(conversiationId.Substring(4), out int id) && id > 2000 && id < 2035)
+            {
+                // Change corpse hints
                 string hint = Main.Randomizer.hintShuffler.getHint(conversiationId);
                 DialogObject current = ___allDialogs[conversiationId];
                 current.dialogLines.Clear();

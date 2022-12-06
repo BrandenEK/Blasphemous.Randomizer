@@ -18,7 +18,9 @@ namespace BlasphemousRandomizer.Patches
 			"TIRSO_KISSER4_DEAD",
 			"TIRSO_KISSER5_DEAD",
 			"TIRSO_KISSER6_DEAD",
-			"TIRSO_TIRSO_DEAD"
+			"TIRSO_TIRSO_DEAD",
+			"CLEOFAS_SUICIDAL",
+			"CLEOFAS_DEAD"
 		};
 
 		public static string[] thornScenes = new string[]
@@ -63,7 +65,8 @@ namespace BlasphemousRandomizer.Patches
 			"D05Z02S14",
 			"D01BZ04S01",
 			"D01BZ04S01",
-			"D03Z01S06"
+			"D03Z01S06",
+			"D01BZ04S01"
 		};
 
 		public static string[] duplicateItems = new string[]
@@ -97,7 +100,8 @@ namespace BlasphemousRandomizer.Patches
 			"PR08",
 			"RB104",
 			"RB105",
-			"RB13"
+			"RB13",
+			"PR11"
 		};
 	}
 

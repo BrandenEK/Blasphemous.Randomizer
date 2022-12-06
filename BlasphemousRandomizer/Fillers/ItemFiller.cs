@@ -73,7 +73,7 @@ namespace BlasphemousRandomizer.Fillers
             List<Item> rewardsToRemove = new List<Item>();
 			string[] randomLocations;
 			if (config.type > 0)
-				randomLocations = new string[] { "item", "cherub", "lady", "oil", "sword", "blessing", "guiltArena", "tirso", "miriam", "redento", "jocinero", "altasgracias", "tentudia", "gemino", "guiltBead", "ossuary", "boss", "visage", "mask", "herb", "church", "shop", "thorn", "candle", "viridiana" };
+				randomLocations = new string[] { "item", "cherub", "lady", "oil", "sword", "blessing", "guiltArena", "tirso", "miriam", "redento", "jocinero", "altasgracias", "tentudia", "gemino", "guiltBead", "ossuary", "boss", "visage", "mask", "herb", "church", "shop", "thorn", "candle", "viridiana", "cleofas" };
 			else
 				randomLocations = new string[0];
 
@@ -416,7 +416,7 @@ namespace BlasphemousRandomizer.Fillers
 			locations.Add(new ItemLocation("CO44", "CO", "item", (InventoryData d) => d.linen));
 
 			//Quest items
-			locations.Add(new ItemLocation("QI01", "QI01", "cleofas", (InventoryData d) => d.bridgeAccess && d.marksOfRefuge >= 3));
+			locations.Add(new ItemLocation("QI01", "QI01", "cleofas", (InventoryData d) => d.bridgeAccess));
 			locations.Add(new ItemLocation("QI02", "QI02", "item", (InventoryData d) => d.bridgeAccess));
 			locations.Add(new ItemLocation("QI03", "QI03", "item", (InventoryData d) => d.bridgeAccess && d.masks > 0));
 			locations.Add(new ItemLocation("QI04", "QI04", "item", (InventoryData d) => d.bridgeAccess && d.masks > 1));
