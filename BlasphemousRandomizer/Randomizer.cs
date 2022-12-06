@@ -299,7 +299,7 @@ namespace BlasphemousRandomizer
             }
             else if (Input.GetKeyDown(KeyCode.Keypad8))
             {
-                //LogFile(EnemyShuffle.enemyData);
+                LogFile(EnemyShuffle.enemyData);
             }
             else if (Input.GetKeyDown(KeyCode.Keypad9))
             {

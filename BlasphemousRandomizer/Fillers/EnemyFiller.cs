@@ -109,18 +109,29 @@ namespace BlasphemousRandomizer.Fillers
 			}
         }
 
-		// 0 - normal, 1 - weak, 2 - large, 3 - flying (unused), 4 - vanilla (for now)
+		// Should probably find a better way of holding this data
+		public void fillEnemyOffsets(Dictionary<string, float> offsets)
+        {
+			offsets.Clear();
+			for (int i = 0; i < allLocations.Count; i++)
+            {
+				offsets.Add(allLocations[i].locationId, allLocations[i].yOffset);
+            }
+        }
+
+		// 0 - normal, 1 - weak (unused), 2 - large, 3 - flying, 4 - vanilla (for now)
 		private Dictionary<string, int> enemyTypes = new Dictionary<string, int>()
 		{
-			{ "EN01", 4 },
+			{ "EN01", 0 },
 			{ "EN02", 0 },
 			{ "EN03", 0 },
-			{ "EN04", 0 },
-			{ "EN05", 1 },
-			{ "EN06", 1 },
-			{ "EN07", 0 },
+			{ "EN04", 3 },
+			{ "EN05", 0 },
+			{ "EN06", 0 },
+			{ "EN07", 3 },
 			{ "EN08", 4 },
 			{ "EN09", 0 },
+			{ "EN09_E", 0 },
 			{ "EN10", 4 },
 			{ "EN11", 0 },
 			{ "EN12", 0 },
@@ -132,30 +143,30 @@ namespace BlasphemousRandomizer.Fillers
 			{ "EN18", 0 },
 			{ "EN20", 0 },
 			{ "EN21", 0 },
-			{ "EN22", 1 },
-			{ "EN23", 0 },
+			{ "EN22", 0 },
+			{ "EN23", 3 },
 			{ "EN24", 0 },
 			{ "EN26", 0 },
-			{ "EN27", 4 },
+			{ "EN27", 3 },
 			{ "EN28", 0 },
 			{ "EN29", 0 },
-			{ "EN31", 0 },
+			{ "EN31", 3 },
 			{ "EN32", 0 },
 			{ "EN33", 0 },
 			{ "EN34", 4 },
 			{ "EV01", 0 },
 			{ "EV02", 0 },
-			{ "EV03", 0 },
+			{ "EV03", 3 },
 			{ "EV05", 4 },
-			{ "EV08", 1 },
+			{ "EV08", 0 },
 			{ "EV10", 0 },
-			{ "EV11", 1 },
-			{ "EV12", 1 },
+			{ "EV11", 0 },
+			{ "EV12", 0 },
 			{ "EV13", 0 },
 			{ "EV14", 0 },
 			{ "EV15", 0 },
-			{ "EV17", 4 },
-			{ "EV18", 4 },
+			{ "EV17", 3 },
+			{ "EV18", 3 },
 			{ "EV19", 2 },
 			{ "EV20", 4 },
 			{ "EV21", 0 },
@@ -164,7 +175,7 @@ namespace BlasphemousRandomizer.Fillers
 			{ "EV24", 0 },
 			{ "EV26", 2 },
 			{ "EV27", 0 },
-			{ "EV29", 4 },
+			{ "EV29", 3 },
 			{ "EN201", 0 },
 			{ "EN202", 2 },
 			{ "EN203", 4 }

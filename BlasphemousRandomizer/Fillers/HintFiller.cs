@@ -94,6 +94,7 @@ namespace BlasphemousRandomizer.Fillers
             grtd.Add(30, getLocationFromItem("RB203", newItems));
             grtd.Add(28, "PR201");
             grtd.Add(27, "Sword[D01Z05S24]");
+            grtd.Add(22, "RB11");
             grtd.Add(18, "HE07");
             grtd.Add(17, "PR05");
             grtd.Add(14, "PR04");

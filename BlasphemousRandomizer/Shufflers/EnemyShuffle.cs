@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BlasphemousRandomizer.Fillers;
 using Framework.Managers;
 using Framework.Audio;
@@ -10,16 +9,18 @@ namespace BlasphemousRandomizer.Shufflers
     public class EnemyShuffle : IShuffle
     {
         private Dictionary<string, string> newEnemies;
+        private Dictionary<string, float> locationOffsets;
         private Dictionary<string, int> difficultyRatings;
         private EnemyFiller filler;
 
+        // Enemizer fixes
         public FMODAudioCatalog[] audioCatalogs;
 
-        public GameObject getEnemy(string id)
+        public GameObject getEnemy(string id, bool facingLeft)
         {
             if (EnemyLoader.loaded && newEnemies != null && newEnemies.ContainsKey(id))
             {
-                return EnemyLoader.getEnemy(newEnemies[id]);
+                return EnemyLoader.getEnemy(newEnemies[id], facingLeft);
             }
             return null;
         }
@@ -39,9 +40,41 @@ namespace BlasphemousRandomizer.Shufflers
             return 0;
         }
 
+        // Gets the y offset of certain enemies 
+        public float getEnemyOffset(string id)
+        {
+            if (id == "EN02") return 1.7f;
+            if (id == "EN03") return 1.65f;
+            if (id == "EN05") return 0.9f;
+            if (id == "EN09") return -0.19f;
+            if (id == "EN09_E") return -0.19f;
+            if (id == "EN14") return 3.2f;
+            if (id == "EN15") return 0.18f;
+            if (id == "EN16") return 0.1f;
+            if (id == "EN34") return 0.18f;
+            if (id == "EV01") return 1.75f;
+            if (id == "EV02") return 1.7f;
+            if (id == "EV13") return -0.19f;
+            if (id == "EV14") return -0.19f;
+            if (id == "EV19") return 0.1f;
+            if (id == "EV23") return 0.1f;
+            if (id == "EV27") return 2f;
+            return 0f;
+        }
+
+        // Gets the y offset of certain locations
+        public float getLocationOffset(string id)
+        {
+            if (locationOffsets.ContainsKey(id))
+                return locationOffsets[id];
+            return 99;
+        }
+
         public void Init()
         {
             filler = new EnemyFiller();
+            locationOffsets = new Dictionary<string, float>();
+            filler.fillEnemyOffsets(locationOffsets);
 
             // Load from json
             difficultyRatings = new Dictionary<string, int>()
@@ -74,6 +107,7 @@ namespace BlasphemousRandomizer.Shufflers
                 { "EN07", 6 },
                 { "EN08", 3 },
                 { "EN09", 8 },
+                { "EN09_E", 8 },
                 { "EN10", 8 },
                 { "EN11", 6 },
                 { "EN12", 6 },
@@ -167,6 +201,6 @@ namespace BlasphemousRandomizer.Shufflers
         }
 
         // temp
-        //public static string enemyData = "";
+        public static string enemyData = "";
     }
 }
