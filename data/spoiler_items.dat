@@ -90,8 +90,9 @@ Our Lady of the Charred Visage: {BS03}
 Holy Visage gift: {QI40}
 Mask room: {QI61}
 
-Deabulatory of his Holiness (3)
+Deabulatory of his Holiness (4)
 
+Viridiana gift: {PR08}
 Complete Penitence 1: {RB101}
 Complete Penitence 2: {RB102}
 Complete Penitence 3: {RB103}
@@ -351,7 +352,7 @@ Death run: {QI07}
 Gemino gift intial: {QI59}
 Gemino gift final: {RB10}
 
-Various (20)
+Various (19)
 
 Guilt arena 1 extra: {Arena_NailManager[1000]}
 Guilt arena 1 main: {QI32}
@@ -367,7 +368,6 @@ Guilt arena 6 extra: {RB35}
 Guilt arena 6 main: {QI80}
 Guilt arena 7 extra: {RB36}
 Guilt arena 7 main: {QI81}
-Viridiana gift: {PR08}
 Amanecida 1: {QI107}
 Amanecida 2: {QI108}
 Amanecida 3: {QI109}
