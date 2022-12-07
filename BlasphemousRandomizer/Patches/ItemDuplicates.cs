@@ -192,6 +192,11 @@ namespace BlasphemousRandomizer.Patches
             {
 				flag = false;
             }
+			// Esdras key
+			if (scene == "D17Z01S15" && text == "ESDRAS_CHAPEL")
+			{
+				flag = true;
+			}
 			// Brotherhood church
 			if (scene == "D17Z01S14" && (text == "ESDRAS_CHAPEL" || text == "D06Z01S25_BOSSDEAD"))
             {

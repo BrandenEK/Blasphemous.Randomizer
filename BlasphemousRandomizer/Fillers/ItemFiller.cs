@@ -70,7 +70,6 @@ namespace BlasphemousRandomizer.Fillers
         // Assign vanilla items & fill vanillaLocations list
         private void fillVanillaItems(List<ItemLocation> locations, List<ItemLocation> vanillaLocations, List<Item> items)
         {
-            List<Item> rewardsToRemove = new List<Item>();
 			string[] randomLocations;
 			if (config.type > 0)
 				randomLocations = new string[] { "item", "cherub", "lady", "oil", "sword", "blessing", "guiltArena", "tirso", "miriam", "redento", "jocinero", "altasgracias", "tentudia", "gemino", "guiltBead", "ossuary", "boss", "visage", "mask", "herb", "church", "shop", "thorn", "candle", "viridiana", "cleofas", "crisanta" };
@@ -82,13 +81,13 @@ namespace BlasphemousRandomizer.Fillers
 				if (!FileUtil.arrayContains(randomLocations, locations[i].type))
                 {
 					// If this location is vanilla, set its item to original game item
-					Item vanillaItem = getItem(items, locations[i].originalItem);
-					if (vanillaItem != null)
+					int vanillaIdx = getItemIdx(items, locations[i].originalItem);
+					if (vanillaIdx >= 0)
                     {
-						locations[i].item = vanillaItem;
-						if (vanillaItem.progression)
+						locations[i].item = items[vanillaIdx];
+						if (items[vanillaIdx].progression)
 							vanillaLocations.Add(locations[i]);
-						rewardsToRemove.Add(vanillaItem);
+						items.RemoveAt(vanillaIdx);
 					}
                 }
                 else
@@ -96,29 +95,27 @@ namespace BlasphemousRandomizer.Fillers
 					// If starting gift location is random & start with wheel is enabled
 					if (config.startWithWheel && locations[i].id == "QI106")
                     {
-						Item wheel = getItem(items, "RB203");
-						if (wheel != null)
+						int wheelIdx = getItemIdx(items, "RB203");
+						if (wheelIdx >= 0)
                         {
-							locations[i].item = wheel;
+							locations[i].item = items[wheelIdx];
 							vanillaLocations.Add(locations[i]);
-							rewardsToRemove.Add(wheel);
+							items.RemoveAt(wheelIdx);
                         }
                     }
                 }
             }
-            for (int i = rewardsToRemove.Count - 1; i >= 0; i--)
-                items.Remove(rewardsToRemove[i]);
         }
 
 		// Really slow, but works for now
-		private Item getItem(List<Item> items, string itemName)
+		private int getItemIdx(List<Item> items, string itemName)
         {
 			for (int i = 0; i < items.Count; i++)
             {
 				if (items[i].name == itemName)
-					return items[i];
+					return i;
             }
-			return null;
+			return -1;
         }
         
         // Fill progression items list while removing them from the items list
@@ -143,7 +140,7 @@ namespace BlasphemousRandomizer.Fillers
             shuffleList(progressionItems);
 
             //Find blood & holy wounds & move them to the back
-            prioritizeRewards(progressionItems);
+            //prioritizeRewards(progressionItems);
 
             findReachable(locations, vanillaLocations, reachableLocations, itemsOwned);
             while (reachableLocations.Count > 0 && progressionItems.Count > 0)
@@ -212,21 +209,21 @@ namespace BlasphemousRandomizer.Fillers
         }
 
         // Place certain items at the back of the list so they are seeded first
-        private void prioritizeRewards(List<Item> progressionItems)
-        {
-            int count = 0;
-            for (int i = 0; i < progressionItems.Count - count; i++)
-            {
-                Item item = progressionItems[i];
-                if (item.type == 2 && item.id == 1 || item.type == 5 && (item.id == 38 || item.id == 39 || item.id == 40))
-                {
-                    progressionItems.RemoveAt(i);
-                    progressionItems.Add(item);
-                    count++;
-                    i--;
-                }
-            }
-        }
+        //private void prioritizeRewards(List<Item> progressionItems)
+        //{
+        //    int count = 0;
+        //    for (int i = 0; i < progressionItems.Count - count; i++)
+        //    {
+        //        Item item = progressionItems[i];
+        //        if (item.type == 2 && item.id == 1 || item.type == 5 && (item.id == 38 || item.id == 39 || item.id == 40))
+        //        {
+        //            progressionItems.RemoveAt(i);
+        //            progressionItems.Add(item);
+        //            count++;
+        //            i--;
+        //        }
+        //    }
+        //}
 
         // Check if any new vanilla locations are reachable and remove them
         private void checkVanillaLocations(List<ItemLocation> vanillaLocations, List<Item> newItems, InventoryData data)
