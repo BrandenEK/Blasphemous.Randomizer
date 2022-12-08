@@ -334,7 +334,7 @@ namespace BlasphemousRandomizer.Fillers
 			locations.Add(new ItemLocation("RB24", "BW", "candle", (InventoryData d) => true));
 			locations.Add(new ItemLocation("RB25", "BW", "candle", (InventoryData d) => d.blueWax > 0));
 			locations.Add(new ItemLocation("RB26", "BW", "candle", (InventoryData d) => d.bridgeAccess && d.blueWax > 0));
-			locations.Add(new ItemLocation("RB28", "RB28", "item", (InventoryData d) => d.root));
+			locations.Add(new ItemLocation("RB28", "RB28", "item", (InventoryData d) => d.root || d.dawnHeart));
 			locations.Add(new ItemLocation("RB30", "RB30", "item", (InventoryData d) => d.bridgeAccess));
 			locations.Add(new ItemLocation("RB31", "RB31", "item", (InventoryData d) => d.bridgeAccess && d.blood && d.root && d.lung));
 			locations.Add(new ItemLocation("RB32", "RB32", "item", (InventoryData d) => true));
