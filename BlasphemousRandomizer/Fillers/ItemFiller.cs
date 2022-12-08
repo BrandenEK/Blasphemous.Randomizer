@@ -10,6 +10,7 @@ namespace BlasphemousRandomizer.Fillers
         private List<Item> allItems;
 
 		private ItemConfig config;
+		private string[] lowestItems;
 
         public ItemFiller()
         {
@@ -17,11 +18,12 @@ namespace BlasphemousRandomizer.Fillers
 			fillLocations(allLocations); // Change to load from json
             FileUtil.loadJson("items.json", out allItems);
 			addSpecialItems(allItems);
+			lowestItems = new string[] { "Tears[250]", "Tears[300]", "Tears[500]" };
         }
 
         public override bool isValid()
         {
-            return allItems.Count > 0 && allLocations.Count > 0 && allItems.Count == allLocations.Count;
+            return allItems.Count > 0 && allLocations.Count > 0;
         }
 
         public bool Fill(int seed, ItemConfig config, Dictionary<string, Item> output)
@@ -34,6 +36,11 @@ namespace BlasphemousRandomizer.Fillers
             List<ItemLocation> vanillaLocations = new List<ItemLocation>();
             List<Item> items = new List<Item>(allItems);
             List<Item> progressionItems = new List<Item>();
+
+			// Remove low tears rewards and replace them with new items
+			replaceNewItems(items);
+			if (locations.Count != items.Count)
+				return false;
 
             // Place vanilla items & get list of locations that are vanilla
             fillVanillaItems(locations, vanillaLocations, items);
@@ -65,6 +72,32 @@ namespace BlasphemousRandomizer.Fillers
 
 			// Seed is filled & validated
 			return true;
+        }
+
+		// For each new item that is to be added, remove the lowest tear reward
+		private void replaceNewItems(List<Item> items)
+        {
+			// For more items, need to add more to lowest array
+			// Also won't work if some of these are set to vanilla
+			int removed = 0;
+			
+			// Reliquaries
+			if (config.shuffleReliquaries)
+            {
+				for (int i = 0; i < 3; i++)
+                {
+					items.RemoveAt(getItemIdx(items, lowestItems[removed]));
+					removed++;
+                }
+            }
+            else
+            {
+				items.RemoveAt(getItemIdx(items, "RB101"));
+				items.RemoveAt(getItemIdx(items, "RB102"));
+				items.RemoveAt(getItemIdx(items, "RB103"));
+			}
+
+			// Dash, Wall climb
         }
 
         // Assign vanilla items & fill vanillaLocations list
@@ -139,8 +172,8 @@ namespace BlasphemousRandomizer.Fillers
             List<Item> itemsOwned = new List<Item>();
             shuffleList(progressionItems);
 
-            //Find blood & holy wounds & move them to the back
-            //prioritizeRewards(progressionItems);
+            // Find holy wounds & move them to the back
+            prioritizeRewards(progressionItems);
 
             findReachable(locations, vanillaLocations, reachableLocations, itemsOwned);
             while (reachableLocations.Count > 0 && progressionItems.Count > 0)
@@ -209,21 +242,21 @@ namespace BlasphemousRandomizer.Fillers
         }
 
         // Place certain items at the back of the list so they are seeded first
-        //private void prioritizeRewards(List<Item> progressionItems)
-        //{
-        //    int count = 0;
-        //    for (int i = 0; i < progressionItems.Count - count; i++)
-        //    {
-        //        Item item = progressionItems[i];
-        //        if (item.type == 2 && item.id == 1 || item.type == 5 && (item.id == 38 || item.id == 39 || item.id == 40))
-        //        {
-        //            progressionItems.RemoveAt(i);
-        //            progressionItems.Add(item);
-        //            count++;
-        //            i--;
-        //        }
-        //    }
-        //}
+        private void prioritizeRewards(List<Item> progressionItems)
+        {
+            int count = 0;
+            for (int i = 0; i < progressionItems.Count - count; i++)
+            {
+                Item item = progressionItems[i];
+                if (item.type == 5 && (item.id == 38 || item.id == 39 || item.id == 40))
+                {
+                    progressionItems.RemoveAt(i);
+                    progressionItems.Add(item);
+                    count++;
+                    i--;
+                }
+            }
+        }
 
         // Check if any new vanilla locations are reachable and remove them
         private void checkVanillaLocations(List<ItemLocation> vanillaLocations, List<Item> newItems, InventoryData data)
@@ -311,9 +344,9 @@ namespace BlasphemousRandomizer.Fillers
 			locations.Add(new ItemLocation("RB36", "RB36", "guiltArena", (InventoryData d) => d.guiltBead && d.bridgeAccess && d.blood && d.masks > 0 && d.bronzeKey && d.silverKey && d.canBeatBoss("quirce")));
 			locations.Add(new ItemLocation("RB37", "RB37", "shop", (InventoryData d) => d.tears >= 15000));
 			locations.Add(new ItemLocation("RB38", "RB38", "guiltBead", (InventoryData d) => true));
-			locations.Add(new ItemLocation("RB101", "RB101", "penitence", (InventoryData d) => true));
-			locations.Add(new ItemLocation("RB102", "RB102", "penitence", (InventoryData d) => true));
-			locations.Add(new ItemLocation("RB103", "RB103", "penitence", (InventoryData d) => true));
+			//locations.Add(new ItemLocation("RB101", "RB101", "penitence", (InventoryData d) => true));
+			//locations.Add(new ItemLocation("RB102", "RB102", "penitence", (InventoryData d) => true));
+			//locations.Add(new ItemLocation("RB103", "RB103", "penitence", (InventoryData d) => true));
 			locations.Add(new ItemLocation("RB104", "RB104", "church", (InventoryData d) => d.tears >= 15000));
 			locations.Add(new ItemLocation("RB105", "RB105", "church", (InventoryData d) => d.tears >= 145000));
 			locations.Add(new ItemLocation("RB106", "RB106", "item", (InventoryData d) => d.blood && d.root));
@@ -332,7 +365,7 @@ namespace BlasphemousRandomizer.Fillers
 			locations.Add(new ItemLocation("PR05", "PR05", "jocinero", (InventoryData d) => d.bridgeAccess && d.cherubs >= 38));
 			locations.Add(new ItemLocation("PR07", "PR07", "item", (InventoryData d) => d.bridgeAccess && d.blood));
 			locations.Add(new ItemLocation("PR08", "PR08", "viridiana", (InventoryData d) => d.bridgeAccess && d.masks >= 3 && d.canBeatBoss("crisanta")));
-			locations.Add(new ItemLocation("PR09", "PR09", "item", (InventoryData d) => d.bridgeAccess));
+			locations.Add(new ItemLocation("PR09", "PR09", "item", (InventoryData d) => d.holyWounds >= 3 && d.canBeatBoss("esdras")));
 			locations.Add(new ItemLocation("PR10", "PR10", "item", (InventoryData d) => d.root || d.linen));
 			locations.Add(new ItemLocation("PR11", "PR11", "cleofas", (InventoryData d) => d.bridgeAccess && d.marksOfRefuge >= 3 && d.cord));
 			locations.Add(new ItemLocation("PR12", "PR12", "item", (InventoryData d) => d.bridgeAccess && d.masks > 1 && d.linen && (d.root || d.swordLevel > 1)));
@@ -483,7 +516,7 @@ namespace BlasphemousRandomizer.Fillers
 			locations.Add(new ItemLocation("QI201", "QI201", "crisanta", (InventoryData d) => d.bones >= 30 && d.canBeatBoss("isidora")));
 			locations.Add(new ItemLocation("QI202", "QI202", "crisanta", (InventoryData d) => d.bridgeAccess && d.canBeatBoss("sierpes") && (d.root || d.nail || d.cherubAttack(786432) && d.swordLevel > 1)));
 			locations.Add(new ItemLocation("QI203", "QI203", "crisanta", (InventoryData d) => d.blood || d.bridgeAccess));
-			locations.Add(new ItemLocation("QI204", "QI204", "crisanta", (InventoryData d) => d.bridgeAccess && d.blood && d.scapular));
+			locations.Add(new ItemLocation("QI204", "QI204", "crisanta", (InventoryData d) => d.holyWounds >= 3 && d.canBeatBoss("esdras") && d.blood && d.scapular));
 			locations.Add(new ItemLocation("QI301", "QI301", "abnegation", (InventoryData d) => d.bridgeAccess && d.masks >= 3 && d.trueHeart && d.blood && d.scapular && d.canBeatBoss("crisanta")));
 
 			//Cherubs
@@ -580,7 +613,7 @@ namespace BlasphemousRandomizer.Fillers
 			locations.Add(new ItemLocation("BS04", "Tears[2100]", "boss", (InventoryData d) => true));
 			locations.Add(new ItemLocation("BS05", "Tears[5500]", "boss", (InventoryData d) => d.bridgeAccess && d.canBeatBoss("melquiades")));
 			locations.Add(new ItemLocation("BS06", "Tears[9000]", "boss", (InventoryData d) => d.bridgeAccess && d.canBeatBoss("exposito")));
-			locations.Add(new ItemLocation("BS12", "Tears[4300]", "boss", (InventoryData d) => d.bridgeAccess));
+			locations.Add(new ItemLocation("BS12", "Tears[4300]", "boss", (InventoryData d) => d.holyWounds >= 3 && d.canBeatBoss("esdras")));
 			locations.Add(new ItemLocation("BS13", "Tears[300]", "boss", (InventoryData d) => true));
 			locations.Add(new ItemLocation("BS14", "Tears[11250]", "boss", (InventoryData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey && d.canBeatBoss("quirce")));
 			locations.Add(new ItemLocation("BS16", "Tears[18000]", "boss", (InventoryData d) => d.bridgeAccess && d.masks >= 3 && d.canBeatBoss("crisanta")));
