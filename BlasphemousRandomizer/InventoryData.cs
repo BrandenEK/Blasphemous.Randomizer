@@ -89,7 +89,7 @@ namespace BlasphemousRandomizer
 
         public bool bridgeAccess
         {
-            get { return holyWounds >= 3 && blood && scapular && canBeatBoss("esdras"); }
+            get { return (holyWounds >= 3 && canBeatBoss("esdras")) || (blood && dawnHeart && swordLevel > 1) || (blood && cherubAttack(65536)); }
         }
 
         public bool canBreakHoles

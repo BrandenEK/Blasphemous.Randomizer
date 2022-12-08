@@ -96,24 +96,6 @@
 		"progression": false
 	},
 	{
-		"name": "RB17",
-		"type": 0,
-		"id": 17,
-		"progression": true
-	},
-	{
-		"name": "RB18",
-		"type": 0,
-		"id": 18,
-		"progression": true
-	},
-	{
-		"name": "RB19",
-		"type": 0,
-		"id": 19,
-		"progression": true
-	},
-	{
 		"name": "RB20",
 		"type": 0,
 		"id": 20,
@@ -129,24 +111,6 @@
 		"name": "RB22",
 		"type": 0,
 		"id": 22,
-		"progression": true
-	},
-	{
-		"name": "RB24",
-		"type": 0,
-		"id": 24,
-		"progression": true
-	},
-	{
-		"name": "RB25",
-		"type": 0,
-		"id": 25,
-		"progression": true
-	},
-	{
-		"name": "RB26",
-		"type": 0,
-		"id": 26,
 		"progression": true
 	},
 	{
@@ -498,270 +462,6 @@
 		"progression": true
 	},
 	{
-		"name": "CO",
-		"type": 4,
-		"id": 1,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 2,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 3,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 4,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 5,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 6,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 7,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 8,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 9,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 10,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 11,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 12,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 13,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 14,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 15,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 16,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 17,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 18,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 19,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 20,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 21,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 22,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 23,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 24,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 25,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 26,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 27,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 28,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 29,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 30,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 31,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 32,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 33,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 34,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 35,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 36,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 37,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 38,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 39,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 40,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 41,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 42,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 43,
-		"progression": true
-	},
-	{
-		"name": "CO",
-		"type": 4,
-		"id": 44,
-		"progression": true
-	},
-	{
 		"name": "QI01",
 		"type": 5,
 		"id": 1,
@@ -846,36 +546,6 @@
 		"progression": true
 	},
 	{
-		"name": "QI31",
-		"type": 5,
-		"id": 31,
-		"progression": false
-	},
-	{
-		"name": "QI32",
-		"type": 5,
-		"id": 32,
-		"progression": false
-	},
-	{
-		"name": "QI33",
-		"type": 5,
-		"id": 33,
-		"progression": false
-	},
-	{
-		"name": "QI34",
-		"type": 5,
-		"id": 34,
-		"progression": false
-	},
-	{
-		"name": "QI35",
-		"type": 5,
-		"id": 35,
-		"progression": false
-	},
-	{
 		"name": "QI37",
 		"type": 5,
 		"id": 37,
@@ -897,90 +567,6 @@
 		"name": "QI40",
 		"type": 5,
 		"id": 40,
-		"progression": true
-	},
-	{
-		"name": "QI41",
-		"type": 5,
-		"id": 41,
-		"progression": true
-	},
-	{
-		"name": "QI44",
-		"type": 5,
-		"id": 44,
-		"progression": true
-	},
-	{
-		"name": "QI45",
-		"type": 5,
-		"id": 45,
-		"progression": true
-	},
-	{
-		"name": "QI46",
-		"type": 5,
-		"id": 46,
-		"progression": true
-	},
-	{
-		"name": "QI47",
-		"type": 5,
-		"id": 47,
-		"progression": true
-	},
-	{
-		"name": "QI48",
-		"type": 5,
-		"id": 48,
-		"progression": true
-	},
-	{
-		"name": "QI49",
-		"type": 5,
-		"id": 49,
-		"progression": true
-	},
-	{
-		"name": "QI50",
-		"type": 5,
-		"id": 50,
-		"progression": true
-	},
-	{
-		"name": "QI51",
-		"type": 5,
-		"id": 51,
-		"progression": true
-	},
-	{
-		"name": "QI52",
-		"type": 5,
-		"id": 52,
-		"progression": true
-	},
-	{
-		"name": "QI53",
-		"type": 5,
-		"id": 53,
-		"progression": true
-	},
-	{
-		"name": "QI54",
-		"type": 5,
-		"id": 54,
-		"progression": true
-	},
-	{
-		"name": "QI55",
-		"type": 5,
-		"id": 55,
-		"progression": true
-	},
-	{
-		"name": "QI56",
-		"type": 5,
-		"id": 56,
 		"progression": true
 	},
 	{
@@ -1086,54 +672,6 @@
 		"progression": true
 	},
 	{
-		"name": "QI79",
-		"type": 5,
-		"id": 79,
-		"progression": false
-	},
-	{
-		"name": "QI80",
-		"type": 5,
-		"id": 80,
-		"progression": false
-	},
-	{
-		"name": "QI81",
-		"type": 5,
-		"id": 81,
-		"progression": false
-	},
-	{
-		"name": "QI101",
-		"type": 5,
-		"id": 101,
-		"progression": true
-	},
-	{
-		"name": "QI102",
-		"type": 5,
-		"id": 102,
-		"progression": true
-	},
-	{
-		"name": "QI103",
-		"type": 5,
-		"id": 103,
-		"progression": true
-	},
-	{
-		"name": "QI104",
-		"type": 5,
-		"id": 104,
-		"progression": true
-	},
-	{
-		"name": "QI105",
-		"type": 5,
-		"id": 105,
-		"progression": true
-	},
-	{
 		"name": "QI106",
 		"type": 5,
 		"id": 106,
@@ -1194,234 +732,6 @@
 		"progression": true
 	},
 	{
-		"name": "CH",
-		"type": 6,
-		"id": 1,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 2,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 3,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 4,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 5,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 6,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 7,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 8,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 9,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 10,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 11,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 12,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 13,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 14,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 15,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 16,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 17,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 18,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 19,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 20,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 21,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 22,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 23,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 24,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 25,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 26,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 27,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 28,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 29,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 30,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 31,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 32,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 33,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 34,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 35,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 36,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 37,
-		"progression": true
-	},
-	{
-		"name": "CH",
-		"type": 6,
-		"id": 38,
-		"progression": true
-	},
-	{
 		"name": "LU",
 		"type": 7,
 		"progression": true
@@ -1517,217 +827,217 @@
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[500]",
 		"type": 10,
 		"id": 500,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[1000]",
 		"type": 10,
 		"id": 1000,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[2000]",
 		"type": 10,
 		"id": 2000,
 		"progression": true
 	},
 	{
-		"name": "TM",
+		"name": "Tears[5000]",
 		"type": 10,
 		"id": 5000,
 		"progression": true
 	},
 	{
-		"name": "TL",
+		"name": "Tears[10000]",
 		"type": 10,
 		"id": 10000,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[500]",
 		"type": 10,
 		"id": 500,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[1000]",
 		"type": 10,
 		"id": 1000,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[1000]",
 		"type": 10,
 		"id": 1000,
 		"progression": true
 	},
 	{
-		"name": "TM",
+		"name": "Tears[3000]",
 		"type": 10,
 		"id": 3000,
 		"progression": true
 	},
 	{
-		"name": "TM",
+		"name": "Tears[5000]",
 		"type": 10,
 		"id": 5000,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[250]",
 		"type": 10,
 		"id": 250,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[500]",
 		"type": 10,
 		"id": 500,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[750]",
 		"type": 10,
 		"id": 750,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[1000]",
 		"type": 10,
 		"id": 1000,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[1250]",
 		"type": 10,
 		"id": 1250,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[1500]",
 		"type": 10,
 		"id": 1500,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[1750]",
 		"type": 10,
 		"id": 1750,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[2000]",
 		"type": 10,
 		"id": 2000,
 		"progression": true
 	},
 	{
-		"name": "TM",
+		"name": "Tears[2500]",
 		"type": 10,
 		"id": 2500,
 		"progression": true
 	},
 	{
-		"name": "TM",
+		"name": "Tears[3000]",
 		"type": 10,
 		"id": 3000,
 		"progression": true
 	},
 	{
-		"name": "TM",
+		"name": "Tears[5000]",
 		"type": 10,
 		"id": 5000,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[625]",
 		"type": 10,
 		"id": 625,
 		"progression": true
 	},
 	{
-		"name": "TM",
+		"name": "Tears[2600]",
 		"type": 10,
 		"id": 2600,
 		"progression": true
 	},
 	{
-		"name": "TM",
+		"name": "Tears[2100]",
 		"type": 10,
 		"id": 2100,
 		"progression": true
 	},
 	{
-		"name": "TM",
+		"name": "Tears[5500]",
 		"type": 10,
 		"id": 5500,
 		"progression": true
 	},
 	{
-		"name": "TM",
+		"name": "Tears[9000]",
 		"type": 10,
 		"id": 9000,
 		"progression": true
 	},
 	{
-		"name": "TM",
+		"name": "Tears[4300]",
 		"type": 10,
 		"id": 4300,
 		"progression": true
 	},
 	{
-		"name": "TS",
+		"name": "Tears[300]",
 		"type": 10,
 		"id": 300,
 		"progression": true
 	},
 	{
-		"name": "TL",
+		"name": "Tears[11250]",
 		"type": 10,
 		"id": 11250,
 		"progression": true
 	},
 	{
-		"name": "TL",
+		"name": "Tears[18000]",
 		"type": 10,
 		"id": 18000,
 		"progression": true
 	},
 	{
-		"name": "TL",
+		"name": "Tears[18000]",
 		"type": 10,
 		"id": 18000,
 		"progression": true
 	},
 	{
-		"name": "TL",
+		"name": "Tears[18000]",
 		"type": 10,
 		"id": 18000,
 		"progression": true
 	},
 	{
-		"name": "TL",
+		"name": "Tears[18000]",
 		"type": 10,
 		"id": 18000,
 		"progression": true
 	},
 	{
-		"name": "TL",
+		"name": "Tears[18000]",
 		"type": 10,
 		"id": 18000,
 		"progression": true
 	},
 	{
-		"name": "TL",
+		"name": "Tears[30000]",
 		"type": 10,
 		"id": 30000,
 		"progression": true
 	},
 	{
-		"name": "TM",
+		"name": "Tears[5000]",
 		"type": 10,
 		"id": 5000,
 		"progression": true

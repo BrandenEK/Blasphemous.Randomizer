@@ -278,6 +278,11 @@ namespace BlasphemousRandomizer
                     Core.Events.SetFlag(id, true, false);
                 }
             }
+            // Set randomized flags
+            string majorVersion = MyPluginInfo.PLUGIN_VERSION;
+            majorVersion = majorVersion.Substring(0, majorVersion.LastIndexOf('.'));
+            Core.Events.SetFlag("RANDOMIZED", true, false);
+            Core.Events.SetFlag(majorVersion, true, false);
         }
 
         // Keyboard input
@@ -342,7 +347,7 @@ namespace BlasphemousRandomizer
         private bool isConfigVersionValid(string configVersion)
         {
             string version = MyPluginInfo.PLUGIN_VERSION;
-            return version.Substring(version.IndexOf('.') + 1, 1) == configVersion.Substring(configVersion.IndexOf('.') + 1, 1);
+            return version.Substring(0, version.LastIndexOf('.')) == configVersion.Substring(0, configVersion.LastIndexOf('.'));
         }
 
         private void loadCustomImages()

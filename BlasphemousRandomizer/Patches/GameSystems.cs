@@ -9,6 +9,7 @@ using Framework.Dialog;
 using System.Collections.Generic;
 using BlasphemousRandomizer.Structures;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BlasphemousRandomizer.Patches
 {
@@ -78,7 +79,7 @@ namespace BlasphemousRandomizer.Patches
 
     // Call load data even if loading vanilla game
     [HarmonyPatch(typeof(PersistentManager), "LoadSnapShot")]
-    public class PersistentManager_Patch
+    public class PersistentManagerLoad_Patch
     {
         public static void Postfix(PersistentManager __instance, PersistentManager.SnapShot snapShot)
         {
@@ -105,7 +106,7 @@ namespace BlasphemousRandomizer.Patches
 
     // Don't allow ascending a save file
     [HarmonyPatch(typeof(SaveSlot), "SetData")]
-    public class SaveSlot_Patch
+    public class SaveSlotConvert_Patch
     {
         public static void Prefix(ref bool canConvert)
         {
@@ -113,14 +114,24 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
-    // Show new hint text instead of corpse dialog
+    // Update dialogs
     [HarmonyPatch(typeof(DialogManager), "StartConversation")]
     public class DialogManager_Patch
     {
         public static void Prefix(string conversiationId, Dictionary<string, DialogObject> ___allDialogs)
         {
-            if (conversiationId.Length == 8 && int.TryParse(conversiationId.Substring(4), out int id) && id > 2000 && id < 2035)
+            Main.Randomizer.Log("Starting dialog: " + conversiationId);
+
+            if (conversiationId == "DLG_QT_0904" && Main.Randomizer.gameConfig.items.disableNPCDeath)
             {
+                // Change socorro options for cleofas quest
+                DialogObject current = ___allDialogs[conversiationId];
+                if (current.answersLines.Count > 1)
+                    current.answersLines.RemoveAt(1);
+            }
+            else if (conversiationId.Length == 8 && int.TryParse(conversiationId.Substring(4), out int id) && id > 2000 && id < 2035)
+            {
+                // Change corpse hints
                 string hint = Main.Randomizer.hintShuffler.getHint(conversiationId);
                 DialogObject current = ___allDialogs[conversiationId];
                 current.dialogLines.Clear();
@@ -140,6 +151,47 @@ namespace BlasphemousRandomizer.Patches
 
             string text = b ? "Setting" : "Clearing";
             Main.Randomizer.Log(text + " flag: " + id);
+            return true;
+        }
+    }
+
+    // Show validity of save slot on select screen
+    [HarmonyPatch(typeof(SelectSaveSlots), "SetAllData")]
+    public class SelectSaveSlots_Patch
+    {
+        public static void Postfix(List<SaveSlot> ___slots)
+        {
+            for (int i = 0; i < ___slots.Count; i++)
+            {
+                PersistentManager.PublicSlotData slotData = Core.Persistence.GetSlotData(i);
+                if (slotData == null)
+                    continue;
+
+                // Check if this save file was played in supported version
+                string majorVersion = MyPluginInfo.PLUGIN_VERSION;
+                majorVersion = majorVersion.Substring(0, majorVersion.LastIndexOf('.'));
+
+                string type = "(Vanilla)";
+                if (slotData.flags.flags.ContainsKey(majorVersion))
+                    type = "(Randomized)";
+                else if (slotData.flags.flags.ContainsKey("RANDOMIZED"))
+                    type = "(Outdated)";
+
+                // Send extra info to the slot
+                ___slots[i].SetData("ignore", type, 0, false, false, false, 0, SelectSaveSlots.SlotsModes.Normal);
+            }
+        }
+    }
+    [HarmonyPatch(typeof(SaveSlot), "SetData")]
+    public class SaveSlotData_Patch
+    {
+        public static bool Prefix(string zoneName, string info, ref Text ___ZoneText)
+        {
+            if (zoneName == "ignore")
+            {
+                ___ZoneText.text += "   " + info;
+                return false;
+            }
             return true;
         }
     }

@@ -18,7 +18,9 @@ namespace BlasphemousRandomizer.Patches
 			"TIRSO_KISSER4_DEAD",
 			"TIRSO_KISSER5_DEAD",
 			"TIRSO_KISSER6_DEAD",
-			"TIRSO_TIRSO_DEAD"
+			"TIRSO_TIRSO_DEAD",
+			"CLEOFAS_SUICIDAL",
+			"CLEOFAS_DEAD"
 		};
 
 		public static string[] thornScenes = new string[]
@@ -63,7 +65,9 @@ namespace BlasphemousRandomizer.Patches
 			"D05Z02S14",
 			"D01BZ04S01",
 			"D01BZ04S01",
-			"D03Z01S06"
+			"D03Z01S06",
+			"D01BZ04S01",
+			"D20Z03S01"
 		};
 
 		public static string[] duplicateItems = new string[]
@@ -97,7 +101,9 @@ namespace BlasphemousRandomizer.Patches
 			"PR08",
 			"RB104",
 			"RB105",
-			"RB13"
+			"RB13",
+			"PR11",
+			"QI203"
 		};
 	}
 
@@ -181,6 +187,31 @@ namespace BlasphemousRandomizer.Patches
 			{
 				flag = Core.Events.GetFlag("LOCATION_QI68");
 			}
+			// Perpetva scapular
+			if (scene == "D20Z03S01" && text == "D08Z01S01_BOSSDEAD")
+            {
+				flag = false;
+            }
+			// Esdras key
+			if (scene == "D17Z01S15" && text == "ESDRAS_CHAPEL")
+			{
+				flag = true;
+			}
+			// Brotherhood church
+			if (scene == "D17Z01S14" && (text == "ESDRAS_CHAPEL" || text == "D06Z01S25_BOSSDEAD"))
+            {
+				flag = Core.InventoryManager.IsQuestItemOwned("QI203");
+            }
+			// Fourth visage
+			if (scene == "D04Z03S02" && text == "D06Z01S25_BOSSDEAD")
+            {
+				flag = false;
+            }
+			// Crisanta wound
+			if (scene == "D17Z01S15" && text == "CRISANTA_LIBERATED")
+            {
+				flag = Core.Events.GetFlag("D06Z01S25_BOSSDEAD") && Core.InventoryManager.IsSwordOwned("HE201");
+            }
 			// Mercy shop
 			if (scene == "D01BZ02S01" && text == "QI58_USED")
 			{
@@ -218,12 +249,12 @@ namespace BlasphemousRandomizer.Patches
 	[HarmonyPatch(typeof(ItemIsOwned), "executeAction")]
 	public class ItemIsOwned_Patch
     {
-		public static bool Prefix(string objectIdStting, InventoryManager.ItemType objType, ref bool __result)
+		public static bool Prefix(string objectIdStting, ref bool __result)
 		{
 			// Get item name & scene name
 			string item = objectIdStting;
 			string scene = Core.LevelManager.currentLevel.LevelName;
-			Main.Randomizer.Log("Checking for item: " + item);
+			Main.Randomizer.Log("Checking for item owned: " + item);
 
 			// If any standard scene-item pair
 			for (int i = 0; i < ItemFlags.duplicateScenes.Length; i++)
@@ -298,6 +329,12 @@ namespace BlasphemousRandomizer.Patches
 				__result = Core.Events.GetFlag("LOCATION_QI31");
 				return false;
 			}
+			// Esdras Scapular
+			if (scene == "D08Z01S01" && item == "QI203")
+            {
+				__result = false;
+				return false;
+            }
 			// Red candle
 			if (scene == "D01Z04S08" && "RB17RB18RB19".Contains(item))
 			{

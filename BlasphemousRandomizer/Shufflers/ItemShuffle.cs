@@ -46,14 +46,14 @@ namespace BlasphemousRandomizer.Shufflers
                 return;
 
             // Add the item to inventory
-            Main.Randomizer.Log($"Giving item [{item.type}]({item.id})");
+            Main.Randomizer.Log($"Giving item ({item.name})");
             Main.Randomizer.itemsCollected++;
             item.addToInventory();
             lastItem = item;
 
             // Possibly display the item
             if (display)
-                displayItem(locationId);
+                showItemPopUp(item);
         }
 
         // Display the item in a pop up
@@ -65,14 +65,20 @@ namespace BlasphemousRandomizer.Shufflers
             if (item == null)
                 return;
 
-            // Create info & show pop up
-            RewardInfo info = item.getRewardInfo(false);
-            RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
-            UIController.instance.ShowPopupAchievement(achievement);
+            // Call pop up method
+            showItemPopUp(item);
 
             //Temporary
             if (locationId == "QI110")
                 Main.Randomizer.itemsCollected++;
+        }
+
+        // Actually trigger the pop up
+        public void showItemPopUp(Item item)
+        {
+            RewardInfo info = item.getRewardInfo(false);
+            RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
+            UIController.instance.ShowPopupAchievement(achievement);
         }
 
         // Used by hint filler to generate new hints
@@ -91,15 +97,15 @@ namespace BlasphemousRandomizer.Shufflers
             }
 
             newItems = new Dictionary<string, Item>();
-            int attempt = 0;
-            while (!filler.Fill(seed + attempt, Main.Randomizer.gameConfig.items, newItems) && attempt < 10)
+            int attempt = 0, maxAttempts = 30;
+            while (!filler.Fill(seed + attempt, Main.Randomizer.gameConfig.items, newItems) && attempt < maxAttempts)
             {
                 Main.Randomizer.Log($"Seed {seed + attempt} was invalid! Trying next...");
                 attempt++;
             }
-            if (attempt >= 10)
+            if (attempt >= maxAttempts)
             {
-                Main.Randomizer.Log("Error: Failed to fill items in 10 tries!");
+                Main.Randomizer.Log($"Error: Failed to fill items in {maxAttempts} tries!");
                 return;
             }
 

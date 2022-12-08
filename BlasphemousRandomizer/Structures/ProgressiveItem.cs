@@ -4,76 +4,66 @@ namespace BlasphemousRandomizer.Structures
 {
     public class ProgressiveItem : Item
     {
-        public Item[] items;
+        public string[] items;
         public bool removePrevious;
 
-        public ProgressiveItem(string name, int type, int id, bool progression, Item[] items, bool removePrevious) : base(name, type, id, progression)
+        // Used for wax beads, thorns, cherubs, rosary knots, bile flasks, quicksilver, collectibles
+
+        public ProgressiveItem(string name, int type, int id, bool progression, string[] items, bool removePrevious) : base(name, type, id, progression)
         {
             this.items = items;
             this.removePrevious = removePrevious;
         }
 
-        /*public override string getDescriptor()
-        {
-            switch (id)
-            {
-                case 17: return "RW";
-                case 24: return "BW";
-                case 31: return "TH";
-                default: return "X";
-            }
-        }*/
-
         public override void addToInventory()
         {
-            getLevel(true).addToInventory();
+            Item itemToAdd = getItemLevel(true);
+            Core.Events.SetFlag("Item_" + itemToAdd.name, true, false);
+            itemToAdd.addToInventory();
             if (removePrevious)
                 removeItem();
         }
 
         public override RewardInfo getRewardInfo(bool upgraded)
         {
-            return getLevel(upgraded).getRewardInfo(false);
+            return getItemLevel(upgraded).getRewardInfo(false);
         }
 
-        // Get the item at the current or next level
-        public Item getLevel(bool upgraded)
+        public Item getItemLevel(bool upgraded)
         {
-            int level = currentLevel() + (upgraded ? 1 : 0);
+            int level = getCurrentLevel() + (upgraded ? 1 : 0);
             if (level >= 0 && level < items.Length)
             {
-                return items[level];
+                return new Item(items[level], type, 0, false);
             }
             Main.Randomizer.Log("Invalid tier of progressive item!");
             return null;
         }
 
-        // Gets the current tier of reward the player has
-        private int currentLevel()
+        private int getCurrentLevel()
         {
-            for (int i = items.Length - 1; i >= 0; i--)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (type == 5 && Core.InventoryManager.IsQuestItemOwned(items[i].name) || type == 0 && Core.InventoryManager.IsRosaryBeadOwned(items[i].name))
+                if (!Core.Events.GetFlag("Item_" + items[i]))
                 {
-                    Main.Randomizer.Log("Current progressive tier: " + i);
-                    return i;
+                    Main.Randomizer.Log("Current progressive tier: " + (i - 1));
+                    return i - 1;
                 }
             }
-            Main.Randomizer.Log("Current progressive tier: -1");
-            return -1;
+            Main.Randomizer.Log("Current progressive tier: " + (items.Length - 1));
+            return items.Length - 1;
         }
 
-        // Removes the previous item from the inventory
-        public void removeItem()
+        private void removeItem()
         {
-            int level = currentLevel() - 1;
+            int level = getCurrentLevel() - 1;
             if (level >= 0 && level < items.Length)
             {
-                Main.Randomizer.Log("Removing item: " + items[level].name);
+                Main.Randomizer.Log("Removing item: " + items[level]);
                 if (type == 5)
-                    Core.InventoryManager.RemoveBaseObject(Core.InventoryManager.GetBaseObject(items[level].name, InventoryManager.ItemType.Quest));
+                    Core.InventoryManager.RemoveBaseObject(Core.InventoryManager.GetBaseObject(items[level], InventoryManager.ItemType.Quest));
                 else if (type == 0)
-                    Core.InventoryManager.RemoveBaseObject(Core.InventoryManager.GetBaseObject(items[level].name, InventoryManager.ItemType.Bead));
+                    Core.InventoryManager.RemoveBaseObject(Core.InventoryManager.GetBaseObject(items[level], InventoryManager.ItemType.Bead));
             }
         }
     }
