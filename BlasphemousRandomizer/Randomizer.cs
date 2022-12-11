@@ -65,10 +65,11 @@ namespace BlasphemousRandomizer
 
             // Load external data
             if (!FileUtil.parseFiletoArray("cutscenes_names.dat", out cutsceneNames))
-                cutsceneNames = new string[0];
+                Log("Error: Cutscene names could not be loaded!");
             if (!FileUtil.parseFiletoArray("interactable_ids.dat", out interactableIds))
-                interactableIds = new string[0];
-            loadCustomImages();
+                Log("Error: Interactable ids could not be loaded!");
+            if (!FileUtil.loadImages("custom_images.png", 32, out customImages))
+                Log("Error: Custom images could not be loaded!");
 
             // Set up data
             Core.Persistence.AddPersistentManager(this);
@@ -312,34 +313,6 @@ namespace BlasphemousRandomizer
         {
             string version = MyPluginInfo.PLUGIN_VERSION;
             return version.Substring(0, version.LastIndexOf('.')) == configVersion.Substring(0, configVersion.LastIndexOf('.'));
-        }
-
-        private void loadCustomImages()
-        {
-            // Read bytes from file
-            if (!FileUtil.readBytes("custom_images.png", out byte[] data))
-            {
-                Log("Error: Custom images could not be loaded!");
-                return; 
-            }
-
-            // Convert to texture
-            Texture2D tex = new Texture2D(2, 2);
-            tex.LoadImage(data);
-            int w = tex.width, h = tex.height;
-            customImages = new Sprite[w * h / 1024];
-
-            // Insert each 32x32 image into the array (T-B, L-R)
-            int count = 0;
-            for (int i = h - 32; i >= 0; i -= 32)
-            {
-                for (int j = 0; j < w; j += 32)
-                {
-                    Sprite sprite = Sprite.Create(tex, new Rect(j, i, 32f, 32f), new Vector2(0.5f, 0.5f), 32f);
-                    customImages[count] = sprite;
-                    count++;
-                }
-            }
         }
 
         public string GetPersistenID()
