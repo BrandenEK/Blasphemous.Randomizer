@@ -6,6 +6,7 @@ using Tools.Playmaker2.Action;
 using Framework.Achievements;
 using Gameplay.UI;
 using Gameplay.UI.Others.MenuLogic;
+using Gameplay.UI.Others.Buttons;
 using BlasphemousRandomizer.Structures;
 using Framework.Managers;
 
@@ -152,6 +153,17 @@ namespace BlasphemousRandomizer.Patches
         {
             if (timeToWait == 0.001f)
                 ___messageRoot.SetActive(false);
+        }
+    }
+
+    // Temp loading buttons
+    [HarmonyPatch(typeof(OptionsWidget), "Initialize")]
+    public class OptionsWidget_Patch
+    {
+        public static void Postfix(EventsButton ___vsyncButton)
+        {
+            Main.Randomizer.LogFile(UIHolder.displayHierarchy(___vsyncButton.transform, "", 0, true));
+            UIHolder.setSettingsButton(___vsyncButton);
         }
     }
 }

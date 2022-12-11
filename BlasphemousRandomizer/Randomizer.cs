@@ -194,6 +194,10 @@ namespace BlasphemousRandomizer
         {
             string scene = newLevel.LevelName;
 
+            // Create randomizer settings menu
+            if (scene == "MainMenu")
+                UIHolder.createSettingsMenu();
+
             // Display delayed error message
             if (errorOnLoad != "")
                 UIController.instance.StartCoroutine(showErrorMessage(2.1f));
@@ -210,54 +214,6 @@ namespace BlasphemousRandomizer
                 GameObject obj = audio.gameObject;
                 Object.Destroy(audio);
                 obj.AddComponent<AudioLoader>();
-            }
-
-            // Update images of shop items
-            if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
-            {
-                foreach (GameObject interactable in getInteractables())
-                {
-                    SpriteRenderer render = interactable.transform.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
-                    if (render != null)
-                    {
-                        Item item = itemShuffler.getItemAtLocation(render.sprite.name.ToUpper());
-                        render.sprite = item == null ? null : item.getRewardInfo(true).sprite;
-                    }
-                }
-            }
-            // Give holy visage reward & disable altar
-            else if (scene == "D01Z04S19")
-            {
-                itemShuffler.giveItem("QI38", true);
-                Core.Events.SetFlag("ATTRITION_ALTAR_DONE", true, false);
-                foreach (GameObject altar in getInteractables())
-                    altar.SetActive(false);
-            }
-            else if (scene == "D03Z03S16")
-            {
-                itemShuffler.giveItem("QI39", true);
-                Core.Events.SetFlag("CONTRITION_ALTAR_DONE", true, false);
-                foreach (GameObject altar in getInteractables())
-                    altar.SetActive(false);
-            }
-            else if (scene == "D02Z03S21")
-            {
-                itemShuffler.giveItem("QI40", true);
-                Core.Events.SetFlag("COMPUNCTION_ALTAR_DONE", true, false);
-                foreach (GameObject altar in getInteractables())
-                    altar.SetActive(false);
-            }
-
-            List<GameObject> getInteractables()
-            {
-                List<GameObject> interactables = new List<GameObject>();
-                foreach (Interactable interactable in Object.FindObjectsOfType<Interactable>())
-                {
-                    Log(interactable.transform.parent.name + ": " + interactable.GetPersistenID());
-                    if (FileUtil.arrayContains(interactableIds, interactable.GetPersistenID()))
-                        interactables.Add(interactable.gameObject);
-                }
-                return interactables;
             }
         }
 
@@ -296,6 +252,8 @@ namespace BlasphemousRandomizer
             {
                 //enemyShuffler.Shuffle(new System.Random().Next());
                 //UIController.instance.ShowPopUp("Shuffling enemies temporarily!", "", 0, false);
+                string output = UIHolder.displayHierarchy(Object.FindObjectOfType<Gameplay.UI.Others.MenuLogic.NewMainMenu>().transform, "", 0, true);
+                LogFile(output);
             }
             else if (Input.GetKeyDown(KeyCode.Keypad8))
             {
@@ -303,6 +261,7 @@ namespace BlasphemousRandomizer
             }
             else if (Input.GetKeyDown(KeyCode.Keypad9))
             {
+                UIHolder.toggleSettingsMenu();
             }
         }
 
@@ -337,6 +296,11 @@ namespace BlasphemousRandomizer
         public bool shouldSkipCutscene(string id)
         {
             return gameConfig.general.skipCutscenes && FileUtil.arrayContains(cutsceneNames, id);
+        }
+
+        public bool isSpecialInteractable(string id)
+        {
+            return FileUtil.arrayContains(interactableIds, id);
         }
 
         public Sprite getImage(int idx)
