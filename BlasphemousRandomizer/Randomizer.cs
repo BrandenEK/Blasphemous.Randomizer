@@ -56,6 +56,7 @@ namespace BlasphemousRandomizer
             }
 
             // Load external data
+            debugMode = FileUtil.read("debug.txt", false, out string text) && text == "true";
             if (!FileUtil.parseFiletoArray("cutscenes_names.dat", out cutsceneNames))
                 Log("Error: Cutscene names could not be loaded!");
             if (!FileUtil.parseFiletoArray("interactable_ids.dat", out interactableIds))
@@ -64,7 +65,6 @@ namespace BlasphemousRandomizer
                 Log("Error: Custom images could not be loaded!");
             if (!FileUtil.loadImages("ui.png", 36, 36, 0, out uiImages))
                 Log("Error: UI images could not be loaded!");
-            debugMode = FileUtil.read("debug.txt", false, out string text) && text == "true";
 
             // Set up data
             Core.Persistence.AddPersistentManager(this);
@@ -73,7 +73,7 @@ namespace BlasphemousRandomizer
             lastLoadedSlot = -1;
             errorOnLoad = "";
             settingsMenu = new SettingsMenu();
-            Log("Randomizer has been initialized!");
+            Log("\nRandomizer has been initialized!");
         }
 
         public void Dispose()
@@ -295,6 +295,13 @@ namespace BlasphemousRandomizer
         public bool isSpecialInteractable(string id)
         {
             return FileUtil.arrayContains(interactableIds, id);
+        }
+
+        public void playSoundEffect(int id)
+        {
+            if (id == 0) Core.Audio.PlayOneShot("event:/SFX/UI/EquipItem");
+            else if (id == 1) Core.Audio.PlayOneShot("event:/SFX/UI/UnequipItem");
+            else if (id == 2) Core.Audio.PlayOneShot("event:/SFX/UI/ChangeSelection");
         }
 
         public Sprite getImage(int idx)

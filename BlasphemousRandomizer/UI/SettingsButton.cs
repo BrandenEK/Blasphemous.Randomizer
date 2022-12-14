@@ -8,6 +8,7 @@ namespace BlasphemousRandomizer.UI
         public virtual void onClick()
         {
             Main.Randomizer.Log(name + " has been clicked!");
+            Main.Randomizer.playSoundEffect(2);
         }
     }
 

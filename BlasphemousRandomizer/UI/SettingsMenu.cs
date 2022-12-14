@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Others;
 using BlasphemousRandomizer.Config;
-using Framework.Managers;
 
 namespace BlasphemousRandomizer.UI
 {
@@ -77,6 +76,7 @@ namespace BlasphemousRandomizer.UI
 
             // Update text
             seedText.text = "Seed: " + (currentSeed != "" ? currentSeed : "random");
+            Main.Randomizer.playSoundEffect(2);
         }
 
         public void setConfigSettings(MainConfig config)
@@ -140,19 +140,29 @@ namespace BlasphemousRandomizer.UI
 
         public void beginGame()
         {
-            Core.Audio.PlayOneShot("event:/SFX/UI/ChangeTab", default(Vector3));
+            if (!menuActive || waiting) return;
+
+            Main.Randomizer.playSoundEffect(0);
             showSettingsMenu(false);
+            waiting = true;
             Object.FindObjectOfType<SelectSaveSlots>().OnAcceptSlots(999 + currentSlot);
         }
+
         public void openMenu(int slot)
         {
+            if (menuActive || waiting) return;
+
             currentSlot = slot;
             waiting = true;
             showSettingsMenu(true);
             setConfigSettings(MainConfig.Default());
         }
+
         public void closeMenu()
         {
+            if (!menuActive || waiting) return;
+
+            Main.Randomizer.playSoundEffect(1);
             showSettingsMenu(false);
         }
 
@@ -310,6 +320,9 @@ namespace BlasphemousRandomizer.UI
 
             RectTransform doorsTitle = getNewText("Doors Title", doorsSection, "Door Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
             doorsTitle.anchoredPosition = new Vector2(0, top - 5);
+
+            RectTransform comingSoon = getNewText("Doors Title", doorsSection, "Coming Soon!", font, 16, Color.white, TextAnchor.MiddleCenter);
+            comingSoon.anchoredPosition = new Vector2(0, top - 40);
 
             // Create buttons
             RectTransform beginButton = getNewButtonbox("Begin", doorsSection, "Begin", font, 15, 16, 0);
