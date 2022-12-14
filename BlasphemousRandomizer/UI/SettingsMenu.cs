@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Others;
+using Rewired;
 using BlasphemousRandomizer.Config;
 
 namespace BlasphemousRandomizer.UI
@@ -10,11 +11,13 @@ namespace BlasphemousRandomizer.UI
     {
         private GameObject settingsMenu;
         private GameObject slotsMenu;
+        private Vector2 scaling;
 
         private Camera camera;
         private SettingsElement[] buttons;
         private Text seedText;
-        private Vector2 scaling;
+        private Text descriptionText;
+        private Player rewired;
 
         private bool menuActive;
         private bool waiting;
@@ -31,17 +34,25 @@ namespace BlasphemousRandomizer.UI
             if (settingsMenu == null || !menuActive)
                 return;
 
+            // Find what box the mouse is currently over
+            SettingsElement currBox = null;
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                if (pointInsideRect(buttons[i].transform as RectTransform, Input.mousePosition))
+                {
+                    currBox = buttons[i];
+                    break;
+                }
+            }
+
+            // Change description text
+            descriptionText.text = currBox == null ? "" : currBox.getDescription();
+
             // Check if a button was clicked
             if (Input.GetMouseButtonDown(0))
             {
-                for (int i = 0; i < buttons.Length; i++)
-                {
-                    if (pointInsideRect(buttons[i].transform as RectTransform, Input.mousePosition))
-                    {
-                        buttons[i].onClick();
-                        break;
-                    }
-                }
+                if (currBox != null)
+                    currBox.onClick();
             }
 
             // Keyboard input
@@ -56,8 +67,10 @@ namespace BlasphemousRandomizer.UI
             else if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Keypad9)) processKeyInput(9);
             else if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0)) processKeyInput(0);
             else if (Input.GetKeyDown(KeyCode.Backspace)) processKeyInput(-1);
-            else if (Input.GetKeyDown(KeyCode.Escape)) closeMenu();
-            else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) beginGame();
+
+            // Game input
+            if (rewired.GetButtonDown(50)) beginGame();
+            else if (rewired.GetButtonDown(51)) closeMenu();
         }
 
         private void processKeyInput(int num)
@@ -95,11 +108,14 @@ namespace BlasphemousRandomizer.UI
             ((SettingsCheckbox)buttons[7]).setSelected(config.enemies.maintainClass);
             ((SettingsCheckbox)buttons[8]).setSelected(config.enemies.areaScaling);
             ((SettingsCyclebox)buttons[9]).setOption(config.items.type);
-            ((SettingsCyclebox)buttons[10]).setOption(config.enemies.type);
+            ((SettingsCyclebox)buttons[10]).setOption(config.items.type);
+            ((SettingsCyclebox)buttons[11]).setOption(config.enemies.type);
+            ((SettingsCyclebox)buttons[12]).setOption(config.enemies.type);
 
             // Load config into seed
             currentSeed = config.general.customSeed > 0 ? config.general.customSeed.ToString() : "";
             seedText.text = "Seed: " + (currentSeed != "" ? currentSeed : "random");
+            descriptionText.text = "";
         }
 
         public MainConfig getConfigSettings()
@@ -119,7 +135,7 @@ namespace BlasphemousRandomizer.UI
             config.enemies.maintainClass = ((SettingsCheckbox)buttons[7]).getSelected();
             config.enemies.areaScaling = ((SettingsCheckbox)buttons[8]).getSelected();
             config.items.type = ((SettingsCyclebox)buttons[9]).getOption();
-            config.enemies.type = ((SettingsCyclebox)buttons[10]).getOption();
+            config.enemies.type = ((SettingsCyclebox)buttons[11]).getOption();
 
             // Load config from seed
             config.general.customSeed = currentSeed != "" ? int.Parse(currentSeed) : 0;
@@ -130,7 +146,7 @@ namespace BlasphemousRandomizer.UI
         {
             if (settingsMenu == null)
                 createSettingsMenu();
-            
+            Main.Randomizer.LogFile(displayHierarchy(settingsMenu.transform, "", 0, true));
             Main.Randomizer.Log("Showing settings menu: " + value);
             settingsMenu.SetActive(value);
             slotsMenu.SetActive(!value);
@@ -177,17 +193,24 @@ namespace BlasphemousRandomizer.UI
 
         private void createSettingsMenu()
         {
-            // Calculate scaling
+            // Find objects
             scaling = new Vector2(Screen.width / 640, Screen.height / 360);
-
-            // Find proper camera
+            rewired = ReInput.players.GetPlayer(0);
             foreach (Camera cam in Object.FindObjectsOfType<Camera>())
                 if (cam.name == "UICamera")
                     camera = cam;
 
-            // Find main menu root
+            // Get menus
             Transform menu = Object.FindObjectOfType<NewMainMenu>().transform;
             slotsMenu = menu.GetChild(2).gameObject;
+
+            // Get input buttons
+            RectTransform begin = Object.Instantiate(slotsMenu.transform.GetChild(3).GetChild(0).GetChild(0).gameObject).GetComponent<RectTransform>();
+            Object.Destroy(begin.GetComponent<HorizontalLayoutGroup>());
+            Object.Destroy(begin.GetChild(1).GetComponent<I2.Loc.Localize>());
+            RectTransform cancel = Object.Instantiate(slotsMenu.transform.GetChild(3).GetChild(1).gameObject).GetComponent<RectTransform>();
+            Object.Destroy(cancel.GetComponent<HorizontalLayoutGroup>());
+            Object.Destroy(cancel.GetChild(1).GetComponent<I2.Loc.Localize>());
 
             // Duplicate slot menu
             settingsMenu = Object.Instantiate(slotsMenu, menu);
@@ -211,7 +234,7 @@ namespace BlasphemousRandomizer.UI
             Text headerText = settingsMenu.transform.GetChild(0).GetChild(0).GetComponent<Text>();
             headerText.text = "CHOOSE SETTINGS";
             Font font = headerText.font;
-            
+
             // Create main section
             int width = 630, height = 260;
             RectTransform mainSection = getNewRect("Main Section", settingsMenu.transform);
@@ -250,18 +273,22 @@ namespace BlasphemousRandomizer.UI
             RectTransform generalTitle = getNewText("General Title", generalSection, "General:", font, 16, Color.white, TextAnchor.MiddleCenter);
             generalTitle.anchoredPosition = new Vector2(0, top - 5);
 
-            RectTransform teleportOption = getNewCheckbox("Teleport", generalSection, "Teleportation", font, 15, 16);
-            teleportOption.anchoredPosition = new Vector2(left, top - 40);
+            RectTransform teleportOption = getNewCheckbox("Teleport", generalSection, "Teleportation", "Prie Dieus are automatically upgraded to the maximum level", font, 15, 16);
+            teleportOption.anchoredPosition = new Vector2(left, top - 70);
             buttons[0] = teleportOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform cutscenesOption = getNewCheckbox("Cutscenes", generalSection, "Skip Cutscenes", font, 15, 16);
-            cutscenesOption.anchoredPosition = new Vector2(left, top - 70);
+            RectTransform cutscenesOption = getNewCheckbox("Cutscenes", generalSection, "Skip Cutscenes", "A majority of cutscenes will be skipped", font, 15, 16);
+            cutscenesOption.anchoredPosition = new Vector2(left, top - 100);
             buttons[1] = cutscenesOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform penitenceOption = getNewCheckbox("Penitence", generalSection, "Allow Penitence", font, 15, 16);
-            penitenceOption.anchoredPosition = new Vector2(left, top - 100);
+            RectTransform penitenceOption = getNewCheckbox("Penitence", generalSection, "Allow Penitence", "You are able to choose a penitence in the Brotherhood", font, 15, 16);
+            penitenceOption.anchoredPosition = new Vector2(left, top - 130);
             buttons[2] = penitenceOption.GetComponent<SettingsCheckbox>();
-            
+
+            RectTransform seed = getNewText("Seed", generalSection, "Seed: ", font, 16, Color.yellow, TextAnchor.MiddleCenter);
+            seed.anchoredPosition = new Vector2(0, top - 25);
+            seedText = seed.GetComponent<Text>();
+
             // Items section
 
             RectTransform itemsSection = getNewRect("Items Section", mainSection);
@@ -271,25 +298,29 @@ namespace BlasphemousRandomizer.UI
             RectTransform itemsTitle = getNewText("Items Title", itemsSection, "Item Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
             itemsTitle.anchoredPosition = new Vector2(0, top - 5);
 
-            RectTransform lungOption = getNewCheckbox("Lung", itemsSection, "Lung Damage", font, 15, 16);
+            RectTransform lungOption = getNewCheckbox("Lung", itemsSection, "Lung Damage", "Some items in poison clouds may be in logic without Lung of Dolphos", font, 15, 16);
             lungOption.anchoredPosition = new Vector2(left, top - 70);
             buttons[3] = lungOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform deathOption = getNewCheckbox("Death", itemsSection, "Disable NPC Death", font, 15, 16);
+            RectTransform deathOption = getNewCheckbox("Death", itemsSection, "Disable NPC Death", "Prevents missable items by keeping certain NPCs always alive", font, 15, 16);
             deathOption.anchoredPosition = new Vector2(left, top - 100);
             buttons[4] = deathOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform wheelOption = getNewCheckbox("Wheel", itemsSection, "Start with Wheel", font, 15, 16);
+            RectTransform wheelOption = getNewCheckbox("Wheel", itemsSection, "Start with Wheel", "The starting gift will be the Young Mason's Wheel", font, 15, 16);
             wheelOption.anchoredPosition = new Vector2(left, top - 130);
             buttons[5] = wheelOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform reliqOption = getNewCheckbox("Reliquaries", itemsSection, "Shuffle Reliquaries", font, 15, 16);
+            RectTransform reliqOption = getNewCheckbox("Reliquaries", itemsSection, "Shuffle Reliquaries", "The three reliquaries will be added to the item pool", font, 15, 16);
             reliqOption.anchoredPosition = new Vector2(left, top - 160);
             buttons[6] = reliqOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform itemsType = getNewCyclebox("Type", itemsSection, font, 15, 16, new string[] { "Disabled", "Enabled" }, new SettingsElement[] { buttons[3], buttons[4], buttons[5], buttons[6] });
-            itemsType.anchoredPosition = new Vector2(left + 10, top - 25);
-            buttons[9] = itemsType.GetComponent<SettingsCyclebox>();
+            RectTransform itemsType = getNewCyclebox("Type", itemsSection, font, 15, 16,
+                new string[] { "Disabled", "Enabled" },
+                new string[] { "Disabled - All items will be in their original places", "Enabled - Every location will have a random item" },
+                new SettingsElement[] { buttons[3], buttons[4], buttons[5], buttons[6] });
+            itemsType.anchoredPosition = new Vector2(0, top - 25);
+            buttons[9] = itemsType.GetChild(0).GetComponent<SettingsCyclebox>();
+            buttons[10] = itemsType.GetChild(1).GetComponent<SettingsCyclebox>();
 
             // Enemies section
 
@@ -300,17 +331,21 @@ namespace BlasphemousRandomizer.UI
             RectTransform enemiesTitle = getNewText("Enemies Title", enemiesSection, "Enemy Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
             enemiesTitle.anchoredPosition = new Vector2(0, top - 5);
 
-            RectTransform classOption = getNewCheckbox("Class", enemiesSection, "Maintain Class", font, 15, 16);
+            RectTransform classOption = getNewCheckbox("Class", enemiesSection, "Maintain Class", "Enemies are constrained to their original group (Normal, Flying, Large)", font, 15, 16);
             classOption.anchoredPosition = new Vector2(left, top - 70);
             buttons[7] = classOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform scalingOption = getNewCheckbox("Scaling", enemiesSection, "Area Scaling", font, 15, 16);
+            RectTransform scalingOption = getNewCheckbox("Scaling", enemiesSection, "Area Scaling", "Enemy health and damage is scaled up/down based on their location", font, 15, 16);
             scalingOption.anchoredPosition = new Vector2(left, top - 100);
             buttons[8] = scalingOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform enemiesType = getNewCyclebox("Type", enemiesSection, font, 15, 16, new string[] { "Disabled", "Simple", "Full" }, new SettingsElement[] { buttons[7], buttons[8] });
-            enemiesType.anchoredPosition = new Vector2(left + 10, top - 25);
-            buttons[10] = enemiesType.GetComponent<SettingsCyclebox>();
+            RectTransform enemiesType = getNewCyclebox("Type", enemiesSection, font, 15, 16,
+                new string[] { "Disabled", "Simple", "Full" },
+                new string[] { "Disabled - Enemies will remain in their original places", "Simple - All enemies of one type will turn into a random type", "Full - Every enemy location will turn into a random enemy" },
+                new SettingsElement[] { buttons[7], buttons[8] });
+            enemiesType.anchoredPosition = new Vector2(0, top - 25);
+            buttons[11] = enemiesType.GetChild(0).GetComponent<SettingsCyclebox>();
+            buttons[12] = enemiesType.GetChild(1).GetComponent<SettingsCyclebox>();
 
             // Doors section
 
@@ -321,23 +356,26 @@ namespace BlasphemousRandomizer.UI
             RectTransform doorsTitle = getNewText("Doors Title", doorsSection, "Door Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
             doorsTitle.anchoredPosition = new Vector2(0, top - 5);
 
-            RectTransform comingSoon = getNewText("Doors Title", doorsSection, "Coming Soon!", font, 16, Color.white, TextAnchor.MiddleCenter);
+            RectTransform comingSoon = getNewText("Coming soon", doorsSection, "Coming Soon!", font, 16, Color.white, TextAnchor.MiddleCenter);
             comingSoon.anchoredPosition = new Vector2(0, top - 40);
 
-            // Create buttons
-            RectTransform beginButton = getNewButtonbox("Begin", doorsSection, "Begin", font, 15, 16, 0);
-            beginButton.anchoredPosition = new Vector2(-20, top - 170);
-            buttons[11] = beginButton.GetComponent<SettingsButtonbox>();
+            // Set begin/cancel buttons
+            begin.SetParent(doorsSection, false);
+            begin.anchorMin = new Vector2(0.5f, 0.5f);
+            begin.anchorMax = new Vector2(0.5f, 0.5f);
+            begin.anchoredPosition = new Vector2(10, -50);
+            begin.GetChild(1).GetComponent<Text>().text = "Begin";
+            cancel.SetParent(doorsSection, false);
+            cancel.anchorMin = new Vector2(0.5f, 0.5f);
+            cancel.anchorMax = new Vector2(0.5f, 0.5f);
+            cancel.anchoredPosition = new Vector2(10, -80);
+            cancel.GetChild(1).GetComponent<Text>().text = "Cancel";
 
-            RectTransform cancelButton = getNewButtonbox("Cancel", doorsSection, "Cancel", font, 15, 16, 1);
-            cancelButton.anchoredPosition = new Vector2(-20, top - 200);
-            buttons[12] = cancelButton.GetComponent<SettingsButtonbox>();
+            // Create description text
+            RectTransform desc = getNewText("Description", mainSection, "", font, 16, Color.white, TextAnchor.MiddleLeft);
+            desc.anchoredPosition = new Vector2(-170, top - 225);
+            descriptionText = desc.GetComponent<Text>();
 
-            // Create seed text
-            RectTransform seed = getNewText("Seed", mainSection, "Seed: ", font, 16, Color.white, TextAnchor.MiddleLeft);
-            seed.anchoredPosition = new Vector2(0, top - 220);
-            seedText = seed.GetComponent<Text>();
-            
             // Hide menu
             Main.Randomizer.Log("Settings menu has been created");
             settingsMenu.SetActive(false);
@@ -351,9 +389,10 @@ namespace BlasphemousRandomizer.UI
                 return rect;
             }
 
-            RectTransform getNewImage(string name, Transform parent)
+            RectTransform getNewImage(string name, Transform parent, int size)
             {
                 RectTransform rect = getNewRect(name, parent);
+                rect.sizeDelta = new Vector2(size, size);
                 rect.gameObject.AddComponent<Image>();
                 return rect;
             }
@@ -373,8 +412,7 @@ namespace BlasphemousRandomizer.UI
 
             RectTransform getNewInteractable(string name, Transform parent, string label, Font font, Color color, int boxSize, int fontSize)
             {
-                RectTransform rect = getNewImage(name, parent);
-                rect.sizeDelta = new Vector2(boxSize, boxSize);
+                RectTransform rect = getNewImage(name, parent, boxSize);
 
                 RectTransform text = getNewText("Label", rect, label, font, fontSize, color, TextAnchor.MiddleLeft);
                 text.anchoredPosition = new Vector2(boxSize + 50, 0);
@@ -382,23 +420,38 @@ namespace BlasphemousRandomizer.UI
                 return rect;
             }
 
-            RectTransform getNewCheckbox(string name, Transform parent, string label, Font font, int boxSize, int fontSize)
+            RectTransform getNewCheckbox(string name, Transform parent, string label, string desc, Font font, int boxSize, int fontSize)
             {
                 RectTransform rect = getNewInteractable(name, parent, label, font, Color.white, boxSize, fontSize);
 
                 SettingsCheckbox check = rect.gameObject.AddComponent<SettingsCheckbox>();
-                check.onStart();
+                check.onStart(desc);
                 return rect;
             }
 
-            RectTransform getNewCyclebox(string name, Transform parent, Font font, int boxSize, int fontSize, string[] options, SettingsElement[] boxes)
+            RectTransform getNewCyclebox(string name, Transform parent, Font font, int boxSize, int fontSize, string[] options, string[] descs, SettingsElement[] boxes)
             {
-                RectTransform rect = getNewInteractable(name, parent, "", font, Color.yellow, boxSize, fontSize);
+                RectTransform rect = getNewText(name, parent, "", font, fontSize, Color.yellow, TextAnchor.MiddleCenter);
 
-                SettingsCyclebox cycle = rect.gameObject.AddComponent<SettingsCyclebox>();
-                cycle.onStart(options, boxes);
+                RectTransform left = getNewImage("Left", rect, boxSize);
+                left.anchoredPosition = new Vector2(-36, 0);
+                left.gameObject.AddComponent<SettingsCyclebox>().onStart(options, descs, boxes, false);
+
+                RectTransform right = getNewImage("Right", rect, boxSize);
+                right.anchoredPosition = new Vector2(36, 0);
+                right.gameObject.AddComponent<SettingsCyclebox>().onStart(options, descs, boxes, true);
+
                 return rect;
             }
+
+            //RectTransform getNewCyclebox(string name, Transform parent, Font font, int boxSize, int fontSize, string[] options, SettingsElement[] boxes)
+            //{
+            //    RectTransform rect = getNewInteractable(name, parent, "", font, Color.yellow, boxSize, fontSize);
+
+            //    SettingsCyclebox cycle = rect.gameObject.AddComponent<SettingsCyclebox>();
+            //    cycle.onStart(options, boxes);
+            //    return rect;
+            //}
 
             RectTransform getNewButtonbox(string name, Transform parent, string label, Font font, int boxSize, int fontSize, int id)
             {

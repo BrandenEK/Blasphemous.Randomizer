@@ -40,6 +40,7 @@ namespace BlasphemousRandomizer
         private string[] interactableIds;
         private Sprite[] customImages;
         private Sprite[] uiImages;
+        private Sprite[] uiArrows;
         private bool debugMode;
 
         public void Initialize()
@@ -65,6 +66,8 @@ namespace BlasphemousRandomizer
                 Log("Error: Custom images could not be loaded!");
             if (!FileUtil.loadImages("ui.png", 36, 36, 0, out uiImages))
                 Log("Error: UI images could not be loaded!");
+            if (!FileUtil.loadImages("arrows.png", 15, 32, 0, out uiArrows))
+                Log("Error: UI arrows could not be loaded!");
 
             // Set up data
             Core.Persistence.AddPersistentManager(this);
@@ -311,6 +314,10 @@ namespace BlasphemousRandomizer
         public Sprite getUI(int idx)
         {
             return (idx >= 0 && idx < uiImages.Length) ? uiImages[idx] : null;
+        }
+        public Sprite getUIArrow(int idx)
+        {
+            return (idx >= 0 && idx < uiArrows.Length) ? uiArrows[idx] : null;
         }
 
         public SettingsMenu getSettingsMenu()

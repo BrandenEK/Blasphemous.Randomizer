@@ -32,6 +32,9 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>..\lib\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\lib\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\lib\BepInEx.dll</HintPath>
     </Reference>
@@ -40,6 +43,9 @@
     </Reference>
     <Reference Include="PlayMaker">
       <HintPath>..\lib\PlayMaker.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>..\lib\Rewired_Core.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization">
       <HintPath>..\lib\Sirenix.Serialization.dll</HintPath>

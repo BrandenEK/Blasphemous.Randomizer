@@ -3,13 +3,30 @@ using UnityEngine.UI;
 
 namespace BlasphemousRandomizer.UI
 {
-    public class SettingsElement : MonoBehaviour
+    // Any settings button can be clicked, or enabled/disabled
+    public abstract class SettingsElement : MonoBehaviour
     {
-        public virtual void onClick()
+        protected bool disabled;
+
+        public void setEnabled(bool value)
+        {
+            disabled = !value;
+            if (value) enable();
+            else disable();
+        }
+
+        public void onClick()
         {
             Main.Randomizer.Log(name + " has been clicked!");
             Main.Randomizer.playSoundEffect(2);
+            if (!disabled)
+                click();
         }
+
+        protected abstract void click();
+        protected abstract void enable();
+        protected abstract void disable();
+        public abstract string getDescription();
     }
 
     // Checkbox can be toggled on or off
@@ -17,21 +34,33 @@ namespace BlasphemousRandomizer.UI
     {
         private Image image;
         private bool selected;
-        private bool disabled;
+        private string description;
 
-        public void onStart()
+        public void onStart(string desc)
         {
             image = GetComponent<Image>();
-            selected = false;
-            enable(true);
+            description = desc;
+            setSelected(false);
+            enable();
         }
 
-        public void enable(bool value)
+        // When changing enabled status, change sprite
+        protected override void enable()
         {
-            disabled = !value;
-            image.sprite = disabled ? Main.Randomizer.getUI(2) : selected ? Main.Randomizer.getUI(1) : Main.Randomizer.getUI(0);
+            image.sprite = selected ? Main.Randomizer.getUI(1) : Main.Randomizer.getUI(0);
+        }
+        protected override void disable()
+        {
+            image.sprite = Main.Randomizer.getUI(2);
         }
 
+        // When clicked, toggle checkbox
+        protected override void click()
+        {
+            setSelected(!selected);
+        }
+
+        // Get and set selected variable
         public void setSelected(bool value)
         {
             selected = value;
@@ -42,13 +71,10 @@ namespace BlasphemousRandomizer.UI
             return selected;
         }
 
-        public override void onClick()
+        // Return desc
+        public override string getDescription()
         {
-            base.onClick();
-            if (!disabled)
-            {
-                setSelected(!selected);
-            }
+            return description;
         }
     }
 
@@ -56,46 +82,70 @@ namespace BlasphemousRandomizer.UI
     public class SettingsCyclebox : SettingsElement
     {
         private Text text;
+        private Image image;
+        
         private SettingsElement[] checkboxes;
-
         private string[] options;
+        private string[] descriptions;
         private int optionIdx;
 
-        public void onStart(string[] options, SettingsElement[] checkboxes)
+        private bool right;
+
+        public void onStart(string[] options, string[] descs, SettingsElement[] checkboxes, bool right)
         {
-            text = GetComponentInChildren<Text>();
-            GetComponent<Image>().sprite = Main.Randomizer.getUI(3);
+            this.right = right;
             this.options = options;
+            this.descriptions = descs;
             this.checkboxes = checkboxes;
+
+            text = GetComponentInParent<Text>();
+            image = GetComponent<Image>();
+
             setOption(0);
         }
 
+        // When changing enabled status, change sprite
+        protected override void enable()
+        {
+            image.sprite = Main.Randomizer.getUIArrow(right ? 2 : 0);
+        }
+        protected override void disable()
+        {
+            image.sprite = Main.Randomizer.getUIArrow(right ? 3 : 1);
+        }
+
+        // When clicked, change option on both cycleboxes & disable checkboxes
+        protected override void click()
+        {
+            setOption(optionIdx + (right ? 1 : -1));
+            transform.parent.GetChild(right ? 0 : 1).GetComponent<SettingsCyclebox>().setOption(optionIdx);
+        }
+
+        // Get and set option index variable
         public void setOption(int option)
         {
             optionIdx = option;
             text.text = options[option];
-            enableButtons(option != 0);
+
+            foreach (SettingsElement box in checkboxes)
+            {
+                ((SettingsCheckbox)box).setEnabled(option != 0);
+            }
+
+            if (right)
+                setEnabled(optionIdx < options.Length - 1);
+            else
+                setEnabled(optionIdx > 0);
         }
         public int getOption()
         {
             return optionIdx;
         }
 
-        private void enableButtons(bool value)
+        // Return description for this option
+        public override string getDescription()
         {
-            foreach (SettingsElement box in checkboxes)
-            {
-                ((SettingsCheckbox)box).enable(value);
-            }
-        }
-
-        public override void onClick()
-        {
-            base.onClick();
-            optionIdx++;
-            if (optionIdx >= options.Length)
-                optionIdx = 0;
-            setOption(optionIdx);
+            return descriptions[optionIdx];
         }
     }
 
@@ -110,9 +160,16 @@ namespace BlasphemousRandomizer.UI
             GetComponent<Image>().sprite = Main.Randomizer.getUI(3);
         }
 
-        public override void onClick()
+        // When changing enabled status, change sprite
+        protected override void enable()
         {
-            base.onClick();
+        }
+        protected override void disable()
+        {
+        }
+
+        protected override void click()
+        {
             if (id == 0)
             {
                 // Begin game
@@ -123,6 +180,11 @@ namespace BlasphemousRandomizer.UI
                 // Go back to select slots screen
                 Main.Randomizer.getSettingsMenu().closeMenu();
             }
+        }
+
+        public override string getDescription()
+        {
+            return "";
         }
     }
 }
