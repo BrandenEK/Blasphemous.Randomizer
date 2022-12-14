@@ -36,6 +36,10 @@ namespace BlasphemousRandomizer.UI
             selected = value;
             image.sprite = selected ? Main.Randomizer.getUI(1) : Main.Randomizer.getUI(0);
         }
+        public bool getSelected()
+        {
+            return selected;
+        }
 
         public override void onClick()
         {
@@ -70,6 +74,10 @@ namespace BlasphemousRandomizer.UI
             optionIdx = option;
             text.text = options[option];
             enableButtons(option != 0);
+        }
+        public int getOption()
+        {
+            return optionIdx;
         }
 
         private void enableButtons(bool value)

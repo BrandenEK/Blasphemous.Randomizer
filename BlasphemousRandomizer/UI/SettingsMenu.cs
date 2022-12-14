@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Others;
 using BlasphemousRandomizer.Config;
+using Framework.Managers;
 
 namespace BlasphemousRandomizer.UI
 {
@@ -56,6 +57,8 @@ namespace BlasphemousRandomizer.UI
             else if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Keypad9)) processKeyInput(9);
             else if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0)) processKeyInput(0);
             else if (Input.GetKeyDown(KeyCode.Backspace)) processKeyInput(-1);
+            else if (Input.GetKeyDown(KeyCode.Escape)) closeMenu();
+            else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) beginGame();
         }
 
         private void processKeyInput(int num)
@@ -76,13 +79,12 @@ namespace BlasphemousRandomizer.UI
             seedText.text = "Seed: " + (currentSeed != "" ? currentSeed : "random");
         }
 
-        public void loadDefaultSettings()
+        public void setConfigSettings(MainConfig config)
         {
             if (settingsMenu == null)
                 return;
 
             // Load config into buttons
-            MainConfig config = MainConfig.Default();
             ((SettingsCheckbox)buttons[0]).setSelected(config.general.teleportationAlwaysUnlocked);
             ((SettingsCheckbox)buttons[1]).setSelected(config.general.skipCutscenes);
             ((SettingsCheckbox)buttons[2]).setSelected(config.general.enablePenitence);
@@ -100,11 +102,35 @@ namespace BlasphemousRandomizer.UI
             seedText.text = "Seed: " + (currentSeed != "" ? currentSeed : "random");
         }
 
+        public MainConfig getConfigSettings()
+        {
+            if (settingsMenu == null)
+                return MainConfig.Default();
+
+            // Load config from buttons
+            MainConfig config = MainConfig.Default();
+            config.general.teleportationAlwaysUnlocked = ((SettingsCheckbox)buttons[0]).getSelected();
+            config.general.skipCutscenes = ((SettingsCheckbox)buttons[1]).getSelected();
+            config.general.enablePenitence = ((SettingsCheckbox)buttons[2]).getSelected();
+            config.items.lungDamage = ((SettingsCheckbox)buttons[3]).getSelected();
+            config.items.disableNPCDeath = ((SettingsCheckbox)buttons[4]).getSelected();
+            config.items.startWithWheel = ((SettingsCheckbox)buttons[5]).getSelected();
+            config.items.shuffleReliquaries = ((SettingsCheckbox)buttons[6]).getSelected();
+            config.enemies.maintainClass = ((SettingsCheckbox)buttons[7]).getSelected();
+            config.enemies.areaScaling = ((SettingsCheckbox)buttons[8]).getSelected();
+            config.items.type = ((SettingsCyclebox)buttons[9]).getOption();
+            config.enemies.type = ((SettingsCyclebox)buttons[10]).getOption();
+
+            // Load config from seed
+            config.general.customSeed = currentSeed != "" ? int.Parse(currentSeed) : 0;
+            return config;
+        }
+
         private void showSettingsMenu(bool value)
         {
             if (settingsMenu == null)
                 createSettingsMenu();
-            Main.Randomizer.LogFile(displayHierarchy(Object.FindObjectOfType<NewMainMenu>().transform as RectTransform, "", 0, false));
+            
             Main.Randomizer.Log("Showing settings menu: " + value);
             settingsMenu.SetActive(value);
             slotsMenu.SetActive(!value);
@@ -114,7 +140,7 @@ namespace BlasphemousRandomizer.UI
 
         public void beginGame()
         {
-            // Load config from buttons into Randomizer.gameConfig
+            Core.Audio.PlayOneShot("event:/SFX/UI/ChangeTab", default(Vector3));
             showSettingsMenu(false);
             Object.FindObjectOfType<SelectSaveSlots>().OnAcceptSlots(999 + currentSlot);
         }
@@ -123,7 +149,7 @@ namespace BlasphemousRandomizer.UI
             currentSlot = slot;
             waiting = true;
             showSettingsMenu(true);
-            loadDefaultSettings();
+            setConfigSettings(MainConfig.Default());
         }
         public void closeMenu()
         {
