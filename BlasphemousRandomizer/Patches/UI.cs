@@ -7,6 +7,7 @@ using Framework.Achievements;
 using Gameplay.UI;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Others.Buttons;
+using Gameplay.UI.Widgets;
 using BlasphemousRandomizer.Structures;
 using Framework.Managers;
 
@@ -156,14 +157,13 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
-    // Temp loading buttons
-    [HarmonyPatch(typeof(OptionsWidget), "Initialize")]
-    public class OptionsWidget_Patch
+    // Allow visible cursor for settings menu
+    [HarmonyPatch(typeof(DebugInformation), "Update")]
+    public class DebugInformation_Patch
     {
-        public static void Postfix(EventsButton ___vsyncButton)
+        public static bool Prefix()
         {
-            Main.Randomizer.LogFile(UIHolder.displayHierarchy(___vsyncButton.transform, "", 0, true));
-            UIHolder.setSettingsButton(___vsyncButton);
+            return false;
         }
     }
 }

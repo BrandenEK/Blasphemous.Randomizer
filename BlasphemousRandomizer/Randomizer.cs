@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using BlasphemousRandomizer.Shufflers;
 using BlasphemousRandomizer.Config;
 using BlasphemousRandomizer.Structures;
+using BlasphemousRandomizer.UI;
 using Framework.FrameworkCore;
 using Framework.Managers;
 using Tools.Level;
@@ -35,11 +36,13 @@ namespace BlasphemousRandomizer
         private bool inGame;
         private int lastLoadedSlot;
         private string errorOnLoad;
+        private SettingsMenu settingsMenu;
 
         // Randomizer data
         private string[] cutsceneNames;
         private string[] interactableIds;
         private Sprite[] customImages;
+        private Sprite[] uiImages;
 
         public void Initialize()
         {
@@ -68,14 +71,17 @@ namespace BlasphemousRandomizer
                 Log("Error: Cutscene names could not be loaded!");
             if (!FileUtil.parseFiletoArray("interactable_ids.dat", out interactableIds))
                 Log("Error: Interactable ids could not be loaded!");
-            if (!FileUtil.loadImages("custom_images.png", 32, out customImages))
+            if (!FileUtil.loadImages("custom_images.png", 32, 32, 0, out customImages))
                 Log("Error: Custom images could not be loaded!");
+            if (!FileUtil.loadImages("ui.png", 36, 36, 0, out uiImages))
+                Log("Error: UI images could not be loaded!");
 
             // Set up data
             Core.Persistence.AddPersistentManager(this);
             LevelManager.OnLevelLoaded += onLevelLoaded;
             lastLoadedSlot = -1;
             errorOnLoad = "";
+            settingsMenu = new SettingsMenu();
             Log("Randomizer has been initialized!");
         }
 
@@ -195,10 +201,6 @@ namespace BlasphemousRandomizer
         {
             string scene = newLevel.LevelName;
 
-            // Create randomizer settings menu
-            if (scene == "MainMenu")
-                UIHolder.createSettingsMenu();
-
             // Display delayed error message
             if (errorOnLoad != "")
                 UIController.instance.StartCoroutine(showErrorMessage(2.1f));
@@ -245,7 +247,7 @@ namespace BlasphemousRandomizer
         // Keyboard input
         public void update()
         {
-            if (Input.GetKeyDown(KeyCode.Keypad6))
+            if (Input.GetKeyDown(KeyCode.Keypad6) && inGame)
             {
                 LogDisplay("Current seed: " + seed);
             }
@@ -253,17 +255,21 @@ namespace BlasphemousRandomizer
             {
                 //enemyShuffler.Shuffle(new System.Random().Next());
                 //UIController.instance.ShowPopUp("Shuffling enemies temporarily!", "", 0, false);
-                string output = UIHolder.displayHierarchy(Object.FindObjectOfType<Gameplay.UI.Others.MenuLogic.NewMainMenu>().transform, "", 0, true);
-                LogFile(output);
+                //string output = UIHolder.displayHierarchy(Object.FindObjectOfType<Gameplay.UI.Others.MenuLogic.NewMainMenu>().transform, "", 0, true);
+                //LogFile(output);
             }
             else if (Input.GetKeyDown(KeyCode.Keypad8))
             {
-                LogFile(EnemyShuffle.enemyData);
+                //LogFile(EnemyShuffle.enemyData);
             }
             else if (Input.GetKeyDown(KeyCode.Keypad9))
             {
-                UIHolder.toggleSettingsMenu();
+                //settingsMenu.toggleSettingsMenu();
             }
+
+            // Update ui menus
+            if (settingsMenu != null)
+                settingsMenu.update();
         }
 
         // Log message to file
@@ -306,7 +312,16 @@ namespace BlasphemousRandomizer
 
         public Sprite getImage(int idx)
         {
-            return (customImages != null && idx >= 0 && idx < customImages.Length) ? customImages[idx] : null;
+            return (idx >= 0 && idx < customImages.Length) ? customImages[idx] : null;
+        }
+        public Sprite getUI(int idx)
+        {
+            return (idx >= 0 && idx < uiImages.Length) ? uiImages[idx] : null;
+        }
+
+        public SettingsMenu getSettingsMenu()
+        {
+            return settingsMenu;
         }
 
         private bool isConfigVersionValid(string configVersion)

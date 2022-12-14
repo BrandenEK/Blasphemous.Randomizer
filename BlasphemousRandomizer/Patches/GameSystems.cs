@@ -1,5 +1,4 @@
-﻿using System;
-using HarmonyLib;
+﻿using HarmonyLib;
 using Framework.Managers;
 using Framework.EditorScripts.EnemiesBalance;
 using Framework.EditorScripts.BossesBalance;
@@ -8,6 +7,7 @@ using Gameplay.UI.Widgets;
 using Framework.Dialog;
 using System.Collections.Generic;
 using BlasphemousRandomizer.Structures;
+using BlasphemousRandomizer.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -157,7 +157,7 @@ namespace BlasphemousRandomizer.Patches
 
     // Show validity of save slot on select screen
     [HarmonyPatch(typeof(SelectSaveSlots), "SetAllData")]
-    public class SelectSaveSlots_Patch
+    public class SelectSaveSlotsData_Patch
     {
         public static void Postfix(List<SaveSlot> ___slots)
         {
@@ -193,6 +193,29 @@ namespace BlasphemousRandomizer.Patches
                 return false;
             }
             return true;
+        }
+    }
+
+    // Show settings menu when starting a new game
+    [HarmonyPatch(typeof(SelectSaveSlots), "OnAcceptSlots")]
+    public class SelectSaveSlotsMenu_Patch
+    {
+        public static bool Prefix(ref int idxSlot, List<SaveSlot> ___slots)
+        {
+            if (idxSlot >= 999) // Load new game
+            {
+                idxSlot -= 999;
+                return true;
+            }
+            else if (___slots[idxSlot].IsEmpty) // Show settings menu
+            {
+                Main.Randomizer.getSettingsMenu().openMenu(idxSlot);
+                return false;
+            }
+            else
+            {
+                return true;
+            }    
         }
     }
 

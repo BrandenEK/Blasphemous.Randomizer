@@ -101,7 +101,7 @@ namespace BlasphemousRandomizer
 		}
 
 		// Loads an array of square images from a file
-		public static bool loadImages(string fileName, int size, out Sprite[] images)
+		public static bool loadImages(string fileName, int size, int pixels, int border, out Sprite[] images)
         {
 			// Read bytes from file
 			if (!readBytes(fileName, out byte[] data))
@@ -122,7 +122,7 @@ namespace BlasphemousRandomizer
 			{
 				for (int j = 0; j < w; j += size)
 				{
-					Sprite sprite = Sprite.Create(tex, new Rect(j, i, size, size), new Vector2(0.5f, 0.5f), size);
+					Sprite sprite = Sprite.Create(tex, new Rect(j, i, size, size), new Vector2(0.5f, 0.5f), pixels, 0, SpriteMeshType.Tight, new Vector4(border, border, border, border));
 					images[count] = sprite;
 					count++;
 				}
