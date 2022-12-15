@@ -146,7 +146,7 @@ namespace BlasphemousRandomizer.UI
         {
             if (settingsMenu == null)
                 createSettingsMenu();
-            Main.Randomizer.LogFile(displayHierarchy(settingsMenu.transform, "", 0, true));
+            
             Main.Randomizer.Log("Showing settings menu: " + value);
             settingsMenu.SetActive(value);
             slotsMenu.SetActive(!value);
@@ -243,23 +243,8 @@ namespace BlasphemousRandomizer.UI
             mainSection.anchorMax = new Vector2(0.5f, 0);
             mainSection.sizeDelta = new Vector2(width, height);
             mainSection.anchoredPosition = new Vector2(0, 185);
-            
-            // Create dividers
-            //RectTransform divider1 = getNewImage("Divider 1", mainSection);
-            //divider1.anchoredPosition = new Vector2(-0.25f * width, 20);
-            //divider1.sizeDelta = new Vector2(1, 200);
-            //divider1.GetComponent<Image>().color = new Color(1, 0.75f, 0);
 
-            //RectTransform divider2 = getNewImage("Divider 2", mainSection);
-            //divider2.anchoredPosition = new Vector2(0, 20);
-            //divider2.sizeDelta = new Vector2(1, 200);
-            //divider2.GetComponent<Image>().color = new Color(1, 0.75f, 0);
-
-            //RectTransform divider3 = getNewImage("Divider 3", mainSection);
-            //divider3.anchoredPosition = new Vector2(0.25f * width, 20);
-            //divider3.sizeDelta = new Vector2(1, 200);
-            //divider3.GetComponent<Image>().color = new Color(1, 0.75f, 0);
-
+            // Set up section buttons
             buttons = new SettingsElement[13];
             int top = height / 2 - 5;
             int left = -60;
@@ -443,51 +428,6 @@ namespace BlasphemousRandomizer.UI
 
                 return rect;
             }
-
-            //RectTransform getNewCyclebox(string name, Transform parent, Font font, int boxSize, int fontSize, string[] options, SettingsElement[] boxes)
-            //{
-            //    RectTransform rect = getNewInteractable(name, parent, "", font, Color.yellow, boxSize, fontSize);
-
-            //    SettingsCyclebox cycle = rect.gameObject.AddComponent<SettingsCyclebox>();
-            //    cycle.onStart(options, boxes);
-            //    return rect;
-            //}
-
-            RectTransform getNewButtonbox(string name, Transform parent, string label, Font font, int boxSize, int fontSize, int id)
-            {
-                RectTransform rect = getNewInteractable(name, parent, label, font, Color.yellow, boxSize, fontSize);
-
-                SettingsButtonbox button = rect.gameObject.AddComponent<SettingsButtonbox>();
-                button.onStart(id);
-                return rect;
-            }
-        }
-
-        public static string displayHierarchy(Transform transform, string output, int level, bool components)
-        {
-            // Indent
-            for (int i = 0; i < level; i++)
-                output += "\t";
-
-            // Add this object
-            output += transform.name;
-
-            // Add components
-            if (components)
-            {
-                output += " (";
-                foreach (Component c in transform.GetComponents<Component>())
-                    output += c.ToString() + ", ";
-                output = output.Substring(0, output.Length - 2) + ")";
-            }
-            output += "\n";
-
-            // Add children
-            for (int i = 0; i < transform.childCount; i++)
-                output = displayHierarchy(transform.GetChild(i), output, level + 1, components);
-
-            // Return output
-            return output;
         }
     }
 }

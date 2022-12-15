@@ -148,43 +148,4 @@ namespace BlasphemousRandomizer.UI
             return descriptions[optionIdx];
         }
     }
-
-    // Button box can be clicked to perform an action
-    public class SettingsButtonbox : SettingsElement
-    {
-        private int id;
-
-        public void onStart(int id)
-        {
-            this.id = id;
-            GetComponent<Image>().sprite = Main.Randomizer.getUI(3);
-        }
-
-        // When changing enabled status, change sprite
-        protected override void enable()
-        {
-        }
-        protected override void disable()
-        {
-        }
-
-        protected override void click()
-        {
-            if (id == 0)
-            {
-                // Begin game
-                Main.Randomizer.getSettingsMenu().beginGame();
-            }
-            else if (id == 1)
-            {
-                // Go back to select slots screen
-                Main.Randomizer.getSettingsMenu().closeMenu();
-            }
-        }
-
-        public override string getDescription()
-        {
-            return "";
-        }
-    }
 }
