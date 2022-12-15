@@ -190,6 +190,10 @@ namespace BlasphemousRandomizer
             if (scene == "MainMenu")
                 inGame = false;
 
+            // Update ui menus
+            if (settingsMenu != null)
+                settingsMenu.onLoad(scene);
+
             // Display delayed error message
             if (errorOnLoad != "")
                 UIController.instance.StartCoroutine(showErrorMessage(2.1f));

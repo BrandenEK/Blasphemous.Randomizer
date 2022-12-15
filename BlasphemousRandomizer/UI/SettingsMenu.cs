@@ -24,6 +24,13 @@ namespace BlasphemousRandomizer.UI
         private string currentSeed;
         private int currentSlot;
 
+        public void onLoad(string scene)
+        {
+            // Close menu if its open
+            if (settingsMenu != null && settingsMenu.activeSelf)
+                settingsMenu.SetActive(false);
+        }
+
         public void update()
         {
             if (waiting)
@@ -38,7 +45,7 @@ namespace BlasphemousRandomizer.UI
             SettingsElement currBox = null;
             for (int i = 0; i < buttons.Length; i++)
             {
-                if (pointInsideRect(buttons[i].transform as RectTransform, Input.mousePosition))
+                if (pointInsideRect(buttons[i].transform as RectTransform, Input.mousePosition)) // Only check if the mouse has moved
                 {
                     currBox = buttons[i];
                     break;
@@ -142,13 +149,14 @@ namespace BlasphemousRandomizer.UI
             return config;
         }
 
-        private void showSettingsMenu(bool value)
+        private void showSettingsMenu(bool value, bool changeMenuVisibility)
         {
             if (settingsMenu == null)
                 createSettingsMenu();
             
             Main.Randomizer.Log("Showing settings menu: " + value);
-            settingsMenu.SetActive(value);
+            if (changeMenuVisibility) 
+                settingsMenu.SetActive(value);
             slotsMenu.SetActive(!value);
             Cursor.visible = value;
             menuActive = value;
@@ -159,7 +167,7 @@ namespace BlasphemousRandomizer.UI
             if (!menuActive || waiting) return;
 
             Main.Randomizer.playSoundEffect(0);
-            showSettingsMenu(false);
+            showSettingsMenu(false, false);
             waiting = true;
             Object.FindObjectOfType<SelectSaveSlots>().OnAcceptSlots(999 + currentSlot);
         }
@@ -170,7 +178,7 @@ namespace BlasphemousRandomizer.UI
 
             currentSlot = slot;
             waiting = true;
-            showSettingsMenu(true);
+            showSettingsMenu(true, true);
             setConfigSettings(MainConfig.Default());
         }
 
@@ -179,7 +187,7 @@ namespace BlasphemousRandomizer.UI
             if (!menuActive || waiting) return;
 
             Main.Randomizer.playSoundEffect(1);
-            showSettingsMenu(false);
+            showSettingsMenu(false, true);
         }
 
         private bool pointInsideRect(RectTransform rect, Vector2 point)
@@ -349,12 +357,12 @@ namespace BlasphemousRandomizer.UI
             begin.anchorMin = new Vector2(0.5f, 0.5f);
             begin.anchorMax = new Vector2(0.5f, 0.5f);
             begin.anchoredPosition = new Vector2(10, -50);
-            begin.GetChild(1).GetComponent<Text>().text = "Begin";
+            begin.GetChild(1).GetComponent<Text>().text = " Begin";
             cancel.SetParent(doorsSection, false);
             cancel.anchorMin = new Vector2(0.5f, 0.5f);
             cancel.anchorMax = new Vector2(0.5f, 0.5f);
             cancel.anchoredPosition = new Vector2(10, -80);
-            cancel.GetChild(1).GetComponent<Text>().text = "Cancel";
+            cancel.GetChild(1).GetComponent<Text>().text = " Cancel";
 
             // Create description text
             RectTransform desc = getNewText("Description", mainSection, "", font, 16, Color.white, TextAnchor.MiddleLeft);
@@ -395,19 +403,12 @@ namespace BlasphemousRandomizer.UI
                 return rect;
             }
 
-            RectTransform getNewInteractable(string name, Transform parent, string label, Font font, Color color, int boxSize, int fontSize)
+            RectTransform getNewCheckbox(string name, Transform parent, string label, string desc, Font font, int boxSize, int fontSize)
             {
                 RectTransform rect = getNewImage(name, parent, boxSize);
 
-                RectTransform text = getNewText("Label", rect, label, font, fontSize, color, TextAnchor.MiddleLeft);
+                RectTransform text = getNewText("Label", rect, label, font, fontSize, Color.white, TextAnchor.MiddleLeft);
                 text.anchoredPosition = new Vector2(boxSize + 50, 0);
-
-                return rect;
-            }
-
-            RectTransform getNewCheckbox(string name, Transform parent, string label, string desc, Font font, int boxSize, int fontSize)
-            {
-                RectTransform rect = getNewInteractable(name, parent, label, font, Color.white, boxSize, fontSize);
 
                 SettingsCheckbox check = rect.gameObject.AddComponent<SettingsCheckbox>();
                 check.onStart(desc);
