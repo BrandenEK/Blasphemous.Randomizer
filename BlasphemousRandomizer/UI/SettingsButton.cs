@@ -107,11 +107,11 @@ namespace BlasphemousRandomizer.UI
         // When changing enabled status, change sprite
         protected override void enable()
         {
-            image.sprite = Main.Randomizer.getUIArrow(right ? 2 : 0);
+            image.sprite = Main.Randomizer.getUI(right ? 5 : 4);
         }
         protected override void disable()
         {
-            image.sprite = Main.Randomizer.getUIArrow(right ? 3 : 1);
+            image.sprite = Main.Randomizer.getUI(right ? 7 : 6);
         }
 
         // When clicked, change option on both cycleboxes & disable checkboxes
