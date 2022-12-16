@@ -13,6 +13,7 @@ Progress board: [Trello](https://trello.com/b/FJ42w6X1/blasphemous-randomizer)
 - Cleofas & Crisanta quests are random
 - Option to start with wheel
 - Option to shuffle reliquaries
+- In game settings menu
 
 ### v1.1.0 (Enemizer Improvements)
 - Full enemy randomization
