@@ -11,7 +11,7 @@ namespace BlasphemousRandomizer.UI
     {
         private GameObject settingsMenu;
         private GameObject slotsMenu;
-        private Vector2 scaling;
+        private Vector3 scaling;
 
         private Camera camera;
         private SettingsElement[] buttons;
@@ -193,7 +193,7 @@ namespace BlasphemousRandomizer.UI
         private bool pointInsideRect(RectTransform rect, Vector2 point)
         {
             Vector2 position = camera.WorldToScreenPoint(rect.position);
-            position = new Vector2(position.x * scaling.x, position.y * scaling.y);
+            position = new Vector2(position.x * scaling.x, position.y * scaling.y + scaling.z);
             Vector2 size = new Vector2(rect.rect.width * scaling.x / 2, rect.rect.height * scaling.y / 2);
 
             return point.x >= position.x - size.x && point.x <= position.x + size.x && point.y >= position.y - size.y && point.y <= position.y + size.y;
@@ -202,12 +202,13 @@ namespace BlasphemousRandomizer.UI
         private void createSettingsMenu()
         {
             // Find objects
-            scaling = new Vector2(Screen.width / 640, Screen.height / 360);
+            float xScale = (float)Screen.width / 640;
+            scaling = new Vector3(xScale, xScale, (Screen.height - 360 * xScale) * 0.5f);
             rewired = ReInput.players.GetPlayer(0);
             foreach (Camera cam in Object.FindObjectsOfType<Camera>())
                 if (cam.name == "UICamera")
                     camera = cam;
-
+            
             // Get menus
             Transform menu = Object.FindObjectOfType<NewMainMenu>().transform;
             slotsMenu = menu.GetChild(2).gameObject;
