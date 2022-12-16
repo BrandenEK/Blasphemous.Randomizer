@@ -9,10 +9,12 @@ namespace BlasphemousRandomizer
     public class Main : BaseUnityPlugin
     {
         public static Randomizer Randomizer;
+        private static Main instance;
 
         private void Awake()
         {
             Randomizer = new Randomizer();
+            instance = this;
             Patch();
         }
 
@@ -25,6 +27,16 @@ namespace BlasphemousRandomizer
         {
             Harmony harmony = new Harmony("com.damocles.blasphemous.randomizer");
             harmony.PatchAll();
+        }
+
+        private void Log(string message)
+        {
+            Logger.LogMessage(message);
+        }
+
+        public static void UnityLog(string message)
+        {
+            instance.Log(message);
         }
     }
 }

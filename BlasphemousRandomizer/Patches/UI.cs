@@ -6,6 +6,8 @@ using Tools.Playmaker2.Action;
 using Framework.Achievements;
 using Gameplay.UI;
 using Gameplay.UI.Others.MenuLogic;
+using Gameplay.UI.Others.Buttons;
+using Gameplay.UI.Widgets;
 using BlasphemousRandomizer.Structures;
 using Framework.Managers;
 
@@ -152,6 +154,16 @@ namespace BlasphemousRandomizer.Patches
         {
             if (timeToWait == 0.001f)
                 ___messageRoot.SetActive(false);
+        }
+    }
+
+    // Allow visible cursor for settings menu
+    [HarmonyPatch(typeof(DebugInformation), "Update")]
+    public class DebugInformation_Patch
+    {
+        public static bool Prefix()
+        {
+            return false;
         }
     }
 }

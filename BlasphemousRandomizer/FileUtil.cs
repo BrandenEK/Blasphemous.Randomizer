@@ -2,6 +2,7 @@
 using System.IO;
 using BepInEx;
 using BlasphemousRandomizer.Config;
+using UnityEngine;
 using Newtonsoft.Json;
 
 namespace BlasphemousRandomizer
@@ -97,6 +98,36 @@ namespace BlasphemousRandomizer
 			MainConfig config = MainConfig.Default();
 			saveConfig(config);
 			return config;
+		}
+
+		// Loads an array of square images from a file
+		public static bool loadImages(string fileName, int size, int pixels, int border, out Sprite[] images)
+        {
+			// Read bytes from file
+			if (!readBytes(fileName, out byte[] data))
+            {
+				images = new Sprite[0];
+				return false;
+            }
+
+			// Convert to texture
+			Texture2D tex = new Texture2D(2, 2);
+			tex.LoadImage(data);
+			int w = tex.width, h = tex.height;
+			images = new Sprite[w * h / (size * size)];
+
+			// Insert each image into the array (T-B, L-R)
+			int count = 0;
+			for (int i = h - size; i >= 0; i -= size)
+			{
+				for (int j = 0; j < w; j += size)
+				{
+					Sprite sprite = Sprite.Create(tex, new Rect(j, i, size, size), new Vector2(0.5f, 0.5f), pixels, 0, SpriteMeshType.Tight, new Vector4(border, border, border, border));
+					images[count] = sprite;
+					count++;
+				}
+			}
+			return true;
 		}
 
 		// Saves the config file to the root directory
