@@ -91,8 +91,7 @@ namespace BlasphemousRandomizer.Structures
 				case 9:
 					return new RewardInfo("Mea Culpa Upgrade " + (stats.MeaCulpa.GetUpgrades() + (upgraded ? 1 : 0)) + "/7", "An increase to the strength of your sword.", "Stat increased!", Main.Randomizer.getImage(3));
 				case 10:
-					TearsObject tearsGenericObject = inventoryManager.TearsGenericObject;
-					return new RewardInfo(tearsGenericObject.caption, "A bundle of " + id + " tears.", id + " tears added!", tearsGenericObject.picture);
+					return new RewardInfo($"Tears of Atonement ({id})", $"A bundle of {id} tears.", "Tears acquired!", inventoryManager.TearsGenericObject.picture);
 				default:
 					return new RewardInfo("Error!", "You should not see this.", "You should not see this!", null);
 			}
