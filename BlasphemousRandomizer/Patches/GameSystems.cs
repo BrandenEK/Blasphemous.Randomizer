@@ -144,14 +144,13 @@ namespace BlasphemousRandomizer.Patches
     [HarmonyPatch(typeof(EventManager), "SetFlag")]
     public class EventManager_Patch
     {
-        public static bool Prefix(string id, bool b)
+        public static void Prefix(string id, bool b)
         {
             if (id == "" || id == "REVEAL_FAITH_PLATFORMS")
-                return true;
+                return;
 
             string text = b ? "Setting" : "Clearing";
             Main.Randomizer.Log(text + " flag: " + id);
-            return true;
         }
     }
 

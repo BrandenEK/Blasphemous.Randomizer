@@ -38,7 +38,6 @@ namespace BlasphemousRandomizer.Shufflers
                 Main.Randomizer.Log($"Location {locationId} has already been collected!");
                 return;
             }
-            Core.Events.SetFlag("Location_" + locationId, true, false);
 
             // Get the item
             Item item = getItemAtLocation(locationId);
@@ -49,6 +48,7 @@ namespace BlasphemousRandomizer.Shufflers
             Main.Randomizer.Log($"Giving item ({item.name})");
             Main.Randomizer.itemsCollected++;
             item.addToInventory();
+            Core.Events.SetFlag("Location_" + locationId, true, false);
             lastItem = item;
 
             // Possibly display the item

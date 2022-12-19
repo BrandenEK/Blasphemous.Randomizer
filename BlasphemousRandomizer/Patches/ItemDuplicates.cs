@@ -212,6 +212,11 @@ namespace BlasphemousRandomizer.Patches
             {
 				flag = Core.Events.GetFlag("D06Z01S25_BOSSDEAD") && Core.InventoryManager.IsSwordOwned("HE201");
             }
+			// Perpetva defeat
+			if (scene == "D03Z01S06" && text == "BROTHERS_EVENTPERPETVA_COMPLETED")
+            {
+				flag = Core.Events.GetFlag("BROTHERS_PERPETUA_DEFEATED");
+            }
 			// Mercy shop
 			if (scene == "D01BZ02S01" && text == "QI58_USED")
 			{

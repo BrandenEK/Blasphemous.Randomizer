@@ -49,10 +49,12 @@ namespace BlasphemousRandomizer.Patches
         {
             if (__instance.cutscene != null && Main.Randomizer.shouldSkipCutscene(__instance.cutscene.name))
             {
+                Main.Randomizer.Log("Skipping cutscene: " + __instance.cutscene.name);
                 __instance.Finish();
                 __instance.Fsm.Event(__instance.onSuccess);
                 return false;
             }
+            Main.Randomizer.Log("Playing cutscene: " + __instance.cutscene.name);
             return true;
         }
     }
