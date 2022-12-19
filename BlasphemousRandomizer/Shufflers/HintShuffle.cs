@@ -29,6 +29,8 @@ namespace BlasphemousRandomizer.Shufflers
 
         public void Shuffle(int seed)
         {
+            if (!Main.Randomizer.gameConfig.general.allowHints)
+                return;
             if (!filler.isValid())
             {
                 Main.Randomizer.Log("Error: Hint data could not be loaded!");

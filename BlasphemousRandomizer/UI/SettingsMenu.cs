@@ -107,6 +107,7 @@ namespace BlasphemousRandomizer.UI
             // Load config into buttons
             ((SettingsCheckbox)buttons[0]).setSelected(config.general.teleportationAlwaysUnlocked);
             ((SettingsCheckbox)buttons[1]).setSelected(config.general.skipCutscenes);
+            ((SettingsCheckbox)buttons[13]).setSelected(config.general.allowHints);
             ((SettingsCheckbox)buttons[2]).setSelected(config.general.enablePenitence);
             ((SettingsCheckbox)buttons[3]).setSelected(config.items.lungDamage);
             ((SettingsCheckbox)buttons[4]).setSelected(config.items.disableNPCDeath);
@@ -134,6 +135,7 @@ namespace BlasphemousRandomizer.UI
             MainConfig config = MainConfig.Default();
             config.general.teleportationAlwaysUnlocked = ((SettingsCheckbox)buttons[0]).getSelected();
             config.general.skipCutscenes = ((SettingsCheckbox)buttons[1]).getSelected();
+            config.general.allowHints = ((SettingsCheckbox)buttons[13]).getSelected();
             config.general.enablePenitence = ((SettingsCheckbox)buttons[2]).getSelected();
             config.items.lungDamage = ((SettingsCheckbox)buttons[3]).getSelected();
             config.items.disableNPCDeath = ((SettingsCheckbox)buttons[4]).getSelected();
@@ -254,7 +256,7 @@ namespace BlasphemousRandomizer.UI
             mainSection.anchoredPosition = new Vector2(0, 185);
 
             // Set up section buttons
-            buttons = new SettingsElement[13];
+            buttons = new SettingsElement[14];
             int top = height / 2 - 5;
             int left = -60;
 
@@ -275,8 +277,12 @@ namespace BlasphemousRandomizer.UI
             cutscenesOption.anchoredPosition = new Vector2(left, top - 100);
             buttons[1] = cutscenesOption.GetComponent<SettingsCheckbox>();
 
+            RectTransform hintsOption = getNewCheckbox("Hints", generalSection, "Allow Hints", "Corpses will give a hint about valuable items when interacted with", font, 15, 16);
+            hintsOption.anchoredPosition = new Vector2(left, top - 130);
+            buttons[13] = hintsOption.GetComponent<SettingsCheckbox>();
+
             RectTransform penitenceOption = getNewCheckbox("Penitence", generalSection, "Allow Penitence", "You are able to choose a penitence in the Brotherhood", font, 15, 16);
-            penitenceOption.anchoredPosition = new Vector2(left, top - 130);
+            penitenceOption.anchoredPosition = new Vector2(left, top - 160);
             buttons[2] = penitenceOption.GetComponent<SettingsCheckbox>();
 
             RectTransform seed = getNewText("Seed", generalSection, "Seed: ", font, 16, Color.yellow, TextAnchor.MiddleCenter);

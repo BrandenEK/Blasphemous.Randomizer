@@ -33,7 +33,7 @@ namespace BlasphemousRandomizer.Patches
         {
             public static bool Prefix(string objectIdStting, ItemIsEquiped __instance, ref bool __result)
             {
-                if (objectIdStting == "RE04" && __instance.Owner.name != "LeftPuzzleCheck" && __instance.Owner.name != "RightPuzzleCheck")
+                if (objectIdStting == "RE04" && Main.Randomizer.gameConfig.general.allowHints && __instance.Owner.name != "LeftPuzzleCheck" && __instance.Owner.name != "RightPuzzleCheck")
                 {
                     __result = true;
                     return false;
@@ -46,7 +46,7 @@ namespace BlasphemousRandomizer.Patches
         {
             public static bool Prefix(ref bool __result, InventoryObjectInspector ___requiredItem)
             {
-                if (___requiredItem.id == "RE04")
+                if (___requiredItem.id == "RE04" && Main.Randomizer.gameConfig.general.allowHints)
                 {
                     __result = true;
                     return false;

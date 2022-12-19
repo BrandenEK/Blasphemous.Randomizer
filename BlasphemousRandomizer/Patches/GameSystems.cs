@@ -129,7 +129,7 @@ namespace BlasphemousRandomizer.Patches
                 if (current.answersLines.Count > 1)
                     current.answersLines.RemoveAt(1);
             }
-            else if (conversiationId.Length == 8 && int.TryParse(conversiationId.Substring(4), out int id) && id > 2000 && id < 2035)
+            else if (Main.Randomizer.gameConfig.general.allowHints && conversiationId.Length == 8 && int.TryParse(conversiationId.Substring(4), out int id) && id > 2000 && id < 2035)
             {
                 // Change corpse hints
                 string hint = Main.Randomizer.hintShuffler.getHint(conversiationId);
