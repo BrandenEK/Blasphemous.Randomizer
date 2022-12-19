@@ -15,7 +15,7 @@ namespace BlasphemousRandomizer.Patches
 {
     // Add randomizer version to main menu
     [HarmonyPatch(typeof(VersionNumber), "Start")]
-    public class VersionNumberPatch
+    public class VersionNumber_Patch
     {
         public static void Postfix(VersionNumber __instance)
         {
@@ -61,7 +61,7 @@ namespace BlasphemousRandomizer.Patches
 
     // Allow unequipping true heart
     [HarmonyPatch(typeof(ItemTemporalEffect), "ContainsEffect")]
-    public class ItemTemporalEffect_ContainsPatch
+    public class ItemTemporalEffectContains_Patch
     {
         public static bool Prefix(ref bool __result, ItemTemporalEffect.PenitentEffects effect)
         {
@@ -117,7 +117,7 @@ namespace BlasphemousRandomizer.Patches
 
     // Change achievement message & time
     [HarmonyPatch(typeof(PopupAchievementWidget), "ShowPopupCorrutine")]
-    public class PopupAchievementWidget_Show_Patch
+    public class PopupAchievementWidgetShow_Patch
     {
         public static void Prefix(RectTransform ___PopUp, ref float ___startDelay, ref float ___popupShowTime, ref float ___endTime, Achievement achievement)
         {
@@ -126,6 +126,22 @@ namespace BlasphemousRandomizer.Patches
             ___endTime = 0.1f;
             ___PopUp.GetChild(1).GetComponent<Text>().text = achievement.Name;
             ___PopUp.GetChild(2).GetComponent<Text>().text = achievement.Description;
+        }
+    }
+    [HarmonyPatch(typeof(Achievement), "GetNameLocalizationTerm")]
+    public class Acheivement_Patch
+    {
+        public static void Postfix(ref string __result) // might not be necessary if multiworld error was because of lastItem.  I doubt it is tho
+        {
+            __result = "ignore";
+        }
+    }
+    [HarmonyPatch(typeof(I2.Loc.Localize), "SetTerm", typeof(string))]
+    public class Localize_Patch
+    {
+        public static bool Prefix(string primary)
+        {
+            return primary == null || primary != "ignore";
         }
     }
 
