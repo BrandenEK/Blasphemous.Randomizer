@@ -211,6 +211,23 @@ namespace BlasphemousRandomizer
                 Object.Destroy(audio);
                 obj.AddComponent<AudioLoader>();
             }
+
+            // Give items for special scenes
+            if (scene == "D01Z04S19")
+            {
+                Main.Randomizer.itemShuffler.giveItem("QI38", true);  // Change to spawn item pickup at center of room
+                Core.Events.SetFlag("ATTRITION_ALTAR_DONE", true, false);
+            }
+            else if (scene == "D03Z03S16")
+            {
+                Main.Randomizer.itemShuffler.giveItem("QI39", true);
+                Core.Events.SetFlag("CONTRITION_ALTAR_DONE", true, false);
+            }
+            else if (scene == "D02Z03S21")
+            {
+                Main.Randomizer.itemShuffler.giveItem("QI40", true);
+                Core.Events.SetFlag("COMPUNCTION_ALTAR_DONE", true, false);
+            }
         }
 
         // Set up a new game

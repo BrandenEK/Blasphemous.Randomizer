@@ -76,23 +76,9 @@ namespace BlasphemousRandomizer.Patches
                         render.sprite = item == null ? null : item.getRewardInfo(true).sprite;
                     }
                 }
-                // Give holy visage reward & disable altar
-                else if (scene == "D01Z04S19")
+                // Disable holy visage altar
+                else if (scene == "D01Z04S19" || scene == "D03Z03S16" || scene == "D02Z03S21")
                 {
-                    Main.Randomizer.itemShuffler.giveItem("QI38", true);  // Change to spawn item pickup at center of room
-                    Core.Events.SetFlag("ATTRITION_ALTAR_DONE", true, false);
-                    __instance.gameObject.SetActive(false);
-                }
-                else if (scene == "D03Z03S16")
-                {
-                    Main.Randomizer.itemShuffler.giveItem("QI39", true);
-                    Core.Events.SetFlag("CONTRITION_ALTAR_DONE", true, false);
-                    __instance.gameObject.SetActive(false);
-                }
-                else if (scene == "D02Z03S21")
-                {
-                    Main.Randomizer.itemShuffler.giveItem("QI40", true);
-                    Core.Events.SetFlag("COMPUNCTION_ALTAR_DONE", true, false);
                     __instance.gameObject.SetActive(false);
                 }
             }
