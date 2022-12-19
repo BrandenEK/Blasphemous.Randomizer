@@ -152,6 +152,11 @@ namespace BlasphemousRandomizer.Patches
 					flag = Core.InventoryManager.IsQuestItemOwned("QI40");
 				}
 			}
+			// Rooftops elevator - Only unlock new floors when a mask is placed
+			if (scene == "D06Z01S01" && (text == "D04Z02S17_ARCHDEACON1ITEMTAKEN" || text == "D05Z01S15_ARCHDEACON2ITEMTAKEN" || text == "D02Z03S19_ARCHDEACON3ITEMTAKEN"))
+            {
+				flag = false;
+            }
 			// Albero sick house - Only give final reward once all herbs are delivered
 			if (scene == "D01Z02S02" && text == "D09Z01S03_BOSSDEAD" && (!Core.Events.GetFlag("TIRSO_QI19_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI20_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI37_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI63_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI64_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI65_DELIVERED")))
 			{
