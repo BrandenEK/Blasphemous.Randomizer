@@ -9,14 +9,22 @@ namespace BlasphemousRandomizer.Structures
     {
 		public string name;
         public int type;
-        public int id;
 		public bool progression;
 
-		public Item(string name, int type, int id, bool progression)
+		public int tearAmount
+		{
+            get
+            {
+				if (type != 10) return 0;
+				int s = name.IndexOf('['), e = name.IndexOf(']');
+				return int.Parse(name.Substring(s + 1, e - s - 1));
+			}
+		}
+
+		public Item(string name, int type, bool progression)
 		{
 			this.name = name;
 			this.type = type;
-			this.id = id;
 			this.progression = progression;
 		}
 
@@ -51,7 +59,7 @@ namespace BlasphemousRandomizer.Structures
 				case 9:
 					stats.MeaCulpa.Upgrade(); stats.Strength.Upgrade(); return;
 				case 10:
-					stats.Purge.Current += id; return;
+					stats.Purge.Current += tearAmount; return;
 				default:
 					return;
 			}
@@ -91,7 +99,7 @@ namespace BlasphemousRandomizer.Structures
 				case 9:
 					return new RewardInfo("Mea Culpa Upgrade " + (stats.MeaCulpa.GetUpgrades() + (upgraded ? 1 : 0)) + "/7", "An increase to the strength of your sword.", "Stat increased!", Main.Randomizer.getImage(3));
 				case 10:
-					return new RewardInfo($"Tears of Atonement ({id})", $"A bundle of {id} tears.", "Tears acquired!", inventoryManager.TearsGenericObject.picture);
+					return new RewardInfo($"Tears of Atonement ({tearAmount})", $"A bundle of {tearAmount} tears.", "Tears acquired!", inventoryManager.TearsGenericObject.picture);
 				default:
 					return new RewardInfo("Error!", "You should not see this.", "You should not see this!", null);
 			}

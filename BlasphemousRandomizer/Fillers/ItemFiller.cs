@@ -248,7 +248,7 @@ namespace BlasphemousRandomizer.Fillers
             for (int i = 0; i < progressionItems.Count - count; i++)
             {
                 Item item = progressionItems[i];
-                if (item.type == 5 && (item.id == 38 || item.id == 39 || item.id == 40))
+                if (item.type == 5 && (item.name == "QI38" || item.name == "QI39" || item.name == "QI40"))
                 {
                     progressionItems.RemoveAt(i);
                     progressionItems.Add(item);
@@ -278,14 +278,14 @@ namespace BlasphemousRandomizer.Fillers
 			// Create progression items
 			ProgressiveItem[] progressiveItems = new ProgressiveItem[]
 			{
-				new ProgressiveItem("RW", 0, 17, true, new string[] { "RB17", "RB18", "RB19" }, true),
-				new ProgressiveItem("BW", 0, 24, true, new string[] { "RB24", "RB25", "RB26" }, true),
-				new ProgressiveItem("TH", 5, 31, true, new string[] { "QI31", "QI32", "QI33", "QI34", "QI35", "QI79", "QI80", "QI81" }, true),
-				new ProgressiveItem("RK", 5, 44, true, new string[] { "QI44", "QI52", "QI53", "QI54", "QI55", "QI56" }, false),
-				new ProgressiveItem("BV", 5, 45, true, new string[] { "QI41", "QI45", "QI46", "QI47", "QI48", "QI49", "QI50", "QI51" }, false),
-				new ProgressiveItem("QS", 5, 101, true, new string[] { "QI101", "QI102", "QI103", "QI104", "QI105" }, false),
-				new ProgressiveItem("CH", 6, 0, true, new string[38], false),
-				new ProgressiveItem("CO", 4, 0, true, new string[44], false)
+				new ProgressiveItem("RW", 0, true, new string[] { "RB17", "RB18", "RB19" }, true),
+				new ProgressiveItem("BW", 0, true, new string[] { "RB24", "RB25", "RB26" }, true),
+				new ProgressiveItem("TH", 5, true, new string[] { "QI31", "QI32", "QI33", "QI34", "QI35", "QI79", "QI80", "QI81" }, true),
+				new ProgressiveItem("RK", 5, true, new string[] { "QI44", "QI52", "QI53", "QI54", "QI55", "QI56" }, false),
+				new ProgressiveItem("BV", 5, true, new string[] { "QI41", "QI45", "QI46", "QI47", "QI48", "QI49", "QI50", "QI51" }, false),
+				new ProgressiveItem("QS", 5, true, new string[] { "QI101", "QI102", "QI103", "QI104", "QI105" }, false),
+				new ProgressiveItem("CH", 6, true, new string[38], false),
+				new ProgressiveItem("CO", 4, true, new string[44], false)
 			};
 			for (int i = 1; i <= 38; i++)
 				progressiveItems[6].items[i - 1] = "CH" + i.ToString("00");
