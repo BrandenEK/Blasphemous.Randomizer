@@ -24,7 +24,7 @@ namespace BlasphemousRandomizer.Fillers
         public void Fill(int seed, Dictionary<string, string> output)
         {
             initialize(seed);
-            Dictionary<string, Item> newItems = Main.Randomizer.itemShuffler.getNewItems();
+            Dictionary<string, Item> newItems = Main.Randomizer.itemShuffler.getNewItems(); // Can change this to loadLocations & itemShuffler.getItemAtLocation once datastorage is implemented
 
             // Get list of dialog ids & possible hint locations
             List<int> dialogIds = new List<int>();

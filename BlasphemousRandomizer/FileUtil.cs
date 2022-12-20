@@ -88,18 +88,6 @@ namespace BlasphemousRandomizer
 			return true;
 		}
 
-		// Loads the config file from the root directory
-		public static MainConfig loadConfig()
-		{
-			if (read("randomizer.cfg", false, out string json))
-			{
-				return JsonConvert.DeserializeObject<MainConfig>(json);
-			}
-			MainConfig config = MainConfig.Default();
-			saveConfig(config);
-			return config;
-		}
-
 		// Loads an array of square images from a file
 		public static bool loadImages(string fileName, int size, int pixels, int border, out Sprite[] images)
         {
@@ -130,10 +118,22 @@ namespace BlasphemousRandomizer
 			return true;
 		}
 
+		// Loads the config file from the root directory
+		public static MainConfig loadConfig()
+		{
+			if (read("randomizer.cfg", false, out string json))
+			{
+				return JsonConvert.DeserializeObject<MainConfig>(json); // Unused
+			}
+			MainConfig config = MainConfig.Default();
+			saveConfig(config);
+			return config;
+		}
+
 		// Saves the config file to the root directory
 		public static void saveConfig(MainConfig config)
 		{
-			writeFull("randomizer.cfg", JsonConvert.SerializeObject(config, Formatting.Indented));
+			writeFull("randomizer.cfg", JsonConvert.SerializeObject(config, Formatting.Indented)); // Unused
 		}
 
 		// Reads object from json file in data folder
@@ -144,25 +144,18 @@ namespace BlasphemousRandomizer
 				obj = default(T);
 				return false;
 			}
-			obj = JsonConvert.DeserializeObject<T>(json);
+			obj = jsonObject<T>(json);
 			return true;
 		}
 
 		// Writes object to json file in data folder
 		public static void saveJson<T>(string fileName, T obj)
 		{
-			writeFull(fileName, JsonConvert.SerializeObject(obj, Formatting.Indented));
+			writeFull(fileName, jsonString(obj));
 		}
 
-		/*[Serializable]
-		private class Wrapper<T>
-		{
-			public List<T> Items;
-
-			public Wrapper(List<T> list)
-            {
-				Items = list;
-            }
-		}*/
+		// Convert object to/from json
+		public static T jsonObject<T>(string json) { return JsonConvert.DeserializeObject<T>(json); }
+		public static string jsonString<T>(T obj) { return JsonConvert.SerializeObject(obj, Formatting.Indented); }
 	}
 }
