@@ -42,8 +42,11 @@ namespace BlasphemousRandomizer.Fillers
 			if (locations.Count != items.Count)
 				return false;
 
-            // Place vanilla items & get list of locations that are vanilla
-            fillVanillaItems(locations, vanillaLocations, items);
+			// Shuffle order of progressive items
+			shuffleProgressiveItems(items); // Use only one instance of each item
+
+			// Place vanilla items & get list of locations that are vanilla
+			fillVanillaItems(locations, vanillaLocations, items);
             // Get list of items that are progression
             getProgressionItems(items, progressionItems);
 
@@ -273,19 +276,44 @@ namespace BlasphemousRandomizer.Fillers
             }
         }
 
+		// Randomizes the order of certain progressive items' rewards
+		private void shuffleProgressiveItems(List<Item> items)
+        {
+			bool bonesDone = false;
+			for (int i = 0; i < items.Count; i++)
+            {
+				if (items[i].name == "CO") // Can remove this once better datastorage is implemented
+				{
+					if (bonesDone) continue;
+					bonesDone = true;
+				}
+				if (items[i] is ProgressiveItem)
+                {
+					ProgressiveItem progressive = (ProgressiveItem)items[i];
+					if (progressive.randomOrder)
+                    {
+						List<string> order = new List<string>(progressive.items);
+						order.Sort(); // Sort
+						shuffleList(order); // Randomize
+						progressive.items = order.ToArray();
+					}
+				}
+            }
+        }
+
 		private void addSpecialItems(List<Item> items)
         {
 			// Create progression items
 			ProgressiveItem[] progressiveItems = new ProgressiveItem[]
 			{
-				new ProgressiveItem("RW", 0, true, new string[] { "RB17", "RB18", "RB19" }, true),
-				new ProgressiveItem("BW", 0, true, new string[] { "RB24", "RB25", "RB26" }, true),
-				new ProgressiveItem("TH", 5, true, new string[] { "QI31", "QI32", "QI33", "QI34", "QI35", "QI79", "QI80", "QI81" }, true),
-				new ProgressiveItem("RK", 5, true, new string[] { "QI44", "QI52", "QI53", "QI54", "QI55", "QI56" }, false),
-				new ProgressiveItem("BV", 5, true, new string[] { "QI41", "QI45", "QI46", "QI47", "QI48", "QI49", "QI50", "QI51" }, false),
-				new ProgressiveItem("QS", 5, true, new string[] { "QI101", "QI102", "QI103", "QI104", "QI105" }, false),
-				new ProgressiveItem("CH", 6, true, new string[38], false),
-				new ProgressiveItem("CO", 4, true, new string[44], false)
+				new ProgressiveItem("RW", 0, true, new string[] { "RB17", "RB18", "RB19" }, false, true),
+				new ProgressiveItem("BW", 0, true, new string[] { "RB24", "RB25", "RB26" }, false, true),
+				new ProgressiveItem("TH", 5, true, new string[] { "QI31", "QI32", "QI33", "QI34", "QI35", "QI79", "QI80", "QI81" }, false, true),
+				new ProgressiveItem("RK", 5, true, new string[] { "QI44", "QI52", "QI53", "QI54", "QI55", "QI56" }, false, false),
+				new ProgressiveItem("BV", 5, true, new string[] { "QI41", "QI45", "QI46", "QI47", "QI48", "QI49", "QI50", "QI51" }, false, false),
+				new ProgressiveItem("QS", 5, true, new string[] { "QI101", "QI102", "QI103", "QI104", "QI105" }, false, false),
+				new ProgressiveItem("CH", 6, true, new string[38], false, false),
+				new ProgressiveItem("CO", 4, true, new string[44], true, false)
 			};
 			for (int i = 1; i <= 38; i++)
 				progressiveItems[6].items[i - 1] = "CH" + i.ToString("00");

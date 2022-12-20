@@ -5,13 +5,15 @@ namespace BlasphemousRandomizer.Structures
     public class ProgressiveItem : Item
     {
         public string[] items;
+        public bool randomOrder;
         public bool removePrevious;
 
         // Used for wax beads, thorns, cherubs, rosary knots, bile flasks, quicksilver, collectibles
 
-        public ProgressiveItem(string name, int type, bool progression, string[] items, bool removePrevious) : base(name, type, progression)
+        public ProgressiveItem(string name, int type, bool progression, string[] items, bool randomOrder, bool removePrevious) : base(name, type, progression)
         {
             this.items = items;
+            this.randomOrder = randomOrder;
             this.removePrevious = removePrevious;
         }
 
