@@ -15,14 +15,14 @@
 	{
 		"id": "EN03",
 		"name": "Bell Carrier",
-		"type": 0,
+		"type": 1,
 		"difficulty": 4,
 		"yOffset": 1.65
 	},
 	{
 		"id": "EN04",
 		"name": "Bell Ghost",
-		"type": 0,
+		"type": 4,
 		"difficulty": 4
 	},
 	{
@@ -41,33 +41,33 @@
 	{
 		"id": "EN07",
 		"name": "Tizona",
-		"type": 0,
+		"type": 4,
 		"difficulty": 6
 	},
 	{
 		"id": "EN09",
 		"name": "Headless Chamberlain (Normal)",
-		"type": 0,
+		"type": 2,
 		"difficulty": 8,
 		"yOffset": -0.19
 	},
 	{
 		"id": "EN09_E",
 		"name": "Headless Chamberlain (Exploding)",
-		"type": 0,
+		"type": 2,
 		"difficulty": 8,
 		"yOffset": -0.19
 	},
 	{
 		"id": "EN11",
 		"name": "Wakeful Alcove",
-		"type": 0,
+		"type": 1,
 		"difficulty": 6
 	},
 	{
 		"id": "EN12",
 		"name": "Nun",
-		"type": 0,
+		"type": 2,
 		"difficulty": 6
 	},
 	{
@@ -79,46 +79,46 @@
 	{
 		"id": "EN14",
 		"name": "Spear of the Cathedra",
-		"type": 0,
+		"type": 1,
 		"difficulty": 4,
 		"yOffset": 3.2
 	},
 	{
 		"id": "EN15",
 		"name": "Guardainfante",
-		"type": 0,
+		"type": 3,
 		"difficulty": 2,
 		"yOffset": 0.18
 	},
 	{
 		"id": "EN16",
 		"name": "Processioner",
-		"type": 0,
+		"type": 3,
 		"difficulty": 7,
 		"yOffset": 0.1
 	},
 	{
 		"id": "EN17",
 		"name": "Boomerang",
-		"type": 0,
+		"type": 1,
 		"difficulty": 4
 	},
 	{
 		"id": "EN18",
 		"name": "Reek Leader",
-		"type": 0,
+		"type": 2,
 		"difficulty": 3
 	},
 	{
 		"id": "EN20",
 		"name": "Phalaris",
-		"type": 0,
+		"type": 1,
 		"difficulty": 4
 	},
 	{
 		"id": "EN21",
 		"name": "Blazing Icon",
-		"type": 0,
+		"type": 2,
 		"difficulty": 6
 	},
 	{
@@ -130,7 +130,7 @@
 	{
 		"id": "EN23",
 		"name": "Portrait",
-		"type": 0,
+		"type": 4,
 		"difficulty": 8
 	},
 	{
@@ -142,13 +142,13 @@
 	{
 		"id": "EN26",
 		"name": "Custodian of the Stained Glass",
-		"type": 0,
+		"type": 2,
 		"difficulty": 7
 	},
 	{
 		"id": "EN27",
 		"name": "Wax Baroness",
-		"type": 0,
+		"type": 4,
 		"difficulty": 6
 	},
 	{
@@ -160,70 +160,70 @@
 	{
 		"id": "EN29",
 		"name": "Monfrake",
-		"type": 0,
+		"type": 2,
 		"difficulty": 7
 	},
 	{
 		"id": "EN31",
 		"name": "Seraph",
-		"type": 0,
+		"type": 4,
 		"difficulty": 9
 	},
 	{
 		"id": "EN32",
 		"name": "Bellido",
-		"type": 0,
+		"type": 2,
 		"difficulty": 3
 	},
 	{
 		"id": "EN33",
 		"name": "Maniac",
-		"type": 0,
+		"type": 1,
 		"difficulty": 10
 	},
 	{
 		"id": "EN34",
 		"name": "Legionary",
-		"type": 0,
+		"type": 5,
 		"difficulty": 9,
 		"yOffset": 0.18
 	},
 	{
 		"id": "EN201",
 		"name": "Anchor Roller",
-		"type": 0,
+		"type": 2,
 		"difficulty": 11
 	},
 	{
 		"id": "EN202",
 		"name": "Mast Figurehead",
-		"type": 0,
+		"type": 3,
 		"difficulty": 11
 	},
 	{
 		"id": "EN203",
 		"name": "Drowned Corpse",
-		"type": 0,
+		"type": 5,
 		"difficulty": 11
 	},
 	{
 		"id": "EV01",
 		"name": "Grey Flagellant",
-		"type": 0,
+		"type": 1,
 		"difficulty": 3,
 		"yOffset": 1.75
 	},
 	{
 		"id": "EV02",
 		"name": "Red Acolyte",
-		"type": 0,
+		"type": 1,
 		"difficulty": 7,
 		"yOffset": 1.7
 	},
 	{
 		"id": "EV03",
 		"name": "Wraith",
-		"type": 0,
+		"type": 4,
 		"difficulty": 3
 	},
 	{
@@ -253,90 +253,90 @@
 	{
 		"id": "EV13",
 		"name": "Jondo Bell Ringer",
-		"type": 0,
+		"type": 2,
 		"difficulty": 3,
 		"yOffset": -0.19
 	},
 	{
 		"id": "EV14",
 		"name": "Convent Bell Ringer",
-		"type": 0,
+		"type": 2,
 		"difficulty": 6,
 		"yOffset": -0.19
 	},
 	{
 		"id": "EV15",
 		"name": "Wakeful Alcove (Snowy)",
-		"type": 0,
+		"type": 1,
 		"difficulty": 4
 	},
 	{
 		"id": "EV17",
 		"name": "Winged Face",
-		"type": 0,
+		"type": 4,
 		"difficulty": 6
 	},
 	{
 		"id": "EV18",
 		"name": "Ink Baroness",
-		"type": 0,
+		"type": 4,
 		"difficulty": 8
 	},
 	{
 		"id": "EV19",
 		"name": "Lion Head",
-		"type": 0,
+		"type": 3,
 		"difficulty": 10,
 		"yOffset": 0.1
 	},
 	{
 		"id": "EV20",
 		"name": "Golden Corpse",
-		"type": 0,
+		"type": 5,
 		"difficulty": 8
 	},
 	{
 		"id": "EV21",
 		"name": "Walking Tomb",
-		"type": 0,
+		"type": 1,
 		"difficulty": 4
 	},
 	{
 		"id": "EV22",
 		"name": "Librarian",
-		"type": 0,
+		"type": 1,
 		"difficulty": 8
 	},
 	{
 		"id": "EV23",
 		"name": "Processioner (Angel)",
-		"type": 0,
+		"type": 3,
 		"difficulty": 9,
 		"yOffset": 0.1
 	},
 	{
 		"id": "EV24",
 		"name": "Blue Jumper",
-		"type": 0,
+		"type": 1,
 		"difficulty": 7
 	},
 	{
 		"id": "EV26",
 		"name": "Isabel",
-		"type": 0,
+		"type": 3,
 		"difficulty": 8
 	},
 	{
 		"id": "EV27",
 		"name": "Chained Angel",
-		"type": 0,
+		"type": 2,
 		"difficulty": 9,
 		"yOffset": 2
 	},
 	{
 		"id": "EV29",
 		"name": "Winged Face (Cannon)",
-		"type": 0,
+		"type": 4,
 		"difficulty": 9
 	}
 ]
