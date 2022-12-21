@@ -12,7 +12,7 @@ namespace BlasphemousRandomizer.Fillers
 
 			// Get lists
 			List<EnemyLocation> locations = new List<EnemyLocation>(Main.Randomizer.data.enemyLocations.Values);
-			List<string> enemyIds = new List<string>(EnemyLoader.enemyIds);
+			List<string> enemyIds = new List<string>(Main.Randomizer.data.enemies.Keys);
 
 			// Get each list of enemies of each type
 			List<string>[] enemyIdsByType = new List<string>[] { new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>() };
