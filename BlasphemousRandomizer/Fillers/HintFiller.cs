@@ -5,22 +5,6 @@ namespace BlasphemousRandomizer.Fillers
 {
     public class HintFiller : Filler
     {
-        private Dictionary<string, string> locationHints;
-        private Dictionary<string, string> itemHints;
-
-        public HintFiller()
-        {
-            locationHints = new Dictionary<string, string>();
-            itemHints = new Dictionary<string, string>();
-            FileUtil.parseFileToDictionary("hints_locations.dat", locationHints);
-            FileUtil.parseFileToDictionary("hints_items.dat", itemHints);
-        }
-
-        public override bool isValid()
-        {
-            return locationHints.Count > 0 && itemHints.Count > 0;
-        }
-
         public void Fill(int seed, Dictionary<string, string> output)
         {
             initialize(seed);
@@ -75,7 +59,7 @@ namespace BlasphemousRandomizer.Fillers
         {
             //Get hints
             string locationHint = "", itemHint = "";
-            if (!locationHints.TryGetValue(location, out locationHint) || !itemHints.TryGetValue(item.name, out itemHint))
+            if (!Main.Randomizer.data.locationHints.TryGetValue(location, out locationHint) || !Main.Randomizer.data.itemHints.TryGetValue(item.name, out itemHint))
             {
                 return "???";
             }

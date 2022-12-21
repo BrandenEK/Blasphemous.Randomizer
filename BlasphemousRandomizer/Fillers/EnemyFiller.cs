@@ -6,24 +6,12 @@ namespace BlasphemousRandomizer.Fillers
 {
     public class EnemyFiller : Filler
     {
-		private List<EnemyLocation> allLocations;
-
-        public EnemyFiller()
-        {
-			FileUtil.loadJson("locations_enemies.json", out allLocations);
-        }
-
-        public override bool isValid()
-        {
-			return allLocations.Count > 0;
-        }
-
 		public void Fill(int seed, EnemyConfig config, Dictionary<string, string> output)
 		{
 			initialize(seed);
 
 			// Get lists
-			List<EnemyLocation> locations = new List<EnemyLocation>(allLocations);
+			List<EnemyLocation> locations = new List<EnemyLocation>(Main.Randomizer.data.enemyLocations.Values);
 			List<string> enemyIds = new List<string>(EnemyLoader.enemyIds);
 
 			// Get each list of enemies of each type
@@ -107,16 +95,6 @@ namespace BlasphemousRandomizer.Fillers
                     }
 				}
 			}
-        }
-
-		// Should probably find a better way of holding this data
-		public void fillEnemyOffsets(Dictionary<string, float> offsets)
-        {
-			offsets.Clear();
-			for (int i = 0; i < allLocations.Count; i++)
-            {
-				offsets.Add(allLocations[i].locationId, allLocations[i].yOffset);
-            }
         }
 
 		// 0 - normal, 1 - weak (unused), 2 - large, 3 - flying, 4 - vanilla (for now)

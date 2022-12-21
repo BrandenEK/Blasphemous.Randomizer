@@ -61,8 +61,9 @@ namespace BlasphemousRandomizer
 		}
 
 		// Read file and split each line into a key value pair
-		public static bool parseFileToDictionary(string fileName, Dictionary<string, string> output)
+		public static bool parseFileToDictionary(string fileName, out Dictionary<string, string> output)
 		{
+			output = new Dictionary<string, string>();
 			if (!parseFiletoArray(fileName, out string[] array))
             {
 				return false;

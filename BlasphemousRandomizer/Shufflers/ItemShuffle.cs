@@ -90,11 +90,8 @@ namespace BlasphemousRandomizer.Shufflers
         // Shuffle the items - called when loading a game
         public void Shuffle(int seed)
         {
-            if (!filler.isValid())
-            {
-                Main.Randomizer.Log("Error: Item data could not be loaded!");
+            if (!Main.Randomizer.data.isValid)
                 return;
-            }
 
             newItems = new Dictionary<string, Item>();
             int attempt = 0, maxAttempts = 30;
@@ -126,14 +123,11 @@ namespace BlasphemousRandomizer.Shufflers
         public string GetSpoiler()
         {
             string spoiler = "================\nItems\n================\n\n";
-            string template;
-            Dictionary<string, string> itemNames = new Dictionary<string, string>();
-
-            // Ensure data is valid
-            if (!FileUtil.read("spoiler_items.dat", true, out template) || !FileUtil.parseFileToDictionary("names_items.dat", itemNames) || newItems == null)
-            {
+            if (!Main.Randomizer.data.isValid)
                 return spoiler + "Failed to generate item spoiler.\n\n";
-            }
+
+            string template = Main.Randomizer.data.spoilerTemplate;
+            Dictionary<string, string> itemNames = Main.Randomizer.data.itemNames;
 
             for (int left = template.IndexOf("{"); left > 0; left = template.IndexOf("{"))
             {

@@ -32,7 +32,7 @@ namespace BlasphemousRandomizer.Fillers
 
         public virtual bool isValid()
         {
-            return true;
+            return true; // Might not be needed anymore
         }
     }
 }

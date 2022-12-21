@@ -14,6 +14,7 @@
         //Until json
         public delegate bool reachable(InventoryData data);
         public reachable isReachable;
+
         public ItemLocation(string id, string originalItem, string type, reachable isReachable)
         {
             this.id = id;

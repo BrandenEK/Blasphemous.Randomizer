@@ -10,7 +10,7 @@ namespace BlasphemousRandomizer.Structures
 
         // Used for wax beads, thorns, cherubs, rosary knots, bile flasks, quicksilver, collectibles
 
-        public ProgressiveItem(string name, int type, bool progression, string[] items, bool randomOrder, bool removePrevious) : base(name, type, progression)
+        public ProgressiveItem(string name, int type, bool progression, int count, string[] items, bool randomOrder, bool removePrevious) : base(name, type, progression, count)
         {
             this.items = items;
             this.randomOrder = randomOrder;
@@ -36,7 +36,7 @@ namespace BlasphemousRandomizer.Structures
             int level = getCurrentLevel() + (upgraded ? 1 : 0);
             if (level >= 0 && level < items.Length)
             {
-                return new Item(items[level], type, false);
+                return new Item(items[level], type, false, 0); // Change to search in dictionary.  maybe not tho
             }
             Main.Randomizer.Log("Invalid tier of progressive item!");
             return null;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BlasphemousRandomizer.Fillers;
+using BlasphemousRandomizer.Structures;
 using Framework.Managers;
 using Framework.Audio;
 using UnityEngine;
@@ -9,7 +10,6 @@ namespace BlasphemousRandomizer.Shufflers
     public class EnemyShuffle : IShuffle
     {
         private Dictionary<string, string> newEnemies;
-        private Dictionary<string, float> locationOffsets;
         private Dictionary<string, int> difficultyRatings;
         private EnemyFiller filler;
 
@@ -65,16 +65,14 @@ namespace BlasphemousRandomizer.Shufflers
         // Gets the y offset of certain locations
         public float getLocationOffset(string id)
         {
-            if (locationOffsets.ContainsKey(id))
-                return locationOffsets[id];
+            if (Main.Randomizer.data.enemyLocations.TryGetValue(id, out EnemyLocation location))
+                return location.yOffset;
             return 99;
         }
 
         public void Init()
         {
             filler = new EnemyFiller();
-            locationOffsets = new Dictionary<string, float>();
-            filler.fillEnemyOffsets(locationOffsets);
 
             // Load from json
             difficultyRatings = new Dictionary<string, int>()
@@ -165,13 +163,8 @@ namespace BlasphemousRandomizer.Shufflers
 
         public void Shuffle(int seed)
         {
-            if (Main.Randomizer.gameConfig.enemies.type < 1)
+            if (Main.Randomizer.gameConfig.enemies.type < 1 || !Main.Randomizer.data.isValid)
                 return;
-            if (!filler.isValid())
-            {
-                Main.Randomizer.Log("Error: Enemy data could not be loaded!");
-                return;
-            }
 
             newEnemies = new Dictionary<string, string>();
             filler.Fill(seed, Main.Randomizer.gameConfig.enemies, newEnemies);

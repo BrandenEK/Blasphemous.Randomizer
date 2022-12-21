@@ -47,11 +47,11 @@ namespace BlasphemousRandomizer.UI
         // When changing enabled status, change sprite
         protected override void enable()
         {
-            image.sprite = selected ? Main.Randomizer.getUI(1) : Main.Randomizer.getUI(0);
+            setSelected(selected);
         }
         protected override void disable()
         {
-            image.sprite = Main.Randomizer.getUI(2);
+            image.sprite = Main.Randomizer.data.uiImages[2];
         }
 
         // When clicked, toggle checkbox
@@ -64,7 +64,7 @@ namespace BlasphemousRandomizer.UI
         public void setSelected(bool value)
         {
             selected = value;
-            image.sprite = selected ? Main.Randomizer.getUI(1) : Main.Randomizer.getUI(0);
+            image.sprite = selected ? Main.Randomizer.data.uiImages[1] : Main.Randomizer.data.uiImages[0];
         }
         public bool getSelected()
         {
@@ -107,11 +107,11 @@ namespace BlasphemousRandomizer.UI
         // When changing enabled status, change sprite
         protected override void enable()
         {
-            image.sprite = Main.Randomizer.getUI(right ? 5 : 4);
+            image.sprite = Main.Randomizer.data.uiImages[right ? 5 : 4];
         }
         protected override void disable()
         {
-            image.sprite = Main.Randomizer.getUI(right ? 7 : 6);
+            image.sprite = Main.Randomizer.data.uiImages[right ? 7 : 6];
         }
 
         // When clicked, change option on both cycleboxes & disable checkboxes

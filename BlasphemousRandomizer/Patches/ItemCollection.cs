@@ -112,8 +112,6 @@ namespace BlasphemousRandomizer.Patches
             return false;
         }
     }
-
-    // Sword Shrine (Unused)
     [HarmonyPatch(typeof(StrengthUpgrade), "OnEnter")]
     public class StrengthUpgrade_Patch
     {
