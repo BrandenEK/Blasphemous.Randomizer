@@ -27,6 +27,9 @@ namespace BlasphemousRandomizer.Fillers
 			List<Item> items = new List<Item>();
 			foreach (Item item in Main.Randomizer.data.items.Values)
             {
+                if (item is ProgressiveItem)
+                    shuffleItemOrder(item as ProgressiveItem);
+
 				if (item.count == 1)
 					items.Add(item);
 				else
@@ -39,9 +42,6 @@ namespace BlasphemousRandomizer.Fillers
 			replaceNewItems(items);
 			if (locations.Count != items.Count)
 				return false;
-
-            // Shuffle order of progressive items
-            shuffleProgressiveItems(items); // Use only one instance of each item
 
 			// Place vanilla items & get list of locations that are vanilla
 			fillVanillaItems(locations, vanillaLocations, items);
@@ -275,27 +275,14 @@ namespace BlasphemousRandomizer.Fillers
         }
 
 		// Randomizes the order of certain progressive items' rewards
-		private void shuffleProgressiveItems(List<Item> items)
+		private void shuffleItemOrder(ProgressiveItem item)
         {
-			bool bonesDone = false;
-			for (int i = 0; i < items.Count; i++)
+            if (item.randomOrder)
             {
-				if (items[i].name == "CO") // Can remove this once better datastorage is implemented
-				{
-					if (bonesDone) continue;
-					bonesDone = true;
-				}
-				if (items[i] is ProgressiveItem)
-                {
-					ProgressiveItem progressive = (ProgressiveItem)items[i];
-					if (progressive.randomOrder)
-                    {
-						List<string> order = new List<string>(progressive.items);
-						order.Sort(); // Sort
-						shuffleList(order); // Randomize
-						progressive.items = order.ToArray();
-					}
-				}
+                List<string> order = new List<string>(item.items);
+                order.Sort(); // Sort
+                shuffleList(order); // Randomize
+                item.items = order.ToArray();
             }
         }
 	}
