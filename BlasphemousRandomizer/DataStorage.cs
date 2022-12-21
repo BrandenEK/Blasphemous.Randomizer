@@ -11,8 +11,9 @@ namespace BlasphemousRandomizer
         // Json data
         public Dictionary<string, Item> items;
         public Dictionary<string, ItemLocation> itemLocations;
-        public Dictionary<string, DoorLocation> doorLocations;
+		public Dictionary<string, Enemy> enemies;
         public Dictionary<string, EnemyLocation> enemyLocations;
+        public Dictionary<string, DoorLocation> doorLocations;
 
         // Text data
         public Dictionary<string, string> itemNames;
@@ -48,9 +49,29 @@ namespace BlasphemousRandomizer
 			List<ItemLocation> tempItemLocations = fillLocations();
 			for (int i = 0; i < tempItemLocations.Count; i++)
 				itemLocations.Add(tempItemLocations[i].id, tempItemLocations[i]);
-            
-            // Doors
-            doorLocations = new Dictionary<string, DoorLocation>();
+
+			// Enemies
+			enemies = new Dictionary<string, Enemy>();
+			if (FileUtil.loadJson("enemies.json", out List<Enemy> tempEnemies))
+            {
+				for (int i = 0; i < tempEnemies.Count; i++)
+					enemies.Add(tempEnemies[i].id, tempEnemies[i]);
+				Main.Randomizer.Log($"Loaded {enemies.Count} enemies!");
+            }
+			else { Main.Randomizer.Log("Error: Failed to load enemies!"); valid = false; }
+
+			// Enemy locations
+			enemyLocations = new Dictionary<string, EnemyLocation>();
+			if (FileUtil.loadJson("locations_enemies.json", out List<EnemyLocation> tempEnemyLocations))
+			{
+				for (int i = 0; i < tempEnemyLocations.Count; i++)
+					enemyLocations.Add(tempEnemyLocations[i].locationId, tempEnemyLocations[i]);
+				Main.Randomizer.Log($"Loaded {enemyLocations.Count} enemy locations!");
+			}
+			else { Main.Randomizer.Log("Error: Failed to load enemy locations!"); valid = false; }
+
+			// Doors
+			doorLocations = new Dictionary<string, DoorLocation>();
             if (FileUtil.loadJson("doors.json", out List<DoorLocation> tempDoorLocations))
             {
                 for (int i = 0; i < tempDoorLocations.Count; i++)
@@ -58,16 +79,6 @@ namespace BlasphemousRandomizer
                 Main.Randomizer.Log($"Loaded {doorLocations.Count} doors!");
             }
             else { Main.Randomizer.Log("Error: Failed to load doors!"); valid = false; }
-
-			// Enemy locations
-			enemyLocations = new Dictionary<string, EnemyLocation>();
-            if (FileUtil.loadJson("locations_enemies.json", out List<EnemyLocation> tempEnemyLocations))
-            {
-				for (int i = 0; i < tempEnemyLocations.Count; i++)
-					enemyLocations.Add(tempEnemyLocations[i].locationId, tempEnemyLocations[i]);
-				Main.Randomizer.Log($"Loaded {enemyLocations.Count} enemy locations!");
-			}
-            else { Main.Randomizer.Log("Error: Failed to load enemy locations!"); valid = false; }
 
             // Load text data
             if (FileUtil.parseFileToDictionary("names_items.dat", out itemNames)) Main.Randomizer.Log($"Loaded {itemNames.Count} item names!");

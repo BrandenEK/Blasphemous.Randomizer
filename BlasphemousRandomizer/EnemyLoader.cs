@@ -70,12 +70,12 @@ namespace BlasphemousRandomizer
 			int totalEnemies = enemyIds.Length + 2;
 			if (allEnemies.Count != totalEnemies)
             {
-				Main.Randomizer.Log($"Not all enemies loaded yet! ({allEnemies.Count}/{totalEnemies})");
+				Main.Randomizer.Log($"Not all enemies processed yet! ({allEnemies.Count}/{totalEnemies})");
             }
 			else
 			{
 				loaded = true;
-				Main.Randomizer.Log($"All {totalEnemies} enemies loaded!");
+				Main.Randomizer.Log($"All {totalEnemies} enemies processed!");
 			}
 		}
 
