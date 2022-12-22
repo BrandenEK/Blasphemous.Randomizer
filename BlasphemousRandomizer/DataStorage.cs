@@ -33,16 +33,14 @@ namespace BlasphemousRandomizer
         {
             bool valid = true;
 
-            // Items
+            // Items - Need to special load these
             items = new Dictionary<string, Item>();
-            if (FileUtil.loadJson("items.json", out List<Item> tempItems))
+			if (FileUtil.read("items.json", true, out string json))
             {
-                addSpecialItems(tempItems);
-                for (int i = 0; i < tempItems.Count; i++)
-                    items.Add(tempItems[i].name, tempItems[i]);
-                Main.Randomizer.Log($"Loaded {items.Count} items!");
-            }
-            else { Main.Randomizer.Log("Error: Failed to load items!"); valid = false; }
+				processItems(items, json);
+				Main.Randomizer.Log($"Loaded {items.Count} items!");
+			}
+			else { Main.Randomizer.Log("Error: Failed to load items!"); valid = false; }
 
 			// Item locations
 			itemLocations = new Dictionary<string, ItemLocation>();
@@ -108,29 +106,35 @@ namespace BlasphemousRandomizer
             return valid;
         }
 
-        // temp - should be moved to inside the json file
-        private void addSpecialItems(List<Item> items)
+		// Fills the dictionary with the items parsed from the json string
+		private void processItems(Dictionary<string, Item> items, string json)
         {
-            // Create progression items
-            ProgressiveItem[] progressiveItems = new ProgressiveItem[]
+			// Parse json string into array
+			json = json.Replace("},", "}*");
+			json = json.Substring(1, json.Length - 2);
+			string[] array = json.Split('*');
+			
+			// Determine if item is progressive or not and add to dictionary
+			for (int i = 0; i < array.Length; i++)
             {
-                new ProgressiveItem("RW", 0, true, 3, new string[] { "RB17", "RB18", "RB19" }, false, true),
-                new ProgressiveItem("BW", 0, true, 3, new string[] { "RB24", "RB25", "RB26" }, false, true),
-                new ProgressiveItem("TH", 5, true, 8, new string[] { "QI31", "QI32", "QI33", "QI34", "QI35", "QI79", "QI80", "QI81" }, false, true),
-                new ProgressiveItem("RK", 5, true, 6, new string[] { "QI44", "QI52", "QI53", "QI54", "QI55", "QI56" }, false, false),
-                new ProgressiveItem("BV", 5, true, 8, new string[] { "QI41", "QI45", "QI46", "QI47", "QI48", "QI49", "QI50", "QI51" }, false, false),
-                new ProgressiveItem("QS", 5, true, 5, new string[] { "QI101", "QI102", "QI103", "QI104", "QI105" }, false, false),
-                new ProgressiveItem("CH", 6, true, 38, new string[38], false, false),
-                new ProgressiveItem("CO", 4, true, 44, new string[44], true, false)
-            };
-            for (int i = 1; i <= 38; i++)
-                progressiveItems[6].items[i - 1] = "CH" + i.ToString("00");
-            for (int i = 1; i <= 44; i++)
-                progressiveItems[7].items[i - 1] = "CO" + i.ToString("00");
-
-			for (int i = 0; i < progressiveItems.Length; i++)
-            {
-				items.Add(progressiveItems[i]);
+				if (array[i].Contains("\"removePrevious\""))
+                {
+					// Progressive item
+					ProgressiveItem item = FileUtil.jsonObject<ProgressiveItem>(array[i]);
+					if (item.items == null)
+                    {
+						item.items = new string[item.count];
+						for (int j = 0; j < item.count; j++)
+							item.items[j] = item.name + (j + 1).ToString("00");
+                    }
+					items.Add(item.name, item);
+                }
+                else
+                {
+					// Regular item
+					Item item = FileUtil.jsonObject<Item>(array[i]);
+					items.Add(item.name, item);
+                }
             }
         }
 

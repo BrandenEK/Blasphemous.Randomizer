@@ -2,6 +2,7 @@
 
 namespace BlasphemousRandomizer.Structures
 {
+    [System.Serializable]
     public class ProgressiveItem : Item
     {
         public string[] items;

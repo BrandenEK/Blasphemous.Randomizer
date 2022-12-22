@@ -880,5 +880,75 @@
 		"type": 10,
 		"progression": true,
 		"count": 1
+	},
+	{
+		"name": "RW",
+		"type": 0,
+		"progression": true,
+		"count": 3,
+		"items": [ "RB17", "RB18", "RB19" ],
+		"randomOrder": false,
+		"removePrevious": true
+	},
+	{
+		"name": "BW",
+		"type": 0,
+		"progression": true,
+		"count": 3,
+		"items": [ "RB24", "RB25", "RB26" ],
+		"randomOrder": false,
+		"removePrevious": true
+	},
+	{
+		"name": "TH",
+		"type": 5,
+		"progression": false,
+		"count": 8,
+		"items": [ "QI31", "QI32", "QI33", "QI34", "QI35", "QI79", "QI80", "QI81" ],
+		"randomOrder": false,
+		"removePrevious": true
+	},
+	{
+		"name": "RK",
+		"type": 5,
+		"progression": true,
+		"count": 6,
+		"items": [ "QI44", "QI52", "QI53", "QI54", "QI55", "QI56" ],
+		"randomOrder": false,
+		"removePrevious": false
+	},
+	{
+		"name": "BV",
+		"type": 5,
+		"progression": true,
+		"count": 8,
+		"items": [ "QI41", "QI45", "QI46", "QI47", "QI48", "QI49", "QI50", "QI51" ],
+		"randomOrder": false,
+		"removePrevious": false
+	},
+	{
+		"name": "QS",
+		"type": 5,
+		"progression": true,
+		"count": 5,
+		"items": [ "QI101", "QI102", "QI103", "QI104", "QI105" ],
+		"randomOrder": false,
+		"removePrevious": false
+	},
+	{
+		"name": "CH",
+		"type": 6,
+		"progression": true,
+		"count": 38,
+		"randomOrder": false,
+		"removePrevious": false
+	},
+	{
+		"name": "CO",
+		"type": 4,
+		"progression": true,
+		"count": 44,
+		"randomOrder": true,
+		"removePrevious": false
 	}
 ]
