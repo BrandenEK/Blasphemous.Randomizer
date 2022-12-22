@@ -20,7 +20,7 @@ namespace BlasphemousRandomizer
         public Dictionary<string, string> enemyNames;
         public Dictionary<string, string> itemHints;
         public Dictionary<string, string> locationHints;
-        public string[] interactableIds;
+        public Dictionary<string, string> interactableIds;
         public string[] cutsceneNames;
         public string[] cutsceneFlags;
         public string spoilerTemplate;
@@ -87,7 +87,7 @@ namespace BlasphemousRandomizer
             else { Main.Randomizer.Log("Error: Failed to load item hints!"); valid = false; }
             if (FileUtil.parseFileToDictionary("hints_locations.dat", out locationHints)) Main.Randomizer.Log($"Loaded {locationHints.Count} location hints!");
             else { Main.Randomizer.Log("Error: Failed to load locations hints!"); valid = false; }
-            if (FileUtil.parseFiletoArray("interactable_ids.dat", out interactableIds)) Main.Randomizer.Log($"Loaded {interactableIds.Length} interactable ids!");
+            if (FileUtil.parseFileToDictionary("interactable_ids.dat", out interactableIds)) Main.Randomizer.Log($"Loaded {interactableIds.Count} interactable ids!");
             else { Main.Randomizer.Log("Error: Failed to load interactable ids!"); valid = false; }
             if (FileUtil.parseFiletoArray("cutscenes_names.dat", out cutsceneNames)) Main.Randomizer.Log($"Loaded {cutsceneNames.Length} cutscene names!");
             else { Main.Randomizer.Log("Error: Failed to load cutscene names!"); valid = false; }

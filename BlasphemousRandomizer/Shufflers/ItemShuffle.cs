@@ -49,6 +49,7 @@ namespace BlasphemousRandomizer.Shufflers
             Main.Randomizer.itemsCollected++;
             item.addToInventory();
             Core.Events.SetFlag("Location_" + locationId, true, false);
+            Main.Randomizer.updateShops();
             lastItem = item;
 
             // Possibly display the item

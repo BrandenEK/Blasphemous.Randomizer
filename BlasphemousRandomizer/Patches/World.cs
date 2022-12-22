@@ -55,29 +55,16 @@ namespace BlasphemousRandomizer.Patches
             }
         }
 
-        // Modify special interactables when they load
+        // Disable holy visage altars
         [HarmonyPatch(typeof(Interactable), "OnAwake")]
         public class InteractableAltar_Patch
         {
             public static void Postfix(Interactable __instance)
             {
-                if (!Main.Randomizer.isSpecialInteractable(__instance.GetPersistenID()))
-                    return;
+                //Main.Randomizer.Log($"{__instance.transform.parent.name} ({__instance.name}): {__instance.GetPersistenID()}");
                 string scene = Core.LevelManager.currentLevel.LevelName;
-                //Log($"{interactable.transform.parent.name} ({interactable.name}): {interactable.GetPersistenID()}");
 
-                // Update images of shop items
-                if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
-                {
-                    SpriteRenderer render = __instance.transform.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
-                    if (render != null)
-                    {
-                        Item item = Main.Randomizer.itemShuffler.getItemAtLocation(render.sprite.name.ToUpper());
-                        render.sprite = item == null ? null : item.getRewardInfo(true).sprite;
-                    }
-                }
-                // Disable holy visage altar
-                else if (scene == "D01Z04S19" || scene == "D03Z03S16" || scene == "D02Z03S21")
+                if ((scene == "D01Z04S19" || scene == "D02Z03S21" || scene == "D03Z03S16") && Main.Randomizer.data.interactableIds.ContainsKey(__instance.GetPersistenID()))
                 {
                     __instance.gameObject.SetActive(false);
                 }

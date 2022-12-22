@@ -3,11 +3,13 @@ using Gameplay.UI;
 using System.Diagnostics;
 using System.Collections;
 using BlasphemousRandomizer.Shufflers;
+using BlasphemousRandomizer.Structures;
 using BlasphemousRandomizer.Config;
 using BlasphemousRandomizer.UI;
 using Framework.FrameworkCore;
 using Framework.Managers;
 using Framework.Audio;
+using Tools.Level;
 
 namespace BlasphemousRandomizer
 {
@@ -189,6 +191,9 @@ namespace BlasphemousRandomizer
             // Load enemies
             EnemyLoader.loadEnemies();
 
+            // Update shop menus
+            updateShops();
+
             // Reload enemy audio catalogs
             AudioLoader audio = Object.FindObjectOfType<AudioLoader>();
             if (audio != null)
@@ -242,6 +247,29 @@ namespace BlasphemousRandomizer
             Core.Events.SetFlag(majorVersion, true, false);
         }
 
+        // Update candelaria/sword shops when opened or when purchased
+        public void updateShops()
+        {
+            string scene = Core.LevelManager.currentLevel.LevelName;
+            // Shop scenes - search for each item pedestal
+            if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
+            {
+                foreach (Interactable interactable in Object.FindObjectsOfType<Interactable>())
+                {
+                    if (data.interactableIds.ContainsKey(interactable.GetPersistenID()))
+                    {
+                        SpriteRenderer render = interactable.transform.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
+                        if (render != null)
+                        {
+                            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(data.interactableIds[interactable.GetPersistenID()]);
+                            render.sprite = item == null ? null : item.getRewardInfo(true).sprite;
+                        }
+                    }
+                }
+            }
+            // otherwise check for & update sword skills menu
+        }
+
         // Keyboard input
         public void update()
         {
@@ -260,7 +288,7 @@ namespace BlasphemousRandomizer
             }
             else if (Input.GetKeyDown(KeyCode.Keypad9))
             {
-                
+                //itemShuffler.Shuffle(new System.Random().Next());
             }
 
             // Update ui menus
@@ -299,11 +327,6 @@ namespace BlasphemousRandomizer
         public bool shouldSkipCutscene(string id)
         {
             return gameConfig.general.skipCutscenes && FileUtil.arrayContains(data.cutsceneNames, id);
-        }
-
-        public bool isSpecialInteractable(string id)
-        {
-            return FileUtil.arrayContains(data.interactableIds, id);
         }
 
         public void playSoundEffect(int id)
