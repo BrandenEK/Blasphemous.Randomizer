@@ -189,4 +189,9 @@ TH,a thorn
 RK,a knotted rope
 BV,an empty flask
 QS,a silvery ball
+COMBO,a sword skill
+CHARGED,a sword skill
+RANGED,a sword skill
+VERTICAL,a sword skill
+LUNGE,a sword skill
 X,???

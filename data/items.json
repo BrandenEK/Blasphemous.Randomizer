@@ -950,5 +950,50 @@
 		"count": 44,
 		"randomOrder": true,
 		"removePrevious": false
+	},
+	{
+		"name": "COMBO",
+		"type": 11,
+		"progression": false,
+		"count": 3,
+		"items": [ "COMBO_1", "COMBO_2", "COMBO_3" ],
+		"randomOrder": false,
+		"removePrevious": false
+	},
+	{
+		"name": "CHARGED",
+		"type": 11,
+		"progression": true,
+		"count": 3,
+		"items": [ "CHARGED_1", "CHARGED_2", "CHARGED_3" ],
+		"randomOrder": false,
+		"removePrevious": false
+	},
+	{
+		"name": "RANGED",
+		"type": 11,
+		"progression": true,
+		"count": 3,
+		"items": [ "RANGED_1", "RANGED_2", "RANGED_3" ],
+		"randomOrder": false,
+		"removePrevious": false
+	},
+	{
+		"name": "VERTICAL",
+		"type": 11,
+		"progression": true,
+		"count": 3,
+		"items": [ "VERTICAL_1", "VERTICAL_2", "VERTICAL_3" ],
+		"randomOrder": false,
+		"removePrevious": false
+	},
+	{
+		"name": "LUNGE",
+		"type": 11,
+		"progression": false,
+		"count": 3,
+		"items": [ "LUNGE_1", "LUNGE_2", "LUNGE_3" ],
+		"randomOrder": false,
+		"removePrevious": false
 	}
 ]

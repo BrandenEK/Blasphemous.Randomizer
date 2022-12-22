@@ -50,6 +50,9 @@
     <Reference Include="Sirenix.Serialization">
       <HintPath>..\lib\Sirenix.Serialization.dll</HintPath>
     </Reference>
+    <Reference Include="TextMeshPro-2017.3-Runtime">
+      <HintPath>..\lib\TextMeshPro-2017.3-Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\lib\UnityEngine.dll</HintPath>
     </Reference>

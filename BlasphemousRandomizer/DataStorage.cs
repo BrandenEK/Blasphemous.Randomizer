@@ -461,6 +461,23 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("LaudesBossTrigger[30000]", "Tears[30000]", "boss", (InventoryData d) => d.bridgeAccess && d.verses >= 4 && d.canBeatBoss("laudes")));
 			locations.Add(new ItemLocation("BossTrigger[5000]", "Tears[5000]", "boss", (InventoryData d) => d.bridgeAccess && d.canBeatBoss("sierpes") && (d.root || d.nail || d.cherubAttack(786432) && d.swordLevel > 1)));
 
+			//Sword skills
+			locations.Add(new ItemLocation("COMBO_1", "COMBO", "skill", (InventoryData d) => d.swordLevel >= 1));
+			locations.Add(new ItemLocation("COMBO_2", "COMBO", "skill", (InventoryData d) => d.swordLevel >= 2));
+			locations.Add(new ItemLocation("COMBO_3", "COMBO", "skill", (InventoryData d) => d.swordLevel >= 4));
+			locations.Add(new ItemLocation("CHARGED_1", "CHARGED", "skill", (InventoryData d) => d.swordLevel >= 1));
+			locations.Add(new ItemLocation("CHARGED_2", "CHARGED", "skill", (InventoryData d) => d.swordLevel >= 3));
+			locations.Add(new ItemLocation("CHARGED_3", "CHARGED", "skill", (InventoryData d) => d.swordLevel >= 6));
+			locations.Add(new ItemLocation("RANGED_1", "RANGED", "skill", (InventoryData d) => d.swordLevel >= 2));
+			locations.Add(new ItemLocation("RANGED_2", "RANGED", "skill", (InventoryData d) => d.swordLevel >= 5));
+			locations.Add(new ItemLocation("RANGED_3", "RANGED", "skill", (InventoryData d) => d.swordLevel >= 7));
+			locations.Add(new ItemLocation("VERTICAL_1", "VERTICAL", "skill", (InventoryData d) => d.swordLevel >= 1));
+			locations.Add(new ItemLocation("VERTICAL_2", "VERTICAL", "skill", (InventoryData d) => d.swordLevel >= 3));
+			locations.Add(new ItemLocation("VERTICAL_3", "VERTICAL", "skill", (InventoryData d) => d.swordLevel >= 6));
+			locations.Add(new ItemLocation("LUNGE_1", "LUNGE", "skill", (InventoryData d) => d.swordLevel >= 1));
+			locations.Add(new ItemLocation("LUNGE_2", "LUNGE", "skill", (InventoryData d) => d.swordLevel >= 2));
+			locations.Add(new ItemLocation("LUNGE_3", "LUNGE", "skill", (InventoryData d) => d.swordLevel >= 4));
+
 			return locations;
 		}
 	}

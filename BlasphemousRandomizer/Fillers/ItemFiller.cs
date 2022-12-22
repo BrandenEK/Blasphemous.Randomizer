@@ -106,7 +106,7 @@ namespace BlasphemousRandomizer.Fillers
         {
 			string[] randomLocations;
 			if (config.type > 0)
-				randomLocations = new string[] { "item", "cherub", "lady", "oil", "sword", "blessing", "guiltArena", "tirso", "miriam", "redento", "jocinero", "altasgracias", "tentudia", "gemino", "guiltBead", "ossuary", "boss", "visage", "mask", "herb", "church", "shop", "thorn", "candle", "viridiana", "cleofas", "crisanta" };
+				randomLocations = new string[] { "item", "cherub", "lady", "oil", "sword", "blessing", "guiltArena", "tirso", "miriam", "redento", "jocinero", "altasgracias", "tentudia", "gemino", "guiltBead", "ossuary", "boss", "visage", "mask", "herb", "church", "shop", "thorn", "candle", "viridiana", "cleofas", "crisanta", "skill" };
 			else
 				randomLocations = new string[0];
 

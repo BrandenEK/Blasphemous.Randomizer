@@ -370,3 +370,19 @@ Amanecida 2: {QI108}
 Amanecida 3: {QI109}
 Amanecida 4: {QI110}
 All amanecidas reward: {PR101}
+Skill 1 Tier 1: {COMBO_1}
+Skill 1 Tier 2: {COMBO_2}
+Skill 1 Tier 3: {COMBO_3}
+Skill 2 Tier 1: {CHARGED_1}
+Skill 2 Tier 2: {CHARGED_2}
+Skill 2 Tier 3: {CHARGED_3}
+Skill 3 Tier 1: {RANGED_1}
+Skill 3 Tier 2: {RANGED_2}
+Skill 3 Tier 3: {RANGED_3}
+Skill 4 Tier 1: {VERTICAL_1}
+Skill 4 Tier 2: {VERTICAL_2}
+Skill 4 Tier 3: {VERTICAL_3}
+Skill 5 Tier 1: {LUNGE_1}
+Skill 5 Tier 2: {LUNGE_2}
+Skill 5 Tier 3: {LUNGE_3}
+
