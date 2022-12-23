@@ -247,7 +247,7 @@ namespace BlasphemousRandomizer
             Core.Events.SetFlag(majorVersion, true, false);
         }
 
-        // Update candelaria/sword shops when opened or when purchased
+        // Update candelaria shops when opened or when purchased
         public void updateShops()
         {
             string scene = Core.LevelManager.currentLevel.LevelName;
@@ -267,7 +267,6 @@ namespace BlasphemousRandomizer
                     }
                 }
             }
-            // otherwise check for & update sword skills menu
         }
 
         // Keyboard input

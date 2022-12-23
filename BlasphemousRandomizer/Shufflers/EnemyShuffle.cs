@@ -38,7 +38,6 @@ namespace BlasphemousRandomizer.Shufflers
         {
             if (Main.Randomizer.data.enemies.TryGetValue(id, out Enemy enemy))
                 return enemy.difficulty;
-            Main.Randomizer.Log("Enemy rating " + id + " does not exist!");
             return 0;
         }
 
@@ -53,7 +52,7 @@ namespace BlasphemousRandomizer.Shufflers
         // Gets the difficulty rating of a specific location
         public int getLocationRating(string id)
         {
-            if (difficultyRatings.ContainsKey(id)) return difficultyRatings[id];
+            if (difficultyRatings.ContainsKey(id)) return difficultyRatings[id]; // Move this into the json file perhaps ?
             if (id == "D19Z01S01") return 2;
             if (id == "D19Z01S02") return 3;
             if (id == "D19Z01S03") return 4;

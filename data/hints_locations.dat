@@ -287,4 +287,19 @@ Tirso[2000],Tirso holds *
 Tirso[500],Tirso holds *
 Tirso[5000],Tirso holds *
 PR08,Viridiana holds *
+COMBO_1,A tier 1 shrine holds *
+COMBO_2,A tier 2 shrine holds *
+COMBO_3,A tier 4 shrine holds *
+CHARGED_1,A tier 1 shrine holds *
+CHARGED_2,A tier 3 shrine holds *
+CHARGED_3,A tier 6 shrine holds *
+RANGED_1,A tier 2 shrine holds *
+RANGED_2,A tier 5 shrine holds *
+RANGED_3,A tier 7 shrine holds *
+VERTICAL_1,A tier 1 shrine holds *
+VERTICAL_2,A tier 3 shrine holds *
+VERTICAL_3,A tier 6 shrine holds *
+LUNGE_1,A tier 1 shrine holds *
+LUNGE_2,A tier 2 shrine holds *
+LUNGE_3,A tier 4 shrine holds *
 X,??? holds *
