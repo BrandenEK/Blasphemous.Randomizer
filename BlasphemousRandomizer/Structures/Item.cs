@@ -8,6 +8,7 @@ namespace BlasphemousRandomizer.Structures
 	[System.Serializable]
     public class Item
     {
+		public string id;
 		public string name;
         public int type;
 		public bool progression;
@@ -18,13 +19,14 @@ namespace BlasphemousRandomizer.Structures
             get
             {
 				if (type != 10) return 0;
-				int s = name.IndexOf('['), e = name.IndexOf(']');
-				return int.Parse(name.Substring(s + 1, e - s - 1));
+				int s = id.IndexOf('['), e = id.IndexOf(']');
+				return int.Parse(id.Substring(s + 1, e - s - 1));
 			}
 		}
 
-		public Item(string name, int type, bool progression, int count)
+		public Item(string id, string name, int type, bool progression, int count)
 		{
+			this.id = id;
 			this.name = name;
 			this.type = type;
 			this.progression = progression;
@@ -39,22 +41,22 @@ namespace BlasphemousRandomizer.Structures
 			switch (type)
 			{
 				case 0:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Bead));
-					if (name == "RB203" && Main.Randomizer.gameConfig.items.startWithWheel)
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(id, InventoryManager.ItemType.Bead));
+					if (id == "RB203" && Main.Randomizer.gameConfig.items.startWithWheel)
 						inv.SetRosaryBeadInSlot(0, "RB203");
 					return;
 				case 1:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Prayer)); return;
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(id, InventoryManager.ItemType.Prayer)); return;
 				case 2:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Relic)); return;
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(id, InventoryManager.ItemType.Relic)); return;
 				case 3:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Sword)); return;
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(id, InventoryManager.ItemType.Sword)); return;
 				case 4:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Collectible)); return;
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(id, InventoryManager.ItemType.Collectible)); return;
 				case 5:
-					inv.AddBaseObjectOrTears(inv.GetBaseObject(name, InventoryManager.ItemType.Quest)); return;
+					inv.AddBaseObjectOrTears(inv.GetBaseObject(id, InventoryManager.ItemType.Quest)); return;
 				case 6:
-					Core.Events.SetFlag("RESCUED_CHERUB_" + name.Substring(2), true, false); return;
+					Core.Events.SetFlag("RESCUED_CHERUB_" + id.Substring(2), true, false); return;
 				case 7:
 					stats.Life.Upgrade(); stats.Life.SetToCurrentMax(); return;
 				case 8:
@@ -64,7 +66,7 @@ namespace BlasphemousRandomizer.Structures
 				case 10:
 					stats.Purge.Current += tearAmount; return;
 				case 11:
-					Core.SkillManager.UnlockSkill(name, true); return;
+					Core.SkillManager.UnlockSkill(id, true); return;
 				default:
 					return;
 			}
@@ -78,25 +80,25 @@ namespace BlasphemousRandomizer.Structures
 			switch (type)
 			{
 				case 0:
-					BaseInventoryObject baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Bead);
+					BaseInventoryObject baseObject = inventoryManager.GetBaseObject(id, InventoryManager.ItemType.Bead);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New rosary bead obtained!", baseObject.picture);
 				case 1:
-					baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Prayer);
+					baseObject = inventoryManager.GetBaseObject(id, InventoryManager.ItemType.Prayer);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New prayer obtained!", baseObject.picture);
 				case 2:
-					baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Relic);
+					baseObject = inventoryManager.GetBaseObject(id, InventoryManager.ItemType.Relic);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New relic obtained!", baseObject.picture);
 				case 3:
-					baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Sword);
+					baseObject = inventoryManager.GetBaseObject(id, InventoryManager.ItemType.Sword);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New sword heart obtained!", baseObject.picture);
 				case 4:
-					baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Collectible);
+					baseObject = inventoryManager.GetBaseObject(id, InventoryManager.ItemType.Collectible);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New collectible obtained!", baseObject.picture);
 				case 5:
-					baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Quest);
+					baseObject = inventoryManager.GetBaseObject(id, InventoryManager.ItemType.Quest);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New quest item obtained!", baseObject.picture);
 				case 6:
-					return new RewardInfo("Cherub " + int.Parse(name.Substring(2)) + "/38", "A little floating baby that you rescued from a cage.", "Cherub rescued!", Main.Randomizer.data.randomizerImages[0]);
+					return new RewardInfo("Cherub " + int.Parse(id.Substring(2)) + "/38", "A little floating baby that you rescued from a cage.", "Cherub rescued!", Main.Randomizer.data.randomizerImages[0]);
 				case 7:
 					return new RewardInfo("Life Upgrade " + (stats.Life.GetUpgrades() + (upgraded ? 1 : 0)) + "/6", "An increase to your maximum health.", "Stat increased!", Main.Randomizer.data.randomizerImages[1]);
 				case 8:
@@ -106,7 +108,7 @@ namespace BlasphemousRandomizer.Structures
 				case 10:
 					return new RewardInfo($"Tears of Atonement ({tearAmount})", $"A bundle of {tearAmount} tears.", "Tears acquired!", inventoryManager.TearsGenericObject.picture);
 				case 11:
-					UnlockableSkill skill = Core.SkillManager.GetSkill(name);
+					UnlockableSkill skill = Core.SkillManager.GetSkill(id);
 					return new RewardInfo(removeCaps(skill.caption), skill.description, "Skill unlocked!", skill.smallImage);
 				default:
 					return new RewardInfo("Error!", "You should not see this.", "You should not see this!", null);

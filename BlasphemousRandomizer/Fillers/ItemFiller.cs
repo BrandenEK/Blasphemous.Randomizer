@@ -146,7 +146,7 @@ namespace BlasphemousRandomizer.Fillers
         {
 			for (int i = 0; i < items.Count; i++)
             {
-				if (items[i].name == itemName)
+				if (items[i].id == itemName)
 					return i;
             }
 			return -1;
@@ -249,7 +249,7 @@ namespace BlasphemousRandomizer.Fillers
             for (int i = 0; i < progressionItems.Count - count; i++)
             {
                 Item item = progressionItems[i];
-                if (item.type == 5 && (item.name == "QI38" || item.name == "QI39" || item.name == "QI40"))
+                if (item.type == 5 && (item.id == "QI38" || item.id == "QI39" || item.id == "QI40"))
                 {
                     progressionItems.RemoveAt(i);
                     progressionItems.Add(item);

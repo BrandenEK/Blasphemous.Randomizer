@@ -59,7 +59,7 @@ namespace BlasphemousRandomizer.Fillers
         {
             //Get hints
             string locationHint = "", itemHint = "";
-            if (!Main.Randomizer.data.locationHints.TryGetValue(location, out locationHint) || !Main.Randomizer.data.itemHints.TryGetValue(item.name, out itemHint))
+            if (!Main.Randomizer.data.locationHints.TryGetValue(location, out locationHint) || !Main.Randomizer.data.itemHints.TryGetValue(item.id, out itemHint))
             {
                 return "???";
             }
@@ -91,7 +91,7 @@ namespace BlasphemousRandomizer.Fillers
         {
             foreach (string location in newItems.Keys)
             {
-                if (newItems[location].name == itemName)
+                if (newItems[location].id == itemName)
                     return location;
             }
             return "X";

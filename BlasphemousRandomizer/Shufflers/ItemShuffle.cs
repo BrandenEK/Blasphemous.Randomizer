@@ -45,7 +45,7 @@ namespace BlasphemousRandomizer.Shufflers
                 return;
 
             // Add the item to inventory
-            Main.Randomizer.Log($"Giving item ({item.name})");
+            Main.Randomizer.Log($"Giving item ({item.id})");
             Main.Randomizer.itemsCollected++;
             item.addToInventory();
             Core.Events.SetFlag("Location_" + locationId, true, false);
@@ -137,7 +137,7 @@ namespace BlasphemousRandomizer.Shufflers
                 string item = "???";
                 if (newItems.ContainsKey(location))
                 {
-                    string desc = newItems[location].name;
+                    string desc = newItems[location].id;
                     if (itemNames.ContainsKey(desc))
                         item = itemNames[desc];
                 }

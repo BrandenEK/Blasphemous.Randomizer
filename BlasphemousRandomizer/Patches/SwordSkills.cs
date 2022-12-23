@@ -52,38 +52,6 @@ namespace BlasphemousRandomizer.Patches
                 ___skillImage.sprite = info.sprite;
             }
         }
-        //public static bool Prefix(string ___skill, ref Image ___skillImage, ref GameObject ___backgorundLocked, ref GameObject ___backgorundUnLocked, ref GameObject ___backgorundEnabled, ref Text ___tierText, Color ___disabledColor)
-        //{
-        //    UnlockableSkill skill = Core.SkillManager.GetSkill(___skill);
-        //    Item item = Main.Randomizer.itemShuffler.getItemAtLocation(___skill);
-        //    if (item != null)
-        //        ___skillImage.sprite = item.getRewardInfo(true).sprite;
-
-        //    // Set initial states
-        //    ___backgorundLocked.SetActive(false);
-        //    ___backgorundUnLocked.SetActive(false);
-        //    ___backgorundEnabled.SetActive(false);
-        //    ___tierText.text = string.Empty;
-        //    bool locked = false;
-
-        //    if (Core.Events.GetFlag("LOCATION_" + ___skill))
-        //    {
-        //        // Slot has already been purchased
-        //        ___backgorundUnLocked.SetActive(true);
-        //    }
-        //    else if (Core.SkillManager.CanUnlockSkillNoCheckPoints(___skill))
-        //    {
-        //        // Slot is able to be purchased
-        //        ___backgorundEnabled.SetActive(true);
-        //    }
-        //    else
-        //    {
-        //        // Slot cant be purchased
-        //        ___tierText.text = skill.tier.ToString();
-        //        ___tierText.color = ___disabledColor;
-        //        locked = true;
-        //    }
-        //}
     }
 
     // Unlocks a skill or buys a random item - ignoreChecks is changed to be whether to give actual skill or not

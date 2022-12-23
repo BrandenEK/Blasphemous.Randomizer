@@ -125,15 +125,15 @@ namespace BlasphemousRandomizer
                     {
 						item.items = new string[item.count];
 						for (int j = 0; j < item.count; j++)
-							item.items[j] = item.name + (j + 1).ToString("00");
+							item.items[j] = item.id + (j + 1).ToString("00");
                     }
-					items.Add(item.name, item);
+					items.Add(item.id, item);
                 }
                 else
                 {
 					// Regular item
 					Item item = FileUtil.jsonObject<Item>(array[i]);
-					items.Add(item.name, item);
+					items.Add(item.id, item);
                 }
             }
         }

@@ -11,7 +11,7 @@ namespace BlasphemousRandomizer.Structures
 
         // Used for wax beads, thorns, cherubs, rosary knots, bile flasks, quicksilver, collectibles, sword skills
 
-        public ProgressiveItem(string name, int type, bool progression, int count, string[] items, bool randomOrder, bool removePrevious) : base(name, type, progression, count)
+        public ProgressiveItem(string id, string name, int type, bool progression, int count, string[] items, bool randomOrder, bool removePrevious) : base(id, name, type, progression, count)
         {
             this.items = items;
             this.randomOrder = randomOrder;
@@ -21,7 +21,7 @@ namespace BlasphemousRandomizer.Structures
         public override void addToInventory()
         {
             Item itemToAdd = getItemLevel(true);
-            Core.Events.SetFlag("Item_" + itemToAdd.name, true, false);
+            Core.Events.SetFlag("Item_" + itemToAdd.id, true, false);
             itemToAdd.addToInventory();
             if (removePrevious)
                 removeItem();
@@ -42,7 +42,7 @@ namespace BlasphemousRandomizer.Structures
                 else if (level >= items.Length) level = items.Length - 1;
             }
 
-            return new Item(items[level], type, false, 0); // Change to search in dictionary.  maybe not tho
+            return new Item(items[level], "", type, false, 0); // Change to search in dictionary.  maybe not tho
         }
 
         private int getCurrentLevel()

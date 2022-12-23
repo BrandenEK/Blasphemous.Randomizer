@@ -1,888 +1,1036 @@
 [
 	{
-		"name": "RB01",
+		"id": "RB01",
+		"name": "Dove Skull",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB02",
+		"id": "RB02",
+		"name": "Ember of the Holy Cremation",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB03",
+		"id": "RB03",
+		"name": "Silver Grape",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB04",
+		"id": "RB04",
+		"name": "Uvula of Proclamation",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB05",
+		"id": "RB05",
+		"name": "Hollow Pearl",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB06",
+		"id": "RB06",
+		"name": "Knot of Hair",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB07",
+		"id": "RB07",
+		"name": "Painted Wood Bead",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB08",
+		"id": "RB08",
+		"name": "Piece of a Golden Mask",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB09",
+		"id": "RB09",
+		"name": "Moss Preserved in Glass",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB10",
+		"id": "RB10",
+		"name": "Frozen Olive",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB11",
+		"id": "RB11",
+		"name": "Quirce's Scorched Bead",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB12",
+		"id": "RB12",
+		"name": "Wicker Knot",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB13",
+		"id": "RB13",
+		"name": "Perpetva's Protection",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB14",
+		"id": "RB14",
+		"name": "Thorned Symbol",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB15",
+		"id": "RB15",
+		"name": "Piece of a Tombstone",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB16",
+		"id": "RB16",
+		"name": "Sphere of the Sacred Smoke",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB20",
+		"id": "RB20",
+		"name": "Little Toe made of Limestone",
 		"type": 0,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RB21",
+		"id": "RB21",
+		"name": "Big Toe made of Limestone",
 		"type": 0,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RB22",
+		"id": "RB22",
+		"name": "Fourth Toe made of Limestone",
 		"type": 0,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RB28",
+		"id": "RB28",
+		"name": "Pelican Effigy",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB30",
+		"id": "RB30",
+		"name": "Drop of Coagulated Ink",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB31",
+		"id": "RB31",
+		"name": "Amber Eye",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB32",
+		"id": "RB32",
+		"name": "Muted Bell",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB33",
+		"id": "RB33",
+		"name": "Consecrated Amethyst",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB34",
+		"id": "RB34",
+		"name": "Embers of a Broken Star",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB35",
+		"id": "RB35",
+		"name": "Scaly Coin",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB36",
+		"id": "RB36",
+		"name": "Seashell of the Inverted Spiral",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB37",
+		"id": "RB37",
+		"name": "Calcified Eye of Erudition",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB41",
+		"id": "RB41",
+		"name": "Weight of True Guilt",
 		"type": 0,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RB101",
+		"id": "RB101",
+		"name": "Reliquary of the Fervent Heart",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB102",
+		"id": "RB102",
+		"name": "Reliquary of the Suffering Heart",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB103",
+		"id": "RB103",
+		"name": "Reliquary of the Sorrowful Heart",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB104",
+		"id": "RB104",
+		"name": "Token of Appreciation",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB105",
+		"id": "RB105",
+		"name": "Cloistered Ruby",
 		"type": 0,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RB106",
+		"id": "RB106",
+		"name": "Bead of Gold Thread",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB107",
+		"id": "RB107",
+		"name": "Cloistered Sapphire",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB108",
+		"id": "RB108",
+		"name": "Fire Enclosed in Enamel",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB201",
+		"id": "RB201",
+		"name": "Light of the Lady of the Lamp",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB202",
+		"id": "RB202",
+		"name": "Scale of Burnished Alabaster",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB203",
+		"id": "RB203",
+		"name": "The Young Mason's Wheel",
 		"type": 0,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RB204",
+		"id": "RB204",
+		"name": "Crown of Gnawed Iron",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RB301",
+		"id": "RB301",
+		"name": "Crimson Heart of a Miura",
 		"type": 0,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "PR01",
+		"id": "PR01",
+		"name": "Seguiriya to your Eyes like Stars",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR03",
+		"id": "PR03",
+		"name": "Debla of the Lights",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR04",
+		"id": "PR04",
+		"name": "Saeta Dolorosa",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR05",
+		"id": "PR05",
+		"name": "Campanillero to the Sons of the Aurora",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR07",
+		"id": "PR07",
+		"name": "Lorquiana",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR08",
+		"id": "PR08",
+		"name": "Zarabanda of the Safe Haven",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR09",
+		"id": "PR09",
+		"name": "Taranto to my Sister",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR10",
+		"id": "PR10",
+		"name": "Solea of Excommunication",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR11",
+		"id": "PR11",
+		"name": "Tiento to your Thorned Hairs",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR12",
+		"id": "PR12",
+		"name": "Cante Jondo of the Three Sisters",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR14",
+		"id": "PR14",
+		"name": "Verdiales of the Forsaken Hamlet",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR15",
+		"id": "PR15",
+		"name": "Romance to the Crimson Mist",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR16",
+		"id": "PR16",
+		"name": "Zambra to the Resplendent Crown",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR101",
+		"id": "PR101",
+		"name": "Aubade of the Nameless Guardian",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR201",
+		"id": "PR201",
+		"name": "Cantina of the Blue Rose",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR202",
+		"id": "PR202",
+		"name": "Mirabras of the Return to Port",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "PR203",
+		"id": "PR203",
+		"name": "Tirana of the Celestial Bastion",
 		"type": 1,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RE01",
+		"id": "RE01",
+		"name": "Blood Perpetuated in Sand",
 		"type": 2,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RE02",
+		"id": "RE02",
+		"name": "Incorrupt Hand of the Fraternal Master",
 		"type": 2,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "RE03",
+		"id": "RE03",
+		"name": "Nail Uprooted from Dirt",
 		"type": 2,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RE04",
+		"id": "RE04",
+		"name": "Shroud of Dreamt Sins",
 		"type": 2,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RE05",
+		"id": "RE05",
+		"name": "Linen of Golden Thread",
 		"type": 2,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RE07",
+		"id": "RE07",
+		"name": "Silvered Lung of Dolphos",
 		"type": 2,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RE10",
+		"id": "RE10",
+		"name": "Three Gnarled Tongues",
 		"type": 2,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "HE01",
+		"id": "HE01",
+		"name": "Smoking Heart of Incense",
 		"type": 3,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "HE02",
+		"id": "HE02",
+		"name": "Heart of the Virtuous Pain",
 		"type": 3,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "HE03",
+		"id": "HE03",
+		"name": "Heart of Saltpeter Blood",
 		"type": 3,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "HE04",
+		"id": "HE04",
+		"name": "Heart of Oils",
 		"type": 3,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "HE05",
+		"id": "HE05",
+		"name": "Heart of Cerulean Incense",
 		"type": 3,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "HE06",
+		"id": "HE06",
+		"name": "Heart of the Holy Purge",
 		"type": 3,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "HE07",
+		"id": "HE07",
+		"name": "Molten Heart of Boiling Blood",
 		"type": 3,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "HE10",
+		"id": "HE10",
+		"name": "Heart of the Single Tone",
 		"type": 3,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "HE11",
+		"id": "HE11",
+		"name": "Heart of the Unnamed Minstrel",
 		"type": 3,
 		"progression": false,
 		"count": 1
 	},
 	{
-		"name": "HE101",
+		"id": "HE101",
+		"name": "Brilliant Heart of Dawn",
 		"type": 3,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "HE201",
+		"id": "HE201",
+		"name": "Apodictic Heart of Mea Culpa",
 		"type": 3,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI01",
+		"id": "QI01",
+		"name": "Cord of the True Burying",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI02",
+		"id": "QI02",
+		"name": "Mark of the First Refuge",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI03",
+		"id": "QI03",
+		"name": "Mark of the Second Refuge",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI04",
+		"id": "QI04",
+		"name": "Mark of the Third Refuge",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI06",
+		"id": "QI06",
+		"name": "Tentudia's Carnal Remains",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI07",
+		"id": "QI07",
+		"name": "Remains of Tentudia's Hair",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI08",
+		"id": "QI08",
+		"name": "Tentudia's Skeletal Remains",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI10",
+		"id": "QI10",
+		"name": "Melted Golden Coins",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI11",
+		"id": "QI11",
+		"name": "Torn Bridal Ribbon",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI12",
+		"id": "QI12",
+		"name": "Black Grieving Veil",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI13",
+		"id": "QI13",
+		"name": "Egg of Deformity",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI14",
+		"id": "QI14",
+		"name": "Hatched Egg of Deformity",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI19",
+		"id": "QI19",
+		"name": "Bouquet of Rosemary",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI20",
+		"id": "QI20",
+		"name": "Incense Garlic",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI37",
+		"id": "QI37",
+		"name": "Olive Seeds",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI38",
+		"id": "QI38",
+		"name": "Holy Wound of Attrition",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI39",
+		"id": "QI39",
+		"name": "Holy Wound of Contrition",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI40",
+		"id": "QI40",
+		"name": "Holy Wound of Compunction",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI57",
+		"id": "QI57",
+		"name": "Golden Thimble Filled with Burning Oil",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI58",
+		"id": "QI58",
+		"name": "Key to the Chamber of the Eldest Brother",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI59",
+		"id": "QI59",
+		"name": "Empty Golden Thimble",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI60",
+		"id": "QI60",
+		"name": "Deformed Mask of Orestes",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI61",
+		"id": "QI61",
+		"name": "Mirrored Mask of Dolphos",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI62",
+		"id": "QI62",
+		"name": "Embossed Mask of Crescente",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI63",
+		"id": "QI63",
+		"name": "Dried Clove",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI64",
+		"id": "QI64",
+		"name": "Sooty Garlic",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI65",
+		"id": "QI65",
+		"name": "Bouquet of Thyme",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI66",
+		"id": "QI66",
+		"name": "Linen Cloth",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI67",
+		"id": "QI67",
+		"name": "Severed Hand",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI68",
+		"id": "QI68",
+		"name": "Dried Flowers bathed in Tears",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI69",
+		"id": "QI69",
+		"name": "Key of the Secular",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI70",
+		"id": "QI70",
+		"name": "Key of the Scribe",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI71",
+		"id": "QI71",
+		"name": "Key of the Inquisitor",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI72",
+		"id": "QI72",
+		"name": "Key of the High Peaks",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI75",
+		"id": "QI75",
+		"name": "Chalice of Inverted Verses",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI106",
+		"id": "QI106",
+		"name": "Petrified Bell",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI107",
+		"id": "QI107",
+		"name": "Verses Spun from Gold",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI108",
+		"id": "QI108",
+		"name": "Verses Spun from Gold",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI109",
+		"id": "QI109",
+		"name": "Verses Spun from Gold",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI110",
+		"id": "QI110",
+		"name": "Verses Spun from Gold",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI201",
+		"id": "QI201",
+		"name": "Severed Right Eye of the Traitor",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI202",
+		"id": "QI202",
+		"name": "Broken Left Eye of the Traitor",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI203",
+		"id": "QI203",
+		"name": "Incomplete Scapular",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI204",
+		"id": "QI204",
+		"name": "Key Grown from Twisted Wood",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "QI301",
+		"id": "QI301",
+		"name": "Holy Wound of Abnegation",
 		"type": 5,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "LU",
+		"id": "LU",
+		"name": "Life Upgrade",
 		"type": 7,
 		"progression": true,
 		"count": 6
 	},
 	{
-		"name": "FU",
+		"id": "FU",
+		"name": "Fervour Upgrade",
 		"type": 8,
 		"progression": true,
 		"count": 6
 	},
 	{
-		"name": "SU",
+		"id": "SU",
+		"name": "Mea Culpa Upgrade",
 		"type": 9,
 		"progression": true,
 		"count": 7
 	},
 	{
-		"name": "Tears[250]",
+		"id": "Tears[250]",
+		"name": "Tears of Atonement (250)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[300]",
+		"id": "Tears[300]",
+		"name": "Tears of Atonement (300)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[500]",
+		"id": "Tears[500]",
+		"name": "Tears of Atonement (500)",
 		"type": 10,
 		"progression": true,
 		"count": 3
 	},
 	{
-		"name": "Tears[625]",
+		"id": "Tears[625]",
+		"name": "Tears of Atonement (625)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[750]",
+		"id": "Tears[750]",
+		"name": "Tears of Atonement (750)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[1000]",
+		"id": "Tears[1000]",
+		"name": "Tears of Atonement (1000)",
 		"type": 10,
 		"progression": true,
 		"count": 4
 	},
 	{
-		"name": "Tears[1250]",
+		"id": "Tears[1250]",
+		"name": "Tears of Atonement (1250)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[1500]",
+		"id": "Tears[1500]",
+		"name": "Tears of Atonement (1500)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[1750]",
+		"id": "Tears[1750]",
+		"name": "Tears of Atonement (1750)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[2000]",
+		"id": "Tears[2000]",
+		"name": "Tears of Atonement (2000)",
 		"type": 10,
 		"progression": true,
 		"count": 2
 	},
 	{
-		"name": "Tears[2100]",
+		"id": "Tears[2100]",
+		"name": "Tears of Atonement (2100)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[2500]",
+		"id": "Tears[2500]",
+		"name": "Tears of Atonement (2500)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[2600]",
+		"id": "Tears[2600]",
+		"name": "Tears of Atonement (2600)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[3000]",
+		"id": "Tears[3000]",
+		"name": "Tears of Atonement (3000)",
 		"type": 10,
 		"progression": true,
 		"count": 2
 	},
 	{
-		"name": "Tears[4300]",
+		"id": "Tears[4300]",
+		"name": "Tears of Atonement (4300)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[5000]",
+		"id": "Tears[5000]",
+		"name": "Tears of Atonement (5000)",
 		"type": 10,
 		"progression": true,
 		"count": 4
 	},
 	{
-		"name": "Tears[5500]",
+		"id": "Tears[5500]",
+		"name": "Tears of Atonement (5500)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[9000]",
+		"id": "Tears[9000]",
+		"name": "Tears of Atonement (9000)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[10000]",
+		"id": "Tears[10000]",
+		"name": "Tears of Atonement (10000)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[11250]",
+		"id": "Tears[11250]",
+		"name": "Tears of Atonement (11250)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "Tears[18000]",
+		"id": "Tears[18000]",
+		"name": "Tears of Atonement (18000)",
 		"type": 10,
 		"progression": true,
 		"count": 5
 	},
 	{
-		"name": "Tears[30000]",
+		"id": "Tears[30000]",
+		"name": "Tears of Atonement (30000)",
 		"type": 10,
 		"progression": true,
 		"count": 1
 	},
 	{
-		"name": "RW",
+		"id": "RW",
+		"name": "Bead of Red Wax",
 		"type": 0,
 		"progression": true,
 		"count": 3,
@@ -891,7 +1039,8 @@
 		"removePrevious": true
 	},
 	{
-		"name": "BW",
+		"id": "BW",
+		"name": "Bead of Blue Wax",
 		"type": 0,
 		"progression": true,
 		"count": 3,
@@ -900,7 +1049,8 @@
 		"removePrevious": true
 	},
 	{
-		"name": "TH",
+		"id": "TH",
+		"name": "Thorn Upgrade",
 		"type": 5,
 		"progression": false,
 		"count": 8,
@@ -909,7 +1059,8 @@
 		"removePrevious": true
 	},
 	{
-		"name": "RK",
+		"id": "RK",
+		"name": "Knot of Rosary Rope",
 		"type": 5,
 		"progression": true,
 		"count": 6,
@@ -918,7 +1069,8 @@
 		"removePrevious": false
 	},
 	{
-		"name": "BV",
+		"id": "BV",
+		"name": "Empty Bile Vessel",
 		"type": 5,
 		"progression": true,
 		"count": 8,
@@ -927,7 +1079,8 @@
 		"removePrevious": false
 	},
 	{
-		"name": "QS",
+		"id": "QS",
+		"name": "Quicksilver",
 		"type": 5,
 		"progression": true,
 		"count": 5,
@@ -936,7 +1089,8 @@
 		"removePrevious": false
 	},
 	{
-		"name": "CH",
+		"id": "CH",
+		"name": "Cherub",
 		"type": 6,
 		"progression": true,
 		"count": 38,
@@ -944,7 +1098,8 @@
 		"removePrevious": false
 	},
 	{
-		"name": "CO",
+		"id": "CO",
+		"name": "Ossuary Remains",
 		"type": 4,
 		"progression": true,
 		"count": 44,
@@ -952,7 +1107,8 @@
 		"removePrevious": false
 	},
 	{
-		"name": "COMBO",
+		"id": "COMBO",
+		"name": "Combo Skill",
 		"type": 11,
 		"progression": false,
 		"count": 3,
@@ -961,7 +1117,8 @@
 		"removePrevious": false
 	},
 	{
-		"name": "CHARGED",
+		"id": "CHARGED",
+		"name": "Charged Skill",
 		"type": 11,
 		"progression": true,
 		"count": 3,
@@ -970,7 +1127,8 @@
 		"removePrevious": false
 	},
 	{
-		"name": "RANGED",
+		"id": "RANGED",
+		"name": "Ranged Skill",
 		"type": 11,
 		"progression": true,
 		"count": 3,
@@ -979,7 +1137,8 @@
 		"removePrevious": false
 	},
 	{
-		"name": "VERTICAL",
+		"id": "VERTICAL",
+		"name": "Vertical Skill",
 		"type": 11,
 		"progression": true,
 		"count": 3,
@@ -988,7 +1147,8 @@
 		"removePrevious": false
 	},
 	{
-		"name": "LUNGE",
+		"id": "LUNGE",
+		"name": "Lunge Skill",
 		"type": 11,
 		"progression": false,
 		"count": 3,
