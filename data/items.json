@@ -539,6 +539,314 @@
 		"count": 1
 	},
 	{
+		"id": "CO01",
+		"name": "Parietal bone of Lasser, the Inquisitor",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO02",
+		"name": "Jaw of Ashgan, the Inquisitor",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO03",
+		"name": "Cervical vertebra of Zicher, the Brewmaster",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO04",
+		"name": "Clavicle of Dalhuisen, the Schoolchild",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO05",
+		"name": "Sternum of Vitas, the Performer",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO06",
+		"name": "Ribs of Sabnock, the Guardian",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO07",
+		"name": "Vertebra of John, the Gambler",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO08",
+		"name": "Scapula of Carlos, the Executioner",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO09",
+		"name": "Humerus of McMittens, the Nurse",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO10",
+		"name": "Ulna of Koke, the Troubadour",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO11",
+		"name": "Radius of Helzer, the Poet",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO12",
+		"name": "Frontal of Martinus, the Ropemaker",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO13",
+		"name": "Metacarpus of Hodges, the Blacksmith",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO14",
+		"name": "Phalanx of Arthur, the Sailor",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO15",
+		"name": "Phalanx of Miriam, the Counsellor",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO16",
+		"name": "Phalanx of Brannon, the Gravedigger",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO17",
+		"name": "Coxal of June, the Prostitute",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO18",
+		"name": "Sacrum of the Dark Warlock",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO19",
+		"name": "Coccyx of Daniel, the Possessed",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO20",
+		"name": "Femur of Karpow, the Bounty Hunter",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO21",
+		"name": "Kneecap of Sebastien, the Puppeteer",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO22",
+		"name": "Tibia of Alsahli, the Mystic",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO23",
+		"name": "Fibula of Rysp, the Ranger",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO24",
+		"name": "Temporal of Joel, the Thief",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO25",
+		"name": "Metatarsus of Rikusyo, the Traveller",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO26",
+		"name": "Phalanx of Zeth, the Prisoner",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO27",
+		"name": "Phalanx of William, the Sceptic",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO28",
+		"name": "Phalanx of Aralcarim, the Archivist",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO29",
+		"name": "Occipital of Tequila, the Metalsmith",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO30",
+		"name": "Maxilla of Tarradax, the Cleric",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO31",
+		"name": "Nasal bone of Charles, the Artist",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO32",
+		"name": "Hyoid bone of Senex, the Beggar",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO33",
+		"name": "Vertebra of Lindquist, the Forger",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO34",
+		"name": "Trapezium of Jeremiah, the Hangman",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO35",
+		"name": "Trapezoid of Yeager, the Jeweller",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO36",
+		"name": "Capitate of Barock, the Herald",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO37",
+		"name": "Hamate of Vukelich, the Copyist",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO38",
+		"name": "Pisiform of Hernandez, the Explorer",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO39",
+		"name": "Triquetral of Luca, the Tailor",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO40",
+		"name": "Lunate of Keiya, the Butcher",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO41",
+		"name": "Scaphoid of Fierce, the Leper",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO42",
+		"name": "Anklebone of Weston, the Pilgrim",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO43",
+		"name": "Calcaneum of Persian, the Bandit",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "CO44",
+		"name": "Navicular of Kahnnyhoo, the Murderer",
+		"type": 4,
+		"progression": true,
+		"count": 1
+	},
+	{
 		"id": "QI01",
 		"name": "Cord of the True Burying",
 		"type": 5,
@@ -1095,15 +1403,6 @@
 		"progression": true,
 		"count": 38,
 		"randomOrder": false,
-		"removePrevious": false
-	},
-	{
-		"id": "CO",
-		"name": "Ossuary Remains",
-		"type": 4,
-		"progression": true,
-		"count": 44,
-		"randomOrder": true,
 		"removePrevious": false
 	},
 	{

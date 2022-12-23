@@ -9,7 +9,7 @@ namespace BlasphemousRandomizer.Structures
         public bool randomOrder;
         public bool removePrevious;
 
-        // Used for wax beads, thorns, cherubs, rosary knots, bile flasks, quicksilver, collectibles, sword skills
+        // Used for wax beads, thorns, cherubs, rosary knots, bile flasks, quicksilver, sword skills
 
         public ProgressiveItem(string id, string name, int type, bool progression, int count, string[] items, bool randomOrder, bool removePrevious) : base(id, name, type, progression, count)
         {
