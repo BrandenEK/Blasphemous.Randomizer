@@ -26,6 +26,13 @@ namespace BlasphemousRandomizer
         public int fervourLevel;
         public int swordLevel;
 
+        // Skills
+        public bool combo;
+        public bool charged;
+        public bool ranged;
+        public bool vertical;
+        public bool lunge;
+
         // Puzzles
         public int redWax;
         public int blueWax;
@@ -89,17 +96,33 @@ namespace BlasphemousRandomizer
 
         public bool bridgeAccess
         {
-            get { return (holyWounds >= 3 && canBeatBoss("esdras")) || (blood && dawnHeart && swordLevel > 1) || (blood && cherubAttack(65536)); }
+            get { return (holyWounds >= 3 && canBeatBoss("esdras")) || (blood && dawnHeart && ranged) || (blood && cherubAttack(65536)); }
         }
 
         public bool canBreakHoles
         {
-            get { return swordLevel > 0 || cherubAttack(131071); }
+            get { return charged || vertical || cherubAttack(131071); }
         }
 
         public int power
         {
             get { return healthLevel + swordLevel + flasks + quicksilver; }
+        }
+
+        public int swordRooms
+        {
+            get
+            {
+                if (bridgeAccess)
+                {
+                    int num = 4;
+                    if (canBeatBoss("exposito")) num++;
+                    if (masks > 1 && blood && lung) num++;
+                    if (chalice && masks > 0 && bronzeKey && ((linen && (ranged || root)) || (lung && nail && (root || dawnHeart || wheel && ranged)))) num++;
+                    return num;
+                }
+                return 3;
+            }
         }
 
         public bool cherubAttack(int bitfield)

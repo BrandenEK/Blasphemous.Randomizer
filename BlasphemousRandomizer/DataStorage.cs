@@ -4,39 +4,39 @@ using BlasphemousRandomizer.Structures;
 
 namespace BlasphemousRandomizer
 {
-    public class DataStorage
-    {
-        public bool isValid { get; private set; }
+	public class DataStorage
+	{
+		public bool isValid { get; private set; }
 
-        // Json data
-        public Dictionary<string, Item> items;
-        public Dictionary<string, ItemLocation> itemLocations;
+		// Json data
+		public Dictionary<string, Item> items;
+		public Dictionary<string, ItemLocation> itemLocations;
 		public Dictionary<string, Enemy> enemies;
-        public Dictionary<string, EnemyLocation> enemyLocations;
-        public Dictionary<string, DoorLocation> doorLocations;
+		public Dictionary<string, EnemyLocation> enemyLocations;
+		public Dictionary<string, DoorLocation> doorLocations;
 
-        // Text data
-        public Dictionary<string, string> itemHints;
-        public Dictionary<string, string> locationHints;
-        public Dictionary<string, string> interactableIds;
-        public string[] cutsceneNames;
-        public string[] cutsceneFlags;
-        public string spoilerTemplate;
+		// Text data
+		public Dictionary<string, string> itemHints;
+		public Dictionary<string, string> locationHints;
+		public Dictionary<string, string> interactableIds;
+		public string[] cutsceneNames;
+		public string[] cutsceneFlags;
+		public string spoilerTemplate;
 
-        // Image data
-        public Sprite[] randomizerImages;
-        public Sprite[] uiImages;
+		// Image data
+		public Sprite[] randomizerImages;
+		public Sprite[] uiImages;
 
 		private string[] oldFiles = new string[] { "names_items.dat", "names_enemies.dat" };
 
-        public bool loadData()
-        {
-            bool valid = true;
+		public bool loadData()
+		{
+			bool valid = true;
 
-            // Items - Need to special load these
-            items = new Dictionary<string, Item>();
+			// Items - Need to special load these
+			items = new Dictionary<string, Item>();
 			if (FileUtil.read("items.json", true, out string json))
-            {
+			{
 				processItems(items, json);
 				Main.Randomizer.Log($"Loaded {items.Count} items!");
 			}
@@ -52,11 +52,11 @@ namespace BlasphemousRandomizer
 			// Enemies
 			enemies = new Dictionary<string, Enemy>();
 			if (FileUtil.loadJson("enemies.json", out List<Enemy> tempEnemies))
-            {
+			{
 				for (int i = 0; i < tempEnemies.Count; i++)
 					enemies.Add(tempEnemies[i].id, tempEnemies[i]);
 				Main.Randomizer.Log($"Loaded {enemies.Count} enemies!");
-            }
+			}
 			else { Main.Randomizer.Log("Error: Failed to load enemies!"); valid = false; }
 
 			// Enemy locations
@@ -71,73 +71,73 @@ namespace BlasphemousRandomizer
 
 			// Doors
 			doorLocations = new Dictionary<string, DoorLocation>();
-            if (FileUtil.loadJson("doors.json", out List<DoorLocation> tempDoorLocations))
-            {
-                for (int i = 0; i < tempDoorLocations.Count; i++)
-                    doorLocations.Add(tempDoorLocations[i].id, tempDoorLocations[i]);
-                Main.Randomizer.Log($"Loaded {doorLocations.Count} doors!");
-            }
-            else { Main.Randomizer.Log("Error: Failed to load doors!"); valid = false; }
+			if (FileUtil.loadJson("doors.json", out List<DoorLocation> tempDoorLocations))
+			{
+				for (int i = 0; i < tempDoorLocations.Count; i++)
+					doorLocations.Add(tempDoorLocations[i].id, tempDoorLocations[i]);
+				Main.Randomizer.Log($"Loaded {doorLocations.Count} doors!");
+			}
+			else { Main.Randomizer.Log("Error: Failed to load doors!"); valid = false; }
 
-            // Load text data
-            if (FileUtil.parseFileToDictionary("hints_items.dat", out itemHints)) Main.Randomizer.Log($"Loaded {itemHints.Count} item hints!");
-            else { Main.Randomizer.Log("Error: Failed to load item hints!"); valid = false; }
-            if (FileUtil.parseFileToDictionary("hints_locations.dat", out locationHints)) Main.Randomizer.Log($"Loaded {locationHints.Count} location hints!");
-            else { Main.Randomizer.Log("Error: Failed to load locations hints!"); valid = false; }
-            if (FileUtil.parseFileToDictionary("interactable_ids.dat", out interactableIds)) Main.Randomizer.Log($"Loaded {interactableIds.Count} interactable ids!");
-            else { Main.Randomizer.Log("Error: Failed to load interactable ids!"); valid = false; }
-            if (FileUtil.parseFiletoArray("cutscenes_names.dat", out cutsceneNames)) Main.Randomizer.Log($"Loaded {cutsceneNames.Length} cutscene names!");
-            else { Main.Randomizer.Log("Error: Failed to load cutscene names!"); valid = false; }
-            if (FileUtil.parseFiletoArray("cutscenes_flags.dat", out cutsceneFlags)) Main.Randomizer.Log($"Loaded {cutsceneFlags.Length} cutscene flags!");
-            else { Main.Randomizer.Log("Error: Failed to load cutscene flags!"); valid = false; }
-            if (FileUtil.read("spoiler_items.dat", true, out spoilerTemplate)) Main.Randomizer.Log("Loaded spoiler template!");
-            else { Main.Randomizer.Log("Error: Failed to load spoiler template!"); valid = false; }
+			// Load text data
+			if (FileUtil.parseFileToDictionary("hints_items.dat", out itemHints)) Main.Randomizer.Log($"Loaded {itemHints.Count} item hints!");
+			else { Main.Randomizer.Log("Error: Failed to load item hints!"); valid = false; }
+			if (FileUtil.parseFileToDictionary("hints_locations.dat", out locationHints)) Main.Randomizer.Log($"Loaded {locationHints.Count} location hints!");
+			else { Main.Randomizer.Log("Error: Failed to load locations hints!"); valid = false; }
+			if (FileUtil.parseFileToDictionary("interactable_ids.dat", out interactableIds)) Main.Randomizer.Log($"Loaded {interactableIds.Count} interactable ids!");
+			else { Main.Randomizer.Log("Error: Failed to load interactable ids!"); valid = false; }
+			if (FileUtil.parseFiletoArray("cutscenes_names.dat", out cutsceneNames)) Main.Randomizer.Log($"Loaded {cutsceneNames.Length} cutscene names!");
+			else { Main.Randomizer.Log("Error: Failed to load cutscene names!"); valid = false; }
+			if (FileUtil.parseFiletoArray("cutscenes_flags.dat", out cutsceneFlags)) Main.Randomizer.Log($"Loaded {cutsceneFlags.Length} cutscene flags!");
+			else { Main.Randomizer.Log("Error: Failed to load cutscene flags!"); valid = false; }
+			if (FileUtil.read("spoiler_items.dat", true, out spoilerTemplate)) Main.Randomizer.Log("Loaded spoiler template!");
+			else { Main.Randomizer.Log("Error: Failed to load spoiler template!"); valid = false; }
 
-            // Load image data
-            if (FileUtil.loadImages("custom_images.png", 32, 32, 0, true, out randomizerImages)) Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
-            else { Main.Randomizer.Log("Error: Failed to load randomizer images!"); valid = false; }
-            if (FileUtil.loadImages("ui.png", 36, 36, 0, false, out uiImages)) Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
-            else { Main.Randomizer.Log("Error: Failed to load ui images!"); valid = false; }
+			// Load image data
+			if (FileUtil.loadImages("custom_images.png", 32, 32, 0, true, out randomizerImages)) Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
+			else { Main.Randomizer.Log("Error: Failed to load randomizer images!"); valid = false; }
+			if (FileUtil.loadImages("ui.png", 36, 36, 0, false, out uiImages)) Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
+			else { Main.Randomizer.Log("Error: Failed to load ui images!"); valid = false; }
 
 			// Delete old files
 			foreach (string file in oldFiles)
 				FileUtil.delete(file);
 
-            isValid = valid;
-            return valid;
-        }
+			isValid = valid;
+			return valid;
+		}
 
 		// Fills the dictionary with the items parsed from the json string
 		private void processItems(Dictionary<string, Item> items, string json)
-        {
+		{
 			// Parse json string into array
 			json = json.Replace("},", "}*");
 			json = json.Substring(1, json.Length - 2);
 			string[] array = json.Split('*');
-			
+
 			// Determine if item is progressive or not and add to dictionary
 			for (int i = 0; i < array.Length; i++)
-            {
+			{
 				if (array[i].Contains("\"removePrevious\""))
-                {
+				{
 					// Progressive item
 					ProgressiveItem item = FileUtil.jsonObject<ProgressiveItem>(array[i]);
 					if (item.items == null)
-                    {
+					{
 						item.items = new string[item.count];
 						for (int j = 0; j < item.count; j++)
 							item.items[j] = item.id + (j + 1).ToString("00");
-                    }
+					}
 					items.Add(item.id, item);
-                }
-                else
-                {
+				}
+				else
+				{
 					// Regular item
 					Item item = FileUtil.jsonObject<Item>(array[i]);
 					items.Add(item.id, item);
-                }
-            }
-        }
+				}
+			}
+		}
 
 		// Temporary until they can be loaded from json
 		private List<ItemLocation> fillLocations()
@@ -146,19 +146,19 @@ namespace BlasphemousRandomizer
 
 			//Rosaries
 			locations.Add(new ItemLocation("RB01", "RB01", "item", (InventoryData d) => true));
-			locations.Add(new ItemLocation("RB02", "RB02", "shop", (InventoryData d) => d.tears >= 15000));
-			locations.Add(new ItemLocation("RB03", "RB03", "item", (InventoryData d) => d.shroud));
+			locations.Add(new ItemLocation("RB02", "RB02", "shop", (InventoryData d) => d.tears >= 41400));
+			locations.Add(new ItemLocation("RB03", "RB03", "item", (InventoryData d) => d.shroud && d.lung && d.nail));
 			locations.Add(new ItemLocation("RB04", "RB04", "item", (InventoryData d) => true));
-			locations.Add(new ItemLocation("RB05", "RB05", "shop", (InventoryData d) => d.tears >= 15000));
+			locations.Add(new ItemLocation("RB05", "RB05", "shop", (InventoryData d) => d.tears >= 18700));
 			locations.Add(new ItemLocation("RB06", "RB06", "altasgracias", (InventoryData d) => d.ceremonyItems >= 3 && d.hatchedEgg));
 			locations.Add(new ItemLocation("RB07", "RB07", "item", (InventoryData d) => d.blood));
 			locations.Add(new ItemLocation("RB08", "RB08", "item", (InventoryData d) => true));
-			locations.Add(new ItemLocation("RB09", "RB09", "shop", (InventoryData d) => d.tears >= 15000));
+			locations.Add(new ItemLocation("RB09", "RB09", "shop", (InventoryData d) => d.tears >= 18700));
 			locations.Add(new ItemLocation("RB10", "RB10", "gemino", (InventoryData d) => d.fullThimble));
 			locations.Add(new ItemLocation("RB11", "RB11", "item", (InventoryData d) => d.bridgeAccess && d.masks > 0));
-			locations.Add(new ItemLocation("RB12", "RB12", "shop", (InventoryData d) => d.bridgeAccess && d.tears >= 65000));
+			locations.Add(new ItemLocation("RB12", "RB12", "shop", (InventoryData d) => d.bridgeAccess && d.tears >= 91399));
 			locations.Add(new ItemLocation("RB13", "RB13", "item", (InventoryData d) => true));
-			locations.Add(new ItemLocation("RB14", "RB14", "item", (InventoryData d) => d.bridgeAccess && (d.wheel && d.swordLevel > 1 || d.dawnHeart || d.root)));
+			locations.Add(new ItemLocation("RB14", "RB14", "item", (InventoryData d) => d.bridgeAccess && (d.wheel && d.ranged || d.dawnHeart || d.root)));
 			locations.Add(new ItemLocation("RB15", "RB15", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("RB16", "RB16", "item", (InventoryData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey));
 			locations.Add(new ItemLocation("RB17", "RW", "candle", (InventoryData d) => true));
@@ -178,17 +178,17 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("RB34", "RB34", "guiltArena", (InventoryData d) => d.guiltBead));
 			locations.Add(new ItemLocation("RB35", "RB35", "guiltArena", (InventoryData d) => d.guiltBead && d.bridgeAccess && (d.blood || d.masks > 0 && d.bronzeKey && d.silverKey && d.canBeatBoss("quirce"))));
 			locations.Add(new ItemLocation("RB36", "RB36", "guiltArena", (InventoryData d) => d.guiltBead && d.bridgeAccess && d.blood && d.masks > 0 && d.bronzeKey && d.silverKey && d.canBeatBoss("quirce")));
-			locations.Add(new ItemLocation("RB37", "RB37", "shop", (InventoryData d) => d.tears >= 15000));
+			locations.Add(new ItemLocation("RB37", "RB37", "shop", (InventoryData d) => d.tears >= 41400));
 			locations.Add(new ItemLocation("RB38", "RB38", "guiltBead", (InventoryData d) => true));
 			//locations.Add(new ItemLocation("RB101", "RB101", "penitence", (InventoryData d) => true));
 			//locations.Add(new ItemLocation("RB102", "RB102", "penitence", (InventoryData d) => true));
 			//locations.Add(new ItemLocation("RB103", "RB103", "penitence", (InventoryData d) => true));
-			locations.Add(new ItemLocation("RB104", "RB104", "church", (InventoryData d) => d.tears >= 15000));
-			locations.Add(new ItemLocation("RB105", "RB105", "church", (InventoryData d) => d.tears >= 145000));
+			locations.Add(new ItemLocation("RB104", "RB104", "church", (InventoryData d) => d.tears >= 41400));
+			locations.Add(new ItemLocation("RB105", "RB105", "church", (InventoryData d) => d.tears >= 164399));
 			locations.Add(new ItemLocation("RB106", "RB106", "item", (InventoryData d) => d.blood && d.root));
 			locations.Add(new ItemLocation("RB107", "RB107", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("RB108", "RB108", "item", (InventoryData d) => true));
-			locations.Add(new ItemLocation("RB201", "RB201", "item", (InventoryData d) => d.bridgeAccess && (d.root || d.dawnHeart && d.swordLevel > 1)));
+			locations.Add(new ItemLocation("RB201", "RB201", "item", (InventoryData d) => d.bridgeAccess && (d.root || d.dawnHeart && d.ranged)));
 			locations.Add(new ItemLocation("RB202", "RB202", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("RB203", "RB203", "item", (InventoryData d) => d.bridgeAccess));
 			locations.Add(new ItemLocation("RB204", "RB204", "item", (InventoryData d) => d.blood && d.linen));
@@ -204,7 +204,7 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("PR09", "PR09", "item", (InventoryData d) => d.holyWounds >= 3 && d.canBeatBoss("esdras")));
 			locations.Add(new ItemLocation("PR10", "PR10", "item", (InventoryData d) => d.root || d.linen));
 			locations.Add(new ItemLocation("PR11", "PR11", "cleofas", (InventoryData d) => d.bridgeAccess && d.marksOfRefuge >= 3 && d.cord));
-			locations.Add(new ItemLocation("PR12", "PR12", "item", (InventoryData d) => d.bridgeAccess && d.masks > 1 && d.linen && (d.root || d.swordLevel > 1)));
+			locations.Add(new ItemLocation("PR12", "PR12", "item", (InventoryData d) => d.bridgeAccess && d.masks > 1 && d.linen && (d.root || d.ranged)));
 			locations.Add(new ItemLocation("PR14", "PR14", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("PR15", "PR15", "item", (InventoryData d) => d.bridgeAccess));
 			locations.Add(new ItemLocation("PR16", "PR16", "item", (InventoryData d) => d.nail || d.linen));
@@ -216,7 +216,7 @@ namespace BlasphemousRandomizer
 			//Relics
 			locations.Add(new ItemLocation("RE01", "RE01", "item", (InventoryData d) => d.elderKey));
 			locations.Add(new ItemLocation("RE02", "RE02", "blessing", (InventoryData d) => d.hand));
-			locations.Add(new ItemLocation("RE03", "RE03", "redento", (InventoryData d) => d.bridgeAccess && d.limestones >= 3 && d.knots >= 3));
+			locations.Add(new ItemLocation("RE03", "RE03", "redento", (InventoryData d) => d.bridgeAccess && d.limestones >= 3 && d.knots > 0));
 			locations.Add(new ItemLocation("RE04", "RE04", "blessing", (InventoryData d) => d.cloth));
 			locations.Add(new ItemLocation("RE05", "RE05", "jocinero", (InventoryData d) => d.bridgeAccess && d.cherubs >= 20));
 			locations.Add(new ItemLocation("RE07", "RE07", "item", (InventoryData d) => true));
@@ -270,11 +270,11 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("CO32", "CO", "item", (InventoryData d) => d.nail && d.lung));
 			locations.Add(new ItemLocation("CO33", "CO", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("CO34", "CO", "item", (InventoryData d) => d.bridgeAccess));
-			locations.Add(new ItemLocation("CO35", "CO", "item", (InventoryData d) => d.bridgeAccess && (d.blood || d.dawnHeart || d.wheel && d.swordLevel > 1)));
+			locations.Add(new ItemLocation("CO35", "CO", "item", (InventoryData d) => d.bridgeAccess && (d.blood || d.dawnHeart || d.wheel && d.ranged)));
 			locations.Add(new ItemLocation("CO36", "CO", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("CO37", "CO", "item", (InventoryData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey));
 			locations.Add(new ItemLocation("CO38", "CO", "item", (InventoryData d) => true));
-			locations.Add(new ItemLocation("CO39", "CO", "item", (InventoryData d) => d.bridgeAccess && (d.wheel && d.swordLevel > 1 || d.dawnHeart || d.root)));
+			locations.Add(new ItemLocation("CO39", "CO", "item", (InventoryData d) => d.bridgeAccess && (d.wheel && d.ranged || d.dawnHeart || d.root)));
 			locations.Add(new ItemLocation("CO40", "CO", "item", (InventoryData d) => d.bridgeAccess && d.masks > 0 && d.lung && d.root && d.blood));
 			locations.Add(new ItemLocation("CO41", "CO", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("CO42", "CO", "item", (InventoryData d) => d.blood || d.canBreakHoles));
@@ -286,11 +286,11 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("QI02", "QI02", "item", (InventoryData d) => d.bridgeAccess));
 			locations.Add(new ItemLocation("QI03", "QI03", "item", (InventoryData d) => d.bridgeAccess && d.masks > 0));
 			locations.Add(new ItemLocation("QI04", "QI04", "item", (InventoryData d) => d.bridgeAccess && d.masks > 1));
-			locations.Add(new ItemLocation("QI06", "QI06", "item", (InventoryData d) => d.blood || d.dawnHeart || (d.wheel && d.swordLevel > 1)));
+			locations.Add(new ItemLocation("QI06", "QI06", "item", (InventoryData d) => d.blood || d.dawnHeart || (d.wheel && d.ranged)));
 			locations.Add(new ItemLocation("QI07", "QI07", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("QI08", "QI08", "item", (InventoryData d) => d.blood && d.root));
 			locations.Add(new ItemLocation("QI10", "QI10", "item", (InventoryData d) => d.blood));
-			locations.Add(new ItemLocation("QI11", "QI11", "shop", (InventoryData d) => d.tears >= 15000));
+			locations.Add(new ItemLocation("QI11", "QI11", "shop", (InventoryData d) => d.tears >= 41400));
 			locations.Add(new ItemLocation("QI12", "QI12", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("QI13", "QI13", "altasgracias", (InventoryData d) => d.ceremonyItems >= 3));
 			locations.Add(new ItemLocation("QI14", "QI14", "hatching", (InventoryData d) => d.egg));
@@ -311,16 +311,16 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("QI46", "BV", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("QI47", "BV", "item", (InventoryData d) => d.blood));
 			locations.Add(new ItemLocation("QI48", "BV", "item", (InventoryData d) => true));
-			locations.Add(new ItemLocation("QI49", "BV", "shop", (InventoryData d) => d.bridgeAccess && d.tears >= 65000));
+			locations.Add(new ItemLocation("QI49", "BV", "shop", (InventoryData d) => d.bridgeAccess && d.tears >= 91399));
 			locations.Add(new ItemLocation("QI50", "BV", "item", (InventoryData d) => d.bridgeAccess && d.canBreakHoles));
 			locations.Add(new ItemLocation("QI51", "BV", "item", (InventoryData d) => d.bridgeAccess && d.masks > 0 && d.goldKey));
 			locations.Add(new ItemLocation("QI52", "RK", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("QI53", "RK", "item", (InventoryData d) => true));
-			locations.Add(new ItemLocation("QI54", "RK", "redento", (InventoryData d) => d.bridgeAccess && d.limestones >= 3 && d.knots >= 3));
+			locations.Add(new ItemLocation("QI54", "RK", "redento", (InventoryData d) => d.bridgeAccess && d.limestones >= 3 && d.knots > 0));
 			locations.Add(new ItemLocation("QI55", "RK", "item", (InventoryData d) => d.nail && d.blood));
 			locations.Add(new ItemLocation("QI56", "RK", "tirso", (InventoryData d) => d.herbs >= 6 && d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey && d.canBeatBoss("quirce")));
 			locations.Add(new ItemLocation("QI57", "QI57", "fountain", (InventoryData d) => d.emptyThimble));
-			locations.Add(new ItemLocation("QI58", "QI58", "shop", (InventoryData d) => d.tears >= 15000));
+			locations.Add(new ItemLocation("QI58", "QI58", "shop", (InventoryData d) => d.tears >= 18700));
 			locations.Add(new ItemLocation("QI59", "QI59", "gemino", (InventoryData d) => true));
 			locations.Add(new ItemLocation("QI60", "QI60", "mask", (InventoryData d) => d.bridgeAccess && d.canBeatBoss("melquiades")));
 			locations.Add(new ItemLocation("QI61", "QI61", "mask", (InventoryData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey && d.peaksKey));
@@ -333,9 +333,9 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("QI68", "QI68", "gemino", (InventoryData d) => d.fullThimble));
 			locations.Add(new ItemLocation("QI69", "QI69", "item", (InventoryData d) => d.bridgeAccess && d.masks > 0));
 			locations.Add(new ItemLocation("QI70", "QI70", "item", (InventoryData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey));
-			locations.Add(new ItemLocation("QI71", "QI71", "shop", (InventoryData d) => d.bridgeAccess && d.tears >= 65000));
+			locations.Add(new ItemLocation("QI71", "QI71", "shop", (InventoryData d) => d.bridgeAccess && d.tears >= 91399));
 			locations.Add(new ItemLocation("QI72", "QI72", "item", (InventoryData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey && d.canBeatBoss("quirce")));
-			locations.Add(new ItemLocation("QI75", "QI75", "chalice", (InventoryData d) => (d.lung && d.nail && (d.root || d.cherubAttack(786432))) || (d.linen && d.swordLevel > 1)));
+			locations.Add(new ItemLocation("QI75", "QI75", "chalice", (InventoryData d) => (d.linen && (d.ranged || d.root)) || (d.lung && d.nail && (d.root || d.dawnHeart || d.wheel && d.ranged))));
 			locations.Add(new ItemLocation("QI79", "TH", "thorn", (InventoryData d) => d.guiltBead && d.bridgeAccess));
 			locations.Add(new ItemLocation("QI80", "TH", "thorn", (InventoryData d) => d.guiltBead && d.bridgeAccess && (d.blood || d.masks > 0 && d.bronzeKey && d.silverKey && d.canBeatBoss("quirce"))));
 			locations.Add(new ItemLocation("QI81", "TH", "thorn", (InventoryData d) => d.guiltBead && d.bridgeAccess && d.blood && d.masks > 0 && d.bronzeKey && d.silverKey && d.canBeatBoss("quirce")));
@@ -350,7 +350,7 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("QI109", "QI109", "verse", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && d.bridgeAccess && (d.blood && d.root || d.masks > 0 && d.bronzeKey && d.silverKey)));
 			locations.Add(new ItemLocation("QI110", "QI110", "verse", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && d.bridgeAccess && d.blood && d.root && d.masks > 0 && d.bronzeKey && d.silverKey));
 			locations.Add(new ItemLocation("QI201", "QI201", "crisanta", (InventoryData d) => d.bones >= 30 && d.canBeatBoss("isidora")));
-			locations.Add(new ItemLocation("QI202", "QI202", "crisanta", (InventoryData d) => d.bridgeAccess && d.canBeatBoss("sierpes") && (d.root || d.nail || d.cherubAttack(786432) && d.swordLevel > 1)));
+			locations.Add(new ItemLocation("QI202", "QI202", "crisanta", (InventoryData d) => d.bridgeAccess && d.canBeatBoss("sierpes") && (d.root || d.nail || d.dawnHeart || d.wheel && d.ranged)));
 			locations.Add(new ItemLocation("QI203", "QI203", "crisanta", (InventoryData d) => d.blood || d.bridgeAccess));
 			locations.Add(new ItemLocation("QI204", "QI204", "crisanta", (InventoryData d) => d.holyWounds >= 3 && d.canBeatBoss("esdras") && d.blood && d.scapular));
 			locations.Add(new ItemLocation("QI301", "QI301", "abnegation", (InventoryData d) => d.bridgeAccess && d.masks >= 3 && d.trueHeart && d.blood && d.scapular && d.canBeatBoss("crisanta")));
@@ -376,7 +376,7 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("RESCUED_CHERUB_18", "CH", "cherub", (InventoryData d) => true));
 			locations.Add(new ItemLocation("RESCUED_CHERUB_19", "CH", "cherub", (InventoryData d) => true));
 			locations.Add(new ItemLocation("RESCUED_CHERUB_20", "CH", "cherub", (InventoryData d) => d.root || d.cherubAttack(205426)));
-			locations.Add(new ItemLocation("RESCUED_CHERUB_21", "CH", "cherub", (InventoryData d) => d.blood && (d.cherubAttack(8192) && d.swordLevel > 1 || d.cherubAttack(198210))));
+			locations.Add(new ItemLocation("RESCUED_CHERUB_21", "CH", "cherub", (InventoryData d) => d.blood && (d.cherubAttack(8192) && d.ranged || d.cherubAttack(198210))));
 			locations.Add(new ItemLocation("RESCUED_CHERUB_22", "CH", "cherub", (InventoryData d) => d.linen || (d.lung && d.nail && d.cherubAttack(131138))));
 			locations.Add(new ItemLocation("RESCUED_CHERUB_23", "CH", "cherub", (InventoryData d) => d.root || d.cherubAttack(131138)));
 			locations.Add(new ItemLocation("RESCUED_CHERUB_24", "CH", "cherub", (InventoryData d) => d.linen || d.cherubAttack(197186)));
@@ -387,7 +387,7 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("RESCUED_CHERUB_29", "CH", "cherub", (InventoryData d) => d.bridgeAccess));
 			locations.Add(new ItemLocation("RESCUED_CHERUB_30", "CH", "cherub", (InventoryData d) => d.bridgeAccess));
 			locations.Add(new ItemLocation("RESCUED_CHERUB_31", "CH", "cherub", (InventoryData d) => d.blood || d.cherubAttack(131138)));
-			locations.Add(new ItemLocation("RESCUED_CHERUB_32", "CH", "cherub", (InventoryData d) => d.bridgeAccess && d.blood && d.canBeatBoss("exposito") && ((d.dawnHeart && d.swordLevel > 1 && d.cherubAttack(131138)) || d.root)));
+			locations.Add(new ItemLocation("RESCUED_CHERUB_32", "CH", "cherub", (InventoryData d) => d.bridgeAccess && d.blood && d.canBeatBoss("exposito") && ((d.dawnHeart && d.ranged && d.cherubAttack(131138)) || d.root)));
 			locations.Add(new ItemLocation("RESCUED_CHERUB_33", "CH", "cherub", (InventoryData d) => d.bridgeAccess && d.cherubAttack(197186)));
 			locations.Add(new ItemLocation("RESCUED_CHERUB_34", "CH", "cherub", (InventoryData d) => d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey));
 			locations.Add(new ItemLocation("RESCUED_CHERUB_35", "CH", "cherub", (InventoryData d) => d.bridgeAccess));
@@ -412,7 +412,7 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("Oil[D05Z01S19]", "FU", "oil", (InventoryData d) => d.bridgeAccess));
 
 			//Mea Culpa Shrines
-			locations.Add(new ItemLocation("Sword[D01Z05S24]", "SU", "sword", (InventoryData d) => d.bridgeAccess && d.chalice && d.masks > 0 && d.bronzeKey && ((d.lung && d.nail && (d.root || d.cherubAttack(786432))) || (d.linen && d.swordLevel > 1))));
+			locations.Add(new ItemLocation("Sword[D01Z05S24]", "SU", "sword", (InventoryData d) => d.bridgeAccess && d.chalice && d.masks > 0 && d.bronzeKey && ((d.linen && (d.ranged || d.root)) || (d.lung && d.nail && (d.root || d.dawnHeart || d.wheel && d.ranged)))));
 			locations.Add(new ItemLocation("Sword[D17Z01S08]", "SU", "sword", (InventoryData d) => true));
 			locations.Add(new ItemLocation("Sword[D02Z03S13]", "SU", "sword", (InventoryData d) => true));
 			locations.Add(new ItemLocation("Sword[D01Z02S06]", "SU", "sword", (InventoryData d) => true));
@@ -460,24 +460,24 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("D04Z01S04[18000]", "Tears[18000]", "boss", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && d.bridgeAccess));
 			locations.Add(new ItemLocation("D09Z01S01[18000]", "Tears[18000]", "boss", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && d.bridgeAccess && d.masks > 0 && d.bronzeKey && d.silverKey));
 			locations.Add(new ItemLocation("LaudesBossTrigger[30000]", "Tears[30000]", "boss", (InventoryData d) => d.bridgeAccess && d.verses >= 4 && d.canBeatBoss("laudes")));
-			locations.Add(new ItemLocation("BossTrigger[5000]", "Tears[5000]", "boss", (InventoryData d) => d.bridgeAccess && d.canBeatBoss("sierpes") && (d.root || d.nail || d.cherubAttack(786432) && d.swordLevel > 1)));
+			locations.Add(new ItemLocation("BossTrigger[5000]", "Tears[5000]", "boss", (InventoryData d) => d.bridgeAccess && d.canBeatBoss("sierpes") && (d.root || d.nail || d.dawnHeart || d.wheel && d.ranged)));
 
 			//Sword skills
-			locations.Add(new ItemLocation("COMBO_1", "COMBO", "skill", (InventoryData d) => d.swordLevel >= 1));
-			locations.Add(new ItemLocation("COMBO_2", "COMBO", "skill", (InventoryData d) => d.swordLevel >= 2));
-			locations.Add(new ItemLocation("COMBO_3", "COMBO", "skill", (InventoryData d) => d.swordLevel >= 4));
-			locations.Add(new ItemLocation("CHARGED_1", "CHARGED", "skill", (InventoryData d) => d.swordLevel >= 1));
-			locations.Add(new ItemLocation("CHARGED_2", "CHARGED", "skill", (InventoryData d) => d.swordLevel >= 3));
-			locations.Add(new ItemLocation("CHARGED_3", "CHARGED", "skill", (InventoryData d) => d.swordLevel >= 6));
-			locations.Add(new ItemLocation("RANGED_1", "RANGED", "skill", (InventoryData d) => d.swordLevel >= 2));
-			locations.Add(new ItemLocation("RANGED_2", "RANGED", "skill", (InventoryData d) => d.swordLevel >= 5));
-			locations.Add(new ItemLocation("RANGED_3", "RANGED", "skill", (InventoryData d) => d.swordLevel >= 7));
-			locations.Add(new ItemLocation("VERTICAL_1", "VERTICAL", "skill", (InventoryData d) => d.swordLevel >= 1));
-			locations.Add(new ItemLocation("VERTICAL_2", "VERTICAL", "skill", (InventoryData d) => d.swordLevel >= 3));
-			locations.Add(new ItemLocation("VERTICAL_3", "VERTICAL", "skill", (InventoryData d) => d.swordLevel >= 6));
-			locations.Add(new ItemLocation("LUNGE_1", "LUNGE", "skill", (InventoryData d) => d.swordLevel >= 1));
-			locations.Add(new ItemLocation("LUNGE_2", "LUNGE", "skill", (InventoryData d) => d.swordLevel >= 2));
-			locations.Add(new ItemLocation("LUNGE_3", "LUNGE", "skill", (InventoryData d) => d.swordLevel >= 4));
+			locations.Add(new ItemLocation("COMBO_1", "COMBO", "skill", (InventoryData d) => d.tears >= 18700 && d.swordRooms >= 1));
+			locations.Add(new ItemLocation("COMBO_2", "COMBO", "skill", (InventoryData d) => d.tears >= 18700 && d.swordRooms >= 2));
+			locations.Add(new ItemLocation("COMBO_3", "COMBO", "skill", (InventoryData d) => d.tears >= 91399 && d.swordRooms >= 4));
+			locations.Add(new ItemLocation("CHARGED_1", "CHARGED", "skill", (InventoryData d) => d.tears >= 18700 && d.swordRooms >= 1));
+			locations.Add(new ItemLocation("CHARGED_2", "CHARGED", "skill", (InventoryData d) => d.tears >= 41400 && d.swordRooms >= 3));
+			locations.Add(new ItemLocation("CHARGED_3", "CHARGED", "skill", (InventoryData d) => d.tears >= 164399 && d.swordRooms >= 6));
+			locations.Add(new ItemLocation("RANGED_1", "RANGED", "skill", (InventoryData d) => d.tears >= 18700 && d.swordRooms >= 1));
+			locations.Add(new ItemLocation("RANGED_2", "RANGED", "skill", (InventoryData d) => d.tears >= 91399 && d.swordRooms >= 5));
+			locations.Add(new ItemLocation("RANGED_3", "RANGED", "skill", (InventoryData d) => d.tears >= 184399 && d.swordRooms >= 7));
+			locations.Add(new ItemLocation("VERTICAL_1", "VERTICAL", "skill", (InventoryData d) => d.tears >= 18700 && d.swordRooms >= 1));
+			locations.Add(new ItemLocation("VERTICAL_2", "VERTICAL", "skill", (InventoryData d) => d.tears >= 41400 && d.swordRooms >= 3));
+			locations.Add(new ItemLocation("VERTICAL_3", "VERTICAL", "skill", (InventoryData d) => d.tears >= 164399 && d.swordRooms >= 6));
+			locations.Add(new ItemLocation("LUNGE_1", "LUNGE", "skill", (InventoryData d) => d.tears >= 18700 && d.swordRooms >= 1));
+			locations.Add(new ItemLocation("LUNGE_2", "LUNGE", "skill", (InventoryData d) => d.tears >= 18700 && d.swordRooms >= 2));
+			locations.Add(new ItemLocation("LUNGE_3", "LUNGE", "skill", (InventoryData d) => d.tears >= 91399 && d.swordRooms >= 4));
 
 			return locations;
 		}

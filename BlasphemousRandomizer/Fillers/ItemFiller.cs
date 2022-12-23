@@ -234,7 +234,7 @@ namespace BlasphemousRandomizer.Fillers
                 data.addItem(itemsOwned[i]);
             }
             data.lungDamage = config.lungDamage || data.lung;
-            if (data.swordLevel > 1)
+            if (data.ranged)
                 data.cherubBits |= 262144;
             if (data.fervourLevel < 2)
                 data.cherubBits &= ~73728;
