@@ -29,10 +29,5 @@ namespace BlasphemousRandomizer.Fillers
                 list[upperIdx] = value;
             }
         }
-
-        public virtual bool isValid()
-        {
-            return true;
-        }
     }
 }

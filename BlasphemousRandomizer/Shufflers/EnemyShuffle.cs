@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BlasphemousRandomizer.Fillers;
+using BlasphemousRandomizer.Structures;
 using Framework.Managers;
 using Framework.Audio;
 using UnityEngine;
@@ -9,7 +10,6 @@ namespace BlasphemousRandomizer.Shufflers
     public class EnemyShuffle : IShuffle
     {
         private Dictionary<string, string> newEnemies;
-        private Dictionary<string, float> locationOffsets;
         private Dictionary<string, int> difficultyRatings;
         private EnemyFiller filler;
 
@@ -25,8 +25,33 @@ namespace BlasphemousRandomizer.Shufflers
             return null;
         }
 
-        // Gets the difficulty rating of a certain enemy or area
-        public int getRating(string id)
+        // Gets the y offset of a specific enemy 
+        public float getEnemyOffset(string id)
+        {
+            if (Main.Randomizer.data.enemies.TryGetValue(id, out Enemy enemy))
+                return enemy.yOffset;
+            return 0f;
+        }
+
+        // Gets the difficulty rating of a specific enemy
+        public int getEnemyRating(string id)
+        {
+            if (Main.Randomizer.data.enemies.TryGetValue(id, out Enemy enemy))
+                return enemy.difficulty;
+            Main.Randomizer.Log("Enemy rating " + id + " does not exist!");
+            return 0;
+        }
+
+        // Gets the y offset of a specific location
+        public float getLocationOffset(string id)
+        {
+            if (Main.Randomizer.data.enemyLocations.TryGetValue(id, out EnemyLocation location))
+                return location.yOffset;
+            return 99;
+        }
+
+        // Gets the difficulty rating of a specific location
+        public int getLocationRating(string id)
         {
             if (difficultyRatings.ContainsKey(id)) return difficultyRatings[id];
             if (id == "D19Z01S01") return 2;
@@ -36,45 +61,13 @@ namespace BlasphemousRandomizer.Shufflers
             if (id == "D19Z01S05") return 7;
             if (id == "D19Z01S06") return 8;
             if (id == "D19Z01S07") return 10;
-            Main.Randomizer.Log("Enemy/Area rating " + id + " does not exist!");
+            Main.Randomizer.Log("Area rating " + id + " does not exist!");
             return 0;
-        }
-
-        // Gets the y offset of certain enemies 
-        public float getEnemyOffset(string id)
-        {
-            if (id == "EN02") return 1.7f;
-            if (id == "EN03") return 1.65f;
-            if (id == "EN05") return 0.9f;
-            if (id == "EN09") return -0.19f;
-            if (id == "EN09_E") return -0.19f;
-            if (id == "EN14") return 3.2f;
-            if (id == "EN15") return 0.18f;
-            if (id == "EN16") return 0.1f;
-            if (id == "EN34") return 0.18f;
-            if (id == "EV01") return 1.75f;
-            if (id == "EV02") return 1.7f;
-            if (id == "EV13") return -0.19f;
-            if (id == "EV14") return -0.19f;
-            if (id == "EV19") return 0.1f;
-            if (id == "EV23") return 0.1f;
-            if (id == "EV27") return 2f;
-            return 0f;
-        }
-
-        // Gets the y offset of certain locations
-        public float getLocationOffset(string id)
-        {
-            if (locationOffsets.ContainsKey(id))
-                return locationOffsets[id];
-            return 99;
         }
 
         public void Init()
         {
             filler = new EnemyFiller();
-            locationOffsets = new Dictionary<string, float>();
-            filler.fillEnemyOffsets(locationOffsets);
 
             // Load from json
             difficultyRatings = new Dictionary<string, int>()
@@ -97,64 +90,7 @@ namespace BlasphemousRandomizer.Shufflers
                 { "D06Z01", 9 },
                 { "D09Z01", 10 },
                 { "D09BZ0", 10 },
-                { "D20Z02", 11 },
-                { "EN01", 2 },
-                { "EN02", 2 },
-                { "EN03", 4 },
-                { "EN04", 4 },
-                { "EN05", 2 },
-                { "EN06", 3 },
-                { "EN07", 6 },
-                { "EN08", 3 },
-                { "EN09", 8 },
-                { "EN09_E", 8 },
-                { "EN10", 8 },
-                { "EN11", 6 },
-                { "EN12", 6 },
-                { "EN13", 2 },
-                { "EN14", 4 },
-                { "EN15", 2 },
-                { "EN16", 7 },
-                { "EN17", 4 },
-                { "EN18", 3 },
-                { "EN20", 4 },
-                { "EN21", 6 },
-                { "EN22", 5 },
-                { "EN23", 8 },
-                { "EN24", 3 },
-                { "EN26", 7 },
-                { "EN27", 6 },
-                { "EN28", 3 },
-                { "EN29", 7 },
-                { "EN31", 9 },
-                { "EN32", 3 },
-                { "EN33", 10 },
-                { "EN34", 9 },
-                { "EV01", 8 },
-                { "EV02", 7 },
-                { "EV03", 3 },
-                { "EV05", 8 },
-                { "EV08", 1 },
-                { "EV10", 1 },
-                { "EV11", 1 },
-                { "EV12", 3 },
-                { "EV13", 3 },
-                { "EV14", 6 },
-                { "EV15", 4 },
-                { "EV17", 6 },
-                { "EV18", 8 },
-                { "EV19", 10 },
-                { "EV20", 8 },
-                { "EV21", 4 },
-                { "EV22", 8 },
-                { "EV23", 9 },
-                { "EV24", 7 },
-                { "EV26", 8 },
-                { "EV27", 9 },
-                { "EV29", 9 },
-                { "EN201", 11 },
-                { "EN202", 11 },
-                { "EN203", 11 }
+                { "D20Z02", 11 }
 			};
         }
 
@@ -165,13 +101,8 @@ namespace BlasphemousRandomizer.Shufflers
 
         public void Shuffle(int seed)
         {
-            if (Main.Randomizer.gameConfig.enemies.type < 1)
+            if (Main.Randomizer.gameConfig.enemies.type < 1 || !Main.Randomizer.data.isValid)
                 return;
-            if (!filler.isValid())
-            {
-                Main.Randomizer.Log("Error: Enemy data could not be loaded!");
-                return;
-            }
 
             newEnemies = new Dictionary<string, string>();
             filler.Fill(seed, Main.Randomizer.gameConfig.enemies, newEnemies);

@@ -2,15 +2,14 @@
 using Gameplay.UI;
 using System.Diagnostics;
 using System.Collections;
-using System.Collections.Generic;
 using BlasphemousRandomizer.Shufflers;
-using BlasphemousRandomizer.Config;
 using BlasphemousRandomizer.Structures;
+using BlasphemousRandomizer.Config;
 using BlasphemousRandomizer.UI;
 using Framework.FrameworkCore;
 using Framework.Managers;
-using Tools.Level;
 using Framework.Audio;
+using Tools.Level;
 
 namespace BlasphemousRandomizer
 {
@@ -30,17 +29,14 @@ namespace BlasphemousRandomizer
         private bool startedInRando;
         public MainConfig gameConfig;
 
+        // Global info
+        private bool debugMode;
         private bool inGame;
         private int lastLoadedSlot;
         private string errorOnLoad;
-        private SettingsMenu settingsMenu;
 
-        // Randomizer data
-        private string[] cutsceneNames;
-        private string[] interactableIds;
-        private Sprite[] customImages;
-        private Sprite[] uiImages;
-        private bool debugMode;
+        public DataStorage data;
+        private SettingsMenu settingsMenu;
 
         public void Initialize()
         {
@@ -57,23 +53,17 @@ namespace BlasphemousRandomizer
 
             // Load external data
             debugMode = FileUtil.read("debug.txt", false, out string text) && text == "true";
-            if (!FileUtil.parseFiletoArray("cutscenes_names.dat", out cutsceneNames))
-                Log("Error: Cutscene names could not be loaded!");
-            if (!FileUtil.parseFiletoArray("interactable_ids.dat", out interactableIds))
-                Log("Error: Interactable ids could not be loaded!");
-            if (!FileUtil.loadImages("custom_images.png", 32, 32, 0, out customImages))
-                Log("Error: Custom images could not be loaded!");
-            if (!FileUtil.loadImages("ui.png", 36, 36, 0, out uiImages))
-                Log("Error: UI images could not be loaded!");
+            Log("\nRandomizer has been initialized!");
+            data = new DataStorage();
+            if (!data.loadData())
+                errorOnLoad = "Randomizer data could not loaded! Reinstall the program!";
 
             // Set up data
             Core.Persistence.AddPersistentManager(this);
             LevelManager.OnLevelLoaded += onLevelLoaded;
             gameConfig = MainConfig.Default();
             lastLoadedSlot = -1;
-            errorOnLoad = "";
             settingsMenu = new SettingsMenu();
-            Log("\nRandomizer has been initialized!");
         }
 
         public void Dispose()
@@ -164,7 +154,7 @@ namespace BlasphemousRandomizer
             }
 
             // Show error message if item shuffler failed
-            if (itemShuffler.getNewItems().Count == 0)
+            if (!itemShuffler.validSeed)
                 errorOnLoad = "Item shuffler failed to generate valid game.  Item locations are invalid!";
 
             // Generate spoiler on new game
@@ -195,11 +185,14 @@ namespace BlasphemousRandomizer
                 settingsMenu.onLoad(scene);
 
             // Display delayed error message
-            if (errorOnLoad != "")
+            if (errorOnLoad != null && errorOnLoad != "")
                 UIController.instance.StartCoroutine(showErrorMessage(2.1f));
 
             // Load enemies
             EnemyLoader.loadEnemies();
+
+            // Update shop menus
+            updateShops();
 
             // Reload enemy audio catalogs
             AudioLoader audio = Object.FindObjectOfType<AudioLoader>();
@@ -240,9 +233,9 @@ namespace BlasphemousRandomizer
                 Core.Events.SetFlag("PENITENCE_NO_PENITENCE", true, false);
             }
             // Set flags relating to various cutscenes
-            if (gameConfig.general.skipCutscenes && FileUtil.parseFiletoArray("cutscenes_flags.dat", out string[] flags))
+            if (gameConfig.general.skipCutscenes)
             {
-                foreach (string id in flags)
+                foreach (string id in data.cutsceneFlags)
                 {
                     Core.Events.SetFlag(id, true, false);
                 }
@@ -252,6 +245,29 @@ namespace BlasphemousRandomizer
             majorVersion = majorVersion.Substring(0, majorVersion.LastIndexOf('.'));
             Core.Events.SetFlag("RANDOMIZED", true, false);
             Core.Events.SetFlag(majorVersion, true, false);
+        }
+
+        // Update candelaria/sword shops when opened or when purchased
+        public void updateShops()
+        {
+            string scene = Core.LevelManager.currentLevel.LevelName;
+            // Shop scenes - search for each item pedestal
+            if (scene == "D02BZ02S01" || scene == "D01BZ02S01" || scene == "D05BZ02S01")
+            {
+                foreach (Interactable interactable in Object.FindObjectsOfType<Interactable>())
+                {
+                    if (data.interactableIds.ContainsKey(interactable.GetPersistenID()))
+                    {
+                        SpriteRenderer render = interactable.transform.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
+                        if (render != null)
+                        {
+                            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(data.interactableIds[interactable.GetPersistenID()]);
+                            render.sprite = item == null ? null : item.getRewardInfo(true).sprite;
+                        }
+                    }
+                }
+            }
+            // otherwise check for & update sword skills menu
         }
 
         // Keyboard input
@@ -272,9 +288,9 @@ namespace BlasphemousRandomizer
             }
             else if (Input.GetKeyDown(KeyCode.Keypad9))
             {
-                
+                //itemShuffler.Shuffle(new System.Random().Next());
             }
-
+            
             // Update ui menus
             if (settingsMenu != null)
                 settingsMenu.update();
@@ -310,12 +326,7 @@ namespace BlasphemousRandomizer
 
         public bool shouldSkipCutscene(string id)
         {
-            return gameConfig.general.skipCutscenes && FileUtil.arrayContains(cutsceneNames, id);
-        }
-
-        public bool isSpecialInteractable(string id)
-        {
-            return FileUtil.arrayContains(interactableIds, id);
+            return gameConfig.general.skipCutscenes && FileUtil.arrayContains(data.cutsceneNames, id);
         }
 
         public void playSoundEffect(int id)
@@ -323,15 +334,6 @@ namespace BlasphemousRandomizer
             if (id == 0) Core.Audio.PlayOneShot("event:/SFX/UI/EquipItem");
             else if (id == 1) Core.Audio.PlayOneShot("event:/SFX/UI/UnequipItem");
             else if (id == 2) Core.Audio.PlayOneShot("event:/SFX/UI/ChangeSelection");
-        }
-
-        public Sprite getImage(int idx)
-        {
-            return (idx >= 0 && idx < customImages.Length) ? customImages[idx] : null;
-        }
-        public Sprite getUI(int idx)
-        {
-            return (idx >= 0 && idx < uiImages.Length) ? uiImages[idx] : null;
         }
 
         public SettingsMenu getSettingsMenu()

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BlasphemousRandomizer.Structures
+﻿namespace BlasphemousRandomizer.Structures
 {
+    [System.Serializable]
     public class DoorLocation
     {
         // Permanent data

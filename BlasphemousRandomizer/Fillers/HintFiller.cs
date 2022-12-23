@@ -5,26 +5,9 @@ namespace BlasphemousRandomizer.Fillers
 {
     public class HintFiller : Filler
     {
-        private Dictionary<string, string> locationHints;
-        private Dictionary<string, string> itemHints;
-
-        public HintFiller()
-        {
-            locationHints = new Dictionary<string, string>();
-            itemHints = new Dictionary<string, string>();
-            FileUtil.parseFileToDictionary("hints_locations.dat", locationHints);
-            FileUtil.parseFileToDictionary("hints_items.dat", itemHints);
-        }
-
-        public override bool isValid()
-        {
-            return locationHints.Count > 0 && itemHints.Count > 0;
-        }
-
         public void Fill(int seed, Dictionary<string, string> output)
         {
             initialize(seed);
-            Dictionary<string, Item> newItems = Main.Randomizer.itemShuffler.getNewItems(); // Can change this to loadLocations & itemShuffler.getItemAtLocation once datastorage is implemented
 
             // Get list of dialog ids & possible hint locations
             List<int> dialogIds = new List<int>();
@@ -33,9 +16,10 @@ namespace BlasphemousRandomizer.Fillers
                 dialogIds.Add(i);
             }
             List<string> possibleLocations = new List<string>();
-            foreach (string location in newItems.Keys)
+            foreach (string location in Main.Randomizer.data.itemLocations.Keys)
             {
-                if (newItems[location].type == 0 || newItems[location].type == 1 || newItems[location].type == 2 || newItems[location].type == 3 || newItems[location].type == 5 || newItems[location].type == 7 || newItems[location].type == 8 || newItems[location].type == 9)
+                Item item = Main.Randomizer.itemShuffler.getItemAtLocation(location);
+                if (item.type == 0 || item.type == 1 || item.type == 2 || item.type == 3 || item.type == 5 || item.type == 7 || item.type == 8 || item.type == 9)
                 {
                     possibleLocations.Add(location);
                 }
@@ -44,10 +28,10 @@ namespace BlasphemousRandomizer.Fillers
 
             // Fill guaranteed hints
             Dictionary<int, string> grtdHints = new Dictionary<int, string>();
-            fillGrtdHintLocations(grtdHints, newItems);
+            fillGrtdHintLocations(grtdHints);
             foreach (int dialogId in grtdHints.Keys)
             {
-                addHint(dialogId, getHintText(grtdHints[dialogId], newItems[grtdHints[dialogId]]), output);
+                addHint(dialogId, getHintText(grtdHints[dialogId], Main.Randomizer.itemShuffler.getItemAtLocation(grtdHints[dialogId])), output);
                 dialogIds.RemoveAt(dialogId - 1);
                 possibleLocations.Remove(grtdHints[dialogId]);
             }
@@ -58,7 +42,7 @@ namespace BlasphemousRandomizer.Fillers
             {
                 int randIdx = rand(dialogIds.Count);
                 string location = possibleLocations[possibleLocations.Count - 1];
-                addHint(dialogIds[randIdx], getHintText(location, newItems[location]), output);
+                addHint(dialogIds[randIdx], getHintText(location, Main.Randomizer.itemShuffler.getItemAtLocation(location)), output);
                 possibleLocations.RemoveAt(possibleLocations.Count - 1);
                 dialogIds.RemoveAt(randIdx);
             }
@@ -75,7 +59,7 @@ namespace BlasphemousRandomizer.Fillers
         {
             //Get hints
             string locationHint = "", itemHint = "";
-            if (!locationHints.TryGetValue(location, out locationHint) || !itemHints.TryGetValue(item.name, out itemHint))
+            if (!Main.Randomizer.data.locationHints.TryGetValue(location, out locationHint) || !Main.Randomizer.data.itemHints.TryGetValue(item.id, out itemHint))
             {
                 return "???";
             }
@@ -86,12 +70,11 @@ namespace BlasphemousRandomizer.Fillers
         }
 
         // Fills a dictionary of hints that are guaranteed to be there
-        private void fillGrtdHintLocations(Dictionary<int, string> grtd, Dictionary<string, Item> newItems)
+        private void fillGrtdHintLocations(Dictionary<int, string> grtd)
         {
             grtd.Clear();
-            grtd.Add(34, getLocationFromItem("QI201", newItems));
-            grtd.Add(32, getLocationFromItem("QI202", newItems));
-            grtd.Add(30, getLocationFromItem("RB203", newItems));
+            grtd.Add(34, "QI201");
+            grtd.Add(32, "QI202");
             grtd.Add(28, "PR201");
             grtd.Add(27, "Sword[D01Z05S24]");
             grtd.Add(22, "RB11");
@@ -99,18 +82,6 @@ namespace BlasphemousRandomizer.Fillers
             grtd.Add(17, "PR05");
             grtd.Add(14, "PR04");
             grtd.Add(8, "RB105");
-            grtd.Add(6, getLocationFromItem("HE201", newItems));
-        }
-
-        // Gets the locationId that holds a certain item
-        private string getLocationFromItem(string itemName, Dictionary<string, Item> newItems)
-        {
-            foreach (string location in newItems.Keys)
-            {
-                if (newItems[location].name == itemName)
-                    return location;
-            }
-            return "X";
         }
     }
 }

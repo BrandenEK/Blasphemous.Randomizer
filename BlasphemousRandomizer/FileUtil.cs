@@ -60,9 +60,28 @@ namespace BlasphemousRandomizer
 			File.AppendAllText(Paths.GameRootPath + "/" + fileName, text);
 		}
 
+		// Deletes file
+		public static void delete(string fileName)
+        {
+			string path = Paths.PluginPath + "/BlasphemousRandomizer/data/" + fileName;
+			if (File.Exists(path))
+			{
+				try
+                {
+					File.Delete(path);
+					Main.Randomizer.Log("Deleted file: " + fileName);
+                }
+				catch (System.Exception e)
+                {
+					Main.Randomizer.Log(e.Message);
+                }
+			}
+		}
+
 		// Read file and split each line into a key value pair
-		public static bool parseFileToDictionary(string fileName, Dictionary<string, string> output)
+		public static bool parseFileToDictionary(string fileName, out Dictionary<string, string> output)
 		{
+			output = new Dictionary<string, string>();
 			if (!parseFiletoArray(fileName, out string[] array))
             {
 				return false;
@@ -89,7 +108,7 @@ namespace BlasphemousRandomizer
 		}
 
 		// Loads an array of square images from a file
-		public static bool loadImages(string fileName, int size, int pixels, int border, out Sprite[] images)
+		public static bool loadImages(string fileName, int size, int pixels, int border, bool pointFilter, out Sprite[] images)
         {
 			// Read bytes from file
 			if (!readBytes(fileName, out byte[] data))
@@ -99,8 +118,10 @@ namespace BlasphemousRandomizer
             }
 
 			// Convert to texture
-			Texture2D tex = new Texture2D(2, 2);
+			Texture2D tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
 			tex.LoadImage(data);
+			if (pointFilter)
+				tex.filterMode = FilterMode.Point;
 			int w = tex.width, h = tex.height;
 			images = new Sprite[w * h / (size * size)];
 

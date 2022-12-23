@@ -13,6 +13,8 @@ namespace BlasphemousRandomizer.Shufflers
 
         private Item lastItem;
 
+        public bool validSeed { get { return newItems != null && newItems.Count > 0; } }
+
         // Gets the item held at the specified location
         public Item getItemAtLocation(string locationId)
         {
@@ -45,10 +47,11 @@ namespace BlasphemousRandomizer.Shufflers
                 return;
 
             // Add the item to inventory
-            Main.Randomizer.Log($"Giving item ({item.name})");
+            Main.Randomizer.Log($"Giving item ({item.id})");
             Main.Randomizer.itemsCollected++;
             item.addToInventory();
             Core.Events.SetFlag("Location_" + locationId, true, false);
+            Main.Randomizer.updateShops();
             lastItem = item;
 
             // Possibly display the item
@@ -81,20 +84,11 @@ namespace BlasphemousRandomizer.Shufflers
             UIController.instance.ShowPopupAchievement(achievement);
         }
 
-        // Used by hint filler to generate new hints
-        public Dictionary<string, Item> getNewItems()
-        {
-            return newItems;
-        }
-
         // Shuffle the items - called when loading a game
         public void Shuffle(int seed)
         {
-            if (!filler.isValid())
-            {
-                Main.Randomizer.Log("Error: Item data could not be loaded!");
+            if (!Main.Randomizer.data.isValid)
                 return;
-            }
 
             newItems = new Dictionary<string, Item>();
             int attempt = 0, maxAttempts = 30;
@@ -126,14 +120,10 @@ namespace BlasphemousRandomizer.Shufflers
         public string GetSpoiler()
         {
             string spoiler = "================\nItems\n================\n\n";
-            string template;
-            Dictionary<string, string> itemNames = new Dictionary<string, string>();
-
-            // Ensure data is valid
-            if (!FileUtil.read("spoiler_items.dat", true, out template) || !FileUtil.parseFileToDictionary("names_items.dat", itemNames) || newItems == null)
-            {
+            if (!Main.Randomizer.data.isValid)
                 return spoiler + "Failed to generate item spoiler.\n\n";
-            }
+
+            string template = Main.Randomizer.data.spoilerTemplate;
 
             for (int left = template.IndexOf("{"); left > 0; left = template.IndexOf("{"))
             {
@@ -142,9 +132,7 @@ namespace BlasphemousRandomizer.Shufflers
                 string item = "???";
                 if (newItems.ContainsKey(location))
                 {
-                    string desc = newItems[location].name;
-                    if (itemNames.ContainsKey(desc))
-                        item = itemNames[desc];
+                    item = newItems[location].name;
                 }
                 template = template.Substring(0, left) + item + template.Substring(right + 1);
             }

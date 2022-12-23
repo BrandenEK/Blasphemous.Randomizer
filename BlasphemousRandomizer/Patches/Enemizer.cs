@@ -106,8 +106,8 @@ namespace BlasphemousRandomizer.Patches
             {
                 scene = scene.Substring(0, 6);
             }
-            int areaRating = Main.Randomizer.enemyShuffler.getRating(scene);
-            int enemyRating = Main.Randomizer.enemyShuffler.getRating(enemy.Id);
+            int areaRating = Main.Randomizer.enemyShuffler.getLocationRating(scene);
+            int enemyRating = Main.Randomizer.enemyShuffler.getEnemyRating(enemy.Id);
             float percent = 0.07f;
 
             // If areaScaling is enabled, calculate percent scaling

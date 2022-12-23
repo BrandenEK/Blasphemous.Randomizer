@@ -2,15 +2,16 @@
 
 namespace BlasphemousRandomizer.Structures
 {
+    [System.Serializable]
     public class ProgressiveItem : Item
     {
         public string[] items;
         public bool randomOrder;
         public bool removePrevious;
 
-        // Used for wax beads, thorns, cherubs, rosary knots, bile flasks, quicksilver, collectibles
+        // Used for wax beads, thorns, cherubs, rosary knots, bile flasks, quicksilver, sword skills
 
-        public ProgressiveItem(string name, int type, bool progression, string[] items, bool randomOrder, bool removePrevious) : base(name, type, progression)
+        public ProgressiveItem(string id, string name, int type, bool progression, int count, string[] items, bool randomOrder, bool removePrevious) : base(id, name, type, progression, count)
         {
             this.items = items;
             this.randomOrder = randomOrder;
@@ -20,7 +21,7 @@ namespace BlasphemousRandomizer.Structures
         public override void addToInventory()
         {
             Item itemToAdd = getItemLevel(true);
-            Core.Events.SetFlag("Item_" + itemToAdd.name, true, false);
+            Core.Events.SetFlag("Item_" + itemToAdd.id, true, false);
             itemToAdd.addToInventory();
             if (removePrevious)
                 removeItem();
@@ -34,12 +35,14 @@ namespace BlasphemousRandomizer.Structures
         public Item getItemLevel(bool upgraded)
         {
             int level = getCurrentLevel() + (upgraded ? 1 : 0);
-            if (level >= 0 && level < items.Length)
+            if (level < 0 && level >= items.Length)
             {
-                return new Item(items[level], type, false);
+                Main.Randomizer.Log("Invalid tier of progressive item!");
+                if (level < 0) level = 0;
+                else if (level >= items.Length) level = items.Length - 1;
             }
-            Main.Randomizer.Log("Invalid tier of progressive item!");
-            return null;
+
+            return new Item(items[level], "", type, false, 0); // Change to search in dictionary.  (Would have to make cherubs a regular item)
         }
 
         private int getCurrentLevel()
