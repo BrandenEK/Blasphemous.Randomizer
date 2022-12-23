@@ -19,9 +19,23 @@ namespace BlasphemousRandomizer.Patches
             Item item = Main.Randomizer.itemShuffler.getItemAtLocation(skillId);
             if (item != null)
             {
-                RewardInfo info = item.getRewardInfo(true);
-                ___caption.text = info.name;
-                ___description.text = info.description;
+                if (Core.SkillManager.IsSkillUnlocked(skillId))
+                {
+                    RewardInfo info = item.getRewardInfo(false);
+                    ___caption.text = info.name;
+                    ___description.text = info.description;
+                }
+                else if (Core.SkillManager.CanUnlockSkillNoCheckPoints(skillId))
+                {
+                    RewardInfo info = item.getRewardInfo(true);
+                    ___caption.text = info.name;
+                    ___description.text = info.description;
+                }
+                else
+                {
+                    ___caption.text = "???";
+                    ___description.text = "";
+                }
                 ___instructionsPro.text = "";
             }
         }
@@ -29,6 +43,15 @@ namespace BlasphemousRandomizer.Patches
     [HarmonyPatch(typeof(NewInventory_Skill), "UpdateStatus")]
     public class InvSkill_Patch
     {
+        public static void Postfix(string ___skill, ref Image ___skillImage)
+        {
+            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(___skill);
+            if (item != null)
+            {
+                RewardInfo info = item.getRewardInfo(!Core.SkillManager.IsSkillUnlocked(___skill));
+                ___skillImage.sprite = info.sprite;
+            }
+        }
         //public static bool Prefix(string ___skill, ref Image ___skillImage, ref GameObject ___backgorundLocked, ref GameObject ___backgorundUnLocked, ref GameObject ___backgorundEnabled, ref Text ___tierText, Color ___disabledColor)
         //{
         //    UnlockableSkill skill = Core.SkillManager.GetSkill(___skill);
@@ -60,19 +83,7 @@ namespace BlasphemousRandomizer.Patches
         //        ___tierText.color = ___disabledColor;
         //        locked = true;
         //    }
-
-            
         //}
-
-        public static void Postfix(string ___skill, ref Image ___skillImage)
-        {
-            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(___skill);
-            if (item != null)
-            {
-                RewardInfo info = item.getRewardInfo(true);
-                ___skillImage.sprite = info.sprite;
-            }
-        }
     }
 
     // Unlocks a skill or buys a random item - ignoreChecks is changed to be whether to give actual skill or not

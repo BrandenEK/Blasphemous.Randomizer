@@ -96,7 +96,7 @@ namespace BlasphemousRandomizer.Structures
 					baseObject = inventoryManager.GetBaseObject(name, InventoryManager.ItemType.Quest);
 					return new RewardInfo(baseObject.caption, baseObject.description, "New quest item obtained!", baseObject.picture);
 				case 6:
-					return new RewardInfo("Cherub " + (CherubCaptorPersistentObject.CountRescuedCherubs() + (upgraded ? 1 : 0)) + "/38", "A little floating baby that you rescued from a cage.", "Cherub rescued!", Main.Randomizer.data.randomizerImages[0]);
+					return new RewardInfo("Cherub " + int.Parse(name.Substring(2)) + "/38", "A little floating baby that you rescued from a cage.", "Cherub rescued!", Main.Randomizer.data.randomizerImages[0]);
 				case 7:
 					return new RewardInfo("Life Upgrade " + (stats.Life.GetUpgrades() + (upgraded ? 1 : 0)) + "/6", "An increase to your maximum health.", "Stat increased!", Main.Randomizer.data.randomizerImages[1]);
 				case 8:
@@ -107,10 +107,19 @@ namespace BlasphemousRandomizer.Structures
 					return new RewardInfo($"Tears of Atonement ({tearAmount})", $"A bundle of {tearAmount} tears.", "Tears acquired!", inventoryManager.TearsGenericObject.picture);
 				case 11:
 					UnlockableSkill skill = Core.SkillManager.GetSkill(name);
-					return new RewardInfo(skill.caption, skill.description, "Skill unlocked!", skill.smallImage);
+					return new RewardInfo(removeCaps(skill.caption), skill.description, "Skill unlocked!", skill.smallImage);
 				default:
 					return new RewardInfo("Error!", "You should not see this.", "You should not see this!", null);
 			}
+		}
+
+		private string removeCaps(string name)
+        {
+			string[] words = name.ToLower().Split(' ');
+			string output = "";
+			foreach (string word in words)
+				output += char.ToUpper(word[0]) + word.Substring(1) + ' ';
+			return output.Trim();
 		}
 	}
 }
