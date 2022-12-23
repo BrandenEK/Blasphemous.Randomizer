@@ -27,8 +27,8 @@ namespace BlasphemousRandomizer.Fillers
 			List<Item> items = new List<Item>();
 			foreach (Item item in Main.Randomizer.data.items.Values)
             {
-                if (item is ProgressiveItem)
-                    shuffleItemOrder(item as ProgressiveItem);
+                //if (item is ProgressiveItem)
+                //    shuffleItemOrder(item as ProgressiveItem);
 
 				if (item.count == 1)
 					items.Add(item);
