@@ -128,7 +128,6 @@ namespace BlasphemousRandomizer.Shufflers
                 return spoiler + "Failed to generate item spoiler.\n\n";
 
             string template = Main.Randomizer.data.spoilerTemplate;
-            Dictionary<string, string> itemNames = Main.Randomizer.data.itemNames;
 
             for (int left = template.IndexOf("{"); left > 0; left = template.IndexOf("{"))
             {
@@ -137,9 +136,7 @@ namespace BlasphemousRandomizer.Shufflers
                 string item = "???";
                 if (newItems.ContainsKey(location))
                 {
-                    string desc = newItems[location].id;
-                    if (itemNames.ContainsKey(desc))
-                        item = itemNames[desc];
+                    item = newItems[location].name;
                 }
                 template = template.Substring(0, left) + item + template.Substring(right + 1);
             }

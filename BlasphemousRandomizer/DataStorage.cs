@@ -16,8 +16,8 @@ namespace BlasphemousRandomizer
         public Dictionary<string, DoorLocation> doorLocations;
 
         // Text data
-        public Dictionary<string, string> itemNames;
-        public Dictionary<string, string> enemyNames;
+        //public Dictionary<string, string> itemNames;
+        //public Dictionary<string, string> enemyNames;
         public Dictionary<string, string> itemHints;
         public Dictionary<string, string> locationHints;
         public Dictionary<string, string> interactableIds;
@@ -47,6 +47,7 @@ namespace BlasphemousRandomizer
 			List<ItemLocation> tempItemLocations = fillLocations();
 			for (int i = 0; i < tempItemLocations.Count; i++)
 				itemLocations.Add(tempItemLocations[i].id, tempItemLocations[i]);
+			Main.Randomizer.Log($"Loaded {itemLocations.Count} item locations!");
 
 			// Enemies
 			enemies = new Dictionary<string, Enemy>();
@@ -79,10 +80,10 @@ namespace BlasphemousRandomizer
             else { Main.Randomizer.Log("Error: Failed to load doors!"); valid = false; }
 
             // Load text data
-            if (FileUtil.parseFileToDictionary("names_items.dat", out itemNames)) Main.Randomizer.Log($"Loaded {itemNames.Count} item names!");
-            else { Main.Randomizer.Log("Error: Failed to load item names!"); valid = false; }
-            if (FileUtil.parseFileToDictionary("names_enemies.dat", out enemyNames)) Main.Randomizer.Log($"Loaded {enemyNames.Count} enemy names!");
-            else { Main.Randomizer.Log("Error: Failed to load enemy names!"); valid = false; }
+            //if (FileUtil.parseFileToDictionary("names_items.dat", out itemNames)) Main.Randomizer.Log($"Loaded {itemNames.Count} item names!");
+            //else { Main.Randomizer.Log("Error: Failed to load item names!"); valid = false; }
+            //if (FileUtil.parseFileToDictionary("names_enemies.dat", out enemyNames)) Main.Randomizer.Log($"Loaded {enemyNames.Count} enemy names!");
+            //else { Main.Randomizer.Log("Error: Failed to load enemy names!"); valid = false; }
             if (FileUtil.parseFileToDictionary("hints_items.dat", out itemHints)) Main.Randomizer.Log($"Loaded {itemHints.Count} item hints!");
             else { Main.Randomizer.Log("Error: Failed to load item hints!"); valid = false; }
             if (FileUtil.parseFileToDictionary("hints_locations.dat", out locationHints)) Main.Randomizer.Log($"Loaded {locationHints.Count} location hints!");
