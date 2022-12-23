@@ -60,6 +60,24 @@ namespace BlasphemousRandomizer
 			File.AppendAllText(Paths.GameRootPath + "/" + fileName, text);
 		}
 
+		// Deletes file
+		public static void delete(string fileName)
+        {
+			string path = Paths.PluginPath + "/BlasphemousRandomizer/data/" + fileName;
+			if (File.Exists(path))
+			{
+				try
+                {
+					File.Delete(path);
+					Main.Randomizer.Log("Deleted file: " + fileName);
+                }
+				catch (System.Exception e)
+                {
+					Main.Randomizer.Log(e.Message);
+                }
+			}
+		}
+
 		// Read file and split each line into a key value pair
 		public static bool parseFileToDictionary(string fileName, out Dictionary<string, string> output)
 		{

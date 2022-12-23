@@ -29,6 +29,8 @@ namespace BlasphemousRandomizer
         public Sprite[] randomizerImages;
         public Sprite[] uiImages;
 
+		private string[] oldFiles = new string[] { "names_items.dat", "names_enemies.dat" };
+
         public bool loadData()
         {
             bool valid = true;
@@ -102,6 +104,10 @@ namespace BlasphemousRandomizer
             else { Main.Randomizer.Log("Error: Failed to load randomizer images!"); valid = false; }
             if (FileUtil.loadImages("ui.png", 36, 36, 0, out uiImages)) Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
             else { Main.Randomizer.Log("Error: Failed to load ui images!"); valid = false; }
+
+			// Delete old files
+			foreach (string file in oldFiles)
+				FileUtil.delete(file);
 
             isValid = valid;
             return valid;
