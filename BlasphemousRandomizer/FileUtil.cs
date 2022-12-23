@@ -108,7 +108,7 @@ namespace BlasphemousRandomizer
 		}
 
 		// Loads an array of square images from a file
-		public static bool loadImages(string fileName, int size, int pixels, int border, out Sprite[] images)
+		public static bool loadImages(string fileName, int size, int pixels, int border, bool pointFilter, out Sprite[] images)
         {
 			// Read bytes from file
 			if (!readBytes(fileName, out byte[] data))
@@ -120,8 +120,8 @@ namespace BlasphemousRandomizer
 			// Convert to texture
 			Texture2D tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
 			tex.LoadImage(data);
-			tex.filterMode = FilterMode.Point;
-			Main.Randomizer.Log(tex.format.ToString());
+			if (pointFilter)
+				tex.filterMode = FilterMode.Point;
 			int w = tex.width, h = tex.height;
 			images = new Sprite[w * h / (size * size)];
 

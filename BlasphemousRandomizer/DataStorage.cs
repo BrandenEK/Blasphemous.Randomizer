@@ -16,8 +16,6 @@ namespace BlasphemousRandomizer
         public Dictionary<string, DoorLocation> doorLocations;
 
         // Text data
-        //public Dictionary<string, string> itemNames;
-        //public Dictionary<string, string> enemyNames;
         public Dictionary<string, string> itemHints;
         public Dictionary<string, string> locationHints;
         public Dictionary<string, string> interactableIds;
@@ -82,10 +80,6 @@ namespace BlasphemousRandomizer
             else { Main.Randomizer.Log("Error: Failed to load doors!"); valid = false; }
 
             // Load text data
-            //if (FileUtil.parseFileToDictionary("names_items.dat", out itemNames)) Main.Randomizer.Log($"Loaded {itemNames.Count} item names!");
-            //else { Main.Randomizer.Log("Error: Failed to load item names!"); valid = false; }
-            //if (FileUtil.parseFileToDictionary("names_enemies.dat", out enemyNames)) Main.Randomizer.Log($"Loaded {enemyNames.Count} enemy names!");
-            //else { Main.Randomizer.Log("Error: Failed to load enemy names!"); valid = false; }
             if (FileUtil.parseFileToDictionary("hints_items.dat", out itemHints)) Main.Randomizer.Log($"Loaded {itemHints.Count} item hints!");
             else { Main.Randomizer.Log("Error: Failed to load item hints!"); valid = false; }
             if (FileUtil.parseFileToDictionary("hints_locations.dat", out locationHints)) Main.Randomizer.Log($"Loaded {locationHints.Count} location hints!");
@@ -100,9 +94,9 @@ namespace BlasphemousRandomizer
             else { Main.Randomizer.Log("Error: Failed to load spoiler template!"); valid = false; }
 
             // Load image data
-            if (FileUtil.loadImages("custom_images.png", 32, 32, 0, out randomizerImages)) Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
+            if (FileUtil.loadImages("custom_images.png", 32, 32, 0, true, out randomizerImages)) Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
             else { Main.Randomizer.Log("Error: Failed to load randomizer images!"); valid = false; }
-            if (FileUtil.loadImages("ui.png", 36, 36, 0, out uiImages)) Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
+            if (FileUtil.loadImages("ui.png", 36, 36, 0, false, out uiImages)) Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
             else { Main.Randomizer.Log("Error: Failed to load ui images!"); valid = false; }
 
 			// Delete old files

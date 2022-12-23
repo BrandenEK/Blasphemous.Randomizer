@@ -42,7 +42,7 @@ namespace BlasphemousRandomizer.Structures
                 else if (level >= items.Length) level = items.Length - 1;
             }
 
-            return new Item(items[level], "", type, false, 0); // Change to search in dictionary.  maybe not tho
+            return new Item(items[level], "", type, false, 0); // Change to search in dictionary.  (Would have to make cherubs a regular item)
         }
 
         private int getCurrentLevel()

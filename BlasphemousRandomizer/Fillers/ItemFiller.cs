@@ -274,7 +274,7 @@ namespace BlasphemousRandomizer.Fillers
             }
         }
 
-		// Randomizes the order of certain progressive items' rewards
+		// Randomizes the order of certain progressive items' rewards (Not used anymore)
 		private void shuffleItemOrder(ProgressiveItem item)
         {
             if (item.randomOrder)
