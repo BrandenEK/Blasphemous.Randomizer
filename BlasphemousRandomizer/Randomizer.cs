@@ -290,7 +290,7 @@ namespace BlasphemousRandomizer
             {
                 //itemShuffler.Shuffle(new System.Random().Next());
             }
-
+            
             // Update ui menus
             if (settingsMenu != null)
                 settingsMenu.update();

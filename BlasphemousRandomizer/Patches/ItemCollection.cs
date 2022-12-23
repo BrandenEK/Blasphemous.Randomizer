@@ -100,23 +100,14 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
-    // Sword Shrine (Used)
-    [HarmonyPatch(typeof(MeaCulpaUpgrade), "OnEnter")]
-    public class MeaCulpaUpgrade_Patch
-    {
-        public static bool Prefix(MeaCulpaUpgrade __instance)
-        {
-            Main.Randomizer.Log("MeaCulpaUpgrade()");
-            Main.Randomizer.itemShuffler.giveItem($"Sword[{Core.LevelManager.currentLevel.LevelName}]", true);
-            __instance.Finish();
-            return false;
-        }
-    }
+    // Sword Shrine
     [HarmonyPatch(typeof(StrengthUpgrade), "OnEnter")]
     public class StrengthUpgrade_Patch
     {
         public static bool Prefix(StrengthUpgrade __instance)
         {
+            Main.Randomizer.Log("StrengthUpgrade()");
+            Main.Randomizer.itemShuffler.giveItem($"Sword[{Core.LevelManager.currentLevel.LevelName}]", true);
             __instance.Finish();
             return false;
         }

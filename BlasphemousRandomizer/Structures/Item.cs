@@ -60,11 +60,11 @@ namespace BlasphemousRandomizer.Structures
 				case 8:
 					stats.Fervour.Upgrade(); stats.Fervour.SetToCurrentMax(); return;
 				case 9:
-					stats.MeaCulpa.Upgrade(); stats.Strength.Upgrade(); return;
+					stats.Strength.Upgrade(); return;
 				case 10:
 					stats.Purge.Current += tearAmount; return;
 				case 11:
-					// Unlock skill
+					Core.SkillManager.UnlockSkill(name, true); return;
 				default:
 					return;
 			}
@@ -102,7 +102,7 @@ namespace BlasphemousRandomizer.Structures
 				case 8:
 					return new RewardInfo("Fervour Upgrade " + (stats.Fervour.GetUpgrades() + (upgraded ? 1 : 0)) + "/6", "An increase to your maximum fervour.", "Stat increased!", Main.Randomizer.data.randomizerImages[2]);
 				case 9:
-					return new RewardInfo("Mea Culpa Upgrade " + (stats.MeaCulpa.GetUpgrades() + (upgraded ? 1 : 0)) + "/7", "An increase to the strength of your sword.", "Stat increased!", Main.Randomizer.data.randomizerImages[3]);
+					return new RewardInfo("Mea Culpa Upgrade " + (stats.Strength.GetUpgrades() + (upgraded ? 1 : 0)) + "/7", "An increase to the strength of your sword.", "Stat increased!", Main.Randomizer.data.randomizerImages[3]);
 				case 10:
 					return new RewardInfo($"Tears of Atonement ({tearAmount})", $"A bundle of {tearAmount} tears.", "Tears acquired!", inventoryManager.TearsGenericObject.picture);
 				case 11:
