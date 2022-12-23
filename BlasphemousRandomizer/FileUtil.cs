@@ -118,8 +118,10 @@ namespace BlasphemousRandomizer
             }
 
 			// Convert to texture
-			Texture2D tex = new Texture2D(2, 2);
+			Texture2D tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
 			tex.LoadImage(data);
+			tex.filterMode = FilterMode.Point;
+			Main.Randomizer.Log(tex.format.ToString());
 			int w = tex.width, h = tex.height;
 			images = new Sprite[w * h / (size * size)];
 
