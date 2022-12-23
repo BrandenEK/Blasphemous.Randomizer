@@ -154,7 +154,7 @@ namespace BlasphemousRandomizer
             }
 
             // Show error message if item shuffler failed
-            if (itemShuffler.getNewItems().Count == 0)
+            if (!itemShuffler.validSeed)
                 errorOnLoad = "Item shuffler failed to generate valid game.  Item locations are invalid!";
 
             // Generate spoiler on new game

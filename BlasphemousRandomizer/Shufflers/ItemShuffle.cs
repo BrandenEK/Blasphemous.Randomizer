@@ -13,6 +13,8 @@ namespace BlasphemousRandomizer.Shufflers
 
         private Item lastItem;
 
+        public bool validSeed { get { return newItems != null && newItems.Count > 0; } }
+
         // Gets the item held at the specified location
         public Item getItemAtLocation(string locationId)
         {
@@ -80,12 +82,6 @@ namespace BlasphemousRandomizer.Shufflers
             RewardInfo info = item.getRewardInfo(false);
             RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
             UIController.instance.ShowPopupAchievement(achievement);
-        }
-
-        // Used by hint filler to generate new hints
-        public Dictionary<string, Item> getNewItems()
-        {
-            return newItems;
         }
 
         // Shuffle the items - called when loading a game
