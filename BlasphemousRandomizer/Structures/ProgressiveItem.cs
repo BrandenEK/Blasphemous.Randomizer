@@ -35,12 +35,14 @@ namespace BlasphemousRandomizer.Structures
         public Item getItemLevel(bool upgraded)
         {
             int level = getCurrentLevel() + (upgraded ? 1 : 0);
-            if (level >= 0 && level < items.Length)
+            if (level < 0 && level >= items.Length)
             {
-                return new Item(items[level], type, false, 0); // Change to search in dictionary.  maybe not tho
+                Main.Randomizer.Log("Invalid tier of progressive item!");
+                if (level < 0) level = 0;
+                else if (level >= items.Length) level = items.Length - 1;
             }
-            Main.Randomizer.Log("Invalid tier of progressive item!");
-            return null;
+
+            return new Item(items[level], type, false, 0); // Change to search in dictionary.  maybe not tho
         }
 
         private int getCurrentLevel()
