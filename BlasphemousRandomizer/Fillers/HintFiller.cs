@@ -33,7 +33,7 @@ namespace BlasphemousRandomizer.Fillers
             foreach (string location in Main.Randomizer.data.itemLocations.Keys)
             {
                 Item item = Main.Randomizer.itemShuffler.getItemAtLocation(location);
-                if (item.type == 0 || item.type == 1 || item.type == 2 || item.type == 3 || item.type == 5 || item.type == 7 || item.type == 8 || item.type == 9)
+                if (item.type == 0 || item.type == 1 || item.type == 2 || item.type == 3 || item.type == 5 || item.type == 7 || item.type == 8 || item.type == 9 || item.type == 11)
                 {
                     possibleLocations.Add(location);
                 }

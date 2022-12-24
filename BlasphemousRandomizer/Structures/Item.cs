@@ -10,6 +10,7 @@ namespace BlasphemousRandomizer.Structures
     {
 		public string id;
 		public string name;
+		public string hint;
         public int type;
 		public bool progression;
 		public int count;
@@ -24,10 +25,11 @@ namespace BlasphemousRandomizer.Structures
 			}
 		}
 
-		public Item(string id, string name, int type, bool progression, int count)
+		public Item(string id, string name, string hint, int type, bool progression, int count)
 		{
 			this.id = id;
 			this.name = name;
+			this.hint = hint;
 			this.type = type;
 			this.progression = progression;
 			this.count = count;

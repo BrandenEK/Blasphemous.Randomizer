@@ -11,7 +11,7 @@ namespace BlasphemousRandomizer.Structures
 
         // Used for wax beads, thorns, cherubs, rosary knots, bile flasks, quicksilver, sword skills
 
-        public ProgressiveItem(string id, string name, int type, bool progression, int count, string[] items, bool randomOrder, bool removePrevious) : base(id, name, type, progression, count)
+        public ProgressiveItem(string id, string name, string hint, int type, bool progression, int count, string[] items, bool randomOrder, bool removePrevious) : base(id, name, hint, type, progression, count)
         {
             this.items = items;
             this.randomOrder = randomOrder;

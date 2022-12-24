@@ -2,6 +2,7 @@
 	{
 		"id": "RB01",
 		"name": "Dove Skull",
+		"hint": "a bead of physical defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -9,6 +10,7 @@
 	{
 		"id": "RB02",
 		"name": "Ember of the Holy Cremation",
+		"hint": "a bead of physical defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -16,6 +18,7 @@
 	{
 		"id": "RB03",
 		"name": "Silver Grape",
+		"hint": "a bead of physical defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -23,6 +26,7 @@
 	{
 		"id": "RB04",
 		"name": "Uvula of Proclamation",
+		"hint": "a bead of wealth",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -30,6 +34,7 @@
 	{
 		"id": "RB05",
 		"name": "Hollow Pearl",
+		"hint": "a bead of magic",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -37,6 +42,7 @@
 	{
 		"id": "RB06",
 		"name": "Knot of Hair",
+		"hint": "a bead of strength",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -44,6 +50,7 @@
 	{
 		"id": "RB07",
 		"name": "Painted Wood Bead",
+		"hint": "a bead of life",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -51,6 +58,7 @@
 	{
 		"id": "RB08",
 		"name": "Piece of a Golden Mask",
+		"hint": "a bead of fiery defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -58,6 +66,7 @@
 	{
 		"id": "RB09",
 		"name": "Moss Preserved in Glass",
+		"hint": "a bead of toxic defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -65,6 +74,7 @@
 	{
 		"id": "RB10",
 		"name": "Frozen Olive",
+		"hint": "a bead of conditional defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -72,6 +82,7 @@
 	{
 		"id": "RB11",
 		"name": "Quirce's Scorched Bead",
+		"hint": "a bead of fiery defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -79,6 +90,7 @@
 	{
 		"id": "RB12",
 		"name": "Wicker Knot",
+		"hint": "a bead of toxic defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -86,6 +98,7 @@
 	{
 		"id": "RB13",
 		"name": "Perpetva's Protection",
+		"hint": "a bead of electric defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -93,6 +106,7 @@
 	{
 		"id": "RB14",
 		"name": "Thorned Symbol",
+		"hint": "a bead of contact defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -100,6 +114,7 @@
 	{
 		"id": "RB15",
 		"name": "Piece of a Tombstone",
+		"hint": "a stone bead",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -107,6 +122,7 @@
 	{
 		"id": "RB16",
 		"name": "Sphere of the Sacred Smoke",
+		"hint": "a bead of life",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -114,6 +130,7 @@
 	{
 		"id": "RB20",
 		"name": "Little Toe made of Limestone",
+		"hint": "a limestone bead",
 		"type": 0,
 		"progression": true,
 		"count": 1
@@ -121,6 +138,7 @@
 	{
 		"id": "RB21",
 		"name": "Big Toe made of Limestone",
+		"hint": "a limestone bead",
 		"type": 0,
 		"progression": true,
 		"count": 1
@@ -128,6 +146,7 @@
 	{
 		"id": "RB22",
 		"name": "Fourth Toe made of Limestone",
+		"hint": "a limestone bead",
 		"type": 0,
 		"progression": true,
 		"count": 1
@@ -135,6 +154,7 @@
 	{
 		"id": "RB28",
 		"name": "Pelican Effigy",
+		"hint": "a bead of conditional defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -142,6 +162,7 @@
 	{
 		"id": "RB30",
 		"name": "Drop of Coagulated Ink",
+		"hint": "a bead of intellect",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -149,6 +170,7 @@
 	{
 		"id": "RB31",
 		"name": "Amber Eye",
+		"hint": "a bead of electric defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -156,6 +178,7 @@
 	{
 		"id": "RB32",
 		"name": "Muted Bell",
+		"hint": "a bead of magical defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -163,6 +186,7 @@
 	{
 		"id": "RB33",
 		"name": "Consecrated Amethyst",
+		"hint": "a bead of magical defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -170,6 +194,7 @@
 	{
 		"id": "RB34",
 		"name": "Embers of a Broken Star",
+		"hint": "a bead of magic",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -177,6 +202,7 @@
 	{
 		"id": "RB35",
 		"name": "Scaly Coin",
+		"hint": "a bead of wealth",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -184,6 +210,7 @@
 	{
 		"id": "RB36",
 		"name": "Seashell of the Inverted Spiral",
+		"hint": "a bead of universal defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -191,6 +218,7 @@
 	{
 		"id": "RB37",
 		"name": "Calcified Eye of Erudition",
+		"hint": "a calcium bead",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -198,6 +226,7 @@
 	{
 		"id": "RB41",
 		"name": "Weight of True Guilt",
+		"hint": "a bead of guilt",
 		"type": 0,
 		"progression": true,
 		"count": 1
@@ -205,6 +234,7 @@
 	{
 		"id": "RB101",
 		"name": "Reliquary of the Fervent Heart",
+		"hint": "a reliquary bead",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -212,6 +242,7 @@
 	{
 		"id": "RB102",
 		"name": "Reliquary of the Suffering Heart",
+		"hint": "a reliquary bead",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -219,6 +250,7 @@
 	{
 		"id": "RB103",
 		"name": "Reliquary of the Sorrowful Heart",
+		"hint": "a reliquary bead",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -226,6 +258,7 @@
 	{
 		"id": "RB104",
 		"name": "Token of Appreciation",
+		"hint": "a bead of conditional strength",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -233,6 +266,7 @@
 	{
 		"id": "RB105",
 		"name": "Cloistered Ruby",
+		"hint": "a red gemstone",
 		"type": 0,
 		"progression": true,
 		"count": 1
@@ -240,6 +274,7 @@
 	{
 		"id": "RB106",
 		"name": "Bead of Gold Thread",
+		"hint": "a bead of life",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -247,6 +282,7 @@
 	{
 		"id": "RB107",
 		"name": "Cloistered Sapphire",
+		"hint": "a blue gemstone",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -254,6 +290,7 @@
 	{
 		"id": "RB108",
 		"name": "Fire Enclosed in Enamel",
+		"hint": "a bead of intellect",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -261,6 +298,7 @@
 	{
 		"id": "RB201",
 		"name": "Light of the Lady of the Lamp",
+		"hint": "a bead of conditional defense",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -268,6 +306,7 @@
 	{
 		"id": "RB202",
 		"name": "Scale of Burnished Alabaster",
+		"hint": "a bead of parrying",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -275,6 +314,7 @@
 	{
 		"id": "RB203",
 		"name": "The Young Mason's Wheel",
+		"hint": "a wheel",
 		"type": 0,
 		"progression": true,
 		"count": 1
@@ -282,6 +322,7 @@
 	{
 		"id": "RB204",
 		"name": "Crown of Gnawed Iron",
+		"hint": "a bead of magic",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -289,6 +330,7 @@
 	{
 		"id": "RB301",
 		"name": "Crimson Heart of a Miura",
+		"hint": "a bead of conditional strength",
 		"type": 0,
 		"progression": false,
 		"count": 1
@@ -296,6 +338,7 @@
 	{
 		"id": "PR01",
 		"name": "Seguiriya to your Eyes like Stars",
+		"hint": "a prayer of speed",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -303,6 +346,7 @@
 	{
 		"id": "PR03",
 		"name": "Debla of the Lights",
+		"hint": "a lightning prayer",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -310,6 +354,7 @@
 	{
 		"id": "PR04",
 		"name": "Saeta Dolorosa",
+		"hint": "a prayer of life",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -317,6 +362,7 @@
 	{
 		"id": "PR05",
 		"name": "Campanillero to the Sons of the Aurora",
+		"hint": "a companion prayer",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -324,6 +370,7 @@
 	{
 		"id": "PR07",
 		"name": "Lorquiana",
+		"hint": "a lightning prayer",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -331,6 +378,7 @@
 	{
 		"id": "PR08",
 		"name": "Zarabanda of the Safe Haven",
+		"hint": "a prayer of defense",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -338,6 +386,7 @@
 	{
 		"id": "PR09",
 		"name": "Taranto to my Sister",
+		"hint": "a lightning prayer",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -345,6 +394,7 @@
 	{
 		"id": "PR10",
 		"name": "Solea of Excommunication",
+		"hint": "a prayer of strength",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -352,6 +402,7 @@
 	{
 		"id": "PR11",
 		"name": "Tiento to your Thorned Hairs",
+		"hint": "a prayer of defense",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -359,6 +410,7 @@
 	{
 		"id": "PR12",
 		"name": "Cante Jondo of the Three Sisters",
+		"hint": "a prayer of destruction",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -366,6 +418,7 @@
 	{
 		"id": "PR14",
 		"name": "Verdiales of the Forsaken Hamlet",
+		"hint": "a lightning prayer",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -373,6 +426,7 @@
 	{
 		"id": "PR15",
 		"name": "Romance to the Crimson Mist",
+		"hint": "a prayer of poison",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -380,6 +434,7 @@
 	{
 		"id": "PR16",
 		"name": "Zambra to the Resplendent Crown",
+		"hint": "a prayer of wealth",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -387,6 +442,7 @@
 	{
 		"id": "PR101",
 		"name": "Aubade of the Nameless Guardian",
+		"hint": "a companion prayer",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -394,6 +450,7 @@
 	{
 		"id": "PR201",
 		"name": "Cantina of the Blue Rose",
+		"hint": "a companion prayer",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -401,6 +458,7 @@
 	{
 		"id": "PR202",
 		"name": "Mirabras of the Return to Port",
+		"hint": "a completely useless prayer",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -408,6 +466,7 @@
 	{
 		"id": "PR203",
 		"name": "Tirana of the Celestial Bastion",
+		"hint": "a lightning prayer",
 		"type": 1,
 		"progression": true,
 		"count": 1
@@ -415,6 +474,7 @@
 	{
 		"id": "RE01",
 		"name": "Blood Perpetuated in Sand",
+		"hint": "a pile of bloody sand",
 		"type": 2,
 		"progression": true,
 		"count": 1
@@ -422,6 +482,7 @@
 	{
 		"id": "RE02",
 		"name": "Incorrupt Hand of the Fraternal Master",
+		"hint": "an incorrupt hand",
 		"type": 2,
 		"progression": false,
 		"count": 1
@@ -429,6 +490,7 @@
 	{
 		"id": "RE03",
 		"name": "Nail Uprooted from Dirt",
+		"hint": "a dirty nail",
 		"type": 2,
 		"progression": true,
 		"count": 1
@@ -436,6 +498,7 @@
 	{
 		"id": "RE04",
 		"name": "Shroud of Dreamt Sins",
+		"hint": "a dreamy shroud",
 		"type": 2,
 		"progression": true,
 		"count": 1
@@ -443,6 +506,7 @@
 	{
 		"id": "RE05",
 		"name": "Linen of Golden Thread",
+		"hint": "a golden cloth",
 		"type": 2,
 		"progression": true,
 		"count": 1
@@ -450,6 +514,7 @@
 	{
 		"id": "RE07",
 		"name": "Silvered Lung of Dolphos",
+		"hint": "a silver lung",
 		"type": 2,
 		"progression": true,
 		"count": 1
@@ -457,6 +522,7 @@
 	{
 		"id": "RE10",
 		"name": "Three Gnarled Tongues",
+		"hint": "a set of tongues",
 		"type": 2,
 		"progression": true,
 		"count": 1
@@ -464,6 +530,7 @@
 	{
 		"id": "HE01",
 		"name": "Smoking Heart of Incense",
+		"hint": "a heart of intellect",
 		"type": 3,
 		"progression": false,
 		"count": 1
@@ -471,6 +538,7 @@
 	{
 		"id": "HE02",
 		"name": "Heart of the Virtuous Pain",
+		"hint": "a heart of parrying",
 		"type": 3,
 		"progression": false,
 		"count": 1
@@ -478,6 +546,7 @@
 	{
 		"id": "HE03",
 		"name": "Heart of Saltpeter Blood",
+		"hint": "a heart of conditional strngth",
 		"type": 3,
 		"progression": false,
 		"count": 1
@@ -485,6 +554,7 @@
 	{
 		"id": "HE04",
 		"name": "Heart of Oils",
+		"hint": "a heart of strength",
 		"type": 3,
 		"progression": false,
 		"count": 1
@@ -492,6 +562,7 @@
 	{
 		"id": "HE05",
 		"name": "Heart of Cerulean Incense",
+		"hint": "a heart of magic",
 		"type": 3,
 		"progression": false,
 		"count": 1
@@ -499,6 +570,7 @@
 	{
 		"id": "HE06",
 		"name": "Heart of the Holy Purge",
+		"hint": "a heart of wealth",
 		"type": 3,
 		"progression": false,
 		"count": 1
@@ -506,6 +578,7 @@
 	{
 		"id": "HE07",
 		"name": "Molten Heart of Boiling Blood",
+		"hint": "a heart of life",
 		"type": 3,
 		"progression": false,
 		"count": 1
@@ -513,6 +586,7 @@
 	{
 		"id": "HE10",
 		"name": "Heart of the Single Tone",
+		"hint": "a heart of defense",
 		"type": 3,
 		"progression": false,
 		"count": 1
@@ -520,6 +594,7 @@
 	{
 		"id": "HE11",
 		"name": "Heart of the Unnamed Minstrel",
+		"hint": "a heart of parrying",
 		"type": 3,
 		"progression": false,
 		"count": 1
@@ -527,6 +602,7 @@
 	{
 		"id": "HE101",
 		"name": "Brilliant Heart of Dawn",
+		"hint": "a heart of speed",
 		"type": 3,
 		"progression": true,
 		"count": 1
@@ -534,6 +610,7 @@
 	{
 		"id": "HE201",
 		"name": "Apodictic Heart of Mea Culpa",
+		"hint": "an apodictic heart",
 		"type": 3,
 		"progression": true,
 		"count": 1
@@ -541,6 +618,7 @@
 	{
 		"id": "CO01",
 		"name": "Parietal bone of Lasser, the Inquisitor",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -548,6 +626,7 @@
 	{
 		"id": "CO02",
 		"name": "Jaw of Ashgan, the Inquisitor",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -555,6 +634,7 @@
 	{
 		"id": "CO03",
 		"name": "Cervical vertebra of Zicher, the Brewmaster",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -562,6 +642,7 @@
 	{
 		"id": "CO04",
 		"name": "Clavicle of Dalhuisen, the Schoolchild",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -569,6 +650,7 @@
 	{
 		"id": "CO05",
 		"name": "Sternum of Vitas, the Performer",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -576,6 +658,7 @@
 	{
 		"id": "CO06",
 		"name": "Ribs of Sabnock, the Guardian",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -583,6 +666,7 @@
 	{
 		"id": "CO07",
 		"name": "Vertebra of John, the Gambler",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -590,6 +674,7 @@
 	{
 		"id": "CO08",
 		"name": "Scapula of Carlos, the Executioner",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -597,6 +682,7 @@
 	{
 		"id": "CO09",
 		"name": "Humerus of McMittens, the Nurse",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -604,6 +690,7 @@
 	{
 		"id": "CO10",
 		"name": "Ulna of Koke, the Troubadour",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -611,6 +698,7 @@
 	{
 		"id": "CO11",
 		"name": "Radius of Helzer, the Poet",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -618,6 +706,7 @@
 	{
 		"id": "CO12",
 		"name": "Frontal of Martinus, the Ropemaker",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -625,6 +714,7 @@
 	{
 		"id": "CO13",
 		"name": "Metacarpus of Hodges, the Blacksmith",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -632,6 +722,7 @@
 	{
 		"id": "CO14",
 		"name": "Phalanx of Arthur, the Sailor",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -639,6 +730,7 @@
 	{
 		"id": "CO15",
 		"name": "Phalanx of Miriam, the Counsellor",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -646,6 +738,7 @@
 	{
 		"id": "CO16",
 		"name": "Phalanx of Brannon, the Gravedigger",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -653,6 +746,7 @@
 	{
 		"id": "CO17",
 		"name": "Coxal of June, the Prostitute",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -660,6 +754,7 @@
 	{
 		"id": "CO18",
 		"name": "Sacrum of the Dark Warlock",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -667,6 +762,7 @@
 	{
 		"id": "CO19",
 		"name": "Coccyx of Daniel, the Possessed",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -674,6 +770,7 @@
 	{
 		"id": "CO20",
 		"name": "Femur of Karpow, the Bounty Hunter",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -681,6 +778,7 @@
 	{
 		"id": "CO21",
 		"name": "Kneecap of Sebastien, the Puppeteer",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -688,6 +786,7 @@
 	{
 		"id": "CO22",
 		"name": "Tibia of Alsahli, the Mystic",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -695,6 +794,7 @@
 	{
 		"id": "CO23",
 		"name": "Fibula of Rysp, the Ranger",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -702,6 +802,7 @@
 	{
 		"id": "CO24",
 		"name": "Temporal of Joel, the Thief",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -709,6 +810,7 @@
 	{
 		"id": "CO25",
 		"name": "Metatarsus of Rikusyo, the Traveller",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -716,6 +818,7 @@
 	{
 		"id": "CO26",
 		"name": "Phalanx of Zeth, the Prisoner",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -723,6 +826,7 @@
 	{
 		"id": "CO27",
 		"name": "Phalanx of William, the Sceptic",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -730,6 +834,7 @@
 	{
 		"id": "CO28",
 		"name": "Phalanx of Aralcarim, the Archivist",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -737,6 +842,7 @@
 	{
 		"id": "CO29",
 		"name": "Occipital of Tequila, the Metalsmith",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -744,6 +850,7 @@
 	{
 		"id": "CO30",
 		"name": "Maxilla of Tarradax, the Cleric",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -751,6 +858,7 @@
 	{
 		"id": "CO31",
 		"name": "Nasal bone of Charles, the Artist",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -758,6 +866,7 @@
 	{
 		"id": "CO32",
 		"name": "Hyoid bone of Senex, the Beggar",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -765,6 +874,7 @@
 	{
 		"id": "CO33",
 		"name": "Vertebra of Lindquist, the Forger",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -772,6 +882,7 @@
 	{
 		"id": "CO34",
 		"name": "Trapezium of Jeremiah, the Hangman",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -779,6 +890,7 @@
 	{
 		"id": "CO35",
 		"name": "Trapezoid of Yeager, the Jeweller",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -786,6 +898,7 @@
 	{
 		"id": "CO36",
 		"name": "Capitate of Barock, the Herald",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -793,6 +906,7 @@
 	{
 		"id": "CO37",
 		"name": "Hamate of Vukelich, the Copyist",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -800,6 +914,7 @@
 	{
 		"id": "CO38",
 		"name": "Pisiform of Hernandez, the Explorer",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -807,6 +922,7 @@
 	{
 		"id": "CO39",
 		"name": "Triquetral of Luca, the Tailor",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -814,6 +930,7 @@
 	{
 		"id": "CO40",
 		"name": "Lunate of Keiya, the Butcher",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -821,6 +938,7 @@
 	{
 		"id": "CO41",
 		"name": "Scaphoid of Fierce, the Leper",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -828,6 +946,7 @@
 	{
 		"id": "CO42",
 		"name": "Anklebone of Weston, the Pilgrim",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -835,6 +954,7 @@
 	{
 		"id": "CO43",
 		"name": "Calcaneum of Persian, the Bandit",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -842,6 +962,7 @@
 	{
 		"id": "CO44",
 		"name": "Navicular of Kahnnyhoo, the Murderer",
+		"hint": "a bone",
 		"type": 4,
 		"progression": true,
 		"count": 1
@@ -849,6 +970,7 @@
 	{
 		"id": "QI01",
 		"name": "Cord of the True Burying",
+		"hint": "a cord",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -856,6 +978,7 @@
 	{
 		"id": "QI02",
 		"name": "Mark of the First Refuge",
+		"hint": "a mark of refuge",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -863,6 +986,7 @@
 	{
 		"id": "QI03",
 		"name": "Mark of the Second Refuge",
+		"hint": "a mark of refuge",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -870,6 +994,7 @@
 	{
 		"id": "QI04",
 		"name": "Mark of the Third Refuge",
+		"hint": "a mark of refuge",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -877,6 +1002,7 @@
 	{
 		"id": "QI06",
 		"name": "Tentudia's Carnal Remains",
+		"hint": "a piece of Tentudia",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -884,6 +1010,7 @@
 	{
 		"id": "QI07",
 		"name": "Remains of Tentudia's Hair",
+		"hint": "a piece of Tentudia",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -891,6 +1018,7 @@
 	{
 		"id": "QI08",
 		"name": "Tentudia's Skeletal Remains",
+		"hint": "a piece of Tentudia",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -898,6 +1026,7 @@
 	{
 		"id": "QI10",
 		"name": "Melted Golden Coins",
+		"hint": "a ceremony piece",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -905,6 +1034,7 @@
 	{
 		"id": "QI11",
 		"name": "Torn Bridal Ribbon",
+		"hint": "a ceremony piece",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -912,6 +1042,7 @@
 	{
 		"id": "QI12",
 		"name": "Black Grieving Veil",
+		"hint": "a ceremony piece",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -919,6 +1050,7 @@
 	{
 		"id": "QI13",
 		"name": "Egg of Deformity",
+		"hint": "an egg",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -926,6 +1058,7 @@
 	{
 		"id": "QI14",
 		"name": "Hatched Egg of Deformity",
+		"hint": "a hatched egg",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -933,6 +1066,7 @@
 	{
 		"id": "QI19",
 		"name": "Bouquet of Rosemary",
+		"hint": "an herb",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -940,6 +1074,7 @@
 	{
 		"id": "QI20",
 		"name": "Incense Garlic",
+		"hint": "an herb",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -947,6 +1082,7 @@
 	{
 		"id": "QI37",
 		"name": "Olive Seeds",
+		"hint": "an herb",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -954,6 +1090,7 @@
 	{
 		"id": "QI38",
 		"name": "Holy Wound of Attrition",
+		"hint": "a holy wound",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -961,6 +1098,7 @@
 	{
 		"id": "QI39",
 		"name": "Holy Wound of Contrition",
+		"hint": "a holy wound",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -968,6 +1106,7 @@
 	{
 		"id": "QI40",
 		"name": "Holy Wound of Compunction",
+		"hint": "a holy wound",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -975,6 +1114,7 @@
 	{
 		"id": "QI57",
 		"name": "Golden Thimble Filled with Burning Oil",
+		"hint": "a full thimble",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -982,6 +1122,7 @@
 	{
 		"id": "QI58",
 		"name": "Key to the Chamber of the Eldest Brother",
+		"hint": "a brother's key",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -989,6 +1130,7 @@
 	{
 		"id": "QI59",
 		"name": "Empty Golden Thimble",
+		"hint": "an empty thimble",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -996,6 +1138,7 @@
 	{
 		"id": "QI60",
 		"name": "Deformed Mask of Orestes",
+		"hint": "a mask",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1003,6 +1146,7 @@
 	{
 		"id": "QI61",
 		"name": "Mirrored Mask of Dolphos",
+		"hint": "a mask",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1010,6 +1154,7 @@
 	{
 		"id": "QI62",
 		"name": "Embossed Mask of Crescente",
+		"hint": "a mask",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1017,6 +1162,7 @@
 	{
 		"id": "QI63",
 		"name": "Dried Clove",
+		"hint": "an herb",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1024,6 +1170,7 @@
 	{
 		"id": "QI64",
 		"name": "Sooty Garlic",
+		"hint": "an herb",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1031,6 +1178,7 @@
 	{
 		"id": "QI65",
 		"name": "Bouquet of Thyme",
+		"hint": "an herb",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1038,6 +1186,7 @@
 	{
 		"id": "QI66",
 		"name": "Linen Cloth",
+		"hint": "a gray cloth",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1045,6 +1194,7 @@
 	{
 		"id": "QI67",
 		"name": "Severed Hand",
+		"hint": "a broken hand",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1052,6 +1202,7 @@
 	{
 		"id": "QI68",
 		"name": "Dried Flowers bathed in Tears",
+		"hint": "a bouqet of flowers",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1059,6 +1210,7 @@
 	{
 		"id": "QI69",
 		"name": "Key of the Secular",
+		"hint": "a bronze key",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1066,6 +1218,7 @@
 	{
 		"id": "QI70",
 		"name": "Key of the Scribe",
+		"hint": "a silver key",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1073,6 +1226,7 @@
 	{
 		"id": "QI71",
 		"name": "Key of the Inquisitor",
+		"hint": "a golden key",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1080,6 +1234,7 @@
 	{
 		"id": "QI72",
 		"name": "Key of the High Peaks",
+		"hint": "a large key",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1087,6 +1242,7 @@
 	{
 		"id": "QI75",
 		"name": "Chalice of Inverted Verses",
+		"hint": "a golden chalice",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1094,6 +1250,7 @@
 	{
 		"id": "QI106",
 		"name": "Petrified Bell",
+		"hint": "a peculiar bell",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1101,6 +1258,7 @@
 	{
 		"id": "QI107",
 		"name": "Verses Spun from Gold",
+		"hint": "a golden verse",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1108,6 +1266,7 @@
 	{
 		"id": "QI108",
 		"name": "Verses Spun from Gold",
+		"hint": "a golden verse",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1115,6 +1274,7 @@
 	{
 		"id": "QI109",
 		"name": "Verses Spun from Gold",
+		"hint": "a golden verse",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1122,6 +1282,7 @@
 	{
 		"id": "QI110",
 		"name": "Verses Spun from Gold",
+		"hint": "a golden verse",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1129,6 +1290,7 @@
 	{
 		"id": "QI201",
 		"name": "Severed Right Eye of the Traitor",
+		"hint": "a severed eye",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1136,6 +1298,7 @@
 	{
 		"id": "QI202",
 		"name": "Broken Left Eye of the Traitor",
+		"hint": "a broken eye",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1143,6 +1306,7 @@
 	{
 		"id": "QI203",
 		"name": "Incomplete Scapular",
+		"hint": "a scapular",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1150,6 +1314,7 @@
 	{
 		"id": "QI204",
 		"name": "Key Grown from Twisted Wood",
+		"hint": "a wooden key",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1157,6 +1322,7 @@
 	{
 		"id": "QI301",
 		"name": "Holy Wound of Abnegation",
+		"hint": "a special holy wound",
 		"type": 5,
 		"progression": true,
 		"count": 1
@@ -1164,6 +1330,7 @@
 	{
 		"id": "LU",
 		"name": "Life Upgrade",
+		"hint": "a life upgrade",
 		"type": 7,
 		"progression": true,
 		"count": 6
@@ -1171,6 +1338,7 @@
 	{
 		"id": "FU",
 		"name": "Fervour Upgrade",
+		"hint": "a fervour upgrade",
 		"type": 8,
 		"progression": true,
 		"count": 6
@@ -1178,6 +1346,7 @@
 	{
 		"id": "SU",
 		"name": "Mea Culpa Upgrade",
+		"hint": "a mea culpa upgrade",
 		"type": 9,
 		"progression": true,
 		"count": 7
@@ -1185,6 +1354,7 @@
 	{
 		"id": "Tears[250]",
 		"name": "Tears of Atonement (250)",
+		"hint": "a small bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1192,6 +1362,7 @@
 	{
 		"id": "Tears[300]",
 		"name": "Tears of Atonement (300)",
+		"hint": "a small bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1199,6 +1370,7 @@
 	{
 		"id": "Tears[500]",
 		"name": "Tears of Atonement (500)",
+		"hint": "a small bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 3
@@ -1206,6 +1378,7 @@
 	{
 		"id": "Tears[625]",
 		"name": "Tears of Atonement (625)",
+		"hint": "a small bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1213,6 +1386,7 @@
 	{
 		"id": "Tears[750]",
 		"name": "Tears of Atonement (750)",
+		"hint": "a small bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1220,6 +1394,7 @@
 	{
 		"id": "Tears[1000]",
 		"name": "Tears of Atonement (1000)",
+		"hint": "a small bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 4
@@ -1227,6 +1402,7 @@
 	{
 		"id": "Tears[1250]",
 		"name": "Tears of Atonement (1250)",
+		"hint": "a small bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1234,6 +1410,7 @@
 	{
 		"id": "Tears[1500]",
 		"name": "Tears of Atonement (1500)",
+		"hint": "a small bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1241,6 +1418,7 @@
 	{
 		"id": "Tears[1750]",
 		"name": "Tears of Atonement (1750)",
+		"hint": "a small bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1248,6 +1426,7 @@
 	{
 		"id": "Tears[2000]",
 		"name": "Tears of Atonement (2000)",
+		"hint": "a medium bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 2
@@ -1255,6 +1434,7 @@
 	{
 		"id": "Tears[2100]",
 		"name": "Tears of Atonement (2100)",
+		"hint": "a medium bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1262,6 +1442,7 @@
 	{
 		"id": "Tears[2500]",
 		"name": "Tears of Atonement (2500)",
+		"hint": "a medium bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1269,6 +1450,7 @@
 	{
 		"id": "Tears[2600]",
 		"name": "Tears of Atonement (2600)",
+		"hint": "a medium bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1276,6 +1458,7 @@
 	{
 		"id": "Tears[3000]",
 		"name": "Tears of Atonement (3000)",
+		"hint": "a medium bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 2
@@ -1283,6 +1466,7 @@
 	{
 		"id": "Tears[4300]",
 		"name": "Tears of Atonement (4300)",
+		"hint": "a medium bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1290,6 +1474,7 @@
 	{
 		"id": "Tears[5000]",
 		"name": "Tears of Atonement (5000)",
+		"hint": "a medium bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 4
@@ -1297,6 +1482,7 @@
 	{
 		"id": "Tears[5500]",
 		"name": "Tears of Atonement (5500)",
+		"hint": "a medium bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1304,6 +1490,7 @@
 	{
 		"id": "Tears[9000]",
 		"name": "Tears of Atonement (9000)",
+		"hint": "a medium bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1311,6 +1498,7 @@
 	{
 		"id": "Tears[10000]",
 		"name": "Tears of Atonement (10000)",
+		"hint": "a large bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1318,6 +1506,7 @@
 	{
 		"id": "Tears[11250]",
 		"name": "Tears of Atonement (11250)",
+		"hint": "a large bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1325,6 +1514,7 @@
 	{
 		"id": "Tears[18000]",
 		"name": "Tears of Atonement (18000)",
+		"hint": "a large bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 5
@@ -1332,6 +1522,7 @@
 	{
 		"id": "Tears[30000]",
 		"name": "Tears of Atonement (30000)",
+		"hint": "a large bundle of tears",
 		"type": 10,
 		"progression": true,
 		"count": 1
@@ -1339,6 +1530,7 @@
 	{
 		"id": "RW",
 		"name": "Bead of Red Wax",
+		"hint": "a waxy red bead",
 		"type": 0,
 		"progression": true,
 		"count": 3,
@@ -1349,6 +1541,7 @@
 	{
 		"id": "BW",
 		"name": "Bead of Blue Wax",
+		"hint": "a waxy blue bead",
 		"type": 0,
 		"progression": true,
 		"count": 3,
@@ -1359,6 +1552,7 @@
 	{
 		"id": "TH",
 		"name": "Thorn Upgrade",
+		"hint": "a thorn",
 		"type": 5,
 		"progression": false,
 		"count": 8,
@@ -1369,6 +1563,7 @@
 	{
 		"id": "RK",
 		"name": "Knot of Rosary Rope",
+		"hint": "a knotted rope",
 		"type": 5,
 		"progression": true,
 		"count": 6,
@@ -1379,6 +1574,7 @@
 	{
 		"id": "BV",
 		"name": "Empty Bile Vessel",
+		"hint": "an empty flask",
 		"type": 5,
 		"progression": true,
 		"count": 8,
@@ -1389,6 +1585,7 @@
 	{
 		"id": "QS",
 		"name": "Quicksilver",
+		"hint": "a silvery substance",
 		"type": 5,
 		"progression": true,
 		"count": 5,
@@ -1399,6 +1596,7 @@
 	{
 		"id": "CH",
 		"name": "Cherub",
+		"hint": "a cherub",
 		"type": 6,
 		"progression": true,
 		"count": 38,
@@ -1408,6 +1606,7 @@
 	{
 		"id": "COMBO",
 		"name": "Combo Skill",
+		"hint": "a sword skill",
 		"type": 11,
 		"progression": false,
 		"count": 3,
@@ -1418,6 +1617,7 @@
 	{
 		"id": "CHARGED",
 		"name": "Charged Skill",
+		"hint": "a sword skill",
 		"type": 11,
 		"progression": true,
 		"count": 3,
@@ -1428,6 +1628,7 @@
 	{
 		"id": "RANGED",
 		"name": "Ranged Skill",
+		"hint": "a sword skill",
 		"type": 11,
 		"progression": true,
 		"count": 3,
@@ -1438,6 +1639,7 @@
 	{
 		"id": "VERTICAL",
 		"name": "Vertical Skill",
+		"hint": "a sword skill",
 		"type": 11,
 		"progression": true,
 		"count": 3,
@@ -1448,6 +1650,7 @@
 	{
 		"id": "LUNGE",
 		"name": "Lunge Skill",
+		"hint": "a sword skill",
 		"type": 11,
 		"progression": false,
 		"count": 3,
