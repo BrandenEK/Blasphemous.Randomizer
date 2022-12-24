@@ -5,6 +5,20 @@ namespace BlasphemousRandomizer.Fillers
 {
     public class HintFiller : Filler
     {
+        // Must go in decreasing order
+        private Dictionary<int, string> grtdHints = new Dictionary<int, string>() // move to data file ?
+        {
+            { 34, "QI201" },
+            { 32, "QI202" },
+            { 28, "PR201" },
+            { 27, "Sword[D01Z05S24]" },
+            { 22, "RB11" },
+            { 18, "HE07" },
+            { 17, "PR05" },
+            { 14, "PR04" },
+            { 8, "RB105" }
+        };
+
         public void Fill(int seed, Dictionary<string, string> output)
         {
             initialize(seed);
@@ -27,11 +41,9 @@ namespace BlasphemousRandomizer.Fillers
             possibleLocations.Remove("QI106");
 
             // Fill guaranteed hints
-            Dictionary<int, string> grtdHints = new Dictionary<int, string>();
-            fillGrtdHintLocations(grtdHints);
             foreach (int dialogId in grtdHints.Keys)
             {
-                addHint(dialogId, getHintText(grtdHints[dialogId], Main.Randomizer.itemShuffler.getItemAtLocation(grtdHints[dialogId])), output);
+                addHint(dialogId, grtdHints[dialogId], output);
                 dialogIds.RemoveAt(dialogId - 1);
                 possibleLocations.Remove(grtdHints[dialogId]);
             }
@@ -41,8 +53,7 @@ namespace BlasphemousRandomizer.Fillers
             while (dialogIds.Count > 0)
             {
                 int randIdx = rand(dialogIds.Count);
-                string location = possibleLocations[possibleLocations.Count - 1];
-                addHint(dialogIds[randIdx], getHintText(location, Main.Randomizer.itemShuffler.getItemAtLocation(location)), output);
+                addHint(dialogIds[randIdx], possibleLocations[possibleLocations.Count - 1], output);
                 possibleLocations.RemoveAt(possibleLocations.Count - 1);
                 dialogIds.RemoveAt(randIdx);
             }
@@ -53,35 +64,6 @@ namespace BlasphemousRandomizer.Fillers
         {
             string key = "DLG_20" + id.ToString("00");
             output.Add(key, hint);
-        }
-
-        private string getHintText(string location, Item item)
-        {
-            //Get hints
-            string locationHint = "", itemHint = "";
-            if (!Main.Randomizer.data.locationHints.TryGetValue(location, out locationHint) || !Main.Randomizer.data.itemHints.TryGetValue(item.id, out itemHint))
-            {
-                return "???";
-            }
-
-            //Build hint text
-            string output = locationHint.Replace("*", itemHint);
-            return char.ToUpper(output[0]).ToString() + output.Substring(1) + "...";
-        }
-
-        // Fills a dictionary of hints that are guaranteed to be there
-        private void fillGrtdHintLocations(Dictionary<int, string> grtd)
-        {
-            grtd.Clear();
-            grtd.Add(34, "QI201");
-            grtd.Add(32, "QI202");
-            grtd.Add(28, "PR201");
-            grtd.Add(27, "Sword[D01Z05S24]");
-            grtd.Add(22, "RB11");
-            grtd.Add(18, "HE07");
-            grtd.Add(17, "PR05");
-            grtd.Add(14, "PR04");
-            grtd.Add(8, "RB105");
         }
     }
 }
