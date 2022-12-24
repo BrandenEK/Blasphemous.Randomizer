@@ -16,7 +16,6 @@ namespace BlasphemousRandomizer
 		public Dictionary<string, DoorLocation> doorLocations;
 
 		// Text data
-		public Dictionary<string, string> itemHints;
 		public Dictionary<string, string> locationHints;
 		public Dictionary<string, string> interactableIds;
 		public string[] cutsceneNames;
@@ -27,7 +26,7 @@ namespace BlasphemousRandomizer
 		public Sprite[] randomizerImages;
 		public Sprite[] uiImages;
 
-		private string[] oldFiles = new string[] { "names_items.dat", "names_enemies.dat" };
+		private string[] oldFiles = new string[] { "names_items.dat", "names_enemies.dat", "hints_items.dat" };
 
 		public bool loadData()
 		{
@@ -80,8 +79,6 @@ namespace BlasphemousRandomizer
 			else { Main.Randomizer.Log("Error: Failed to load doors!"); valid = false; }
 
 			// Load text data
-			if (FileUtil.parseFileToDictionary("hints_items.dat", out itemHints)) Main.Randomizer.Log($"Loaded {itemHints.Count} item hints!");
-			else { Main.Randomizer.Log("Error: Failed to load item hints!"); valid = false; }
 			if (FileUtil.parseFileToDictionary("hints_locations.dat", out locationHints)) Main.Randomizer.Log($"Loaded {locationHints.Count} location hints!");
 			else { Main.Randomizer.Log("Error: Failed to load locations hints!"); valid = false; }
 			if (FileUtil.parseFileToDictionary("interactable_ids.dat", out interactableIds)) Main.Randomizer.Log($"Loaded {interactableIds.Count} interactable ids!");
