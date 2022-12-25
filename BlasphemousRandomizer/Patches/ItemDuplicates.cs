@@ -365,7 +365,7 @@ namespace BlasphemousRandomizer.Patches
 			{
 				if (item == "RB17")
 				{
-					__result = !Core.Events.GetFlag("LOCATION_RB18") && (Core.InventoryManager.IsRosaryBeadOwned("RB17") || Core.InventoryManager.IsRosaryBeadOwned("RB18") || Core.InventoryManager.IsRosaryBeadOwned("RB19"));
+					__result = !Core.Events.GetFlag("LOCATION_RB18") && Core.Events.GetFlag("ITEM_RB17");
 					return false;
 				}
 				if (item == "RB18")
@@ -384,7 +384,7 @@ namespace BlasphemousRandomizer.Patches
 			{
 				if (item == "RB24")
 				{
-					__result = !Core.Events.GetFlag("LOCATION_RB25") && (Core.InventoryManager.IsRosaryBeadOwned("RB24") || Core.InventoryManager.IsRosaryBeadOwned("RB25") || Core.InventoryManager.IsRosaryBeadOwned("RB26"));
+					__result = !Core.Events.GetFlag("LOCATION_RB25") && Core.Events.GetFlag("ITEM_RB24");
 					return false;
 				}
 				if (item == "RB25")

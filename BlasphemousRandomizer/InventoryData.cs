@@ -30,7 +30,7 @@ namespace BlasphemousRandomizer
         public bool combo;
         public bool charged;
         public bool ranged;
-        public bool vertical;
+        public bool dive;
         public bool lunge;
 
         // Puzzles
@@ -101,7 +101,7 @@ namespace BlasphemousRandomizer
 
         public bool canBreakHoles
         {
-            get { return charged || vertical || cherubAttack(0x1FFFF); }
+            get { return charged || dive || cherubAttack(0x1FFFF); }
         }
 
         public int power
@@ -250,7 +250,7 @@ namespace BlasphemousRandomizer
                 if (item.id == "COMBO") { combo = true; return; }
                 if (item.id == "CHARGED") { charged = true; return; }
                 if (item.id == "RANGED") { ranged = true; cherubBits |= 0x40000; return; }
-                if (item.id == "VERTICAL") { vertical = true; return; }
+                if (item.id == "DIVE") { dive = true; return; }
                 if (item.id == "LUNGE") { lunge = true; return; }
             }
         }

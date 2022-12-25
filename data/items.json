@@ -1436,8 +1436,8 @@
 		"removePrevious": false
 	},
 	{
-		"id": "VERTICAL",
-		"name": "Vertical Skill",
+		"id": "DIVE",
+		"name": "Dive Skill",
 		"type": 11,
 		"progression": true,
 		"count": 3,

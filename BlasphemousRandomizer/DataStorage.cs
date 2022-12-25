@@ -472,9 +472,9 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("RANGED_1", "RANGED", "skill", (InventoryData d) => d.tears >= 18700 && d.swordRooms >= 2));
 			locations.Add(new ItemLocation("RANGED_2", "RANGED", "skill", (InventoryData d) => d.tears >= 91399 && d.swordRooms >= 5));
 			locations.Add(new ItemLocation("RANGED_3", "RANGED", "skill", (InventoryData d) => d.tears >= 184399 && d.swordRooms >= 7));
-			locations.Add(new ItemLocation("VERTICAL_1", "VERTICAL", "skill", (InventoryData d) => d.tears >= 18700 && d.swordRooms >= 1));
-			locations.Add(new ItemLocation("VERTICAL_2", "VERTICAL", "skill", (InventoryData d) => d.tears >= 41400 && d.swordRooms >= 3));
-			locations.Add(new ItemLocation("VERTICAL_3", "VERTICAL", "skill", (InventoryData d) => d.tears >= 164399 && d.swordRooms >= 6));
+			locations.Add(new ItemLocation("VERTICAL_1", "DIVE", "skill", (InventoryData d) => d.tears >= 18700 && d.swordRooms >= 1));
+			locations.Add(new ItemLocation("VERTICAL_2", "DIVE", "skill", (InventoryData d) => d.tears >= 41400 && d.swordRooms >= 3));
+			locations.Add(new ItemLocation("VERTICAL_3", "DIVE", "skill", (InventoryData d) => d.tears >= 164399 && d.swordRooms >= 6));
 			locations.Add(new ItemLocation("LUNGE_1", "LUNGE", "skill", (InventoryData d) => d.tears >= 18700 && d.swordRooms >= 1));
 			locations.Add(new ItemLocation("LUNGE_2", "LUNGE", "skill", (InventoryData d) => d.tears >= 18700 && d.swordRooms >= 2));
 			locations.Add(new ItemLocation("LUNGE_3", "LUNGE", "skill", (InventoryData d) => d.tears >= 91399 && d.swordRooms >= 4));
