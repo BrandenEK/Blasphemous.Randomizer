@@ -70,10 +70,6 @@ namespace BlasphemousRandomizer.Shufflers
 
             // Call pop up method
             showItemPopUp(item);
-
-            //Temporary
-            if (locationId == "QI110")
-                Main.Randomizer.itemsCollected++;
         }
 
         // Actually trigger the pop up

@@ -119,7 +119,8 @@ namespace BlasphemousRandomizer.Patches
 				|| !FileUtil.arrayContains(ItemFlags.bannedFlags, __instance.flagName.Value) 
 				|| Core.LevelManager.currentLevel.LevelName == "D07Z01S01")
             {
-				Core.Events.SetFlag(__instance.flagName.Value, __instance.state.Value, false);
+				if (__instance.flagName.Value != "SANTOS_LAUDES_ACTIVATED")
+					Core.Events.SetFlag(__instance.flagName.Value, __instance.state.Value, false);  // Fix up this function
             }
 			__instance.Finish();
 			return false;
@@ -347,6 +348,13 @@ namespace BlasphemousRandomizer.Patches
 				__result = false;
 				return false;
             }
+			// Amanecida verses
+			if ((scene == "D02Z02S14" || scene == "D03Z01S03" || scene == "D04Z01S04" || scene == "D09Z01S01" || scene.Contains("D21"))
+				&& (item == "PR101" || item == "QI107" || item == "QI108" || item == "QI109" || item == "QI110"))
+            {
+				__result = Core.Events.GetFlag("LOCATION_" + item);
+				return false;
+            }
 			// Red candle
 			if (scene == "D01Z04S08" && "RB17RB18RB19".Contains(item))
 			{
@@ -389,5 +397,21 @@ namespace BlasphemousRandomizer.Patches
 			// If none of these special conditions
 			return true;
 		}
-    }
+
+		// Prevent progressive items from being removed from the inventory
+		[HarmonyPatch(typeof(ItemSubstraction), "executeAction")]
+		public class ItemSubstraction_Patch
+		{
+			public static bool Prefix(string objectIdStting, ref bool __result)
+			{
+				string invalidItems = "RB17RB18RB19RB24RB25RB26QI31QI32QI33QI34QI35QI79QI80QI81QI107QI108QI109QI110";
+				if (invalidItems.Contains(objectIdStting))
+				{
+					__result = true;
+					return false;
+				}
+				return true;
+			}
+		}
+	}
 }

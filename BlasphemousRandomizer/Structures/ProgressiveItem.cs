@@ -6,7 +6,7 @@ namespace BlasphemousRandomizer.Structures
     public class ProgressiveItem : Item
     {
         public string[] items;
-        public bool randomOrder;
+        public bool randomOrder; // Unused
         public bool removePrevious;
 
         // Used for wax beads, thorns, cherubs, rosary knots, bile flasks, quicksilver, sword skills
@@ -69,6 +69,8 @@ namespace BlasphemousRandomizer.Structures
                     Core.InventoryManager.RemoveBaseObject(Core.InventoryManager.GetBaseObject(items[level], InventoryManager.ItemType.Quest));
                 else if (type == 0)
                     Core.InventoryManager.RemoveBaseObject(Core.InventoryManager.GetBaseObject(items[level], InventoryManager.ItemType.Bead));
+                else
+                    Main.Randomizer.LogDisplay($"Item type {type} can not be removed!");
             }
         }
     }
