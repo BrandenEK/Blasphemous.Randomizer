@@ -1099,34 +1099,6 @@
 		"count": 1
 	},
 	{
-		"id": "QI107",
-		"name": "Verses Spun from Gold",
-		"type": 5,
-		"progression": true,
-		"count": 1
-	},
-	{
-		"id": "QI108",
-		"name": "Verses Spun from Gold",
-		"type": 5,
-		"progression": true,
-		"count": 1
-	},
-	{
-		"id": "QI109",
-		"name": "Verses Spun from Gold",
-		"type": 5,
-		"progression": true,
-		"count": 1
-	},
-	{
-		"id": "QI110",
-		"name": "Verses Spun from Gold",
-		"type": 5,
-		"progression": true,
-		"count": 1
-	},
-	{
 		"id": "QI201",
 		"name": "Severed Right Eye of the Traitor",
 		"type": 5,
@@ -1393,6 +1365,16 @@
 		"progression": true,
 		"count": 5,
 		"items": [ "QI101", "QI102", "QI103", "QI104", "QI105" ],
+		"randomOrder": false,
+		"removePrevious": false
+	},
+	{
+		"id": "GV",
+		"name": "Verses Spun from Gold",
+		"type": 5,
+		"progression": true,
+		"count": 4,
+		"items": [ "QI107", "QI108", "QI109", "QI110" ],
 		"randomOrder": false,
 		"removePrevious": false
 	},

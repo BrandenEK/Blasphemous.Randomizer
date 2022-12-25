@@ -208,7 +208,7 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("PR14", "PR14", "item", (InventoryData d) => true));
 			locations.Add(new ItemLocation("PR15", "PR15", "item", (InventoryData d) => d.bridgeAccess));
 			locations.Add(new ItemLocation("PR16", "PR16", "item", (InventoryData d) => d.nail || d.linen));
-			locations.Add(new ItemLocation("PR101", "PR101", "verse", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && d.bridgeAccess && d.blood && d.root && d.masks > 0 && d.bronzeKey && d.silverKey));
+			locations.Add(new ItemLocation("PR101", "PR101", "item", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && d.bridgeAccess && d.blood && d.root && d.masks > 0 && d.bronzeKey && d.silverKey));
 			locations.Add(new ItemLocation("PR201", "PR201", "miriam", (InventoryData d) => d.bridgeAccess && d.masks > 1 && d.linen && d.blood && d.root && d.lung));
 			locations.Add(new ItemLocation("PR202", "PR202", "item", (InventoryData d) => d.blood || d.bridgeAccess));
 			locations.Add(new ItemLocation("PR203", "PR203", "item", (InventoryData d) => d.blood));
@@ -345,10 +345,10 @@ namespace BlasphemousRandomizer
 			locations.Add(new ItemLocation("QI104", "QS", "item", (InventoryData d) => d.bridgeAccess));
 			locations.Add(new ItemLocation("QI105", "QS", "item", (InventoryData d) => d.bridgeAccess));
 			locations.Add(new ItemLocation("QI106", "QI106", "item", (InventoryData d) => true));
-			locations.Add(new ItemLocation("QI107", "QI107", "verse", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles));
-			locations.Add(new ItemLocation("QI108", "QI108", "verse", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && (d.blood && d.root || d.bridgeAccess)));
-			locations.Add(new ItemLocation("QI109", "QI109", "verse", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && d.bridgeAccess && (d.blood && d.root || d.masks > 0 && d.bronzeKey && d.silverKey)));
-			locations.Add(new ItemLocation("QI110", "QI110", "verse", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && d.bridgeAccess && d.blood && d.root && d.masks > 0 && d.bronzeKey && d.silverKey));
+			locations.Add(new ItemLocation("QI107", "GV", "item", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles));
+			locations.Add(new ItemLocation("QI108", "GV", "item", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && (d.blood && d.root || d.bridgeAccess)));
+			locations.Add(new ItemLocation("QI109", "GV", "item", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && d.bridgeAccess && (d.blood && d.root || d.masks > 0 && d.bronzeKey && d.silverKey)));
+			locations.Add(new ItemLocation("QI110", "GV", "item", (InventoryData d) => d.bell && d.canBeatBoss("amanecida") && d.canBreakHoles && d.bridgeAccess && d.blood && d.root && d.masks > 0 && d.bronzeKey && d.silverKey));
 			locations.Add(new ItemLocation("QI201", "QI201", "crisanta", (InventoryData d) => d.bones >= 30 && d.canBeatBoss("isidora")));
 			locations.Add(new ItemLocation("QI202", "QI202", "crisanta", (InventoryData d) => d.bridgeAccess && d.canBeatBoss("sierpes") && (d.root || d.nail || d.dawnHeart || d.wheel && d.ranged)));
 			locations.Add(new ItemLocation("QI203", "QI203", "crisanta", (InventoryData d) => d.blood || d.bridgeAccess));

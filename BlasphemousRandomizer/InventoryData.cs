@@ -224,7 +224,7 @@ namespace BlasphemousRandomizer
                 if (item.id == "QI75") { chalice = true; return; }
                 if (item.id == "QS") { quicksilver++; return; }
                 if (item.id == "QI106") { bell = true; return; }
-                if (item.id == "QI107" || item.id == "QI108" || item.id == "QI109" || item.id == "QI110") { verses++; return; }
+                if (item.id == "GV") { verses++; return; }
                 if (item.id == "QI201" || item.id == "QI202") { traitorEyes++; return; }
                 if (item.id == "QI203") { scapular = true; return; }
                 if (item.id == "QI204") { woodKey = true; return; }
