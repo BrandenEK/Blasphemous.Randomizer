@@ -119,8 +119,7 @@ namespace BlasphemousRandomizer.Patches
 				|| !FileUtil.arrayContains(ItemFlags.bannedFlags, __instance.flagName.Value) 
 				|| Core.LevelManager.currentLevel.LevelName == "D07Z01S01")
             {
-				if (__instance.flagName.Value != "SANTOS_LAUDES_ACTIVATED")
-					Core.Events.SetFlag(__instance.flagName.Value, __instance.state.Value, false);  // Fix up this function
+				Core.Events.SetFlag(__instance.flagName.Value, __instance.state.Value, false);
             }
 			__instance.Finish();
 			return false;
@@ -224,6 +223,11 @@ namespace BlasphemousRandomizer.Patches
 			if (scene == "D03Z01S06" && text == "BROTHERS_EVENTPERPETVA_COMPLETED")
             {
 				flag = Core.Events.GetFlag("BROTHERS_PERPETUA_DEFEATED");
+            }
+			// Final amanecida
+			if ((scene == "D02Z02S14" || scene == "D03Z01S03" || scene == "D04Z01S04" || scene == "D09Z01S01") && text == "SANTOS_LAUDES_ACTIVATED")
+            {
+				flag = Core.Events.GetFlag("LOCATION_QI110");
             }
 			// Mercy shop
 			if (scene == "D01BZ02S01" && text == "QI58_USED")
