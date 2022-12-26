@@ -7,6 +7,10 @@ Progress board: [Trello](https://trello.com/b/FJ42w6X1/blasphemous-randomizer)
 
 ## Changelog
 
+### v1.3.0 (Sword Skills)
+- Shuffle the 15 sword skills
+- Golden verses are random
+
 ### v1.2.0 (More Randomization)
 - Multiworld support
 - Show save file validity on select screen
