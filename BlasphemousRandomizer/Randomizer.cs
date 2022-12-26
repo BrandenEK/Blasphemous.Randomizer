@@ -114,7 +114,7 @@ namespace BlasphemousRandomizer
                 {
                     shufflers[i].Reset();
                 }
-                Log("Loaded invalid game!");
+                LogError("Loaded invalid game!");
                 errorOnLoad = "This save file was not created in randomizer or used an older version.  Item locations are invalid!";
             }
 
@@ -297,7 +297,19 @@ namespace BlasphemousRandomizer
         // Log message to file
         public void Log(string message)
         {
-            logger.Log(message, Logger.LogType.Output);
+            logger.Log(message, Logger.LogType.Standard);
+        }
+
+        // Log error message to file
+        public void LogError(string message)
+        {
+            logger.Log(message, Logger.LogType.Error);
+        }
+
+        // Log data to file
+        public void LogFile(string data)
+        {
+            logger.Log(data, Logger.LogType.Data);
         }
 
         // Log message to UI display
@@ -305,12 +317,6 @@ namespace BlasphemousRandomizer
         {
             Log(message);
             UIController.instance.ShowPopUp(message, "", 0, block);
-        }
-
-        // Log data to file
-        public void LogFile(string data)
-        {
-            logger.Log(data, Logger.LogType.Data);
         }
 
         private IEnumerator showErrorMessage(float waitTime)

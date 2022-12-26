@@ -95,7 +95,7 @@ namespace BlasphemousRandomizer
 					component.size = new Vector2(component.size.x, 3f);
 					return;
 				}
-				Main.Randomizer.Log("Enemy " + id + " had no hitbox to change!");
+				Main.Randomizer.LogError("Enemy " + id + " had no hitbox to change!");
 			}
 			else if (id == "EN15" || id == "EV19" || id == "EV26")
             {
@@ -107,7 +107,7 @@ namespace BlasphemousRandomizer
 					component2.size = new Vector2(component2.size.x, 3.75f);
 					return;
 				}
-				Main.Randomizer.Log("Enemy " + id + " had no hitbox to change!");
+				Main.Randomizer.LogError("Enemy " + id + " had no hitbox to change!");
 			}
 		}
 	}

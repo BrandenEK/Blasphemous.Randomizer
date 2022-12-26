@@ -37,7 +37,7 @@ namespace BlasphemousRandomizer.Structures
             int level = getCurrentLevel() + (upgraded ? 1 : 0);
             if (level < 0 && level >= items.Length)
             {
-                Main.Randomizer.Log("Invalid tier of progressive item!");
+                Main.Randomizer.LogError("Invalid tier of progressive item!");
                 if (level < 0) level = 0;
                 else if (level >= items.Length) level = items.Length - 1;
             }

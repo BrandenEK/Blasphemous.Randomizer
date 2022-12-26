@@ -73,7 +73,7 @@ namespace BlasphemousRandomizer
                 }
 				catch (System.Exception e)
                 {
-					Main.Randomizer.Log(e.Message);
+					Main.Randomizer.LogError(e.Message);
                 }
 			}
 		}

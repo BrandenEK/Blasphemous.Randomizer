@@ -25,7 +25,7 @@ namespace BlasphemousRandomizer.Shufflers
             }
             if (!newItems.ContainsKey(locationId))
             {
-                Main.Randomizer.Log("Location " + locationId + " was not loaded!");
+                Main.Randomizer.LogError("Location " + locationId + " was not loaded!");
                 return null;
             }
             return newItems[locationId];
@@ -90,12 +90,12 @@ namespace BlasphemousRandomizer.Shufflers
             int attempt = 0, maxAttempts = 30;
             while (!filler.Fill(seed + attempt, Main.Randomizer.gameConfig.items, newItems) && attempt < maxAttempts)
             {
-                Main.Randomizer.Log($"Seed {seed + attempt} was invalid! Trying next...");
+                Main.Randomizer.LogError($"Seed {seed + attempt} was invalid! Trying next...");
                 attempt++;
             }
             if (attempt >= maxAttempts)
             {
-                Main.Randomizer.Log($"Error: Failed to fill items in {maxAttempts} tries!");
+                Main.Randomizer.LogError($"Error: Failed to fill items in {maxAttempts} tries!");
                 return;
             }
 

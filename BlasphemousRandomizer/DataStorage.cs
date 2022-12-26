@@ -39,7 +39,7 @@ namespace BlasphemousRandomizer
 				processItems(items, json);
 				Main.Randomizer.Log($"Loaded {items.Count} items!");
 			}
-			else { Main.Randomizer.Log("Error: Failed to load items!"); valid = false; }
+			else { Main.Randomizer.LogError("Error: Failed to load items!"); valid = false; }
 
 			// Item locations
 			itemLocations = new Dictionary<string, ItemLocation>();
@@ -56,7 +56,7 @@ namespace BlasphemousRandomizer
 					enemies.Add(tempEnemies[i].id, tempEnemies[i]);
 				Main.Randomizer.Log($"Loaded {enemies.Count} enemies!");
 			}
-			else { Main.Randomizer.Log("Error: Failed to load enemies!"); valid = false; }
+			else { Main.Randomizer.LogError("Error: Failed to load enemies!"); valid = false; }
 
 			// Enemy locations
 			enemyLocations = new Dictionary<string, EnemyLocation>();
@@ -66,7 +66,7 @@ namespace BlasphemousRandomizer
 					enemyLocations.Add(tempEnemyLocations[i].locationId, tempEnemyLocations[i]);
 				Main.Randomizer.Log($"Loaded {enemyLocations.Count} enemy locations!");
 			}
-			else { Main.Randomizer.Log("Error: Failed to load enemy locations!"); valid = false; }
+			else { Main.Randomizer.LogError("Error: Failed to load enemy locations!"); valid = false; }
 
 			// Doors
 			doorLocations = new Dictionary<string, DoorLocation>();
@@ -76,25 +76,25 @@ namespace BlasphemousRandomizer
 					doorLocations.Add(tempDoorLocations[i].id, tempDoorLocations[i]);
 				Main.Randomizer.Log($"Loaded {doorLocations.Count} doors!");
 			}
-			else { Main.Randomizer.Log("Error: Failed to load doors!"); valid = false; }
+			else { Main.Randomizer.LogError("Error: Failed to load doors!"); valid = false; }
 
 			// Load text data
 			if (FileUtil.parseFileToDictionary("hints_locations.dat", out locationHints)) Main.Randomizer.Log($"Loaded {locationHints.Count} location hints!");
-			else { Main.Randomizer.Log("Error: Failed to load locations hints!"); valid = false; }
+			else { Main.Randomizer.LogError("Error: Failed to load locations hints!"); valid = false; }
 			if (FileUtil.parseFileToDictionary("interactable_ids.dat", out interactableIds)) Main.Randomizer.Log($"Loaded {interactableIds.Count} interactable ids!");
-			else { Main.Randomizer.Log("Error: Failed to load interactable ids!"); valid = false; }
+			else { Main.Randomizer.LogError("Error: Failed to load interactable ids!"); valid = false; }
 			if (FileUtil.parseFiletoArray("cutscenes_names.dat", out cutsceneNames)) Main.Randomizer.Log($"Loaded {cutsceneNames.Length} cutscene names!");
-			else { Main.Randomizer.Log("Error: Failed to load cutscene names!"); valid = false; }
+			else { Main.Randomizer.LogError("Error: Failed to load cutscene names!"); valid = false; }
 			if (FileUtil.parseFiletoArray("cutscenes_flags.dat", out cutsceneFlags)) Main.Randomizer.Log($"Loaded {cutsceneFlags.Length} cutscene flags!");
-			else { Main.Randomizer.Log("Error: Failed to load cutscene flags!"); valid = false; }
+			else { Main.Randomizer.LogError("Error: Failed to load cutscene flags!"); valid = false; }
 			if (FileUtil.read("spoiler_items.dat", true, out spoilerTemplate)) Main.Randomizer.Log("Loaded spoiler template!");
-			else { Main.Randomizer.Log("Error: Failed to load spoiler template!"); valid = false; }
+			else { Main.Randomizer.LogError("Error: Failed to load spoiler template!"); valid = false; }
 
 			// Load image data
 			if (FileUtil.loadImages("custom_images.png", 32, 32, 0, true, out randomizerImages)) Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
-			else { Main.Randomizer.Log("Error: Failed to load randomizer images!"); valid = false; }
+			else { Main.Randomizer.LogError("Error: Failed to load randomizer images!"); valid = false; }
 			if (FileUtil.loadImages("ui.png", 36, 36, 0, false, out uiImages)) Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
-			else { Main.Randomizer.Log("Error: Failed to load ui images!"); valid = false; }
+			else { Main.Randomizer.LogError("Error: Failed to load ui images!"); valid = false; }
 
 			// Delete old files
 			foreach (string file in oldFiles)

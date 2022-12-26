@@ -67,8 +67,6 @@ namespace BlasphemousRandomizer.Patches
                 ___selectedEnemy = newEnemy;
                 enemyId = ___selectedEnemy.GetComponentInChildren<Enemy>().Id;
             }
-            else
-                Main.Randomizer.Log("Enemy to spawn is null!");
 
             // Modify spawnpoint position
             float locationOffset = Main.Randomizer.enemyShuffler.getLocationOffset(locationId);
