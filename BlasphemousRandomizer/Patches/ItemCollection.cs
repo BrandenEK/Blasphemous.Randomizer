@@ -135,7 +135,7 @@ namespace BlasphemousRandomizer.Patches
                 Main.Randomizer.Log("PurgeAdd(" + tears + ")");
                 if (tears == 18000)
                 {
-                    Main.Randomizer.itemShuffler.giveItem($"{Core.LevelManager.currentLevel.LevelName}[18000]", showMessage);
+                    Main.Randomizer.itemShuffler.giveItem($"{Core.LevelManager.lastLevel.LevelName}[18000]", showMessage);
                 }
                 else
                 {
