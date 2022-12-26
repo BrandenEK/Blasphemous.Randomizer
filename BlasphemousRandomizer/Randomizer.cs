@@ -30,12 +30,12 @@ namespace BlasphemousRandomizer
         public MainConfig gameConfig;
 
         // Global info
-        private bool debugMode;
         private bool inGame;
         private int lastLoadedSlot;
         private string errorOnLoad;
 
         public DataStorage data;
+        private Logger logger;
         private SettingsMenu settingsMenu;
 
         public void Initialize()
@@ -52,8 +52,7 @@ namespace BlasphemousRandomizer
             }
 
             // Load external data
-            debugMode = FileUtil.read("debug.txt", false, out string text) && text == "true";
-            Log("\nRandomizer has been initialized!");
+            logger = new Logger("Randomizer has been initialized!");
             data = new DataStorage();
             if (!data.loadData())
                 errorOnLoad = "Randomizer data could not loaded! Reinstall the program!";
@@ -298,8 +297,7 @@ namespace BlasphemousRandomizer
         // Log message to file
         public void Log(string message)
         {
-            if (debugMode)
-                FileUtil.writeLine("log.txt", message + "\n");
+            logger.Log(message, Logger.LogType.Output);
         }
 
         // Log message to UI display
@@ -312,8 +310,7 @@ namespace BlasphemousRandomizer
         // Log data to file
         public void LogFile(string data)
         {
-            if (debugMode)
-                FileUtil.writeFull("data.txt", data);
+            logger.Log(data, Logger.LogType.Data);
         }
 
         private IEnumerator showErrorMessage(float waitTime)
