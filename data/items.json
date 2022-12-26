@@ -1256,38 +1256,6 @@
 		"count": 1
 	},
 	{
-		"id": "QI107",
-		"name": "Verses Spun from Gold",
-		"hint": "a golden verse",
-		"type": 5,
-		"progression": true,
-		"count": 1
-	},
-	{
-		"id": "QI108",
-		"name": "Verses Spun from Gold",
-		"hint": "a golden verse",
-		"type": 5,
-		"progression": true,
-		"count": 1
-	},
-	{
-		"id": "QI109",
-		"name": "Verses Spun from Gold",
-		"hint": "a golden verse",
-		"type": 5,
-		"progression": true,
-		"count": 1
-	},
-	{
-		"id": "QI110",
-		"name": "Verses Spun from Gold",
-		"hint": "a golden verse",
-		"type": 5,
-		"progression": true,
-		"count": 1
-	},
-	{
 		"id": "QI201",
 		"name": "Severed Right Eye of the Traitor",
 		"hint": "a severed eye",
@@ -1594,6 +1562,17 @@
 		"removePrevious": false
 	},
 	{
+		"id": "GV",
+		"name": "Verses Spun from Gold",
+		"hint": "a golden verse",
+		"type": 5,
+		"progression": true,
+		"count": 4,
+		"items": [ "QI107", "QI108", "QI109", "QI110" ],
+		"randomOrder": false,
+		"removePrevious": false
+	},
+	{
 		"id": "CH",
 		"name": "Cherub",
 		"hint": "a cherub",
@@ -1637,8 +1616,8 @@
 		"removePrevious": false
 	},
 	{
-		"id": "VERTICAL",
-		"name": "Vertical Skill",
+		"id": "DIVE",
+		"name": "Dive Skill",
 		"hint": "a sword skill",
 		"type": 11,
 		"progression": true,

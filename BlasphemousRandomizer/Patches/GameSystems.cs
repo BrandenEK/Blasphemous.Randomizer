@@ -142,7 +142,7 @@ namespace BlasphemousRandomizer.Patches
 
     // Log what flags are being set
     [HarmonyPatch(typeof(EventManager), "SetFlag")]
-    public class EventManager_Patch
+    public class EventManagerSet_Patch
     {
         public static void Prefix(string id, bool b)
         {
@@ -215,6 +215,21 @@ namespace BlasphemousRandomizer.Patches
             {
                 return true;
             }    
+        }
+    }
+
+    // Only have laudes activated in boss room with verse
+    [HarmonyPatch(typeof(EventManager), "GetFlag")]
+    public class EventManagerGet_Patch
+    {
+        public static void Postfix(string id, EventManager __instance, ref bool __result)
+        {
+            string formatted = __instance.GetFormattedId(id);
+            if (formatted == "SANTOS_LAUDES_ACTIVATED")
+            {
+                string scene = Core.LevelManager.currentLevel.LevelName;
+                __result = (scene == "D08Z03S01" || scene == "D08Z03S03") && __instance.GetFlag("ITEM_QI110");
+            }
         }
     }
 

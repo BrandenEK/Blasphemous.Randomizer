@@ -53,6 +53,11 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(string objectIdStting, ref bool __result)
         {
+            if (objectIdStting == "QI110")
+            {
+                Main.Randomizer.Log("SpecialVerseAddition(" + objectIdStting + ")");
+                Main.Randomizer.itemShuffler.giveItem(objectIdStting, false);
+            }
             Main.Randomizer.Log("ItemAdditionMessage(" + objectIdStting + ")");
             Main.Randomizer.itemShuffler.displayItem(objectIdStting);
             __result = true;
@@ -130,7 +135,7 @@ namespace BlasphemousRandomizer.Patches
                 Main.Randomizer.Log("PurgeAdd(" + tears + ")");
                 if (tears == 18000)
                 {
-                    Main.Randomizer.itemShuffler.giveItem($"{Core.LevelManager.currentLevel.LevelName}[18000]", showMessage);
+                    Main.Randomizer.itemShuffler.giveItem($"{Core.LevelManager.lastLevel.LevelName}[18000]", showMessage);
                 }
                 else
                 {
@@ -158,22 +163,6 @@ namespace BlasphemousRandomizer.Patches
             {
                 Main.Randomizer.Log("GetPurge(" + enemy.Id + ")");
                 Main.Randomizer.itemShuffler.giveItem(enemy.Id, true);
-                return false;
-            }
-            return true;
-        }
-    }
-
-    // Prevent progressive items from being removed from the inventory
-    [HarmonyPatch(typeof(ItemSubstraction), "executeAction")]
-    public class ItemSubstraction_Patch
-    {
-        public static bool Prefix(string objectIdStting, ref bool __result)
-        {
-            string invalidItems = "RB17RB18RB19RB24RB25RB26QI31QI32QI33QI34QI35QI79QI80QI81";
-            if (invalidItems.Contains(objectIdStting))
-            {
-                __result = true;
                 return false;
             }
             return true;

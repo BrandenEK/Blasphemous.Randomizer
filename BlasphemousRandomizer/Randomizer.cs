@@ -30,12 +30,13 @@ namespace BlasphemousRandomizer
         public MainConfig gameConfig;
 
         // Global info
-        private bool debugMode;
         private bool inGame;
         private int lastLoadedSlot;
         private string errorOnLoad;
+        public bool shrineEditMode;
 
         public DataStorage data;
+        private Logger logger;
         private SettingsMenu settingsMenu;
 
         public void Initialize()
@@ -52,8 +53,7 @@ namespace BlasphemousRandomizer
             }
 
             // Load external data
-            debugMode = FileUtil.read("debug.txt", false, out string text) && text == "true";
-            Log("\nRandomizer has been initialized!");
+            logger = new Logger("Randomizer has been initialized!");
             data = new DataStorage();
             if (!data.loadData())
                 errorOnLoad = "Randomizer data could not loaded! Reinstall the program!";
@@ -115,7 +115,7 @@ namespace BlasphemousRandomizer
                 {
                     shufflers[i].Reset();
                 }
-                Log("Loaded invalid game!");
+                LogError("Loaded invalid game!");
                 errorOnLoad = "This save file was not created in randomizer or used an older version.  Item locations are invalid!";
             }
 
@@ -298,8 +298,19 @@ namespace BlasphemousRandomizer
         // Log message to file
         public void Log(string message)
         {
-            if (debugMode)
-                FileUtil.writeLine("log.txt", message + "\n");
+            logger.Log(message, Logger.LogType.Standard);
+        }
+
+        // Log error message to file
+        public void LogError(string message)
+        {
+            logger.Log(message, Logger.LogType.Error);
+        }
+
+        // Log data to file
+        public void LogFile(string data)
+        {
+            logger.Log(data, Logger.LogType.Data);
         }
 
         // Log message to UI display
@@ -307,13 +318,6 @@ namespace BlasphemousRandomizer
         {
             Log(message);
             UIController.instance.ShowPopUp(message, "", 0, block);
-        }
-
-        // Log data to file
-        public void LogFile(string data)
-        {
-            if (debugMode)
-                FileUtil.writeFull("data.txt", data);
         }
 
         private IEnumerator showErrorMessage(float waitTime)

@@ -60,7 +60,7 @@ namespace BlasphemousRandomizer.Shufflers
             if (id == "D19Z01S05") return 7;
             if (id == "D19Z01S06") return 8;
             if (id == "D19Z01S07") return 10;
-            Main.Randomizer.Log("Area rating " + id + " does not exist!");
+            Main.Randomizer.LogError("Area rating " + id + " does not exist!");
             return 0;
         }
 

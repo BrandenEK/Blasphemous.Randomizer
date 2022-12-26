@@ -16,6 +16,12 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Postfix(string skillId, ref Text ___caption, ref Text ___description, ref TextMeshProUGUI ___instructionsPro)
         {
+            // Only show changed items at shrine
+            if (!Main.Randomizer.shrineEditMode)
+            {
+                return;
+            }
+
             Item item = Main.Randomizer.itemShuffler.getItemAtLocation(skillId);
             if (item != null)
             {
@@ -41,10 +47,18 @@ namespace BlasphemousRandomizer.Patches
         }
     }
     [HarmonyPatch(typeof(NewInventory_Skill), "UpdateStatus")]
-    public class InvSkill_Patch
+    public class InvSkillImage_Patch
     {
-        public static void Postfix(string ___skill, ref Image ___skillImage)
+        public static void Postfix(string ___skill, ref Image ___skillImage, ref Text ___tierText)
         {
+            // Any skill not owned is locked
+            if (!Main.Randomizer.shrineEditMode)
+            {
+                ___tierText.text = "";
+                return;
+            }
+
+            // Show image of new item
             Item item = Main.Randomizer.itemShuffler.getItemAtLocation(___skill);
             if (item != null)
             {
@@ -85,6 +99,13 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(SkillManager __instance, ref bool __result, string skill, bool ignoreChecks, Dictionary<string, UnlockableSkill> ___allSkills)
         {
+            // Might not be necessary
+            if (!Main.Randomizer.shrineEditMode)
+            {
+                __result = false;
+                return false;
+            }
+
             // Cant unlock if slot is already purchased
             if (!___allSkills.ContainsKey(skill) || Core.Events.GetFlag("LOCATION_" + skill))
             {
@@ -102,6 +123,13 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(SkillManager __instance, ref bool __result, string skill, Dictionary<string, UnlockableSkill> ___allSkills)
         {
+            // Always locked in regular pause menu
+            if (!Main.Randomizer.shrineEditMode)
+            {
+                __result = false;
+                return false;
+            }
+
             // Cant unlock if slot is already purchased or mea culpa level is not enough
             if (!___allSkills.ContainsKey(skill) || Core.Events.GetFlag("LOCATION_" + skill) || __instance.GetCurrentMeaCulpa() < ___allSkills[skill].tier)
             {
@@ -120,10 +148,9 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(ref string skill, ref bool __result)
         {
-            if (skill.Length > 0 && skill[0] == '*')
+            if (!Main.Randomizer.shrineEditMode)
             {
                 // Actually checking if skill is unlocked
-                skill = skill.Substring(1, skill.Length - 1);
                 return true;
             }
             else
@@ -135,20 +162,32 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
-    // Special request to check if skill is unlocked
-    [HarmonyPatch(typeof(Ability), "GetLastUnlockedSkill")]
-    public class Ability_Patch
+    // Update shrine edit mode status
+    [HarmonyPatch(typeof(NewInventory_LayoutSkill), "ShowLayout")]
+    public class InvSkillShow_Patch
     {
-        public static bool Prefix(ref UnlockableSkill __result, List<string> ___unlocableSkill)
+        public static void Prefix(bool editMode)
         {
-            __result = null;
-            foreach (string skill in ___unlocableSkill)
-            {
-                if (!Core.SkillManager.IsSkillUnlocked("*" + skill))
-                    break;
-                __result = Core.SkillManager.GetSkill(skill);
-            }
-            return false;
+            Main.Randomizer.shrineEditMode = editMode;
+        }
+
+        public static void Postfix(bool editMode, NewInventory_LayoutSkill __instance, ref Text ___maxTier)
+        {
+            // Change text to show mea culpa / shrine tier
+            if (!editMode)
+                ___maxTier.text = Core.Logic.Penitent.Stats.Strength.GetUpgrades().ToString();
+
+            Text captionText = __instance.transform.GetChild(3).GetComponent<Text>();
+            if (captionText != null)
+                captionText.text = editMode ? "Shrine Tier" : "Mea Culpa";
+        }
+    }
+    [HarmonyPatch(typeof(NewInventory_LayoutSkill), "CancelEditMode")]
+    public class InvSkillCancel_Patch
+    {
+        public static void Postfix()
+        {
+            Main.Randomizer.shrineEditMode = false;
         }
     }
 }

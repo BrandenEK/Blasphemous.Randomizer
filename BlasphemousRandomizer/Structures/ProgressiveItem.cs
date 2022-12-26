@@ -6,7 +6,7 @@ namespace BlasphemousRandomizer.Structures
     public class ProgressiveItem : Item
     {
         public string[] items;
-        public bool randomOrder;
+        public bool randomOrder; // Unused
         public bool removePrevious;
 
         // Used for wax beads, thorns, cherubs, rosary knots, bile flasks, quicksilver, sword skills
@@ -35,14 +35,14 @@ namespace BlasphemousRandomizer.Structures
         public Item getItemLevel(bool upgraded)
         {
             int level = getCurrentLevel() + (upgraded ? 1 : 0);
-            if (level < 0 && level >= items.Length)
+            if (level < 0 || level >= items.Length)
             {
-                Main.Randomizer.Log("Invalid tier of progressive item!");
+                Main.Randomizer.LogError("Invalid tier of progressive item!");
                 if (level < 0) level = 0;
                 else if (level >= items.Length) level = items.Length - 1;
             }
 
-            return new Item(items[level], "", type, false, 0); // Change to search in dictionary.  (Would have to make cherubs a regular item)
+            return new Item(items[level], "", "", type, false, 0); // Change to search in dictionary.  (Would have to make cherubs a regular item)
         }
 
         private int getCurrentLevel()
@@ -69,6 +69,8 @@ namespace BlasphemousRandomizer.Structures
                     Core.InventoryManager.RemoveBaseObject(Core.InventoryManager.GetBaseObject(items[level], InventoryManager.ItemType.Quest));
                 else if (type == 0)
                     Core.InventoryManager.RemoveBaseObject(Core.InventoryManager.GetBaseObject(items[level], InventoryManager.ItemType.Bead));
+                else
+                    Main.Randomizer.LogDisplay($"Item type {type} can not be removed!");
             }
         }
     }
