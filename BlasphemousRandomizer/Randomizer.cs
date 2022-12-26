@@ -33,6 +33,7 @@ namespace BlasphemousRandomizer
         private bool inGame;
         private int lastLoadedSlot;
         private string errorOnLoad;
+        public bool shrineEditMode;
 
         public DataStorage data;
         private Logger logger;
