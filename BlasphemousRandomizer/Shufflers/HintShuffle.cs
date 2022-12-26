@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BlasphemousRandomizer.Fillers;
+using BlasphemousRandomizer.Structures;
 
 namespace BlasphemousRandomizer.Shufflers
 {
@@ -12,9 +13,21 @@ namespace BlasphemousRandomizer.Shufflers
         {
             if (newHints != null && newHints.ContainsKey(id))
             {
-                return newHints[id];
+                Main.Randomizer.Log("Retrieving hint: " + id);
+                return getHintText(newHints[id]);
             }
-            return "Error!";
+            return "???";
+        }
+
+        // Returns the actual hint that describes the item and location
+        private string getHintText(string location)
+        {
+            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(location);
+            if (item == null || !Main.Randomizer.data.locationHints.TryGetValue(location, out string locationHint)) // change to simply get location/item text from structure itself
+                return "???";
+
+            string output = locationHint.Replace("*", item.hint);
+            return char.ToUpper(output[0]).ToString() + output.Substring(1) + "...";
         }
 
         public void Init()
@@ -29,7 +42,7 @@ namespace BlasphemousRandomizer.Shufflers
 
         public void Shuffle(int seed)
         {
-            if (!Main.Randomizer.gameConfig.general.allowHints || !Main.Randomizer.data.isValid)
+            if (!Main.Randomizer.gameConfig.general.allowHints || !Main.Randomizer.data.isValid || !Main.Randomizer.itemShuffler.validSeed)
                 return;
 
             newHints = new Dictionary<string, string>();
