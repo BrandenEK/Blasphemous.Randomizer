@@ -340,8 +340,8 @@ namespace BlasphemousRandomizer.UI
             buttons[8] = scalingOption.GetComponent<SettingsCheckbox>();
 
             RectTransform enemiesType = getNewCyclebox("Type", enemiesSection, font, 15, 16,
-                new string[] { "Disabled", "Simple", "Full" },
-                new string[] { "Disabled - Enemies will remain in their original places", "Simple - All enemies of one type will turn into a random type", "Full - Every enemy location will turn into a random enemy" },
+                new string[] { "Disabled", "Shuffled", "Random" },
+                new string[] { "Disabled - Enemies will remain in their original places", "Shuffled - An enemy can only appear as many times as in the original game", "Random - An enemy can appear any amount of times" },
                 new SettingsElement[] { buttons[7], buttons[8] });
             enemiesType.anchoredPosition = new Vector2(0, top - 25);
             buttons[11] = enemiesType.GetChild(0).GetComponent<SettingsCyclebox>();

@@ -15,7 +15,7 @@
 	{
 		"id": "EN03",
 		"name": "Bell Carrier",
-		"type": 1,
+		"type": 0,
 		"difficulty": 4,
 		"yOffset": 1.65
 	},
@@ -28,7 +28,7 @@
 	{
 		"id": "EN05",
 		"name": "Stoners",
-		"type": 0,
+		"type": 2,
 		"difficulty": 2,
 		"yOffset": 0.9
 	},
@@ -61,13 +61,13 @@
 	{
 		"id": "EN11",
 		"name": "Wakeful Alcove",
-		"type": 1,
+		"type": 2,
 		"difficulty": 6
 	},
 	{
 		"id": "EN12",
 		"name": "Nun",
-		"type": 2,
+		"type": 0,
 		"difficulty": 6
 	},
 	{
@@ -79,7 +79,7 @@
 	{
 		"id": "EN14",
 		"name": "Spear of the Cathedra",
-		"type": 1,
+		"type": 0,
 		"difficulty": 4,
 		"yOffset": 3.2
 	},
@@ -100,7 +100,7 @@
 	{
 		"id": "EN17",
 		"name": "Boomerang",
-		"type": 1,
+		"type": 0,
 		"difficulty": 4
 	},
 	{
@@ -112,13 +112,13 @@
 	{
 		"id": "EN20",
 		"name": "Phalaris",
-		"type": 1,
+		"type": 0,
 		"difficulty": 4
 	},
 	{
 		"id": "EN21",
 		"name": "Blazing Icon",
-		"type": 2,
+		"type": 0,
 		"difficulty": 6
 	},
 	{
@@ -142,7 +142,7 @@
 	{
 		"id": "EN26",
 		"name": "Custodian of the Stained Glass",
-		"type": 2,
+		"type": 0,
 		"difficulty": 7
 	},
 	{
@@ -160,7 +160,7 @@
 	{
 		"id": "EN29",
 		"name": "Monfrake",
-		"type": 2,
+		"type": 0,
 		"difficulty": 7
 	},
 	{
@@ -172,13 +172,13 @@
 	{
 		"id": "EN32",
 		"name": "Bellido",
-		"type": 2,
+		"type": 0,
 		"difficulty": 3
 	},
 	{
 		"id": "EN33",
 		"name": "Maniac",
-		"type": 1,
+		"type": 0,
 		"difficulty": 10
 	},
 	{
@@ -191,7 +191,7 @@
 	{
 		"id": "EN201",
 		"name": "Anchor Roller",
-		"type": 2,
+		"type": 0,
 		"difficulty": 11
 	},
 	{
@@ -209,14 +209,14 @@
 	{
 		"id": "EV01",
 		"name": "Grey Flagellant",
-		"type": 1,
+		"type": 0,
 		"difficulty": 3,
 		"yOffset": 1.75
 	},
 	{
 		"id": "EV02",
 		"name": "Red Acolyte",
-		"type": 1,
+		"type": 0,
 		"difficulty": 7,
 		"yOffset": 1.7
 	},
@@ -267,7 +267,7 @@
 	{
 		"id": "EV15",
 		"name": "Wakeful Alcove (Snowy)",
-		"type": 1,
+		"type": 2,
 		"difficulty": 4
 	},
 	{
@@ -298,13 +298,13 @@
 	{
 		"id": "EV21",
 		"name": "Walking Tomb",
-		"type": 1,
+		"type": 0,
 		"difficulty": 4
 	},
 	{
 		"id": "EV22",
 		"name": "Librarian",
-		"type": 1,
+		"type": 2,
 		"difficulty": 8
 	},
 	{
@@ -317,7 +317,7 @@
 	{
 		"id": "EV24",
 		"name": "Blue Jumper",
-		"type": 1,
+		"type": 0,
 		"difficulty": 7
 	},
 	{
