@@ -4,7 +4,7 @@
     <TargetFramework>net35</TargetFramework>
     <AssemblyName>BlasphemousRandomizer</AssemblyName>
     <Description>An item and enemy randomizer for the game Blasphemous</Description>
-    <Version>1.3.0</Version>
+    <Version>1.3.1</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>
