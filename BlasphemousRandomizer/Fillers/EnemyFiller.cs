@@ -6,8 +6,9 @@ namespace BlasphemousRandomizer.Fillers
 {
     public class EnemyFiller : Filler
     {
-		// 0 - weak, 1 - normal, 2 - difficult, 3 - large, 4 - flying, 5 - vanilla
+		// 0 - normal, 1 - unused, 2 - stationary, 3 - large, 4 - flying, 5 - vanilla
 		private int numTypes = 6;
+		private int vanillaType = 5;
 
 		public void Fill(int seed, EnemyConfig config, Dictionary<string, string> output)
 		{
@@ -17,87 +18,87 @@ namespace BlasphemousRandomizer.Fillers
 			List<EnemyLocation> locations = new List<EnemyLocation>(Main.Randomizer.data.enemyLocations.Values);
 			List<Enemy> enemies = new List<Enemy>(Main.Randomizer.data.enemies.Values);
 
-			// Get each list of enemies of each type
-			List<Enemy>[] enemiesByType = new List<Enemy>[numTypes];
-			for (int i = 0; i < enemies.Count; i++)
-            {
-				if (enemiesByType[enemies[i].type] == null)
-					enemiesByType[enemies[i].type] = new List<Enemy>();
-				enemiesByType[enemies[i].type].Add(enemies[i]);
-            }
-
-			// Get list of ids to place - vanilla enemies are removed
-			List<string> possibleIds = new List<string>();
-			for (int i = 0; i < enemies.Count; i++)
-            {
-				if (enemies[i].type != 5)
-					possibleIds.Add(enemies[i].id);
-            }
-
-			// Each enemy id is randomized to a random id
+			// Only place the same number of each enemy as in original game
 			if (config.type == 1)
             {
-				// Create dictionary to hold new id matchings
-				Dictionary<string, string> newEnemyIds = new Dictionary<string, string>();
-				shuffleList(enemies);
-				
-				// Assign a new enemy id to this original one
-				foreach (Enemy originalEnemy in enemies)
-                {
-					int type = originalEnemy.type;
-					if (type == 5)
-                    {
-						// If vanilla enemy, leave it as original
-						newEnemyIds.Add(originalEnemy.id, originalEnemy.id);
-                    }
-					else if (config.maintainClass)
-                    {
-						// Get new enemy id from the same type as original (Unless vanilla)
-						int randIdx = rand(enemiesByType[type].Count);
-						newEnemyIds.Add(originalEnemy.id, enemiesByType[type][randIdx].id);
-						enemiesByType[type].RemoveAt(randIdx);
+				// Set vanilla/arena locations & add random enemies to list
+				List<string> possibleEnemies = new List<string>();
+				for (int i = locations.Count - 1; i >= 0; i--)
+				{
+					Enemy original = Main.Randomizer.data.enemies[locations[i].originalEnemy];
+					if (original.type == vanillaType || locations[i].arena)
+					{
+						output.Add(locations[i].locationId, locations[i].originalEnemy);
+						locations.RemoveAt(i);
 					}
                     else
                     {
-						// Get new enemy id from any remaining type
-						int randIdx = rand(possibleIds.Count);
-						newEnemyIds.Add(originalEnemy.id, possibleIds[randIdx]);
-						possibleIds.RemoveAt(randIdx);
+						possibleEnemies.Add(locations[i].originalEnemy);
                     }
                 }
+				shuffleList(possibleEnemies);
 
-				// Assign each location a new enemy id based on its original enemy id
-				for (int i = 0; i < locations.Count; i++)
+				// Pick random location and place the first valid enemy in list
+				while (locations.Count > 0 && possibleEnemies.Count > 0)
                 {
-					string newEnemy = locations[i].arena ? locations[i].originalEnemy : newEnemyIds[locations[i].originalEnemy];
-					output.Add(locations[i].locationId, newEnemy);
+					int locationIdx = rand(locations.Count);
+					EnemyLocation location = locations[locationIdx];
+					int enemyIdx = possibleEnemies.Count - 1;
+
+					// Need to find enemy from this class
+					if (config.maintainClass)
+                    {
+						Enemy original = Main.Randomizer.data.enemies[location.originalEnemy];
+						for (int i = possibleEnemies.Count - 1; i >= 0; i--)
+                        {
+							Enemy enemy = Main.Randomizer.data.enemies[possibleEnemies[i]];
+							if (original.type == enemy.type)
+                            {
+								enemyIdx = i;
+								break;
+                            }
+                        }
+                    }
+
+					output.Add(location.locationId, possibleEnemies[enemyIdx]);
+					locations.RemoveAt(locationIdx);
+					possibleEnemies.RemoveAt(enemyIdx);
                 }
             }
-			// Each enemy location is randomized to a random id
+			// Place any number of each enemy
             else if (config.type == 2)
             {
-				shuffleList(enemies);
-
+				// Get lists of possible enemy ids for each type
+				List<string>[] enemyIdsByType = new List<string>[numTypes];
+				List<string> singleList = new List<string>();
+				for (int i = 0; i < numTypes; i++)
+                {
+					if (config.maintainClass)
+						enemyIdsByType[i] = new List<string>();
+					else
+						enemyIdsByType[i] = singleList;
+                }
+				for (int i = 0; i < enemies.Count; i++)
+                {
+					if (enemies[i].type != vanillaType)
+						enemyIdsByType[enemies[i].type].Add(enemies[i].id);
+                }
+				
+				// Pick random enemy of the same type and place it at the location
 				for (int i = 0; i < locations.Count; i++)
 				{
 					int type = Main.Randomizer.data.enemies[locations[i].originalEnemy].type;
-					if (type == 5 || locations[i].arena)
+					if (type == vanillaType || locations[i].arena)
                     {
 						// If vanilla or arena enemy, leave it as original
 						output.Add(locations[i].locationId, locations[i].originalEnemy);
                     }
-					else if (config.maintainClass)
+					else
                     {
-						// Get random id only from same type
-						int randIdx = rand(enemiesByType[type].Count);
-						output.Add(locations[i].locationId, enemiesByType[type][randIdx].id);
+						// If maintainClass, get only id from type, otherwise, get id from all types
+						int randIdx = rand(enemyIdsByType[type].Count);
+						output.Add(locations[i].locationId, enemyIdsByType[type][randIdx]);
 					}
-                    else
-                    {
-						// Get random id from all possible ids
-						int randIdx = rand(possibleIds.Count);
-						output.Add(locations[i].locationId, possibleIds[randIdx]);
-                    }
 				}
 			}
         }
