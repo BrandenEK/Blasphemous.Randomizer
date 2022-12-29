@@ -128,22 +128,6 @@ namespace BlasphemousRandomizer.Patches
             ___PopUp.GetChild(2).GetComponent<Text>().text = achievement.Description;
         }
     }
-    [HarmonyPatch(typeof(Achievement), "GetNameLocalizationTerm")]
-    public class Acheivement_Patch
-    {
-        public static void Postfix(ref string __result) // might not be necessary if multiworld error was because of lastItem.  I doubt it is tho
-        {
-            __result = "ignore";
-        }
-    }
-    [HarmonyPatch(typeof(I2.Loc.Localize), "SetTerm", typeof(string))]
-    public class Localize_Patch
-    {
-        public static bool Prefix(string primary)
-        {
-            return primary == null || primary != "ignore";
-        }
-    }
 
     // Show number of items collected on map screen
     [HarmonyPatch(typeof(NewMapMenuWidget), "Initialize")]
