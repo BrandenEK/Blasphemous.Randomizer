@@ -221,7 +221,12 @@ namespace BlasphemousRandomizer
                 Main.Randomizer.itemShuffler.giveItem("QI40", true);
                 Core.Events.SetFlag("COMPUNCTION_ALTAR_DONE", true, false);
             }
+
+            // Temp functions
+            boss.levelLoaded(scene);
         }
+
+        public BossShuffle boss = new BossShuffle();
 
         // Set up a new game
         private void setUpExtras()
@@ -287,9 +292,11 @@ namespace BlasphemousRandomizer
             }
             else if (Input.GetKeyDown(KeyCode.Keypad9))
             {
-                //itemShuffler.Shuffle(new System.Random().Next());
+                
             }
-            
+
+            if (boss != null) boss.update();
+
             // Update ui menus
             if (settingsMenu != null)
                 settingsMenu.update();
@@ -337,6 +344,7 @@ namespace BlasphemousRandomizer
             if (id == 0) Core.Audio.PlayOneShot("event:/SFX/UI/EquipItem");
             else if (id == 1) Core.Audio.PlayOneShot("event:/SFX/UI/UnequipItem");
             else if (id == 2) Core.Audio.PlayOneShot("event:/SFX/UI/ChangeSelection");
+            else if (id == 3) Core.Audio.PlayOneShot("event:/SFX/UI/FadeToWhite");
         }
 
         public SettingsMenu getSettingsMenu()

@@ -250,6 +250,12 @@ namespace BlasphemousRandomizer.Patches
 				flag = Core.Events.GetFlag("LOCATION_QI71");
 			}
 
+			// Boss shuffle disabling
+			if (scene == "D17Z01S11" && text == "D17Z01_BOSSDEAD")
+            {
+				flag = true;
+            }
+
 			// Finish action
 			if (__instance.outValue != null)
 				__instance.outValue.Value = flag;

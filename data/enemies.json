@@ -184,7 +184,7 @@
 	{
 		"id": "EN34",
 		"name": "Legionary",
-		"type": 5,
+		"type": 0,
 		"difficulty": 9,
 		"yOffset": 0.18
 	},
