@@ -251,10 +251,10 @@ namespace BlasphemousRandomizer.Patches
 			}
 
 			// Boss shuffle disabling
-			if (scene == "D17Z01S11" && text == "D17Z01_BOSSDEAD")
-            {
-				flag = true;
-            }
+			//if (scene == "D17Z01S11" && text == "D17Z01_BOSSDEAD")
+			//{
+			//	flag = true;
+			//}
 
 			// Finish action
 			if (__instance.outValue != null)

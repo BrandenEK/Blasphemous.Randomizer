@@ -206,15 +206,24 @@ namespace BlasphemousRandomizer.Patches
                 idxSlot -= 999;
                 return true;
             }
-            else if (___slots[idxSlot].IsEmpty) // Show settings menu
+            if (___slots[idxSlot].IsEmpty) // Show settings menu
             {
                 Main.Randomizer.getSettingsMenu().openMenu(idxSlot);
                 return false;
             }
-            else
-            {
-                return true;
-            }    
+
+            return true;
+        }
+    }
+
+    // Don't allow playing in sacred sorrows mode
+    [HarmonyPatch(typeof(BossRushWidget), "OptionPressed")]
+    public class BossRushWidget_Patch
+    {
+        public static bool Prefix()
+        {
+            Main.Randomizer.LogDisplay("Sacred Sorrows mode can not be played in randomizer!");
+            return false;
         }
     }
 

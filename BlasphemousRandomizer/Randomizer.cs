@@ -18,6 +18,7 @@ namespace BlasphemousRandomizer
         // Shufflers
         public ItemShuffle itemShuffler;
         public EnemyShuffle enemyShuffler;
+        public BossShuffle bossShuffler;
         public DoorShuffle doorShuffler;
         public HintShuffle hintShuffler;
         private IShuffle[] shufflers;
@@ -44,9 +45,10 @@ namespace BlasphemousRandomizer
             // Create main shufflers
             itemShuffler = new ItemShuffle();
             enemyShuffler = new EnemyShuffle();
+            bossShuffler = new BossShuffle();
             doorShuffler = new DoorShuffle();
             hintShuffler = new HintShuffle();
-            shufflers = new IShuffle[] { itemShuffler, enemyShuffler, doorShuffler, hintShuffler };
+            shufflers = new IShuffle[] { itemShuffler, enemyShuffler, bossShuffler, doorShuffler, hintShuffler };
             for (int i = 0; i < shufflers.Length; i++)
             {
                 shufflers[i].Init();
@@ -188,11 +190,10 @@ namespace BlasphemousRandomizer
             if (errorOnLoad != null && errorOnLoad != "")
                 UIController.instance.StartCoroutine(showErrorMessage(2.1f));
 
-            // Load enemies
-            EnemyLoader.loadEnemies();
-
-            // Update shop menus
-            updateShops();
+            // Misc functions
+            EnemyLoader.loadEnemies(); // Load enemies
+            updateShops(); // Update shop menus
+            bossShuffler.levelLoaded(scene); // Spawn boss stuff
 
             // Reload enemy audio catalogs
             AudioLoader audio = Object.FindObjectOfType<AudioLoader>();
@@ -221,12 +222,7 @@ namespace BlasphemousRandomizer
                 Main.Randomizer.itemShuffler.giveItem("QI40", true);
                 Core.Events.SetFlag("COMPUNCTION_ALTAR_DONE", true, false);
             }
-
-            // Temp functions
-            boss.levelLoaded(scene);
         }
-
-        public BossShuffle boss = new BossShuffle();
 
         // Set up a new game
         private void setUpExtras()
@@ -294,8 +290,6 @@ namespace BlasphemousRandomizer
             {
                 
             }
-
-            if (boss != null) boss.update();
 
             // Update ui menus
             if (settingsMenu != null)
