@@ -11,5 +11,6 @@
 
         // Temporary data
         public string targetDoor;
+        public bool available;
     }
 }

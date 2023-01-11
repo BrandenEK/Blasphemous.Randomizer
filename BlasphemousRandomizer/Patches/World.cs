@@ -71,6 +71,21 @@ namespace BlasphemousRandomizer.Patches
             }
         }
 
+        // Change target door for door shuffle
+        [HarmonyPatch(typeof(Door), "OnDoorActivated")]
+        public class Door_Patch
+        {
+            public static void Prefix(ref Door __instance)
+            {
+                string doorId = $"{Core.LevelManager.currentLevel.LevelName}[{__instance.identificativeName}~{__instance.targetDoor}]";
+                if (Main.Randomizer.doorShuffler.getNewDoor(doorId, out string newScene, out string newId))
+                {
+                    __instance.targetScene = newScene;
+                    __instance.targetDoor = newId;
+                }
+            }
+        }
+
         // Open WaHP gate faster
         //[HarmonyPatch(typeof(Lever), "Start")]
         //public class Lever_Patch

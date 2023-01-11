@@ -1479,7 +1479,7 @@
 	},
 	{
 		"id": "D02Z03S07[N~S]",
-		"newDoors": "D02Z03S07[E~N],D02Z03S07[W~E],D02Z03S07[NWW~E],D02Z03S07[NW~S]",
+		"newDoors": "D02Z03S07[E~W],D02Z03S07[W~E],D02Z03S07[NWW~E],D02Z03S07[NW~S]",
 		"direction": 0
 	},
 	{
@@ -1489,17 +1489,17 @@
 	},
 	{
 		"id": "D02Z03S07[W~E]",
-		"newDoors": "D02Z03S07[N~S],D02Z03S07[E~N],D02Z03S07[NWW~E],D02Z03S07[NW~S]",
+		"newDoors": "D02Z03S07[N~S],D02Z03S07[E~W],D02Z03S07[NWW~E],D02Z03S07[NW~S]",
 		"direction": 1
 	},
 	{
 		"id": "D02Z03S07[NWW~E]",
-		"newDoors": "D02Z03S07[N~S],D02Z03S07[E~N],D02Z03S07[W~E],D02Z03S07[NW~S]",
+		"newDoors": "D02Z03S07[N~S],D02Z03S07[E~W],D02Z03S07[W~E],D02Z03S07[NW~S]",
 		"direction": 1
 	},
 	{
 		"id": "D02Z03S07[NW~S]",
-		"newDoors": "D02Z03S07[N~S],D02Z03S07[E~N],D02Z03S07[W~E],D02Z03S07[NWW~E]",
+		"newDoors": "D02Z03S07[N~S],D02Z03S07[E~W],D02Z03S07[W~E],D02Z03S07[NWW~E]",
 		"direction": 0
 	},
 	{
