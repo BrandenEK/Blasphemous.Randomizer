@@ -18,7 +18,7 @@ namespace BlasphemousRandomizer.Config
 
 		public static MainConfig Default()
         {
-			return new MainConfig(MyPluginInfo.PLUGIN_VERSION,
+			return new MainConfig(Main.MOD_VERSION,
 				new GeneralConfig(true, true, true, false, false, 0),
 				new ItemConfig(1, false, true, false, true),
 				new EnemyConfig(0, true, true),

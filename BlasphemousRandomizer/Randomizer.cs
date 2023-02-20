@@ -40,7 +40,7 @@ namespace BlasphemousRandomizer
         private Logger logger;
         private SettingsMenu settingsMenu;
 
-        public override string PersistentID { get { return "ID_RANDOMIZER"; } }
+        public override string PersistentID => "ID_RANDOMIZER";
 
         public Randomizer(string modId, string modName, string modVersion) : base(modId, modName, modVersion) { }
 
@@ -237,7 +237,7 @@ namespace BlasphemousRandomizer
                 }
             }
             // Set randomized flags
-            string majorVersion = MyPluginInfo.PLUGIN_VERSION;
+            string majorVersion = Main.MOD_VERSION;
             majorVersion = majorVersion.Substring(0, majorVersion.LastIndexOf('.'));
             Core.Events.SetFlag("RANDOMIZED", true, false);
             Core.Events.SetFlag(majorVersion, true, false);
@@ -343,7 +343,7 @@ namespace BlasphemousRandomizer
 
         private bool isConfigVersionValid(string configVersion)
         {
-            string version = MyPluginInfo.PLUGIN_VERSION;
+            string version = Main.MOD_VERSION;
             return version.Substring(0, version.LastIndexOf('.')) == configVersion.Substring(0, configVersion.LastIndexOf('.'));
         }
     }
