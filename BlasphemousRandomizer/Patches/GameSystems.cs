@@ -6,26 +6,10 @@ using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Widgets;
 using Framework.Dialog;
 using System.Collections.Generic;
-using BlasphemousRandomizer.Structures;
-using BlasphemousRandomizer.UI;
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace BlasphemousRandomizer.Patches
 {
-    // Allow console commands
-    [HarmonyPatch(typeof(ConsoleWidget), "Update")]
-    public class ConsoleWidget_Patch
-    {
-        public static void Postfix(ConsoleWidget __instance, bool ___isEnabled)
-        {
-            if (Input.GetKeyDown(KeyCode.Backslash))
-            {
-                __instance.SetEnabled(!___isEnabled);
-            }
-        }
-    }
-
     // Change functionality of the Ossuary
     [HarmonyPatch(typeof(OssuaryManager), "CheckGroupCompletion")]
     public class OssuaryManager_Patch
@@ -83,23 +67,9 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Postfix(PersistentManager __instance, PersistentManager.SnapShot snapShot)
         {
-            if (!snapShot.commonElements.ContainsKey(Main.Randomizer.GetPersistenID()))
+            if (!snapShot.commonElements.ContainsKey(Main.Randomizer.PersistentID))
             {
-                Main.Randomizer.SetCurrentPersistentState(null, false, "");
-            }
-        }
-    }
-
-    // Set up new game when select new save file
-    [HarmonyPatch(typeof(NewMainMenu), "InternalPlay")]
-    public class NewMainMenu_Patch
-    {
-        public static void Postfix(bool ___isContinue)
-        {
-            if (!___isContinue)
-            {
-                Core.GameModeManager.ChangeMode(GameModeManager.GAME_MODES.NEW_GAME_PLUS);
-                Main.Randomizer.newGame();
+                Main.Randomizer.LoadGame(null);
             }
         }
     }
@@ -167,7 +137,7 @@ namespace BlasphemousRandomizer.Patches
                     continue;
 
                 // Check if this save file was played in supported version
-                string majorVersion = MyPluginInfo.PLUGIN_VERSION;
+                string majorVersion = Main.Randomizer.ModVersion;
                 majorVersion = majorVersion.Substring(0, majorVersion.LastIndexOf('.'));
 
                 string type = "(Vanilla)";
@@ -239,25 +209,6 @@ namespace BlasphemousRandomizer.Patches
                 string scene = Core.LevelManager.currentLevel.LevelName;
                 __result = (scene == "D08Z03S01" || scene == "D08Z03S03") && __instance.GetFlag("ITEM_QI110");
             }
-        }
-    }
-
-    // Initialize Randomizer class
-    [HarmonyPatch(typeof(AchievementsManager), "AllInitialized")]
-    public class AchievementsManager_InitializePatch
-    {
-        public static void Postfix()
-        {
-            Main.Randomizer.Initialize();
-        }
-    }
-    // Dispose Randomizer class
-    [HarmonyPatch(typeof(AchievementsManager), "Dispose")]
-    public class AchievementsManager_DisposePatch
-    {
-        public static void Postfix()
-        {
-            Main.Randomizer.Dispose();
         }
     }
 }

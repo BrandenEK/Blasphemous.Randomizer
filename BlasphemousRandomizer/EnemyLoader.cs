@@ -57,7 +57,7 @@ namespace BlasphemousRandomizer
                 }
 				//Main.Randomizer.Log($"Processing enemy {baseId}({fullId}): {array[i].name}");
 
-				if (baseId != "" && array[i].gameObject.scene.name == null && !allEnemies.ContainsKey(fullId) && FileUtil.arrayContains(enemyIds, baseId))
+				if (baseId != "" && array[i].gameObject.scene.name == null && !allEnemies.ContainsKey(fullId) && Main.arrayContains(enemyIds, baseId))
 				{
 					//Main.Randomizer.Log($"Loading enemy {baseId}({fullId}): {array[i].name}");
 					changeHitbox(array[i].transform, baseId);

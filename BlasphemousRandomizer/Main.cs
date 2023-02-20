@@ -1,41 +1,34 @@
 ﻿using BepInEx;
-using HarmonyLib;
 
 namespace BlasphemousRandomizer
 {
-    [BepInPlugin("com.damocles.blasphemous.randomizer", "Blasphemous Randomizer", MyPluginInfo.PLUGIN_VERSION)]
+    [BepInPlugin(MOD_ID, MOD_NAME, MOD_VERSION)]
+    [BepInDependency("com.damocles.blasphemous.modding-api", "1.0.0")]
     [BepInProcess("Blasphemous.exe")]
     public class Main : BaseUnityPlugin
     {
+        public const string MOD_ID = "com.damocles.blasphemous.randomizer";
+        public const string MOD_NAME = "Randomizer";
+        public const string MOD_VERSION = "1.3.1";
+
         public static Randomizer Randomizer;
-        private static Main instance;
 
-        private void Awake()
+        private void Start()
         {
-            Randomizer = new Randomizer();
-            instance = this;
-            Patch();
+            Randomizer = new Randomizer(MOD_ID, MOD_NAME, MOD_VERSION);
         }
 
-        private void Update()
+        // Checks if an array contains a certain object
+        public static bool arrayContains<T>(T[] arr, T id)
         {
-            Randomizer.update();
-        }
-
-        private void Patch()
-        {
-            Harmony harmony = new Harmony("com.damocles.blasphemous.randomizer");
-            harmony.PatchAll();
-        }
-
-        private void Log(string message)
-        {
-            Logger.LogMessage(message);
-        }
-
-        public static void UnityLog(string message)
-        {
-            instance.Log(message);
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i].Equals(id))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

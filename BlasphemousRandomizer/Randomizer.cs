@@ -6,14 +6,14 @@ using BlasphemousRandomizer.Shufflers;
 using BlasphemousRandomizer.Structures;
 using BlasphemousRandomizer.Config;
 using BlasphemousRandomizer.UI;
-using Framework.FrameworkCore;
 using Framework.Managers;
 using Framework.Audio;
 using Tools.Level;
+using ModdingAPI;
 
 namespace BlasphemousRandomizer
 {
-    public class Randomizer : PersistentInterface
+    public class Randomizer : PersistentMod
     {
         // Shufflers
         public ItemShuffle itemShuffler;
@@ -40,7 +40,11 @@ namespace BlasphemousRandomizer
         private Logger logger;
         private SettingsMenu settingsMenu;
 
-        public void Initialize()
+        public override string PersistentID { get { return "ID_RANDOMIZER"; } }
+
+        public Randomizer(string modId, string modName, string modVersion) : base(modId, modName, modVersion) { }
+
+        protected override void Initialize()
         {
             // Create main shufflers
             itemShuffler = new ItemShuffle();
@@ -57,24 +61,16 @@ namespace BlasphemousRandomizer
             // Load external data
             logger = new Logger("Randomizer has been initialized!");
             data = new DataStorage();
-            if (!data.loadData())
+            if (!data.loadData(FileUtil))
                 errorOnLoad = "Randomizer data could not loaded! Reinstall the program!";
 
             // Set up data
-            Core.Persistence.AddPersistentManager(this);
-            LevelManager.OnLevelLoaded += onLevelLoaded;
             gameConfig = MainConfig.Default();
             lastLoadedSlot = -1;
             settingsMenu = new SettingsMenu();
         }
 
-        public void Dispose()
-        {
-            LevelManager.OnLevelLoaded -= onLevelLoaded;
-        }
-
-        // When game is saved
-        public PersistentManager.PersistentData GetCurrentPersistentState(string dataPath, bool fullSave)
+        public override ModPersistentData SaveGame()
         {
             return new RandomizerPersistenceData
             {
@@ -85,8 +81,7 @@ namespace BlasphemousRandomizer
             };
         }
 
-        // When game is loaded
-        public void SetCurrentPersistentState(PersistentManager.PersistentData data, bool isloading, string dataPath)
+        public override void LoadGame(ModPersistentData data)
         {
             // Only reload data if coming from title screen and loading different save file
             if (inGame || PersistentManager.GetAutomaticSlot() == lastLoadedSlot)
@@ -125,8 +120,7 @@ namespace BlasphemousRandomizer
             lastLoadedSlot = PersistentManager.GetAutomaticSlot();
         }
 
-        // When new game is started
-        public void newGame()
+        public override void NewGame()
         {
             itemsCollected = 0;
             startedInRando = true;
@@ -138,7 +132,10 @@ namespace BlasphemousRandomizer
 
             inGame = true;
             lastLoadedSlot = PersistentManager.GetAutomaticSlot();
+            Core.GameModeManager.ChangeMode(GameModeManager.GAME_MODES.NEW_GAME_PLUS);
         }
+
+        public override void ResetGame() { }
 
         private int generateSeed()
         {
@@ -167,24 +164,22 @@ namespace BlasphemousRandomizer
                 {
                     spoiler += shufflers[i].GetSpoiler();
                 }
-                FileUtil.writeFull($"spoiler{PersistentManager.GetAutomaticSlot() + 1}.txt", spoiler);
+                FileUtil.saveTextFile($"spoiler{PersistentManager.GetAutomaticSlot() + 1}.txt", spoiler);
             }
             watch.Stop();
             Log("Time to fill seed: " + watch.ElapsedMilliseconds + " ms");
         }
 
         // Specific actions need to be taken when a certain scene is loaded
-        private void onLevelLoaded(Level oldLevel, Level newLevel)
+        protected override void LevelLoaded(string oldLevel, string newLevel)
         {
-            string scene = newLevel.LevelName;
-
             // Set gameplay status
-            if (scene == "MainMenu")
+            if (newLevel == "MainMenu")
                 inGame = false;
 
             // Update ui menus
             if (settingsMenu != null)
-                settingsMenu.onLoad(scene);
+                settingsMenu.onLoad(newLevel);
 
             // Display delayed error message
             if (errorOnLoad != null && errorOnLoad != "")
@@ -193,7 +188,7 @@ namespace BlasphemousRandomizer
             // Misc functions
             EnemyLoader.loadEnemies(); // Load enemies
             updateShops(); // Update shop menus
-            bossShuffler.levelLoaded(scene); // Spawn boss stuff
+            bossShuffler.levelLoaded(newLevel); // Spawn boss stuff
 
             // Reload enemy audio catalogs
             AudioLoader audio = Object.FindObjectOfType<AudioLoader>();
@@ -207,17 +202,17 @@ namespace BlasphemousRandomizer
             }
 
             // Give items for special scenes
-            if (scene == "D01Z04S19")
+            if (newLevel == "D01Z04S19")
             {
                 Main.Randomizer.itemShuffler.giveItem("QI38", true);  // Change to spawn item pickup at center of room
                 Core.Events.SetFlag("ATTRITION_ALTAR_DONE", true, false);
             }
-            else if (scene == "D03Z03S16")
+            else if (newLevel == "D03Z03S16")
             {
                 Main.Randomizer.itemShuffler.giveItem("QI39", true);
                 Core.Events.SetFlag("CONTRITION_ALTAR_DONE", true, false);
             }
-            else if (scene == "D02Z03S21")
+            else if (newLevel == "D02Z03S21")
             {
                 Main.Randomizer.itemShuffler.giveItem("QI40", true);
                 Core.Events.SetFlag("COMPUNCTION_ALTAR_DONE", true, false);
@@ -271,7 +266,7 @@ namespace BlasphemousRandomizer
         }
 
         // Keyboard input
-        public void update()
+        protected override void Update()
         {
             if (Input.GetKeyDown(KeyCode.Keypad6) && inGame)
             {
@@ -330,7 +325,7 @@ namespace BlasphemousRandomizer
 
         public bool shouldSkipCutscene(string id)
         {
-            return gameConfig.general.skipCutscenes && FileUtil.arrayContains(data.cutsceneNames, id);
+            return gameConfig.general.skipCutscenes && Main.arrayContains(data.cutsceneNames, id);
         }
 
         public void playSoundEffect(int id)
@@ -351,11 +346,5 @@ namespace BlasphemousRandomizer
             string version = MyPluginInfo.PLUGIN_VERSION;
             return version.Substring(0, version.LastIndexOf('.')) == configVersion.Substring(0, configVersion.LastIndexOf('.'));
         }
-
-        public string GetPersistenID() { return "ID_RANDOMIZER"; }
-
-        public int GetOrder() { return 0; }
-
-        public void ResetPersistence() { }
     }
 }

@@ -116,7 +116,7 @@ namespace BlasphemousRandomizer.Patches
 		public static bool Prefix(FlagModification __instance)
 		{
 			if (!Main.Randomizer.gameConfig.items.disableNPCDeath 
-				|| !FileUtil.arrayContains(ItemFlags.bannedFlags, __instance.flagName.Value) 
+				|| !Main.arrayContains(ItemFlags.bannedFlags, __instance.flagName.Value) 
 				|| Core.LevelManager.currentLevel.LevelName == "D07Z01S01")
             {
 				Core.Events.SetFlag(__instance.flagName.Value, __instance.state.Value, false);
@@ -289,7 +289,7 @@ namespace BlasphemousRandomizer.Patches
 				}
 			}
 			// Thorn upgrades
-			if (scene.Contains("D19") || FileUtil.arrayContains(ItemFlags.thornScenes, scene))
+			if (scene.Contains("D19") || Main.arrayContains(ItemFlags.thornScenes, scene))
             {
 				if (item == "QI31")
                 {
@@ -415,7 +415,7 @@ namespace BlasphemousRandomizer.Patches
 			public static bool Prefix(string objectIdStting, ref bool __result)
 			{
 				string invalidItems = "RB17RB18RB19RB24RB25RB26QI31QI32QI33QI34QI35QI79QI80QI81QI107QI108QI109QI110";
-				if (invalidItems.Contains(objectIdStting))
+				if (objectIdStting != "QI10" && invalidItems.Contains(objectIdStting))
 				{
 					__result = true;
 					return false;

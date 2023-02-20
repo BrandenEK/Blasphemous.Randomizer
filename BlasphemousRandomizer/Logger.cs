@@ -1,4 +1,5 @@
 ﻿using Framework.Managers;
+using ModdingAPI;
 
 namespace BlasphemousRandomizer
 {
@@ -7,7 +8,6 @@ namespace BlasphemousRandomizer
         public enum LogType { Standard, Error, Data };
 
         private string lastScene;
-        private bool debugMode;
         private bool firstLog;
 
         public Logger(string initialMessage)
@@ -15,19 +15,16 @@ namespace BlasphemousRandomizer
             firstLog = true;
             lastScene = "";
 
-            debugMode = FileUtil.read("debug.txt", false, out string text) && text == "true";
             if (initialMessage != null && initialMessage != "")
                 Log(initialMessage, LogType.Standard);
         }
 
         public void Log(string text, LogType type)
         {
-            if (!debugMode) return;
-
             // Log data output to file
             if (type == LogType.Data)
             {
-                FileUtil.writeFull("data.txt", text);
+                Main.Randomizer.FileUtil.saveTextFile("data.txt", text);
                 return;
             }
 
@@ -51,7 +48,7 @@ namespace BlasphemousRandomizer
 
             // Indent & write to file
             output += type == LogType.Error ? "  * " : "\t";
-            FileUtil.writeLine("log.txt", output + text + "\n");
+            Main.Randomizer.FileUtil.appendLog(output + text + "\n");
         }
     }
 }

@@ -112,7 +112,7 @@ namespace BlasphemousRandomizer.Fillers
 
             for (int i = 0; i < locations.Count; i++)
             {
-				if (!FileUtil.arrayContains(randomLocations, locations[i].type))
+				if (!Main.arrayContains(randomLocations, locations[i].type))
                 {
 					// If this location is vanilla, set its item to original game item
 					int vanillaIdx = getItemIdx(items, locations[i].originalItem);

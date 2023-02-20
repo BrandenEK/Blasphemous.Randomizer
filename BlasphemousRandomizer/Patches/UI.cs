@@ -6,26 +6,12 @@ using Tools.Playmaker2.Action;
 using Framework.Achievements;
 using Gameplay.UI;
 using Gameplay.UI.Others.MenuLogic;
-using Gameplay.UI.Others.Buttons;
 using Gameplay.UI.Widgets;
 using BlasphemousRandomizer.Structures;
 using Framework.Managers;
 
 namespace BlasphemousRandomizer.Patches
 {
-    // Add randomizer version to main menu
-    [HarmonyPatch(typeof(VersionNumber), "Start")]
-    public class VersionNumber_Patch
-    {
-        public static void Postfix(VersionNumber __instance)
-        {
-            Text version = __instance.GetComponent<Text>();
-            if (version.text.Contains("v."))
-                version.text = "";
-            version.text += "Randomizer v" + MyPluginInfo.PLUGIN_VERSION + "\n";
-        }
-    }
-
     // Skip showing certain messages to the player
     [HarmonyPatch(typeof(ShowMessage), "OnEnter")]
     public class ShowMessage_Patch

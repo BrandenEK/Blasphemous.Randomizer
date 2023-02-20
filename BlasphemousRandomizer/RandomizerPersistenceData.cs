@@ -1,11 +1,11 @@
 ﻿using System;
-using Framework.Managers;
 using BlasphemousRandomizer.Config;
+using ModdingAPI;
 
 namespace BlasphemousRandomizer
 {
     [Serializable]
-    public class RandomizerPersistenceData : PersistentManager.PersistentData
+    public class RandomizerPersistenceData : ModPersistentData
     {
         public RandomizerPersistenceData() : base("ID_RANDOMIZER") { }
 

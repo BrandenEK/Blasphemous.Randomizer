@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using BlasphemousRandomizer.Structures;
+using ModdingAPI;
 
 namespace BlasphemousRandomizer
 {
@@ -26,17 +27,15 @@ namespace BlasphemousRandomizer
 		public Sprite[] randomizerImages;
 		public Sprite[] uiImages;
 
-		private string[] oldFiles = new string[] { "names_items.dat", "names_enemies.dat", "hints_items.dat" };
-
-		public bool loadData()
+		public bool loadData(FileUtil fileUtil)
 		{
 			bool valid = true;
 
 			// Items - Need to special load these
 			items = new Dictionary<string, Item>();
-			if (FileUtil.read("items.json", true, out string json))
+			if (fileUtil.loadDataText("items.json", out string json))
 			{
-				processItems(items, json);
+				processItems(fileUtil, items, json);
 				Main.Randomizer.Log($"Loaded {items.Count} items!");
 			}
 			else { Main.Randomizer.LogError("Error: Failed to load items!"); valid = false; }
@@ -50,8 +49,9 @@ namespace BlasphemousRandomizer
 
 			// Enemies
 			enemies = new Dictionary<string, Enemy>();
-			if (FileUtil.loadJson("enemies.json", out List<Enemy> tempEnemies))
+			if (fileUtil.loadDataText("enemies.json", out string jsonEnemies))
 			{
+				List<Enemy> tempEnemies = fileUtil.jsonObject<List<Enemy>>(jsonEnemies);
 				for (int i = 0; i < tempEnemies.Count; i++)
 					enemies.Add(tempEnemies[i].id, tempEnemies[i]);
 				Main.Randomizer.Log($"Loaded {enemies.Count} enemies!");
@@ -60,8 +60,9 @@ namespace BlasphemousRandomizer
 
 			// Enemy locations
 			enemyLocations = new Dictionary<string, EnemyLocation>();
-			if (FileUtil.loadJson("locations_enemies.json", out List<EnemyLocation> tempEnemyLocations))
+			if (fileUtil.loadDataText("locations_enemies.json", out string jsonEnemyLocations))
 			{
+				List<EnemyLocation> tempEnemyLocations = fileUtil.jsonObject<List<EnemyLocation>>(jsonEnemyLocations);
 				for (int i = 0; i < tempEnemyLocations.Count; i++)
 					enemyLocations.Add(tempEnemyLocations[i].locationId, tempEnemyLocations[i]);
 				Main.Randomizer.Log($"Loaded {enemyLocations.Count} enemy locations!");
@@ -70,8 +71,9 @@ namespace BlasphemousRandomizer
 
 			// Doors
 			doorLocations = new Dictionary<string, DoorLocation>();
-			if (FileUtil.loadJson("doors.json", out List<DoorLocation> tempDoorLocations))
+			if (fileUtil.loadDataText("doors.json", out string jsonDoors))
 			{
+				List<DoorLocation> tempDoorLocations = fileUtil.jsonObject<List<DoorLocation>>(jsonDoors);
 				for (int i = 0; i < tempDoorLocations.Count; i++)
 					doorLocations.Add(tempDoorLocations[i].id, tempDoorLocations[i]);
 				Main.Randomizer.Log($"Loaded {doorLocations.Count} doors!");
@@ -79,33 +81,29 @@ namespace BlasphemousRandomizer
 			else { Main.Randomizer.LogError("Error: Failed to load doors!"); valid = false; }
 
 			// Load text data
-			if (FileUtil.parseFileToDictionary("hints_locations.dat", out locationHints)) Main.Randomizer.Log($"Loaded {locationHints.Count} location hints!");
+			if (fileUtil.loadDataDictionary("hints_locations.dat", out locationHints)) Main.Randomizer.Log($"Loaded {locationHints.Count} location hints!");
 			else { Main.Randomizer.LogError("Error: Failed to load locations hints!"); valid = false; }
-			if (FileUtil.parseFileToDictionary("interactable_ids.dat", out interactableIds)) Main.Randomizer.Log($"Loaded {interactableIds.Count} interactable ids!");
+			if (fileUtil.loadDataDictionary("interactable_ids.dat", out interactableIds)) Main.Randomizer.Log($"Loaded {interactableIds.Count} interactable ids!");
 			else { Main.Randomizer.LogError("Error: Failed to load interactable ids!"); valid = false; }
-			if (FileUtil.parseFiletoArray("cutscenes_names.dat", out cutsceneNames)) Main.Randomizer.Log($"Loaded {cutsceneNames.Length} cutscene names!");
+			if (fileUtil.loadDataArray("cutscenes_names.dat", out cutsceneNames)) Main.Randomizer.Log($"Loaded {cutsceneNames.Length} cutscene names!");
 			else { Main.Randomizer.LogError("Error: Failed to load cutscene names!"); valid = false; }
-			if (FileUtil.parseFiletoArray("cutscenes_flags.dat", out cutsceneFlags)) Main.Randomizer.Log($"Loaded {cutsceneFlags.Length} cutscene flags!");
+			if (fileUtil.loadDataArray("cutscenes_flags.dat", out cutsceneFlags)) Main.Randomizer.Log($"Loaded {cutsceneFlags.Length} cutscene flags!");
 			else { Main.Randomizer.LogError("Error: Failed to load cutscene flags!"); valid = false; }
-			if (FileUtil.read("spoiler_items.dat", true, out spoilerTemplate)) Main.Randomizer.Log("Loaded spoiler template!");
+			if (fileUtil.loadDataText("spoiler_items.dat", out spoilerTemplate)) Main.Randomizer.Log("Loaded spoiler template!");
 			else { Main.Randomizer.LogError("Error: Failed to load spoiler template!"); valid = false; }
 
 			// Load image data
-			if (FileUtil.loadImages("custom_images.png", 32, 32, 0, true, out randomizerImages)) Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
+			if (fileUtil.loadDataImages("custom_images.png", 32, 32, 0, true, out randomizerImages)) Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
 			else { Main.Randomizer.LogError("Error: Failed to load randomizer images!"); valid = false; }
-			if (FileUtil.loadImages("ui.png", 36, 36, 0, false, out uiImages)) Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
+			if (fileUtil.loadDataImages("ui.png", 36, 36, 0, false, out uiImages)) Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
 			else { Main.Randomizer.LogError("Error: Failed to load ui images!"); valid = false; }
-
-			// Delete old files
-			foreach (string file in oldFiles)
-				FileUtil.delete(file);
 
 			isValid = valid;
 			return valid;
 		}
 
 		// Fills the dictionary with the items parsed from the json string
-		private void processItems(Dictionary<string, Item> items, string json)
+		private void processItems(FileUtil fileUtil, Dictionary<string, Item> items, string json)
 		{
 			// Parse json string into array
 			json = json.Replace("},", "}*");
@@ -118,7 +116,7 @@ namespace BlasphemousRandomizer
 				if (array[i].Contains("\"removePrevious\""))
 				{
 					// Progressive item
-					ProgressiveItem item = FileUtil.jsonObject<ProgressiveItem>(array[i]);
+					ProgressiveItem item = fileUtil.jsonObject<ProgressiveItem>(array[i]);
 					if (item.items == null)
 					{
 						item.items = new string[item.count];
@@ -130,7 +128,7 @@ namespace BlasphemousRandomizer
 				else
 				{
 					// Regular item
-					Item item = FileUtil.jsonObject<Item>(array[i]);
+					Item item = fileUtil.jsonObject<Item>(array[i]);
 					items.Add(item.id, item);
 				}
 			}
