@@ -2,14 +2,14 @@
 
 ## Table of Contents
 
-- [Links]()
-- [Installation]()
-- [Randomizer info]()
-  - [Important notes]()
-  - [Lesser know logic]()
-  - [Questline changes]()
-  - [Corpse hints]()
-- [Changelog]()
+- [Links](https://github.com/BrandenEK/Blasphemous-Randomizer#links)
+- [Installation](https://github.com/BrandenEK/Blasphemous-Randomizer#installation)
+- [Randomizer info](https://github.com/BrandenEK/Blasphemous-Randomizer#randomizer-info)
+  - [Important notes](https://github.com/BrandenEK/Blasphemous-Randomizer#important-notes)
+  - [Lesser know logic](https://github.com/BrandenEK/Blasphemous-Randomizer#lesser-known-logic)
+  - [Questline changes](https://github.com/BrandenEK/Blasphemous-Randomizer#questline-changes)
+  - [Corpse hints](https://github.com/BrandenEK/Blasphemous-Randomizer#corpse-hints)
+- [Changelog](https://github.com/BrandenEK/Blasphemous-Randomizer#changelog)
 
 ---
 
