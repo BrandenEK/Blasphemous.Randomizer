@@ -91,6 +91,10 @@ These are:
 
 ## Changelog
 
+### v1.4.0 (Modding API)
+- Fixed melted coins bug
+- Reworked rando to be compatible with the Modding API
+
 ### v1.3.0 (Sword Skills)
 - Shuffle the 15 sword skills
 - Golden verses are random
