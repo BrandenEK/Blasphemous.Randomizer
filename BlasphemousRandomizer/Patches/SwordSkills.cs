@@ -179,7 +179,7 @@ namespace BlasphemousRandomizer.Patches
 
             Text captionText = __instance.transform.GetChild(3).GetComponent<Text>();
             if (captionText != null)
-                captionText.text = editMode ? "Shrine Tier" : "Mea Culpa";
+                captionText.text = Main.Randomizer.Localize(editMode ? "shrine" : "sword");
         }
     }
     [HarmonyPatch(typeof(NewInventory_LayoutSkill), "CancelEditMode")]

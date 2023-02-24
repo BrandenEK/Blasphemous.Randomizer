@@ -140,11 +140,11 @@ namespace BlasphemousRandomizer.Patches
                 string majorVersion = Main.Randomizer.ModVersion;
                 majorVersion = majorVersion.Substring(0, majorVersion.LastIndexOf('.'));
 
-                string type = "(Vanilla)";
+                string type = $"({Main.Randomizer.Localize("vandis")})";
                 if (slotData.flags.flags.ContainsKey(majorVersion))
-                    type = "(Randomized)";
+                    type = $"({Main.Randomizer.Localize("randis")})";
                 else if (slotData.flags.flags.ContainsKey("RANDOMIZED"))
-                    type = "(Outdated)";
+                    type = $"({Main.Randomizer.Localize("outdis")})";
 
                 // Send extra info to the slot
                 ___slots[i].SetData("ignore", type, 0, false, false, false, 0, SelectSaveSlots.SlotsModes.Normal);
@@ -192,7 +192,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix()
         {
-            Main.Randomizer.LogDisplay("Sacred Sorrows mode can not be played in randomizer!");
+            Main.Randomizer.LogDisplay(Main.Randomizer.Localize("sorrow") + "!");
             return false;
         }
     }

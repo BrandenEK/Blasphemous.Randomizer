@@ -130,7 +130,7 @@ namespace BlasphemousRandomizer.Patches
                 rect.GetComponentInChildren<Text>().alignment = TextAnchor.MiddleLeft;
                 items = rect;
             }
-            items.GetComponentInChildren<Text>().text = $"Items collected: {Main.Randomizer.itemsCollected}/{Main.Randomizer.totalItems}";
+            items.GetComponentInChildren<Text>().text = $"{Main.Randomizer.Localize("items")}: {Main.Randomizer.itemsCollected}/{Main.Randomizer.totalItems}";
         }
     }
 

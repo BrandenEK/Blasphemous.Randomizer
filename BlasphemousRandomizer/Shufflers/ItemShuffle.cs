@@ -20,7 +20,7 @@ namespace BlasphemousRandomizer.Shufflers
         {
             if (newItems == null)
             {
-                UIController.instance.ShowPopUp("Error: Rewards list not initialized!", "", 0f, false);
+                UIController.instance.ShowPopUp(Main.Randomizer.Localize("itmerr") + "!", "", 0f, false);
                 return null;
             }
             if (!newItems.ContainsKey(locationId))

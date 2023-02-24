@@ -95,7 +95,7 @@ namespace BlasphemousRandomizer.UI
             }
 
             // Update text
-            seedText.text = "Seed: " + (currentSeed != "" ? currentSeed : "random");
+            seedText.text = Main.Randomizer.Localize("menusd") + ": " + (currentSeed != "" ? currentSeed : Main.Randomizer.Localize("menurd"));
             Main.Randomizer.playSoundEffect(2);
         }
 
@@ -122,7 +122,7 @@ namespace BlasphemousRandomizer.UI
 
             // Load config into seed
             currentSeed = config.general.customSeed > 0 ? config.general.customSeed.ToString() : "";
-            seedText.text = "Seed: " + (currentSeed != "" ? currentSeed : "random");
+            seedText.text = Main.Randomizer.Localize("menusd") + ": " + (currentSeed != "" ? currentSeed : Main.Randomizer.Localize("menurd"));
             descriptionText.text = "";
         }
 
@@ -243,7 +243,7 @@ namespace BlasphemousRandomizer.UI
             
             // Set header text
             Text headerText = settingsMenu.transform.GetChild(0).GetChild(0).GetComponent<Text>();
-            headerText.text = "CHOOSE SETTINGS";
+            headerText.text = Main.Randomizer.Localize("chset");
             Font font = headerText.font;
 
             // Create main section
@@ -266,26 +266,26 @@ namespace BlasphemousRandomizer.UI
             generalSection.sizeDelta = new Vector2(width / 4, height);
             generalSection.anchoredPosition = new Vector2(-0.375f * width, 0);
 
-            RectTransform generalTitle = getNewText("General Title", generalSection, "General:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            RectTransform generalTitle = getNewText("General Title", generalSection, Main.Randomizer.Localize("genset") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
             generalTitle.anchoredPosition = new Vector2(0, top - 5);
 
-            RectTransform teleportOption = getNewCheckbox("Teleport", generalSection, "Teleportation", "Prie Dieus are automatically upgraded to the maximum level", font, 15, 16);
+            RectTransform teleportOption = getNewCheckbox("Teleport", generalSection, Main.Randomizer.Localize("tpname"), Main.Randomizer.Localize("tpdesc"), font, 15, 16);
             teleportOption.anchoredPosition = new Vector2(left, top - 70);
             buttons[0] = teleportOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform cutscenesOption = getNewCheckbox("Cutscenes", generalSection, "Skip Cutscenes", "A majority of cutscenes will be skipped", font, 15, 16);
+            RectTransform cutscenesOption = getNewCheckbox("Cutscenes", generalSection, Main.Randomizer.Localize("ctname"), Main.Randomizer.Localize("ctdesc"), font, 15, 16);
             cutscenesOption.anchoredPosition = new Vector2(left, top - 100);
             buttons[1] = cutscenesOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform hintsOption = getNewCheckbox("Hints", generalSection, "Allow Hints", "Corpses will give a hint about valuable items when interacted with", font, 15, 16);
+            RectTransform hintsOption = getNewCheckbox("Hints", generalSection, Main.Randomizer.Localize("htname"), Main.Randomizer.Localize("htdesc"), font, 15, 16);
             hintsOption.anchoredPosition = new Vector2(left, top - 130);
             buttons[13] = hintsOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform penitenceOption = getNewCheckbox("Penitence", generalSection, "Allow Penitence", "You are able to choose a penitence in the Brotherhood", font, 15, 16);
+            RectTransform penitenceOption = getNewCheckbox("Penitence", generalSection, Main.Randomizer.Localize("pename"), Main.Randomizer.Localize("pedesc"), font, 15, 16);
             penitenceOption.anchoredPosition = new Vector2(left, top - 160);
             buttons[2] = penitenceOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform seed = getNewText("Seed", generalSection, "Seed: ", font, 16, Color.yellow, TextAnchor.MiddleCenter);
+            RectTransform seed = getNewText("Seed", generalSection, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.yellow, TextAnchor.MiddleCenter);
             seed.anchoredPosition = new Vector2(0, top - 25);
             seedText = seed.GetComponent<Text>();
 
@@ -295,28 +295,29 @@ namespace BlasphemousRandomizer.UI
             itemsSection.sizeDelta = new Vector2(width / 4, height);
             itemsSection.anchoredPosition = new Vector2(-0.125f * width, 0);
 
-            RectTransform itemsTitle = getNewText("Items Title", itemsSection, "Item Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            RectTransform itemsTitle = getNewText("Items Title", itemsSection, Main.Randomizer.Localize("itmset") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
             itemsTitle.anchoredPosition = new Vector2(0, top - 5);
 
-            RectTransform lungOption = getNewCheckbox("Lung", itemsSection, "Lung Damage", "Some items in poison clouds may be in logic without Lung of Dolphos", font, 15, 16);
+            RectTransform lungOption = getNewCheckbox("Lung", itemsSection, Main.Randomizer.Localize("lgname"), Main.Randomizer.Localize("lgdesc"), font, 15, 16);
             lungOption.anchoredPosition = new Vector2(left, top - 70);
             buttons[3] = lungOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform deathOption = getNewCheckbox("Death", itemsSection, "Disable NPC Death", "Prevents missable items by keeping certain NPCs always alive", font, 15, 16);
+            RectTransform deathOption = getNewCheckbox("Death", itemsSection, Main.Randomizer.Localize("dename"), Main.Randomizer.Localize("dedesc"), font, 15, 16);
             deathOption.anchoredPosition = new Vector2(left, top - 100);
             buttons[4] = deathOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform wheelOption = getNewCheckbox("Wheel", itemsSection, "Start with Wheel", "The starting gift will be the Young Mason's Wheel", font, 15, 16);
+            RectTransform wheelOption = getNewCheckbox("Wheel", itemsSection, Main.Randomizer.Localize("whname"), Main.Randomizer.Localize("whdesc"), font, 15, 16);
             wheelOption.anchoredPosition = new Vector2(left, top - 130);
             buttons[5] = wheelOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform reliqOption = getNewCheckbox("Reliquaries", itemsSection, "Shuffle Reliquaries", "The three reliquaries will be added to the item pool", font, 15, 16);
+            RectTransform reliqOption = getNewCheckbox("Reliquaries", itemsSection, Main.Randomizer.Localize("rqname"), Main.Randomizer.Localize("rqdesc"), font, 15, 16);
             reliqOption.anchoredPosition = new Vector2(left, top - 160);
             buttons[6] = reliqOption.GetComponent<SettingsCheckbox>();
 
             RectTransform itemsType = getNewCyclebox("Type", itemsSection, font, 15, 16,
-                new string[] { "Disabled", "Enabled" },
-                new string[] { "Disabled - All items will be in their original places", "Enabled - Every location will have a random item" },
+                new string[] { Main.Randomizer.Localize("dstype"), Main.Randomizer.Localize("entype") },
+                new string[] { Main.Randomizer.Localize("dstype") + " - " + Main.Randomizer.Localize("dsides"),
+                               Main.Randomizer.Localize("entype") + " - " + Main.Randomizer.Localize("endesc") },
                 new SettingsElement[] { buttons[3], buttons[4], buttons[5], buttons[6] });
             itemsType.anchoredPosition = new Vector2(0, top - 25);
             buttons[9] = itemsType.GetChild(0).GetComponent<SettingsCyclebox>();
@@ -328,20 +329,22 @@ namespace BlasphemousRandomizer.UI
             enemiesSection.sizeDelta = new Vector2(width / 4, height);
             enemiesSection.anchoredPosition = new Vector2(0.125f * width, 0);
 
-            RectTransform enemiesTitle = getNewText("Enemies Title", enemiesSection, "Enemy Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            RectTransform enemiesTitle = getNewText("Enemies Title", enemiesSection, Main.Randomizer.Localize("emyset") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
             enemiesTitle.anchoredPosition = new Vector2(0, top - 5);
 
-            RectTransform classOption = getNewCheckbox("Class", enemiesSection, "Maintain Class", "Enemies are constrained to their original group (Normal, Flying, Large)", font, 15, 16);
+            RectTransform classOption = getNewCheckbox("Class", enemiesSection, Main.Randomizer.Localize("clname"), Main.Randomizer.Localize("cldesc"), font, 15, 16);
             classOption.anchoredPosition = new Vector2(left, top - 70);
             buttons[7] = classOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform scalingOption = getNewCheckbox("Scaling", enemiesSection, "Area Scaling", "Enemy health and damage is scaled up/down based on their location", font, 15, 16);
+            RectTransform scalingOption = getNewCheckbox("Scaling", enemiesSection, Main.Randomizer.Localize("scname"), Main.Randomizer.Localize("scdesc"), font, 15, 16);
             scalingOption.anchoredPosition = new Vector2(left, top - 100);
             buttons[8] = scalingOption.GetComponent<SettingsCheckbox>();
 
             RectTransform enemiesType = getNewCyclebox("Type", enemiesSection, font, 15, 16,
-                new string[] { "Disabled", "Shuffled", "Random" },
-                new string[] { "Disabled - Enemies will remain in their original places", "Shuffled - An enemy can only appear as many times as in the original game", "Random - An enemy can appear any amount of times (Not recommended)" },
+                new string[] { Main.Randomizer.Localize("dstype"), Main.Randomizer.Localize("sftype"), Main.Randomizer.Localize("rdtype") },
+                new string[] { Main.Randomizer.Localize("dstype") + " - " + Main.Randomizer.Localize("dsedes"),
+                               Main.Randomizer.Localize("sftype") + " - " + Main.Randomizer.Localize("sfdesc"),
+                               Main.Randomizer.Localize("rdtype") + " - " + Main.Randomizer.Localize("rddesc") },
                 new SettingsElement[] { buttons[7], buttons[8] });
             enemiesType.anchoredPosition = new Vector2(0, top - 25);
             buttons[11] = enemiesType.GetChild(0).GetComponent<SettingsCyclebox>();
@@ -353,10 +356,10 @@ namespace BlasphemousRandomizer.UI
             doorsSection.sizeDelta = new Vector2(width / 4, height);
             doorsSection.anchoredPosition = new Vector2(0.375f * width, 0);
 
-            RectTransform doorsTitle = getNewText("Doors Title", doorsSection, "Door Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            RectTransform doorsTitle = getNewText("Doors Title", doorsSection, Main.Randomizer.Localize("dorset") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
             doorsTitle.anchoredPosition = new Vector2(0, top - 5);
 
-            RectTransform comingSoon = getNewText("Coming soon", doorsSection, "Coming Soon!", font, 16, Color.white, TextAnchor.MiddleCenter);
+            RectTransform comingSoon = getNewText("Coming soon", doorsSection, Main.Randomizer.Localize("soon") + "!", font, 16, Color.white, TextAnchor.MiddleCenter);
             comingSoon.anchoredPosition = new Vector2(0, top - 40);
 
             // Set begin/cancel buttons
@@ -364,12 +367,12 @@ namespace BlasphemousRandomizer.UI
             begin.anchorMin = new Vector2(0.5f, 0.5f);
             begin.anchorMax = new Vector2(0.5f, 0.5f);
             begin.anchoredPosition = new Vector2(10, -50);
-            begin.GetChild(1).GetComponent<Text>().text = " Begin";
+            begin.GetChild(1).GetComponent<Text>().text = " " + Main.Randomizer.Localize("begin");
             cancel.SetParent(doorsSection, false);
             cancel.anchorMin = new Vector2(0.5f, 0.5f);
             cancel.anchorMax = new Vector2(0.5f, 0.5f);
             cancel.anchoredPosition = new Vector2(10, -80);
-            cancel.GetChild(1).GetComponent<Text>().text = " Cancel";
+            cancel.GetChild(1).GetComponent<Text>().text = " " + Main.Randomizer.Localize("cancel");
 
             // Create description text
             RectTransform desc = getNewText("Description", mainSection, "", font, 16, Color.white, TextAnchor.MiddleLeft);

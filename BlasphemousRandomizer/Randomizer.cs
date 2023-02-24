@@ -62,7 +62,7 @@ namespace BlasphemousRandomizer
             logger = new Logger("Randomizer has been initialized!");
             data = new DataStorage();
             if (!data.loadData(FileUtil))
-                errorOnLoad = "Randomizer data could not loaded! Reinstall the program!";
+                errorOnLoad = Localize("daterr") + "!";
 
             // Set up data
             gameConfig = MainConfig.Default();
@@ -113,7 +113,7 @@ namespace BlasphemousRandomizer
                     shufflers[i].Reset();
                 }
                 LogError("Loaded invalid game!");
-                errorOnLoad = "This save file was not created in randomizer or used an older version.  Item locations are invalid!";
+                errorOnLoad = Localize("vererr") + "!";
             }
 
             inGame = true;
@@ -154,7 +154,7 @@ namespace BlasphemousRandomizer
 
             // Show error message if item shuffler failed
             if (!itemShuffler.validSeed)
-                errorOnLoad = "Item shuffler failed to generate valid game.  Item locations are invalid!";
+                errorOnLoad = Localize("generr") + "!";
 
             // Generate spoiler on new game
             if (newGame)
@@ -270,7 +270,7 @@ namespace BlasphemousRandomizer
         {
             if (Input.GetKeyDown(KeyCode.Keypad6) && inGame)
             {
-                LogDisplay("Current seed: " + seed);
+                LogDisplay(Localize("currsd") + ": " + seed);
             }
             else if (Input.GetKeyDown(KeyCode.Keypad7))
             {
