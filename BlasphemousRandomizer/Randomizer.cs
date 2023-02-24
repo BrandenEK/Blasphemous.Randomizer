@@ -11,6 +11,8 @@ using Framework.Audio;
 using Tools.Level;
 using ModdingAPI;
 
+using BlasphemousRandomizer.Tracker;
+
 namespace BlasphemousRandomizer
 {
     public class Randomizer : PersistentMod
@@ -280,6 +282,8 @@ namespace BlasphemousRandomizer
             else if (Input.GetKeyDown(KeyCode.Keypad8))
             {
                 //LogFile(EnemyShuffle.enemyData);
+                AutoTracker tracker = new AutoTracker();
+                tracker.Start();
             }
             else if (Input.GetKeyDown(KeyCode.Keypad9))
             {
