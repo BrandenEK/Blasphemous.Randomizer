@@ -195,6 +195,7 @@ namespace BlasphemousRandomizer
             EnemyLoader.loadEnemies(); // Load enemies
             updateShops(); // Update shop menus
             bossShuffler.levelLoaded(newLevel); // Spawn boss stuff
+            tracker.LevelLoaded(newLevel);
 
             // Reload enemy audio catalogs
             AudioLoader audio = Object.FindObjectOfType<AudioLoader>();
@@ -286,7 +287,7 @@ namespace BlasphemousRandomizer
             else if (Input.GetKeyDown(KeyCode.Keypad8))
             {
                 //LogFile(EnemyShuffle.enemyData);
-                tracker.Start();
+                tracker.Connect();
             }
             else if (Input.GetKeyDown(KeyCode.Keypad9))
             {

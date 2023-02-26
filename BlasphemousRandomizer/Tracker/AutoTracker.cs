@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using WebSocketSharp.Server;
-using WebSocketSharp;
+using Framework.Managers;
 using BlasphemousRandomizer.Structures;
 
 namespace BlasphemousRandomizer.Tracker
@@ -11,9 +10,11 @@ namespace BlasphemousRandomizer.Tracker
         private WebSocketServer server;
         private UATService service;
 
-        private bool TrackerActive => server != null && server.IsListening && service != null;
+        public bool TrackerActive => server != null && server.IsListening && service != null;
 
-        public void Start()
+        private bool waitingToSendItems = false;
+
+        public void Connect()
         {
             try
             {
@@ -29,81 +30,49 @@ namespace BlasphemousRandomizer.Tracker
             }
         }
 
+        public void Disconnect()
+        {
+            if (TrackerActive)
+            {
+                server.Stop();
+            }
+            server = null;
+            service = null;
+        }
+
+        public void TrackerConnected()
+        {
+            waitingToSendItems = true;
+            SendAllItems(Core.LevelManager.currentLevel.LevelName);
+        }
+
+        public void LevelLoaded(string scene)
+        {
+            SendAllItems(scene);
+        }
+
+        private void SendAllItems(string scene)
+        {
+            if (!waitingToSendItems || scene == "MainMenu") return;
+
+            Main.Randomizer.LogWarning("Sending all items!");
+            waitingToSendItems = false;
+            // Send all items
+        }
+
         public void NewItem(Item item)
         {
+            if (item.type > 6 && item.type != 11) return;
+
             string trackerItem = item.id;
             if (item.type == 5) trackerItem = "CO";
             else if (item.type == 6) trackerItem = "CH";
-            else if (item.type == 11) trackerItem = item.name;
             // Dont send certain items
 
             Main.Randomizer.LogWarning("New item: " + trackerItem);
             if (TrackerActive)
             {
                 service.VariableChanged(trackerItem, 1);
-            }
-        }
-    }
-
-    public class UATService : WebSocketBehavior
-    {
-        protected override void OnOpen()
-        {
-            if (ConnectionState == WebSocketState.Open)
-            {
-                Main.Randomizer.LogWarning("Poptracker has connected");
-                string jsonString = Main.Randomizer.FileUtil.jsonString(new Info(0, "Blasphemous", Main.MOD_VERSION));
-                Send("[" + jsonString + "]");
-            }
-
-            base.OnOpen();
-        }
-
-        protected override void OnMessage(MessageEventArgs e)
-        {
-            base.OnMessage(e);
-            Main.Randomizer.LogWarning(e.Data);
-
-            // If message is sync, send all variables
-        }
-
-        public void VariableChanged(string name, byte value)
-        {
-            if (ConnectionState == WebSocketState.Open)
-            {
-                Main.Randomizer.LogWarning("Sending new variable");
-                string jsonString = Main.Randomizer.FileUtil.jsonString(new Var(name, value));
-                Send("[" + jsonString + "]");
-            }
-        }
-
-        class Info
-        {
-            public string cmd;
-            public int protocol;
-            public string name;
-            public string version;
-
-            public Info(int protocol, string name, string version)
-            {
-                cmd = "Info";
-                this.protocol = protocol;
-                this.name = name;
-                this.version = version;
-            }
-        }
-
-        class Var
-        {
-            public string cmd;
-            public string name;
-            public byte value;
-
-            public Var(string name, byte value)
-            {
-                cmd = "Var";
-                this.name = name;
-                this.value = value;
             }
         }
     }
