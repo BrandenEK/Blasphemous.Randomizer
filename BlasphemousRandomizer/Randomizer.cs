@@ -44,6 +44,8 @@ namespace BlasphemousRandomizer
 
         public override string PersistentID => "ID_RANDOMIZER";
 
+        public AutoTracker tracker { get; private set; }
+
         public Randomizer(string modId, string modName, string modVersion) : base(modId, modName, modVersion) { }
 
         protected override void Initialize()
@@ -70,6 +72,8 @@ namespace BlasphemousRandomizer
             gameConfig = MainConfig.Default();
             lastLoadedSlot = -1;
             settingsMenu = new SettingsMenu();
+
+            tracker = new AutoTracker();
         }
 
         public override ModPersistentData SaveGame()
@@ -282,7 +286,6 @@ namespace BlasphemousRandomizer
             else if (Input.GetKeyDown(KeyCode.Keypad8))
             {
                 //LogFile(EnemyShuffle.enemyData);
-                AutoTracker tracker = new AutoTracker();
                 tracker.Start();
             }
             else if (Input.GetKeyDown(KeyCode.Keypad9))

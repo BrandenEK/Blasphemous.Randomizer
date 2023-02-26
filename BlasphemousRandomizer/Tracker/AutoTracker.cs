@@ -1,44 +1,110 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using WebSocketSharp.Server;
 using WebSocketSharp;
-using System.Net;
-using System.Net.Sockets;
+using BlasphemousRandomizer.Structures;
 
 namespace BlasphemousRandomizer.Tracker
 {
     public class AutoTracker
     {
+        private WebSocketServer server;
+        private UATService service;
+
+        private bool TrackerActive => server != null && server.IsListening && service != null;
+
         public void Start()
         {
-            //WebSocket socket = new WebSocket("test");
-            //socket.Connect();
-
-            TcpListener server = new TcpListener(IPAddress.Parse("127.0.0.1"), 65399);
-            server.Start();
-            Main.Randomizer.LogWarning("Server started!");
-
-            if (!server.Pending())
+            try
             {
-                Main.Randomizer.LogWarning("No client found!");
-                server.Stop();
-                return;
+                server = new WebSocketServer("ws://localhost:65399");
+                server.AddWebSocketService("/", (UATService uat) => { service = uat; });
+
+                server.Start();
+                Main.Randomizer.LogWarning("Server started!");
+            }
+            catch (Exception e)
+            {
+                Main.Randomizer.LogWarning("Server failed: " + e.Message);
+            }
+        }
+
+        public void NewItem(Item item)
+        {
+            string trackerItem = item.id;
+            if (item.type == 5) trackerItem = "CO";
+            else if (item.type == 6) trackerItem = "CH";
+            else if (item.type == 11) trackerItem = item.name;
+            // Dont send certain items
+
+            Main.Randomizer.LogWarning("New item: " + trackerItem);
+            if (TrackerActive)
+            {
+                service.VariableChanged(trackerItem, 1);
+            }
+        }
+    }
+
+    public class UATService : WebSocketBehavior
+    {
+        protected override void OnOpen()
+        {
+            if (ConnectionState == WebSocketState.Open)
+            {
+                Main.Randomizer.LogWarning("Poptracker has connected");
+                string jsonString = Main.Randomizer.FileUtil.jsonString(new Info(0, "Blasphemous", Main.MOD_VERSION));
+                Send("[" + jsonString + "]");
             }
 
-            TcpClient client = server.AcceptTcpClient();
-            NetworkStream stream = client.GetStream();
-            Main.Randomizer.LogWarning("Client connected!");
+            base.OnOpen();
+        }
 
-            while (true)
+        protected override void OnMessage(MessageEventArgs e)
+        {
+            base.OnMessage(e);
+            Main.Randomizer.LogWarning(e.Data);
+
+            // If message is sync, send all variables
+        }
+
+        public void VariableChanged(string name, byte value)
+        {
+            if (ConnectionState == WebSocketState.Open)
             {
-                while (!stream.DataAvailable);
-
-                byte[] bytes = new byte[client.Available];
-                stream.Read(bytes, 0, bytes.Length);
-                Main.Randomizer.LogWarning("Message: " + Encoding.UTF8.GetString(bytes));
+                Main.Randomizer.LogWarning("Sending new variable");
+                string jsonString = Main.Randomizer.FileUtil.jsonString(new Var(name, value));
+                Send("[" + jsonString + "]");
             }
-            // Close client at end
+        }
+
+        class Info
+        {
+            public string cmd;
+            public int protocol;
+            public string name;
+            public string version;
+
+            public Info(int protocol, string name, string version)
+            {
+                cmd = "Info";
+                this.protocol = protocol;
+                this.name = name;
+                this.version = version;
+            }
+        }
+
+        class Var
+        {
+            public string cmd;
+            public string name;
+            public byte value;
+
+            public Var(string name, byte value)
+            {
+                cmd = "Var";
+                this.name = name;
+                this.value = value;
+            }
         }
     }
 }
