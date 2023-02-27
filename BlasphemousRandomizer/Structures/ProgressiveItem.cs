@@ -66,9 +66,9 @@ namespace BlasphemousRandomizer.Structures
             {
                 Main.Randomizer.Log("Removing item: " + items[level]);
                 if (type == 5)
-                    Core.InventoryManager.RemoveBaseObject(Core.InventoryManager.GetBaseObject(items[level], InventoryManager.ItemType.Quest));
+                    Core.InventoryManager.RemoveQuestItem(items[level]);
                 else if (type == 0)
-                    Core.InventoryManager.RemoveBaseObject(Core.InventoryManager.GetBaseObject(items[level], InventoryManager.ItemType.Bead));
+                    Core.InventoryManager.RemoveRosaryBead(items[level]);
                 else
                     Main.Randomizer.LogDisplay($"Item type {type} can not be removed!");
             }

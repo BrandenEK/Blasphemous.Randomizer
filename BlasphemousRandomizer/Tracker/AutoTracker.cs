@@ -14,19 +14,22 @@ namespace BlasphemousRandomizer.Tracker
 
         private bool waitingToSendItems = false;
 
-        public void Connect()
+        public bool Connect()
         {
             try
             {
+                Disconnect();
                 server = new WebSocketServer("ws://localhost:65399");
                 server.AddWebSocketService("/", (UATService uat) => { service = uat; });
 
                 server.Start();
-                Main.Randomizer.LogWarning("Server started!");
+                Main.Randomizer.Log("Autotracker server started");
+                return true;
             }
             catch (Exception e)
             {
-                Main.Randomizer.LogWarning("Server failed: " + e.Message);
+                Main.Randomizer.LogError("Autotracker server failed - " + e.Message);
+                return false;
             }
         }
 

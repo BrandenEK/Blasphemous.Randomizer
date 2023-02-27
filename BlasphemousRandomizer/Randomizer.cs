@@ -74,6 +74,7 @@ namespace BlasphemousRandomizer
             settingsMenu = new SettingsMenu();
 
             tracker = new AutoTracker();
+            RegisterCommand(new RandomizerCommand());
         }
 
         public override ModPersistentData SaveGame()
@@ -287,7 +288,7 @@ namespace BlasphemousRandomizer
             else if (Input.GetKeyDown(KeyCode.Keypad8))
             {
                 //LogFile(EnemyShuffle.enemyData);
-                tracker.Connect();
+                //tracker.Connect();
             }
             else if (Input.GetKeyDown(KeyCode.Keypad9))
             {
