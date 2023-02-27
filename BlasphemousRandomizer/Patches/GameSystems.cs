@@ -74,16 +74,6 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
-    // Don't allow ascending a save file
-    [HarmonyPatch(typeof(SaveSlot), "SetData")]
-    public class SaveSlotConvert_Patch
-    {
-        public static void Prefix(ref bool canConvert)
-        {
-            canConvert = false;
-        }
-    }
-
     // Update dialogs
     [HarmonyPatch(typeof(DialogManager), "StartConversation")]
     public class DialogManager_Patch
@@ -110,7 +100,7 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
-    // Log what flags are being set
+    // Log what flags are being set & track certain ones
     [HarmonyPatch(typeof(EventManager), "SetFlag")]
     public class EventManagerSet_Patch
     {
@@ -121,6 +111,12 @@ namespace BlasphemousRandomizer.Patches
 
             string text = b ? "Setting" : "Clearing";
             Main.Randomizer.Log(text + " flag: " + id);
+
+            // Autotracking flags
+            if (id.StartsWith("RESCUED_CHERUB_"))
+                Main.Randomizer.tracker.NewItem("CH");
+            else if (id.StartsWith("LOCATION_"))
+                Main.Randomizer.tracker.NewLocation(id.Substring(9));
         }
     }
 
@@ -154,8 +150,9 @@ namespace BlasphemousRandomizer.Patches
     [HarmonyPatch(typeof(SaveSlot), "SetData")]
     public class SaveSlotData_Patch
     {
-        public static bool Prefix(string zoneName, string info, ref Text ___ZoneText)
+        public static bool Prefix(string zoneName, string info, ref Text ___ZoneText, ref bool canConvert)
         {
+            canConvert = false;
             if (zoneName == "ignore")
             {
                 ___ZoneText.text += "   " + info;

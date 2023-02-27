@@ -168,4 +168,61 @@ namespace BlasphemousRandomizer.Patches
             return true;
         }
     }
+
+    // Autotracking
+
+    // Beads
+    [HarmonyPatch(typeof(InventoryManager), "AddRosaryBead", typeof(RosaryBead))]
+    public class InventoryBead_Patch
+    {
+        public static void Postfix(RosaryBead rosaryBead)
+        {
+            Main.Randomizer.tracker.NewItem(rosaryBead.id);
+        }
+    }
+    // Prayers
+    [HarmonyPatch(typeof(InventoryManager), "AddPrayer", typeof(Prayer))]
+    public class InventoryPrayer_Patch
+    {
+        public static void Postfix(Prayer prayer)
+        {
+            Main.Randomizer.tracker.NewItem(prayer.id);
+        }
+    }
+    // Relics
+    [HarmonyPatch(typeof(InventoryManager), "AddRelic", typeof(Relic))]
+    public class InventoryRelic_Patch
+    {
+        public static void Postfix(Relic relic)
+        {
+            Main.Randomizer.tracker.NewItem(relic.id);
+        }
+    }
+    // Hearts
+    [HarmonyPatch(typeof(InventoryManager), "AddSword", typeof(Sword))]
+    public class InventorySword_Patch
+    {
+        public static void Postfix(Sword sword)
+        {
+            Main.Randomizer.tracker.NewItem(sword.id);
+        }
+    }
+    // Collectibles
+    [HarmonyPatch(typeof(InventoryManager), "AddCollectibleItem", typeof(Framework.Inventory.CollectibleItem))]
+    public class InventoryCollectible_Patch
+    {
+        public static void Postfix(Framework.Inventory.CollectibleItem collectibleItem)
+        {
+            Main.Randomizer.tracker.NewItem("CO");
+        }
+    }
+    // Quest items
+    [HarmonyPatch(typeof(InventoryManager), "AddQuestItem", typeof(QuestItem))]
+    public class InventoryQuestItem_Patch
+    {
+        public static void Postfix(QuestItem questItem)
+        {
+            Main.Randomizer.tracker.NewItem(questItem.id);
+        }
+    }
 }

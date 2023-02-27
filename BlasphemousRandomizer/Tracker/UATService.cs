@@ -20,10 +20,7 @@ namespace BlasphemousRandomizer.Tracker
         protected override void OnMessage(MessageEventArgs e)
         {
             base.OnMessage(e);
-            Main.Randomizer.LogWarning(e.Data);
-
-            // If message is sync, send all variables
-            // Temp
+            Main.Randomizer.LogWarning("Received autotracker cmd: " + e.Data);
             if (e.Data.Contains("Sync"))
                 Main.Randomizer.tracker.TrackerConnected();
         }

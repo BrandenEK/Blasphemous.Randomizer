@@ -16,9 +16,10 @@ namespace BlasphemousRandomizer.Tracker
 
         public bool Connect()
         {
+            if (TrackerActive) return true;
+
             try
             {
-                Disconnect();
                 server = new WebSocketServer("ws://localhost:65399");
                 server.AddWebSocketService("/", (UATService uat) => { service = uat; });
 
@@ -63,29 +64,20 @@ namespace BlasphemousRandomizer.Tracker
             // Send all items
         }
 
-        public void NewItem(Item item)
+        public void NewItem(string item)
         {
-            if (item.type > 6 && item.type != 11) return;
+            if (!TrackerActive) return;
 
-            string trackerItem = item.id;
-            if (item.type == 4) trackerItem = "CO";
-            else if (item.type == 6) trackerItem = "CH";
-            // Dont send certain items
-
-            Main.Randomizer.LogWarning("New item: " + trackerItem);
-            if (TrackerActive)
-            {
-                service.VariableChanged(trackerItem, 1);
-            }
+            Main.Randomizer.LogWarning("New item: " + item);
+            service.VariableChanged(item, 1);
         }
 
         public void NewLocation(string locationId)
         {
+            if (!TrackerActive) return;
+
             Main.Randomizer.LogWarning("New location: " + locationId);
-            if (TrackerActive)
-            {
-                service.VariableChanged(locationId, 1);
-            }
+            service.VariableChanged("@" + locationId, 1);
         }
     }
 }
