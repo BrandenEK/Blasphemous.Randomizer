@@ -9,7 +9,7 @@ namespace BlasphemousRandomizer.Tracker
         {
             if (ConnectionState == WebSocketState.Open)
             {
-                Main.Randomizer.LogWarning("Poptracker has connected");
+                Main.Randomizer.Log("Poptracker has connected");
                 string jsonString = Main.Randomizer.FileUtil.jsonString(new Info(0, "Blasphemous", Main.MOD_VERSION));
                 Send("[" + jsonString + "]");
             }
@@ -29,7 +29,7 @@ namespace BlasphemousRandomizer.Tracker
         {
             if (ConnectionState == WebSocketState.Open)
             {
-                Main.Randomizer.LogWarning("Sending new variable");
+                Main.Randomizer.LogWarning("Sending new variable: " + name);
                 string jsonString = Main.Randomizer.FileUtil.jsonString(new Var(name, value));
                 Send("[" + jsonString + "]");
             }

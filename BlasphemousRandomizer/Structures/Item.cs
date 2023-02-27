@@ -39,6 +39,7 @@ namespace BlasphemousRandomizer.Structures
         {
 			InventoryManager inv = Core.InventoryManager;
 			EntityStats stats = Core.Logic.Penitent.Stats;
+			Core.Events.SetFlag("ITEM_" + id, true, false);
 
 			switch (type)
 			{

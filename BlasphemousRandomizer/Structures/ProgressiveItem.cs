@@ -21,7 +21,6 @@ namespace BlasphemousRandomizer.Structures
         public override void addToInventory()
         {
             Item itemToAdd = getItemLevel(true);
-            Core.Events.SetFlag("Item_" + itemToAdd.id, true, false);
             itemToAdd.addToInventory();
             if (removePrevious)
                 removeItem();
@@ -49,7 +48,7 @@ namespace BlasphemousRandomizer.Structures
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (!Core.Events.GetFlag("Item_" + items[i]))
+                if (!Core.Events.GetFlag("ITEM_" + items[i]))
                 {
                     Main.Randomizer.Log("Current progressive tier: " + (i - 1));
                     return i - 1;

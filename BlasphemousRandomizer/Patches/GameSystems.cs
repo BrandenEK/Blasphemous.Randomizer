@@ -104,19 +104,21 @@ namespace BlasphemousRandomizer.Patches
     [HarmonyPatch(typeof(EventManager), "SetFlag")]
     public class EventManagerSet_Patch
     {
-        public static void Prefix(string id, bool b)
+        public static void Prefix(EventManager __instance, string id, bool b)
         {
-            if (id == "" || id == "REVEAL_FAITH_PLATFORMS")
+            string formatted = __instance.GetFormattedId(id);
+            if (formatted == "" || formatted == "REVEAL_FAITH_PLATFORMS")
                 return;
 
             string text = b ? "Setting" : "Clearing";
-            Main.Randomizer.Log(text + " flag: " + id);
+            Main.Randomizer.Log(text + " flag: " + formatted);
 
             // Autotracking flags
-            if (id.StartsWith("RESCUED_CHERUB_"))
-                Main.Randomizer.tracker.NewItem("CH", 6);
-            else if (id.StartsWith("LOCATION_"))
+            if (formatted.StartsWith("ITEM_"))
+                Main.Randomizer.tracker.NewItem(id.Substring(5));
+            else if (formatted.StartsWith("LOCATION_"))
                 Main.Randomizer.tracker.NewLocation(id.Substring(9));
+            // Special flags ...
         }
     }
 
