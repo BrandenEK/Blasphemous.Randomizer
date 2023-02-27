@@ -50,7 +50,8 @@ namespace BlasphemousRandomizer.Shufflers
             Main.Randomizer.Log($"Giving item ({item.id})");
             Main.Randomizer.itemsCollected++;
             item.addToInventory();
-            Main.Randomizer.tracker.NewItem(item);
+            Main.Randomizer.tracker.NewItem(item); // Move to actual give item functions
+            Main.Randomizer.tracker.NewLocation(locationId); // Move to set flag
             Core.Events.SetFlag("Location_" + locationId, true, false);
             Main.Randomizer.updateShops();
             lastItem = item;

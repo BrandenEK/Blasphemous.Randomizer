@@ -43,15 +43,15 @@ namespace BlasphemousRandomizer.Tracker
         public void TrackerConnected()
         {
             waitingToSendItems = true;
-            SendAllItems(Core.LevelManager.currentLevel.LevelName);
+            SendAllVariables(Core.LevelManager.currentLevel.LevelName);
         }
 
         public void LevelLoaded(string scene)
         {
-            SendAllItems(scene);
+            SendAllVariables(scene);
         }
 
-        private void SendAllItems(string scene)
+        private void SendAllVariables(string scene)
         {
             if (!waitingToSendItems || scene == "MainMenu") return;
 
@@ -65,7 +65,7 @@ namespace BlasphemousRandomizer.Tracker
             if (item.type > 6 && item.type != 11) return;
 
             string trackerItem = item.id;
-            if (item.type == 5) trackerItem = "CO";
+            if (item.type == 4) trackerItem = "CO";
             else if (item.type == 6) trackerItem = "CH";
             // Dont send certain items
 
@@ -73,6 +73,15 @@ namespace BlasphemousRandomizer.Tracker
             if (TrackerActive)
             {
                 service.VariableChanged(trackerItem, 1);
+            }
+        }
+
+        public void NewLocation(string locationId)
+        {
+            Main.Randomizer.LogWarning("New location: " + locationId);
+            if (TrackerActive)
+            {
+                service.VariableChanged(locationId, 1);
             }
         }
     }
