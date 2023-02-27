@@ -114,7 +114,7 @@ namespace BlasphemousRandomizer.Patches
 
             // Autotracking flags
             if (id.StartsWith("RESCUED_CHERUB_"))
-                Main.Randomizer.tracker.NewItem("CH");
+                Main.Randomizer.tracker.NewItem("CH", 6);
             else if (id.StartsWith("LOCATION_"))
                 Main.Randomizer.tracker.NewLocation(id.Substring(9));
         }

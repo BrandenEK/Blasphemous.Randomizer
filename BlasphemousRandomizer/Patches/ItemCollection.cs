@@ -177,7 +177,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Postfix(RosaryBead rosaryBead)
         {
-            Main.Randomizer.tracker.NewItem(rosaryBead.id);
+            Main.Randomizer.tracker.NewItem(rosaryBead.id, 0);
         }
     }
     // Prayers
@@ -186,7 +186,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Postfix(Prayer prayer)
         {
-            Main.Randomizer.tracker.NewItem(prayer.id);
+            Main.Randomizer.tracker.NewItem(prayer.id, 1);
         }
     }
     // Relics
@@ -195,7 +195,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Postfix(Relic relic)
         {
-            Main.Randomizer.tracker.NewItem(relic.id);
+            Main.Randomizer.tracker.NewItem(relic.id, 2);
         }
     }
     // Hearts
@@ -204,16 +204,16 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Postfix(Sword sword)
         {
-            Main.Randomizer.tracker.NewItem(sword.id);
+            Main.Randomizer.tracker.NewItem(sword.id, 3);
         }
     }
     // Collectibles
     [HarmonyPatch(typeof(InventoryManager), "AddCollectibleItem", typeof(Framework.Inventory.CollectibleItem))]
     public class InventoryCollectible_Patch
     {
-        public static void Postfix(Framework.Inventory.CollectibleItem collectibleItem)
+        public static void Postfix()
         {
-            Main.Randomizer.tracker.NewItem("CO");
+            Main.Randomizer.tracker.NewItem("CO", 4);
         }
     }
     // Quest items
@@ -222,7 +222,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Postfix(QuestItem questItem)
         {
-            Main.Randomizer.tracker.NewItem(questItem.id);
+            Main.Randomizer.tracker.NewItem(questItem.id, 5);
         }
     }
 }

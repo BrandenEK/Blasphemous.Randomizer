@@ -78,7 +78,7 @@ namespace BlasphemousRandomizer.Patches
             {
                 // Actually give item
                 ___allSkills[skill].unlocked = true;
-                Main.Randomizer.tracker.NewItem(skill);
+                Main.Randomizer.tracker.NewItem(skill, 11);
             }
             else
             {
