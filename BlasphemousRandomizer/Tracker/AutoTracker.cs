@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using WebSocketSharp.Server;
 using Framework.Managers;
@@ -99,6 +100,22 @@ namespace BlasphemousRandomizer.Tracker
             byte value = 1;
             switch (type)
             {
+                case 0:
+                case 5:
+                    if (specialItems.ContainsKey(item))
+                    {
+                        item = specialItems[item];
+                        value = 0;
+
+                        foreach (KeyValuePair<string, string> entry in specialItems)
+                        {
+                            if (entry.Value == item && (type == 0 ? Core.InventoryManager.IsRosaryBeadOwned(entry.Key) : Core.InventoryManager.IsQuestItemOwned(entry.Key)))
+                            {
+                                value++;
+                            }
+                        }
+                    }
+                    break;
                 case 4:
                     value = (byte)Core.InventoryManager.GetCollectibleItemOwned().Count;
                     break;
@@ -118,5 +135,51 @@ namespace BlasphemousRandomizer.Tracker
             Main.Randomizer.LogWarning("New location: " + locationId);
             service.VariableChanged("@" + locationId, 1);
         }
+
+        private Dictionary<string, string> specialItems = new Dictionary<string, string>()
+        {
+            // Consumables
+            {"RB20", "LM" },
+            {"RB21", "LM" },
+            {"RB22", "LM" },
+            {"QI02", "MR" },
+            {"QI03", "MR" },
+            {"QI04", "MR" },
+            {"QI06", "TN" },
+            {"QI07", "TN" },
+            {"QI08", "TN" },
+            {"QI10", "AL" },
+            {"QI11", "AL" },
+            {"QI12", "AL" },
+            {"QI19", "HB" },
+            {"QI20", "HB" },
+            {"QI37", "HB" },
+            {"QI63", "HB" },
+            {"QI64", "HB" },
+            {"QI65", "HB" },
+            {"QI38", "HW" },
+            {"QI39", "HW" },
+            {"QI40", "HW" },
+            {"QI60", "MK" },
+            {"QI61", "MK" },
+            {"QI62", "MK" },
+            {"QI107", "GV" },
+            {"QI108", "GV" },
+            {"QI109", "GV" },
+            {"QI110", "GV" },
+            {"QI201", "TE" },
+            {"QI202", "TE" },
+            // Progressives
+            {"RB17", "RW" },
+            {"RB18", "RW" },
+            {"RB19", "RW" },
+            {"RB24", "BW" },
+            {"RB25", "BW" },
+            {"RB26", "BW" },
+            {"QI13", "EG" },
+            {"QI14", "EG" },
+            {"QI59", "TH" },
+            {"QI57", "TH" }
+        };
     }
 }
