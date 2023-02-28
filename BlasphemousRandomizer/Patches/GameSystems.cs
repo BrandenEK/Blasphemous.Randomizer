@@ -118,7 +118,8 @@ namespace BlasphemousRandomizer.Patches
                 Main.Randomizer.tracker.NewItem(id.Substring(5));
             else if (formatted.StartsWith("LOCATION_"))
                 Main.Randomizer.tracker.NewLocation(id.Substring(9));
-            // Special flags ...
+            else if (Main.arrayContains(Main.Randomizer.tracker.SpecialLocations, formatted))
+                Main.Randomizer.tracker.NewItem(formatted);
         }
     }
 

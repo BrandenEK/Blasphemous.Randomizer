@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using WebSocketSharp.Server;
 using Framework.Managers;
-using Framework.Inventory;
 using BlasphemousRandomizer.Structures;
 
 namespace BlasphemousRandomizer.Tracker
@@ -14,7 +11,7 @@ namespace BlasphemousRandomizer.Tracker
         private UATService service;
 
         public bool TrackerActive => server != null && server.IsListening && service != null;
-
+        public string[] SpecialLocations { get; private set; }
         private bool waitingToSendItems = false;
 
         public bool Connect()
@@ -89,6 +86,13 @@ namespace BlasphemousRandomizer.Tracker
                 if (Core.Events.GetFlag("LOCATION_" + locationId))
                     NewLocation(locationId);
             }
+
+            // Send special locations
+            foreach (string locationFlag in SpecialLocations)
+            {
+                if (Core.Events.GetFlag(locationFlag))
+                    NewItem(locationFlag);
+            }
         }
 
         public void NewItem(string item)
@@ -103,6 +107,31 @@ namespace BlasphemousRandomizer.Tracker
             if (!TrackerActive) return;
 
             service.VariableChanged("@" + locationId, 1);
+        }
+
+        public AutoTracker()
+        {
+            SpecialLocations = new string[]
+            {
+                // Boss killed flags
+                "D17Z01_BOSSDEAD",
+                "D01Z06S01_BOSSDEAD",
+                "D02Z05S01_BOSSDEAD",
+                "D03Z04S01_BOSSDEAD",
+                "D08Z01S01_BOSSDEAD",
+                "D04Z04S01_BOSSDEAD",
+                "D05Z01S13_BOSSDEAD",
+                "D09Z01S03_BOSSDEAD",
+                "D06Z01S25_BOSSDEAD",
+                "D07Z01S02_BOSSDEAD",
+                "D20Z02S08_BOSSDEAD",
+                "D01BZ08S01_BOSSDEAD",
+                // Confessor dungeons
+                // Candles
+                // Amanecida quest
+                // Redento quest
+                // Miriam quest
+            };
         }
     }
 }
