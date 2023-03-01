@@ -126,11 +126,43 @@ namespace BlasphemousRandomizer.Tracker
                 "D07Z01S02_BOSSDEAD",
                 "D20Z02S08_BOSSDEAD",
                 "D01BZ08S01_BOSSDEAD",
+                "SANTOS_LAUDES_DEFEATED",
                 // Confessor dungeons
+                "CONFESSOR_1_ARENACOMPLETED",
+                "CONFESSOR_2_ARENACOMPLETED",
+                "CONFESSOR_3_ARENACOMPLETED",
+                "CONFESSOR_4_ARENACOMPLETED",
+                "CONFESSOR_5_ARENACOMPLETED",
+                "CONFESSOR_6_ARENACOMPLETED",
+                "CONFESSOR_7_ARENACOMPLETED",
                 // Candles
-                // Amanecida quest
+                "CANDLE_RED_1_USED",
+                "CANDLE_RED_2_USED",
+                "CANDLE_BLUE_1_USED",
+                "CANDLE_BLUE_2_USED",
+                // Jibrael quest
+                "SANTOS_FIRSTCONVERSATION_DONE", // ??
+                "SANTOS_AMANECIDA_LOCATION1_ACTIVATED",
+                "SANTOS_AMANECIDA_LOCATION2_ACTIVATED",
+                "SANTOS_AMANECIDA_LOCATION3_ACTIVATED",
+                "SANTOS_AMANECIDA_LOCATION4_ACTIVATED",
                 // Redento quest
+                "REDENTO_0203_DONE", // ??
+                "REDENTO_0204_DONE",
+                "REDENTO_0205_DONE",
+                "REDENTO_0206_DONE",
+                "REDENTO_0207_DONE",
+                "REDENTO_0209_DONE",
+                "REDENTO_0210_DONE",
+                "REDENTO_0211_DONE",
+                "REDENTO_0214_DONE",
                 // Miriam quest
+                "MIRIAM_FIRSTENCOUNTER_DONE", // ??
+                "MIRIAM_CHALLENGE_1",
+                "MIRIAM_CHALLENGE_2",
+                "MIRIAM_CHALLENGE_3",
+                "MIRIAM_CHALLENGE_4",
+                "MIRIAM_CHALLENGE_5",
             };
         }
     }
