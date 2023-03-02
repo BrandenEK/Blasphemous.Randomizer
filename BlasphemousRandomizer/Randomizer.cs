@@ -39,7 +39,6 @@ namespace BlasphemousRandomizer
         public bool shrineEditMode;
 
         public DataStorage data;
-        private Logger logger;
         private SettingsMenu settingsMenu;
 
         public override string PersistentID => "ID_RANDOMIZER";
@@ -63,7 +62,7 @@ namespace BlasphemousRandomizer
             }
 
             // Load external data
-            logger = new Logger("Randomizer has been initialized!");
+            Log("Randomizer has been initialized!");
             data = new DataStorage();
             if (!data.loadData(FileUtil))
                 errorOnLoad = "Randomizer data could not loaded! Reinstall the program!";
@@ -298,24 +297,6 @@ namespace BlasphemousRandomizer
             // Update ui menus
             if (settingsMenu != null)
                 settingsMenu.update();
-        }
-
-        // Log message to file
-        public void Log(string message)
-        {
-            logger.Log(message, Logger.LogType.Standard);
-        }
-
-        // Log error message to file
-        public void LogError(string message)
-        {
-            logger.Log(message, Logger.LogType.Error);
-        }
-
-        // Log data to file
-        public void LogFile(string data)
-        {
-            logger.Log(data, Logger.LogType.Data);
         }
 
         // Log message to UI display

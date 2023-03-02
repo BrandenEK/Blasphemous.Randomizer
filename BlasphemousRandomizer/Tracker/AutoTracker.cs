@@ -135,6 +135,10 @@ namespace BlasphemousRandomizer.Tracker
                 "CONFESSOR_5_ARENACOMPLETED",
                 "CONFESSOR_6_ARENACOMPLETED",
                 "CONFESSOR_7_ARENACOMPLETED",
+                // Jondo bells
+                "BELL_PUZZLE1_ACTIVATED",
+                "BELL_PUZZLE2_ACTIVATED",
+                "BELL_ACTIVATED",
                 // Candles
                 "CANDLE_RED_1_USED",
                 "CANDLE_RED_2_USED",
