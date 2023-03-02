@@ -299,17 +299,10 @@ namespace BlasphemousRandomizer
                 settingsMenu.update();
         }
 
-        // Log message to UI display
-        public void LogDisplay(string message, bool block = false)
-        {
-            Log(message);
-            UIController.instance.ShowPopUp(message, "", 0, block);
-        }
-
         private IEnumerator showErrorMessage(float waitTime)
         {
             yield return new WaitForSecondsRealtime(waitTime);
-            LogDisplay(errorOnLoad, true);
+            LogDisplay(errorOnLoad);
             errorOnLoad = "";
         }
 

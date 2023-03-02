@@ -192,6 +192,12 @@
             </summary>
             <param name="error">The error to display</param>
         </member>
+        <member name="M:ModdingAPI.Mod.LogDisplay(System.String)">
+            <summary>
+            Displays a message with a UI text box
+            </summary>
+            <param name="message">The text to display</param>
+        </member>
         <member name="T:ModdingAPI.ModCommand">
             <summary>
             A command that can be used in the console for this mod/>
