@@ -119,7 +119,10 @@ namespace BlasphemousRandomizer.Patches
             else if (formatted.StartsWith("LOCATION_"))
                 Main.Randomizer.tracker.NewLocation(id.Substring(9));
             else if (Main.arrayContains(Main.Randomizer.tracker.SpecialLocations, formatted))
+            {
                 Main.Randomizer.tracker.NewItem(formatted);
+                Main.Randomizer.tracker.NewLocation(formatted);
+            }
         }
     }
 

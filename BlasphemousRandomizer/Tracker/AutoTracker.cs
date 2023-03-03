@@ -91,7 +91,10 @@ namespace BlasphemousRandomizer.Tracker
             foreach (string locationFlag in SpecialLocations)
             {
                 if (Core.Events.GetFlag(locationFlag))
+                {
                     NewItem(locationFlag);
+                    NewLocation(locationFlag);
+                }
             }
         }
 
@@ -151,15 +154,10 @@ namespace BlasphemousRandomizer.Tracker
                 "SANTOS_AMANECIDA_LOCATION3_ACTIVATED",
                 "SANTOS_AMANECIDA_LOCATION4_ACTIVATED",
                 // Redento quest
-                "REDENTO_0203_DONE", // ??
-                "REDENTO_0204_DONE",
+                "REDENTO_0203_DONE",
                 "REDENTO_0205_DONE",
-                "REDENTO_0206_DONE",
                 "REDENTO_0207_DONE",
-                "REDENTO_0209_DONE",
                 "REDENTO_0210_DONE",
-                "REDENTO_0211_DONE",
-                "REDENTO_0214_DONE",
                 // Miriam quest
                 "MIRIAM_FIRSTENCOUNTER_DONE", // ??
                 "MIRIAM_CHALLENGE_1",
