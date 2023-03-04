@@ -110,6 +110,9 @@ namespace BlasphemousRandomizer.Tracker
             if (!TrackerActive) return;
 
             service.VariableChanged("@" + locationId, 1);
+            // Also send a shrine item for the mea culpa shrines
+            if (locationId.StartsWith("Sword["))
+                NewItem("MEACULPA");
         }
 
         public AutoTracker()
@@ -158,13 +161,19 @@ namespace BlasphemousRandomizer.Tracker
                 "REDENTO_0205_DONE",
                 "REDENTO_0207_DONE",
                 "REDENTO_0210_DONE",
+                // Cleofas quest
+                "PENITENT_MET_CLEOFAS",
+                "SOCORRO_STATE_GONE",
+                "CLEOFAS_JOINED_ORDER",
                 // Miriam quest
-                "MIRIAM_FIRSTENCOUNTER_DONE", // ??
-                "MIRIAM_CHALLENGE_1",
-                "MIRIAM_CHALLENGE_2",
-                "MIRIAM_CHALLENGE_3",
-                "MIRIAM_CHALLENGE_4",
-                "MIRIAM_CHALLENGE_5",
+                "MIRIAM_FIRSTENCOUNTER_DONE",
+                "RMIRIAM_D02Z03S24",
+                "RMIRIAM_D03Z03S19",
+                "RMIRIAM_D04Z04S02",
+                "RMIRIAM_D05Z01S24",
+                "RMIRIAM_D06Z01S26",
+                // Diosdado quest
+                "SERENO_DLC2QUEST_FINISHED",
             };
         }
     }

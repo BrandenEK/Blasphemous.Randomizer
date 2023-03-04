@@ -214,4 +214,17 @@ namespace BlasphemousRandomizer.Patches
             }
         }
     }
+
+    // Set flag for what miriam portal has been activated
+    [HarmonyPatch(typeof(EventManager), "EndMiriamPortalAndReturn")]
+    public class EventManagerMiriam_Patch
+    {
+        public static void Prefix(EventManager __instance)
+        {
+            if (__instance.AreInMiriamLevel())
+            {
+                __instance.SetFlag("RMIRIAM_" + __instance.MiriamCurrentScenePortal, true);
+            }
+        }
+    }
 }
