@@ -107,6 +107,28 @@ namespace BlasphemousRandomizer.Patches
 			"PR11",
 			"QI203"
 		};
+
+		public static string[] itemsToNotRemove = new string[]
+		{
+			"RB17",
+			"RB18",
+			"RB19",
+			"RB24",
+			"RB25",
+			"RB26",
+			"QI31",
+			"QI32",
+			"QI33",
+			"QI34",
+			"QI35",
+			"QI79",
+			"QI80",
+			"QI81",
+			"QI107",
+			"QI108",
+			"QI109",
+			"QI110",
+		};
 	}
 
 	// Don't allow certain npc's death flags to be set
@@ -414,8 +436,7 @@ namespace BlasphemousRandomizer.Patches
 		{
 			public static bool Prefix(string objectIdStting, ref bool __result)
 			{
-				string invalidItems = "RB17RB18RB19RB24RB25RB26QI31QI32QI33QI34QI35QI79QI80QI81QI107QI108QI109QI110";
-				if (objectIdStting != "QI10" && invalidItems.Contains(objectIdStting))
+				if (Main.arrayContains(ItemFlags.itemsToNotRemove, objectIdStting))
 				{
 					__result = true;
 					return false;
