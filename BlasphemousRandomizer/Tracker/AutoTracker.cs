@@ -157,7 +157,7 @@ namespace BlasphemousRandomizer.Tracker
                 "SANTOS_AMANECIDA_LOCATION3_ACTIVATED",
                 "SANTOS_AMANECIDA_LOCATION4_ACTIVATED",
                 // Gemino quest
-                "GEMINO_TOMB_OPEN",
+                "GEMINO_ENTRANCE_OPEN",
                 // Redento quest
                 "REDENTO_0203_DONE",
                 "REDENTO_0205_DONE",

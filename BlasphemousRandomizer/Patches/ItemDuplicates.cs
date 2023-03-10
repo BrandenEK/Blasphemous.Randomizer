@@ -191,6 +191,11 @@ namespace BlasphemousRandomizer.Patches
 			{
 				flag = false;
 			}
+			// Gemino - Dont require convent boss to be defeated if already have filled thimble
+			if (scene == "D02Z01S01" && text == "D02Z05S01_BOSSDEAD")
+            {
+				flag = Core.InventoryManager.IsQuestItemOwned("QI57");
+            }
 			// Viridiana reward
 			if (text == "VIRIDIANA_REWARD_COMPLETED" && (scene == "D01Z04S18" || scene == "D02Z03S20" || scene == "D03Z03S15" || scene == "D04Z02S22" || scene == "D05Z02S14"))
 			{
@@ -367,6 +372,12 @@ namespace BlasphemousRandomizer.Patches
 					__result = false;
 					return false;
 				}
+			}
+			// Gemino thimbles
+			if (scene == "D02Z01S01" && item == "QI57")
+			{
+				__result = Core.Events.GetFlag("LOCATION_QI59");
+				return false;
 			}
 			// Holy Line Deosgracias
 			if (scene == "D01Z01S07" && (item == "QI38" || item == "QI39" || item == "QI40"))
