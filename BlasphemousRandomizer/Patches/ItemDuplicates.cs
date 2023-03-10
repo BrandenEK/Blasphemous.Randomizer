@@ -425,6 +425,12 @@ namespace BlasphemousRandomizer.Patches
 					return false;
 				}
 			}
+			// Penitence bead rewards
+			if (scene == "D07Z01S04" && item == "RB101" || item == "RB102" || item == "RB103")
+            {
+				__result = true;
+				return false;
+            }
 
 			// If none of these special conditions
 			return true;

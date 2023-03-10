@@ -151,11 +151,13 @@ namespace BlasphemousRandomizer.Tracker
                 "CANDLE_BLUE_1_USED",
                 "CANDLE_BLUE_2_USED",
                 // Jibrael quest
-                "SANTOS_FIRSTCONVERSATION_DONE", // ??
+                "SANTOS_FIRSTCONVERSATION_DONE",
                 "SANTOS_AMANECIDA_LOCATION1_ACTIVATED",
                 "SANTOS_AMANECIDA_LOCATION2_ACTIVATED",
                 "SANTOS_AMANECIDA_LOCATION3_ACTIVATED",
                 "SANTOS_AMANECIDA_LOCATION4_ACTIVATED",
+                // Gemino quest
+                "GEMINO_TOMB_OPEN",
                 // Redento quest
                 "REDENTO_0203_DONE",
                 "REDENTO_0205_DONE",
@@ -174,6 +176,8 @@ namespace BlasphemousRandomizer.Tracker
                 "RMIRIAM_D06Z01S26",
                 // Diosdado quest
                 "SERENO_DLC2QUEST_FINISHED",
+                // Crisanta quest
+                "CRISANTA_LIBERATED",
             };
         }
     }
