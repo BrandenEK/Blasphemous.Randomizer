@@ -59,7 +59,7 @@ namespace BlasphemousRandomizer.Tracker
         {
             if (!waitingToSendItems || scene == "MainMenu") return;
 
-            Main.Randomizer.LogWarning("Sending all items!");
+            Main.Randomizer.Log("Sending all items to autotracker!");
             waitingToSendItems = false;
 
             // Send all items

@@ -20,7 +20,6 @@ namespace BlasphemousRandomizer.Tracker
         protected override void OnMessage(MessageEventArgs e)
         {
             base.OnMessage(e);
-            Main.Randomizer.LogWarning("Received autotracker cmd: " + e.Data);
             if (e.Data.Contains("Sync"))
                 Main.Randomizer.tracker.TrackerConnected();
         }
@@ -29,7 +28,6 @@ namespace BlasphemousRandomizer.Tracker
         {
             if (ConnectionState == WebSocketState.Open)
             {
-                Main.Randomizer.LogWarning("Sending new variable: " + name);
                 string jsonString = Main.Randomizer.FileUtil.jsonString(new Var(name, value));
                 Send("[" + jsonString + "]");
             }
