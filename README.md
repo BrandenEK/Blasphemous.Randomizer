@@ -92,7 +92,10 @@ These are:
 ## Changelog
 
 ### v1.4.0 (Modding API)
-- Fixed melted coins bug
+- Added Spanish & Chinese localization
+- Added autotracking
+- Fixed Gemino missable item bug
+- Fixed Alstasgracias items bug
 - Reworked rando to be compatible with the Modding API
 
 ### v1.3.0 (Sword Skills)
