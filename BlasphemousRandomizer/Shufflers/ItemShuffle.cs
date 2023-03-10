@@ -60,16 +60,17 @@ namespace BlasphemousRandomizer.Shufflers
         }
 
         // Display the item in a pop up
-        public void displayItem(string locationId)
+        public bool displayItem(string locationId)
         {
             // Get item
             string specialItems = "QI78RB17RB18RB19RB24RB25RB26";
             Item item = specialItems.Contains(locationId) ? lastItem : getItemAtLocation(locationId);
             if (item == null)
-                return;
+                return false;
 
             // Call pop up method
             showItemPopUp(item);
+            return true;
         }
 
         // Actually trigger the pop up

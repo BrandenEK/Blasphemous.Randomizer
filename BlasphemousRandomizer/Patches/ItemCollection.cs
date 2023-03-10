@@ -58,9 +58,9 @@ namespace BlasphemousRandomizer.Patches
                 Main.Randomizer.Log("SpecialVerseAddition(" + objectIdStting + ")");
                 Main.Randomizer.itemShuffler.giveItem(objectIdStting, false);
             }
+
             Main.Randomizer.Log("ItemAdditionMessage(" + objectIdStting + ")");
-            Main.Randomizer.itemShuffler.displayItem(objectIdStting);
-            __result = true;
+            __result = Main.Randomizer.itemShuffler.displayItem(objectIdStting);
             return false;
         }
     }
