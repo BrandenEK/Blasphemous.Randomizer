@@ -4,200 +4,6 @@
         <name>ModdingAPI</name>
     </assembly>
     <members>
-        <member name="T:ModdingAPI.FileUtil">
-            <summary>
-            A class for handling file IO related operations
-            </summary>
-        </member>
-        <member name="M:ModdingAPI.FileUtil.loadConfig``1">
-            <summary>
-            Loads the configuration file for this mod from the configs folder
-            </summary>
-            <typeparam name="T">The type of the config object</typeparam>
-            <returns>The configuration object</returns>
-        </member>
-        <member name="M:ModdingAPI.FileUtil.saveConfig``1(``0)">
-            <summary>
-            Saves a configuration file for this mod to the configs folder
-            </summary>
-            <typeparam name="T">The type of the config object</typeparam>
-            <param name="config">The configuration object</param>
-        </member>
-        <member name="M:ModdingAPI.FileUtil.appendLog(System.String)">
-            <summary>
-            Adds a message to the log file for this mod
-            </summary>
-            <param name="line">The message to add to the log file</param>
-        </member>
-        <member name="M:ModdingAPI.FileUtil.clearLog">
-            <summary>
-            Clears the log file for this mod
-            </summary>
-        </member>
-        <member name="M:ModdingAPI.FileUtil.loadDataText(System.String,System.String@)">
-            <summary>
-            Loads a string from a file in the data folder
-            </summary>
-            <param name="fileName">The name of the data file</param>
-            <param name="output">The data string, or null if the file deosn't exist</param>
-            <returns>Whether the data was loaded successfully or not</returns>
-        </member>
-        <member name="M:ModdingAPI.FileUtil.loadDataArray(System.String,System.String[]@)">
-            <summary>
-            Loads an array from a file in the data folder
-            </summary>
-            <param name="fileName">The name of the data file</param>
-            <param name="output">The data array, or null if the file deosn't exist</param>
-            <returns>Whether the data was loaded successfully or not</returns>
-        </member>
-        <member name="M:ModdingAPI.FileUtil.loadDataDictionary(System.String,System.Collections.Generic.Dictionary{System.String,System.String}@)">
-            <summary>
-            Loads a dictionary from a file in the data folder
-            </summary>
-            <param name="fileName">The name of the data file</param>
-            <param name="output">The data dictionary, or null if the file deosn't exist</param>
-            <returns>Whether the data was loaded successfully or not</returns>
-        </member>
-        <member name="M:ModdingAPI.FileUtil.loadDataImages(System.String,System.Int32,System.Int32,System.Int32,System.Boolean,UnityEngine.Sprite[]@)">
-            <summary>
-            Loads an array of images from an image file in the data folder
-            </summary>
-            <param name="fileName">The name of the data file</param>
-            <param name="spriteSize">The pixel size of each square sprite in the image</param>
-            <param name="pixelsPerUnit">The pixels per unit of each square sprite in the image</param>
-            <param name="border">The border size of each square sprite in the image</param>
-            <param name="pointFilter">Whether a point filter should be applied to the image</param>
-            <param name="output">The data images, or null if the file deosn't exist</param>
-            <returns>Whether the data was loaded successfully or not</returns>
-        </member>
-        <member name="M:ModdingAPI.FileUtil.saveTextFile(System.String,System.String)">
-            <summary>
-            Writes text to a file in the root directory
-            </summary>
-            <param name="fileName">The name of text file to create</param>
-            <param name="text">The text to write to the file</param>
-        </member>
-        <member name="M:ModdingAPI.FileUtil.jsonObject``1(System.String)">
-            <summary>
-            Converts a json string into a json object
-            </summary>
-            <typeparam name="T">The type of object to convert to</typeparam>
-            <param name="json">The json string to convert into an object</param>
-            <returns>The object created from the json string</returns>
-        </member>
-        <member name="M:ModdingAPI.FileUtil.jsonString``1(``0)">
-            <summary>
-            Converts an object into a json string
-            </summary>
-            <typeparam name="T">The type of object to convert from</typeparam>
-            <param name="obj">The object to convert into a json string</param>
-            <returns>The json string created from the object</returns>
-        </member>
-        <member name="T:ModdingAPI.Mod">
-            <summary>
-            An abstract representation of a mod
-            </summary>
-        </member>
-        <member name="P:ModdingAPI.Mod.ModId">
-            <summary>
-            The unique id of this mod used for harmony patching
-            </summary>
-        </member>
-        <member name="P:ModdingAPI.Mod.ModName">
-            <summary>
-            The name of the mod to be displayed on the main menu
-            </summary>
-        </member>
-        <member name="P:ModdingAPI.Mod.ModVersion">
-            <summary>
-            The version of the mod
-            </summary>
-        </member>
-        <member name="P:ModdingAPI.Mod.FileUtil">
-            <summary>
-            The file utility for performing various IO operations
-            </summary>
-        </member>
-        <member name="M:ModdingAPI.Mod.#ctor(System.String,System.String,System.String)">
-            <summary>
-            Creates, registers, and patches a new mod
-            </summary>
-            <param name="modId">The unique id of this mod used for harmony patching</param>
-            <param name="modName">The name of the mod to be displayed on the main menu</param>
-            <param name="modVersion">The version of the mod</param>
-        </member>
-        <member name="M:ModdingAPI.Mod.Update">
-            <summary>
-            Called every frame by the modding API
-            </summary>
-        </member>
-        <member name="M:ModdingAPI.Mod.LateUpdate">
-            <summary>
-            Called at the end of every frame by the modding API
-            </summary>
-        </member>
-        <member name="M:ModdingAPI.Mod.Initialize">
-            <summary>
-            Called at the beginning of the game by the modding API
-            </summary>
-        </member>
-        <member name="M:ModdingAPI.Mod.Dispose">
-            <summary>
-            Called at the end of the game by the modding API
-            </summary>
-        </member>
-        <member name="M:ModdingAPI.Mod.LevelLoaded(System.String,System.String)">
-            <summary>
-            Called when a scene is loaded by the modding API
-            </summary>
-            <param name="oldLevel">The name of the old level</param>
-            <param name="newLevel">The name of the new level</param>
-        </member>
-        <member name="M:ModdingAPI.Mod.LevelUnloaded(System.String,System.String)">
-            <summary>
-            Called when a scene is unloaded by the modding API
-            </summary>
-            <param name="oldLevel">The name of the old level</param>
-            <param name="newLevel">The name of the new level</param>
-        </member>
-        <member name="M:ModdingAPI.Mod.RegisterCommand(ModdingAPI.ModCommand)">
-            <summary>
-            Registers a command to be used in the debug console for this mod
-            </summary>
-            <param name="command">The new command to be added</param>
-        </member>
-        <member name="M:ModdingAPI.Mod.IsModLoaded(System.String)">
-            <summary>
-            Checks whether a specific mod has been loaded or not
-            </summary>
-            <param name="modId">The unique id of the mod</param>
-            <returns>Whether or not the mod has been loaded</returns>
-        </member>
-        <member name="M:ModdingAPI.Mod.Localize(System.String)">
-            <summary>
-            Localizes text based on a key into the game's current language
-            </summary>
-            <param name="key">The key of the text to localize</param>
-            <returns>The localized text</returns>
-        </member>
-        <member name="M:ModdingAPI.Mod.Log(System.String)">
-            <summary>
-            Logs a message to the console
-            </summary>
-            <param name="message">The message to display</param>
-        </member>
-        <member name="M:ModdingAPI.Mod.LogWarning(System.String)">
-            <summary>
-            Logs a warning to the console
-            </summary>
-            <param name="warning">The warning to display</param>
-        </member>
-        <member name="M:ModdingAPI.Mod.LogError(System.String)">
-            <summary>
-            Logs an error to the console
-            </summary>
-            <param name="error">The error to display</param>
-        </member>
         <member name="T:ModdingAPI.ModCommand">
             <summary>
             A command that can be used in the console for this mod/>
@@ -261,6 +67,258 @@
             Initializes a mapping of command names to functionality
             </summary>
             <returns>The command mapping</returns>
+        </member>
+        <member name="T:ModdingAPI.FileUtil">
+            <summary>
+            A class for handling file IO related operations
+            </summary>
+        </member>
+        <member name="M:ModdingAPI.FileUtil.loadConfig``1">
+            <summary>
+            Loads the configuration file for this mod from the configs folder
+            </summary>
+            <typeparam name="T">The type of the config object</typeparam>
+            <returns>The configuration object</returns>
+        </member>
+        <member name="M:ModdingAPI.FileUtil.saveConfig``1(``0)">
+            <summary>
+            Saves a configuration file for this mod to the configs folder
+            </summary>
+            <typeparam name="T">The type of the config object</typeparam>
+            <param name="config">The configuration object</param>
+        </member>
+        <member name="M:ModdingAPI.FileUtil.loadDataText(System.String,System.String@)">
+            <summary>
+            Loads a string from a file in the data folder
+            </summary>
+            <param name="fileName">The name of the data file</param>
+            <param name="output">The data string, or null if the file deosn't exist</param>
+            <returns>Whether the data was loaded successfully or not</returns>
+        </member>
+        <member name="M:ModdingAPI.FileUtil.loadDataArray(System.String,System.String[]@)">
+            <summary>
+            Loads an array from a file in the data folder
+            </summary>
+            <param name="fileName">The name of the data file</param>
+            <param name="output">The data array, or null if the file deosn't exist</param>
+            <returns>Whether the data was loaded successfully or not</returns>
+        </member>
+        <member name="M:ModdingAPI.FileUtil.loadDataDictionary(System.String,System.Collections.Generic.Dictionary{System.String,System.String}@)">
+            <summary>
+            Loads a dictionary from a file in the data folder
+            </summary>
+            <param name="fileName">The name of the data file</param>
+            <param name="output">The data dictionary, or null if the file deosn't exist</param>
+            <returns>Whether the data was loaded successfully or not</returns>
+        </member>
+        <member name="M:ModdingAPI.FileUtil.loadDataImages(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,UnityEngine.Sprite[]@)">
+            <summary>
+            Loads an array of images from an image file in the data folder
+            </summary>
+            <param name="fileName">The name of the data file</param>
+            <param name="spriteWidth">The pixel width of each sprite in the image</param>
+            <param name="spriteHeight">The pixel height of each sprite in the image</param>
+            <param name="pixelsPerUnit">The pixels per unit of each sprite in the image</param>
+            <param name="border">The border size of each sprite in the image</param>
+            <param name="pointFilter">Whether a point filter should be applied to the image</param>
+            <param name="output">The data images, or null if the file deosn't exist</param>
+            <returns>Whether the data was loaded successfully or not</returns>
+        </member>
+        <member name="M:ModdingAPI.FileUtil.saveTextFile(System.String,System.String)">
+            <summary>
+            Writes text to a file in the root directory
+            </summary>
+            <param name="fileName">The name of text file to create</param>
+            <param name="text">The text to write to the file</param>
+        </member>
+        <member name="M:ModdingAPI.FileUtil.jsonObject``1(System.String)">
+            <summary>
+            Converts a json string into a json object
+            </summary>
+            <typeparam name="T">The type of object to convert to</typeparam>
+            <param name="json">The json string to convert into an object</param>
+            <returns>The object created from the json string</returns>
+        </member>
+        <member name="M:ModdingAPI.FileUtil.jsonString``1(``0)">
+            <summary>
+            Converts an object into a json string
+            </summary>
+            <typeparam name="T">The type of object to convert from</typeparam>
+            <param name="obj">The object to convert into a json string</param>
+            <returns>The json string created from the object</returns>
+        </member>
+        <member name="T:ModdingAPI.Mod">
+            <summary>
+            An abstract representation of a mod
+            </summary>
+        </member>
+        <member name="P:ModdingAPI.Mod.ModId">
+            <summary>
+            The unique id of this mod used for harmony patching
+            </summary>
+        </member>
+        <member name="P:ModdingAPI.Mod.ModName">
+            <summary>
+            The name of the mod to be displayed on the main menu
+            </summary>
+        </member>
+        <member name="P:ModdingAPI.Mod.ModVersion">
+            <summary>
+            The version of the mod
+            </summary>
+        </member>
+        <member name="P:ModdingAPI.Mod.FileUtil">
+            <summary>
+            The file utility for performing various IO operations
+            </summary>
+        </member>
+        <member name="P:ModdingAPI.Mod.DisableFileLogging">
+            <summary>
+            Set to true to disable the mod from writing to the log file
+            </summary>
+        </member>
+        <member name="M:ModdingAPI.Mod.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Creates, registers, and patches a new mod
+            </summary>
+            <param name="modId">The unique id of this mod used for harmony patching</param>
+            <param name="modName">The name of the mod to be displayed on the main menu</param>
+            <param name="modVersion">The version of the mod</param>
+        </member>
+        <member name="M:ModdingAPI.Mod.Update">
+            <summary>
+            Called every frame by the modding API
+            </summary>
+        </member>
+        <member name="M:ModdingAPI.Mod.LateUpdate">
+            <summary>
+            Called at the end of every frame by the modding API
+            </summary>
+        </member>
+        <member name="M:ModdingAPI.Mod.Initialize">
+            <summary>
+            Called at the beginning of the game by the modding API
+            </summary>
+        </member>
+        <member name="M:ModdingAPI.Mod.Dispose">
+            <summary>
+            Called at the end of the game by the modding API
+            </summary>
+        </member>
+        <member name="M:ModdingAPI.Mod.LevelLoaded(System.String,System.String)">
+            <summary>
+            Called when a scene is loaded by the modding API
+            </summary>
+            <param name="oldLevel">The name of the old level</param>
+            <param name="newLevel">The name of the new level</param>
+        </member>
+        <member name="M:ModdingAPI.Mod.LevelUnloaded(System.String,System.String)">
+            <summary>
+            Called when a scene is unloaded by the modding API
+            </summary>
+            <param name="oldLevel">The name of the old level</param>
+            <param name="newLevel">The name of the new level</param>
+        </member>
+        <member name="M:ModdingAPI.Mod.RegisterCommand(ModdingAPI.ModCommand)">
+            <summary>
+            Registers a command to be used in the debug console for this mod
+            </summary>
+            <param name="command">The new command to be added</param>
+        </member>
+        <member name="M:ModdingAPI.Mod.RegisterPenitence(ModdingAPI.ModPenitence)">
+            <summary>
+            Registers a penitence that can be selected from the Brotherhood statue
+            </summary>
+            <param name="penitence">The new penitence to be added</param>
+        </member>
+        <member name="M:ModdingAPI.Mod.IsModLoaded(System.String)">
+            <summary>
+            Checks whether a specific mod has been loaded or not
+            </summary>
+            <param name="modId">The unique id of the mod</param>
+            <returns>Whether or not the mod has been loaded</returns>
+        </member>
+        <member name="M:ModdingAPI.Mod.Localize(System.String)">
+            <summary>
+            Localizes text based on a key into the game's current language
+            </summary>
+            <param name="key">The key of the text to localize</param>
+            <returns>The localized text</returns>
+        </member>
+        <member name="M:ModdingAPI.Mod.Log(System.String)">
+            <summary>
+            Logs a message to the console and log file
+            </summary>
+            <param name="message">The message to display</param>
+        </member>
+        <member name="M:ModdingAPI.Mod.LogWarning(System.String)">
+            <summary>
+            Logs a warning to the console and log file
+            </summary>
+            <param name="warning">The warning to display</param>
+        </member>
+        <member name="M:ModdingAPI.Mod.LogError(System.String)">
+            <summary>
+            Logs an error to the console and log file
+            </summary>
+            <param name="error">The error to display</param>
+        </member>
+        <member name="M:ModdingAPI.Mod.LogDisplay(System.String)">
+            <summary>
+            Displays a message with a UI text box
+            </summary>
+            <param name="message">The text to display</param>
+        </member>
+        <member name="T:ModdingAPI.ModPenitence">
+            <summary>
+            An abstract representation of a penitence
+            </summary>
+        </member>
+        <member name="P:ModdingAPI.ModPenitence.Id">
+            <summary>
+            The unique id of this penitence (PEXX...)
+            </summary>
+        </member>
+        <member name="P:ModdingAPI.ModPenitence.Name">
+            <summary>
+            The descriptive name of this penitence
+            </summary>
+        </member>
+        <member name="P:ModdingAPI.ModPenitence.Description">
+            <summary>
+            The full description of this penitence
+            </summary>
+        </member>
+        <member name="P:ModdingAPI.ModPenitence.ItemIdToGive">
+            <summary>
+            The ID of the item to give for completing the penitence
+            </summary>
+        </member>
+        <member name="P:ModdingAPI.ModPenitence.ItemTypeToGive">
+            <summary>
+            The type of the item to give for completing the penitence
+            </summary>
+        </member>
+        <member name="M:ModdingAPI.ModPenitence.Activate">
+            <summary>
+            Should perform any necessary actions to activate this penitence's functionality
+            </summary>
+        </member>
+        <member name="M:ModdingAPI.ModPenitence.Deactivate">
+            <summary>
+            Should perform any necessary actions to deactivate this penitence's functionality
+            </summary>
+        </member>
+        <member name="M:ModdingAPI.ModPenitence.#ctor(UnityEngine.Sprite,UnityEngine.Sprite,UnityEngine.Sprite,UnityEngine.Sprite,UnityEngine.Sprite,UnityEngine.Sprite)">
+            <summary>
+            Creates a new custom penitence and stores all of its images
+            </summary>
+            <param name="inProgress">The menu icon for an activated penitence</param>
+            <param name="completed">The menu icon for a completed penitence</param>
+            <param name="abandoned">The menu icon for an abandoned penitence</param>
+            <param name="gameplay">The gameplay icon for an activated penitence</param>
+            <param name="chooseSelected">The selected icon when choosing a penitence</param>
+            <param name="chooseUnselected">The unselected icon when chooseing a penitence</param>
         </member>
         <member name="T:ModdingAPI.ModPersistentData">
             <summary>

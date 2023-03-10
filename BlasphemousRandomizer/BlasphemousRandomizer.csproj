@@ -65,5 +65,8 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>..\lib\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>..\lib\websocket-sharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

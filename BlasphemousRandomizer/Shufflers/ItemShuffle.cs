@@ -35,7 +35,7 @@ namespace BlasphemousRandomizer.Shufflers
         public void giveItem(string locationId, bool display)
         {
             // Make sure this location hasn't already been collected
-            if (Core.Events.GetFlag("Location_" + locationId))
+            if (Core.Events.GetFlag("LOCATION_" + locationId))
             {
                 Main.Randomizer.Log($"Location {locationId} has already been collected!");
                 return;
@@ -50,7 +50,7 @@ namespace BlasphemousRandomizer.Shufflers
             Main.Randomizer.Log($"Giving item ({item.id})");
             Main.Randomizer.itemsCollected++;
             item.addToInventory();
-            Core.Events.SetFlag("Location_" + locationId, true, false);
+            Core.Events.SetFlag("LOCATION_" + locationId, true, false);
             Main.Randomizer.updateShops();
             lastItem = item;
 

@@ -21,7 +21,6 @@ namespace BlasphemousRandomizer.Structures
         public override void addToInventory()
         {
             Item itemToAdd = getItemLevel(true);
-            Core.Events.SetFlag("Item_" + itemToAdd.id, true, false);
             itemToAdd.addToInventory();
             if (removePrevious)
                 removeItem();
@@ -49,7 +48,7 @@ namespace BlasphemousRandomizer.Structures
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (!Core.Events.GetFlag("Item_" + items[i]))
+                if (!Core.Events.GetFlag("ITEM_" + items[i]))
                 {
                     Main.Randomizer.Log("Current progressive tier: " + (i - 1));
                     return i - 1;
@@ -66,9 +65,9 @@ namespace BlasphemousRandomizer.Structures
             {
                 Main.Randomizer.Log("Removing item: " + items[level]);
                 if (type == 5)
-                    Core.InventoryManager.RemoveBaseObject(Core.InventoryManager.GetBaseObject(items[level], InventoryManager.ItemType.Quest));
+                    Core.InventoryManager.RemoveQuestItem(items[level]);
                 else if (type == 0)
-                    Core.InventoryManager.RemoveBaseObject(Core.InventoryManager.GetBaseObject(items[level], InventoryManager.ItemType.Bead));
+                    Core.InventoryManager.RemoveRosaryBead(items[level]);
                 else
                     Main.Randomizer.LogDisplay($"Item type {type} can not be removed!");
             }

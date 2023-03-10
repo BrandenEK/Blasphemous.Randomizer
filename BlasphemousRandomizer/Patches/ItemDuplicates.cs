@@ -107,6 +107,28 @@ namespace BlasphemousRandomizer.Patches
 			"PR11",
 			"QI203"
 		};
+
+		public static string[] itemsToNotRemove = new string[]
+		{
+			"RB17",
+			"RB18",
+			"RB19",
+			"RB24",
+			"RB25",
+			"RB26",
+			"QI31",
+			"QI32",
+			"QI33",
+			"QI34",
+			"QI35",
+			"QI79",
+			"QI80",
+			"QI81",
+			"QI107",
+			"QI108",
+			"QI109",
+			"QI110",
+		};
 	}
 
 	// Don't allow certain npc's death flags to be set
@@ -169,6 +191,11 @@ namespace BlasphemousRandomizer.Patches
 			{
 				flag = false;
 			}
+			// Gemino - Dont require convent boss to be defeated if already have filled thimble
+			if (scene == "D02Z01S01" && text == "D02Z05S01_BOSSDEAD")
+            {
+				flag = Core.InventoryManager.IsQuestItemOwned("QI57");
+            }
 			// Viridiana reward
 			if (text == "VIRIDIANA_REWARD_COMPLETED" && (scene == "D01Z04S18" || scene == "D02Z03S20" || scene == "D03Z03S15" || scene == "D04Z02S22" || scene == "D05Z02S14"))
 			{
@@ -346,6 +373,12 @@ namespace BlasphemousRandomizer.Patches
 					return false;
 				}
 			}
+			// Gemino thimbles
+			if (scene == "D02Z01S01" && item == "QI57")
+			{
+				__result = Core.Events.GetFlag("LOCATION_QI59");
+				return false;
+			}
 			// Holy Line Deosgracias
 			if (scene == "D01Z01S07" && (item == "QI38" || item == "QI39" || item == "QI40"))
 			{
@@ -403,6 +436,12 @@ namespace BlasphemousRandomizer.Patches
 					return false;
 				}
 			}
+			// Penitence bead rewards
+			if (scene == "D07Z01S04" && item == "RB101" || item == "RB102" || item == "RB103")
+            {
+				__result = true;
+				return false;
+            }
 
 			// If none of these special conditions
 			return true;
@@ -414,8 +453,7 @@ namespace BlasphemousRandomizer.Patches
 		{
 			public static bool Prefix(string objectIdStting, ref bool __result)
 			{
-				string invalidItems = "RB17RB18RB19RB24RB25RB26QI31QI32QI33QI34QI35QI79QI80QI81QI107QI108QI109QI110";
-				if (objectIdStting != "QI10" && invalidItems.Contains(objectIdStting))
+				if (Main.arrayContains(ItemFlags.itemsToNotRemove, objectIdStting))
 				{
 					__result = true;
 					return false;

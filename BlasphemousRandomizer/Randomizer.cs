@@ -11,6 +11,8 @@ using Framework.Audio;
 using Tools.Level;
 using ModdingAPI;
 
+using BlasphemousRandomizer.Tracker;
+
 namespace BlasphemousRandomizer
 {
     public class Randomizer : PersistentMod
@@ -37,10 +39,11 @@ namespace BlasphemousRandomizer
         public bool shrineEditMode;
 
         public DataStorage data;
-        private Logger logger;
         private SettingsMenu settingsMenu;
 
         public override string PersistentID => "ID_RANDOMIZER";
+
+        public AutoTracker tracker { get; private set; }
 
         public Randomizer(string modId, string modName, string modVersion) : base(modId, modName, modVersion) { }
 
@@ -59,7 +62,7 @@ namespace BlasphemousRandomizer
             }
 
             // Load external data
-            logger = new Logger("Randomizer has been initialized!");
+            Log("Randomizer has been initialized!");
             data = new DataStorage();
             if (!data.loadData(FileUtil))
                 errorOnLoad = Localize("daterr") + "!";
@@ -68,6 +71,9 @@ namespace BlasphemousRandomizer
             gameConfig = MainConfig.Default();
             lastLoadedSlot = -1;
             settingsMenu = new SettingsMenu();
+
+            tracker = new AutoTracker();
+            RegisterCommand(new RandomizerCommand());
         }
 
         public override ModPersistentData SaveGame()
@@ -189,6 +195,7 @@ namespace BlasphemousRandomizer
             EnemyLoader.loadEnemies(); // Load enemies
             updateShops(); // Update shop menus
             bossShuffler.levelLoaded(newLevel); // Spawn boss stuff
+            tracker.LevelLoaded(newLevel);
 
             // Reload enemy audio catalogs
             AudioLoader audio = Object.FindObjectOfType<AudioLoader>();
@@ -280,6 +287,7 @@ namespace BlasphemousRandomizer
             else if (Input.GetKeyDown(KeyCode.Keypad8))
             {
                 //LogFile(EnemyShuffle.enemyData);
+                //tracker.Connect();
             }
             else if (Input.GetKeyDown(KeyCode.Keypad9))
             {
@@ -291,35 +299,10 @@ namespace BlasphemousRandomizer
                 settingsMenu.update();
         }
 
-        // Log message to file
-        public void Log(string message)
-        {
-            logger.Log(message, Logger.LogType.Standard);
-        }
-
-        // Log error message to file
-        public void LogError(string message)
-        {
-            logger.Log(message, Logger.LogType.Error);
-        }
-
-        // Log data to file
-        public void LogFile(string data)
-        {
-            logger.Log(data, Logger.LogType.Data);
-        }
-
-        // Log message to UI display
-        public void LogDisplay(string message, bool block = false)
-        {
-            Log(message);
-            UIController.instance.ShowPopUp(message, "", 0, block);
-        }
-
         private IEnumerator showErrorMessage(float waitTime)
         {
             yield return new WaitForSecondsRealtime(waitTime);
-            LogDisplay(errorOnLoad, true);
+            LogDisplay(errorOnLoad);
             errorOnLoad = "";
         }
 

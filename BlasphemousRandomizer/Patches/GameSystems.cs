@@ -74,16 +74,6 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
-    // Don't allow ascending a save file
-    [HarmonyPatch(typeof(SaveSlot), "SetData")]
-    public class SaveSlotConvert_Patch
-    {
-        public static void Prefix(ref bool canConvert)
-        {
-            canConvert = false;
-        }
-    }
-
     // Update dialogs
     [HarmonyPatch(typeof(DialogManager), "StartConversation")]
     public class DialogManager_Patch
@@ -110,17 +100,29 @@ namespace BlasphemousRandomizer.Patches
         }
     }
 
-    // Log what flags are being set
+    // Log what flags are being set & track certain ones
     [HarmonyPatch(typeof(EventManager), "SetFlag")]
     public class EventManagerSet_Patch
     {
-        public static void Prefix(string id, bool b)
+        public static void Prefix(EventManager __instance, string id, bool b)
         {
-            if (id == "" || id == "REVEAL_FAITH_PLATFORMS")
+            string formatted = __instance.GetFormattedId(id);
+            if (formatted == "" || formatted == "REVEAL_FAITH_PLATFORMS")
                 return;
 
             string text = b ? "Setting" : "Clearing";
-            Main.Randomizer.Log(text + " flag: " + id);
+            Main.Randomizer.Log(text + " flag: " + formatted);
+
+            // Autotracking flags
+            if (formatted.StartsWith("ITEM_"))
+                Main.Randomizer.tracker.NewItem(id.Substring(5));
+            else if (formatted.StartsWith("LOCATION_"))
+                Main.Randomizer.tracker.NewLocation(id.Substring(9));
+            else if (Main.arrayContains(Main.Randomizer.tracker.SpecialLocations, formatted))
+            {
+                Main.Randomizer.tracker.NewItem(formatted);
+                Main.Randomizer.tracker.NewLocation(formatted);
+            }
         }
     }
 
@@ -154,8 +156,9 @@ namespace BlasphemousRandomizer.Patches
     [HarmonyPatch(typeof(SaveSlot), "SetData")]
     public class SaveSlotData_Patch
     {
-        public static bool Prefix(string zoneName, string info, ref Text ___ZoneText)
+        public static bool Prefix(string zoneName, string info, ref Text ___ZoneText, ref bool canConvert)
         {
+            canConvert = false;
             if (zoneName == "ignore")
             {
                 ___ZoneText.text += "   " + info;
@@ -208,6 +211,19 @@ namespace BlasphemousRandomizer.Patches
             {
                 string scene = Core.LevelManager.currentLevel.LevelName;
                 __result = (scene == "D08Z03S01" || scene == "D08Z03S03") && __instance.GetFlag("ITEM_QI110");
+            }
+        }
+    }
+
+    // Set flag for what miriam portal has been activated
+    [HarmonyPatch(typeof(EventManager), "EndMiriamPortalAndReturn")]
+    public class EventManagerMiriam_Patch
+    {
+        public static void Prefix(EventManager __instance)
+        {
+            if (__instance.AreInMiriamLevel())
+            {
+                __instance.SetFlag("RMIRIAM_" + __instance.MiriamCurrentScenePortal, true);
             }
         }
     }
