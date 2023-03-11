@@ -1,3 +1,218 @@
-keys:bead~prayer~relic~heart~bone~quest~chname~chdesc~chnot~luname~ludesc~funame~fudesc~suname~sudesc~stnot~trname~trdesc~trnot~sknot~itmerr~itmerr~vererr~generr~currsd~shrine~sword~items~vandis~randis~outdis~sorrow~chset~begin~cancel~menusd~menurd~genset~tpname~tpdesc~ctname~ctdesc~htname~htdesc~pename~pedesc~itmset~lgname~lgdesc~dename~dedesc~whname~whdesc~rqname~rqdesc~dstype~dsides~entype~endesc~emyset~clname~cldesc~scname~scdesc~dsedes~sftype~sfdesc~rdtype~rddesc~dorset~soon
-en:New rosary bead obtained~New prayer obtained~New relic obtained~New sword heart obtained~New collectible obtained~New quest item obtained~Cherub~A little floating baby that you rescued from a cage~Cherub rescued~Life Upgrade~An increase to your maximum health~Fervour Upgrade~An increase to your maximum fervour~Mea Culpa Upgrade~An increase to the strength of your sword~Stat increased~Tears of Atonement~A bundle of * tears~Tears acquired~Skill unlocked~Error: Rewards list not initialized~Randomizer data could not be loaded, reinstall the program~This save file was not created in randomizer or used an older version.  Item locations are invalid~Item shuffler failed to generate valid game.  Item locations are invalid~Current seed~Shrine Tier~Mea Culpa~Items collected~Vanilla~Randomized~Outdated~Sacred Sorrows mode can not be played in randomizer~CHOOSE SETTINGS~Begin~Cancel~Seed~random~General~Teleportation~Prie Dieus are automatically upgraded to the maximum level~Skip Cutscenes~A majority of cutscenes will be skipped~Allow Hints~Corpses will give a hint about valuable items when interacted with~Allow Penitence~You are able to choose a penitence in the Brotherhood~Item Shuffle~Mist Damage~Some items in poison clouds may be in logic without Lung of Dolphos~Disable NPC Death~Prevents missable items by keeping certain NPCs always alive~Start with Wheel~The starting gift will be the Young Mason's Wheel~Shuffle Reliquaries~The three reliquaries will be added to the item pool~Disabled~All items will be in their original places~Enabled~Every location will have a random item~Enemy Shuffle~Maintain Class~Enemies are constrained to their original group (Normal, Flying, Large)~Area Scaling~Enemy health and damage is scaled up/down based on their location~Enemies will remain in their original places~Shuffled~An enemy can only appear as many times as in the original game~Random~An enemy can appear any amount of times (Not recommended)~Door Shuffle~Coming Soon
-zh:获得新念珠~获得新祷文~获得新圣物~获得新孽刃之心~获得新骨骼~获得新任务物品~月光之子~被你从浮空牢笼中救出的小天使~解救了月光之子~血量上限升级~提升最大生命值~蓝量上限升级~提升最大热诚值~孽刃升级~提升孽刃的攻击力并解锁新的剑技~能力值提升~赎罪之泪~装有 * 赎罪之泪的小瓶子~获得赎罪之泪~解锁新技能~错误：物品列表未初始化~随机mod数据未加载，请重新下载并安装随机mod~此存档不兼容当前版本的随机mod，物品分布地点不合法~物品随机生成器无法生成合理的物品分布地点~此存档的种子~祭坛等级~孽刃~已收集的物品~原版~随机mod~老版本~在随机mod中无法游玩圣恸模式~自定义随机mod设置项~开始~取消~种子~随机~综合设置~开局祭坛传送~开局自动将存档祭坛升至满级（有传送功能，回满蓝）~跳过过场动画~跳过大部分过场动画~尸体提示~尸体遗言会提示该区域的一项重要物品位置~可选忏悔~你可以在默哀守望者门口选择忏悔~物品随机设置~硬抗毒雾~可能需要在无镀银肺时硬抗毒雾伤害来获得关键物品~NPC不死~NPC不会死亡，防止错过他们的奖励物品~开局车轮~开局奖励将改为念珠“年轻石工的车轮”~随机圣物匣~圣物匣将被加入随机池中（关闭此项将无法获得圣物匣）~禁用物品随机~所有物品都在原版《渎神》的对应位置上~启用物品随机~每个物品位置都会提供随机的物品~敌人随机设置~对应类型~随机敌人将会对应其原有的类型（普通怪/飞行怪/精英怪）~场地调整~下调前期场地的敌人数值，上调后期场地的敌人数值~所有敌人都在原版《渎神》的对应位置上~乱序式敌人随机~敌人总数和类型不变，只是将位置打乱（例：大狮子头一定出现4遍）~全独立敌人随机~每个敌人位置都独立选择敌人（例：大狮子头可能出现20遍或0遍）【作者不推荐】~房门随机设置~即将推出
+lang: en
+bead: New rosary bead obtained
+prayer: New prayer obtained
+relic: New relic obtained
+heart: New sword heart obtained
+bone: New collectible obtained
+quest: New quest item obtained
+chname: Cherub
+chdesc: A little floating baby that you rescued from a cage
+chnot: Cherub rescued
+luname: Life Upgrade
+ludesc: An increase to your maximum health
+funame: Fervour Upgrade
+fudesc: An increase to your maximum fervour
+suname: Mea Culpa Upgrade
+sudesc: An increase to the strength of your sword
+stnot: Stat increased
+trname: Tears of Atonement
+trdesc: A bundle of * tears
+trnot: Tears acquired
+sknot: Skill unlocked
+itmerr: Error: Rewards list not initialized
+daterr: Randomizer data could not be loaded, reinstall the program
+vererr: This save file was not created in randomizer or used an older version.  Item locations are invalid
+generr: Item shuffler failed to generate valid game.  Item locations are invalid
+currsd: Current seed
+shrine: Shrine Tier
+sword: Mea Culpa
+items: Items collected
+vandis: Vanilla
+randis: Randomized
+outdis: Outdated
+sorrow: Sacred Sorrows mode can not be played in randomizer
+chset: CHOOSE SETTINGS
+begin: Begin
+cancel: Cancel
+menusd: Seed
+menurd: random
+genset: General
+tpname: Teleportation
+tpdesc: Prie Dieus are automatically upgraded to the maximum level
+ctname: Skip Cutscenes
+ctdesc: A majority of cutscenes will be skipped
+htname: Allow Hints
+htdesc: Corpses will give a hint about valuable items when interacted with
+pename: Allow Penitence
+pedesc: You are able to choose a penitence in the Brotherhood
+itmset: Item Shuffle
+lgname: Mist Damage
+lgdesc: Some items in poison clouds may be in logic without Lung of Dolphos
+dename: Disable NPC Death
+dedesc: Prevents missable items by keeping certain NPCs always alive
+whname: Start with Wheel
+whdesc: The starting gift will be the Young Mason's Wheel
+rqname: Shuffle Reliquaries
+rqdesc: The three reliquaries will be added to the item pool
+dstype: Disabled
+dsides: All items will be in their original places
+entype: Enabled
+endesc: Every location will have a random item
+emyset: Enemy Shuffle
+clname: Maintain Class
+cldesc: Enemies are constrained to their original group (Normal, Flying, Large)
+scname: Area Scaling
+scdesc: Enemy health and damage is scaled up/down based on their location
+dsedes: Enemies will remain in their original places
+sftype: Shuffled
+sfdesc: An enemy can only appear as many times as in the original game
+rdtype: Random
+rddesc: An enemy can appear any amount of times (Not recommended)
+dorset: Door Shuffle
+soon: Coming Soon
+
+lang: es
+bead: Nueva cuenta de rosario obtenida
+prayer: Nuevo rezo obtenido
+relic: Nueva reliquia obtenida
+heart: Nuevo corazón de Mea Culpa obtenido
+bone: Nuevo coleccionable obtenido
+quest: Nuevo objeto clave obtenido
+chname: Niño de la Luz Lunar
+chdesc: Un bebé volador al que has rescatado de una jaula.
+chnot: Niño de la Luz Lunar rescatado
+luname: Aumento de vida
+ludesc: Un aumento de tu salud máxima.
+funame: Aumento de fervor
+fudesc: Un aumento de tu fervor máximo
+suname: Mejora de Mea Culpa
+sudesc: Una mejora del poder de tu espada
+stnot: Atributo mejorado
+trname: Lágrimas de enmienda
+trdesc: Una cantidad de * lágrimas
+trnot: Lágrimas conseguidas
+sknot: Habilidad desbloqueada
+itmerr: Error: no se ha iniciado la lista de recompensas.
+daterr: No se han podido cargar los datos del randomizador, reinstala el programa.
+vererr: Este archivo no se ha creado en el randomizador o se ha usado una versión anterior. La ubicación de los objetos no es válida.
+generr: El randomizador de objetos no ha podido crear una partida válida. La ubicación de los objetos no es válida.
+currsd: Semilla actual
+shrine: Nivel de altar
+sword: Mea Culpa
+items: Objetos obtenidos
+vandis: Vanilla
+randis: Randomizado
+outdis: Desactualizado
+sorrow: No se puede jugar al modo Sagrados Pesares en el randomizador
+chset: SELECCIONA LOS AJUSTES
+begin: Comenzar
+cancel: Cancelar
+menusd: Semilla
+menurd: Aleatoria
+genset: General
+tpname: Teletransporte
+tpdesc: Los prie-dieus se mejoran al máximo automáticamente
+ctname: Saltar escenas
+ctdesc: Se saltarán la mayoría de escenas
+htname: Permitir pistas
+htdesc: Los cadáveres darán pistas sobre objetos valiosos cuando se hable con ellos
+pename: Permitir penitencia
+pedesc: Puedes elegir una penitencia en la Hermandad
+itmset: Objetos aleatorios
+lgname: Daño por miasma
+lgdesc: Puede que tengas que conseguir objetos situados en zonas de miasma sin tener el Pulmón de Dolfos
+dename: Desactivar muerte de PNJ
+dedesc: Evita la pérdida de objetos al mantener a ciertos PNJ vivos
+whname: Empezar con la Rueda
+whdesc: Tu obsequio inicial será la Rueda del Joven Masón
+rqname: Añadir relicarios
+rqdesc: Los tres relicarios se añadirán al inventario
+dstype: Desactivado
+dsides: Todos los objetos estarán en su lugar original
+entype: Activado
+endesc: Habrá un objeto aleatorio en todos los lugares
+emyset: Enemigos aleatorios
+clname: Mantener clase
+cldesc: El tipo de enemigos se limita a su tipo original (Normales, Voladores y Grandes)
+scname: Acorde a la zona
+scdesc: La salud y el daño de los enemigos se ajusta a su ubicación en el mapa
+dsedes: Los enemigos seguirán en su ubicación original
+sftype: Intercambiados
+sfdesc: Un enemigo solo podrá aparecer la misma cantidad de veces que en el juego original
+rdtype: Aleatorio
+rddesc: Un enemigo puede aparecer cualquier cantidad de veces (no se recomienda)
+dorset: Puertas aleatorias
+soon: Próximamente
+
+lang: zh
+bead: 获得新念珠
+prayer: 获得新祷文
+relic: 获得新圣物
+heart: 获得新孽刃之心
+bone: 获得新骨头
+quest: 获得新任务物品
+chname: 月光之子
+chdesc: 被你从浮空牢笼中救出的小天使
+chnot: 解救了月光之子
+luname: 血量上限升级
+ludesc: 提升最大生命值
+funame: 蓝量上限升级
+fudesc: 提升最大热诚值
+suname: 孽刃升级
+sudesc: 提升孽刃的攻击力并解锁新的剑技
+stnot: 能力值提升
+trname: 赎罪之泪
+trdesc: 装有 * 赎罪之泪的小瓶子
+trnot: 获得赎罪之泪
+sknot: 解锁新技能
+itmerr: 错误：物品列表未初始化
+daterr: 随机mod数据未加载，请重新下载并安装随机mod
+vererr: 此存档不兼容当前版本的随机mod，物品分布地点不合法
+generr: 物品随机生成器无法生成合理的物品分布地点
+currsd: 此存档的种子
+shrine: 祭坛等级
+sword: 孽刃
+items: 已收集的物品
+vandis: 原版
+randis: 随机mod
+outdis: 老版本
+sorrow: 在随机mod中无法游玩圣恸模式
+chset: 自定义随机mod设置项
+begin: 开始
+cancel: 取消
+menusd: 种子
+menurd: 随机
+genset: 基本设置
+tpname: 开局祭坛传送
+tpdesc: 开局自动将存档点祭坛升至满级（有传送功能，回满蓝）
+ctname: 跳过过场动画
+ctdesc: 跳过大部分过场动画
+htname: 尸体提示
+htdesc: 尸体遗言会提示该区域的一项重要物品位置
+pename: 可选忏悔
+pedesc: 你可以在默哀守望者门口选择忏悔
+itmset: 物品随机设置
+lgname: 硬抗毒雾
+lgdesc: 可能需要在无镀银肺时硬抗毒雾伤害来获得关键物品
+dename: NPC不死
+dedesc: NPC不会死亡，防止错过他们的奖励物品
+whname: 开局车轮
+whdesc: 开局奖励将改为念珠“年轻石工的车轮”
+rqname: 随机圣物匣
+rqdesc: 圣物匣将被加入随机池中（关闭此项将无法获得圣物匣）
+dstype: 禁用随机
+dsides: 所有物品都在原版《渎神》的对应位置上
+entype: 乱序式物品随机
+endesc: 将所有物品的位置打乱
+emyset:  敌人随机设置
+clname: 对应类型
+cldesc: 随机敌人将会对应其原有的类型（普通怪/飞行怪/精英怪）
+scname: 场地调整
+scdesc: 下调前期场地的敌人数值，上调后期场地的敌人数值
+dsedes: 所有敌人都在原版《渎神》的对应位置上
+sftype: 乱序式敌人随机
+sfdesc: 敌人总数和类型不变，只是将位置打乱
+rdtype: 全独立敌人随机
+rddesc: 每个敌人位置都独立选择敌人（mod作者不建议）
+dorset: 房门随机设置
+soon: 即将推出
