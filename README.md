@@ -11,6 +11,7 @@
   - [Lesser know logic](https://github.com/BrandenEK/Blasphemous-Randomizer#lesser-known-logic)
   - [Questline changes](https://github.com/BrandenEK/Blasphemous-Randomizer#questline-changes)
   - [Corpse hints](https://github.com/BrandenEK/Blasphemous-Randomizer#corpse-hints)
+- [Translations](https://github.com/BrandenEK/Blasphemous-Randomizer#translations)
 - [Changelog](https://github.com/BrandenEK/Blasphemous-Randomizer#changelog)
 
 ---
@@ -105,6 +106,14 @@ These are:
 - Corpse outside Jocinero's room --> Jocinero's final reward
 - Corpse at entrance of WhOTW --> White Lady tomb reward
 - Corpse outside Albero church --> 50,000 tear donation reward
+
+---
+
+## Translations
+
+This mod is available in these other languages in addition to English:
+- Spanish (Thanks to Rodol J. "ConanCimmerio" Pérez (Ro))
+- Chinese (Thanks to NewbieElton)
 
 ---
 
