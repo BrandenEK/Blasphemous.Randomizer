@@ -41,6 +41,11 @@ namespace BlasphemousRandomizer.Shufflers
                 return;
             }
 
+            // If the location was a sword shrine, upgrade the mea culpa stat
+            // This has to be done in here to prevent duplication in multiplayer
+            if (locationId.StartsWith("Sword["))
+                Core.Logic.Penitent.Stats.MeaCulpa.Upgrade();
+
             // Get the item
             Item item = getItemAtLocation(locationId);
             if (item == null)

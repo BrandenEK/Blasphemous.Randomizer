@@ -118,6 +118,17 @@ namespace BlasphemousRandomizer.Patches
             return false;
         }
     }
+    [HarmonyPatch(typeof(MeaCulpaUpgrade), "OnEnter")]
+    public class MeaCulpaUpgrade_Patch
+    {
+        public static bool Prefix(MeaCulpaUpgrade __instance)
+        {
+            // Can't upgrade mea culpa normally here, since stats can be duplicated in multiplayer
+            // Instead this has to be upgraded in GiveItem(), once it has been verified that the location hasn't already been collected
+            __instance.Finish();
+            return false;
+        }
+    }
 
     // Used when giving tears of atonement to the player
     [HarmonyPatch(typeof(PurgeAdd), "OnEnter")]
