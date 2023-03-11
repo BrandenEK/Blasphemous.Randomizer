@@ -4,6 +4,8 @@
 
 - [Links](https://github.com/BrandenEK/Blasphemous-Randomizer#links)
 - [Installation](https://github.com/BrandenEK/Blasphemous-Randomizer#installation)
+- [Autotracking](https://github.com/BrandenEK/Blasphemous-Randomizer#autotracking)
+- [Available commands](https://github.com/BrandenEK/Blasphemous-Randomizer#available-commands)
 - [Randomizer info](https://github.com/BrandenEK/Blasphemous-Randomizer#randomizer-info)
   - [Important notes](https://github.com/BrandenEK/Blasphemous-Randomizer#important-notes)
   - [Lesser know logic](https://github.com/BrandenEK/Blasphemous-Randomizer#lesser-known-logic)
@@ -28,6 +30,23 @@
 2. Follow the instructions there on how to install the api
 3. Download the latest release of the Randomizer from the [Releases](https://github.com/BrandenEK/Blasphemous-Randomizer/releases) page
 4. Extract the contents of the BlasphemousRandomizer.zip file into the "Modding" folder
+
+---
+
+## Autotracking
+
+Autotracking for the Blasphemous poptracker pack has now been integrated into the randomizer.  In order to activate autotracking, open the console and run the command:<br>```randomizer autotracker on```
+
+---
+
+## Available commands
+- Press the 'backslash' key to open the debug console
+- Type the desired command followed by the parameters all separated by a single space
+
+| Command | Parameters | Description |
+| ------- | ----------- | ------- |
+| `randomizer help` | none | List all available commands |
+| `randomizer autotracker` | on/off | Enables or disables the autotracker |
 
 ---
 
@@ -92,7 +111,10 @@ These are:
 ## Changelog
 
 ### v1.4.0 (Modding API)
-- Fixed melted coins bug
+- Added Spanish & Chinese localization
+- Added autotracking
+- Fixed Gemino missable item bug
+- Fixed Alstasgracias items bug
 - Reworked rando to be compatible with the Modding API
 
 ### v1.3.0 (Sword Skills)
