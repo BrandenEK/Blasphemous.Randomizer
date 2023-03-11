@@ -195,7 +195,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix()
         {
-            Main.Randomizer.LogDisplay(Main.Randomizer.Localize("sorrow") + "!");
+            Main.Randomizer.LogDisplay(Main.Randomizer.Localize("sorrow"));
             return false;
         }
     }

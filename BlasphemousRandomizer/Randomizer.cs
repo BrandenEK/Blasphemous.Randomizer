@@ -63,7 +63,7 @@ namespace BlasphemousRandomizer
             Log("Randomizer has been initialized!");
             data = new DataStorage();
             if (!data.loadData(FileUtil))
-                errorOnLoad = Localize("daterr") + "!";
+                errorOnLoad = Localize("daterr");
 
             // Set up data
             gameConfig = MainConfig.Default();
@@ -117,7 +117,7 @@ namespace BlasphemousRandomizer
                     shufflers[i].Reset();
                 }
                 LogError("Loaded invalid game!");
-                errorOnLoad = Localize("vererr") + "!";
+                errorOnLoad = Localize("vererr");
             }
 
             inGame = true;
@@ -158,7 +158,7 @@ namespace BlasphemousRandomizer
 
             // Show error message if item shuffler failed
             if (!itemShuffler.validSeed)
-                errorOnLoad = Localize("generr") + "!";
+                errorOnLoad = Localize("generr");
 
             // Generate spoiler on new game
             if (newGame)

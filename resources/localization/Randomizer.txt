@@ -1,28 +1,28 @@
 lang: en
-bead: New rosary bead obtained
-prayer: New prayer obtained
-relic: New relic obtained
-heart: New sword heart obtained
-bone: New collectible obtained
-quest: New quest item obtained
+bead: New rosary bead obtained!
+prayer: New prayer obtained!
+relic: New relic obtained!
+heart: New sword heart obtained!
+bone: New collectible obtained!
+quest: New quest item obtained!
 chname: Cherub
-chdesc: A little floating baby that you rescued from a cage
-chnot: Cherub rescued
+chdesc: A little floating baby that you rescued from a cage.
+chnot: Cherub rescued!
 luname: Life Upgrade
-ludesc: An increase to your maximum health
+ludesc: An increase to your maximum health.
 funame: Fervour Upgrade
-fudesc: An increase to your maximum fervour
+fudesc: An increase to your maximum fervour.
 suname: Mea Culpa Upgrade
-sudesc: An increase to the strength of your sword
-stnot: Stat increased
+sudesc: An increase to the strength of your sword.
+stnot: Stat increased!
 trname: Tears of Atonement
-trdesc: A bundle of * tears
-trnot: Tears acquired
-sknot: Skill unlocked
+trdesc: A bundle of * tears.
+trnot: Tears acquired!
+sknot: Skill unlocked!
 itmerr: Error: Rewards list not initialized
-daterr: Randomizer data could not be loaded, reinstall the program
-vererr: This save file was not created in randomizer or used an older version.  Item locations are invalid
-generr: Item shuffler failed to generate valid game.  Item locations are invalid
+daterr: Randomizer data could not be loaded, reinstall the program.
+vererr: This save file was not created in randomizer or used an older version.  Item locations are invalid.
+generr: Item shuffler failed to generate valid game.  Item locations are invalid.
 currsd: Current seed
 shrine: Shrine Tier
 sword: Mea Culpa
@@ -30,7 +30,7 @@ items: Items collected
 vandis: Vanilla
 randis: Randomized
 outdis: Outdated
-sorrow: Sacred Sorrows mode can not be played in randomizer
+sorrow: Sacred Sorrows mode can not be played in randomizer!
 chset: CHOOSE SETTINGS
 begin: Begin
 cancel: Cancel
@@ -84,15 +84,15 @@ chnot: Niño de la Luz Lunar rescatado
 luname: Aumento de vida
 ludesc: Un aumento de tu salud máxima.
 funame: Aumento de fervor
-fudesc: Un aumento de tu fervor máximo
+fudesc: Un aumento de tu fervor máximo.
 suname: Mejora de Mea Culpa
-sudesc: Una mejora del poder de tu espada
+sudesc: Una mejora del poder de tu espada.
 stnot: Atributo mejorado
 trname: Lágrimas de enmienda
-trdesc: Una cantidad de * lágrimas
+trdesc: Una cantidad de * lágrimas.
 trnot: Lágrimas conseguidas
 sknot: Habilidad desbloqueada
-itmerr: Error: no se ha iniciado la lista de recompensas.
+itmerr: Error: no se ha iniciado la lista de recompensas
 daterr: No se han podido cargar los datos del randomizador, reinstala el programa.
 vererr: Este archivo no se ha creado en el randomizador o se ha usado una versión anterior. La ubicación de los objetos no es válida.
 generr: El randomizador de objetos no ha podido crear una partida válida. La ubicación de los objetos no es válida.
@@ -103,7 +103,7 @@ items: Objetos obtenidos
 vandis: Vanilla
 randis: Randomizado
 outdis: Desactualizado
-sorrow: No se puede jugar al modo Sagrados Pesares en el randomizador
+sorrow: No se puede jugar al modo Sagrados Pesares en el randomizador.
 chset: SELECCIONA LOS AJUSTES
 begin: Comenzar
 cancel: Cancelar
