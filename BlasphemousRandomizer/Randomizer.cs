@@ -4,14 +4,13 @@ using System.Diagnostics;
 using System.Collections;
 using BlasphemousRandomizer.Shufflers;
 using BlasphemousRandomizer.Structures;
+using BlasphemousRandomizer.Tracker;
 using BlasphemousRandomizer.Config;
 using BlasphemousRandomizer.UI;
 using Framework.Managers;
 using Framework.Audio;
 using Tools.Level;
 using ModdingAPI;
-
-using BlasphemousRandomizer.Tracker;
 
 namespace BlasphemousRandomizer
 {
@@ -36,14 +35,13 @@ namespace BlasphemousRandomizer
         private bool inGame;
         private int lastLoadedSlot;
         private string errorOnLoad;
-        public bool shrineEditMode;
+        public bool ShrineEditMode { get; set; }
 
-        public DataStorage data;
-        private SettingsMenu settingsMenu;
+        public DataStorage data { get; private set; }
+        public AutoTracker tracker { get; private set; }
+        public SettingsMenu settingsMenu;
 
         public override string PersistentID => "ID_RANDOMIZER";
-
-        public AutoTracker tracker { get; private set; }
 
         public Randomizer(string modId, string modName, string modVersion) : base(modId, modName, modVersion) { }
 
@@ -317,11 +315,6 @@ namespace BlasphemousRandomizer
             else if (id == 1) Core.Audio.PlayOneShot("event:/SFX/UI/UnequipItem");
             else if (id == 2) Core.Audio.PlayOneShot("event:/SFX/UI/ChangeSelection");
             else if (id == 3) Core.Audio.PlayOneShot("event:/SFX/UI/FadeToWhite");
-        }
-
-        public SettingsMenu getSettingsMenu()
-        {
-            return settingsMenu;
         }
 
         private bool isConfigVersionValid(string configVersion)

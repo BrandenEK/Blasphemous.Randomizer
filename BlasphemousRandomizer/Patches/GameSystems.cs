@@ -181,7 +181,7 @@ namespace BlasphemousRandomizer.Patches
             }
             if (___slots[idxSlot].IsEmpty) // Show settings menu
             {
-                Main.Randomizer.getSettingsMenu().openMenu(idxSlot);
+                Main.Randomizer.settingsMenu.openMenu(idxSlot);
                 return false;
             }
 

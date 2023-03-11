@@ -1,7 +1,6 @@
 ﻿using HarmonyLib;
 using System.Collections.Generic;
 using Gameplay.UI.Others.MenuLogic;
-using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Framework.Managers;
@@ -17,7 +16,7 @@ namespace BlasphemousRandomizer.Patches
         public static void Postfix(string skillId, ref Text ___caption, ref Text ___description, ref TextMeshProUGUI ___instructionsPro)
         {
             // Only show changed items at shrine
-            if (!Main.Randomizer.shrineEditMode)
+            if (!Main.Randomizer.ShrineEditMode)
             {
                 return;
             }
@@ -52,7 +51,7 @@ namespace BlasphemousRandomizer.Patches
         public static void Postfix(string ___skill, ref Image ___skillImage, ref Text ___tierText)
         {
             // Any skill not owned is locked
-            if (!Main.Randomizer.shrineEditMode)
+            if (!Main.Randomizer.ShrineEditMode)
             {
                 ___tierText.text = "";
                 return;
@@ -100,7 +99,7 @@ namespace BlasphemousRandomizer.Patches
         public static bool Prefix(SkillManager __instance, ref bool __result, string skill, bool ignoreChecks, Dictionary<string, UnlockableSkill> ___allSkills)
         {
             // Might not be necessary
-            if (!Main.Randomizer.shrineEditMode)
+            if (!Main.Randomizer.ShrineEditMode)
             {
                 __result = false;
                 return false;
@@ -124,7 +123,7 @@ namespace BlasphemousRandomizer.Patches
         public static bool Prefix(SkillManager __instance, ref bool __result, string skill, Dictionary<string, UnlockableSkill> ___allSkills)
         {
             // Always locked in regular pause menu
-            if (!Main.Randomizer.shrineEditMode)
+            if (!Main.Randomizer.ShrineEditMode)
             {
                 __result = false;
                 return false;
@@ -148,7 +147,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static bool Prefix(ref string skill, ref bool __result)
         {
-            if (!Main.Randomizer.shrineEditMode)
+            if (!Main.Randomizer.ShrineEditMode)
             {
                 // Actually checking if skill is unlocked
                 return true;
@@ -168,7 +167,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Prefix(bool editMode)
         {
-            Main.Randomizer.shrineEditMode = editMode;
+            Main.Randomizer.ShrineEditMode = editMode;
         }
 
         public static void Postfix(bool editMode, NewInventory_LayoutSkill __instance, ref Text ___maxTier)
@@ -187,7 +186,7 @@ namespace BlasphemousRandomizer.Patches
     {
         public static void Postfix()
         {
-            Main.Randomizer.shrineEditMode = false;
+            Main.Randomizer.ShrineEditMode = false;
         }
     }
 }
