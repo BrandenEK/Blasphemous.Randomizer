@@ -69,7 +69,7 @@ sfdesc: An enemy can only appear as many times as in the original game
 rdtype: Random
 rddesc: An enemy can appear any amount of times (Not recommended)
 dorset: Door Shuffle
-soon: Coming Soon
+soon: Coming Soon!
 
 lang: es
 bead: Nueva cuenta de rosario obtenida
@@ -120,14 +120,14 @@ pename: Permitir penitencia
 pedesc: Puedes elegir una penitencia en la Hermandad
 itmset: Objetos aleatorios
 lgname: Daño por miasma
-lgdesc: Puede que tengas que conseguir objetos situados en zonas de miasma sin tener el Pulmón de Dolfos
-dename: Desactivar muerte de PNJ
+lgdesc: Puede que tengas que conseguir objetos situados en zonas\nde miasma sin tener el Pulmón de Dolfos
+dename: Desactivar muerte \nde PNJ
 dedesc: Evita la pérdida de objetos al mantener a ciertos PNJ vivos
 whname: Empezar con la Rueda
 whdesc: Tu obsequio inicial será la Rueda del Joven Masón
 rqname: Añadir relicarios
 rqdesc: Los tres relicarios se añadirán al inventario
-dstype: Desactivado
+dstype: Estándar
 dsides: Todos los objetos estarán en su lugar original
 entype: Activado
 endesc: Habrá un objeto aleatorio en todos los lugares
@@ -137,10 +137,10 @@ cldesc: El tipo de enemigos se limita a su tipo original (Normales, Voladores y 
 scname: Acorde a la zona
 scdesc: La salud y el daño de los enemigos se ajusta a su ubicación en el mapa
 dsedes: Los enemigos seguirán en su ubicación original
-sftype: Intercambiados
-sfdesc: Un enemigo solo podrá aparecer la misma cantidad de veces que en el juego original
+sftype: Alternar
+sfdesc: Un enemigo solo podrá aparecer la misma cantidad\nde veces que en el juego original
 rdtype: Aleatorio
-rddesc: Un enemigo puede aparecer cualquier cantidad de veces (no se recomienda)
+rddesc: Un enemigo puede aparecer cualquier cantidad\nde veces (no se recomienda)
 dorset: Puertas aleatorias
 soon: Próximamente
 

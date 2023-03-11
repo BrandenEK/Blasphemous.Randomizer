@@ -359,7 +359,7 @@ namespace BlasphemousRandomizer.UI
             RectTransform doorsTitle = getNewText("Doors Title", doorsSection, Main.Randomizer.Localize("dorset") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
             doorsTitle.anchoredPosition = new Vector2(0, top - 5);
 
-            RectTransform comingSoon = getNewText("Coming soon", doorsSection, Main.Randomizer.Localize("soon") + "!", font, 16, Color.white, TextAnchor.MiddleCenter);
+            RectTransform comingSoon = getNewText("Coming soon", doorsSection, Main.Randomizer.Localize("soon"), font, 16, Color.white, TextAnchor.MiddleCenter);
             comingSoon.anchoredPosition = new Vector2(0, top - 40);
 
             // Set begin/cancel buttons
