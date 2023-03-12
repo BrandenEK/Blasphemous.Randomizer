@@ -57,6 +57,12 @@ namespace BlasphemousRandomizer.Fillers
                 possibleLocations.RemoveAt(possibleLocations.Count - 1);
                 dialogIds.RemoveAt(randIdx);
             }
+
+            // Show error if hint dictionary wasnt filled
+            if (dialogIds.Count > 0)
+            {
+                Main.Randomizer.LogWarning("Error: Hint dictionary wasn't fully filled!");
+            }
         }
 
         // Adds a hint to the output dictionary
