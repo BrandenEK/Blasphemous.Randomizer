@@ -50,7 +50,7 @@ namespace BlasphemousRandomizer.Fillers
 
             // Fill random hints
             shuffleList(possibleLocations);
-            while (dialogIds.Count > 0)
+            while (dialogIds.Count > 0 && possibleLocations.Count > 0)
             {
                 int randIdx = rand(dialogIds.Count);
                 addHint(dialogIds[randIdx], possibleLocations[possibleLocations.Count - 1], output);
