@@ -153,7 +153,14 @@ namespace BlasphemousRandomizer
             // Shuffle everything
             for (int i = 0; i < shufflers.Length; i++)
             {
-                shufflers[i].Shuffle(seed);
+                try
+                {
+                    shufflers[i].Shuffle(seed);
+                }
+                catch (System.Exception)
+                {
+                    LogError($"Error with the {shufflers[i].GetType().Name} when shuffling seed {seed}");
+                }
             }
 
             // Show error message if item shuffler failed
