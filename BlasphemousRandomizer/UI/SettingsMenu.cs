@@ -53,7 +53,18 @@ namespace BlasphemousRandomizer.UI
             }
 
             // Change description text
-            descriptionText.text = currBox == null ? "" : currBox.getDescription();
+            if (currBox != null)
+            {
+                descriptionText.text = currBox.getDescription();
+            }
+            else if (currentSeed == "")
+            {
+                descriptionText.text = Main.Randomizer.Localize("typesd");
+            }
+            else
+            {
+                descriptionText.text = "";
+            }
 
             // Check if a button was clicked
             if (Input.GetMouseButtonDown(0))

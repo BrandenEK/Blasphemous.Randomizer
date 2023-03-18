@@ -36,6 +36,7 @@ begin: Begin
 cancel: Cancel
 menusd: Seed
 menurd: random
+typesd: Begin typing numbers to input a custom seed
 genset: General
 tpname: Teleportation
 tpdesc: Prie Dieus are automatically upgraded to the maximum level
