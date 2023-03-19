@@ -124,7 +124,7 @@ namespace BlasphemousRandomizer
             lastLoadedSlot = PersistentManager.GetAutomaticSlot();
         }
 
-        public override void NewGame()
+        public override void NewGame(bool NGPlus)
         {
             itemsCollected = 0;
             startedInRando = true;
