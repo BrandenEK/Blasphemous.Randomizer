@@ -110,6 +110,7 @@ begin: Comenzar
 cancel: Cancelar
 menusd: Semilla
 menurd: Aleatoria
+typesd: Escribe un número para introducir una semilla personalizada
 genset: General
 tpname: Teletransporte
 tpdesc: Los prie-dieus se mejoran al máximo automáticamente
@@ -183,6 +184,7 @@ begin: 开始
 cancel: 取消
 menusd: 种子
 menurd: 随机
+typesd: 用数字键输入自定义种子
 genset: 基本设置
 tpname: 开局祭坛传送
 tpdesc: 开局自动将存档点祭坛升至满级（有传送功能，回满蓝）
@@ -205,7 +207,7 @@ dstype: 禁用随机
 dsides: 所有物品都在原版《渎神》的对应位置上
 entype: 乱序式物品随机
 endesc: 将所有物品的位置打乱
-emyset:  敌人随机设置
+emyset: 敌人随机设置
 clname: 对应类型
 cldesc: 随机敌人将会对应其原有的类型（普通怪/飞行怪/精英怪）
 scname: 场地调整
@@ -256,6 +258,7 @@ begin: Commencer
 cancel: Annuler
 menusd: Seed
 menurd: aléatoire
+typesd: Veuillez saisir un nombre pour rentrer une seed personnalisée
 genset: Général
 tpname: Téléportation
 tpdesc: Les Prie-Dieus seront améliorés au niveau maximum dès le début
