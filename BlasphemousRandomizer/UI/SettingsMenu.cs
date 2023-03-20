@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Others;
+using Framework.Managers;
 using Rewired;
 using BlasphemousRandomizer.Config;
 
@@ -9,12 +10,15 @@ namespace BlasphemousRandomizer.UI
 {
     public class SettingsMenu
     {
+        private const int UNIQUE_ID_SIZE = 6;
+
         private GameObject settingsMenu;
         private GameObject slotsMenu;
         private Vector3 scaling;
 
         private Camera camera;
         private SettingsElement[] buttons;
+        private Image[] uniqueImages;
         private Text seedText;
         private Text descriptionText;
         private Player rewired;
@@ -70,7 +74,10 @@ namespace BlasphemousRandomizer.UI
             if (Input.GetMouseButtonDown(0))
             {
                 if (currBox != null)
+                {
                     currBox.onClick();
+                    UpdateUniqueId();
+                }
             }
 
             // Keyboard input
@@ -108,6 +115,8 @@ namespace BlasphemousRandomizer.UI
             // Update text
             seedText.text = Main.Randomizer.Localize("menusd") + ": " + (currentSeed != "" ? currentSeed : Main.Randomizer.Localize("menurd"));
             Main.Randomizer.playSoundEffect(2);
+
+            UpdateUniqueId();
         }
 
         public void setConfigSettings(MainConfig config)
@@ -135,6 +144,8 @@ namespace BlasphemousRandomizer.UI
             currentSeed = config.general.customSeed > 0 ? config.general.customSeed.ToString() : "";
             seedText.text = Main.Randomizer.Localize("menusd") + ": " + (currentSeed != "" ? currentSeed : Main.Randomizer.Localize("menurd"));
             descriptionText.text = "";
+
+            UpdateUniqueId();
         }
 
         public MainConfig getConfigSettings()
@@ -173,6 +184,35 @@ namespace BlasphemousRandomizer.UI
             slotsMenu.SetActive(!value);
             Cursor.visible = value;
             menuActive = value;
+        }
+
+        private void UpdateUniqueId()
+        {
+            Main.Randomizer.LogWarning("Updating unique id code");
+            string[] items = new string[] // 42 diff images, 6 item slots, 33 bits
+            {
+                "RB01", "RB03", "RB07", "RB08", "RB09", "RB10", "RB11", "RB12", "RB13", "RB21", "RB33", "RB36", "RB101", "RB102", "RB103", "RB105", "RB107", "RB108", "RB201", "RB301",
+                "RE01", "RE02", "RE03", "RE04", "RE05", "RE07", "RE10",
+                "HE101", "HE201",
+                "QI01", "QI41", "QI44", "QI68", "QI69", "QI70", "QI71", "QI78", "QI81", "QI101", "QI110", "QI203", "QI301"
+            };
+
+            for (int i = 0; i < uniqueImages.Length; i++)
+            {
+                int idx = Random.RandomRangeInt(0, items.Length - 1);
+                string itemId = items[idx];
+                Sprite sprite = null;
+                if (itemId.StartsWith("RB"))
+                    sprite = Core.InventoryManager.GetRosaryBead(itemId).picture;
+                else if (itemId.StartsWith("RE"))
+                    sprite = Core.InventoryManager.GetRelic(itemId).picture;
+                else if (itemId.StartsWith("HE"))
+                    sprite = Core.InventoryManager.GetSword(itemId).picture;
+                else if (itemId.StartsWith("QI"))
+                    sprite = Core.InventoryManager.GetQuestItem(itemId).picture;
+
+                uniqueImages[i].sprite = sprite;
+            }
         }
 
         public void beginGame()
@@ -251,7 +291,24 @@ namespace BlasphemousRandomizer.UI
             rect.anchorMax = Vector2.one;
             rect.pivot = new Vector2(0.5f, 0.5f);
             rect.anchoredPosition = Vector2.zero;
-            
+
+            // Create unique seed images
+            RectTransform uniqueHolder = getNewRect("Img Holder", rect);
+            uniqueHolder.sizeDelta = new Vector2(100, 32);
+            uniqueHolder.pivot = Vector2.one;
+            uniqueHolder.anchoredPosition = new Vector2(320, 180);
+
+            uniqueImages = new Image[UNIQUE_ID_SIZE];
+            for (int i = 0; i < uniqueImages.Length; i++)
+            {
+                RectTransform image = getNewImage("Img" + i, uniqueHolder, 32);
+                image.pivot = new Vector2(1, 0.5f);
+                image.anchorMin = new Vector2(1, 0.5f);
+                image.anchorMax = new Vector2(1, 0.5f);
+                image.anchoredPosition = new Vector2(-5 + i * -30, 0);
+                uniqueImages[i] = image.GetComponent<Image>();
+            }
+
             // Set header text
             Text headerText = settingsMenu.transform.GetChild(0).GetChild(0).GetComponent<Text>();
             headerText.text = Main.Randomizer.Localize("chset");
