@@ -4,6 +4,7 @@
 
 - [Links](https://github.com/BrandenEK/Blasphemous-Randomizer#links)
 - [Installation](https://github.com/BrandenEK/Blasphemous-Randomizer#installation)
+- [Seeds](https://github.com/BrandenEK/Blasphemous-Randomizer#seeds)
 - [Autotracking](https://github.com/BrandenEK/Blasphemous-Randomizer#autotracking)
 - [Available commands](https://github.com/BrandenEK/Blasphemous-Randomizer#available-commands)
 - [Randomizer info](https://github.com/BrandenEK/Blasphemous-Randomizer#randomizer-info)
@@ -30,6 +31,14 @@
 2. Follow the instructions there on how to install the api
 3. Download the latest release of the Randomizer from the [Releases](https://github.com/BrandenEK/Blasphemous-Randomizer/releases) page
 4. Extract the contents of the BlasphemousRandomizer.zip file into the "Modding" folder
+
+---
+
+## Seeds
+
+In order to choose a specific seed that you want to play on, you can type any numbers 1-10 on the settings menu shown before starting a new game.  Seeds can be in the range of 1 to 999,999.
+<br><br>
+In order to make it easier for multiple people to play with the same item generation (Such as for races or multiplayer), a sequence of 5 images is shown in the top right corner of the settings menu.  This is a unique identifier of the seed that also takes into account the other configuration settings and ensures that items will be placed exactly the same for all players.
 
 ---
 
