@@ -338,26 +338,26 @@ namespace BlasphemousRandomizer
             int uniqueSeed = 0;
 
             // Remaining bits: 24, 25, 26, 27, 28, 29, 30, 31
-            uniqueSeed |= (seed & (1 << 0)) >> 0 << 18;
-            uniqueSeed |= (seed & (1 << 1)) >> 1 << 22;
-            uniqueSeed |= (seed & (1 << 2)) >> 2 << 12;
-            uniqueSeed |= (seed & (1 << 3)) >> 3 << 21;
-            uniqueSeed |= (seed & (1 << 4)) >> 4 << 0;
-            uniqueSeed |= (seed & (1 << 5)) >> 5 << 6;
-            uniqueSeed |= (seed & (1 << 6)) >> 6 << 10;
-            uniqueSeed |= (seed & (1 << 7)) >> 7 << 9;
-            uniqueSeed |= (seed & (1 << 8)) >> 8 << 3;
-            uniqueSeed |= (seed & (1 << 9)) >> 9 << 14;
-            uniqueSeed |= (seed & (1 << 10)) >> 10 << 20;
-            uniqueSeed |= (seed & (1 << 11)) >> 11 << 8;
-            uniqueSeed |= (seed & (1 << 12)) >> 12 << 4;
-            uniqueSeed |= (seed & (1 << 13)) >> 13 << 15;
-            uniqueSeed |= (seed & (1 << 14)) >> 14 << 2;
-            uniqueSeed |= (seed & (1 << 15)) >> 15 << 11;
-            uniqueSeed |= (seed & (1 << 16)) >> 16 << 19;
-            uniqueSeed |= (seed & (1 << 17)) >> 17 << 23;
-            uniqueSeed |= (seed & (1 << 18)) >> 18 << 17;
-            uniqueSeed |= (seed & (1 << 19)) >> 19 << 1;
+            uniqueSeed |= (seed & (1 << 0)) << 18;
+            uniqueSeed |= (seed & (1 << 1)) << 21;
+            uniqueSeed |= (seed & (1 << 2)) << 10;
+            uniqueSeed |= (seed & (1 << 3)) << 18;
+            uniqueSeed |= (seed & (1 << 4)) >> 4;
+            uniqueSeed |= (seed & (1 << 5)) << 1;
+            uniqueSeed |= (seed & (1 << 6)) << 4;
+            uniqueSeed |= (seed & (1 << 7)) << 2;
+            uniqueSeed |= (seed & (1 << 8)) >> 5;
+            uniqueSeed |= (seed & (1 << 9)) << 5;
+            uniqueSeed |= (seed & (1 << 10)) << 10;
+            uniqueSeed |= (seed & (1 << 11)) >> 3;
+            uniqueSeed |= (seed & (1 << 12)) >> 8;
+            uniqueSeed |= (seed & (1 << 13)) << 2;
+            uniqueSeed |= (seed & (1 << 14)) >> 12;
+            uniqueSeed |= (seed & (1 << 15)) >> 4;
+            uniqueSeed |= (seed & (1 << 16)) << 3;
+            uniqueSeed |= (seed & (1 << 17)) << 6;
+            uniqueSeed |= (seed & (1 << 18)) >> 1;
+            uniqueSeed |= (seed & (1 << 19)) >> 18;
             if (itemShuffle > 0)
             {
                 uniqueSeed |= 1 << 7;
