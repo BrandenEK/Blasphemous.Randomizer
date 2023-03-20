@@ -26,6 +26,7 @@ namespace BlasphemousRandomizer.UI
         private bool menuActive;
         private bool waiting;
         private string currentSeed;
+        private int generatedSeed;
         private int currentSlot;
 
         public void onLoad(string scene)
@@ -107,7 +108,7 @@ namespace BlasphemousRandomizer.UI
                     currentSeed = currentSeed.Substring(0, currentSeed.Length - 1);
             }
             // Pressed number 1-10 - add new character
-            else if (int.TryParse(currentSeed + num.ToString(), out int x) && (currentSeed.Length > 0 || num != 0))
+            else if (int.TryParse(currentSeed + num.ToString(), out int newSeed) && newSeed <= Randomizer.MAX_SEED && (currentSeed.Length > 0 || num != 0))
             {
                 currentSeed += num.ToString();
             }
@@ -169,7 +170,7 @@ namespace BlasphemousRandomizer.UI
             config.enemies.type = ((SettingsCyclebox)buttons[11]).getOption();
 
             // Load config from seed
-            config.general.customSeed = currentSeed != "" ? int.Parse(currentSeed) : 0;
+            config.general.customSeed = currentSeed != "" ? int.Parse(currentSeed) : generatedSeed;
             return config;
         }
 
@@ -231,6 +232,8 @@ namespace BlasphemousRandomizer.UI
 
             currentSlot = slot;
             waiting = true;
+            generatedSeed = new System.Random().Next(1, Randomizer.MAX_SEED);
+            Main.Randomizer.LogWarning("Generating new random seed: " + generatedSeed);
             showSettingsMenu(true, true);
             setConfigSettings(MainConfig.Default());
         }

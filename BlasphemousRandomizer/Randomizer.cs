@@ -16,6 +16,8 @@ namespace BlasphemousRandomizer
 {
     public class Randomizer : PersistentMod
     {
+        public const int MAX_SEED = 999999;
+
         // Shufflers
         public ItemShuffle itemShuffler;
         public EnemyShuffle enemyShuffler;
