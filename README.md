@@ -55,7 +55,7 @@ Autotracking for the Blasphemous poptracker pack has now been integrated into th
 ### Important notes
 
 - Only works on the most current game version (4.0.67)
-- Press 'Numpad 6' to display the current seed
+- Press 'Numpad 6' to display the current seed (If you are stuck in dialogue use this to break out of it)
 - Consult the spoiler generated in the game directory if you are stuck or believe the seed is unbeatable
 - Do not load a vanilla game in the randomizer or vice versa
 - Do not load an outdated randomized game in a newer version of the randomizer - seed generation is different
