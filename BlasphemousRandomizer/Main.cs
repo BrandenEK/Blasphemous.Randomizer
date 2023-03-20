@@ -9,7 +9,7 @@ namespace BlasphemousRandomizer
     {
         public const string MOD_ID = "com.damocles.blasphemous.randomizer";
         public const string MOD_NAME = "Randomizer";
-        public const string MOD_VERSION = "1.4.3";
+        public const string MOD_VERSION = "1.4.4";
 
         public static Randomizer Randomizer;
 

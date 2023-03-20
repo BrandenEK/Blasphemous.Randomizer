@@ -214,22 +214,39 @@ namespace BlasphemousRandomizer.UI
         }
 
         private void UpdateUniqueId()
-        {
-            Main.Randomizer.LogWarning("Updating unique id code");
-            
-
+        {           
             // Generate unique int32 based on seed and important options
-            int uniqueSeed = currentSeed != "" ? int.Parse(currentSeed) : generatedSeed;
+            int seed = currentSeed != "" ? int.Parse(currentSeed) : generatedSeed;
+            int uniqueSeed = 0;
+
+            // Remaining bits: 24, 25, 26, 27, 28, 29, 30, 31
+            uniqueSeed |= (seed & (1 << 0)) >> 0 << 18;
+            uniqueSeed |= (seed & (1 << 1)) >> 1 << 22;
+            uniqueSeed |= (seed & (1 << 2)) >> 2 << 12;
+            uniqueSeed |= (seed & (1 << 3)) >> 3 << 21;
+            uniqueSeed |= (seed & (1 << 4)) >> 4 << 0;
+            uniqueSeed |= (seed & (1 << 5)) >> 5 << 6;
+            uniqueSeed |= (seed & (1 << 6)) >> 6 << 10;
+            uniqueSeed |= (seed & (1 << 7)) >> 7 << 9;
+            uniqueSeed |= (seed & (1 << 8)) >> 8 << 3;
+            uniqueSeed |= (seed & (1 << 9)) >> 9 << 14;
+            uniqueSeed |= (seed & (1 << 10)) >> 10 << 20;
+            uniqueSeed |= (seed & (1 << 11)) >> 11 << 8;
+            uniqueSeed |= (seed & (1 << 12)) >> 12 << 4;
+            uniqueSeed |= (seed & (1 << 13)) >> 13 << 15;
+            uniqueSeed |= (seed & (1 << 14)) >> 14 << 2;
+            uniqueSeed |= (seed & (1 << 15)) >> 15 << 11;
+            uniqueSeed |= (seed & (1 << 16)) >> 16 << 19;
+            uniqueSeed |= (seed & (1 << 17)) >> 17 << 23;
+            uniqueSeed |= (seed & (1 << 18)) >> 18 << 17;
+            uniqueSeed |= (seed & (1 << 19)) >> 19 << 1;
             if (ItemsRight.getOption() > 0)
             {
-                uniqueSeed |= 1 << 20;
-                if (MistDamage.getSelected()) uniqueSeed |= 1 << 21;
-                if (Wheel.getSelected()) uniqueSeed |= 1 << 22;
-                if (Reliquaries.getSelected()) uniqueSeed |= 1 << 23;
+                uniqueSeed |= 1 << 7;
+                if (MistDamage.getSelected()) uniqueSeed |= 1 << 13;
+                if (Wheel.getSelected()) uniqueSeed |= 1 << 16;
+                if (Reliquaries.getSelected()) uniqueSeed |= 1 << 5;
             }
-
-            // Rearrange bits
-            Main.Randomizer.LogWarning("Unique seed: " + System.Convert.ToString(uniqueSeed, 2).PadLeft(0, '0'));
 
             // Fill images based on unique seed
             try
@@ -246,7 +263,6 @@ namespace BlasphemousRandomizer.UI
             void FillImages(int seed)
             {
                 int numDigits = uniqueSeedIcons.Length, currDigit = 0;
-
                 do
                 {
                     int imgIdx = seed % numDigits;
@@ -292,6 +308,7 @@ namespace BlasphemousRandomizer.UI
             currentSlot = slot;
             waiting = true;
             generatedSeed = new System.Random().Next(1, Randomizer.MAX_SEED);
+            Main.Randomizer.Log("Generating default seed: " + generatedSeed);
             showSettingsMenu(true, true);
             setConfigSettings(MainConfig.Default());
         }
