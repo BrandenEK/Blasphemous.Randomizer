@@ -284,7 +284,7 @@ namespace BlasphemousRandomizer
         {
             if (Input.GetKeyDown(KeyCode.Keypad6) && inGame)
             {
-                LogDisplay(Localize("currsd") + ": " + seed);
+                LogDisplay($"{Localize("currsd")}: {seed} [{ComputeFinalSeed(seed, gameConfig.items.type, gameConfig.items.lungDamage, gameConfig.items.startWithWheel, gameConfig.items.shuffleReliquaries)}]");
             }
             else if (Input.GetKeyDown(KeyCode.Keypad7))
             {
@@ -330,6 +330,42 @@ namespace BlasphemousRandomizer
         {
             string version = Main.MOD_VERSION;
             return version.Substring(0, version.LastIndexOf('.')) == configVersion.Substring(0, configVersion.LastIndexOf('.'));
+        }
+
+        public int ComputeFinalSeed(int seed, int itemShuffle, bool mistDamage, bool startWithWheel, bool shuffleReliquaries)
+        {
+            // Generate unique int32 based on seed and important options
+            int uniqueSeed = 0;
+
+            // Remaining bits: 24, 25, 26, 27, 28, 29, 30, 31
+            uniqueSeed |= (seed & (1 << 0)) >> 0 << 18;
+            uniqueSeed |= (seed & (1 << 1)) >> 1 << 22;
+            uniqueSeed |= (seed & (1 << 2)) >> 2 << 12;
+            uniqueSeed |= (seed & (1 << 3)) >> 3 << 21;
+            uniqueSeed |= (seed & (1 << 4)) >> 4 << 0;
+            uniqueSeed |= (seed & (1 << 5)) >> 5 << 6;
+            uniqueSeed |= (seed & (1 << 6)) >> 6 << 10;
+            uniqueSeed |= (seed & (1 << 7)) >> 7 << 9;
+            uniqueSeed |= (seed & (1 << 8)) >> 8 << 3;
+            uniqueSeed |= (seed & (1 << 9)) >> 9 << 14;
+            uniqueSeed |= (seed & (1 << 10)) >> 10 << 20;
+            uniqueSeed |= (seed & (1 << 11)) >> 11 << 8;
+            uniqueSeed |= (seed & (1 << 12)) >> 12 << 4;
+            uniqueSeed |= (seed & (1 << 13)) >> 13 << 15;
+            uniqueSeed |= (seed & (1 << 14)) >> 14 << 2;
+            uniqueSeed |= (seed & (1 << 15)) >> 15 << 11;
+            uniqueSeed |= (seed & (1 << 16)) >> 16 << 19;
+            uniqueSeed |= (seed & (1 << 17)) >> 17 << 23;
+            uniqueSeed |= (seed & (1 << 18)) >> 18 << 17;
+            uniqueSeed |= (seed & (1 << 19)) >> 19 << 1;
+            if (itemShuffle > 0)
+            {
+                uniqueSeed |= 1 << 7;
+                if (mistDamage) uniqueSeed |= 1 << 13;
+                if (startWithWheel) uniqueSeed |= 1 << 16;
+                if (shuffleReliquaries) uniqueSeed |= 1 << 5;
+            }
+            return uniqueSeed;
         }
     }
 }

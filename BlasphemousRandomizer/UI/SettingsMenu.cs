@@ -15,8 +15,8 @@ namespace BlasphemousRandomizer.UI
 
         readonly string[] uniqueSeedIcons = new string[] // 42 diff images (Will have to be updated when adding new options)
         {
-            "RB01", "RB03", "RB07", "RB08", "RB09", "RB10", "RB11", "RB12", "RB13", "RB21", "RB33", "RB36", "RB101", "RB102", "RB103", "RB105", "RB107", "RB108", "RB201", "RB301",
-            "RE01", "RE02", "RE03", "RE04", "RE05", "RE07", "RE10",
+            "RB01", "RB03", "RB07", "RB08", "RB09", "RB10", "RB11", "RB12", "RB13", "RB21", "RB33", "RB35", "RB36", "RB101", "RB102", "RB103", "RB105", "RB107", "RB108", "RB201", "RB301",
+            "RE01", "RE02", "RE03", "RE04", "RE07", "RE10",
             "HE101", "HE201",
             "QI01", "QI41", "QI44", "QI68", "QI69", "QI70", "QI71", "QI78", "QI81", "QI101", "QI110", "QI203", "QI301"
         };
@@ -214,48 +214,18 @@ namespace BlasphemousRandomizer.UI
         }
 
         private void UpdateUniqueId()
-        {           
-            // Generate unique int32 based on seed and important options
-            int seed = currentSeed != "" ? int.Parse(currentSeed) : generatedSeed;
-            int uniqueSeed = 0;
-
-            // Remaining bits: 24, 25, 26, 27, 28, 29, 30, 31
-            uniqueSeed |= (seed & (1 << 0)) >> 0 << 18;
-            uniqueSeed |= (seed & (1 << 1)) >> 1 << 22;
-            uniqueSeed |= (seed & (1 << 2)) >> 2 << 12;
-            uniqueSeed |= (seed & (1 << 3)) >> 3 << 21;
-            uniqueSeed |= (seed & (1 << 4)) >> 4 << 0;
-            uniqueSeed |= (seed & (1 << 5)) >> 5 << 6;
-            uniqueSeed |= (seed & (1 << 6)) >> 6 << 10;
-            uniqueSeed |= (seed & (1 << 7)) >> 7 << 9;
-            uniqueSeed |= (seed & (1 << 8)) >> 8 << 3;
-            uniqueSeed |= (seed & (1 << 9)) >> 9 << 14;
-            uniqueSeed |= (seed & (1 << 10)) >> 10 << 20;
-            uniqueSeed |= (seed & (1 << 11)) >> 11 << 8;
-            uniqueSeed |= (seed & (1 << 12)) >> 12 << 4;
-            uniqueSeed |= (seed & (1 << 13)) >> 13 << 15;
-            uniqueSeed |= (seed & (1 << 14)) >> 14 << 2;
-            uniqueSeed |= (seed & (1 << 15)) >> 15 << 11;
-            uniqueSeed |= (seed & (1 << 16)) >> 16 << 19;
-            uniqueSeed |= (seed & (1 << 17)) >> 17 << 23;
-            uniqueSeed |= (seed & (1 << 18)) >> 18 << 17;
-            uniqueSeed |= (seed & (1 << 19)) >> 19 << 1;
-            if (ItemsRight.getOption() > 0)
-            {
-                uniqueSeed |= 1 << 7;
-                if (MistDamage.getSelected()) uniqueSeed |= 1 << 13;
-                if (Wheel.getSelected()) uniqueSeed |= 1 << 16;
-                if (Reliquaries.getSelected()) uniqueSeed |= 1 << 5;
-            }
+        {
+            // Get final seed based on seed & options
+            int finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != "" ? int.Parse(currentSeed) : generatedSeed, ItemsRight.getOption(), MistDamage.getSelected(), Wheel.getSelected(), Reliquaries.getSelected());
 
             // Fill images based on unique seed
             try
             {
-                FillImages(uniqueSeed);
+                FillImages(finalSeed);
             }
             catch (System.Exception)
             {
-                Main.Randomizer.LogError("Failed to generate image layout for unique seed " + uniqueSeed);
+                Main.Randomizer.LogError("Failed to generate image layout for unique seed " + finalSeed);
                 for (int i = 0; i < uniqueImages.Length; i++)
                     uniqueImages[i].sprite = GetIcon(0);
             }
