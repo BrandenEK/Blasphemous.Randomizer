@@ -11,13 +11,13 @@ namespace BlasphemousRandomizer.UI
     public class SettingsMenu
     {
         private const int UNIQUE_ID_SIZE = 6;
+        private const int NUMBER_OF_OPTIONS = 14;
 
         private GameObject settingsMenu;
         private GameObject slotsMenu;
         private Vector3 scaling;
 
         private Camera camera;
-        private SettingsElement[] buttons;
         private Image[] uniqueImages;
         private Text seedText;
         private Text descriptionText;
@@ -28,6 +28,24 @@ namespace BlasphemousRandomizer.UI
         private string currentSeed;
         private int generatedSeed;
         private int currentSlot;
+
+        private SettingsElement[] buttons;
+        private SettingsCheckbox teleportation { get { return buttons[0] as SettingsCheckbox; } set { buttons[0] = value; } }
+        private SettingsCheckbox cutscenes { get { return buttons[1] as SettingsCheckbox; } set { buttons[1] = value; } }
+        private SettingsCheckbox hints { get { return buttons[13] as SettingsCheckbox; } set { buttons[13] = value; } }
+        private SettingsCheckbox penitence { get { return buttons[2] as SettingsCheckbox; } set { buttons[2] = value; } }
+
+        private SettingsCyclebox itemsLeft { get { return buttons[9] as SettingsCyclebox; } set { buttons[9] = value; } }
+        private SettingsCyclebox itemsRight { get { return buttons[10] as SettingsCyclebox; } set { buttons[10] = value; } }
+        private SettingsCheckbox mistDamage { get { return buttons[3] as SettingsCheckbox; } set { buttons[3] = value; } }
+        private SettingsCheckbox npcDeath { get { return buttons[4] as SettingsCheckbox; } set { buttons[4] = value; } }
+        private SettingsCheckbox wheel { get { return buttons[5] as SettingsCheckbox; } set { buttons[5] = value; } }
+        private SettingsCheckbox reliquaries { get { return buttons[6] as SettingsCheckbox; } set { buttons[6] = value; } }
+
+        private SettingsCyclebox enemiesLeft { get { return buttons[11] as SettingsCyclebox; } set { buttons[11] = value; } }
+        private SettingsCyclebox enemiesRight { get { return buttons[12] as SettingsCyclebox; } set { buttons[12] = value; } }
+        private SettingsCheckbox maintainClass { get { return buttons[7] as SettingsCheckbox; } set { buttons[7] = value; } }
+        private SettingsCheckbox areaScaling { get { return buttons[8] as SettingsCheckbox; } set { buttons[8] = value; } }
 
         public void onLoad(string scene)
         {
@@ -126,20 +144,20 @@ namespace BlasphemousRandomizer.UI
                 return;
 
             // Load config into buttons
-            ((SettingsCheckbox)buttons[0]).setSelected(config.general.teleportationAlwaysUnlocked);
-            ((SettingsCheckbox)buttons[1]).setSelected(config.general.skipCutscenes);
-            ((SettingsCheckbox)buttons[13]).setSelected(config.general.allowHints);
-            ((SettingsCheckbox)buttons[2]).setSelected(config.general.enablePenitence);
-            ((SettingsCheckbox)buttons[3]).setSelected(config.items.lungDamage);
-            ((SettingsCheckbox)buttons[4]).setSelected(config.items.disableNPCDeath);
-            ((SettingsCheckbox)buttons[5]).setSelected(config.items.startWithWheel);
-            ((SettingsCheckbox)buttons[6]).setSelected(config.items.shuffleReliquaries);
-            ((SettingsCheckbox)buttons[7]).setSelected(config.enemies.maintainClass);
-            ((SettingsCheckbox)buttons[8]).setSelected(config.enemies.areaScaling);
-            ((SettingsCyclebox)buttons[9]).setOption(config.items.type);
-            ((SettingsCyclebox)buttons[10]).setOption(config.items.type);
-            ((SettingsCyclebox)buttons[11]).setOption(config.enemies.type);
-            ((SettingsCyclebox)buttons[12]).setOption(config.enemies.type);
+            teleportation.setSelected(config.general.teleportationAlwaysUnlocked);
+            cutscenes.setSelected(config.general.skipCutscenes);
+            hints.setSelected(config.general.allowHints);
+            penitence.setSelected(config.general.enablePenitence);
+            mistDamage.setSelected(config.items.lungDamage);
+            npcDeath.setSelected(config.items.disableNPCDeath);
+            wheel.setSelected(config.items.startWithWheel);
+            reliquaries.setSelected(config.items.shuffleReliquaries);
+            maintainClass.setSelected(config.enemies.maintainClass);
+            areaScaling.setSelected(config.enemies.areaScaling);
+            itemsLeft.setOption(config.items.type);
+            itemsRight.setOption(config.items.type);
+            enemiesLeft.setOption(config.enemies.type);
+            enemiesRight.setOption(config.enemies.type);
 
             // Load config into seed
             currentSeed = config.general.customSeed > 0 ? config.general.customSeed.ToString() : "";
@@ -156,18 +174,18 @@ namespace BlasphemousRandomizer.UI
 
             // Load config from buttons
             MainConfig config = MainConfig.Default();
-            config.general.teleportationAlwaysUnlocked = ((SettingsCheckbox)buttons[0]).getSelected();
-            config.general.skipCutscenes = ((SettingsCheckbox)buttons[1]).getSelected();
-            config.general.allowHints = ((SettingsCheckbox)buttons[13]).getSelected();
-            config.general.enablePenitence = ((SettingsCheckbox)buttons[2]).getSelected();
-            config.items.lungDamage = ((SettingsCheckbox)buttons[3]).getSelected();
-            config.items.disableNPCDeath = ((SettingsCheckbox)buttons[4]).getSelected();
-            config.items.startWithWheel = ((SettingsCheckbox)buttons[5]).getSelected();
-            config.items.shuffleReliquaries = ((SettingsCheckbox)buttons[6]).getSelected();
-            config.enemies.maintainClass = ((SettingsCheckbox)buttons[7]).getSelected();
-            config.enemies.areaScaling = ((SettingsCheckbox)buttons[8]).getSelected();
-            config.items.type = ((SettingsCyclebox)buttons[9]).getOption();
-            config.enemies.type = ((SettingsCyclebox)buttons[11]).getOption();
+            config.general.teleportationAlwaysUnlocked = teleportation.getSelected();
+            config.general.skipCutscenes = cutscenes.getSelected();
+            config.general.allowHints = hints.getSelected();
+            config.general.enablePenitence = penitence.getSelected();
+            config.items.lungDamage = mistDamage.getSelected();
+            config.items.disableNPCDeath = npcDeath.getSelected();
+            config.items.startWithWheel = wheel.getSelected();
+            config.items.shuffleReliquaries = reliquaries.getSelected();
+            config.enemies.maintainClass = maintainClass.getSelected();
+            config.enemies.areaScaling = areaScaling.getSelected();
+            config.items.type = itemsLeft.getOption();
+            config.enemies.type = enemiesLeft.getOption();
 
             // Load config from seed
             config.general.customSeed = currentSeed != "" ? int.Parse(currentSeed) : generatedSeed;
@@ -233,7 +251,6 @@ namespace BlasphemousRandomizer.UI
             currentSlot = slot;
             waiting = true;
             generatedSeed = new System.Random().Next(1, Randomizer.MAX_SEED);
-            Main.Randomizer.LogWarning("Generating new random seed: " + generatedSeed);
             showSettingsMenu(true, true);
             setConfigSettings(MainConfig.Default());
         }
@@ -327,7 +344,7 @@ namespace BlasphemousRandomizer.UI
             mainSection.anchoredPosition = new Vector2(0, 185);
 
             // Set up section buttons
-            buttons = new SettingsElement[14];
+            buttons = new SettingsElement[NUMBER_OF_OPTIONS];
             int top = height / 2 - 5;
             int left = -60;
 
@@ -342,19 +359,19 @@ namespace BlasphemousRandomizer.UI
 
             RectTransform teleportOption = getNewCheckbox("Teleport", generalSection, Main.Randomizer.Localize("tpname"), Main.Randomizer.Localize("tpdesc"), font, 15, 16);
             teleportOption.anchoredPosition = new Vector2(left, top - 70);
-            buttons[0] = teleportOption.GetComponent<SettingsCheckbox>();
+            teleportation = teleportOption.GetComponent<SettingsCheckbox>();
 
             RectTransform cutscenesOption = getNewCheckbox("Cutscenes", generalSection, Main.Randomizer.Localize("ctname"), Main.Randomizer.Localize("ctdesc"), font, 15, 16);
             cutscenesOption.anchoredPosition = new Vector2(left, top - 100);
-            buttons[1] = cutscenesOption.GetComponent<SettingsCheckbox>();
+            cutscenes = cutscenesOption.GetComponent<SettingsCheckbox>();
 
             RectTransform hintsOption = getNewCheckbox("Hints", generalSection, Main.Randomizer.Localize("htname"), Main.Randomizer.Localize("htdesc"), font, 15, 16);
             hintsOption.anchoredPosition = new Vector2(left, top - 130);
-            buttons[13] = hintsOption.GetComponent<SettingsCheckbox>();
+            hints = hintsOption.GetComponent<SettingsCheckbox>();
 
             RectTransform penitenceOption = getNewCheckbox("Penitence", generalSection, Main.Randomizer.Localize("pename"), Main.Randomizer.Localize("pedesc"), font, 15, 16);
             penitenceOption.anchoredPosition = new Vector2(left, top - 160);
-            buttons[2] = penitenceOption.GetComponent<SettingsCheckbox>();
+            penitence = penitenceOption.GetComponent<SettingsCheckbox>();
 
             RectTransform seed = getNewText("Seed", generalSection, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.yellow, TextAnchor.MiddleCenter);
             seed.anchoredPosition = new Vector2(0, top - 25);
@@ -371,28 +388,28 @@ namespace BlasphemousRandomizer.UI
 
             RectTransform lungOption = getNewCheckbox("Lung", itemsSection, Main.Randomizer.Localize("lgname"), Main.Randomizer.Localize("lgdesc"), font, 15, 16);
             lungOption.anchoredPosition = new Vector2(left, top - 70);
-            buttons[3] = lungOption.GetComponent<SettingsCheckbox>();
+            mistDamage = lungOption.GetComponent<SettingsCheckbox>();
 
             RectTransform deathOption = getNewCheckbox("Death", itemsSection, Main.Randomizer.Localize("dename"), Main.Randomizer.Localize("dedesc"), font, 15, 16);
             deathOption.anchoredPosition = new Vector2(left, top - 100);
-            buttons[4] = deathOption.GetComponent<SettingsCheckbox>();
+            npcDeath = deathOption.GetComponent<SettingsCheckbox>();
 
             RectTransform wheelOption = getNewCheckbox("Wheel", itemsSection, Main.Randomizer.Localize("whname"), Main.Randomizer.Localize("whdesc"), font, 15, 16);
             wheelOption.anchoredPosition = new Vector2(left, top - 130);
-            buttons[5] = wheelOption.GetComponent<SettingsCheckbox>();
+            wheel = wheelOption.GetComponent<SettingsCheckbox>();
 
             RectTransform reliqOption = getNewCheckbox("Reliquaries", itemsSection, Main.Randomizer.Localize("rqname"), Main.Randomizer.Localize("rqdesc"), font, 15, 16);
             reliqOption.anchoredPosition = new Vector2(left, top - 160);
-            buttons[6] = reliqOption.GetComponent<SettingsCheckbox>();
+            reliquaries = reliqOption.GetComponent<SettingsCheckbox>();
 
             RectTransform itemsType = getNewCyclebox("Type", itemsSection, font, 15, 16,
                 new string[] { Main.Randomizer.Localize("dstype"), Main.Randomizer.Localize("entype") },
                 new string[] { Main.Randomizer.Localize("dstype") + " - " + Main.Randomizer.Localize("dsides"),
                                Main.Randomizer.Localize("entype") + " - " + Main.Randomizer.Localize("endesc") },
-                new SettingsElement[] { buttons[3], buttons[4], buttons[5], buttons[6] });
+                new SettingsElement[] { mistDamage, npcDeath, wheel, reliquaries });
             itemsType.anchoredPosition = new Vector2(0, top - 25);
-            buttons[9] = itemsType.GetChild(0).GetComponent<SettingsCyclebox>();
-            buttons[10] = itemsType.GetChild(1).GetComponent<SettingsCyclebox>();
+            itemsLeft = itemsType.GetChild(0).GetComponent<SettingsCyclebox>();
+            itemsRight = itemsType.GetChild(1).GetComponent<SettingsCyclebox>();
 
             // Enemies section
 
@@ -405,21 +422,21 @@ namespace BlasphemousRandomizer.UI
 
             RectTransform classOption = getNewCheckbox("Class", enemiesSection, Main.Randomizer.Localize("clname"), Main.Randomizer.Localize("cldesc"), font, 15, 16);
             classOption.anchoredPosition = new Vector2(left, top - 70);
-            buttons[7] = classOption.GetComponent<SettingsCheckbox>();
+            maintainClass = classOption.GetComponent<SettingsCheckbox>();
 
             RectTransform scalingOption = getNewCheckbox("Scaling", enemiesSection, Main.Randomizer.Localize("scname"), Main.Randomizer.Localize("scdesc"), font, 15, 16);
             scalingOption.anchoredPosition = new Vector2(left, top - 100);
-            buttons[8] = scalingOption.GetComponent<SettingsCheckbox>();
+            areaScaling = scalingOption.GetComponent<SettingsCheckbox>();
 
             RectTransform enemiesType = getNewCyclebox("Type", enemiesSection, font, 15, 16,
                 new string[] { Main.Randomizer.Localize("dstype"), Main.Randomizer.Localize("sftype"), Main.Randomizer.Localize("rdtype") },
                 new string[] { Main.Randomizer.Localize("dstype") + " - " + Main.Randomizer.Localize("dsedes"),
                                Main.Randomizer.Localize("sftype") + " - " + Main.Randomizer.Localize("sfdesc"),
                                Main.Randomizer.Localize("rdtype") + " - " + Main.Randomizer.Localize("rddesc") },
-                new SettingsElement[] { buttons[7], buttons[8] });
+                new SettingsElement[] { maintainClass, areaScaling });
             enemiesType.anchoredPosition = new Vector2(0, top - 25);
-            buttons[11] = enemiesType.GetChild(0).GetComponent<SettingsCyclebox>();
-            buttons[12] = enemiesType.GetChild(1).GetComponent<SettingsCyclebox>();
+            enemiesLeft = enemiesType.GetChild(0).GetComponent<SettingsCyclebox>();
+            enemiesRight = enemiesType.GetChild(1).GetComponent<SettingsCyclebox>();
 
             // Doors section
 
