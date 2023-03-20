@@ -1,7 +1,8 @@
 # Changelog
 
 ### v1.4.0 (Modding API)
-- Added Spanish & Chinese localization
+- Improved settings menu UI
+- Added Spanish, Chinese, & French localization
 - Added autotracking
 - Fixed Gemino missable item bug
 - Fixed Alstasgracias items bug
