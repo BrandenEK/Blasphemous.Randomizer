@@ -18,6 +18,7 @@ using Gameplay.GameControllers.Enemies.GhostKnight;
 using Gameplay.GameControllers.Enemies.GhostKnight.AI;
 using Gameplay.GameControllers.Enemies.CauldronNun.AI;
 using Gameplay.GameControllers.Enemies.ChimeRinger.AI;
+using Gameplay.GameControllers.Enemies.LanceAngel;
 using Gameplay.GameControllers.Effects.Entity;
 using UnityEngine;
 using System.Collections.Generic;
@@ -169,11 +170,24 @@ namespace BlasphemousRandomizer.Patches
             }
         }
 
-        // Prevent Jar Thrower loading error
+        // Prevent enemy spawn errors
         [HarmonyPatch(typeof(JarThrower), "OnPlayerSpawn")]
         public class JarThrower_Patch
         {
             public static bool Prefix(JarThrower __instance)
+            {
+                if (__instance.Behaviour == null)
+                {
+                    Object.Destroy(__instance); // I seem to remember trying to make this destroy the whole object and that just made it worse
+                    return false;
+                }
+                return true;
+            }
+        }
+        [HarmonyPatch(typeof(LanceAngel), "OnPlayerSpawn")]
+        public class LanceAngel_Patch
+        {
+            public static bool Prefix(LanceAngel __instance)
             {
                 if (__instance.Behaviour == null)
                 {
