@@ -1,0 +1,15 @@
+{
+	"DisabledObjects":
+	[
+		"LOGIC/INTERACTABLES/ACT_PenitenceAltar"
+	],
+	"AddedObjects":
+	[
+		{
+			"Type": "CollectibleItem",
+			"Id": "QI40",
+			"XPos": 0,
+			"YPos": 0
+		}
+	]
+}
