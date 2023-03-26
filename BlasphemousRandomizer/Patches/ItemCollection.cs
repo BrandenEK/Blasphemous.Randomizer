@@ -4,7 +4,6 @@ using Framework.Managers;
 using Framework.Inventory;
 using Tools.Playmaker2.Action;
 using HutongGames.PlayMaker;
-using Tools.Level.Utils;
 using Gameplay.GameControllers.Penitent;
 using Gameplay.GameControllers.Entities;
 
@@ -17,6 +16,13 @@ namespace BlasphemousRandomizer.Patches
         public static bool Prefix(string ___item)
         {
             Main.Randomizer.Log("InteractableInvAdd(" + ___item + ")");
+
+            if (!Main.Randomizer.data.itemLocations.ContainsKey(___item))
+            {
+                Main.Randomizer.LogWarning($"Location '{___item}' doesn't exist!");
+                return true;
+            }
+
             Main.Randomizer.itemShuffler.giveItem(___item, true);
             return false;
         }
