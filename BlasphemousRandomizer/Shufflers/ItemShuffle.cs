@@ -45,6 +45,10 @@ namespace BlasphemousRandomizer.Shufflers
             // This has to be done in here to prevent duplication in multiplayer
             if (locationId.StartsWith("Sword["))
                 Core.Logic.Penitent.Stats.MeaCulpa.Upgrade();
+            // If picking up one of the custom items in place of Holy Visage altar, also set altar flag
+            else if (locationId == "QI38") Core.Events.SetFlag("ATTRITION_ALTAR_DONE", true, false);
+            else if (locationId == "QI39") Core.Events.SetFlag("CONTRITION_ALTAR_DONE", true, false);
+            else if (locationId == "QI40") Core.Events.SetFlag("COMPUNCTION_ALTAR_DONE", true, false);
 
             // Get the item
             Item item = getItemAtLocation(locationId);

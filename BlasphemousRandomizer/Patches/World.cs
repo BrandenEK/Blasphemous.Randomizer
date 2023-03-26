@@ -55,22 +55,6 @@ namespace BlasphemousRandomizer.Patches
             }
         }
 
-        // Disable holy visage altars
-        [HarmonyPatch(typeof(Interactable), "OnAwake")]
-        public class InteractableAltar_Patch
-        {
-            public static void Postfix(Interactable __instance)
-            {
-                //Main.Randomizer.Log($"{__instance.transform.parent.name} ({__instance.name}): {__instance.GetPersistenID()}");
-                string scene = Core.LevelManager.currentLevel.LevelName;
-
-                if ((scene == "D01Z04S19" || scene == "D02Z03S21" || scene == "D03Z03S16") && Main.Randomizer.data.interactableIds.ContainsKey(__instance.GetPersistenID()))
-                {
-                    __instance.gameObject.SetActive(false);
-                }
-            }
-        }
-
         // Change target door for door shuffle
         [HarmonyPatch(typeof(Door), "OnDoorActivated")]
         public class Door_Patch
