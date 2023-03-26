@@ -1,6 +1,8 @@
 # Changelog
 
 ### v1.4.0 (Modding API)
+- Added collectible items in Holy Visage rooms
+- Display unique id for each seed
 - Improved settings menu UI
 - Added Spanish, Chinese, & French localization
 - Added autotracking
