@@ -1,0 +1,56 @@
+[
+	{
+		"Id": "QI106",
+		"Name": "Starting gift",
+		"Hint": "* is already owned",
+		"Type": "item",
+		"Room": "D17Z01S01"
+	},
+	{
+		"Id": "RESCUED_CHERUB_06",
+		"Name": "Starting room cherub",
+		"Hint": "* resides in the Brotherhood",
+		"Type": "cherub",
+		"OriginalItem": "CH",
+		"Room": "D17Z01S01",
+		"logic": "D17Z01S01[Cherubs1] || cherubs ^ 0x40 || blood && (root || cherubs ^ 0x20)"
+	},
+	{
+		"Id": "RB204",
+		"Name": "Starting room ledge",
+		"Hint": "* resides in the Brotherhood",
+		"Type": "item",
+		"Room": "D17Z01S01",
+		"Logic": "D17Z01S01[Cherubs3]"
+	},
+	{
+		"Id": "RE01",
+		"Name": "Chamber of the Eldest Brother",
+		"Hint": "* is locked away in a room",
+		"Type": "item",
+		"Room": "D17BZ01S01"
+	},
+	{
+		"Id": "Sword[D17Z01S08]",
+		"Name": "Mea Culpa shrine",
+		"Hint": "A Mea Culpa Shrine holds *",
+		"Type": "sword",
+		"OriginalItem": "SU",
+		"Room": "D17Z01S08"
+	},
+	{
+		"Id": "CO25",
+		"Name": "Spike room",
+		"Hint": "* resides in the Brotherhood",
+		"Type": "item",
+		"Room": "D17BZ02S01"
+	},
+	{
+		"Id": "PR203",
+		"Name": "Outside church",
+		"Hint": "* resides in the Brotherhood",
+		"Type": "item",
+		"Room": "D17Z01S14",
+		"Logic": "D17Z01S14[W] || D17Z01S14[E] && blood"
+	},
+]
