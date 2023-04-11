@@ -46,7 +46,7 @@ namespace BlasphemousRandomizer
 			{
 				List<ItemLocation> tempItemLocations = fileUtil.jsonObject<List<ItemLocation>>(jsonItemLocations);
 				for (int i = 0; i < tempItemLocations.Count; i++)
-					itemLocations.Add(tempItemLocations[i].id, tempItemLocations[i]);
+					itemLocations.Add(tempItemLocations[i].Id, tempItemLocations[i]);
 				Main.Randomizer.Log($"Loaded {itemLocations.Count} item locations!");
 			}
 			else { Main.Randomizer.LogError("Error: Failed to load item locations!"); valid = false; }
@@ -79,7 +79,7 @@ namespace BlasphemousRandomizer
 			{
 				List<DoorLocation> tempDoorLocations = fileUtil.jsonObject<List<DoorLocation>>(jsonDoors);
 				for (int i = 0; i < tempDoorLocations.Count; i++)
-					doorLocations.Add(tempDoorLocations[i].id, tempDoorLocations[i]);
+					doorLocations.Add(tempDoorLocations[i].Id, tempDoorLocations[i]);
 				Main.Randomizer.Log($"Loaded {doorLocations.Count} doors!");
 			}
 			else { Main.Randomizer.LogError("Error: Failed to load doors!"); valid = false; }

@@ -147,6 +147,90 @@
             <param name="obj">The object to convert into a json string</param>
             <returns>The json string created from the object</returns>
         </member>
+        <member name="T:ModdingAPI.InputHandler">
+            <summary>
+            A class for handling player input
+            </summary>
+        </member>
+        <member name="T:ModdingAPI.InputHandler.ButtonCode">
+            <summary>
+            The button code for each input action
+            </summary>
+        </member>
+        <member name="T:ModdingAPI.InputHandler.AxisCode">
+            <summary>
+            The axis code for each input action
+            </summary>
+        </member>
+        <member name="M:ModdingAPI.InputHandler.GetButton(ModdingAPI.InputHandler.ButtonCode)">
+            <summary>
+            Checks whether a button is currently being held down
+            </summary>
+            <param name="button">The button code to check for</param>
+            <returns>The button status</returns>
+        </member>
+        <member name="M:ModdingAPI.InputHandler.GetButtonDown(ModdingAPI.InputHandler.ButtonCode)">
+            <summary>
+            Checks whether a button was pressed during this frame
+            </summary>
+            <param name="button">The button code to check for</param>
+            <returns>The button status</returns>
+        </member>
+        <member name="M:ModdingAPI.InputHandler.GetButtonUp(ModdingAPI.InputHandler.ButtonCode)">
+            <summary>
+            Checks whether a button was released during this frame
+            </summary>
+            <param name="button">The button code to check for</param>
+            <returns>The button status</returns>
+        </member>
+        <member name="M:ModdingAPI.InputHandler.GetAxis(ModdingAPI.InputHandler.AxisCode,System.Boolean)">
+            <summary>
+            Checks the direction that an axis is held at from -1 to 1
+            </summary>
+            <param name="axis">The axis code the check for</param>
+            <param name="useRawInput">Whether to use the raw axis data</param>
+            <returns>The axis status</returns>
+        </member>
+        <member name="M:ModdingAPI.InputHandler.GetAxisPrevious(ModdingAPI.InputHandler.AxisCode,System.Boolean)">
+            <summary>
+            Checks the direction that an axis was held at on the last frame from -1 to 1
+            </summary>
+            <param name="axis">The axis code the check for</param>
+            <param name="useRawInput">Whether to use the raw axis data</param>
+            <returns>The axis status</returns>
+        </member>
+        <member name="M:ModdingAPI.InputHandler.GetAxisTimeActive(ModdingAPI.InputHandler.AxisCode,System.Boolean)">
+            <summary>
+            Checks the time that an axis has been held
+            </summary>
+            <param name="axis">The axis code the check for</param>
+            <param name="useRawInput">Whether to use the raw axis data</param>
+            <returns>The axis status</returns>
+        </member>
+        <member name="T:ModdingAPI.ItemModder">
+            <summary>
+            A collection of methods used to work with items
+            </summary>
+        </member>
+        <member name="M:ModdingAPI.ItemModder.GetItemTypeFromId(System.String)">
+            <summary>
+            Gets the item type based off of the item's prefix
+            </summary>
+            <param name="id">The id of the item</param>
+            <returns>The type of the item</returns>
+        </member>
+        <member name="M:ModdingAPI.ItemModder.AddAndDisplayItem(System.String)">
+            <summary>
+            Adds an item to the inventory, or tears if it is already owned, and displays the item
+            </summary>
+            <param name="itemId">The id of the item to add</param>
+        </member>
+        <member name="M:ModdingAPI.ItemModder.RemoveAndDisplayItem(System.String)">
+            <summary>
+            Removes an item from the inventory, and displays the item if it was previously owned
+            </summary>
+            <param name="itemId">The id of the item to remove</param>
+        </member>
         <member name="T:ModdingAPI.Items.ModItem">
             <summary>
             An abstract representation of a custom item
@@ -358,6 +442,11 @@
         <member name="P:ModdingAPI.Mod.FileUtil">
             <summary>
             The file utility for performing various IO operations
+            </summary>
+        </member>
+        <member name="P:ModdingAPI.Mod.Input">
+            <summary>
+            The utility class for checking player input
             </summary>
         </member>
         <member name="P:ModdingAPI.Mod.DisableFileLogging">

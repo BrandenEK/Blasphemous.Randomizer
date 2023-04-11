@@ -38,17 +38,14 @@
     <Reference Include="BepInEx">
       <HintPath>..\lib\BepInEx.dll</HintPath>
     </Reference>
+    <Reference Include="LogicParser">
+      <HintPath>..\lib\LogicParser.dll</HintPath>
+    </Reference>
     <Reference Include="ModdingAPI">
       <HintPath>..\lib\ModdingAPI.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="PlayMaker">
       <HintPath>..\lib\PlayMaker.dll</HintPath>
-    </Reference>
-    <Reference Include="Rewired_Core">
-      <HintPath>..\lib\Rewired_Core.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization">
       <HintPath>..\lib\Sirenix.Serialization.dll</HintPath>

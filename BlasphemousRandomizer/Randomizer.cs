@@ -265,21 +265,21 @@ namespace BlasphemousRandomizer
         // Keyboard input
         protected override void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Keypad6) && inGame)
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad6) && inGame)
             {
                 LogDisplay($"{Localize("currsd")}: {seed} [{ComputeFinalSeed(seed, gameConfig.items.type, gameConfig.items.lungDamage, gameConfig.items.startWithWheel, gameConfig.items.shuffleReliquaries)}]");
             }
-            else if (Input.GetKeyDown(KeyCode.Keypad7))
+            else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad7))
             {
                 //enemyShuffler.Shuffle(new System.Random().Next());
                 //UIController.instance.ShowPopUp("Shuffling enemies temporarily!", "", 0, false);
             }
-            else if (Input.GetKeyDown(KeyCode.Keypad8))
+            else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad8))
             {
                 //LogFile(EnemyShuffle.enemyData);
                 //tracker.Connect();
             }
-            else if (Input.GetKeyDown(KeyCode.Keypad9))
+            else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad9))
             {
                 
             }

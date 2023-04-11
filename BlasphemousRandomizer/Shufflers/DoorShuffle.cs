@@ -6,25 +6,9 @@ namespace BlasphemousRandomizer.Shufflers
 {
     public class DoorShuffle : IShuffle
     {
-        private Dictionary<string, string> newDoors;
         private DoorFiller filler;
 
-        public bool getNewDoor(string doorId, out string targetScene, out string targetId)
-        {
-            if (newDoors != null && newDoors.ContainsKey(doorId))
-            {
-                Main.Randomizer.Log("Processing door " + doorId);
-                string targetDoorId = newDoors[doorId];
-                int bracket = targetDoorId.IndexOf('[');
-
-                targetScene = targetDoorId.Substring(0, bracket);
-                targetId = targetDoorId.Substring(bracket + 1, targetDoorId.Length - bracket - 2);
-                return true;
-            }
-            targetScene = "";
-            targetId = "";
-            return false;
-        }
+        
 
         public void Init()
         {
@@ -33,7 +17,7 @@ namespace BlasphemousRandomizer.Shufflers
 
         public void Reset()
         {
-            newDoors = null;
+            //newDoors = null;
         }
 
         public void Shuffle(int seed)

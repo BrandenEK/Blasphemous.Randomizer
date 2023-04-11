@@ -9,11 +9,30 @@ namespace BlasphemousRandomizer.Shufflers
     public class ItemShuffle : IShuffle
     {
         private Dictionary<string, string> newItems;
+        private Dictionary<string, string> newDoors;
         private ItemFiller filler;
 
         private Item lastItem;
 
         public bool validSeed { get { return newItems != null && newItems.Count > 0; } }
+
+        // Returns the target door given a door id
+        public bool getNewDoor(string doorId, out string targetScene, out string targetId)
+        {
+            if (newDoors != null && newDoors.ContainsKey(doorId))
+            {
+                Main.Randomizer.Log("Processing door " + doorId);
+                string targetDoorId = newDoors[doorId];
+                int bracket = targetDoorId.IndexOf('[');
+
+                targetScene = targetDoorId.Substring(0, bracket);
+                targetId = targetDoorId.Substring(bracket + 1, targetDoorId.Length - bracket - 2);
+                return true;
+            }
+            targetScene = "";
+            targetId = "";
+            return false;
+        }
 
         // Gets the item held at the specified location
         public Item getItemAtLocation(string locationId)
@@ -96,8 +115,9 @@ namespace BlasphemousRandomizer.Shufflers
                 return;
 
             newItems = new Dictionary<string, string>();
+            newDoors = new Dictionary<string, string>();
             int attempt = 0, maxAttempts = 30;
-            while (!filler.Fill(seed + attempt, Main.Randomizer.gameConfig.items, newItems) && attempt < maxAttempts)
+            while (!filler.Fill(seed + attempt, Main.Randomizer.gameConfig.items, newDoors, newItems) && attempt < maxAttempts)
             {
                 Main.Randomizer.LogError($"Seed {seed + attempt} was invalid! Trying next...");
                 attempt++;

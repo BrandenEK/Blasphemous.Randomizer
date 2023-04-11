@@ -1,26 +1,16 @@
 ﻿namespace BlasphemousRandomizer.Structures
 {
+    [System.Serializable]
     public class ItemLocation
     {
-        // Permanent data
-        public string id;
-        public string originalItem;
-        public string type;
-        public string requirements;
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Hint { get; set; }
 
-        // Temporary data
-        public Item item;
+        public string Type { get; set; }
+        public string OriginalItem { get; set; }
 
-        //Until json
-        public delegate bool reachable(InventoryData data);
-        public reachable isReachable;
-
-        public ItemLocation(string id, string originalItem, string type, reachable isReachable)
-        {
-            this.id = id;
-            this.originalItem = originalItem;
-            this.type = type;
-            this.isReachable = isReachable;
-        }
+        public string Room { get; set; }
+        public string Logic { get; set; }
     }
 }

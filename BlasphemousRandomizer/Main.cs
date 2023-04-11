@@ -3,7 +3,7 @@
 namespace BlasphemousRandomizer
 {
     [BepInPlugin(MOD_ID, MOD_NAME, MOD_VERSION)]
-    [BepInDependency("com.damocles.blasphemous.modding-api", "1.3.1")]
+    [BepInDependency("com.damocles.blasphemous.modding-api", "1.3.2")]
     [BepInProcess("Blasphemous.exe")]
     public class Main : BaseUnityPlugin
     {

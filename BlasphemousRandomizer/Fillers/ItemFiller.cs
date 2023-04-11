@@ -1,287 +1,205 @@
 ﻿using System.Collections.Generic;
 using BlasphemousRandomizer.Config;
 using BlasphemousRandomizer.Structures;
+using LogicParser;
 
 namespace BlasphemousRandomizer.Fillers
 {
     public class ItemFiller : Filler
     {
-		private ItemConfig config;
-		private string[] lowestItems;
-
-        public ItemFiller()
+        private void keep()
         {
-			lowestItems = new string[] { "Tears[250]", "Tears[300]", "Tears[500]" };
-        }
-
-        public bool Fill(int seed, ItemConfig config, Dictionary<string, string> output)
-        {
-            initialize(seed);
-			this.config = config;
-
-            // Create lists of locations
-            List<ItemLocation> locations = new List<ItemLocation>(Main.Randomizer.data.itemLocations.Values);
-            List<ItemLocation> vanillaLocations = new List<ItemLocation>();
-
             // Create lists of items
-			List<Item> items = new List<Item>();
-			foreach (Item item in Main.Randomizer.data.items.Values)
+            List<Item> items = new List<Item>();
+            foreach (Item item in Main.Randomizer.data.items.Values)
             {
                 //if (item is ProgressiveItem)
                 //    shuffleItemOrder(item as ProgressiveItem);
 
-				if (item.count == 1)
-					items.Add(item);
-				else
-					for (int i = 0; i < item.count; i++)
-						items.Add(item);
+                if (item.count == 1)
+                    items.Add(item);
+                else
+                    for (int i = 0; i < item.count; i++)
+                        items.Add(item);
             }
             List<Item> progressionItems = new List<Item>();
 
-			// Remove low tears rewards and replace them with new items
-			replaceNewItems(items);
-			if (locations.Count != items.Count)
-				return false;
+            // Remove low tears rewards and replace them with new items
+            //replaceNewItems(items);
 
-			// Place vanilla items & get list of locations that are vanilla
-			fillVanillaItems(locations, vanillaLocations, items);
-            // Get list of items that are progression
-            getProgressionItems(items, progressionItems);
+            lowestItems = new string[] { "Tears[250]", "Tears[300]", "Tears[500]" };
 
-			// Fill all progression items
-			fillProgressionItems(locations, vanillaLocations, progressionItems);
-			if (progressionItems.Count > 0)
-				return false;
+            // For each new item that is to be added, remove the lowest tear reward
+            //private void replaceNewItems(List<Item> items)
+            //{
+            //    // For more items, need to add more to lowest array
+            //    // Also won't work if some of these are set to vanilla
+            //    int removed = 0;
 
-			// Fill all extra items
-			fillExtraItems(locations, items);
-			if (items.Count > 0)
-				return false;
+            //    // Reliquaries
+            //    if (config.shuffleReliquaries)
+            //    {
+            //        for (int i = 0; i < 3; i++)
+            //        {
+            //            items.RemoveAt(getItemIdx(items, lowestItems[removed]));
+            //            removed++;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        items.RemoveAt(getItemIdx(items, "RB101"));
+            //        items.RemoveAt(getItemIdx(items, "RB102"));
+            //        items.RemoveAt(getItemIdx(items, "RB103"));
+            //    }
 
-			// Fill output dictionary
-			output.Clear();
-			//for (int i = 0; i < locations.Count; i++)
-   //         {
-			//	output.Add(locations[i].id, locations[i].item);
-   //         }
-
-			// Remove temporary location data
-			for (int i = 0; i < locations.Count; i++)
-            {
-				locations[i].item = null;
-            }
-
-			// Seed is filled & validated
-			return true;
+            //    // Dash, Wall climb
+            //}
         }
 
-		// For each new item that is to be added, remove the lowest tear reward
-		private void replaceNewItems(List<Item> items)
+		private ItemConfig config;
+		private string[] lowestItems;
+
+        private const string FIRST_DOOR = "D17Z01S01[E]";
+
+        public bool Fill(int seed, ItemConfig config, Dictionary<string, string> mappedDoors, Dictionary<string, string> mappedItems)
         {
-			// For more items, need to add more to lowest array
-			// Also won't work if some of these are set to vanilla
-			int removed = 0;
-			
-			// Reliquaries
-			if (config.shuffleReliquaries)
+            // Initialize seed with empty lists
+            initialize(seed);
+            BlasphemousInventory inventory = new BlasphemousInventory();
+            Dictionary<string, ItemLocation> allItemLocations = Main.Randomizer.data.itemLocations;
+            Dictionary<string, DoorLocation> allDoorLocations = Main.Randomizer.data.doorLocations;
+
+            List<DoorLocation> visibleDoors = new List<DoorLocation>();
+            List<ItemLocation> visibleItems = new List<ItemLocation>();
+            List<Item> progressionItems = new List<Item>()
             {
-				for (int i = 0; i < 3; i++)
-                {
-					items.RemoveAt(getItemIdx(items, lowestItems[removed]));
-					removed++;
-                }
+                new Item("", "", "", 0, false, 0){id = "RE01"},
+                new Item("", "", "", 0, false, 0){id = "RE05"},
+                new Item("", "", "", 0, false, 0){id = "RE07"},
+                new Item("", "", "", 0, false, 0){id = "RE10"},
+                new Item("", "", "", 0, false, 0){id = "QI58"},
+                new Item("", "", "", 0, false, 0){id = "QI203"},
+                new Item("", "", "", 0, false, 0){id = "QI204"},
+            };
+            shuffleList(progressionItems);
+
+            // Make sure that there are the same number of items as locations
+            if (allItemLocations.Count != progressionItems.Count)
+                throw new System.Exception("Number of items is different than the number of locations!");
+            int itemsRemaining = allItemLocations.Count;
+            int doorsRemaining = allDoorLocations.Count;
+
+            // Sort all item locations & doors into rooms
+            Dictionary<string, List<string>> roomObjects = new Dictionary<string, List<string>>();
+            foreach (ItemLocation itemLoc in allItemLocations.Values)
+            {
+                string scene = itemLoc.Room;
+                if (!roomObjects.ContainsKey(scene))
+                    roomObjects.Add(scene, new List<string>());
+                roomObjects[scene].Add(itemLoc.Id);
             }
-            else
+            foreach (DoorLocation door in allDoorLocations.Values)
             {
-				items.RemoveAt(getItemIdx(items, "RB101"));
-				items.RemoveAt(getItemIdx(items, "RB102"));
-				items.RemoveAt(getItemIdx(items, "RB103"));
-			}
+                string scene = door.Room;
+                if (!roomObjects.ContainsKey(scene))
+                    roomObjects.Add(scene, new List<string>());
+                roomObjects[scene].Add(door.Id);
+            }
 
-			// Dash, Wall climb
-        }
-
-        // Assign vanilla items & fill vanillaLocations list
-        private void fillVanillaItems(List<ItemLocation> locations, List<ItemLocation> vanillaLocations, List<Item> items)
-        {
-			string[] randomLocations;
-			if (config.type > 0)
-				randomLocations = new string[] { "item", "cherub", "lady", "oil", "sword", "blessing", "guiltArena", "tirso", "miriam", "redento", "jocinero", "altasgracias", "tentudia", "gemino", "guiltBead", "ossuary", "boss", "visage", "mask", "herb", "church", "shop", "thorn", "candle", "viridiana", "cleofas", "crisanta", "skill" };
-			else
-				randomLocations = new string[0];
-
-            for (int i = 0; i < locations.Count; i++)
+            // Add first room to visible list
+            inventory.AddItem(FIRST_DOOR);
+            foreach (string obj in roomObjects[allDoorLocations[FIRST_DOOR].Room])
             {
-				if (!Main.arrayContains(randomLocations, locations[i].type))
+                if (obj[0] == 'D')
                 {
-					// If this location is vanilla, set its item to original game item
-					int vanillaIdx = getItemIdx(items, locations[i].originalItem);
-					if (vanillaIdx >= 0)
-                    {
-						locations[i].item = items[vanillaIdx];
-						if (items[vanillaIdx].progression)
-							vanillaLocations.Add(locations[i]);
-						items.RemoveAt(vanillaIdx);
-					}
+                    DoorLocation door = allDoorLocations[obj];
+                    if (door.Direction != 5)
+                        visibleDoors.Add(door);
                 }
                 else
                 {
-					// If starting gift location is random & start with wheel is enabled
-					if (config.startWithWheel && locations[i].id == "QI106")
+                    visibleItems.Add(allItemLocations[obj]);
+                }
+            }
+
+            // While there are still doors or items to place, place them
+            while (itemsRemaining > 0 || doorsRemaining > 0)
+            {
+                // Continue connecting and processing new doors until no more are reachable
+                Stack<DoorLocation> newlyFoundDoors = new Stack<DoorLocation>(visibleDoors);
+                visibleDoors.Clear();
+                while (newlyFoundDoors.Count > 0)
+                {
+                    DoorLocation enterDoor = newlyFoundDoors.Pop();
+                    if (mappedDoors.ContainsKey(enterDoor.Id)) continue;
+
+                    if (enterDoor.Logic == null || Parser.EvaluateExpression(enterDoor.Logic, inventory))
                     {
-						int wheelIdx = getItemIdx(items, "RB203");
-						if (wheelIdx >= 0)
+                        // Connect the door and add to output
+                        DoorLocation exitDoor = allDoorLocations[enterDoor.OriginalDoor];
+                        mappedDoors.Add(enterDoor.Id, exitDoor.Id);
+                        mappedDoors.Add(exitDoor.Id, enterDoor.Id);
+                        inventory.AddItem(enterDoor.Id);
+                        inventory.AddItem(exitDoor.Id);
+                        doorsRemaining -= 2;
+
+                        // Add everything in the new room
+                        foreach (string obj in roomObjects[exitDoor.Room])
                         {
-							locations[i].item = items[wheelIdx];
-							vanillaLocations.Add(locations[i]);
-							items.RemoveAt(wheelIdx);
+                            if (obj[0] == 'D')
+                            {
+                                // If this door hasn't already been processed, make it visible
+                                DoorLocation newDoor = allDoorLocations[obj];
+                                if (!mappedDoors.ContainsKey(newDoor.Id) && newDoor.Direction != 5)
+                                {
+                                    newlyFoundDoors.Push(newDoor);
+                                }
+                            }
+                            else
+                            {
+                                // If this item location is new, add it to the visible list
+                                ItemLocation itemLocation = allItemLocations[obj];
+                                if (!mappedItems.ContainsKey(itemLocation.Id) && !visibleItems.Contains(itemLocation))
+                                {
+                                    visibleItems.Add(itemLocation);
+                                }
+                            }
                         }
                     }
+                    else
+                    {
+                        // Add to visible doors, but still not reachable yet
+                        if (!visibleDoors.Contains(enterDoor))
+                            visibleDoors.Add(enterDoor);
+                    }
                 }
-            }
-        }
 
-		// Really slow, but works for now
-		private int getItemIdx(List<Item> items, string itemName)
-        {
-			for (int i = 0; i < items.Count; i++)
-            {
-				if (items[i].id == itemName)
-					return i;
-            }
-			return -1;
-        }
-        
-        // Fill progression items list while removing them from the items list
-        private void getProgressionItems(List<Item> items, List<Item> progressionItems)
-        {
-            for (int i = 0; i < items.Count; i++)
-            {
-                if (items[i].progression)
+                // Now that all reachable doors have been processed, place an item at a random reachable location
+                List<ItemLocation> reachableLocations = new List<ItemLocation>();
+                foreach (ItemLocation itemLocation in visibleItems)
                 {
-                    progressionItems.Add(items[i]);
-                    items.RemoveAt(i);
-                    i--;
+                    if (itemLocation.Logic == null || Parser.EvaluateExpression(itemLocation.Logic, inventory))
+                        reachableLocations.Add(itemLocation);
                 }
-            }
-        }
-
-        // Place all progression items into a random reachable location
-        private void fillProgressionItems(List<ItemLocation> locations, List<ItemLocation> vanillaLocations, List<Item> progressionItems)
-        {
-            List<ItemLocation> reachableLocations = new List<ItemLocation>();
-            List<Item> itemsOwned = new List<Item>();
-            shuffleList(progressionItems);
-
-            // Find holy wounds & move them to the back
-            prioritizeRewards(progressionItems);
-
-            findReachable(locations, vanillaLocations, reachableLocations, itemsOwned);
-            while (reachableLocations.Count > 0 && progressionItems.Count > 0)
-            {
-                int idx = rand(reachableLocations.Count);
-                ItemLocation loc = reachableLocations[idx];
-                Item item = progressionItems[progressionItems.Count - 1];
-                loc.item = item;
-                itemsOwned.Add(item);
-                progressionItems.RemoveAt(progressionItems.Count - 1);
-                findReachable(locations, vanillaLocations, reachableLocations, itemsOwned);
-            }
-        }
-
-        // Place all remaining items into random locations
-        private void fillExtraItems(List<ItemLocation> locations, List<Item> items)
-        {
-            shuffleList(locations);
-            for (int i = 0; i < locations.Count; i++)
-            {
-                if (locations[i].item != null) continue;
-                locations[i].item = items[items.Count - 1];
-				items.RemoveAt(items.Count - 1);
-            }
-        }
-
-        // Fill reachableLocations list with locations that are reachable with the current items owned
-        private void findReachable(List<ItemLocation> locations, List<ItemLocation> vanillaLocations, List<ItemLocation> reachableLocations, List<Item> itemsOwned)
-        {
-            List<Item> newItems = new List<Item>();
-            InventoryData data;
-
-            while (true)
-            {
-                data = calculateItemData(itemsOwned);
-                checkVanillaLocations(vanillaLocations, newItems, data);
-                if (newItems.Count == 0)
-                    break;
-                itemsOwned.AddRange(newItems);
-            }
-
-            reachableLocations.Clear();
-            for (int i = 0; i < locations.Count; i++)
-            {
-                if (locations[i].item == null && locations[i].isReachable(data))
-                    reachableLocations.Add(locations[i]);
-            }
-        }
-
-        // Fill out the item data based on the items owned
-        private InventoryData calculateItemData(List<Item> itemsOwned)
-        {
-            InventoryData data = new InventoryData();
-
-            for (int i = 0; i < itemsOwned.Count; i++)
-            {
-                data.addItem(itemsOwned[i]);
-            }
-            data.lungDamage = config.lungDamage || data.lung;
-            if (data.fervourLevel < 2)
-                data.cherubBits &= ~0x12000;
-
-            return data;
-        }
-
-        // Place certain items at the back of the list so they are seeded first
-        private void prioritizeRewards(List<Item> progressionItems)
-        {
-            int count = 0;
-            for (int i = 0; i < progressionItems.Count - count; i++)
-            {
-                Item item = progressionItems[i];
-                if (item.type == 5 && (item.id == "QI38" || item.id == "QI39" || item.id == "QI40"))
+                if (reachableLocations.Count == 0)
                 {
-                    progressionItems.RemoveAt(i);
-                    progressionItems.Add(item);
-                    count++;
-                    i--;
+                    return false;
                 }
-            }
-        }
 
-        // Check if any new vanilla locations are reachable and remove them
-        private void checkVanillaLocations(List<ItemLocation> vanillaLocations, List<Item> newItems, InventoryData data)
-        {
-            newItems.Clear();
-            for (int i = 0; i < vanillaLocations.Count; i++)
-            {
-                if (vanillaLocations[i].isReachable(data))
-                {
-                    newItems.Add(vanillaLocations[i].item);
-                    vanillaLocations.RemoveAt(i);
-                    i--;
-                }
-            }
-        }
+                int locationIdx = rand(reachableLocations.Count);
+                ItemLocation randomLocation = reachableLocations[locationIdx];
+                int itemIdx = progressionItems.Count - 1;
+                Item randomItem = progressionItems[itemIdx];
 
-		// Randomizes the order of certain progressive items' rewards (Not used anymore)
-		private void shuffleItemOrder(ProgressiveItem item)
-        {
-            if (item.randomOrder)
-            {
-                List<string> order = new List<string>(item.items);
-                order.Sort(); // Sort
-                shuffleList(order); // Randomize
-                item.items = order.ToArray();
+                visibleItems.Remove(randomLocation);
+                progressionItems.RemoveAt(itemIdx);
+                mappedItems.Add(randomLocation.Id, randomItem.id);
+                inventory.AddItem(randomItem.id);
+                itemsRemaining--;
             }
+
+            // Seed is filled & validated
+            return true;
         }
 	}
 }

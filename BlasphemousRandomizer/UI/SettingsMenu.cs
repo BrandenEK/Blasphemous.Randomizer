@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Others;
 using Framework.Managers;
-using Rewired;
 using BlasphemousRandomizer.Config;
 
 namespace BlasphemousRandomizer.UI
@@ -29,7 +28,6 @@ namespace BlasphemousRandomizer.UI
         private Image[] uniqueImages;
         private Text seedText;
         private Text descriptionText;
-        private Player rewired;
 
         private bool menuActive;
         private bool waiting;
@@ -121,8 +119,8 @@ namespace BlasphemousRandomizer.UI
             else if (Input.GetKeyDown(KeyCode.Backspace)) processKeyInput(-1);
 
             // Game input
-            if (rewired.GetButtonDown(50)) beginGame();
-            else if (rewired.GetButtonDown(51)) closeMenu();
+            if (Main.Randomizer.Input.GetButtonDown(ModdingAPI.InputHandler.ButtonCode.UISubmit)) beginGame();
+            else if (Main.Randomizer.Input.GetButtonDown(ModdingAPI.InputHandler.ButtonCode.UICancel)) closeMenu();
         }
 
         private void processKeyInput(int num)
@@ -194,6 +192,9 @@ namespace BlasphemousRandomizer.UI
             config.enemies.areaScaling = AreaScaling.getSelected();
             config.items.type = ItemsLeft.getOption();
             config.enemies.type = EnemiesLeft.getOption();
+
+            // temp
+            config.doors.type = 1;
 
             // Load config from seed
             config.general.customSeed = currentSeed != "" ? int.Parse(currentSeed) : generatedSeed;
@@ -305,7 +306,6 @@ namespace BlasphemousRandomizer.UI
             // Find objects
             float xScale = (float)Screen.width / 640;
             scaling = new Vector3(xScale, xScale, (Screen.height - 360 * xScale) * 0.5f);
-            rewired = ReInput.players.GetPlayer(0);
             foreach (Camera cam in Object.FindObjectsOfType<Camera>())
                 if (cam.name == "UICamera")
                     camera = cam;
