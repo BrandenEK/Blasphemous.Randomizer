@@ -14,7 +14,7 @@ namespace BlasphemousRandomizer.Fillers
 			lowestItems = new string[] { "Tears[250]", "Tears[300]", "Tears[500]" };
         }
 
-        public bool Fill(int seed, ItemConfig config, Dictionary<string, Item> output)
+        public bool Fill(int seed, ItemConfig config, Dictionary<string, string> output)
         {
             initialize(seed);
 			this.config = config;
@@ -60,10 +60,10 @@ namespace BlasphemousRandomizer.Fillers
 
 			// Fill output dictionary
 			output.Clear();
-			for (int i = 0; i < locations.Count; i++)
-            {
-				output.Add(locations[i].id, locations[i].item);
-            }
+			//for (int i = 0; i < locations.Count; i++)
+   //         {
+			//	output.Add(locations[i].id, locations[i].item);
+   //         }
 
 			// Remove temporary location data
 			for (int i = 0; i < locations.Count; i++)

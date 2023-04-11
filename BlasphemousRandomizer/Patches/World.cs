@@ -61,8 +61,10 @@ namespace BlasphemousRandomizer.Patches
         {
             public static void Prefix(ref Door __instance)
             {
-                string doorId = $"{Core.LevelManager.currentLevel.LevelName}[{__instance.identificativeName}~{__instance.targetDoor}]";
-                if (Main.Randomizer.doorShuffler.getNewDoor(doorId, out string newScene, out string newId))
+                string currentScene = Core.LevelManager.currentLevel.LevelName;
+                string currentId = __instance.identificativeName == "-" ? "-" + __instance.targetDoor : __instance.identificativeName;
+                string doorId = $"{currentScene}[{currentId}]";
+                if (Main.Randomizer.gameConfig.doors.type > 0 && Main.Randomizer.doorShuffler.getNewDoor(doorId, out string newScene, out string newId))
                 {
                     __instance.targetScene = newScene;
                     __instance.targetDoor = newId;

@@ -8,7 +8,7 @@ namespace BlasphemousRandomizer.Shufflers
 {
     public class ItemShuffle : IShuffle
     {
-        private Dictionary<string, Item> newItems;
+        private Dictionary<string, string> newItems;
         private ItemFiller filler;
 
         private Item lastItem;
@@ -28,7 +28,7 @@ namespace BlasphemousRandomizer.Shufflers
                 Main.Randomizer.LogError("Location " + locationId + " was not loaded!");
                 return null;
             }
-            return newItems[locationId];
+            return Main.Randomizer.data.items[newItems[locationId]];
         }
 
         // Item has been collected from a location
@@ -95,7 +95,7 @@ namespace BlasphemousRandomizer.Shufflers
             if (!Main.Randomizer.data.isValid)
                 return;
 
-            newItems = new Dictionary<string, Item>();
+            newItems = new Dictionary<string, string>();
             int attempt = 0, maxAttempts = 30;
             while (!filler.Fill(seed + attempt, Main.Randomizer.gameConfig.items, newItems) && attempt < maxAttempts)
             {
@@ -137,7 +137,7 @@ namespace BlasphemousRandomizer.Shufflers
                 string item = "???";
                 if (newItems.ContainsKey(location))
                 {
-                    item = newItems[location].name;
+                    item = Main.Randomizer.data.items[newItems[location]].name;
                 }
                 template = template.Substring(0, left) + item + template.Substring(right + 1);
             }
