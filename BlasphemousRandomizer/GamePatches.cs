@@ -15,7 +15,7 @@ namespace BlasphemousRandomizer
     {
         public static bool Prefix(ref int __result)
         {
-            if (Main.Randomizer.gameConfig.general.teleportationAlwaysUnlocked)
+            if (Main.Randomizer.gameConfig.UnlockTeleportation)
             {
                 __result = 3;
                 return false;

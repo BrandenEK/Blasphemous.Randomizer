@@ -5,8 +5,6 @@ using Tools.Items;
 using Tools.Playmaker2.Action;
 using Gameplay.UI.Others.MenuLogic;
 using Framework.Managers;
-using BlasphemousRandomizer.ItemRando;
-using BlasphemousRandomizer.Notifications;
 
 namespace BlasphemousRandomizer
 {
@@ -63,24 +61,6 @@ namespace BlasphemousRandomizer
         public static void Postfix()
         {
             Core.Logic.Penitent.AllowEquipSwords = true;
-        }
-    }
-
-    // Update shop dialog when buying items
-    [HarmonyPatch(typeof(DialogWidget), "ShowBuy")]
-    public class DialogWidget_Patch
-    {
-        public static void Prefix(ref string caption, ref string description, ref Sprite image)
-        {
-            // Can also use this to show different cost
-            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(image.name.ToUpper());
-            if (item != null)
-            {
-                RewardInfo info = item.getRewardInfo(true);
-                caption = info.name;
-                description = info.description;
-                image = info.sprite;
-            }
         }
     }
 

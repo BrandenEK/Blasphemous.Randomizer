@@ -97,11 +97,11 @@ namespace BlasphemousRandomizer.EnemyRando
 
         public void Shuffle(int seed)
         {
-            if (Main.Randomizer.gameConfig.enemies.type < 1 || !Main.Randomizer.data.isValid)
+            if (Main.Randomizer.gameConfig.EnemyShuffleType < 1 || !Main.Randomizer.data.isValid)
                 return;
 
             newEnemies = new Dictionary<string, string>();
-            filler.Fill(seed, Main.Randomizer.gameConfig.enemies, newEnemies);
+            filler.Fill(seed, newEnemies);
             Main.Randomizer.Log(newEnemies.Count + " enemies have been shuffled!");
         }
 

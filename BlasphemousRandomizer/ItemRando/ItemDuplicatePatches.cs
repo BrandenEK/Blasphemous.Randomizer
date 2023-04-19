@@ -137,9 +137,7 @@ namespace BlasphemousRandomizer.ItemRando
 	{
 		public static bool Prefix(FlagModification __instance)
 		{
-			if (!Main.Randomizer.gameConfig.items.disableNPCDeath 
-				|| !Main.arrayContains(ItemFlags.bannedFlags, __instance.flagName.Value) 
-				|| Core.LevelManager.currentLevel.LevelName == "D07Z01S01")
+			if (!Main.arrayContains(ItemFlags.bannedFlags, __instance.flagName.Value) || Core.LevelManager.currentLevel.LevelName == "D07Z01S01")
             {
 				Core.Events.SetFlag(__instance.flagName.Value, __instance.state.Value, false);
             }
@@ -187,7 +185,7 @@ namespace BlasphemousRandomizer.ItemRando
 				flag = false;
 			}
 			// Gemino - Dont progress quest ever (Move to FlagModification)
-			if (scene == "D02Z01S01" && Main.Randomizer.gameConfig.items.disableNPCDeath && (text == "D01Z06S01_BOSSDEAD" || text == "D03Z04S01_BOSSDEAD" || text == "D08Z01S01_BOSSDEAD"))
+			if (scene == "D02Z01S01" && (text == "D01Z06S01_BOSSDEAD" || text == "D03Z04S01_BOSSDEAD" || text == "D08Z01S01_BOSSDEAD"))
 			{
 				flag = false;
 			}

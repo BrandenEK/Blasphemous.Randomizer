@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using BlasphemousRandomizer.Config;
 using BlasphemousRandomizer.DoorRando;
 using LogicParser;
 
@@ -7,12 +6,9 @@ namespace BlasphemousRandomizer.ItemRando
 {
     public class ItemFiller : Filler
     {
-		private ItemConfig config;
-		private string[] lowestItems;
-
         private const string FIRST_DOOR = "D17Z01S01[E]";
 
-        public bool Fill(int seed, ItemConfig config, Dictionary<string, string> mappedDoors, Dictionary<string, string> mappedItems)
+        public bool Fill(int seed, Dictionary<string, string> mappedDoors, Dictionary<string, string> mappedItems)
         {
             // Initialize seed with empty lists
             initialize(seed);

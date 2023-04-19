@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using BlasphemousRandomizer.Config;
 
 namespace BlasphemousRandomizer.EnemyRando
 {
@@ -9,16 +8,17 @@ namespace BlasphemousRandomizer.EnemyRando
 		private int numTypes = 6;
 		private int vanillaType = 5;
 
-		public void Fill(int seed, EnemyConfig config, Dictionary<string, string> output)
+		public void Fill(int seed, Dictionary<string, string> output)
 		{
 			initialize(seed);
+			Config config = Main.Randomizer.gameConfig;
 
 			// Get lists
 			List<EnemyLocation> locations = new List<EnemyLocation>(Main.Randomizer.data.enemyLocations.Values);
 			List<EnemyData> enemies = new List<EnemyData>(Main.Randomizer.data.enemies.Values);
 
 			// Only place the same number of each enemy as in original game
-			if (config.type == 1)
+			if (config.EnemyShuffleType == 1)
             {
 				// Set vanilla/arena locations & add random enemies to list
 				List<string> possibleEnemies = new List<string>();
@@ -45,7 +45,7 @@ namespace BlasphemousRandomizer.EnemyRando
 					int enemyIdx = possibleEnemies.Count - 1;
 
 					// Need to find enemy from this class
-					if (config.maintainClass)
+					if (config.MaintainClass)
                     {
 						EnemyData original = Main.Randomizer.data.enemies[location.originalEnemy];
 						for (int i = possibleEnemies.Count - 1; i >= 0; i--)
@@ -65,14 +65,14 @@ namespace BlasphemousRandomizer.EnemyRando
                 }
             }
 			// Place any number of each enemy
-            else if (config.type == 2)
+            else if (config.EnemyShuffleType == 2)
             {
 				// Get lists of possible enemy ids for each type
 				List<string>[] enemyIdsByType = new List<string>[numTypes];
 				List<string> singleList = new List<string>();
 				for (int i = 0; i < numTypes; i++)
                 {
-					if (config.maintainClass)
+					if (config.MaintainClass)
 						enemyIdsByType[i] = new List<string>();
 					else
 						enemyIdsByType[i] = singleList;

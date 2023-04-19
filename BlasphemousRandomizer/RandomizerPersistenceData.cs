@@ -1,5 +1,4 @@
 ﻿using System;
-using BlasphemousRandomizer.Config;
 using ModdingAPI;
 
 namespace BlasphemousRandomizer
@@ -12,6 +11,6 @@ namespace BlasphemousRandomizer
         public int seed;
         public int itemsCollected;
         public bool startedInRando;
-        public MainConfig config;
+        public Config config;
     }
 }

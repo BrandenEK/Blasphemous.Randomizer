@@ -1,5 +1,7 @@
 ﻿using HarmonyLib;
 using Framework.Managers;
+using UnityEngine;
+using BlasphemousRandomizer.Notifications;
 
 namespace BlasphemousRandomizer.ItemRando
 {
@@ -57,6 +59,24 @@ namespace BlasphemousRandomizer.ItemRando
             __instance.alreadyClaimedRewards = alreadyClaimed;
             Core.Events.LaunchEvent(__instance.CheckRewardsEvent, string.Empty);
             return false;
+        }
+    }
+
+    // Update shop dialog when buying items
+    [HarmonyPatch(typeof(DialogWidget), "ShowBuy")]
+    public class DialogWidget_Patch
+    {
+        public static void Prefix(ref string caption, ref string description, ref Sprite image)
+        {
+            // Can also use this to show different cost
+            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(image.name.ToUpper());
+            if (item != null)
+            {
+                RewardInfo info = item.getRewardInfo(true);
+                caption = info.name;
+                description = info.description;
+                image = info.sprite;
+            }
         }
     }
 }

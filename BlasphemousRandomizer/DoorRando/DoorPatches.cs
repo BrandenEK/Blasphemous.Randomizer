@@ -14,7 +14,7 @@ namespace BlasphemousRandomizer.DoorRando
             string currentScene = Core.LevelManager.currentLevel.LevelName;
             string currentId = __instance.identificativeName == "-" ? "-" + __instance.targetDoor : __instance.identificativeName;
             string doorId = $"{currentScene}[{currentId}]";
-            if (Main.Randomizer.gameConfig.doors.type > 0 && Main.Randomizer.itemShuffler.getNewDoor(doorId, out string newScene, out string newId))
+            if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && Main.Randomizer.itemShuffler.getNewDoor(doorId, out string newScene, out string newId))
             {
                 __instance.targetScene = newScene;
                 __instance.targetDoor = newId;

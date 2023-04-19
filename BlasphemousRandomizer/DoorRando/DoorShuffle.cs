@@ -38,10 +38,5 @@ namespace BlasphemousRandomizer.DoorRando
 
             //Main.Randomizer.Log(newDoors.Count + " doors have been shuffled!");
         }
-
-        public string GetSpoiler()
-        {
-            return "";
-        }
     }
 }

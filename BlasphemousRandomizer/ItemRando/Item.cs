@@ -46,7 +46,7 @@ namespace BlasphemousRandomizer.ItemRando
 			{
 				case 0:
 					inv.AddBaseObjectOrTears(inv.GetBaseObject(id, InventoryManager.ItemType.Bead));
-					if (id == "RB203" && Main.Randomizer.gameConfig.items.startWithWheel)
+					if (id == "RB203" && Main.Randomizer.gameConfig.StartWithWheel)
 						inv.SetRosaryBeadInSlot(0, "RB203");
 					return;
 				case 1:

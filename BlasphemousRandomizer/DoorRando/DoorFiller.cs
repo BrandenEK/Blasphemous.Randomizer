@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using BlasphemousRandomizer.Config;
 
 namespace BlasphemousRandomizer.DoorRando
 {
     public class DoorFiller : Filler
     {
-        public bool Fill(int seed, DoorConfig config, Dictionary<string, string> output)
+        public bool Fill(int seed, Dictionary<string, string> output)
         {
             // Initialize & create lists
    //         initialize(seed);

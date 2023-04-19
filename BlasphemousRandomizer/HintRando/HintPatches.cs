@@ -13,7 +13,7 @@ namespace BlasphemousRandomizer.HintRando
     {
         public static bool Prefix(string objectIdStting, ItemIsEquiped __instance, ref bool __result)
         {
-            if (objectIdStting == "RE04" && Main.Randomizer.gameConfig.general.allowHints && __instance.Owner.name != "LeftPuzzleCheck" && __instance.Owner.name != "RightPuzzleCheck")
+            if (objectIdStting == "RE04" && Main.Randomizer.gameConfig.AllowHints && __instance.Owner.name != "LeftPuzzleCheck" && __instance.Owner.name != "RightPuzzleCheck")
             {
                 __result = true;
                 return false;
@@ -26,7 +26,7 @@ namespace BlasphemousRandomizer.HintRando
     {
         public static bool Prefix(ref bool __result, InventoryObjectInspector ___requiredItem)
         {
-            if (___requiredItem.id == "RE04" && Main.Randomizer.gameConfig.general.allowHints)
+            if (___requiredItem.id == "RE04" && Main.Randomizer.gameConfig.AllowHints)
             {
                 __result = true;
                 return false;
@@ -43,14 +43,14 @@ namespace BlasphemousRandomizer.HintRando
         {
             Main.Randomizer.Log("Starting dialog: " + conversiationId);
 
-            if (conversiationId == "DLG_QT_0904" && Main.Randomizer.gameConfig.items.disableNPCDeath)
+            if (conversiationId == "DLG_QT_0904")
             {
                 // Change socorro options for cleofas quest
                 DialogObject current = ___allDialogs[conversiationId];
                 if (current.answersLines.Count > 1)
                     current.answersLines.RemoveAt(1);
             }
-            else if (Main.Randomizer.gameConfig.general.allowHints && conversiationId.Length == 8 && int.TryParse(conversiationId.Substring(4), out int id) && id > 2000 && id < 2035)
+            else if (Main.Randomizer.gameConfig.AllowHints && conversiationId.Length == 8 && int.TryParse(conversiationId.Substring(4), out int id) && id > 2000 && id < 2035)
             {
                 // Change corpse hints
                 string hint = Main.Randomizer.hintShuffler.getHint(conversiationId);

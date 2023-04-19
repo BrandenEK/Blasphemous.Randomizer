@@ -116,7 +116,7 @@ namespace BlasphemousRandomizer.ItemRando
             newItems = new Dictionary<string, string>();
             newDoors = new Dictionary<string, string>();
             int attempt = 0, maxAttempts = 30;
-            while (!filler.Fill(seed + attempt, Main.Randomizer.gameConfig.items, newDoors, newItems) && attempt < maxAttempts)
+            while (!filler.Fill(seed + attempt, newDoors, newItems) && attempt < maxAttempts)
             {
                 Main.Randomizer.LogError($"Seed {seed + attempt} was invalid! Trying next...");
                 attempt++;

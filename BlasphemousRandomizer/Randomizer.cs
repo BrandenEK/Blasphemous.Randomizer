@@ -8,7 +8,6 @@ using BlasphemousRandomizer.EnemyRando;
 using BlasphemousRandomizer.HintRando;
 using BlasphemousRandomizer.ItemRando;
 using BlasphemousRandomizer.Tracker;
-using BlasphemousRandomizer.Config;
 using BlasphemousRandomizer.Settings;
 using Framework.Managers;
 using Framework.Audio;
@@ -20,6 +19,7 @@ namespace BlasphemousRandomizer
     public class Randomizer : PersistentMod
     {
         public const int MAX_SEED = 999999;
+        private const bool SKIP_CUTSCENES = true;
 
         // Shufflers
         public ItemShuffle itemShuffler;
@@ -34,7 +34,7 @@ namespace BlasphemousRandomizer
         public int itemsCollected;
         public int totalItems;
         private bool startedInRando;
-        public MainConfig gameConfig;
+        public Config gameConfig;
 
         // Global info
         private bool inGame;
@@ -71,7 +71,7 @@ namespace BlasphemousRandomizer
                 errorOnLoad = Localize("daterr");
 
             // Set up data
-            gameConfig = MainConfig.Default();
+            gameConfig = new Config();
             lastLoadedSlot = -1;
             settingsMenu = new SettingsMenu();
 
@@ -99,7 +99,7 @@ namespace BlasphemousRandomizer
             }
 
             RandomizerPersistenceData randomizerPersistenceData = data == null ? null : (RandomizerPersistenceData)data;
-            if (randomizerPersistenceData != null && randomizerPersistenceData.startedInRando && isConfigVersionValid(randomizerPersistenceData.config.versionCreated))
+            if (randomizerPersistenceData != null && randomizerPersistenceData.startedInRando && isConfigVersionValid(randomizerPersistenceData.config.VersionCreated))
             {
                 // Loaded a valid randomized game
                 seed = randomizerPersistenceData.seed;
@@ -116,7 +116,7 @@ namespace BlasphemousRandomizer
                 itemsCollected = 0;
                 totalItems = 0;
                 startedInRando = false;
-                gameConfig = MainConfig.Default();
+                gameConfig = new Config();
                 for (int i = 0; i < shufflers.Length; i++)
                 {
                     shufflers[i].Reset();
@@ -148,7 +148,7 @@ namespace BlasphemousRandomizer
 
         private int generateSeed()
         {
-            return gameConfig.general.customSeed > 0 ? gameConfig.general.customSeed : new System.Random().Next();
+            return gameConfig.CustomSeed > 0 ? gameConfig.CustomSeed : new System.Random().Next();
         }
 
         private void Randomize(bool newGame)
@@ -219,13 +219,13 @@ namespace BlasphemousRandomizer
         private void setUpExtras()
         {
             // Set flags relating to choosing a penitence
-            if (!gameConfig.general.enablePenitence)
+            if (!gameConfig.AllowPenitence)
             {
                 Core.Events.SetFlag("PENITENCE_EVENT_FINISHED", true, false);
                 Core.Events.SetFlag("PENITENCE_NO_PENITENCE", true, false);
             }
             // Set flags relating to various cutscenes
-            if (gameConfig.general.skipCutscenes)
+            if (SKIP_CUTSCENES)
             {
                 foreach (string id in data.cutsceneFlags)
                 {
@@ -266,7 +266,7 @@ namespace BlasphemousRandomizer
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad6) && inGame)
             {
-                LogDisplay($"{Localize("currsd")}: {seed} [{ComputeFinalSeed(seed, gameConfig.items.type, gameConfig.items.lungDamage, gameConfig.items.startWithWheel, gameConfig.items.shuffleReliquaries)}]");
+                LogDisplay($"{Localize("currsd")}: {seed} [{ComputeFinalSeed(seed, 1, true, gameConfig.StartWithWheel, gameConfig.ShuffleReliquaries)}]");
             }
             else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad7))
             {
@@ -297,7 +297,7 @@ namespace BlasphemousRandomizer
 
         public bool shouldSkipCutscene(string id)
         {
-            return gameConfig.general.skipCutscenes && Main.arrayContains(data.cutsceneNames, id);
+            return SKIP_CUTSCENES && Main.arrayContains(data.cutsceneNames, id);
         }
 
         public void playSoundEffect(int id)

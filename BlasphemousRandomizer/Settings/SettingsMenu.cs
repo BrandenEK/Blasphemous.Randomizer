@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Others;
 using Framework.Managers;
-using BlasphemousRandomizer.Config;
 
 namespace BlasphemousRandomizer.Settings
 {
@@ -144,60 +143,56 @@ namespace BlasphemousRandomizer.Settings
             UpdateUniqueId();
         }
 
-        public void setConfigSettings(MainConfig config)
+        public void setConfigSettings(Config config)
         {
             if (settingsMenu == null)
                 return;
 
             // Load config into buttons
-            Teleportation.setSelected(config.general.teleportationAlwaysUnlocked);
-            Cutscenes.setSelected(config.general.skipCutscenes);
-            Hints.setSelected(config.general.allowHints);
-            Penitence.setSelected(config.general.enablePenitence);
-            MistDamage.setSelected(config.items.lungDamage);
-            NpcDeath.setSelected(config.items.disableNPCDeath);
-            Wheel.setSelected(config.items.startWithWheel);
-            Reliquaries.setSelected(config.items.shuffleReliquaries);
-            MaintainClass.setSelected(config.enemies.maintainClass);
-            AreaScaling.setSelected(config.enemies.areaScaling);
-            ItemsLeft.setOption(config.items.type);
-            ItemsRight.setOption(config.items.type);
-            EnemiesLeft.setOption(config.enemies.type);
-            EnemiesRight.setOption(config.enemies.type);
+            Teleportation.setSelected(config.UnlockTeleportation);
+            Cutscenes.setSelected(true);
+            Hints.setSelected(config.AllowHints);
+            Penitence.setSelected(config.AllowPenitence);
+            MistDamage.setSelected(true);
+            NpcDeath.setSelected(true);
+            Wheel.setSelected(config.StartWithWheel);
+            Reliquaries.setSelected(config.ShuffleReliquaries);
+            MaintainClass.setSelected(config.MaintainClass);
+            AreaScaling.setSelected(config.AreaScaling);
+            ItemsLeft.setOption(1);
+            ItemsRight.setOption(1);
+            EnemiesLeft.setOption(config.EnemyShuffleType);
+            EnemiesRight.setOption(config.EnemyShuffleType);
 
             // Load config into seed
-            currentSeed = config.general.customSeed > 0 ? config.general.customSeed.ToString() : "";
+            currentSeed = config.CustomSeed > 0 ? config.CustomSeed.ToString() : "";
             seedText.text = Main.Randomizer.Localize("menusd") + ": " + (currentSeed != "" ? currentSeed : Main.Randomizer.Localize("menurd"));
             descriptionText.text = "";
 
             UpdateUniqueId();
         }
 
-        public MainConfig getConfigSettings()
+        public Config getConfigSettings()
         {
+            Config config = new Config();
             if (settingsMenu == null)
-                return MainConfig.Default();
+                return config;
 
             // Load config from buttons
-            MainConfig config = MainConfig.Default();
-            config.general.teleportationAlwaysUnlocked = Teleportation.getSelected();
-            config.general.skipCutscenes = Cutscenes.getSelected();
-            config.general.allowHints = Hints.getSelected();
-            config.general.enablePenitence = Penitence.getSelected();
-            config.items.lungDamage = MistDamage.getSelected();
-            config.items.disableNPCDeath = NpcDeath.getSelected();
-            config.items.startWithWheel = Wheel.getSelected();
-            config.items.shuffleReliquaries = Reliquaries.getSelected();
-            config.enemies.maintainClass = MaintainClass.getSelected();
-            config.enemies.areaScaling = AreaScaling.getSelected();
-            config.items.type = ItemsLeft.getOption();
-            config.enemies.type = EnemiesLeft.getOption();
+            config.UnlockTeleportation = Teleportation.getSelected();
+            config.AllowHints = Hints.getSelected();
+            config.AllowPenitence = Penitence.getSelected();
+            config.StartWithWheel = Wheel.getSelected();
+            config.ShuffleReliquaries = Reliquaries.getSelected();
+            config.MaintainClass = MaintainClass.getSelected();
+            config.AreaScaling = AreaScaling.getSelected();
+            config.EnemyShuffleType = EnemiesLeft.getOption();
 
             // temp
-            config.doors.type = 1;
+            config.DoorShuffleType = 1;
 
             // Load config from seed
-            config.general.customSeed = currentSeed != "" ? int.Parse(currentSeed) : generatedSeed;
+            config.CustomSeed = currentSeed != "" ? int.Parse(currentSeed) : generatedSeed;
             return config;
         }
 
@@ -281,7 +276,7 @@ namespace BlasphemousRandomizer.Settings
             generatedSeed = new System.Random().Next(1, Randomizer.MAX_SEED);
             Main.Randomizer.Log("Generating default seed: " + generatedSeed);
             showSettingsMenu(true, true);
-            setConfigSettings(MainConfig.Default());
+            setConfigSettings(new Config());
         }
 
         public void closeMenu()

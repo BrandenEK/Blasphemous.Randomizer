@@ -45,7 +45,7 @@ namespace BlasphemousRandomizer.EnemyRando
     {
         public static void Postfix(EnemySpawnPoint __instance, ref GameObject ___selectedEnemy, ref Transform ___spawnPoint)
         {
-            if (Main.Randomizer.gameConfig.enemies.type < 1)
+            if (Main.Randomizer.gameConfig.EnemyShuffleType < 1)
                 return;
 
             // Calculate location id
@@ -110,7 +110,7 @@ namespace BlasphemousRandomizer.EnemyRando
             float percent = 0.07f;
 
             // If areaScaling is enabled, calculate percent scaling
-            if (areaRating != 0 && enemyRating != 0 && Main.Randomizer.gameConfig.enemies.type > 0 && Main.Randomizer.gameConfig.enemies.areaScaling)
+            if (areaRating != 0 && enemyRating != 0 && Main.Randomizer.gameConfig.EnemyShuffleType > 0 && Main.Randomizer.gameConfig.AreaScaling)
             {
                 percent *= areaRating - enemyRating;
             }
