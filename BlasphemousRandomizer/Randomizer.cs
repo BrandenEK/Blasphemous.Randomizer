@@ -2,11 +2,14 @@
 using Gameplay.UI;
 using System.Diagnostics;
 using System.Collections;
-using BlasphemousRandomizer.Shufflers;
-using BlasphemousRandomizer.Structures;
+using BlasphemousRandomizer.BossRando;
+using BlasphemousRandomizer.DoorRando;
+using BlasphemousRandomizer.EnemyRando;
+using BlasphemousRandomizer.HintRando;
+using BlasphemousRandomizer.ItemRando;
 using BlasphemousRandomizer.Tracker;
 using BlasphemousRandomizer.Config;
-using BlasphemousRandomizer.UI;
+using BlasphemousRandomizer.Settings;
 using Framework.Managers;
 using Framework.Audio;
 using Tools.Level;
@@ -172,11 +175,7 @@ namespace BlasphemousRandomizer
             // Generate spoiler on new game
             if (newGame)
             {
-                string spoiler = "";
-                for (int i = 0; i < shufflers.Length; i++)
-                {
-                    spoiler += shufflers[i].GetSpoiler();
-                }
+                string spoiler = itemShuffler.GetSpoiler();
                 FileUtil.saveTextFile($"spoiler{PersistentManager.GetAutomaticSlot() + 1}.txt", spoiler);
             }
             watch.Stop();

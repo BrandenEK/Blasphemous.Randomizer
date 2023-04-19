@@ -1,7 +1,7 @@
 ﻿using System;
 using WebSocketSharp.Server;
 using Framework.Managers;
-using BlasphemousRandomizer.Structures;
+using BlasphemousRandomizer.ItemRando;
 
 namespace BlasphemousRandomizer.Tracker
 {

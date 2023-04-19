@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using BlasphemousRandomizer.Structures;
+using BlasphemousRandomizer.DoorRando;
+using BlasphemousRandomizer.EnemyRando;
+using BlasphemousRandomizer.ItemRando;
 using ModdingAPI;
 
 namespace BlasphemousRandomizer
@@ -12,7 +14,7 @@ namespace BlasphemousRandomizer
 		// Json data
 		public Dictionary<string, Item> items;
 		public Dictionary<string, ItemLocation> itemLocations;
-		public Dictionary<string, Enemy> enemies;
+		public Dictionary<string, EnemyData> enemies;
 		public Dictionary<string, EnemyLocation> enemyLocations;
 		public Dictionary<string, DoorLocation> doorLocations;
 
@@ -52,10 +54,10 @@ namespace BlasphemousRandomizer
 			else { Main.Randomizer.LogError("Error: Failed to load item locations!"); valid = false; }
 
 			// Enemies
-			enemies = new Dictionary<string, Enemy>();
+			enemies = new Dictionary<string, EnemyData>();
 			if (fileUtil.loadDataText("enemies.json", out string jsonEnemies))
 			{
-				List<Enemy> tempEnemies = fileUtil.jsonObject<List<Enemy>>(jsonEnemies);
+				List<EnemyData> tempEnemies = fileUtil.jsonObject<List<EnemyData>>(jsonEnemies);
 				for (int i = 0; i < tempEnemies.Count; i++)
 					enemies.Add(tempEnemies[i].id, tempEnemies[i]);
 				Main.Randomizer.Log($"Loaded {enemies.Count} enemies!");
