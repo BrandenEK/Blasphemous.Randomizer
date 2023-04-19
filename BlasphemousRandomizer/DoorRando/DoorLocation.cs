@@ -5,12 +5,10 @@ namespace BlasphemousRandomizer.DoorRando
     public class DoorLocation
     {
         public string Id { get; set; }
+        public string Logic { get; set; }
 
         public int Direction { get; set; }
         public string OriginalDoor { get; set; }
-
-        public bool SpecialFlag { get; set; }
-        public string Logic { get; set; }
 
         public string Room
         {

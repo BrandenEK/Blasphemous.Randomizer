@@ -1,56 +1,2112 @@
 [
 	{
+		"Id": "PR14",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z01S02"
+	},
+	{
+		"Id": "RB07",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z01S02",
+		"Logic": "blood"
+	},
+	{
+		"Id": "CO04",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z01S03"
+	},
+	{
+		"Id": "QI55",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z01S03",
+		"Logic": "blood && nail"
+	},
+	{
+		"Id": "RESCUED_CHERUB_07",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z01S03"
+	},
+	{
+		"Id": "QI31",
+		"Name": "",
+		"Hint": "",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"Room": "D01Z01S07"
+	},
+	
+	{
+		"Id": "RE02",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z02S01",
+		"Logic": "hand"
+	},
+	{
+		"Id": "RE04",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z02S01",
+		"Logic": "cloth"
+	},
+	{
+		"Id": "RE10",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z02S01",
+		"Logic": "hatchedEgg"
+	},
+	{
+		"Id": "RB01",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z02S02"
+	},
+	{
+		"Id": "QI66",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 1"
+	},
+	{
+		"Id": "Tirso[500]",
+		"Name": "",
+		"Hint": "",
+		"OriginalItem": "Tears[500]",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 2"
+	},
+	{
+		"Id": "Tirso[1000]",
+		"Name": "",
+		"Hint": "",
+		"OriginalItem": "Tears[1000]",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 3"
+	},
+	{
+		"Id": "Tirso[200]",
+		"Name": "",
+		"Hint": "",
+		"OriginalItem": "Tears[2000]",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 4"
+	},
+	{
+		"Id": "Tirso[5000]",
+		"Name": "",
+		"Hint": "",
+		"OriginalItem": "Tears[5000]",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 5"
+	},
+	{
+		"Id": "Tirso[10000]",
+		"Name": "",
+		"Hint": "",
+		"OriginalItem": "Tears[10000]",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 6"
+	},
+	{
+		"Id": "QI56",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 6 && boss-mercy && (D01Z04S18[W] || D01Z04S18[E]) && boss-convent && (D02Z03S20[W] || D02Z03S20[E]) && boss-grievance && (D03Z03S15[W] || D03Z03S15[E]) && boss-mothers && (D04Z02S22[W] || D04Z02S022[E]) && boss-canvases && (D05Z02S14[W] || D05Z02S14[E]) && boss-wall && (D09Z01S03[N] || D09Z01S03[W])"
+	},
+	{
+		"Id": "RESCUED_CHERUB_08",
+		"Name": "",
+		"Hint": "",
+		"OriginalItem": "CH",
+		"Room": "D01Z02S03",
+		"Logic": "cherubs ^ 0x20242 || D01Z02S03[NW] && (wheel || cherubs ^ 0x46010)"
+	},
+	{
+		"Id": "Lvdovico[500]",
+		"Name": "",
+		"Hint": "",
+		"OriginalItem": "Tears[500]",
+		"Room": "D01Z02S03",
+		"Logic": "tentudiaRemains >= 1"
+	},
+	{
+		"Id": "Lvdovico[1000]",
+		"Name": "",
+		"Hint": "",
+		"OriginalItem": "Tears[1000]",
+		"Room": "D01Z02S03",
+		"Logic": "tentudiaRemains >= 2"
+	},
+	{
+		"Id": "PR03",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z02S03",
+		"Logic": "tentudiaRemains >= 3"
+	},
+	{
+		"Id": "QI01",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z02S03",
+		"Logic": "D04Z02S10[W]"
+	},
+	{
+		"Id": "CO43",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z02S04"
+	},
+	{
+		"Id": "CO16",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z02S05"
+	},
+	{
+		"Id": "Sword[D01Z02S06]",
+		"Name": "Mea Culpa shrine",
+		"Hint": "A Mea Culpa Shrine holds *",
+		"OriginalItem": "SU",
+		"Room": "D01Z02S06"
+	},
+	{
+		"Id": "QI65",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z02S07",
+		"Logic": "teleport-room"
+	},
+	{
+		"Id": "RB104",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ04S01",
+		"Logic": "tears >= 0"
+	},
+	{
+		"Id": "RB105",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ04S01",
+		"Logic": "tears >= 0"
+	},
+	{
+		"Id": "PR11",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ04S01",
+		"Logic": "marksOfRefuge >= 3 && cord && D04Z02S10[W] && D06Z01S18[E]"
+	},
+	{
+		"Id": "Undertaker[250]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 4"
+	},
+	{
+		"Id": "Undertaker[500]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 8"
+	},
+	{
+		"Id": "Undertaker[750]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 12"
+	},
+	{
+		"Id": "Undertaker[1000]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 16"
+	},
+	{
+		"Id": "Undertaker[1250]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 20"
+	},
+	{
+		"Id": "Undertaker[1500]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 24"
+	},
+	{
+		"Id": "Undertaker[1750]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 28"
+	},
+	{
+		"Id": "Undertaker[2000]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 32"
+	},
+	{
+		"Id": "Undertaker[2500]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 36"
+	},
+	{
+		"Id": "Undertaker[3000]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 40"
+	},
+	{
+		"Id": "Undertaker[5000]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 44"
+	},
+	{
+		"Id": "QI201",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ08S01",
+		"Logic": "boss-ossuary"
+	},
+	
+	{
+		"Id": "RB04",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z03S01",
+		"Logic": "D01Z03S01[SE]"
+	},
+	{
+		"Id": "CO14",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z03S02"
+	},
+	{
+		"Id": "CO36",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z03S03"
+	},
+	{
+		"Id": "RESCUED_CHERUB_10",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z03S03"
+	},
+	{
+		"Id": "QI06",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z03S05",
+		"Logic": "blood || dawnHeart || wheel && ranged"
+	},
+	{
+		"Id": "RB20",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z03S06",
+		"Logic": "(D17Z01S04[N] || D17Z01S04[FrontR]) && (D03Z01S03[W] || D03Z01S03[SW])"
+	},
+	{
+		"Id": "HE02",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z03S07"
+	},
+	{
+		"Id": "RESCUED_CHERUB_38",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z03S07",
+		"Logic": "dawnHeart || wheel || cherubs ^ 0x66210"
+	},
+	
+	{
+		"Id": "CO30",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z04S05"
+	},
+	{
+		"Id": "CO03",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z04S06"
+	},
+	{
+		"Id": "RESCUED_CHERUB_09",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z04S06"
+	},
+	{
+		"Id": "PR01",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z04S07"
+	},
+	{
+		"Id": "RB17",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z04S08"
+	},
+	{
+		"Id": "QI48",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z04S11"
+	},
+	{
+		"Id": "CO21",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z04S13",
+		"Logic": "D01Z04S13[SE]"
+	},
+	{
+		"Id": "CO38",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z04S14"
+	},
+	{
+		"Id": "RESCUED_CHERUB_33",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z04S16",
+		"Logic": "cherubs ^ 0x30242"
+	},
+	{
+		"Id": "BS01",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z04S18",
+		"Logic": "boss-mercy"
+	},
+	{
+		"Id": "QI38",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z04S19"
+	},
+	{
+		"Id": "QI58",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ02S01",
+		"Logic": "tears >= 0"
+	},
+	{
+		"Id": "RB05",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ02S01",
+		"Logic": "tears >= 0"
+	},
+	{
+		"Id": "RB09",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ02S01",
+		"Logic": "tears >= 0"
+	},
+	
+	{
+		"Id": "CO09",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S05"
+	},
+	{
+		"Id": "QI67",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S05",
+		"Logic": "nail"
+	},
+	{
+		"Id": "PR16",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S06",
+		"Logic": "D01Z05S06[Cherubs] || nail"
+	},
+	{
+		"Id": "RESCUED_CHERUB_13",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S06",
+		"Logic": "D01Z05S06[Cherubs] || nail || cherubs ^ 0x72242"
+	},
+	{
+		"Id": "Oil[D01Z05S07]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S07"
+	},
+	{
+		"Id": "QI12",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S08"
+	},
+	{
+		"Id": "RESCUED_CHERUB_14",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S08"
+	},
+	{
+		"Id": "QI45",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S11"
+	},
+	{
+		"Id": "RESCUED_CHERUB_12",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S13",
+		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && lung && nail"
+	},
+	{
+		"Id": "RESCUED_CHERUB_11",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S14"
+	},
+	{
+		"Id": "CO41",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S15"
+	},
+	{
+		"Id": "CO32",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S17",
+		"Logic": "nail"
+	},
+	{
+		"Id": "RESCUED_CHERUB_15",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S20"
+	},
+	{
+		"Id": "Lady[D01Z05S22]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S22"
+	},
+	{
+		"Id": "QI75",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S23"
+	},
+	{
+		"Id": "Sword[D01Z05S24]",
+		"Name": "Mea Culpa shrine",
+		"Hint": "A Mea Culpa Shrine holds *",
+		"Room": "D01Z05S24"
+	},
+	{
+		"Id": "CO44",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S25",
+		"Logic": "linen"
+	},
+	{
+		"Id": "RESCUED_CHERUB_22",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S25",
+		"Logic": "linen || (D01Z05S25[W] && (dawnHeart || root || wheel && ranged) || D01Z05S25[E]) && cherubs ^ 0x20042"
+	},
+	{
+		"Id": "Lady[D01Z05S26]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z05S26"
+	},
+	{
+		"Id": "RB03",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01BZ05S01"
+	},
+	
+	{
+		"Id": "QI101",
+		"Name": "",
+		"Hint": "",
+		"Room": "D01Z06S01"
+	},
+	
+	{
+		"Id": "CO11",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z01S01"
+	},
+	{
+		"Id": "QI59",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z01S01"
+	},
+	{
+		"Id": "RB10",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z01S01",
+		"Logic": "fullThimble"
+	},
+	{
+		"Id": "RESCUED_CHERUB_23",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z01S02",
+		"Logic": "root || cherubs ^ 0x20042"
+	},
+	{
+		"Id": "QI20",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z01S04"
+	},
+	{
+		"Id": "QI68",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z01S04",
+		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[SW] || D02Z01S01[SE])"
+	},
+	{
+		"Id": "QI07",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z01S05"
+	},
+	{
+		"Id": "CO19",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z01S06",
+		"Logic": "blood"
+	},
+	{
+		"Id": "RESCUED_CHERUB_27",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z01S06",
+		"Logic": "cherubs ^ 0x66252"
+	},
+	{
+		"Id": "PR04",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z01S08",
+		"Logic": "driedFlowers"
+	},
+	{
+		"Id": "HE05",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z01S09",
+		"Logic": "root"
+	},
+	
+	{
+		"Id": "RESCUED_CHERUB_24",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S02",
+		"Logic": "D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || cherubs ^ 0x30242"
+	},
+	{
+		"Id": "QI46",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S03"
+	},
+	{
+		"Id": "CO29",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S03"
+	},
+	{
+		"Id": "QI08",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S03",
+		"Logic": "blood && root"
+	},
+	{
+		"Id": "RB32",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S04",
+		"Logic": "D02Z02S04[E]"
+	},
+	{
+		"Id": "CO01",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S04"
+	},
+	{
+		"Id": "RESCUED_CHERUB_25",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S04",
+		"Logic": "blood || cherubs ^ 0x26652"
+	},
+	{
+		"Id": "RB15",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S05"
+	},
+	{
+		"Id": "RB38",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S06"
+	},
+	{
+		"Id": "CO42",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S08",
+		"Logic": "D02Z02S08[CherubsR] || blood || canBreakHoles"
+	},
+	{
+		"Id": "RESCUED_CHERUB_31",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S08",
+		"Logic": "D02Z02S08[CherubsR] || blood || cherubs ^ 0x20042"
+	},
+	{
+		"Id": "Oil[D02Z02S10]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S10"
+	},
+	{
+		"Id": "QI53",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S11"
+	},
+	{
+		"Id": "RESCUED_CHERUB_26",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S11"
+	},
+	{
+		"Id": "Lady[D02Z02S12]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S12"
+	},
+	{
+		"Id": "HE11",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S13"
+	},
+	{
+		"Id": "RB106",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S14"
+	},
+	{
+		"Id": "Amanecida[D02Z02S14]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z02S14",
+		"Logic": "D01BZ07S01[Santos] && boss-amanecida && D02Z03S23[E]"
+	},
+	{
+		"Id": "QI11",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02BZ02S01",
+		"Logic": "tears >= 0"
+	},
+	{
+		"Id": "RB37",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02BZ02S01",
+		"Logic": "tears >= 0"
+	},
+	{
+		"Id": "RB02",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02BZ02S01",
+		"Logic": "tears >= 0"
+	},
+	
+	{
+		"Id": "CO05",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z03S03",
+		"Logic": "D02Z03S03[NW] || blood"
+	},
+	{
+		"Id": "RB08",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z03S05"
+	},
+	{
+		"Id": "CO15",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z03S07"
+	},
+	{
+		"Id": "HE03",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z03S12",
+		"Logic": "lung"
+	},
+	{
+		"Id": "Sword[D02Z03S13]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z03S13"
+	},
+	{
+		"Id": "Lady[D02Z03S15]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z03S15"
+	},
+	{
+		"Id": "RB24",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z03S17"
+	},
+	{
+		"Id": "QI61",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z03S19"
+	},
+	{
+		"Id": "BS03",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z03S20",
+		"Logic": "boss-convent"
+	},
+	{
+		"Id": "QI40",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z03S21"
+	},
+	{
+		"Id": "QI57",
+		"Name": "",
+		"Hint": "",
+		"Type": 9,
+		"OriginalItem": "QI57",
+		"Room": "D02Z03S21",
+		"Logic": "emptyThimble"
+	},
+	{
+		"Id": "RB107",
+		"Name": "",
+		"Hint": "",
+		"Room": "D02Z03S23"
+	},
+	
+	{
+		"Id": "CO13",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z01S01"
+	},
+	{
+		"Id": "QI47",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z01S03",
+		"Logic": "blood && (D03Z01S03[W] || D03Z01S03[SW])"
+	},
+	{
+		"Id": "RB22",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z01S03",
+		"Logic": "D03Z01S03[W] || D03Z01S03[SW]"
+	},
+	{
+		"Id": "RESCUED_CHERUB_16",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z01S03",
+		"Logic": "D03Z01S03[W] || D03Z01S03[SW]"
+	},
+	{
+		"Id": "Amanecida[D03Z01S03]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z01S03",
+		"Logic": "D01BZ07S01[Santos] && boss-amanecida && (D20Z01S05[W] || D20Z01S05[E]) && (D03Z01S03[W] || D03Z01S03[SW])"
+	},
+	{
+		"Id": "QI63",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z01S04",
+		"Logic": "blood"
+	},
+	{
+		"Id": "RB13",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z01S06"
+	},
+	{
+		"Id": "QI14",
+		"Name": "",
+		"Hint": "",
+		"Type": 9,
+		"OriginalItem": "QI14",
+		"Room": "D03Z01S06",
+		"Logic": "egg"
+	},
+	
+	{
+		"Id": "CO08",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S01"
+	},
+	{
+		"Id": "PR10",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S01",
+		"Logic": "D03Z02S01[Cherubs] || root"
+	},
+	{
+		"Id": "CO33",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S04"
+	},
+	{
+		"Id": "RESCUED_CHERUB_18",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S05",
+		"Logic": "D03Z02S05[E] || D03Z02S05[S] || dawnHeart && ranged"
+	},
+	{
+		"Id": "QI19",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S06"
+	},
+	{
+		"Id": "CO07",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S07"
+	},
+	{
+		"Id": "QI41",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S08"
+	},
+	{
+		"Id": "RESCUED_CHERUB_17",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S10"
+	},
+	{
+		"Id": "HE06",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S11"
+	},
+	{
+		"Id": "RESCUED_CHERUB_37",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S11"
+	},
+	{
+		"Id": "QI52",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S12"
+	},
+	{
+		"Id": "RB28",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S13",
+		"Logic": "root || dawnHeart"
+	},
+	{
+		"Id": "QI103",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z02S15"
+	},
+
+	{
+		"Id": "QI44",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z03S02",
+		"Logic": "lung"
+	},
+	{
+		"Id": "CO12",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z03S06",
+		"Logic": "lung"
+	},
+	{
+		"Id": "RE07",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z03S06"
+	},
+	{
+		"Id": "RESCUED_CHERUB_19",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z03S06"
+	},
+	{
+		"Id": "QI10",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z03S08",
+		"Logic": "blood"
+	},
+	{
+		"Id": "RESCUED_CHERUB_21",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z03S08",
+		"Logic": "blood && (cherubs ^ 0x2000 && ranged || cherubs ^ 0x30642)"
+	},
+	{
+		"Id": "RESCUED_CHERUB_20",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z03S09",
+		"Logic": "root || cherubs ^ 0x32272"
+	},
+	{
+		"Id": "QI13",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z03S10",
+		"Logic": "ceremonyItems >= 3"
+	},
+	{
+		"Id": "RB06",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z03S10",
+		"Logic": "ceremonyItems >= 3 && hatchedEgg && (D01Z02S01[W] || D01Z02S01[E])"
+	},
+	{
+		"Id": "Oil[D03Z03S13]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z03S13"
+	},
+	{
+		"Id": "BS04",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z03S15",
+		"Logic": "boss-grievance"
+	},
+	{
+		"Id": "QI39",
+		"Name": "",
+		"Hint": "",
+		"Room": "D03Z03S16"
+	},
+	
+	{
+		"Id": "CO23",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z01S01",
+		"Logic": "D04Z01S01[NE] || D04Z01S01[N] || dawnHeart || wheel && ranged"
+	},
+	{
+		"Id": "RESCUED_CHERUB_35",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z01S01"
+	},
+	{
+		"Id": "RB14",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z01S02",
+		"Logic": "root || dawnHeart || wheel && ranged"
+	},
+	{
+		"Id": "QI37",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z01S03"
+	},
+	{
+		"Id": "CO39",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z01S03",
+		"Logic": "ranged && wheel || dawnHeart || root"
+	},
+	{
+		"Id": "RESCUED_CHERUB_28",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z01S03"
+	},
+	{
+		"Id": "RB21",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z01S04",
+		"Logic": "(D03Z01S03[W] || D03Z01S03[SW]) && (D17Z01S04[N] || D17Z01S04[FrontR]) && (D01Z03S06[W] || D01Z03S06[E])"
+	},
+	{
+		"Id": "Amanecida[D04Z01S04]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z01S04",
+		"Logic": "D01BZ07S01[Santos] && boss-amanecida && D06Z01S18[E] && (D04Z01S04[W] || D04Z01S04[E] || D04Z01S04[Cherubs])"
+	},
+	{
+		"Id": "QI102",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z01S06"
+	},
+
+	{
+		"Id": "RE402",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S01",
+		"Logic": "D04Z02S04[N] || D04Z02S04[NE]"
+	},
+	{
+		"Id": "RESCUED_CHERUB_30",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S01",
+		"Logic": "D04Z02S04[N] || D04Z02S04[NE] || cherubs ^ 0x20042"
+	},
+	{
+		"Id": "CO17",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S02"
+	},
+	{
+		"Id": "CO34",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S06"
+	},
+	{
+		"Id": "CO35",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S07",
+		"Logic": "blood || dawnHeart || wheel && ranged"
+	},
+	{
+		"Id": "RB33",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S07"
+	},
+	{
+		"Id": "CO20",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S11"
+	},
+	{
+		"Id": "RESCUED_CHERUB_29",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S11"
+	},
+	{
+		"Id": "Sword[D04Z02S12]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S12"
+	},
+	{
+		"Id": "Oil[D04Z02S14]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S14"
+	},
+	{
+		"Id": "QI60",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S15"
+	},
+	{
+		"Id": "HE01",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S16",
+		"Logic": "blood"
+	},
+	{
+		"Id": "BS05",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z02S22",
+		"Logic": "boss-mothers"
+	},
+	{
+		"Id": "RE03",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04BZ02S01"
+	},
+	{
+		"Id": "QI54",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04BZ02S01",
+		"Logic": "(D03Z01S03[W] || D03Z01S03[SW]) && (D17Z01S04[N] || D17Z01S04[FrontR]) && (D01Z03S06[W] || D01Z03S06[E]) && (D04Z02S20[W] || D04Z02S20[Redento])"
+	},
+	
+	{
+		"Id": "HE201",
+		"Name": "",
+		"Hint": "",
+		"Room": "D04Z03S02",
+		"Logic": "traitorEyes >= 2"
+	},
+	
+	{
+		"Id": "PR201",
+		"Name": "",
+		"Hint": "",
+		"Type": 3,
+		"Room": "D04Z04S01",
+		"Logic": "miriamRooms >= 5"
+	},
+	
+	{
+		"Id": "CO18",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S04"
+	},
+	{
+		"Id": "RESCUED_CHERUB_01",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S04"
+	},
+	{
+		"Id": "QI50",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S05",
+		"Logic": "canBreakHoles"
+	},
+	{
+		"Id": "CO22",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S05",
+		"Logic": "root && (D05Z01S05[NE] || blood)"
+	},
+	{
+		"Id": "RB31",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S06",
+		"Logic": "D05Z01S06[W] || lung"
+	},
+	{
+		"Id": "PR07",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S10",
+		"Logic": "blood"
+	},
+	{
+		"Id": "RB203",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S11",
+		"Logic": "(D05Z01S11[NW] || D05Z01S11[NE]) && D05Z01S23[E]"
+	},
+	{
+		"Id": "CO28",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S11",
+		"Logic": "D05Z01S11[NW] || D05Z01S11[NE]"
+	},
+	{
+		"Id": "RB30",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S11"
+	},
+	{
+		"Id": "RESCUED_CHERUB_02",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S11"
+	},
+	{
+		"Id": "Sword[D05Z01S13]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S13"
+	},
+	{
+		"Id": "Lady[D05Z01S14]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S14"
+	},
+	{
+		"Id": "QI62",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S15"
+	},
+	{
+		"Id": "PR15",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S18"
+	},
+	{
+		"Id": "Oil[D05Z01S19]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S19"
+	},
+	{
+		"Id": "RESCUED_CHERUB_32",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z01S21",
+		"Logic": "blood && (root || dawnHeart && ranged && cherubs ^ 0x20042)"
+	},
+	{
+		"Id": "RB301",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05BZ01S01"
+	},
+	
+	{
+		"Id": "QI64",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z02S02"
+	},
+	{
+		"Id": "HE07",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z02S08"
+	},
+	{
+		"Id": "RE05",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z02S10",
+		"Logic": "cherubs >= 20"
+	},
+	{
+		"Id": "PR05",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z02S10",
+		"Logic": "cherubs >= 38"
+	},
+	{
+		"Id": "CO31",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z02S11"
+	},
+	{
+		"Id": "BS06",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z02S14",
+		"Logic": "boss-canvases"
+	},
+	{
+		"Id": "QI104",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05Z02S15"
+	},
+	{
+		"Id": "RB12",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05BZ02S01",
+		"Logic": "tears >= 0"
+	},
+	{
+		"Id": "QI49",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05BZ02S01",
+		"Logic": "tears >= 0"
+	},
+	{
+		"Id": "QI71",
+		"Name": "",
+		"Hint": "",
+		"Room": "D05BZ02S01",
+		"Logic": "tears >= 0"
+	},
+	
+	{
+		"Id": "QI02",
+		"Name": "",
+		"Hint": "",
+		"Room": "D06Z01S03"
+	},
+	{
+		"Id": "QI03",
+		"Name": "",
+		"Hint": "",
+		"Room": "D06Z01S06",
+		"Logic": "D06Z01S06[WW] || D06Z01S06[E]"
+	},
+	{
+		"Id": "Sword[D06Z01S11]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D06Z01S11"
+	},
+	{
+		"Id": "CO06",
+		"Name": "",
+		"Hint": "",
+		"Room": "D06Z01S12"
+	},
+	{
+		"Id": "PR12",
+		"Name": "",
+		"Hint": "",
+		"Room": "D06Z01S12",
+		"Logic": "D06Z01S12[NE2]"
+	},
+	{
+		"Id": "RESCUED_CHERUB_36",
+		"Name": "",
+		"Hint": "",
+		"Room": "D06Z01S12",
+		"Logic": "D06Z01S12[W] || D06Z01S12[E] || D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || cherubs ^ 0x40"
+	},
+	{
+		"Id": "CO40",
+		"Name": "",
+		"Hint": "",
+		"Room": "D06Z01S15",
+		"Logic": "D06Z01S15[SW] && root"
+	},
+	{
+		"Id": "QI04",
+		"Name": "",
+		"Hint": "",
+		"Room": "D06Z01S21"
+	},
+	{
+		"Id": "HE04",
+		"Name": "",
+		"Hint": "",
+		"Room": "D06Z01S22"
+	},
+	{
+		"Id": "Lady[D06Z01S24]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D06Z01S24"
+	},
+	{
+		"Id": "BS16",
+		"Name": "",
+		"Hint": "",
+		"Room": "D06Z01S25",
+		"Logic": "boss-rooftops"
+	},
+	
+	{
+		"Id": "PR08",
+		"Name": "",
+		"Hint": "",
+		"Room": "D07Z01S01"
+	},
+
+	{
+		"Id": "BS12",
+		"Name": "",
+		"Hint": "",
+		"Room": "D08Z01S01",
+		"Logic": "holyWounds >= 3 && boss-bridge"
+	},
+	{
+		"Id": "PR09",
+		"Name": "",
+		"Hint": "",
+		"Room": "D08Z01S01",
+		"Logic": "holyWounds >= 3 && boss-bridge"
+	},
+	{
+		"Id": "HE101",
+		"Name": "",
+		"Hint": "",
+		"Room": "D08Z01S02"
+	},
+	
+	{
+		"Id": "QI105",
+		"Name": "",
+		"Hint": "",
+		"Room": "D08Z03S01"
+	},
+	{
+		"Id": "LaudesBossTrigger[30000]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D08Z03S03",
+		"Logic": "boss-laudes"
+	},
+	
+	{
+		"Id": "Amanecida[D09Z01S01]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09Z01S01",
+		"Logic": "D01BZ07S01[Santos] && boss-amanecida && D09BZ01S01[Cell24] && (D09Z01S01[W] || D09Z01S01[E])"
+	},
+	{
+		"Id": "QI51",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09Z01S02",
+		"Logic": "D09Z01S02[Cell5]"
+	},
+	{
+		"Id": "RB11",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09Z01S02",
+		"Logic": "D09Z01S02[NW] || D09Z01S02[N] || D09Z01S02[Cell1] || D09Z01S02[Cell6] || D09Z01S02[Cell4] || D09Z01S02[Cell3] || D09Z01S02[Cell22] || D09Z01S02[Cell23]"
+	},
+	{
+		"Id": "BS14",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09Z01S03",
+		"Logic": "boss-wall"
+	},
+	{
+		"Id": "RESCUED_CHERUB_05",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09Z01S06"
+	},
+	{
+		"Id": "QI72",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09Z01S08",
+		"Logic": "(D09Z01S08[W] || D09Z01S08[Cell18]) && (D09Z01S05[W] || D09Z01S05[SE] || D09Z01S05[NE])"
+	},
+	{
+		"Id": "RB16",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09Z01S09",
+		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || D09Z01S09[Cell24]"
+	},
+	{
+		"Id": "QI70",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09Z01S10",
+		"Logic": "D09Z01S10[Cell13]"
+	},
+	{
+		"Id": "CO27",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09Z01S10",
+		"Logic": "D09Z01S10[W] || D09Z01S10[Cell12] || D09Z01S10[Cell10] || D09Z01S10[Cell11]"
+	},
+	{
+		"Id": "Oil[D09Z01S12]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09Z01S12"
+	},
+	{
+		"Id": "CO10",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell22]"
+	},
+	{
+		"Id": "QI69",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell22] || D09BZ01S01[Cell23]"
+	},
+	{
+		"Id": "RESCUED_CHERUB_03",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell1]"
+	},
+	{
+		"Id": "CO24",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell6]"
+	},
+	{
+		"Id": "RESCUED_CHERUB_34",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell14] || D09BZ01S01[Cell15]"
+	},
+	{
+		"Id": "CO26",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell16]"
+	},
+	{
+		"Id": "CO02",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell21] && blood && root && lung"
+	},
+	{
+		"Id": "CO37",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell10]"
+	},
+	{
+		"Id": "RESCUED_CHERUB_04",
+		"Name": "",
+		"Hint": "",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell11] && lung"
+	},
+	
+	{
 		"Id": "QI106",
 		"Name": "Starting gift",
 		"Hint": "* is already owned",
-		"Type": "item",
-		"Room": "D17Z01S01"
-	},
-	{
-		"Id": "RESCUED_CHERUB_06",
-		"Name": "Starting room cherub",
-		"Hint": "* resides in the Brotherhood",
-		"Type": "cherub",
-		"OriginalItem": "CH",
-		"Room": "D17Z01S01",
-		"logic": "D17Z01S01[Cherubs1] || cherubs ^ 0x40 || blood && (root || cherubs ^ 0x20)"
+		"Room": "Initial"
 	},
 	{
 		"Id": "RB204",
 		"Name": "Starting room ledge",
 		"Hint": "* resides in the Brotherhood",
-		"Type": "item",
 		"Room": "D17Z01S01",
 		"Logic": "D17Z01S01[Cherubs3]"
 	},
 	{
-		"Id": "RE01",
-		"Name": "Chamber of the Eldest Brother",
-		"Hint": "* is locked away in a room",
-		"Type": "item",
-		"Room": "D17BZ01S01"
+		"Id": "RESCUED_CHERUB_06",
+		"Name": "Starting room cherub",
+		"Hint": "* resides in the Brotherhood",
+		"Room": "D17Z01S01",
+		"logic": "D17Z01S01[Cherubs1] || cherubs ^ 0x40 || root && (blood || cherubs ^ 0x30402)"
+	},
+	{
+		"Id": "RE401",
+		"Name": "",
+		"Hint": "",
+		"Room": "D17Z01S04",
+		"Logic": "(D17Z01S04[N] || D17Z01S04[FrontR]) && (D03Z01S03[W] || D03Z01S03[SW])"
 	},
 	{
 		"Id": "Sword[D17Z01S08]",
 		"Name": "Mea Culpa shrine",
 		"Hint": "A Mea Culpa Shrine holds *",
-		"Type": "sword",
-		"OriginalItem": "SU",
 		"Room": "D17Z01S08"
 	},
 	{
-		"Id": "CO25",
-		"Name": "Spike room",
-		"Hint": "* resides in the Brotherhood",
-		"Type": "item",
-		"Room": "D17BZ02S01"
+		"Id": "BS13",
+		"Name": "",
+		"Hint": "",
+		"Room": "D17Z01S11"
 	},
 	{
 		"Id": "PR203",
 		"Name": "Outside church",
 		"Hint": "* resides in the Brotherhood",
-		"Type": "item",
 		"Room": "D17Z01S14",
-		"Logic": "D17Z01S14[W] || D17Z01S14[E] && blood"
+		"Logic": "D17Z01S14[W] || blood"
+	},
+	{
+		"Id": "QI204",
+		"Name": "",
+		"Hint": "",
+		"Room": "D17Z01S15",
+		"Logic": "boss-bridge && holyWounds >= 3 && (D08Z01S01[W] || D08Z01S01[E])"
+	},
+	{
+		"Id": "QI301",
+		"Name": "",
+		"Hint": "",
+		"Type": 9,
+		"OriginalItem": "QI301",
+		"Room": "D17Z01S15",
+		"Logic": "boss-rooftops && trueHeart && (D06Z01S25[W] || D06Z01S25[E])"
+	},
+	{
+		"Id": "RE01",
+		"Name": "Chamber of the Eldest Brother",
+		"Hint": "* is locked away in a room",
+		"Room": "D17BZ01S01"
+	},
+	{
+		"Id": "CO25",
+		"Name": "Spike room",
+		"Hint": "* resides in the Brotherhood",
+		"Room": "D17BZ02S01"
+	},
+	
+	{
+		"Id": "RB108",
+		"Name": "",
+		"Hint": "",
+		"Room": "D20Z01S03"
+	},
+	{
+		"Id": "RB202",
+		"Name": "",
+		"Hint": "",
+		"Room": "D20Z01S09"
+	},
+	
+	{
+		"Id": "RB201",
+		"Name": "",
+		"Hint": "",
+		"Room": "D20Z02S02"
+	},
+	{
+		"Id": "BossTrigger[5000]",
+		"Name": "",
+		"Hint": "",
+		"Room": "D20Z02S08",
+		"Logic": "boss-mourning"
+	},
+	{
+		"Id": "QI202",
+		"Name": "",
+		"Hint": "",
+		"Room": "D20Z02S08",
+		"Logic": "boss-mourning"
+	},
+	{
+		"Id": "PR202",
+		"Name": "",
+		"Hint": "",
+		"Room": "D20Z02S11"
+	},
+	
+	{
+		"Id": "QI203",
+		"Name": "",
+		"Hint": "",
+		"Room": "D20Z03S01"
+	},
+	
+	{
+		"Id": "RB18",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "redWax > 0 && (D02Z03S06[W] || D02Z03S06[S] || D05Z01S02[W])"
+	},
+	{
+		"Id": "RB19",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "redWax > 0 && D05Z01S02[W] && (D02Z03S06[W] || D02Z03S06[S])"
+	},
+	{
+		"Id": "RB25",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "blueWax > 0 && (D17Z01S04[N] || D17Z01S04[FrontR] || D01Z04S16[W] || D01Z04S16[E])"
+	},
+	{
+		"Id": "RB26",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "blueWax > 0 && (D17Z01S04[N] || D17Z01S04[FrontR]) && (D01Z04S16[W] || D01Z04S16[E])"
+	},
+	{
+		"Id": "QI107",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 1"
+	},
+	{
+		"Id": "QI108",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 2"
+	},
+	{
+		"Id": "QI109",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 3"
+	},
+	{
+		"Id": "QI110",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 4"
+	},
+	{
+		"Id": "PR101",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 4"
+	},
+	{
+		"Id": "QI32",
+		"Name": "",
+		"Hint": "",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 1"
+	},
+	{
+		"Id": "QI33",
+		"Name": "",
+		"Hint": "",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 2"
+	},
+	{
+		"Id": "QI34",
+		"Name": "",
+		"Hint": "",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 3"
+	},
+	{
+		"Id": "QI35",
+		"Name": "",
+		"Hint": "",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 4"
+	},
+	{
+		"Id": "QI79",
+		"Name": "",
+		"Hint": "",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 5"
+	},
+	{
+		"Id": "QI80",
+		"Name": "",
+		"Hint": "",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 6"
+	},
+	{
+		"Id": "QI81",
+		"Name": "",
+		"Hint": "",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 7"
+	},
+	{
+		"Id": "Arena_NailManager[1000]",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 1"
+	},
+	{
+		"Id": "HE10",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 2"
+	},
+	{
+		"Id": "Arena_NailManager[3000]",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 3"
+	},
+	{
+		"Id": "RB34",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 4"
+	},
+	{
+		"Id": "Arena_NailManager[5000]",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 5"
+	},
+	{
+		"Id": "RB35",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 6"
+	},
+	{
+		"Id": "RB36",
+		"Name": "",
+		"Hint": "",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 7"
+	},
+	{
+		"Id": "COMBO_1",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "COMBO",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 1 && tears >= 0"
+	},
+	{
+		"Id": "COMBO_2",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "COMBO",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 3 && tears >= 0"
+	},
+	{
+		"Id": "COMBO_3",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "COMBO",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 6 && tears >= 0"
+	},
+	{
+		"Id": "CHARGED_1",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "CHARGED",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 1 && tears >= 0"
+	},
+	{
+		"Id": "CHARGED_2",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "CHARGED",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 2 && tears >= 0"
+	},
+	{
+		"Id": "CHARGED_3",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "CHARGED",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 4 && tears >= 0"
+	},
+	{
+		"Id": "RANGED_1",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "RANGED",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 2 && tears >= 0"
+	},
+	{
+		"Id": "RANGED_2",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "RANGED",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 5 && tears >= 0"
+	},
+	{
+		"Id": "RANGED_3",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "RANGED",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 7 && tears >= 0"
+	},
+	{
+		"Id": "LUNGE_1",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "LUNGE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 1 && tears >= 0"
+	},
+	{
+		"Id": "LUNGE_2",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "LUNGE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 2 && tears >= 0"
+	},
+	{
+		"Id": "LUNGE_3",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "LUNGE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 4 && tears >= 0"
+	},
+	{
+		"Id": "VERTICAL_1",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "DIVE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 1 && tears >= 0"
+	},
+	{
+		"Id": "VERTICAL_2",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "DIVE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 3 && tears >= 0"
+	},
+	{
+		"Id": "VERTICAL_3",
+		"Name": "",
+		"Hint": "",
+		"Type": 1,
+		"OriginalItem": "DIVE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 6 && tears >= 0"
 	},
 ]
