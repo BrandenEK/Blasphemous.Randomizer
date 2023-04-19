@@ -6,6 +6,7 @@ namespace BlasphemousRandomizer
     {
         // Main Settings
         public int LogicDifficulty { get; set; }
+        public int StartingLocation { get; set; }
         public int CustomSeed { get; set; }
         public string VersionCreated { get; set; }
 
@@ -35,6 +36,7 @@ namespace BlasphemousRandomizer
         public Config()
         {
             LogicDifficulty = 1;
+            StartingLocation = 0;
             CustomSeed = 0;
             VersionCreated = Main.Randomizer.ModVersion;
 

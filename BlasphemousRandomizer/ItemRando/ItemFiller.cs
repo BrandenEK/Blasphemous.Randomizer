@@ -6,8 +6,6 @@ namespace BlasphemousRandomizer.ItemRando
 {
     public class ItemFiller : Filler
     {
-        private const string FIRST_DOOR = "D17Z01S01[E]";
-
         public bool Fill(int seed, Dictionary<string, string> mappedDoors, Dictionary<string, string> mappedItems)
         {
             // Initialize seed with empty lists
@@ -126,7 +124,9 @@ namespace BlasphemousRandomizer.ItemRando
             // Create and fill initially visible doors/items lists
             List<DoorLocation> visibleDoors = new List<DoorLocation>();
             List<ItemLocation> visibleItems = new List<ItemLocation>();
-            roomObjects["Initial"].AddRange(roomObjects[allDoorLocations[FIRST_DOOR].Room]);
+            DoorLocation startingDoor = allDoorLocations[startingLocations[config.StartingLocation]];
+
+            roomObjects["Initial"].AddRange(roomObjects[startingDoor.Room]);
             foreach (string obj in roomObjects["Initial"])
             {
                 if (obj[0] == 'D')
@@ -142,7 +142,7 @@ namespace BlasphemousRandomizer.ItemRando
             }
             visibleDoors.Add(allDoorLocations["D01Z02S07[E]"]);
             visibleItems.Add(allItemLocations["QI65"]);
-            inventory.AddItem(FIRST_DOOR);
+            inventory.AddItem(startingDoor.Id);
 
             // While there are still doors or items to place, place them
             while (progressionItems.Count > 0 || doorsRemaining > 0)
@@ -272,5 +272,11 @@ namespace BlasphemousRandomizer.ItemRando
             // Seed is filled & validated
             return true;
         }
+
+        private string[] startingLocations = new string[]
+        {
+            "D17Z01S01[E]",
+            "D08Z02S01[W]",
+        };
 	}
 }
