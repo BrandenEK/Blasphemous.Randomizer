@@ -16,7 +16,7 @@ namespace BlasphemousRandomizer.ItemRando
         {
             Main.Randomizer.Log("InteractableInvAdd(" + ___item + ")");
 
-            if (!Main.Randomizer.data.itemLocations.ContainsKey(___item))
+            if (Main.Randomizer.itemShuffler.getItemAtLocation(___item) == null)
             {
                 Main.Randomizer.LogWarning($"Location '{___item}' doesn't exist!");
                 return true;
@@ -152,7 +152,7 @@ namespace BlasphemousRandomizer.ItemRando
                 Main.Randomizer.Log("PurgeAdd(" + tears + ")");
                 if (tears == 18000)
                 {
-                    Main.Randomizer.itemShuffler.giveItem($"{Core.LevelManager.lastLevel.LevelName}[18000]", showMessage);
+                    Main.Randomizer.itemShuffler.giveItem($"Amanecida[{Core.LevelManager.lastLevel.LevelName}]", showMessage);
                 }
                 else
                 {
