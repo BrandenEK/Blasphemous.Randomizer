@@ -148,7 +148,7 @@ namespace BlasphemousRandomizer
 
         private int generateSeed()
         {
-            return gameConfig.CustomSeed > 0 ? gameConfig.CustomSeed : new System.Random().Next();
+            return gameConfig.CustomSeed > 0 ? gameConfig.CustomSeed : new System.Random().Next(1, 999999);
         }
 
         private void Randomize(bool newGame)

@@ -188,9 +188,6 @@ namespace BlasphemousRandomizer.Settings
             config.AreaScaling = AreaScaling.getSelected();
             config.EnemyShuffleType = EnemiesLeft.getOption();
 
-            // temp
-            config.DoorShuffleType = 1;
-
             // Load config from seed
             config.CustomSeed = currentSeed != "" ? int.Parse(currentSeed) : generatedSeed;
             return config;
