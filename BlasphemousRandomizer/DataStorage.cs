@@ -109,7 +109,7 @@ namespace BlasphemousRandomizer
 		}
 
 		// Fills the dictionary with the items parsed from the json string
-		private void processItems(FileUtil fileUtil, Dictionary<string, Item> items, string json)
+		private void processItems(FileUtil fileUtil, Dictionary<string, Item> items, string json) // items.json file can't end with a comma for this to work!
 		{
 			// Parse json string into array
 			json = json.Replace("},", "}*");
