@@ -5,6 +5,7 @@ using Tools.Playmaker2.Action;
 using HutongGames.PlayMaker;
 using Gameplay.GameControllers.Penitent;
 using Gameplay.GameControllers.Entities;
+using ModdingAPI;
 
 namespace BlasphemousRandomizer.ItemRando
 {
@@ -183,6 +184,25 @@ namespace BlasphemousRandomizer.ItemRando
                 return false;
             }
             return true;
+        }
+    }
+
+    // Used when custom items are added from the modding api
+    [HarmonyPatch(typeof(ItemModder), "AddAndDisplayItem")]
+    public class ItemModder_Patch
+    {
+        public static bool Prefix(string itemId)
+        {
+            Main.Randomizer.Log("ItemModderAdd(" + itemId + ")");
+
+            if (Main.Randomizer.itemShuffler.getItemAtLocation(itemId) == null)
+            {
+                Main.Randomizer.LogWarning($"Location '{itemId}' doesn't exist!");
+                return true;
+            }
+
+            Main.Randomizer.itemShuffler.giveItem(itemId, true);
+            return false;
         }
     }
 }
