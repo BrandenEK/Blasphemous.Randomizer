@@ -73,6 +73,8 @@ namespace BlasphemousRandomizer
             Main.Randomizer.Log(text + " flag: " + formatted);
 
             // Autotracking flags
+            if (!b) return;
+
             if (formatted.StartsWith("ITEM_"))
                 Main.Randomizer.tracker.NewItem(id.Substring(5));
             else if (formatted.StartsWith("LOCATION_"))
