@@ -210,14 +210,20 @@ namespace BlasphemousRandomizer.ItemRando
 				flag = Core.Events.GetFlag("LOCATION_RB06");
 			}
 			// Gemino bead
-			if ((scene == "D02Z01S01" || scene == "D02Z01S04") && text == "GEMINO_RB10_REWARD")
+			if (text == "GEMINO_RB10_REWARD")
 			{
-				flag = Core.Events.GetFlag("LOCATION_RB10");
+				if (scene == "D02Z01S01")
+					flag = Core.Events.GetFlag("LOCATION_RB10");
+				else if (scene == "D02Z01S04")
+					flag = true;
 			}
 			// Gemino flowers
-			if ((scene == "D02Z01S01" || scene == "D02Z01S04") && text == "GEMINO_OFFERING_DONE")
+			if (text == "GEMINO_OFFERING_DONE")
 			{
-				flag = Core.Events.GetFlag("LOCATION_QI68");
+				if (scene == "D02Z01S01")
+					flag = true;
+				else if (scene == "D02Z01S04")
+					flag = Core.Events.GetFlag("LOCATION_QI68");
 			}
 			// Perpetva scapular
 			if (scene == "D20Z03S01" && text == "D08Z01S01_BOSSDEAD")
