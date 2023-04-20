@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Framework.Managers;
+using Tools.Items;
 using Tools.Playmaker2.Action;
 using Tools.Playmaker2.Condition;
 
@@ -286,6 +287,17 @@ namespace BlasphemousRandomizer.ItemRando
 				flag = Core.Events.GetFlag("LOCATION_QI71");
 			}
 
+			// Cistern shroud puzzle
+			if (scene == "D01Z05S21")
+            {
+				bool completePuzzle = Core.InventoryManager.IsRelicEquipped("RE04");
+				if (text == "D01Z05S21_LEFTSHOW4" || text == "D01Z05S21_RIGHTSHOW2")
+					flag = completePuzzle;
+				else if (text == "D01Z05S21_LEFTSHOWNONE" || text == "D01Z05S21_LEFTSHOW1" || text == "D01Z05S21_LEFTSHOW2" || text == "D01Z05S21_LEFTSHOW3" ||
+					text == "D01Z05S21_RIGHTSHOWNONE" || text == "D01Z05S21_RIGHTSHOW1")
+					flag = !completePuzzle;
+            }
+
 			// Boss shuffle disabling
 			//if (scene == "D17Z01S11" && text == "D17Z01_BOSSDEAD")
 			//{
@@ -468,6 +480,24 @@ namespace BlasphemousRandomizer.ItemRando
 					return false;
 				}
 				return true;
+			}
+		}
+
+		// Prevent the chalice from unfilling
+		[HarmonyPatch(typeof(ChaliceEffect), "ClearEnemiesFlags")]
+		public class ChaliceFlags_Patch
+        {
+			public static bool Prefix()
+            {
+				return false;
+            }
+        }
+		[HarmonyPatch(typeof(ChaliceEffect), "UnfillChalice")]
+		public class ChaliceItem_Patch
+		{
+			public static bool Prefix()
+			{
+				return false;
 			}
 		}
 	}

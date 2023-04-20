@@ -528,6 +528,8 @@
 		"Id": "QI75",
 		"Name": "",
 		"Hint": "",
+		"Type": 9,
+		"OriginalItem": "QI75",
 		"Room": "D01Z05S23"
 	},
 	{
