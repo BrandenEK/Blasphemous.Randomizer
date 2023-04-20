@@ -5,7 +5,10 @@ using Framework.EditorScripts.BossesBalance;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Widgets;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
+using Tools.Level.Interactables;
+using Tools.Level.Actionables;
 
 namespace BlasphemousRandomizer
 {
@@ -161,6 +164,31 @@ namespace BlasphemousRandomizer
         {
             __result = false;
             return false;
+        }
+    }
+
+    // Insta open WotHP gate
+    [HarmonyPatch(typeof(Lever), "InteractionEnd")]
+    public class Lever_Patch
+    {
+        public static void Postfix()
+        {
+            //"5add5f9e-c290-4c0c-9a93-3728584f015b && 213379f6-1168-4c0a-bc99-e6118bce5a48"
+            if (Core.LevelManager.currentLevel.LevelName != "D09Z01S02") return;
+
+            Gate[] gates = Object.FindObjectsOfType<Gate>();
+            foreach (Gate gate in gates)
+            {
+                if (gate.GetPersistenID() == "debd2dd2-4061-4b29-9ea2-8db07e884f5d")
+                {
+                    if (!gate.IsOpenOrActivated())
+                    {
+                        gate.Use();
+                        Core.Events.SetFlag("D09Z01S02_GATERIDDLE", true);
+                    }
+                    break;
+                }
+            }
         }
     }
 }
