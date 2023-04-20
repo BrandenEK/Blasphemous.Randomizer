@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Framework.Managers;
 using ModdingAPI.Commands;
 
 namespace BlasphemousRandomizer
@@ -15,7 +16,8 @@ namespace BlasphemousRandomizer
             return new Dictionary<string, Action<string[]>>()
             {
                 { "help", Help },
-                { "autotracker", AutoTracker }
+                { "autotracker", AutoTracker },
+                { "respawn", Respawn },
             };
         }
 
@@ -25,6 +27,7 @@ namespace BlasphemousRandomizer
 
             Write("Available RANDOMIZER commands:");
             Write("randomizer autotracker ON/OFF: Turn autotracking on or off");
+            Write("randomizer respawn: Respawn from your chosen starting location");
         }
 
         private void AutoTracker(string[] parameters)
@@ -44,6 +47,24 @@ namespace BlasphemousRandomizer
             else
             {
                 Write("Please type 'on' or 'off'");
+            }
+        }
+
+        private void Respawn(string[] parameters)
+        {
+            if (!ValidateParameterList(parameters, 0)) return;
+
+            string currentLevel = Core.LevelManager.currentLevel.LevelName;
+            if (currentLevel != "MainMenu" && currentLevel != Main.Randomizer.StartingDoor.Room)
+            {
+                Write("Respawning from starting location!");
+                Core.Events.SetFlag("CHERUB_RESPAWN", true);
+                Core.SpawnManager.ResetPersistence();
+                Core.SpawnManager.SpawnFromCustom(true, null);
+            }
+            else
+            {
+                Write("Can only respawn while in game and in a different room!");
             }
         }
     }

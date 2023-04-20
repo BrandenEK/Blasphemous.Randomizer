@@ -149,10 +149,7 @@ namespace BlasphemousRandomizer
     {
         public static void Prefix(bool ___isContinue, ref string ___sceneName)
         {
-            if (!___isContinue)
-            {
-                ___sceneName = Main.Randomizer.StartingDoor.Room;
-            }
+            ___sceneName = Main.Randomizer.StartingDoor.Room;
         }
     }
 

@@ -27,10 +27,11 @@ namespace BlasphemousRandomizer.DoorRando
     [HarmonyPatch(typeof(SpawnManager), "ResetPersistence")]
     public class SpawnManagerStart_Patch
     {
-        public static void Postfix(ref SpawnManager.PosibleSpawnPoints ___pendingSpawn, ref Vector3 ___customPosition, ref EntityOrientation ___customOrientation)
+        public static void Postfix(ref SpawnManager.PosibleSpawnPoints ___pendingSpawn, ref string ___customLevel, ref Vector3 ___customPosition, ref EntityOrientation ___customOrientation)
         {
             ___pendingSpawn = SpawnManager.PosibleSpawnPoints.CustomPosition;
             StartingLocation start = Main.Randomizer.StartingDoor;
+            ___customLevel = start.Room;
             ___customPosition = start.Position;
             ___customOrientation = start.FacingRight ? EntityOrientation.Right : EntityOrientation.Left;
             Main.Randomizer.Log("Setting start location to " + start.Room);
