@@ -199,6 +199,11 @@ namespace BlasphemousRandomizer.ItemRando
 			{
 				flag = Core.Events.GetFlag("LOCATION_PR08");
 			}
+			// Rooftops - If both cleofas & Jibrael present prioritize Jibrael
+			if (scene == "D06Z01S18" && text == "CLEOFAS_BURYING")
+            {
+				flag = flag && (!Core.Events.GetFlag("SANTOS_FIRSTCONVERSATION_DONE") || Core.Events.GetFlag("SANTOS_AMANECIDA_LOCATION3_ACTIVATED") || Core.Events.GetFlag("SANTOS_AMANECIDA_FACCATA_DEFEATED"));
+            }
 			// Redento corpse
 			if (scene == "D04BZ02S01" && text == "REDENTO_QI54_USED")
 			{
