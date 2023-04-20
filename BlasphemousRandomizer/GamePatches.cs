@@ -150,4 +150,15 @@ namespace BlasphemousRandomizer
             }
         }
     }
+
+    // Always think that no sword hearts are equipped
+    [HarmonyPatch(typeof(InventoryManager), "IsAnySwordHeartEquiped")]
+    public class InventorySwordHeart_Patch
+    {
+        public static bool Prefix(ref bool __result)
+        {
+            __result = false;
+            return false;
+        }
+    }
 }
