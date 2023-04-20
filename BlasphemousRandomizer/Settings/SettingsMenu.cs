@@ -442,9 +442,9 @@ namespace BlasphemousRandomizer.Settings
             startLocationText.anchoredPosition = new Vector2(0, top - 70);
 
             RectTransform startLocationOption = getNewCyclebox("Start Loc Option", itemsSection, font, 15, 16,
-                new string[] { "Brotherhood", "Knot of Words" },
-                new string[] { "Begin the game in the Brotherhood of the Silent Sorrow", "Begin the game in the Knot of the Three Words" },
-                new SettingsElement[] { }, 54);
+                new string[] { "Brotherhood", /*"Mercy Dreams",*/ "Knot of Words", "Library" },
+                new string[] { "Begin the game in the Brotherhood of the Silent Sorrow", /*"Begin the game in Mercy Dreams",*/ "Begin the game in the Knot of the Three Words", "Begin the game in the Library of the Negated Words" },
+                new SettingsElement[] { }, 52);
             startLocationOption.anchoredPosition = new Vector2(0, top - 90);
             StartingLocationLeft = startLocationOption.GetChild(0).GetComponent<SettingsCyclebox>();
             StartingLocationRight = startLocationOption.GetChild(1).GetComponent<SettingsCyclebox>();
