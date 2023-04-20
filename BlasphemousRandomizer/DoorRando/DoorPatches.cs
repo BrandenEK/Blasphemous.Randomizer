@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using HarmonyLib;
+﻿using HarmonyLib;
 using Framework.Managers;
+using Framework.FrameworkCore;
 using Tools.Level.Interactables;
+using UnityEngine;
 
 namespace BlasphemousRandomizer.DoorRando
 {
@@ -19,6 +20,20 @@ namespace BlasphemousRandomizer.DoorRando
                 __instance.targetScene = newScene;
                 __instance.targetDoor = newId;
             }
+        }
+    }
+
+    // When beginning new game, set custom spawning properties
+    [HarmonyPatch(typeof(SpawnManager), "ResetPersistence")]
+    public class SpawnManagerStart_Patch
+    {
+        public static void Postfix(ref SpawnManager.PosibleSpawnPoints ___pendingSpawn, ref Vector3 ___customPosition, ref EntityOrientation ___customOrientation)
+        {
+            ___pendingSpawn = SpawnManager.PosibleSpawnPoints.CustomPosition;
+            StartingLocation start = Main.Randomizer.StartingDoor;
+            ___customPosition = start.Position;
+            ___customOrientation = start.FacingRight ? EntityOrientation.Right : EntityOrientation.Left;
+            Main.Randomizer.Log("Setting start location to " + start.Room);
         }
     }
 }

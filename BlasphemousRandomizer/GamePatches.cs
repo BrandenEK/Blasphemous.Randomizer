@@ -137,4 +137,17 @@ namespace BlasphemousRandomizer
             return false;
         }
     }
+
+    // Load custom starting location
+    [HarmonyPatch(typeof(NewMainMenu), "InternalPlay")]
+    public class MainMenuNewGame_Patch
+    {
+        public static void Prefix(bool ___isContinue, ref string ___sceneName)
+        {
+            if (!___isContinue)
+            {
+                ___sceneName = Main.Randomizer.StartingDoor.Room;
+            }
+        }
+    }
 }

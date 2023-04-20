@@ -142,6 +142,7 @@ namespace BlasphemousRandomizer
             inGame = true;
             lastLoadedSlot = PersistentManager.GetAutomaticSlot();
             Core.GameModeManager.ChangeMode(GameModeManager.GAME_MODES.NEW_GAME_PLUS);
+            Core.Events.SetFlag("CHERUB_RESPAWN", true);
         }
 
         public override void ResetGame() { }
@@ -213,6 +214,12 @@ namespace BlasphemousRandomizer
                 Object.Destroy(audio);
                 obj.AddComponent<AudioLoader>();
             }
+
+            // Give first item when starting a new game
+            if (newLevel == StartingDoor.Room)
+            {
+                itemShuffler.giveItem("QI106", true);
+            }
         }
 
         // Set up a new game
@@ -268,21 +275,22 @@ namespace BlasphemousRandomizer
             {
                 LogDisplay($"{Localize("currsd")}: {seed} [{ComputeFinalSeed(seed, 1, true, gameConfig.StartWithWheel, gameConfig.ShuffleReliquaries)}]");
             }
-            else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad7))
+            else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad1))
             {
                 //enemyShuffler.Shuffle(new System.Random().Next());
                 //UIController.instance.ShowPopUp("Shuffling enemies temporarily!", "", 0, false);
             }
-            else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad8))
+            else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad2))
             {
-                //LogFile(EnemyShuffle.enemyData);
-                //tracker.Connect();
+                gameConfig.StartingLocation = 0;
+                Log("Starting from brotherhood");
             }
-            else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad9))
+            else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad3))
             {
-                
+                gameConfig.StartingLocation = 1;
+                Log("Starting from knot");
             }
-
+            
             // Update ui menus
             if (settingsMenu != null)
                 settingsMenu.update();
@@ -349,5 +357,23 @@ namespace BlasphemousRandomizer
             }
             return uniqueSeed;
         }
+
+        public StartingLocation StartingDoor
+        {
+            get
+            {
+                if (gameConfig.StartingLocation < 0 || gameConfig.StartingLocation >= startingLocations.Length)
+                {
+                    LogError(gameConfig.StartingLocation + " is not a valid starting location!");
+                    return startingLocations[0];
+                }
+                return startingLocations[gameConfig.StartingLocation];
+            }
+        }
+        private StartingLocation[] startingLocations = new StartingLocation[]
+        {
+            new StartingLocation("D17Z01S01", "D17Z01S01[E]", new Vector3(-988, 20, 0), true),
+            new StartingLocation("D04Z03S01", "D04Z03S01[W]", new Vector3(353, 19, 0), false),
+        };
     }
 }

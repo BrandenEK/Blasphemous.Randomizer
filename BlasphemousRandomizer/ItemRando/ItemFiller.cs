@@ -124,7 +124,7 @@ namespace BlasphemousRandomizer.ItemRando
             // Create and fill initially visible doors/items lists
             List<DoorLocation> visibleDoors = new List<DoorLocation>();
             List<ItemLocation> visibleItems = new List<ItemLocation>();
-            DoorLocation startingDoor = allDoorLocations[startingLocations[config.StartingLocation]];
+            DoorLocation startingDoor = allDoorLocations[Main.Randomizer.StartingDoor.Door];
 
             roomObjects["Initial"].AddRange(roomObjects[startingDoor.Room]);
             foreach (string obj in roomObjects["Initial"])
@@ -272,11 +272,5 @@ namespace BlasphemousRandomizer.ItemRando
             // Seed is filled & validated
             return true;
         }
-
-        private string[] startingLocations = new string[]
-        {
-            "D17Z01S01[E]",
-            "D08Z02S01[W]",
-        };
 	}
 }
