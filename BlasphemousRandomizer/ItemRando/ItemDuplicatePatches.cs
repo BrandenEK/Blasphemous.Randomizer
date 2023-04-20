@@ -227,7 +227,7 @@ namespace BlasphemousRandomizer.ItemRando
 			// Esdras key
 			if (scene == "D17Z01S15" && text == "ESDRAS_CHAPEL")
 			{
-				flag = true;
+				flag = Core.Events.GetFlag("D08Z01S01_BOSSDEAD");
 			}
 			// Brotherhood church
 			if (scene == "D17Z01S14" && (text == "ESDRAS_CHAPEL" || text == "D06Z01S25_BOSSDEAD"))
