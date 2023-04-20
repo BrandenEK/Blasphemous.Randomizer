@@ -133,7 +133,6 @@ namespace BlasphemousRandomizer
         {
             itemsCollected = 0;
             startedInRando = true;
-            gameConfig = settingsMenu.getConfigSettings();
             seed = generateSeed();
             setUpExtras();
             Log("Generating new seed: " + seed);

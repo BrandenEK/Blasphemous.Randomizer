@@ -9,7 +9,7 @@ namespace BlasphemousRandomizer.Settings
     public class SettingsMenu
     {
         private const int UNIQUE_ID_SIZE = 5;
-        private const int NUMBER_OF_OPTIONS = 14;
+        private const int NUMBER_OF_OPTIONS = 13;
 
         readonly string[] uniqueSeedIcons = new string[] // 42 diff images (Will have to be updated when adding new options)
         {
@@ -36,14 +36,17 @@ namespace BlasphemousRandomizer.Settings
 
         private SettingsElement[] buttons;
         private SettingsCheckbox Teleportation { get { return buttons[0] as SettingsCheckbox; } set { buttons[0] = value; } }
-        private SettingsCheckbox Cutscenes { get { return buttons[1] as SettingsCheckbox; } set { buttons[1] = value; } }
-        private SettingsCheckbox Hints { get { return buttons[13] as SettingsCheckbox; } set { buttons[13] = value; } }
+        //private SettingsCheckbox Cutscenes { get { return buttons[1] as SettingsCheckbox; } set { buttons[1] = value; } }
+        private SettingsCheckbox Hints { get { return buttons[1] as SettingsCheckbox; } set { buttons[1] = value; } }
         private SettingsCheckbox Penitence { get { return buttons[2] as SettingsCheckbox; } set { buttons[2] = value; } }
 
         private SettingsCyclebox ItemsLeft { get { return buttons[9] as SettingsCyclebox; } set { buttons[9] = value; } }
         private SettingsCyclebox ItemsRight { get { return buttons[10] as SettingsCyclebox; } set { buttons[10] = value; } }
-        private SettingsCheckbox MistDamage { get { return buttons[3] as SettingsCheckbox; } set { buttons[3] = value; } }
-        private SettingsCheckbox NpcDeath { get { return buttons[4] as SettingsCheckbox; } set { buttons[4] = value; } }
+
+        private SettingsCyclebox StartingLocationLeft { get { return buttons[3] as SettingsCyclebox; } set { buttons[3] = value; } }
+        private SettingsCyclebox StartingLocationRight { get { return buttons[4] as SettingsCyclebox; } set { buttons[4] = value; } }
+        //private SettingsCheckbox MistDamage { get { return buttons[3] as SettingsCheckbox; } set { buttons[3] = value; } }
+        //private SettingsCheckbox NpcDeath { get { return buttons[4] as SettingsCheckbox; } set { buttons[4] = value; } }
         private SettingsCheckbox Wheel { get { return buttons[5] as SettingsCheckbox; } set { buttons[5] = value; } }
         private SettingsCheckbox Reliquaries { get { return buttons[6] as SettingsCheckbox; } set { buttons[6] = value; } }
 
@@ -150,17 +153,19 @@ namespace BlasphemousRandomizer.Settings
 
             // Load config into buttons
             Teleportation.setSelected(config.UnlockTeleportation);
-            Cutscenes.setSelected(true);
+            //Cutscenes.setSelected(true);
             Hints.setSelected(config.AllowHints);
             Penitence.setSelected(config.AllowPenitence);
-            MistDamage.setSelected(true);
-            NpcDeath.setSelected(true);
+            //MistDamage.setSelected(true);
+            //NpcDeath.setSelected(true);
             Wheel.setSelected(config.StartWithWheel);
             Reliquaries.setSelected(config.ShuffleReliquaries);
             MaintainClass.setSelected(config.MaintainClass);
             AreaScaling.setSelected(config.AreaScaling);
             ItemsLeft.setOption(1);
             ItemsRight.setOption(1);
+            StartingLocationLeft.setOption(config.StartingLocation);
+            StartingLocationRight.setOption(config.StartingLocation);
             EnemiesLeft.setOption(config.EnemyShuffleType);
             EnemiesRight.setOption(config.EnemyShuffleType);
 
@@ -187,6 +192,7 @@ namespace BlasphemousRandomizer.Settings
             config.MaintainClass = MaintainClass.getSelected();
             config.AreaScaling = AreaScaling.getSelected();
             config.EnemyShuffleType = EnemiesLeft.getOption();
+            config.StartingLocation = StartingLocationLeft.getOption();
 
             // Load config from seed
             config.CustomSeed = currentSeed != "" ? int.Parse(currentSeed) : generatedSeed;
@@ -209,7 +215,7 @@ namespace BlasphemousRandomizer.Settings
         private void UpdateUniqueId()
         {
             // Get final seed based on seed & options
-            int finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != "" ? int.Parse(currentSeed) : generatedSeed, ItemsRight.getOption(), MistDamage.getSelected(), Wheel.getSelected(), Reliquaries.getSelected());
+            int finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != "" ? int.Parse(currentSeed) : generatedSeed, ItemsRight.getOption(), true, Wheel.getSelected(), Reliquaries.getSelected());
 
             // Fill images based on unique seed
             try
@@ -259,6 +265,7 @@ namespace BlasphemousRandomizer.Settings
             if (!menuActive || waiting) return;
 
             Main.Randomizer.playSoundEffect(0);
+            Main.Randomizer.gameConfig = getConfigSettings();
             showSettingsMenu(false, false);
             waiting = true;
             Object.FindObjectOfType<SelectSaveSlots>().OnAcceptSlots(999 + currentSlot);
@@ -381,9 +388,9 @@ namespace BlasphemousRandomizer.Settings
             teleportOption.anchoredPosition = new Vector2(left, top - 70);
             Teleportation = teleportOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform cutscenesOption = getNewCheckbox("Cutscenes", generalSection, Main.Randomizer.Localize("ctname"), Main.Randomizer.Localize("ctdesc"), font, 15, 16);
-            cutscenesOption.anchoredPosition = new Vector2(left, top - 100);
-            Cutscenes = cutscenesOption.GetComponent<SettingsCheckbox>();
+            //RectTransform cutscenesOption = getNewCheckbox("Cutscenes", generalSection, Main.Randomizer.Localize("ctname"), Main.Randomizer.Localize("ctdesc"), font, 15, 16);
+            //cutscenesOption.anchoredPosition = new Vector2(left, top - 100);
+            //Cutscenes = cutscenesOption.GetComponent<SettingsCheckbox>();
 
             RectTransform hintsOption = getNewCheckbox("Hints", generalSection, Main.Randomizer.Localize("htname"), Main.Randomizer.Localize("htdesc"), font, 15, 16);
             hintsOption.anchoredPosition = new Vector2(left, top - 130);
@@ -406,13 +413,13 @@ namespace BlasphemousRandomizer.Settings
             RectTransform itemsTitle = getNewText("Items Title", itemsSection, Main.Randomizer.Localize("itmset") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
             itemsTitle.anchoredPosition = new Vector2(0, top - 5);
 
-            RectTransform lungOption = getNewCheckbox("Lung", itemsSection, Main.Randomizer.Localize("lgname"), Main.Randomizer.Localize("lgdesc"), font, 15, 16);
-            lungOption.anchoredPosition = new Vector2(left, top - 70);
-            MistDamage = lungOption.GetComponent<SettingsCheckbox>();
+            //RectTransform lungOption = getNewCheckbox("Lung", itemsSection, Main.Randomizer.Localize("lgname"), Main.Randomizer.Localize("lgdesc"), font, 15, 16);
+            //lungOption.anchoredPosition = new Vector2(left, top - 70);
+            //MistDamage = lungOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform deathOption = getNewCheckbox("Death", itemsSection, Main.Randomizer.Localize("dename"), Main.Randomizer.Localize("dedesc"), font, 15, 16);
-            deathOption.anchoredPosition = new Vector2(left, top - 100);
-            NpcDeath = deathOption.GetComponent<SettingsCheckbox>();
+            //RectTransform deathOption = getNewCheckbox("Death", itemsSection, Main.Randomizer.Localize("dename"), Main.Randomizer.Localize("dedesc"), font, 15, 16);
+            //deathOption.anchoredPosition = new Vector2(left, top - 100);
+            //NpcDeath = deathOption.GetComponent<SettingsCheckbox>();
 
             RectTransform wheelOption = getNewCheckbox("Wheel", itemsSection, Main.Randomizer.Localize("whname"), Main.Randomizer.Localize("whdesc"), font, 15, 16);
             wheelOption.anchoredPosition = new Vector2(left, top - 130);
@@ -426,10 +433,21 @@ namespace BlasphemousRandomizer.Settings
                 new string[] { Main.Randomizer.Localize("dstype"), Main.Randomizer.Localize("entype") },
                 new string[] { Main.Randomizer.Localize("dstype") + " - " + Main.Randomizer.Localize("dsides"),
                                Main.Randomizer.Localize("entype") + " - " + Main.Randomizer.Localize("endesc") },
-                new SettingsElement[] { MistDamage, NpcDeath, Wheel, Reliquaries });
+                new SettingsElement[] { Wheel, Reliquaries }, 36);
             itemsType.anchoredPosition = new Vector2(0, top - 25);
             ItemsLeft = itemsType.GetChild(0).GetComponent<SettingsCyclebox>();
             ItemsRight = itemsType.GetChild(1).GetComponent<SettingsCyclebox>();
+
+            RectTransform startLocationText = getNewText("Start Loc Text", itemsSection, "Starting Location:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            startLocationText.anchoredPosition = new Vector2(0, top - 70);
+
+            RectTransform startLocationOption = getNewCyclebox("Start Loc Option", itemsSection, font, 15, 16,
+                new string[] { "Brotherhood", "Knot of Words" },
+                new string[] { "Begin the game in the Brotherhood of the Silent Sorrow", "Begin the game in the Knot of the Three Words" },
+                new SettingsElement[] { }, 54);
+            startLocationOption.anchoredPosition = new Vector2(0, top - 90);
+            StartingLocationLeft = startLocationOption.GetChild(0).GetComponent<SettingsCyclebox>();
+            StartingLocationRight = startLocationOption.GetChild(1).GetComponent<SettingsCyclebox>();
 
             // Enemies section
 
@@ -453,7 +471,7 @@ namespace BlasphemousRandomizer.Settings
                 new string[] { Main.Randomizer.Localize("dstype") + " - " + Main.Randomizer.Localize("dsedes"),
                                Main.Randomizer.Localize("sftype") + " - " + Main.Randomizer.Localize("sfdesc"),
                                Main.Randomizer.Localize("rdtype") + " - " + Main.Randomizer.Localize("rddesc") },
-                new SettingsElement[] { MaintainClass, AreaScaling });
+                new SettingsElement[] { MaintainClass, AreaScaling }, 38);
             enemiesType.anchoredPosition = new Vector2(0, top - 25);
             EnemiesLeft = enemiesType.GetChild(0).GetComponent<SettingsCyclebox>();
             EnemiesRight = enemiesType.GetChild(1).GetComponent<SettingsCyclebox>();
@@ -533,16 +551,16 @@ namespace BlasphemousRandomizer.Settings
                 return rect;
             }
 
-            RectTransform getNewCyclebox(string name, Transform parent, Font font, int boxSize, int fontSize, string[] options, string[] descs, SettingsElement[] boxes)
+            RectTransform getNewCyclebox(string name, Transform parent, Font font, int boxSize, int fontSize, string[] options, string[] descs, SettingsElement[] boxes, int arrowDistance)
             {
                 RectTransform rect = getNewText(name, parent, "", font, fontSize, Color.yellow, TextAnchor.MiddleCenter);
 
                 RectTransform left = getNewImage("Left", rect, boxSize);
-                left.anchoredPosition = new Vector2(-36, 0);
+                left.anchoredPosition = new Vector2(-arrowDistance, 0);
                 left.gameObject.AddComponent<SettingsCyclebox>().onStart(options, descs, boxes, false);
 
                 RectTransform right = getNewImage("Right", rect, boxSize);
-                right.anchoredPosition = new Vector2(36, 0);
+                right.anchoredPosition = new Vector2(arrowDistance, 0);
                 right.gameObject.AddComponent<SettingsCyclebox>().onStart(options, descs, boxes, true);
 
                 return rect;
