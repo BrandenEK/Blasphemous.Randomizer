@@ -203,8 +203,8 @@ namespace BlasphemousRandomizer.ItemRando
                     ItemLocation itemLocation = visibleItems[i];
                     if (itemLocation.Logic == null || Parser.EvaluateExpression(itemLocation.Logic, inventory))
                     {
-                        // If miriam item and forcing filler, make it never reachable
-                        if (config.ForceMiriamFiller && itemLocation.Type == 3)
+                        // If long quest item and forcing junk, make it never reachable
+                        if (config.JunkLongQuests && itemLocation.Type == 8)
                         {
                             continue;
                         }

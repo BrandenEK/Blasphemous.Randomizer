@@ -19,15 +19,21 @@ namespace BlasphemousRandomizer
         public bool ShuffleReliquaries { get; set; }
         public bool ShuffleBootsOfPleading { get; set; }
         public bool ShufflePurifiedHand { get; set; }
+        public bool ShuffleDash { get; set; }
+        public bool ShuffleWallClimb { get; set; }
+
         public bool ShuffleSwordSkills { get; set; }
         public bool ShuffleThorns { get; set; }
-        public bool ForceMiriamFiller { get; set; }
+        public bool JunkLongQuests { get; set; }
         public bool StartWithWheel { get; set; }
 
         // Enemy Rando
         public int EnemyShuffleType { get; set; }
         public bool MaintainClass { get; set; }
         public bool AreaScaling { get; set; }
+
+        // Boss Rando
+        public int BossShuffleType { get; set; }
 
         // Door Rando
         public int DoorShuffleType { get; set; }
@@ -47,14 +53,19 @@ namespace BlasphemousRandomizer
             ShuffleReliquaries = true;
             ShuffleBootsOfPleading = false;
             ShufflePurifiedHand = false;
+            ShuffleDash = false;
+            ShuffleWallClimb = false;
+
             ShuffleSwordSkills = true;
             ShuffleThorns = true;
-            ForceMiriamFiller = true;
+            JunkLongQuests = true;
             StartWithWheel = false;
 
             EnemyShuffleType = 0;
             MaintainClass = true;
             AreaScaling = true;
+
+            BossShuffleType = 0;
 
             DoorShuffleType = 0;
         }

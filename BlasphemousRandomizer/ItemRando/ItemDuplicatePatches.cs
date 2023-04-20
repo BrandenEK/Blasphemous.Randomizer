@@ -487,18 +487,12 @@ namespace BlasphemousRandomizer.ItemRando
 		[HarmonyPatch(typeof(ChaliceEffect), "ClearEnemiesFlags")]
 		public class ChaliceFlags_Patch
         {
-			public static bool Prefix()
-            {
-				return false;
-            }
+			public static bool Prefix() { return false; }
         }
 		[HarmonyPatch(typeof(ChaliceEffect), "UnfillChalice")]
 		public class ChaliceItem_Patch
 		{
-			public static bool Prefix()
-			{
-				return false;
-			}
+			public static bool Prefix() { return false; }
 		}
 	}
 }

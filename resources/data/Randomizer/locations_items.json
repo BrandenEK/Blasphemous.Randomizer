@@ -127,7 +127,7 @@
 		"Hint": "",
 		"OriginalItem": "CH",
 		"Room": "D01Z02S03",
-		"Logic": "cherubs ^ 0x20242 || D01Z02S03[NW] && (wheel || cherubs ^ 0x46010)"
+		"Logic": "cherubBitfield ^ 0x20242 || D01Z02S03[NW] && (wheel || cherubBitfield ^ 0x46010)"
 	},
 	{
 		"Id": "Lvdovico[500]",
@@ -280,6 +280,7 @@
 		"Id": "Undertaker[5000]",
 		"Name": "",
 		"Hint": "",
+		"Type": 8,
 		"Room": "D01BZ06S01",
 		"Logic": "bones >= 44"
 	},
@@ -341,7 +342,7 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D01Z03S07",
-		"Logic": "dawnHeart || wheel || cherubs ^ 0x66210"
+		"Logic": "dawnHeart || wheel || cherubBitfield ^ 0x66210"
 	},
 	
 	{
@@ -398,7 +399,7 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D01Z04S16",
-		"Logic": "cherubs ^ 0x30242"
+		"Logic": "cherubBitfield ^ 0x30242"
 	},
 	{
 		"Id": "BS01",
@@ -460,7 +461,7 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D01Z05S06",
-		"Logic": "D01Z05S06[Cherubs] || nail || cherubs ^ 0x72242"
+		"Logic": "D01Z05S06[Cherubs] || nail || cherubBitfield ^ 0x72242"
 	},
 	{
 		"Id": "Oil[D01Z05S07]",
@@ -550,7 +551,7 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D01Z05S25",
-		"Logic": "linen || (D01Z05S25[W] && (dawnHeart || root || wheel && ranged) || D01Z05S25[E]) && cherubs ^ 0x20042"
+		"Logic": "linen || (D01Z05S25[W] && (dawnHeart || root || wheel && ranged) || D01Z05S25[E]) && cherubBitfield ^ 0x20042"
 	},
 	{
 		"Id": "Lady[D01Z05S26]",
@@ -596,7 +597,7 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D02Z01S02",
-		"Logic": "root || cherubs ^ 0x20042"
+		"Logic": "root || cherubBitfield ^ 0x20042"
 	},
 	{
 		"Id": "QI20",
@@ -629,7 +630,7 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D02Z01S06",
-		"Logic": "cherubs ^ 0x66252"
+		"Logic": "cherubBitfield ^ 0x66252"
 	},
 	{
 		"Id": "PR04",
@@ -651,7 +652,7 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D02Z02S02",
-		"Logic": "D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || cherubs ^ 0x30242"
+		"Logic": "D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || cherubBitfield ^ 0x30242"
 	},
 	{
 		"Id": "QI46",
@@ -690,7 +691,7 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D02Z02S04",
-		"Logic": "blood || cherubs ^ 0x26652"
+		"Logic": "blood || cherubBitfield ^ 0x26652"
 	},
 	{
 		"Id": "RB15",
@@ -716,7 +717,7 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D02Z02S08",
-		"Logic": "D02Z02S08[CherubsR] || blood || cherubs ^ 0x20042"
+		"Logic": "D02Z02S08[CherubsR] || blood || cherubBitfield ^ 0x20042"
 	},
 	{
 		"Id": "Oil[D02Z02S10]",
@@ -1039,14 +1040,14 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D03Z03S08",
-		"Logic": "blood && (cherubs ^ 0x2000 && ranged || cherubs ^ 0x30642)"
+		"Logic": "blood && (cherubBitfield ^ 0x2000 && ranged || cherubBitfield ^ 0x30642)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_20",
 		"Name": "",
 		"Hint": "",
 		"Room": "D03Z03S09",
-		"Logic": "root || cherubs ^ 0x32272"
+		"Logic": "root || cherubBitfield ^ 0x32272"
 	},
 	{
 		"Id": "QI13",
@@ -1154,7 +1155,7 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D04Z02S01",
-		"Logic": "D04Z02S04[N] || D04Z02S04[NE] || cherubs ^ 0x20042"
+		"Logic": "D04Z02S04[N] || D04Z02S04[NE] || cherubBitfield ^ 0x20042"
 	},
 	{
 		"Id": "CO17",
@@ -1251,7 +1252,7 @@
 		"Id": "PR201",
 		"Name": "",
 		"Hint": "",
-		"Type": 3,
+		"Type": 8,
 		"Room": "D04Z04S01",
 		"Logic": "miriamRooms >= 5"
 	},
@@ -1357,7 +1358,7 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D05Z01S21",
-		"Logic": "blood && (root || dawnHeart && ranged && cherubs ^ 0x20042)"
+		"Logic": "blood && (root || dawnHeart && ranged && cherubBitfield ^ 0x20042)"
 	},
 	{
 		"Id": "RB301",
@@ -1389,6 +1390,7 @@
 		"Id": "PR05",
 		"Name": "",
 		"Hint": "",
+		"Type": 8,
 		"Room": "D05Z02S10",
 		"Logic": "cherubs >= 38"
 	},
@@ -1470,7 +1472,7 @@
 		"Name": "",
 		"Hint": "",
 		"Room": "D06Z01S12",
-		"Logic": "D06Z01S12[W] || D06Z01S12[E] || D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || cherubs ^ 0x40"
+		"Logic": "D06Z01S12[W] || D06Z01S12[E] || D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || cherubBitfield ^ 0x40"
 	},
 	{
 		"Id": "CO40",
@@ -1697,7 +1699,7 @@
 		"Name": "Starting room cherub",
 		"Hint": "* resides in the Brotherhood",
 		"Room": "D17Z01S01",
-		"logic": "D17Z01S01[Cherubs1] || cherubs ^ 0x40 || root && (blood || cherubs ^ 0x30402)"
+		"logic": "D17Z01S01[Cherubs1] || cherubBitfield ^ 0x40 || root && (blood || cherubBitfield ^ 0x30402)"
 	},
 	{
 		"Id": "RE401",
