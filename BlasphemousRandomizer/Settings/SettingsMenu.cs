@@ -10,7 +10,7 @@ namespace BlasphemousRandomizer.Settings
     public class SettingsMenu
     {
         private const int UNIQUE_ID_SIZE = 5;
-        private const int NUMBER_OF_OPTIONS = 13;
+        private const int NUMBER_OF_OPTIONS = 14;
 
         readonly string[] uniqueSeedIcons = new string[] // 96 diff images (5 images = 32 bits, 6 images = 39 bits)
         {
@@ -51,6 +51,7 @@ namespace BlasphemousRandomizer.Settings
         //private SettingsCheckbox NpcDeath { get { return buttons[4] as SettingsCheckbox; } set { buttons[4] = value; } }
         private SettingsCheckbox Wheel { get { return buttons[5] as SettingsCheckbox; } set { buttons[5] = value; } }
         private SettingsCheckbox Reliquaries { get { return buttons[6] as SettingsCheckbox; } set { buttons[6] = value; } }
+        private SettingsCheckbox Dash { get { return buttons[13] as SettingsCheckbox; } set { buttons[13] = value; } }
 
         private SettingsCyclebox EnemiesLeft { get { return buttons[11] as SettingsCyclebox; } set { buttons[11] = value; } }
         private SettingsCyclebox EnemiesRight { get { return buttons[12] as SettingsCyclebox; } set { buttons[12] = value; } }
@@ -162,6 +163,7 @@ namespace BlasphemousRandomizer.Settings
             //NpcDeath.setSelected(true);
             Wheel.setSelected(config.StartWithWheel);
             Reliquaries.setSelected(config.ShuffleReliquaries);
+            Dash.setSelected(config.ShuffleDash);
             MaintainClass.setSelected(config.MaintainClass);
             AreaScaling.setSelected(config.AreaScaling);
             ItemsLeft.setOption(1);
@@ -191,6 +193,7 @@ namespace BlasphemousRandomizer.Settings
             config.AllowPenitence = Penitence.getSelected();
             config.StartWithWheel = Wheel.getSelected();
             config.ShuffleReliquaries = Reliquaries.getSelected();
+            config.ShuffleDash = Dash.getSelected();
             config.MaintainClass = MaintainClass.getSelected();
             config.AreaScaling = AreaScaling.getSelected();
             config.EnemyShuffleType = EnemiesLeft.getOption();
@@ -423,6 +426,10 @@ namespace BlasphemousRandomizer.Settings
             RectTransform reliqOption = getNewCheckbox("Reliquaries", itemsSection, Main.Randomizer.Localize("rqname"), Main.Randomizer.Localize("rqdesc"), font, 15, 16);
             reliqOption.anchoredPosition = new Vector2(left, top - 160);
             Reliquaries = reliqOption.GetComponent<SettingsCheckbox>();
+
+            RectTransform dashOption = getNewCheckbox("Dash", itemsSection, "Shuffle Dash", "Shuffles the dash ability into the item pool", font, 15, 16);
+            dashOption.anchoredPosition = new Vector2(left, top - 190);
+            Dash = dashOption.GetComponent<SettingsCheckbox>();
 
             RectTransform itemsType = getNewCyclebox("Type", itemsSection, font, 15, 16,
                 new string[] { Main.Randomizer.Localize("dstype"), Main.Randomizer.Localize("entype") },
