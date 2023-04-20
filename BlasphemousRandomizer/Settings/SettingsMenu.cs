@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Others;
 using Framework.Managers;
+using ModdingAPI;
 
 namespace BlasphemousRandomizer.Settings
 {
@@ -11,12 +12,13 @@ namespace BlasphemousRandomizer.Settings
         private const int UNIQUE_ID_SIZE = 5;
         private const int NUMBER_OF_OPTIONS = 13;
 
-        readonly string[] uniqueSeedIcons = new string[] // 42 diff images (Will have to be updated when adding new options)
+        readonly string[] uniqueSeedIcons = new string[] // 96 diff images (5 images = 32 bits, 6 images = 39 bits)
         {
-            "RB01", "RB03", "RB07", "RB08", "RB09", "RB10", "RB11", "RB12", "RB13", "RB21", "RB33", "RB35", "RB36", "RB101", "RB102", "RB103", "RB105", "RB107", "RB108", "RB201", "RB301",
-            "RE01", "RE02", "RE03", "RE04", "RE07", "RE10",
-            "HE101", "HE201",
-            "QI01", "QI41", "QI44", "QI68", "QI69", "QI70", "QI71", "QI78", "QI81", "QI101", "QI110", "QI203", "QI301"
+            "RE01", "RE02", "RE03", "RE04", "RE05", "RE07", "RE10",
+            "RB01", "RB03", "RB04", "RB05", "RB06", "RB07", "RB08", "RB09", "RB10", "RB11", "RB12", "RB13", "RB14", "RB15", "RB16", "RB21", "RB30", "RB31", "RB32", "RB33", "RB35", "RB36", "RB37", "RB101", "RB102", "RB103", "RB105", "RB106", "RB107", "RB108", "RB201", "RB202", "RB203", "RB301",
+            "HE01", "HE02", "HE03", "HE04", "HE05", "HE06", "HE07", "HE10", "HE11", "HE101", "HE201",
+            "PR03", "PR04", "PR05", "PR07", "PR08", "PR09", "PR10", "PR11", "PR12", "PR14", "PR15", "PR16", "PR101", "PR201", "PR202", "PR203",
+            "QI01", "QI06", "QI07", "QI08", "QI10", "QI11", "QI12", "QI19", "QI20", "QI37", "QI41", "QI44", "QI57", "QI58", "QI61", "QI68", "QI69", "QI70", "QI71", "QI75", "QI78", "QI81", "QI101", "QI110", "QI202", "QI203", "QI204", "QI301",
         };
 
         private GameObject settingsMenu;
@@ -247,16 +249,9 @@ namespace BlasphemousRandomizer.Settings
 
             Sprite GetIcon(int index)
             {
-                string id = uniqueSeedIcons[index];
-                if (id.StartsWith("RB"))
-                    return Core.InventoryManager.GetRosaryBead(id).picture;
-                else if (id.StartsWith("RE"))
-                    return Core.InventoryManager.GetRelic(id).picture;
-                else if (id.StartsWith("HE"))
-                    return Core.InventoryManager.GetSword(id).picture;
-                else if (id.StartsWith("QI"))
-                    return Core.InventoryManager.GetQuestItem(id).picture;
-                return null;
+                string itemId = uniqueSeedIcons[index];
+                InventoryManager.ItemType itemType = ItemModder.GetItemTypeFromId(itemId);
+                return Core.InventoryManager.GetBaseObject(itemId, itemType).picture;
             }
         }
 

@@ -281,13 +281,13 @@ namespace BlasphemousRandomizer
             }
             else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad2))
             {
-                gameConfig.StartingLocation = 0;
-                Log("Starting from brotherhood");
+                //gameConfig.StartingLocation = 0;
+                //Log("Starting from brotherhood");
             }
             else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad3))
             {
-                gameConfig.StartingLocation = 1;
-                Log("Starting from knot");
+                //gameConfig.StartingLocation = 1;
+                //Log("Starting from knot");
             }
             
             // Update ui menus
