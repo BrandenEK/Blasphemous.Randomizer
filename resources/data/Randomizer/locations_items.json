@@ -196,6 +196,7 @@
 		"Id": "RB105",
 		"Name": "Church donation (50000)",
 		"Hint": "* requires a donation",
+		"Type": 8,
 		"Room": "D01BZ04S01",
 		"Logic": "tears >= 0"
 	},
