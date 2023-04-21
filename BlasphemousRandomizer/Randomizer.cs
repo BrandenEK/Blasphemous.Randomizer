@@ -48,6 +48,9 @@ namespace BlasphemousRandomizer
 
         public override string PersistentID => "ID_RANDOMIZER";
 
+        public bool InstalledBootsMod => IsModLoaded("com.damocles.blasphemous.boots-of-pleading");
+        public bool InstalledDoubleJumpMod => IsModLoaded("com.damocles.blasphemous.double-jump");
+
         public Randomizer(string modId, string modName, string modVersion) : base(modId, modName, modVersion) { }
 
         protected override void Initialize()
@@ -272,7 +275,7 @@ namespace BlasphemousRandomizer
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad6) && inGame)
             {
-                LogDisplay($"{Localize("currsd")}: {seed} [{ComputeFinalSeed(seed, 1, true, gameConfig.StartWithWheel, gameConfig.ShuffleReliquaries)}]");
+                LogDisplay($"{Localize("currsd")}: {seed} [{ComputeFinalSeed(seed, gameConfig)}]");
             }
             else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad1))
             {
@@ -323,7 +326,7 @@ namespace BlasphemousRandomizer
 
         public int GetSeed() { return seed; }
 
-        public int ComputeFinalSeed(int seed, int itemShuffle, bool mistDamage, bool startWithWheel, bool shuffleReliquaries)
+        public int ComputeFinalSeed(int seed, Config config)
         {
             // Generate unique int32 based on seed and important options
             int uniqueSeed = 0;
@@ -349,13 +352,13 @@ namespace BlasphemousRandomizer
             uniqueSeed |= (seed & (1 << 17)) << 6;
             uniqueSeed |= (seed & (1 << 18)) >> 1;
             uniqueSeed |= (seed & (1 << 19)) >> 18;
-            if (itemShuffle > 0)
-            {
-                uniqueSeed |= 1 << 7;
-                if (mistDamage) uniqueSeed |= 1 << 13;
-                if (startWithWheel) uniqueSeed |= 1 << 16;
-                if (shuffleReliquaries) uniqueSeed |= 1 << 5;
-            }
+            //if (itemShuffle > 0)
+            //{
+            //    uniqueSeed |= 1 << 7;
+            //    if (mistDamage) uniqueSeed |= 1 << 13;
+            //    if (startWithWheel) uniqueSeed |= 1 << 16;
+            //    if (shuffleReliquaries) uniqueSeed |= 1 << 5;
+            //}
             return uniqueSeed;
         }
 

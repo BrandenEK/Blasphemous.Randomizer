@@ -180,10 +180,10 @@ namespace BlasphemousRandomizer.Settings
             JunkQuests.setSelected(config.JunkLongQuests);
             Wheel.setSelected(config.StartWithWheel);
 
-            EnemiesLeft.setOption(config.EnemyShuffleType);
-            EnemiesRight.setOption(config.EnemyShuffleType);
             MaintainClass.setSelected(config.MaintainClass);
             AreaScaling.setSelected(config.AreaScaling);
+            EnemiesLeft.setOption(config.EnemyShuffleType);
+            EnemiesRight.setOption(config.EnemyShuffleType);
 
             BossesLeft.setOption(config.BossShuffleType);
             BossesRight.setOption(config.BossShuffleType);
@@ -251,7 +251,7 @@ namespace BlasphemousRandomizer.Settings
         private void UpdateUniqueId()
         {
             // Get final seed based on seed & options
-            int finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != "" ? int.Parse(currentSeed) : generatedSeed, 1, true, Wheel.getSelected(), Reliquaries.getSelected());
+            int finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != "" ? int.Parse(currentSeed) : generatedSeed, getConfigSettings());
 
             // Fill images based on unique seed
             try
@@ -310,6 +310,8 @@ namespace BlasphemousRandomizer.Settings
             Main.Randomizer.Log("Generating default seed: " + generatedSeed);
             showSettingsMenu(true, true);
             setConfigSettings(new Config());
+            Boots.setEnabled(Main.Randomizer.InstalledBootsMod);
+            PurifiedHand.setEnabled(Main.Randomizer.InstalledDoubleJumpMod);
         }
 
         public void closeMenu()
