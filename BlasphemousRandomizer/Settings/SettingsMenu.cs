@@ -394,6 +394,12 @@ namespace BlasphemousRandomizer.Settings
             headerText.text = Main.Randomizer.Localize("chset");
             Font font = headerText.font;
 
+            // Create seed text
+            RectTransform seed = getNewText("Seed", rect, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.yellow, TextAnchor.MiddleCenter);
+            seed.pivot = Vector2.one;
+            seed.anchoredPosition = new Vector2(0, 160);
+            seedText = seed.GetComponent<Text>();
+
             // Create main section
             int width = 630, height = 260;
             RectTransform mainSection = getNewRect("Main Section", settingsMenu.transform);
@@ -413,10 +419,6 @@ namespace BlasphemousRandomizer.Settings
             RectTransform generalSection = getNewRect("General Section", mainSection);
             generalSection.sizeDelta = new Vector2(width / 4, height);
             generalSection.anchoredPosition = new Vector2(-0.375f * width, 0);
-
-            RectTransform seed = getNewText("Seed", generalSection, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.yellow, TextAnchor.MiddleCenter);
-            seed.anchoredPosition = new Vector2(0, top + 50);
-            seedText = seed.GetComponent<Text>();
 
             RectTransform logicText = getNewText("Logic Text", generalSection, "Logic Difficulty:", font, 16, Color.white, TextAnchor.MiddleCenter);
             logicText.anchoredPosition = new Vector2(0, top);
@@ -445,11 +447,11 @@ namespace BlasphemousRandomizer.Settings
             Teleportation = teleportOption.GetComponent<SettingsCheckbox>();
 
             RectTransform hintsOption = getNewCheckbox("Hints", generalSection, Main.Randomizer.Localize("htname"), Main.Randomizer.Localize("htdesc"), font, 15, 16);
-            hintsOption.anchoredPosition = new Vector2(left, top - 140);
+            hintsOption.anchoredPosition = new Vector2(left, top - 135);
             Hints = hintsOption.GetComponent<SettingsCheckbox>();
 
             RectTransform penitenceOption = getNewCheckbox("Penitence", generalSection, Main.Randomizer.Localize("pename"), Main.Randomizer.Localize("pedesc"), font, 15, 16);
-            penitenceOption.anchoredPosition = new Vector2(left, top - 180);
+            penitenceOption.anchoredPosition = new Vector2(left, top - 170);
             Penitence = penitenceOption.GetComponent<SettingsCheckbox>();
 
             // Enemy/Boss/Door section
@@ -458,16 +460,38 @@ namespace BlasphemousRandomizer.Settings
             enemiesSection.sizeDelta = new Vector2(width / 4, height);
             enemiesSection.anchoredPosition = new Vector2(-0.125f * width, 0);
 
-            RectTransform enemyTitle = getNewText("Enemy Text", enemiesSection, "Enemy Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
-            enemyTitle.anchoredPosition = new Vector2(0, top);
+            RectTransform doorsTitle = getNewText("Doors Text", enemiesSection, "Door Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            doorsTitle.anchoredPosition = new Vector2(0, top);
+
+            RectTransform doorsOption = getNewCyclebox("Doors Option", enemiesSection, font, 15, 16,
+                new string[] { "Disabled", "Simple", "Full" },
+                new string[] { "disabled text", "simple text", "full text" },
+                new SettingsElement[] { }, 36);
+            doorsOption.anchoredPosition = new Vector2(0, top - 20);
+            DoorsLeft = doorsOption.GetChild(0).GetComponent<SettingsCyclebox>();
+            DoorsRight = doorsOption.GetChild(1).GetComponent<SettingsCyclebox>();
+
+            RectTransform bossTitle = getNewText("Boss Text", enemiesSection, "Boss Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            bossTitle.anchoredPosition = new Vector2(0, top - 50);
+
+            RectTransform bossOption = getNewCyclebox("Boss Option", enemiesSection, font, 15, 16,
+                new string[] { "Disabled", "Simple", "Full" },
+                new string[] { "disabled text", "simple text", "full text" },
+                new SettingsElement[] { }, 36);
+            bossOption.anchoredPosition = new Vector2(0, top - 70);
+            BossesLeft = bossOption.GetChild(0).GetComponent<SettingsCyclebox>();
+            BossesRight = bossOption.GetChild(1).GetComponent<SettingsCyclebox>();
 
             RectTransform classOption = getNewCheckbox("Class", enemiesSection, Main.Randomizer.Localize("clname"), Main.Randomizer.Localize("cldesc"), font, 15, 16);
-            classOption.anchoredPosition = new Vector2(left, top - 50);
+            classOption.anchoredPosition = new Vector2(left, top - 150);
             MaintainClass = classOption.GetComponent<SettingsCheckbox>();
 
             RectTransform scalingOption = getNewCheckbox("Scaling", enemiesSection, Main.Randomizer.Localize("scname"), Main.Randomizer.Localize("scdesc"), font, 15, 16);
-            scalingOption.anchoredPosition = new Vector2(left, top - 90);
+            scalingOption.anchoredPosition = new Vector2(left, top - 185);
             AreaScaling = scalingOption.GetComponent<SettingsCheckbox>();
+
+            RectTransform enemyTitle = getNewText("Enemy Text", enemiesSection, "Enemy Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            enemyTitle.anchoredPosition = new Vector2(0, top - 100);
 
             RectTransform enemiesType = getNewCyclebox("Type", enemiesSection, font, 15, 16,
                 new string[] { Main.Randomizer.Localize("dstype"), Main.Randomizer.Localize("sftype"), Main.Randomizer.Localize("rdtype") },
@@ -475,31 +499,9 @@ namespace BlasphemousRandomizer.Settings
                                Main.Randomizer.Localize("sftype") + " - " + Main.Randomizer.Localize("sfdesc"),
                                Main.Randomizer.Localize("rdtype") + " - " + Main.Randomizer.Localize("rddesc") },
                 new SettingsElement[] { MaintainClass, AreaScaling }, 36);
-            enemiesType.anchoredPosition = new Vector2(0, top - 20);
+            enemiesType.anchoredPosition = new Vector2(0, top - 120);
             EnemiesLeft = enemiesType.GetChild(0).GetComponent<SettingsCyclebox>();
             EnemiesRight = enemiesType.GetChild(1).GetComponent<SettingsCyclebox>();
-
-            RectTransform bossTitle = getNewText("Boss Text", enemiesSection, "Boss Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
-            bossTitle.anchoredPosition = new Vector2(0, top - 120);
-
-            RectTransform bossOption = getNewCyclebox("Boss Option", enemiesSection, font, 15, 16,
-                new string[] { "Disabled", "Simple", "Full" },
-                new string[] { "disabled text", "simple text", "full text" },
-                new SettingsElement[] { }, 36);
-            bossOption.anchoredPosition = new Vector2(0, top - 140);
-            BossesLeft = bossOption.GetChild(0).GetComponent<SettingsCyclebox>();
-            BossesRight = bossOption.GetChild(1).GetComponent<SettingsCyclebox>();
-
-            RectTransform doorsTitle = getNewText("Doors Text", enemiesSection, "Door Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
-            doorsTitle.anchoredPosition = new Vector2(0, top - 170);
-
-            RectTransform doorsOption = getNewCyclebox("Doors Option", enemiesSection, font, 15, 16,
-                new string[] { "Disabled", "Simple", "Full" },
-                new string[] { "disabled text", "simple text", "full text" },
-                new SettingsElement[] { }, 36);
-            doorsOption.anchoredPosition = new Vector2(0, top - 190);
-            DoorsLeft = doorsOption.GetChild(0).GetComponent<SettingsCyclebox>();
-            DoorsRight = doorsOption.GetChild(1).GetComponent<SettingsCyclebox>();
 
             // Items section
             RectTransform itemsTitle = getNewText("Items Title", mainSection, "Item Pool:", font, 16, Color.white, TextAnchor.MiddleCenter);
@@ -510,7 +512,7 @@ namespace BlasphemousRandomizer.Settings
             itemsSection.anchoredPosition = new Vector2(0.125f * width, 0);
 
             RectTransform reliqOption = getNewCheckbox("Reliquaries", itemsSection, Main.Randomizer.Localize("rqname"), Main.Randomizer.Localize("rqdesc"), font, 15, 16);
-            reliqOption.anchoredPosition = new Vector2(left, top - 20);
+            reliqOption.anchoredPosition = new Vector2(left, top - 25);
             Reliquaries = reliqOption.GetComponent<SettingsCheckbox>();
 
             RectTransform dashOption = getNewCheckbox("Dash", itemsSection, "Shuffle Dash", "Shuffles the dash ability into the item pool", font, 15, 16);
@@ -518,15 +520,15 @@ namespace BlasphemousRandomizer.Settings
             Dash = dashOption.GetComponent<SettingsCheckbox>();
 
             RectTransform wallclimbOption = getNewCheckbox("Wall Climb", itemsSection, "Shuffle Wall Climb", "Shuffles the wall climb ability into the item pool", font, 15, 16);
-            wallclimbOption.anchoredPosition = new Vector2(left, top - 100);
+            wallclimbOption.anchoredPosition = new Vector2(left, top - 95);
             WallClimb = wallclimbOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform bootsOption = getNewCheckbox("Boots", itemsSection, "Shuffle Boots\nof Pleading", "Shuffles the Boots of Pleading into the item pool (Only if the mod is installed)", font, 15, 16);
-            bootsOption.anchoredPosition = new Vector2(left, top - 140);
+            RectTransform bootsOption = getNewCheckbox("Boots", itemsSection, "Shuffle Spike Boots", "Shuffles the Boots of Pleading into the item pool (Only if the mod is installed)", font, 15, 16);
+            bootsOption.anchoredPosition = new Vector2(left, top - 130);
             Boots = bootsOption.GetComponent<SettingsCheckbox>();
 
-            RectTransform purifedHandOption = getNewCheckbox("PurifiedHand", itemsSection, "Shuffle Purifed Hand\nof the Nun", "Shuffles the Purified Hand of the Nun into the item pool (Only if the mod is installed)", font, 15, 16);
-            purifedHandOption.anchoredPosition = new Vector2(left, top - 180);
+            RectTransform purifedHandOption = getNewCheckbox("PurifiedHand", itemsSection, "Shuffle Double Jump", "Shuffles the Purified Hand of the Nun into the item pool (Only if the mod is installed)", font, 15, 16);
+            purifedHandOption.anchoredPosition = new Vector2(left, top - 165);
             PurifiedHand = purifedHandOption.GetComponent<SettingsCheckbox>();
 
             // Last section
@@ -536,7 +538,7 @@ namespace BlasphemousRandomizer.Settings
             lastSection.anchoredPosition = new Vector2(0.375f * width, 0);
 
             RectTransform swordskillsOption = getNewCheckbox("Sword Skills", lastSection, "Shuffle Sword Skills", "Shuffles the sword skills into the item pool", font, 15, 16);
-            swordskillsOption.anchoredPosition = new Vector2(left, top - 20);
+            swordskillsOption.anchoredPosition = new Vector2(left, top - 25);
             SwordSkills = swordskillsOption.GetComponent<SettingsCheckbox>();
 
             RectTransform thornsOption = getNewCheckbox("Thorns", lastSection, "Shuffle Thorns", "Shuffles the 8 thorns into the item pool", font, 15, 16);
@@ -544,11 +546,11 @@ namespace BlasphemousRandomizer.Settings
             Thorns = thornsOption.GetComponent<SettingsCheckbox>();
 
             RectTransform junkOptions = getNewCheckbox("Junk Quests", lastSection, "Junk inconvenient\nlocations", "Forces a junk item at inconvenient locations such as Miriam", font, 15, 16);
-            junkOptions.anchoredPosition = new Vector2(left, top - 100);
+            junkOptions.anchoredPosition = new Vector2(left, top - 95);
             JunkQuests = junkOptions.GetComponent<SettingsCheckbox>();
 
             RectTransform wheelOption = getNewCheckbox("Wheel", lastSection, Main.Randomizer.Localize("whname"), Main.Randomizer.Localize("whdesc"), font, 15, 16);
-            wheelOption.anchoredPosition = new Vector2(left, top - 140);
+            wheelOption.anchoredPosition = new Vector2(left, top - 130);
             Wheel = wheelOption.GetComponent<SettingsCheckbox>();
 
             // Set begin/cancel buttons
