@@ -395,9 +395,9 @@ namespace BlasphemousRandomizer.Settings
             Font font = headerText.font;
 
             // Create seed text
-            RectTransform seed = getNewText("Seed", rect, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.yellow, TextAnchor.MiddleCenter);
+            RectTransform seed = getNewText("Seed", rect, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.yellow, TextAnchor.UpperLeft);
             seed.pivot = Vector2.one;
-            seed.anchoredPosition = new Vector2(0, 160);
+            seed.anchoredPosition = new Vector2(-200, 175);
             seedText = seed.GetComponent<Text>();
 
             // Create main section
@@ -443,15 +443,15 @@ namespace BlasphemousRandomizer.Settings
             StartingLocationRight = startLocationOption.GetChild(1).GetComponent<SettingsCyclebox>();
 
             RectTransform teleportOption = getNewCheckbox("Teleport", generalSection, Main.Randomizer.Localize("tpname"), Main.Randomizer.Localize("tpdesc"), font, 15, 16);
-            teleportOption.anchoredPosition = new Vector2(left, top - 100);
+            teleportOption.anchoredPosition = new Vector2(left + 10, top - 100);
             Teleportation = teleportOption.GetComponent<SettingsCheckbox>();
 
             RectTransform hintsOption = getNewCheckbox("Hints", generalSection, Main.Randomizer.Localize("htname"), Main.Randomizer.Localize("htdesc"), font, 15, 16);
-            hintsOption.anchoredPosition = new Vector2(left, top - 135);
+            hintsOption.anchoredPosition = new Vector2(left + 10, top - 135);
             Hints = hintsOption.GetComponent<SettingsCheckbox>();
 
             RectTransform penitenceOption = getNewCheckbox("Penitence", generalSection, Main.Randomizer.Localize("pename"), Main.Randomizer.Localize("pedesc"), font, 15, 16);
-            penitenceOption.anchoredPosition = new Vector2(left, top - 170);
+            penitenceOption.anchoredPosition = new Vector2(left + 10, top - 170);
             Penitence = penitenceOption.GetComponent<SettingsCheckbox>();
 
             // Enemy/Boss/Door section
@@ -483,11 +483,11 @@ namespace BlasphemousRandomizer.Settings
             BossesRight = bossOption.GetChild(1).GetComponent<SettingsCyclebox>();
 
             RectTransform classOption = getNewCheckbox("Class", enemiesSection, Main.Randomizer.Localize("clname"), Main.Randomizer.Localize("cldesc"), font, 15, 16);
-            classOption.anchoredPosition = new Vector2(left, top - 150);
+            classOption.anchoredPosition = new Vector2(left + 10, top - 150);
             MaintainClass = classOption.GetComponent<SettingsCheckbox>();
 
             RectTransform scalingOption = getNewCheckbox("Scaling", enemiesSection, Main.Randomizer.Localize("scname"), Main.Randomizer.Localize("scdesc"), font, 15, 16);
-            scalingOption.anchoredPosition = new Vector2(left, top - 185);
+            scalingOption.anchoredPosition = new Vector2(left + 10, top - 185);
             AreaScaling = scalingOption.GetComponent<SettingsCheckbox>();
 
             RectTransform enemyTitle = getNewText("Enemy Text", enemiesSection, "Enemy Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
