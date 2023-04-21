@@ -101,13 +101,9 @@ namespace BlasphemousRandomizer.Settings
             {
                 descriptionText.text = currBox.getDescription();
             }
-            else if (currentSeed == "")
-            {
-                descriptionText.text = Main.Randomizer.Localize("typesd");
-            }
             else
             {
-                descriptionText.text = "";
+                descriptionText.text = string.Empty;
             }
 
             // Check if a button was clicked
@@ -397,7 +393,7 @@ namespace BlasphemousRandomizer.Settings
             // Create seed text
             RectTransform seed = getNewText("Seed", rect, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.yellow, TextAnchor.UpperLeft);
             seed.pivot = Vector2.one;
-            seed.anchoredPosition = new Vector2(-200, 175);
+            seed.anchoredPosition = new Vector2(-200, 172);
             seedText = seed.GetComponent<Text>();
 
             // Create main section

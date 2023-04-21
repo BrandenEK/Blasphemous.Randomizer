@@ -35,7 +35,7 @@ chset: CHOOSE SETTINGS
 begin: Begin
 cancel: Cancel
 menusd: Seed
-menurd: random
+menurd: random  (Begin typing numbers to input a custom seed)
 typesd: Begin typing numbers to input a custom seed
 genset: General
 tpname: Teleportation
