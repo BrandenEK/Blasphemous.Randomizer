@@ -10,7 +10,7 @@ namespace BlasphemousRandomizer.Settings
     public class SettingsMenu
     {
         private const int UNIQUE_ID_SIZE = 5;
-        private const int NUMBER_OF_OPTIONS = 14;
+        private const int NUMBER_OF_OPTIONS = 24;
 
         readonly string[] uniqueSeedIcons = new string[] // 96 diff images (5 images = 32 bits, 6 images = 39 bits)
         {
@@ -37,26 +37,36 @@ namespace BlasphemousRandomizer.Settings
         private int currentSlot;
 
         private SettingsElement[] buttons;
-        private SettingsCheckbox Teleportation { get { return buttons[0] as SettingsCheckbox; } set { buttons[0] = value; } }
-        //private SettingsCheckbox Cutscenes { get { return buttons[1] as SettingsCheckbox; } set { buttons[1] = value; } }
-        private SettingsCheckbox Hints { get { return buttons[1] as SettingsCheckbox; } set { buttons[1] = value; } }
-        private SettingsCheckbox Penitence { get { return buttons[2] as SettingsCheckbox; } set { buttons[2] = value; } }
 
-        private SettingsCyclebox ItemsLeft { get { return buttons[9] as SettingsCyclebox; } set { buttons[9] = value; } }
-        private SettingsCyclebox ItemsRight { get { return buttons[10] as SettingsCyclebox; } set { buttons[10] = value; } }
+        private SettingsCyclebox LogicDifficultyLeft { get { return buttons[0] as SettingsCyclebox; } set { buttons[0] = value; } }
+        private SettingsCyclebox LogicDifficultyRight { get { return buttons[1] as SettingsCyclebox; } set { buttons[1] = value; } }
+        private SettingsCyclebox StartingLocationLeft { get { return buttons[2] as SettingsCyclebox; } set { buttons[2] = value; } }
+        private SettingsCyclebox StartingLocationRight { get { return buttons[3] as SettingsCyclebox; } set { buttons[3] = value; } }
+        private SettingsCheckbox Teleportation { get { return buttons[4] as SettingsCheckbox; } set { buttons[4] = value; } }
+        private SettingsCheckbox Hints { get { return buttons[5] as SettingsCheckbox; } set { buttons[5] = value; } }
+        private SettingsCheckbox Penitence { get { return buttons[6] as SettingsCheckbox; } set { buttons[6] = value; } }
 
-        private SettingsCyclebox StartingLocationLeft { get { return buttons[3] as SettingsCyclebox; } set { buttons[3] = value; } }
-        private SettingsCyclebox StartingLocationRight { get { return buttons[4] as SettingsCyclebox; } set { buttons[4] = value; } }
-        //private SettingsCheckbox MistDamage { get { return buttons[3] as SettingsCheckbox; } set { buttons[3] = value; } }
-        //private SettingsCheckbox NpcDeath { get { return buttons[4] as SettingsCheckbox; } set { buttons[4] = value; } }
-        private SettingsCheckbox Wheel { get { return buttons[5] as SettingsCheckbox; } set { buttons[5] = value; } }
-        private SettingsCheckbox Reliquaries { get { return buttons[6] as SettingsCheckbox; } set { buttons[6] = value; } }
-        private SettingsCheckbox Dash { get { return buttons[13] as SettingsCheckbox; } set { buttons[13] = value; } }
+        private SettingsCheckbox Reliquaries { get { return buttons[7] as SettingsCheckbox; } set { buttons[7] = value; } }
+        private SettingsCheckbox Dash { get { return buttons[8] as SettingsCheckbox; } set { buttons[8] = value; } }
+        private SettingsCheckbox WallClimb { get { return buttons[9] as SettingsCheckbox; } set { buttons[9] = value; } }
+        private SettingsCheckbox Boots { get { return buttons[10] as SettingsCheckbox; } set { buttons[10] = value; } }
+        private SettingsCheckbox PurifiedHand { get { return buttons[11] as SettingsCheckbox; } set { buttons[11] = value; } }
 
-        private SettingsCyclebox EnemiesLeft { get { return buttons[11] as SettingsCyclebox; } set { buttons[11] = value; } }
-        private SettingsCyclebox EnemiesRight { get { return buttons[12] as SettingsCyclebox; } set { buttons[12] = value; } }
-        private SettingsCheckbox MaintainClass { get { return buttons[7] as SettingsCheckbox; } set { buttons[7] = value; } }
-        private SettingsCheckbox AreaScaling { get { return buttons[8] as SettingsCheckbox; } set { buttons[8] = value; } }
+        private SettingsCheckbox SwordSkills { get { return buttons[12] as SettingsCheckbox; } set { buttons[12] = value; } }
+        private SettingsCheckbox Thorns { get { return buttons[13] as SettingsCheckbox; } set { buttons[13] = value; } }
+        private SettingsCheckbox JunkQuests { get { return buttons[14] as SettingsCheckbox; } set { buttons[14] = value; } }
+        private SettingsCheckbox Wheel { get { return buttons[15] as SettingsCheckbox; } set { buttons[15] = value; } }
+
+        private SettingsCyclebox EnemiesLeft { get { return buttons[16] as SettingsCyclebox; } set { buttons[16] = value; } }
+        private SettingsCyclebox EnemiesRight { get { return buttons[17] as SettingsCyclebox; } set { buttons[17] = value; } }
+        private SettingsCheckbox MaintainClass { get { return buttons[18] as SettingsCheckbox; } set { buttons[18] = value; } }
+        private SettingsCheckbox AreaScaling { get { return buttons[19] as SettingsCheckbox; } set { buttons[19] = value; } }
+
+        private SettingsCyclebox BossesLeft { get { return buttons[20] as SettingsCyclebox; } set { buttons[20] = value; } }
+        private SettingsCyclebox BossesRight { get { return buttons[21] as SettingsCyclebox; } set { buttons[21] = value; } }
+
+        private SettingsCyclebox DoorsLeft { get { return buttons[22] as SettingsCyclebox; } set { buttons[22] = value; } }
+        private SettingsCyclebox DoorsRight { get { return buttons[23] as SettingsCyclebox; } set { buttons[23] = value; } }
 
         public void onLoad(string scene)
         {
@@ -155,23 +165,35 @@ namespace BlasphemousRandomizer.Settings
                 return;
 
             // Load config into buttons
-            Teleportation.setSelected(config.UnlockTeleportation);
-            //Cutscenes.setSelected(true);
-            Hints.setSelected(config.AllowHints);
-            Penitence.setSelected(config.AllowPenitence);
-            //MistDamage.setSelected(true);
-            //NpcDeath.setSelected(true);
-            Wheel.setSelected(config.StartWithWheel);
-            Reliquaries.setSelected(config.ShuffleReliquaries);
-            Dash.setSelected(config.ShuffleDash);
-            MaintainClass.setSelected(config.MaintainClass);
-            AreaScaling.setSelected(config.AreaScaling);
-            ItemsLeft.setOption(1);
-            ItemsRight.setOption(1);
+            LogicDifficultyLeft.setOption(config.LogicDifficulty);
+            LogicDifficultyRight.setOption(config.LogicDifficulty);
             StartingLocationLeft.setOption(config.StartingLocation);
             StartingLocationRight.setOption(config.StartingLocation);
+            Teleportation.setSelected(config.UnlockTeleportation);
+            Hints.setSelected(config.AllowHints);
+            Penitence.setSelected(config.AllowPenitence);
+
+            Reliquaries.setSelected(config.ShuffleReliquaries);
+            Dash.setSelected(config.ShuffleDash);
+            WallClimb.setSelected(config.ShuffleWallClimb);
+            Boots.setSelected(config.ShuffleBootsOfPleading);
+            PurifiedHand.setSelected(config.ShufflePurifiedHand);
+
+            SwordSkills.setSelected(config.ShuffleSwordSkills);
+            Thorns.setSelected(config.ShuffleThorns);
+            JunkQuests.setSelected(config.JunkLongQuests);
+            Wheel.setSelected(config.StartWithWheel);
+
             EnemiesLeft.setOption(config.EnemyShuffleType);
             EnemiesRight.setOption(config.EnemyShuffleType);
+            MaintainClass.setSelected(config.MaintainClass);
+            AreaScaling.setSelected(config.AreaScaling);
+
+            BossesLeft.setOption(config.BossShuffleType);
+            BossesRight.setOption(config.BossShuffleType);
+
+            DoorsLeft.setOption(config.DoorShuffleType);
+            DoorsRight.setOption(config.DoorShuffleType);
 
             // Load config into seed
             currentSeed = config.CustomSeed > 0 ? config.CustomSeed.ToString() : "";
@@ -188,16 +210,29 @@ namespace BlasphemousRandomizer.Settings
                 return config;
 
             // Load config from buttons
+            config.LogicDifficulty = LogicDifficultyLeft.getOption();
+            config.StartingLocation = StartingLocationLeft.getOption();
             config.UnlockTeleportation = Teleportation.getSelected();
             config.AllowHints = Hints.getSelected();
             config.AllowPenitence = Penitence.getSelected();
-            config.StartWithWheel = Wheel.getSelected();
+
             config.ShuffleReliquaries = Reliquaries.getSelected();
             config.ShuffleDash = Dash.getSelected();
+            config.ShuffleWallClimb = WallClimb.getSelected();
+            config.ShuffleBootsOfPleading = Boots.getSelected();
+            config.ShufflePurifiedHand = PurifiedHand.getSelected();
+
+            config.ShuffleSwordSkills = SwordSkills.getSelected();
+            config.ShuffleThorns = Thorns.getSelected();
+            config.JunkLongQuests = JunkQuests.getSelected();
+            config.StartWithWheel = Wheel.getSelected();
+
+            config.EnemyShuffleType = EnemiesLeft.getOption();
             config.MaintainClass = MaintainClass.getSelected();
             config.AreaScaling = AreaScaling.getSelected();
-            config.EnemyShuffleType = EnemiesLeft.getOption();
-            config.StartingLocation = StartingLocationLeft.getOption();
+
+            config.BossShuffleType = BossesLeft.getOption();
+            config.DoorShuffleType = DoorsLeft.getOption();
 
             // Load config from seed
             config.CustomSeed = currentSeed != "" ? int.Parse(currentSeed) : generatedSeed;
@@ -220,7 +255,7 @@ namespace BlasphemousRandomizer.Settings
         private void UpdateUniqueId()
         {
             // Get final seed based on seed & options
-            int finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != "" ? int.Parse(currentSeed) : generatedSeed, ItemsRight.getOption(), true, Wheel.getSelected(), Reliquaries.getSelected());
+            int finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != "" ? int.Parse(currentSeed) : generatedSeed, 1, true, Wheel.getSelected(), Reliquaries.getSelected());
 
             // Fill images based on unique seed
             try
@@ -379,93 +414,59 @@ namespace BlasphemousRandomizer.Settings
             generalSection.sizeDelta = new Vector2(width / 4, height);
             generalSection.anchoredPosition = new Vector2(-0.375f * width, 0);
 
-            RectTransform generalTitle = getNewText("General Title", generalSection, Main.Randomizer.Localize("genset") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
-            generalTitle.anchoredPosition = new Vector2(0, top - 5);
-
-            RectTransform teleportOption = getNewCheckbox("Teleport", generalSection, Main.Randomizer.Localize("tpname"), Main.Randomizer.Localize("tpdesc"), font, 15, 16);
-            teleportOption.anchoredPosition = new Vector2(left, top - 70);
-            Teleportation = teleportOption.GetComponent<SettingsCheckbox>();
-
-            //RectTransform cutscenesOption = getNewCheckbox("Cutscenes", generalSection, Main.Randomizer.Localize("ctname"), Main.Randomizer.Localize("ctdesc"), font, 15, 16);
-            //cutscenesOption.anchoredPosition = new Vector2(left, top - 100);
-            //Cutscenes = cutscenesOption.GetComponent<SettingsCheckbox>();
-
-            RectTransform hintsOption = getNewCheckbox("Hints", generalSection, Main.Randomizer.Localize("htname"), Main.Randomizer.Localize("htdesc"), font, 15, 16);
-            hintsOption.anchoredPosition = new Vector2(left, top - 130);
-            Hints = hintsOption.GetComponent<SettingsCheckbox>();
-
-            RectTransform penitenceOption = getNewCheckbox("Penitence", generalSection, Main.Randomizer.Localize("pename"), Main.Randomizer.Localize("pedesc"), font, 15, 16);
-            penitenceOption.anchoredPosition = new Vector2(left, top - 160);
-            Penitence = penitenceOption.GetComponent<SettingsCheckbox>();
-
             RectTransform seed = getNewText("Seed", generalSection, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.yellow, TextAnchor.MiddleCenter);
             seed.anchoredPosition = new Vector2(0, top - 25);
             seedText = seed.GetComponent<Text>();
 
-            // Items section
+            RectTransform logicText = getNewText("Logic Text", generalSection, "Logic Difficulty:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            logicText.anchoredPosition = new Vector2(0, top - 5);
 
-            RectTransform itemsSection = getNewRect("Items Section", mainSection);
-            itemsSection.sizeDelta = new Vector2(width / 4, height);
-            itemsSection.anchoredPosition = new Vector2(-0.125f * width, 0);
+            RectTransform logicOption = getNewCyclebox("Logic Option", generalSection, font, 15, 16,
+                new string[] { "Easy", "Normal", "Hard" },
+                new string[] { "Easy text", "normal text", "hard text" },
+                new SettingsElement[] { }, 30);
+            logicOption.anchoredPosition = new Vector2(0, top - 25);
+            LogicDifficultyLeft = logicOption.GetChild(0).GetComponent<SettingsCyclebox>();
+            LogicDifficultyRight = logicOption.GetChild(1).GetComponent<SettingsCyclebox>();
 
-            RectTransform itemsTitle = getNewText("Items Title", itemsSection, Main.Randomizer.Localize("itmset") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
-            itemsTitle.anchoredPosition = new Vector2(0, top - 5);
+            RectTransform startLocationText = getNewText("Start Loc Text", generalSection, "Starting Location:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            startLocationText.anchoredPosition = new Vector2(0, top - 45);
 
-            //RectTransform lungOption = getNewCheckbox("Lung", itemsSection, Main.Randomizer.Localize("lgname"), Main.Randomizer.Localize("lgdesc"), font, 15, 16);
-            //lungOption.anchoredPosition = new Vector2(left, top - 70);
-            //MistDamage = lungOption.GetComponent<SettingsCheckbox>();
-
-            //RectTransform deathOption = getNewCheckbox("Death", itemsSection, Main.Randomizer.Localize("dename"), Main.Randomizer.Localize("dedesc"), font, 15, 16);
-            //deathOption.anchoredPosition = new Vector2(left, top - 100);
-            //NpcDeath = deathOption.GetComponent<SettingsCheckbox>();
-
-            RectTransform wheelOption = getNewCheckbox("Wheel", itemsSection, Main.Randomizer.Localize("whname"), Main.Randomizer.Localize("whdesc"), font, 15, 16);
-            wheelOption.anchoredPosition = new Vector2(left, top - 130);
-            Wheel = wheelOption.GetComponent<SettingsCheckbox>();
-
-            RectTransform reliqOption = getNewCheckbox("Reliquaries", itemsSection, Main.Randomizer.Localize("rqname"), Main.Randomizer.Localize("rqdesc"), font, 15, 16);
-            reliqOption.anchoredPosition = new Vector2(left, top - 160);
-            Reliquaries = reliqOption.GetComponent<SettingsCheckbox>();
-
-            RectTransform dashOption = getNewCheckbox("Dash", itemsSection, "Shuffle Dash", "Shuffles the dash ability into the item pool", font, 15, 16);
-            dashOption.anchoredPosition = new Vector2(left, top - 190);
-            Dash = dashOption.GetComponent<SettingsCheckbox>();
-
-            RectTransform itemsType = getNewCyclebox("Type", itemsSection, font, 15, 16,
-                new string[] { Main.Randomizer.Localize("dstype"), Main.Randomizer.Localize("entype") },
-                new string[] { Main.Randomizer.Localize("dstype") + " - " + Main.Randomizer.Localize("dsides"),
-                               Main.Randomizer.Localize("entype") + " - " + Main.Randomizer.Localize("endesc") },
-                new SettingsElement[] { Wheel, Reliquaries }, 36);
-            itemsType.anchoredPosition = new Vector2(0, top - 25);
-            ItemsLeft = itemsType.GetChild(0).GetComponent<SettingsCyclebox>();
-            ItemsRight = itemsType.GetChild(1).GetComponent<SettingsCyclebox>();
-
-            RectTransform startLocationText = getNewText("Start Loc Text", itemsSection, "Starting Location:", font, 16, Color.white, TextAnchor.MiddleCenter);
-            startLocationText.anchoredPosition = new Vector2(0, top - 70);
-
-            RectTransform startLocationOption = getNewCyclebox("Start Loc Option", itemsSection, font, 15, 16,
+            RectTransform startLocationOption = getNewCyclebox("Start Loc Option", generalSection, font, 15, 16,
                 new string[] { "Brotherhood", /*"Mercy Dreams",*/ "Knot of Words", "Library" },
                 new string[] { "Begin the game in the Brotherhood of the Silent Sorrow", /*"Begin the game in Mercy Dreams",*/ "Begin the game in the Knot of the Three Words", "Begin the game in the Library of the Negated Words" },
                 new SettingsElement[] { }, 52);
-            startLocationOption.anchoredPosition = new Vector2(0, top - 90);
+            startLocationOption.anchoredPosition = new Vector2(0, top - 60);
             StartingLocationLeft = startLocationOption.GetChild(0).GetComponent<SettingsCyclebox>();
             StartingLocationRight = startLocationOption.GetChild(1).GetComponent<SettingsCyclebox>();
 
-            // Enemies section
+            RectTransform teleportOption = getNewCheckbox("Teleport", generalSection, Main.Randomizer.Localize("tpname"), Main.Randomizer.Localize("tpdesc"), font, 15, 16);
+            teleportOption.anchoredPosition = new Vector2(left, top - 90);
+            Teleportation = teleportOption.GetComponent<SettingsCheckbox>();
+
+            RectTransform hintsOption = getNewCheckbox("Hints", generalSection, Main.Randomizer.Localize("htname"), Main.Randomizer.Localize("htdesc"), font, 15, 16);
+            hintsOption.anchoredPosition = new Vector2(left, top - 120);
+            Hints = hintsOption.GetComponent<SettingsCheckbox>();
+
+            RectTransform penitenceOption = getNewCheckbox("Penitence", generalSection, Main.Randomizer.Localize("pename"), Main.Randomizer.Localize("pedesc"), font, 15, 16);
+            penitenceOption.anchoredPosition = new Vector2(left, top - 150);
+            Penitence = penitenceOption.GetComponent<SettingsCheckbox>();
+
+            // Enemy/Boss/Door section
 
             RectTransform enemiesSection = getNewRect("Enemies Section", mainSection);
             enemiesSection.sizeDelta = new Vector2(width / 4, height);
-            enemiesSection.anchoredPosition = new Vector2(0.125f * width, 0);
+            enemiesSection.anchoredPosition = new Vector2(-0.125f * width, 0);
 
-            RectTransform enemiesTitle = getNewText("Enemies Title", enemiesSection, Main.Randomizer.Localize("emyset") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
-            enemiesTitle.anchoredPosition = new Vector2(0, top - 5);
+            RectTransform enemyTitle = getNewText("Enemy Text", enemiesSection, "Enemy Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            enemyTitle.anchoredPosition = new Vector2(0, top - 5);
 
             RectTransform classOption = getNewCheckbox("Class", enemiesSection, Main.Randomizer.Localize("clname"), Main.Randomizer.Localize("cldesc"), font, 15, 16);
-            classOption.anchoredPosition = new Vector2(left, top - 70);
+            classOption.anchoredPosition = new Vector2(left, top - 55);
             MaintainClass = classOption.GetComponent<SettingsCheckbox>();
 
             RectTransform scalingOption = getNewCheckbox("Scaling", enemiesSection, Main.Randomizer.Localize("scname"), Main.Randomizer.Localize("scdesc"), font, 15, 16);
-            scalingOption.anchoredPosition = new Vector2(left, top - 100);
+            scalingOption.anchoredPosition = new Vector2(left, top - 85);
             AreaScaling = scalingOption.GetComponent<SettingsCheckbox>();
 
             RectTransform enemiesType = getNewCyclebox("Type", enemiesSection, font, 15, 16,
@@ -478,25 +479,86 @@ namespace BlasphemousRandomizer.Settings
             EnemiesLeft = enemiesType.GetChild(0).GetComponent<SettingsCyclebox>();
             EnemiesRight = enemiesType.GetChild(1).GetComponent<SettingsCyclebox>();
 
-            // Doors section
+            RectTransform bossTitle = getNewText("Boss Text", enemiesSection, "Boss Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            bossTitle.anchoredPosition = new Vector2(0, top - 105);
 
-            RectTransform doorsSection = getNewRect("Doors Section", mainSection);
-            doorsSection.sizeDelta = new Vector2(width / 4, height);
-            doorsSection.anchoredPosition = new Vector2(0.375f * width, 0);
+            RectTransform bossOption = getNewCyclebox("Boss Option", enemiesSection, font, 15, 16,
+                new string[] { "Disabled", "Simple", "Full" },
+                new string[] { "disabled text", "simple text", "full text" },
+                new SettingsElement[] { }, 30);
+            bossOption.anchoredPosition = new Vector2(0, top - 125);
+            BossesLeft = bossOption.GetChild(0).GetComponent<SettingsCyclebox>();
+            BossesRight = bossOption.GetChild(1).GetComponent<SettingsCyclebox>();
 
-            RectTransform doorsTitle = getNewText("Doors Title", doorsSection, Main.Randomizer.Localize("dorset") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
-            doorsTitle.anchoredPosition = new Vector2(0, top - 5);
+            RectTransform doorsTitle = getNewText("Doors Text", enemiesSection, "Door Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            doorsTitle.anchoredPosition = new Vector2(0, top - 145);
 
-            RectTransform comingSoon = getNewText("Coming soon", doorsSection, Main.Randomizer.Localize("soon"), font, 16, Color.white, TextAnchor.MiddleCenter);
-            comingSoon.anchoredPosition = new Vector2(0, top - 40);
+            RectTransform doorsOption = getNewCyclebox("Doors Option", enemiesSection, font, 15, 16,
+                new string[] { "Disabled", "Simple", "Full" },
+                new string[] { "disabled text", "simple text", "full text" },
+                new SettingsElement[] { }, 30);
+            doorsOption.anchoredPosition = new Vector2(0, top - 165);
+            DoorsLeft = doorsOption.GetChild(0).GetComponent<SettingsCyclebox>();
+            DoorsRight = doorsOption.GetChild(1).GetComponent<SettingsCyclebox>();
+
+            // Items section
+
+            RectTransform itemsSection = getNewRect("Items Section", mainSection);
+            itemsSection.sizeDelta = new Vector2(width / 4, height);
+            itemsSection.anchoredPosition = new Vector2(-0.125f * width, 0);
+
+            RectTransform itemsTitle = getNewText("Items Title", itemsSection, "Item Pool:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            itemsTitle.anchoredPosition = new Vector2(50, top - 5);
+
+            RectTransform reliqOption = getNewCheckbox("Reliquaries", itemsSection, Main.Randomizer.Localize("rqname"), Main.Randomizer.Localize("rqdesc"), font, 15, 16);
+            reliqOption.anchoredPosition = new Vector2(left, top - 30);
+            Reliquaries = reliqOption.GetComponent<SettingsCheckbox>();
+
+            RectTransform dashOption = getNewCheckbox("Dash", itemsSection, "Shuffle Dash", "Shuffles the dash ability into the item pool", font, 15, 16);
+            dashOption.anchoredPosition = new Vector2(left, top - 60);
+            Dash = dashOption.GetComponent<SettingsCheckbox>();
+
+            RectTransform wallclimbOption = getNewCheckbox("Wall Climb", itemsSection, "Shuffle Wall Climb", "Shuffles the wall climb ability into the item pool", font, 15, 16);
+            wallclimbOption.anchoredPosition = new Vector2(left, top - 90);
+            WallClimb = wallclimbOption.GetComponent<SettingsCheckbox>();
+
+            RectTransform bootsOption = getNewCheckbox("Boots", itemsSection, "Shuffle Boots\nof Pleading", "Shuffles the Boots of Pleading into the item pool (Only if the mod is installed)", font, 15, 16);
+            bootsOption.anchoredPosition = new Vector2(left, top - 120);
+            Boots = bootsOption.GetComponent<SettingsCheckbox>();
+
+            RectTransform purifedHandOption = getNewCheckbox("PurifiedHand", itemsSection, "Shuffle Purifed Hand\nof the Nun", "Shuffles the Purified Hand of the Nun into the item pool (Only if the mod is installed)", font, 15, 16);
+            purifedHandOption.anchoredPosition = new Vector2(left, top - 150);
+            PurifiedHand = purifedHandOption.GetComponent<SettingsCheckbox>();
+
+            // Last section
+
+            RectTransform lastSection = getNewRect("Last Section", mainSection);
+            lastSection.sizeDelta = new Vector2(width / 4, height);
+            lastSection.anchoredPosition = new Vector2(0.375f * width, 0);
+
+            RectTransform swordskillsOption = getNewCheckbox("Sword Skills", lastSection, "Shuffle Sword Skills", "Shuffles the sword skills into the item pool", font, 15, 16);
+            swordskillsOption.anchoredPosition = new Vector2(left, top - 30);
+            SwordSkills = swordskillsOption.GetComponent<SettingsCheckbox>();
+
+            RectTransform thornsOption = getNewCheckbox("Thorns", lastSection, "Shuffle Thorns", "Shuffles the 8 thorns into the item pool", font, 15, 16);
+            thornsOption.anchoredPosition = new Vector2(left, top - 60);
+            Thorns = thornsOption.GetComponent<SettingsCheckbox>();
+
+            RectTransform junkOptions = getNewCheckbox("Junk Quests", lastSection, "Junk inconvenient\nlocations", "Forces a junk item at inconvenient locations such as Miriam", font, 15, 16);
+            junkOptions.anchoredPosition = new Vector2(left, top - 90);
+            JunkQuests = junkOptions.GetComponent<SettingsCheckbox>();
+
+            RectTransform wheelOption = getNewCheckbox("Wheel", lastSection, Main.Randomizer.Localize("whname"), Main.Randomizer.Localize("whdesc"), font, 15, 16);
+            wheelOption.anchoredPosition = new Vector2(left, top - 120);
+            Wheel = wheelOption.GetComponent<SettingsCheckbox>();
 
             // Set begin/cancel buttons
-            begin.SetParent(doorsSection, false);
+            begin.SetParent(lastSection, false);
             begin.anchorMin = new Vector2(0.5f, 0.5f);
             begin.anchorMax = new Vector2(0.5f, 0.5f);
             begin.anchoredPosition = new Vector2(10, -50);
             begin.GetChild(1).GetComponent<Text>().text = " " + Main.Randomizer.Localize("begin");
-            cancel.SetParent(doorsSection, false);
+            cancel.SetParent(lastSection, false);
             cancel.anchorMin = new Vector2(0.5f, 0.5f);
             cancel.anchorMax = new Vector2(0.5f, 0.5f);
             cancel.anchoredPosition = new Vector2(10, -80);

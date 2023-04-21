@@ -17,10 +17,10 @@ namespace BlasphemousRandomizer
 
         // Item Rando
         public bool ShuffleReliquaries { get; set; }
-        public bool ShuffleBootsOfPleading { get; set; }
-        public bool ShufflePurifiedHand { get; set; }
         public bool ShuffleDash { get; set; }
         public bool ShuffleWallClimb { get; set; }
+        public bool ShuffleBootsOfPleading { get; set; }
+        public bool ShufflePurifiedHand { get; set; }
 
         public bool ShuffleSwordSkills { get; set; }
         public bool ShuffleThorns { get; set; }
