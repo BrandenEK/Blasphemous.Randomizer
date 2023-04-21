@@ -27,6 +27,9 @@ namespace BlasphemousRandomizer
 		public Sprite[] randomizerImages;
 		public Sprite[] uiImages;
 
+		// New & improved
+		public Dictionary<string, string> LocationNames { get; private set; }
+
 		public bool loadData(FileUtil fileUtil)
 		{
 			bool valid = true;
@@ -98,6 +101,7 @@ namespace BlasphemousRandomizer
 			if (fileUtil.loadDataImages("ui.png", 36, 36, 36, 0, false, out uiImages)) Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
 			else { Main.Randomizer.LogError("Error: Failed to load ui images!"); valid = false; }
 
+			CreateInternalData();
 			isValid = valid;
 			return valid;
 		}
@@ -133,5 +137,49 @@ namespace BlasphemousRandomizer
 				}
 			}
 		}
+
+		private void CreateInternalData()
+        {
+			LocationNames = new Dictionary<string, string>()
+			{
+				{ "D01Z01", "The Holy Line" },
+				{ "D01Z02", "Albero" },
+				{ "D01Z03", "Wasteland of the Buried Churches" },
+				{ "D01Z04", "Mercy Dreams" },
+				{ "D01Z05", "The Desecrated Cistern" },
+				{ "D01Z06", "Petrous" },
+
+				{ "D02Z01", "Where the Olive Trees Wither" },
+				{ "D02Z02", "Graveyard of the Peaks" },
+				{ "D02Z03", "Convent of Our Lady of the Charred Visage" },
+
+				{ "D03Z01", "Mountains of the Endless Dusk" },
+				{ "D03Z02", "Jondo" },
+				{ "D03Z03", "Grievance Ascends" },
+
+				{ "D04Z01", "Patio of the Silent Steps" },
+				{ "D04Z02", "Mother of Mothers" },
+				{ "D04Z03", "Knot of the Three Words" },
+				{ "D04Z04", "All the Tears of the Sea" },
+
+				{ "D05Z01", "Library of the Negated Words" },
+				{ "D05Z02", "Sleeping Canvases" },
+
+				{ "D06Z01", "Archcathedral Rooftops" },
+				{ "D07Z01", "Deambulatory of his Holiness" },
+
+				{ "D08Z01", "Bridge of the Three Calvaries" },
+				{ "D08Z02", "Ferrous Tree" },
+				{ "D08Z03", "Hall of the Dawning" },
+				{ "D09Z01", "Wall of the Holy Prohibitions" },
+
+				{ "D17Z01", "Brotherhood of the Silent Sorrow" },
+				{ "D20Z01", "Echoes of Salt" },
+				{ "D20Z02", "Mourning and Havoc" },
+				{ "D20Z03", "Resting Place of the Sister" },
+
+				{ "Initia", "Various" },
+			};
+        }
 	}
 }

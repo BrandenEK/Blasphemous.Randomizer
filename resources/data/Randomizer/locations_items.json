@@ -1682,12 +1682,6 @@
 	},
 	
 	{
-		"Id": "QI106",
-		"Name": "Starting item",
-		"Hint": "* is already owned",
-		"Room": "Initial"
-	},
-	{
 		"Id": "RB204",
 		"Name": "Initial room ledge",
 		"Hint": "* resides in the Brotherhood",
@@ -1803,6 +1797,12 @@
 		"Room": "D20Z03S01"
 	},
 	
+	{
+		"Id": "QI106",
+		"Name": "Starting item",
+		"Hint": "* is already owned",
+		"Room": "Initial"
+	},
 	{
 		"Id": "RB18",
 		"Name": "Red candle 1",

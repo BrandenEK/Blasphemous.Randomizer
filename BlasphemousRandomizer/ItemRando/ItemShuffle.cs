@@ -1,5 +1,6 @@
 ﻿using BlasphemousRandomizer.Notifications;
 using System.Collections.Generic;
+using System.Text;
 using Framework.Managers;
 using Gameplay.UI;
 
@@ -141,19 +142,30 @@ namespace BlasphemousRandomizer.ItemRando
             newItems = null;
         }
 
+        // The locations_items.json file must be in order sorted by area for this to work!
         public string GetSpoiler()
         {
-            string spoiler = "Seed: " + Main.Randomizer.GetSeed() + "\n\n";
+            StringBuilder spoiler = new StringBuilder();
+            spoiler.AppendLine($"Seed: {Main.Randomizer.GetSeed()}");
 
+            string currentArea = string.Empty;
             foreach (ItemLocation location in Main.Randomizer.data.itemLocations.Values)
             {
                 Item item = getItemAtLocation(location.Id);
                 if (item == null) continue;
 
-                spoiler += $"{location.Name}: {item.name}\n";
+                string locationArea = location.Room.Substring(0, 6);
+                if (locationArea != currentArea && Main.Randomizer.data.LocationNames.TryGetValue(locationArea, out string locationName))
+                {
+                    // Reached new area
+                    spoiler.AppendLine($"\n - {locationName} -\n");
+                    currentArea = locationArea;
+                }
+
+                spoiler.AppendLine($"{location.Name}: {item.name}");
             }
 
-            return spoiler;
+            return spoiler.ToString();
         }
     }
 }
