@@ -19,7 +19,7 @@ trname: Tears of Atonement
 trdesc: A bundle of * tears.
 trnot: Tears acquired!
 sknot: Skill unlocked!
-itmerr: Error: Rewards list not initialized
+itmerr: Error: Rewards list not initialized!
 daterr: Randomizer data could not be loaded, reinstall the program.
 vererr: This save file was not created in randomizer or used an older version.  Item locations are invalid.
 generr: Item shuffler failed to generate valid game.  Item locations are invalid.
