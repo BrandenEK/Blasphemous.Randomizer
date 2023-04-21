@@ -22,10 +22,10 @@ namespace BlasphemousRandomizer.HintRando
         private string getHintText(string location)
         {
             Item item = Main.Randomizer.itemShuffler.getItemAtLocation(location);
-            if (item == null || !Main.Randomizer.data.locationHints.TryGetValue(location, out string locationHint)) // change to simply get location/item text from structure itself
-                return "???";
+            string locationHint = Main.Randomizer.data.itemLocations[location].Hint;
+            string itemHint = item == null ? "???" : item.hint;
 
-            string output = locationHint.Replace("*", item.hint);
+            string output = locationHint.Replace("*", itemHint);
             return char.ToUpper(output[0]).ToString() + output.Substring(1) + "...";
         }
 

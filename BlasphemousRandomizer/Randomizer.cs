@@ -321,6 +321,8 @@ namespace BlasphemousRandomizer
             return version.Substring(0, version.LastIndexOf('.')) == configVersion.Substring(0, configVersion.LastIndexOf('.'));
         }
 
+        public int GetSeed() { return seed; }
+
         public int ComputeFinalSeed(int seed, int itemShuffle, bool mistDamage, bool startWithWheel, bool shuffleReliquaries)
         {
             // Generate unique int32 based on seed and important options

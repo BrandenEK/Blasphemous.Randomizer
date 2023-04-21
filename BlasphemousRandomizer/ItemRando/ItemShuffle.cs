@@ -143,25 +143,17 @@ namespace BlasphemousRandomizer.ItemRando
 
         public string GetSpoiler()
         {
-            string spoiler = "================\nItems\n================\n\n";
-            if (!Main.Randomizer.data.isValid)
-                return spoiler + "Failed to generate item spoiler.\n\n";
+            string spoiler = "Seed: " + Main.Randomizer.GetSeed() + "\n\n";
 
-            string template = Main.Randomizer.data.spoilerTemplate;
-
-            for (int left = template.IndexOf("{"); left > 0; left = template.IndexOf("{"))
+            foreach (ItemLocation location in Main.Randomizer.data.itemLocations.Values)
             {
-                int right = template.IndexOf("}");
-                string location = template.Substring(left + 1, right - left - 1);
-                string item = "???";
-                if (newItems.ContainsKey(location))
-                {
-                    item = Main.Randomizer.data.items[newItems[location]].name;
-                }
-                template = template.Substring(0, left) + item + template.Substring(right + 1);
+                Item item = getItemAtLocation(location.Id);
+                if (item == null) continue;
+
+                spoiler += $"{location.Name}: {item.name}\n";
             }
 
-            return spoiler + template + "\n";
+            return spoiler;
         }
     }
 }

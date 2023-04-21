@@ -19,11 +19,9 @@ namespace BlasphemousRandomizer
 		public Dictionary<string, DoorLocation> doorLocations;
 
 		// Text data
-		public Dictionary<string, string> locationHints;
 		public Dictionary<string, string> interactableIds;
 		public string[] cutsceneNames;
 		public string[] cutsceneFlags;
-		public string spoilerTemplate;
 
 		// Image data
 		public Sprite[] randomizerImages;
@@ -87,16 +85,12 @@ namespace BlasphemousRandomizer
 			else { Main.Randomizer.LogError("Error: Failed to load doors!"); valid = false; }
 
 			// Load text data
-			if (fileUtil.loadDataDictionary("hints_locations.dat", out locationHints)) Main.Randomizer.Log($"Loaded {locationHints.Count} location hints!");
-			else { Main.Randomizer.LogError("Error: Failed to load locations hints!"); valid = false; }
 			if (fileUtil.loadDataDictionary("interactable_ids.dat", out interactableIds)) Main.Randomizer.Log($"Loaded {interactableIds.Count} interactable ids!");
 			else { Main.Randomizer.LogError("Error: Failed to load interactable ids!"); valid = false; }
 			if (fileUtil.loadDataArray("cutscenes_names.dat", out cutsceneNames)) Main.Randomizer.Log($"Loaded {cutsceneNames.Length} cutscene names!");
 			else { Main.Randomizer.LogError("Error: Failed to load cutscene names!"); valid = false; }
 			if (fileUtil.loadDataArray("cutscenes_flags.dat", out cutsceneFlags)) Main.Randomizer.Log($"Loaded {cutsceneFlags.Length} cutscene flags!");
 			else { Main.Randomizer.LogError("Error: Failed to load cutscene flags!"); valid = false; }
-			if (fileUtil.loadDataText("spoiler_items.dat", out spoilerTemplate)) Main.Randomizer.Log("Loaded spoiler template!");
-			else { Main.Randomizer.LogError("Error: Failed to load spoiler template!"); valid = false; }
 
 			// Load image data
 			if (fileUtil.loadDataImages("custom_images.png", 32, 32, 32, 0, true, out randomizerImages)) Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
