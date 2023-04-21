@@ -415,41 +415,41 @@ namespace BlasphemousRandomizer.Settings
             generalSection.anchoredPosition = new Vector2(-0.375f * width, 0);
 
             RectTransform seed = getNewText("Seed", generalSection, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.yellow, TextAnchor.MiddleCenter);
-            seed.anchoredPosition = new Vector2(0, top - 25);
+            seed.anchoredPosition = new Vector2(0, top + 50);
             seedText = seed.GetComponent<Text>();
 
             RectTransform logicText = getNewText("Logic Text", generalSection, "Logic Difficulty:", font, 16, Color.white, TextAnchor.MiddleCenter);
-            logicText.anchoredPosition = new Vector2(0, top - 5);
+            logicText.anchoredPosition = new Vector2(0, top);
 
             RectTransform logicOption = getNewCyclebox("Logic Option", generalSection, font, 15, 16,
                 new string[] { "Easy", "Normal", "Hard" },
                 new string[] { "Easy text", "normal text", "hard text" },
                 new SettingsElement[] { }, 30);
-            logicOption.anchoredPosition = new Vector2(0, top - 25);
+            logicOption.anchoredPosition = new Vector2(0, top - 20);
             LogicDifficultyLeft = logicOption.GetChild(0).GetComponent<SettingsCyclebox>();
             LogicDifficultyRight = logicOption.GetChild(1).GetComponent<SettingsCyclebox>();
 
             RectTransform startLocationText = getNewText("Start Loc Text", generalSection, "Starting Location:", font, 16, Color.white, TextAnchor.MiddleCenter);
-            startLocationText.anchoredPosition = new Vector2(0, top - 45);
+            startLocationText.anchoredPosition = new Vector2(0, top - 50);
 
             RectTransform startLocationOption = getNewCyclebox("Start Loc Option", generalSection, font, 15, 16,
                 new string[] { "Brotherhood", /*"Mercy Dreams",*/ "Knot of Words", "Library" },
                 new string[] { "Begin the game in the Brotherhood of the Silent Sorrow", /*"Begin the game in Mercy Dreams",*/ "Begin the game in the Knot of the Three Words", "Begin the game in the Library of the Negated Words" },
                 new SettingsElement[] { }, 52);
-            startLocationOption.anchoredPosition = new Vector2(0, top - 60);
+            startLocationOption.anchoredPosition = new Vector2(0, top - 70);
             StartingLocationLeft = startLocationOption.GetChild(0).GetComponent<SettingsCyclebox>();
             StartingLocationRight = startLocationOption.GetChild(1).GetComponent<SettingsCyclebox>();
 
             RectTransform teleportOption = getNewCheckbox("Teleport", generalSection, Main.Randomizer.Localize("tpname"), Main.Randomizer.Localize("tpdesc"), font, 15, 16);
-            teleportOption.anchoredPosition = new Vector2(left, top - 90);
+            teleportOption.anchoredPosition = new Vector2(left, top - 100);
             Teleportation = teleportOption.GetComponent<SettingsCheckbox>();
 
             RectTransform hintsOption = getNewCheckbox("Hints", generalSection, Main.Randomizer.Localize("htname"), Main.Randomizer.Localize("htdesc"), font, 15, 16);
-            hintsOption.anchoredPosition = new Vector2(left, top - 120);
+            hintsOption.anchoredPosition = new Vector2(left, top - 140);
             Hints = hintsOption.GetComponent<SettingsCheckbox>();
 
             RectTransform penitenceOption = getNewCheckbox("Penitence", generalSection, Main.Randomizer.Localize("pename"), Main.Randomizer.Localize("pedesc"), font, 15, 16);
-            penitenceOption.anchoredPosition = new Vector2(left, top - 150);
+            penitenceOption.anchoredPosition = new Vector2(left, top - 180);
             Penitence = penitenceOption.GetComponent<SettingsCheckbox>();
 
             // Enemy/Boss/Door section
@@ -459,14 +459,14 @@ namespace BlasphemousRandomizer.Settings
             enemiesSection.anchoredPosition = new Vector2(-0.125f * width, 0);
 
             RectTransform enemyTitle = getNewText("Enemy Text", enemiesSection, "Enemy Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
-            enemyTitle.anchoredPosition = new Vector2(0, top - 5);
+            enemyTitle.anchoredPosition = new Vector2(0, top);
 
             RectTransform classOption = getNewCheckbox("Class", enemiesSection, Main.Randomizer.Localize("clname"), Main.Randomizer.Localize("cldesc"), font, 15, 16);
-            classOption.anchoredPosition = new Vector2(left, top - 55);
+            classOption.anchoredPosition = new Vector2(left, top - 50);
             MaintainClass = classOption.GetComponent<SettingsCheckbox>();
 
             RectTransform scalingOption = getNewCheckbox("Scaling", enemiesSection, Main.Randomizer.Localize("scname"), Main.Randomizer.Localize("scdesc"), font, 15, 16);
-            scalingOption.anchoredPosition = new Vector2(left, top - 85);
+            scalingOption.anchoredPosition = new Vector2(left, top - 90);
             AreaScaling = scalingOption.GetComponent<SettingsCheckbox>();
 
             RectTransform enemiesType = getNewCyclebox("Type", enemiesSection, font, 15, 16,
@@ -474,44 +474,43 @@ namespace BlasphemousRandomizer.Settings
                 new string[] { Main.Randomizer.Localize("dstype") + " - " + Main.Randomizer.Localize("dsedes"),
                                Main.Randomizer.Localize("sftype") + " - " + Main.Randomizer.Localize("sfdesc"),
                                Main.Randomizer.Localize("rdtype") + " - " + Main.Randomizer.Localize("rddesc") },
-                new SettingsElement[] { MaintainClass, AreaScaling }, 38);
-            enemiesType.anchoredPosition = new Vector2(0, top - 25);
+                new SettingsElement[] { MaintainClass, AreaScaling }, 36);
+            enemiesType.anchoredPosition = new Vector2(0, top - 20);
             EnemiesLeft = enemiesType.GetChild(0).GetComponent<SettingsCyclebox>();
             EnemiesRight = enemiesType.GetChild(1).GetComponent<SettingsCyclebox>();
 
             RectTransform bossTitle = getNewText("Boss Text", enemiesSection, "Boss Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
-            bossTitle.anchoredPosition = new Vector2(0, top - 105);
+            bossTitle.anchoredPosition = new Vector2(0, top - 120);
 
             RectTransform bossOption = getNewCyclebox("Boss Option", enemiesSection, font, 15, 16,
                 new string[] { "Disabled", "Simple", "Full" },
                 new string[] { "disabled text", "simple text", "full text" },
-                new SettingsElement[] { }, 30);
-            bossOption.anchoredPosition = new Vector2(0, top - 125);
+                new SettingsElement[] { }, 36);
+            bossOption.anchoredPosition = new Vector2(0, top - 140);
             BossesLeft = bossOption.GetChild(0).GetComponent<SettingsCyclebox>();
             BossesRight = bossOption.GetChild(1).GetComponent<SettingsCyclebox>();
 
             RectTransform doorsTitle = getNewText("Doors Text", enemiesSection, "Door Shuffle:", font, 16, Color.white, TextAnchor.MiddleCenter);
-            doorsTitle.anchoredPosition = new Vector2(0, top - 145);
+            doorsTitle.anchoredPosition = new Vector2(0, top - 170);
 
             RectTransform doorsOption = getNewCyclebox("Doors Option", enemiesSection, font, 15, 16,
                 new string[] { "Disabled", "Simple", "Full" },
                 new string[] { "disabled text", "simple text", "full text" },
-                new SettingsElement[] { }, 30);
-            doorsOption.anchoredPosition = new Vector2(0, top - 165);
+                new SettingsElement[] { }, 36);
+            doorsOption.anchoredPosition = new Vector2(0, top - 190);
             DoorsLeft = doorsOption.GetChild(0).GetComponent<SettingsCyclebox>();
             DoorsRight = doorsOption.GetChild(1).GetComponent<SettingsCyclebox>();
 
             // Items section
+            RectTransform itemsTitle = getNewText("Items Title", mainSection, "Item Pool:", font, 16, Color.white, TextAnchor.MiddleCenter);
+            itemsTitle.anchoredPosition = new Vector2(0.25f * width, top);
 
             RectTransform itemsSection = getNewRect("Items Section", mainSection);
             itemsSection.sizeDelta = new Vector2(width / 4, height);
-            itemsSection.anchoredPosition = new Vector2(-0.125f * width, 0);
-
-            RectTransform itemsTitle = getNewText("Items Title", itemsSection, "Item Pool:", font, 16, Color.white, TextAnchor.MiddleCenter);
-            itemsTitle.anchoredPosition = new Vector2(50, top - 5);
+            itemsSection.anchoredPosition = new Vector2(0.125f * width, 0);
 
             RectTransform reliqOption = getNewCheckbox("Reliquaries", itemsSection, Main.Randomizer.Localize("rqname"), Main.Randomizer.Localize("rqdesc"), font, 15, 16);
-            reliqOption.anchoredPosition = new Vector2(left, top - 30);
+            reliqOption.anchoredPosition = new Vector2(left, top - 20);
             Reliquaries = reliqOption.GetComponent<SettingsCheckbox>();
 
             RectTransform dashOption = getNewCheckbox("Dash", itemsSection, "Shuffle Dash", "Shuffles the dash ability into the item pool", font, 15, 16);
@@ -519,15 +518,15 @@ namespace BlasphemousRandomizer.Settings
             Dash = dashOption.GetComponent<SettingsCheckbox>();
 
             RectTransform wallclimbOption = getNewCheckbox("Wall Climb", itemsSection, "Shuffle Wall Climb", "Shuffles the wall climb ability into the item pool", font, 15, 16);
-            wallclimbOption.anchoredPosition = new Vector2(left, top - 90);
+            wallclimbOption.anchoredPosition = new Vector2(left, top - 100);
             WallClimb = wallclimbOption.GetComponent<SettingsCheckbox>();
 
             RectTransform bootsOption = getNewCheckbox("Boots", itemsSection, "Shuffle Boots\nof Pleading", "Shuffles the Boots of Pleading into the item pool (Only if the mod is installed)", font, 15, 16);
-            bootsOption.anchoredPosition = new Vector2(left, top - 120);
+            bootsOption.anchoredPosition = new Vector2(left, top - 140);
             Boots = bootsOption.GetComponent<SettingsCheckbox>();
 
             RectTransform purifedHandOption = getNewCheckbox("PurifiedHand", itemsSection, "Shuffle Purifed Hand\nof the Nun", "Shuffles the Purified Hand of the Nun into the item pool (Only if the mod is installed)", font, 15, 16);
-            purifedHandOption.anchoredPosition = new Vector2(left, top - 150);
+            purifedHandOption.anchoredPosition = new Vector2(left, top - 180);
             PurifiedHand = purifedHandOption.GetComponent<SettingsCheckbox>();
 
             // Last section
@@ -537,7 +536,7 @@ namespace BlasphemousRandomizer.Settings
             lastSection.anchoredPosition = new Vector2(0.375f * width, 0);
 
             RectTransform swordskillsOption = getNewCheckbox("Sword Skills", lastSection, "Shuffle Sword Skills", "Shuffles the sword skills into the item pool", font, 15, 16);
-            swordskillsOption.anchoredPosition = new Vector2(left, top - 30);
+            swordskillsOption.anchoredPosition = new Vector2(left, top - 20);
             SwordSkills = swordskillsOption.GetComponent<SettingsCheckbox>();
 
             RectTransform thornsOption = getNewCheckbox("Thorns", lastSection, "Shuffle Thorns", "Shuffles the 8 thorns into the item pool", font, 15, 16);
@@ -545,11 +544,11 @@ namespace BlasphemousRandomizer.Settings
             Thorns = thornsOption.GetComponent<SettingsCheckbox>();
 
             RectTransform junkOptions = getNewCheckbox("Junk Quests", lastSection, "Junk inconvenient\nlocations", "Forces a junk item at inconvenient locations such as Miriam", font, 15, 16);
-            junkOptions.anchoredPosition = new Vector2(left, top - 90);
+            junkOptions.anchoredPosition = new Vector2(left, top - 100);
             JunkQuests = junkOptions.GetComponent<SettingsCheckbox>();
 
             RectTransform wheelOption = getNewCheckbox("Wheel", lastSection, Main.Randomizer.Localize("whname"), Main.Randomizer.Localize("whdesc"), font, 15, 16);
-            wheelOption.anchoredPosition = new Vector2(left, top - 120);
+            wheelOption.anchoredPosition = new Vector2(left, top - 140);
             Wheel = wheelOption.GetComponent<SettingsCheckbox>();
 
             // Set begin/cancel buttons
