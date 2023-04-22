@@ -1,19 +1,37 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
 using Gameplay.UI.Others.MenuLogic;
+using UnityEngine;
+using UnityEngine.UI;
 using Framework.Managers;
 using Framework.Map;
+using BlasphemousRandomizer.ItemRando;
 
 namespace BlasphemousRandomizer.Map
 {
     public class MapCollectionStatus
     {
+        public Dictionary<string, ZoneCollection> CollectionStatus { get; set; }
+
+        // Displays the total items collected and zone items collected on the map screen
         public void UpdateMap(NewMapMenuWidget widget, CellData currentCell)
         {
             mapWidget = widget;
+            if (CollectionStatus == null)
+            {
+                Main.Randomizer.LogError("Collection status dictionary was null - Not updating map");
+                return;
+            }
 
-            TotalItemsText.text = $"{Main.Randomizer.Localize("items")}: {Main.Randomizer.itemsCollected}/{Main.Randomizer.totalItems}";
+            // Get and display total items
+            int currentAll = 0, totalAll = 0;
+            foreach (ZoneCollection zone in CollectionStatus.Values)
+            {
+                currentAll += zone.CurrentItems;
+                totalAll += zone.TotalItems;
+            }
+            TotalItemsText.text = $"{Main.Randomizer.Localize("items")}: {currentAll}/{totalAll}";
             
+            // Get and display zone items
             string zoneName = string.Empty;
             if (currentCell == null)
             {
@@ -27,10 +45,33 @@ namespace BlasphemousRandomizer.Map
                 if (zoneName.Length == 1)
                     zoneName = fullName;
                 zoneName += ": ";
-
             }
-            ZoneItemsText.text = zoneName + "0/0";
+            ZoneCollection currentZone = CollectionStatus[currentCell == null ? "Initia" : (currentCell.ZoneId.District + currentCell.ZoneId.Zone)];
+            ZoneItemsText.text = zoneName + $"{currentZone.CurrentItems}/{currentZone.TotalItems}";
+        }
 
+        // When a new item location is collected, increase the counter in the specified zone
+        public void CollectLocation(string locationId)
+        {
+
+        }
+
+        // When a new game is started, create a new collection status based on which items are shuffled
+        public void ResetCollectionStatus(Config config)
+        {
+            CollectionStatus = new Dictionary<string, ZoneCollection>();
+            foreach (ItemLocation location in Main.Randomizer.data.itemLocations.Values)
+            {
+                string zoneId = location.Room.Substring(0, 6); // First check if the location has a locationFlag
+                if (!CollectionStatus.ContainsKey(zoneId))
+                    CollectionStatus.Add(zoneId, new ZoneCollection());
+                CollectionStatus[zoneId].TotalItems++;
+            }
+            CollectionStatus.Add("D08Z02", new ZoneCollection());
+
+            // temp
+            foreach (string key in CollectionStatus.Keys)
+                Main.Randomizer.LogWarning(key + ": " + CollectionStatus[key].TotalItems);
         }
 
         private NewMapMenuWidget mapWidget;

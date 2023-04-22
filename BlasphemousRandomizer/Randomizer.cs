@@ -143,6 +143,7 @@ namespace BlasphemousRandomizer
             setUpExtras();
             Log("Generating new seed: " + seed);
             Randomize(true);
+            MapCollection.ResetCollectionStatus(gameConfig);
 
             inGame = true;
             lastLoadedSlot = PersistentManager.GetAutomaticSlot();
