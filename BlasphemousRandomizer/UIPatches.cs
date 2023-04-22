@@ -5,6 +5,7 @@ using Tools.Items;
 using Tools.Playmaker2.Action;
 using Gameplay.UI.Others.MenuLogic;
 using Framework.Managers;
+using Framework.Map;
 
 namespace BlasphemousRandomizer
 {
@@ -80,6 +81,27 @@ namespace BlasphemousRandomizer
                 items = rect;
             }
             items.GetComponentInChildren<Text>().text = $"{Main.Randomizer.Localize("items")}: {Main.Randomizer.itemsCollected}/{Main.Randomizer.totalItems}";
+        }
+    }
+
+    // SHow items collected per zone
+    [HarmonyPatch(typeof(NewMapMenuWidget), "UpdateCellData")]
+    public class MapZoneItems_Patch
+    {
+        public static void Postfix(NewMapMenuWidget __instance, CellData ___CurrentCell)
+        {
+            Transform zoneItems = __instance.transform.Find("ZoneItemsText");
+            if (zoneItems == null)
+            {
+                RectTransform rect = Object.Instantiate(__instance.CherubsText.gameObject, __instance.transform).transform as RectTransform;
+                rect.name = "ZoneItemsText";
+                rect.anchoredPosition = new Vector2(45f, -80f);
+                rect.GetComponentInChildren<Text>().alignment = TextAnchor.MiddleLeft;
+                zoneItems = rect;
+            }
+
+            Main.Randomizer.LogWarning("Updating zone items text");
+            zoneItems.GetComponent<Text>().text = "Desecrated Cistern: 7/22";
         }
     }
 }
