@@ -1,5 +1,7 @@
 ﻿using System;
 using ModdingAPI;
+using System.Collections.Generic;
+using BlasphemousRandomizer.Map;
 
 namespace BlasphemousRandomizer
 {
@@ -12,5 +14,7 @@ namespace BlasphemousRandomizer
         public int itemsCollected;
         public bool startedInRando;
         public Config config;
+
+        public Dictionary<string, ZoneCollection> collectionStatus;
     }
 }

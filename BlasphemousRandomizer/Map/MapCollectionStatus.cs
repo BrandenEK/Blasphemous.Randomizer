@@ -53,7 +53,8 @@ namespace BlasphemousRandomizer.Map
         // When a new item location is collected, increase the counter in the specified zone
         public void CollectLocation(string locationId)
         {
-
+            string zoneId = Main.Randomizer.data.itemLocations[locationId].Room.Substring(0, 6);
+            CollectionStatus[zoneId].CurrentItems++;
         }
 
         // When a new game is started, create a new collection status based on which items are shuffled

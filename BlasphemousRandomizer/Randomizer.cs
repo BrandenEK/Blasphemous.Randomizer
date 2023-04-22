@@ -92,7 +92,8 @@ namespace BlasphemousRandomizer
                 seed = seed,
                 itemsCollected = itemsCollected,
                 startedInRando = startedInRando,
-                config = gameConfig
+                config = gameConfig,
+                collectionStatus = MapCollection.CollectionStatus
             };
         }
 
@@ -112,6 +113,7 @@ namespace BlasphemousRandomizer
                 itemsCollected = randomizerPersistenceData.itemsCollected;
                 startedInRando = randomizerPersistenceData.startedInRando;
                 gameConfig = randomizerPersistenceData.config;
+                MapCollection.CollectionStatus = randomizerPersistenceData.collectionStatus;
                 Log("Loading seed: " + seed);
                 Randomize(false);
             }
@@ -123,6 +125,7 @@ namespace BlasphemousRandomizer
                 totalItems = 0;
                 startedInRando = false;
                 gameConfig = new Config();
+                MapCollection.ResetCollectionStatus(gameConfig);
                 for (int i = 0; i < shufflers.Length; i++)
                 {
                     shufflers[i].Reset();
