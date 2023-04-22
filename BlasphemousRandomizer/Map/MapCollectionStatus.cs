@@ -51,9 +51,13 @@ namespace BlasphemousRandomizer.Map
         }
 
         // When a new item location is collected, increase the counter in the specified zone
-        public void CollectLocation(string locationId)
+        public void CollectLocation(string locationId, Config config)
         {
-            string zoneId = Main.Randomizer.data.itemLocations[locationId].Room.Substring(0, 6);
+            ItemLocation location = Main.Randomizer.data.itemLocations[locationId];
+            if (!ShouldTrackLocation(location, config))
+                return;
+
+            string zoneId = GetZoneId(location);
             CollectionStatus[zoneId].CurrentItems++;
         }
 
@@ -63,16 +67,30 @@ namespace BlasphemousRandomizer.Map
             CollectionStatus = new Dictionary<string, ZoneCollection>();
             foreach (ItemLocation location in Main.Randomizer.data.itemLocations.Values)
             {
-                string zoneId = location.Room.Substring(0, 6); // First check if the location has a locationFlag
+                string zoneId = GetZoneId(location);
                 if (!CollectionStatus.ContainsKey(zoneId))
                     CollectionStatus.Add(zoneId, new ZoneCollection());
-                CollectionStatus[zoneId].TotalItems++;
+
+                if (ShouldTrackLocation(location, config))
+                    CollectionStatus[zoneId].TotalItems++;
             }
             CollectionStatus.Add("D08Z02", new ZoneCollection());
 
             // temp
             foreach (string key in CollectionStatus.Keys)
                 Main.Randomizer.LogWarning(key + ": " + CollectionStatus[key].TotalItems);
+        }
+
+        private string GetZoneId(ItemLocation location)
+        {
+            // Also check if this location has a special location flag to change its zone
+            return location.Room.Substring(0, 6);
+        }
+
+        private bool ShouldTrackLocation(ItemLocation location, Config config)
+        {
+            // Use config to check if this location should increment the counter
+            return true;
         }
 
         private NewMapMenuWidget mapWidget;

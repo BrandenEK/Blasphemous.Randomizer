@@ -76,7 +76,7 @@ namespace BlasphemousRandomizer.ItemRando
 
             // Add the item to inventory
             Main.Randomizer.Log($"Giving item ({item.id})");
-            Main.Randomizer.MapCollection.CollectLocation(locationId);
+            Main.Randomizer.MapCollection.CollectLocation(locationId, Main.Randomizer.gameConfig);
             Main.Randomizer.itemsCollected++;
             item.addToInventory();
             Core.Events.SetFlag("LOCATION_" + locationId, true, false);
