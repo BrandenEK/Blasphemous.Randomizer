@@ -89,7 +89,14 @@ namespace BlasphemousRandomizer.Map
 
         private bool ShouldTrackLocation(ItemLocation location, Config config)
         {
-            // Use config to check if this location should increment the counter
+            if (!config.ShuffleSwordSkills && location.Type == 1)
+                return false;
+            if (!config.ShuffleThorns && location.Type == 2)
+                return false;
+            if (!config.ShuffleBootsOfPleading && location.Id == "RE401")
+                return false;
+            if (!config.ShufflePurifiedHand && location.Id == "RE402")
+                return false;
             return true;
         }
 
