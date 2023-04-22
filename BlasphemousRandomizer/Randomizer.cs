@@ -9,6 +9,7 @@ using BlasphemousRandomizer.HintRando;
 using BlasphemousRandomizer.ItemRando;
 using BlasphemousRandomizer.Tracker;
 using BlasphemousRandomizer.Settings;
+using BlasphemousRandomizer.Map;
 using Framework.Managers;
 using Framework.Audio;
 using Tools.Level;
@@ -44,6 +45,7 @@ namespace BlasphemousRandomizer
 
         public DataStorage data { get; private set; }
         public AutoTracker tracker { get; private set; }
+        public MapCollectionStatus MapCollection { get; private set; }
         public SettingsMenu settingsMenu;
 
         public override string PersistentID => "ID_RANDOMIZER";
@@ -77,6 +79,7 @@ namespace BlasphemousRandomizer
             gameConfig = new Config();
             lastLoadedSlot = -1;
             settingsMenu = new SettingsMenu();
+            MapCollection = new MapCollectionStatus();
 
             tracker = new AutoTracker();
             RegisterCommand(new RandomizerCommand());

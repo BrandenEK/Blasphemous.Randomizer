@@ -1,6 +1,4 @@
 ﻿using HarmonyLib;
-using UnityEngine;
-using UnityEngine.UI;
 using Tools.Items;
 using Tools.Playmaker2.Action;
 using Gameplay.UI.Others.MenuLogic;
@@ -66,42 +64,12 @@ namespace BlasphemousRandomizer
     }
 
     // Show number of items collected on map screen
-    [HarmonyPatch(typeof(NewMapMenuWidget), "Initialize")]
-    public class NewMapMenuWidget_Patch
-    {
-        public static void Postfix(NewMapMenuWidget __instance)
-        {
-            Transform items = __instance.transform.Find("ItemsText");
-            if (items == null)
-            {
-                RectTransform rect = Object.Instantiate(__instance.CherubsText.gameObject, __instance.transform).transform as RectTransform;
-                rect.name = "ItemsText";
-                rect.anchoredPosition = new Vector2(45f, -60f);
-                rect.GetComponentInChildren<Text>().alignment = TextAnchor.MiddleLeft;
-                items = rect;
-            }
-            items.GetComponentInChildren<Text>().text = $"{Main.Randomizer.Localize("items")}: {Main.Randomizer.itemsCollected}/{Main.Randomizer.totalItems}";
-        }
-    }
-
-    // SHow items collected per zone
     [HarmonyPatch(typeof(NewMapMenuWidget), "UpdateCellData")]
     public class MapZoneItems_Patch
     {
         public static void Postfix(NewMapMenuWidget __instance, CellData ___CurrentCell)
         {
-            Transform zoneItems = __instance.transform.Find("ZoneItemsText");
-            if (zoneItems == null)
-            {
-                RectTransform rect = Object.Instantiate(__instance.CherubsText.gameObject, __instance.transform).transform as RectTransform;
-                rect.name = "ZoneItemsText";
-                rect.anchoredPosition = new Vector2(45f, -80f);
-                rect.GetComponentInChildren<Text>().alignment = TextAnchor.MiddleLeft;
-                zoneItems = rect;
-            }
-
-            Main.Randomizer.LogWarning("Updating zone items text");
-            zoneItems.GetComponent<Text>().text = "Desecrated Cistern: 7/22";
+            Main.Randomizer.MapCollection.UpdateMap(__instance, ___CurrentCell);
         }
     }
 }
