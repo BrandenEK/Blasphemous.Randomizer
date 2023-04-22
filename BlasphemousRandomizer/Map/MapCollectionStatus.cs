@@ -13,7 +13,23 @@ namespace BlasphemousRandomizer.Map
             mapWidget = widget;
 
             TotalItemsText.text = $"{Main.Randomizer.Localize("items")}: {Main.Randomizer.itemsCollected}/{Main.Randomizer.totalItems}";
-            ZoneItemsText.text = "Zone items text";
+            
+            string zoneName = string.Empty;
+            if (currentCell == null)
+            {
+                zoneName = "Various: ";
+            }
+            else
+            {
+                string fullName = Core.NewMapManager.GetZoneName(currentCell.ZoneId);
+                foreach (string word in fullName.Split(' '))
+                    zoneName += word[0];
+                if (zoneName.Length == 1)
+                    zoneName = fullName;
+                zoneName += ": ";
+
+            }
+            ZoneItemsText.text = zoneName + "0/0";
 
         }
 
