@@ -328,79 +328,67 @@ namespace BlasphemousRandomizer
 
         public long ComputeFinalSeed(int seed, Config config)
         {
-            // Generate unique int32 based on seed and important options
+            // Generate unique int64 based on seed and important options
             long uniqueSeed = 0;
 
-            // Remaining bits: 24, 25, 26, 27, 28, 29, 30, 31
-            //uniqueSeed |= (seed & (1 << 0)) << 18;
-            //uniqueSeed |= (seed & (1 << 1)) << 21;
-            //uniqueSeed |= (seed & (1 << 2)) << 10;
-            //uniqueSeed |= (seed & (1 << 3)) << 18;
-            //uniqueSeed |= (seed & (1 << 4)) >> 4;
-            //uniqueSeed |= (seed & (1 << 5)) << 1;
-            //uniqueSeed |= (seed & (1 << 6)) << 4;
-            //uniqueSeed |= (seed & (1 << 7)) << 2;
-            //uniqueSeed |= (seed & (1 << 8)) >> 5;
-            //uniqueSeed |= (seed & (1 << 9)) << 5;
-            //uniqueSeed |= (seed & (1 << 10)) << 10;
-            //uniqueSeed |= (seed & (1 << 11)) >> 3;
-            //uniqueSeed |= (seed & (1 << 12)) >> 8;
-            //uniqueSeed |= (seed & (1 << 13)) << 2;
-            //uniqueSeed |= (seed & (1 << 14)) >> 12;
-            //uniqueSeed |= (seed & (1 << 15)) >> 4;
-            //uniqueSeed |= (seed & (1 << 16)) << 3;
-            //uniqueSeed |= (seed & (1 << 17)) << 6;
-            //uniqueSeed |= (seed & (1 << 18)) >> 1;
-            //uniqueSeed |= (seed & (1 << 19)) >> 18;
-            //if (itemShuffle > 0)
-            //{
-            //    uniqueSeed |= 1 << 7;
-            //    if (mistDamage) uniqueSeed |= 1 << 13;
-            //    if (startWithWheel) uniqueSeed |= 1 << 16;
-            //    if (shuffleReliquaries) uniqueSeed |= 1 << 5;
-            //}
-            uniqueSeed = seed; // First 27 bits
-            //uniqueSeed |= (long)((config.LogicDifficulty & 1) << 27);
-            //uniqueSeed |= (long)((config.LogicDifficulty & 2) >> 1 << 28);
-            //uniqueSeed |= (long)((config.StartingLocation & 1) << 29);
-            //uniqueSeed |= (long)((config.StartingLocation & 2) >> 1 << 30);
-            //uniqueSeed |= (long)((config.StartingLocation & 4) >> 2 << 31);
-            //uniqueSeed |= (long)((config.StartingLocation & 8) >> 3 << 32);
+            if ((seed & (1 << 0)) > 0) SetBit(0);
+            if ((seed & (1 << 1)) > 0) SetBit(1);
+            if ((seed & (1 << 2)) > 0) SetBit(2);
+            if ((seed & (1 << 3)) > 0) SetBit(3);
+            if ((seed & (1 << 4)) > 0) SetBit(4);
+            if ((seed & (1 << 5)) > 0) SetBit(5);
+            if ((seed & (1 << 6)) > 0) SetBit(6);
+            if ((seed & (1 << 7)) > 0) SetBit(7);
+            if ((seed & (1 << 8)) > 0) SetBit(8);
+            if ((seed & (1 << 9)) > 0) SetBit(9);
+            if ((seed & (1 << 10)) > 0) SetBit(10);
+            if ((seed & (1 << 11)) > 0) SetBit(11);
+            if ((seed & (1 << 12)) > 0) SetBit(12);
+            if ((seed & (1 << 13)) > 0) SetBit(13);
+            if ((seed & (1 << 14)) > 0) SetBit(14);
+            if ((seed & (1 << 15)) > 0) SetBit(15);
+            if ((seed & (1 << 16)) > 0) SetBit(16);
+            if ((seed & (1 << 17)) > 0) SetBit(17);
+            if ((seed & (1 << 18)) > 0) SetBit(18);
+            if ((seed & (1 << 19)) > 0) SetBit(19);
+            if ((seed & (1 << 20)) > 0) SetBit(20);
+            if ((seed & (1 << 21)) > 0) SetBit(21);
+            if ((seed & (1 << 22)) > 0) SetBit(22);
+            if ((seed & (1 << 23)) > 0) SetBit(23);
+            if ((seed & (1 << 24)) > 0) SetBit(24);
+            if ((seed & (1 << 25)) > 0) SetBit(25);
+            if ((seed & (1 << 26)) > 0) SetBit(26);
 
-            if ((config.LogicDifficulty & 1) > 0) uniqueSeed |= 1 << 27;
-            if ((config.LogicDifficulty & 2) > 0) uniqueSeed |= 1 << 28;
-            if ((config.StartingLocation & 1) > 0) uniqueSeed |= 1 << 29;
-            if ((config.StartingLocation & 2) > 0) uniqueSeed |= 1 << 30;
-            if ((config.StartingLocation & 4) > 0) uniqueSeed |= 1 << 31;
-            if ((config.StartingLocation & 8) > 0) uniqueSeed |= 1 << 32;
+            if ((config.LogicDifficulty & 1) > 0) SetBit(27);
+            if ((config.LogicDifficulty & 2) > 0) SetBit(28);
+            if ((config.StartingLocation & 1) > 0) SetBit(29);
+            if ((config.StartingLocation & 2) > 0) SetBit(30);
+            if ((config.StartingLocation & 4) > 0) SetBit(31);
+            if ((config.StartingLocation & 8) > 0) SetBit(32);
 
-            if (config.ShuffleReliquaries) uniqueSeed |= 1 << 33;
-            if (config.ShuffleDash) uniqueSeed |= 1 << 34;
-            if (config.ShuffleWallClimb) uniqueSeed |= 1 << 35;
-            if (config.ShuffleBootsOfPleading) uniqueSeed |= 1 << 36;
-            if (config.ShufflePurifiedHand) uniqueSeed |= 1 << 37;
+            if (config.ShuffleReliquaries) SetBit(33);
+            if (config.ShuffleDash) SetBit(34);
+            if (config.ShuffleWallClimb) SetBit(35);
+            if (config.ShuffleBootsOfPleading) SetBit(36);
+            if (config.ShufflePurifiedHand) SetBit(37);
 
-            if (config.ShuffleSwordSkills) uniqueSeed |= 1 << 38;
-            if (config.ShuffleThorns) uniqueSeed |= 1 << 39;
-            if (config.JunkLongQuests) uniqueSeed |= 1 << 40;
-            if (config.StartWithWheel) uniqueSeed |= 1 << 41;
+            if (config.ShuffleSwordSkills) SetBit(38);
+            if (config.ShuffleThorns) SetBit(39);
+            if (config.JunkLongQuests) SetBit(40);
+            if (config.StartWithWheel) SetBit(41);
 
-            //uniqueSeed |= (long)((config.BossShuffleType & 1) << 42);
-            //uniqueSeed |= (long)((config.BossShuffleType & 2) >> 1 << 43);
-            //uniqueSeed |= (long)((config.DoorShuffleType & 1) << 44);
-            //uniqueSeed |= (long)((config.DoorShuffleType & 2) >> 1 << 45);
 
-            if ((config.BossShuffleType & 1) > 0) uniqueSeed |= 1 << 42;
-            if ((config.BossShuffleType & 2) > 0) uniqueSeed |= 1 << 43;
-            if ((config.DoorShuffleType & 1) > 0) uniqueSeed |= 1 << 44;
-            if ((config.DoorShuffleType & 2) > 0) uniqueSeed |= 1 << 45;
+            if ((config.BossShuffleType & 1) > 0) SetBit(42);
+            if ((config.BossShuffleType & 2) > 0) SetBit(43);
+            if ((config.DoorShuffleType & 1) > 0) SetBit(44);
+            if ((config.DoorShuffleType & 2) > 0) SetBit(45);
 
             LogWarning(System.Convert.ToString(uniqueSeed, 2).PadLeft(46, '0'));
             return uniqueSeed;
 
-            long GetMask(byte digit)
+            void SetBit(byte digit)
             {
-                return ((long)1) << digit;
+                uniqueSeed |= ((long)1) << digit;
             }
         }
 
