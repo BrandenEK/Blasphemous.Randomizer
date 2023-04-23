@@ -89,10 +89,10 @@ namespace BlasphemousRandomizer
                 Main.Randomizer.tracker.NewLocation(formatted);
             }
 
-            // Increase zone counter when location flag or special flag is set
+            // Increase zone counter when location flag or special flag is set (Cant use formatted because location ids have lowercase)
             foreach (ItemRando.ItemLocation location in Main.Randomizer.data.itemLocations.Values)
             {
-                if (location.LocationFlag == null && formatted == "LOCATION_" + location.Id || location.LocationFlag != null && location.LocationFlag.StartsWith(formatted))
+                if (location.LocationFlag == null && id == "LOCATION_" + location.Id || location.LocationFlag != null && location.LocationFlag.StartsWith(id))
                 {
                     Main.Randomizer.MapCollection.CollectLocation(location.Id, Main.Randomizer.gameConfig);
                 }
