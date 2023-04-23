@@ -9,10 +9,10 @@ namespace BlasphemousRandomizer.Settings
 {
     public class SettingsMenu
     {
-        private const int UNIQUE_ID_SIZE = 5;
+        private const int UNIQUE_ID_SIZE = 7;
         private const int NUMBER_OF_OPTIONS = 24;
 
-        readonly string[] uniqueSeedIcons = new string[] // 96 diff images (5 images = 32 bits, 6 images = 39 bits)
+        readonly string[] uniqueSeedIcons = new string[] // 96 diff images (5 images = 32 bits, 6 images = 39 bits, 7 images = 46 bits)
         {
             "RE01", "RE02", "RE03", "RE04", "RE05", "RE07", "RE10",
             "RB01", "RB03", "RB04", "RB05", "RB06", "RB07", "RB08", "RB09", "RB10", "RB11", "RB12", "RB13", "RB14", "RB15", "RB16", "RB21", "RB30", "RB31", "RB32", "RB33", "RB35", "RB36", "RB37", "RB101", "RB102", "RB103", "RB105", "RB106", "RB107", "RB108", "RB201", "RB202", "RB203", "RB301",
@@ -273,12 +273,12 @@ namespace BlasphemousRandomizer.Settings
                     int imgIdx = seed % numDigits;
                     seed /= numDigits;
 
-                    uniqueImages[currDigit].sprite = GetIcon(imgIdx);
+                    SetDigitImage(currDigit, GetIcon(imgIdx));
                     currDigit++;
                 }
                 while (seed > 0);
                 for ( ; currDigit < uniqueImages.Length; currDigit++)
-                    uniqueImages[currDigit].sprite = GetIcon(0);
+                    SetDigitImage(currDigit, GetIcon(0));
             }
 
             Sprite GetIcon(int index)
@@ -286,6 +286,25 @@ namespace BlasphemousRandomizer.Settings
                 string itemId = uniqueSeedIcons[index];
                 InventoryManager.ItemType itemType = ItemModder.GetItemTypeFromId(itemId);
                 return Core.InventoryManager.GetBaseObject(itemId, itemType).picture;
+            }
+
+            void SetDigitImage(int digit, Sprite image) // Need to update this when adding more images
+            {
+                int realIdx = -1;
+                if (digit == 0) realIdx = 1;
+                else if (digit == 1) realIdx = 5;
+                else if (digit == 2) realIdx = 0;
+                else if (digit == 3) realIdx = 3;
+                else if (digit == 4) realIdx = 6;
+                else if (digit == 5) realIdx = 4;
+                else if (digit == 6) realIdx = 2;
+
+                if (realIdx < 0)
+                {
+                    Main.Randomizer.LogError("Error: Too many digits in unique seed!");
+                    return;
+                }
+                uniqueImages[realIdx].sprite = image;
             }
         }
 
