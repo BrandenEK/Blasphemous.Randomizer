@@ -331,59 +331,58 @@ namespace BlasphemousRandomizer
             // Generate unique int64 based on seed and important options
             long uniqueSeed = 0;
 
-            if ((seed & (1 << 0)) > 0) SetBit(0);
-            if ((seed & (1 << 1)) > 0) SetBit(1);
-            if ((seed & (1 << 2)) > 0) SetBit(2);
-            if ((seed & (1 << 3)) > 0) SetBit(3);
-            if ((seed & (1 << 4)) > 0) SetBit(4);
-            if ((seed & (1 << 5)) > 0) SetBit(5);
-            if ((seed & (1 << 6)) > 0) SetBit(6);
-            if ((seed & (1 << 7)) > 0) SetBit(7);
-            if ((seed & (1 << 8)) > 0) SetBit(8);
-            if ((seed & (1 << 9)) > 0) SetBit(9);
-            if ((seed & (1 << 10)) > 0) SetBit(10);
-            if ((seed & (1 << 11)) > 0) SetBit(11);
-            if ((seed & (1 << 12)) > 0) SetBit(12);
-            if ((seed & (1 << 13)) > 0) SetBit(13);
-            if ((seed & (1 << 14)) > 0) SetBit(14);
-            if ((seed & (1 << 15)) > 0) SetBit(15);
-            if ((seed & (1 << 16)) > 0) SetBit(16);
-            if ((seed & (1 << 17)) > 0) SetBit(17);
-            if ((seed & (1 << 18)) > 0) SetBit(18);
-            if ((seed & (1 << 19)) > 0) SetBit(19);
-            if ((seed & (1 << 20)) > 0) SetBit(20);
-            if ((seed & (1 << 21)) > 0) SetBit(21);
-            if ((seed & (1 << 22)) > 0) SetBit(22);
-            if ((seed & (1 << 23)) > 0) SetBit(23);
-            if ((seed & (1 << 24)) > 0) SetBit(24);
-            if ((seed & (1 << 25)) > 0) SetBit(25);
-            if ((seed & (1 << 26)) > 0) SetBit(26);
+            if ((seed & (1 << 0)) == 0) SetBit(8);
+            if ((seed & (1 << 1)) == 0) SetBit(19);
+            if ((seed & (1 << 2)) > 0) SetBit(11);
+            if ((seed & (1 << 3)) > 0) SetBit(23);
+            if ((seed & (1 << 4)) == 0) SetBit(41);
+            if ((seed & (1 << 5)) > 0) SetBit(38);
+            if ((seed & (1 << 6)) > 0) SetBit(16);
+            if ((seed & (1 << 7)) > 0) SetBit(29);
+            if ((seed & (1 << 8)) > 0) SetBit(32);
+            if ((seed & (1 << 9)) > 0) SetBit(36);
+            if ((seed & (1 << 10)) > 0) SetBit(18);
+            if ((seed & (1 << 11)) > 0) SetBit(12);
+            if ((seed & (1 << 12)) == 0) SetBit(3);
+            if ((seed & (1 << 13)) == 0) SetBit(45);
+            if ((seed & (1 << 14)) == 0) SetBit(42);
+            if ((seed & (1 << 15)) == 0) SetBit(28);
+            if ((seed & (1 << 16)) > 0) SetBit(13);
+            if ((seed & (1 << 17)) > 0) SetBit(35);
+            if ((seed & (1 << 18)) == 0) SetBit(20);
+            if ((seed & (1 << 19)) == 0) SetBit(31);
+            if ((seed & (1 << 20)) > 0) SetBit(10);
+            if ((seed & (1 << 21)) == 0) SetBit(6);
+            if ((seed & (1 << 22)) > 0) SetBit(24);
+            if ((seed & (1 << 23)) > 0) SetBit(0);
+            if ((seed & (1 << 24)) == 0) SetBit(5);
+            if ((seed & (1 << 25)) > 0) SetBit(1);
+            if ((seed & (1 << 26)) > 0) SetBit(22);
 
-            if ((config.LogicDifficulty & 1) > 0) SetBit(27);
-            if ((config.LogicDifficulty & 2) > 0) SetBit(28);
-            if ((config.StartingLocation & 1) > 0) SetBit(29);
-            if ((config.StartingLocation & 2) > 0) SetBit(30);
-            if ((config.StartingLocation & 4) > 0) SetBit(31);
-            if ((config.StartingLocation & 8) > 0) SetBit(32);
+            if ((config.LogicDifficulty & 1) == 0) SetBit(4);
+            if ((config.LogicDifficulty & 2) > 0) SetBit(30);
+            if ((config.StartingLocation & 1) > 0) SetBit(9);
+            if ((config.StartingLocation & 2) > 0) SetBit(39);
+            if ((config.StartingLocation & 4) == 0) SetBit(33);
+            if ((config.StartingLocation & 8) == 0) SetBit(25);
 
-            if (config.ShuffleReliquaries) SetBit(33);
-            if (config.ShuffleDash) SetBit(34);
-            if (config.ShuffleWallClimb) SetBit(35);
-            if (config.ShuffleBootsOfPleading) SetBit(36);
-            if (config.ShufflePurifiedHand) SetBit(37);
+            if (config.ShuffleReliquaries) SetBit(7);
+            if (config.ShuffleDash) SetBit(37);
+            if (!config.ShuffleWallClimb) SetBit(27);
+            if (config.ShuffleBootsOfPleading) SetBit(15);
+            if (!config.ShufflePurifiedHand) SetBit(44);
 
-            if (config.ShuffleSwordSkills) SetBit(38);
-            if (config.ShuffleThorns) SetBit(39);
-            if (config.JunkLongQuests) SetBit(40);
-            if (config.StartWithWheel) SetBit(41);
+            if (!config.ShuffleSwordSkills) SetBit(2);
+            if (!config.ShuffleThorns) SetBit(21);
+            if (config.JunkLongQuests) SetBit(14);
+            if (!config.StartWithWheel) SetBit(40);
 
 
-            if ((config.BossShuffleType & 1) > 0) SetBit(42);
+            if ((config.BossShuffleType & 1) == 0) SetBit(17);
             if ((config.BossShuffleType & 2) > 0) SetBit(43);
-            if ((config.DoorShuffleType & 1) > 0) SetBit(44);
-            if ((config.DoorShuffleType & 2) > 0) SetBit(45);
+            if ((config.DoorShuffleType & 1) > 0) SetBit(26);
+            if ((config.DoorShuffleType & 2) == 0) SetBit(34);
 
-            LogWarning(System.Convert.ToString(uniqueSeed, 2).PadLeft(46, '0'));
             return uniqueSeed;
 
             void SetBit(byte digit)
