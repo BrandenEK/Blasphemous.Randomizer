@@ -27,6 +27,7 @@ currsd: Current seed
 shrine: Shrine Tier
 sword: Mea Culpa
 items: Items collected
+varous: Various
 vandis: Vanilla
 randis: Randomized
 outdis: Outdated
@@ -36,41 +37,66 @@ begin: Begin
 cancel: Cancel
 menusd: Seed
 menurd: random  (Begin typing numbers to input a custom seed)
-typesd: Begin typing numbers to input a custom seed
-genset: General
+
+lgname: Logic Difficulty
+lgtyp1: Easy
+lgtyp2: Normal
+lgtyp3: Hard
+lgdes1: Text for easy logic
+lgdes2: Text for normal logic
+lgdes3: Text for hard logic
+loname: Starting Location
+lodesc: Where to spawn when beginning the game
+lotyp1: Brotherhood
+lotyp2: Knot of Words
+lotyp3: Library
 tpname: Teleportation
 tpdesc: Prie Dieus are automatically upgraded to the maximum level
-ctname: Skip Cutscenes
-ctdesc: A majority of cutscenes will be skipped
 htname: Allow Hints
 htdesc: Corpses will give a hint about valuable items when interacted with
 pename: Allow Penitence
 pedesc: You are able to choose a penitence in the Brotherhood
-itmset: Item Shuffle
-lgname: Mist Damage
-lgdesc: Some items in poison clouds may be in logic without Lung of Dolphos
-dename: Disable NPC Death
-dedesc: Prevents missable items by keeping certain NPCs always alive
-whname: Start with Wheel
-whdesc: The starting gift will be the Young Mason's Wheel
-rqname: Shuffle Reliquaries
-rqdesc: The three reliquaries will be added to the item pool
-dstype: Disabled
-dsides: All items will be in their original places
-entype: Enabled
-endesc: Every location will have a random item
-emyset: Enemy Shuffle
+
+itmpol: Item Pool
+distyp: Disabled
+simtyp: Simple
+fultyp: Full
+drname: Door Shuffle
+drdes1: Text for disabled door shuffle
+drdes2: Text for simple door shuffle
+drdes3: Text for full door shuffle
+bsname: Boss Shuffle
+bsdes1: Text for disabled boss shuffle
+bsdes2: Text for simple boss shuffle
+bsdes3: Text for full boss shuffle
+enname: Enemy Shuffle
+endes1: Text for disabled enemy shuffle
+endes2: Text for simple enemy shuffle
+endes3: Text for full enemy shuffle
 clname: Maintain Class
 cldesc: Enemies are constrained to their original group (Normal, Flying, Large)
 scname: Area Scaling
 scdesc: Enemy health and damage is scaled up/down based on their location
-dsedes: Enemies will remain in their original places
-sftype: Shuffled
-sfdesc: An enemy can only appear as many times as in the original game
-rdtype: Random
-rddesc: An enemy can appear any amount of times (Not recommended)
-dorset: Door Shuffle
-soon: Coming Soon!
+
+rqname: Shuffle Reliquaries
+rqdesc: The three reliquaries will be added to the item pool
+dsname: Shuffle Dash
+dsdesc: Shuffles the dash ability into the item pool
+wcname: Shuffle Wall Climb
+wcdesc: Shuffles the wall climb ability into the item pool
+sbname: Shuffle Spike Boots
+sbdesc: Shuffles the Boots of Pleading into the item pool (Only if the mod is installed)
+djname: Shuffle Double Jump
+djdesc: Shuffles the Purified Hand of the Nun into the item pool (Only if the mod is installed)
+
+ssname: Shuffle Sword Skills
+ssdesc: Shuffles the sword skills into the item pool
+thname: Shuffle Thorns
+thdesc: Shuffles the 8 thorns into the item pool
+jiname: Junk inconvenient\nlocations
+jidesc: Forces a junk item at inconvenient locations such as Miriam
+whname: Start with Wheel
+whdesc: The starting gift will be the Young Mason's Wheel
 
 lang: es
 bead: Nueva cuenta de rosario obtenida

@@ -35,7 +35,7 @@ namespace BlasphemousRandomizer.Map
             string zoneName = string.Empty;
             if (currentCell == null)
             {
-                zoneName = "Various: ";
+                zoneName = Main.Randomizer.Localize("varous");
             }
             else
             {
@@ -44,10 +44,9 @@ namespace BlasphemousRandomizer.Map
                     zoneName += word[0];
                 if (zoneName.Length == 1)
                     zoneName = fullName;
-                zoneName += ": ";
             }
             ZoneCollection currentZone = CollectionStatus[currentCell == null ? "Initia" : (currentCell.ZoneId.District + currentCell.ZoneId.Zone)];
-            ZoneItemsText.text = zoneName + $"{currentZone.CurrentItems}/{currentZone.TotalItems}";
+            ZoneItemsText.text = zoneName + $": {currentZone.CurrentItems}/{currentZone.TotalItems}";
         }
 
         // When a new item location is collected, increase the counter in the specified zone
