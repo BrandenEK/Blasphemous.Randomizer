@@ -10,6 +10,7 @@ namespace BlasphemousRandomizer.ItemRando
 
         public int Type { get; set; }
         public string OriginalItem { get; set; }
+        public string LocationFlag { get; set; }
 
         public string Room { get; set; }
         public string Logic { get; set; }

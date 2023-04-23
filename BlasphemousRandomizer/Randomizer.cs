@@ -50,7 +50,7 @@ namespace BlasphemousRandomizer
 
         public override string PersistentID => "ID_RANDOMIZER";
 
-        public bool InstalledBootsMod => IsModLoaded("com.damocles.blasphemous.boots-of-pleading");
+        public bool InstalledBootsMod => IsModLoaded("com.author.blasphemous.boots-of-pleading");
         public bool InstalledDoubleJumpMod => IsModLoaded("com.damocles.blasphemous.double-jump");
 
         public Randomizer(string modId, string modName, string modVersion) : base(modId, modName, modVersion) { }

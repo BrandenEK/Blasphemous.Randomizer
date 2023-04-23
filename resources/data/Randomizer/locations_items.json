@@ -189,6 +189,7 @@
 		"Id": "RB104",
 		"Name": "Church donation (5000)",
 		"Hint": "* requires a donation",
+		"LocationFlag": "LOCATION_RB104~D01Z02",
 		"Room": "D01BZ04S01",
 		"Logic": "tears >= 0"
 	},
@@ -197,6 +198,7 @@
 		"Name": "Church donation (50000)",
 		"Hint": "* requires a donation",
 		"Type": 8,
+		"LocationFlag": "LOCATION_RB105~D01Z02",
 		"Room": "D01BZ04S01",
 		"Logic": "tears >= 0"
 	},
@@ -204,6 +206,7 @@
 		"Id": "PR11",
 		"Name": "Cleofas final gift",
 		"Hint": "Cleofas holds *",
+		"LocationFlag": "LOCATION_PR11~D01Z02",
 		"Room": "D01BZ04S01",
 		"Logic": "marksOfRefuge >= 3 && cord && D04Z02S10[W] && D06Z01S18[E]"
 	},
@@ -211,6 +214,7 @@
 		"Id": "Undertaker[250]",
 		"Name": "Ossuary reward 1",
 		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[250]~D01Z02",
 		"Room": "D01BZ06S01",
 		"Logic": "bones >= 4"
 	},
@@ -218,6 +222,7 @@
 		"Id": "Undertaker[500]",
 		"Name": "Ossuary reward 2",
 		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[500]~D01Z02",
 		"Room": "D01BZ06S01",
 		"Logic": "bones >= 8"
 	},
@@ -225,6 +230,7 @@
 		"Id": "Undertaker[750]",
 		"Name": "Ossuary reward 3",
 		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[750]~D01Z02",
 		"Room": "D01BZ06S01",
 		"Logic": "bones >= 12"
 	},
@@ -232,6 +238,7 @@
 		"Id": "Undertaker[1000]",
 		"Name": "Ossuary reward 4",
 		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[1000]~D01Z02",
 		"Room": "D01BZ06S01",
 		"Logic": "bones >= 16"
 	},
@@ -239,6 +246,7 @@
 		"Id": "Undertaker[1250]",
 		"Name": "Ossuary reward 5",
 		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[1250]~D01Z02",
 		"Room": "D01BZ06S01",
 		"Logic": "bones >= 20"
 	},
@@ -246,6 +254,7 @@
 		"Id": "Undertaker[1500]",
 		"Name": "Ossuary reward 6",
 		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[1500]~D01Z02",
 		"Room": "D01BZ06S01",
 		"Logic": "bones >= 24"
 	},
@@ -253,6 +262,7 @@
 		"Id": "Undertaker[1750]",
 		"Name": "Ossuary reward 7",
 		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[1750]~D01Z02",
 		"Room": "D01BZ06S01",
 		"Logic": "bones >= 28"
 	},
@@ -260,6 +270,7 @@
 		"Id": "Undertaker[2000]",
 		"Name": "Ossuary reward 8",
 		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[2000]~D01Z02",
 		"Room": "D01BZ06S01",
 		"Logic": "bones >= 32"
 	},
@@ -267,6 +278,7 @@
 		"Id": "Undertaker[2500]",
 		"Name": "Ossuary reward 9",
 		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[2500]~D01Z02",
 		"Room": "D01BZ06S01",
 		"Logic": "bones >= 36"
 	},
@@ -274,6 +286,7 @@
 		"Id": "Undertaker[3000]",
 		"Name": "Ossuary reward 10",
 		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[3000]~D01Z02",
 		"Room": "D01BZ06S01",
 		"Logic": "bones >= 40"
 	},
@@ -281,6 +294,7 @@
 		"Id": "Undertaker[5000]",
 		"Name": "Ossuary reward 11",
 		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[5000]~D01Z02",
 		"Type": 8,
 		"Room": "D01BZ06S01",
 		"Logic": "bones >= 44"
@@ -289,6 +303,7 @@
 		"Id": "QI201",
 		"Name": "Isidora reward",
 		"Hint": "* is guarded by Isidora",
+		"LocationFlag": "LOCATION_QI201~D01Z02",
 		"Room": "D01BZ08S01",
 		"Logic": "boss-ossuary"
 	},
@@ -419,6 +434,7 @@
 		"Id": "QI58",
 		"Name": "Shop left",
 		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_QI58~D01Z04",
 		"Room": "D01BZ02S01",
 		"Logic": "tears >= 0"
 	},
@@ -426,6 +442,7 @@
 		"Id": "RB05",
 		"Name": "Shop middle",
 		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_RB05~D01Z04",
 		"Room": "D01BZ02S01",
 		"Logic": "tears >= 0"
 	},
@@ -433,6 +450,7 @@
 		"Id": "RB09",
 		"Name": "Shop right",
 		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_RB09~D01Z04",
 		"Room": "D01BZ02S01",
 		"Logic": "tears >= 0"
 	},
@@ -564,6 +582,7 @@
 		"Id": "RB03",
 		"Name": "Shroud puzzle",
 		"Hint": "* resides in the Cistern",
+		"LocationFlag": "LOCATION_RB03~D01Z05",
 		"Room": "D01BZ05S01"
 	},
 	
@@ -767,6 +786,7 @@
 		"Id": "QI11",
 		"Name": "Shop left",
 		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_QI11~D02Z02",
 		"Room": "D02BZ02S01",
 		"Logic": "tears >= 0"
 	},
@@ -774,6 +794,7 @@
 		"Id": "RB37",
 		"Name": "Shop middle",
 		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_RB37~D02Z02",
 		"Room": "D02BZ02S01",
 		"Logic": "tears >= 0"
 	},
@@ -781,6 +802,7 @@
 		"Id": "RB02",
 		"Name": "Shop right",
 		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_RB02~D02Z02",
 		"Room": "D02BZ02S01",
 		"Logic": "tears >= 0"
 	},
@@ -1231,12 +1253,14 @@
 		"Id": "RE03",
 		"Name": "Redento prayer room",
 		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_RE03~D04Z02",
 		"Room": "D04BZ02S01"
 	},
 	{
 		"Id": "QI54",
 		"Name": "Redento corpse",
 		"Hint": "Redento holds *",
+		"LocationFlag": "LOCATION_QI54~D04Z02",
 		"Room": "D04BZ02S01",
 		"Logic": "(D03Z01S03[W] || D03Z01S03[SW]) && (D17Z01S04[N] || D17Z01S04[FrontR]) && (D01Z03S06[W] || D01Z03S06[E]) && (D04Z02S20[W] || D04Z02S20[Redento])"
 	},
@@ -1365,6 +1389,7 @@
 		"Id": "RB301",
 		"Name": "Fourth Visage hidden wall",
 		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_RB301~D05Z01",
 		"Room": "D05BZ01S01"
 	},
 	
@@ -1418,6 +1443,7 @@
 		"Id": "RB12",
 		"Name": "Shop left",
 		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_RB12~D05Z02",
 		"Room": "D05BZ02S01",
 		"Logic": "tears >= 0"
 	},
@@ -1425,6 +1451,7 @@
 		"Id": "QI49",
 		"Name": "Shop middle",
 		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_QI49~D05Z02",
 		"Room": "D05BZ02S01",
 		"Logic": "tears >= 0"
 	},
@@ -1432,6 +1459,7 @@
 		"Id": "QI71",
 		"Name": "Shop right",
 		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_QI71~D05Z02",
 		"Room": "D05BZ02S01",
 		"Logic": "tears >= 0"
 	},
@@ -1622,6 +1650,7 @@
 		"Id": "CO10",
 		"Name": "Q1 drop room upper",
 		"Hint": "* resides in the Wall",
+		"LocationFlag": "LOCATION_CO10~D09Z01",
 		"Room": "D09BZ01S01",
 		"Logic": "D09BZ01S01[Cell22]"
 	},
@@ -1629,6 +1658,7 @@
 		"Id": "QI69",
 		"Name": "Q1 drop room lower",
 		"Hint": "* resides in the Wall",
+		"LocationFlag": "LOCATION_QI69~D09Z01",
 		"Room": "D09BZ01S01",
 		"Logic": "D09BZ01S01[Cell22] || D09BZ01S01[Cell23]"
 	},
@@ -1636,6 +1666,7 @@
 		"Id": "RESCUED_CHERUB_03",
 		"Name": "Q1 upper bronze door",
 		"Hint": "* resides in the Wall",
+		"LocationFlag": "LOCATION_RESCUED_CHERUB_03~D09Z01",
 		"Room": "D09BZ01S01",
 		"Logic": "D09BZ01S01[Cell1]"
 	},
@@ -1643,6 +1674,7 @@
 		"Id": "CO24",
 		"Name": "Q1 upper silver door",
 		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_CO24~D09Z01",
 		"Room": "D09BZ01S01",
 		"Logic": "D09BZ01S01[Cell6]"
 	},
@@ -1650,6 +1682,7 @@
 		"Id": "RESCUED_CHERUB_34",
 		"Name": "Q3 upper silver door",
 		"Hint": "* resides in the Wall",
+		"LocationFlag": "LOCATION_RESCUED_CHERUB_34~D09Z01",
 		"Room": "D09BZ01S01",
 		"Logic": "D09BZ01S01[Cell14] || D09BZ01S01[Cell15]"
 	},
@@ -1657,6 +1690,7 @@
 		"Id": "CO26",
 		"Name": "Q2 middle gold door",
 		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_CO26~D09Z01",
 		"Room": "D09BZ01S01",
 		"Logic": "D09BZ01S01[Cell16]"
 	},
@@ -1664,6 +1698,7 @@
 		"Id": "CO02",
 		"Name": "Q3 lower gold door",
 		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_CO02~D09Z01",
 		"Room": "D09BZ01S01",
 		"Logic": "D09BZ01S01[Cell21] && blood && root && lung"
 	},
@@ -1671,6 +1706,7 @@
 		"Id": "CO37",
 		"Name": "Q4 upper silver door",
 		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_CO37~D09Z01",
 		"Room": "D09BZ01S01",
 		"Logic": "D09BZ01S01[Cell10]"
 	},
@@ -1678,6 +1714,7 @@
 		"Id": "RESCUED_CHERUB_04",
 		"Name": "Q4 lower silver door",
 		"Hint": "* resides in the Wall",
+		"LocationFlag": "LOCATION_RESCUED_CHERUB_04~D09Z01",
 		"Room": "D09BZ01S01",
 		"Logic": "D09BZ01S01[Cell11] && lung"
 	},
@@ -1742,12 +1779,14 @@
 		"Id": "RE01",
 		"Name": "Chamber of the Eldest Brother",
 		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_RE01~D17Z01",
 		"Room": "D17BZ01S01"
 	},
 	{
 		"Id": "CO25",
 		"Name": "Spike gaunlet exit",
 		"Hint": "* resides in the Brotherhood",
+		"LocationFlag": "LOCATION_CO25~D17Z01",
 		"Room": "D17BZ02S01"
 	},
 	
@@ -1808,6 +1847,7 @@
 		"Id": "RB18",
 		"Name": "Red candle 1",
 		"Hint": "A candle holds *",
+		"LocationFlag": "CANDLE_RED_1_USED~D02Z03",
 		"Room": "Initial",
 		"Logic": "redWax > 0 && (D02Z03S06[W] || D02Z03S06[S] || D05Z01S02[W])"
 	},
@@ -1815,6 +1855,7 @@
 		"Id": "RB19",
 		"Name": "Red candle 2",
 		"Hint": "A candle holds *",
+		"LocationFlag": "CANDLE_RED_2_USED~D05Z01",
 		"Room": "Initial",
 		"Logic": "redWax > 0 && D05Z01S02[W] && (D02Z03S06[W] || D02Z03S06[S])"
 	},
@@ -1822,6 +1863,7 @@
 		"Id": "RB25",
 		"Name": "Blue candle 1",
 		"Hint": "A candle holds *",
+		"LocationFlag": "CANDLE_BLUE_1_USED~D17Z01",
 		"Room": "Initial",
 		"Logic": "blueWax > 0 && (D17Z01S04[N] || D17Z01S04[FrontR] || D01Z04S16[W] || D01Z04S16[E])"
 	},
@@ -1829,6 +1871,7 @@
 		"Id": "RB26",
 		"Name": "Blue candle 2",
 		"Hint": "A candle holds *",
+		"LocationFlag": "CANDLE_BLUE_2_USED~D05Z02",
 		"Room": "Initial",
 		"Logic": "blueWax > 0 && (D17Z01S04[N] || D17Z01S04[FrontR]) && (D01Z04S16[W] || D01Z04S16[E])"
 	},
@@ -1836,6 +1879,7 @@
 		"Id": "QI107",
 		"Name": "Defeat 1 Amanecida",
 		"Hint": "* is guarded by an Amanecida",
+		"LocationFlag": "SANTOS_AMANECIDA_BOW_DEFEATED~D02Z02",
 		"Room": "Initial",
 		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 1"
 	},
@@ -1843,6 +1887,7 @@
 		"Id": "QI108",
 		"Name": "Defeat 2 Amanecidas",
 		"Hint": "* is guarded by an Amanecida",
+		"LocationFlag": "SANTOS_AMANECIDA_AXE_DEFEATED~D03Z01",
 		"Room": "Initial",
 		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 2"
 	},
@@ -1850,6 +1895,7 @@
 		"Id": "QI109",
 		"Name": "Defeat 3 Amanecidas",
 		"Hint": "* is guarded by an Amanecida",
+		"LocationFlag": "SANTOS_AMANECIDA_FALCATA_DEFEATED~D04Z01",
 		"Room": "Initial",
 		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 3"
 	},
@@ -1857,6 +1903,7 @@
 		"Id": "QI110",
 		"Name": "Defeat 4 Amanecidas",
 		"Hint": "* is guarded by an Amanecida",
+		"LocationFlag": "SANTOS_AMANECIDA_LANCE_DEFEATED~D09Z01",
 		"Room": "Initial",
 		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 4"
 	},
@@ -1873,6 +1920,7 @@
 		"Hint": "A guilt statue holds *",
 		"Type": 2,
 		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_1_ARENACOMPLETED~D01Z04",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 1"
 	},
@@ -1882,6 +1930,7 @@
 		"Hint": "A guilt statue holds *",
 		"Type": 2,
 		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_2_ARENACOMPLETED~D02Z02",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 2"
 	},
@@ -1891,6 +1940,7 @@
 		"Hint": "A guilt statue holds *",
 		"Type": 2,
 		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_3_ARENACOMPLETED~D03Z03",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 3"
 	},
@@ -1900,6 +1950,7 @@
 		"Hint": "A guilt statue holds *",
 		"Type": 2,
 		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_4_ARENACOMPLETED~D17Z01",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 4"
 	},
@@ -1909,6 +1960,7 @@
 		"Hint": "A guilt statue holds *",
 		"Type": 2,
 		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_5_ARENACOMPLETED~D04Z02",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 5"
 	},
@@ -1918,6 +1970,7 @@
 		"Hint": "A guilt statue holds *",
 		"Type": 2,
 		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_6_ARENACOMPLETED~D05Z01",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 6"
 	},
@@ -1927,6 +1980,7 @@
 		"Hint": "A guilt statue holds *",
 		"Type": 2,
 		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_7_ARENACOMPLETED~D09Z01",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 7"
 	},
@@ -1934,6 +1988,7 @@
 		"Id": "Arena_NailManager[1000]",
 		"Name": "Guilt arena 1 extra",
 		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_1_ARENACOMPLETED~D01Z04",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 1"
 	},
@@ -1941,6 +1996,7 @@
 		"Id": "HE10",
 		"Name": "Guilt arena 2 extra",
 		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_2_ARENACOMPLETED~D02Z02",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 2"
 	},
@@ -1948,6 +2004,7 @@
 		"Id": "Arena_NailManager[3000]",
 		"Name": "Guilt arena 3 extra",
 		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_3_ARENACOMPLETED~D03Z03",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 3"
 	},
@@ -1955,6 +2012,7 @@
 		"Id": "RB34",
 		"Name": "Guilt arena 4 extra",
 		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_4_ARENACOMPLETED~D17Z01",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 4"
 	},
@@ -1962,6 +2020,7 @@
 		"Id": "Arena_NailManager[5000]",
 		"Name": "Guilt arena 5 extra",
 		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_5_ARENACOMPLETED~D04Z02",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 5"
 	},
@@ -1969,6 +2028,7 @@
 		"Id": "RB35",
 		"Name": "Guilt arena 6 extra",
 		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_6_ARENACOMPLETED~D05Z01",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 6"
 	},
@@ -1976,6 +2036,7 @@
 		"Id": "RB36",
 		"Name": "Guilt arena 7 extra",
 		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_7_ARENACOMPLETED~D09Z01",
 		"Room": "Initial",
 		"Logic": "guiltBead && guiltRooms >= 7"
 	},

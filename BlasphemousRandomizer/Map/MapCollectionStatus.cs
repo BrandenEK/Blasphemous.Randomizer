@@ -83,8 +83,10 @@ namespace BlasphemousRandomizer.Map
 
         private string GetZoneId(ItemLocation location)
         {
-            // Also check if this location has a special location flag to change its zone
-            return location.Room.Substring(0, 6);
+            if (location.LocationFlag == null)
+                return location.Room.Substring(0, 6);
+            else
+                return location.LocationFlag.Split('~')[1];
         }
 
         private bool ShouldTrackLocation(ItemLocation location, Config config)
