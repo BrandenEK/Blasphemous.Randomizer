@@ -127,6 +127,7 @@ currsd: Semilla actual
 shrine: Nivel de altar
 sword: Mea Culpa
 items: Objetos obtenidos
+varous: ???
 vandis: Vanilla
 randis: Randomizado
 outdis: Desactualizado
@@ -135,35 +136,29 @@ chset: SELECCIONA LOS AJUSTES
 begin: Comenzar
 cancel: Cancelar
 menusd: Semilla
-menurd: Aleatoria
-typesd: Escribe un número para introducir una semilla personalizada
-genset: General
+menurd: Aleatoria  (Escribe un número para introducir una semilla personalizada)
+
 tpname: Teletransporte
 tpdesc: Los prie-dieus se mejoran al máximo automáticamente
-ctname: Saltar escenas
-ctdesc: Se saltarán la mayoría de escenas
 htname: Permitir pistas
 htdesc: Los cadáveres darán pistas sobre objetos valiosos cuando se hable con ellos
 pename: Permitir penitencia
 pedesc: Puedes elegir una penitencia en la Hermandad
-itmset: Objetos aleatorios
-lgname: Daño por miasma
-lgdesc: Puede que tengas que conseguir objetos situados en zonas\nde miasma sin tener el Pulmón de Dolfos
-dename: Desactivar muerte \nde PNJ
-dedesc: Evita la pérdida de objetos al mantener a ciertos PNJ vivos
+
+clname: Mantener clase
+cldesc: El tipo de enemigos se limita a su tipo original (Normales, Voladores y Grandes)
+scname: Acorde a la zona
+scdesc: La salud y el daño de los enemigos se ajusta a su ubicación en el mapa
 whname: Empezar con la Rueda
 whdesc: Tu obsequio inicial será la Rueda del Joven Masón
 rqname: Añadir relicarios
 rqdesc: Los tres relicarios se añadirán al inventario
+
 dstype: Estándar
 dsides: Todos los objetos estarán en su lugar original
 entype: Activado
 endesc: Habrá un objeto aleatorio en todos los lugares
 emyset: Enemigos aleatorios
-clname: Mantener clase
-cldesc: El tipo de enemigos se limita a su tipo original (Normales, Voladores y Grandes)
-scname: Acorde a la zona
-scdesc: La salud y el daño de los enemigos se ajusta a su ubicación en el mapa
 dsedes: Los enemigos seguirán en su ubicación original
 sftype: Alternar
 sfdesc: Un enemigo solo podrá aparecer la misma cantidad\nde veces que en el juego original
@@ -201,6 +196,7 @@ currsd: 此存档的种子
 shrine: 祭坛等级
 sword: 孽刃
 items: 已收集的物品
+varous: ???
 vandis: 原版
 randis: 随机mod
 outdis: 老版本
@@ -209,35 +205,29 @@ chset: 自定义随机mod设置项
 begin: 开始
 cancel: 取消
 menusd: 种子
-menurd: 随机
-typesd: 用数字键输入自定义种子
-genset: 基本设置
+menurd: 随机  (用数字键输入自定义种子)
+
 tpname: 开局祭坛传送
 tpdesc: 开局自动将存档点祭坛升至满级（有传送功能，回满蓝）
-ctname: 跳过过场动画
-ctdesc: 跳过大部分过场动画
 htname: 尸体提示
 htdesc: 尸体遗言会提示该区域的一项重要物品位置
 pename: 可选忏悔
 pedesc: 你可以在默哀守望者门口选择忏悔
-itmset: 物品随机设置
-lgname: 硬抗毒雾
-lgdesc: 可能需要在无镀银肺时硬抗毒雾伤害来获得关键物品
-dename: NPC不死
-dedesc: NPC不会死亡，防止错过他们的奖励物品
+
+clname: 对应类型
+cldesc: 随机敌人将会对应其原有的类型（普通怪/飞行怪/精英怪）
+scname: 场地调整
+scdesc: 下调前期场地的敌人数值，上调后期场地的敌人数值
 whname: 开局车轮
 whdesc: 开局奖励将改为念珠“年轻石工的车轮”
 rqname: 随机圣物匣
 rqdesc: 圣物匣将被加入随机池中（关闭此项将无法获得圣物匣）
+
 dstype: 禁用随机
 dsides: 所有物品都在原版《渎神》的对应位置上
 entype: 乱序式物品随机
 endesc: 将所有物品的位置打乱
 emyset: 敌人随机设置
-clname: 对应类型
-cldesc: 随机敌人将会对应其原有的类型（普通怪/飞行怪/精英怪）
-scname: 场地调整
-scdesc: 下调前期场地的敌人数值，上调后期场地的敌人数值
 dsedes: 所有敌人都在原版《渎神》的对应位置上
 sftype: 乱序式敌人随机
 sfdesc: 敌人总数和类型不变，只是将位置打乱
@@ -275,6 +265,7 @@ currsd: Seed actuelle
 shrine: Rang de Sanctuaire
 sword: Mea Culpa
 items: Objets récupérés
+varous: ???
 vandis: Vanilla
 randis: Randomisés
 outdis: Obsolète
@@ -283,35 +274,29 @@ chset: CHOISISSEZ VOS PARAMÈTRES
 begin: Commencer
 cancel: Annuler
 menusd: Seed
-menurd: aléatoire
-typesd: Veuillez saisir un nombre pour rentrer une seed personnalisée
-genset: Général
+menurd: aléatoire  (Veuillez saisir un nombre pour rentrer une seed personnalisée)
+
 tpname: Téléportation
 tpdesc: Les Prie-Dieus seront améliorés au niveau maximum dès le début
-ctname: Passer les cinématiques
-ctdesc: Une grande majorité des cinématiques ne seront pas jouées
 htname: Indices macabres
 htdesc: Les cadavres aux âmes torturées donnent des indices sur la positions des objets importants
 pename: Pénitences disponibles
 pedesc: Vous pourrez choisir une pénitence à la confrérie du Chagrin Silencieux (NG+)
-itmset: Randomisation d’objets
-lgname: Logique poison
-lgdesc: Certaines positions d'objets situées dans des salles contenant des nuages empoisonnés \npourront être considérées dans la logique de progression sans le poumon argenté de Dolphos
-dename: PNJ immortels
-dedesc: Désactive la possibilité de rater certains objets en maintenant tous les PNJs en vie
+
+clname: Maintien des classes
+cldesc: Les ennemis seront restreints à leur group initial (Normal, Volant, Géant)
+scname: Mise à niveau des zones
+scdesc: La vie et les dégâts s'adapteront en fonction de la zone dans laquelle ils sont
 whname: Roue du maçon
 whdesc: L'objet de départ sera la roue du jeune maçon (augmentation de la vitesse de déplacement)
 rqname: Ajouter les reliquaires
 rqdesc: Les trois reliquaires seront ajoutées à la pool d'objets
+
 dstype: Désactivé
 dsides: Tous les objets seront à leur position originales
 entype: Activé
 endesc: Chaque emplacement d'objet contiendra un objet aléatoire
 emyset: Randomisation d'ennemis
-clname: Maintien des classes
-cldesc: Les ennemis seront restreints à leur group initial (Normal, Volant, Géant)
-scname: Mise à niveau des zones
-scdesc: La vie et les dégâts s'adapteront en fonction de la zone dans laquelle ils sont
 dsedes: Les ennemis resteront à leurs positions initiales
 sftype: Mélangé
 sfdesc: Un ennemi ne peut apparaître qu'autant de fois\n que ce qu'il apparaît dans le jeu de base (recommandé)
