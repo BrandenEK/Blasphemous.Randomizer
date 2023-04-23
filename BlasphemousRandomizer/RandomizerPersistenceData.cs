@@ -11,7 +11,6 @@ namespace BlasphemousRandomizer
         public RandomizerPersistenceData() : base("ID_RANDOMIZER") { }
 
         public int seed;
-        public int itemsCollected;
         public bool startedInRando;
         public Config config;
 

@@ -75,10 +75,6 @@ namespace BlasphemousRandomizer.Map
                     CollectionStatus[zoneId].TotalItems++;
             }
             CollectionStatus.Add("D08Z02", new ZoneCollection());
-
-            // temp
-            foreach (string key in CollectionStatus.Keys)
-                Main.Randomizer.LogWarning(key + ": " + CollectionStatus[key].TotalItems);
         }
 
         private string GetZoneId(ItemLocation location)

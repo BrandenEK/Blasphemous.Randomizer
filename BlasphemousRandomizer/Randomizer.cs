@@ -32,8 +32,6 @@ namespace BlasphemousRandomizer
 
         // Save file info
         private int seed;
-        public int itemsCollected;
-        public int totalItems;
         private bool startedInRando;
         public Config gameConfig;
 
@@ -90,7 +88,6 @@ namespace BlasphemousRandomizer
             return new RandomizerPersistenceData
             {
                 seed = seed,
-                itemsCollected = itemsCollected,
                 startedInRando = startedInRando,
                 config = gameConfig,
                 collectionStatus = MapCollection.CollectionStatus
@@ -110,7 +107,6 @@ namespace BlasphemousRandomizer
             {
                 // Loaded a valid randomized game
                 seed = randomizerPersistenceData.seed;
-                itemsCollected = randomizerPersistenceData.itemsCollected;
                 startedInRando = randomizerPersistenceData.startedInRando;
                 gameConfig = randomizerPersistenceData.config;
                 MapCollection.CollectionStatus = randomizerPersistenceData.collectionStatus;
@@ -121,8 +117,6 @@ namespace BlasphemousRandomizer
             {
                 // Loaded a vanilla game or an outdated rando game
                 seed = -1;
-                itemsCollected = 0;
-                totalItems = 0;
                 startedInRando = false;
                 gameConfig = new Config();
                 MapCollection.ResetCollectionStatus(gameConfig);
@@ -140,7 +134,6 @@ namespace BlasphemousRandomizer
 
         public override void NewGame(bool NGPlus)
         {
-            itemsCollected = 0;
             startedInRando = true;
             seed = generateSeed();
             setUpExtras();

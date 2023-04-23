@@ -75,9 +75,10 @@ namespace BlasphemousRandomizer
             string text = b ? "Setting" : "Clearing";
             Main.Randomizer.Log(text + " flag: " + formatted);
 
-            // Autotracking flags
+            // Special autotracker & map collection functionality when setting an item/location flag
             if (!b) return;
 
+            // Send locations, items, and special flags to tracker
             if (formatted.StartsWith("ITEM_"))
                 Main.Randomizer.tracker.NewItem(id.Substring(5));
             else if (formatted.StartsWith("LOCATION_"))
@@ -86,6 +87,15 @@ namespace BlasphemousRandomizer
             {
                 Main.Randomizer.tracker.NewItem(formatted);
                 Main.Randomizer.tracker.NewLocation(formatted);
+            }
+
+            // Increase zone counter when location flag or special flag is set
+            foreach (ItemRando.ItemLocation location in Main.Randomizer.data.itemLocations.Values)
+            {
+                if (location.LocationFlag == null && formatted == "LOCATION_" + location.Id || location.LocationFlag != null && location.LocationFlag.StartsWith(formatted))
+                {
+                    Main.Randomizer.MapCollection.CollectLocation(location.Id, Main.Randomizer.gameConfig);
+                }
             }
         }
     }

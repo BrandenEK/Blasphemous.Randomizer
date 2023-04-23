@@ -76,8 +76,6 @@ namespace BlasphemousRandomizer.ItemRando
 
             // Add the item to inventory
             Main.Randomizer.Log($"Giving item ({item.id})");
-            Main.Randomizer.MapCollection.CollectLocation(locationId, Main.Randomizer.gameConfig);
-            Main.Randomizer.itemsCollected++;
             item.addToInventory();
             Core.Events.SetFlag("LOCATION_" + locationId, true, false);
             Main.Randomizer.updateShops();
@@ -129,7 +127,6 @@ namespace BlasphemousRandomizer.ItemRando
                 return;
             }
 
-            Main.Randomizer.totalItems = newItems.Count;
             Main.Randomizer.Log(newItems.Count + " items have been shuffled!");
         }
 
