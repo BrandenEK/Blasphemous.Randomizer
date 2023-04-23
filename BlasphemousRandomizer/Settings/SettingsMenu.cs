@@ -495,10 +495,10 @@ namespace BlasphemousRandomizer.Settings
             bossTitle.anchoredPosition = new Vector2(0, top - 50);
 
             RectTransform bossOption = getNewCyclebox("Boss Option", enemiesSection, font, 15, 16,
-                new string[] { Main.Randomizer.Localize("distyp"), Main.Randomizer.Localize("simtyp"), Main.Randomizer.Localize("fultyp") },
+                new string[] { Main.Randomizer.Localize("distyp"), /*Main.Randomizer.Localize("simtyp"), Main.Randomizer.Localize("fultyp")*/ },
                 new string[] { Main.Randomizer.Localize("distyp") + " - " + Main.Randomizer.Localize("bsdes1"),
-                               Main.Randomizer.Localize("simtyp") + " - " + Main.Randomizer.Localize("bsdes2"),
-                               Main.Randomizer.Localize("fultyp") + " - " + Main.Randomizer.Localize("bsdes3"), }, new SettingsElement[] { }, 36);
+                               /*Main.Randomizer.Localize("simtyp") + " - " + Main.Randomizer.Localize("bsdes2"),
+                               Main.Randomizer.Localize("fultyp") + " - " + Main.Randomizer.Localize("bsdes3"),*/ }, new SettingsElement[] { }, 36);
             bossOption.anchoredPosition = new Vector2(0, top - 70);
             BossesLeft = bossOption.GetChild(0).GetComponent<SettingsCyclebox>();
             BossesRight = bossOption.GetChild(1).GetComponent<SettingsCyclebox>();
@@ -530,27 +530,27 @@ namespace BlasphemousRandomizer.Settings
             itemsSection.sizeDelta = new Vector2(width / 4, height);
             itemsSection.anchoredPosition = new Vector2(0.125f * width, 0);
 
-            RectTransform itemsTitle = getNewText("Items Title", itemsSection, Main.Randomizer.Localize("itmpol") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
-            itemsTitle.anchoredPosition = new Vector2(0.125f * width, top);
+            //RectTransform itemsTitle = getNewText("Items Title", itemsSection, Main.Randomizer.Localize("itmpol") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
+            //itemsTitle.anchoredPosition = new Vector2(0.125f * width, top);
 
             RectTransform reliqOption = getNewCheckbox("Reliquaries", itemsSection, Main.Randomizer.Localize("rqname"), Main.Randomizer.Localize("rqdesc"), font, 15, 16);
-            reliqOption.anchoredPosition = new Vector2(left, top - 25);
+            reliqOption.anchoredPosition = new Vector2(left, top);
             Reliquaries = reliqOption.GetComponent<SettingsCheckbox>();
 
             RectTransform dashOption = getNewCheckbox("Dash", itemsSection, Main.Randomizer.Localize("dsname"), Main.Randomizer.Localize("dsdesc"), font, 15, 16);
-            dashOption.anchoredPosition = new Vector2(left, top - 60);
+            dashOption.anchoredPosition = new Vector2(left, top - 35);
             Dash = dashOption.GetComponent<SettingsCheckbox>();
 
             RectTransform wallclimbOption = getNewCheckbox("Wall Climb", itemsSection, Main.Randomizer.Localize("wcname"), Main.Randomizer.Localize("wcdesc"), font, 15, 16);
-            wallclimbOption.anchoredPosition = new Vector2(left, top - 95);
+            wallclimbOption.anchoredPosition = new Vector2(left, top - 70);
             WallClimb = wallclimbOption.GetComponent<SettingsCheckbox>();
 
             RectTransform bootsOption = getNewCheckbox("Boots", itemsSection, Main.Randomizer.Localize("sbname"), Main.Randomizer.Localize("sbdesc"), font, 15, 16);
-            bootsOption.anchoredPosition = new Vector2(left, top - 130);
+            bootsOption.anchoredPosition = new Vector2(left, top - 105);
             Boots = bootsOption.GetComponent<SettingsCheckbox>();
 
             RectTransform purifedHandOption = getNewCheckbox("PurifiedHand", itemsSection, Main.Randomizer.Localize("djname"), Main.Randomizer.Localize("djdesc"), font, 15, 16);
-            purifedHandOption.anchoredPosition = new Vector2(left, top - 165);
+            purifedHandOption.anchoredPosition = new Vector2(left, top - 140);
             PurifiedHand = purifedHandOption.GetComponent<SettingsCheckbox>();
 
             // Last section
@@ -560,19 +560,19 @@ namespace BlasphemousRandomizer.Settings
             lastSection.anchoredPosition = new Vector2(0.375f * width, 0);
 
             RectTransform swordskillsOption = getNewCheckbox("Sword Skills", lastSection, Main.Randomizer.Localize("ssname"), Main.Randomizer.Localize("ssdesc"), font, 15, 16);
-            swordskillsOption.anchoredPosition = new Vector2(left, top - 25);
+            swordskillsOption.anchoredPosition = new Vector2(left, top);
             SwordSkills = swordskillsOption.GetComponent<SettingsCheckbox>();
 
             RectTransform thornsOption = getNewCheckbox("Thorns", lastSection, Main.Randomizer.Localize("thname"), Main.Randomizer.Localize("thdesc"), font, 15, 16);
-            thornsOption.anchoredPosition = new Vector2(left, top - 60);
+            thornsOption.anchoredPosition = new Vector2(left, top - 35);
             Thorns = thornsOption.GetComponent<SettingsCheckbox>();
 
             RectTransform junkOptions = getNewCheckbox("Junk Quests", lastSection, Main.Randomizer.Localize("jiname"), Main.Randomizer.Localize("jidesc"), font, 15, 16);
-            junkOptions.anchoredPosition = new Vector2(left, top - 95);
+            junkOptions.anchoredPosition = new Vector2(left, top - 70);
             JunkQuests = junkOptions.GetComponent<SettingsCheckbox>();
 
             RectTransform wheelOption = getNewCheckbox("Wheel", lastSection, Main.Randomizer.Localize("whname"), Main.Randomizer.Localize("whdesc"), font, 15, 16);
-            wheelOption.anchoredPosition = new Vector2(left, top - 130);
+            wheelOption.anchoredPosition = new Vector2(left, top - 105);
             Wheel = wheelOption.GetComponent<SettingsCheckbox>();
 
             // Set begin/cancel buttons
