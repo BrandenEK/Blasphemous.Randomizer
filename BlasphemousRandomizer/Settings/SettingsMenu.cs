@@ -251,7 +251,7 @@ namespace BlasphemousRandomizer.Settings
         private void UpdateUniqueId()
         {
             // Get final seed based on seed & options
-            int finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != "" ? int.Parse(currentSeed) : generatedSeed, getConfigSettings());
+            long finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != "" ? int.Parse(currentSeed) : generatedSeed, getConfigSettings());
 
             // Fill images based on unique seed
             try
@@ -265,12 +265,12 @@ namespace BlasphemousRandomizer.Settings
                     uniqueImages[i].sprite = GetIcon(0);
             }
 
-            void FillImages(int seed)
+            void FillImages(long seed)
             {
                 int numDigits = uniqueSeedIcons.Length, currDigit = 0;
                 do
                 {
-                    int imgIdx = seed % numDigits;
+                    int imgIdx = (int)(seed % numDigits);
                     seed /= numDigits;
 
                     SetDigitImage(currDigit, GetIcon(imgIdx));
