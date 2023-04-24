@@ -10,8 +10,9 @@ namespace BlasphemousRandomizer.ItemRando
         {
             // Initialize seed with empty lists
             initialize(seed);
-            BlasphemousInventory inventory = new BlasphemousInventory();
             Config config = Main.Randomizer.gameConfig;
+            BlasphemousInventory inventory = new BlasphemousInventory();
+            inventory.SetLogicDifficulty(config.LogicDifficulty);
             mappedDoors.Clear();
             mappedItems.Clear();
 

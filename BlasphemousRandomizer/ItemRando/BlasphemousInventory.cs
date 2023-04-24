@@ -5,6 +5,8 @@ namespace BlasphemousRandomizer.ItemRando
 {
     public class BlasphemousInventory : InventoryData
     {
+        private int logicDifficulty;
+
         // Relics
         private bool blood = false;
         private bool root = false;
@@ -105,6 +107,14 @@ namespace BlasphemousRandomizer.ItemRando
 
         private bool canBreakHoles => charged || dive || (cherubBitfield & 0x1FFFF) > 0;
 
+        private bool canDawnJump => dawnHeart && dash && logicDifficulty >= 1;
+
+        private bool canAirStall => ranged && logicDifficulty >= 1;
+
+        private bool canSlashUpwarp => logicDifficulty >= 2;
+
+        private bool canSurvivePoison => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2; // Fix up.  Cant go upwards with nothing
+
         private int bossPower => healthLevel + swordLevel + flasks + quicksilver;
 
         private int guiltRooms
@@ -176,6 +186,11 @@ namespace BlasphemousRandomizer.ItemRando
 
         // Doors
         private Dictionary<string, bool> doors = new Dictionary<string, bool>();
+
+        public void SetLogicDifficulty(int logic)
+        {
+            logicDifficulty = logic;
+        }
 
         protected override Variable GetVariable(string variable)
         {
@@ -259,6 +274,10 @@ namespace BlasphemousRandomizer.ItemRando
                 case "verses": return new IntVariable(verses);
 
                 case "canBreakHoles": return new BoolVariable(canBreakHoles);
+                case "canDawnJump": return new BoolVariable(canDawnJump);
+                case "canAirStall": return new BoolVariable(canAirStall);
+                case "canSlashUpwarp": return new BoolVariable(canSlashUpwarp);
+                case "canSurvivePoison": return new BoolVariable(canSurvivePoison);
 
                 case "guiltRooms": return new IntVariable(guiltRooms);
                 case "swordRooms": return new IntVariable(swordRooms);
