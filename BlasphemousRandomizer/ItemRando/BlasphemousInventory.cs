@@ -109,13 +109,32 @@ namespace BlasphemousRandomizer.ItemRando
 
         private bool canDawnJump => dawnHeart && dash && logicDifficulty >= 1;
 
+        private bool canWaterJump => nail || doubleJump;
+
         private bool canAirStall => ranged && logicDifficulty >= 1;
 
         private bool canSlashUpwarp => logicDifficulty >= 2;
 
         private bool canSurvivePoison => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2; // Fix up.  Cant go upwards with nothing
 
-        private int bossPower => healthLevel + swordLevel + flasks + quicksilver;
+        // Bosses
+        private int bossPower => healthLevel + swordLevel + flasks + quicksilver; // Will need to be changed with boss rando
+        private bool canBeatBrotherhoodBoss => bossPower >= 0 && (doors.ContainsKey("D17Z01S11[W]") || doors.ContainsKey("D17Z01S11[E]"));
+        private bool canBeatMercyBoss => bossPower >= 0 && (doors.ContainsKey("D01Z04S18[W]") || doors.ContainsKey("D01Z04S18[E]"));
+        private bool canBeatConventBoss => bossPower >= 3 && (doors.ContainsKey("D02Z03S20[W]") || doors.ContainsKey("D02Z03S20[E]"));
+        private bool canBeatGrievanceBoss => bossPower >= 3 && (doors.ContainsKey("D03Z03S15[W]") || doors.ContainsKey("D03Z03S15[E]"));
+        private bool canBeatBridgeBoss => bossPower >= 4 && (doors.ContainsKey("D08Z01S01[W]") || doors.ContainsKey("D08Z01S01[E]"));
+        private bool canBeatMothersBoss => bossPower >= 4 && (doors.ContainsKey("D04Z02S22[W]") || doors.ContainsKey("D04Z02S22[E]"));
+        private bool canBeatCanvasesBoss => bossPower >= 4 && (doors.ContainsKey("D05Z02S14[W]") || doors.ContainsKey("D05Z02S14[E]"));
+        private bool canBeatPrisonBoss => bossPower >= 4 && (doors.ContainsKey("D09Z01S03[W]") || doors.ContainsKey("D09Z01S03[N]"));
+        private bool canBeatRooftopsBoss => bossPower >= 10 && (doors.ContainsKey("D06Z01S25[W]") || doors.ContainsKey("D06Z01S25[E]"));
+        private bool canBeatOssuaryBoss => bossPower >= 15 && doors.ContainsKey("D01BZ08S01[W]");
+        private bool canBeatMourningBoss => bossPower >= 9 && doors.ContainsKey("D20Z02S08[E]");
+        private bool canBeatGraveyardBoss => bossPower >= 12 && doors.ContainsKey("D01BZ07S01[Santos]") && doors.ContainsKey("D02Z03S23[E]") && doors.ContainsKey("D02Z02S14[W]");
+        private bool canBeatJondoBoss => bossPower >= 12 && doors.ContainsKey("D01BZ07S01[Santos]") && (doors.ContainsKey("D20Z01S05[W]") || doors.ContainsKey("D20Z01S05[E]")) && (doors.ContainsKey("D03Z01S03[W]") || doors.ContainsKey("D03Z01S03[SW]"));
+        private bool canBeatPatioBoss => bossPower >= 12 && doors.ContainsKey("D01BZ07S01[Santos]") && doors.ContainsKey("D06Z01S18[E]") && (doors.ContainsKey("D04Z01S04[W]") || doors.ContainsKey("D04Z01S04[E]") || doors.ContainsKey("D04Z01S04[Cherubs]"));
+        private bool canBeatWallBoss => bossPower >= 12 && doors.ContainsKey("D01BZ07S01[Santos]") && doors.ContainsKey("D09BZ01S01[Cell24]") && (doors.ContainsKey("D09Z01S01[W]") || doors.ContainsKey("D09Z01S01[E]"));
+        private bool canBeatHallBoss => bossPower >= 12 && (doors.ContainsKey("D08Z03S03[W]") || doors.ContainsKey("D08Z03S03[E]"));
 
         private int guiltRooms
         {
@@ -146,6 +165,34 @@ namespace BlasphemousRandomizer.ItemRando
                 if (doors.ContainsKey("D06Z01S11[W]")) rooms++;
                 if (doors.ContainsKey("D17Z01S08[E]")) rooms++;
                 return rooms;
+            }
+        }
+
+        private int redentoRooms
+        {
+            get
+            {
+                if (doors.ContainsKey("D03Z01S03[W]") || doors.ContainsKey("D03Z01S03[E]"))
+                {
+                    if (doors.ContainsKey("D17Z01S04[N]") || doors.ContainsKey("D17Z01S04[FrontR]"))
+                    {
+                        if (doors.ContainsKey("D01Z03S06[W]") || doors.ContainsKey("D17Z01S04[E]"))
+                        {
+                            if (doors.ContainsKey("D04Z01S04[W]") || doors.ContainsKey("D04Z01S04[E]") || doors.ContainsKey("D04Z01S04[Cherubs]"))
+                            {
+                                if (doors.ContainsKey("D04Z02S20[W]") || doors.ContainsKey("D04Z02S20[Redento]"))
+                                {
+                                    return 5;
+                                }
+                                return 4;
+                            }
+                            return 3;
+                        }
+                        return 2;
+                    }
+                    return 1;
+                }
+                return 0;
             }
         }
 
@@ -275,12 +322,14 @@ namespace BlasphemousRandomizer.ItemRando
 
                 case "canBreakHoles": return new BoolVariable(canBreakHoles);
                 case "canDawnJump": return new BoolVariable(canDawnJump);
+                case "canWaterJump": return new BoolVariable(canWaterJump);
                 case "canAirStall": return new BoolVariable(canAirStall);
                 case "canSlashUpwarp": return new BoolVariable(canSlashUpwarp);
                 case "canSurvivePoison": return new BoolVariable(canSurvivePoison);
 
                 case "guiltRooms": return new IntVariable(guiltRooms);
                 case "swordRooms": return new IntVariable(swordRooms);
+                case "redentoRooms": return new IntVariable(redentoRooms);
                 case "miriamRooms": return new IntVariable(miriamRooms);
                 case "amanecidaRooms": return new IntVariable(amanecidaRooms);
 
@@ -298,6 +347,24 @@ namespace BlasphemousRandomizer.ItemRando
                 case "boss-mourning": return new BoolVariable(bossPower >= 9);
                 case "boss-amanecida": return new BoolVariable(bossPower >= 12);
                 case "boss-laudes": return new BoolVariable(bossPower >= 12);
+
+                // Bosses
+                case "canBeatBrotherhoodBoss": return new BoolVariable(canBeatBrotherhoodBoss);
+                case "canBeatMercyBoss": return new BoolVariable(canBeatMercyBoss);
+                case "canBeatConventBoss": return new BoolVariable(canBeatConventBoss);
+                case "canBeatGrievanceBoss": return new BoolVariable(canBeatGrievanceBoss);
+                case "canBeatBridgeBoss": return new BoolVariable(canBeatBridgeBoss);
+                case "canBeatMothersBoss": return new BoolVariable(canBeatMothersBoss);
+                case "canBeatCanvasesBoss": return new BoolVariable(canBeatCanvasesBoss);
+                case "canBeatPrisonBoss": return new BoolVariable(canBeatPrisonBoss);
+                case "canBeatRooftopsBoss": return new BoolVariable(canBeatRooftopsBoss);
+                case "canBeatOssuaryBoss": return new BoolVariable(canBeatOssuaryBoss);
+                case "canBeatMourningBoss": return new BoolVariable(canBeatMourningBoss);
+                case "canBeatGraveyardBoss": return new BoolVariable(canBeatGraveyardBoss);
+                case "canBeatJondoBoss": return new BoolVariable(canBeatJondoBoss);
+                case "canBeatPatioBoss": return new BoolVariable(canBeatPatioBoss);
+                case "canBeatWallBoss": return new BoolVariable(canBeatWallBoss);
+                case "canBeatHallBoss": return new BoolVariable(canBeatHallBoss);
 
                 case "albero-elevator": return new BoolVariable(alberoElevator); // access to graveyard elevator room
                 case "jondo-bell": return new BoolVariable(jondoBell); // access to both jondo bell rooms

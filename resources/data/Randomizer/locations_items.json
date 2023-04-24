@@ -23,7 +23,7 @@
 		"Name": "Cave chest",
 		"Hint": "* resides in the Holy Line",
 		"Room": "D01Z01S03",
-		"Logic": "blood && dash && (nail || doubleJump)"
+		"Logic": "blood && dash && canWaterJump"
 	},
 	{
 		"Id": "RESCUED_CHERUB_07",
@@ -119,7 +119,7 @@
 		"Name": "Tirso final reward",
 		"Hint": "Tirso holds *",
 		"Room": "D01Z02S02",
-		"Logic": "herbs >= 6 && boss-mercy && (D01Z04S18[W] || D01Z04S18[E]) && boss-convent && (D02Z03S20[W] || D02Z03S20[E]) && boss-grievance && (D03Z03S15[W] || D03Z03S15[E]) && boss-mothers && (D04Z02S22[W] || D04Z02S022[E]) && boss-canvases && (D05Z02S14[W] || D05Z02S14[E]) && boss-wall && (D09Z01S03[N] || D09Z01S03[W])"
+		"Logic": "herbs >= 6 && canBeatMercyBoss && canBeatConventBoss && canBeatGrievanceBoss && canBeatMothersBoss && canBeatCanvasesBoss && canBeatPrisonBoss"
 	},
 	{
 		"Id": "RESCUED_CHERUB_08",
@@ -127,7 +127,7 @@
 		"Hint": "* resides in Albero",
 		"OriginalItem": "CH",
 		"Room": "D01Z02S03",
-		"Logic": "cherubBitfield ^ 0x20242 || D01Z02S03[NW] && (wheel || (dawnHeart && dash) || doubleJump || cherubBitfield ^ 0x46010)"
+		"Logic": "cherubBitfield ^ 0x20242 || D01Z02S03[NW] && (wheel || canDawnJump || doubleJump || cherubBitfield ^ 0x46010)"
 	},
 	{
 		"Id": "Lvdovico[500]",
@@ -175,7 +175,6 @@
 		"Id": "Sword[D01Z02S06]",
 		"Name": "Mea Culpa shrine",
 		"Hint": "A Mea Culpa Shrine holds *",
-		"OriginalItem": "SU",
 		"Room": "D01Z02S06"
 	},
 	{
@@ -190,8 +189,7 @@
 		"Name": "Church donation (5000)",
 		"Hint": "* requires a donation",
 		"LocationFlag": "LOCATION_RB104~D01Z02",
-		"Room": "D01BZ04S01",
-		"Logic": "tears >= 0"
+		"Room": "D01BZ04S01"
 	},
 	{
 		"Id": "RB105",
@@ -199,8 +197,7 @@
 		"Hint": "* requires a donation",
 		"Type": 8,
 		"LocationFlag": "LOCATION_RB105~D01Z02",
-		"Room": "D01BZ04S01",
-		"Logic": "tears >= 0"
+		"Room": "D01BZ04S01"
 	},
 	{
 		"Id": "PR11",
@@ -305,7 +302,7 @@
 		"Hint": "* is guarded by Isidora",
 		"LocationFlag": "LOCATION_QI201~D01Z02",
 		"Room": "D01BZ08S01",
-		"Logic": "boss-ossuary"
+		"Logic": "canBeatOssuaryBoss"
 	},
 	
 	{
@@ -339,14 +336,14 @@
 		"Name": "Underneath MD bridge",
 		"Hint": "* resides in the Wastelands",
 		"Room": "D01Z03S05",
-		"Logic": "blood || boots || doubleJump || dawnHeart && dash || wheel && ranged"
+		"Logic": "blood || boots || doubleJump || canDawnJump || wheel && canAirStall"
 	},
 	{
 		"Id": "RB20",
 		"Name": "Redento meeting 3",
 		"Hint": "Redento holds *",
 		"Room": "D01Z03S06",
-		"Logic": "(D17Z01S04[N] || D17Z01S04[FrontR]) && (D03Z01S03[W] || D03Z01S03[SW])"
+		"Logic": "redentoRooms >= 3"
 	},
 	{
 		"Id": "HE02",
@@ -359,7 +356,7 @@
 		"Name": "Cliffside cherub",
 		"Hint": "* resides in the Wastelands",
 		"Room": "D01Z03S07",
-		"Logic": "dawnHeart && dash || doubleJump || wheel || cherubBitfield ^ 0x66210"
+		"Logic": "canDawnJump || doubleJump || wheel || cherubBitfield ^ 0x66210"
 	},
 	
 	{
@@ -424,7 +421,7 @@
 		"Name": "Defeat Ten Piedad",
 		"Hint": "* is guarded by Ten Piedad",
 		"Room": "D01Z04S18",
-		"Logic": "boss-mercy"
+		"Logic": "canBeatMercyBoss"
 	},
 	{
 		"Id": "QI38",
@@ -437,24 +434,21 @@
 		"Name": "Shop left",
 		"Hint": "* can be purchased",
 		"LocationFlag": "LOCATION_QI58~D01Z04",
-		"Room": "D01BZ02S01",
-		"Logic": "tears >= 0"
+		"Room": "D01BZ02S01"
 	},
 	{
 		"Id": "RB05",
 		"Name": "Shop middle",
 		"Hint": "* can be purchased",
 		"LocationFlag": "LOCATION_RB05~D01Z04",
-		"Room": "D01BZ02S01",
-		"Logic": "tears >= 0"
+		"Room": "D01BZ02S01"
 	},
 	{
 		"Id": "RB09",
 		"Name": "Shop right",
 		"Hint": "* can be purchased",
 		"LocationFlag": "LOCATION_RB09~D01Z04",
-		"Room": "D01BZ02S01",
-		"Logic": "tears >= 0"
+		"Room": "D01BZ02S01"
 	},
 	
 	{
@@ -468,21 +462,21 @@
 		"Name": "Hidden hand room",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S05",
-		"Logic": "dash && (nail || doubleJump)"
+		"Logic": "dash && canWaterJump"
 	},
 	{
 		"Id": "PR16",
 		"Name": "Eastern upper tunnel chest",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S06",
-		"Logic": "D01Z05S06[Cherubs] || nail || doubleJump"
+		"Logic": "D01Z05S06[Cherubs] || canWaterJump"
 	},
 	{
 		"Id": "RESCUED_CHERUB_13",
 		"Name": "Eastern upper tunnel cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S06",
-		"Logic": "D01Z05S06[Cherubs] || nail || doubleJump || cherubBitfield ^ 0x72242"
+		"Logic": "D01Z05S06[Cherubs] || canWaterJump || cherubBitfield ^ 0x72242"
 	},
 	{
 		"Id": "Oil[D01Z05S07]",
@@ -513,7 +507,7 @@
 		"Name": "Lung tunnel cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S13",
-		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && lung && (nail || doubleJump)"
+		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && canSurvivePoison && canWaterJump"
 	},
 	{
 		"Id": "RESCUED_CHERUB_11",
@@ -532,7 +526,7 @@
 		"Name": "Water ledge near elevator",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S17",
-		"Logic": "D01Z05S17[E] || nail || doubleJump"
+		"Logic": "D01Z05S17[E] || canWaterJump"
 	},
 	{
 		"Id": "RESCUED_CHERUB_15",
@@ -572,7 +566,7 @@
 		"Name": "Elevator shaft cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S25",
-		"Logic": "linen || (D01Z05S25[W] && (root || doubleJump || dawnHeart && dash || wheel && ranged) || D01Z05S25[E]) && cherubBitfield ^ 0x20042"
+		"Logic": "linen || (cherubBitfield ^ 0x20042 && (D01Z05S25[E] || D01Z05S25[W] && (root || doubleJump || canDawnJump || canAirStall)))"
 	},
 	{
 		"Id": "Lady[D01Z05S26]",

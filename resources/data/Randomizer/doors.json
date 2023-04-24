@@ -101,7 +101,7 @@
 		"Id": "D01Z02S03[church]",
 		"Direction": 4,
 		"OriginalDoor": "D01BZ04S01[church]",
-		"Logic": "(boss-mercy && (D01Z04S18[W] || D01Z04S18[E])) || (boss-convent && (D02Z03S20[W] || D02Z03S20[E])) || (boss-grievance && (D03Z03S15[W] || D03Z03S15[E]))"
+		"Logic": "canBeatMercyBoss || canBeatConventBoss || canBeatGrievanceBoss)"
 	},
 	{
 		"Id": "D01Z02S03[Cherubs]",
@@ -498,13 +498,13 @@
 		"Id": "D01Z04S18[W]",
 		"Direction": 1,
 		"OriginalDoor": "D01Z04S19[E]",
-		"Logic": "D01Z04S18[W] || boss-mercy"
+		"Logic": "D01Z04S18[W] || canBeatMercyBoss"
 	},
 	{
 		"Id": "D01Z04S18[E]",
 		"Direction": 2,
 		"OriginalDoor": "D01Z04S12[W]",
-		"Logic": "D01Z04S18[E] || boss-mercy"
+		"Logic": "D01Z04S18[E] || canBeatMercyBoss"
 	},
 	{
 		"Id": "D01Z04S19[W]",
@@ -691,13 +691,13 @@
 		"Id": "D01Z05S13[SW]",
 		"Direction": 3,
 		"OriginalDoor": "D01Z05S16[N]",
-		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && lung && (nail || doubleJump)"
+		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && canSurvivePoison && canWaterJump"
 	},
 	{
 		"Id": "D01Z05S13[N]",
 		"Direction": 0,
 		"OriginalDoor": "D01Z05S03[S]",
-		"Logic": "D01Z05S13[N] || D01Z05S13[E] && lung && (nail || doubleJump)"
+		"Logic": "D01Z05S13[N] || D01Z05S13[E] && canSurvivePoison && canWaterJump"
 	},
 	{
 		"Id": "D01Z05S13[E]",
@@ -759,7 +759,7 @@
 		"Id": "D01Z05S17[E]",
 		"Direction": 2,
 		"OriginalDoor": "D01BZ09S01[W]",
-		"Logic": "dash && (D01Z05S17[E] || nail || doubleJump)"
+		"Logic": "dash && (D01Z05S17[E] || canWaterJump)"
 	},
 	{
 		"Id": "D01Z05S18[E]",
@@ -838,7 +838,7 @@
 		"Id": "D01Z05S25[W]",
 		"Direction": 1,
 		"OriginalDoor": "D01Z05S23[E]",
-		"Logic": "D01Z05S25[W] || (linen && (ranged || root || doubleJump)) || (D01Z05S25[E] && (root || doubleJump || dawnHeart && dash || wheel && ranged))"
+		"Logic": "D01Z05S25[W] || (linen && (root || doubleJump || canAirStall)) || (D01Z05S25[E] && (root || doubleJump || canDawnJump || wheel && canAirStall))"
 	},
 	{
 		"Id": "D01Z05S25[E]",
