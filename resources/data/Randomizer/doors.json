@@ -912,12 +912,13 @@
 		"Id": "D02Z01S01[SW]",
 		"Direction": 1,
 		"OriginalDoor": "D02Z01S06[E]",
-		"Logic": "D02Z01S06[W] || D02Z01S06[E] || D02Z01S06[Cherubs]"
+		"Logic": "(D02Z01S06[E] || (D02Z01S06[W] || D02Z01S06[Cherubs]) && wallClimb) && (D02Z01S01[W] || D02Z01S01[CherubsL] || D02Z01S01[SW] || D02Z01S01[CherubsR] || doubleJump || wallClimb)"
 	},
 	{
 		"Id": "D02Z01S01[W]",
 		"Direction": 1,
-		"OriginalDoor": "D02Z01S02[E]"
+		"OriginalDoor": "D02Z01S02[E]",
+		"Logic": "D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && dawnHeart && dash)"
 	},
 	{
 		"Id": "D02Z01S01[SE]",
@@ -940,7 +941,8 @@
 	{
 		"Id": "D02Z01S02[NW]",
 		"Direction": 1,
-		"OriginalDoor": "D02Z01S03[SE]"
+		"OriginalDoor": "D02Z01S03[SE]",
+		"Logic": "D02Z01S02[NW] || wallClimb || doubleJump || (D02Z01S02[NE] && root && dawnHeart && dash && ranged)"
 	},
 	{
 		"Id": "D02Z01S02[E]",
@@ -951,7 +953,7 @@
 		"Id": "D02Z01S02[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D02Z01S09[W]",
-		"Logic": "D02Z01S02[NE] || root"
+		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (root || dawnHeart && dash && doubleJump)"
 	},
 	{
 		"Id": "D02Z01S02[]",
@@ -967,12 +969,14 @@
 	{
 		"Id": "D02Z01S03[W]",
 		"Direction": 1,
-		"OriginalDoor": "D02Z02S01[E]"
+		"OriginalDoor": "D02Z02S01[E]",
+		"Logic": "D02Z01S03[W] || D02Z01S03[SE] || D02Z01S03[Cherubs] || wallClimb"
 	},
 	{
 		"Id": "D02Z01S03[SE]",
 		"Direction": 2,
-		"OriginalDoor": "D02Z01S02[NW]"
+		"OriginalDoor": "D02Z01S02[NW]",
+		"Logic": "D02Z01S03[W] || D02Z01S03[SE] || D02Z01S03[Cherubs] || wallClimb"
 	},
 	{
 		"Id": "D02Z01S03[Cherubs]",
@@ -987,7 +991,7 @@
 		"Id": "D02Z01S04[-N]",
 		"Direction": 6,
 		"OriginalDoor": "D02Z01S08[N]",
-		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[SW] || D02Z01S01[SE])"
+		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && dawnHeart && dash))"
 	},
 	{
 		"Id": "D02Z01S05[E]",
@@ -997,12 +1001,14 @@
 	{
 		"Id": "D02Z01S06[W]",
 		"Direction": 1,
-		"OriginalDoor": "D02Z01S08[E]"
+		"OriginalDoor": "D02Z01S08[E]",
+		"Logic": "D02Z01S06[W] || dash || doubleJump && wallClimb"
 	},
 	{
 		"Id": "D02Z01S06[E]",
 		"Direction": 2,
-		"OriginalDoor": "D02Z01S01[SW]"
+		"OriginalDoor": "D02Z01S01[SW]",
+		"Logic": "D02Z01S06[E] || wallClimb"
 	},
 	{
 		"Id": "D02Z01S06[Cherubs]",
@@ -1032,7 +1038,7 @@
 		"Id": "D02Z01S09[-CherubsR]",
 		"Direction": 6,
 		"OriginalDoor": "D02Z01S01[CherubsR]",
-		"Logic": "linen && root"
+		"Logic": "linen && (root || dawnHeart || doubleJump)"
 	},
 	
 	
@@ -1044,7 +1050,8 @@
 	{
 		"Id": "D02Z02S01[NW]",
 		"Direction": 1,
-		"OriginalDoor": "D02Z02S02[SE]"
+		"OriginalDoor": "D02Z02S02[SE]",
+		"Logic": "D02Z02S01[NW] || D02Z02S01[Cherubs] || wallClimb"
 	},
 	{
 		"Id": "D02Z02S01[E]",
@@ -1063,12 +1070,14 @@
 	{
 		"Id": "D02Z02S02[NW]",
 		"Direction": 1,
-		"OriginalDoor": "D02Z02S04[SE]"
+		"OriginalDoor": "D02Z02S04[SE]",
+		"Logic": "D02Z02S02[NW] || D02Z02S02[NE] || D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || wallClimb"
 	},
 	{
 		"Id": "D02Z02S02[NE]",
 		"Direction": 2,
-		"OriginalDoor": "D02Z02S03[SW]"
+		"OriginalDoor": "D02Z02S03[SW]",
+		"Logic": "D02Z02S02[NW] || D02Z02S02[NE] || D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || wallClimb"
 	},
 	{
 		"Id": "D02Z02S02[-CherubsR]",
@@ -1092,13 +1101,14 @@
 	{
 		"Id": "D02Z02S03[NW]",
 		"Direction": 1,
-		"OriginalDoor": "D02Z02S05[SE]"
+		"OriginalDoor": "D02Z02S05[SE]",
+		"Logic": "D02Z02S03[NW] || wallClimb || D02Z02S03[NE] && root"
 	},
 	{
 		"Id": "D02Z02S03[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D02Z02S14[W]",
-		"Logic": "D02Z02S03[NE] || root && (blood || ranged)"
+		"Logic": "D02Z02S03[NE] || wallClimb && (blood && dawnHeart && dash && doubleJump) root && (blood || ranged) !!!"
 	},
 	{
 		"Id": "D02Z02S03[-Cherubs]",
