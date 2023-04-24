@@ -50,6 +50,8 @@ namespace BlasphemousRandomizer
 
         public bool InstalledBootsMod => IsModLoaded("com.author.blasphemous.boots-of-pleading");
         public bool InstalledDoubleJumpMod => IsModLoaded("com.damocles.blasphemous.double-jump");
+        public bool CanDash => !gameConfig.ShuffleDash || Core.Events.GetFlag("ITEM_Dash");
+        public bool CanWallClimb => !gameConfig.ShuffleWallClimb || Core.Events.GetFlag("ITEM_WallClimb");
 
         public Randomizer(string modId, string modName, string modVersion) : base(modId, modName, modVersion) { }
 

@@ -76,7 +76,7 @@ namespace BlasphemousRandomizer
             Main.Randomizer.Log(text + " flag: " + formatted);
 
             // Special autotracker & map collection functionality when setting an item/location flag
-            if (!b) return;
+            if (!b || __instance.GetFlag(id)) return;
 
             // Send locations, items, and special flags to tracker
             if (formatted.StartsWith("ITEM_"))
@@ -196,6 +196,24 @@ namespace BlasphemousRandomizer
                     break;
                 }
             }
+        }
+    }
+
+    // Prevent dash unless the item is owned
+    [HarmonyPatch(typeof(Rewired.Player), "GetButton", typeof(int))]
+    public class RewiredButton_Patch
+    {
+        public static bool Prefix(int actionId)
+        {
+            return actionId != 7 || Main.Randomizer.CanDash;
+        }
+    }
+    [HarmonyPatch(typeof(Rewired.Player), "GetButtonDown", typeof(int))]
+    public class RewiredButtonDown_Patch
+    {
+        public static bool Prefix(int actionId)
+        {
+            return actionId != 7 || Main.Randomizer.CanDash;
         }
     }
 }
