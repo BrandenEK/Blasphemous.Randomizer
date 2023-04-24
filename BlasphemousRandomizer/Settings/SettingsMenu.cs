@@ -250,6 +250,13 @@ namespace BlasphemousRandomizer.Settings
 
         private void UpdateUniqueId()
         {
+            // Set enabled status of various checkboxes whenever ui is updated
+            Boots.Enabled = Main.Randomizer.InstalledBootsMod;
+            PurifiedHand.Enabled = Main.Randomizer.InstalledDoubleJumpMod;
+            MaintainClass.Enabled = EnemiesLeft.CurrentOption > 0;
+            AreaScaling.Enabled = EnemiesLeft.CurrentOption > 0;
+            Dash.Enabled = DoorsLeft.CurrentOption > 0 || StartingLocationLeft.CurrentOption > 0;
+
             // Get final seed based on seed & options
             long finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != "" ? int.Parse(currentSeed) : generatedSeed, getConfigSettings());
 
@@ -329,8 +336,6 @@ namespace BlasphemousRandomizer.Settings
             Main.Randomizer.Log("Generating default seed: " + generatedSeed);
             showSettingsMenu(true, true);
             setConfigSettings(new Config());
-            Boots.Enabled = Main.Randomizer.InstalledBootsMod;
-            PurifiedHand.Enabled = Main.Randomizer.InstalledDoubleJumpMod;
         }
 
         public void closeMenu()
@@ -444,7 +449,7 @@ namespace BlasphemousRandomizer.Settings
                 new string[] { Main.Randomizer.Localize("lgtyp1"), Main.Randomizer.Localize("lgtyp2"), Main.Randomizer.Localize("lgtyp3") },
                 new string[] { Main.Randomizer.Localize("lgtyp1") + " - " + Main.Randomizer.Localize("lgdes1"),
                                Main.Randomizer.Localize("lgtyp2") + " - " + Main.Randomizer.Localize("lgdes2"),
-                               Main.Randomizer.Localize("lgtyp3") + " - " + Main.Randomizer.Localize("lgdes3") }, new SettingsElement[] { }, 30);
+                               Main.Randomizer.Localize("lgtyp3") + " - " + Main.Randomizer.Localize("lgdes3") }, 30);
             logicOption.anchoredPosition = new Vector2(0, top - 20);
             LogicDifficultyLeft = logicOption.GetChild(0).GetComponent<SettingsCyclebox>();
             LogicDifficultyRight = logicOption.GetChild(1).GetComponent<SettingsCyclebox>();
@@ -455,8 +460,7 @@ namespace BlasphemousRandomizer.Settings
             string locationDesc = Main.Randomizer.Localize("lodesc");
             RectTransform startLocationOption = getNewCyclebox("Start Loc Option", generalSection, font, 15, 16,
                 new string[] { Main.Randomizer.Localize("lotyp1"), Main.Randomizer.Localize("lotyp2"), Main.Randomizer.Localize("lotyp3") },
-                new string[] { locationDesc, locationDesc, locationDesc },
-                new SettingsElement[] { }, 52);
+                new string[] { locationDesc, locationDesc, locationDesc }, 52);
             startLocationOption.anchoredPosition = new Vector2(0, top - 70);
             StartingLocationLeft = startLocationOption.GetChild(0).GetComponent<SettingsCyclebox>();
             StartingLocationRight = startLocationOption.GetChild(1).GetComponent<SettingsCyclebox>();
@@ -486,7 +490,7 @@ namespace BlasphemousRandomizer.Settings
                 new string[] { Main.Randomizer.Localize("distyp"), Main.Randomizer.Localize("simtyp"), Main.Randomizer.Localize("fultyp") },
                 new string[] { Main.Randomizer.Localize("distyp") + " - " + Main.Randomizer.Localize("drdes1"),
                                Main.Randomizer.Localize("simtyp") + " - " + Main.Randomizer.Localize("drdes2"),
-                               Main.Randomizer.Localize("fultyp") + " - " + Main.Randomizer.Localize("drdes3"), }, new SettingsElement[] { }, 36);
+                               Main.Randomizer.Localize("fultyp") + " - " + Main.Randomizer.Localize("drdes3"), }, 36);
             doorsOption.anchoredPosition = new Vector2(0, top - 20);
             DoorsLeft = doorsOption.GetChild(0).GetComponent<SettingsCyclebox>();
             DoorsRight = doorsOption.GetChild(1).GetComponent<SettingsCyclebox>();
@@ -498,7 +502,7 @@ namespace BlasphemousRandomizer.Settings
                 new string[] { Main.Randomizer.Localize("distyp"), /*Main.Randomizer.Localize("simtyp"), Main.Randomizer.Localize("fultyp")*/ },
                 new string[] { Main.Randomizer.Localize("distyp") + " - " + Main.Randomizer.Localize("bsdes1"),
                                /*Main.Randomizer.Localize("simtyp") + " - " + Main.Randomizer.Localize("bsdes2"),
-                               Main.Randomizer.Localize("fultyp") + " - " + Main.Randomizer.Localize("bsdes3"),*/ }, new SettingsElement[] { }, 36);
+                               Main.Randomizer.Localize("fultyp") + " - " + Main.Randomizer.Localize("bsdes3"),*/ }, 36);
             bossOption.anchoredPosition = new Vector2(0, top - 70);
             BossesLeft = bossOption.GetChild(0).GetComponent<SettingsCyclebox>();
             BossesRight = bossOption.GetChild(1).GetComponent<SettingsCyclebox>();
@@ -518,8 +522,7 @@ namespace BlasphemousRandomizer.Settings
                 new string[] { Main.Randomizer.Localize("distyp"), Main.Randomizer.Localize("simtyp"), Main.Randomizer.Localize("fultyp") },
                 new string[] { Main.Randomizer.Localize("distyp") + " - " + Main.Randomizer.Localize("endes1"),
                                Main.Randomizer.Localize("simtyp") + " - " + Main.Randomizer.Localize("endes2"),
-                               Main.Randomizer.Localize("fultyp") + " - " + Main.Randomizer.Localize("endes3") },
-                new SettingsElement[] { MaintainClass, AreaScaling }, 36);
+                               Main.Randomizer.Localize("fultyp") + " - " + Main.Randomizer.Localize("endes3") }, 36);
             enemiesType.anchoredPosition = new Vector2(0, top - 120);
             EnemiesLeft = enemiesType.GetChild(0).GetComponent<SettingsCyclebox>();
             EnemiesRight = enemiesType.GetChild(1).GetComponent<SettingsCyclebox>();
@@ -638,17 +641,17 @@ namespace BlasphemousRandomizer.Settings
                 return rect;
             }
 
-            RectTransform getNewCyclebox(string name, Transform parent, Font font, int boxSize, int fontSize, string[] options, string[] descs, SettingsElement[] boxes, int arrowDistance)
+            RectTransform getNewCyclebox(string name, Transform parent, Font font, int boxSize, int fontSize, string[] options, string[] descs, int arrowDistance)
             {
                 RectTransform rect = getNewText(name, parent, "", font, fontSize, Color.yellow, TextAnchor.MiddleCenter);
 
                 RectTransform left = getNewImage("Left", rect, boxSize);
                 left.anchoredPosition = new Vector2(-arrowDistance, 0);
-                left.gameObject.AddComponent<SettingsCyclebox>().onStart(options, descs, boxes, false);
+                left.gameObject.AddComponent<SettingsCyclebox>().onStart(options, descs, false);
 
                 RectTransform right = getNewImage("Right", rect, boxSize);
                 right.anchoredPosition = new Vector2(arrowDistance, 0);
-                right.gameObject.AddComponent<SettingsCyclebox>().onStart(options, descs, boxes, true);
+                right.gameObject.AddComponent<SettingsCyclebox>().onStart(options, descs, true);
 
                 return rect;
             }

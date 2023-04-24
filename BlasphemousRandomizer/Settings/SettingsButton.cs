@@ -56,7 +56,7 @@ namespace BlasphemousRandomizer.Settings
         private bool m_Selected;
         public bool Selected
         {
-            get { return m_Selected; }
+            get { return m_Selected && m_Enabled; }
             set
             {
                 m_Selected = value;
@@ -79,17 +79,15 @@ namespace BlasphemousRandomizer.Settings
         private Text text;
         private Image image;
         
-        private SettingsElement[] checkboxes;
         private string[] options;
         private string[] descriptions;
         private bool right;
 
-        public void onStart(string[] options, string[] descs, SettingsElement[] checkboxes, bool right)
+        public void onStart(string[] options, string[] descriptions, bool right)
         {
             this.right = right;
             this.options = options;
-            this.descriptions = descs;
-            this.checkboxes = checkboxes;
+            this.descriptions = descriptions;
 
             text = GetComponentInParent<Text>();
             image = GetComponent<Image>();
@@ -119,11 +117,6 @@ namespace BlasphemousRandomizer.Settings
             {
                 m_CurrentOption = value;
                 text.text = options[value];
-
-                foreach (SettingsElement box in checkboxes)
-                {
-                    ((SettingsCheckbox)box).Enabled = value != 0;
-                }
 
                 if (right)
                     Enabled = value < options.Length - 1;
