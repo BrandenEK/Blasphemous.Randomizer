@@ -2,6 +2,7 @@
 using Framework.Managers;
 using Framework.EditorScripts.EnemiesBalance;
 using Framework.EditorScripts.BossesBalance;
+using Gameplay.GameControllers.Penitent.Abilities;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Widgets;
 using System.Collections.Generic;
@@ -214,6 +215,18 @@ namespace BlasphemousRandomizer
         public static bool Prefix(int actionId)
         {
             return actionId != 7 || Main.Randomizer.CanDash;
+        }
+    }
+
+    // Prevent wall climb unless the item is owned
+    [HarmonyPatch(typeof(WallJump), "EndStickCoolDown", MethodType.Getter)]
+    public class WallJump_Patch
+    {
+        public static bool Prefix(ref bool __result)
+        {
+            bool wallClimb = Main.Randomizer.CanWallClimb;
+            __result = wallClimb;
+            return wallClimb;
         }
     }
 }
