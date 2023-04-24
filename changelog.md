@@ -1,5 +1,13 @@
 # Changelog
 
+### v??? (???)
+- New and improved item shuffle algorithm
+- New items added to shuffle (Dash, Wall climb, Modded items)
+- Ability to spawn from custom starting location
+- Various QoL enhancements & fixes
+- Replaced unused settings with more useful ones
+- Display number of items collected per zone
+
 ### v1.4.0 (Modding API)
 - Added collectible items in Holy Visage rooms
 - Display unique id for each seed

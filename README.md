@@ -39,9 +39,9 @@
 
 ## Seeds
 
-In order to choose a specific seed that you want to play on, you can type any numbers 1-10 on the settings menu shown before starting a new game.  Seeds can be in the range of 1 to 999,999.
+In order to choose a specific seed that you want to play on, you can type any numbers 1-10 on the settings menu shown before starting a new game.  Seeds can be in the range of 1 to 99,999,999.
 <br><br>
-In order to make it easier for multiple people to play with the same item generation (Such as for races or multiplayer), a sequence of 5 images is shown in the top right corner of the settings menu.  This is a unique identifier of the seed that also takes into account the other configuration settings and ensures that items will be placed exactly the same for all players.
+In order to make it easier for multiple people to play with the same item generation (Such as for races or multiplayer), a sequence of 7 images is shown in the top right corner of the settings menu.  This is a unique identifier of the seed that also takes into account the other configuration settings and ensures that items will be placed exactly the same for all players.
 
 ---
 
@@ -59,6 +59,7 @@ Autotracking for the Blasphemous poptracker pack has now been integrated into th
 | ------- | ----------- | ------- |
 | `randomizer help` | none | List all available commands |
 | `randomizer autotracker` | on/off | Enables or disables the autotracker |
+| `randomizer respawn` | none | Respawns the player from the chosen starting location |
 
 ---
 
@@ -68,6 +69,7 @@ Autotracking for the Blasphemous poptracker pack has now been integrated into th
 
 - Only works on the most current game version (4.0.67)
 - Press 'Numpad 6' to display the current seed (If you are stuck in dialogue use this to break out of it)
+- Save & Quit can be used to instantly return to your last Prie Dieu, which can fix softlocks and makes the 'Return to Port' prayer useless
 - Consult the spoiler generated in the game directory if you are stuck or believe the seed is unbeatable
 - Do not load a vanilla game in the randomizer or vice versa
 - Do not load an outdated randomized game in a newer version of the randomizer - seed generation is different
@@ -102,6 +104,18 @@ Autotracking for the Blasphemous poptracker pack has now been integrated into th
   - Perpetva's item can be retrieved even after defeating Esdras
   - Crisanta will always hold the 'Holy Wound of Abnegation'
   - Crisanta does not have to beaten with the True Heart equipped in order to obtain the holy wound, it just has to be in your inventory when talking to her
+
+### Door Rando changes
+
+Because of the nature of door rando, there are a few changes to had to be made in order for everything to still work properly.
+<br>
+
+- A command has been added to respawn the player from the chosen starting location
+- Some doors will always remain the same as they are in the original game
+- A platform has been added to the main bell room in Jondo
+- The sword heart doesn't have to be unequipped for the Library bone puzzle
+- The chalice will never unfill
+- The Cistern shroud puzzle will be automatically completed if the shroud is equipped
 
 ### Corpse hints
 
