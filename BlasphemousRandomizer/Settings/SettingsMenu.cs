@@ -466,7 +466,7 @@ namespace BlasphemousRandomizer.Settings
                 locationDescriptions[i] = locationDesc;
             }
 
-            RectTransform startLocationOption = getNewCyclebox("Start Loc Option", generalSection, font, 15, 16, locationNames, locationDescriptions, 52);
+            RectTransform startLocationOption = getNewCyclebox("Start Loc Option", generalSection, font, 15, 16, locationNames, locationDescriptions, 50);
             startLocationOption.anchoredPosition = new Vector2(0, top - 70);
             StartingLocationLeft = startLocationOption.GetChild(0).GetComponent<SettingsCyclebox>();
             StartingLocationRight = startLocationOption.GetChild(1).GetComponent<SettingsCyclebox>();

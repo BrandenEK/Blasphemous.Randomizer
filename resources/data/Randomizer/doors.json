@@ -1983,25 +1983,25 @@
 		"Id": "D03Z03S04[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z03S03[NE]",
-		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[NE] || D03Z03S04[SW] || blood"
+		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[E] || D03Z03S04[SW] || blood"
 	},
 	{
 		"Id": "D03Z03S04[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z03S05[NW]",
-		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[NE] || D03Z03S04[SW] || blood"
+		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[E] || D03Z03S04[SW] || blood"
 	},
 	{
 		"Id": "D03Z03S04[E]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z03S05[SW]",
-		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[NE] || D03Z03S04[SW] || blood"
+		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[E] || D03Z03S04[SW] || blood"
 	},
 	{
 		"Id": "D03Z03S04[SW]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z03S03[SE]",
-		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[NE] || D03Z03S04[SW] || blood"
+		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[E] || D03Z03S04[SW] || blood"
 	},
 	{
 		"Id": "D03Z03S04[SE]",
