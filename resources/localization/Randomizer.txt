@@ -195,7 +195,7 @@ generr: 物品随机生成器无法生成合理的物品分布地点
 currsd: 此存档的种子
 shrine: 祭坛等级
 sword: 孽刃
-items: 已收集的物品
+items: ???
 varous: ???
 vandis: 原版
 randis: 随机mod

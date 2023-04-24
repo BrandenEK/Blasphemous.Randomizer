@@ -32,20 +32,18 @@ namespace BlasphemousRandomizer.Map
             TotalItemsText.text = $"{Main.Randomizer.Localize("items")}: {currentAll}/{totalAll}";
             
             // Get and display zone items
-            string zoneName = string.Empty;
+            string zoneName, zoneKey;
             if (currentCell == null)
             {
+                zoneKey = "Initia";
                 zoneName = Main.Randomizer.Localize("varous");
             }
             else
             {
-                string fullName = Core.NewMapManager.GetZoneName(currentCell.ZoneId);
-                foreach (string word in fullName.Split(' '))
-                    zoneName += word[0];
-                if (zoneName.Length == 1)
-                    zoneName = fullName;
+                zoneKey = currentCell.ZoneId.District + currentCell.ZoneId.Zone;
+                zoneName = locationNames.ContainsKey(zoneKey) ? locationNames[zoneKey] : "???";
             }
-            ZoneCollection currentZone = CollectionStatus[currentCell == null ? "Initia" : (currentCell.ZoneId.District + currentCell.ZoneId.Zone)];
+            ZoneCollection currentZone = CollectionStatus[zoneKey];
             ZoneItemsText.text = zoneName + $": {currentZone.CurrentItems}/{currentZone.TotalItems}";
         }
 
@@ -132,5 +130,37 @@ namespace BlasphemousRandomizer.Map
                 return m_ZoneItemsText;
             }
         }
+
+        private Dictionary<string, string> locationNames = new Dictionary<string, string>()
+        {
+            { "D01Z01", "THL" },
+            { "D01Z02", "Albero" },
+            { "D01Z03", "WotBC" },
+            { "D01Z04", "MD" },
+            { "D01Z05", "DC" },
+            { "D01Z06", "Petrous" },
+            { "D02Z01", "WOTW" },
+            { "D02Z02", "GotP" },
+            { "D02Z03", "CoOLotCV" },
+            { "D03Z01", "MotED" },
+            { "D03Z02", "Jondo" },
+            { "D03Z03", "GA" },
+            { "D04Z01", "PotSS" },
+            { "D04Z02", "MoM" },
+            { "D04Z03", "KotTW" },
+            { "D04Z04", "AtTotS" },
+            { "D05Z01", "LotNW" },
+            { "D05Z02", "SC" },
+            { "D06Z01", "AR" },
+            { "D07Z01", "DoHH" },
+            { "D08Z01", "THL" },
+            { "D08Z02", "THL" },
+            { "D08Z03", "HotD" },
+            { "D09Z01", "WotHP" },
+            { "D17Z01", "BotSS" },
+            { "D20Z01", "EoS" },
+            { "D20Z02", "MaH" },
+            { "D20Z03", "TRPotS" },
+        };
     }
 }
