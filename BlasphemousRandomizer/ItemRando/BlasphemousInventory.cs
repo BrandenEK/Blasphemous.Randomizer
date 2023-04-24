@@ -26,9 +26,11 @@ namespace BlasphemousRandomizer.ItemRando
         private int bones = 0;
         private int tears = 0;
 
-        // Modded items
-        private bool doubleJump = false;
+        // Special items
+        private bool dash = false;
+        private bool wallClimb = false;
         private bool boots = false;
+        private bool doubleJump = false;
 
         // Speed boosts
         private bool wheel = false;
@@ -198,8 +200,10 @@ namespace BlasphemousRandomizer.ItemRando
                 case "elderKey": return new BoolVariable(elderKey);
                 case "woodKey": return new BoolVariable(woodKey);
 
-                case "doubleJump": return new BoolVariable(doubleJump);
+                case "dash": return new BoolVariable(dash);
+                case "wallClimb": return new BoolVariable(wallClimb);
                 case "boots": return new BoolVariable(boots);
+                case "doubleJump": return new BoolVariable(doubleJump);
 
                 case "cherubs": return new IntVariable(cherubs);
                 case "bones": return new IntVariable(bones);
@@ -416,6 +420,12 @@ namespace BlasphemousRandomizer.ItemRando
                         else if (item.id == "RANGED") { ranged = true; cherubBitfield |= 0x40000; }
                         else if (item.id == "DIVE") dive = true;
                         else if (item.id == "LUNGE") lunge = true;
+                        break;
+                    }
+                case 12:
+                    {
+                        if (item.id == "Slide") dash = true;
+                        else if (item.id == "WallClimb") wallClimb = true;
                         break;
                     }
             }

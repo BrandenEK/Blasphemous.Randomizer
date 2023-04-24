@@ -117,7 +117,7 @@ namespace BlasphemousRandomizer.ItemRando
 					UnlockableSkill skill = Core.SkillManager.GetSkill(id);
 					return new RewardInfo(removeCaps(skill.caption), skill.description, Main.Randomizer.Localize("sknot"), skill.smallImage);
 				case 12:
-					if (id == "Dash") return new RewardInfo(Main.Randomizer.Localize("dshnam"), Main.Randomizer.Localize("dshdes"), Main.Randomizer.Localize("ablnot"), null);
+					if (id == "Slide") return new RewardInfo(Main.Randomizer.Localize("dshnam"), Main.Randomizer.Localize("dshdes"), Main.Randomizer.Localize("ablnot"), null);
 					if (id == "WallClimb") return new RewardInfo(Main.Randomizer.Localize("wclnam"), Main.Randomizer.Localize("wcldes"), Main.Randomizer.Localize("ablnot"), null);
 					return new RewardInfo("Error!", "You should not see this.", "You should not see this!", null);
 				default:

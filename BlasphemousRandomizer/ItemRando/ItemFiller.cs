@@ -59,11 +59,13 @@ namespace BlasphemousRandomizer.ItemRando
             }
             if (!config.ShuffleDash)
             {
-                items.Remove(allItems["Dash"]);
+                items.Remove(allItems["Slide"]);
+                inventory.AddItem("Slide");
             }
             if (!config.ShuffleWallClimb)
             {
                 items.Remove(allItems["WallClimb"]);
+                inventory.AddItem("WallClimb");
             }
             if (!config.ShuffleBootsOfPleading)
             {
