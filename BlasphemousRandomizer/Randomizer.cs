@@ -52,6 +52,7 @@ namespace BlasphemousRandomizer
         public bool InstalledDoubleJumpMod => IsModLoaded("com.damocles.blasphemous.double-jump");
         public bool CanDash => !gameConfig.ShuffleDash || Core.Events.GetFlag("ITEM_Dash");
         public bool CanWallClimb => !gameConfig.ShuffleWallClimb || Core.Events.GetFlag("ITEM_WallClimb");
+        public bool DashChecker { get; set; }
 
         public Randomizer(string modId, string modName, string modVersion) : base(modId, modName, modVersion) { }
 
@@ -407,10 +408,15 @@ namespace BlasphemousRandomizer
         }
         private StartingLocation[] startingLocations = new StartingLocation[]
         {
-            new StartingLocation("D17Z01S01", "D17Z01S01[E]", new Vector3(-988, 20, 0), true),
             //new StartingLocation("D01Z04S01", "D01Z04S01[W]", new Vector3(-121, -27, 0), true),
+            //new StartingLocation("D05Z01S03", "D05Z01S03[W]", new Vector3(318, -4, 0), false),
+            new StartingLocation("D17Z01S01", "D17Z01S01[E]", new Vector3(-988, 20, 0), true),
+            new StartingLocation("D01Z02S01", "D01Z02S01[E]", new Vector3(-512, 11, 0), false),
+            new StartingLocation("D02Z03S09", "D02Z03S09[E]", new Vector3(-577, 250, 0), true),
+            new StartingLocation("D03Z03S11", "D03Z03S11[E]", new Vector3(-551, -236, 0), true),
             new StartingLocation("D04Z03S01", "D04Z03S01[W]", new Vector3(353, 19, 0), false),
-            new StartingLocation("D05Z01S03", "D05Z01S03[W]", new Vector3(318, -4, 0), false),
+            new StartingLocation("D06Z01S09", "D06Z01S09[W]", new Vector3(374, 175, 0), false),
+            new StartingLocation("D20Z02S01", "D20Z02S01[W]", new Vector3(522, -163, 0), true),
         };
     }
 }

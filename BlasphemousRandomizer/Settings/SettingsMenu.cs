@@ -458,9 +458,15 @@ namespace BlasphemousRandomizer.Settings
             startLocationText.anchoredPosition = new Vector2(0, top - 50);
 
             string locationDesc = Main.Randomizer.Localize("lodesc");
-            RectTransform startLocationOption = getNewCyclebox("Start Loc Option", generalSection, font, 15, 16,
-                new string[] { Main.Randomizer.Localize("lotyp1"), Main.Randomizer.Localize("lotyp2"), Main.Randomizer.Localize("lotyp3") },
-                new string[] { locationDesc, locationDesc, locationDesc }, 52);
+            string[] locationNames = new string[8];
+            string[] locationDescriptions = new string[8];
+            for (int i = 0; i < 8; i++)
+            {
+                locationNames[i] = Main.Randomizer.Localize("lotyp" + (i + 1));
+                locationDescriptions[i] = locationDesc;
+            }
+
+            RectTransform startLocationOption = getNewCyclebox("Start Loc Option", generalSection, font, 15, 16, locationNames, locationDescriptions, 52);
             startLocationOption.anchoredPosition = new Vector2(0, top - 70);
             StartingLocationLeft = startLocationOption.GetChild(0).GetComponent<SettingsCyclebox>();
             StartingLocationRight = startLocationOption.GetChild(1).GetComponent<SettingsCyclebox>();

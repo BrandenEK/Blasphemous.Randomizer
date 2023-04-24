@@ -57,8 +57,13 @@ lgdes3: Text for hard logic
 loname: Starting Location
 lodesc: Where to spawn when beginning the game
 lotyp1: Brotherhood
-lotyp2: Knot of Words
-lotyp3: Library
+lotyp2: Albero
+lotyp3: The Convent
+lotyp4: The Depths
+lotyp5: Cathedral
+lotyp6: Rooftops
+lotyp7: Shipyard
+lotyp8: Random
 tpname: Teleportation
 tpdesc: Prie Dieus are automatically upgraded to the maximum level
 htname: Allow Hints
@@ -164,6 +169,11 @@ lodesc: ???
 lotyp1: ???
 lotyp2: ???
 lotyp3: ???
+lotyp4: ???
+lotyp5: ???
+lotyp6: ???
+lotyp7: ???
+lotyp8: ???
 tpname: Teletransporte
 tpdesc: Los prie-dieus se mejoran al máximo automáticamente
 htname: Permitir pistas
@@ -269,6 +279,11 @@ lodesc: ???
 lotyp1: ???
 lotyp2: ???
 lotyp3: ???
+lotyp4: ???
+lotyp5: ???
+lotyp6: ???
+lotyp7: ???
+lotyp8: ???
 tpname: 开局祭坛传送
 tpdesc: 开局自动将存档点祭坛升至满级（有传送功能，回满蓝）
 htname: 尸体提示
@@ -374,6 +389,11 @@ lodesc: ???
 lotyp1: ???
 lotyp2: ???
 lotyp3: ???
+lotyp4: ???
+lotyp5: ???
+lotyp6: ???
+lotyp7: ???
+lotyp8: ???
 tpname: Téléportation
 tpdesc: Les Prie-Dieus seront améliorés au niveau maximum dès le début
 htname: Indices macabres
