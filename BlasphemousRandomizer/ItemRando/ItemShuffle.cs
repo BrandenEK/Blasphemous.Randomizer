@@ -14,7 +14,12 @@ namespace BlasphemousRandomizer.ItemRando
 
         private Item lastItem;
 
-        public bool validSeed { get { return newItems != null && newItems.Count > 0; } }
+        public bool ValidSeed { get { return newItems != null && newItems.Count > 0; } }
+
+        public void SetMappedItems(Dictionary<string, string> mappedItems)
+        {
+            newItems = mappedItems;
+        }
 
         // Returns the target door given a door id
         public bool getNewDoor(string doorId, out string targetScene, out string targetId)
@@ -124,6 +129,8 @@ namespace BlasphemousRandomizer.ItemRando
             if (attempt >= maxAttempts)
             {
                 Main.Randomizer.LogError($"Error: Failed to fill items in {maxAttempts} tries!");
+                newItems.Clear();
+                newDoors.Clear();
                 return;
             }
 

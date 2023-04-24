@@ -41,7 +41,7 @@ namespace BlasphemousRandomizer.HintRando
 
         public void Shuffle(int seed)
         {
-            if (!Main.Randomizer.gameConfig.AllowHints || !Main.Randomizer.data.isValid || !Main.Randomizer.itemShuffler.validSeed)
+            if (!Main.Randomizer.gameConfig.AllowHints || !Main.Randomizer.data.isValid || !Main.Randomizer.itemShuffler.ValidSeed)
                 return;
 
             newHints = new Dictionary<string, string>();

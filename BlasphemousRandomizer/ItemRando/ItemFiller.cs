@@ -11,10 +11,13 @@ namespace BlasphemousRandomizer.ItemRando
             // Initialize seed with empty lists
             initialize(seed);
             BlasphemousInventory inventory = new BlasphemousInventory();
+            Config config = Main.Randomizer.gameConfig;
+            mappedDoors.Clear();
+            mappedItems.Clear();
+
             Dictionary<string, ItemLocation> allItemLocations = Main.Randomizer.data.itemLocations;
             Dictionary<string, DoorLocation> allDoorLocations = Main.Randomizer.data.doorLocations;
             Dictionary<string, Item> allItems = Main.Randomizer.data.items;
-            Config config = Main.Randomizer.gameConfig;
 
             // Sort all item locations & doors into rooms
             Dictionary<string, List<string>> roomObjects = new Dictionary<string, List<string>>();

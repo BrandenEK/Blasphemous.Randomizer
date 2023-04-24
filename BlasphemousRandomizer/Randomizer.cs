@@ -168,19 +168,23 @@ namespace BlasphemousRandomizer
                 {
                     shufflers[i].Shuffle(seed);
                 }
-                catch (System.Exception)
+                catch (System.Exception e)
                 {
                     LogError($"Error with the {shufflers[i].GetType().Name} when shuffling seed {seed}");
+                    LogError("Error message: " + e.Message);
+                    if (shufflers[i] is ItemShuffle)
+                        itemShuffler.SetMappedItems(null);
                 }
             }
 
-            // Show error message if item shuffler failed
-            if (!itemShuffler.validSeed)
-                errorOnLoad = Localize("generr");
-
-            // Generate spoiler on new game
-            if (newGame)
+            if (!itemShuffler.ValidSeed)
             {
+                // Show error message if item shuffler failed
+                errorOnLoad = Localize("generr");
+            }
+            else if (newGame)
+            {
+                // Generate spoiler on new game
                 string spoiler = itemShuffler.GetSpoiler();
                 FileUtil.saveTextFile($"spoiler{PersistentManager.GetAutomaticSlot() + 1}.txt", spoiler);
             }
