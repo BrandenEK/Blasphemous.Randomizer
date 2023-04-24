@@ -10,7 +10,7 @@
 		"Name": "Mud ledge upper",
 		"Hint": "* resides in the Holy Line",
 		"Room": "D01Z01S02",
-		"Logic": "blood"
+		"Logic": "blood || doubleJump"
 	},
 	{
 		"Id": "CO04",
@@ -23,7 +23,7 @@
 		"Name": "Cave chest",
 		"Hint": "* resides in the Holy Line",
 		"Room": "D01Z01S03",
-		"Logic": "blood && nail"
+		"Logic": "blood && dash && (nail || doubleJump)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_07",
@@ -127,7 +127,7 @@
 		"Hint": "* resides in Albero",
 		"OriginalItem": "CH",
 		"Room": "D01Z02S03",
-		"Logic": "cherubBitfield ^ 0x20242 || D01Z02S03[NW] && (wheel || cherubBitfield ^ 0x46010)"
+		"Logic": "cherubBitfield ^ 0x20242 || D01Z02S03[NW] && (wheel || (dawnHeart && dash) || doubleJump || cherubBitfield ^ 0x46010)"
 	},
 	{
 		"Id": "Lvdovico[500]",
@@ -319,7 +319,8 @@
 		"Id": "CO14",
 		"Name": "Building slide",
 		"Hint": "* resides in the Wastelands",
-		"Room": "D01Z03S02"
+		"Room": "D01Z03S02",
+		"Logic": "dash"
 	},
 	{
 		"Id": "CO36",
@@ -338,7 +339,7 @@
 		"Name": "Underneath MD bridge",
 		"Hint": "* resides in the Wastelands",
 		"Room": "D01Z03S05",
-		"Logic": "blood || dawnHeart || wheel && ranged"
+		"Logic": "blood || boots || doubleJump || dawnHeart && dash || wheel && ranged"
 	},
 	{
 		"Id": "RB20",
@@ -358,7 +359,7 @@
 		"Name": "Cliffside cherub",
 		"Hint": "* resides in the Wastelands",
 		"Room": "D01Z03S07",
-		"Logic": "dawnHeart || wheel || cherubBitfield ^ 0x66210"
+		"Logic": "dawnHeart && dash || doubleJump || wheel || cherubBitfield ^ 0x66210"
 	},
 	
 	{
@@ -408,7 +409,8 @@
 		"Id": "CO38",
 		"Name": "Lower slide room",
 		"Hint": "* resides in Mercy",
-		"Room": "D01Z04S14"
+		"Room": "D01Z04S14",
+		"Logic": "dash"
 	},
 	{
 		"Id": "RESCUED_CHERUB_33",
@@ -466,21 +468,21 @@
 		"Name": "Hidden hand room",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S05",
-		"Logic": "nail"
+		"Logic": "dash && (nail || doubleJump)"
 	},
 	{
 		"Id": "PR16",
 		"Name": "Eastern upper tunnel chest",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S06",
-		"Logic": "D01Z05S06[Cherubs] || nail"
+		"Logic": "D01Z05S06[Cherubs] || nail || doubleJump"
 	},
 	{
 		"Id": "RESCUED_CHERUB_13",
 		"Name": "Eastern upper tunnel cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S06",
-		"Logic": "D01Z05S06[Cherubs] || nail || cherubBitfield ^ 0x72242"
+		"Logic": "D01Z05S06[Cherubs] || nail || doubleJump || cherubBitfield ^ 0x72242"
 	},
 	{
 		"Id": "Oil[D01Z05S07]",
@@ -511,7 +513,7 @@
 		"Name": "Lung tunnel cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S13",
-		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && lung && nail"
+		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && lung && (nail || doubleJump)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_11",
@@ -530,7 +532,7 @@
 		"Name": "Water ledge near elevator",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S17",
-		"Logic": "nail"
+		"Logic": "D01Z05S17[E] || nail || doubleJump"
 	},
 	{
 		"Id": "RESCUED_CHERUB_15",
@@ -570,7 +572,7 @@
 		"Name": "Elevator shaft cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S25",
-		"Logic": "linen || (D01Z05S25[W] && (dawnHeart || root || wheel && ranged) || D01Z05S25[E]) && cherubBitfield ^ 0x20042"
+		"Logic": "linen || (D01Z05S25[W] && (root || doubleJump || dawnHeart && dash || wheel && ranged) || D01Z05S25[E]) && cherubBitfield ^ 0x20042"
 	},
 	{
 		"Id": "Lady[D01Z05S26]",

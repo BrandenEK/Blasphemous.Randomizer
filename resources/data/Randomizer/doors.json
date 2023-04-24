@@ -691,13 +691,13 @@
 		"Id": "D01Z05S13[SW]",
 		"Direction": 3,
 		"OriginalDoor": "D01Z05S16[N]",
-		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && nail && lung"
+		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && lung && (nail || doubleJump)"
 	},
 	{
 		"Id": "D01Z05S13[N]",
 		"Direction": 0,
 		"OriginalDoor": "D01Z05S03[S]",
-		"Logic": "D01Z05S13[N] || D01Z05S13[E] && nail && lung"
+		"Logic": "D01Z05S13[N] || D01Z05S13[E] && lung && (nail || doubleJump)"
 	},
 	{
 		"Id": "D01Z05S13[E]",
@@ -754,6 +754,12 @@
 		"Id": "D01Z05S17[W]",
 		"Direction": 1,
 		"OriginalDoor": "D01Z05S16[SE]"
+	},
+	{
+		"Id": "D01Z05S17[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01BZ09S01[W]",
+		"Logic": "dash && (D01Z05S17[E] || nail || doubleJump)"
 	},
 	{
 		"Id": "D01Z05S18[E]",
@@ -832,7 +838,7 @@
 		"Id": "D01Z05S25[W]",
 		"Direction": 1,
 		"OriginalDoor": "D01Z05S23[E]",
-		"Logic": "D01Z05S25[W] || (linen && (ranged || root)) || (D01Z05S25[E] && (root || dawnHeart || wheel && ranged))"
+		"Logic": "D01Z05S25[W] || (linen && (ranged || root || doubleJump)) || (D01Z05S25[E] && (root || doubleJump || dawnHeart && dash || wheel && ranged))"
 	},
 	{
 		"Id": "D01Z05S25[E]",
@@ -856,13 +862,13 @@
 		"Id": "D01Z05S25[EchoesW]",
 		"Direction": 1,
 		"OriginalDoor": "D20Z01S09[E]",
-		"Logic": "D01Z05S25[EchoesW] || D01Z05S25[EchoesE] && blood"
+		"Logic": "D01Z05S25[EchoesW] || (D01Z05S25[EchoesE] && (blood || doubleJump)) || (linen && doubleJump)"
 	},
 	{
 		"Id": "D01Z05S25[EchoesE]",
 		"Direction": 2,
 		"OriginalDoor": "D20Z01S10[W]",
-		"Logic": "D01Z05S25[EchoesE] || D01Z05S25[EchoesW] && blood"
+		"Logic": "D01Z05S25[EchoesE] || (D01Z05S25[EchoesW] && (blood || doubleJump)) || (linen && doubleJump)"
 	},
 	{
 		"Id": "D01Z05S26[W]",
@@ -878,6 +884,11 @@
 		"Id": "D01BZ05S01[Reward]",
 		"Direction": 4,
 		"OriginalDoor": "D01Z05S21[Reward]"
+	},
+	{
+		"Id": "D01BZ09S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S17[E]"
 	},
 	
 	{
