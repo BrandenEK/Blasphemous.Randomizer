@@ -99,7 +99,7 @@ namespace BlasphemousRandomizer.Settings
             // Change description text
             if (currBox != null)
             {
-                descriptionText.text = currBox.getDescription();
+                descriptionText.text = currBox.Description;
             }
             else
             {
@@ -161,35 +161,35 @@ namespace BlasphemousRandomizer.Settings
                 return;
 
             // Load config into buttons
-            LogicDifficultyLeft.setOption(config.LogicDifficulty);
-            LogicDifficultyRight.setOption(config.LogicDifficulty);
-            StartingLocationLeft.setOption(config.StartingLocation);
-            StartingLocationRight.setOption(config.StartingLocation);
-            Teleportation.setSelected(config.UnlockTeleportation);
-            Hints.setSelected(config.AllowHints);
-            Penitence.setSelected(config.AllowPenitence);
+            LogicDifficultyLeft.CurrentOption = config.LogicDifficulty;
+            LogicDifficultyRight.CurrentOption = config.LogicDifficulty;
+            StartingLocationLeft.CurrentOption = config.StartingLocation;
+            StartingLocationRight.CurrentOption = config.StartingLocation;
+            Teleportation.Selected = config.UnlockTeleportation;
+            Hints.Selected = config.AllowHints;
+            Penitence.Selected = config.AllowPenitence;
 
-            Reliquaries.setSelected(config.ShuffleReliquaries);
-            Dash.setSelected(config.ShuffleDash);
-            WallClimb.setSelected(config.ShuffleWallClimb);
-            Boots.setSelected(config.ShuffleBootsOfPleading);
-            PurifiedHand.setSelected(config.ShufflePurifiedHand);
+            Reliquaries.Selected = config.ShuffleReliquaries;
+            Dash.Selected = config.ShuffleDash;
+            WallClimb.Selected = config.ShuffleWallClimb;
+            Boots.Selected = config.ShuffleBootsOfPleading;
+            PurifiedHand.Selected = config.ShufflePurifiedHand;
 
-            SwordSkills.setSelected(config.ShuffleSwordSkills);
-            Thorns.setSelected(config.ShuffleThorns);
-            JunkQuests.setSelected(config.JunkLongQuests);
-            Wheel.setSelected(config.StartWithWheel);
+            SwordSkills.Selected = config.ShuffleSwordSkills;
+            Thorns.Selected = config.ShuffleThorns;
+            JunkQuests.Selected = config.JunkLongQuests;
+            Wheel.Selected = config.StartWithWheel;
 
-            MaintainClass.setSelected(config.MaintainClass);
-            AreaScaling.setSelected(config.AreaScaling);
-            EnemiesLeft.setOption(config.EnemyShuffleType);
-            EnemiesRight.setOption(config.EnemyShuffleType);
+            MaintainClass.Selected = config.MaintainClass;
+            AreaScaling.Selected = config.AreaScaling;
+            EnemiesLeft.CurrentOption = config.EnemyShuffleType;
+            EnemiesRight.CurrentOption = config.EnemyShuffleType;
 
-            BossesLeft.setOption(config.BossShuffleType);
-            BossesRight.setOption(config.BossShuffleType);
+            BossesLeft.CurrentOption = config.BossShuffleType;
+            BossesRight.CurrentOption = config.BossShuffleType;
 
-            DoorsLeft.setOption(config.DoorShuffleType);
-            DoorsRight.setOption(config.DoorShuffleType);
+            DoorsLeft.CurrentOption = config.DoorShuffleType;
+            DoorsRight.CurrentOption = config.DoorShuffleType;
 
             // Load config into seed
             currentSeed = config.CustomSeed > 0 ? config.CustomSeed.ToString() : "";
@@ -206,29 +206,29 @@ namespace BlasphemousRandomizer.Settings
                 return config;
 
             // Load config from buttons
-            config.LogicDifficulty = LogicDifficultyLeft.getOption();
-            config.StartingLocation = StartingLocationLeft.getOption();
-            config.UnlockTeleportation = Teleportation.getSelected();
-            config.AllowHints = Hints.getSelected();
-            config.AllowPenitence = Penitence.getSelected();
+            config.LogicDifficulty = LogicDifficultyLeft.CurrentOption;
+            config.StartingLocation = StartingLocationLeft.CurrentOption;
+            config.UnlockTeleportation = Teleportation.Selected;
+            config.AllowHints = Hints.Selected;
+            config.AllowPenitence = Penitence.Selected;
 
-            config.ShuffleReliquaries = Reliquaries.getSelected();
-            config.ShuffleDash = Dash.getSelected();
-            config.ShuffleWallClimb = WallClimb.getSelected();
-            config.ShuffleBootsOfPleading = Boots.getSelected();
-            config.ShufflePurifiedHand = PurifiedHand.getSelected();
+            config.ShuffleReliquaries = Reliquaries.Selected;
+            config.ShuffleDash = Dash.Selected;
+            config.ShuffleWallClimb = WallClimb.Selected;
+            config.ShuffleBootsOfPleading = Boots.Selected;
+            config.ShufflePurifiedHand = PurifiedHand.Selected;
 
-            config.ShuffleSwordSkills = SwordSkills.getSelected();
-            config.ShuffleThorns = Thorns.getSelected();
-            config.JunkLongQuests = JunkQuests.getSelected();
-            config.StartWithWheel = Wheel.getSelected();
+            config.ShuffleSwordSkills = SwordSkills.Selected;
+            config.ShuffleThorns = Thorns.Selected;
+            config.JunkLongQuests = JunkQuests.Selected;
+            config.StartWithWheel = Wheel.Selected;
 
-            config.EnemyShuffleType = EnemiesLeft.getOption();
-            config.MaintainClass = MaintainClass.getSelected();
-            config.AreaScaling = AreaScaling.getSelected();
+            config.EnemyShuffleType = EnemiesLeft.CurrentOption;
+            config.MaintainClass = MaintainClass.Selected;
+            config.AreaScaling = AreaScaling.Selected;
 
-            config.BossShuffleType = BossesLeft.getOption();
-            config.DoorShuffleType = DoorsLeft.getOption();
+            config.BossShuffleType = BossesLeft.CurrentOption;
+            config.DoorShuffleType = DoorsLeft.CurrentOption;
 
             // Load config from seed
             config.CustomSeed = currentSeed != "" ? int.Parse(currentSeed) : generatedSeed;
@@ -329,8 +329,8 @@ namespace BlasphemousRandomizer.Settings
             Main.Randomizer.Log("Generating default seed: " + generatedSeed);
             showSettingsMenu(true, true);
             setConfigSettings(new Config());
-            Boots.setEnabled(Main.Randomizer.InstalledBootsMod);
-            PurifiedHand.setEnabled(Main.Randomizer.InstalledDoubleJumpMod);
+            Boots.Enabled = Main.Randomizer.InstalledBootsMod;
+            PurifiedHand.Enabled = Main.Randomizer.InstalledDoubleJumpMod;
         }
 
         public void closeMenu()

@@ -6,76 +6,71 @@ namespace BlasphemousRandomizer.Settings
     // Any settings button can be clicked, or enabled/disabled
     public abstract class SettingsElement : MonoBehaviour
     {
-        protected bool disabled;
-
-        public void setEnabled(bool value)
-        {
-            disabled = !value;
-            if (value) enable();
-            else disable();
-        }
+        public abstract bool Enabled { get; set; }
 
         public void onClick()
         {
             Main.Randomizer.Log(name + " has been clicked!");
             Main.Randomizer.playSoundEffect(2);
-            if (!disabled)
-                click();
+            if (Enabled)
+                Click();
         }
 
-        protected abstract void click();
-        protected abstract void enable();
-        protected abstract void disable();
-        public abstract string getDescription();
+        protected abstract void Click();
+
+        public abstract string Description { get; }
     }
 
     // Checkbox can be toggled on or off
     public class SettingsCheckbox : SettingsElement
     {
         private Image image;
-        private bool selected;
         private string description;
 
         public void onStart(string desc)
         {
             image = GetComponent<Image>();
             description = desc;
-            setSelected(false);
-            enable();
+            Selected = false;
+            Enabled = true;
         }
 
-        // When changing enabled status, change sprite
-        protected override void enable()
+        private bool m_Enabled;
+        public override bool Enabled
         {
-            setSelected(selected);
+            get { return m_Enabled; }
+            set
+            {
+                m_Enabled = value;
+                if (value)
+                {
+                    Selected = m_Selected;
+                }
+                else
+                {
+                    image.sprite = Main.Randomizer.data.uiImages[2];
+                }
+            }
         }
-        protected override void disable()
+
+        private bool m_Selected;
+        public bool Selected
         {
-            image.sprite = Main.Randomizer.data.uiImages[2];
+            get { return m_Selected; }
+            set
+            {
+                m_Selected = value;
+                image.sprite = value ? Main.Randomizer.data.uiImages[1] : Main.Randomizer.data.uiImages[0];
+            }
         }
 
         // When clicked, toggle checkbox
-        protected override void click()
+        protected override void Click()
         {
-            setSelected(!selected);
+            Selected = !m_Selected;
         }
 
-        // Get and set selected variable
-        public void setSelected(bool value)
-        {
-            selected = value;
-            image.sprite = selected ? Main.Randomizer.data.uiImages[1] : Main.Randomizer.data.uiImages[0];
-        }
-        public bool getSelected()
-        {
-            return selected;
-        }
-
-        // Return desc
-        public override string getDescription()
-        {
-            return description;
-        }
+        public override string Description => description;
     }
 
     // Cyclebox can cycle the box through a series of options
@@ -87,8 +82,6 @@ namespace BlasphemousRandomizer.Settings
         private SettingsElement[] checkboxes;
         private string[] options;
         private string[] descriptions;
-        private int optionIdx;
-
         private bool right;
 
         public void onStart(string[] options, string[] descs, SettingsElement[] checkboxes, bool right)
@@ -101,51 +94,51 @@ namespace BlasphemousRandomizer.Settings
             text = GetComponentInParent<Text>();
             image = GetComponent<Image>();
 
-            setOption(0);
+            CurrentOption = 0;
         }
 
-        // When changing enabled status, change sprite
-        protected override void enable()
+        private bool m_Enabled;
+        public override bool Enabled
         {
-            image.sprite = Main.Randomizer.data.uiImages[right ? 5 : 4];
+            get { return m_Enabled; }
+            set
+            {
+                m_Enabled = value;
+                if (value)
+                    image.sprite = Main.Randomizer.data.uiImages[right ? 5 : 4];
+                else
+                    image.sprite = Main.Randomizer.data.uiImages[right ? 7 : 6];
+            }
         }
-        protected override void disable()
+
+        private int m_CurrentOption;
+        public int CurrentOption
         {
-            image.sprite = Main.Randomizer.data.uiImages[right ? 7 : 6];
+            get { return m_CurrentOption; }
+            set
+            {
+                m_CurrentOption = value;
+                text.text = options[value];
+
+                foreach (SettingsElement box in checkboxes)
+                {
+                    ((SettingsCheckbox)box).Enabled = value != 0;
+                }
+
+                if (right)
+                    Enabled = value < options.Length - 1;
+                else
+                    Enabled = value > 0;
+            }
         }
 
         // When clicked, change option on both cycleboxes & disable checkboxes
-        protected override void click()
+        protected override void Click()
         {
-            setOption(optionIdx + (right ? 1 : -1));
-            transform.parent.GetChild(right ? 0 : 1).GetComponent<SettingsCyclebox>().setOption(optionIdx);
+            CurrentOption = m_CurrentOption + (right ? 1 : -1);
+            transform.parent.GetChild(right ? 0 : 1).GetComponent<SettingsCyclebox>().CurrentOption = m_CurrentOption;
         }
 
-        // Get and set option index variable
-        public void setOption(int option)
-        {
-            optionIdx = option;
-            text.text = options[option];
-
-            foreach (SettingsElement box in checkboxes)
-            {
-                ((SettingsCheckbox)box).setEnabled(option != 0);
-            }
-
-            if (right)
-                setEnabled(optionIdx < options.Length - 1);
-            else
-                setEnabled(optionIdx > 0);
-        }
-        public int getOption()
-        {
-            return optionIdx;
-        }
-
-        // Return description for this option
-        public override string getDescription()
-        {
-            return descriptions[optionIdx];
-        }
+        public override string Description => descriptions[m_CurrentOption];
     }
 }
