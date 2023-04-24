@@ -54,6 +54,14 @@ namespace BlasphemousRandomizer.ItemRando
                 items.Remove(allItems["RB102"]);
                 items.Remove(allItems["RB103"]);
             }
+            if (!config.ShuffleDash)
+            {
+                items.Remove(allItems["Dash"]);
+            }
+            if (!config.ShuffleWallClimb)
+            {
+                items.Remove(allItems["WallClimb"]);
+            }
             if (!config.ShuffleBootsOfPleading)
             {
                 items.Remove(allItems["RE401"]);

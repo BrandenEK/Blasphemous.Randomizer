@@ -19,6 +19,11 @@ trname: Tears of Atonement
 trdesc: A bundle of * tears.
 trnot: Tears acquired!
 sknot: Skill unlocked!
+dshnam: Dash Ability
+dshdes: The lost ability to dash and slide under obstacles.
+wclnam: Wall Climb Ability
+wcldes: The lost ability to climb walls with your sword.
+ablnot: Ability unlocked!
 itmerr: Error: Rewards list not initialized!
 daterr: Randomizer data could not be loaded, reinstall the program.
 vererr: This save file was not created in randomizer or used an older version.  Item locations are invalid.
@@ -119,6 +124,11 @@ trname: Lágrimas de enmienda
 trdesc: Una cantidad de * lágrimas.
 trnot: Lágrimas conseguidas
 sknot: Habilidad desbloqueada
+dshnam: ???
+dshdes: ???
+wclnam: ???
+wcldes: ???
+ablnot: ???
 itmerr: Error: no se ha iniciado la lista de recompensas
 daterr: No se han podido cargar los datos del randomizador, reinstala el programa.
 vererr: Este archivo no se ha creado en el randomizador o se ha usado una versión anterior. La ubicación de los objetos no es válida.
@@ -219,6 +229,11 @@ trname: 赎罪之泪
 trdesc: 装有 * 赎罪之泪的小瓶子
 trnot: 获得赎罪之泪
 sknot: 解锁新技能
+dshnam: ???
+dshdes: ???
+wclnam: ???
+wcldes: ???
+ablnot: ???
 itmerr: 错误：物品列表未初始化
 daterr: 随机mod数据未加载，请重新下载并安装随机mod
 vererr: 此存档不兼容当前版本的随机mod，物品分布地点不合法
@@ -319,6 +334,11 @@ trname: Larmes d'expiation
 trdesc: Un amas de * larmes
 trnot: Larmes récupérées
 sknot: Compétence débloquée
+dshnam: ???
+dshdes: ???
+wclnam: ???
+wcldes: ???
+ablnot: ???
 itmerr: Erreur: La Liste de récompenses n'a pas été initialisée
 daterr: Les données du Randomizer n'ont pas pu être chargées, veuillez réinstaller le programme
 vererr: Ce fichier de sauvegarde n'a pas été créé avec le randomizer ou utilise une version antérieure du jeu. Les positionnements des objets sont invalides

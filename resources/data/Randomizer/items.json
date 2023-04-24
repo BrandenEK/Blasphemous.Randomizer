@@ -1630,6 +1630,22 @@
 		"count": 1
 	},
 	{
+		"id": "Dash",
+		"name": "Dash Ability",
+		"hint": "a special ability",
+		"type": 12,
+		"progression": true,
+		"count": 1
+	},
+	{
+		"id": "WallClimb",
+		"name": "Wall Climb Ability",
+		"hint": "a special ability",
+		"type": 12,
+		"progression": true,
+		"count": 1
+	},
+	{
 		"id": "Tears[500]",
 		"name": "Tears of Atonement (500)",
 		"hint": "a small bundle of tears",
