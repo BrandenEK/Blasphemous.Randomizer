@@ -117,7 +117,7 @@ namespace BlasphemousRandomizer.ItemRando
 
         private bool canSurvivePoison => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2; // Fix up.  Cant go upwards with nothing
         // ? maybe wheel works maybe not double jump
-        private bool canBreakJondoBell => (doors.ContainsKey("D03Z02S05[W]") && (canDawnJump && canAirStall || doubleJump) || doors.ContainsKey("D03Z02S05[S]") || doors.ContainsKey("D03Z02S05[E]")) && (doors.ContainsKey("D03Z02S09[S]") || doors.ContainsKey("D03Z02S09[W]") || doors.ContainsKey("D03Z02S09[N]") || doors.ContainsKey("D03Z02S09[Cherubs]"));
+        private bool canBreakJondoBell => (doors.ContainsKey("D03Z02S05[W]") && canCrossGap5 || doors.ContainsKey("D03Z02S05[S]") || doors.ContainsKey("D03Z02S05[E]")) && (doors.ContainsKey("D03Z02S09[S]") || doors.ContainsKey("D03Z02S09[W]") && dash || doors.ContainsKey("D03Z02S09[N]") || doors.ContainsKey("D03Z02S09[Cherubs]"));
 
         // Crossing gaps
         private bool canCrossGap1 => doubleJump || canDawnJump || wheel || canAirStall;

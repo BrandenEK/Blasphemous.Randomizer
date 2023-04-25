@@ -954,20 +954,21 @@
 		"Name": "Eastern entrance chest",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S01",
-		"Logic": "D03Z02S01[Cherubs] || root && wallClimb || doubleJump && (canDawnJump || wheel && canAirStall)"
+		"Logic": "D03Z02S01[Cherubs] || (D03Z02S01[W] && canCrossGap8) || (root && wallClimb) || canCrossGap9"
 	},
 	{
 		"Id": "CO33",
 		"Name": "Eastern shaft bell chargers",
 		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S04"
+		"Room": "D03Z02S04",
+		"Logic": "D03Z02S04[NE] || D03Z02S04[S] || wallClimb"
 	},
 	{
 		"Id": "RESCUED_CHERUB_18",
 		"Name": "Eastern shaft cherub",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S05",
-		"Logic": "D03Z02S05[E] || D03Z02S05[S] || dawnHeart && ranged"
+		"Logic": "D03Z02S05[E] || D03Z02S05[S] || canCrossGap5"
 	},
 	{
 		"Id": "QI19",
@@ -979,13 +980,15 @@
 		"Id": "CO07",
 		"Name": "Western shaft lower slide",
 		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S07"
+		"Room": "D03Z02S07",
+		"Logic": "dash"
 	},
 	{
 		"Id": "QI41",
 		"Name": "Western shaft bell trap",
 		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S08"
+		"Room": "D03Z02S08",
+		"Logic": "D03Z02S08[N] || D03Z02S08[W] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "RESCUED_CHERUB_17",
@@ -997,13 +1000,15 @@
 		"Id": "HE06",
 		"Name": "Spike tunnel ledge",
 		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S11"
+		"Room": "D03Z02S11",
+		"Logic": "dash && (wallClimb || doubleJump)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_37",
 		"Name": "Spike tunnel cherub",
 		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S11"
+		"Room": "D03Z02S11",
+		"Logic": "dash && (wallClimb || doubleJump || D03Z02S11[W] && canCrossGap3)"
 	},
 	{
 		"Id": "QI52",
@@ -1016,7 +1021,7 @@
 		"Name": "Western shaft root puzzle",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S13",
-		"Logic": "root || dawnHeart"
+		"Logic": "root || canCrossGap3"
 	},
 	{
 		"Id": "QI103",
@@ -1030,7 +1035,7 @@
 		"Name": "Western lung ledge",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S02",
-		"Logic": "lung"
+		"Logic": "canSurvivePoison"
 	},
 	{
 		"Id": "CO12",
@@ -1043,34 +1048,36 @@
 		"Id": "RE07",
 		"Name": "Lung room upper",
 		"Hint": "* resides in the Grievance",
-		"Room": "D03Z03S06"
+		"Room": "D03Z03S06",
+		"Logic": "wallClimb"
 	},
 	{
 		"Id": "RESCUED_CHERUB_19",
 		"Name": "Lung room cherub",
 		"Hint": "* resides in the Grievance",
-		"Room": "D03Z03S06"
+		"Room": "D03Z03S06",
+		"Logic": "wallClimb"
 	},
 	{
 		"Id": "QI10",
 		"Name": "Blood tunnel ledge",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S08",
-		"Logic": "blood"
+		"Logic": "blood || canCrossGap11"
 	},
 	{
 		"Id": "RESCUED_CHERUB_21",
 		"Name": "Blood tunnel cherub",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S08",
-		"Logic": "blood && (cherubBitfield ^ 0x2000 && ranged || cherubBitfield ^ 0x30642)"
+		"Logic": "(blood || canCrossGap11) && (cherubBitfield ^ 0x2000 && ranged || cherubBitfield ^ 0x30642)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_20",
 		"Name": "Altasgracias cherub",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S09",
-		"Logic": "root || cherubBitfield ^ 0x32272"
+		"Logic": "root || doubleJump || cherubBitfield ^ 0x32272"
 	},
 	{
 		"Id": "QI13",
@@ -1097,7 +1104,7 @@
 		"Name": "Defeat Tres Angustias",
 		"Hint": "* is guarded by Tres Angustias",
 		"Room": "D03Z03S15",
-		"Logic": "boss-grievance"
+		"Logic": "canBeatGrievanceBoss"
 	},
 	{
 		"Id": "QI39",

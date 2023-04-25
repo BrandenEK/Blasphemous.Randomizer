@@ -1704,7 +1704,7 @@
 		"Id": "D03Z02S01[N]",
 		"Direction": 0,
 		"OriginalDoor": "D03Z01S03[SE]",
-		"Logic": "D03Z02S01[N] || wallClimb || doubleJump && (canDawnJump || wheel)"
+		"Logic": "D03Z02S01[N] || wallClimb || canCrossGap8"
 	},
 	{
 		"Id": "D03Z02S01[Cherubs]",
@@ -1714,12 +1714,13 @@
 		"Id": "D03Z02S02[W]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z02S10[E]",
-		"Logic": "D03Z02S02[W]"
+		"Logic": "D03Z02S02[W] || D03Z02S02[CherubsL] || doubleJump && (D03Z02S02[E] || D03Z02S02[CherubsR] || wallClimb)"
 	},
 	{
 		"Id": "D03Z02S02[E]",
 		"Direction": 2,
-		"OriginalDoor": "D03Z02S01[W]"
+		"OriginalDoor": "D03Z02S01[W]",
+		"Logic": "D03Z02S02[E] || wallClimb"
 	},
 	{
 		"Id": "D03Z02S02[S]",
@@ -1738,70 +1739,73 @@
 		"Id": "D03Z02S03[W]",
 		"Direction": 3,
 		"OriginalDoor": "D03Z02S07[N]",
-		"Logic": "D03Z02S03[W] || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2]"
+		"Logic": "D03Z02S03[W] || dash && (D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
 		"Id": "D03Z02S03[E]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z02S05[W]",
-		"Logic": "D03Z02S03[E]"
+		"Logic": "D03Z02S03[E] || (canAirStall || doubleJump) && (D03Z02S03[E] && dash || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
 		"Id": "D03Z02S03[N]",
 		"Direction": 0,
 		"OriginalDoor": "D03Z02S02[S]",
-		"Logic": "D03Z02S03[W] || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2]"
+		"Logic": "D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2]"
 	},
 	{
 		"Id": "D03Z02S03[SE2]",
 		"Direction": 3,
 		"OriginalDoor": "D03Z02S04[NW]",
-		"Logic": "D03Z02S03[W] || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2]"
+		"Logic": "D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2]"
 	},
 	{
 		"Id": "D03Z02S03[SW]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z02S07[E]",
-		"Logic": "jondo-bell || D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR]"
+		"Logic": "D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR] || canBreakJondoBell && (D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
 		"Id": "D03Z02S03[SE]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z02S06[W]",
-		"Logic": "jondo-bell || D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR]"
+		"Logic": "D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR] || canBreakJondoBell && (D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
 		"Id": "D03Z02S03[SSL]",
 		"Direction": 3,
 		"OriginalDoor": "D03Z03S01[NL]",
-		"Logic": "jondo-bell || D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR]"
+		"Logic": "D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR] || canBreakJondoBell && (D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
 		"Id": "D03Z02S03[SSC]",
 		"Direction": 6,
 		"OriginalDoor": "D03Z03S01[NC]",
-		"Logic": "jondo-bell || D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR]"
+		"Logic": "D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR] || canBreakJondoBell && (D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
 		"Id": "D03Z02S03[SSR]",
 		"Direction": 3,
 		"OriginalDoor": "D03Z03S01[NR]",
-		"Logic": "jondo-bell || D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR]"
+		"Logic": "D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR] || canBreakJondoBell && (D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
 		"Id": "D03Z02S04[NW]",
 		"Direction": 0,
-		"OriginalDoor": "D03Z02S03[SE2]"
+		"OriginalDoor": "D03Z02S03[SE2]",
+		"Logic": "D03Z02S04[NW] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "D03Z02S04[NE]",
 		"Direction": 0,
-		"OriginalDoor": "D03Z02S05[S]"
+		"OriginalDoor": "D03Z02S05[S]",
+		"Logic": "D03Z02S04[NE] || wallClimb || (D03Z02S04[S] && doubleJump)"
 	},
 	{
 		"Id": "D03Z02S04[S]",
 		"Direction": 3,
-		"OriginalDoor": "D03Z02S06[N]"
+		"OriginalDoor": "D03Z02S06[N]",
+		"Logic": "D03Z02S04[NE] || D03Z02S04[S] || wallClimb"
 	},
 	{
 		"Id": "D03Z02S05[W]",
@@ -1812,13 +1816,13 @@
 		"Id": "D03Z02S05[E]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z02S11[W]",
-		"Logic": "D03Z02S05[E] || D03Z02S05[S] || dawnHeart && ranged"
+		"Logic": "D03Z02S05[E] || D03Z02S05[S] || canCrossGap5"
 	},
 	{
 		"Id": "D03Z02S05[S]",
 		"Direction": 3,
 		"OriginalDoor": "D03Z02S04[NE]",
-		"Logic": "D03Z02S05[E] || D03Z02S05[S] || dawnHeart && ranged"
+		"Logic": "D03Z02S05[E] || D03Z02S05[S] || canCrossGap5"
 	},
 	{
 		"Id": "D03Z02S06[W]",
@@ -1850,7 +1854,8 @@
 	{
 		"Id": "D03Z02S08[W]",
 		"Direction": 1,
-		"OriginalDoor": "D03Z02S14[E]"
+		"OriginalDoor": "D03Z02S14[E]",
+		"Logic": "D03Z02S08[N] || D03Z02S08[W] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "D03Z02S08[E]",
@@ -1860,22 +1865,26 @@
 	{
 		"Id": "D03Z02S08[N]",
 		"Direction": 0,
-		"OriginalDoor": "D03Z02S09[S]"
+		"OriginalDoor": "D03Z02S09[S]",
+		"Logic": "D03Z02S08[N] || D03Z02S08[W] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "D03Z02S09[W]",
 		"Direction": 1,
-		"OriginalDoor": "D03Z02S12[E]"
+		"OriginalDoor": "D03Z02S12[E]",
+		"Logic": "D03Z02S09[W] || dash"
 	},
 	{
 		"Id": "D03Z02S09[N]",
 		"Direction": 0,
-		"OriginalDoor": "D03Z02S10[S]"
+		"OriginalDoor": "D03Z02S10[S]",
+		"Logic": "D03Z02S09[N] || D03Z02S09[S] || D03Z02S09[Cherubs] || dash"
 	},
 	{
 		"Id": "D03Z02S09[S]",
 		"Direction": 3,
-		"OriginalDoor": "D03Z02S08[N]"
+		"OriginalDoor": "D03Z02S08[N]",
+		"Logic": "D03Z02S09[N] || D03Z02S09[S] || D03Z02S09[Cherubs] || dash"
 	},
 	{
 		"Id": "D03Z02S09[Cherubs]",
@@ -1914,12 +1923,14 @@
 	{
 		"Id": "D03Z02S11[W]",
 		"Direction": 1,
-		"OriginalDoor": "D03Z02S05[E]"
+		"OriginalDoor": "D03Z02S05[E]",
+		"Logic": "D03Z02S11[W] || dash && (doubleJump || wallClimb)"
 	},
 	{
 		"Id": "D03Z02S11[E]",
 		"Direction": 2,
-		"OriginalDoor": "D03Z02S15[W]"
+		"OriginalDoor": "D03Z02S15[W]",
+		"Logic": "D03Z02S11[E] || dash && (wallClimb || doubleJump)"
 	},
 	{
 		"Id": "D03Z02S12[E]",
@@ -1970,7 +1981,8 @@
 	{
 		"Id": "D03Z03S01[NL]",
 		"Direction": 0,
-		"OriginalDoor": "D03Z02S03[SSL]"
+		"OriginalDoor": "D03Z02S03[SSL]",
+		"Logic": "D03Z03S01[NL] || D03Z03S01[NR] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "D03Z03S01[NC]",
@@ -1979,17 +1991,20 @@
 	{
 		"Id": "D03Z03S01[NR]",
 		"Direction": 0,
-		"OriginalDoor": "D03Z02S03[SSR]"
+		"OriginalDoor": "D03Z02S03[SSR]",
+		"Logic": "D03Z03S01[NL] || D03Z03S01[NR] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "D03Z03S02[W]",
 		"Direction": 1,
-		"OriginalDoor": "D03Z03S12[E]"
+		"OriginalDoor": "D03Z03S12[E]",
+		"Logic": "D03Z03S02[NE] || D03Z03S02[W] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "D03Z03S02[NE]",
 		"Direction": 2,
-		"OriginalDoor": "D03Z03S14[W]"
+		"OriginalDoor": "D03Z03S14[W]",
+		"Logic": "D03Z03S02[NE] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "D03Z03S02[E]",
@@ -2018,25 +2033,25 @@
 		"Id": "D03Z03S04[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z03S03[NE]",
-		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[E] || D03Z03S04[SW] || blood"
+		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || (wallClimb || doubleJump) && (D03Z03S04[E] || D03Z03S04[SW] || blood || canCrossGap10)"
 	},
 	{
 		"Id": "D03Z03S04[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z03S05[NW]",
-		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[E] || D03Z03S04[SW] || blood"
+		"Logic": "D03Z03S04[NE] || wallClimb && (D03Z03S04[NW] || D03Z03S04[E] || D03Z03S04[SW] || blood || canCrossGap10)"
 	},
 	{
 		"Id": "D03Z03S04[E]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z03S05[SW]",
-		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[E] || D03Z03S04[SW] || blood"
+		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[E] || (wallClimb || doubleJump) && (D03Z03S04[SW] || blood || canCrossGap10)"
 	},
 	{
 		"Id": "D03Z03S04[SW]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z03S03[SE]",
-		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[E] || D03Z03S04[SW] || blood"
+		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[E] || D03Z03S04[SW] || blood || canCrossGap10"
 	},
 	{
 		"Id": "D03Z03S04[SE]",
@@ -2081,12 +2096,14 @@
 	{
 		"Id": "D03Z03S07[NW]",
 		"Direction": 1,
-		"OriginalDoor": "D03Z03S19[E]"
+		"OriginalDoor": "D03Z03S19[E]",
+		"Logic": "D03Z03S07[NW] || D03Z03S07[NE] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "D03Z03S07[NE]",
 		"Direction": 2,
-		"OriginalDoor": "D03Z03S08[W]"
+		"OriginalDoor": "D03Z03S08[W]",
+		"Logic": "D03Z03S07[NW] || D03Z03S07[NE] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "D03Z03S07[SW]",
@@ -2118,7 +2135,7 @@
 		"Id": "D03Z03S08[-CherubsR]",
 		"Direction": 6,
 		"OriginalDoor": "D03Z03S11[CherubsR]",
-		"Logic": "linen && blood"
+		"Logic": "linen"
 	},
 	{
 		"Id": "D03Z03S09[SW]",
@@ -2186,7 +2203,7 @@
 		"Id": "D03Z03S15[E]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z03S16[W]",
-		"Logic": "boss-grievance"
+		"Logic": "canBeatGrievanceBoss"
 	},
 	{
 		"Id": "D03Z03S16[W]",
