@@ -333,21 +333,6 @@ namespace BlasphemousRandomizer.ItemRando
                 case "miriamRooms": return new IntVariable(miriamRooms);
                 case "amanecidaRooms": return new IntVariable(amanecidaRooms);
 
-                // Will need to be changed with boss rando
-                case "boss-brotherhood": return new BoolVariable(bossPower >= 0);
-                case "boss-mercy": return new BoolVariable(bossPower >= 0);
-                case "boss-convent": return new BoolVariable(bossPower >= 3);
-                case "boss-grievance": return new BoolVariable(bossPower >= 3);
-                case "boss-bridge": return new BoolVariable(bossPower >= 4);
-                case "boss-mothers": return new BoolVariable(bossPower >= 4);
-                case "boss-canvases": return new BoolVariable(bossPower >= 4);
-                case "boss-wall": return new BoolVariable(bossPower >= 4);
-                case "boss-rooftops": return new BoolVariable(bossPower >= 10);
-                case "boss-ossuary": return new BoolVariable(bossPower >= 15);
-                case "boss-mourning": return new BoolVariable(bossPower >= 9);
-                case "boss-amanecida": return new BoolVariable(bossPower >= 12);
-                case "boss-laudes": return new BoolVariable(bossPower >= 12);
-
                 // Bosses
                 case "canBeatBrotherhoodBoss": return new BoolVariable(canBeatBrotherhoodBoss);
                 case "canBeatMercyBoss": return new BoolVariable(canBeatMercyBoss);

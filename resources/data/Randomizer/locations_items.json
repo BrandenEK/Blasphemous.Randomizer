@@ -601,21 +601,21 @@
 		"Name": "Gemino intial gift",
 		"Hint": "Gemino holds *",
 		"Room": "D02Z01S01",
-		"Logic": "D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && dawnHeart && dash)"
+		"Logic": "D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump)"
 	},
 	{
 		"Id": "RB10",
 		"Name": "Gemino final gift",
 		"Hint": "Gemino holds *",
 		"Room": "D02Z01S01",
-		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && dawnHeart && dash))"
+		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump))"
 	},
 	{
 		"Id": "RESCUED_CHERUB_23",
 		"Name": "Eastern root cherub",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S02",
-		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (root || dawnHeart && dash || cherubBitfield ^ 0x20042)"
+		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (root || canDawnJump || cherubBitfield ^ 0x20042)"
 	},
 	{
 		"Id": "QI20",
@@ -628,7 +628,7 @@
 		"Name": "White lady flower",
 		"Hint": "Gemino holds *",
 		"Room": "D02Z01S04",
-		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && dawnHeart && dash))"
+		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump))"
 	},
 	{
 		"Id": "QI07",
@@ -641,14 +641,14 @@
 		"Name": "Large cave ledge",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S06",
-		"Logic": "D02Z01S06[E] && wallClimb && dash && blood || (dawnHeart && dash || wheel)"
+		"Logic": "D02Z01S06[E] && wallClimb && dash && blood || (canDawnJump || wheel) ???"
 	},
 	{
 		"Id": "RESCUED_CHERUB_27",
 		"Name": "Large cave cherub",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S06",
-		"Logic": "cherubBitfield ^ 0x66252"
+		"Logic": "cherubBitfield ^ 0x66252 ???"
 	},
 	{
 		"Id": "PR04",
@@ -662,7 +662,7 @@
 		"Name": "Eastern root ledge",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S09",
-		"Logic": "root || (dawnHeart && dash && doubleJump && ranged)"
+		"Logic": "root || (canDawnJump && doubleJump && canAirStall)"
 	},
 	
 	{
@@ -670,14 +670,14 @@
 		"Name": "Center shaft cherub",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S02",
-		"Logic": "D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || (D02Z02S02[NW] || D02Z02S02[NE] || wallClimb) && (cherubBitfield ^ 0x30242 || doubleJump)"
+		"Logic": "D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || ((D02Z02S02[NW] || D02Z02S02[NE] || wallClimb) && (cherubBitfield ^ 0x30242 || doubleJump))"
 	},
 	{
 		"Id": "QI46",
 		"Name": "Eastern shaft lower",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S03",
-		"Logic": "D02Z02S03[NW] || D02Z02S03[NE] || wallClimb || wheel || doubleJump || dawnHeart && dash"
+		"Logic": "D02Z02S03[NW] || D02Z02S03[NE] || wallClimb || wheel || doubleJump || canDawnJump"
 	},
 	{
 		"Id": "CO29",
@@ -691,7 +691,7 @@
 		"Name": "Eastern shaft upper",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S03",
-		"Logic": "blood && root"
+		"Logic": "((wallClimb || doubleJump || D02Z02S03[NE] && root) && blood && (doubleJump || root && wallClimb)) || (D02Z02S03[NE] && root && wallClimb && doubleJump)"
 	},
 	{
 		"Id": "RB32",
@@ -704,20 +704,22 @@
 		"Id": "CO01",
 		"Name": "Western shaft upper",
 		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S04"
+		"Room": "D02Z02S04",
+		"Logic": "D02Z02S04[NE] || ((D02Z02S04[W] || D02Z02S04[E] && dash) && (doubleJump || wallClimb)) || (wallClimb && D02Z02S04[SE])"
 	},
 	{
 		"Id": "RESCUED_CHERUB_25",
 		"Name": "Western shaft cherub",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S04",
-		"Logic": "blood || cherubBitfield ^ 0x26652"
+		"Logic": "cherubBitfield ^ 0x26652 && (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE]) ???"
 	},
 	{
 		"Id": "RB15",
 		"Name": "Center shaft ledge",
 		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S05"
+		"Room": "D02Z02S05",
+		"Logic": "D02Z02S05[NW] || wallClimb"
 	},
 	{
 		"Id": "RB38",
@@ -730,14 +732,14 @@
 		"Name": "Shop cave hole",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S08",
-		"Logic": "D02Z02S08[CherubsR] || blood || canBreakHoles"
+		"Logic": "D02Z02S08[CherubsR] || blood || canBreakHoles || doubleJump && (canDawnJump || wheel)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_31",
 		"Name": "Shop cave cherub",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S08",
-		"Logic": "D02Z02S08[CherubsR] || blood || cherubBitfield ^ 0x20042"
+		"Logic": "D02Z02S08[CherubsR] || blood || cherubBitfield ^ 0x20042 || doubleJump && (canDawnJump || wheel)"
 	},
 	{
 		"Id": "Oil[D02Z02S10]",
@@ -780,31 +782,28 @@
 		"Name": "Defeat Amanecida of the Bejeweled Arrow",
 		"Hint": "* is guarded by the Bejeweled Arrow",
 		"Room": "D02Z02S14",
-		"Logic": "D01BZ07S01[Santos] && boss-amanecida && D02Z03S23[E]"
+		"Logic": "canBeatGraveyardBoss"
 	},
 	{
 		"Id": "QI11",
 		"Name": "Shop left",
 		"Hint": "* can be purchased",
 		"LocationFlag": "LOCATION_QI11~D02Z02",
-		"Room": "D02BZ02S01",
-		"Logic": "tears >= 0"
+		"Room": "D02BZ02S01"
 	},
 	{
 		"Id": "RB37",
 		"Name": "Shop middle",
 		"Hint": "* can be purchased",
 		"LocationFlag": "LOCATION_RB37~D02Z02",
-		"Room": "D02BZ02S01",
-		"Logic": "tears >= 0"
+		"Room": "D02BZ02S01"
 	},
 	{
 		"Id": "RB02",
 		"Name": "Shop right",
 		"Hint": "* can be purchased",
 		"LocationFlag": "LOCATION_RB02~D02Z02",
-		"Room": "D02BZ02S01",
-		"Logic": "tears >= 0"
+		"Room": "D02BZ02S01"
 	},
 	
 	{
@@ -812,13 +811,14 @@
 		"Name": "Blood platform ledge",
 		"Hint": "* resides in the Convent",
 		"Room": "D02Z03S03",
-		"Logic": "D02Z03S03[NW] || blood"
+		"Logic": "D02Z03S03[NW] || blood || doubleJump || canDawnJump || wheel && canAirStall"
 	},
 	{
 		"Id": "RB08",
 		"Name": "Central lung room",
 		"Hint": "* resides in the Convent",
-		"Room": "D02Z03S05"
+		"Room": "D02Z03S05",
+		"Logic": "dash && (D02Z03S05[S] || D02Z03S05[NE] || wallClimb || doubleJump)"
 	},
 	{
 		"Id": "CO15",
@@ -831,7 +831,7 @@
 		"Name": "Southwest lung room",
 		"Hint": "* resides in the Convent",
 		"Room": "D02Z03S12",
-		"Logic": "lung"
+		"Logic": "canSurvivePoison && dash"
 	},
 	{
 		"Id": "Sword[D02Z03S13]",
@@ -862,7 +862,7 @@
 		"Name": "Defeat Our Lady of the Charred Visage",
 		"Hint": "* is guarded by Our Lady of the Charred Visage",
 		"Room": "D02Z03S20",
-		"Logic": "boss-convent"
+		"Logic": "canBeatConventBoss"
 	},
 	{
 		"Id": "QI40",

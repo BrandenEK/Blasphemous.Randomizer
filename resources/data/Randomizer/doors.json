@@ -918,7 +918,7 @@
 		"Id": "D02Z01S01[W]",
 		"Direction": 1,
 		"OriginalDoor": "D02Z01S02[E]",
-		"Logic": "D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && dawnHeart && dash)"
+		"Logic": "D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump)"
 	},
 	{
 		"Id": "D02Z01S01[SE]",
@@ -942,7 +942,7 @@
 		"Id": "D02Z01S02[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D02Z01S03[SE]",
-		"Logic": "D02Z01S02[NW] || wallClimb || doubleJump || (D02Z01S02[NE] && root && dawnHeart && dash && ranged)"
+		"Logic": "D02Z01S02[NW] || wallClimb || doubleJump || (D02Z01S02[NE] && root && canDawnJump && canAirStall)"
 	},
 	{
 		"Id": "D02Z01S02[E]",
@@ -953,7 +953,7 @@
 		"Id": "D02Z01S02[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D02Z01S09[W]",
-		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (root || dawnHeart && dash && doubleJump)"
+		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (root || canDawnJump && doubleJump)"
 	},
 	{
 		"Id": "D02Z01S02[]",
@@ -991,7 +991,7 @@
 		"Id": "D02Z01S04[-N]",
 		"Direction": 6,
 		"OriginalDoor": "D02Z01S08[N]",
-		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && dawnHeart && dash))"
+		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump))"
 	},
 	{
 		"Id": "D02Z01S05[E]",
@@ -1002,7 +1002,7 @@
 		"Id": "D02Z01S06[W]",
 		"Direction": 1,
 		"OriginalDoor": "D02Z01S08[E]",
-		"Logic": "D02Z01S06[W] || dash || doubleJump && wallClimb"
+		"Logic": "???"
 	},
 	{
 		"Id": "D02Z01S06[E]",
@@ -1038,9 +1038,8 @@
 		"Id": "D02Z01S09[-CherubsR]",
 		"Direction": 6,
 		"OriginalDoor": "D02Z01S01[CherubsR]",
-		"Logic": "linen && (root || dawnHeart || doubleJump)"
+		"Logic": "linen && (root || canDawnJump || doubleJump)"
 	},
-	
 	
 	{
 		"Id": "D02Z02S01[W]",
@@ -1102,13 +1101,13 @@
 		"Id": "D02Z02S03[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D02Z02S05[SE]",
-		"Logic": "D02Z02S03[NW] || wallClimb || D02Z02S03[NE] && root"
+		"Logic": "D02Z02S03[NW] || doubleJump || wallClimb || D02Z02S03[NE] && root"
 	},
 	{
 		"Id": "D02Z02S03[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D02Z02S14[W]",
-		"Logic": "D02Z02S03[NE] || wallClimb && (blood && dawnHeart && dash && doubleJump) root && (blood || ranged) !!!"
+		"Logic": "D02Z02S03[NE] || wallClimb && ((canDawnJump && doubleJump && canAirStall) || (blood && (root || doubleJump && (canDawnJump || canAirStall))) || (root && (doubleJump || canAirStall)))"
 	},
 	{
 		"Id": "D02Z02S03[-Cherubs]",
@@ -1119,12 +1118,14 @@
 	{
 		"Id": "D02Z02S04[W]",
 		"Direction": 1,
-		"OriginalDoor": "D02Z02S09[E]"
+		"OriginalDoor": "D02Z02S09[E]",
+		"Logic": "D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE] && wallClimb"
 	},
 	{
 		"Id": "D02Z02S04[SE]",
 		"Direction": 2,
-		"OriginalDoor": "D02Z02S02[NW]"
+		"OriginalDoor": "D02Z02S02[NW]",
+		"Logic": "D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[SE] || dash"
 	},
 	{
 		"Id": "D02Z02S04[E]",
@@ -1135,13 +1136,14 @@
 	{
 		"Id": "D02Z02S04[NE]",
 		"Direction": 2,
-		"OriginalDoor": "D02Z02S05[W]"
+		"OriginalDoor": "D02Z02S05[W]",
+		"Logic": "D02Z02S04[NE] || ((D02Z02S04[W] || D02Z02S04[E] && dash) && (doubleJump || wallClimb)) || (wallClimb && D02Z02S04[SE])"
 	},
 	{
 		"Id": "D02Z02S04[-CherubsL]",
 		"Direction": 6,
 		"OriginalDoor": "D02Z02S08[CherubsL]",
-		"Logic": "linen"
+		"Logic": "linen && (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[SE] || dash)"
 	},
 	{
 		"Id": "D02Z02S05[SW]",
@@ -1162,12 +1164,14 @@
 	{
 		"Id": "D02Z02S05[E]",
 		"Direction": 2,
-		"OriginalDoor": "D02Z02S10[W]"
+		"OriginalDoor": "D02Z02S10[W]",
+		"Logic": "D02Z02S05[NW] || D02Z02S05[E] || wallClimb"
 	},
 	{
 		"Id": "D02Z02S05[NW]",
 		"Direction": 1,
-		"OriginalDoor": "D02Z02S07[E]"
+		"OriginalDoor": "D02Z02S07[E]",
+		"Logic": "D02Z02S05[NW] || wallClimb"
 	},
 	{
 		"Id": "D02Z02S05[-CherubsL]",
@@ -1247,7 +1251,7 @@
 		"Id": "D02Z02S11[E]",
 		"Direction": 2,
 		"OriginalDoor": "D02Z02S12[W]",
-		"Logic": "D02Z02S11[E] || D02Z02S11[NW] || D02Z02S11[NE]"
+		"Logic": "D02Z02S11[E] || D02Z02S11[NW] || D02Z02S11[NE] || doubleJump"
 	},
 	{
 		"Id": "D02Z02S11[NW]",
@@ -1312,7 +1316,8 @@
 	{
 		"Id": "D02Z03S02[W]",
 		"Direction": 1,
-		"OriginalDoor": "D02Z03S03[E]"
+		"OriginalDoor": "D02Z03S03[E]",
+		"Logic": "D02Z03S02[NW] || D02Z03S02[NE] || D02Z03S02[N] || D02Z03S02[W] || doubleJump || wallClimb"
 	},
 	{
 		"Id": "D02Z03S02[NW]",
@@ -1341,7 +1346,7 @@
 		"Id": "D02Z03S03[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D02Z03S05[NE]",
-		"Logic": "D02Z03S03[NW] || blood"
+		"Logic": "D02Z03S03[NW] || blood || doubleJump || canDawnJump || wheel && canAirStall"
 	},
 	{
 		"Id": "D02Z03S03[E]",
@@ -1351,7 +1356,8 @@
 	{
 		"Id": "D02Z03S05[S]",
 		"Direction": 3,
-		"OriginalDoor": "D02Z03S07[N]"
+		"OriginalDoor": "D02Z03S07[N]",
+		"Logic": "D02Z03S05[S] || D02Z03S05[NE] || wallClimb"
 	},
 	{
 		"Id": "D02Z03S05[E]",
@@ -1361,7 +1367,8 @@
 	{
 		"Id": "D02Z03S05[NE]",
 		"Direction": 2,
-		"OriginalDoor": "D02Z03S03[NW]"
+		"OriginalDoor": "D02Z03S03[NW]",
+		"Logic": "D02Z03S05[S] || D02Z03S05[NE] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "D02Z03S06[W]",
@@ -1518,7 +1525,8 @@
 	{
 		"Id": "D02Z03S18[NW]",
 		"Direction": 1,
-		"OriginalDoor": "D02Z03S23[E]"
+		"OriginalDoor": "D02Z03S23[E]",
+		"Logic": "D02Z03S18[NW] || D02Z03S18[NE] || wallClimb"
 	},
 	{
 		"Id": "D02Z03S18[SE]",
@@ -1528,7 +1536,8 @@
 	{
 		"Id": "D02Z03S18[NE]",
 		"Direction": 2,
-		"OriginalDoor": "D02Z03S09[W]"
+		"OriginalDoor": "D02Z03S09[W]",
+		"Logic": "D02Z03S18[NW] || D02Z03S18[NE] || wallClimb"
 	},
 	{
 		"Id": "D02Z03S19[E]",
@@ -1539,13 +1548,13 @@
 		"Id": "D02Z03S20[W]",
 		"Direction": 1,
 		"OriginalDoor": "D02Z03S09[E]",
-		"Logic": "D02Z03S20[W] || boss-convent"
+		"Logic": "D02Z03S20[W] || canBeatConventBoss"
 	},
 	{
 		"Id": "D02Z03S20[E]",
 		"Direction": 2,
 		"OriginalDoor": "D02Z03S21[W]",
-		"Logic": "D02Z03S20[E] || boss-convent"
+		"Logic": "D02Z03S20[E] || canBeatConventBoss"
 	},
 	{
 		"Id": "D02Z03S21[W]",
