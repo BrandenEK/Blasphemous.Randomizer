@@ -1745,7 +1745,7 @@
 		"Id": "D03Z02S03[E]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z02S05[W]",
-		"Logic": "D03Z02S03[E] || (canAirStall || doubleJump) && (D03Z02S03[E] && dash || D03Z02S03[N] || D03Z02S03[SE2])"
+		"Logic": "D03Z02S03[E] || (canAirStall || doubleJump || boots) && (D03Z02S03[E] && dash || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
 		"Id": "D03Z02S03[N]",
@@ -3305,19 +3305,19 @@
 		"Id": "D06Z01S04[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S06[E]",
-		"Logic": "D06Z01S04[NW] || D06Z01S04[Cherubs] || lung && D06Z01S04[NE] && (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health])"
+		"Logic": "D06Z01S04[NW] || D06Z01S04[Cherubs] || D06Z01S04[NE] && (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health]) && wallClimb && canSurvivePoison && (dash || doubleJump && (canDawnJump || root))"
 	},
 	{
 		"Id": "D06Z01S04[Health]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S24[W]",
-		"Logic": "D06Z01S04[Health] || ((D06Z01S04[SW] || D06Z01S04[W]) && blood && root && lung)"
+		"Logic": "D06Z01S04[Health] || ((D06Z01S04[SW] || D06Z01S04[W]) && wallClimb && canSurvivePoison && (doubleJump || blood && root))"
 	},
 	{
 		"Id": "D06Z01S04[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S06[W]",
-		"Logic": "D06Z01S04[NE] || lung && (D06Z01S04[NW] || D06Z01S04[Cherubs]) && (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health])"
+		"Logic": "D06Z01S04[NE] || (D06Z01S04[NW] || D06Z01S04[Cherubs]) && (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health]) && wallClimb && canSurvivePoison && (dash || doubleJump && (canDawnJump || root))"
 	},
 	{
 		"Id": "D06Z01S04[Cherubs]",
@@ -3378,7 +3378,8 @@
 	{
 		"Id": "D06Z01S08[E]",
 		"Direction": 2,
-		"OriginalDoor": "D06Z01S14[W]"
+		"OriginalDoor": "D06Z01S14[W]",
+		"Logic": "D06Z01S08[N] || D06Z01S08[E] || wallClimb"
 	},
 	{
 		"Id": "D06Z01S08[N]",
@@ -3444,31 +3445,31 @@
 		"Id": "D06Z01S12[W]",
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S13[E]",
-		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || D06Z01S12[W] || D06Z01S12[E]"
+		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || D06Z01S12[W] || D06Z01S12[E] || wallClimb && doubleJump"
 	},
 	{
 		"Id": "D06Z01S12[E]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S07[W]",
-		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || D06Z01S12[W] || D06Z01S12[E]"
+		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || D06Z01S12[W] || D06Z01S12[E] || wallClimb && doubleJump"
 	},
 	{
 		"Id": "D06Z01S12[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S05[E]",
-		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2]"
+		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] && (wallClimb || doubleJump)"
 	},
 	{
 		"Id": "D06Z01S12[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S09[W]",
-		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2]"
+		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] && (wallClimb || doubleJump)"
 	},
 	{
 		"Id": "D06Z01S12[NE2]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S16[W]",
-		"Logic": "D06Z01S12[NE2]"
+		"Logic": "D06Z01S12[NE2] || (D06Z01S12[NW] || D06Z01S12[NE]) && doubleJump"
 	},
 	{
 		"Id": "D06Z01S13[W]",
@@ -3510,37 +3511,37 @@
 		"Id": "D06Z01S15[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S21[E]",
-		"Logic": "D06Z01S15[NW] || D06Z01S15[NE] && D06Z01S15[SW]"
+		"Logic": "D06Z01S15[NW] || D06Z01S15[NE] && D06Z01S15[SW] && wallClimb"
 	},
 	{
 		"Id": "D06Z01S15[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S11[W]",
-		"Logic": "D06Z01S15[NE] || D06Z01S15[NW] && D06Z01S15[SW]"
+		"Logic": "D06Z01S15[NE] || D06Z01S15[NW] && D06Z01S15[SW] && wallClimb"
 	},
 	{
 		"Id": "D06Z01S16[W]",
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S12[NE2]",
-		"Logic": "D06Z01S16[W] || (D06Z01S16[CherubsL] && (root || ranged)) || (D06Z01S16[CherubsR] && ranged && (root || wheel)) || (D06Z01S16[E] && root)"
+		"Logic": "D06Z01S16[W] || (D06Z01S16[CherubsL] && (doubleJump || wallClimb && (root || canAirStall))) || (D06Z01S16[CherubsR] && (doubleJump || canAirStall && (root || wheel) && (wallClimb || canDawnJump))) || (D06Z01S16[E] && (root || canCrossGap7) && (wallClimb || canCrossGap5))"
 	},
 	{
 		"Id": "D06Z01S16[E]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S01[NNW]",
-		"Logic": "D06Z01S16[E] || ((D06Z01S16[W] || D06Z01S16[CherubsL]) && (root || ranged && dawnHeart)) || (D06Z01S16[CherubsR] && ranged && (root || wheel))"
+		"Logic": "D06Z01S16[E] || ((D06Z01S16[W] || D06Z01S16[CherubsL]) && (root || canCrossGap5)) || (D06Z01S16[CherubsR] && (doubleJump || canAirStall && (root || wheel)))"
 	},
 	{
 		"Id": "D06Z01S16[-CherubsL]",
 		"Direction": 6,
 		"OriginalDoor": "D06Z01S07[CherubsL]",
-		"Logic": "linen && (D06Z01S16[W] || D06Z01S16[CherubsL] || (D06Z01S16[CherubsR] && ranged && (root || wheel)) || (D06Z01S16[E] && root))"
+		"Logic": "linen && (D06Z01S16[W] || D06Z01S16[CherubsL] || (D06Z01S16[CherubsR] && (doubleJump || canAirStall && (root || wheel))) || (D06Z01S16[E] && (root || canCrossGap7)))"
 	},
 	{
 		"Id": "D06Z01S16[-CherubsR]",
 		"Direction": 6,
 		"OriginalDoor": "D06Z01S07[CherubsR]",
-		"Logic": "linen && (D06Z01S16[E] || D06Z01S16[CherubsR] || (D06Z01S16[CherubsL] && (ranged || root)) || (D06Z01S16[W] && (ranged || root || wheel || dawnHeart)))"
+		"Logic": "linen && (D06Z01S16[E] || D06Z01S16[CherubsR] || (D06Z01S16[CherubsL] && (ranged || root || doubleJump)) || (D06Z01S16[W] && (root || canCrossGap1)))"
 	},
 	{
 		"Id": "D06Z01S16[CherubsL]",
@@ -3554,18 +3555,19 @@
 		"Id": "D06Z01S17[W]",
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S01[NNE]",
-		"Logic": "D06Z01S17[W] || (D06Z01S17[E] || D06Z01S17[CherubsR]) && blood || D06Z01S17[CherubsL] && ranged"
+		"Logic": "D06Z01S17[W] || (D06Z01S17[E] || D06Z01S17[CherubsR]) && blood || D06Z01S17[CherubsL] && doubleJump"
 	},
 	{
 		"Id": "D06Z01S17[E]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S26[W]",
-		"Logic": "D06Z01S17[E] || D06Z01S17[CherubsR] || blood && (D06Z01S17[W] || D06Z01S17[CherubsL] && ranged)"
+		"Logic": "D06Z01S17[E] || D06Z01S17[CherubsR] || blood && (D06Z01S17[W] || D06Z01S17[CherubsL] && doubleJump)"
 	},
 	{
 		"Id": "D06Z01S17[-Cherubs]",
 		"Direction": 6,
-		"OriginalDoor": "D06Z01S04[Cherubs]"
+		"OriginalDoor": "D06Z01S04[Cherubs]",
+		"Logic": "linen"
 	},
 	{
 		"Id": "D06Z01S17[CherubsL]",
@@ -3649,13 +3651,13 @@
 		"Id": "D06Z01S25[W]",
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S19[E]",
-		"Logic": "D06Z01S25[W] || boss-rooftops"
+		"Logic": "D06Z01S25[W] || canBeatRooftopsBoss"
 	},
 	{
 		"Id": "D06Z01S25[E]",
 		"Direction": 2,
 		"OriginalDoor": "D07Z01S01[W]",
-		"Logic": "D06Z01S25[E] || boss-rooftops"
+		"Logic": "D06Z01S25[E] || canBeatRooftopsBoss"
 	},
 	{
 		"Id": "D06Z01S26[W]",
@@ -3693,13 +3695,13 @@
 		"Id": "D08Z01S01[W]",
 		"Direction": 1,
 		"OriginalDoor": "D01Z03S06[E]",
-		"Logic": "D08Z01S01[W] || boss-bridge"
+		"Logic": "D08Z01S01[W] || canBeatBridgeBoss"
 	},
 	{
 		"Id": "D08Z01S01[E]",
 		"Direction": 2,
 		"OriginalDoor": "D08Z02S01[W]",
-		"Logic": "holyWounds >= 3 && (D08Z01S01[E] || boss-bridge)"
+		"Logic": "holyWounds >= 3 && (D08Z01S01[E] || D08Z01S01[Cherubs] || canBeatBridgeBoss)"
 	},
 	{
 		"Id": "D08Z01S01[Cherubs]",
@@ -3785,19 +3787,20 @@
 	{
 		"Id": "D08Z03S02[NW]",
 		"Direction": 1,
-		"OriginalDoor": "D08Z03S03[E]"
+		"OriginalDoor": "D08Z03S03[E]",
+		"Logic": "D08Z03S02[NW] || wallClimb"
 	},
 	{
 		"Id": "D08Z03S03[W]",
 		"Direction": 1,
 		"OriginalDoor": "D08Z01S02[NE]",
-		"Logic": "D08Z03S03[W] || boss-laudes"
+		"Logic": "D08Z03S03[W] || canBeatHallBoss"
 	},
 	{
 		"Id": "D08Z03S03[E]",
 		"Direction": 2,
 		"OriginalDoor": "D08Z03S02[NW]",
-		"Logic": "D08Z03S03[E] || boss-laudes"
+		"Logic": "D08Z03S03[E] || canBeatHallBoss"
 	},
 	
 	{
@@ -3880,7 +3883,7 @@
 		"Id": "D09Z01S03[W]",
 		"Direction": 1,
 		"OriginalDoor": "D09Z01S05[SE]",
-		"Logic": "D09Z01S03[N] && boss-wall"
+		"Logic": "D09Z01S03[N] && canBeatPrisonBoss"
 	},
 	{
 		"Id": "D09Z01S03[N]",
@@ -3985,13 +3988,13 @@
 		"Id": "D09Z01S08[SE]",
 		"Direction": 2,
 		"OriginalDoor": "D09Z01S07[W]",
-		"Logic": "D09Z01S08[SE] || D09Z01S08[Cell15] || D09Z01S08[Cell16] || D09Z01S08[Cell18] || D09Z01S08[Cell17]"
+		"Logic": "D09Z01S08[SE] || D09Z01S08[Cell15] || D09Z01S08[Cell16] || D09Z01S08[Cell18] || D09Z01S08[Cell17] && dash"
 	},
 	{
 		"Id": "D09Z01S08[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D09Z01S07[NW]",
-		"Logic": "D09Z01S08[NE] || D09Z01S08[Cell7] || D09Z01S08[Cell17]"
+		"Logic": "D09Z01S08[NE] || D09Z01S08[Cell7] || D09Z01S08[Cell17] && dash"
 	},
 	{
 		"Id": "D09Z01S08[Cell14]",
@@ -4003,25 +4006,25 @@
 		"Id": "D09Z01S08[Cell15]",
 		"Direction": 4,
 		"OriginalDoor": "D09BZ01S01[Cell15]",
-		"Logic": "silverKey && (D09Z01S08[SE] || D09Z01S08[Cell15] || D09Z01S08[Cell16] || D09Z01S08[Cell18] || D09Z01S08[Cell17])"
+		"Logic": "silverKey && (D09Z01S08[SE] || D09Z01S08[Cell15] || D09Z01S08[Cell16] || D09Z01S08[Cell18] || D09Z01S08[Cell17] && dash)"
 	},
 	{
 		"Id": "D09Z01S08[Cell7]",
 		"Direction": 4,
 		"OriginalDoor": "D09BZ01S01[Cell7]",
-		"Logic": "goldKey && (D09Z01S08[NE] || D09Z01S08[Cell7] || D09Z01S08[Cell17])"
+		"Logic": "goldKey && (D09Z01S08[NE] || D09Z01S08[Cell7] || D09Z01S08[Cell17] && dash)"
 	},
 	{
 		"Id": "D09Z01S08[Cell16]",
 		"Direction": 4,
 		"OriginalDoor": "D09BZ01S01[Cell16]",
-		"Logic": "goldKey && (D09Z01S08[SE] || D09Z01S08[Cell15] || D09Z01S08[Cell16] || D09Z01S08[Cell18] || D09Z01S08[Cell17])"
+		"Logic": "goldKey && (D09Z01S08[SE] || D09Z01S08[Cell15] || D09Z01S08[Cell16] || D09Z01S08[Cell18] || D09Z01S08[Cell17] && dash)"
 	},
 	{
 		"Id": "D09Z01S08[Cell18]",
 		"Direction": 4,
 		"OriginalDoor": "D09BZ01S01[Cell18]",
-		"Logic": "silverKey && (D09Z01S08[SE] || D09Z01S08[Cell15] || D09Z01S08[Cell16] || D09Z01S08[Cell18] || D09Z01S08[Cell17])"
+		"Logic": "silverKey && (D09Z01S08[SE] || D09Z01S08[Cell15] || D09Z01S08[Cell16] || D09Z01S08[Cell18] || D09Z01S08[Cell17] && dash)"
 	},
 	{
 		"Id": "D09Z01S08[Cell17]",
@@ -4032,42 +4035,44 @@
 	{
 		"Id": "D09Z01S09[SW]",
 		"Direction": 1,
-		"OriginalDoor": "D04Z01S06[E]"
+		"OriginalDoor": "D04Z01S06[E]",
+		"Logic": "D09Z01S09[Cell21] || D09Z01S09[Cell20] || D09Z01S09[SW] || D09Z01S09[E] || dash"
 	},
 	{
 		"Id": "D09Z01S09[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D09Z01S12[E]",
-		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || D09Z01S09[Cell24]"
+		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || D09Z01S09[Cell24] && dash"
 	},
 	{
 		"Id": "D09Z01S09[E]",
 		"Direction": 2,
-		"OriginalDoor": "D09Z01S07[SW]"
+		"OriginalDoor": "D09Z01S07[SW]",
+		"Logic": "D09Z01S09[Cell21] || D09Z01S09[Cell20] || D09Z01S09[SW] || D09Z01S09[E] || dash"
 	},
 	{
 		"Id": "D09Z01S09[Cell24]",
 		"Direction": 4,
 		"OriginalDoor": "D09BZ01S01[Cell24]",
-		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || D09Z01S09[Cell24]"
+		"Logic": "D09Z01S09[Cell24] || dash && (D09Z01S09[NW] || D09Z01S09[Cell19])"
 	},
 	{
 		"Id": "D09Z01S09[Cell19]",
 		"Direction": 4,
 		"OriginalDoor": "D09BZ01S01[Cell19]",
-		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || D09Z01S09[Cell24]"
+		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || D09Z01S09[Cell24] && dash"
 	},
 	{
 		"Id": "D09Z01S09[Cell20]",
 		"Direction": 4,
 		"OriginalDoor": "D09BZ01S01[Cell20]",
-		"Logic": "silverKey"
+		"Logic": "silverKey && (D09Z01S09[Cell21] || D09Z01S09[Cell20] || D09Z01S09[SW] || D09Z01S09[E] || dash)"
 	},
 	{
 		"Id": "D09Z01S09[Cell21]",
 		"Direction": 4,
 		"OriginalDoor": "D09BZ01S01[Cell21]",
-		"Logic": "goldKey"
+		"Logic": "goldKey && (D09Z01S09[Cell21] || D09Z01S09[Cell20] || D09Z01S09[SW] || D09Z01S09[E] || dash)"
 	},
 	{
 		"Id": "D09Z01S10[W]",

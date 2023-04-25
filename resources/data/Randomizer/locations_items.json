@@ -1499,28 +1499,29 @@
 		"Id": "CO06",
 		"Name": "Western shaft ledge",
 		"Hint": "* resides in the Rooftops",
-		"Room": "D06Z01S12"
+		"Room": "D06Z01S12",
+		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || D06Z01S12[W] || D06Z01S12[E] || wallClimb"
 	},
 	{
 		"Id": "PR12",
 		"Name": "Western shaft chest",
 		"Hint": "* resides in the Rooftops",
 		"Room": "D06Z01S12",
-		"Logic": "D06Z01S12[NE2]"
+		"Logic": "D06Z01S12[NE2] || (D06Z01S12[NW] || D06Z01S12[NE]) && doubleJump"
 	},
 	{
 		"Id": "RESCUED_CHERUB_36",
 		"Name": "Western shaft cherub",
 		"Hint": "* resides in the Rooftops",
 		"Room": "D06Z01S12",
-		"Logic": "D06Z01S12[W] || D06Z01S12[E] || D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || cherubBitfield ^ 0x40"
+		"Logic": "D06Z01S12[W] || D06Z01S12[E] || D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || wallClimb && (doubleJump || cherubBitfield ^ 0x40)"
 	},
 	{
 		"Id": "CO40",
 		"Name": "Upper eastern shaft ledge",
 		"Hint": "* resides in the Rooftops",
 		"Room": "D06Z01S15",
-		"Logic": "D06Z01S15[SW] && root"
+		"Logic": "D06Z01S15[SW] && wallClimb && (canCrossGap10 || root && (blood || doubleJump && canAirStall))"
 	},
 	{
 		"Id": "HE04",
@@ -1539,7 +1540,7 @@
 		"Name": "Defeat Crisanta",
 		"Hint": "* is guarded by Crisanta",
 		"Room": "D06Z01S25",
-		"Logic": "boss-rooftops"
+		"Logic": "canBeatRooftopsBoss"
 	},
 	
 	{
@@ -1554,14 +1555,14 @@
 		"Name": "Defeat Esdras",
 		"Hint": "* is guarded by Esdras",
 		"Room": "D08Z01S01",
-		"Logic": "holyWounds >= 3 && boss-bridge"
+		"Logic": "holyWounds >= 3 && canBeatBridgeBoss"
 	},
 	{
 		"Id": "PR09",
 		"Name": "Esdras bridge gift",
 		"Hint": "* is guarded by Esdras",
 		"Room": "D08Z01S01",
-		"Logic": "holyWounds >= 3 && boss-bridge"
+		"Logic": "holyWounds >= 3 && canBeatBridgeBoss"
 	},
 	{
 		"Id": "HE101",
@@ -1581,7 +1582,7 @@
 		"Name": "Defeat Laudes",
 		"Hint": "* is guarded by Laudes",
 		"Room": "D08Z03S03",
-		"Logic": "boss-laudes"
+		"Logic": "canBeatHallBoss"
 	},
 	
 	{
@@ -1589,7 +1590,7 @@
 		"Name": "Defeat Amanecida of the Molten Thorn",
 		"Hint": "* is guarded by the Molten Thorn",
 		"Room": "D09Z01S01",
-		"Logic": "D01BZ07S01[Santos] && boss-amanecida && D09BZ01S01[Cell24] && (D09Z01S01[W] || D09Z01S01[E])"
+		"Logic": "canBeatWallBoss"
 	},
 	{
 		"Id": "QI51",
@@ -1610,7 +1611,7 @@
 		"Name": "Defeat Quirce",
 		"Hint": "* is guarded by Quirce",
 		"Room": "D09Z01S03",
-		"Logic": "boss-wall"
+		"Logic": "canBeatPrisonBoss"
 	},
 	{
 		"Id": "RESCUED_CHERUB_05",
@@ -1630,7 +1631,7 @@
 		"Name": "Q3 upper ledge",
 		"Hint": "* resides in the Wall",
 		"Room": "D09Z01S09",
-		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || D09Z01S09[Cell24]"
+		"Logic": "D09Z01S09[Cell24] || dash && (D09Z01S09[NW] || D09Z01S09[Cell19])"
 	},
 	{
 		"Id": "QI70",
@@ -1706,7 +1707,7 @@
 		"Hint": "* is locked away in a room",
 		"LocationFlag": "LOCATION_CO02~D09Z01",
 		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell21] && blood && root && lung"
+		"Logic": "D09BZ01S01[Cell21] && blood && root && canSurvivePoison && wallClimb && dash"
 	},
 	{
 		"Id": "CO37",
@@ -1722,7 +1723,7 @@
 		"Hint": "* resides in the Wall",
 		"LocationFlag": "LOCATION_RESCUED_CHERUB_04~D09Z01",
 		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell11] && lung"
+		"Logic": "D09BZ01S01[Cell11] && (canSurvivePoison && dash) || ???"
 	},
 	
 	{
