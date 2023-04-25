@@ -119,6 +119,19 @@ namespace BlasphemousRandomizer.ItemRando
         // ? maybe wheel works maybe not double jump
         private bool canBreakJondoBell => (doors.ContainsKey("D03Z02S05[W]") && (canDawnJump && canAirStall || doubleJump) || doors.ContainsKey("D03Z02S05[S]") || doors.ContainsKey("D03Z02S05[E]")) && (doors.ContainsKey("D03Z02S09[S]") || doors.ContainsKey("D03Z02S09[W]") || doors.ContainsKey("D03Z02S09[N]") || doors.ContainsKey("D03Z02S09[Cherubs]"));
 
+        // Crossing gaps
+        private bool canCrossGap1 => doubleJump || canDawnJump || wheel || canAirStall;
+        private bool canCrossGap2 => doubleJump || canDawnJump || wheel;
+        private bool canCrossGap3 => doubleJump || canDawnJump || wheel && canAirStall;
+        private bool canCrossGap4 => doubleJump || canDawnJump;
+        private bool canCrossGap5 => doubleJump || canDawnJump && canAirStall;
+        private bool canCrossGap6 => doubleJump;
+        private bool canCrossGap7 => doubleJump && (canDawnJump || wheel || canAirStall);
+        private bool canCrossGap8 => doubleJump && (canDawnJump || wheel);
+        private bool canCrossGap9 => doubleJump && (canDawnJump || wheel && canAirStall);
+        private bool canCrossGap10 => doubleJump && canDawnJump;
+        private bool canCrossGap11 => doubleJump && canDawnJump && canAirStall;
+
         // Bosses
         private int bossPower => healthLevel + swordLevel + flasks + quicksilver; // Will need to be changed with boss rando
         private bool canBeatBrotherhoodBoss => bossPower >= 0 && (doors.ContainsKey("D17Z01S11[W]") || doors.ContainsKey("D17Z01S11[E]"));
@@ -337,6 +350,19 @@ namespace BlasphemousRandomizer.ItemRando
                 case "redentoRooms": return new IntVariable(redentoRooms);
                 case "miriamRooms": return new IntVariable(miriamRooms);
                 case "amanecidaRooms": return new IntVariable(amanecidaRooms);
+
+                // Crossing gaps
+                case "canCrossGap1": return new BoolVariable(canCrossGap1);
+                case "canCrossGap2": return new BoolVariable(canCrossGap2);
+                case "canCrossGap3": return new BoolVariable(canCrossGap3);
+                case "canCrossGap4": return new BoolVariable(canCrossGap4);
+                case "canCrossGap5": return new BoolVariable(canCrossGap5);
+                case "canCrossGap6": return new BoolVariable(canCrossGap6);
+                case "canCrossGap7": return new BoolVariable(canCrossGap7);
+                case "canCrossGap8": return new BoolVariable(canCrossGap8);
+                case "canCrossGap9": return new BoolVariable(canCrossGap9);
+                case "canCrossGap10": return new BoolVariable(canCrossGap10);
+                case "canCrossGap11": return new BoolVariable(canCrossGap11);
 
                 // Bosses
                 case "canBeatBrotherhoodBoss": return new BoolVariable(canBeatBrotherhoodBoss);

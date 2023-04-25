@@ -838,7 +838,7 @@
 		"Id": "D01Z05S25[W]",
 		"Direction": 1,
 		"OriginalDoor": "D01Z05S23[E]",
-		"Logic": "D01Z05S25[W] || (linen && (root || doubleJump || canAirStall)) || (D01Z05S25[E] && (root || doubleJump || canDawnJump || wheel && canAirStall))"
+		"Logic": "D01Z05S25[W] || (linen && (root || doubleJump || canAirStall)) || (D01Z05S25[E] && (root || canCrossGap3))"
 	},
 	{
 		"Id": "D01Z05S25[E]",
@@ -942,7 +942,7 @@
 		"Id": "D02Z01S02[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D02Z01S03[SE]",
-		"Logic": "D02Z01S02[NW] || wallClimb || doubleJump || (D02Z01S02[NE] && root && canDawnJump && canAirStall)"
+		"Logic": "D02Z01S02[NW] || wallClimb || doubleJump || (D02Z01S02[NE] && root && canCrossGap5)"
 	},
 	{
 		"Id": "D02Z01S02[E]",
@@ -953,7 +953,7 @@
 		"Id": "D02Z01S02[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D02Z01S09[W]",
-		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (root || canDawnJump && doubleJump)"
+		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (root || canCrossGap10)"
 	},
 	{
 		"Id": "D02Z01S02[]",
@@ -1038,7 +1038,7 @@
 		"Id": "D02Z01S09[-CherubsR]",
 		"Direction": 6,
 		"OriginalDoor": "D02Z01S01[CherubsR]",
-		"Logic": "linen && (root || canDawnJump || doubleJump)"
+		"Logic": "linen && (root || canCrossGap10)"
 	},
 	
 	{
@@ -1107,7 +1107,7 @@
 		"Id": "D02Z02S03[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D02Z02S14[W]",
-		"Logic": "D02Z02S03[NE] || wallClimb && ((canDawnJump && doubleJump && canAirStall) || (blood && (root || doubleJump && (canDawnJump || canAirStall))) || (root && (doubleJump || canAirStall)))"
+		"Logic": "D02Z02S03[NE] || wallClimb && (canCrossGap11 || (blood && (root || canCrossGap7)) || (root && (doubleJump || canAirStall)))"
 	},
 	{
 		"Id": "D02Z02S03[-Cherubs]",
@@ -1251,7 +1251,7 @@
 		"Id": "D02Z02S11[E]",
 		"Direction": 2,
 		"OriginalDoor": "D02Z02S12[W]",
-		"Logic": "D02Z02S11[E] || D02Z02S11[NW] || D02Z02S11[NE] || doubleJump"
+		"Logic": "D02Z02S11[E] || D02Z02S11[NW] || D02Z02S11[NE] || canCrossGap6"
 	},
 	{
 		"Id": "D02Z02S11[NW]",
@@ -1346,7 +1346,7 @@
 		"Id": "D02Z03S03[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D02Z03S05[NE]",
-		"Logic": "D02Z03S03[NW] || blood || doubleJump || canDawnJump || wheel && canAirStall"
+		"Logic": "D02Z03S03[NW] || blood || canCrossGap3"
 	},
 	{
 		"Id": "D02Z03S03[E]",
@@ -1608,19 +1608,19 @@
 		"Id": "D03Z01S02[W]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z01S06[E]",
-		"Logic": "D03Z01S02[W] || wallClimb || canDawnJump || doubleJump || wheel && canAirStall"
+		"Logic": "D03Z01S02[W] || wallClimb || canCrossGap3"
 	},
 	{
 		"Id": "D03Z01S02[E]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z01S01[W]",
-		"Logic": "D03Z01S02[E] || wallClimb || doubleJump && (canDawnJump || canAirStall || wheel)"
+		"Logic": "D03Z01S02[E] || wallClimb || canCrossGap7"
 	},
 	{
 		"Id": "D03Z01S03[W]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z01S04[E]",
-		"Logic": "D03Z01S03[W] || wallClimb && (D03Z01S03[SW] || doubleJump && (canDawnJump || wheel && canAirStall))"
+		"Logic": "D03Z01S03[W] || wallClimb && (D03Z01S03[SW] || canCrossGap9)"
 	},
 	{
 		"Id": "D03Z01S03[E]",
@@ -1632,7 +1632,7 @@
 		"Id": "D03Z01S03[SW]",
 		"Direction": 3,
 		"OriginalDoor": "D03Z02S10[N]",
-		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || doubleJump && (canDawnJump || wheel && canAirStall)"
+		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9"
 	},
 	{
 		"Id": "D03Z01S03[SE]",
@@ -1643,19 +1643,19 @@
 		"Id": "D03Z01S03[-WestL]",
 		"Direction": 6,
 		"OriginalDoor": "D03Z02S10[Cherubs]",
-		"Logic": "linen && (D03Z01S03[W] || D03Z01S03[SW] || doubleJump && (canDawnJump || wheel && canAirStall))"
+		"Logic": "linen && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9)"
 	},
 	{
 		"Id": "D03Z01S03[-WestR]",
 		"Direction": 6,
 		"OriginalDoor": "D03Z02S02[CherubsL]",
-		"Logic": "linen && (D03Z01S03[W] || D03Z01S03[SW] || doubleJump && (canDawnJump || wheel && canAirStall))"
+		"Logic": "linen && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9)"
 	},
 	{
 		"Id": "D03Z01S03[-EastL]",
 		"Direction": 6,
 		"OriginalDoor": "D03Z02S02[CherubsR]",
-		"Logic": "linen && (D03Z01S03[W] || D03Z01S03[SW] || (canDawnJump && (doubleJump || canAirStall) || doubleJump && (wheel || canAirStall)))"
+		"Logic": "linen && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap5)"
 	},
 	{
 		"Id": "D03Z01S03[-EastR]",

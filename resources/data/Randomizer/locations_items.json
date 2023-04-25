@@ -127,7 +127,7 @@
 		"Hint": "* resides in Albero",
 		"OriginalItem": "CH",
 		"Room": "D01Z02S03",
-		"Logic": "cherubBitfield ^ 0x20242 || D01Z02S03[NW] && (wheel || canDawnJump || doubleJump || cherubBitfield ^ 0x46010)"
+		"Logic": "cherubBitfield ^ 0x20242 || D01Z02S03[NW] && (canCrossGap2 || cherubBitfield ^ 0x46010)"
 	},
 	{
 		"Id": "Lvdovico[500]",
@@ -336,7 +336,7 @@
 		"Name": "Underneath MD bridge",
 		"Hint": "* resides in the Wastelands",
 		"Room": "D01Z03S05",
-		"Logic": "blood || boots || doubleJump || canDawnJump || wheel && canAirStall"
+		"Logic": "blood || boots || canCrossGap3"
 	},
 	{
 		"Id": "RB20",
@@ -356,7 +356,7 @@
 		"Name": "Cliffside cherub",
 		"Hint": "* resides in the Wastelands",
 		"Room": "D01Z03S07",
-		"Logic": "canDawnJump || doubleJump || wheel || cherubBitfield ^ 0x66210"
+		"Logic": "canCrossGap2 || cherubBitfield ^ 0x66210"
 	},
 	
 	{
@@ -566,7 +566,7 @@
 		"Name": "Elevator shaft cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S25",
-		"Logic": "linen || (cherubBitfield ^ 0x20042 && (D01Z05S25[E] || D01Z05S25[W] && (root || doubleJump || canDawnJump || canAirStall)))"
+		"Logic": "linen || (cherubBitfield ^ 0x20042 && (D01Z05S25[E] || D01Z05S25[W] && (root || canCrossGap3)))"
 	},
 	{
 		"Id": "Lady[D01Z05S26]",
@@ -615,7 +615,7 @@
 		"Name": "Eastern root cherub",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S02",
-		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (root || canDawnJump || cherubBitfield ^ 0x20042)"
+		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (root || canCrossGap4 || cherubBitfield ^ 0x20042)"
 	},
 	{
 		"Id": "QI20",
@@ -662,7 +662,7 @@
 		"Name": "Eastern root ledge",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S09",
-		"Logic": "root || (canDawnJump && doubleJump && canAirStall)"
+		"Logic": "root || canCrossGap11"
 	},
 	
 	{
@@ -677,7 +677,7 @@
 		"Name": "Eastern shaft lower",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S03",
-		"Logic": "D02Z02S03[NW] || D02Z02S03[NE] || wallClimb || wheel || doubleJump || canDawnJump"
+		"Logic": "D02Z02S03[NW] || D02Z02S03[NE] || wallClimb || canCrossGap2"
 	},
 	{
 		"Id": "CO29",
@@ -691,7 +691,7 @@
 		"Name": "Eastern shaft upper",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S03",
-		"Logic": "((wallClimb || doubleJump || D02Z02S03[NE] && root) && blood && (doubleJump || root && wallClimb)) || (D02Z02S03[NE] && root && wallClimb && doubleJump)"
+		"Logic": "(blood && (wallClimb || doubleJump || D02Z02S03[NE] && root) && (doubleJump || root && wallClimb)) || (D02Z02S03[NE] && root && wallClimb && doubleJump)"
 	},
 	{
 		"Id": "RB32",
@@ -732,14 +732,14 @@
 		"Name": "Shop cave hole",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S08",
-		"Logic": "D02Z02S08[CherubsR] || blood || canBreakHoles || doubleJump && (canDawnJump || wheel)"
+		"Logic": "D02Z02S08[CherubsR] || blood || canBreakHoles || canCrossGap8"
 	},
 	{
 		"Id": "RESCUED_CHERUB_31",
 		"Name": "Shop cave cherub",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S08",
-		"Logic": "D02Z02S08[CherubsR] || blood || cherubBitfield ^ 0x20042 || doubleJump && (canDawnJump || wheel)"
+		"Logic": "D02Z02S08[CherubsR] || blood || cherubBitfield ^ 0x20042 || canCrossGap8"
 	},
 	{
 		"Id": "Oil[D02Z02S10]",
@@ -811,7 +811,7 @@
 		"Name": "Blood platform ledge",
 		"Hint": "* resides in the Convent",
 		"Room": "D02Z03S03",
-		"Logic": "D02Z03S03[NW] || blood || doubleJump || canDawnJump || wheel && canAirStall"
+		"Logic": "D02Z03S03[NW] || blood || canCrossGap3"
 	},
 	{
 		"Id": "RB08",
@@ -897,28 +897,28 @@
 		"Name": "Bell gap ledge",
 		"Hint": "* resides in the Mountains",
 		"Room": "D03Z01S03",
-		"Logic": "(blood || doubleJump) && (D03Z01S03[W] || D03Z01S03[SW] || doubleJump && (canDawnJump || wheel && canAirStall))"
+		"Logic": "(blood || doubleJump) && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9)"
 	},
 	{
 		"Id": "RB22",
 		"Name": "Redento meeting 1",
 		"Hint": "Redento holds *",
 		"Room": "D03Z01S03",
-		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || doubleJump && (canDawnJump || wheel && canAirStall)"
+		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9"
 	},
 	{
 		"Id": "RESCUED_CHERUB_16",
 		"Name": "Bell gap cherub",
 		"Hint": "* resides in the Mountains",
 		"Room": "D03Z01S03",
-		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || doubleJump && (canDawnJump || wheel && canAirStall)"
+		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9"
 	},
 	{
 		"Id": "Amanecida[D03Z01S03]",
 		"Name": "Defeat Amanecida of the Golden Blades",
 		"Hint": "* is guarded by the Golden Blades",
 		"Room": "D03Z01S03",
-		"Logic": "canBeatJondoBoss && (D03Z01S03[W] || D03Z01S03[SW] || doubleJump && (canDawnJump || wheel && canAirStall))"
+		"Logic": "canBeatJondoBoss && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9)"
 	},
 	{
 		"Id": "QI63",
