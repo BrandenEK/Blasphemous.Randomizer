@@ -897,35 +897,35 @@
 		"Name": "Bell gap ledge",
 		"Hint": "* resides in the Mountains",
 		"Room": "D03Z01S03",
-		"Logic": "blood && (D03Z01S03[W] || D03Z01S03[SW])"
+		"Logic": "(blood || doubleJump) && (D03Z01S03[W] || D03Z01S03[SW] || doubleJump && (canDawnJump || wheel && canAirStall))"
 	},
 	{
 		"Id": "RB22",
 		"Name": "Redento meeting 1",
 		"Hint": "Redento holds *",
 		"Room": "D03Z01S03",
-		"Logic": "D03Z01S03[W] || D03Z01S03[SW]"
+		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || doubleJump && (canDawnJump || wheel && canAirStall)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_16",
 		"Name": "Bell gap cherub",
 		"Hint": "* resides in the Mountains",
 		"Room": "D03Z01S03",
-		"Logic": "D03Z01S03[W] || D03Z01S03[SW]"
+		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || doubleJump && (canDawnJump || wheel && canAirStall)"
 	},
 	{
 		"Id": "Amanecida[D03Z01S03]",
 		"Name": "Defeat Amanecida of the Golden Blades",
 		"Hint": "* is guarded by the Golden Blades",
 		"Room": "D03Z01S03",
-		"Logic": "D01BZ07S01[Santos] && boss-amanecida && (D20Z01S05[W] || D20Z01S05[E]) && (D03Z01S03[W] || D03Z01S03[SW])"
+		"Logic": "canBeatJondoBoss && (D03Z01S03[W] || D03Z01S03[SW] || doubleJump && (canDawnJump || wheel && canAirStall))"
 	},
 	{
 		"Id": "QI63",
 		"Name": "Blood platform",
 		"Hint": "* resides in the Mountains",
 		"Room": "D03Z01S04",
-		"Logic": "blood"
+		"Logic": "blood || doubleJump || canSlashUpwarp"
 	},
 	{
 		"Id": "RB13",
@@ -954,7 +954,7 @@
 		"Name": "Eastern entrance chest",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S01",
-		"Logic": "D03Z02S01[Cherubs] || root"
+		"Logic": "D03Z02S01[Cherubs] || root && wallClimb || doubleJump && (canDawnJump || wheel && canAirStall)"
 	},
 	{
 		"Id": "CO33",

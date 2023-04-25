@@ -116,6 +116,8 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canSlashUpwarp => logicDifficulty >= 2;
 
         private bool canSurvivePoison => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2; // Fix up.  Cant go upwards with nothing
+        // ? maybe wheel works maybe not double jump
+        private bool canBreakJondoBell => (doors.ContainsKey("D03Z02S05[W]") && (canDawnJump && canAirStall || doubleJump) || doors.ContainsKey("D03Z02S05[S]") || doors.ContainsKey("D03Z02S05[E]")) && (doors.ContainsKey("D03Z02S09[S]") || doors.ContainsKey("D03Z02S09[W]") || doors.ContainsKey("D03Z02S09[N]") || doors.ContainsKey("D03Z02S09[Cherubs]"));
 
         // Bosses
         private int bossPower => healthLevel + swordLevel + flasks + quicksilver; // Will need to be changed with boss rando
@@ -225,8 +227,6 @@ namespace BlasphemousRandomizer.ItemRando
 
         private bool alberoElevator => doors.ContainsKey("D02Z02S11[W]") || doors.ContainsKey("D02Z02S11[SE]") || doors.ContainsKey("D02Z02S11[E]") || doors.ContainsKey("D02Z02S11[NW]") || doors.ContainsKey("D02Z02S11[NE]");
 
-        private bool jondoBell => (doors.ContainsKey("D03Z02S05[W]") || doors.ContainsKey("D03Z02S05[S]") || doors.ContainsKey("D03Z02S05[E]") && dawnHeart && ranged) && (doors.ContainsKey("D03Z02S09[S]") || doors.ContainsKey("D03Z02S09[W]") || doors.ContainsKey("D03Z02S09[N]") || doors.ContainsKey("D03Z02S09[Cherubs]"));
-
         private bool teleportRoom => doors.ContainsKey("D01Z02S07[E]") || doors.ContainsKey("D01Z04S02[W]") || doors.ContainsKey("D03Z03S18[E]") || doors.ContainsKey("D02Z03S22[W]") || doors.ContainsKey("D04Z02S25[W]") || doors.ContainsKey("D05Z01S16[W]") || doors.ContainsKey("D06Z01S05[E]") || doors.ContainsKey("D08Z02S02[W]") || doors.ContainsKey("D17Z01S06[E]") || doors.ContainsKey("D20Z01S12[E]");
 
         private bool chaliceQuest => chalice && (doors.ContainsKey("D03Z01S01[W]") || doors.ContainsKey("D03Z01S01[NE]") || doors.ContainsKey("D03Z01S01[S]")) && (doors.ContainsKey("D05Z02S01[W]") || doors.ContainsKey("D05Z02S01[E]")) && (doors.ContainsKey("D09Z01S07[SW]") || doors.ContainsKey("D09Z01S07[SE]") || doors.ContainsKey("D09Z01S07[W]") || doors.ContainsKey("D09Z01S07[E]"));
@@ -327,6 +327,11 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canSlashUpwarp": return new BoolVariable(canSlashUpwarp);
                 case "canSurvivePoison": return new BoolVariable(canSurvivePoison);
 
+                case "canBreakJondoBell": return new BoolVariable(canBreakJondoBell); // access to both jondo bell rooms
+                case "albero-elevator": return new BoolVariable(alberoElevator); // access to graveyard elevator room
+                case "teleport-room": return new BoolVariable(teleportRoom); // access to any teleport room
+                case "chalice-quest": return new BoolVariable(chaliceQuest); // chalice && access to the 3 enemy rooms
+
                 case "guiltRooms": return new IntVariable(guiltRooms);
                 case "swordRooms": return new IntVariable(swordRooms);
                 case "redentoRooms": return new IntVariable(redentoRooms);
@@ -350,11 +355,6 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canBeatPatioBoss": return new BoolVariable(canBeatPatioBoss);
                 case "canBeatWallBoss": return new BoolVariable(canBeatWallBoss);
                 case "canBeatHallBoss": return new BoolVariable(canBeatHallBoss);
-
-                case "albero-elevator": return new BoolVariable(alberoElevator); // access to graveyard elevator room
-                case "jondo-bell": return new BoolVariable(jondoBell); // access to both jondo bell rooms
-                case "teleport-room": return new BoolVariable(teleportRoom); // access to any teleport room
-                case "chalice-quest": return new BoolVariable(chaliceQuest); // chalice && access to the 3 enemy rooms
 
                 default:
                     throw new System.Exception($"Error: Variable {variable} doesn't exist!");
