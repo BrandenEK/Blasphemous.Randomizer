@@ -641,14 +641,14 @@
 		"Name": "Large cave ledge",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S06",
-		"Logic": "D02Z01S06[E] && wallClimb && dash && blood || (canDawnJump || wheel) ???"
+		"Logic": "wallClimb && blood && (dash || D02Z01S06[Cherubs]) || doubleJump && (D02Z01S06[Cherubs] || D02Z01S06[E] || wallClimb || dash)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_27",
 		"Name": "Large cave cherub",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S06",
-		"Logic": "cherubBitfield ^ 0x66252 ???"
+		"Logic": "cherubBitfield ^ 0x46010 && wallClimb && (D02Z01S06[W] || doubleJump || dash) || cherubBitfield ^ 0x20242 && (D02Z01S06[W] || dash || doubleJump && wallClimb)"
 	},
 	{
 		"Id": "PR04",
@@ -712,7 +712,7 @@
 		"Name": "Western shaft cherub",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S04",
-		"Logic": "cherubBitfield ^ 0x26652 && (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE]) ???"
+		"Logic": "(blood && dash || cherubBitfield ^ 0x6610) && (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE] && wallClimb) || (cherubBitfield ^ 0x20042) && (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE])"
 	},
 	{
 		"Id": "RB15",
@@ -1287,7 +1287,7 @@
 		"Hint": "Miriam holds *",
 		"Type": 8,
 		"Room": "D04Z04S01",
-		"Logic": "miriamRooms >= 5 ???"
+		"Logic": "miriamRooms >= 5 && dash && wallClimb"
 	},
 	
 	{
@@ -1723,7 +1723,7 @@
 		"Hint": "* resides in the Wall",
 		"LocationFlag": "LOCATION_RESCUED_CHERUB_04~D09Z01",
 		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell11] && (canSurvivePoison && dash) || ???"
+		"Logic": "D09BZ01S01[Cell11] && (canSurvivePoison && dash || cherubBitfield ^ 0x6642)"
 	},
 	
 	{
@@ -1738,14 +1738,14 @@
 		"Name": "Initial room cherub",
 		"Hint": "* resides in the Brotherhood",
 		"Room": "D17Z01S01",
-		"logic": "D17Z01S01[Cherubs1] || cherubBitfield ^ 0x40 || root && (blood || cherubBitfield ^ 0x30402)"
+		"logic": "D17Z01S01[Cherubs1] || cherubBitfield ^ 0x40 || root && wallClimb && (blood || cherubBitfield ^ 0x30402)"
 	},
 	{
 		"Id": "RE401",
 		"Name": "Redento meeting 2",
 		"Hint": "Redento holds *",
 		"Room": "D17Z01S04",
-		"Logic": "(D17Z01S04[N] || D17Z01S04[FrontR]) && (D03Z01S03[W] || D03Z01S03[SW])"
+		"Logic": "redentoRooms >= 2"
 	},
 	{
 		"Id": "Sword[D17Z01S08]",
@@ -1757,7 +1757,8 @@
 		"Id": "BS13",
 		"Name": "Defeat Warden of the Silent Sorrow",
 		"Hint": "* is guarded by the Warden",
-		"Room": "D17Z01S11"
+		"Room": "D17Z01S11",
+		"Logic": "canBeatBrotherhoodBoss"
 	},
 	{
 		"Id": "PR203",
@@ -1771,7 +1772,7 @@
 		"Name": "Esdras church gift",
 		"Hint": "Esdras holds *",
 		"Room": "D17Z01S15",
-		"Logic": "boss-bridge && holyWounds >= 3 && (D08Z01S01[W] || D08Z01S01[E])"
+		"Logic": "canBeatBridgeBoss && holyWounds >= 3)"
 	},
 	{
 		"Id": "QI301",
@@ -1780,7 +1781,7 @@
 		"Type": 9,
 		"OriginalItem": "QI301",
 		"Room": "D17Z01S15",
-		"Logic": "boss-rooftops && trueHeart && (D06Z01S25[W] || D06Z01S25[E])"
+		"Logic": "canBeatRooftopsBoss && trueHeart)"
 	},
 	{
 		"Id": "RE01",
@@ -1794,7 +1795,8 @@
 		"Name": "Spike gaunlet exit",
 		"Hint": "* resides in the Brotherhood",
 		"LocationFlag": "LOCATION_CO25~D17Z01",
-		"Room": "D17BZ02S01"
+		"Room": "D17BZ02S01",
+		"Logic": "D17BZ02S01[FrontR] || dash && wallClimb"
 	},
 	
 	{
@@ -1807,7 +1809,8 @@
 		"Id": "RB202",
 		"Name": "Near elevator shaft",
 		"Hint": "* resides in the salts",
-		"Room": "D20Z01S09"
+		"Room": "D20Z01S09",
+		"Logic": "D20Z01S09[W] || dash"
 	},
 	
 	{
@@ -1821,14 +1824,14 @@
 		"Name": "Defeat Sierpes",
 		"Hint": "* is guarded by Sierpes",
 		"Room": "D20Z02S08",
-		"Logic": "boss-mourning"
+		"Logic": "canBeatMourningBoss"
 	},
 	{
 		"Id": "QI202",
 		"Name": "Sierpes reward",
 		"Hint": "* is guarded by Sierpes",
 		"Room": "D20Z02S08",
-		"Logic": "boss-mourning"
+		"Logic": "canBeatMourningBoss"
 	},
 	{
 		"Id": "PR202",
@@ -1888,7 +1891,7 @@
 		"Hint": "* is guarded by an Amanecida",
 		"LocationFlag": "SANTOS_AMANECIDA_BOW_DEFEATED~D02Z02",
 		"Room": "Initial",
-		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 1"
+		"Logic": "amanecidaRooms >= 1"
 	},
 	{
 		"Id": "QI108",
@@ -1896,7 +1899,7 @@
 		"Hint": "* is guarded by an Amanecida",
 		"LocationFlag": "SANTOS_AMANECIDA_AXE_DEFEATED~D03Z01",
 		"Room": "Initial",
-		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 2"
+		"Logic": "amanecidaRooms >= 2"
 	},
 	{
 		"Id": "QI109",
@@ -1904,7 +1907,7 @@
 		"Hint": "* is guarded by an Amanecida",
 		"LocationFlag": "SANTOS_AMANECIDA_FALCATA_DEFEATED~D04Z01",
 		"Room": "Initial",
-		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 3"
+		"Logic": "amanecidaRooms >= 3"
 	},
 	{
 		"Id": "QI110",
@@ -1912,14 +1915,14 @@
 		"Hint": "* is guarded by an Amanecida",
 		"LocationFlag": "SANTOS_AMANECIDA_LANCE_DEFEATED~D09Z01",
 		"Room": "Initial",
-		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 4"
+		"Logic": "amanecidaRooms >= 4"
 	},
 	{
 		"Id": "PR101",
 		"Name": "Defeat all Amanecidas",
 		"Hint": "* is guarded by an Amanecida",
 		"Room": "Initial",
-		"Logic": "D01BZ07S01[Santos] && boss-amanecida && amanecidaRooms >= 4"
+		"Logic": "amanecidaRooms >= 4"
 	},
 	{
 		"Id": "QI32",

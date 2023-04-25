@@ -116,7 +116,7 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canSlashUpwarp => logicDifficulty >= 2;
 
         private bool canSurvivePoison => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2; // Fix up.  Cant go upwards with nothing
-        // ? maybe wheel works maybe not double jump
+
         private bool canBreakJondoBell => (doors.ContainsKey("D03Z02S05[W]") && canCrossGap5 || doors.ContainsKey("D03Z02S05[S]") || doors.ContainsKey("D03Z02S05[E]")) && (doors.ContainsKey("D03Z02S09[S]") || doors.ContainsKey("D03Z02S09[W]") && dash || doors.ContainsKey("D03Z02S09[N]") || doors.ContainsKey("D03Z02S09[Cherubs]"));
 
         // Crossing gaps
@@ -131,6 +131,12 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canCrossGap9 => doubleJump && (canDawnJump || wheel && canAirStall);
         private bool canCrossGap10 => doubleJump && canDawnJump;
         private bool canCrossGap11 => doubleJump && canDawnJump && canAirStall;
+
+        // Special skips
+        private bool mourningSkipAllowed => logicDifficulty >= 2;
+        private bool unknownSkipsAllowed => false;
+        private bool preciseSkipsAllowed => false;
+        private bool enemySkipsAllowed => false;
 
         // Bosses
         private int bossPower => healthLevel + swordLevel + flasks + quicksilver; // Will need to be changed with boss rando
@@ -230,10 +236,10 @@ namespace BlasphemousRandomizer.ItemRando
             get
             {
                 int rooms = 0;
-                if (doors.ContainsKey("D02Z03S23[E]") && doors.ContainsKey("D02Z02S14[W]")) rooms++;
-                if (doors.ContainsKey("D06Z01S18[E]") && (doors.ContainsKey("D04Z01S04[W]") || doors.ContainsKey("D04Z01S04[E]") || doors.ContainsKey("D04Z01S04[Cherubs]"))) rooms++;
-                if ((doors.ContainsKey("D20Z01S05[W]") || doors.ContainsKey("D20Z01S05[E]")) && (doors.ContainsKey("D03Z01S03[W]") || doors.ContainsKey("D03Z01S03[SW]"))) rooms++;
-                if (doors.ContainsKey("D09BZ01S01[Cell24]") && (doors.ContainsKey("D09Z01S01[W]") || doors.ContainsKey("D09Z01S01[E]"))) rooms++;
+                if (canBeatGraveyardBoss) rooms++;
+                if (canBeatJondoBoss) rooms++;
+                if (canBeatPatioBoss) rooms++;
+                if (canBeatWallBoss) rooms++;
                 return rooms;
             }
         }
@@ -363,6 +369,9 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canCrossGap9": return new BoolVariable(canCrossGap9);
                 case "canCrossGap10": return new BoolVariable(canCrossGap10);
                 case "canCrossGap11": return new BoolVariable(canCrossGap11);
+
+                // Special skips
+                case "mourningSkipAllowed": return new BoolVariable(mourningSkipAllowed);
 
                 // Bosses
                 case "canBeatBrotherhoodBoss": return new BoolVariable(canBeatBrotherhoodBoss);
