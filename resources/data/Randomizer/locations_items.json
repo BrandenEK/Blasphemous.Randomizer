@@ -1118,7 +1118,7 @@
 		"Name": "Garden 1 ledge",
 		"Hint": "* resides in the Patio",
 		"Room": "D04Z01S01",
-		"Logic": "D04Z01S01[NE] || D04Z01S01[N] || dawnHeart || wheel && ranged"
+		"Logic": "D04Z01S01[NE] || D04Z01S01[N] || canCrossGap3"
 	},
 	{
 		"Id": "RESCUED_CHERUB_35",
@@ -1131,7 +1131,7 @@
 		"Name": "Garden 2 ledge",
 		"Hint": "* resides in the Patio",
 		"Room": "D04Z01S02",
-		"Logic": "root || dawnHeart || wheel && ranged"
+		"Logic": "root && wallClimb || canCrossGap3"
 	},
 	{
 		"Id": "QI37",
@@ -1144,7 +1144,7 @@
 		"Name": "Garden 3 upper ledge",
 		"Hint": "* resides in the Patio",
 		"Room": "D04Z01S03",
-		"Logic": "ranged && wheel || dawnHeart || root"
+		"Logic": "root || canCrossGap3"
 	},
 	{
 		"Id": "RESCUED_CHERUB_28",
@@ -1157,14 +1157,14 @@
 		"Name": "Redento meeting 4",
 		"Hint": "Redento holds *",
 		"Room": "D04Z01S04",
-		"Logic": "(D03Z01S03[W] || D03Z01S03[SW]) && (D17Z01S04[N] || D17Z01S04[FrontR]) && (D01Z03S06[W] || D01Z03S06[E])"
+		"Logic": "redentoRooms >= 4"
 	},
 	{
 		"Id": "Amanecida[D04Z01S04]",
 		"Name": "Defeat Amanecida of the Chiselled Steel",
 		"Hint": "* is guarded by the Chiselled Steel",
 		"Room": "D04Z01S04",
-		"Logic": "D01BZ07S01[Santos] && boss-amanecida && D06Z01S18[E] && (D04Z01S04[W] || D04Z01S04[E] || D04Z01S04[Cherubs])"
+		"Logic": "canBeatPatioBoss"
 	},
 	{
 		"Id": "QI102",
@@ -1178,14 +1178,14 @@
 		"Name": "Western room ledge",
 		"Hint": "* resides in the Mother",
 		"Room": "D04Z02S01",
-		"Logic": "D04Z02S04[N] || D04Z02S04[NE]"
+		"Logic": "D04Z02S04[N] || D04Z02S04[NE] && dash && (doubleJump || wallClimb)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_30",
 		"Name": "Western room cherub",
 		"Hint": "* resides in the Mother",
 		"Room": "D04Z02S01",
-		"Logic": "D04Z02S04[N] || D04Z02S04[NE] || cherubBitfield ^ 0x20042"
+		"Logic": "D04Z02S04[N] || cherubBitfield ^ 0x20042 || D04Z02S04[NE] && dash && (wallClimb || canCrossGap1)"
 	},
 	{
 		"Id": "CO17",
@@ -1197,14 +1197,15 @@
 		"Id": "CO34",
 		"Name": "Outside Cleofas room",
 		"Hint": "* resides in the Mother",
-		"Room": "D04Z02S06"
+		"Room": "D04Z02S06",
+		"Logic": "D04Z02S06[NW] || D04Z02S06[N] || D04Z02S06[NE] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "CO35",
 		"Name": "Eastern room lower",
 		"Hint": "* resides in the Mother",
 		"Room": "D04Z02S07",
-		"Logic": "blood || dawnHeart || wheel && ranged"
+		"Logic": "blood || canCrossGap3"
 	},
 	{
 		"Id": "RB33",
@@ -1247,14 +1248,14 @@
 		"Name": "Blood incense shaft",
 		"Hint": "* resides in the Mother",
 		"Room": "D04Z02S16",
-		"Logic": "blood"
+		"Logic": "wallClimb && (blood || doubleJump)"
 	},
 	{
 		"Id": "BS05",
 		"Name": "Defeat Melquiades",
 		"Hint": "* is guarded by Melquiades",
 		"Room": "D04Z02S22",
-		"Logic": "boss-mothers"
+		"Logic": "canBeatMothersBoss"
 	},
 	{
 		"Id": "RE03",
@@ -1269,7 +1270,7 @@
 		"Hint": "Redento holds *",
 		"LocationFlag": "LOCATION_QI54~D04Z02",
 		"Room": "D04BZ02S01",
-		"Logic": "(D03Z01S03[W] || D03Z01S03[SW]) && (D17Z01S04[N] || D17Z01S04[FrontR]) && (D01Z03S06[W] || D01Z03S06[E]) && (D04Z02S20[W] || D04Z02S20[Redento])"
+		"Logic": "redentoRooms >= 5"
 	},
 	
 	{
@@ -1286,7 +1287,7 @@
 		"Hint": "Miriam holds *",
 		"Type": 8,
 		"Room": "D04Z04S01",
-		"Logic": "miriamRooms >= 5"
+		"Logic": "miriamRooms >= 5 ???"
 	},
 	
 	{
@@ -1313,21 +1314,21 @@
 		"Name": "Upper cathedral ledge",
 		"Hint": "* resides in the Library",
 		"Room": "D05Z01S05",
-		"Logic": "root && (D05Z01S05[NE] || blood)"
+		"Logic": "(root || doubleJump) && (D05Z01S05[NE] || blood)"
 	},
 	{
 		"Id": "RB31",
 		"Name": "Lung ambush chest",
 		"Hint": "* resides in the Library",
 		"Room": "D05Z01S06",
-		"Logic": "D05Z01S06[W] || lung"
+		"Logic": "D05Z01S06[W] || canSurvivePoison"
 	},
 	{
 		"Id": "PR07",
 		"Name": "Platform puzzle chest",
 		"Hint": "* resides in the Library",
 		"Room": "D05Z01S10",
-		"Logic": "blood"
+		"Logic": "blood || doubleJump"
 	},
 	{
 		"Id": "RB203",
@@ -1390,7 +1391,7 @@
 		"Name": "Elevator cherub",
 		"Hint": "* resides in the Library",
 		"Room": "D05Z01S21",
-		"Logic": "blood && (root || dawnHeart && ranged && cherubBitfield ^ 0x20042)"
+		"Logic": "blood && (root || doubleJump || canCrossGap5 && cherubBitfield ^ 0x20042)"
 	},
 	{
 		"Id": "RB301",
@@ -1438,37 +1439,35 @@
 		"Name": "Defeat Expositio",
 		"Hint": "* is guarded by Exposito",
 		"Room": "D05Z02S14",
-		"Logic": "boss-canvases"
+		"Logic": "canBeatCanvasesBoss"
 	},
 	{
 		"Id": "QI104",
 		"Name": "Low tunnel blade trap",
 		"Hint": "* resides in the Canvases",
-		"Room": "D05Z02S15"
+		"Room": "D05Z02S15",
+		"Logic": "dash"
 	},
 	{
 		"Id": "RB12",
 		"Name": "Shop left",
 		"Hint": "* can be purchased",
 		"LocationFlag": "LOCATION_RB12~D05Z02",
-		"Room": "D05BZ02S01",
-		"Logic": "tears >= 0"
+		"Room": "D05BZ02S01"
 	},
 	{
 		"Id": "QI49",
 		"Name": "Shop middle",
 		"Hint": "* can be purchased",
 		"LocationFlag": "LOCATION_QI49~D05Z02",
-		"Room": "D05BZ02S01",
-		"Logic": "tears >= 0"
+		"Room": "D05BZ02S01"
 	},
 	{
 		"Id": "QI71",
 		"Name": "Shop right",
 		"Hint": "* can be purchased",
 		"LocationFlag": "LOCATION_QI71~D05Z02",
-		"Room": "D05BZ02S01",
-		"Logic": "tears >= 0"
+		"Room": "D05BZ02S01"
 	},
 	
 	{
