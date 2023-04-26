@@ -1,25 +1,11 @@
 ﻿using HarmonyLib;
 using Framework.Managers;
 using UnityEngine;
+using Tools.Items;
 using BlasphemousRandomizer.Notifications;
 
 namespace BlasphemousRandomizer.ItemRando
 {
-    // Only have laudes activated in boss room with verse
-    [HarmonyPatch(typeof(EventManager), "GetFlag")]
-    public class EventManagerGet_Patch
-    {
-        public static void Postfix(string id, EventManager __instance, ref bool __result)
-        {
-            string formatted = __instance.GetFormattedId(id);
-            if (formatted == "SANTOS_LAUDES_ACTIVATED")
-            {
-                string scene = Core.LevelManager.currentLevel.LevelName;
-                __result = (scene == "D08Z03S01" || scene == "D08Z03S03") && __instance.GetFlag("ITEM_QI110");
-            }
-        }
-    }
-
     // Set flag for what miriam portal has been activated
     [HarmonyPatch(typeof(EventManager), "EndMiriamPortalAndReturn")]
     public class EventManagerMiriam_Patch
@@ -78,5 +64,17 @@ namespace BlasphemousRandomizer.ItemRando
                 image = info.sprite;
             }
         }
+    }
+
+    // Prevent the chalice from unfilling
+    [HarmonyPatch(typeof(ChaliceEffect), "ClearEnemiesFlags")]
+    public class ChaliceFlags_Patch
+    {
+        public static bool Prefix() { return false; }
+    }
+    [HarmonyPatch(typeof(ChaliceEffect), "UnfillChalice")]
+    public class ChaliceItem_Patch
+    {
+        public static bool Prefix() { return false; }
     }
 }

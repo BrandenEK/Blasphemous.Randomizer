@@ -1,15 +1,16 @@
 ﻿using HarmonyLib;
 using Framework.Managers;
-using Tools.Items;
 using Tools.Playmaker2.Action;
 using Tools.Playmaker2.Condition;
+using Tools.Level.Actionables;
+using System.Collections.Generic;
 
 namespace BlasphemousRandomizer.ItemRando
 {
-    public static class ItemFlags
-    {
-        public static string[] bannedFlags = new string[]
-        {
+	public static class ItemFlags
+	{
+		public static string[] bannedFlags = new string[]
+		{
 			"VIRIDIANA_MATURE",
 			"VIRIDIANA_OLD",
 			"VIRIDIANA_DEAD",
@@ -130,6 +131,68 @@ namespace BlasphemousRandomizer.ItemRando
 			"QI109",
 			"QI110",
 		};
+
+		public static string[] elevatorFlags = new string[]
+		{
+			//"D01Z02S03_ELEVATOR_IN_ALBERO",
+			//"D02Z05S01_ELEVATOR2_ON_BOTTOM",
+			"D02Z05S01_ELEVATOR1_ON_BOTTOM",
+			"D03Z05S01_ELEVATOR_ON_BOTTOM",
+			"D04Z02S24_ELEVATOR_ON_BOTTOM",
+			"D05Z04S01_ELEVATOR_ON_BOTTOM",
+			"ELEVATOR_POSITION_1",
+			"ELEVATOR_POSITION_2",
+			"ELEVATOR_POSITION_3",
+			"ELEVATOR_POSITION_4",
+		};
+
+		public static string[] elevatorGates = new string[]
+		{
+			"835afc15-8de9-47bf-9057-54a0f23d69c6",
+			"6aa4b846-441a-4be6-8786-49a915b0df97",
+			"6aa4b846-441a-4be6-8786-49a915b0df97",
+			"17b487db-fb2c-4ac2-ace2-0017b67a7eda",
+			"c1c68418-eb19-48f6-8bf6-fc979b8df329",
+		};
+	}
+
+	// Always set elevators to default positions with gates open
+	[HarmonyPatch(typeof(EventManager), "GetCurrentPersistentState")]
+	public class EventManagerSave_Patch
+    {
+		public static void Prefix(Dictionary<string, FlagObject> ___flags)
+        {
+			string[] elevators = ItemFlags.elevatorFlags;
+			for (int i = 0; i < elevators.Length; i++)
+            {
+				if (___flags.ContainsKey(elevators[i]))
+					___flags[elevators[i]].value = i == elevators.Length - 1 && !___flags["ELEVATOR_POSITION_FAKE"].value;
+			}
+        }
+    }
+	[HarmonyPatch(typeof(Gate), "GetCurrentPersistentState")]
+	public class GateSave_Patch
+    {
+		public static void Prefix(Gate __instance, ref bool ___open)
+        {
+			if (Main.arrayContains(ItemFlags.elevatorGates, __instance.GetPersistenID()))
+				___open = true;
+        }
+    }
+
+	// Only have laudes activated in boss room with verse
+	[HarmonyPatch(typeof(EventManager), "GetFlag")]
+	public class EventManagerGet_Patch
+	{
+		public static void Postfix(string id, EventManager __instance, ref bool __result)
+		{
+			string formatted = __instance.GetFormattedId(id);
+			if (formatted == "SANTOS_LAUDES_ACTIVATED")
+			{
+				string scene = Core.LevelManager.currentLevel.LevelName;
+				__result = (scene == "D08Z03S01" || scene == "D08Z03S03") && __instance.GetFlag("ITEM_QI110");
+			}
+		}
 	}
 
 	// Don't allow certain npc's death flags to be set
@@ -481,18 +544,6 @@ namespace BlasphemousRandomizer.ItemRando
 				}
 				return true;
 			}
-		}
-
-		// Prevent the chalice from unfilling
-		[HarmonyPatch(typeof(ChaliceEffect), "ClearEnemiesFlags")]
-		public class ChaliceFlags_Patch
-        {
-			public static bool Prefix() { return false; }
-        }
-		[HarmonyPatch(typeof(ChaliceEffect), "UnfillChalice")]
-		public class ChaliceItem_Patch
-		{
-			public static bool Prefix() { return false; }
 		}
 	}
 }

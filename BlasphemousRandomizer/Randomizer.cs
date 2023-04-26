@@ -195,9 +195,26 @@ namespace BlasphemousRandomizer
         // Specific actions need to be taken when a certain scene is loaded
         protected override void LevelLoaded(string oldLevel, string newLevel)
         {
-            // Set gameplay status
             if (newLevel == "MainMenu")
+            {
+                // Set gameplay status
                 inGame = false;
+            }
+            else if (newLevel == StartingDoor.Room)
+            {
+                // Give first item when starting a new game
+                itemShuffler.giveItem("QI106", true);
+            }
+            else if (newLevel == "D06Z01S01")
+            {
+                // Keep the elevator set at position 4
+                Core.Events.SetFlag("ELEVATOR_POSITION_1", false);
+            }
+            else if (newLevel == "D06Z01S19")
+            {
+                // Prevent the elevator crashing when returning to main room
+                Core.Events.SetFlag("ELEVATOR_POSITION_FAKE", true);
+            }
 
             // Update ui menus
             if (settingsMenu != null)
@@ -222,12 +239,6 @@ namespace BlasphemousRandomizer
                 GameObject obj = audio.gameObject;
                 Object.Destroy(audio);
                 obj.AddComponent<AudioLoader>();
-            }
-
-            // Give first item when starting a new game
-            if (newLevel == StartingDoor.Room)
-            {
-                itemShuffler.giveItem("QI106", true);
             }
         }
 
@@ -270,7 +281,7 @@ namespace BlasphemousRandomizer
                         if (render != null)
                         {
                             Item item = Main.Randomizer.itemShuffler.getItemAtLocation(data.interactableIds[interactable.GetPersistenID()]);
-                            render.sprite = item == null ? null : item.getRewardInfo(true).sprite;
+                            render.sprite = item?.getRewardInfo(true).sprite;
                         }
                     }
                 }
