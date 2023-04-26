@@ -101,7 +101,7 @@
 		"Id": "D01Z02S03[church]",
 		"Direction": 4,
 		"OriginalDoor": "D01BZ04S01[church]",
-		"Logic": "canBeatMercyBoss || canBeatConventBoss || canBeatGrievanceBoss)"
+		"Logic": "canBeatMercyBoss || canBeatConventBoss || canBeatGrievanceBoss"
 	},
 	{
 		"Id": "D01Z02S03[Cherubs]",

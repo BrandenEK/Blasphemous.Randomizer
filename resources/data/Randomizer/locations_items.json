@@ -1772,7 +1772,7 @@
 		"Name": "Esdras church gift",
 		"Hint": "Esdras holds *",
 		"Room": "D17Z01S15",
-		"Logic": "canBeatBridgeBoss && holyWounds >= 3)"
+		"Logic": "canBeatBridgeBoss && holyWounds >= 3"
 	},
 	{
 		"Id": "QI301",
@@ -1781,7 +1781,7 @@
 		"Type": 9,
 		"OriginalItem": "QI301",
 		"Room": "D17Z01S15",
-		"Logic": "canBeatRooftopsBoss && trueHeart)"
+		"Logic": "canBeatRooftopsBoss && trueHeart"
 	},
 	{
 		"Id": "RE01",

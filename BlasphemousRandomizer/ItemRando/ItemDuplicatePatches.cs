@@ -3,6 +3,7 @@ using Framework.Managers;
 using Tools.Playmaker2.Action;
 using Tools.Playmaker2.Condition;
 using Tools.Level.Actionables;
+using Gameplay.GameControllers.Environment.MovingPlatforms;
 using System.Collections.Generic;
 
 namespace BlasphemousRandomizer.ItemRando
@@ -134,8 +135,8 @@ namespace BlasphemousRandomizer.ItemRando
 
 		public static string[] elevatorFlags = new string[]
 		{
-			//"D01Z02S03_ELEVATOR_IN_ALBERO",
-			//"D02Z05S01_ELEVATOR2_ON_BOTTOM",
+			"D01Z02S03_ELEVATOR_IN_ALBERO",
+			"D02Z05S01_ELEVATOR2_ON_BOTTOM",
 			"D02Z05S01_ELEVATOR1_ON_BOTTOM",
 			"D03Z05S01_ELEVATOR_ON_BOTTOM",
 			"D04Z02S24_ELEVATOR_ON_BOTTOM",
@@ -146,13 +147,21 @@ namespace BlasphemousRandomizer.ItemRando
 			"ELEVATOR_POSITION_4",
 		};
 
-		public static string[] elevatorGates = new string[]
+		public static string[] elevatorGateIds = new string[]
 		{
 			"835afc15-8de9-47bf-9057-54a0f23d69c6",
 			"6aa4b846-441a-4be6-8786-49a915b0df97",
 			"6aa4b846-441a-4be6-8786-49a915b0df97",
 			"17b487db-fb2c-4ac2-ace2-0017b67a7eda",
 			"c1c68418-eb19-48f6-8bf6-fc979b8df329",
+		};
+		public static string[] elevatorGateScenes = new string[]
+		{
+			"D02Z02S11",
+			"D01Z05S25",
+			"D04Z02S24",
+			"D05Z01S21",
+			"D05Z01S21",
 		};
 	}
 
@@ -166,7 +175,7 @@ namespace BlasphemousRandomizer.ItemRando
 			for (int i = 0; i < elevators.Length; i++)
             {
 				if (___flags.ContainsKey(elevators[i]))
-					___flags[elevators[i]].value = i == elevators.Length - 1 && !___flags["ELEVATOR_POSITION_FAKE"].value;
+					___flags[elevators[i]].value = i == elevators.Length - 1 && !___flags["ELEVATOR_POSITION_FAKE"].value || i <= 1 && Core.LevelManager.currentLevel.LevelName == "D01Z02S03" && Core.Events.GetFlag("D01Z02S03_ELEVATOR");
 			}
         }
     }
@@ -175,10 +184,22 @@ namespace BlasphemousRandomizer.ItemRando
     {
 		public static void Prefix(Gate __instance, ref bool ___open)
         {
-			if (Main.arrayContains(ItemFlags.elevatorGates, __instance.GetPersistenID()))
-				___open = true;
+			string gateId = __instance.GetPersistenID();
+			for (int i = 0; i < ItemFlags.elevatorGateIds.Length; i++)
+            {
+				if (Core.LevelManager.currentLevel.LevelName == ItemFlags.elevatorGateScenes[i] && gateId == ItemFlags.elevatorGateIds[i])
+					___open = true;
+            }
         }
     }
+	[HarmonyPatch(typeof(StraightMovingPlatform), "SetCurrentPersistentState")]
+	public class PlatformLoad_Patch
+	{
+		public static bool Prefix(StraightMovingPlatform __instance)
+		{
+			return Core.LevelManager.currentLevel.LevelName != "D02Z02S11" || __instance.GetPersistenID() != "e78fa0c2-ba1f-40f4-97cc-394162f84d7c";
+		}
+	}
 
 	// Only have laudes activated in boss room with verse
 	[HarmonyPatch(typeof(EventManager), "GetFlag")]
