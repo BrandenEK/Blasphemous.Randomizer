@@ -3208,61 +3208,61 @@
 		"Id": "D06Z01S01[SW]",
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S14[E]",
-		"Logic": "D06Z01S01[SW] || D06Z01S01[SE] || linen"
+		"Logic": "(D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N]) || linen && (D06Z01S01[NW] || D06Z01S01[NE])"
 	},
 	{
 		"Id": "D06Z01S01[SE]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S03[W]",
-		"Logic": "D06Z01S01[SW] || D06Z01S01[SE] || linen"
+		"Logic": "(D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N]) || linen && (D06Z01S01[NW] || D06Z01S01[NE])"
 	},
 	{
 		"Id": "D06Z01S01[W]",
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S07[E]",
-		"Logic": "D06Z01S01[W] || D06Z01S01[E] || masks >= 1 && (D06Z01S01[SW] || D06Z01S01[SE]) || linen && (D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[NW] || D06Z01S01[NE])"
+		"Logic": "(D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N]) || masks >= 1 && (D06Z01S01[SW] || D06Z01S01[SE]) || linen && (D06Z01S01[NW] || D06Z01S01[NE] && (root || canCrossGap1))"
 	},
 	{
 		"Id": "D06Z01S01[E]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S06[WW]",
-		"Logic": "D06Z01S01[W] || D06Z01S01[E] || masks >= 1 && (D06Z01S01[SW] || D06Z01S01[SE]) || linen && (D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[NW] || D06Z01S01[NE] || D06Z01S01[N])"
+		"Logic": "(D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N]) || masks >= 1 && (D06Z01S01[SW] || D06Z01S01[SE]) || linen && (D06Z01S01[NE] || D06Z01S01[NW] && (root || canCrossGap1))"
 	},
 	{
 		"Id": "D06Z01S01[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S16[E]",
-		"Logic": "D06Z01S01[NW] || D06Z01S01[NE] && root || D06Z01S01[NNW] && linen || D06Z01S01[NNE] && (wheel && ranged || dawnHeart || root)"
+		"Logic": "D06Z01S01[NW] || D06Z01S01[NE] && (root || canCrossGap8) || linen && (D06Z01S01[NNW] || D06Z01S01[NNE] && (root || canCrossGap3))"
 	},
 	{
 		"Id": "D06Z01S01[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S17[W]",
-		"Logic": "D06Z01S01[NW] || D06Z01S01[NE] || D06Z01S01[N] || masks >= 2 && ((D06Z01S01[NNW] || D06Z01S01[NNE]) && linen || D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E])"
+		"Logic": "D06Z01S01[NE] || D06Z01S01[NW] && (root || canCrossGap8) || linen && (D06Z01S01[NNE] || D06Z01S01[NNW] && (root || canCrossGap3))"
 	},
 	{
 		"Id": "D06Z01S01[NNW]",
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S09[E]",
-		"Logic": "D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N] || masks >= 2 && ((D06Z01S01[NW] || D06Z01S01[NE]) && linen || D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E])"
+		"Logic": "(D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N]) || masks >= 2 && (D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || linen && (D06Z01S01[NW] || D06Z01S01[NE]))"
 	},
 	{
 		"Id": "D06Z01S01[NNE]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S10[W]",
-		"Logic": "D06Z01S01[NNE] || D06Z01S01[NNW] && root || D06Z01S01[NE] && linen || D06Z01S01[NW] && (wheel && ranged || dawnHeart || root)"
+		"Logic": "(D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N]) || masks >= 2 && (D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || linen && (D06Z01S01[NW] || D06Z01S01[NE]))"
 	},
 	{
 		"Id": "D06Z01S01[N]",
 		"Direction": 0,
 		"OriginalDoor": "D06Z01S19[S]",
-		"Logic": "masks >= 3 && (D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NW] || D06Z01S01[NE] || D06Z01S01[N] || (D06Z01S01[NNW] || D06Z01S01[NNE]) && linen)"
+		"Logic": "masks >= 3 && (D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N] || linen && (D06Z01S01[NW] || D06Z01S01[NE]))"
 	},
 	{
 		"Id": "D06Z01S01[-Cherubs]",
 		"Direction": 6,
 		"OriginalDoor": "D06Z01S23[Cherubs]",
-		"Logic": "linen && (D06Z01S01[SW] || D06Z01S01[SE]) && (D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NW] || D06Z01S01[NE] || D06Z01S01[N] || D06Z01S01[NNW] || D06Z01S01[NNE])"
+		"Logic": "linen && (D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NW] || D06Z01S01[NE] || D06Z01S01[NNW] || D06Z01S01[NNE])"
 	},
 	{
 		"Id": "D06Z01S02[W]",
