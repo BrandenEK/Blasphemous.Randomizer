@@ -84,24 +84,26 @@
 	{
 		"Id": "D01Z02S03[W]",
 		"Direction": 1,
-		"OriginalDoor": "D01Z02S02[E]"
+		"OriginalDoor": "D01Z02S02[E]",
+		"Logic": "D01Z02S03[NW] || D01Z02S03[W] || D01Z02S03[E] || D01Z02S03[church] || D01Z02S03[Cherubs] || canRideAlberoElevator"
 	},
 	{
 		"Id": "D01Z02S03[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D01Z02S02[NE]",
-		"Logic": "D01Z02S03[NW]"
+		"Logic": "D01Z02S03[NW] || canRideAlberoElevator || D01Z02S03[Cherubs] && canAirStall"
 	},
 	{
 		"Id": "D01Z02S03[E]",
 		"Direction": 2,
-		"OriginalDoor": "D01Z02S05[W]"
+		"OriginalDoor": "D01Z02S05[W]",
+		"Logic": "D01Z02S03[NW] || D01Z02S03[W] || D01Z02S03[E] || D01Z02S03[church] || D01Z02S03[Cherubs] || canRideAlberoElevator"
 	},
 	{
 		"Id": "D01Z02S03[church]",
 		"Direction": 4,
 		"OriginalDoor": "D01BZ04S01[church]",
-		"Logic": "canBeatMercyBoss || canBeatConventBoss || canBeatGrievanceBoss"
+		"Logic": "(D01Z02S03[NW] || D01Z02S03[W] || D01Z02S03[E] || D01Z02S03[church] || D01Z02S03[Cherubs] || canRideAlberoElevator) && (canBeatMercyBoss || canBeatConventBoss || canBeatGrievanceBoss)"
 	},
 	{
 		"Id": "D01Z02S03[Cherubs]",

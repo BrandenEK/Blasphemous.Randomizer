@@ -127,7 +127,7 @@
 		"Hint": "* resides in Albero",
 		"OriginalItem": "CH",
 		"Room": "D01Z02S03",
-		"Logic": "cherubBitfield ^ 0x20242 || D01Z02S03[NW] && (canCrossGap2 || cherubBitfield ^ 0x46010)"
+		"Logic": "canRideAlberoElevator || (D01Z02S03[NW] || D01Z02S03[W] || D01Z02S03[E] || D01Z02S03[church] || D01Z02S03[Cherubs]) && cherubBitfield ^ 0x20242 || D01Z02S03[NW] && (canCrossGap2 || cherubBitfield ^ 0x46010)"
 	},
 	{
 		"Id": "Lvdovico[500]",
@@ -135,7 +135,7 @@
 		"Hint": "Lvdovico holds *",
 		"OriginalItem": "Tears[500]",
 		"Room": "D01Z02S03",
-		"Logic": "tentudiaRemains >= 1"
+		"Logic": "(D01Z02S03[NW] || D01Z02S03[W] || D01Z02S03[E] || D01Z02S03[church] || D01Z02S03[Cherubs] || canRideAlberoElevator) && tentudiaRemains >= 1"
 	},
 	{
 		"Id": "Lvdovico[1000]",
@@ -143,21 +143,21 @@
 		"Hint": "Lvdovico holds *",
 		"OriginalItem": "Tears[1000]",
 		"Room": "D01Z02S03",
-		"Logic": "tentudiaRemains >= 2"
+		"Logic": "(D01Z02S03[NW] || D01Z02S03[W] || D01Z02S03[E] || D01Z02S03[church] || D01Z02S03[Cherubs] || canRideAlberoElevator) && tentudiaRemains >= 2"
 	},
 	{
 		"Id": "PR03",
 		"Name": "Tentudia reward 3",
 		"Hint": "Lvdovico holds *",
 		"Room": "D01Z02S03",
-		"Logic": "tentudiaRemains >= 3"
+		"Logic": "(D01Z02S03[NW] || D01Z02S03[W] || D01Z02S03[E] || D01Z02S03[church] || D01Z02S03[Cherubs] || canRideAlberoElevator) && tentudiaRemains >= 3"
 	},
 	{
 		"Id": "QI01",
 		"Name": "Cleofas initial gift",
 		"Hint": "Lvdovico holds *",
 		"Room": "D01Z02S03",
-		"Logic": "D04Z02S10[W]"
+		"Logic": "(D01Z02S03[NW] || D01Z02S03[W] || D01Z02S03[E] || D01Z02S03[church] || D01Z02S03[Cherubs] || canRideAlberoElevator) && D04Z02S10[W]"
 	},
 	{
 		"Id": "CO43",

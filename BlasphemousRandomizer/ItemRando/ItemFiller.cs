@@ -140,9 +140,12 @@ namespace BlasphemousRandomizer.ItemRando
             List<ItemLocation> visibleItems = new List<ItemLocation>();
             DoorLocation startingDoor = allDoorLocations[Main.Randomizer.StartingDoor.Door];
 
-            roomObjects["Initial"].AddRange(roomObjects[startingDoor.Room]);
+            roomObjects["Initial"].AddRange(roomObjects[startingDoor.Room]); // Starting room is visible
+            roomObjects["Initial"].AddRange(roomObjects["D01Z02S07"]); // Albero warp room is visible
+            roomObjects["Initial"].AddRange(roomObjects["D01Z02S03"]); // Albero elevator room is visible
             foreach (string obj in roomObjects["Initial"])
             {
+                Main.Randomizer.LogWarning(obj);
                 if (obj[0] == 'D')
                 {
                     DoorLocation door = allDoorLocations[obj];
@@ -154,8 +157,6 @@ namespace BlasphemousRandomizer.ItemRando
                     visibleItems.Add(allItemLocations[obj]);
                 }
             }
-            visibleDoors.Add(allDoorLocations["D01Z02S07[E]"]);
-            visibleItems.Add(allItemLocations["QI65"]);
             inventory.AddItem(startingDoor.Id);
 
             // While there are still doors or items to place, place them

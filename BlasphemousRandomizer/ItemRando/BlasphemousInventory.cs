@@ -118,6 +118,7 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canSurvivePoison => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2; // Fix up.  Cant go upwards with nothing
 
         private bool canBreakJondoBell => (doors.ContainsKey("D03Z02S05[W]") && canCrossGap5 || doors.ContainsKey("D03Z02S05[S]") || doors.ContainsKey("D03Z02S05[E]")) && (doors.ContainsKey("D03Z02S09[S]") || doors.ContainsKey("D03Z02S09[W]") && dash || doors.ContainsKey("D03Z02S09[N]") || doors.ContainsKey("D03Z02S09[Cherubs]"));
+        private bool canRideAlberoElevator => doors.ContainsKey("D02Z02S11[NW]") || doors.ContainsKey("D02Z02S11[NE]") || doors.ContainsKey("D02Z02S11[W]") || doors.ContainsKey("D02Z02S11[E]") || doors.ContainsKey("D02Z02S11[SE]");
 
         // Crossing gaps
         private bool canCrossGap1 => doubleJump || canDawnJump || wheel || canAirStall;
@@ -244,8 +245,6 @@ namespace BlasphemousRandomizer.ItemRando
             }
         }
 
-        private bool alberoElevator => doors.ContainsKey("D02Z02S11[W]") || doors.ContainsKey("D02Z02S11[SE]") || doors.ContainsKey("D02Z02S11[E]") || doors.ContainsKey("D02Z02S11[NW]") || doors.ContainsKey("D02Z02S11[NE]");
-
         private bool teleportRoom => doors.ContainsKey("D01Z02S07[E]") || doors.ContainsKey("D01Z04S02[W]") || doors.ContainsKey("D03Z03S18[E]") || doors.ContainsKey("D02Z03S22[W]") || doors.ContainsKey("D04Z02S25[W]") || doors.ContainsKey("D05Z01S16[W]") || doors.ContainsKey("D06Z01S05[E]") || doors.ContainsKey("D08Z02S02[W]") || doors.ContainsKey("D17Z01S06[E]") || doors.ContainsKey("D20Z01S12[E]");
 
         private bool chaliceQuest => chalice && (doors.ContainsKey("D03Z01S01[W]") || doors.ContainsKey("D03Z01S01[NE]") || doors.ContainsKey("D03Z01S01[S]")) && (doors.ContainsKey("D05Z02S01[W]") || doors.ContainsKey("D05Z02S01[E]")) && (doors.ContainsKey("D09Z01S07[SW]") || doors.ContainsKey("D09Z01S07[SE]") || doors.ContainsKey("D09Z01S07[W]") || doors.ContainsKey("D09Z01S07[E]"));
@@ -347,7 +346,7 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canSurvivePoison": return new BoolVariable(canSurvivePoison);
 
                 case "canBreakJondoBell": return new BoolVariable(canBreakJondoBell); // access to both jondo bell rooms
-                case "albero-elevator": return new BoolVariable(alberoElevator); // access to graveyard elevator room
+                case "canRideAlberoElevator": return new BoolVariable(canRideAlberoElevator); // access to graveyard elevator room
                 case "teleport-room": return new BoolVariable(teleportRoom); // access to any teleport room
                 case "chalice-quest": return new BoolVariable(chaliceQuest); // chalice && access to the 3 enemy rooms
 
