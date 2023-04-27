@@ -151,6 +151,7 @@ namespace BlasphemousRandomizer
             inGame = true;
             lastLoadedSlot = PersistentManager.GetAutomaticSlot();
             Core.GameModeManager.ChangeMode(GameModeManager.GAME_MODES.NEW_GAME_PLUS);
+            Core.SpawnManager.SetTeleportActive("TELEPORT_D02", false);
             Core.Events.SetFlag("CHERUB_RESPAWN", true);
         }
 
@@ -208,6 +209,11 @@ namespace BlasphemousRandomizer
             {
                 // Give first item when starting a new game
                 itemShuffler.giveItem("QI106", true);
+            }
+            else if (newLevel == "D01Z02S07")
+            {
+                // Activate Albero warp room when entering it
+                Core.SpawnManager.SetTeleportActive("TELEPORT_D02", true);
             }
             else if (newLevel == "D06Z01S01")
             {

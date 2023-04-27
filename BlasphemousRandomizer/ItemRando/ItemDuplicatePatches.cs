@@ -382,6 +382,12 @@ namespace BlasphemousRandomizer.ItemRando
 					flag = !completePuzzle;
             }
 
+			// Allows open albero warp room
+			if (scene == "D01Z02S06" && text == "D01Z02S07_TELEPORT_ALBERO")
+            {
+				flag = true;
+            }
+
 			// Boss shuffle disabling
 			//if (scene == "D17Z01S11" && text == "D17Z01_BOSSDEAD")
 			//{
