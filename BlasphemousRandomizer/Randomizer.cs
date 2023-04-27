@@ -2,6 +2,7 @@
 using Gameplay.UI;
 using System.Diagnostics;
 using System.Collections;
+using System.Collections.Generic;
 using BlasphemousRandomizer.BossRando;
 using BlasphemousRandomizer.DoorRando;
 using BlasphemousRandomizer.EnemyRando;
@@ -21,6 +22,9 @@ namespace BlasphemousRandomizer
     {
         public const int MAX_SEED = 99_999_999;
         private const bool SKIP_CUTSCENES = true;
+        public const int BROTHERHOOD_LOCATION = 0;
+        public const int DEPTHS_LOCATION = 3;
+        public const int SHIPYARD_LOCATION = 6;
 
         // Shufflers
         public ItemShuffle itemShuffler;
@@ -416,16 +420,25 @@ namespace BlasphemousRandomizer
                 int numberOfStartingLocations = startingLocations.Length;
                 if (gameConfig.StartingLocation < 0 || gameConfig.StartingLocation > numberOfStartingLocations)
                 {
+                    // Invalid starting position, should never happen
                     LogError(gameConfig.StartingLocation + " is not a valid starting location!");
                     return startingLocations[0];
                 }
-                if (gameConfig.StartingLocation == numberOfStartingLocations)
+                if (gameConfig.StartingLocation != numberOfStartingLocations)
                 {
-                    int minLocation = gameConfig.ShuffleDash ? 1 : 0;
-                    int randLocation = new System.Random(gameConfig.CustomSeed).Next(minLocation, numberOfStartingLocations);
-                    return startingLocations[randLocation];
+                    // Chose a predefined starting location
+                    return startingLocations[gameConfig.StartingLocation];
                 }
-                return startingLocations[gameConfig.StartingLocation];
+
+                // Chose a random starting location
+                List<StartingLocation> possibleLocations = new List<StartingLocation>(startingLocations);
+                if (gameConfig.LogicDifficulty < 2) possibleLocations.RemoveAt(SHIPYARD_LOCATION);
+                if (gameConfig.ShuffleWallClimb) possibleLocations.RemoveAt(DEPTHS_LOCATION);
+                if (gameConfig.ShuffleDash) possibleLocations.RemoveAt(BROTHERHOOD_LOCATION);
+
+                Main.Randomizer.Log($"Choosing random starting location from {possibleLocations.Count} options");
+                int randLocation = new System.Random(gameConfig.CustomSeed).Next(0, possibleLocations.Count);
+                return possibleLocations[randLocation];
             }
         }
         private StartingLocation[] startingLocations = new StartingLocation[]
