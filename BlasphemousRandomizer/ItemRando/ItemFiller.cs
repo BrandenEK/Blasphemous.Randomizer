@@ -141,7 +141,6 @@ namespace BlasphemousRandomizer.ItemRando
             DoorLocation startingDoor = allDoorLocations[Main.Randomizer.StartingDoor.Door];
 
             roomObjects["Initial"].AddRange(roomObjects[startingDoor.Room]); // Starting room is visible
-            roomObjects["Initial"].AddRange(roomObjects["D01Z02S07"]); // Albero warp room is visible
             roomObjects["Initial"].AddRange(roomObjects["D01Z02S03"]); // Albero elevator room is visible
             foreach (string obj in roomObjects["Initial"])
             {

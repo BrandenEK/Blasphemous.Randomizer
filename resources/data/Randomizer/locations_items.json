@@ -181,8 +181,7 @@
 		"Id": "QI65",
 		"Name": "Warp room",
 		"Hint": "* resides in Albero",
-		"Room": "D01Z02S07",
-		"Logic": "teleport-room"
+		"Room": "D01Z02S07"
 	},
 	{
 		"Id": "RB104",

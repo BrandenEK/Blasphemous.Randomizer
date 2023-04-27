@@ -137,8 +137,7 @@
 	{
 		"Id": "D01Z02S06[W]",
 		"Direction": 1,
-		"OriginalDoor": "D01Z02S07[E]",
-		"Logic": "teleport-room"
+		"OriginalDoor": "D01Z02S07[E]"
 	},
 	{
 		"Id": "D01Z02S06[E]",
@@ -148,8 +147,7 @@
 	{
 		"Id": "D01Z02S07[E]",
 		"Direction": 2,
-		"OriginalDoor": "D01Z02S06[W]",
-		"Logic": "teleport-room"
+		"OriginalDoor": "D01Z02S06[W]"
 	},
 	{
 		"Id": "D01BZ04S01[church]",
@@ -813,7 +811,7 @@
 		"Id": "D01Z05S23[W]",
 		"Direction": 1,
 		"OriginalDoor": "D01Z05S24[E]",
-		"Logic": "chalice-quest"
+		"Logic": "canFillChalice"
 	},
 	{
 		"Id": "D01Z05S23[E]",
