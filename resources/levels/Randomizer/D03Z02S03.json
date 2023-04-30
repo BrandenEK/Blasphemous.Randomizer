@@ -12,13 +12,13 @@
 		{
 			"Type": "PlatformWood",
 			"XPos": -722,
-			"YPos": -91,
+			"YPos": -91.5,
 			"Condition": "flag:BELL_ACTIVATED"
 		},
 		{
 			"Type": "PlatformWood",
 			"XPos": -718,
-			"YPos": -91,
+			"YPos": -91.5,
 			"Condition": "flag:BELL_ACTIVATED"
 		}
 	]

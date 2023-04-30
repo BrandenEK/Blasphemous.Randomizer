@@ -18,17 +18,15 @@ namespace BlasphemousRandomizer
 		public Dictionary<string, EnemyLocation> enemyLocations;
 		public Dictionary<string, DoorLocation> doorLocations;
 
-		// Text data
-		public Dictionary<string, string> interactableIds;
-		public string[] cutsceneNames;
-		public string[] cutsceneFlags;
-
 		// Image data
 		public Sprite[] randomizerImages;
 		public Sprite[] uiImages;
 
 		// New & improved
 		public Dictionary<string, string> LocationNames { get; private set; }
+		public Dictionary<string, string> ShopInteractables { get; private set; }
+		public string[] CutsceneNames { get; private set; }
+		public string[] CutsceneFlags { get; private set; }
 
 		public bool loadData(FileUtil fileUtil)
 		{
@@ -86,14 +84,6 @@ namespace BlasphemousRandomizer
 				Main.Randomizer.Log($"Loaded {doorLocations.Count} doors!");
 			}
 			else { Main.Randomizer.LogError("Error: Failed to load doors!"); valid = false; }
-
-			// Load text data
-			if (fileUtil.loadDataDictionary("interactable_ids.dat", out interactableIds)) Main.Randomizer.Log($"Loaded {interactableIds.Count} interactable ids!");
-			else { Main.Randomizer.LogError("Error: Failed to load interactable ids!"); valid = false; }
-			if (fileUtil.loadDataArray("cutscenes_names.dat", out cutsceneNames)) Main.Randomizer.Log($"Loaded {cutsceneNames.Length} cutscene names!");
-			else { Main.Randomizer.LogError("Error: Failed to load cutscene names!"); valid = false; }
-			if (fileUtil.loadDataArray("cutscenes_flags.dat", out cutsceneFlags)) Main.Randomizer.Log($"Loaded {cutsceneFlags.Length} cutscene flags!");
-			else { Main.Randomizer.LogError("Error: Failed to load cutscene flags!"); valid = false; }
 
 			// Load image data
 			if (fileUtil.loadDataImages("custom_images.png", 32, 32, 32, 0, true, out randomizerImages)) Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
@@ -179,6 +169,49 @@ namespace BlasphemousRandomizer
 				{ "D20Z03", "Resting Place of the Sister" },
 
 				{ "Initia", "Various" },
+			};
+
+			ShopInteractables = new Dictionary<string, string>()
+			{
+				{ "225a8ff2-be3f-4c10-bd90-e88d8671d0ac", "QI58" },
+				{ "a927f0a1-0431-40f1-952e-87383c97194a", "RB05" },
+				{ "5d413c5a-63a7-4053-bf21-a13060b84e15", "RB09" },
+				{ "a23c71b5-d29c-4b7b-8425-8722b9c4c4a0", "QI11" },
+				{ "36709870-5584-41c9-83d1-627d1eae9b2b", "RB37" },
+				{ "c5952d17-848b-4027-8b82-7cb04349c0f2", "RB02" },
+				{ "bed4fc04-7ae6-41b3-8a9c-6ae292825aeb", "QI71" },
+				{ "c0af12b1-a4a0-4d33-a858-ba3bd393a95a", "RB12" },
+				{ "208bff40-6ae6-4bfc-a906-c182b3aa5439", "QI49" },
+			};
+
+			CutsceneNames = new string[]
+			{
+				"IntroBrotherhood",
+				"IntroDeosgracias",
+				"CTS12-Intro2",
+				"CTS07-Deosgracias",
+				"CTS102-Santos1",
+				"CTS103-Santos2",
+				"CTS105-LaudesAwakening",
+				"CTS201-MiriamIntro",
+				"CTS08-Throne",
+			};
+
+			CutsceneFlags = new string[]
+			{
+				"D17Z01S01_INTRO",
+				"PONTIFF_ALBERO_EVENT",
+				"PONTIFF_BRIDGE_EVENT",
+				"PONTIFF_KEY1_USED",
+				"PONTIFF_KEY2_USED",
+				"PONTIFF_KEY3_USED",
+				"PONTIFF_ARCHDEACON1_EVENT",
+				"PONTIFF_ARCHDEACON2_EVENT",
+				"BROTHERS_EVENT1_COMPLETED",
+				"BROTHERS_EVENT2_COMPLETED",
+				"BROTHERS_GRAVEYARD_EVENT",
+				"BROTHERS_WASTELAND_EVENT",
+				"SANTOS_LAUDES_CUTSCENE_PLAYED",
 			};
         }
 	}

@@ -264,7 +264,7 @@ namespace BlasphemousRandomizer
             // Set flags relating to various cutscenes
             if (SKIP_CUTSCENES)
             {
-                foreach (string id in data.cutsceneFlags)
+                foreach (string id in data.CutsceneFlags)
                 {
                     Core.Events.SetFlag(id, true, false);
                 }
@@ -285,12 +285,12 @@ namespace BlasphemousRandomizer
             {
                 foreach (Interactable interactable in Object.FindObjectsOfType<Interactable>())
                 {
-                    if (data.interactableIds.ContainsKey(interactable.GetPersistenID()))
+                    if (data.ShopInteractables.ContainsKey(interactable.GetPersistenID()))
                     {
                         SpriteRenderer render = interactable.transform.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
                         if (render != null)
                         {
-                            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(data.interactableIds[interactable.GetPersistenID()]);
+                            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(data.ShopInteractables[interactable.GetPersistenID()]);
                             render.sprite = item?.getRewardInfo(true).sprite;
                         }
                     }
@@ -335,7 +335,7 @@ namespace BlasphemousRandomizer
 
         public bool shouldSkipCutscene(string id)
         {
-            return SKIP_CUTSCENES && data.cutsceneNames.Contains(id);
+            return SKIP_CUTSCENES && data.CutsceneNames.Contains(id);
         }
 
         public void playSoundEffect(int id)
