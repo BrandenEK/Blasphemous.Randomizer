@@ -482,16 +482,23 @@
             Called at the end of the game by the modding API
             </summary>
         </member>
+        <member name="M:ModdingAPI.Mod.LevelPreloaded(System.String,System.String)">
+            <summary>
+            Called when a scene is preloaded by the Modding API
+            </summary>
+            <param name="oldLevel">The name of the old level</param>
+            <param name="newLevel">The name of the new level</param>
+        </member>
         <member name="M:ModdingAPI.Mod.LevelLoaded(System.String,System.String)">
             <summary>
-            Called when a scene is loaded by the modding API
+            Called when a scene is loaded by the Modding API
             </summary>
             <param name="oldLevel">The name of the old level</param>
             <param name="newLevel">The name of the new level</param>
         </member>
         <member name="M:ModdingAPI.Mod.LevelUnloaded(System.String,System.String)">
             <summary>
-            Called when a scene is unloaded by the modding API
+            Called when a scene is unloaded by the Modding API
             </summary>
             <param name="oldLevel">The name of the old level</param>
             <param name="newLevel">The name of the new level</param>
