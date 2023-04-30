@@ -222,7 +222,7 @@ namespace BlasphemousRandomizer.ItemRando
 	{
 		public static bool Prefix(FlagModification __instance)
 		{
-			if (!Main.arrayContains(ItemFlags.bannedFlags, __instance.flagName.Value) || Core.LevelManager.currentLevel.LevelName == "D07Z01S01")
+			if (!ItemFlags.bannedFlags.Contains(__instance.flagName.Value) || Core.LevelManager.currentLevel.LevelName == "D07Z01S01")
             {
 				Core.Events.SetFlag(__instance.flagName.Value, __instance.state.Value, false);
             }
@@ -427,7 +427,7 @@ namespace BlasphemousRandomizer.ItemRando
 				}
 			}
 			// Thorn upgrades
-			if (scene.Contains("D19") || Main.arrayContains(ItemFlags.thornScenes, scene))
+			if (scene.Contains("D19") || ItemFlags.thornScenes.Contains(scene))
             {
 				if (item == "QI31")
                 {
@@ -564,7 +564,7 @@ namespace BlasphemousRandomizer.ItemRando
 		{
 			public static bool Prefix(string objectIdStting, ref bool __result)
 			{
-				if (Main.arrayContains(ItemFlags.itemsToNotRemove, objectIdStting))
+				if (ItemFlags.itemsToNotRemove.Contains(objectIdStting))
 				{
 					__result = true;
 					return false;

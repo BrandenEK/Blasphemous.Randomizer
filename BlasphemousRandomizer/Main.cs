@@ -17,13 +17,16 @@ namespace BlasphemousRandomizer
         {
             Randomizer = new Randomizer(MOD_ID, MOD_NAME, MOD_VERSION);
         }
+    }
 
-        // Checks if an array contains a certain object
-        public static bool arrayContains<T>(T[] arr, T id)
+    public static class Extensions
+    {
+        // Check if an array contains a certain item
+        public static bool Contains<T>(this T[] array, T item)
         {
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (arr[i].Equals(id))
+                if (array[i].Equals(item))
                 {
                     return true;
                 }

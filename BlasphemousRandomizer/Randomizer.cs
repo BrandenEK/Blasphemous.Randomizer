@@ -335,7 +335,7 @@ namespace BlasphemousRandomizer
 
         public bool shouldSkipCutscene(string id)
         {
-            return SKIP_CUTSCENES && Main.arrayContains(data.cutsceneNames, id);
+            return SKIP_CUTSCENES && data.cutsceneNames.Contains(id);
         }
 
         public void playSoundEffect(int id)

@@ -85,7 +85,7 @@ namespace BlasphemousRandomizer
                 Main.Randomizer.tracker.NewItem(id.Substring(5));
             else if (formatted.StartsWith("LOCATION_"))
                 Main.Randomizer.tracker.NewLocation(id.Substring(9));
-            else if (Main.arrayContains(Main.Randomizer.tracker.SpecialLocations, formatted))
+            else if (Main.Randomizer.tracker.SpecialLocations.Contains(formatted))
             {
                 Main.Randomizer.tracker.NewItem(formatted);
                 Main.Randomizer.tracker.NewLocation(formatted);
