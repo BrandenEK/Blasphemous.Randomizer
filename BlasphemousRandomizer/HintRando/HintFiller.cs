@@ -12,7 +12,6 @@ namespace BlasphemousRandomizer.HintRando
             { 32, "QI202" },
             { 28, "PR201" },
             { 27, "Sword[D01Z05S24]" },
-            { 22, "RB11" },
             { 18, "HE07" },
             { 17, "PR05" },
             { 14, "PR04" },

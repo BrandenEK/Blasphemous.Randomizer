@@ -112,7 +112,7 @@ Because of the nature of door rando, there are a few changes to had to be made i
 
 - A command has been added to respawn the player from the chosen starting location
 - Some doors will always remain the same as they are in the original game
-- A platform has been added to the main bell room in Jondo
+- Platforms have been added to the main bell room in Jondo
 - The sword heart doesn't have to be unequipped for the Library bone puzzle
 - The chalice will never unfill
 - The Cistern shroud puzzle will be automatically completed if the shroud is equipped
@@ -126,7 +126,6 @@ These are:
 - Corpse outside Sierpes --> Sierpes reward
 - Corpse in Ferrous Tree --> Miriam reward
 - Corpse in Echoes of Salt --> Chalice quest sword shrine
-- Corpse underneath WaHP lift puzzle --> WaHP lift puzzle item
 - Corpse outside wax puzzle room --> Wax puzzle chest
 - Corpse outside Jocinero's room --> Jocinero's final reward
 - Corpse at entrance of WhOTW --> White Lady tomb reward

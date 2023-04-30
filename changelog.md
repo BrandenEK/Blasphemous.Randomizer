@@ -1,6 +1,7 @@
 # Changelog
 
-### v??? (???)
+### v2.0.0 (Door Rando)
+- Added Door Shuffle
 - New and improved item shuffle algorithm
 - New items added to shuffle (Dash, Wall climb, Modded items)
 - Ability to spawn from custom starting location
