@@ -32,19 +32,19 @@ namespace BlasphemousRandomizer.Map
             TotalItemsText.text = $"{Main.Randomizer.Localize("items")}: {currentAll}/{totalAll}";
             
             // Get and display zone items
-            string zoneName, zoneKey;
+            string currentZoneName;
+            ZoneCollection currentZoneCollection;
             if (currentCell == null)
             {
-                zoneKey = "Initia";
-                zoneName = Main.Randomizer.Localize("varous");
+                currentZoneCollection = CollectionStatus["Initia"];
+                currentZoneName = Main.Randomizer.Localize("varous");
             }
             else
             {
-                zoneKey = currentCell.ZoneId.District + currentCell.ZoneId.Zone;
-                zoneName = locationNames.ContainsKey(zoneKey) ? locationNames[zoneKey] : "???";
+                currentZoneCollection = CollectionStatus[currentCell.ZoneId.District + currentCell.ZoneId.Zone];
+                currentZoneName = currentZoneCollection.ZoneInitials;
             }
-            ZoneCollection currentZone = CollectionStatus[zoneKey];
-            ZoneItemsText.text = zoneName + $": {currentZone.CurrentItems}/{currentZone.TotalItems}";
+            ZoneItemsText.text = $"{currentZoneName}: {currentZoneCollection.CurrentItems}/{currentZoneCollection.TotalItems}";
         }
 
         // When a new item location is collected, increase the counter in the specified zone
@@ -62,16 +62,23 @@ namespace BlasphemousRandomizer.Map
         public void ResetCollectionStatus(Config config)
         {
             CollectionStatus = new Dictionary<string, ZoneCollection>();
+            foreach (KeyValuePair<string, string> zoneEntry in Main.Randomizer.data.LocationNames)
+            {
+                // Create new zone collection and set its initials
+                ZoneCollection currentZone = new ZoneCollection();
+                string initials = string.Empty;
+                foreach (string word in zoneEntry.Value.Split(' '))
+                    initials += word[0];
+                currentZone.ZoneInitials = initials.Length == 1 ? zoneEntry.Value : initials;
+                CollectionStatus.Add(zoneEntry.Key, currentZone);
+            }
+
             foreach (ItemLocation location in Main.Randomizer.data.itemLocations.Values)
             {
-                string zoneId = GetZoneId(location);
-                if (!CollectionStatus.ContainsKey(zoneId))
-                    CollectionStatus.Add(zoneId, new ZoneCollection());
-
+                // Increment total items for this zone for each item location that should be tracked
                 if (ShouldTrackLocation(location, config))
-                    CollectionStatus[zoneId].TotalItems++;
+                    CollectionStatus[GetZoneId(location)].TotalItems++;
             }
-            CollectionStatus.Add("D08Z02", new ZoneCollection());
         }
 
         private string GetZoneId(ItemLocation location)
@@ -130,37 +137,5 @@ namespace BlasphemousRandomizer.Map
                 return m_ZoneItemsText;
             }
         }
-
-        private Dictionary<string, string> locationNames = new Dictionary<string, string>()
-        {
-            { "D01Z01", "THL" },
-            { "D01Z02", "Albero" },
-            { "D01Z03", "WotBC" },
-            { "D01Z04", "MD" },
-            { "D01Z05", "DC" },
-            { "D01Z06", "Petrous" },
-            { "D02Z01", "WOTW" },
-            { "D02Z02", "GotP" },
-            { "D02Z03", "CoOLotCV" },
-            { "D03Z01", "MotED" },
-            { "D03Z02", "Jondo" },
-            { "D03Z03", "GA" },
-            { "D04Z01", "PotSS" },
-            { "D04Z02", "MoM" },
-            { "D04Z03", "KotTW" },
-            { "D04Z04", "AtTotS" },
-            { "D05Z01", "LotNW" },
-            { "D05Z02", "SC" },
-            { "D06Z01", "AR" },
-            { "D07Z01", "DoHH" },
-            { "D08Z01", "BotTC" },
-            { "D08Z02", "FT" },
-            { "D08Z03", "HotD" },
-            { "D09Z01", "WotHP" },
-            { "D17Z01", "BotSS" },
-            { "D20Z01", "EoS" },
-            { "D20Z02", "MaH" },
-            { "D20Z03", "TRPotS" },
-        };
     }
 }

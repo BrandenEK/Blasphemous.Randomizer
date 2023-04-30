@@ -396,7 +396,7 @@
 	},
 	{
 		"Id": "CO21",
-		"Name": "SC entrance ledge",
+		"Name": "TSC entrance ledge",
 		"Hint": "* resides in Mercy",
 		"Room": "D01Z04S13",
 		"Logic": "D01Z04S13[SE]"
@@ -410,7 +410,7 @@
 	},
 	{
 		"Id": "RESCUED_CHERUB_33",
-		"Name": "SC entrance cherub",
+		"Name": "TSC entrance cherub",
 		"Hint": "* resides in Mercy",
 		"Room": "D01Z04S16",
 		"Logic": "cherubBitfield ^ 0x30242"

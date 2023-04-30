@@ -136,10 +136,10 @@ namespace BlasphemousRandomizer
 				{ "D01Z02", "Albero" },
 				{ "D01Z03", "Wasteland of the Buried Churches" },
 				{ "D01Z04", "Mercy Dreams" },
-				{ "D01Z05", "The Desecrated Cistern" },
+				{ "D01Z05", "Desecrated Cistern" },
 				{ "D01Z06", "Petrous" },
 
-				{ "D02Z01", "Where the Olive Trees Wither" },
+				{ "D02Z01", "Where Olive Trees Wither" },
 				{ "D02Z02", "Graveyard of the Peaks" },
 				{ "D02Z03", "Convent of Our Lady of the Charred Visage" },
 
@@ -153,7 +153,7 @@ namespace BlasphemousRandomizer
 				{ "D04Z04", "All the Tears of the Sea" },
 
 				{ "D05Z01", "Library of the Negated Words" },
-				{ "D05Z02", "Sleeping Canvases" },
+				{ "D05Z02", "The Sleeping Canvases" },
 
 				{ "D06Z01", "Archcathedral Rooftops" },
 				{ "D07Z01", "Deambulatory of his Holiness" },
@@ -166,7 +166,7 @@ namespace BlasphemousRandomizer
 				{ "D17Z01", "Brotherhood of the Silent Sorrow" },
 				{ "D20Z01", "Echoes of Salt" },
 				{ "D20Z02", "Mourning and Havoc" },
-				{ "D20Z03", "Resting Place of the Sister" },
+				{ "D20Z03", "The Resting Place of the Sister" },
 
 				{ "Initia", "Various" },
 			};
