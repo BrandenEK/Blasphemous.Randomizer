@@ -1069,7 +1069,7 @@
 		"Name": "Blood tunnel cherub",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S08",
-		"Logic": "(blood || canCrossGap11) && (cherubBitfield ^ 0x2000 && ranged || cherubBitfield ^ 0x30642)"
+		"Logic": "(blood || canCrossGap11) && (aubade && canAirStall || cherubBitfield ^ 0x30642)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_20",
@@ -1513,7 +1513,7 @@
 		"Name": "Western shaft cherub",
 		"Hint": "* resides in the Rooftops",
 		"Room": "D06Z01S12",
-		"Logic": "D06Z01S12[W] || D06Z01S12[E] || D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || wallClimb && (doubleJump || cherubBitfield ^ 0x40)"
+		"Logic": "D06Z01S12[W] || D06Z01S12[E] || D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || wallClimb && (doubleJump || taranto)"
 	},
 	{
 		"Id": "CO40",
@@ -1737,7 +1737,7 @@
 		"Name": "Initial room cherub",
 		"Hint": "* resides in the Brotherhood",
 		"Room": "D17Z01S01",
-		"logic": "D17Z01S01[Cherubs1] || cherubBitfield ^ 0x40 || root && wallClimb && (blood || cherubBitfield ^ 0x30402)"
+		"logic": "D17Z01S01[Cherubs1] || taranto || root && wallClimb && (blood || cherubBitfield ^ 0x30402)"
 	},
 	{
 		"Id": "RE401",

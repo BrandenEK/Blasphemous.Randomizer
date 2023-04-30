@@ -49,8 +49,10 @@ namespace BlasphemousRandomizer.ItemRando
 
         // Prayers
         private int cherubBitfield = 0;
-        private bool tirana = false;
+        private bool taranto = false;
         private bool tiento = false;
+        private bool tirana = false;
+        private bool aubade = false;
         private bool ownAubade = false, ownTirana = false;
 
         // Stats
@@ -286,8 +288,10 @@ namespace BlasphemousRandomizer.ItemRando
                 case "bones": return new IntVariable(bones);
                 case "tears": return new IntVariable(tears);
 
-                case "tirana": return new BoolVariable(tirana);
+                case "taranto": return new BoolVariable(taranto);
                 case "tiento": return new BoolVariable(tiento);
+                case "tirana": return new BoolVariable(tirana);
+                case "aubade": return new BoolVariable(aubade);
                 case "cherubBitfield": return new IntVariable(cherubBitfield);
 
                 case "combo": return new BoolVariable(combo);
@@ -421,7 +425,7 @@ namespace BlasphemousRandomizer.ItemRando
                         else if (item.id == "PR05") cherubBitfield |= 0x08;
                         else if (item.id == "PR07") cherubBitfield |= 0x10;
                         else if (item.id == "PR08") cherubBitfield |= 0x20;
-                        else if (item.id == "PR09") cherubBitfield |= 0x40;
+                        else if (item.id == "PR09") { cherubBitfield |= 0x40; taranto = true; }
                         else if (item.id == "PR10") cherubBitfield |= 0x80;
                         else if (item.id == "PR11") { cherubBitfield |= 0x100; tiento = true; }
                         else if (item.id == "PR12") cherubBitfield |= 0x200;
@@ -537,6 +541,7 @@ namespace BlasphemousRandomizer.ItemRando
                 if (ownAubade)
                 {
                     cherubBitfield |= 0x2000;
+                    aubade = true;
                 }
                 if (ownTirana)
                 {
