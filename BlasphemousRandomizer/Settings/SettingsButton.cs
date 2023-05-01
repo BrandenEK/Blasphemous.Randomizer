@@ -134,4 +134,50 @@ namespace BlasphemousRandomizer.Settings
 
         public override string Description => descriptions[m_CurrentOption];
     }
+
+    // Textbox can be used to input string fields
+    public class SettingsTextbox : SettingsElement
+    {
+        private Text text;
+        private Image line;
+
+        public void OnStart()
+        {
+            text = GetComponent<Text>();
+            line = GetComponentInChildren<Image>();
+            Enabled = false;
+        }
+
+        public override bool Enabled
+        {
+            get { return true; }
+            set { }
+        }
+
+        private bool m_Selected;
+        public bool Selected
+        {
+            get { return m_Selected; }
+            set
+            {
+                m_Selected = value;
+                text.color = value ? Color.yellow : Color.white;
+                line.color = value ? Color.yellow : Color.white;
+            }
+        }
+
+        public string TextContent
+        {
+            get { return text.text; }
+            set { text.text = value; }
+        }
+
+        protected override void Click()
+        {
+            Main.Randomizer.LogWarning("Clicked textbox");
+            Selected = !Selected;
+        }
+
+        public override string Description => string.Empty;
+    }
 }
