@@ -145,7 +145,7 @@ namespace BlasphemousRandomizer.Settings
         {
             text = GetComponent<Text>();
             line = GetComponentInChildren<Image>();
-            Enabled = false;
+            Selected = false;
         }
 
         public override bool Enabled
@@ -172,11 +172,7 @@ namespace BlasphemousRandomizer.Settings
             set { text.text = value; }
         }
 
-        protected override void Click()
-        {
-            Main.Randomizer.LogWarning("Clicked textbox");
-            Selected = !Selected;
-        }
+        protected override void Click() { }
 
         public override string Description => string.Empty;
     }

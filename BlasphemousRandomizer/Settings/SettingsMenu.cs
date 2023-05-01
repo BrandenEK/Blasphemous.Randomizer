@@ -111,6 +111,12 @@ namespace BlasphemousRandomizer.Settings
             // Check if a button was clicked
             if (Input.GetMouseButtonDown(0))
             {
+                SeedText.Selected = currBox == SeedText;
+                if (SeedText.Selected || currentSeed != string.Empty)
+                    SeedText.TextContent = currentSeed;
+                else
+                    SeedText.TextContent = generatedSeed.ToString();
+
                 if (currBox != null)
                 {
                     currBox.onClick();
@@ -137,24 +143,27 @@ namespace BlasphemousRandomizer.Settings
             }
 
             // Keyboard input
-            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) processKeyInput(1);
-            else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) processKeyInput(2);
-            else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) processKeyInput(3);
-            else if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4)) processKeyInput(4);
-            else if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5)) processKeyInput(5);
-            else if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6)) processKeyInput(6);
-            else if (Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Keypad7)) processKeyInput(7);
-            else if (Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Keypad8)) processKeyInput(8);
-            else if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Keypad9)) processKeyInput(9);
-            else if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0)) processKeyInput(0);
-            else if (Input.GetKeyDown(KeyCode.Backspace)) processKeyInput(-1);
+            if (SeedText.Selected)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) processKeyInput(1);
+                else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) processKeyInput(2);
+                else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) processKeyInput(3);
+                else if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4)) processKeyInput(4);
+                else if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5)) processKeyInput(5);
+                else if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6)) processKeyInput(6);
+                else if (Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Keypad7)) processKeyInput(7);
+                else if (Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Keypad8)) processKeyInput(8);
+                else if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Keypad9)) processKeyInput(9);
+                else if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0)) processKeyInput(0);
+                else if (Input.GetKeyDown(KeyCode.Backspace)) processKeyInput(-1);
+            }
 
             // Game input
             if (Main.Randomizer.Input.GetButtonDown(InputHandler.ButtonCode.UISubmit)) beginGame();
             else if (Main.Randomizer.Input.GetButtonDown(InputHandler.ButtonCode.UICancel)) closeMenu();
         }
 
-        private void processKeyInput(int num) // Only process if text is selected
+        private void processKeyInput(int num)
         {
             // Pressed backspace - delete last character
             if (num < 0)
@@ -169,7 +178,7 @@ namespace BlasphemousRandomizer.Settings
             }
 
             // Update text
-            SeedText.TextContent = currentSeed != string.Empty ? currentSeed : generatedSeed.ToString();
+            SeedText.TextContent = currentSeed;
             Main.Randomizer.playSoundEffect(2);
 
             UpdateUniqueId();
@@ -458,7 +467,7 @@ namespace BlasphemousRandomizer.Settings
 
             RectTransform seedTitle = getNewText("SeedTitle", rect, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.white, TextAnchor.MiddleLeft);
             seedTitle.pivot = new Vector2(0.5f, 0.5f);
-            seedTitle.anchoredPosition = new Vector2(-200, 215);
+            seedTitle.anchoredPosition = new Vector2(-250, 165);
 
             RectTransform seedBox = getNewTextbox("SeedBox", rect, font, lineSprite, 53);
             seedBox.pivot = new Vector2(0.5f, 0.5f);

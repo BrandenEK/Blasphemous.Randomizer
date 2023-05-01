@@ -219,6 +219,7 @@ namespace BlasphemousRandomizer
             {
                 // Keep the elevator set at position 4
                 Core.Events.SetFlag("ELEVATOR_POSITION_1", false);
+                //Object.FindObjectOfType<Gameplay.GameControllers.Environment.Elevator.Elevator>().MovingSpeed = 10;
             }
             else if (newLevel == "D06Z01S19")
             {
