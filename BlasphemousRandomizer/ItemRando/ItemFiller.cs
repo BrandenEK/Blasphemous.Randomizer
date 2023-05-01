@@ -12,7 +12,7 @@ namespace BlasphemousRandomizer.ItemRando
             initialize(seed);
             Config config = Main.Randomizer.gameConfig;
             BlasphemousInventory inventory = new BlasphemousInventory();
-            inventory.SetLogicDifficulty(config.LogicDifficulty);
+            inventory.SetConfigSettings(config);
             mappedDoors.Clear();
             mappedItems.Clear();
 

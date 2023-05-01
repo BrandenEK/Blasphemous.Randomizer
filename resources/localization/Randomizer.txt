@@ -42,7 +42,6 @@ begin: Begin
 cancel: Cancel
 
 menusd: Seed
-menurd: random  (Begin typing numbers to input a custom seed)
 distyp: Disabled
 simtyp: Simple
 fultyp: Full
@@ -152,7 +151,6 @@ begin: Comenzar
 cancel: Cancelar
 
 menusd: Semilla
-menurd: Aleatoria  (Escribe un número para introducir una semilla personalizada !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
 distyp: Estándar
 simtyp: ???
 fultyp: ???
@@ -262,7 +260,6 @@ begin: 开始
 cancel: 取消
 
 menusd: 种子
-menurd: 随机  (用数字键输入自定义种子)
 distyp: 禁用随机
 simtyp: ???
 fultyp: ???
@@ -372,7 +369,6 @@ begin: Commencer
 cancel: Annuler
 
 menusd: Seed
-menurd: aléatoire  (Veuillez saisir un nombre pour rentrer une seed personnalisée !!!!!!!!!!!!!!!!!!!!!!!!!!!!)
 distyp: Désactivé
 simtyp: ???
 fultyp: ???

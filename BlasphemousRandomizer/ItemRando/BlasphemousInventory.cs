@@ -6,6 +6,7 @@ namespace BlasphemousRandomizer.ItemRando
     public class BlasphemousInventory : InventoryData
     {
         private int logicDifficulty;
+        private bool enemyShuffle;
 
         // Relics
         private bool blood = false;
@@ -140,7 +141,7 @@ namespace BlasphemousRandomizer.ItemRando
         private bool mourningSkipAllowed => logicDifficulty >= 2;
         private bool unknownSkipsAllowed => false;
         private bool preciseSkipsAllowed => false;
-        private bool enemySkipsAllowed => false;
+        private bool enemySkipsAllowed => logicDifficulty >= 2 && !enemyShuffle;
 
         // Bosses
         private int bossPower => healthLevel + swordLevel + flasks + quicksilver; // Will need to be changed with boss rando
@@ -251,9 +252,10 @@ namespace BlasphemousRandomizer.ItemRando
         // Doors
         private Dictionary<string, bool> doors = new Dictionary<string, bool>();
 
-        public void SetLogicDifficulty(int logic)
+        public void SetConfigSettings(Config config)
         {
-            logicDifficulty = logic;
+            logicDifficulty = config.LogicDifficulty;
+            enemyShuffle = config.EnemyShuffleType > 0;
         }
 
         protected override Variable GetVariable(string variable)
@@ -371,6 +373,7 @@ namespace BlasphemousRandomizer.ItemRando
 
                 // Special skips
                 case "mourningSkipAllowed": return new BoolVariable(mourningSkipAllowed);
+                case "enemySkipsAllowed": return new BoolVariable(enemySkipsAllowed);
 
                 // Bosses
                 case "canBeatBrotherhoodBoss": return new BoolVariable(canBeatBrotherhoodBoss);
