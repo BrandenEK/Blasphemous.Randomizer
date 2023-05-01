@@ -438,7 +438,7 @@
 		"Id": "D01Z04S13[SE]",
 		"Direction": 2,
 		"OriginalDoor": "D01Z04S16[W]",
-		"Logic": "D01Z04S13[SE]"
+		"Logic": "D01Z04S13[SE] || canDiveLaser"
 	},
 	{
 		"Id": "D01Z04S14[E]",
@@ -3541,7 +3541,7 @@
 		"Id": "D06Z01S16[-CherubsR]",
 		"Direction": 6,
 		"OriginalDoor": "D06Z01S07[CherubsR]",
-		"Logic": "linen && (D06Z01S16[E] || D06Z01S16[CherubsR] || (D06Z01S16[CherubsL] && (ranged || root || doubleJump)) || (D06Z01S16[W] && (root || canCrossGap1)))"
+		"Logic": "linen && (D06Z01S16[E] || D06Z01S16[CherubsR] || (D06Z01S16[CherubsL] && (canAirStall || root || doubleJump)) || (D06Z01S16[W] && (root || canCrossGap1)))"
 	},
 	{
 		"Id": "D06Z01S16[CherubsL]",

@@ -60,11 +60,11 @@ namespace BlasphemousRandomizer.ItemRando
         private int healthLevel = 0, fervourLevel = 0, swordLevel = 0;
 
         // Skills
-        private bool combo = false;
-        private bool charged = false;
-        private bool ranged = false;
-        private bool dive = false;
-        private bool lunge = false;
+        private int combo = 0;
+        private int charged = 0;
+        private int ranged = 0;
+        private int dive = 0;
+        private int lunge = 0;
 
         // Main quest
         private int holyWounds = 0;
@@ -108,13 +108,15 @@ namespace BlasphemousRandomizer.ItemRando
         private bool bell = false;
         private int verses = 0;
 
-        private bool canBreakHoles => charged || dive || (cherubBitfield & 0x1FFFF) > 0;
+        private bool canBreakHoles => charged > 0 || dive > 0 || lunge >= 3 || (cherubBitfield & 0x1FFFF) > 0;
 
         private bool canDawnJump => dawnHeart && dash && logicDifficulty >= 1;
 
         private bool canWaterJump => nail || doubleJump;
 
-        private bool canAirStall => ranged && logicDifficulty >= 1;
+        private bool canAirStall => ranged > 0 && logicDifficulty >= 1;
+
+        private bool canDiveLaser => dive >= 3 && enemySkipsAllowed;
 
         private bool canSlashUpwarp => logicDifficulty >= 2;
 
@@ -296,11 +298,11 @@ namespace BlasphemousRandomizer.ItemRando
                 case "aubade": return new BoolVariable(aubade);
                 case "cherubBitfield": return new IntVariable(cherubBitfield);
 
-                case "combo": return new BoolVariable(combo);
-                case "charged": return new BoolVariable(charged);
-                case "ranged": return new BoolVariable(ranged);
-                case "dive": return new BoolVariable(dive);
-                case "lunge": return new BoolVariable(lunge);
+                //case "combo": return new BoolVariable(combo);
+                //case "charged": return new BoolVariable(charged);
+                //case "ranged": return new BoolVariable(ranged);
+                //case "dive": return new BoolVariable(dive);
+                //case "lunge": return new BoolVariable(lunge);
 
                 case "wheel": return new BoolVariable(wheel);
                 case "dawnHeart": return new BoolVariable(dawnHeart);
@@ -345,6 +347,7 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canDawnJump": return new BoolVariable(canDawnJump);
                 case "canWaterJump": return new BoolVariable(canWaterJump);
                 case "canAirStall": return new BoolVariable(canAirStall);
+                case "canDiveLaser": return new BoolVariable(canDiveLaser);
                 case "canSlashUpwarp": return new BoolVariable(canSlashUpwarp);
                 case "canSurvivePoison": return new BoolVariable(canSurvivePoison);
 
@@ -523,11 +526,11 @@ namespace BlasphemousRandomizer.ItemRando
                     }
                 case 11:
                     {
-                        if (item.id == "COMBO") combo = true;
-                        else if (item.id == "CHARGED") charged = true;
-                        else if (item.id == "RANGED") { ranged = true; cherubBitfield |= 0x40000; }
-                        else if (item.id == "DIVE") dive = true;
-                        else if (item.id == "LUNGE") lunge = true;
+                        if (item.id == "COMBO") combo++;
+                        else if (item.id == "CHARGED") charged++;
+                        else if (item.id == "RANGED") { ranged++; cherubBitfield |= 0x40000; }
+                        else if (item.id == "DIVE") dive++;
+                        else if (item.id == "LUNGE") lunge++;
                         break;
                     }
                 case 12:
