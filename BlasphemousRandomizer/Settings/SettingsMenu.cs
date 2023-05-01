@@ -23,6 +23,7 @@ namespace BlasphemousRandomizer.Settings
 
         private GameObject settingsMenu;
         private GameObject slotsMenu;
+        private RectTransform debugRect;
         private Vector3 scaling;
 
         private Camera camera;
@@ -116,6 +117,22 @@ namespace BlasphemousRandomizer.Settings
                 }
             }
 
+            // Debug testing ui positions
+            if (debugRect != null)
+            {
+                Vector2 movement = new Vector2();
+                if (Input.GetKeyDown(KeyCode.LeftArrow)) movement.x -= 1;
+                if (Input.GetKeyDown(KeyCode.RightArrow)) movement.x += 1;
+                if (Input.GetKeyDown(KeyCode.DownArrow)) movement.y -= 1;
+                if (Input.GetKeyDown(KeyCode.UpArrow)) movement.y += 1;
+                
+                if (movement != Vector2.zero)
+                {
+                    debugRect.anchoredPosition += movement;
+                    Main.Randomizer.LogWarning("Moving rect to " + debugRect.anchoredPosition);
+                }
+            }
+
             // Keyboard input
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) processKeyInput(1);
             else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) processKeyInput(2);
@@ -130,8 +147,8 @@ namespace BlasphemousRandomizer.Settings
             else if (Input.GetKeyDown(KeyCode.Backspace)) processKeyInput(-1);
 
             // Game input
-            if (Main.Randomizer.Input.GetButtonDown(ModdingAPI.InputHandler.ButtonCode.UISubmit)) beginGame();
-            else if (Main.Randomizer.Input.GetButtonDown(ModdingAPI.InputHandler.ButtonCode.UICancel)) closeMenu();
+            if (Main.Randomizer.Input.GetButtonDown(InputHandler.ButtonCode.UISubmit)) beginGame();
+            else if (Main.Randomizer.Input.GetButtonDown(InputHandler.ButtonCode.UICancel)) closeMenu();
         }
 
         private void processKeyInput(int num)
@@ -149,7 +166,7 @@ namespace BlasphemousRandomizer.Settings
             }
 
             // Update text
-            seedText.text = Main.Randomizer.Localize("menusd") + ": " + (currentSeed != "" ? currentSeed : Main.Randomizer.Localize("menurd"));
+            seedText.text = currentSeed != "" ? currentSeed : generatedSeed.ToString(); //Main.Randomizer.Localize("menusd") + ": " + (currentSeed != "" ? currentSeed : Main.Randomizer.Localize("menurd"));
             Main.Randomizer.playSoundEffect(2);
 
             UpdateUniqueId();
@@ -193,7 +210,7 @@ namespace BlasphemousRandomizer.Settings
 
             // Load config into seed
             currentSeed = config.CustomSeed > 0 ? config.CustomSeed.ToString() : "";
-            seedText.text = Main.Randomizer.Localize("menusd") + ": " + (currentSeed != "" ? currentSeed : Main.Randomizer.Localize("menurd"));
+            seedText.text = currentSeed != "" ? currentSeed : generatedSeed.ToString();  //Main.Randomizer.Localize("menusd") + ": " + (currentSeed != "" ? currentSeed : Main.Randomizer.Localize("menurd"));
             descriptionText.text = "";
 
             UpdateUniqueId();
@@ -412,16 +429,25 @@ namespace BlasphemousRandomizer.Settings
                 uniqueImages[i] = image.GetComponent<Image>();
             }
 
+            // Create sprite for a line
+            Texture2D tex = new Texture2D(1, 1, TextureFormat.RGBA32, false);
+            tex.SetPixel(0, 0, new Color(171, 154, 63));
+            Sprite lineSprite = Sprite.Create(tex, new Rect(0, 0, 1, 1), Vector2.zero);
+
             // Set header text
             Text headerText = settingsMenu.transform.GetChild(0).GetChild(0).GetComponent<Text>();
             headerText.text = Main.Randomizer.Localize("chset");
             Font font = headerText.font;
 
             // Create seed text
-            RectTransform seed = getNewText("Seed", rect, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.yellow, TextAnchor.UpperLeft);
-            seed.pivot = Vector2.one;
-            seed.anchoredPosition = new Vector2(-200, 172);
-            seedText = seed.GetComponent<Text>();
+            RectTransform seedTitle = getNewText("SeedTitle", rect, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.white, TextAnchor.MiddleLeft);
+            seedTitle.pivot = Vector2.one;
+            seedTitle.anchoredPosition = new Vector2(-200, 215);
+
+            RectTransform seedBox = getNewTextbox("SeedBox", rect, font, lineSprite, 53);
+            seedBox.pivot = Vector2.one;
+            seedBox.anchoredPosition = new Vector2(-210, 172);
+            seedText = seedBox.GetComponent<Text>();
 
             // Create main section
             int width = 630, height = 260;
@@ -661,6 +687,19 @@ namespace BlasphemousRandomizer.Settings
                 right.gameObject.AddComponent<SettingsCyclebox>().onStart(options, descs, true);
 
                 return rect;
+            }
+
+            RectTransform getNewTextbox(string name, Transform parent, Font font, Sprite lineSprite, int lineSize)
+            {
+                RectTransform text = getNewText(name, parent, string.Empty, font, 16, Color.white, TextAnchor.MiddleCenter);
+                text.sizeDelta = new Vector2(lineSize, 15);
+                RectTransform line = getNewImage("Line", text, 1);
+                line.GetComponent<Image>().sprite = lineSprite;
+                line.sizeDelta = new Vector2(lineSize, 1);
+                line.pivot = new Vector2(0.5f, 0);
+                line.anchoredPosition = new Vector2(0, -8);
+
+                return text;
             }
         }
     }
