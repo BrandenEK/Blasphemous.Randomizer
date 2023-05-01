@@ -129,6 +129,8 @@ namespace BlasphemousRandomizer.Settings
                 
                 if (movement != Vector2.zero)
                 {
+                    if (Input.GetKey(KeyCode.LeftControl))
+                        movement *= 5;
                     debugRect.anchoredPosition += movement;
                     Main.Randomizer.LogWarning("Moving rect to " + debugRect.anchoredPosition);
                 }
@@ -455,14 +457,14 @@ namespace BlasphemousRandomizer.Settings
             Sprite lineSprite = Sprite.Create(tex, new Rect(0, 0, 1, 1), Vector2.zero);
 
             RectTransform seedTitle = getNewText("SeedTitle", rect, Main.Randomizer.Localize("menusd") + ": ", font, 16, Color.white, TextAnchor.MiddleLeft);
-            seedTitle.pivot = Vector2.one;
+            seedTitle.pivot = new Vector2(0.5f, 0.5f);
             seedTitle.anchoredPosition = new Vector2(-200, 215);
 
             RectTransform seedBox = getNewTextbox("SeedBox", rect, font, lineSprite, 53);
-            seedBox.pivot = Vector2.one;
-            seedBox.anchoredPosition = new Vector2(-210, 172);
+            seedBox.pivot = new Vector2(0.5f, 0.5f);
+            seedBox.anchoredPosition = new Vector2(-238, 165);
             SeedText = seedBox.GetComponent<SettingsTextbox>();
-            debugRect = seedBox;
+            debugRect = seedTitle;
 
             // General section
 
