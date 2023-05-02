@@ -118,8 +118,6 @@ namespace BlasphemousRandomizer.ItemRando
 
         private bool canDiveLaser => dive >= 3 && enemySkipsAllowed;
 
-        private bool canSlashUpwarp => logicDifficulty >= 2;
-
         private bool canSurvivePoison => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2; // Fix up.  Cant go upwards with nothing
 
         private bool canBreakJondoBell => (doors.ContainsKey("D03Z02S05[W]") && canCrossGap5 || doors.ContainsKey("D03Z02S05[S]") || doors.ContainsKey("D03Z02S05[E]")) && (doors.ContainsKey("D03Z02S09[S]") || doors.ContainsKey("D03Z02S09[W]") && dash || doors.ContainsKey("D03Z02S09[N]") || doors.ContainsKey("D03Z02S09[Cherubs]"));
@@ -140,10 +138,11 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canCrossGap11 => doubleJump && canDawnJump && canAirStall;
 
         // Special skips
-        private bool mourningSkipAllowed => logicDifficulty >= 2;
-        private bool unknownSkipsAllowed => false;
-        private bool preciseSkipsAllowed => false;
-        private bool enemySkipsAllowed => logicDifficulty >= 2 && !enemyShuffle;
+        public bool upwarpSkipsAllowed => logicDifficulty >= 2;
+        public bool mourningSkipAllowed => logicDifficulty >= 2;
+        public bool enemySkipsAllowed => logicDifficulty >= 2 && !enemyShuffle;
+        public bool unknownSkipsAllowed => false;
+        public bool preciseSkipsAllowed => false;
 
         // Bosses
         private int bossPower => healthLevel + swordLevel + flasks + quicksilver; // Will need to be changed with boss rando
@@ -260,11 +259,16 @@ namespace BlasphemousRandomizer.ItemRando
             enemyShuffle = config.EnemyShuffleType > 0;
         }
 
+        public bool HasDoor(string doorId)
+        {
+            return doors.ContainsKey(doorId) && doors[doorId];
+        }
+
         protected override Variable GetVariable(string variable)
         {
             if (variable[0] == 'D')
             {
-                return new BoolVariable(doors.ContainsKey(variable) && doors[variable]);
+                return new BoolVariable(HasDoor(variable));
             }
 
             switch (variable)
@@ -348,7 +352,6 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canWaterJump": return new BoolVariable(canWaterJump);
                 case "canAirStall": return new BoolVariable(canAirStall);
                 case "canDiveLaser": return new BoolVariable(canDiveLaser);
-                case "canSlashUpwarp": return new BoolVariable(canSlashUpwarp);
                 case "canSurvivePoison": return new BoolVariable(canSurvivePoison);
 
                 case "canBreakJondoBell": return new BoolVariable(canBreakJondoBell); // access to both jondo bell rooms
@@ -375,6 +378,7 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canCrossGap11": return new BoolVariable(canCrossGap11);
 
                 // Special skips
+                case "upwarpSkipsAllowed": return new BoolVariable(upwarpSkipsAllowed);
                 case "mourningSkipAllowed": return new BoolVariable(mourningSkipAllowed);
                 case "enemySkipsAllowed": return new BoolVariable(enemySkipsAllowed);
 
@@ -555,6 +559,17 @@ namespace BlasphemousRandomizer.ItemRando
                     tirana = true;
                 }
             }
+        }
+
+        public void RemoveItem(string itemId)
+        {
+            if (itemId[0] == 'D')
+            {
+                if (doors.ContainsKey(itemId))
+                    doors.Remove(itemId);
+                return;
+            }
+            // Right now this is only used for removing doors during the door rando process
         }
     }
 }

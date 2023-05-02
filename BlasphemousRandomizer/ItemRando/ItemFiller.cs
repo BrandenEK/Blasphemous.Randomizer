@@ -37,8 +37,16 @@ namespace BlasphemousRandomizer.ItemRando
                 roomObjects[scene].Add(itemLoc.Id);
             }
 
-            int itemLocationsToShuffle = allItemLocations.Count;
-            int doorsRemaining = allDoorLocations.Count;
+            // Create list of all unconnected doors
+            List<DoorLocation> unconnectedDoors = new List<DoorLocation>(allDoorLocations.Values);
+            for (int i = unconnectedDoors.Count - 1; i >= 0; i--)
+            {
+                if (unconnectedDoors[i].Type == 9)
+                {
+                    unconnectedDoors.RemoveAt(i);
+                }
+            }
+            shuffleList(unconnectedDoors);
 
             // Fill list of all items based on their counts
             List<Item> items = new List<Item>();
@@ -52,6 +60,7 @@ namespace BlasphemousRandomizer.ItemRando
             }
 
             // Add/Remove any items from the pool based on config
+            int itemLocationsToShuffle = allItemLocations.Count;
             if (!config.ShuffleReliquaries)
             {
                 items.Remove(allItems["RB101"]);
@@ -141,14 +150,14 @@ namespace BlasphemousRandomizer.ItemRando
             DoorLocation startingDoor = allDoorLocations[Main.Randomizer.StartingDoor.Door];
 
             roomObjects["Initial"].AddRange(roomObjects[startingDoor.Room]); // Starting room is visible
-            roomObjects["Initial"].AddRange(roomObjects["D01Z02S03"]); // Albero elevator room is visible
+            roomObjects["D02Z02S11"].AddRange(roomObjects["D01Z02S03"]); // Albero elevator room is also visible after graveyard elevator
             foreach (string obj in roomObjects["Initial"])
             {
                 if (obj[0] == 'D')
                 {
                     DoorLocation door = allDoorLocations[obj];
                     if (door.Direction != 5)
-                        visibleDoors.Add(door);
+                        visibleDoors.Add(door); // Maybe instead check visibility flags
                 }
                 else if (!config.StartWithWheel || obj != "QI106")
                 {
@@ -158,7 +167,8 @@ namespace BlasphemousRandomizer.ItemRando
             inventory.AddItem(startingDoor.Id);
 
             // While there are still doors or items to place, place them
-            while (progressionItems.Count > 0 || doorsRemaining > 0)
+            bool placedAllItems = false;
+            while (progressionItems.Count > 0 || unconnectedDoors.Count > 0)
             {
                 // Continue connecting and processing new doors until no more are reachable
                 Stack<DoorLocation> newlyFoundDoors = new Stack<DoorLocation>(visibleDoors);
@@ -170,13 +180,90 @@ namespace BlasphemousRandomizer.ItemRando
 
                     if (enterDoor.Logic == null || Parser.EvaluateExpression(enterDoor.Logic, inventory))
                     {
-                        // Connect the door and add to output
-                        DoorLocation exitDoor = allDoorLocations[enterDoor.OriginalDoor];
+                        // Connect the door to vanilla/random door and add to output
+                        DoorLocation exitDoor = null;
+                        if (config.DoorShuffleType > 0 && enterDoor.Type != 9)
+                        {
+                            // Get first valid door from unconnected ones
+                            int exitIdx = -1, undesirableIdx = -1;
+                            for (int i = unconnectedDoors.Count - 1; i >= 0; i--) // Insert at random spot or start differently to make sure you're not just doing the same doors?
+                            {
+                                DoorLocation currentDoor = unconnectedDoors[i];
+
+                                // Invalid door if ...
+                                if (currentDoor.Direction != enterDoor.OppositeDirection) continue; // Wrong direction
+                                if (enterDoor.Id == currentDoor.Id) continue; // This is the same door (probably dont need this since the direction will always be opposite)
+
+                                // If this door is in a room you already have access to, only connect it if no other option since it would take away an option for dead end rooms
+                                if (newlyFoundDoors.Contains(currentDoor) || visibleDoors.Contains(currentDoor))
+                                {
+                                    undesirableIdx = i;
+                                    continue;
+                                }
+
+                                // If there are still more doors after these two, need to make sure the loop doesn't close
+                                if (unconnectedDoors.Count > 2)
+                                {
+                                    // Find if this door will open any more up
+                                    int newDoors = -1;
+                                    inventory.AddItem(currentDoor.Id);
+                                    foreach (string obj in roomObjects[currentDoor.Room])
+                                    {
+                                        if (obj[0] != 'D' || mappedDoors.ContainsKey(obj) || currentDoor.Id == obj) continue;
+
+                                        DoorLocation door = allDoorLocations[obj];
+                                        if (newlyFoundDoors.Contains(door) || visibleDoors.Contains(door))
+                                            continue;
+
+                                        if (door.ShouldBeMadeVisible(config, inventory))
+                                            newDoors++;
+                                    }
+                                    inventory.RemoveItem(currentDoor.Id);
+
+                                    // Because the current enterDoor has been popped from the stack, there is actually one more visible door than it thinks
+                                    if (newlyFoundDoors.Count + visibleDoors.Count + newDoors < 0) continue;
+                                }
+
+                                // Can't come out on the other side of a one way door
+                                // If (unconnected[i].type == 3) continue; // Additional logic to ensure there is a dead end after this one
+
+                                exitIdx = i;
+                                break;
+                            }
+
+                            if (exitIdx >= 0)
+                            {
+                                // There was a valid door to connect to
+                                exitDoor = unconnectedDoors[exitIdx];
+                            }
+                            else if (undesirableIdx >= 0)
+                            {
+                                // There was no valid door, but there was an undesirable one
+                                exitDoor = unconnectedDoors[undesirableIdx];
+                            }
+                        }
+                        else
+                        {
+                            exitDoor = allDoorLocations[enterDoor.OriginalDoor];
+                        }
+
+                        if (exitDoor == null)
+                        {
+                            // If this door is reachable but cant connect to anything without closing the loop, put it off until later and hope another door becomes reachable
+                            if (!visibleDoors.Contains(enterDoor))
+                                visibleDoors.Add(enterDoor);
+                            continue;
+                        }
+
+
+
+
                         mappedDoors.Add(enterDoor.Id, exitDoor.Id);
                         mappedDoors.Add(exitDoor.Id, enterDoor.Id);
                         inventory.AddItem(enterDoor.Id);
                         inventory.AddItem(exitDoor.Id);
-                        doorsRemaining -= 2;
+                        unconnectedDoors.Remove(enterDoor);
+                        unconnectedDoors.Remove(exitDoor);
 
                         // Add everything in the new room
                         foreach (string obj in roomObjects[exitDoor.Room])
@@ -185,7 +272,7 @@ namespace BlasphemousRandomizer.ItemRando
                             {
                                 // If this door hasn't already been processed, make it visible
                                 DoorLocation newDoor = allDoorLocations[obj];
-                                if (!mappedDoors.ContainsKey(newDoor.Id) && newDoor.Direction != 5)
+                                if (!mappedDoors.ContainsKey(newDoor.Id) && newDoor.ShouldBeMadeVisible(config, inventory))
                                 {
                                     newlyFoundDoors.Push(newDoor);
                                 }
@@ -244,6 +331,12 @@ namespace BlasphemousRandomizer.ItemRando
                 if (progressionItems.Count == 0)
                 {
                     // No more items to place but maybe need to finish connecting doors?
+                    if (placedAllItems && unconnectedDoors.Count > 0)
+                    {
+                        // All items have been placed, but somehow not all doors are reachable even after another go through
+                        return false;
+                    }
+                    placedAllItems = true;
                     continue;
                 }
 
@@ -256,6 +349,12 @@ namespace BlasphemousRandomizer.ItemRando
                 progressionItems.RemoveAt(itemIdx);
                 mappedItems.Add(randomLocation.Id, randomItem.id);
                 inventory.AddItem(randomItem.id);
+            }
+
+            if (mappedDoors.Count != allDoorLocations.Count)
+            {
+                // Not all doors were mapped, most likely because the rooftops elevator was never reachable, meaning the vanilla doors & locations up there were never made accessible
+                return false;
             }
 
             // Once all progression items have been placed and the doors are filled, place all filler items

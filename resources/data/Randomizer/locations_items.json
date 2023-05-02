@@ -924,7 +924,7 @@
 		"Name": "Blood platform",
 		"Hint": "* resides in the Mountains",
 		"Room": "D03Z01S04",
-		"Logic": "blood || doubleJump || canSlashUpwarp"
+		"Logic": "blood || doubleJump || upwarpSkipsAllowed"
 	},
 	{
 		"Id": "RB13",
