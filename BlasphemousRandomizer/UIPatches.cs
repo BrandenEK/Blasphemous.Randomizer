@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using Tools.Items;
 using Tools.Playmaker2.Action;
+using Gameplay.UI;
 using Gameplay.UI.Others.MenuLogic;
 using Framework.Managers;
 using Framework.Map;
@@ -19,6 +20,16 @@ namespace BlasphemousRandomizer
                 return false;
             }
             return true;
+        }
+    }
+
+    // Dont show area pop up in door shuffle
+    [HarmonyPatch(typeof(UIController), "ShowAreaPopUp")]
+    public class UIControllerArea_Patch
+    {
+        public static bool Prefix()
+        {
+            return Main.Randomizer.gameConfig.DoorShuffleType <= 0;
         }
     }
 
