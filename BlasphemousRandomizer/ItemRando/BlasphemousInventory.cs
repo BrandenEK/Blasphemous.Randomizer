@@ -120,9 +120,9 @@ namespace BlasphemousRandomizer.ItemRando
 
         private bool canSurvivePoison => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2; // Fix up.  Cant go upwards with nothing
 
-        private bool canBreakJondoBell => (doors.ContainsKey("D03Z02S05[W]") && canCrossGap5 || doors.ContainsKey("D03Z02S05[S]") || doors.ContainsKey("D03Z02S05[E]")) && (doors.ContainsKey("D03Z02S09[S]") || doors.ContainsKey("D03Z02S09[W]") && dash || doors.ContainsKey("D03Z02S09[N]") || doors.ContainsKey("D03Z02S09[Cherubs]"));
-        private bool canRideAlberoElevator => doors.ContainsKey("D02Z02S11[NW]") || doors.ContainsKey("D02Z02S11[NE]") || doors.ContainsKey("D02Z02S11[W]") || doors.ContainsKey("D02Z02S11[E]") || doors.ContainsKey("D02Z02S11[SE]");
-        private bool canFillChalice => chalice && (doors.ContainsKey("D03Z01S01[W]") || doors.ContainsKey("D03Z01S01[NE]") || doors.ContainsKey("D03Z01S01[S]")) && (doors.ContainsKey("D05Z02S01[W]") || doors.ContainsKey("D05Z02S01[E]")) && (doors.ContainsKey("D09Z01S07[SW]") || doors.ContainsKey("D09Z01S07[SE]") || doors.ContainsKey("D09Z01S07[W]") || doors.ContainsKey("D09Z01S07[E]"));
+        private bool canBreakJondoBell => (HasDoor("D03Z02S05[W]") && canCrossGap5 || HasDoor("D03Z02S05[S]") || HasDoor("D03Z02S05[E]")) && (HasDoor("D03Z02S09[S]") || HasDoor("D03Z02S09[W]") && dash || HasDoor("D03Z02S09[N]") || HasDoor("D03Z02S09[Cherubs]"));
+        private bool canRideAlberoElevator => HasDoor("D02Z02S11[NW]") || HasDoor("D02Z02S11[NE]") || HasDoor("D02Z02S11[W]") || HasDoor("D02Z02S11[E]") || HasDoor("D02Z02S11[SE]");
+        private bool canFillChalice => chalice && (HasDoor("D03Z01S01[W]") || HasDoor("D03Z01S01[NE]") || HasDoor("D03Z01S01[S]")) && (HasDoor("D05Z02S01[W]") || HasDoor("D05Z02S01[E]")) && (HasDoor("D09Z01S07[SW]") || HasDoor("D09Z01S07[SE]") || HasDoor("D09Z01S07[W]") || HasDoor("D09Z01S07[E]"));
 
         // Crossing gaps
         private bool canCrossGap1 => doubleJump || canDawnJump || wheel || canAirStall;
@@ -146,35 +146,35 @@ namespace BlasphemousRandomizer.ItemRando
 
         // Bosses
         private int bossPower => healthLevel + swordLevel + flasks + quicksilver; // Will need to be changed with boss rando
-        private bool canBeatBrotherhoodBoss => bossPower >= 0 && (doors.ContainsKey("D17Z01S11[W]") || doors.ContainsKey("D17Z01S11[E]"));
-        private bool canBeatMercyBoss => bossPower >= 0 && (doors.ContainsKey("D01Z04S18[W]") || doors.ContainsKey("D01Z04S18[E]"));
-        private bool canBeatConventBoss => bossPower >= 3 && (doors.ContainsKey("D02Z03S20[W]") || doors.ContainsKey("D02Z03S20[E]"));
-        private bool canBeatGrievanceBoss => bossPower >= 3 && (doors.ContainsKey("D03Z03S15[W]") || doors.ContainsKey("D03Z03S15[E]"));
-        private bool canBeatBridgeBoss => bossPower >= 4 && (doors.ContainsKey("D08Z01S01[W]") || doors.ContainsKey("D08Z01S01[E]"));
-        private bool canBeatMothersBoss => bossPower >= 4 && (doors.ContainsKey("D04Z02S22[W]") || doors.ContainsKey("D04Z02S22[E]"));
-        private bool canBeatCanvasesBoss => bossPower >= 4 && (doors.ContainsKey("D05Z02S14[W]") || doors.ContainsKey("D05Z02S14[E]"));
-        private bool canBeatPrisonBoss => bossPower >= 4 && (doors.ContainsKey("D09Z01S03[W]") || doors.ContainsKey("D09Z01S03[N]"));
-        private bool canBeatRooftopsBoss => bossPower >= 10 && (doors.ContainsKey("D06Z01S25[W]") || doors.ContainsKey("D06Z01S25[E]"));
-        private bool canBeatOssuaryBoss => bossPower >= 15 && doors.ContainsKey("D01BZ08S01[W]");
-        private bool canBeatMourningBoss => bossPower >= 9 && doors.ContainsKey("D20Z02S08[E]");
-        private bool canBeatGraveyardBoss => bossPower >= 12 && doors.ContainsKey("D01BZ07S01[Santos]") && doors.ContainsKey("D02Z03S23[E]") && doors.ContainsKey("D02Z02S14[W]");
-        private bool canBeatJondoBoss => bossPower >= 12 && doors.ContainsKey("D01BZ07S01[Santos]") && (doors.ContainsKey("D20Z01S05[W]") || doors.ContainsKey("D20Z01S05[E]")) && (doors.ContainsKey("D03Z01S03[W]") || doors.ContainsKey("D03Z01S03[SW]"));
-        private bool canBeatPatioBoss => bossPower >= 12 && doors.ContainsKey("D01BZ07S01[Santos]") && doors.ContainsKey("D06Z01S18[E]") && (doors.ContainsKey("D04Z01S04[W]") || doors.ContainsKey("D04Z01S04[E]") || doors.ContainsKey("D04Z01S04[Cherubs]"));
-        private bool canBeatWallBoss => bossPower >= 12 && doors.ContainsKey("D01BZ07S01[Santos]") && doors.ContainsKey("D09BZ01S01[Cell24]") && (doors.ContainsKey("D09Z01S01[W]") || doors.ContainsKey("D09Z01S01[E]"));
-        private bool canBeatHallBoss => bossPower >= 12 && (doors.ContainsKey("D08Z03S03[W]") || doors.ContainsKey("D08Z03S03[E]"));
+        private bool canBeatBrotherhoodBoss => bossPower >= 0 && (HasDoor("D17Z01S11[W]") || HasDoor("D17Z01S11[E]"));
+        private bool canBeatMercyBoss => bossPower >= 0 && (HasDoor("D01Z04S18[W]") || HasDoor("D01Z04S18[E]"));
+        private bool canBeatConventBoss => bossPower >= 3 && (HasDoor("D02Z03S20[W]") || HasDoor("D02Z03S20[E]"));
+        private bool canBeatGrievanceBoss => bossPower >= 3 && (HasDoor("D03Z03S15[W]") || HasDoor("D03Z03S15[E]"));
+        private bool canBeatBridgeBoss => bossPower >= 4 && (HasDoor("D08Z01S01[W]") || HasDoor("D08Z01S01[E]"));
+        private bool canBeatMothersBoss => bossPower >= 4 && (HasDoor("D04Z02S22[W]") || HasDoor("D04Z02S22[E]"));
+        private bool canBeatCanvasesBoss => bossPower >= 4 && (HasDoor("D05Z02S14[W]") || HasDoor("D05Z02S14[E]"));
+        private bool canBeatPrisonBoss => bossPower >= 4 && (HasDoor("D09Z01S03[W]") || HasDoor("D09Z01S03[N]"));
+        private bool canBeatRooftopsBoss => bossPower >= 10 && (HasDoor("D06Z01S25[W]") || HasDoor("D06Z01S25[E]"));
+        private bool canBeatOssuaryBoss => bossPower >= 15 && HasDoor("D01BZ08S01[W]");
+        private bool canBeatMourningBoss => bossPower >= 9 && HasDoor("D20Z02S08[E]");
+        private bool canBeatGraveyardBoss => bossPower >= 12 && HasDoor("D01BZ07S01[Santos]") && HasDoor("D02Z03S23[E]") && HasDoor("D02Z02S14[W]");
+        private bool canBeatJondoBoss => bossPower >= 12 && HasDoor("D01BZ07S01[Santos]") && (HasDoor("D20Z01S05[W]") || HasDoor("D20Z01S05[E]")) && (HasDoor("D03Z01S03[W]") || HasDoor("D03Z01S03[SW]"));
+        private bool canBeatPatioBoss => bossPower >= 12 && HasDoor("D01BZ07S01[Santos]") && HasDoor("D06Z01S18[E]") && (HasDoor("D04Z01S04[W]") || HasDoor("D04Z01S04[E]") || HasDoor("D04Z01S04[Cherubs]"));
+        private bool canBeatWallBoss => bossPower >= 12 && HasDoor("D01BZ07S01[Santos]") && HasDoor("D09BZ01S01[Cell24]") && (HasDoor("D09Z01S01[W]") || HasDoor("D09Z01S01[E]"));
+        private bool canBeatHallBoss => bossPower >= 12 && (HasDoor("D08Z03S03[W]") || HasDoor("D08Z03S03[E]"));
 
         private int guiltRooms
         {
             get
             {
                 int rooms = 0;
-                if (doors.ContainsKey("D01Z04S17[W]")) rooms++;
-                if (doors.ContainsKey("D02Z02S06[E]")) rooms++;
-                if (doors.ContainsKey("D03Z03S14[W]")) rooms++;
-                if (doors.ContainsKey("D04Z02S17[W]")) rooms++;
-                if (doors.ContainsKey("D05Z01S17[W]")) rooms++;
-                if (doors.ContainsKey("D09Z01S13[E]")) rooms++;
-                if (doors.ContainsKey("D17Z01S12[E]")) rooms++;
+                if (HasDoor("D01Z04S17[W]")) rooms++;
+                if (HasDoor("D02Z02S06[E]")) rooms++;
+                if (HasDoor("D03Z03S14[W]")) rooms++;
+                if (HasDoor("D04Z02S17[W]")) rooms++;
+                if (HasDoor("D05Z01S17[W]")) rooms++;
+                if (HasDoor("D09Z01S13[E]")) rooms++;
+                if (HasDoor("D17Z01S12[E]")) rooms++;
                 return rooms;
             }
         }
@@ -184,13 +184,13 @@ namespace BlasphemousRandomizer.ItemRando
             get
             {
                 int rooms = 0;
-                if (doors.ContainsKey("D01Z02S06[W]") || doors.ContainsKey("D01Z02S06[E]")) rooms++;
-                if (doors.ContainsKey("D01Z05S24[W]") || doors.ContainsKey("D01Z05S24[E]")) rooms++;
-                if (doors.ContainsKey("D02Z03S13[W]")) rooms++;
-                if (doors.ContainsKey("D04Z02S12[W]")) rooms++;
-                if (doors.ContainsKey("D05Z01S13[E]")) rooms++;
-                if (doors.ContainsKey("D06Z01S11[W]")) rooms++;
-                if (doors.ContainsKey("D17Z01S08[E]")) rooms++;
+                if (HasDoor("D01Z02S06[W]") || HasDoor("D01Z02S06[E]")) rooms++;
+                if (HasDoor("D01Z05S24[W]") || HasDoor("D01Z05S24[E]")) rooms++;
+                if (HasDoor("D02Z03S13[W]")) rooms++;
+                if (HasDoor("D04Z02S12[W]")) rooms++;
+                if (HasDoor("D05Z01S13[E]")) rooms++;
+                if (HasDoor("D06Z01S11[W]")) rooms++;
+                if (HasDoor("D17Z01S08[E]")) rooms++;
                 return rooms;
             }
         }
@@ -199,15 +199,15 @@ namespace BlasphemousRandomizer.ItemRando
         {
             get
             {
-                if (doors.ContainsKey("D03Z01S03[W]") || doors.ContainsKey("D03Z01S03[E]"))
+                if (HasDoor("D03Z01S03[W]") || HasDoor("D03Z01S03[E]"))
                 {
-                    if (doors.ContainsKey("D17Z01S04[N]") || doors.ContainsKey("D17Z01S04[FrontR]"))
+                    if (HasDoor("D17Z01S04[N]") || HasDoor("D17Z01S04[FrontR]"))
                     {
-                        if (doors.ContainsKey("D01Z03S06[W]") || doors.ContainsKey("D17Z01S04[E]"))
+                        if (HasDoor("D01Z03S06[W]") || HasDoor("D17Z01S04[E]"))
                         {
-                            if (doors.ContainsKey("D04Z01S04[W]") || doors.ContainsKey("D04Z01S04[E]") || doors.ContainsKey("D04Z01S04[Cherubs]"))
+                            if (HasDoor("D04Z01S04[W]") || HasDoor("D04Z01S04[E]") || HasDoor("D04Z01S04[Cherubs]"))
                             {
-                                if (doors.ContainsKey("D04Z02S20[W]") || doors.ContainsKey("D04Z02S20[Redento]"))
+                                if (HasDoor("D04Z02S20[W]") || HasDoor("D04Z02S20[Redento]"))
                                 {
                                     return 5;
                                 }
@@ -228,11 +228,11 @@ namespace BlasphemousRandomizer.ItemRando
             get
             {
                 int rooms = 0;
-                if (doors.ContainsKey("D02Z03S24[E]")) rooms++;
-                if (doors.ContainsKey("D03Z03S19[E]")) rooms++;
-                if (doors.ContainsKey("D04Z04S02[W]")) rooms++;
-                if (doors.ContainsKey("D05Z01S24[E]")) rooms++;
-                if (doors.ContainsKey("D06Z01S26[W]")) rooms++;
+                if (HasDoor("D02Z03S24[E]")) rooms++;
+                if (HasDoor("D03Z03S19[E]")) rooms++;
+                if (HasDoor("D04Z04S02[W]")) rooms++;
+                if (HasDoor("D05Z01S24[E]")) rooms++;
+                if (HasDoor("D06Z01S26[W]")) rooms++;
                 return rooms;
             }
         }
@@ -261,7 +261,7 @@ namespace BlasphemousRandomizer.ItemRando
 
         public bool HasDoor(string doorId)
         {
-            return doors.ContainsKey(doorId) && doors[doorId];
+            return doors.ContainsKey(doorId);// && doors[doorId];
         }
 
         protected override Variable GetVariable(string variable)
