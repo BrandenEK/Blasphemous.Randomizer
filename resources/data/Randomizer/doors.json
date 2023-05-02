@@ -151,12 +151,12 @@
 	},
 	{
 		"Id": "D01BZ04S01[church]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D01Z02S03[church]"
 	},
 	{
 		"Id": "D01BZ06S01[Ossary]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D01Z02S04[Ossary]"
 	},
 	{
@@ -518,7 +518,7 @@
 	},
 	{
 		"Id": "D01BZ02S01[C]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D01Z04S09[C]"
 	},
 	
@@ -882,7 +882,7 @@
 	},
 	{
 		"Id": "D01BZ05S01[Reward]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D01Z05S21[Reward]"
 	},
 	{
@@ -904,7 +904,7 @@
 	},
 	{
 		"Id": "D01BZ07S01[Santos]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D01Z06S01[Santos]"
 	},
 	
@@ -1294,7 +1294,7 @@
 	},
 	{
 		"Id": "D02BZ02S01[C]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D02Z02S08[C]"
 	},
 	
@@ -1698,7 +1698,7 @@
 		"Id": "D03Z02S01[W]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z02S02[E]",
-		"Logic": "D03Z02S01[W] && wallClimb"
+		"Logic": "D03Z02S01[W] || wallClimb"
 	},
 	{
 		"Id": "D03Z02S01[N]",
@@ -2689,7 +2689,7 @@
 	},
 	{
 		"Id": "D04BZ02S01[Redento]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D04Z02S20[Redento]"
 	},
 	
@@ -2717,12 +2717,14 @@
 	{
 		"Id": "D04Z04S01[E]",
 		"Direction": 2,
-		"OriginalDoor": "D04Z04S02[W]"
+		"OriginalDoor": "D04Z04S02[W]",
+		"Type": 9
 	},
 	{
 		"Id": "D04Z04S02[W]",
 		"Direction": 1,
-		"OriginalDoor": "D04Z04S01[E]"
+		"OriginalDoor": "D04Z04S01[E]",
+		"Type": 9
 	},
 	
 	{
@@ -2972,8 +2974,7 @@
 	{
 		"Id": "D05Z01S21[SW]",
 		"Direction": 1,
-		"OriginalDoor": "D05Z02S14[E]",
-		"Logic": "D05Z01S21[SW] || D05Z01S21[NE]"
+		"OriginalDoor": "D05Z02S14[E]"
 	},
 	{
 		"Id": "D05Z01S21[NW]",
@@ -2983,14 +2984,13 @@
 	{
 		"Id": "D05Z01S21[NE]",
 		"Direction": 2,
-		"OriginalDoor": "D05Z01S15[W]",
-		"Logic": "D05Z01S21[SW] || D05Z01S21[NE]"
+		"OriginalDoor": "D05Z01S15[W]"
 	},
 	{
 		"Id": "D05Z01S21[-Cherubs]",
 		"Direction": 6,
 		"OriginalDoor": "D05Z02S11[Cherubs]",
-		"Logic": "linen && (D05Z01S21[SW] || D05Z01S21[NE])"
+		"Logic": "linen"
 	},
 	{
 		"Id": "D05Z01S22[FrontalN]",
@@ -3014,12 +3014,12 @@
 	},
 	{
 		"Id": "D05BZ01S01[FrontalS]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D05Z01S03[Frontal]"
 	},
 	{
 		"Id": "D05BZ01S01[FrontalN]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D05Z01S22[FrontalN]"
 	},
 
@@ -3200,7 +3200,7 @@
 	},
 	{
 		"Id": "D05BZ02S01[C]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D05Z02S04[C]"
 	},
 
@@ -3256,7 +3256,8 @@
 		"Id": "D06Z01S01[N]",
 		"Direction": 0,
 		"OriginalDoor": "D06Z01S19[S]",
-		"Logic": "masks >= 3 && (D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N] || linen && (D06Z01S01[NW] || D06Z01S01[NE]))"
+		"Logic": "masks >= 3 && (D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N] || linen && (D06Z01S01[NW] || D06Z01S01[NE]))",
+		"Type": 9
 	},
 	{
 		"Id": "D06Z01S01[-Cherubs]",
@@ -3591,12 +3592,14 @@
 	{
 		"Id": "D06Z01S19[S]",
 		"Direction": 3,
-		"OriginalDoor": "D06Z01S01[N]"
+		"OriginalDoor": "D06Z01S01[N]",
+		"Type": 9
 	},
 	{
 		"Id": "D06Z01S19[E]",
 		"Direction": 2,
-		"OriginalDoor": "D06Z01S25[W]"
+		"OriginalDoor": "D06Z01S25[W]",
+		"Type": 9
 	},
 	{
 		"Id": "D06Z01S20[W]",
@@ -3651,13 +3654,15 @@
 		"Id": "D06Z01S25[W]",
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S19[E]",
-		"Logic": "D06Z01S25[W] || canBeatRooftopsBoss"
+		"Logic": "D06Z01S25[W] || canBeatRooftopsBoss",
+		"Type": 9
 	},
 	{
 		"Id": "D06Z01S25[E]",
 		"Direction": 2,
 		"OriginalDoor": "D07Z01S01[W]",
-		"Logic": "D06Z01S25[E] || canBeatRooftopsBoss"
+		"Logic": "D06Z01S25[E] || canBeatRooftopsBoss",
+		"Type": 9
 	},
 	{
 		"Id": "D06Z01S26[W]",
@@ -3668,27 +3673,32 @@
 	{
 		"Id": "D07Z01S01[W]",
 		"Direction": 1,
-		"OriginalDoor": "D06Z01S25[E]"
+		"OriginalDoor": "D06Z01S25[E]",
+		"Type": 9
 	},
 	{
 		"Id": "D07Z01S01[E]",
 		"Direction": 2,
-		"OriginalDoor": "D07Z01S02[W]"
+		"OriginalDoor": "D07Z01S02[W]",
+		"Type": 9
 	},
 	{
 		"Id": "D07Z01S02[W]",
 		"Direction": 1,
-		"OriginalDoor": "D07Z01S01[E]"
+		"OriginalDoor": "D07Z01S01[E]",
+		"Type": 9
 	},
 	{
 		"Id": "D07Z01S02[E]",
 		"Direction": 2,
-		"OriginalDoor": "D07Z01S03[W]"
+		"OriginalDoor": "D07Z01S03[W]",
+		"Type": 9
 	},
 	{
 		"Id": "D07Z01S03[W]",
 		"Direction": 1,
-		"OriginalDoor": "D07Z01S02[E]"
+		"OriginalDoor": "D07Z01S02[E]",
+		"Type": 9
 	},
 
 	{
@@ -4132,133 +4142,133 @@
 	},
 	{
 		"Id": "D09BZ01S01[Cell1]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S02[Cell1]",
 		"Logic": "D09BZ01S01[Cell1]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell2]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S02[Cell2]",
 		"Logic": "D09BZ01S01[Cell2] || D09BZ01S01[Cell3]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell3]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S02[Cell3]",
 		"Logic": "D09BZ01S01[Cell2] || D09BZ01S01[Cell3]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell4]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S02[Cell4]",
 		"Logic": "D09BZ01S01[Cell4] || D09BZ01S01[Cell5]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell5]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S02[Cell5]",
 		"Logic": "D09BZ01S01[Cell4] || D09BZ01S01[Cell5]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell6]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S02[Cell6]",
 		"Logic": "D09BZ01S01[Cell6]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell7]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S08[Cell7]",
 		"Logic": "D09BZ01S01[Cell7]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell10]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S10[Cell10]",
 		"Logic": "D09BZ01S01[Cell10]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell11]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S10[Cell11]",
 		"Logic": "D09BZ01S01[Cell11]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell12]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S10[Cell12]",
 		"Logic": "D09BZ01S01[Cell12] || D09BZ01S01[Cell13]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell13]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S10[Cell13]",
 		"Logic": "D09BZ01S01[Cell12] || D09BZ01S01[Cell13]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell14]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S08[Cell14]",
 		"Logic": "D09BZ01S01[Cell14] || D09BZ01S01[Cell15]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell15]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S08[Cell15]",
 		"Logic": "D09BZ01S01[Cell14] || D09BZ01S01[Cell15]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell16]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S08[Cell16]",
 		"Logic": "D09BZ01S01[Cell16]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell17]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S08[Cell17]",
 		"Logic": "D09BZ01S01[Cell17] || D09BZ01S01[Cell18]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell18]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S08[Cell18]",
 		"Logic": "D09BZ01S01[Cell18]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell19]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S09[Cell19]",
 		"Logic": "D09BZ01S01[Cell19] || D09BZ01S01[Cell20]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell20]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S09[Cell19]",
 		"Logic": "D09BZ01S01[Cell19] || D09BZ01S01[Cell20]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell21]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S09[Cell21]",
 		"Logic": "D09BZ01S01[Cell21]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell22]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S02[Cell22]",
 		"Logic": "D09BZ01S01[Cell22]"
 	},
 	{
 		"Id": "D09BZ01S01[Cell23]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S02[Cell23]",
 		"Logic": "bronzeKey && (D09BZ01S01[Cell22] || D09BZ01S01[Cell23])"
 	},
 	{
 		"Id": "D09BZ01S01[Cell24]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D09Z01S09[Cell24]",
 		"Logic": "D09BZ01S01[Cell24]"
 	},
@@ -4472,18 +4482,18 @@
 	},
 	{
 		"Id": "D17BZ01S01[relic]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D17Z01S03[relic]"
 	},
 	{
 		"Id": "D17BZ02S01[FrontL]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D17Z01S04[FrontL]",
 		"Logic": "D17BZ02S01[FrontL]"
 	},
 	{
 		"Id": "D17BZ02S01[FrontR]",
-		"Direction": 4,
+		"Direction": 7,
 		"OriginalDoor": "D17Z01S04[FrontR]",
 		"Logic": "D17BZ02S01[FrontR] || dash && wallClimb"
 	},
