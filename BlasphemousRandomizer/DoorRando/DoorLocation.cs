@@ -34,6 +34,17 @@ namespace BlasphemousRandomizer.DoorRando
             }
         }
 
+        public bool ShouldBeVanillaDoor(Config config)
+        {
+            if (Type == 9 || config.DoorShuffleType <= 0)
+                return true;
+
+            if (Type != 1 && config.DoorShuffleType == 1)
+                return true;
+
+            return false;
+        }
+
         public bool ShouldBeMadeVisible(Config config, BlasphemousInventory inventory)
         {
             if (Direction == 5) return false;

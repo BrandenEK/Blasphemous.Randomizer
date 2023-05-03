@@ -41,7 +41,7 @@ namespace BlasphemousRandomizer.ItemRando
             List<DoorLocation> unconnectedDoors = new List<DoorLocation>(allDoorLocations.Values);
             for (int i = unconnectedDoors.Count - 1; i >= 0; i--)
             {
-                if (unconnectedDoors[i].Type == 9)
+                if (unconnectedDoors[i].ShouldBeVanillaDoor(config))
                 {
                     unconnectedDoors.RemoveAt(i);
                 }
@@ -182,7 +182,7 @@ namespace BlasphemousRandomizer.ItemRando
                     {
                         // Connect the door to vanilla/random door and add to output
                         DoorLocation exitDoor = null;
-                        if (config.DoorShuffleType > 0 && enterDoor.Type != 9)
+                        if (!enterDoor.ShouldBeVanillaDoor(config))
                         {
                             // Get first valid door from unconnected ones
                             int exitIdx = -1, undesirableIdx = -1;
@@ -254,9 +254,6 @@ namespace BlasphemousRandomizer.ItemRando
                                 visibleDoors.Add(enterDoor);
                             continue;
                         }
-
-
-
 
                         mappedDoors.Add(enterDoor.Id, exitDoor.Id);
                         mappedDoors.Add(exitDoor.Id, enterDoor.Id);

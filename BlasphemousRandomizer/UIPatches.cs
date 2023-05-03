@@ -29,7 +29,7 @@ namespace BlasphemousRandomizer
     {
         public static bool Prefix()
         {
-            return Main.Randomizer.gameConfig.DoorShuffleType <= 0;
+            return Main.Randomizer.gameConfig.DoorShuffleType <= 1;
         }
     }
 
