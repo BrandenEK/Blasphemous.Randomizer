@@ -14,7 +14,24 @@ namespace BlasphemousRandomizer.DoorRando
         {
             string currentScene = Core.LevelManager.currentLevel.LevelName;
             string currentId = __instance.identificativeName == "-" ? "-" + __instance.targetDoor : __instance.identificativeName;
+            if (currentScene == "D03Z01S03")
+            {
+                // Special id calculation for the linen drops over Jondo
+                if (__instance.targetDoor == "CherubsL")
+                    currentId = "-WestR";
+                else if (__instance.targetDoor == "CherubsR")
+                    currentId = "-EastL";
+                else if (__instance.targetDoor == "Cherubs")
+                {
+                    if (__instance.targetScene == "D03Z02S10")
+                        currentId = "-WestL";
+                    else if (__instance.targetScene == "D03Z02S01")
+                        currentId = "-EastR";
+                }
+            }
+
             string doorId = $"{currentScene}[{currentId}]";
+            Main.Randomizer.LogWarning("Entering door: " + doorId);
             if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && Main.Randomizer.itemShuffler.getNewDoor(doorId, out string newScene, out string newId))
             {
                 __instance.targetScene = newScene;
