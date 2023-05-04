@@ -320,6 +320,11 @@ namespace BlasphemousRandomizer
             {
                 //gameConfig.StartingLocation = 1;
                 //Log("Starting from knot");
+                //foreach (string doorId in data.doorLocations.Keys)
+                //{
+                //    itemShuffler.getNewDoor(doorId, out string scene, out string id);
+                //    LogWarning($"{doorId} maps to {scene}[{id}]");
+                //}
             }
             
             // Update ui menus

@@ -54,4 +54,15 @@ namespace BlasphemousRandomizer.DoorRando
             Main.Randomizer.Log("Setting start location to " + start.Room);
         }
     }
+
+    // Prevent crashing when loading same scene from door
+    [HarmonyPatch(typeof(SpawnManager), "SpawnPlayer")]
+    public class SpawnManagerSpawn_Patch
+    {
+        public static void Prefix(SpawnManager.PosibleSpawnPoints spawnType, ref bool forceLoad)
+        {
+            if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && spawnType == SpawnManager.PosibleSpawnPoints.Door)
+                forceLoad = true;
+        }
+    }
 }
