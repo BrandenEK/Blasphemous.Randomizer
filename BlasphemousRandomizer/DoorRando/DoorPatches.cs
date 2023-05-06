@@ -2,6 +2,7 @@
 using Framework.Managers;
 using Framework.FrameworkCore;
 using Tools.Level.Interactables;
+using Gameplay.GameControllers.Bosses.BossFight;
 using UnityEngine;
 
 namespace BlasphemousRandomizer.DoorRando
@@ -63,6 +64,30 @@ namespace BlasphemousRandomizer.DoorRando
         {
             if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && spawnType == SpawnManager.PosibleSpawnPoints.Door)
                 forceLoad = true;
+        }
+    }
+
+    // Enable wall collider on certain boss fight starts
+    [HarmonyPatch(typeof(BossFightManager), "StartBossFight", typeof(bool))]
+    public class BossFightStart_Patch
+    {
+        public static void Postfix()
+        {
+            string currentScene = Core.LevelManager.currentLevel.LevelName;
+            if (currentScene == "D17Z01S11" || currentScene == "D05Z02S14")
+                Main.Randomizer.BossBoundaryStatus = true;
+        }
+    }
+
+    // Disable wall collider on certain boss fight ends
+    [HarmonyPatch(typeof(BossFightManager), "OnDeathBoss")]
+    public class BossFightEnd_Patch
+    {
+        public static void Postfix()
+        {
+            string currentScene = Core.LevelManager.currentLevel.LevelName;
+            if (currentScene == "D17Z01S11" || currentScene == "D01Z04S18")
+                Main.Randomizer.BossBoundaryStatus = false;
         }
     }
 }

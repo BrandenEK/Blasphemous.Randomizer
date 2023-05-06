@@ -42,13 +42,28 @@ namespace BlasphemousRandomizer
             if (__instance.cutscene != null && Main.Randomizer.shouldSkipCutscene(__instance.cutscene.name))
             {
                 Main.Randomizer.Log("Skipping cutscene: " + __instance.cutscene.name);
-                __instance.Finish();
                 __instance.Fsm.Event(__instance.onSuccess);
+                __instance.Finish();
                 return false;
             }
             Main.Randomizer.Log("Playing cutscene: " + __instance.cutscene.name);
             return true;
         }
+
+        //public static void Postfix(CutscenePlay __instance)
+        //{
+        //    if (__instance.cutscene == null) return;
+
+        //    if (Main.Randomizer.shouldSkipCutscene(__instance.cutscene.name))
+        //    {
+        //        Main.Randomizer.Log("Skipping cutscene: " + __instance.cutscene.name);
+        //        Core.Cinematics.EndCutscene(true);
+        //    }
+        //    else
+        //    {
+        //        Main.Randomizer.Log("Playing cutscene: " + __instance.cutscene.name);
+        //    }
+        //}
     }
 
     // Allow unequipping true heart

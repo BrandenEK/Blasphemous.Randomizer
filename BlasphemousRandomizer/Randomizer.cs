@@ -219,12 +219,16 @@ namespace BlasphemousRandomizer
             {
                 // Keep the elevator set at position 4
                 Core.Events.SetFlag("ELEVATOR_POSITION_1", false);
-                //Object.FindObjectOfType<Gameplay.GameControllers.Environment.Elevator.Elevator>().MovingSpeed = 10;
             }
             else if (newLevel == "D06Z01S19")
             {
                 // Prevent the elevator crashing when returning to main room
                 Core.Events.SetFlag("ELEVATOR_POSITION_FAKE", true);
+            }
+            else if (newLevel == "D17Z01S11" || newLevel == "D05Z02S14" || newLevel == "D01Z04S18")
+            {
+                // Disable right wall in Warden & Exposito & Piety boss room
+                BossBoundaryStatus = false;
             }
 
             // Update ui menus
@@ -308,23 +312,12 @@ namespace BlasphemousRandomizer
             }
             else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad1))
             {
-                //enemyShuffler.Shuffle(new System.Random().Next());
-                //UIController.instance.ShowPopUp("Shuffling enemies temporarily!", "", 0, false);
             }
             else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad2))
             {
-                //gameConfig.StartingLocation = 0;
-                //Log("Starting from brotherhood");
             }
             else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad3))
             {
-                //gameConfig.StartingLocation = 1;
-                //Log("Starting from knot");
-                //foreach (string doorId in data.doorLocations.Keys)
-                //{
-                //    itemShuffler.getNewDoor(doorId, out string scene, out string id);
-                //    LogWarning($"{doorId} maps to {scene}[{id}]");
-                //}
             }
             
             // Update ui menus
@@ -422,6 +415,20 @@ namespace BlasphemousRandomizer
             void SetBit(byte digit)
             {
                 uniqueSeed |= ((long)1) << digit;
+            }
+        }
+
+        public bool BossBoundaryStatus
+        {
+            set
+            {
+                GameObject rightWall = GameObject.Find("CombatBoundariesRight");
+                if (rightWall != null)
+                {
+                    BoxCollider2D collider = rightWall.GetComponent<BoxCollider2D>();
+                    collider.enabled = value;
+                    LogWarning("Setting boss boundary status to " + value);
+                }
             }
         }
 
