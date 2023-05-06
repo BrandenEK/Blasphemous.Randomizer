@@ -14,6 +14,7 @@ using BlasphemousRandomizer.Map;
 using Framework.Managers;
 using Framework.Audio;
 using Tools.Level;
+using Tools.Level.Interactables;
 using ModdingAPI;
 
 namespace BlasphemousRandomizer
@@ -195,6 +196,40 @@ namespace BlasphemousRandomizer
             }
             watch.Stop();
             Log("Time to fill seed: " + watch.ElapsedMilliseconds + " ms");
+        }
+
+        // Before spawning player, might have to change the spawn point of a few doors
+        protected override void LevelPreloaded(string oldLevel, string newLevel)
+        {
+            string doorId;
+            Vector3 position;
+            if (newLevel == "D05Z02S06")
+            {
+                doorId = "SE";
+                position = new Vector3(286, -101, 0);
+            }
+            else if (newLevel == "D09Z01S08")
+            {
+                doorId = "W";
+                position = new Vector3(33, 117, 0);
+            }
+            else if (newLevel == "D09Z01S03")
+            {
+                doorId = "W";
+                position = new Vector3(46, 106, 0);
+            }
+            else return;
+
+            Door[] doors = Object.FindObjectsOfType<Door>();
+            foreach (Door door in doors)
+            {
+                if (door.identificativeName == doorId)
+                {
+                    LogWarning($"Modifiying spawn point of {doorId} door");
+                    door.spawnPoint.position = position;
+                    break;
+                }
+            }
         }
 
         // Specific actions need to be taken when a certain scene is loaded
