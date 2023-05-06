@@ -15,6 +15,7 @@ using Framework.Managers;
 using Framework.Audio;
 using Tools.Level;
 using Tools.Level.Interactables;
+using Tools.Level.Actionables;
 using ModdingAPI;
 
 namespace BlasphemousRandomizer
@@ -262,8 +263,19 @@ namespace BlasphemousRandomizer
             }
             else if (newLevel == "D17Z01S11" || newLevel == "D05Z02S14" || newLevel == "D01Z04S18")
             {
-                // Disable right wall in Warden & Exposito & Piety & Our Lady boss room
+                // Disable right wall in Warden & Exposito & Piety boss room
                 BossBoundaryStatus = false;
+            }
+            else if (newLevel == "D03BZ01S01" || newLevel == "D03Z03S15")
+            {
+                // Close Anguish boss fight gate when entering
+                bool shouldBeOpen = newLevel == "D03Z03S15";
+                Gate[] gates = Object.FindObjectsOfType<Gate>();
+                foreach (Gate gate in gates)
+                {
+                    if (gate.IsOpenOrActivated() != shouldBeOpen)
+                        gate.Use();
+                }
             }
 
             // Update ui menus

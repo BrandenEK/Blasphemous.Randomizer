@@ -3,6 +3,7 @@ using Framework.Managers;
 using Tools.Playmaker2.Action;
 using Tools.Playmaker2.Condition;
 using Tools.Level.Actionables;
+using Tools.Gameplay;
 using Gameplay.GameControllers.Environment.MovingPlatforms;
 using System.Collections.Generic;
 
@@ -383,7 +384,8 @@ namespace BlasphemousRandomizer.ItemRando
             }
 
 			// Make sure that certain gates are always open regardless of holy wound or boss status
-			if (scene == "D01Z05S19" && text == "D01Z06S01_BOSSDEAD" || scene == "D01Z05S25" && text == "D03Z04S01_BOSSDEAD" || scene == "D03Z03S15" && text == "CONTRITION_ALTAR_DONE")
+			if (scene == "D01Z05S19" && text == "D01Z06S01_BOSSDEAD" || scene == "D01Z05S25" && text == "D03Z04S01_BOSSDEAD" || 
+				scene == "D03Z03S11" && (text == "D03Z04S01_BOSSDEAD" || text == "CONTRITION_ALTAR_DONE") || scene == "D03Z03S15" && text == "CONTRITION_ALTAR_DONE")
 			{
 				flag = true;
 			}

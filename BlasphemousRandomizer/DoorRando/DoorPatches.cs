@@ -38,6 +38,14 @@ namespace BlasphemousRandomizer.DoorRando
                 __instance.targetScene = newScene;
                 __instance.targetDoor = newId;
             }
+
+            Main.Randomizer.LogWarning("Scene to load: " + __instance.targetScene);
+            if (__instance.targetScene == "D03Z03S15" && !Core.Events.GetFlag("D03Z04S01_BOSSDEAD"))
+            {
+                // If Anguish hasnt been killed yet, load boss fight room instead
+                __instance.targetScene = "D03BZ01S01";
+                __instance.targetDoor = "W";
+            }
         }
     }
 
