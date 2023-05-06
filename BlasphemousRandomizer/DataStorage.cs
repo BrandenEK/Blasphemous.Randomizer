@@ -190,7 +190,7 @@ namespace BlasphemousRandomizer
 				"IntroDeosgracias",
 				"CTS12-Intro2",
 				"CTS07-Deosgracias",
-				//"CTS02-Bloody Baptism",
+				"CTS02-Bloody Baptism",
 				//"MeaCulpa",
 				//"CTS04-Dagger_Lady",
 				"CTS102-Santos1",

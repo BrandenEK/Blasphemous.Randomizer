@@ -227,7 +227,7 @@ namespace BlasphemousRandomizer
             }
             else if (newLevel == "D17Z01S11" || newLevel == "D05Z02S14" || newLevel == "D01Z04S18")
             {
-                // Disable right wall in Warden & Exposito & Piety boss room
+                // Disable right wall in Warden & Exposito & Piety & Our Lady boss room
                 BossBoundaryStatus = false;
             }
 
@@ -422,12 +422,21 @@ namespace BlasphemousRandomizer
         {
             set
             {
-                GameObject rightWall = GameObject.Find("CombatBoundariesRight");
-                if (rightWall != null)
+                Transform boundaries = null;
+                string currentScene = Core.LevelManager.currentLevel.LevelName;
+                try
                 {
-                    BoxCollider2D collider = rightWall.GetComponent<BoxCollider2D>();
-                    collider.enabled = value;
-                    LogWarning("Setting boss boundary status to " + value);
+                    if (currentScene == "D17Z01S11") boundaries = GameObject.Find("CAMERAS").transform.Find("CombatBoundaries");
+                    else if (currentScene == "D01Z04S18") boundaries = GameObject.Find("CAMERAS").transform.Find("CombatBoundaries");
+                    //else if (currentScene == "D02Z03S20") boundaries = GameObject.Find("LOGIC").transform.Find("SCRIPTS/CombatElements");
+                    else if (currentScene == "D05Z02S14") boundaries = GameObject.Find("LOGIC").transform.Find("SCRIPTS/CombatBoundaries");
+                    boundaries.gameObject.SetActive(value);
+
+                    LogWarning($"Setting boss boundary status to {value}");
+                }
+                catch (System.NullReferenceException)
+                {
+                    LogError("Boss boundary path could not be found!");
                 }
             }
         }

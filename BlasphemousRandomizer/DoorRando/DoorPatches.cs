@@ -86,7 +86,7 @@ namespace BlasphemousRandomizer.DoorRando
         public static void Postfix()
         {
             string currentScene = Core.LevelManager.currentLevel.LevelName;
-            if (currentScene == "D17Z01S11" || currentScene == "D01Z04S18")
+            if (currentScene == "D17Z01S11" || currentScene == "D01Z04S18") // charred visage & exposito have to be after requiem aternam
                 Main.Randomizer.BossBoundaryStatus = false;
         }
     }

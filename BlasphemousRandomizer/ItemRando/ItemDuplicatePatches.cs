@@ -39,9 +39,6 @@ namespace BlasphemousRandomizer.ItemRando
 
 		public static string[] duplicateScenes = new string[]
 		{
-			"D01Z04S18",
-			"D03Z03S15",
-			"D02Z03S20",
 			"D04BZ03S01",
 			"D02Z03S19",
 			"D05Z01S15",
@@ -76,9 +73,6 @@ namespace BlasphemousRandomizer.ItemRando
 
 		public static string[] duplicateItems = new string[]
 		{
-			"QI38",
-			"QI39",
-			"QI40",
 			"QI60",
 			"QI61",
 			"QI62",
@@ -388,6 +382,12 @@ namespace BlasphemousRandomizer.ItemRando
 				flag = true;
             }
 
+			// Make sure that certain gates are always open regardless of holy wound or boss status
+			if (scene == "D01Z05S19" && text == "D01Z06S01_BOSSDEAD" || scene == "D01Z05S25" && text == "D03Z04S01_BOSSDEAD" || scene == "D03Z03S15" && text == "CONTRITION_ALTAR_DONE")
+			{
+				flag = true;
+			}
+
 			// Boss shuffle disabling
 			//if (scene == "D17Z01S11" && text == "D17Z01_BOSSDEAD")
 			//{
@@ -549,6 +549,12 @@ namespace BlasphemousRandomizer.ItemRando
 			}
 			// Penitence bead rewards
 			if (scene == "D07Z01S04" && item == "RB101" || item == "RB102" || item == "RB103")
+            {
+				__result = true;
+				return false;
+            }
+			// Disable the boundaries in holy wound boss rooms
+			if (scene == "D01Z04S18" && item == "QI38" || scene == "D02Z03S20" && item == "QI40")
             {
 				__result = true;
 				return false;
