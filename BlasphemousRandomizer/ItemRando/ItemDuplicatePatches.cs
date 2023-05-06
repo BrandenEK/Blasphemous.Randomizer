@@ -383,8 +383,14 @@ namespace BlasphemousRandomizer.ItemRando
 				flag = true;
             }
 
+			// Mothers mask room
+			if (scene == "D04Z02S15" && text == "D04Z02S17_ARCHDEACON1ITEMTAKEN")
+            {
+				flag = Core.Events.GetFlag("LOCATION_QI60");
+            }
+
 			// Make sure that certain gates are always open regardless of holy wound or boss status
-			if (scene == "D01Z05S19" && text == "D01Z06S01_BOSSDEAD" || scene == "D01Z05S25" && text == "D03Z04S01_BOSSDEAD" || 
+			if (scene == "D01Z05S19" && text == "D01Z06S01_BOSSDEAD" || scene == "D01Z05S25" && text == "D03Z04S01_BOSSDEAD" || scene == "D04Z02S22" && text == "D04Z04S01_DREAMVISITED" ||
 				scene == "D03Z03S11" && (text == "D03Z04S01_BOSSDEAD" || text == "CONTRITION_ALTAR_DONE") || scene == "D03Z03S15" && text == "CONTRITION_ALTAR_DONE")
 			{
 				flag = true;

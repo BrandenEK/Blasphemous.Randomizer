@@ -66,6 +66,16 @@ namespace BlasphemousRandomizer
         //}
     }
 
+    // Decrease time spent on boss defeated message
+    [HarmonyPatch(typeof(ShowFullMessage), "OnEnter")]
+    public class FullMessage_Patch
+    {
+        public static void Prefix(ShowFullMessage __instance)
+        {
+            __instance.totalTime = 0f;
+        }
+    }
+
     // Allow unequipping true heart
     [HarmonyPatch(typeof(ItemTemporalEffect), "ContainsEffect")]
     public class ItemTemporalEffectContains_Patch
