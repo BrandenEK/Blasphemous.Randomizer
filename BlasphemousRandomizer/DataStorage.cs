@@ -223,6 +223,7 @@ namespace BlasphemousRandomizer
 			{
 				{ "D01Z04S15[W]", new Vector3(-125, -60) },
 				{ "D01Z05S03[W]", new Vector3(-387, -49) },
+				{ "D02Z01S06[E]", new Vector3(-253.5f, 42) },
 				{ "D05Z02S06[SE]", new Vector3(286, -101) },
 				{ "D08Z02S03[W]", new Vector3(-7, 40) },
 				{ "D09Z01S03[W]", new Vector3(46, 106) },

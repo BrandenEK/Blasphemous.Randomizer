@@ -29,10 +29,7 @@ namespace BlasphemousRandomizer.ItemRando
         {
             if (newDoors != null && newDoors.ContainsKey(doorId))
             {
-                Main.Randomizer.Log("Processing door " + doorId);
                 LastDoor = Main.Randomizer.data.doorLocations[newDoors[doorId]];
-                Main.Randomizer.LogWarning("Setting last door to " + LastDoor.Id);
-
                 targetScene = LastDoor.Room;
                 targetId = LastDoor.IdentityName;
                 return true;

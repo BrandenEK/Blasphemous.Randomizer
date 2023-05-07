@@ -32,7 +32,7 @@ namespace BlasphemousRandomizer.DoorRando
             }
 
             string doorId = $"{currentScene}[{currentId}]";
-            Main.Randomizer.LogWarning("Entering door: " + doorId);
+            Main.Randomizer.Log("Entering door: " + doorId);
             if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && Main.Randomizer.itemShuffler.getNewDoor(doorId, out string newScene, out string newId))
             {
                 __instance.targetScene = newScene;

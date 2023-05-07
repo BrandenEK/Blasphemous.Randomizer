@@ -427,7 +427,7 @@ namespace BlasphemousRandomizer
         {
             // If entering from a certain door, change the spawn point
             DoorLocation doorToEnter = itemShuffler.LastDoor;
-            if (doorToEnter == null || !data.FixedDoorPositions.TryGetValue(doorToEnter.Id, out Vector3 newPosition))
+            if (doorToEnter == null || scene != doorToEnter.Room || !data.FixedDoorPositions.TryGetValue(doorToEnter.Id, out Vector3 newPosition))
                 return;
 
             string doorId = doorToEnter.IdentityName;
@@ -464,7 +464,7 @@ namespace BlasphemousRandomizer
 
             // If entering from a certain door, remove the wall
             DoorLocation doorToEnter = itemShuffler.LastDoor;
-            if (doorToEnter == null || !data.FixedDoorWalls.TryGetValue(doorToEnter.Id, out string wallToRemove))
+            if (doorToEnter == null || scene != doorToEnter.Room || !data.FixedDoorWalls.TryGetValue(doorToEnter.Id, out string wallToRemove))
                 return;
 
             GameObject parent = GameObject.Find("INTERACTABLES");
@@ -472,6 +472,7 @@ namespace BlasphemousRandomizer
 
             LogWarning("Disabling hidden wall for " + doorToEnter.Id);
             parent.transform.Find(wallToRemove).gameObject.SetActive(false);
+            Core.Events.SetFlag("HIDDEN_WALL_" + doorToEnter.Room, true);
         }
 
         public bool BossBoundaryStatus
