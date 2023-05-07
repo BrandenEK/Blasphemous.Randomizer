@@ -791,7 +791,7 @@
 		"Id": "D01Z05S17[E]",
 		"Direction": 2,
 		"OriginalDoor": "D01BZ09S01[W]",
-		"Logic": "dash && (D01Z05S17[E] || canWaterJump)"
+		"Logic": "dash && (D01Z05S17[E] || canWaterJump || canCrossGap5)"
 	},
 	{
 		"Id": "D01Z05S18[E]",
@@ -878,7 +878,7 @@
 		"Id": "D01Z05S25[E]",
 		"Direction": 2,
 		"OriginalDoor": "D01Z05S21[W]",
-		"Logic": "D01Z05S25[E] || tirana"
+		"Logic": "D01Z05S25[E] || tirana && (linen || D01Z05S25[W] && (root || canCrossGap3))"
 	},
 	{
 		"Id": "D01Z05S25[SW]",
@@ -900,7 +900,7 @@
 		"Type": 1,
 		"VisibilityFlags": 11,
 		"RequiredDoors": [ "D01Z05S25[EchoesE]" ],
-		"Logic": "D01Z05S25[EchoesW] || (D01Z05S25[EchoesE] && (blood || doubleJump)) || (linen && doubleJump)"
+		"Logic": "D01Z05S25[EchoesW] || (D01Z05S25[EchoesE] && (blood || canCrossGap8)) || (linen && doubleJump)"
 	},
 	{
 		"Id": "D01Z05S25[EchoesE]",
@@ -909,7 +909,7 @@
 		"Type": 1,
 		"VisibilityFlags": 11,
 		"RequiredDoors": [ "D01Z05S25[EchoesW]" ],
-		"Logic": "D01Z05S25[EchoesE] || (D01Z05S25[EchoesW] && (blood || doubleJump)) || (linen && doubleJump)"
+		"Logic": "D01Z05S25[EchoesE] || (D01Z05S25[EchoesW] && (blood || canCrossGap8)) || (linen && doubleJump)"
 	},
 	{
 		"Id": "D01Z05S26[W]",

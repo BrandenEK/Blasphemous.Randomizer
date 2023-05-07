@@ -396,6 +396,12 @@ namespace BlasphemousRandomizer.ItemRando
 				flag = true;
 			}
 
+			if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && (scene == "D08Z01S02" && text == "D08Z01S02_FACE_BROKEN" || scene == "D05Z01S02" && text == "D05Z01S02_PASSAGEUNVEILED"))
+            {
+				//, mountains, petrous
+				flag = true;
+			}
+
 			// Boss shuffle disabling
 			//if (scene == "D17Z01S11" && text == "D17Z01_BOSSDEAD")
 			//{

@@ -125,7 +125,6 @@
 		"Id": "RESCUED_CHERUB_08",
 		"Name": "Elevator cherub",
 		"Hint": "* resides in Albero",
-		"OriginalItem": "CH",
 		"Room": "D01Z02S03",
 		"Logic": "canRideAlberoElevator || cherubBitfield ^ 0x20242 || D01Z02S03[NW] && (canCrossGap2 || cherubBitfield ^ 0x46010)"
 	},
@@ -413,7 +412,7 @@
 		"Name": "TSC entrance cherub",
 		"Hint": "* resides in Mercy",
 		"Room": "D01Z04S16",
-		"Logic": "cherubBitfield ^ 0x30242"
+		"Logic": "doubleJump || cherubBitfield ^ 0x30242"
 	},
 	{
 		"Id": "BS01",
@@ -525,7 +524,7 @@
 		"Name": "Water ledge near elevator",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S17",
-		"Logic": "D01Z05S17[E] || canWaterJump"
+		"Logic": "D01Z05S17[E] || canWaterJump || canCrossGap5"
 	},
 	{
 		"Id": "RESCUED_CHERUB_15",

@@ -199,11 +199,11 @@ namespace BlasphemousRandomizer.ItemRando
         {
             get
             {
-                if (HasDoor("D03Z01S03[W]") || HasDoor("D03Z01S03[E]"))
+                if (HasDoor("D03Z01S03[W]") || HasDoor("D03Z01S03[SW]"))
                 {
                     if (HasDoor("D17Z01S04[N]") || HasDoor("D17Z01S04[FrontR]"))
                     {
-                        if (HasDoor("D01Z03S06[W]") || HasDoor("D17Z01S04[E]"))
+                        if (HasDoor("D01Z03S06[W]") || HasDoor("D01Z03S06[E]"))
                         {
                             if (HasDoor("D04Z01S04[W]") || HasDoor("D04Z01S04[E]") || HasDoor("D04Z01S04[Cherubs]"))
                             {

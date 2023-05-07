@@ -219,6 +219,11 @@ namespace BlasphemousRandomizer
                 doorId = "W";
                 position = new Vector3(46, 106, 0);
             }
+            else if (newLevel == "D08Z02S03")
+            {
+                doorId = "W";
+                position = new Vector3(-7, 40, 0);
+            }
             else return;
 
             Door[] doors = Object.FindObjectsOfType<Door>();
@@ -260,6 +265,18 @@ namespace BlasphemousRandomizer
             {
                 // Prevent the elevator crashing when returning to main room
                 Core.Events.SetFlag("ELEVATOR_POSITION_FAKE", true);
+            }
+            else if (newLevel == "D01Z01S01")
+            {
+                if (gameConfig.DoorShuffleType > 0)
+                {
+                    HiddenArea area = Object.FindObjectOfType<HiddenArea>();
+                    if (area != null)
+                    {
+                        Transform child = area.transform.GetChild(1).GetChild(1);
+                        child.gameObject.SetActive(false);
+                    }
+                }
             }
             else if (newLevel == "D17Z01S11" || newLevel == "D05Z02S14" || newLevel == "D01Z04S18")
             {
