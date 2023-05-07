@@ -473,7 +473,6 @@ namespace BlasphemousRandomizer.Settings
             seedBox.pivot = new Vector2(0.5f, 0.5f);
             seedBox.anchoredPosition = new Vector2(-238, 165);
             SeedText = seedBox.GetComponent<SettingsTextbox>();
-            debugRect = seedTitle;
 
             // General section
 

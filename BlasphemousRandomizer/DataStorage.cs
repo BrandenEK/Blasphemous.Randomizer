@@ -217,6 +217,8 @@ namespace BlasphemousRandomizer
 				"BROTHERS_GRAVEYARD_EVENT",
 				"BROTHERS_WASTELAND_EVENT",
 				"SANTOS_LAUDES_CUTSCENE_PLAYED",
+				"MEACULPA_CUTSCENE_PLAYED",
+				"DAGGER_CUTSCENE_FINISHED",
 			};
 
 			FixedDoorPositions = new Dictionary<string, Vector3>()
