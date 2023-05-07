@@ -202,40 +202,7 @@ namespace BlasphemousRandomizer
         // Before spawning player, might have to change the spawn point of a few doors
         protected override void LevelPreloaded(string oldLevel, string newLevel)
         {
-            string doorId;
-            Vector3 position;
-            if (newLevel == "D05Z02S06")
-            {
-                doorId = "SE";
-                position = new Vector3(286, -101, 0);
-            }
-            else if (newLevel == "D09Z01S08")
-            {
-                doorId = "W";
-                position = new Vector3(33, 117, 0);
-            }
-            else if (newLevel == "D09Z01S03")
-            {
-                doorId = "W";
-                position = new Vector3(46, 106, 0);
-            }
-            else if (newLevel == "D08Z02S03")
-            {
-                doorId = "W";
-                position = new Vector3(-7, 40, 0);
-            }
-            else return;
-
-            Door[] doors = Object.FindObjectsOfType<Door>();
-            foreach (Door door in doors)
-            {
-                if (door.identificativeName == doorId)
-                {
-                    LogWarning($"Modifiying spawn point of {doorId} door");
-                    door.spawnPoint.position = position;
-                    break;
-                }
-            }
+            FixDoorsOnPreload(newLevel);
         }
 
         // Specific actions need to be taken when a certain scene is loaded
@@ -266,34 +233,6 @@ namespace BlasphemousRandomizer
                 // Prevent the elevator crashing when returning to main room
                 Core.Events.SetFlag("ELEVATOR_POSITION_FAKE", true);
             }
-            else if (newLevel == "D01Z01S01")
-            {
-                if (gameConfig.DoorShuffleType > 0)
-                {
-                    HiddenArea area = Object.FindObjectOfType<HiddenArea>();
-                    if (area != null)
-                    {
-                        Transform child = area.transform.GetChild(1).GetChild(1);
-                        child.gameObject.SetActive(false);
-                    }
-                }
-            }
-            else if (newLevel == "D17Z01S11" || newLevel == "D05Z02S14" || newLevel == "D01Z04S18")
-            {
-                // Disable right wall in Warden & Exposito & Piety boss room
-                BossBoundaryStatus = false;
-            }
-            else if (newLevel == "D03BZ01S01" || newLevel == "D03Z03S15")
-            {
-                // Close Anguish boss fight gate when entering
-                bool shouldBeOpen = newLevel == "D03Z03S15";
-                Gate[] gates = Object.FindObjectsOfType<Gate>();
-                foreach (Gate gate in gates)
-                {
-                    if (gate.IsOpenOrActivated() != shouldBeOpen)
-                        gate.Use();
-                }
-            }
 
             // Update ui menus
             if (settingsMenu != null)
@@ -304,10 +243,11 @@ namespace BlasphemousRandomizer
                 UIController.instance.StartCoroutine(showErrorMessage(2.1f));
 
             // Misc functions
-            EnemyLoader.loadEnemies(); // Load enemies
+            FixDoorsOnLoad(newLevel); // Perform door fixes such as closing gates & revealing secrets
             updateShops(); // Update shop menus
             bossShuffler.levelLoaded(newLevel); // Spawn boss stuff
             tracker.LevelLoaded(newLevel);
+            EnemyLoader.loadEnemies(); // Load enemies
 
             // Reload enemy audio catalogs
             AudioLoader audio = Object.FindObjectOfType<AudioLoader>();
@@ -479,6 +419,67 @@ namespace BlasphemousRandomizer
             void SetBit(byte digit)
             {
                 uniqueSeed |= ((long)1) << digit;
+            }
+        }
+
+        private void FixDoorsOnPreload(string scene)
+        {
+            string doorId = null;
+            Vector3 position = Vector3.zero;
+            foreach (string doorKey in data.DoorsFixedLocations.Keys)
+            {
+                DoorLocation fixedDoor = data.doorLocations[doorKey];
+                if (scene == fixedDoor.Room)
+                {
+                    doorId = fixedDoor.IdentityName;
+                    position = data.DoorsFixedLocations[doorKey];
+                    break;
+                }
+            }
+            if (doorId == null) return;
+
+            Door[] doors = Object.FindObjectsOfType<Door>();
+            foreach (Door door in doors)
+            {
+                if (door.identificativeName == doorId)
+                {
+                    LogWarning($"Modifiying spawn point of {doorId} door");
+                    door.spawnPoint.position = position;
+                    break;
+                }
+            }
+        }
+
+        private void FixDoorsOnLoad(string scene)
+        {
+            if (scene == "D01Z01S01")
+            {
+                // Reveal secret in Holy Line
+                if (gameConfig.DoorShuffleType > 0)
+                {
+                    HiddenArea area = Object.FindObjectOfType<HiddenArea>();
+                    if (area != null)
+                    {
+                        Transform child = area.transform.GetChild(1).GetChild(1);
+                        child.gameObject.SetActive(false);
+                    }
+                }
+            }
+            else if (scene == "D17Z01S11" || scene == "D05Z02S14" || scene == "D01Z04S18")
+            {
+                // Disable right wall in Warden & Exposito & Piety boss room
+                BossBoundaryStatus = false;
+            }
+            else if (scene == "D03BZ01S01" || scene == "D03Z03S15")
+            {
+                // Close Anguish boss fight gate when entering
+                bool shouldBeOpen = scene == "D03Z03S15";
+                Gate[] gates = Object.FindObjectsOfType<Gate>();
+                foreach (Gate gate in gates)
+                {
+                    if (gate.IsOpenOrActivated() != shouldBeOpen)
+                        gate.Use();
+                }
             }
         }
 

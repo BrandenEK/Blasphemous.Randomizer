@@ -18,6 +18,16 @@ namespace BlasphemousRandomizer.DoorRando
 
         public string Room => Id.Substring(0, Id.IndexOf('['));
 
+        public string IdentityName
+        {
+            get
+            {
+                int start = Id.IndexOf('[') + 1;
+                int end = Id.IndexOf(']');
+                return Id.Substring(start, end - start);
+            }
+        }
+
         public int OppositeDirection
         {
             get

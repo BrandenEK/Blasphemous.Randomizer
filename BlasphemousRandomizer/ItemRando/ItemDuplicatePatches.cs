@@ -229,9 +229,9 @@ namespace BlasphemousRandomizer.ItemRando
 	// Change the value that certain flags are referencing
 	[HarmonyPatch(typeof(FlagExists), "OnEnter")]
 	public class FlagExists_Patch
-    {
+	{
 		public static bool Prefix(FlagExists __instance)
-        {
+		{
 			// Get flag name & scene name
 			string text = __instance.flagName.Value.ToUpper().Replace(' ', '_');
 			bool flag = Core.Events.GetFlag(text);
@@ -256,9 +256,9 @@ namespace BlasphemousRandomizer.ItemRando
 			}
 			// Rooftops elevator - Only unlock new floors when a mask is placed
 			if (scene == "D06Z01S01" && (text == "D04Z02S17_ARCHDEACON1ITEMTAKEN" || text == "D05Z01S15_ARCHDEACON2ITEMTAKEN" || text == "D02Z03S19_ARCHDEACON3ITEMTAKEN"))
-            {
+			{
 				flag = false;
-            }
+			}
 			// Albero sick house - Only give final reward once all herbs are delivered
 			if (scene == "D01Z02S02" && text == "D09Z01S03_BOSSDEAD" && (!Core.Events.GetFlag("TIRSO_QI19_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI20_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI37_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI63_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI64_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI65_DELIVERED")))
 			{
@@ -271,9 +271,9 @@ namespace BlasphemousRandomizer.ItemRando
 			}
 			// Gemino - Dont require convent boss to be defeated if already have filled thimble
 			if (scene == "D02Z01S01" && text == "D02Z05S01_BOSSDEAD")
-            {
+			{
 				flag = Core.InventoryManager.IsQuestItemOwned("QI57");
-            }
+			}
 			// Viridiana reward
 			if (text == "VIRIDIANA_REWARD_COMPLETED" && (scene == "D01Z04S18" || scene == "D02Z03S20" || scene == "D03Z03S15" || scene == "D04Z02S22" || scene == "D05Z02S14"))
 			{
@@ -281,9 +281,9 @@ namespace BlasphemousRandomizer.ItemRando
 			}
 			// Rooftops - If both cleofas & Jibrael present prioritize Jibrael
 			if (scene == "D06Z01S18" && text == "CLEOFAS_BURYING")
-            {
+			{
 				flag = flag && (!Core.Events.GetFlag("SANTOS_FIRSTCONVERSATION_DONE") || Core.Events.GetFlag("SANTOS_AMANECIDA_LOCATION3_ACTIVATED") || Core.Events.GetFlag("SANTOS_AMANECIDA_FACCATA_DEFEATED"));
-            }
+			}
 			// Redento corpse
 			if (scene == "D04BZ02S01" && text == "REDENTO_QI54_USED")
 			{
@@ -312,9 +312,9 @@ namespace BlasphemousRandomizer.ItemRando
 			}
 			// Perpetva scapular
 			if (scene == "D20Z03S01" && text == "D08Z01S01_BOSSDEAD")
-            {
+			{
 				flag = false;
-            }
+			}
 			// Esdras key
 			if (scene == "D17Z01S15" && text == "ESDRAS_CHAPEL")
 			{
@@ -322,29 +322,29 @@ namespace BlasphemousRandomizer.ItemRando
 			}
 			// Brotherhood church
 			if (scene == "D17Z01S14" && (text == "ESDRAS_CHAPEL" || text == "D06Z01S25_BOSSDEAD"))
-            {
+			{
 				flag = Core.InventoryManager.IsQuestItemOwned("QI203");
-            }
+			}
 			// Fourth visage
 			if (scene == "D04Z03S02" && text == "D06Z01S25_BOSSDEAD")
-            {
+			{
 				flag = false;
-            }
+			}
 			// Crisanta wound
 			if (scene == "D17Z01S15" && text == "CRISANTA_LIBERATED")
-            {
+			{
 				flag = Core.Events.GetFlag("D06Z01S25_BOSSDEAD") && Core.InventoryManager.IsSwordOwned("HE201");
-            }
+			}
 			// Perpetva defeat
 			if (scene == "D03Z01S06" && text == "BROTHERS_EVENTPERPETVA_COMPLETED")
-            {
+			{
 				flag = Core.Events.GetFlag("BROTHERS_PERPETUA_DEFEATED");
-            }
+			}
 			// Final amanecida
 			if ((scene == "D02Z02S14" || scene == "D03Z01S03" || scene == "D04Z01S04" || scene == "D09Z01S01") && text == "SANTOS_LAUDES_ACTIVATED")
-            {
+			{
 				flag = Core.Events.GetFlag("LOCATION_QI110");
-            }
+			}
 			// Mercy shop
 			if (scene == "D01BZ02S01" && text == "QI58_USED")
 			{
@@ -368,26 +368,26 @@ namespace BlasphemousRandomizer.ItemRando
 
 			// Cistern shroud puzzle
 			if (scene == "D01Z05S21")
-            {
+			{
 				bool completePuzzle = Core.InventoryManager.IsRelicEquipped("RE04");
 				if (text == "D01Z05S21_LEFTSHOW4" || text == "D01Z05S21_RIGHTSHOW2")
 					flag = completePuzzle;
 				else if (text == "D01Z05S21_LEFTSHOWNONE" || text == "D01Z05S21_LEFTSHOW1" || text == "D01Z05S21_LEFTSHOW2" || text == "D01Z05S21_LEFTSHOW3" ||
 					text == "D01Z05S21_RIGHTSHOWNONE" || text == "D01Z05S21_RIGHTSHOW1")
 					flag = !completePuzzle;
-            }
+			}
 
 			// Allows open albero warp room
 			if (scene == "D01Z02S06" && text == "D01Z02S07_TELEPORT_ALBERO")
-            {
+			{
 				flag = true;
-            }
+			}
 
 			// Mothers mask room
 			if (scene == "D04Z02S15" && text == "D04Z02S17_ARCHDEACON1ITEMTAKEN")
-            {
+			{
 				flag = Core.Events.GetFlag("LOCATION_QI60");
-            }
+			}
 
 			// Make sure that certain gates are always open regardless of holy wound or boss status
 			if (scene == "D01Z05S19" && text == "D01Z06S01_BOSSDEAD" || scene == "D01Z05S25" && text == "D03Z04S01_BOSSDEAD" || scene == "D04Z02S22" && text == "D04Z04S01_DREAMVISITED" ||
@@ -396,10 +396,10 @@ namespace BlasphemousRandomizer.ItemRando
 				flag = true;
 			}
 
-			if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && (scene == "D08Z01S02" && text == "D08Z01S02_FACE_BROKEN" || scene == "D05Z01S02" && text == "D05Z01S02_PASSAGEUNVEILED"))
+			if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && (scene == "D08Z01S02" && text == "D08Z01S02_FACE_BROKEN" || scene == "D05Z01S02" && text == "D05Z01S02_PASSAGEUNVEILED" ||
+				scene == "D03Z01S01" && text == "D03Z01S01_PASSAGEUNVEILED"))
             {
-				//, mountains, petrous
-				flag = true;
+				flag = true; // Only do these things if door shuffle is set and you come through the door
 			}
 
 			// Boss shuffle disabling
