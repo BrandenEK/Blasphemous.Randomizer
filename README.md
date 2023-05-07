@@ -14,6 +14,7 @@
   - [Important notes](https://github.com/BrandenEK/Blasphemous-Randomizer#important-notes)
   - [Lesser know logic](https://github.com/BrandenEK/Blasphemous-Randomizer#lesser-known-logic)
   - [Questline changes](https://github.com/BrandenEK/Blasphemous-Randomizer#questline-changes)
+  - [Door Rando changes](https://github.com/BrandenEK/Blasphemous-Randomizer#door-rando-changes)
   - [Corpse hints](https://github.com/BrandenEK/Blasphemous-Randomizer#corpse-hints)
 - [Translations](https://github.com/BrandenEK/Blasphemous-Randomizer#translations)
 
@@ -77,7 +78,7 @@ Autotracking for the Blasphemous poptracker pack has now been integrated into th
 ### Lesser known logic
 
 - Many gaps can be jumped across by using either dawn heart or young mason's wheel
-- Many cherubs can be collected with the more uncommon prayers
+- Many cherubs can be collected with unusual methods, such as Aubade or Cloistered Ruby
 - Lvdovico's reward for meeting Cleofas doesn't require the marks - Just talking to him
 - Laudes only requires the 4 golden verses to access - She can be fought before any of the other Amanecidas
 - Holes in the ground can be opened with either dive or charge attack or using any prayer on top of them
@@ -112,10 +113,12 @@ Because of the nature of door rando, there are a few changes to had to be made i
 
 - A command has been added to respawn the player from the chosen starting location
 - Some doors will always remain the same as they are in the original game
+- The spawn points of a few doors have been modified
 - Platforms have been added to the main bell room in Jondo
 - The sword heart doesn't have to be unequipped for the Library bone puzzle
 - The chalice will never unfill
 - The Cistern shroud puzzle will be automatically completed if the shroud is equipped
+- The Albero warp room can not be teleported to until activated, and the gate has been removed
 
 ### Corpse hints
 
