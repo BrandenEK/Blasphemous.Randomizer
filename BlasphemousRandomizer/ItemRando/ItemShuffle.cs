@@ -1,4 +1,5 @@
 ﻿using BlasphemousRandomizer.Notifications;
+using BlasphemousRandomizer.DoorRando;
 using System.Collections.Generic;
 using System.Text;
 using Framework.Managers;
@@ -14,7 +15,9 @@ namespace BlasphemousRandomizer.ItemRando
 
         private Item lastItem;
 
-        public bool ValidSeed { get { return newItems != null && newItems.Count > 0; } }
+        public bool ValidSeed => newItems != null && newItems.Count > 0;
+
+        public DoorLocation LastDoor { get; set; }
 
         public void SetMappedItems(Dictionary<string, string> mappedItems)
         {
@@ -27,15 +30,15 @@ namespace BlasphemousRandomizer.ItemRando
             if (newDoors != null && newDoors.ContainsKey(doorId))
             {
                 Main.Randomizer.Log("Processing door " + doorId);
-                string targetDoorId = newDoors[doorId];
-                int bracket = targetDoorId.IndexOf('[');
+                LastDoor = Main.Randomizer.data.doorLocations[newDoors[doorId]];
+                Main.Randomizer.LogWarning("Setting last door to " + LastDoor.Id);
 
-                targetScene = targetDoorId.Substring(0, bracket);
-                targetId = targetDoorId.Substring(bracket + 1, targetDoorId.Length - bracket - 2);
+                targetScene = LastDoor.Room;
+                targetId = LastDoor.IdentityName;
                 return true;
             }
-            targetScene = "";
-            targetId = "";
+            targetScene = string.Empty;
+            targetId = string.Empty;
             return false;
         }
 

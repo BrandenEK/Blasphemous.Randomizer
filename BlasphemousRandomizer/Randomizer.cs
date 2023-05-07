@@ -212,6 +212,7 @@ namespace BlasphemousRandomizer
             {
                 // Set gameplay status
                 inGame = false;
+                itemShuffler.LastDoor = null;
             }
             else if (newLevel == StartingDoor.Room)
             {
@@ -424,27 +425,19 @@ namespace BlasphemousRandomizer
 
         private void FixDoorsOnPreload(string scene)
         {
-            string doorId = null;
-            Vector3 position = Vector3.zero;
-            foreach (string doorKey in data.DoorsFixedLocations.Keys)
-            {
-                DoorLocation fixedDoor = data.doorLocations[doorKey];
-                if (scene == fixedDoor.Room)
-                {
-                    doorId = fixedDoor.IdentityName;
-                    position = data.DoorsFixedLocations[doorKey];
-                    break;
-                }
-            }
-            if (doorId == null) return;
+            // If entering from a certain door, change the spawn point
+            DoorLocation doorToEnter = itemShuffler.LastDoor;
+            if (doorToEnter == null || !data.FixedDoorPositions.TryGetValue(doorToEnter.Id, out Vector3 newPosition))
+                return;
 
+            string doorId = doorToEnter.IdentityName;
             Door[] doors = Object.FindObjectsOfType<Door>();
             foreach (Door door in doors)
             {
                 if (door.identificativeName == doorId)
                 {
                     LogWarning($"Modifiying spawn point of {doorId} door");
-                    door.spawnPoint.position = position;
+                    door.spawnPoint.position = newPosition;
                     break;
                 }
             }
@@ -452,20 +445,7 @@ namespace BlasphemousRandomizer
 
         private void FixDoorsOnLoad(string scene)
         {
-            if (scene == "D01Z01S01")
-            {
-                // Reveal secret in Holy Line
-                if (gameConfig.DoorShuffleType > 0)
-                {
-                    HiddenArea area = Object.FindObjectOfType<HiddenArea>();
-                    if (area != null)
-                    {
-                        Transform child = area.transform.GetChild(1).GetChild(1);
-                        child.gameObject.SetActive(false);
-                    }
-                }
-            }
-            else if (scene == "D17Z01S11" || scene == "D05Z02S14" || scene == "D01Z04S18")
+            if (scene == "D17Z01S11" || scene == "D05Z02S14" || scene == "D01Z04S18")
             {
                 // Disable right wall in Warden & Exposito & Piety boss room
                 BossBoundaryStatus = false;
@@ -481,6 +461,17 @@ namespace BlasphemousRandomizer
                         gate.Use();
                 }
             }
+
+            // If entering from a certain door, remove the wall
+            DoorLocation doorToEnter = itemShuffler.LastDoor;
+            if (doorToEnter == null || !data.FixedDoorWalls.TryGetValue(doorToEnter.Id, out string wallToRemove))
+                return;
+
+            GameObject parent = GameObject.Find("INTERACTABLES");
+            if (parent == null) return;
+
+            LogWarning("Disabling hidden wall for " + doorToEnter.Id);
+            parent.transform.Find(wallToRemove).gameObject.SetActive(false);
         }
 
         public bool BossBoundaryStatus

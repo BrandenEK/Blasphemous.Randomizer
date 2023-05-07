@@ -25,7 +25,8 @@ namespace BlasphemousRandomizer
 		// New & improved
 		public Dictionary<string, string> LocationNames { get; private set; }
 		public Dictionary<string, string> ShopInteractables { get; private set; }
-		public Dictionary<string, Vector3> DoorsFixedLocations { get; private set; }
+		public Dictionary<string, Vector3> FixedDoorPositions { get; private set; }
+		public Dictionary<string, string> FixedDoorWalls { get; private set; }
 		public string[] CutsceneNames { get; private set; }
 		public string[] CutsceneFlags { get; private set; }
 
@@ -218,14 +219,23 @@ namespace BlasphemousRandomizer
 				"SANTOS_LAUDES_CUTSCENE_PLAYED",
 			};
 
-			DoorsFixedLocations = new Dictionary<string, Vector3>()
+			FixedDoorPositions = new Dictionary<string, Vector3>()
 			{
+				{ "D01Z04S15[W]", new Vector3(-125, -60) },
+				{ "D01Z05S03[W]", new Vector3(-387, -49) },
 				{ "D05Z02S06[SE]", new Vector3(286, -101) },
 				{ "D08Z02S03[W]", new Vector3(-7, 40) },
 				{ "D09Z01S03[W]", new Vector3(46, 106) },
 				{ "D09Z01S08[W]", new Vector3(33, 117) },
-				{ "D01Z05S03[W]", new Vector3(-387, -49) },
 				{ "D20Z01S04[E]", new Vector3(-493, -114) },
+			};
+
+			FixedDoorWalls = new Dictionary<string, string>()
+			{
+				{ "D01Z01S01[S]", "GEO_DestroyableBlock (32x128)/ACT_HiddenArea/SecretArea/forest-spritesheet_23 (1)" },
+				{ "D01Z04S10[SW]", "GEO_DestroyableBlock (32x128)/ACT_HiddenArea/SecretRoom/cathedral-sprite-sheet_70" },
+				{ "D03Z01S01[S]", "PassageVisualBlocker" },
+				{ "D05Z01S02[W]", "PassageVisualBlocker" },
 			};
 		}
 	}
