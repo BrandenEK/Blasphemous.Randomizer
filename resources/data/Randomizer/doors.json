@@ -1503,7 +1503,7 @@
 	{
 		"Id": "D02Z03S10[-W]",
 		"Direction": 2,
-		"OriginalDoor": "D09Z01S06[W]",
+		"OriginalDoor": "D09Z01S06[-E]",
 		"Type": 1
 	},
 	{
@@ -4096,7 +4096,7 @@
 		"OriginalDoor": "D09Z01S08[W]"
 	},
 	{
-		"Id": "D09Z01S06[W]",
+		"Id": "D09Z01S06[-E]",
 		"Direction": 1,
 		"OriginalDoor": "D02Z03S10[-W]",
 		"Type": 1,
