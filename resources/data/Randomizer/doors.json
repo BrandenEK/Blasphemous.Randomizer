@@ -2142,7 +2142,8 @@
 	{
 		"Id": "D03Z03S04[-Cherubs]",
 		"Direction": 6,
-		"OriginalDoor": "D03Z03S10[Cherubs]"
+		"OriginalDoor": "D03Z03S10[Cherubs]",
+		"Logic": "linen"
 	},
 	{
 		"Id": "D03Z03S05[NW]",

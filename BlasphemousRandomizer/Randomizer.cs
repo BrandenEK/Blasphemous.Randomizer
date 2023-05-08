@@ -153,7 +153,6 @@ namespace BlasphemousRandomizer
             inGame = true;
             lastLoadedSlot = PersistentManager.GetAutomaticSlot();
             Core.GameModeManager.ChangeMode(GameModeManager.GAME_MODES.NEW_GAME_PLUS);
-            Core.SpawnManager.SetTeleportActive("TELEPORT_D02", false);
             Core.Events.SetFlag("CHERUB_RESPAWN", true);
         }
 
@@ -222,7 +221,7 @@ namespace BlasphemousRandomizer
             else if (newLevel == "D01Z02S07")
             {
                 // Activate Albero warp room when entering it
-                Core.SpawnManager.SetTeleportActive("TELEPORT_D02", true);
+                Core.Events.SetFlag("ALBERO_WARP", true);
             }
             else if (newLevel == "D06Z01S01")
             {
@@ -233,6 +232,12 @@ namespace BlasphemousRandomizer
             {
                 // Prevent the elevator crashing when returning to main room
                 Core.Events.SetFlag("ELEVATOR_POSITION_FAKE", true);
+            }
+
+            if (newLevel != "MainMenu")
+            {
+                // Control albero warp room activation
+                Core.SpawnManager.SetTeleportActive("TELEPORT_D02", Core.Events.GetFlag("ALBERO_WARP"));
             }
 
             // Update ui menus
