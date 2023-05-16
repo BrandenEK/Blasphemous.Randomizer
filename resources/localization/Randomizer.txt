@@ -50,9 +50,9 @@ lgname: Logic Difficulty
 lgtyp1: Easy
 lgtyp2: Normal
 lgtyp3: Hard
-lgdes1: Text for easy logic
-lgdes2: Text for normal logic
-lgdes3: Text for hard logic
+lgdes1: Best for beginner players, not many skips or special\ntechniques will be required
+lgdes2: Best for the average player, common skips may be required,\nbut never the MaH skip
+lgdes3: Best for expert players, many uncommon and difficult skips\nmay be required
 loname: Starting Location
 lodesc: Where to spawn when beginning the game
 lotyp1: Brotherhood
@@ -71,17 +71,17 @@ pename: Allow Penitence
 pedesc: You are able to choose a penitence in the Brotherhood
 
 drname: Door Shuffle
-drdes1: Text for disabled door shuffle
-drdes2: Text for simple door shuffle
-drdes3: Text for full door shuffle
+drdes1: Room transitions will always lead to their original destinations
+drdes2: Only room transitions that lead to a different region\nwill be shuffled with each other
+drdes3: All room transtitions will be shuffled with each other
 bsname: Boss Shuffle
-bsdes1: Text for disabled boss shuffle
-bsdes2: Text for simple boss shuffle
-bsdes3: Text for full boss shuffle
+bsdes1: Bosses will remain in their original places
+bsdes2: Bosses will be shuffled around, with each boss only appearing once
+bsdes3: Bosses will be shuffled around, with each boss appearing any number of times
 enname: Enemy Shuffle
-endes1: Text for disabled enemy shuffle
-endes2: Text for simple enemy shuffle
-endes3: Text for full enemy shuffle
+endes1: Enemies will remain in their original places
+endes2: Enemies will be placed randomly, with each enemy appearing\nthe same number of times as in the original game
+endes3: Enemies will be placed randomly, with each enemy appearing\nany number of times
 clname: Maintain Class
 cldesc: Enemies are constrained to their original group (Normal, Flying, Large)
 scname: Area Scaling
@@ -94,9 +94,9 @@ dsdesc: Shuffles the dash ability into the item pool
 wcname: Shuffle Wall Climb
 wcdesc: Shuffles the wall climb ability into the item pool
 sbname: Shuffle Spike Boots
-sbdesc: Shuffles the Boots of Pleading into the item pool (Only if the mod is installed)
+sbdesc: Shuffles the Boots of Pleading into the item pool\n(Only if the mod is installed)
 djname: Shuffle Double Jump
-djdesc: Shuffles the Purified Hand of the Nun into the item pool (Only if the mod is installed)
+djdesc: Shuffles the Purified Hand of the Nun into the item pool\n(Only if the mod is installed)
 
 ssname: Shuffle Sword Skills
 ssdesc: Shuffles the sword skills into the item pool
