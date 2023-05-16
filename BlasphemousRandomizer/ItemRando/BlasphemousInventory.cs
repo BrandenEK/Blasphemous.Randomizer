@@ -116,7 +116,7 @@ namespace BlasphemousRandomizer.ItemRando
 
         private bool canAirStall => ranged > 0 && logicDifficulty >= 1;
 
-        private bool canDiveLaser => dive >= 3 && enemySkipsAllowed;
+        private bool canDiveLaser => dive >= 3 && logicDifficulty >= 2;
 
         private bool canSurvivePoison => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2; // Fix up.  Cant go upwards with nothing
 
@@ -550,7 +550,7 @@ namespace BlasphemousRandomizer.ItemRando
             }
 
             // Recalculate cherub bitfield based on fervour
-            if (fervourLevel >= 2)
+            if (fervourLevel >= 2 || blueWax >= 3 || fervourLevel >= 1 && blueWax >= 1)
             {
                 if (ownAubade)
                 {

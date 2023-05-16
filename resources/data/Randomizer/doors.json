@@ -454,7 +454,7 @@
 		"Id": "D01Z04S13[SE]",
 		"Direction": 2,
 		"OriginalDoor": "D01Z04S16[W]",
-		"Logic": "D01Z04S13[SE] || canDiveLaser"
+		"Logic": "D01Z04S13[SE] || canDiveLaser && (canAirStall || wheel || doubleJump || enemySkipsAllowed)"
 	},
 	{
 		"Id": "D01Z04S14[E]",

@@ -398,7 +398,7 @@
 		"Name": "TSC entrance ledge",
 		"Hint": "* resides in Mercy",
 		"Room": "D01Z04S13",
-		"Logic": "D01Z04S13[SE] || canDiveLaser"
+		"Logic": "D01Z04S13[SE] || canDiveLaser && (canAirStall || wheel || doubleJump || enemySkipsAllowed)"
 	},
 	{
 		"Id": "CO38",
