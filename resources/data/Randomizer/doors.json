@@ -1751,12 +1751,14 @@
 	{
 		"Id": "D03Z01S06[W]",
 		"Direction": 1,
-		"OriginalDoor": "D03Z01S03[E]"
+		"OriginalDoor": "D03Z01S03[E]",
+		"Logic": "D03Z01S06[W] || canBeatPerpetua"
 	},
 	{
 		"Id": "D03Z01S06[E]",
 		"Direction": 2,
-		"OriginalDoor": "D03Z01S02[W]"
+		"OriginalDoor": "D03Z01S02[W]",
+		"Logic": "D03Z01S06[E] || canBeatPerpetua"
 	},
 	
 	{
@@ -3401,12 +3403,14 @@
 	{
 		"Id": "D06Z01S03[W]",
 		"Direction": 1,
-		"OriginalDoor": "D06Z01S01[SE]"
+		"OriginalDoor": "D06Z01S01[SE]",
+		"Logic": "D06Z01S03[W] || canBeatLegionary"
 	},
 	{
 		"Id": "D06Z01S03[E]",
 		"Direction": 2,
-		"OriginalDoor": "D06Z01S04[W]"
+		"OriginalDoor": "D06Z01S04[W]",
+		"Logic": "D06Z01S03[E] || canBeatLegionary"
 	},
 	{
 		"Id": "D06Z01S04[SW]",
@@ -3460,14 +3464,16 @@
 		"Direction": 1,
 		"OriginalDoor": "D06Z01S01[E]",
 		"VisibilityFlags": 3,
-		"RequiredDoors": [ "D06Z01S06[E]" ]
+		"RequiredDoors": [ "D06Z01S06[E]" ],
+		"Logic": "D06Z01S06[WW] || canBeatLegionary"
 	},
 	{
 		"Id": "D06Z01S06[E]",
 		"Direction": 2,
 		"OriginalDoor": "D06Z01S04[NW]",
 		"VisibilityFlags": 3,
-		"RequiredDoors": [ "D06Z01S06[WW]" ]
+		"RequiredDoors": [ "D06Z01S06[WW]" ],
+		"Logic": "D06Z01S06[E] || canBeatLegionary"
 	},
 	{
 		"Id": "D06Z01S06[W]",
@@ -3754,12 +3760,14 @@
 	{
 		"Id": "D06Z01S21[W]",
 		"Direction": 1,
-		"OriginalDoor": "D06Z01S10[E]"
+		"OriginalDoor": "D06Z01S10[E]",
+		"Logic": "D06Z01S21[W] || canBeatLegionary"
 	},
 	{
 		"Id": "D06Z01S21[E]",
 		"Direction": 2,
-		"OriginalDoor": "D06Z01S15[NW]"
+		"OriginalDoor": "D06Z01S15[NW]",
+		"Logic": "D06Z01S21[E] || canBeatLegionary"
 	},
 	{
 		"Id": "D06Z01S22[Sword]",

@@ -162,6 +162,8 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canBeatPatioBoss => bossPower >= 12 && HasDoor("D01BZ07S01[Santos]") && HasDoor("D06Z01S18[E]") && (HasDoor("D04Z01S04[W]") || HasDoor("D04Z01S04[E]") || HasDoor("D04Z01S04[Cherubs]"));
         private bool canBeatWallBoss => bossPower >= 12 && HasDoor("D01BZ07S01[Santos]") && HasDoor("D09BZ01S01[Cell24]") && (HasDoor("D09Z01S01[W]") || HasDoor("D09Z01S01[E]"));
         private bool canBeatHallBoss => bossPower >= 12 && (HasDoor("D08Z03S03[W]") || HasDoor("D08Z03S03[E]"));
+        private bool canBeatPerpetua => bossPower >= 1;
+        private bool canBeatLegionary => bossPower >= 4;
 
         private int guiltRooms
         {
@@ -399,6 +401,8 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canBeatPatioBoss": return new BoolVariable(canBeatPatioBoss);
                 case "canBeatWallBoss": return new BoolVariable(canBeatWallBoss);
                 case "canBeatHallBoss": return new BoolVariable(canBeatHallBoss);
+                case "canBeatPerpetua": return new BoolVariable(canBeatPerpetua);
+                case "canBeatLegionary": return new BoolVariable(canBeatLegionary);
 
                 default:
                     throw new System.Exception($"Error: Variable {variable} doesn't exist!");

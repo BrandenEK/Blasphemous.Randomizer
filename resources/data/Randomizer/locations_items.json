@@ -929,7 +929,8 @@
 		"Id": "RB13",
 		"Name": "Perpetua gift",
 		"Hint": "* is guarded by Perpetva",
-		"Room": "D03Z01S06"
+		"Room": "D03Z01S06",
+		"Logic": "canBeatPerpetua"
 	},
 	{
 		"Id": "QI14",
@@ -938,7 +939,7 @@
 		"Type": 9,
 		"OriginalItem": "QI14",
 		"Room": "D03Z01S06",
-		"Logic": "egg"
+		"Logic": "canBeatPerpetua && egg"
 	},
 	
 	{
@@ -1472,20 +1473,22 @@
 		"Id": "QI02",
 		"Name": "Bridge fight 1",
 		"Hint": "* is guarded by a Legionary",
-		"Room": "D06Z01S03"
+		"Room": "D06Z01S03",
+		"Logic": "canBeatLegionary"
 	},
 	{
 		"Id": "QI03",
 		"Name": "Bridge fight 2",
 		"Hint": "* is guarded by a Legionary",
 		"Room": "D06Z01S06",
-		"Logic": "D06Z01S06[WW] || D06Z01S06[E]"
+		"Logic": "canBeatLegionary && (D06Z01S06[WW] || D06Z01S06[E])"
 	},
 	{
 		"Id": "QI04",
 		"Name": "Bridge fight 3",
 		"Hint": "* is guarded by a Legionary",
-		"Room": "D06Z01S21"
+		"Room": "D06Z01S21",
+		"Logic": "canBeatLegionary"
 	},
 	{
 		"Id": "Sword[D06Z01S11]",
