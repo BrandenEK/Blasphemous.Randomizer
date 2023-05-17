@@ -126,7 +126,7 @@
 		"Name": "Elevator cherub",
 		"Hint": "* resides in Albero",
 		"Room": "D01Z02S03",
-		"Logic": "canRideAlberoElevator || cherubBitfield ^ 0x20242 || D01Z02S03[NW] && (canCrossGap2 || cherubBitfield ^ 0x46010)"
+		"Logic": "canRideAlberoElevator || pillar || cante || D01Z02S03[NW] && (canCrossGap2 || lorquiana || aubade || cantina || canAirStall)"
 	},
 	{
 		"Id": "Lvdovico[500]",
@@ -354,7 +354,7 @@
 		"Name": "Cliffside cherub",
 		"Hint": "* resides in the Wastelands",
 		"Room": "D01Z03S07",
-		"Logic": "canCrossGap2 || cherubBitfield ^ 0x66210"
+		"Logic": "canCrossGap1 || lorquiana || cante || aubade || cantina || ruby"
 	},
 	
 	{
@@ -412,7 +412,7 @@
 		"Name": "TSC entrance cherub",
 		"Hint": "* resides in Mercy",
 		"Room": "D01Z04S16",
-		"Logic": "doubleJump || cherubBitfield ^ 0x30242"
+		"Logic": "doubleJump || pillar || cante || tirana"
 	},
 	{
 		"Id": "BS01",
@@ -474,7 +474,7 @@
 		"Name": "Eastern upper tunnel cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S06",
-		"Logic": "D01Z05S06[Cherubs] || canWaterJump || cherubBitfield ^ 0x72242"
+		"Logic": "D01Z05S06[Cherubs] || canWaterJump || pillar || cante || aubade || tirana || canAirStall"
 	},
 	{
 		"Id": "Oil[D01Z05S07]",
@@ -564,7 +564,7 @@
 		"Name": "Elevator shaft cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S25",
-		"Logic": "linen || (cherubBitfield ^ 0x20042 && (D01Z05S25[E] || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3)))"
+		"Logic": "linen || (pillar && (D01Z05S25[E] || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3)))"
 	},
 	{
 		"Id": "Lady[D01Z05S26]",
@@ -613,7 +613,7 @@
 		"Name": "Eastern root cherub",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S02",
-		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (canWalkOnRoot || canCrossGap4 || cherubBitfield ^ 0x20042)"
+		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (canWalkOnRoot || canCrossGap4 || pillar)"
 	},
 	{
 		"Id": "QI20",
@@ -646,7 +646,7 @@
 		"Name": "Large cave cherub",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S06",
-		"Logic": "cherubBitfield ^ 0x46010 && wallClimb && (D02Z01S06[W] || doubleJump || dash) || cherubBitfield ^ 0x20242 && (D02Z01S06[W] || dash || doubleJump && wallClimb)"
+		"Logic": "(D02Z01S06[W] || dash || doubleJump && wallClimb) && (pillar || cante) || (D02Z01S06[W] || doubleJump || dash) && wallClimb && (lorquiana || aubade || cantina || canAirStall)"
 	},
 	{
 		"Id": "PR04",
@@ -668,7 +668,7 @@
 		"Name": "Center shaft cherub",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S02",
-		"Logic": "D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || ((D02Z02S02[NW] || D02Z02S02[NE] || wallClimb) && (cherubBitfield ^ 0x30242 || doubleJump))"
+		"Logic": "D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || ((D02Z02S02[NW] || D02Z02S02[NE] || wallClimb) && (doubleJump || pillar || cante || tirana))"
 	},
 	{
 		"Id": "QI46",
@@ -710,7 +710,7 @@
 		"Name": "Western shaft cherub",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S04",
-		"Logic": "(blood && dash || cherubBitfield ^ 0x6610) && (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE] && wallClimb) || (cherubBitfield ^ 0x20042) && (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE])"
+		"Logic": "(D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE] && wallClimb) && (blood && dash || lorquiana || cante || verdiales || aubade || cantina) || (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE]) && pillar"
 	},
 	{
 		"Id": "RB15",
@@ -737,7 +737,7 @@
 		"Name": "Shop cave cherub",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S08",
-		"Logic": "D02Z02S08[CherubsR] || blood || cherubBitfield ^ 0x20042 || canCrossGap8"
+		"Logic": "D02Z02S08[CherubsR] || blood || pillar || canCrossGap8"
 	},
 	{
 		"Id": "Oil[D02Z02S10]",
@@ -1069,14 +1069,14 @@
 		"Name": "Blood tunnel cherub",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S08",
-		"Logic": "(blood || canCrossGap11) && (aubade && canAirStall || cherubBitfield ^ 0x30642)"
+		"Logic": "(blood || canCrossGap11) && (doubleJump || pillar || cante || verdiales || tirana || aubade && canAirStall)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_20",
 		"Name": "Altasgracias cherub",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S09",
-		"Logic": "canClimbOnRoot || doubleJump || cherubBitfield ^ 0x32272"
+		"Logic": "canClimbOnRoot || doubleJump || pillar || lorquiana || zarabanda || cante || aubade || tirana"
 	},
 	{
 		"Id": "QI13",
@@ -1184,7 +1184,7 @@
 		"Name": "Western room cherub",
 		"Hint": "* resides in the Mother",
 		"Room": "D04Z02S01",
-		"Logic": "D04Z02S04[N] || cherubBitfield ^ 0x20042 || D04Z02S04[NE] && dash && (wallClimb || canCrossGap1)"
+		"Logic": "D04Z02S04[N] || pillar || D04Z02S04[NE] && dash && (wallClimb || canCrossGap1)"
 	},
 	{
 		"Id": "CO17",
@@ -1390,7 +1390,7 @@
 		"Name": "Elevator cherub",
 		"Hint": "* resides in the Library",
 		"Room": "D05Z01S21",
-		"Logic": "blood && (canWalkOnRoot || doubleJump || canCrossGap5 && cherubBitfield ^ 0x20042)"
+		"Logic": "blood && (canWalkOnRoot || doubleJump || canCrossGap5 && pillar)"
 	},
 	{
 		"Id": "RB301",
@@ -1724,7 +1724,7 @@
 		"Hint": "* resides in the Wall",
 		"LocationFlag": "LOCATION_RESCUED_CHERUB_04~D09Z01",
 		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell11] && (canSurvivePoison1 && dash || cherubBitfield ^ 0x6642)"
+		"Logic": "D09BZ01S01[Cell11] && (canSurvivePoison1 && dash || debla || taranto || cante || verdiales || aubade || cantina)"
 	},
 	
 	{
@@ -1739,7 +1739,7 @@
 		"Name": "Initial room cherub",
 		"Hint": "* resides in the Brotherhood",
 		"Room": "D17Z01S01",
-		"logic": "D17Z01S01[Cherubs1] || taranto || canClimbOnRoot && (blood || cherubBitfield ^ 0x30402)"
+		"logic": "D17Z01S01[Cherubs1] || taranto || (canClimbOnRoot || canCrossGap10) && (blood || doubleJump || debla || verdiales || tirana || ruby)"
 	},
 	{
 		"Id": "RE401",

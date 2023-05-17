@@ -48,13 +48,24 @@ namespace BlasphemousRandomizer.ItemRando
         private int blueWax = 0;
         private bool chalice = false;
 
-        // Prayers
-        private int cherubBitfield = 0;
+        // Cherubs
+        private bool debla = false;
+        private bool lorquiana = false;
+        private bool zarabanda = false;
         private bool taranto = false;
+        private bool verdiales = false;
+        private bool cante = false;
+        private bool cantina = false;
+
+        private bool ownAubade = false;
+        private bool aubade => ownAubade && TotalFervour >= 90;
+        private bool ownTirana = false;
+        private bool tirana => ownTirana && TotalFervour >= 90;
+
+        private bool ruby = false;
         private bool tiento = false;
-        private bool tirana = false;
-        private bool aubade = false;
-        private bool ownAubade = false, ownTirana = false;
+        private bool anyPrayer = false;
+        private bool pillar => debla || taranto || ruby;
 
         // Stats
         private int healthLevel = 0, fervourLevel = 0, swordLevel = 0;
@@ -110,7 +121,7 @@ namespace BlasphemousRandomizer.ItemRando
 
         private int TotalFervour => 60 + (20 * fervourLevel) + (10 * blueWax);
 
-        private bool canBreakHoles => charged > 0 || dive > 0 || lunge >= 3 || (cherubBitfield & 0x1FFFF) > 0;
+        private bool canBreakHoles => charged > 0 || dive > 0 || lunge >= 3 || anyPrayer;
 
         private bool canDawnJump => dawnHeart && dash && logicDifficulty >= 1;
 
@@ -305,17 +316,18 @@ namespace BlasphemousRandomizer.ItemRando
                 case "bones": return new IntVariable(bones);
                 case "tears": return new IntVariable(tears);
 
+                case "debla": return new BoolVariable(debla);
+                case "lorquiana": return new BoolVariable(lorquiana);
+                case "zarabanda": return new BoolVariable(zarabanda);
                 case "taranto": return new BoolVariable(taranto);
+                case "cante": return new BoolVariable(cante);
+                case "verdiales": return new BoolVariable(verdiales);
+                case "cantina": return new BoolVariable(cantina);
                 case "tiento": return new BoolVariable(tiento);
-                case "tirana": return new BoolVariable(tirana);
+                case "ruby": return new BoolVariable(ruby);
                 case "aubade": return new BoolVariable(aubade);
-                case "cherubBitfield": return new IntVariable(cherubBitfield);
-
-                //case "combo": return new BoolVariable(combo);
-                //case "charged": return new BoolVariable(charged);
-                //case "ranged": return new BoolVariable(ranged);
-                //case "dive": return new BoolVariable(dive);
-                //case "lunge": return new BoolVariable(lunge);
+                case "tirana": return new BoolVariable(tirana);
+                case "pillar": return new BoolVariable(pillar);
 
                 case "wheel": return new BoolVariable(wheel);
 
@@ -439,7 +451,7 @@ namespace BlasphemousRandomizer.ItemRando
                     {
                         if (item.id == "RB20" || item.id == "RB21" || item.id == "RB22") limestones++;
                         else if (item.id == "RB41") guiltBead = true;
-                        else if (item.id == "RB105") cherubBitfield |= 0x20000;
+                        else if (item.id == "RB105") ruby = true;
                         else if (item.id == "RB203") wheel = true;
                         else if (item.id == "RW") redWax++;
                         else if (item.id == "BW") blueWax++;
@@ -447,22 +459,16 @@ namespace BlasphemousRandomizer.ItemRando
                     }
                 case 1:
                     {
-                        if (item.id == "PR01") cherubBitfield |= 0x01;
-                        else if (item.id == "PR03") cherubBitfield |= 0x02;
-                        else if (item.id == "PR04") cherubBitfield |= 0x04;
-                        else if (item.id == "PR05") cherubBitfield |= 0x08;
-                        else if (item.id == "PR07") cherubBitfield |= 0x10;
-                        else if (item.id == "PR08") cherubBitfield |= 0x20;
-                        else if (item.id == "PR09") { cherubBitfield |= 0x40; taranto = true; }
-                        else if (item.id == "PR10") cherubBitfield |= 0x80;
-                        else if (item.id == "PR11") { cherubBitfield |= 0x100; tiento = true; }
-                        else if (item.id == "PR12") cherubBitfield |= 0x200;
-                        else if (item.id == "PR14") cherubBitfield |= 0x400;
-                        else if (item.id == "PR15") cherubBitfield |= 0x800;
-                        else if (item.id == "PR16") cherubBitfield |= 0x1000;
+                        anyPrayer = true;
+                        if (item.id == "PR03") debla = true;
+                        else if (item.id == "PR07") lorquiana = true;
+                        else if (item.id == "PR08") zarabanda = true;
+                        else if (item.id == "PR09") taranto = true;
+                        else if (item.id == "PR11") tiento = true;
+                        else if (item.id == "PR12") cante = true;
+                        else if (item.id == "PR14") verdiales = true;
                         else if (item.id == "PR101") ownAubade = true;
-                        else if (item.id == "PR201") cherubBitfield |= 0x4000;
-                        else if (item.id == "PR202") cherubBitfield |= 0x8000;
+                        else if (item.id == "PR201") cantina = true;
                         else if (item.id == "PR203") ownTirana = true;
                         break;
                     }
@@ -550,7 +556,7 @@ namespace BlasphemousRandomizer.ItemRando
                     {
                         if (item.id == "COMBO") combo++;
                         else if (item.id == "CHARGED") charged++;
-                        else if (item.id == "RANGED") { ranged++; cherubBitfield |= 0x40000; }
+                        else if (item.id == "RANGED") ranged++;
                         else if (item.id == "DIVE") dive++;
                         else if (item.id == "LUNGE") lunge++;
                         break;
@@ -561,21 +567,6 @@ namespace BlasphemousRandomizer.ItemRando
                         else if (item.id == "WallClimb") wallClimb = true;
                         break;
                     }
-            }
-
-            // Recalculate cherub bitfield based on fervour
-            if (TotalFervour >= 90)
-            {
-                if (ownAubade)
-                {
-                    cherubBitfield |= 0x2000;
-                    aubade = true;
-                }
-                if (ownTirana)
-                {
-                    cherubBitfield |= 0x10000;
-                    tirana = true;
-                }
             }
         }
 
