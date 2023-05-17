@@ -721,7 +721,7 @@
 		"OriginalDoor": "D01Z05S16[N]",
 		"VisibilityFlags": 3,
 		"RequiredDoors": [ "D01Z05S13[E]" ],
-		"Logic": "D01Z05S13[SW] || canSurvivePoison && canWaterJump"
+		"Logic": "D01Z05S13[SW] || canSurvivePoison3 && canWaterJump"
 	},
 	{
 		"Id": "D01Z05S13[N]",
@@ -729,7 +729,7 @@
 		"OriginalDoor": "D01Z05S03[S]",
 		"VisibilityFlags": 3,
 		"RequiredDoors": [ "D01Z05S13[E]" ],
-		"Logic": "D01Z05S13[N] || canSurvivePoison && canWaterJump"
+		"Logic": "D01Z05S13[N] || canSurvivePoison3 && canWaterJump"
 	},
 	{
 		"Id": "D01Z05S13[E]",
@@ -2910,13 +2910,13 @@
 		"Id": "D05Z01S06[W]",
 		"Direction": 1,
 		"OriginalDoor": "D05Z01S24[E]",
-		"Logic": "D05Z01S06[W] || canSurvivePoison"
+		"Logic": "D05Z01S06[W] || canSurvivePoison3"
 	},
 	{
 		"Id": "D05Z01S06[E]",
 		"Direction": 2,
 		"OriginalDoor": "D05Z01S20[W]",
-		"Logic": "D05Z01S06[E] || canSurvivePoison"
+		"Logic": "D05Z01S06[E] || canSurvivePoison3"
 	},
 	{
 		"Id": "D05Z01S07[SW]",
@@ -3432,7 +3432,7 @@
 		"OriginalDoor": "D06Z01S24[W]",
 		"VisibilityFlags": 3,
 		"RequiredDoors": [ "D06Z01S04[SW]", "D06Z01S04[W]" ],
-		"Logic": "D06Z01S04[Health] || (wallClimb && canSurvivePoison && (doubleJump || blood && root))"
+		"Logic": "D06Z01S04[Health] || (wallClimb && canSurvivePoison2 && (doubleJump || blood && root))"
 	},
 	{
 		"Id": "D06Z01S04[NW]",
@@ -3440,7 +3440,7 @@
 		"OriginalDoor": "D06Z01S06[E]",
 		"VisibilityFlags": 3,
 		"RequiredDoors": [ "D06Z01S04[NE]", "D06Z01S04[Cherubs]" ],
-		"Logic": "D06Z01S04[NW] || D06Z01S04[Cherubs] || (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health]) && wallClimb && canSurvivePoison && (dash || doubleJump && (canDawnJump || root))"
+		"Logic": "D06Z01S04[NW] || D06Z01S04[Cherubs] || (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health]) && wallClimb && canSurvivePoison2 && (dash || doubleJump && (canDawnJump || root))"
 	},
 	{
 		"Id": "D06Z01S04[NE]",
@@ -3448,7 +3448,7 @@
 		"OriginalDoor": "D06Z01S06[W]",
 		"VisibilityFlags": 3,
 		"RequiredDoors": [ "D06Z01S04[NW]", "D06Z01S04[Cherubs]" ],
-		"Logic": "D06Z01S04[NE] || (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health]) && wallClimb && canSurvivePoison && (dash || doubleJump && (canDawnJump || root))"
+		"Logic": "D06Z01S04[NE] || (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health]) && wallClimb && canSurvivePoison2 && (dash || doubleJump && (canDawnJump || root))"
 	},
 	{
 		"Id": "D06Z01S04[Cherubs]",

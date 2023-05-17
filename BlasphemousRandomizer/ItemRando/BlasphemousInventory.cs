@@ -108,6 +108,8 @@ namespace BlasphemousRandomizer.ItemRando
         private bool bell = false;
         private int verses = 0;
 
+        private int TotalFervour => 60 + (20 * fervourLevel) + (10 * blueWax);
+
         private bool canBreakHoles => charged > 0 || dive > 0 || lunge >= 3 || (cherubBitfield & 0x1FFFF) > 0;
 
         private bool canDawnJump => dawnHeart && dash && logicDifficulty >= 1;
@@ -117,8 +119,6 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canAirStall => ranged > 0 && logicDifficulty >= 1;
 
         private bool canDiveLaser => dive >= 3 && logicDifficulty >= 2;
-
-        private bool canSurvivePoison => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2; // Fix up.  Cant go upwards with nothing
 
         private bool canBreakJondoBell => (HasDoor("D03Z02S05[W]") && canCrossGap5 || HasDoor("D03Z02S05[S]") || HasDoor("D03Z02S05[E]")) && (HasDoor("D03Z02S09[S]") || HasDoor("D03Z02S09[W]") && dash || HasDoor("D03Z02S09[N]") || HasDoor("D03Z02S09[Cherubs]"));
         private bool canRideAlberoElevator => HasDoor("D02Z02S11[NW]") || HasDoor("D02Z02S11[NE]") || HasDoor("D02Z02S11[W]") || HasDoor("D02Z02S11[E]") || HasDoor("D02Z02S11[SE]");
@@ -136,6 +136,11 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canCrossGap9 => doubleJump && (canDawnJump || wheel && canAirStall);
         private bool canCrossGap10 => doubleJump && canDawnJump;
         private bool canCrossGap11 => doubleJump && canDawnJump && canAirStall;
+
+        // Lung skips
+        private bool canSurvivePoison1 => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2;
+        private bool canSurvivePoison2 => lung || (logicDifficulty >= 1 && tiento);
+        private bool canSurvivePoison3 => lung || (logicDifficulty >= 2 && tiento && TotalFervour >= 120);
 
         // Special skips
         public bool upwarpSkipsAllowed => logicDifficulty >= 2;
@@ -354,7 +359,9 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canWaterJump": return new BoolVariable(canWaterJump);
                 case "canAirStall": return new BoolVariable(canAirStall);
                 case "canDiveLaser": return new BoolVariable(canDiveLaser);
-                case "canSurvivePoison": return new BoolVariable(canSurvivePoison);
+                case "canSurvivePoison1": return new BoolVariable(canSurvivePoison1);
+                case "canSurvivePoison2": return new BoolVariable(canSurvivePoison2);
+                case "canSurvivePoison3": return new BoolVariable(canSurvivePoison3);
 
                 case "canBreakJondoBell": return new BoolVariable(canBreakJondoBell); // access to both jondo bell rooms
                 case "canRideAlberoElevator": return new BoolVariable(canRideAlberoElevator); // access to graveyard elevator room
@@ -550,7 +557,7 @@ namespace BlasphemousRandomizer.ItemRando
             }
 
             // Recalculate cherub bitfield based on fervour
-            if (fervourLevel >= 2 || blueWax >= 3 || fervourLevel >= 1 && blueWax >= 1)
+            if (TotalFervour >= 90)
             {
                 if (ownAubade)
                 {

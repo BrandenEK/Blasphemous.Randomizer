@@ -505,7 +505,7 @@
 		"Name": "Lung tunnel cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S13",
-		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && canSurvivePoison && canWaterJump"
+		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && canSurvivePoison3 && canWaterJump"
 	},
 	{
 		"Id": "RESCUED_CHERUB_11",
@@ -829,7 +829,7 @@
 		"Name": "Southwest lung room",
 		"Hint": "* resides in the Convent",
 		"Room": "D02Z03S12",
-		"Logic": "canSurvivePoison && dash"
+		"Logic": "canSurvivePoison1 && dash"
 	},
 	{
 		"Id": "Sword[D02Z03S13]",
@@ -1034,7 +1034,7 @@
 		"Name": "Western lung ledge",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S02",
-		"Logic": "canSurvivePoison"
+		"Logic": "canSurvivePoison1"
 	},
 	{
 		"Id": "CO12",
@@ -1076,7 +1076,7 @@
 		"Name": "Altasgracias cherub",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S09",
-		"Logic": "root || doubleJump || cherubBitfield ^ 0x32272"
+		"Logic": "root && wallClimb || doubleJump || cherubBitfield ^ 0x32272"
 	},
 	{
 		"Id": "QI13",
@@ -1320,7 +1320,7 @@
 		"Name": "Lung ambush chest",
 		"Hint": "* resides in the Library",
 		"Room": "D05Z01S06",
-		"Logic": "D05Z01S06[W] || canSurvivePoison"
+		"Logic": "D05Z01S06[W] || canSurvivePoison3"
 	},
 	{
 		"Id": "PR07",
@@ -1708,7 +1708,7 @@
 		"Hint": "* is locked away in a room",
 		"LocationFlag": "LOCATION_CO02~D09Z01",
 		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell21] && blood && root && canSurvivePoison && wallClimb && dash"
+		"Logic": "D09BZ01S01[Cell21] && blood && root && canSurvivePoison2 && wallClimb && dash"
 	},
 	{
 		"Id": "CO37",
@@ -1724,7 +1724,7 @@
 		"Hint": "* resides in the Wall",
 		"LocationFlag": "LOCATION_RESCUED_CHERUB_04~D09Z01",
 		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell11] && (canSurvivePoison && dash || cherubBitfield ^ 0x6642)"
+		"Logic": "D09BZ01S01[Cell11] && (canSurvivePoison1 && dash || cherubBitfield ^ 0x6642)"
 	},
 	
 	{
