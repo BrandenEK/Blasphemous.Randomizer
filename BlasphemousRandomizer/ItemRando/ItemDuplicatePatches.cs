@@ -4,6 +4,7 @@ using Tools.Playmaker2.Action;
 using Tools.Playmaker2.Condition;
 using Tools.Level.Actionables;
 using Tools.Gameplay;
+using Gameplay.GameControllers.Environment.Elevator;
 using Gameplay.GameControllers.Environment.MovingPlatforms;
 using System.Collections.Generic;
 
@@ -195,6 +196,14 @@ namespace BlasphemousRandomizer.ItemRando
 			return Core.LevelManager.currentLevel.LevelName != "D02Z02S11" || __instance.GetPersistenID() != "e78fa0c2-ba1f-40f4-97cc-394162f84d7c";
 		}
 	}
+	[HarmonyPatch(typeof(Elevator), "GetDisplacementLapse")]
+	public class ElevatorSpeed_Patch
+    {
+		public static void Postfix(ref float __result)
+        {
+			__result = 2f;
+        }
+    }
 
 	// Only have laudes activated in boss room with verse
 	[HarmonyPatch(typeof(EventManager), "GetFlag")]

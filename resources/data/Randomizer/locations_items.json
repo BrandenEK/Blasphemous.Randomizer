@@ -1041,7 +1041,7 @@
 		"Name": "Lung room lower",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S06",
-		"Logic": "lung"
+		"Logic": "canSurvivePoison1"
 	},
 	{
 		"Id": "RE07",
