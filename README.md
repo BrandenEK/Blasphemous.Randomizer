@@ -12,7 +12,7 @@
 - [Available commands](https://github.com/BrandenEK/Blasphemous-Randomizer#available-commands)
 - [Randomizer info](https://github.com/BrandenEK/Blasphemous-Randomizer#randomizer-info)
   - [Important notes](https://github.com/BrandenEK/Blasphemous-Randomizer#important-notes)
-  - [Lesser know logic](https://github.com/BrandenEK/Blasphemous-Randomizer#lesser-known-logic)
+  - [Logic difficulty](https://github.com/BrandenEK/Blasphemous-Randomizer#logic-difficulty)
   - [Questline changes](https://github.com/BrandenEK/Blasphemous-Randomizer#questline-changes)
   - [Door Rando changes](https://github.com/BrandenEK/Blasphemous-Randomizer#door-rando-changes)
   - [Corpse hints](https://github.com/BrandenEK/Blasphemous-Randomizer#corpse-hints)
@@ -40,7 +40,7 @@
 
 ## Seeds
 
-In order to choose a specific seed that you want to play on, you can type any numbers 1-10 on the settings menu shown before starting a new game.  Seeds can be in the range of 1 to 99,999,999.
+In order to choose a specific seed that you want to play on, click on the seed text box and type the desired number on the settings menu shown before starting a new game.  Seeds can be in the range of 1 to 99,999,999.
 <br><br>
 In order to make it easier for multiple people to play with the same item generation (Such as for races or multiplayer), a sequence of 7 images is shown in the top right corner of the settings menu.  This is a unique identifier of the seed that also takes into account the other configuration settings and ensures that items will be placed exactly the same for all players.
 
@@ -48,7 +48,7 @@ In order to make it easier for multiple people to play with the same item genera
 
 ## Autotracking
 
-Autotracking for the Blasphemous poptracker pack has now been integrated into the randomizer.  In order to activate autotracking, open the console and run the command:<br>```randomizer autotracker on```
+Autotracking for the Blasphemous poptracker pack is integrated into the randomizer.  In order to activate autotracking, open the console and run the command:<br>```randomizer autotracker on```
 
 ---
 
@@ -75,17 +75,23 @@ Autotracking for the Blasphemous poptracker pack has now been integrated into th
 - Do not load a vanilla game in the randomizer or vice versa
 - Do not load an outdated randomized game in a newer version of the randomizer - seed generation is different
 
-### Lesser known logic
+### Logic difficulty
 
-- Many gaps can be jumped across by using either dawn heart or young mason's wheel
-- Many cherubs can be collected with unusual methods, such as Aubade or Cloistered Ruby
-- Lvdovico's reward for meeting Cleofas doesn't require the marks - Just talking to him
-- Laudes only requires the 4 golden verses to access - She can be fought before any of the other Amanecidas
-- Holes in the ground can be opened with either dive or charge attack or using any prayer on top of them
-- There are three ways to reach the second half of the map
-  1. Collect 3 holy wounds and defeat Esdras
-  2. Use dawn heart & blood attack to jump across the gap in Mourning and Havoc
-  3. Use Tirana to release the ladder in Mourning and Havoc
+Easy
+- No skips or glitches will be necessary
+- Only the expected method of reaching items will be considered in logic
+- Bosses require an extra 10% strength to be in logic
+
+Normal
+- Using dawn heart skips & mid-air stalls may be necessary
+- Tiento may be required to access items in poison clouds without Silvered Lung
+
+Hard
+- Mourning and Havoc skip may be required
+- Mercy-Canvases skip may be required
+- Slash Upwarp skips are considered in logic
+- Some items in poison clouds are considered in logic without Tiento or Silvered Lung
+- Bosses require 10% less strength to be in logic
 
 ### Questline changes
 

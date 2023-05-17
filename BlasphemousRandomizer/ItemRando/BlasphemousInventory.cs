@@ -165,25 +165,51 @@ namespace BlasphemousRandomizer.ItemRando
         public bool preciseSkipsAllowed => false;
 
         // Bosses
-        private int bossPower => healthLevel + swordLevel + flasks + quicksilver; // Will need to be changed with boss rando
-        private bool canBeatBrotherhoodBoss => bossPower >= 0 && (HasDoor("D17Z01S11[W]") || HasDoor("D17Z01S11[E]"));
-        private bool canBeatMercyBoss => bossPower >= 0 && (HasDoor("D01Z04S18[W]") || HasDoor("D01Z04S18[E]"));
-        private bool canBeatConventBoss => bossPower >= 3 && (HasDoor("D02Z03S20[W]") || HasDoor("D02Z03S20[E]"));
-        private bool canBeatGrievanceBoss => bossPower >= 3 && (HasDoor("D03Z03S15[W]") || HasDoor("D03Z03S15[E]"));
-        private bool canBeatBridgeBoss => bossPower >= 4 && (HasDoor("D08Z01S01[W]") || HasDoor("D08Z01S01[E]"));
-        private bool canBeatMothersBoss => bossPower >= 4 && (HasDoor("D04Z02S22[W]") || HasDoor("D04Z02S22[E]"));
-        private bool canBeatCanvasesBoss => bossPower >= 4 && (HasDoor("D05Z02S14[W]") || HasDoor("D05Z02S14[E]"));
-        private bool canBeatPrisonBoss => bossPower >= 4 && (HasDoor("D09Z01S03[W]") || HasDoor("D09Z01S03[N]"));
-        private bool canBeatRooftopsBoss => bossPower >= 10 && (HasDoor("D06Z01S25[W]") || HasDoor("D06Z01S25[E]"));
-        private bool canBeatOssuaryBoss => bossPower >= 15 && HasDoor("D01BZ08S01[W]");
-        private bool canBeatMourningBoss => bossPower >= 9 && HasDoor("D20Z02S08[E]");
-        private bool canBeatGraveyardBoss => bossPower >= 12 && HasDoor("D01BZ07S01[Santos]") && HasDoor("D02Z03S23[E]") && HasDoor("D02Z02S14[W]");
-        private bool canBeatJondoBoss => bossPower >= 12 && HasDoor("D01BZ07S01[Santos]") && (HasDoor("D20Z01S05[W]") || HasDoor("D20Z01S05[E]")) && (HasDoor("D03Z01S03[W]") || HasDoor("D03Z01S03[SW]"));
-        private bool canBeatPatioBoss => bossPower >= 12 && HasDoor("D01BZ07S01[Santos]") && HasDoor("D06Z01S18[E]") && (HasDoor("D04Z01S04[W]") || HasDoor("D04Z01S04[E]") || HasDoor("D04Z01S04[Cherubs]"));
-        private bool canBeatWallBoss => bossPower >= 12 && HasDoor("D01BZ07S01[Santos]") && HasDoor("D09BZ01S01[Cell24]") && (HasDoor("D09Z01S01[W]") || HasDoor("D09Z01S01[E]"));
-        private bool canBeatHallBoss => bossPower >= 12 && (HasDoor("D08Z03S03[W]") || HasDoor("D08Z03S03[E]"));
-        private bool canBeatPerpetua => bossPower >= 1;
-        private bool canBeatLegionary => bossPower >= 4;
+        private bool canBeatBrotherhoodBoss => HasBossStrength("warden") && (HasDoor("D17Z01S11[W]") || HasDoor("D17Z01S11[E]")); // These need to be changed for boss shuffle
+        private bool canBeatMercyBoss => HasBossStrength("ten-piedad") && (HasDoor("D01Z04S18[W]") || HasDoor("D01Z04S18[E]"));
+        private bool canBeatConventBoss => HasBossStrength("charred-visage") && (HasDoor("D02Z03S20[W]") || HasDoor("D02Z03S20[E]"));
+        private bool canBeatGrievanceBoss => HasBossStrength("tres-angustias") && (HasDoor("D03Z03S15[W]") || HasDoor("D03Z03S15[E]"));
+        private bool canBeatBridgeBoss => HasBossStrength("esdras") && (HasDoor("D08Z01S01[W]") || HasDoor("D08Z01S01[E]"));
+        private bool canBeatMothersBoss => HasBossStrength("melquiades") && (HasDoor("D04Z02S22[W]") || HasDoor("D04Z02S22[E]"));
+        private bool canBeatCanvasesBoss => HasBossStrength("exposito") && (HasDoor("D05Z02S14[W]") || HasDoor("D05Z02S14[E]"));
+        private bool canBeatPrisonBoss => HasBossStrength("quirce") && (HasDoor("D09Z01S03[W]") || HasDoor("D09Z01S03[N]"));
+        private bool canBeatRooftopsBoss => HasBossStrength("crisanta") && (HasDoor("D06Z01S25[W]") || HasDoor("D06Z01S25[E]"));
+        private bool canBeatOssuaryBoss => HasBossStrength("isidora") && HasDoor("D01BZ08S01[W]");
+        private bool canBeatMourningBoss => HasBossStrength("sierpes") && HasDoor("D20Z02S08[E]");
+        private bool canBeatGraveyardBoss => HasBossStrength("amanecida") && HasDoor("D01BZ07S01[Santos]") && HasDoor("D02Z03S23[E]") && HasDoor("D02Z02S14[W]");
+        private bool canBeatJondoBoss => HasBossStrength("amanecida") && HasDoor("D01BZ07S01[Santos]") && (HasDoor("D20Z01S05[W]") || HasDoor("D20Z01S05[E]")) && (HasDoor("D03Z01S03[W]") || HasDoor("D03Z01S03[SW]"));
+        private bool canBeatPatioBoss => HasBossStrength("amanecida") && HasDoor("D01BZ07S01[Santos]") && HasDoor("D06Z01S18[E]") && (HasDoor("D04Z01S04[W]") || HasDoor("D04Z01S04[E]") || HasDoor("D04Z01S04[Cherubs]"));
+        private bool canBeatWallBoss => HasBossStrength("amanecida") && HasDoor("D01BZ07S01[Santos]") && HasDoor("D09BZ01S01[Cell24]") && (HasDoor("D09Z01S01[W]") || HasDoor("D09Z01S01[E]"));
+        private bool canBeatHallBoss => HasBossStrength("laudes") && (HasDoor("D08Z03S03[W]") || HasDoor("D08Z03S03[E]"));
+        private bool canBeatPerpetua => HasBossStrength("perpetua");
+        private bool canBeatLegionary => HasBossStrength("legionary");
+
+        private bool HasBossStrength(string boss)
+        {
+            float playerStrength = healthLevel * 0.25f / 6 + swordLevel * 0.25f / 7 + fervourLevel * 0.20f / 6 + flasks * 0.15f / 8 + quicksilver * 0.15f / 5;
+            float bossStrength;
+            switch (boss)
+            {
+                case "warden": bossStrength = -0.10f; break;
+                case "ten-piedad": bossStrength = 0.05f; break;
+                case "charred-visage": bossStrength = 0.20f; break;
+                case "tres-angustias": bossStrength = 0.15f; break;
+                case "esdras": bossStrength = 0.25f; break;
+                case "melquiades": bossStrength = 0.25f; break;
+                case "exposito": bossStrength = 0.30f; break;
+                case "quirce": bossStrength = 0.35f; break;
+                case "crisanta": bossStrength = 0.50f; break;
+                case "isidora": bossStrength = 0.70f; break;
+                case "sierpes": bossStrength = 0.70f; break;
+                case "amanecida": bossStrength = 0.60f; break;
+                case "laudes": bossStrength = 0.60f; break;
+                case "perpetua": bossStrength = -0.05f; break;
+                case "legionary": bossStrength = 0.20f; break;
+
+                default: throw new System.Exception($"Boss {boss} does not exist!");
+            }
+            return playerStrength >= (logicDifficulty >= 2 ? bossStrength - 0.10f : (logicDifficulty >= 1 ? bossStrength : bossStrength + 0.10f));
+        }
 
         private int guiltRooms
         {
