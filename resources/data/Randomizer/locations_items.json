@@ -564,7 +564,7 @@
 		"Name": "Elevator shaft cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S25",
-		"Logic": "linen || (cherubBitfield ^ 0x20042 && (D01Z05S25[E] || D01Z05S25[W] && (root || canCrossGap3)))"
+		"Logic": "linen || (cherubBitfield ^ 0x20042 && (D01Z05S25[E] || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3)))"
 	},
 	{
 		"Id": "Lady[D01Z05S26]",
@@ -613,7 +613,7 @@
 		"Name": "Eastern root cherub",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S02",
-		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (root || canCrossGap4 || cherubBitfield ^ 0x20042)"
+		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (canWalkOnRoot || canCrossGap4 || cherubBitfield ^ 0x20042)"
 	},
 	{
 		"Id": "QI20",
@@ -660,7 +660,7 @@
 		"Name": "Eastern root ledge",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S09",
-		"Logic": "root || canCrossGap11"
+		"Logic": "canWalkOnRoot || canCrossGap11"
 	},
 	
 	{
@@ -689,7 +689,7 @@
 		"Name": "Eastern shaft upper",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S03",
-		"Logic": "(blood && (wallClimb || doubleJump || D02Z02S03[NE] && root) && (doubleJump || root && wallClimb)) || (D02Z02S03[NE] && root && wallClimb && doubleJump)"
+		"Logic": "(canClimbOnRoot && doubleJump) || (blood && (doubleJump || canClimbOnRoot))"
 	},
 	{
 		"Id": "RB32",
@@ -953,7 +953,7 @@
 		"Name": "Eastern entrance chest",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S01",
-		"Logic": "D03Z02S01[Cherubs] || (D03Z02S01[W] && canCrossGap8) || (root && wallClimb) || canCrossGap9"
+		"Logic": "D03Z02S01[Cherubs] || (D03Z02S01[W] && canCrossGap8) || canClimbOnRoot || canCrossGap9"
 	},
 	{
 		"Id": "CO33",
@@ -1020,7 +1020,7 @@
 		"Name": "Western shaft root puzzle",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S13",
-		"Logic": "root || canCrossGap3"
+		"Logic": "canWalkOnRoot || canCrossGap3"
 	},
 	{
 		"Id": "QI103",
@@ -1076,7 +1076,7 @@
 		"Name": "Altasgracias cherub",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S09",
-		"Logic": "root && wallClimb || doubleJump || cherubBitfield ^ 0x32272"
+		"Logic": "canClimbOnRoot || doubleJump || cherubBitfield ^ 0x32272"
 	},
 	{
 		"Id": "QI13",
@@ -1130,7 +1130,7 @@
 		"Name": "Garden 2 ledge",
 		"Hint": "* resides in the Patio",
 		"Room": "D04Z01S02",
-		"Logic": "root && wallClimb || canCrossGap3"
+		"Logic": "canClimbOnRoot || canCrossGap3"
 	},
 	{
 		"Id": "QI37",
@@ -1143,7 +1143,7 @@
 		"Name": "Garden 3 upper ledge",
 		"Hint": "* resides in the Patio",
 		"Room": "D04Z01S03",
-		"Logic": "root || canCrossGap3"
+		"Logic": "canWalkOnRoot || canCrossGap3"
 	},
 	{
 		"Id": "RESCUED_CHERUB_28",
@@ -1313,7 +1313,7 @@
 		"Name": "Upper cathedral ledge",
 		"Hint": "* resides in the Library",
 		"Room": "D05Z01S05",
-		"Logic": "(root || doubleJump) && (D05Z01S05[NE] || blood)"
+		"Logic": "(canClimbOnRoot || doubleJump) && (D05Z01S05[NE] || blood)"
 	},
 	{
 		"Id": "RB31",
@@ -1390,7 +1390,7 @@
 		"Name": "Elevator cherub",
 		"Hint": "* resides in the Library",
 		"Room": "D05Z01S21",
-		"Logic": "blood && (root || doubleJump || canCrossGap5 && cherubBitfield ^ 0x20042)"
+		"Logic": "blood && (canWalkOnRoot || doubleJump || canCrossGap5 && cherubBitfield ^ 0x20042)"
 	},
 	{
 		"Id": "RB301",
@@ -1522,7 +1522,7 @@
 		"Name": "Upper eastern shaft ledge",
 		"Hint": "* resides in the Rooftops",
 		"Room": "D06Z01S15",
-		"Logic": "D06Z01S15[SW] && wallClimb && (canCrossGap10 || root && (blood || doubleJump && canAirStall))"
+		"Logic": "D06Z01S15[SW] && wallClimb && (canCrossGap10 || canClimbOnRoot && (blood || doubleJump && canAirStall))"
 	},
 	{
 		"Id": "HE04",
@@ -1708,7 +1708,7 @@
 		"Hint": "* is locked away in a room",
 		"LocationFlag": "LOCATION_CO02~D09Z01",
 		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell21] && blood && root && canSurvivePoison2 && wallClimb && dash"
+		"Logic": "D09BZ01S01[Cell21] && blood && canClimbOnRoot && canSurvivePoison2 && dash"
 	},
 	{
 		"Id": "CO37",
@@ -1739,7 +1739,7 @@
 		"Name": "Initial room cherub",
 		"Hint": "* resides in the Brotherhood",
 		"Room": "D17Z01S01",
-		"logic": "D17Z01S01[Cherubs1] || taranto || root && wallClimb && (blood || cherubBitfield ^ 0x30402)"
+		"logic": "D17Z01S01[Cherubs1] || taranto || canClimbOnRoot && (blood || cherubBitfield ^ 0x30402)"
 	},
 	{
 		"Id": "RE401",

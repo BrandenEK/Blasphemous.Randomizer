@@ -137,10 +137,14 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canCrossGap10 => doubleJump && canDawnJump;
         private bool canCrossGap11 => doubleJump && canDawnJump && canAirStall;
 
-        // Lung skips
+        // Lung techniques
         private bool canSurvivePoison1 => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2;
         private bool canSurvivePoison2 => lung || (logicDifficulty >= 1 && tiento);
         private bool canSurvivePoison3 => lung || (logicDifficulty >= 2 && tiento && TotalFervour >= 120);
+
+        // Root techniques
+        private bool canWalkOnRoot => root;
+        private bool canClimbOnRoot => root && wallClimb;
 
         // Special skips
         public bool upwarpSkipsAllowed => logicDifficulty >= 2;
@@ -281,11 +285,9 @@ namespace BlasphemousRandomizer.ItemRando
             switch (variable)
             {
                 case "blood": return new BoolVariable(blood);
-                case "root": return new BoolVariable(root);
                 case "linen": return new BoolVariable(linen);
                 case "nail": return new BoolVariable(nail);
                 case "shroud": return new BoolVariable(shroud);
-                case "lung": return new BoolVariable(lung);
 
                 case "bronzeKey": return new BoolVariable(bronzeKey);
                 case "silverKey": return new BoolVariable(silverKey);
@@ -316,7 +318,6 @@ namespace BlasphemousRandomizer.ItemRando
                 //case "lunge": return new BoolVariable(lunge);
 
                 case "wheel": return new BoolVariable(wheel);
-                case "dawnHeart": return new BoolVariable(dawnHeart);
 
                 case "redWax": return new IntVariable(redWax);
                 case "blueWax": return new IntVariable(blueWax);
@@ -359,9 +360,6 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canWaterJump": return new BoolVariable(canWaterJump);
                 case "canAirStall": return new BoolVariable(canAirStall);
                 case "canDiveLaser": return new BoolVariable(canDiveLaser);
-                case "canSurvivePoison1": return new BoolVariable(canSurvivePoison1);
-                case "canSurvivePoison2": return new BoolVariable(canSurvivePoison2);
-                case "canSurvivePoison3": return new BoolVariable(canSurvivePoison3);
 
                 case "canBreakJondoBell": return new BoolVariable(canBreakJondoBell); // access to both jondo bell rooms
                 case "canRideAlberoElevator": return new BoolVariable(canRideAlberoElevator); // access to graveyard elevator room
@@ -385,6 +383,15 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canCrossGap9": return new BoolVariable(canCrossGap9);
                 case "canCrossGap10": return new BoolVariable(canCrossGap10);
                 case "canCrossGap11": return new BoolVariable(canCrossGap11);
+
+                // Lung techniques
+                case "canSurvivePoison1": return new BoolVariable(canSurvivePoison1);
+                case "canSurvivePoison2": return new BoolVariable(canSurvivePoison2);
+                case "canSurvivePoison3": return new BoolVariable(canSurvivePoison3);
+
+                // Root techniques
+                case "canWalkOnRoot": return new BoolVariable(canWalkOnRoot);
+                case "canClimbOnRoot": return new BoolVariable(canClimbOnRoot);
 
                 // Special skips
                 case "upwarpSkipsAllowed": return new BoolVariable(upwarpSkipsAllowed);
