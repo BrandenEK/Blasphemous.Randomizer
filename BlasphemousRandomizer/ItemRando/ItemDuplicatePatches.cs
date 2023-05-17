@@ -173,7 +173,12 @@ namespace BlasphemousRandomizer.ItemRando
 				if (___flags.ContainsKey(elevators[i]))
 					___flags[elevators[i]].value = i == elevators.Length - 1 && !___flags["ELEVATOR_POSITION_FAKE"].value || i <= 1 && Core.LevelManager.currentLevel.LevelName == "D01Z02S03" && Core.Events.GetFlag("D01Z02S03_ELEVATOR");
 			}
-        }
+
+			// If entering from behind amanecida face, break it instantly
+			DoorRando.DoorLocation doorToEnter = Main.Randomizer.itemShuffler.LastDoor;
+			if (doorToEnter != null && doorToEnter.Id == "D08Z01S02[SE]")
+				Core.Events.SetFlag("D08Z01S02_FACE_BROKEN", true);
+		}
     }
 	[HarmonyPatch(typeof(Gate), "GetCurrentPersistentState")]
 	public class GateSave_Patch
@@ -405,8 +410,7 @@ namespace BlasphemousRandomizer.ItemRando
 				flag = true;
 			}
 
-            if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && (/*scene == "D08Z01S02" && text == "D08Z01S02_FACE_BROKEN" || */scene == "D05Z01S02" && text == "D05Z01S02_PASSAGEUNVEILED" ||
-                scene == "D03Z01S01" && text == "D03Z01S01_PASSAGEUNVEILED"))
+            if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && (scene == "D05Z01S02" && text == "D05Z01S02_PASSAGEUNVEILED" || scene == "D03Z01S01" && text == "D03Z01S01_PASSAGEUNVEILED"))
             {
                 flag = Core.Events.GetFlag("HIDDEN_WALL_" + scene);
             }
