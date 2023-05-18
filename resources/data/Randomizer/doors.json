@@ -388,7 +388,7 @@
 		"Direction": 1,
 		"OriginalDoor": "D01Z05S12[E]",
 		"Type": 1,
-		"Logic": "D01Z05S12[W] || D01Z05S12[E]"
+		"Logic": "openedDCGateE"
 	},
 	{
 		"Id": "D01Z04S09[E]",
@@ -581,7 +581,7 @@
 		"Id": "D01Z05S02[S]",
 		"Direction": 3,
 		"OriginalDoor": "D01Z05S20[N]",
-		"Logic": "D01Z05S20[W] || D01Z05S20[N]"
+		"Logic": "openedDCLadder"
 	},
 	{
 		"Id": "D01Z05S03[NW]",
@@ -954,7 +954,7 @@
 		"Id": "D02Z01S01[SW]",
 		"Direction": 1,
 		"OriginalDoor": "D02Z01S06[E]",
-		"Logic": "(D02Z01S06[E] || (D02Z01S06[W] || D02Z01S06[Cherubs]) && wallClimb) && (D02Z01S01[W] || D02Z01S01[CherubsL] || D02Z01S01[SW] || D02Z01S01[CherubsR] || doubleJump || wallClimb)"
+		"Logic": "openedWOTWCave && (D02Z01S01[W] || D02Z01S01[CherubsL] || D02Z01S01[SW] || D02Z01S01[CherubsR] || doubleJump || wallClimb)"
 	},
 	{
 		"Id": "D02Z01S01[W]",
@@ -2534,7 +2534,7 @@
 		"Id": "D04Z02S04[N]",
 		"Direction": 0,
 		"OriginalDoor": "D04Z02S06[S]",
-		"Logic": "(D04Z02S04[NW] || D04Z02S04[NE] || D04Z02S04[N] || D04Z02S04[Cherubs] || wallClimb && doubleJump) && (D04Z02S06[NW] || D04Z02S06[N] || D04Z02S06[NE] || D04Z02S06[S] || D04Z02S06[SE])"
+		"Logic": "(D04Z02S04[NW] || D04Z02S04[NE] || D04Z02S04[N] || D04Z02S04[Cherubs] || wallClimb && doubleJump) && openedMoMLadder"
 	},
 	{
 		"Id": "D04Z02S04[Cherubs]",
@@ -2566,7 +2566,7 @@
 		"Direction": 0,
 		"OriginalDoor": "D06Z01S23[S]",
 		"Type": 1,
-		"Logic": "(D04Z02S06[NW] || D04Z02S06[N] || D04Z02S06[NE] || wallClimb) && (D06Z01S23[Sword] || D06Z01S23[E] || D06Z01S23[S] || D06Z01S23[Cherubs])"
+		"Logic": "(D04Z02S06[NW] || D04Z02S06[N] || D04Z02S06[NE] || wallClimb) && openedARLadder"
 	},
 	{
 		"Id": "D04Z02S06[NE]",
@@ -3217,7 +3217,7 @@
 		"Id": "D05Z02S06[SE]",
 		"Direction": 2,
 		"OriginalDoor": "D05Z02S11[W]",
-		"Logic": "D05Z02S11[W] || D05Z02S11[Cherubs]"
+		"Logic": "openedTSCGate"
 	},
 	{
 		"Id": "D05Z02S06[NE]",
@@ -3920,7 +3920,7 @@
 		"Direction": 1,
 		"OriginalDoor": "D08Z01S02[SE]",
 		"Type": 1,
-		"Logic": "D08Z01S02[NE] || D08Z01S02[SE]"
+		"Logic": "openedBotTCStatue"
 	},
 	{
 		"Id": "D08Z02S03[E]",
@@ -4171,7 +4171,7 @@
 		"OriginalDoor": "D09Z01S05[NE]",
 		"VisibilityFlags": 3,
 		"RequiredDoors": [ "D09Z01S08[Cell14]" ],
-		"Logic": "D09Z01S05[W] || D09Z01S05[SE] || D09Z01S05[NE]"
+		"Logic": "openedWotHPGate"
 	},
 	{
 		"Id": "D09Z01S08[S]",
@@ -4582,7 +4582,7 @@
 		"Id": "D17Z01S05[S]",
 		"Direction": 3,
 		"OriginalDoor": "D17Z01S04[N]",
-		"Logic": "D17Z01S04[N] || D17Z01S04[FrontR]"
+		"Logic": "openedBotSSLadder"
 	},
 	{
 		"Id": "D17Z01S06[E]",
@@ -4767,7 +4767,7 @@
 		"Direction": 2,
 		"OriginalDoor": "D01Z05S24[W]",
 		"Type": 1,
-		"Logic": "D01Z05S24[W] || D01Z05S24[E]"
+		"Logic": "openedDCGateW"
 	},
 	{
 		"Id": "D20Z01S04[N]",

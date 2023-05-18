@@ -1625,7 +1625,7 @@
 		"Name": "Quirce room",
 		"Hint": "* resides in the Wall",
 		"Room": "D09Z01S08",
-		"Logic": "(D09Z01S08[W] || D09Z01S08[Cell18]) && (D09Z01S05[W] || D09Z01S05[SE] || D09Z01S05[NE])"
+		"Logic": "(D09Z01S08[W] || D09Z01S08[Cell18]) && openedWotHPGate"
 	},
 	{
 		"Id": "RB16",

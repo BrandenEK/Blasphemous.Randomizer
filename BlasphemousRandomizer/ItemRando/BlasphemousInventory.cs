@@ -148,6 +148,18 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canCrossGap10 => doubleJump && canDawnJump;
         private bool canCrossGap11 => doubleJump && canDawnJump && canAirStall;
 
+        // One way doors
+        private bool openedDCGateW => HasDoor("D01Z05S24[W]") || HasDoor("D01Z05S24[E]");
+        private bool openedDCGateE => HasDoor("D01Z05S12[W]") || HasDoor("D01Z05S12[E]");
+        private bool openedDCLadder => HasDoor("D01Z05S20[W]") || HasDoor("D01Z05S20[N]");
+        private bool openedWOTWCave => HasDoor("D02Z01S06[E]") || wallClimb && (HasDoor("D02Z01S06[W]") || HasDoor("D02Z01S06[Cherubs]"));
+        private bool openedMoMLadder => HasDoor("D04Z02S06[NW]") || HasDoor("D04Z02S06[NE]") || HasDoor("D04Z02S06[N]") || HasDoor("D04Z02S06[S]") || HasDoor("D04Z02S06[SE]");
+        private bool openedTSCGate => HasDoor("D05Z02S11[W]") || HasDoor("D05Z02S11[Cherubs]");
+        private bool openedARLadder => HasDoor("D06Z01S23[Sword]") || HasDoor("D06Z01S23[E]") || HasDoor("D06Z01S23[S]") || HasDoor("D06Z01S23[Cherubs]");
+        private bool openedBotTCStatue => HasDoor("D08Z01S02[NE]") || HasDoor("D08Z01S02[SE]");
+        private bool openedWotHPGate => HasDoor("D09Z01S05[W]") || HasDoor("D09Z01S05[SE]") || HasDoor("D09Z01S05[NE]");
+        private bool openedBotSSLadder => HasDoor("D17Z01S04[N]") || HasDoor("D17Z01S04[FrontR]");
+
         // Lung techniques
         private bool canSurvivePoison1 => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2;
         private bool canSurvivePoison2 => lung || (logicDifficulty >= 1 && tiento);
@@ -421,6 +433,18 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canCrossGap9": return new BoolVariable(canCrossGap9);
                 case "canCrossGap10": return new BoolVariable(canCrossGap10);
                 case "canCrossGap11": return new BoolVariable(canCrossGap11);
+
+                // One way doors
+                case "openedDCGateW": return new BoolVariable(openedDCGateW);
+                case "openedDCGateE": return new BoolVariable(openedDCGateE);
+                case "openedDCLadder": return new BoolVariable(openedDCLadder);
+                case "openedWOTWCave": return new BoolVariable(openedWOTWCave);
+                case "openedMoMLadder": return new BoolVariable(openedMoMLadder);
+                case "openedTSCGate": return new BoolVariable(openedTSCGate);
+                case "openedARLadder": return new BoolVariable(openedARLadder);
+                case "openedBotTCStatue": return new BoolVariable(openedBotTCStatue);
+                case "openedWotHPGate": return new BoolVariable(openedWotHPGate);
+                case "openedBotSSLadder": return new BoolVariable(openedBotSSLadder);
 
                 // Lung techniques
                 case "canSurvivePoison1": return new BoolVariable(canSurvivePoison1);
