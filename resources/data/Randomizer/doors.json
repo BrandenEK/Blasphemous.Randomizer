@@ -4969,13 +4969,13 @@
 		"Id": "D20Z02S06[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D20Z02S07[E]",
-		"Logic": "D20Z02S06[NW] || D20Z02S06[NE] || doubleJump || canClimbOnRoot"
+		"Logic": "D20Z02S06[NW] || D20Z02S06[NE] || doubleJump || canClimbOnRoot || canDiveLaser"
 	},
 	{
 		"Id": "D20Z02S06[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D20Z02S05[NW]",
-		"Logic": "D20Z02S06[NW] || D20Z02S06[NE] || doubleJump || canClimbOnRoot"
+		"Logic": "D20Z02S06[NW] || D20Z02S06[NE] || doubleJump || canClimbOnRoot || canDiveLaser"
 	},
 	{
 		"Id": "D20Z02S07[W]",

@@ -88,8 +88,8 @@ Normal
 
 Hard
 - Mourning and Havoc skip may be required
-- Mercy-Canvases skip may be required
 - Slash Upwarp skips are considered in logic
+- Dive Laser skips are considered in logic
 - Some items in poison clouds are considered in logic without Tiento or Silvered Lung
 - Bosses require 10% less strength to be in logic
 
