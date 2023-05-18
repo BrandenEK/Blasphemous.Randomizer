@@ -104,21 +104,21 @@ namespace BlasphemousRandomizer.ItemRando
 					baseObject = inventoryManager.GetBaseObject(id, InventoryManager.ItemType.Quest);
 					return new RewardInfo(baseObject.caption, baseObject.description, Main.Randomizer.Localize("quest"), baseObject.picture);
 				case 6:
-					return new RewardInfo($"{Main.Randomizer.Localize("chname")} {int.Parse(id.Substring(2))}/38", Main.Randomizer.Localize("chdesc"), Main.Randomizer.Localize("chnot"), Main.Randomizer.data.randomizerImages[0]);
+					return new RewardInfo($"{Main.Randomizer.Localize("chname")} {int.Parse(id.Substring(2))}/38", Main.Randomizer.Localize("chdesc"), Main.Randomizer.Localize("chnot"), Main.Randomizer.data.ImageCherub);
 				case 7:
-					return new RewardInfo($"{Main.Randomizer.Localize("luname")} {stats.Life.GetUpgrades() + (upgraded ? 1 : 0)}/6", Main.Randomizer.Localize("ludesc"), Main.Randomizer.Localize("stnot"), Main.Randomizer.data.randomizerImages[1]);
+					return new RewardInfo($"{Main.Randomizer.Localize("luname")} {stats.Life.GetUpgrades() + (upgraded ? 1 : 0)}/6", Main.Randomizer.Localize("ludesc"), Main.Randomizer.Localize("stnot"), Main.Randomizer.data.ImageHealth);
 				case 8:
-					return new RewardInfo($"{Main.Randomizer.Localize("funame")} {stats.Fervour.GetUpgrades() + (upgraded ? 1 : 0)}/6", Main.Randomizer.Localize("fudesc"), Main.Randomizer.Localize("stnot"), Main.Randomizer.data.randomizerImages[2]);
+					return new RewardInfo($"{Main.Randomizer.Localize("funame")} {stats.Fervour.GetUpgrades() + (upgraded ? 1 : 0)}/6", Main.Randomizer.Localize("fudesc"), Main.Randomizer.Localize("stnot"), Main.Randomizer.data.ImageFervour);
 				case 9:
-					return new RewardInfo($"{Main.Randomizer.Localize("suname")} {stats.Strength.GetUpgrades() + (upgraded ? 1 : 0)}/7", Main.Randomizer.Localize("sudesc"), Main.Randomizer.Localize("stnot"), Main.Randomizer.data.randomizerImages[3]);
+					return new RewardInfo($"{Main.Randomizer.Localize("suname")} {stats.Strength.GetUpgrades() + (upgraded ? 1 : 0)}/7", Main.Randomizer.Localize("sudesc"), Main.Randomizer.Localize("stnot"), Main.Randomizer.data.ImageSword);
 				case 10:
 					return new RewardInfo($"{Main.Randomizer.Localize("trname")} ({tearAmount})", Main.Randomizer.Localize("trdesc").Replace("*", tearAmount.ToString()), Main.Randomizer.Localize("trnot"), inventoryManager.TearsGenericObject.picture);
 				case 11:
 					UnlockableSkill skill = Core.SkillManager.GetSkill(id);
 					return new RewardInfo(removeCaps(skill.caption), skill.description, Main.Randomizer.Localize("sknot"), skill.smallImage);
 				case 12:
-					if (id == "Slide") return new RewardInfo(Main.Randomizer.Localize("dshnam"), Main.Randomizer.Localize("dshdes"), Main.Randomizer.Localize("ablnot"), null);
-					if (id == "WallClimb") return new RewardInfo(Main.Randomizer.Localize("wclnam"), Main.Randomizer.Localize("wcldes"), Main.Randomizer.Localize("ablnot"), null);
+					if (id == "Slide") return new RewardInfo(Main.Randomizer.Localize("dshnam"), Main.Randomizer.Localize("dshdes"), Main.Randomizer.Localize("ablnot"), Main.Randomizer.data.ImageDash);
+					if (id == "WallClimb") return new RewardInfo(Main.Randomizer.Localize("wclnam"), Main.Randomizer.Localize("wcldes"), Main.Randomizer.Localize("ablnot"), Main.Randomizer.data.ImageWallClimb);
 					return new RewardInfo("Error!", "You should not see this.", "You should not see this!", null);
 				default:
 					return new RewardInfo("Error!", "You should not see this.", "You should not see this!", null);

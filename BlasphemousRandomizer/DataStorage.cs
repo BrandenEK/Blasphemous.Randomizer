@@ -19,7 +19,13 @@ namespace BlasphemousRandomizer
 		public Dictionary<string, DoorLocation> doorLocations;
 
 		// Image data
-		public Sprite[] randomizerImages;
+		private Sprite[] randomizerImages;
+		public Sprite ImageCherub => randomizerImages[0];
+		public Sprite ImageHealth => randomizerImages[1];
+		public Sprite ImageFervour => randomizerImages[2];
+		public Sprite ImageSword => randomizerImages[3];
+		public Sprite ImageDash => randomizerImages[4];
+		public Sprite ImageWallClimb => randomizerImages[5];
 		public Sprite[] uiImages;
 
 		// New & improved
@@ -88,7 +94,7 @@ namespace BlasphemousRandomizer
 			else { Main.Randomizer.LogError("Error: Failed to load doors!"); valid = false; }
 
 			// Load image data
-			if (fileUtil.loadDataImages("custom_images.png", 32, 32, 32, 0, true, out randomizerImages)) Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
+			if (fileUtil.loadDataImages("rando-items.png", 30, 30, 30, 0, true, out randomizerImages)) Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
 			else { Main.Randomizer.LogError("Error: Failed to load randomizer images!"); valid = false; }
 			if (fileUtil.loadDataImages("ui.png", 36, 36, 36, 0, false, out uiImages)) Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
 			else { Main.Randomizer.LogError("Error: Failed to load ui images!"); valid = false; }
