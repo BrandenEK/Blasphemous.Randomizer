@@ -261,6 +261,7 @@ namespace BlasphemousRandomizer.Settings
 
             // Load config from seed
             config.CustomSeed = currentSeed != string.Empty ? int.Parse(currentSeed) : generatedSeed;
+            config.VersionCreated = Main.MOD_VERSION;
             return config;
         }
 
@@ -350,7 +351,6 @@ namespace BlasphemousRandomizer.Settings
             if (!menuActive || waiting) return;
 
             Main.Randomizer.playSoundEffect(0);
-            Main.Randomizer.gameConfig = getConfigSettings();
             showSettingsMenu(false, false);
             waiting = true;
             Object.FindObjectOfType<SelectSaveSlots>().OnAcceptSlots(999 + currentSlot);

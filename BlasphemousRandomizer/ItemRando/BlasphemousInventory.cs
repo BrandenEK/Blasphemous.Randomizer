@@ -180,7 +180,7 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canBeatBrotherhoodBoss => HasBossStrength("warden") && (HasDoor("D17Z01S11[W]") || HasDoor("D17Z01S11[E]")); // These need to be changed for boss shuffle
         private bool canBeatMercyBoss => HasBossStrength("ten-piedad") && (HasDoor("D01Z04S18[W]") || HasDoor("D01Z04S18[E]"));
         private bool canBeatConventBoss => HasBossStrength("charred-visage") && (HasDoor("D02Z03S20[W]") || HasDoor("D02Z03S20[E]"));
-        private bool canBeatGrievanceBoss => HasBossStrength("tres-angustias") && (HasDoor("D03Z03S15[W]") || HasDoor("D03Z03S15[E]"));
+        private bool canBeatGrievanceBoss => HasBossStrength("tres-angustias") && (wallClimb || doubleJump) && (HasDoor("D03Z03S15[W]") || HasDoor("D03Z03S15[E]"));
         private bool canBeatBridgeBoss => HasBossStrength("esdras") && (HasDoor("D08Z01S01[W]") || HasDoor("D08Z01S01[E]"));
         private bool canBeatMothersBoss => HasBossStrength("melquiades") && (HasDoor("D04Z02S22[W]") || HasDoor("D04Z02S22[E]"));
         private bool canBeatCanvasesBoss => HasBossStrength("exposito") && (HasDoor("D05Z02S14[W]") || HasDoor("D05Z02S14[E]"));

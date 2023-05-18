@@ -26,8 +26,7 @@ wcldes: The lost ability to climb walls with your sword.
 ablnot: Ability unlocked!
 itmerr: Error: Rewards list not initialized!
 daterr: Randomizer data could not be loaded, reinstall the program.
-vererr: This save file was not created in randomizer or used an older version.  Item locations are invalid.
-generr: Item shuffler failed to generate valid game.  Item locations are invalid.
+saverr: Loaded invalid save file.  Item locations are invalid.
 currsd: Current seed
 shrine: Shrine Tier
 sword: Mea Culpa
@@ -135,8 +134,7 @@ wcldes: ???
 ablnot: ???
 itmerr: Error: no se ha iniciado la lista de recompensas
 daterr: No se han podido cargar los datos del randomizador, reinstala el programa.
-vererr: Este archivo no se ha creado en el randomizador o se ha usado una versión anterior. La ubicación de los objetos no es válida.
-generr: El randomizador de objetos no ha podido crear una partida válida. La ubicación de los objetos no es válida.
+saverr: ???
 currsd: Semilla actual
 shrine: Nivel de altar
 sword: Mea Culpa
@@ -244,8 +242,7 @@ wcldes: ???
 ablnot: ???
 itmerr: 错误：物品列表未初始化
 daterr: 随机mod数据未加载，请重新下载并安装随机mod
-vererr: 此存档不兼容当前版本的随机mod，物品分布地点不合法
-generr: 物品随机生成器无法生成合理的物品分布地点
+saverr: ???
 currsd: 此存档的种子
 shrine: 祭坛等级
 sword: 孽刃
@@ -353,8 +350,7 @@ wcldes: ???
 ablnot: ???
 itmerr: Erreur: La Liste de récompenses n'a pas été initialisée
 daterr: Les données du Randomizer n'ont pas pu être chargées, veuillez réinstaller le programme
-vererr: Ce fichier de sauvegarde n'a pas été créé avec le randomizer ou utilise une version antérieure du jeu. Les positionnements des objets sont invalides
-generr: Échec de l'Item Shuffler, impossible de générer une partie valide. Les positionnements des objets sont invalides
+saverr: ???
 currsd: Seed actuelle
 shrine: Rang de Sanctuaire
 sword: Mea Culpa

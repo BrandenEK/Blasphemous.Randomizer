@@ -8,6 +8,11 @@ namespace BlasphemousRandomizer.HintRando
         private Dictionary<string, string> newHints;
         private HintFiller filler;
 
+        // Manage mapped hints
+        public Dictionary<string, string> SaveMappedHints() => newHints;
+        public void LoadMappedHints(Dictionary<string, string> mappedHints) => newHints = mappedHints;
+        public void ClearMappedHints() => newHints = null;
+
         public string getHint(string id)
         {
             if (newHints != null && newHints.ContainsKey(id))
@@ -34,14 +39,9 @@ namespace BlasphemousRandomizer.HintRando
             filler = new HintFiller();
         }
 
-        public void Reset()
-        {
-            newHints = null;
-        }
-
         public void Shuffle(int seed)
         {
-            if (!Main.Randomizer.gameConfig.AllowHints || !Main.Randomizer.data.isValid || !Main.Randomizer.itemShuffler.ValidSeed)
+            if (!Main.Randomizer.GameSettings.AllowHints || !Main.Randomizer.data.isValid || !Main.Randomizer.itemShuffler.ValidSeed)
                 return;
 
             newHints = new Dictionary<string, string>();

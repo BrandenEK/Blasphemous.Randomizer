@@ -13,6 +13,11 @@ namespace BlasphemousRandomizer.EnemyRando
         // Enemizer fixes
         public FMODAudioCatalog[] audioCatalogs;
 
+        // Manage mapped enemies
+        public Dictionary<string, string> SaveMappedEnemies() => newEnemies;
+        public void LoadMappedEnemies(Dictionary<string, string> mappedEnemies) => newEnemies = mappedEnemies;
+        public void ClearMappedEnemies() => newEnemies = null;
+
         public GameObject getEnemy(string id, bool facingLeft)
         {
             if (EnemyLoader.loaded && newEnemies != null && newEnemies.ContainsKey(id))
@@ -90,14 +95,9 @@ namespace BlasphemousRandomizer.EnemyRando
 			};
         }
 
-        public void Reset()
-        {
-            newEnemies = null;
-        }
-
         public void Shuffle(int seed)
         {
-            if (Main.Randomizer.gameConfig.EnemyShuffleType < 1 || !Main.Randomizer.data.isValid)
+            if (Main.Randomizer.GameSettings.EnemyShuffleType < 1 || !Main.Randomizer.data.isValid)
                 return;
 
             newEnemies = new Dictionary<string, string>();

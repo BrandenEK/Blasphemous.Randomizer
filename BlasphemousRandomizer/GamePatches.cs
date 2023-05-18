@@ -20,7 +20,7 @@ namespace BlasphemousRandomizer
     {
         public static bool Prefix(ref int __result)
         {
-            if (Main.Randomizer.gameConfig.UnlockTeleportation)
+            if (Main.Randomizer.GameSettings.UnlockTeleportation)
             {
                 __result = 3;
                 return false;
@@ -48,19 +48,6 @@ namespace BlasphemousRandomizer
         {
             __result = ___newGameBossesBalanceChart;
             return false;
-        }
-    }
-
-    // Call load data even if loading vanilla game
-    [HarmonyPatch(typeof(PersistentManager), "LoadSnapShot")]
-    public class PersistentManagerLoad_Patch
-    {
-        public static void Postfix(PersistentManager __instance, PersistentManager.SnapShot snapShot)
-        {
-            if (!snapShot.commonElements.ContainsKey(Main.Randomizer.PersistentID))
-            {
-                Main.Randomizer.LoadGame(null);
-            }
         }
     }
 
@@ -96,7 +83,7 @@ namespace BlasphemousRandomizer
             {
                 if (location.LocationFlag == null && id == "LOCATION_" + location.Id || location.LocationFlag != null && location.LocationFlag.StartsWith(id))
                 {
-                    Main.Randomizer.MapCollection.CollectLocation(location.Id, Main.Randomizer.gameConfig);
+                    Main.Randomizer.MapCollection.CollectLocation(location.Id, Main.Randomizer.GameSettings);
                 }
             }
         }
@@ -161,7 +148,11 @@ namespace BlasphemousRandomizer
     {
         public static void Prefix(bool ___isContinue, ref string ___sceneName)
         {
-            ___sceneName = Main.Randomizer.StartingDoor.Room;
+            if (!___isContinue)
+            {
+                Main.Randomizer.LoadConfigFromMenu(); // Have to also load config now, because this is called before NewGame()
+                ___sceneName = Main.Randomizer.StartingDoor.Room;
+            }
         }
     }
 

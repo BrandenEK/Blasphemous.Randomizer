@@ -410,7 +410,7 @@ namespace BlasphemousRandomizer.ItemRando
 				flag = true;
 			}
 
-            if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && (scene == "D05Z01S02" && text == "D05Z01S02_PASSAGEUNVEILED" || scene == "D03Z01S01" && text == "D03Z01S01_PASSAGEUNVEILED"))
+            if (Main.Randomizer.GameSettings.DoorShuffleType > 0 && (scene == "D05Z01S02" && text == "D05Z01S02_PASSAGEUNVEILED" || scene == "D03Z01S01" && text == "D03Z01S01_PASSAGEUNVEILED"))
             {
                 flag = Core.Events.GetFlag("HIDDEN_WALL_" + scene);
             }

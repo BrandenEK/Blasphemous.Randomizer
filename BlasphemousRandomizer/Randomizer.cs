@@ -37,27 +37,25 @@ namespace BlasphemousRandomizer
         private IShuffle[] shufflers;
 
         // Save file info
-        private int seed;
-        private bool startedInRando;
-        public Config gameConfig;
+        public int GameSeed { get; private set; }
+        public Config GameSettings { get; private set; }
 
         // Global info
         private bool inGame;
-        private int lastLoadedSlot;
         private string errorOnLoad;
         public bool ShrineEditMode { get; set; }
 
         public DataStorage data { get; private set; }
         public AutoTracker tracker { get; private set; }
         public MapCollectionStatus MapCollection { get; private set; }
-        public SettingsMenu settingsMenu;
+        public SettingsMenu SettingsMenu { get; private set; }
 
         public override string PersistentID => "ID_RANDOMIZER";
 
         public bool InstalledBootsMod => IsModLoaded("com.author.blasphemous.boots-of-pleading");
         public bool InstalledDoubleJumpMod => IsModLoaded("com.damocles.blasphemous.double-jump");
-        public bool CanDash => !gameConfig.ShuffleDash || Core.Events.GetFlag("ITEM_Slide");
-        public bool CanWallClimb => !gameConfig.ShuffleWallClimb || Core.Events.GetFlag("ITEM_WallClimb");
+        public bool CanDash => !GameSettings.ShuffleDash || Core.Events.GetFlag("ITEM_Slide");
+        public bool CanWallClimb => !GameSettings.ShuffleWallClimb || Core.Events.GetFlag("ITEM_WallClimb");
         public bool DashChecker { get; set; }
 
         public Randomizer(string modId, string modName, string modVersion) : base(modId, modName, modVersion) { }
@@ -83,9 +81,8 @@ namespace BlasphemousRandomizer
                 errorOnLoad = Localize("daterr");
 
             // Set up data
-            gameConfig = new Config();
-            lastLoadedSlot = -1;
-            settingsMenu = new SettingsMenu();
+            GameSettings = new Config();
+            SettingsMenu = new SettingsMenu();
             MapCollection = new MapCollectionStatus();
 
             tracker = new AutoTracker();
@@ -96,74 +93,56 @@ namespace BlasphemousRandomizer
         {
             return new RandomizerPersistenceData
             {
-                seed = seed,
-                startedInRando = startedInRando,
-                config = gameConfig,
+                seed = GameSeed,
+                config = GameSettings,
+                mappedItems = itemShuffler.SaveMappedItems(),
+                mappedDoors = itemShuffler.SaveMappedDoors(),
+                mappedHints = hintShuffler.SaveMappedHints(),
+                mappedEnemies = enemyShuffler.SaveMappedEnemies(),
                 collectionStatus = MapCollection.CollectionStatus
             };
         }
 
         public override void LoadGame(ModPersistentData data)
         {
-            // Only reload data if coming from title screen and loading different save file
-            if (inGame || PersistentManager.GetAutomaticSlot() == lastLoadedSlot)
-            {
-                return;
-            }
+            RandomizerPersistenceData randomizerPersistenceData = data as RandomizerPersistenceData;
 
-            RandomizerPersistenceData randomizerPersistenceData = data == null ? null : (RandomizerPersistenceData)data;
-            if (randomizerPersistenceData != null && randomizerPersistenceData.startedInRando && isConfigVersionValid(randomizerPersistenceData.config.VersionCreated))
-            {
-                // Loaded a valid randomized game
-                seed = randomizerPersistenceData.seed;
-                startedInRando = randomizerPersistenceData.startedInRando;
-                gameConfig = randomizerPersistenceData.config;
-                MapCollection.CollectionStatus = randomizerPersistenceData.collectionStatus;
-                Log("Loading seed: " + seed);
-                Randomize(false);
-            }
-            else
-            {
-                // Loaded a vanilla game or an outdated rando game
-                seed = -1;
-                startedInRando = false;
-                gameConfig = new Config();
-                MapCollection.ResetCollectionStatus(gameConfig);
-                for (int i = 0; i < shufflers.Length; i++)
-                {
-                    shufflers[i].Reset();
-                }
-                LogError("Loaded invalid game!");
-                errorOnLoad = Localize("vererr");
-            }
+            GameSeed = randomizerPersistenceData.seed;
+            GameSettings = randomizerPersistenceData.config;
+            itemShuffler.LoadMappedItems(randomizerPersistenceData.mappedItems);
+            itemShuffler.LoadMappedDoors(randomizerPersistenceData.mappedDoors);
+            hintShuffler.LoadMappedHints(randomizerPersistenceData.mappedHints);
+            enemyShuffler.LoadMappedEnemies(randomizerPersistenceData.mappedEnemies);
+            MapCollection.CollectionStatus = randomizerPersistenceData.collectionStatus;
 
-            inGame = true;
-            lastLoadedSlot = PersistentManager.GetAutomaticSlot();
+            Log("Loaded seed: " + GameSeed);
         }
 
         public override void NewGame(bool NGPlus)
         {
-            startedInRando = true;
-            seed = generateSeed();
-            setUpExtras();
-            Log("Generating new seed: " + seed);
-            Randomize(true);
-            MapCollection.ResetCollectionStatus(gameConfig);
+            LoadConfigFromMenu();
+            GameSeed = GameSettings.CustomSeed;
+            Log("Generating new seed: " + GameSeed);
+            Randomize();
+            MapCollection.ResetCollectionStatus(GameSettings);
 
-            inGame = true;
-            lastLoadedSlot = PersistentManager.GetAutomaticSlot();
+            setUpExtras();
             Core.GameModeManager.ChangeMode(GameModeManager.GAME_MODES.NEW_GAME_PLUS);
             Core.Events.SetFlag("CHERUB_RESPAWN", true);
         }
 
-        public override void ResetGame() { }
-
-        private int generateSeed()
+        public override void ResetGame()
         {
-            return gameConfig.CustomSeed > 0 ? gameConfig.CustomSeed : new System.Random().Next(1, 999999);
+            GameSeed = -1;
+            GameSettings = new Config();
+            itemShuffler.ClearMappedItems();
+            itemShuffler.ClearMappedDoors();
+            hintShuffler.ClearMappedHints();
+            enemyShuffler.ClearMappedEnemies();
+            MapCollection.ResetCollectionStatus(GameSettings);
         }
 
-        private void Randomize(bool newGame)
+        private void Randomize()
         {
             Stopwatch watch = Stopwatch.StartNew();
 
@@ -172,23 +151,17 @@ namespace BlasphemousRandomizer
             {
                 try
                 {
-                    shufflers[i].Shuffle(seed);
+                    shufflers[i].Shuffle(GameSeed);
                 }
                 catch (System.Exception e)
                 {
-                    LogError($"Error with the {shufflers[i].GetType().Name} when shuffling seed {seed}");
+                    LogError($"Error with the {shufflers[i].GetType().Name} when shuffling seed {GameSeed}");
                     LogError("Error message: " + e.Message);
-                    if (shufflers[i] is ItemShuffle)
-                        itemShuffler.SetMappedItems(null);
+                    ResetGame();
                 }
             }
 
-            if (!itemShuffler.ValidSeed)
-            {
-                // Show error message if item shuffler failed
-                errorOnLoad = Localize("generr");
-            }
-            else if (newGame)
+            if (itemShuffler.ValidSeed)
             {
                 // Generate spoiler on new game
                 string spoiler = itemShuffler.GetSpoiler();
@@ -237,12 +210,22 @@ namespace BlasphemousRandomizer
             if (newLevel != "MainMenu")
             {
                 // Control albero warp room activation
+                inGame = true;
                 Core.SpawnManager.SetTeleportActive("TELEPORT_D02", Core.Events.GetFlag("ALBERO_WARP"));
+
+                // Validate save data
+                if (!itemShuffler.ValidSeed)
+                {
+                    // Loaded an outdated rando or vanilla game
+                    LogError("Loaded invalid game!");
+                    errorOnLoad = Localize("saverr");
+                    ResetGame();
+                }
             }
 
             // Update ui menus
-            if (settingsMenu != null)
-                settingsMenu.onLoad(newLevel);
+            if (SettingsMenu != null)
+                SettingsMenu.onLoad(newLevel);
 
             // Display delayed error message
             if (errorOnLoad != null && errorOnLoad != "")
@@ -271,7 +254,7 @@ namespace BlasphemousRandomizer
         private void setUpExtras()
         {
             // Set flags relating to choosing a penitence
-            if (!gameConfig.AllowPenitence)
+            if (!GameSettings.AllowPenitence)
             {
                 Core.Events.SetFlag("PENITENCE_EVENT_FINISHED", true, false);
                 Core.Events.SetFlag("PENITENCE_NO_PENITENCE", true, false);
@@ -318,7 +301,7 @@ namespace BlasphemousRandomizer
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad6) && inGame)
             {
-                LogDisplay($"{Localize("currsd")}: {seed} [{ComputeFinalSeed(seed, gameConfig)}]");
+                LogDisplay($"{Localize("currsd")}: {GameSeed} [{ComputeFinalSeed(GameSeed, GameSettings)}]");
             }
             else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad1))
             {
@@ -329,17 +312,17 @@ namespace BlasphemousRandomizer
             else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad3))
             {
             }
-            
+
             // Update ui menus
-            if (settingsMenu != null)
-                settingsMenu.update();
+            if (SettingsMenu != null)
+                SettingsMenu.update();
         }
 
         private IEnumerator showErrorMessage(float waitTime)
         {
             yield return new WaitForSecondsRealtime(waitTime);
             LogDisplay(errorOnLoad);
-            errorOnLoad = "";
+            errorOnLoad = string.Empty;
         }
 
         public bool shouldSkipCutscene(string id)
@@ -355,13 +338,17 @@ namespace BlasphemousRandomizer
             else if (id == 3) Core.Audio.PlayOneShot("event:/SFX/UI/FadeToWhite");
         }
 
+        // Did this even work ??
         private bool isConfigVersionValid(string configVersion)
         {
             string version = Main.MOD_VERSION;
             return version.Substring(0, version.LastIndexOf('.')) == configVersion.Substring(0, configVersion.LastIndexOf('.'));
         }
 
-        public int GetSeed() { return seed; }
+        public void LoadConfigFromMenu()
+        {
+            GameSettings = SettingsMenu.getConfigSettings();
+        }
 
         public long ComputeFinalSeed(int seed, Config config)
         {
@@ -516,27 +503,28 @@ namespace BlasphemousRandomizer
         {
             get
             {
+                int chosenStartingLocation = GameSettings.StartingLocation;
                 int numberOfStartingLocations = startingLocations.Length;
-                if (gameConfig.StartingLocation < 0 || gameConfig.StartingLocation > numberOfStartingLocations)
+                if (chosenStartingLocation < 0 || chosenStartingLocation > numberOfStartingLocations)
                 {
                     // Invalid starting position, should never happen
-                    LogError(gameConfig.StartingLocation + " is not a valid starting location!");
+                    LogError(chosenStartingLocation + " is not a valid starting location!");
                     return startingLocations[0];
                 }
-                if (gameConfig.StartingLocation != numberOfStartingLocations)
+                if (chosenStartingLocation != numberOfStartingLocations)
                 {
                     // Chose a predefined starting location
-                    return startingLocations[gameConfig.StartingLocation];
+                    return startingLocations[chosenStartingLocation];
                 }
 
                 // Chose a random starting location
                 List<StartingLocation> possibleLocations = new List<StartingLocation>(startingLocations);
-                if (gameConfig.LogicDifficulty < 2) possibleLocations.RemoveAt(SHIPYARD_LOCATION);
-                if (gameConfig.ShuffleWallClimb) possibleLocations.RemoveAt(DEPTHS_LOCATION);
-                if (gameConfig.ShuffleDash) possibleLocations.RemoveAt(BROTHERHOOD_LOCATION);
+                if (GameSettings.LogicDifficulty < 2) possibleLocations.RemoveAt(SHIPYARD_LOCATION);
+                if (GameSettings.ShuffleWallClimb) possibleLocations.RemoveAt(DEPTHS_LOCATION);
+                if (GameSettings.ShuffleDash) possibleLocations.RemoveAt(BROTHERHOOD_LOCATION);
 
                 Main.Randomizer.Log($"Choosing random starting location from {possibleLocations.Count} options");
-                int randLocation = new System.Random(gameConfig.CustomSeed).Next(0, possibleLocations.Count);
+                int randLocation = new System.Random(GameSettings.CustomSeed).Next(0, possibleLocations.Count);
                 return possibleLocations[randLocation];
             }
         }

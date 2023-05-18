@@ -19,10 +19,15 @@ namespace BlasphemousRandomizer.ItemRando
 
         public DoorLocation LastDoor { get; set; }
 
-        public void SetMappedItems(Dictionary<string, string> mappedItems)
-        {
-            newItems = mappedItems;
-        }
+        // Manage mapped items
+        public Dictionary<string, string> SaveMappedItems() => newItems;
+        public void LoadMappedItems(Dictionary<string, string> mappedItems) => newItems = mappedItems;
+        public void ClearMappedItems() => newItems = null;
+
+        // Manage mapped doors
+        public Dictionary<string, string> SaveMappedDoors() => newDoors;
+        public void LoadMappedDoors(Dictionary<string, string> mappedDoors) => newDoors = mappedDoors;
+        public void ClearMappedDoors() => newDoors = null;
 
         // Returns the target door given a door id
         public bool getNewDoor(string doorId, out string targetScene, out string targetId)
@@ -142,16 +147,11 @@ namespace BlasphemousRandomizer.ItemRando
             filler = new ItemFiller();
         }
 
-        public void Reset()
-        {
-            newItems = null;
-        }
-
         // The locations_items.json file must be in order sorted by area for this to work!
         public string GetSpoiler()
         {
             StringBuilder spoiler = new StringBuilder();
-            spoiler.AppendLine($"Seed: {Main.Randomizer.GetSeed()}");
+            spoiler.AppendLine($"Seed: {Main.Randomizer.GameSeed}");
 
             string currentArea = string.Empty;
             foreach (ItemLocation location in Main.Randomizer.data.itemLocations.Values)

@@ -1088,19 +1088,21 @@
 	{
 		"Id": "D02Z02S01[W]",
 		"Direction": 1,
-		"OriginalDoor": "D02Z02S08[E]"
+		"OriginalDoor": "D02Z02S08[E]",
+		"Logic": "D02Z02S01[W] || D02Z02S01[NW] || D02Z02S01[Cherubs] || dash"
 	},
 	{
 		"Id": "D02Z02S01[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D02Z02S02[SE]",
-		"Logic": "D02Z02S01[NW] || D02Z02S01[Cherubs] || wallClimb"
+		"Logic": "D02Z02S01[NW] || D02Z02S01[Cherubs] || wallClimb && (D02Z02S01[W] || dash)"
 	},
 	{
 		"Id": "D02Z02S01[E]",
 		"Direction": 2,
 		"OriginalDoor": "D02Z01S03[W]",
-		"Type": 1
+		"Type": 1,
+		"Logic": "D02Z02S01[E] || D02Z02S01[NW] || D02Z02S01[Cherubs] || wallClimb || dash"
 	},
 	{
 		"Id": "D02Z02S01[Cherubs]",
@@ -2282,7 +2284,8 @@
 	{
 		"Id": "D03Z03S15[W]",
 		"Direction": 1,
-		"OriginalDoor": "D03Z03S11[E]"
+		"OriginalDoor": "D03Z03S11[E]",
+		"Logic": "canBeatGrievanceBoss"
 	},
 	{
 		"Id": "D03Z03S15[E]",

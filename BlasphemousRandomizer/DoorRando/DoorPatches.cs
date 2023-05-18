@@ -33,13 +33,12 @@ namespace BlasphemousRandomizer.DoorRando
 
             string doorId = $"{currentScene}[{currentId}]";
             Main.Randomizer.Log("Entering door: " + doorId);
-            if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && Main.Randomizer.itemShuffler.getNewDoor(doorId, out string newScene, out string newId))
+            if (Main.Randomizer.GameSettings.DoorShuffleType > 0 && Main.Randomizer.itemShuffler.getNewDoor(doorId, out string newScene, out string newId))
             {
                 __instance.targetScene = newScene;
                 __instance.targetDoor = newId;
             }
 
-            Main.Randomizer.LogWarning("Scene to load: " + __instance.targetScene);
             if (__instance.targetScene == "D03Z03S15" && !Core.Events.GetFlag("D03Z04S01_BOSSDEAD"))
             {
                 // If Anguish hasnt been killed yet, load boss fight room instead
@@ -70,7 +69,7 @@ namespace BlasphemousRandomizer.DoorRando
     {
         public static void Prefix(SpawnManager.PosibleSpawnPoints spawnType, ref bool forceLoad)
         {
-            if (Main.Randomizer.gameConfig.DoorShuffleType > 0 && spawnType == SpawnManager.PosibleSpawnPoints.Door)
+            if (Main.Randomizer.GameSettings.DoorShuffleType > 0 && spawnType == SpawnManager.PosibleSpawnPoints.Door)
                 forceLoad = true;
         }
     }

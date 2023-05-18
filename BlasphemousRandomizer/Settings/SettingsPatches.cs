@@ -28,7 +28,7 @@ namespace BlasphemousRandomizer.Settings
             }
             if (___slots[idxSlot].IsEmpty) // Show settings menu
             {
-                Main.Randomizer.settingsMenu.openMenu(idxSlot);
+                Main.Randomizer.SettingsMenu.openMenu(idxSlot);
                 return false;
             }
 

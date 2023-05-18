@@ -11,7 +11,7 @@ namespace BlasphemousRandomizer.EnemyRando
 		public void Fill(int seed, Dictionary<string, string> output)
 		{
 			initialize(seed);
-			Config config = Main.Randomizer.gameConfig;
+			Config config = Main.Randomizer.GameSettings;
 
 			// Get lists
 			List<EnemyLocation> locations = new List<EnemyLocation>(Main.Randomizer.data.enemyLocations.Values);
