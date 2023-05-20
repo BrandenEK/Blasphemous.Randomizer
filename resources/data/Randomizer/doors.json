@@ -2451,7 +2451,7 @@
 		"Id": "D04Z02S01[N]",
 		"Direction": 0,
 		"OriginalDoor": "D04Z02S02[S]",
-		"Logic": "D04Z02S04[N] || D04Z02S04[NE] && dash && (doubleJump || wallClimb)"
+		"Logic": "D04Z02S01[N] || D04Z02S01[NE] && dash && (doubleJump || wallClimb)"
 	},
 	{
 		"Id": "D04Z02S01[E]",
@@ -2463,7 +2463,7 @@
 		"Id": "D04Z02S01[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D04Z02S03[W]",
-		"Logic": "D04Z02S04[NE] || D04Z02S04[N] && dash && canCrossGap1"
+		"Logic": "D04Z02S01[NE] || D04Z02S01[N] && dash && canCrossGap1"
 	},
 	{
 		"Id": "D04Z02S02[S]",

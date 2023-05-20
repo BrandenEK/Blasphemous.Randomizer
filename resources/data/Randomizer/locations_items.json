@@ -668,7 +668,7 @@
 		"Name": "Center shaft cherub",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S02",
-		"Logic": "D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || ((D02Z02S02[NW] || D02Z02S02[NE] || wallClimb) && (doubleJump || pillar || cante || tirana))"
+		"Logic": "D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || ((D02Z02S02[NW] || D02Z02S02[NE] || wallClimb) && (doubleJump || pillar || cante || tirana || canDiveLaser))"
 	},
 	{
 		"Id": "QI46",
@@ -1177,14 +1177,14 @@
 		"Name": "Western room ledge",
 		"Hint": "* resides in the Mother",
 		"Room": "D04Z02S01",
-		"Logic": "D04Z02S04[N] || D04Z02S04[NE] && dash && (doubleJump || wallClimb)"
+		"Logic": "D04Z02S01[N] || D04Z02S01[NE] && dash && (doubleJump || wallClimb)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_30",
 		"Name": "Western room cherub",
 		"Hint": "* resides in the Mother",
 		"Room": "D04Z02S01",
-		"Logic": "D04Z02S04[N] || pillar || D04Z02S04[NE] && dash && (wallClimb || canCrossGap1)"
+		"Logic": "D04Z02S01[N] || pillar || D04Z02S01[NE] && dash && (wallClimb || canCrossGap1)"
 	},
 	{
 		"Id": "CO17",
