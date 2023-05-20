@@ -36,10 +36,10 @@ vandis: Vanilla
 randis: Randomized
 outdis: Outdated
 sorrow: Sacred Sorrows mode can not be played in randomizer!
+
 chset: CHOOSE SETTINGS
 begin: Begin
 cancel: Cancel
-
 menusd: Seed
 distyp: Disabled
 simtyp: Simple
@@ -145,10 +145,10 @@ vandis: Vanilla
 randis: Randomizado
 outdis: Desactualizado
 sorrow: No se puede jugar al modo Sagrados Pesares en el randomizador.
+
 chset: SELECCIONA LOS AJUSTES
 begin: Comenzar
 cancel: Cancelar
-
 menusd: Semilla
 distyp: Estándar
 simtyp: ???
@@ -254,10 +254,10 @@ vandis: 原版
 randis: 随机mod
 outdis: 老版本
 sorrow: 在随机mod中无法游玩圣恸模式
+
 chset: 自定义随机mod设置项
 begin: 开始
 cancel: 取消
-
 menusd: 种子
 distyp: 禁用随机
 simtyp: ???
@@ -363,10 +363,10 @@ vandis: Vanilla
 randis: Randomisés
 outdis: Obsolète
 sorrow: Le mode Chagrins Sacrés n'est pas accessible en randomizer
+
 chset: CHOISISSEZ VOS PARAMÈTRES
 begin: Commencer
 cancel: Annuler
-
 menusd: Seed
 distyp: Désactivé
 simtyp: ???

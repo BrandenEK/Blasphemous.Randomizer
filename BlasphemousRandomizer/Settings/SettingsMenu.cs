@@ -471,7 +471,7 @@ namespace BlasphemousRandomizer.Settings
 
             RectTransform seedBox = getNewTextbox("SeedBox", rect, font, lineSprite, 53);
             seedBox.pivot = new Vector2(0.5f, 0.5f);
-            seedBox.anchoredPosition = new Vector2(-238, 165);
+            seedBox.anchoredPosition = new Vector2(-225, 165);
             SeedText = seedBox.GetComponent<SettingsTextbox>();
 
             // General section
