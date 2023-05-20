@@ -544,8 +544,9 @@ namespace BlasphemousRandomizer.Settings
 
             RectTransform bossOption = getNewCyclebox("Boss Option", enemiesSection, font, 15, 16,
                 new string[] { Main.Randomizer.Localize("distyp"), /*Main.Randomizer.Localize("simtyp"), Main.Randomizer.Localize("fultyp")*/ },
-                new string[] { Main.Randomizer.Localize("distyp") + " - " + Main.Randomizer.Localize("bsdes1"),
-                               /*Main.Randomizer.Localize("simtyp") + " - " + Main.Randomizer.Localize("bsdes2"),
+                new string[] { Main.Randomizer.Localize("soon")
+                               /*Main.Randomizer.Localize("distyp") + " - " + Main.Randomizer.Localize("bsdes1"),
+                               Main.Randomizer.Localize("simtyp") + " - " + Main.Randomizer.Localize("bsdes2"),
                                Main.Randomizer.Localize("fultyp") + " - " + Main.Randomizer.Localize("bsdes3"),*/ }, 36);
             bossOption.anchoredPosition = new Vector2(0, top - 70);
             BossesLeft = bossOption.GetChild(0).GetComponent<SettingsCyclebox>();

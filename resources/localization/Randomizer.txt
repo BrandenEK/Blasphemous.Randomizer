@@ -44,6 +44,7 @@ menusd: Seed
 distyp: Disabled
 simtyp: Simple
 fultyp: Full
+soon: Coming soon!
 
 lgname: Logic Difficulty
 lgtyp1: Easy
@@ -152,6 +153,7 @@ menusd: Semilla
 distyp: Estándar
 simtyp: ???
 fultyp: ???
+soon: Próximamente
 
 lgname: ???
 lgtyp1: ???
@@ -260,6 +262,7 @@ menusd: 种子
 distyp: 禁用随机
 simtyp: ???
 fultyp: ???
+soon: 即将推出
 
 lgname: ???
 lgtyp1: ???
@@ -368,6 +371,7 @@ menusd: Seed
 distyp: Désactivé
 simtyp: ???
 fultyp: ???
+soon: Bientôt disponible
 
 lgname: ???
 lgtyp1: ???
