@@ -84,8 +84,8 @@ namespace BlasphemousRandomizer
             GameSettings = new Config();
             SettingsMenu = new SettingsMenu();
             MapCollection = new MapCollectionStatus();
-
             tracker = new AutoTracker();
+
             RegisterCommand(new RandomizerCommand());
         }
 
@@ -196,16 +196,6 @@ namespace BlasphemousRandomizer
                 // Activate Albero warp room when entering it
                 Core.Events.SetFlag("ALBERO_WARP", true);
             }
-            else if (newLevel == "D06Z01S01")
-            {
-                // Keep the elevator set at position 4
-                Core.Events.SetFlag("ELEVATOR_POSITION_1", false);
-            }
-            else if (newLevel == "D06Z01S19")
-            {
-                // Prevent the elevator crashing when returning to main room
-                Core.Events.SetFlag("ELEVATOR_POSITION_FAKE", true);
-            }
 
             if (newLevel != "MainMenu")
             {
@@ -233,6 +223,7 @@ namespace BlasphemousRandomizer
 
             // Misc functions
             FixDoorsOnLoad(newLevel); // Perform door fixes such as closing gates & revealing secrets
+            FixRooftopsElevator(newLevel); // Keep rooftops elevator at top
             updateShops(); // Update shop menus
             bossShuffler.levelLoaded(newLevel); // Spawn boss stuff
             tracker.LevelLoaded(newLevel);
@@ -247,6 +238,23 @@ namespace BlasphemousRandomizer
                 GameObject obj = audio.gameObject;
                 Object.Destroy(audio);
                 obj.AddComponent<AudioLoader>();
+            }
+        }
+
+        // Control position of Rooftops elevator
+        private void FixRooftopsElevator(string scene)
+        {
+            if (GameSettings.DoorShuffleType <= 0) return;
+
+            if (scene == "D06Z01S01")
+            {
+                // Keep the elevator set at position 4
+                Core.Events.SetFlag("ELEVATOR_POSITION_1", false);
+            }
+            else if (scene == "D06Z01S19")
+            {
+                // Prevent the elevator crashing when returning to main room
+                Core.Events.SetFlag("ELEVATOR_POSITION_FAKE", true);
             }
         }
 

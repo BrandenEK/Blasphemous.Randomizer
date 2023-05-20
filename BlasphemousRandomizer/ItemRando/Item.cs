@@ -115,7 +115,7 @@ namespace BlasphemousRandomizer.ItemRando
 					return new RewardInfo($"{Main.Randomizer.Localize("trname")} ({tearAmount})", Main.Randomizer.Localize("trdesc").Replace("*", tearAmount.ToString()), Main.Randomizer.Localize("trnot"), inventoryManager.TearsGenericObject.picture);
 				case 11:
 					UnlockableSkill skill = Core.SkillManager.GetSkill(id);
-					return new RewardInfo(removeCaps(skill.caption), skill.description, Main.Randomizer.Localize("sknot"), skill.smallImage);
+					return new RewardInfo(skill.caption.Capitalize(), skill.description, Main.Randomizer.Localize("sknot"), skill.smallImage);
 				case 12:
 					if (id == "Slide") return new RewardInfo(Main.Randomizer.Localize("dshnam"), Main.Randomizer.Localize("dshdes"), Main.Randomizer.Localize("ablnot"), Main.Randomizer.data.ImageDash);
 					if (id == "WallClimb") return new RewardInfo(Main.Randomizer.Localize("wclnam"), Main.Randomizer.Localize("wcldes"), Main.Randomizer.Localize("ablnot"), Main.Randomizer.data.ImageWallClimb);
@@ -123,15 +123,6 @@ namespace BlasphemousRandomizer.ItemRando
 				default:
 					return new RewardInfo("Error!", "You should not see this.", "You should not see this!", null);
 			}
-		}
-
-		private string removeCaps(string name)
-        {
-			string[] words = name.ToLower().Split(' ');
-			string output = "";
-			foreach (string word in words)
-				output += char.ToUpper(word[0]) + word.Substring(1) + ' ';
-			return output.Trim();
 		}
 	}
 }
