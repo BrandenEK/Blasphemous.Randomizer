@@ -131,6 +131,8 @@ namespace BlasphemousRandomizer.ItemRando
 
         private bool canDiveLaser => dive >= 3 && logicDifficulty >= 2;
 
+        private bool canBreakTirana => tirana && logicDifficulty >= 2;
+
         private bool canBreakJondoBell => (HasDoor("D03Z02S05[W]") && canCrossGap5 || HasDoor("D03Z02S05[S]") || HasDoor("D03Z02S05[E]")) && (HasDoor("D03Z02S09[S]") || HasDoor("D03Z02S09[W]") && dash || HasDoor("D03Z02S09[N]") || HasDoor("D03Z02S09[Cherubs]"));
         private bool canRideAlberoElevator => HasDoor("D02Z02S11[NW]") || HasDoor("D02Z02S11[NE]") || HasDoor("D02Z02S11[W]") || HasDoor("D02Z02S11[E]") || HasDoor("D02Z02S11[SE]");
         private bool canFillChalice => chalice && (HasDoor("D03Z01S01[W]") || HasDoor("D03Z01S01[NE]") || HasDoor("D03Z01S01[S]")) && (HasDoor("D05Z02S01[W]") || HasDoor("D05Z02S01[E]")) && (HasDoor("D09Z01S07[SW]") || HasDoor("D09Z01S07[SE]") || HasDoor("D09Z01S07[W]") || HasDoor("D09Z01S07[E]"));
@@ -153,6 +155,7 @@ namespace BlasphemousRandomizer.ItemRando
         private bool openedDCGateE => HasDoor("D01Z05S12[W]") || HasDoor("D01Z05S12[E]");
         private bool openedDCLadder => HasDoor("D01Z05S20[W]") || HasDoor("D01Z05S20[N]");
         private bool openedWOTWCave => HasDoor("D02Z01S06[E]") || wallClimb && (HasDoor("D02Z01S06[W]") || HasDoor("D02Z01S06[Cherubs]"));
+        private bool openedConventLadder => HasDoor("D02Z03S11[S]") || HasDoor("D02Z03S11[W]") || HasDoor("D02Z03S11[NW]") || HasDoor("D02Z03S11[E]") || HasDoor("D02Z03S11[NE]");
         private bool openedMoMLadder => HasDoor("D04Z02S06[NW]") || HasDoor("D04Z02S06[NE]") || HasDoor("D04Z02S06[N]") || HasDoor("D04Z02S06[S]") || HasDoor("D04Z02S06[SE]");
         private bool openedTSCGate => HasDoor("D05Z02S11[W]") || HasDoor("D05Z02S11[Cherubs]");
         private bool openedARLadder => HasDoor("D06Z01S23[Sword]") || HasDoor("D06Z01S23[E]") || HasDoor("D06Z01S23[S]") || HasDoor("D06Z01S23[Cherubs]");
@@ -410,6 +413,7 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canWaterJump": return new BoolVariable(canWaterJump);
                 case "canAirStall": return new BoolVariable(canAirStall);
                 case "canDiveLaser": return new BoolVariable(canDiveLaser);
+                case "canBreakTirana": return new BoolVariable(canBreakTirana);
 
                 case "canBreakJondoBell": return new BoolVariable(canBreakJondoBell); // access to both jondo bell rooms
                 case "canRideAlberoElevator": return new BoolVariable(canRideAlberoElevator); // access to graveyard elevator room
@@ -439,6 +443,7 @@ namespace BlasphemousRandomizer.ItemRando
                 case "openedDCGateE": return new BoolVariable(openedDCGateE);
                 case "openedDCLadder": return new BoolVariable(openedDCLadder);
                 case "openedWOTWCave": return new BoolVariable(openedWOTWCave);
+                case "openedConventLadder": return new BoolVariable(openedConventLadder);
                 case "openedMoMLadder": return new BoolVariable(openedMoMLadder);
                 case "openedTSCGate": return new BoolVariable(openedTSCGate);
                 case "openedARLadder": return new BoolVariable(openedARLadder);

@@ -80,8 +80,8 @@ namespace BlasphemousRandomizer.DoorRando
             }
             if (!visible && (VisibilityFlags & 4) > 0)
             {
-                // If third bit, make door visible if mourning skip is allowed
-                visible = inventory.mourningSkipAllowed;
+                // If third bit, make door visible if hard logic
+                visible = config.LogicDifficulty >= 2;
             }
             if (!visible && (VisibilityFlags & 8) > 0)
             {
@@ -90,8 +90,8 @@ namespace BlasphemousRandomizer.DoorRando
             }
             if (!visible && (VisibilityFlags & 16) > 0)
             {
-                // If fifth bit, make door visible if double jump is possible to obtain and upwarps allowed
-                visible = config.ShufflePurifiedHand && inventory.upwarpSkipsAllowed;
+                // If fifth bit, make door visible if double jump is possible to obtain AND hard logic
+                visible = config.ShufflePurifiedHand && config.LogicDifficulty >= 2;
             }
 
             return visible;

@@ -454,6 +454,7 @@
 		"Id": "D01Z04S13[SE]",
 		"Direction": 2,
 		"OriginalDoor": "D01Z04S16[W]",
+		"VisibilityFlags": 5,
 		"Logic": "D01Z04S13[SE] || canDiveLaser && (canAirStall || wheel || doubleJump || enemySkipsAllowed)"
 	},
 	{
@@ -878,7 +879,8 @@
 		"Id": "D01Z05S25[E]",
 		"Direction": 2,
 		"OriginalDoor": "D01Z05S21[W]",
-		"Logic": "D01Z05S25[E] || tirana && (linen || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3))"
+		"VisibiliyFlags": 5,
+		"Logic": "D01Z05S25[E] || canBreakTirana && (linen || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3))"
 	},
 	{
 		"Id": "D01Z05S25[SW]",
@@ -1391,7 +1393,7 @@
 		"OriginalDoor": "D02Z03S11[S]",
 		"VisibilityFlags": 3,
 		"RequiredDoors": [ "D02Z03S02[NW]", "D02Z03S02[NE]" ],
-		"Logic": "D02Z03S11[S] || D02Z03S11[W] || D02Z03S11[NW] || D02Z03S11[E] || D02Z03S11[NE]"
+		"Logic": "openedConventLadder"
 	},
 	{
 		"Id": "D02Z03S03[W]",
@@ -2991,7 +2993,8 @@
 		"Id": "D05Z01S11[SW]",
 		"Direction": 1,
 		"OriginalDoor": "D05Z01S19[E]",
-		"VisibilityFlags": 1
+		"VisibilityFlags": 5,
+		"Logic": "canBreakTirana"
 	},
 	{
 		"Id": "D05Z01S11[NW]",
@@ -5024,14 +5027,14 @@
 		"Type": 1,
 		"VisibilityFlags": 15,
 		"RequiredDoors": [ "D20Z02S11[E]" ],
-		"Logic": "D20Z02S11[NW] || D20Z02S11[E] || doubleJump || mourningSkipAllowed && tirana"
+		"Logic": "D20Z02S11[NW] || D20Z02S11[E] || doubleJump || canBreakTirana"
 	},
 	{
 		"Id": "D20Z02S11[E]",
 		"Direction": 2,
 		"OriginalDoor": "D20Z02S10[W]",
 		"VisibilityFlags": 13,
-		"Logic": "D20Z02S11[E] || doubleJump || mourningSkipAllowed && (tirana || D20Z02S11[NW] && canCrossGap5)"
+		"Logic": "D20Z02S11[E] || doubleJump || canBreakTirana || mourningSkipAllowed && D20Z02S11[NW] && canCrossGap5"
 	},
 	{
 		"Id": "D20Z02S12[W]",
