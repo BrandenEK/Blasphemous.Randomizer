@@ -19,58 +19,93 @@ trname: Tears of Atonement
 trdesc: A bundle of * tears.
 trnot: Tears acquired!
 sknot: Skill unlocked!
-itmerr: Error: Rewards list not initialized
+dshnam: Dash Ability
+dshdes: The lost ability to dash and slide under obstacles.
+wclnam: Wall Climb Ability
+wcldes: The lost ability to climb walls with your sword.
+ablnot: Ability unlocked!
+itmerr: Error: Rewards list not initialized!
 daterr: Randomizer data could not be loaded, reinstall the program.
-vererr: This save file was not created in randomizer or used an older version.  Item locations are invalid.
-generr: Item shuffler failed to generate valid game.  Item locations are invalid.
+saverr: Loaded invalid save file.  Item locations are invalid.
 currsd: Current seed
 shrine: Shrine Tier
 sword: Mea Culpa
 items: Items collected
+varous: Various
 vandis: Vanilla
 randis: Randomized
 outdis: Outdated
 sorrow: Sacred Sorrows mode can not be played in randomizer!
+
 chset: CHOOSE SETTINGS
 begin: Begin
 cancel: Cancel
 menusd: Seed
-menurd: random
-typesd: Begin typing numbers to input a custom seed
-genset: General
+distyp: Disabled
+simtyp: Simple
+fultyp: Full
+soon: Coming soon!
+
+lgname: Logic Difficulty
+lgtyp1: Easy
+lgtyp2: Normal
+lgtyp3: Hard
+lgdes1: Best for beginner players, not many skips or special\ntechniques will be required
+lgdes2: Best for the average player, common skips may be required,\nbut never the MaH skip
+lgdes3: Best for expert players, many uncommon and difficult skips\nmay be required
+loname: Starting Location
+lodesc: Where to spawn when beginning the game
+lotyp1: Brotherhood
+lotyp2: Albero
+lotyp3: The Convent
+lotyp4: The Depths
+lotyp5: Cathedral
+lotyp6: Rooftops
+lotyp7: Shipyard
+lotyp8: Random
 tpname: Teleportation
 tpdesc: Prie Dieus are automatically upgraded to the maximum level
-ctname: Skip Cutscenes
-ctdesc: A majority of cutscenes will be skipped
 htname: Allow Hints
 htdesc: Corpses will give a hint about valuable items when interacted with
 pename: Allow Penitence
 pedesc: You are able to choose a penitence in the Brotherhood
-itmset: Item Shuffle
-lgname: Mist Damage
-lgdesc: Some items in poison clouds may be in logic without Lung of Dolphos
-dename: Disable NPC Death
-dedesc: Prevents missable items by keeping certain NPCs always alive
-whname: Start with Wheel
-whdesc: The starting gift will be the Young Mason's Wheel
-rqname: Shuffle Reliquaries
-rqdesc: The three reliquaries will be added to the item pool
-dstype: Disabled
-dsides: All items will be in their original places
-entype: Enabled
-endesc: Every location will have a random item
-emyset: Enemy Shuffle
+
+drname: Door Shuffle
+drdes1: Room transitions will always lead to their original destinations
+drdes2: Only room transitions that lead to a different region\nwill be shuffled with each other
+drdes3: All room transtitions will be shuffled with each other
+bsname: Boss Shuffle
+bsdes1: Bosses will remain in their original places
+bsdes2: Bosses will be shuffled around, with each boss only appearing once
+bsdes3: Bosses will be shuffled around, with each boss appearing any number of times
+enname: Enemy Shuffle
+endes1: Enemies will remain in their original places
+endes2: Enemies will be placed randomly, with each enemy appearing\nthe same number of times as in the original game
+endes3: Enemies will be placed randomly, with each enemy appearing\nany number of times
 clname: Maintain Class
 cldesc: Enemies are constrained to their original group (Normal, Flying, Large)
 scname: Area Scaling
 scdesc: Enemy health and damage is scaled up/down based on their location
-dsedes: Enemies will remain in their original places
-sftype: Shuffled
-sfdesc: An enemy can only appear as many times as in the original game
-rdtype: Random
-rddesc: An enemy can appear any amount of times (Not recommended)
-dorset: Door Shuffle
-soon: Coming Soon!
+
+rqname: Shuffle Reliquaries
+rqdesc: The three reliquaries will be added to the item pool
+dsname: Shuffle Dash
+dsdesc: Shuffles the dash ability into the item pool
+wcname: Shuffle Wall Climb
+wcdesc: Shuffles the wall climb ability into the item pool
+sbname: Shuffle Spike Boots
+sbdesc: Shuffles the Boots of Pleading into the item pool\n(Only if the mod is installed)
+djname: Shuffle Double Jump
+djdesc: Shuffles the Purified Hand of the Nun into the item pool\n(Only if the mod is installed)
+
+ssname: Shuffle Sword Skills
+ssdesc: Shuffles the sword skills into the item pool
+thname: Shuffle Thorns
+thdesc: Shuffles the 8 thorns into the item pool
+jiname: Junk inconvenient\nlocations
+jidesc: Forces a junk item at inconvenient locations such as Miriam
+whname: Start with Wheel
+whdesc: The starting gift will be the Young Mason's Wheel
 
 lang: es
 bead: Nueva cuenta de rosario obtenida
@@ -93,58 +128,93 @@ trname: Lágrimas de enmienda
 trdesc: Una cantidad de * lágrimas.
 trnot: Lágrimas conseguidas
 sknot: Habilidad desbloqueada
+dshnam: Habilidad de esquive
+dshdes: La habilidad perdida de esquivar y deslizarte bajo los obstáculos
+wclnam: Habilidad de escalada
+wcldes: La habilidad perdida de trepar muros con la espada
+ablnot: Habilidad desbloqueada
 itmerr: Error: no se ha iniciado la lista de recompensas
 daterr: No se han podido cargar los datos del randomizador, reinstala el programa.
-vererr: Este archivo no se ha creado en el randomizador o se ha usado una versión anterior. La ubicación de los objetos no es válida.
-generr: El randomizador de objetos no ha podido crear una partida válida. La ubicación de los objetos no es válida.
+saverr: Se ha cargado una partida no compatible. La ubicación de los objetos no es válida.
 currsd: Semilla actual
 shrine: Nivel de altar
 sword: Mea Culpa
 items: Objetos obtenidos
+varous: varios
 vandis: Vanilla
 randis: Randomizado
 outdis: Desactualizado
 sorrow: No se puede jugar al modo Sagrados Pesares en el randomizador.
+
 chset: SELECCIONA LOS AJUSTES
 begin: Comenzar
 cancel: Cancelar
 menusd: Semilla
-menurd: Aleatoria
-typesd: Escribe un número para introducir una semilla personalizada
-genset: General
+distyp: Estándar
+simtyp: Simple
+fultyp: Total
+soon: Próximamente
+
+lgname: Dificultad de la lógica
+lgtyp1: Fácil
+lgtyp2: Normal
+lgtyp3: Difícil
+lgdes1: Lo mejor para principiantes, no harán falta muchas técnicas especiales\nni triquiñuelas
+lgdes2: Lo mejor para jugadores promedio. Tal vez haga falta alguna triquiñuela normal,\npero nunca la de Luto y Estrago 
+lgdes3: Lo mejor para jugadores con experiencia. Tal vez hagan falta muchas\ntriquiñuelas raras y complicadas
+loname: Lugar de inicio
+lodesc: El lugar en el que empiezas en el juego
+lotyp1: La Hermandad
+lotyp2: Albero
+lotyp3: El Convento
+lotyp4: El Quejido 
+lotyp5: La Catedral
+lotyp6: Los Altos
+lotyp7: Luto y Estrago
+lotyp8: Aleatorio
 tpname: Teletransporte
 tpdesc: Los prie-dieus se mejoran al máximo automáticamente
-ctname: Saltar escenas
-ctdesc: Se saltarán la mayoría de escenas
 htname: Permitir pistas
 htdesc: Los cadáveres darán pistas sobre objetos valiosos cuando se hable con ellos
 pename: Permitir penitencia
 pedesc: Puedes elegir una penitencia en la Hermandad
-itmset: Objetos aleatorios
-lgname: Daño por miasma
-lgdesc: Puede que tengas que conseguir objetos situados en zonas\nde miasma sin tener el Pulmón de Dolfos
-dename: Desactivar muerte \nde PNJ
-dedesc: Evita la pérdida de objetos al mantener a ciertos PNJ vivos
-whname: Empezar con la Rueda
-whdesc: Tu obsequio inicial será la Rueda del Joven Masón
-rqname: Añadir relicarios
-rqdesc: Los tres relicarios se añadirán al inventario
-dstype: Estándar
-dsides: Todos los objetos estarán en su lugar original
-entype: Activado
-endesc: Habrá un objeto aleatorio en todos los lugares
-emyset: Enemigos aleatorios
+
+drname: Puertas aleatorias
+drdes1: Las “puertas” de los niveles siempre dan a los niveles originales
+drdes2: Solo se intercambian las “puertas” de transición entre distintas regiones
+drdes3: Se intercambian todas las “puertas”
+bsname: Jefes aleatorios
+bsdes1: Los jefes permanecerán en su lugar original
+bsdes2: Los jefes se intercambiarán y solo aparecerán una vez por partida
+bsdes3: Los jefes se intercambiarán y cada uno aparecerá el número de veces que sea.
+enname: Enemigos aleatorios
+endes1: Los enemigos permanecerán en su lugar original
+endes2: Los enemigos se sitúan de forma aleatoria y cada enemigo\naparece las mismas veces que en el juego original
+endes3: Los enemigos se sitúan de forma aleatoria y cada enemigo\naparece un número cualquiera de veces
 clname: Mantener clase
 cldesc: El tipo de enemigos se limita a su tipo original (Normales, Voladores y Grandes)
 scname: Acorde a la zona
 scdesc: La salud y el daño de los enemigos se ajusta a su ubicación en el mapa
-dsedes: Los enemigos seguirán en su ubicación original
-sftype: Alternar
-sfdesc: Un enemigo solo podrá aparecer la misma cantidad\nde veces que en el juego original
-rdtype: Aleatorio
-rddesc: Un enemigo puede aparecer cualquier cantidad\nde veces (no se recomienda)
-dorset: Puertas aleatorias
-soon: Próximamente
+
+rqname: Añadir relicarios
+rqdesc: Los tres relicarios se añadirán al inventario
+dsname: Añadir esquive
+dsdesc: Se añadirá la habilidad de esquive al inventario
+wcname: Añadir escalada
+wcdesc: Se añadirá la habilidad de escalada al inventario
+sbname: Añadir Botas\nde la Súplica
+sbdesc: Se añadirán las Botas de la Súplica al inventario\n(Solo si se ha instalado el mod)
+djname: Añadir salto doble
+djdesc: Se añadirá la Mano Purificada de la Monja al inventario\n(Solo si se ha instalado el mod)
+
+ssname: Añadir habilidades\nde espada
+ssdesc: Se añadirán las habilidades de Mea Culpa al inventario
+thname: Añadir espinas
+thdesc: Se añadirán las ocho espinas al inventario
+jiname: Objetos sin valor\nen sitios inconvenientes
+jidesc: Fuerza la ubicación de objetos de valor irrelevante\nen lugares inconvenientes como los desafíos de Miriam
+whname: Empezar con la Rueda
+whdesc: Tu obsequio inicial será la Rueda del Joven Masón
 
 lang: zh
 bead: 获得新念珠
@@ -167,58 +237,93 @@ trname: 赎罪之泪
 trdesc: 装有 * 赎罪之泪的小瓶子
 trnot: 获得赎罪之泪
 sknot: 解锁新技能
+dshnam: ???
+dshdes: ???
+wclnam: ???
+wcldes: ???
+ablnot: ???
 itmerr: 错误：物品列表未初始化
 daterr: 随机mod数据未加载，请重新下载并安装随机mod
-vererr: 此存档不兼容当前版本的随机mod，物品分布地点不合法
-generr: 物品随机生成器无法生成合理的物品分布地点
+saverr: ???
 currsd: 此存档的种子
 shrine: 祭坛等级
 sword: 孽刃
-items: 已收集的物品
+items: ???
+varous: ???
 vandis: 原版
 randis: 随机mod
 outdis: 老版本
 sorrow: 在随机mod中无法游玩圣恸模式
+
 chset: 自定义随机mod设置项
 begin: 开始
 cancel: 取消
 menusd: 种子
-menurd: 随机
-typesd: 用数字键输入自定义种子
-genset: 基本设置
+distyp: 禁用随机
+simtyp: ???
+fultyp: ???
+soon: 即将推出
+
+lgname: ???
+lgtyp1: ???
+lgtyp2: ???
+lgtyp3: ???
+lgdes1: ???
+lgdes2: ???
+lgdes3: ???
+loname: ???
+lodesc: ???
+lotyp1: ???
+lotyp2: ???
+lotyp3: ???
+lotyp4: ???
+lotyp5: ???
+lotyp6: ???
+lotyp7: ???
+lotyp8: ???
 tpname: 开局祭坛传送
 tpdesc: 开局自动将存档点祭坛升至满级（有传送功能，回满蓝）
-ctname: 跳过过场动画
-ctdesc: 跳过大部分过场动画
 htname: 尸体提示
 htdesc: 尸体遗言会提示该区域的一项重要物品位置
 pename: 可选忏悔
 pedesc: 你可以在默哀守望者门口选择忏悔
-itmset: 物品随机设置
-lgname: 硬抗毒雾
-lgdesc: 可能需要在无镀银肺时硬抗毒雾伤害来获得关键物品
-dename: NPC不死
-dedesc: NPC不会死亡，防止错过他们的奖励物品
-whname: 开局车轮
-whdesc: 开局奖励将改为念珠“年轻石工的车轮”
-rqname: 随机圣物匣
-rqdesc: 圣物匣将被加入随机池中（关闭此项将无法获得圣物匣）
-dstype: 禁用随机
-dsides: 所有物品都在原版《渎神》的对应位置上
-entype: 乱序式物品随机
-endesc: 将所有物品的位置打乱
-emyset: 敌人随机设置
+
+drname: 房门随机设置
+drdes1: ???
+drdes2: ???
+drdes3: ???
+bsname: ???
+bsdes1: ???
+bsdes2: ???
+bsdes3: ???
+enname: 敌人随机设置
+endes1: ???
+endes2: ???
+endes3: ???
 clname: 对应类型
 cldesc: 随机敌人将会对应其原有的类型（普通怪/飞行怪/精英怪）
 scname: 场地调整
 scdesc: 下调前期场地的敌人数值，上调后期场地的敌人数值
-dsedes: 所有敌人都在原版《渎神》的对应位置上
-sftype: 乱序式敌人随机
-sfdesc: 敌人总数和类型不变，只是将位置打乱
-rdtype: 全独立敌人随机
-rddesc: 每个敌人位置都独立选择敌人（mod作者不建议）
-dorset: 房门随机设置
-soon: 即将推出
+
+rqname: 随机圣物匣
+rqdesc: 圣物匣将被加入随机池中（关闭此项将无法获得圣物匣）
+dsname: ???
+dsdesc: ???
+wcname: ???
+wcdesc: ???
+sbname: ???
+sbdesc: ???
+djname: ???
+djdesc: ???
+
+ssname: ???
+ssdesc: ???
+thname: ???
+thdesc: ???
+jiname: ???
+jidesc: ???
+whname: 开局车轮
+whdesc: 开局奖励将改为念珠“年轻石工的车轮”
 
 lang: fr
 bead: Nouvelle perle de rosaire obtenue
@@ -241,55 +346,90 @@ trname: Larmes d'expiation
 trdesc: Un amas de * larmes
 trnot: Larmes récupérées
 sknot: Compétence débloquée
+dshnam: ???
+dshdes: ???
+wclnam: ???
+wcldes: ???
+ablnot: ???
 itmerr: Erreur: La Liste de récompenses n'a pas été initialisée
 daterr: Les données du Randomizer n'ont pas pu être chargées, veuillez réinstaller le programme
-vererr: Ce fichier de sauvegarde n'a pas été créé avec le randomizer ou utilise une version antérieure du jeu. Les positionnements des objets sont invalides
-generr: Échec de l'Item Shuffler, impossible de générer une partie valide. Les positionnements des objets sont invalides
+saverr: ???
 currsd: Seed actuelle
 shrine: Rang de Sanctuaire
 sword: Mea Culpa
 items: Objets récupérés
+varous: ???
 vandis: Vanilla
 randis: Randomisés
 outdis: Obsolète
 sorrow: Le mode Chagrins Sacrés n'est pas accessible en randomizer
+
 chset: CHOISISSEZ VOS PARAMÈTRES
 begin: Commencer
 cancel: Annuler
 menusd: Seed
-menurd: aléatoire
-typesd: Veuillez saisir un nombre pour rentrer une seed personnalisée
-genset: Général
+distyp: Désactivé
+simtyp: ???
+fultyp: ???
+soon: Bientôt disponible
+
+lgname: ???
+lgtyp1: ???
+lgtyp2: ???
+lgtyp3: ???
+lgdes1: ???
+lgdes2: ???
+lgdes3: ???
+loname: ???
+lodesc: ???
+lotyp1: ???
+lotyp2: ???
+lotyp3: ???
+lotyp4: ???
+lotyp5: ???
+lotyp6: ???
+lotyp7: ???
+lotyp8: ???
 tpname: Téléportation
 tpdesc: Les Prie-Dieus seront améliorés au niveau maximum dès le début
-ctname: Passer les cinématiques
-ctdesc: Une grande majorité des cinématiques ne seront pas jouées
 htname: Indices macabres
 htdesc: Les cadavres aux âmes torturées donnent des indices sur la positions des objets importants
 pename: Pénitences disponibles
 pedesc: Vous pourrez choisir une pénitence à la confrérie du Chagrin Silencieux (NG+)
-itmset: Randomisation d’objets
-lgname: Logique poison
-lgdesc: Certaines positions d'objets situées dans des salles contenant des nuages empoisonnés \npourront être considérées dans la logique de progression sans le poumon argenté de Dolphos
-dename: PNJ immortels
-dedesc: Désactive la possibilité de rater certains objets en maintenant tous les PNJs en vie
-whname: Roue du maçon
-whdesc: L'objet de départ sera la roue du jeune maçon (augmentation de la vitesse de déplacement)
-rqname: Ajouter les reliquaires
-rqdesc: Les trois reliquaires seront ajoutées à la pool d'objets
-dstype: Désactivé
-dsides: Tous les objets seront à leur position originales
-entype: Activé
-endesc: Chaque emplacement d'objet contiendra un objet aléatoire
-emyset: Randomisation d'ennemis
+
+drname: ???
+drdes1: ???
+drdes2: ???
+drdes3: ???
+bsname: ???
+bsdes1: ???
+bsdes2: ???
+bsdes3: ???
+enname: Randomisation d'ennemis
+endes1: ???
+endes2: ???
+endes3: ???
 clname: Maintien des classes
 cldesc: Les ennemis seront restreints à leur group initial (Normal, Volant, Géant)
 scname: Mise à niveau des zones
 scdesc: La vie et les dégâts s'adapteront en fonction de la zone dans laquelle ils sont
-dsedes: Les ennemis resteront à leurs positions initiales
-sftype: Mélangé
-sfdesc: Un ennemi ne peut apparaître qu'autant de fois\n que ce qu'il apparaît dans le jeu de base (recommandé)
-rdtype: Aléatoire
-rddesc: Pas de limite au nombre d'apparition d'un ennemi (non recommandé)
-dorset: Door Shuffle
-soon: Bientôt disponible
+
+rqname: Ajouter les reliquaires
+rqdesc: Les trois reliquaires seront ajoutées à la pool d'objets
+dsname: ???
+dsdesc: ???
+wcname: ???
+wcdesc: ???
+sbname: ???
+sbdesc: ???
+djname: ???
+djdesc: ???
+
+ssname: ???
+ssdesc: ???
+thname: ???
+thdesc: ???
+jiname: ???
+jidesc: ???
+whname: Roue du maçon
+whdesc: L'objet de départ sera la roue du jeune maçon (augmentation de la vitesse de déplacement)

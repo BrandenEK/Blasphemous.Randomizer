@@ -1,0 +1,25 @@
+{
+	"DisabledObjects":
+	{
+		"Logic":
+		[
+			"LOGIC/INTERACTABLES/GEO_FaithBlock (64x32)",
+			"LOGIC/INTERACTABLES/GEO_FaithBlock (64x32) (1)"
+		]
+	},
+	"AddedObjects":
+	[
+		{
+			"Type": "PlatformWood",
+			"XPos": -722,
+			"YPos": -91.5,
+			"Condition": "flag:BELL_ACTIVATED"
+		},
+		{
+			"Type": "PlatformWood",
+			"XPos": -718,
+			"YPos": -91.5,
+			"Condition": "flag:BELL_ACTIVATED"
+		}
+	]
+}

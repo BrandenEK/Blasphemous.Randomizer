@@ -1,6 +1,7 @@
 ﻿using System;
-using BlasphemousRandomizer.Config;
 using ModdingAPI;
+using System.Collections.Generic;
+using BlasphemousRandomizer.Map;
 
 namespace BlasphemousRandomizer
 {
@@ -10,8 +11,13 @@ namespace BlasphemousRandomizer
         public RandomizerPersistenceData() : base("ID_RANDOMIZER") { }
 
         public int seed;
-        public int itemsCollected;
-        public bool startedInRando;
-        public MainConfig config;
+        public Config config;
+
+        public Dictionary<string, string> mappedItems;
+        public Dictionary<string, string> mappedDoors;
+        public Dictionary<string, string> mappedHints;
+        public Dictionary<string, string> mappedEnemies;
+
+        public Dictionary<string, ZoneCollection> collectionStatus;
     }
 }

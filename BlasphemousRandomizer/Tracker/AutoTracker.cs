@@ -1,7 +1,7 @@
 ﻿using System;
 using WebSocketSharp.Server;
 using Framework.Managers;
-using BlasphemousRandomizer.Structures;
+using BlasphemousRandomizer.ItemRando;
 
 namespace BlasphemousRandomizer.Tracker
 {
@@ -178,6 +178,10 @@ namespace BlasphemousRandomizer.Tracker
                 "SERENO_DLC2QUEST_FINISHED",
                 // Crisanta quest
                 "CRISANTA_LIBERATED",
+                // Chalice quest
+                "ISABEL_CHALICE_DEAD",
+                "ROLLER_CHALICE_DEAD",
+                "LIONHEAD_CHALICE_DEAD",
             };
         }
     }

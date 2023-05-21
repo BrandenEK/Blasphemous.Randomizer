@@ -1,0 +1,10 @@
+{
+	"DisabledObjects":
+	{
+		"Logic":
+		[
+			"LOGIC/INTERACTABLES/ACT_SHOCK_RECEIVER",
+			"LOGIC/INTERACTABLES/Gate"
+		]
+	}
+}

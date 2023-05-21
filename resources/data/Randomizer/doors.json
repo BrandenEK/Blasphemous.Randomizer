@@ -1,4377 +1,5057 @@
 [
 	{
-		"id": "D17Z01S01[E~W]",
-		"direction": 2,
-		"type": 1
+		"Id": "D01Z01S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z01S07[E]"
 	},
 	{
-		"id": "D17Z01S01[Cherubs1~-]",
-		"newDoors": "D17Z01S01[E~W]",
-		"direction": 6,
-		"type": 2
+		"Id": "D01Z01S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z01S02[W]"
 	},
 	{
-		"id": "D17Z01S01[Cherubs2~-]",
-		"newDoors": "D17Z01S01[E~W]",
-		"direction": 6,
-		"type": 2
+		"Id": "D01Z01S01[S]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z06S01[N]",
+		"Type": 1,
+		"Logic": "D01Z01S01[S] || canBreakHoles"
 	},
 	{
-		"id": "D17Z01S01[Cherubs3~-]",
-		"newDoors": "D17Z01S01[E~W]",
-		"direction": 6,
-		"type": 2
+		"Id": "D01Z01S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z01S01[E]"
 	},
 	{
-		"id": "D17Z01S02[E~W]",
-		"newDoors": "D17Z01S02[N~S],D17Z01S02[W~E]",
-		"direction": 2
+		"Id": "D01Z01S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z01S03[W]"
 	},
 	{
-		"id": "D17Z01S02[N~S]",
-		"newDoors": "D17Z01S02[E~W],D17Z01S02[W~E]",
-		"direction": 0
+		"Id": "D01Z01S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z01S02[E]"
 	},
 	{
-		"id": "D17Z01S02[W~E]",
-		"newDoors": "D17Z01S02[E~W],D17Z01S02[N~S]",
-		"direction": 1
+		"Id": "D01Z01S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z02S01[W]",
+		"Type": 1
 	},
 	{
-		"id": "D17Z01S03[E~W]",
-		"newDoors": "D17Z01S03[W~E],D17Z01S03[relic~relic]",
-		"direction": 2,
-		"type": 3
+		"Id": "D01Z01S07[W]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S03[E]",
+		"Type": 1
 	},
 	{
-		"id": "D17Z01S03[W~E]",
-		"newDoors": "D17Z01S03[E~W],D17Z01S03[relic~relic]",
-		"direction": 1
+		"Id": "D01Z01S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z01S01[W]"
 	},
+
 	{
-		"id": "D17Z01S03[relic~relic]",
-		"newDoors": "D17Z01S03[E~W],D17Z01S03[W~E]",
-		"direction": 4,
-		"type": 3
+		"Id": "D01Z02S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z01S03[E]",
+		"Type": 1
 	},
 	{
-		"id": "D17Z01S04[N~S]",
-		"newDoors": "D17Z01S04[W~E],D17Z01S04[S~N],D17Z01S04[FrontL~FrontL],D17Z01S04[FrontR~FrontR]",
-		"direction": 0,
-		"type": 3
+		"Id": "D01Z02S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z02S02[W]"
 	},
 	{
-		"id": "D17Z01S04[W~E]",
-		"newDoors": "D17Z01S04[S~N],D17Z01S04[FrontL~FrontL]",
-		"direction": 1
+		"Id": "D01Z02S02[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z02S06[E]"
 	},
 	{
-		"id": "D17Z01S04[S~N]",
-		"newDoors": "D17Z01S04[W~E],D17Z01S04[FrontL~FrontL]",
-		"direction": 3
+		"Id": "D01Z02S02[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z02S04[W]"
 	},
 	{
-		"id": "D17Z01S04[FrontL~FrontL]",
-		"newDoors": "D17Z01S04[W~E],D17Z01S04[S~N]",
-		"direction": 4
+		"Id": "D01Z02S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z02S01[E]"
 	},
 	{
-		"id": "D17Z01S04[FrontR~FrontR]",
-		"newDoors": "D17Z01S04[W~E],D17Z01S04[S~N],D17Z01S04[FrontL~FrontL],D17Z01S04[N~S]",
-		"direction": 4
+		"Id": "D01Z02S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z02S03[W]"
 	},
 	{
-		"id": "D17Z01S05[E~W]",
-		"newDoors": "D17Z01S05[W~E]",
-		"direction": 2
+		"Id": "D01Z02S02[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z02S03[NW]"
 	},
 	{
-		"id": "D17Z01S05[W~E]",
-		"newDoors": "D17Z01S05[E~W]",
-		"direction": 1
+		"Id": "D01Z02S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z02S02[E]"
 	},
 	{
-		"id": "D17Z01S05[S~N]",
-		"newDoors": "D17Z01S05[E~W],D17Z01S05[W~E]",
-		"direction": 3,
-		"type": 3
+		"Id": "D01Z02S03[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z02S02[NE]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D02Z02S11[NW]", "D02Z02S11[NE]", "D02Z02S11[W]", "D02Z02S11[E]", "D02Z02S11[SE]" ]
 	},
 	{
-		"id": "D17Z01S06[E~W]",
-		"newDoors": "D01Z02S07[E~W]",
-		"direction": 2
+		"Id": "D01Z02S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z02S05[W]"
 	},
 	{
-		"id": "D17Z01S07[N~S]",
-		"newDoors": "D17Z01S07[NW~E],D17Z01S07[W~E],D17Z01S07[SW~E],D17Z01S07[SE~W]",
-		"direction": 0
+		"Id": "D01Z02S03[church]",
+		"Direction": 4,
+		"OriginalDoor": "D01BZ04S01[church]",
+		"Logic": "canBeatMercyBoss || canBeatConventBoss || canBeatGrievanceBoss"
 	},
 	{
-		"id": "D17Z01S07[NW~E]",
-		"newDoors": "D17Z01S07[N~S],D17Z01S07[W~E],D17Z01S07[SW~E],D17Z01S07[SE~W]",
-		"direction": 1
+		"Id": "D01Z02S03[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D17Z01S07[W~E]",
-		"newDoors": "D17Z01S07[N~S],D17Z01S07[NW~E],D17Z01S07[SW~E],D17Z01S07[SE~W]",
-		"direction": 1
+		"Id": "D01Z02S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z02S02[SE]"
 	},
 	{
-		"id": "D17Z01S07[SW~E]",
-		"newDoors": "D17Z01S07[N~S],D17Z01S07[NW~E],D17Z01S07[W~E],D17Z01S07[SE~W]",
-		"direction": 1
+		"Id": "D01Z02S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S01[N]",
+		"Type": 1
 	},
 	{
-		"id": "D17Z01S07[SE~W]",
-		"newDoors": "D17Z01S07[N~S],D17Z01S07[NW~E],D17Z01S07[W~E],D17Z01S07[SW~E]",
-		"direction": 2
+		"Id": "D01Z02S04[Ossary]",
+		"Direction": 4,
+		"OriginalDoor": "D01BZ06S01[Ossary]"
 	},
 	{
-		"id": "D17Z01S08[E~SW]",
-		"direction": 2,
-		"type": 1
+		"Id": "D01Z02S05[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z02S03[E]"
 	},
 	{
-		"id": "D17Z01S09[E~NW]",
-		"direction": 2,
-		"type": 1
+		"Id": "D01Z02S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z03S01[W]",
+		"Type": 1
 	},
 	{
-		"id": "D17Z01S10[S~N]",
-		"newDoors": "D17Z01S10[W~E]",
-		"direction": 3
+		"Id": "D01Z02S06[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z02S07[E]"
 	},
 	{
-		"id": "D17Z01S10[W~E]",
-		"newDoors": "D17Z01S10[S~N]",
-		"direction": 1
+		"Id": "D01Z02S06[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z02S02[SW]"
 	},
 	{
-		"id": "D17Z01S11[W~E]",
-		"newDoors": "D17Z01S11[E~W]",
-		"direction": 1
+		"Id": "D01Z02S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z02S06[W]"
 	},
 	{
-		"id": "D17Z01S11[E~W]",
-		"newDoors": "D17Z01S11[W~E]",
-		"direction": 2
+		"Id": "D01BZ04S01[church]",
+		"Direction": 7,
+		"OriginalDoor": "D01Z02S03[church]"
 	},
 	{
-		"id": "D17Z01S12[E~W]",
-		"direction": 2,
-		"type": 1
+		"Id": "D01BZ06S01[Ossary]",
+		"Direction": 7,
+		"OriginalDoor": "D01Z02S04[Ossary]"
 	},
 	{
-		"id": "D17Z01S13[E~W]",
-		"newDoors": "D17Z01S13[W~E]",
-		"direction": 2
+		"Id": "D01BZ06S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01BZ08S01[W]",
+		"Logic": "bones >= 30"
 	},
 	{
-		"id": "D17Z01S13[W~E]",
-		"newDoors": "D17Z01S13[E~W]",
-		"direction": 1
+		"Id": "D01BZ08S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01BZ06S01[E]"
 	},
+	
 	{
-		"id": "D17Z01S14[E~W]",
-		"newDoors": "D17Z01S14[W~E],D17Z01S14[-~Cherubs1],D17Z01S14[-~Cherubs2],D17Z01S14[-~Cherubs3]",
-		"direction": 2
+		"Id": "D01Z03S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z02S05[E]",
+		"Type": 1
 	},
 	{
-		"id": "D17Z01S14[W~E]",
-		"newDoors": "D17Z01S14[E~W],D17Z01S14[-~Cherubs1],D17Z01S14[-~Cherubs2],D17Z01S14[-~Cherubs3]",
-		"direction": 1,
-		"type": 3
+		"Id": "D01Z03S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z03S02[W]"
 	},
 	{
-		"id": "D17Z01S14[-~Cherubs1]",
-		"direction": 5,
-		"type": 2
+		"Id": "D01Z03S01[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z03S02[SW]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D17Z01S14[-~Cherubs2]",
-		"direction": 5,
-		"type": 2
+		"Id": "D01Z03S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z03S01[E]"
 	},
 	{
-		"id": "D17Z01S14[-~Cherubs3]",
-		"direction": 5,
-		"type": 2
+		"Id": "D01Z03S02[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z03S01[SE]"
 	},
 	{
-		"id": "D17Z01S15[E~W]",
-		"direction": 2,
-		"type": 1
+		"Id": "D01Z03S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z03S03[W]"
 	},
 	{
-		"id": "D17BZ01S01[relic~relic]",
-		"direction": 4,
-		"type": 1
+		"Id": "D01Z03S02[S]",
+		"Direction": 3,
+		"OriginalDoor": "D01Z05S05[N]",
+		"Type": 1,
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D17BZ02S01[FrontL~FrontL]",
-		"newDoors": "D17BZ02S01[FrontR~FrontR]",
-		"direction": 4,
-		"type": 4
+		"Id": "D01Z03S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z03S02[E]"
 	},
 	{
-		"id": "D17BZ02S01[FrontR~FrontR]",
-		"direction": 4,
-		"type": 3
+		"Id": "D01Z03S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z03S04[SW]"
 	},
 	{
-		"id": "D01Z01S01[E~W]",
-		"newDoors": "D01Z01S01[W~E],D01Z01S01[S~N]",
-		"direction": 2
+		"Id": "D01Z03S03[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D01Z01S01[W~E]",
-		"newDoors": "D01Z01S01[E~W],D01Z01S01[S~N]",
-		"direction": 1
+		"Id": "D01Z03S03[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D01Z05S06[Cherubs]",
+		"Type": 1,
+		"Logic": "linen"
 	},
 	{
-		"id": "D01Z01S01[S~N]",
-		"newDoors": "D01Z01S01[E~W],D01Z01S01[W~E]",
-		"direction": 2,
-		"type": 3
+		"Id": "D01Z03S04[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z03S03[E]"
 	},
 	{
-		"id": "D01Z01S02[W~E]",
-		"newDoors": "D01Z01S02[E~W]",
-		"direction": 1
+		"Id": "D01Z03S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z03S07[E]"
 	},
 	{
-		"id": "D01Z01S02[E~W]",
-		"newDoors": "D01Z01S02[W~E]",
-		"direction": 2
+		"Id": "D01Z03S04[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z01S01[SE]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z01S03[W~E]",
-		"newDoors": "D01Z01S03[E~W]",
-		"direction": 1
+		"Id": "D01Z03S04[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z03S05[W]"
 	},
 	{
-		"id": "D01Z01S03[E~W]",
-		"newDoors": "D01Z01S03[W~E]",
-		"direction": 2
+		"Id": "D01Z03S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z03S06[W]"
 	},
 	{
-		"id": "D01Z01S07[W~E]",
-		"newDoors": "D01Z01S07[E~W]",
-		"direction": 1
+		"Id": "D01Z03S05[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z03S04[SE]"
 	},
 	{
-		"id": "D01Z01S07[E~W]",
-		"newDoors": "D01Z01S07[W~E]",
-		"direction": 2
+		"Id": "D01Z03S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S01[NW]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z02S01[E~W]",
-		"newDoors": "D01Z02S01[W~E]",
-		"direction": 2
+		"Id": "D01Z03S05[Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D01Z05S11[Cherubs]",
+		"Type": 1,
+		"Logic": "linen"
 	},
 	{
-		"id": "D01Z02S01[W~E]",
-		"newDoors": "D01Z02S01[E~W]",
-		"direction": 1
+		"Id": "D01Z03S06[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z03S04[E]"
 	},
 	{
-		"id": "D01Z02S02[W~E]",
-		"newDoors": "D01Z02S02[SW~E],D01Z02S02[NE~NW],D01Z02S02[E~W],D01Z02S02[SE~W]",
-		"direction": 1
+		"Id": "D01Z03S06[E]",
+		"Direction": 2,
+		"OriginalDoor": "D08Z01S01[W]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z02S02[SW~E]",
-		"newDoors": "D01Z02S02[W~E],D01Z02S02[NE~NW],D01Z02S02[E~W],D01Z02S02[SE~W]",
-		"direction": 1
+		"Id": "D01Z03S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z03S04[W]"
 	},
 	{
-		"id": "D01Z02S02[NE~NW]",
-		"newDoors": "D01Z02S02[W~E],D01Z02S02[SW~E],D01Z02S02[E~W],D01Z02S02[SE~W]",
-		"direction": 2
+		"Id": "D01Z03S07[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D01Z03S03[Cherubs]",
+		"Logic": "linen"
 	},
+	
 	{
-		"id": "D01Z02S02[E~W]",
-		"newDoors": "D01Z02S02[W~E],D01Z02S02[SW~E],D01Z02S02[NE~NW],D01Z02S02[SE~W]",
-		"direction": 2
+		"Id": "D01Z04S01[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z03S05[E]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z02S02[SE~W]",
-		"newDoors": "D01Z02S02[W~E],D01Z02S02[SW~E],D01Z02S02[NE~NW],D01Z02S02[E~W]",
-		"direction": 2
+		"Id": "D01Z04S01[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S17[W]"
 	},
 	{
-		"id": "D01Z02S03[W~E]",
-		"newDoors": "D01Z02S03[E~W],D01Z02S03[church~church]",
-		"direction": 1
+		"Id": "D01Z04S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S03[E]"
 	},
 	{
-		"id": "D01Z02S03[NW~NE]",
-		"newDoors": "D01Z02S03[W~E],D01Z02S03[E~W],D01Z02S03[church~church]",
-		"direction": 1
+		"Id": "D01Z04S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S05[NW]"
 	},
 	{
-		"id": "D01Z02S03[E~W]",
-		"newDoors": "D01Z02S03[W~E],D01Z02S03[church~church]",
-		"direction": 2
+		"Id": "D01Z04S01[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S05[SW]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D01Z04S01[S]" ]
 	},
 	{
-		"id": "D01Z02S03[church~church]",
-		"newDoors": "D01Z02S03[W~E],D01Z02S03[E~W]",
-		"direction": 4
+		"Id": "D01Z04S01[S]",
+		"Direction": 3,
+		"OriginalDoor": "D01Z04S15[N]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D01Z04S01[SE]" ]
 	},
 	{
-		"id": "D01Z02S03[Cherubs~-]",
-		"newDoors": "D01Z02S03[W~E],D01Z02S03[E~W],D01Z02S03[church~church],D01Z02S03[NW~NE]",
-		"direction": 6
+		"Id": "D01Z04S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S13[NE]"
 	},
 	{
-		"id": "D01Z02S04[E~N]",
-		"newDoors": "D01Z02S04[W~SE],D01Z02S04[Ossary~Ossary]",
-		"direction": 2
+		"Id": "D01Z04S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S01[W]"
 	},
 	{
-		"id": "D01Z02S04[W~SE]",
-		"newDoors": "D01Z02S04[E~N],D01Z02S04[Ossary~Ossary]",
-		"direction": 1
+		"Id": "D01Z04S05[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S01[E]"
 	},
 	{
-		"id": "D01Z02S04[Ossary~Ossary]",
-		"newDoors": "D01Z02S04[E~N],D01Z02S04[W~SE]",
-		"direction": 4
+		"Id": "D01Z04S05[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S01[SE]"
 	},
 	{
-		"id": "D01Z02S05[E~W]",
-		"newDoors": "D01Z02S05[W~E]",
-		"direction": 2
+		"Id": "D01Z04S06[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S07[W]"
 	},
 	{
-		"id": "D01Z02S05[W~E]",
-		"newDoors": "D01Z02S05[E~W]",
-		"direction": 1
+		"Id": "D01Z04S06[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S15[NE]"
 	},
 	{
-		"id": "D01Z02S06[E~SW]",
-		"direction": 2
+		"Id": "D01Z04S06[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S15[E]"
 	},
 	{
-		"id": "D01Z02S06[W~E]",
-		"newDoors": "D01Z02S06[E~SW]",
-		"direction": 1
+		"Id": "D01Z04S07[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S06[E]"
 	},
 	{
-		"id": "D01Z02S07[E~W]",
-		"direction": 2
+		"Id": "D01Z04S08[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S15[W]"
 	},
 	{
-		"id": "D01BZ04S01[church~church]",
-		"direction": 4,
-		"type": 1
+		"Id": "D01Z04S09[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S12[E]",
+		"Type": 1,
+		"Logic": "openedDCGateE"
 	},
 	{
-		"id": "D01BZ06S01[Ossary~Ossary]",
-		"newDoors": "D01BZ06S01[E~W]",
-		"direction": 4
+		"Id": "D01Z04S09[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S15[SW]"
 	},
 	{
-		"id": "D01BZ06S01[E~W]",
-		"newDoors": "D01BZ06S01[Ossary~Ossary]",
-		"direction": 2
+		"Id": "D01Z04S09[C]",
+		"Direction": 4,
+		"OriginalDoor": "D01BZ02S01[C]"
 	},
 	{
-		"id": "D01BZ08S01[W~E]",
-		"direction": 1,
-		"type": 1
+		"Id": "D01Z04S10[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S15[SE]"
 	},
 	{
-		"id": "D01Z03S01[W~E]",
-		"newDoors": "D01Z03S01[E~W]",
-		"direction": 1
+		"Id": "D01Z04S10[SW]",
+		"Direction": 3,
+		"OriginalDoor": "D01Z04S11[NE]"
 	},
 	{
-		"id": "D01Z03S01[E~W]",
-		"newDoors": "D01Z03S01[W~E]",
-		"direction": 2
+		"Id": "D01Z04S10[SE]",
+		"Direction": 3,
+		"OriginalDoor": "D01Z04S12[NW]"
 	},
 	{
-		"id": "D01Z03S01[SE~SW]",
-		"newDoors": "D01Z03S01[W~E],D01Z03S01[E~W]",
-		"direction": 2
+		"Id": "D01Z04S11[NE]",
+		"Direction": 0,
+		"OriginalDoor": "D01Z04S10[SW]"
 	},
 	{
-		"id": "D01Z03S02[W~E]",
-		"newDoors": "D01Z03S02[SW~SE],D01Z03S02[E~W]",
-		"direction": 1
+		"Id": "D01Z04S12[NW]",
+		"Direction": 0,
+		"OriginalDoor": "D01Z04S10[SE]"
 	},
 	{
-		"id": "D01Z03S02[SW~SE]",
-		"newDoors": "D01Z03S02[W~E],D01Z03S02[E~W]",
-		"direction": 1
+		"Id": "D01Z04S12[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S18[E]"
 	},
 	{
-		"id": "D01Z03S02[E~W]",
-		"newDoors": "D01Z03S02[W~E],D01Z03S02[SW~SE]",
-		"direction": 2
+		"Id": "D01Z04S12[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S13[NW]"
 	},
 	{
-		"id": "D01Z03S02[S~N]",
-		"newDoors": "D01Z03S02[W~E],D01Z03S02[SW~SE],D01Z03S02[E~W]",
-		"direction": 3
+		"Id": "D01Z04S13[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S12[SE]"
 	},
 	{
-		"id": "D01Z03S03[W~E]",
-		"newDoors": "D01Z03S03[E~SW],D01Z03S03[-~Cherubs]",
-		"direction": 1
+		"Id": "D01Z04S13[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S02[W]"
 	},
 	{
-		"id": "D01Z03S03[E~SW]",
-		"newDoors": "D01Z03S03[W~E],D01Z03S03[-~Cherubs]",
-		"direction": 2
+		"Id": "D01Z04S13[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S14[E]"
 	},
 	{
-		"id": "D01Z03S03[-~Cherubs]",
-		"direction": 5
+		"Id": "D01Z04S13[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S16[W]",
+		"VisibilityFlags": 5,
+		"Logic": "D01Z04S13[SE] || canDiveLaser && (canAirStall || wheel || doubleJump || enemySkipsAllowed)"
 	},
 	{
-		"id": "D01Z03S03[Cherubs~-]",
-		"newDoors": "D01Z03S03[E~SW],D01Z03S03[W~E],D01Z03S03[-~Cherubs]",
-		"direction": 6
+		"Id": "D01Z04S14[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S13[SW]"
 	},
 	{
-		"id": "D01Z03S04[NW~SE]",
-		"newDoors": "D01Z03S04[W~E],D01Z03S04[SW~E],D01Z03S04[E~W],D01Z03S04[SE~W]",
-		"direction": 1
+		"Id": "D01Z04S15[N]",
+		"Direction": 0,
+		"OriginalDoor": "D01Z04S01[S]"
 	},
 	{
-		"id": "D01Z03S04[W~E]",
-		"newDoors": "D01Z03S04[NW~SE],D01Z03S04[SW~E],D01Z03S04[E~W],D01Z03S04[SE~W]",
-		"direction": 1
+		"Id": "D01Z04S15[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S06[NW]"
 	},
 	{
-		"id": "D01Z03S04[SW~E]",
-		"newDoors": "D01Z03S04[NW~SE],D01Z03S04[W~E],D01Z03S04[E~W],D01Z03S04[SE~W]",
-		"direction": 1
+		"Id": "D01Z04S15[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S08[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D01Z04S15[E]", "D01Z04S15[SW]", "D01Z04S15[SE]" ]
 	},
 	{
-		"id": "D01Z03S04[E~W]",
-		"newDoors": "D01Z03S04[NW~SE],D01Z03S04[W~E],D01Z03S04[SW~E],D01Z03S04[SE~W]",
-		"direction": 2
+		"Id": "D01Z04S15[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S06[SW]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D01Z04S15[W]", "D01Z04S15[SW]", "D01Z04S15[SE]" ]
 	},
 	{
-		"id": "D01Z03S04[SE~W]",
-		"newDoors": "D01Z03S04[NW~SE],D01Z03S04[W~E],D01Z03S04[SW~E],D01Z03S04[E~W]",
-		"direction": 2
+		"Id": "D01Z04S15[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S09[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D01Z04S15[W]", "D01Z04S15[E]", "D01Z04S15[SE]" ]
 	},
 	{
-		"id": "D01Z03S05[W~SE]",
-		"newDoors": "D01Z03S05[E~NW],D01Z03S05[Cherubs~Cherubs]",
-		"direction": 1
+		"Id": "D01Z04S15[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S10[NW]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D01Z04S15[W]", "D01Z04S15[E]", "D01Z04S15[SW]" ]
 	},
 	{
-		"id": "D01Z03S05[E~NW]",
-		"newDoors": "D01Z03S05[W~SE],D01Z03S05[Cherubs~Cherubs]",
-		"direction": 2
+		"Id": "D01Z04S16[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S13[SE]"
 	},
 	{
-		"id": "D01Z03S05[Cherubs~Cherubs]",
-		"direction": 5
+		"Id": "D01Z04S16[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S12[W]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z03S06[W~E]",
-		"newDoors": "D01Z03S06[E~W]",
-		"direction": 1
+		"Id": "D01Z04S17[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S01[NE]"
 	},
 	{
-		"id": "D01Z03S06[E~W]",
-		"newDoors": "D01Z03S06[W~E]",
-		"direction": 2
+		"Id": "D01Z04S18[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S19[E]",
+		"Logic": "D01Z04S18[W] || canBeatMercyBoss"
 	},
 	{
-		"id": "D01Z03S07[E~W]",
-		"newDoors": "D01Z03S07[-~Cherubs]",
-		"direction": 2
+		"Id": "D01Z04S18[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S12[W]",
+		"Logic": "D01Z04S18[E] || canBeatMercyBoss"
 	},
 	{
-		"id": "D01Z03S07[-~Cherubs]",
-		"direction": 5
+		"Id": "D01Z04S19[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S19[E]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z04S01[NW~E]",
-		"newDoors": "D01Z04S01[NE~W],D01Z04S01[W~E],D01Z04S01[E~NW]",
-		"direction": 1
+		"Id": "D01Z04S19[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S18[W]"
 	},
 	{
-		"id": "D01Z04S01[NE~W]",
-		"newDoors": "D01Z04S01[NW~E],D01Z04S01[W~E],D01Z04S01[E~NW]",
-		"direction": 2
+		"Id": "D01BZ02S01[C]",
+		"Direction": 7,
+		"OriginalDoor": "D01Z04S09[C]"
 	},
+	
 	{
-		"id": "D01Z04S01[W~E]",
-		"newDoors": "D01Z04S01[NW~E],D01Z04S01[NE~W],D01Z04S01[E~NW]",
-		"direction": 1
+		"Id": "D01Z05S01[N]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z02S04[E]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z04S01[E~NW]",
-		"newDoors": "D01Z04S01[NW~E],D01Z04S01[NE~W],D01Z04S01[W~E]",
-		"direction": 2
+		"Id": "D01Z05S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S27[E]"
 	},
 	{
-		"id": "D01Z04S01[SE~SW]",
-		"newDoors": "D01Z04S01[NW~E],D01Z04S01[NE~W],D01Z04S01[W~E],D01Z04S01[E~NW],D01Z04S01[S~N]",
-		"direction": 2
+		"Id": "D01Z05S01[S]",
+		"Direction": 3,
+		"OriginalDoor": "D01Z05S02[N]"
 	},
 	{
-		"id": "D01Z04S01[S~N]",
-		"newDoors": "D01Z04S01[NW~E],D01Z04S01[NE~W],D01Z04S01[W~E],D01Z04S01[E~NW],D01Z04S01[SE~SW]",
-		"direction": 3
+		"Id": "D01Z05S02[N]",
+		"Direction": 0,
+		"OriginalDoor": "D01Z05S01[S]"
 	},
 	{
-		"id": "D01Z04S02[W~NE]",
-		"newDoors": "D01Z02S07[E~W]",
-		"direction": 1
+		"Id": "D01Z05S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z01S01[NE]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z04S03[E~W]",
-		"direction": 2
+		"Id": "D01Z05S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S03[NW]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D01Z04S05[NW~E]",
-		"newDoors": "D01Z04S05[SW~SE]",
-		"direction": 1
+		"Id": "D01Z05S02[S]",
+		"Direction": 3,
+		"OriginalDoor": "D01Z05S20[N]",
+		"Logic": "openedDCLadder"
 	},
 	{
-		"id": "D01Z04S05[SW~SE]",
-		"newDoors": "D01Z04S05[NW~E]",
-		"direction": 1
+		"Id": "D01Z05S03[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S02[E]"
 	},
 	{
-		"id": "D01Z04S06[E~W]",
-		"newDoors": "D01Z04S06[NW~NE],D01Z04S06[SW~E]",
-		"direction": 2
+		"Id": "D01Z05S03[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S04[W]"
 	},
 	{
-		"id": "D01Z04S06[NW~NE]",
-		"newDoors": "D01Z04S06[E~W],D01Z04S06[SW~E]",
-		"direction": 1
+		"Id": "D01Z05S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S07[E]"
 	},
 	{
-		"id": "D01Z04S06[SW~E]",
-		"newDoors": "D01Z04S06[E~W],D01Z04S06[NW~NE]",
-		"direction": 1
+		"Id": "D01Z05S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S08[W]"
 	},
 	{
-		"id": "D01Z04S07[W~E]",
-		"direction": 1
+		"Id": "D01Z05S03[S]",
+		"Direction": 3,
+		"OriginalDoor": "D01Z05S13[N]"
 	},
 	{
-		"id": "D01Z04S08[E~W]",
-		"direction": 2
+		"Id": "D01Z05S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S03[NE]"
 	},
 	{
-		"id": "D01Z04S09[W~E]",
-		"newDoors": "D01Z04S09[E~SW],D01Z04S09[C~C]",
-		"direction": 1
+		"Id": "D01Z05S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S05[NW]"
 	},
 	{
-		"id": "D01Z04S09[E~SW]",
-		"newDoors": "D01Z04S09[C~C]",
-		"direction": 2
+		"Id": "D01Z05S05[N]",
+		"Direction": 0,
+		"OriginalDoor": "D01Z03S02[S]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z04S09[C~C]",
-		"newDoors": "D01Z04S09[E~SW]",
-		"direction": 4
+		"Id": "D01Z05S05[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S04[E]"
 	},
 	{
-		"id": "D01Z04S10[NW~SE]",
-		"newDoors": "D01Z04S10[SE~NW],D01Z04S10[SW~NE]",
-		"direction": 1
+		"Id": "D01Z05S05[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S06[W]"
 	},
 	{
-		"id": "D01Z04S10[SE~NW]",
-		"newDoors": "D01Z04S10[NW~SE],D01Z04S10[SW~NE]",
-		"direction": 3
+		"Id": "D01Z05S05[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S18[E]"
 	},
 	{
-		"id": "D01Z04S10[SW~NE]",
-		"newDoors": "D01Z04S10[NW~SE],D01Z04S10[SE~NW]",
-		"direction": 3
+		"Id": "D01Z05S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S09[NW]"
 	},
 	{
-		"id": "D01Z04S11[NE~SW]",
-		"direction": 0
+		"Id": "D01Z05S06[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S05[NE]"
 	},
 	{
-		"id": "D01Z04S12[NW~SE]",
-		"newDoors": "D01Z04S12[W~E],D01Z04S12[SE~NW]",
-		"direction": 0
+		"Id": "D01Z05S06[Cherubs]",
+		"Direction": 5,
+		"Type": 1
 	},
 	{
-		"id": "D01Z04S12[W~E]",
-		"newDoors": "D01Z04S12[NW~SE],D01Z04S12[SE~NW]",
-		"direction": 1
+		"Id": "D01Z05S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S03[W]"
 	},
 	{
-		"id": "D01Z04S12[SE~NW]",
-		"newDoors": "D01Z04S12[NW~SE],D01Z04S12[W~E]",
-		"direction": 2
+		"Id": "D01Z05S08[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S03[E]"
 	},
 	{
-		"id": "D01Z04S13[NW~SE]",
-		"newDoors": "D01Z04S13[NE~W],D01Z04S13[SW~E],D01Z04S13[SE~W]",
-		"direction": 1
+		"Id": "D01Z05S09[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S05[E]"
 	},
 	{
-		"id": "D01Z04S13[NE~W]",
-		"newDoors": "D01Z04S13[NW~SE],D01Z04S13[SW~E],D01Z04S13[SE~W]",
-		"direction": 2
+		"Id": "D01Z05S09[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S10[W]"
 	},
 	{
-		"id": "D01Z04S13[SW~E]",
-		"newDoors": "D01Z04S13[NW~SE],D01Z04S13[NE~W],D01Z04S13[SE~W]",
-		"direction": 1
+		"Id": "D01Z05S10[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S09[SE]"
 	},
 	{
-		"id": "D01Z04S13[SE~W]",
-		"newDoors": "D01Z04S13[NW~SE],D01Z04S13[NE~W],D01Z04S13[SW~E]",
-		"direction": 2
+		"Id": "D01Z05S10[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S11[W]"
 	},
 	{
-		"id": "D01Z04S14[E~SW]",
-		"direction": 2
+		"Id": "D01Z05S10[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S12[W]"
 	},
 	{
-		"id": "D01Z04S15[N~S]",
-		"newDoors": "D01Z04S15[NE~NW]",
-		"direction": 0
+		"Id": "D01Z05S10[S]",
+		"Direction": 3,
+		"OriginalDoor": "D01Z05S14[N]"
 	},
 	{
-		"id": "D01Z04S15[NE~NW]",
-		"newDoors": "D01Z04S15[N~S]",
-		"direction": 2
+		"Id": "D01Z05S11[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S10[NE]"
 	},
 	{
-		"id": "D01Z04S15[E~SW]",
-		"newDoors": "D01Z04S15[N~S],D01Z04S15[NE~NW],D01Z04S15[W~E],D01Z04S15[SW~E],D01Z04S15[SE~NW]",
-		"direction": 2
+		"Id": "D01Z05S11[Cherubs]",
+		"Direction": 5,
+		"Type": 1
 	},
 	{
-		"id": "D01Z04S15[W~E]",
-		"newDoors": "D01Z04S15[N~S],D01Z04S15[NE~NW],D01Z04S15[E~SW],D01Z04S15[SW~E],D01Z04S15[SE~NW]",
-		"direction": 1
+		"Id": "D01Z05S12[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S10[SE]"
 	},
 	{
-		"id": "D01Z04S15[SW~E]",
-		"newDoors": "D01Z04S15[N~S],D01Z04S15[NE~NW],D01Z04S15[E~SW],D01Z04S15[W~E],D01Z04S15[SE~NW]",
-		"direction": 1
+		"Id": "D01Z05S12[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S09[W]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z04S15[SE~NW]",
-		"newDoors": "D01Z04S15[N~S],D01Z04S15[NE~NW],D01Z04S15[E~SW],D01Z04S15[W~E],D01Z04S15[SW~E]",
-		"direction": 2
+		"Id": "D01Z05S13[SW]",
+		"Direction": 3,
+		"OriginalDoor": "D01Z05S16[N]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D01Z05S13[E]" ],
+		"Logic": "D01Z05S13[SW] || canSurvivePoison3 && canWaterJump"
 	},
 	{
-		"id": "D01Z04S16[E~W]",
-		"newDoors": "D01Z04S16[W~SE]",
-		"direction": 2
+		"Id": "D01Z05S13[N]",
+		"Direction": 0,
+		"OriginalDoor": "D01Z05S03[S]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D01Z05S13[E]" ],
+		"Logic": "D01Z05S13[N] || canSurvivePoison3 && canWaterJump"
 	},
 	{
-		"id": "D01Z04S16[W~SE]",
-		"newDoors": "D01Z04S16[E~W]",
-		"direction": 1
+		"Id": "D01Z05S13[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S14[W]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D01Z04S17[W~NE]",
-		"direction": 1
+		"Id": "D01Z05S14[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S13[E]"
 	},
 	{
-		"id": "D01Z04S18[W~E]",
-		"newDoors": "D01Z04S18[E~W]",
-		"direction": 1
+		"Id": "D01Z05S14[N]",
+		"Direction": 0,
+		"OriginalDoor": "D01Z05S10[S]"
 	},
 	{
-		"id": "D01Z04S18[E~W]",
-		"newDoors": "D01Z04S18[W~E]",
-		"direction": 2
+		"Id": "D01Z05S14[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S15[W]"
 	},
 	{
-		"id": "D01Z04S19[W~E]",
-		"newDoors": "D01Z04S19[E~W]",
-		"direction": 1
+		"Id": "D01Z05S15[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S14[SE]"
 	},
 	{
-		"id": "D01Z04S19[E~W]",
-		"newDoors": "D01Z04S19[W~E]",
-		"direction": 2
+		"Id": "D01Z05S15[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S22[E]"
 	},
 	{
-		"id": "D01BZ02S01[C~C]",
-		"direction": 4
+		"Id": "D01Z05S15[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S19[W]"
 	},
 	{
-		"id": "D01Z05S01[N~E]",
-		"newDoors": "D01Z05S01[W~E],D01Z05S01[S~N]",
-		"direction": 1
+		"Id": "D01Z05S16[N]",
+		"Direction": 0,
+		"OriginalDoor": "D01Z05S13[SW]"
 	},
 	{
-		"id": "D01Z05S01[W~E]",
-		"newDoors": "D01Z05S01[N~E],D01Z05S01[S~N]",
-		"direction": 1
+		"Id": "D01Z05S16[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S21[E]"
 	},
 	{
-		"id": "D01Z05S01[S~N]",
-		"newDoors": "D01Z05S01[N~E],D01Z05S01[W~E]",
-		"direction": 3
+		"Id": "D01Z05S16[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S17[W]"
 	},
 	{
-		"id": "D01Z05S02[N~S]",
-		"newDoors": "D01Z05S02[W~NE]",
-		"direction": 0
+		"Id": "D01Z05S17[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S16[SE]"
 	},
 	{
-		"id": "D01Z05S02[W~NE]",
-		"newDoors": "D01Z05S02[N~S]",
-		"direction": 1
+		"Id": "D01Z05S17[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01BZ09S01[W]",
+		"Logic": "dash && (D01Z05S17[E] || canWaterJump || canCrossGap5)"
 	},
 	{
-		"id": "D01Z05S02[E~NW]",
-		"newDoors": "D01Z05S02[N~S],D01Z05S02[W~NE]",
-		"direction": 2
+		"Id": "D01Z05S18[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S05[SW]"
 	},
 	{
-		"id": "D01Z05S02[S~N]",
-		"newDoors": "D01Z05S02[N~S],D01Z05S02[W~NE]",
-		"direction": 3
+		"Id": "D01Z05S19[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S15[SE]"
 	},
 	{
-		"id": "D01Z05S03[NW~E]",
-		"newDoors": "D01Z05S03[NE~W],D01Z05S03[W~E],D01Z05S03[E~W],D01Z05S03[S~N]",
-		"direction": 1
+		"Id": "D01Z05S19[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z04S19[W]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z05S03[NE~W]",
-		"newDoors": "D01Z05S03[NW~E],D01Z05S03[W~E],D01Z05S03[E~W],D01Z05S03[S~N]",
-		"direction": 2
+		"Id": "D01Z05S20[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S25[NE]"
 	},
 	{
-		"id": "D01Z05S03[W~E]",
-		"newDoors": "D01Z05S03[NW~E],D01Z05S03[NE~W],D01Z05S03[E~W],D01Z05S03[S~N]",
-		"direction": 1
+		"Id": "D01Z05S20[N]",
+		"Direction": 0,
+		"OriginalDoor": "D01Z05S02[S]"
 	},
 	{
-		"id": "D01Z05S03[E~W]",
-		"newDoors": "D01Z05S03[NW~E],D01Z05S03[NE~W],D01Z05S03[W~E],D01Z05S03[S~N]",
-		"direction": 2
+		"Id": "D01Z05S21[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S25[E]"
 	},
 	{
-		"id": "D01Z05S03[S~N]",
-		"newDoors": "D01Z05S03[NW~E],D01Z05S03[NE~W],D01Z05S03[W~E],D01Z05S03[E~W]",
-		"direction": 3
+		"Id": "D01Z05S21[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S16[SW]"
 	},
 	{
-		"id": "D01Z05S04[W~NE]",
-		"newDoors": "D01Z05S04[E~NW]",
-		"direction": 1
+		"Id": "D01Z05S21[Reward]",
+		"Direction": 4,
+		"OriginalDoor": "D01BZ05S01[Reward]",
+		"Logic": "shroud"
 	},
 	{
-		"id": "D01Z05S04[E~NW]",
-		"newDoors": "D01Z05S04[W~NE]",
-		"direction": 2
+		"Id": "D01Z05S22[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S15[SW]"
 	},
 	{
-		"id": "D01Z05S05[NW~E]",
-		"newDoors": "D01Z05S05[NE~W],D01Z05S05[N~S],D01Z05S05[SW~E],D01Z05S05[E~NW]",
-		"direction": 1
+		"Id": "D01Z05S23[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S24[E]",
+		"Logic": "canFillChalice"
 	},
 	{
-		"id": "D01Z05S05[NE~W]",
-		"newDoors": "D01Z05S05[NW~E],D01Z05S05[N~S],D01Z05S05[SW~E],D01Z05S05[E~NW]",
-		"direction": 2
+		"Id": "D01Z05S23[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S25[W]"
 	},
 	{
-		"id": "D01Z05S05[N~S]",
-		"newDoors": "D01Z05S05[NW~E],D01Z05S05[NE~W],D01Z05S05[SW~E],D01Z05S05[E~NW]",
-		"direction": 0
+		"Id": "D01Z05S24[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S04[E]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z05S05[SW~E]",
-		"newDoors": "D01Z05S05[NW~E],D01Z05S05[NE~W],D01Z05S05[N~S],D01Z05S05[E~NW]",
-		"direction": 1
+		"Id": "D01Z05S24[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S23[W]"
 	},
 	{
-		"id": "D01Z05S05[E~NW]",
-		"newDoors": "D01Z05S05[NW~E],D01Z05S05[NE~W],D01Z05S05[N~S],D01Z05S05[SW~E]",
-		"direction": 2
+		"Id": "D01Z05S25[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S20[W]",
+		"Logic": "D01Z05S25[SW] || D01Z05S25[SE] || D01Z05S25[NE] || linen"
 	},
 	{
-		"id": "D01Z05S06[W~NE]",
-		"direction": 1
+		"Id": "D01Z05S25[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S23[E]",
+		"Logic": "D01Z05S25[W] || (linen && (canWalkOnRoot || doubleJump || canAirStall)) || (D01Z05S25[E] && (canWalkOnRoot || canCrossGap3))"
 	},
 	{
-		"id": "D01Z05S06[Cherubs~-]",
-		"newDoors": "D01Z05S06[W~NE]",
-		"direction": 6
+		"Id": "D01Z05S25[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S21[W]",
+		"VisibiliyFlags": 5,
+		"Logic": "D01Z05S25[E] || canBreakTirana && (linen || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3))"
 	},
 	{
-		"id": "D01Z05S07[E~W]",
-		"direction": 2
+		"Id": "D01Z05S25[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S17[E]",
+		"Type": 1,
+		"Logic": "D01Z05S25[SW] || D01Z05S25[SE] || D01Z05S25[NE] || linen"
 	},
 	{
-		"id": "D01Z05S08[W~E]",
-		"direction": 1
+		"Id": "D01Z05S25[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S26[W]",
+		"Logic": "D01Z05S25[SW] || D01Z05S25[SE] || D01Z05S25[NE] || linen"
 	},
 	{
-		"id": "D01Z05S09[NW~E]",
-		"newDoors": "D01Z05S09[SE~W]",
-		"direction": 1
+		"Id": "D01Z05S25[EchoesW]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S09[E]",
+		"Type": 1,
+		"VisibilityFlags": 11,
+		"RequiredDoors": [ "D01Z05S25[EchoesE]" ],
+		"Logic": "D01Z05S25[EchoesW] || (D01Z05S25[EchoesE] && (blood || canCrossGap8)) || (linen && doubleJump)"
 	},
 	{
-		"id": "D01Z05S09[SE~W]",
-		"newDoors": "D01Z05S09[NW~E]",
-		"direction": 2
+		"Id": "D01Z05S25[EchoesE]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z01S10[W]",
+		"Type": 1,
+		"VisibilityFlags": 11,
+		"RequiredDoors": [ "D01Z05S25[EchoesW]" ],
+		"Logic": "D01Z05S25[EchoesE] || (D01Z05S25[EchoesW] && (blood || canCrossGap8)) || (linen && doubleJump)"
 	},
 	{
-		"id": "D01Z05S10[W~SE]",
-		"newDoors": "D01Z05S10[NE~W],D01Z05S10[SE~W],D01Z05S10[S~N]",
-		"direction": 1
+		"Id": "D01Z05S26[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S25[SE]"
 	},
 	{
-		"id": "D01Z05S10[NE~W]",
-		"newDoors": "D01Z05S10[W~SE],D01Z05S10[SE~W],D01Z05S10[S~N]",
-		"direction": 2
+		"Id": "D01Z05S27[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S01[W]"
 	},
 	{
-		"id": "D01Z05S10[SE~W]",
-		"newDoors": "D01Z05S10[W~SE],D01Z05S10[NE~W],D01Z05S10[S~N]",
-		"direction": 2
+		"Id": "D01BZ05S01[Reward]",
+		"Direction": 7,
+		"OriginalDoor": "D01Z05S21[Reward]"
 	},
 	{
-		"id": "D01Z05S10[S~N]",
-		"newDoors": "D01Z05S10[W~SE],D01Z05S10[NE~W],D01Z05S10[SE~W]",
-		"direction": 3
+		"Id": "D01BZ09S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S17[E]"
 	},
+	
 	{
-		"id": "D01Z05S11[W~NE]",
-		"direction": 1
+		"Id": "D01Z06S01[N]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z01S01[S]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z05S11[Cherubs~Cherubs]",
-		"newDoors": "D01Z05S11[W~NE]",
-		"direction": 6
+		"Id": "D01Z06S01[Santos]",
+		"Direction": 4,
+		"OriginalDoor": "D01BZ07S01[Santos]",
+		"Logic": "bell"
 	},
 	{
-		"id": "D01Z05S12[W~SE]",
-		"newDoors": "D01Z05S12[E~W]",
-		"direction": 1
+		"Id": "D01BZ07S01[Santos]",
+		"Direction": 7,
+		"OriginalDoor": "D01Z06S01[Santos]"
 	},
+	
 	{
-		"id": "D01Z05S12[E~W]",
-		"newDoors": "D01Z05S12[W~SE]",
-		"direction": 2
+		"Id": "D02Z01S01[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z01S06[E]",
+		"Logic": "openedWOTWCave && (D02Z01S01[W] || D02Z01S01[CherubsL] || D02Z01S01[SW] || D02Z01S01[CherubsR] || doubleJump || wallClimb)"
 	},
 	{
-		"id": "D01Z05S13[SW~N]",
-		"direction": 3
+		"Id": "D02Z01S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z01S02[E]",
+		"Logic": "D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump)"
 	},
 	{
-		"id": "D01Z05S13[N~S]",
-		"direction": 0
+		"Id": "D02Z01S01[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z03S04[NW]",
+		"Type": 1
 	},
 	{
-		"id": "D01Z05S13[E~W]",
-		"newDoors": "D01Z05S13[SW~N],D01Z05S13[N~S]",
-		"direction": 2
+		"Id": "D02Z01S01[CherubsL]",
+		"Direction": 5
 	},
 	{
-		"id": "D01Z05S14[W~E]",
-		"newDoors": "D01Z05S14[N~S],D01Z05S14[SE~W]",
-		"direction": 1
+		"Id": "D02Z01S01[CherubsR]",
+		"Direction": 5
 	},
 	{
-		"id": "D01Z05S14[N~S]",
-		"newDoors": "D01Z05S14[W~E],D01Z05S14[SE~W]",
-		"direction": 0
+		"Id": "D02Z01S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z01S04[E]"
 	},
 	{
-		"id": "D01Z05S14[SE~W]",
-		"newDoors": "D01Z05S14[W~E],D01Z05S14[N~S]",
-		"direction": 2
+		"Id": "D02Z01S02[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z01S03[SE]",
+		"Logic": "D02Z01S02[NW] || wallClimb || doubleJump || (D02Z01S02[NE] && canWalkOnRoot && canCrossGap5)"
 	},
 	{
-		"id": "D01Z05S15[SE~W]",
-		"newDoors": "D01Z05S15[SW~E],D01Z05S15[W~SE]",
-		"direction": 2
+		"Id": "D02Z01S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z01S01[W]"
 	},
 	{
-		"id": "D01Z05S15[SW~E]",
-		"newDoors": "D01Z05S15[SE~W],D01Z05S15[W~SE]",
-		"direction": 1
+		"Id": "D02Z01S02[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z01S09[W]",
+		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (canWalkOnRoot || canCrossGap10)"
 	},
 	{
-		"id": "D01Z05S15[W~SE]",
-		"newDoors": "D01Z05S15[SE~W],D01Z05S15[SW~E]",
-		"direction": 1
+		"Id": "D02Z01S02[]",
+		"Direction": 6,
+		"OriginalDoor": "D02Z01S06[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D01Z05S16[N~SW]",
-		"newDoors": "D01Z05S16[SE~W],D01Z05S16[SW~E]",
-		"direction": 0
+		"Id": "D02Z01S03[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z01S05[E]"
 	},
 	{
-		"id": "D01Z05S16[SE~W]",
-		"newDoors": "D01Z05S16[N~SW],D01Z05S16[SW~E]",
-		"direction": 2
+		"Id": "D02Z01S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S01[E]",
+		"Type": 1,
+		"Logic": "D02Z01S03[W] || D02Z01S03[SE] || D02Z01S03[Cherubs] || wallClimb"
 	},
 	{
-		"id": "D01Z05S16[SW~E]",
-		"newDoors": "D01Z05S16[N~SW],D01Z05S16[SE~W]",
-		"direction": 1
+		"Id": "D02Z01S03[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z01S02[NW]",
+		"Logic": "D02Z01S03[W] || D02Z01S03[SE] || D02Z01S03[Cherubs] || wallClimb"
 	},
 	{
-		"id": "D01Z05S17[W~SE]",
-		"direction": 1
+		"Id": "D02Z01S03[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D01Z05S18[E~SW]",
-		"direction": 2
+		"Id": "D02Z01S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z01S02[W]"
 	},
 	{
-		"id": "D01Z05S19[E~W]",
-		"newDoors": "D01Z05S19[W~SE]",
-		"direction": 2
+		"Id": "D02Z01S04[-N]",
+		"Direction": 6,
+		"OriginalDoor": "D02Z01S08[N]",
+		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump))"
 	},
 	{
-		"id": "D01Z05S19[W~SE]",
-		"newDoors": "D01Z05S19[E~W]",
-		"direction": 1
+		"Id": "D02Z01S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z01S03[SW]"
 	},
 	{
-		"id": "D01Z05S20[N~S]",
-		"newDoors": "D01Z05S20[W~NE]",
-		"direction": 0
+		"Id": "D02Z01S06[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z01S08[E]",
+		"Logic": "D02Z01S06[W] || dash || wallClimb && doubleJump"
 	},
 	{
-		"id": "D01Z05S20[W~NE]",
-		"newDoors": "D01Z05S20[N~S]",
-		"direction": 1
+		"Id": "D02Z01S06[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z01S01[SW]",
+		"Logic": "D02Z01S06[E] || wallClimb"
 	},
 	{
-		"id": "D01Z05S21[E~SW]",
-		"newDoors": "D01Z05S21[W~E],D01Z05S21[Reward~Reward]",
-		"direction": 2
+		"Id": "D02Z01S06[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D01Z05S21[W~E]",
-		"newDoors": "D01Z05S21[E~SW],D01Z05S21[Reward~Reward]",
-		"direction": 1
+		"Id": "D02Z01S08[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z01S06[W]"
 	},
 	{
-		"id": "D01Z05S21[Reward~Reward]",
-		"newDoors": "D01Z05S21[E~SW],D01Z05S21[W~E]",
-		"direction": 4
+		"Id": "D02Z01S08[N]",
+		"Direction": 5
 	},
 	{
-		"id": "D01Z05S22[E~SW]",
-		"direction": 2
+		"Id": "D02Z01S09[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z01S02[NE]"
 	},
 	{
-		"id": "D01Z05S23[E~W]",
-		"newDoors": "D01Z05S23[W~E]",
-		"direction": 2
+		"Id": "D02Z01S09[-CherubsL]",
+		"Direction": 6,
+		"OriginalDoor": "D02Z01S01[CherubsL]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D01Z05S23[W~E]",
-		"newDoors": "D01Z05S23[E~W]",
-		"direction": 1
+		"Id": "D02Z01S09[-CherubsR]",
+		"Direction": 6,
+		"OriginalDoor": "D02Z01S01[CherubsR]",
+		"Logic": "linen && (canWalkOnRoot || canCrossGap10)"
 	},
+	
 	{
-		"id": "D01Z05S24[E~W]",
-		"newDoors": "D01Z05S24[W~E]",
-		"direction": 2
+		"Id": "D02Z02S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S08[E]",
+		"Logic": "D02Z02S01[W] || D02Z02S01[NW] || D02Z02S01[Cherubs] || dash"
 	},
 	{
-		"id": "D01Z05S24[W~E]",
-		"newDoors": "D01Z05S24[E~W]",
-		"direction": 1
+		"Id": "D02Z02S01[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S02[SE]",
+		"Logic": "D02Z02S01[NW] || D02Z02S01[Cherubs] || wallClimb && (D02Z02S01[W] || dash)"
 	},
 	{
-		"id": "D01Z05S25[NE~W]",
-		"newDoors": "D01Z05S25[W~E],D01Z05S25[SE~W],D01Z05S25[SW~E]",
-		"direction": 2
+		"Id": "D02Z02S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z01S03[W]",
+		"Type": 1,
+		"Logic": "D02Z02S01[E] || D02Z02S01[NW] || D02Z02S01[Cherubs] || wallClimb || dash"
 	},
 	{
-		"id": "D01Z05S25[W~E]",
-		"newDoors": "D01Z05S25[NE~W],D01Z05S25[SE~W],D01Z05S25[SW~E]",
-		"direction": 1
+		"Id": "D02Z02S01[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D01Z05S25[E~W]",
-		"newDoors": "D01Z05S25[NE~W],D01Z05S25[W~E],D01Z05S25[SE~W],D01Z05S25[SW~E]",
-		"direction": 2
+		"Id": "D02Z02S02[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S01[NW]"
 	},
 	{
-		"id": "D01Z05S25[EchoesE~W]",
-		"newDoors": "D01Z05S25[NE~W],D01Z05S25[W~E],D01Z05S25[SE~W],D01Z05S25[SW~E],D01Z05S25[EchoesW~E]",
-		"direction": 2
+		"Id": "D02Z02S02[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S04[SE]",
+		"Logic": "D02Z02S02[NW] || D02Z02S02[NE] || D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || wallClimb"
 	},
 	{
-		"id": "D01Z05S25[EchoesW~E]",
-		"newDoors": "D01Z05S25[NE~W],D01Z05S25[W~E],D01Z05S25[SE~W],D01Z05S25[SW~E],D01Z05S25[EchoesE~W]",
-		"direction": 1
+		"Id": "D02Z02S02[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S03[SW]",
+		"Logic": "D02Z02S02[NW] || D02Z02S02[NE] || D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || wallClimb"
 	},
 	{
-		"id": "D01Z05S25[SE~W]",
-		"newDoors": "D01Z05S25[NE~W],D01Z05S25[W~E],D01Z05S25[SW~E]",
-		"direction": 2
+		"Id": "D02Z02S02[-CherubsR]",
+		"Direction": 6,
+		"OriginalDoor": "D02Z02S08[CherubsR]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D01Z05S25[SW~E]",
-		"newDoors": "D01Z05S25[NE~W],D01Z05S25[W~E],D01Z05S25[SE~W]",
-		"direction": 1
+		"Id": "D02Z02S02[CherubsL]",
+		"Direction": 5
 	},
 	{
-		"id": "D01Z05S26[W~SE]",
-		"direction": 1
+		"Id": "D02Z02S02[CherubsR]",
+		"Direction": 5
 	},
 	{
-		"id": "D01Z05S27[E~W]",
-		"direction": 2
+		"Id": "D02Z02S03[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S02[NE]"
 	},
 	{
-		"id": "D01BZ05S01[Reward~Reward]",
-		"direction": 4
+		"Id": "D02Z02S03[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S05[SE]",
+		"Logic": "D02Z02S03[NW] || doubleJump || wallClimb || D02Z02S03[NE] && canWalkOnRoot"
 	},
 	{
-		"id": "D01Z06S01[N~S]",
-		"newDoors": "D01Z06S01[Santos~Santos]",
-		"direction": 1
+		"Id": "D02Z02S03[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S14[W]",
+		"Logic": "D02Z02S03[NE] || wallClimb && (canCrossGap11 || (blood && (canWalkOnRoot || canCrossGap7)) || (canWalkOnRoot && (doubleJump || canAirStall)))"
 	},
 	{
-		"id": "D01Z06S01[Santos~Santos]",
-		"newDoors": "D01Z06S01[N~S]",
-		"direction": 4,
-		"type": 3
+		"Id": "D02Z02S03[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D02Z02S01[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D01BZ07S01[Santos~Santos]",
-		"direction": 4,
-		"type": 1
+		"Id": "D02Z02S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S09[E]",
+		"Logic": "D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE] && wallClimb"
 	},
 	{
-		"id": "D02Z01S01[SE~NW]",
-		"newDoors": "D02Z01S01[W~E]",
-		"direction": 2
+		"Id": "D02Z02S04[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S02[NW]",
+		"Logic": "D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[SE] || dash"
 	},
 	{
-		"id": "D02Z01S01[SW~E]",
-		"newDoors": "D02Z01S01[SE~NW],D02Z01S01[W~E]",
-		"direction": 1
+		"Id": "D02Z02S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S05[SW]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D02Z01S01[W~E]",
-		"newDoors": "D02Z01S01[SE~NW]",
-		"direction": 1
+		"Id": "D02Z02S04[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S05[W]",
+		"Logic": "D02Z02S04[NE] || ((D02Z02S04[W] || D02Z02S04[E] && dash) && (doubleJump || wallClimb)) || (wallClimb && D02Z02S04[SE])"
 	},
 	{
-		"id": "D02Z01S01[CherubsL~-]",
-		"newDoors": "D02Z01S01[W~E],D02Z01S01[SE~NW]",
-		"direction": 6
+		"Id": "D02Z02S04[-CherubsL]",
+		"Direction": 6,
+		"OriginalDoor": "D02Z02S08[CherubsL]",
+		"Logic": "linen && (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[SE] || dash)"
 	},
 	{
-		"id": "D02Z01S01[CherubsR~-]",
-		"newDoors": "D02Z01S01[W~E],D02Z01S01[SE~NW]",
-		"direction": 6
+		"Id": "D02Z02S05[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S04[E]"
 	},
 	{
-		"id": "D02Z01S02[E~W]",
-		"newDoors": "D02Z01S02[NE~W],D02Z01S02[W~E],D02Z01S02[NW~SE],D02Z01S02[~Cherubs]",
-		"direction": 2
+		"Id": "D02Z02S05[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S04[NE]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D02Z01S02[NE~W]",
-		"newDoors": "D02Z01S02[E~W],D02Z01S02[W~E],D02Z01S02[NW~SE],D02Z01S02[~Cherubs]",
-		"direction": 2
+		"Id": "D02Z02S05[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S03[NW]"
 	},
 	{
-		"id": "D02Z01S02[W~E]",
-		"newDoors": "D02Z01S02[E~W],D02Z01S02[NE~W],D02Z01S02[NW~SE],D02Z01S02[~Cherubs]",
-		"direction": 1
+		"Id": "D02Z02S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S10[W]",
+		"Logic": "D02Z02S05[NW] || D02Z02S05[E] || wallClimb"
 	},
 	{
-		"id": "D02Z01S02[NW~SE]",
-		"newDoors": "D02Z01S02[E~W],D02Z01S02[NE~W],D02Z01S02[W~E],D02Z01S02[~Cherubs]",
-		"direction": 1
+		"Id": "D02Z02S05[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S07[E]",
+		"Logic": "D02Z02S05[NW] || wallClimb"
 	},
 	{
-		"id": "D02Z01S02[~Cherubs]",
-		"direction": 5
+		"Id": "D02Z02S05[-CherubsL]",
+		"Direction": 6,
+		"OriginalDoor": "D02Z02S02[CherubsL]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D02Z01S03[SE~NW]",
-		"newDoors": "D02Z01S03[SW~E],D02Z01S03[W~E]",
-		"direction": 2
+		"Id": "D02Z02S05[-CherubsR]",
+		"Direction": 6,
+		"OriginalDoor": "D02Z02S02[CherubsR]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D02Z01S03[SW~E]",
-		"newDoors": "D02Z01S03[SE~NW],D02Z01S03[W~E]",
-		"direction": 1
+		"Id": "D02Z02S06[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S11[W]"
 	},
 	{
-		"id": "D02Z01S03[W~E]",
-		"newDoors": "D02Z01S03[SE~NW],D02Z01S03[SW~E]",
-		"direction": 1
+		"Id": "D02Z02S07[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S01[E]",
+		"Type": 1
 	},
 	{
-		"id": "D02Z01S03[Cherubs~-]",
-		"newDoors": "D02Z01S03[SE~NW],D02Z01S03[SW~E],D02Z01S03[W~E]",
-		"direction": 6
+		"Id": "D02Z02S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S05[NW]"
 	},
 	{
-		"id": "D02Z01S04[E~W]",
-		"newDoors": "D02Z01S04[-~N]",
-		"direction": 2
+		"Id": "D02Z02S07[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D02Z01S04[-~N]",
-		"direction": 5
+		"Id": "D02Z02S08[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S11[SE]"
 	},
 	{
-		"id": "D02Z01S05[E~SW]",
-		"direction": 2
+		"Id": "D02Z02S08[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S01[W]"
 	},
 	{
-		"id": "D02Z01S06[E~SW]",
-		"newDoors": "D02Z01S06[W~E]",
-		"direction": 2
+		"Id": "D02Z02S08[C]",
+		"Direction": 4,
+		"OriginalDoor": "D02BZ02S01[C]"
 	},
 	{
-		"id": "D02Z01S06[W~E]",
-		"newDoors": "D02Z01S06[E~SW]",
-		"direction": 1
+		"Id": "D02Z02S08[CherubsL]",
+		"Direction": 5
 	},
 	{
-		"id": "D02Z01S06[Cherubs~]",
-		"newDoors": "D02Z01S06[W~E],D02Z01S06[E~SW]",
-		"direction": 6
+		"Id": "D02Z02S08[CherubsR]",
+		"Direction": 5
 	},
 	{
-		"id": "D02Z01S08[E~W]",
-		"direction": 2
+		"Id": "D02Z02S09[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S04[W]"
 	},
 	{
-		"id": "D02Z01S08[N~-]",
-		"newDoors": "D02Z01S08[E~W]",
-		"direction": 6
+		"Id": "D02Z02S10[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S05[E]"
 	},
 	{
-		"id": "D02Z01S09[W~NE]",
-		"newDoors": "D02Z01S09[-~CherubsL],D02Z01S09[-~CherubsR]",
-		"direction": 1
+		"Id": "D02Z02S11[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S06[E]"
 	},
 	{
-		"id": "D02Z01S09[-~CherubsL]",
-		"direction": 5
+		"Id": "D02Z02S11[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S08[W]"
 	},
 	{
-		"id": "D02Z01S09[-~CherubsR]",
-		"direction": 5
+		"Id": "D02Z02S11[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S12[W]",
+		"Logic": "D02Z02S11[E] || D02Z02S11[NW] || D02Z02S11[NE] || canCrossGap6"
 	},
 	{
-		"id": "D02Z02S01[E~W]",
-		"newDoors": "D02Z02S01[W~E],D02Z02S01[NW~SE]",
-		"direction": 2
+		"Id": "D02Z02S11[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S14[E]",
+		"Type": 1,
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D02Z02S11[NE]" ]
 	},
 	{
-		"id": "D02Z02S01[W~E]",
-		"newDoors": "D02Z02S01[E~W],D02Z02S01[NW~SE]",
-		"direction": 1
+		"Id": "D02Z02S11[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S13[W]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D02Z02S11[NW]" ]
 	},
 	{
-		"id": "D02Z02S01[NW~SE]",
-		"newDoors": "D02Z02S01[E~W],D02Z02S01[W~E]",
-		"direction": 1
+		"Id": "D02Z02S11[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D01Z02S03[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D02Z02S01[Cherubs~-]",
-		"newDoors": "D02Z02S01[E~W],D02Z02S01[W~E],D02Z02S01[NW~SE]",
-		"direction": 6
+		"Id": "D02Z02S12[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S11[E]"
 	},
 	{
-		"id": "D02Z02S02[SE~NW]",
-		"newDoors": "D02Z02S02[NW~SE],D02Z02S02[NE~SW],D02Z02S02[-~CherubsR]",
-		"direction": 2
+		"Id": "D02Z02S13[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S11[NE]"
 	},
 	{
-		"id": "D02Z02S02[NW~SE]",
-		"newDoors": "D02Z02S02[SE~NW],D02Z02S02[NE~SW],D02Z02S02[-~CherubsR]",
-		"direction": 1
+		"Id": "D02Z02S14[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z02S03[NE]"
 	},
 	{
-		"id": "D02Z02S02[NE~SW]",
-		"newDoors": "D02Z02S02[SE~NW],D02Z02S02[NW~SE],D02Z02S02[-~CherubsR]",
-		"direction": 2
+		"Id": "D02Z02S14[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D02Z01S03[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D02Z02S02[-~CherubsR]",
-		"direction": 5
+		"Id": "D02BZ02S01[C]",
+		"Direction": 7,
+		"OriginalDoor": "D02Z02S08[C]"
 	},
+	
 	{
-		"id": "D02Z02S02[CherubsL~-]",
-		"newDoors": "D02Z02S02[SE~NW],D02Z02S02[NW~SE],D02Z02S02[NE~SW],D02Z02S02[-~CherubsR]",
-		"direction": 6
+		"Id": "D02Z03S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S08[E]"
 	},
 	{
-		"id": "D02Z02S02[CherubsR~-]",
-		"newDoors": "D02Z02S02[SE~NW],D02Z02S02[NW~SE],D02Z02S02[NE~SW],D02Z02S02[-~CherubsR]",
-		"direction": 6
+		"Id": "D02Z03S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S07[W]",
+		"Type": 1
 	},
 	{
-		"id": "D02Z02S03[SW~NE]",
-		"newDoors": "D02Z02S03[NE~W],D02Z02S03[NW~SE],D02Z02S03[-~Cherubs]",
-		"direction": 1
+		"Id": "D02Z03S02[S]",
+		"Direction": 3,
+		"OriginalDoor": "D02Z03S16[N]"
 	},
 	{
-		"id": "D02Z02S03[NE~W]",
-		"newDoors": "D02Z02S03[SW~NE],D02Z02S03[NW~SE],D02Z02S03[-~Cherubs]",
-		"direction": 2
+		"Id": "D02Z03S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S03[E]",
+		"Logic": "D02Z03S02[NW] || D02Z03S02[NE] || D02Z03S02[N] || D02Z03S02[W] || doubleJump || wallClimb"
 	},
 	{
-		"id": "D02Z02S03[NW~SE]",
-		"newDoors": "D02Z02S03[SW~NE],D02Z02S03[NE~W],D02Z02S03[-~Cherubs]",
-		"direction": 1
+		"Id": "D02Z03S02[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S21[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D02Z03S02[NE]", "D02Z03S02[N]" ]
 	},
 	{
-		"id": "D02Z02S03[-~Cherubs]",
-		"direction": 5
+		"Id": "D02Z03S02[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S13[W]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D02Z03S02[NW]", "D02Z03S02[N]" ]
 	},
 	{
-		"id": "D02Z02S04[SE~NW]",
-		"newDoors": "D02Z02S04[W~E],D02Z02S04[NE~W],D02Z02S04[-~CherubsL]",
-		"direction": 2
+		"Id": "D02Z03S02[N]",
+		"Direction": 0,
+		"OriginalDoor": "D02Z03S11[S]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D02Z03S02[NW]", "D02Z03S02[NE]" ],
+		"Logic": "openedConventLadder"
 	},
 	{
-		"id": "D02Z02S04[W~E]",
-		"newDoors": "D02Z02S04[SE~NW],D02Z02S04[NE~W],D02Z02S04[-~CherubsL]",
-		"direction": 1
+		"Id": "D02Z03S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S05[E]"
 	},
 	{
-		"id": "D02Z02S04[NE~W]",
-		"newDoors": "D02Z02S04[SE~NW],D02Z02S04[W~E],D02Z02S04[-~CherubsL]",
-		"direction": 2
+		"Id": "D02Z03S03[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S05[NE]",
+		"Logic": "D02Z03S03[NW] || blood || canCrossGap3"
 	},
 	{
-		"id": "D02Z02S04[E~SW]",
-		"newDoors": "D02Z02S04[SE~NW],D02Z02S04[W~E],D02Z02S04[NE~W],D02Z02S04[-~CherubsL]",
-		"direction": 2
+		"Id": "D02Z03S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S02[W]"
 	},
 	{
-		"id": "D02Z02S04[-~CherubsL]",
-		"direction": 5
+		"Id": "D02Z03S05[S]",
+		"Direction": 3,
+		"OriginalDoor": "D02Z03S07[N]",
+		"Logic": "D02Z03S05[S] || D02Z03S05[NE] || wallClimb"
 	},
 	{
-		"id": "D02Z02S05[SE~NW]",
-		"newDoors": "D02Z02S05[SW~E],D02Z02S05[E~W],D02Z02S05[NW~E],D02Z02S05[-~CherubsL],D02Z02S05[-~CherubsR]",
-		"direction": 2
+		"Id": "D02Z03S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S03[W]"
 	},
 	{
-		"id": "D02Z02S05[SW~E]",
-		"newDoors": "D02Z02S05[SE~NW],D02Z02S05[E~W],D02Z02S05[NW~E],D02Z02S05[-~CherubsL],D02Z02S05[-~CherubsR]",
-		"direction": 1
+		"Id": "D02Z03S05[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S03[NW]",
+		"Logic": "D02Z03S05[S] || D02Z03S05[NE] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D02Z02S05[W~NE]",
-		"newDoors": "D02Z02S05[SE~NW],D02Z02S05[SW~E],D02Z02S05[E~W],D02Z02S05[NW~E],D02Z02S05[-~CherubsL],D02Z02S05[-~CherubsR]",
-		"direction": 1
+		"Id": "D02Z03S06[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S18[SE]"
 	},
 	{
-		"id": "D02Z02S05[E~W]",
-		"newDoors": "D02Z02S05[SE~NW],D02Z02S05[SW~E],D02Z02S05[NW~E],D02Z02S05[-~CherubsL],D02Z02S05[-~CherubsR]",
-		"direction": 2
+		"Id": "D02Z03S06[S]",
+		"Direction": 3,
+		"OriginalDoor": "D02Z03S07[NW]"
 	},
 	{
-		"id": "D02Z02S05[NW~E]",
-		"newDoors": "D02Z02S05[SE~NW],D02Z02S05[SW~E],D02Z02S05[E~W],D02Z02S05[-~CherubsL],D02Z02S05[-~CherubsR]",
-		"direction": 1
+		"Id": "D02Z03S07[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S17[E]"
 	},
 	{
-		"id": "D02Z02S05[-~CherubsL]",
-		"direction": 5
+		"Id": "D02Z03S07[NWW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S24[E]"
 	},
 	{
-		"id": "D02Z02S05[-~CherubsR]",
-		"direction": 5
+		"Id": "D02Z03S07[NW]",
+		"Direction": 0,
+		"OriginalDoor": "D02Z03S06[S]"
 	},
 	{
-		"id": "D02Z02S06[E~W]",
-		"direction": 2
+		"Id": "D02Z03S07[N]",
+		"Direction": 0,
+		"OriginalDoor": "D02Z03S05[S]"
 	},
 	{
-		"id": "D02Z02S07[E~NW]",
-		"newDoors": "D02Z02S07[W~E]",
-		"direction": 2
+		"Id": "D02Z03S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S08[W]"
 	},
 	{
-		"id": "D02Z02S07[W~E]",
-		"newDoors": "D02Z02S07[E~NW]",
-		"direction": 1
+		"Id": "D02Z03S08[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S12[E]"
 	},
 	{
-		"id": "D02Z02S07[Cherubs~-]",
-		"newDoors": "D02Z02S07[W~E],D02Z02S07[E~NW]",
-		"direction": 6
+		"Id": "D02Z03S08[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S07[E]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D02Z02S08[E~W]",
-		"newDoors": "D02Z02S08[W~SE],D02Z02S08[C~C]",
-		"direction": 2
+		"Id": "D02Z03S08[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S14[W]"
 	},
 	{
-		"id": "D02Z02S08[W~SE]",
-		"newDoors": "D02Z02S08[E~W],D02Z02S08[C~C]",
-		"direction": 1
+		"Id": "D02Z03S08[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S01[W]"
 	},
 	{
-		"id": "D02Z02S08[C~C]",
-		"newDoors": "D02Z02S08[E~W],D02Z02S08[W~SE]",
-		"direction": 4
+		"Id": "D02Z03S08[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S16[W]"
 	},
 	{
-		"id": "D02Z02S08[CherubsL~-]",
-		"newDoors": "D02Z02S08[E~W],D02Z02S08[W~SE],D02Z02S08[C~C]",
-		"direction": 6
+		"Id": "D02Z03S09[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S18[NE]"
 	},
 	{
-		"id": "D02Z02S08[CherubsR~-]",
-		"newDoors": "D02Z02S08[E~W],D02Z02S08[W~SE],D02Z02S08[C~C]",
-		"direction": 6
+		"Id": "D02Z03S09[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S20[W]"
 	},
 	{
-		"id": "D02Z02S09[E~W]",
-		"direction": 2
+		"Id": "D02Z03S10[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S11[E]"
 	},
 	{
-		"id": "D02Z02S10[W~E]",
-		"direction": 1
+		"Id": "D02Z03S10[-W]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S06[-E]",
+		"Type": 1
 	},
 	{
-		"id": "D02Z02S11[NW~E]",
-		"newDoors": "D02Z02S11[NE~W],D02Z02S11[E~W],D02Z02S11[W~E],D02Z02S11[SE~W],D02Z02S11[-~Cherubs]",
-		"direction": 1
+		"Id": "D02Z03S10[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D02Z02S07[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D02Z02S11[NE~W]",
-		"newDoors": "D02Z02S11[NW~E],D02Z02S11[E~W],D02Z02S11[W~E],D02Z02S11[SE~W],D02Z02S11[-~Cherubs]",
-		"direction": 2
+		"Id": "D02Z03S11[S]",
+		"Direction": 3,
+		"OriginalDoor": "D02Z03S02[N]"
 	},
 	{
-		"id": "D02Z02S11[E~W]",
-		"newDoors": "D02Z02S11[W~E],D02Z02S11[SE~W],D02Z02S11[-~Cherubs]",
-		"direction": 2
+		"Id": "D02Z03S11[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S15[E]"
 	},
 	{
-		"id": "D02Z02S11[W~E]",
-		"newDoors": "D02Z02S11[SE~W],D02Z02S11[-~Cherubs]",
-		"direction": 1
+		"Id": "D02Z03S11[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S19[E]"
 	},
 	{
-		"id": "D02Z02S11[SE~W]",
-		"newDoors": "D02Z02S11[W~E],D02Z02S11[-~Cherubs]",
-		"direction": 2
+		"Id": "D02Z03S11[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S10[W]"
 	},
 	{
-		"id": "D02Z02S11[-~Cherubs]",
-		"direction": 5
+		"Id": "D02Z03S11[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S22[W]"
 	},
 	{
-		"id": "D02Z02S12[W~E]",
-		"direction": 1
+		"Id": "D02Z03S12[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S08[SW]"
 	},
 	{
-		"id": "D02Z02S13[W~NE]",
-		"direction": 1
+		"Id": "D02Z03S13[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S02[NE]"
 	},
 	{
-		"id": "D02Z02S14[W~NE]",
-		"newDoors": "D02Z02S14[-~Cherubs]",
-		"direction": 1
+		"Id": "D02Z03S14[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S08[SE]"
 	},
 	{
-		"id": "D02Z02S14[-~Cherubs]",
-		"direction": 5
+		"Id": "D02Z03S14[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z02S11[NW]",
+		"Type": 1
 	},
 	{
-		"id": "D02BZ02S01[C~C]",
-		"direction": 4
+		"Id": "D02Z03S15[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S11[W]"
 	},
 	{
-		"id": "D02Z03S01[W~E]",
-		"newDoors": "D02Z03S01[E~W]",
-		"direction": 1
+		"Id": "D02Z03S16[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S08[NE]"
 	},
 	{
-		"id": "D02Z03S01[E~W]",
-		"newDoors": "D02Z03S01[W~E]",
-		"direction": 2
+		"Id": "D02Z03S16[N]",
+		"Direction": 0,
+		"OriginalDoor": "D02Z03S02[S]"
 	},
 	{
-		"id": "D02Z03S02[S~N]",
-		"newDoors": "D02Z03S02[W~E]",
-		"direction": 3
+		"Id": "D02Z03S17[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S07[W]"
 	},
 	{
-		"id": "D02Z03S02[W~E]",
-		"newDoors": "D02Z03S02[S~N]",
-		"direction": 1
+		"Id": "D02Z03S18[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S23[E]",
+		"Logic": "D02Z03S18[NW] || D02Z03S18[NE] || wallClimb"
 	},
 	{
-		"id": "D02Z03S02[NE~W]",
-		"newDoors": "D02Z03S02[S~N],D02Z03S02[W~E],D02Z03S02[NW~E]",
-		"direction": 2
+		"Id": "D02Z03S18[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S06[W]"
 	},
 	{
-		"id": "D02Z03S02[NW~E]",
-		"newDoors": "D02Z03S02[S~N],D02Z03S02[W~E],D02Z03S02[NE~W]",
-		"direction": 1
+		"Id": "D02Z03S18[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S09[W]",
+		"Logic": "D02Z03S18[NW] || D02Z03S18[NE] || wallClimb"
 	},
 	{
-		"id": "D02Z03S02[N~S]",
-		"newDoors": "D02Z03S02[S~N],D02Z03S02[W~E],D02Z03S02[NE~W],D02Z03S02[NW~E]",
-		"direction": 0
+		"Id": "D02Z03S19[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S11[NW]"
 	},
 	{
-		"id": "D02Z03S03[E~W]",
-		"newDoors": "D02Z03S03[W~E],D02Z03S03[NW~NE]",
-		"direction": 2
+		"Id": "D02Z03S20[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S09[E]",
+		"Logic": "D02Z03S20[W] || canBeatConventBoss"
 	},
 	{
-		"id": "D02Z03S03[W~E]",
-		"newDoors": "D02Z03S03[E~W],D02Z03S03[NW~NE]",
-		"direction": 1
+		"Id": "D02Z03S20[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S21[W]",
+		"Logic": "D02Z03S20[E] || canBeatConventBoss"
 	},
 	{
-		"id": "D02Z03S03[NW~NE]",
-		"newDoors": "D02Z03S03[E~W],D02Z03S03[W~E]",
-		"direction": 1
+		"Id": "D02Z03S21[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S20[E]"
 	},
 	{
-		"id": "D02Z03S05[E~W]",
-		"newDoors": "D02Z03S05[NE~NW],D02Z03S05[S~N]",
-		"direction": 2
+		"Id": "D02Z03S21[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S02[NW]"
 	},
 	{
-		"id": "D02Z03S05[NE~NW]",
-		"newDoors": "D02Z03S05[E~W],D02Z03S05[S~N]",
-		"direction": 2
+		"Id": "D02Z03S22[W]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S11[NE]"
 	},
 	{
-		"id": "D02Z03S05[S~N]",
-		"newDoors": "D02Z03S05[E~W],D02Z03S05[NE~NW]",
-		"direction": 3
+		"Id": "D02Z03S23[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S18[NW]"
 	},
 	{
-		"id": "D02Z03S06[S~NW]",
-		"newDoors": "D02Z03S06[W~SE]",
-		"direction": 3
+		"Id": "D02Z03S24[E]",
+		"Direction": 2,
+		"OriginalDoor": "D02Z03S07[NWW]"
 	},
+	
 	{
-		"id": "D02Z03S06[W~SE]",
-		"newDoors": "D02Z03S06[S~NW]",
-		"direction": 1
+		"Id": "D03Z01S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z01S02[E]"
 	},
 	{
-		"id": "D02Z03S07[N~S]",
-		"newDoors": "D02Z03S07[E~W],D02Z03S07[W~E],D02Z03S07[NWW~E],D02Z03S07[NW~S]",
-		"direction": 0
+		"Id": "D03Z01S01[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S02[W]",
+		"Type": 1
 	},
 	{
-		"id": "D02Z03S07[E~W]",
-		"newDoors": "D02Z03S07[N~S],D02Z03S07[W~E],D02Z03S07[NWW~E],D02Z03S07[NW~S]",
-		"direction": 2
+		"Id": "D03Z01S01[S]",
+		"Direction": 3,
+		"OriginalDoor": "D20Z01S03[N]",
+		"Type": 1,
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D02Z03S07[W~E]",
-		"newDoors": "D02Z03S07[N~S],D02Z03S07[E~W],D02Z03S07[NWW~E],D02Z03S07[NW~S]",
-		"direction": 1
+		"Id": "D03Z01S01[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D20Z01S01[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D02Z03S07[NWW~E]",
-		"newDoors": "D02Z03S07[N~S],D02Z03S07[E~W],D02Z03S07[W~E],D02Z03S07[NW~S]",
-		"direction": 1
+		"Id": "D03Z01S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z01S06[E]",
+		"Logic": "D03Z01S02[W] || wallClimb || canCrossGap3"
 	},
 	{
-		"id": "D02Z03S07[NW~S]",
-		"newDoors": "D02Z03S07[N~S],D02Z03S07[E~W],D02Z03S07[W~E],D02Z03S07[NWW~E]",
-		"direction": 0
+		"Id": "D03Z01S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z01S01[W]",
+		"Logic": "D03Z01S02[E] || wallClimb || canCrossGap7"
 	},
 	{
-		"id": "D02Z03S08[SW~E]",
-		"newDoors": "D02Z03S08[SE~W],D02Z03S08[E~W],D02Z03S08[NE~W]",
-		"direction": 1
+		"Id": "D03Z01S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z01S04[E]",
+		"Logic": "D03Z01S03[W] || wallClimb && (D03Z01S03[SW] || canCrossGap9)"
 	},
 	{
-		"id": "D02Z03S08[SE~W]",
-		"newDoors": "D02Z03S08[SW~E],D02Z03S08[E~W],D02Z03S08[NE~W]",
-		"direction": 2
+		"Id": "D03Z01S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z01S06[W]",
+		"Logic": "D03Z01S03[E] || wallClimb"
 	},
 	{
-		"id": "D02Z03S08[E~W]",
-		"newDoors": "D02Z03S08[SW~E],D02Z03S08[SE~W],D02Z03S08[NE~W]",
-		"direction": 2
+		"Id": "D03Z01S03[SW]",
+		"Direction": 3,
+		"OriginalDoor": "D03Z02S10[N]",
+		"Type": 1,
+		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9"
 	},
 	{
-		"id": "D02Z03S08[NE~W]",
-		"newDoors": "D02Z03S08[SW~E],D02Z03S08[SE~W],D02Z03S08[E~W]",
-		"direction": 2
+		"Id": "D03Z01S03[SE]",
+		"Direction": 3,
+		"OriginalDoor": "D03Z02S01[N]",
+		"Type": 1
 	},
 	{
-		"id": "D02Z03S08[W~E]",
-		"newDoors": "D02Z03S08[SW~E],D02Z03S08[SE~W],D02Z03S08[E~W],D02Z03S08[NE~W]",
-		"direction": 1
+		"Id": "D03Z01S03[-WestL]",
+		"Direction": 6,
+		"OriginalDoor": "D03Z02S10[Cherubs]",
+		"Type": 1,
+		"Logic": "linen && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9)"
 	},
 	{
-		"id": "D02Z03S09[E~W]",
-		"newDoors": "D02Z03S09[W~NE]",
-		"direction": 2
+		"Id": "D03Z01S03[-WestR]",
+		"Direction": 6,
+		"OriginalDoor": "D03Z02S02[CherubsL]",
+		"Type": 1,
+		"Logic": "linen && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9)"
 	},
 	{
-		"id": "D02Z03S09[W~NE]",
-		"newDoors": "D02Z03S09[E~W]",
-		"direction": 1
+		"Id": "D03Z01S03[-EastL]",
+		"Direction": 6,
+		"OriginalDoor": "D03Z02S02[CherubsR]",
+		"Type": 1,
+		"Logic": "linen && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap5)"
 	},
 	{
-		"id": "D02Z03S10[W~E]",
-		"newDoors": "D02Z03S10[-~Cherubs]",
-		"direction": 1
+		"Id": "D03Z01S03[-EastR]",
+		"Direction": 6,
+		"OriginalDoor": "D03Z02S01[Cherubs]",
+		"Type": 1,
+		"Logic": "linen"
 	},
 	{
-		"id": "D02Z03S10[-~W]",
-		"newDoors": "D02Z03S10[W~E],D02Z03S10[-~Cherubs]",
-		"direction": 2
+		"Id": "D03Z01S04[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z01S05[E]"
 	},
 	{
-		"id": "D02Z03S10[-~Cherubs]",
-		"direction": 5
+		"Id": "D03Z01S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z01S03[W]"
 	},
 	{
-		"id": "D02Z03S11[S~N]",
-		"newDoors": "D02Z03S11[W~E],D02Z03S11[E~W],D02Z03S11[NW~E],D02Z03S11[NE~W]",
-		"direction": 3
+		"Id": "D03Z01S05[W]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S07[SE]",
+		"Type": 1
 	},
 	{
-		"id": "D02Z03S11[W~E]",
-		"newDoors": "D02Z03S11[S~N],D02Z03S11[E~W],D02Z03S11[NW~E],D02Z03S11[NE~W]",
-		"direction": 1
+		"Id": "D03Z01S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z01S04[NW]"
 	},
 	{
-		"id": "D02Z03S11[E~W]",
-		"newDoors": "D02Z03S11[S~N],D02Z03S11[W~E],D02Z03S11[NW~E],D02Z03S11[NE~W]",
-		"direction": 2
+		"Id": "D03Z01S06[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z01S03[E]",
+		"Logic": "D03Z01S06[W] || canBeatPerpetua"
 	},
 	{
-		"id": "D02Z03S11[NW~E]",
-		"newDoors": "D02Z03S11[S~N],D02Z03S11[W~E],D02Z03S11[E~W],D02Z03S11[NE~W]",
-		"direction": 1
+		"Id": "D03Z01S06[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z01S02[W]",
+		"Logic": "D03Z01S06[E] || canBeatPerpetua"
 	},
+	
 	{
-		"id": "D02Z03S11[NE~W]",
-		"newDoors": "D02Z03S11[S~N],D02Z03S11[W~E],D02Z03S11[E~W],D02Z03S11[NW~E]",
-		"direction": 2
+		"Id": "D03Z02S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z02S02[E]",
+		"Logic": "D03Z02S01[W] || wallClimb"
 	},
 	{
-		"id": "D02Z03S12[E~SW]",
-		"direction": 2
+		"Id": "D03Z02S01[N]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z01S03[SE]",
+		"Type": 1,
+		"Logic": "D03Z02S01[N] || wallClimb || canCrossGap8"
 	},
 	{
-		"id": "D02Z03S13[W~NE]",
-		"direction": 1
+		"Id": "D03Z02S01[Cherubs]",
+		"Direction": 5,
+		"Type": 1
 	},
 	{
-		"id": "D02Z03S14[E~NW]",
-		"newDoors": "D02Z03S14[W~SE]",
-		"direction": 2
+		"Id": "D03Z02S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z02S10[E]",
+		"Logic": "D03Z02S02[W] || D03Z02S02[CherubsL] || doubleJump && (D03Z02S02[E] || D03Z02S02[CherubsR] || wallClimb)"
 	},
 	{
-		"id": "D02Z03S14[W~SE]",
-		"newDoors": "D02Z03S14[E~NW]",
-		"direction": 1
+		"Id": "D03Z02S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z02S01[W]",
+		"Logic": "D03Z02S02[E] || wallClimb"
 	},
 	{
-		"id": "D02Z03S15[E~W]",
-		"direction": 2
+		"Id": "D03Z02S02[S]",
+		"Direction": 3,
+		"OriginalDoor": "D03Z02S03[N]"
 	},
 	{
-		"id": "D02Z03S16[N~S]",
-		"newDoors": "D02Z03S16[W~NE]",
-		"direction": 0
+		"Id": "D03Z02S02[CherubsL]",
+		"Direction": 5,
+		"Type": 1
 	},
 	{
-		"id": "D02Z03S16[W~NE]",
-		"newDoors": "D02Z03S16[N~S]",
-		"direction": 1
+		"Id": "D03Z02S02[CherubsR]",
+		"Direction": 5,
+		"Type": 1
 	},
 	{
-		"id": "D02Z03S17[E~W]",
-		"direction": 2
+		"Id": "D03Z02S03[W]",
+		"Direction": 3,
+		"OriginalDoor": "D03Z02S07[N]",
+		"Logic": "D03Z02S03[W] || dash && (D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
-		"id": "D02Z03S18[SE~W]",
-		"newDoors": "D02Z03S18[NW~E],D02Z03S18[NE~W]",
-		"direction": 2
+		"Id": "D03Z02S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z02S05[W]",
+		"Logic": "D03Z02S03[E] || (canAirStall || doubleJump || boots) && (D03Z02S03[E] && dash || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
-		"id": "D02Z03S18[NW~E]",
-		"newDoors": "D02Z03S18[SE~W],D02Z03S18[NE~W]",
-		"direction": 1
+		"Id": "D03Z02S03[N]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z02S02[S]",
+		"Logic": "D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2]"
 	},
 	{
-		"id": "D02Z03S18[NE~W]",
-		"newDoors": "D02Z03S18[SE~W],D02Z03S18[NW~E]",
-		"direction": 2
+		"Id": "D03Z02S03[SE2]",
+		"Direction": 3,
+		"OriginalDoor": "D03Z02S04[NW]",
+		"Logic": "D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2]"
 	},
 	{
-		"id": "D02Z03S19[E~NW]",
-		"direction": 2
+		"Id": "D03Z02S03[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z02S07[E]",
+		"Logic": "D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR] || canBreakJondoBell && (D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
-		"id": "D02Z03S20[E~W]",
-		"newDoors": "D02Z03S20[W~E]",
-		"direction": 2
+		"Id": "D03Z02S03[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z02S06[W]",
+		"Logic": "D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR] || canBreakJondoBell && (D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
-		"id": "D02Z03S20[W~E]",
-		"newDoors": "D02Z03S20[E~W]",
-		"direction": 1
+		"Id": "D03Z02S03[SSL]",
+		"Direction": 3,
+		"OriginalDoor": "D03Z03S01[NL]",
+		"Type": 1,
+		"Logic": "D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR] || canBreakJondoBell && (D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
-		"id": "D02Z03S21[E~NW]",
-		"newDoors": "D02Z03S21[W~E]",
-		"direction": 2
+		"Id": "D03Z02S03[SSC]",
+		"Direction": 6,
+		"OriginalDoor": "D03Z03S01[NC]",
+		"Type": 1,
+		"Logic": "D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR] || canBreakJondoBell && (D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
-		"id": "D02Z03S21[W~E]",
-		"newDoors": "D02Z03S21[E~NW]",
-		"direction": 1
+		"Id": "D03Z02S03[SSR]",
+		"Direction": 3,
+		"OriginalDoor": "D03Z03S01[NR]",
+		"Type": 1,
+		"Logic": "D03Z02S03[SW] || D03Z02S03[SE] || D03Z02S03[SSL] || D03Z02S03[SSR] || canBreakJondoBell && (D03Z02S03[W] && dash || D03Z02S03[E] || D03Z02S03[N] || D03Z02S03[SE2])"
 	},
 	{
-		"id": "D02Z03S22[W~NE]",
-		"newDoors": "D01Z02S07[E~W]",
-		"direction": 1
+		"Id": "D03Z02S04[NW]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z02S03[SE2]",
+		"Logic": "D03Z02S04[NW] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D02Z03S23[E~NW]",
-		"direction": 2
+		"Id": "D03Z02S04[NE]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z02S05[S]",
+		"Logic": "D03Z02S04[NE] || wallClimb || (D03Z02S04[S] && doubleJump)"
 	},
 	{
-		"id": "D02Z03S24[E~NWW]",
-		"direction": 2
+		"Id": "D03Z02S04[S]",
+		"Direction": 3,
+		"OriginalDoor": "D03Z02S06[N]",
+		"Logic": "D03Z02S04[NE] || D03Z02S04[S] || wallClimb"
 	},
 	{
-		"id": "D03Z01S01[W~E]",
-		"newDoors": "D03Z01S01[NE~W],D03Z01S01[-~Cherubs]",
-		"direction": 1
+		"Id": "D03Z02S05[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z02S03[E]"
 	},
 	{
-		"id": "D03Z01S01[S~N]",
-		"newDoors": "D03Z01S01[W~E],D03Z01S01[NE~W],D03Z01S01[-~Cherubs]",
-		"direction": 3,
-		"type": 3
+		"Id": "D03Z02S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z02S11[W]",
+		"Logic": "D03Z02S05[E] || D03Z02S05[S] || canCrossGap5"
 	},
 	{
-		"id": "D03Z01S01[NE~W]",
-		"newDoors": "D03Z01S01[W~E],D03Z01S01[-~Cherubs]",
-		"direction": 2
+		"Id": "D03Z02S05[S]",
+		"Direction": 3,
+		"OriginalDoor": "D03Z02S04[NE]",
+		"Logic": "D03Z02S05[E] || D03Z02S05[S] || canCrossGap5"
 	},
 	{
-		"id": "D03Z01S01[-~Cherubs]",
-		"direction": 5
+		"Id": "D03Z02S06[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z02S03[SE]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D03Z01S02[W~E]",
-		"newDoors": "D03Z01S02[E~W]",
-		"direction": 1
+		"Id": "D03Z02S06[N]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z02S04[S]"
 	},
 	{
-		"id": "D03Z01S02[E~W]",
-		"newDoors": "D03Z01S02[W~E]",
-		"direction": 2
+		"Id": "D03Z02S07[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z02S08[E]"
 	},
 	{
-		"id": "D03Z01S03[W~E]",
-		"newDoors": "D03Z01S03[SW~N],D03Z01S03[E~W],D03Z01S03[SE~N],D03Z01S03[-~SpecL],D03Z01S03[-~SpecR],D03Z01S03[-~CherubsL],D03Z01S03[-~CherubsR]",
-		"direction": 1
+		"Id": "D03Z02S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z02S03[SW]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D03Z01S03[E~W]",
-		"newDoors": "D03Z01S03[SE~N],D03Z01S03[-~SpecR]",
-		"direction": 2
+		"Id": "D03Z02S07[N]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z02S03[W]"
 	},
 	{
-		"id": "D03Z01S03[SW~N]",
-		"newDoors": "D03Z01S03[W~E],D03Z01S03[E~W],D03Z01S03[SE~N],D03Z01S03[-~SpecL],D03Z01S03[-~SpecR],D03Z01S03[-~CherubsL],D03Z01S03[-~CherubsR]",
-		"direction": 3
+		"Id": "D03Z02S08[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z02S14[E]",
+		"Logic": "D03Z02S08[N] || D03Z02S08[W] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D03Z01S03[SE~N]",
-		"newDoors": "D03Z01S03[E~W],D03Z01S03[-~SpecR]",
-		"direction": 3
+		"Id": "D03Z02S08[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z02S07[W]"
 	},
 	{
-		"id": "D03Z01S03[-~SpecL]",
-		"direction": 5
+		"Id": "D03Z02S08[N]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z02S09[S]",
+		"Logic": "D03Z02S08[N] || D03Z02S08[W] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D03Z01S03[-~SpecR]",
-		"direction": 5
+		"Id": "D03Z02S09[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z02S12[E]",
+		"Logic": "D03Z02S09[W] || dash"
 	},
 	{
-		"id": "D03Z01S03[-~CherubsL]",
-		"direction": 5
+		"Id": "D03Z02S09[N]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z02S10[S]",
+		"Logic": "D03Z02S09[N] || D03Z02S09[S] || D03Z02S09[Cherubs] || dash"
 	},
 	{
-		"id": "D03Z01S03[-~CherubsR]",
-		"direction": 5
+		"Id": "D03Z02S09[S]",
+		"Direction": 3,
+		"OriginalDoor": "D03Z02S08[N]",
+		"Logic": "D03Z02S09[N] || D03Z02S09[S] || D03Z02S09[Cherubs] || dash"
 	},
 	{
-		"id": "D03Z01S04[NW~E]",
-		"newDoors": "D03Z01S04[E~W]",
-		"direction": 1
+		"Id": "D03Z02S09[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D03Z01S04[E~W]",
-		"newDoors": "D03Z01S04[NW~E]",
-		"direction": 2
+		"Id": "D03Z02S10[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z02S13[E]"
 	},
 	{
-		"id": "D03Z01S05[W~SE]",
-		"newDoors": "D03Z01S05[E~NW]",
-		"direction": 1
+		"Id": "D03Z02S10[N]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z01S03[SW]",
+		"Type": 1
 	},
 	{
-		"id": "D03Z01S05[E~NW]",
-		"newDoors": "D03Z01S05[W~SE]",
-		"direction": 2
+		"Id": "D03Z02S10[S]",
+		"Direction": 3,
+		"OriginalDoor": "D03Z02S09[N]"
 	},
 	{
-		"id": "D03Z01S06[W~E]",
-		"newDoors": "D03Z01S06[E~W]",
-		"direction": 1
+		"Id": "D03Z02S10[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z02S02[W]"
 	},
 	{
-		"id": "D03Z01S06[E~W]",
-		"newDoors": "D03Z01S06[W~E]",
-		"direction": 2
+		"Id": "D03Z02S10[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D03Z02S09[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D03Z02S01[N~SE]",
-		"newDoors": "D03Z02S01[W~E]",
-		"direction": 0
+		"Id": "D03Z02S10[Cherubs]",
+		"Direction": 5,
+		"Type": 1
 	},
 	{
-		"id": "D03Z02S01[W~E]",
-		"newDoors": "D03Z02S01[N~SE]",
-		"direction": 1
+		"Id": "D03Z02S11[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z02S05[E]",
+		"Logic": "D03Z02S11[W] || dash && (doubleJump || wallClimb)"
 	},
 	{
-		"id": "D03Z02S01[SpecR~-]",
-		"newDoors": "D03Z02S01[N~SE],D03Z02S01[W~E]",
-		"direction": 6
+		"Id": "D03Z02S11[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z02S15[W]",
+		"Logic": "D03Z02S11[E] || dash && (wallClimb || doubleJump)"
 	},
 	{
-		"id": "D03Z02S02[W~E]",
-		"newDoors": "D03Z02S02[E~W],D03Z02S02[S~N]",
-		"direction": 1,
-		"type": 4
+		"Id": "D03Z02S12[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z02S09[W]"
 	},
 	{
-		"id": "D03Z02S02[E~W]",
-		"newDoors": "D03Z02S02[S~N]",
-		"direction": 2
+		"Id": "D03Z02S12[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D03Z02S02[S~N]",
-		"newDoors": "D03Z02S02[E~W]",
-		"direction": 3
+		"Id": "D03Z02S13[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z02S10[W]"
 	},
 	{
-		"id": "D03Z02S02[CherubsL~-]",
-		"newDoors": "D03Z02S02[E~W],D03Z02S02[S~N],D03Z02S02[W~E]",
-		"direction": 6
+		"Id": "D03Z02S13[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D03Z02S12[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D03Z02S02[CherubsR~-]",
-		"newDoors": "D03Z02S02[E~W],D03Z02S02[S~N]",
-		"direction": 6
+		"Id": "D03Z02S14[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z02S08[W]"
 	},
 	{
-		"id": "D03Z02S03[W~N]",
-		"newDoors": "D03Z02S03[SSL~NL],D03Z02S03[SSC~NC],D03Z02S03[SSR~NR],D03Z02S03[SW~E],D03Z02S03[SE~W],D03Z02S03[N~S],D03Z02S03[SE2~NW]",
-		"direction": 3
+		"Id": "D03Z02S15[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z02S11[E]"
 	},
 	{
-		"id": "D03Z02S03[N~S]",
-		"newDoors": "D03Z02S03[SSL~NL],D03Z02S03[SSC~NC],D03Z02S03[SSR~NR],D03Z02S03[SW~E],D03Z02S03[SE~W],D03Z02S03[W~N],D03Z02S03[SE2~NW]",
-		"direction": 0
+		"Id": "D03Z02S15[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z01S01[W]",
+		"Type": 1
 	},
+	
 	{
-		"id": "D03Z02S03[E~W]",
-		"newDoors": "D03Z02S03[SSL~NL],D03Z02S03[SSC~NC],D03Z02S03[SSR~NR],D03Z02S03[SW~E],D03Z02S03[SE~W],D03Z02S03[W~N],D03Z02S03[N~S],D03Z02S03[SE2~NW]",
-		"direction": 2
+		"Id": "D03Z03S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S18[E]"
 	},
 	{
-		"id": "D03Z02S03[SE2~NW]",
-		"newDoors": "D03Z02S03[SSL~NL],D03Z02S03[SSC~NC],D03Z02S03[SSR~NR],D03Z02S03[SW~E],D03Z02S03[SE~W],D03Z02S03[W~N],D03Z02S03[N~S]",
-		"direction": 3
+		"Id": "D03Z03S01[S]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S12[W]"
 	},
 	{
-		"id": "D03Z02S03[SW~E]",
-		"newDoors": "D03Z02S03[SSL~NL],D03Z02S03[SSC~NC],D03Z02S03[SSR~NR],D03Z02S03[SE~W]",
-		"direction": 1
+		"Id": "D03Z03S01[NL]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z02S03[SSL]",
+		"Type": 1,
+		"Logic": "D03Z03S01[NL] || D03Z03S01[NR] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D03Z02S03[SE~W]",
-		"newDoors": "D03Z02S03[SSL~NL],D03Z02S03[SSC~NC],D03Z02S03[SSR~NR],D03Z02S03[SW~E]",
-		"direction": 2
+		"Id": "D03Z03S01[NC]",
+		"Direction": 5,
+		"Type": 1
 	},
 	{
-		"id": "D03Z02S03[SSL~NL]",
-		"newDoors": "D03Z02S03[SSC~NC],D03Z02S03[SSR~NR],D03Z02S03[SW~E],D03Z02S03[SE~W]",
-		"direction": 3,
-		"type": 3
+		"Id": "D03Z03S01[NR]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z02S03[SSR]",
+		"Type": 1,
+		"Logic": "D03Z03S01[NL] || D03Z03S01[NR] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D03Z02S03[SSC~NC]",
-		"direction": 5,
-		"type": 2
+		"Id": "D03Z03S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S12[E]",
+		"Logic": "D03Z03S02[NE] || D03Z03S02[W] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D03Z02S03[SSR~NR]",
-		"newDoors": "D03Z02S03[SSL~NL],D03Z02S03[SSC~NC],D03Z02S03[SW~E],D03Z02S03[SE~W]",
-		"direction": 3,
-		"type": 3
+		"Id": "D03Z03S02[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S14[W]",
+		"Logic": "D03Z03S02[NE] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D03Z02S04[NW~SE2]",
-		"newDoors": "D03Z02S04[S~N],D03Z02S04[NE~S]",
-		"direction": 0
+		"Id": "D03Z03S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S03[W]"
 	},
 	{
-		"id": "D03Z02S04[S~N]",
-		"newDoors": "D03Z02S04[NW~SE2],D03Z02S04[NE~S]",
-		"direction": 3
+		"Id": "D03Z03S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S02[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D03Z03S03[NE]" ]
 	},
 	{
-		"id": "D03Z02S04[NE~S]",
-		"newDoors": "D03Z02S04[NW~SE2],D03Z02S04[S~N]",
-		"direction": 0
+		"Id": "D03Z03S03[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S04[NW]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D03Z03S03[W]" ]
 	},
 	{
-		"id": "D03Z02S05[S~NE]",
-		"newDoors": "D03Z02S05[E~W],D03Z02S05[W~E]",
-		"direction": 3
+		"Id": "D03Z03S03[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S04[SW]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D03Z02S05[W~E]",
-		"direction": 1,
-		"type": 3
+		"Id": "D03Z03S04[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S03[NE]",
+		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || (wallClimb || doubleJump) && (D03Z03S04[E] || D03Z03S04[SW] || blood || canCrossGap10)"
 	},
 	{
-		"id": "D03Z02S05[E~W]",
-		"newDoors": "D03Z02S05[S~NE],D03Z02S05[W~E]",
-		"direction": 2
+		"Id": "D03Z03S04[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S05[NW]",
+		"Logic": "D03Z03S04[NE] || wallClimb && (D03Z03S04[NW] || D03Z03S04[E] || D03Z03S04[SW] || blood || canCrossGap10)"
 	},
 	{
-		"id": "D03Z02S06[W~SE]",
-		"newDoors": "D03Z02S06[N~S]",
-		"direction": 1
+		"Id": "D03Z03S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S05[SW]",
+		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[E] || (wallClimb || doubleJump) && (D03Z03S04[SW] || blood || canCrossGap10)"
 	},
 	{
-		"id": "D03Z02S06[N~S]",
-		"direction": 0
+		"Id": "D03Z03S04[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S03[SE]",
+		"Logic": "D03Z03S04[NW] || D03Z03S04[NE] || D03Z03S04[E] || D03Z03S04[SW] || blood || canCrossGap10"
 	},
 	{
-		"id": "D03Z02S07[N~W]",
-		"newDoors": "D03Z02S07[W~E]",
-		"direction": 0
+		"Id": "D03Z03S04[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S13[W]",
+		"Logic": "D03Z03S04[SE] || blood"
 	},
 	{
-		"id": "D03Z02S07[W~E]",
-		"newDoors": "D03Z02S07[N~W]",
-		"direction": 1
+		"Id": "D03Z03S04[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D03Z03S10[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D03Z02S07[E~SW]",
-		"newDoors": "D03Z02S07[N~W],D03Z02S07[W~E]",
-		"direction": 2
+		"Id": "D03Z03S05[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S04[NE]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D03Z03S05[NE]" ]
 	},
 	{
-		"id": "D03Z02S08[W~E]",
-		"newDoors": "D03Z02S08[E~W],D03Z02S08[N~S]",
-		"direction": 1
+		"Id": "D03Z03S05[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S06[W]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D03Z03S05[NW]" ]
 	},
 	{
-		"id": "D03Z02S08[E~W]",
-		"newDoors": "D03Z02S08[W~E],D03Z02S08[N~S]",
-		"direction": 2
+		"Id": "D03Z03S05[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S04[E]",
+		"Logic": "D03Z03S05[SW] || D03Z03S05[SE] || linen"
 	},
 	{
-		"id": "D03Z02S08[N~S]",
-		"newDoors": "D03Z02S08[W~E],D03Z02S08[E~W]",
-		"direction": 0
+		"Id": "D03Z03S05[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S07[SW]",
+		"Logic": "D03Z03S05[SW] || D03Z03S05[SE] || linen"
 	},
 	{
-		"id": "D03Z02S09[N~S]",
-		"newDoors": "D03Z02S09[W~E],D03Z02S09[S~N]",
-		"direction": 0
+		"Id": "D03Z03S06[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S05[NE]"
 	},
 	{
-		"id": "D03Z02S09[W~E]",
-		"newDoors": "D03Z02S09[N~S],D03Z02S09[S~N]",
-		"direction": 1
+		"Id": "D03Z03S07[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S19[E]",
+		"Logic": "D03Z03S07[NW] || D03Z03S07[NE] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D03Z02S09[S~N]",
-		"newDoors": "D03Z02S09[N~S],D03Z02S09[W~E]",
-		"direction": 3
+		"Id": "D03Z03S07[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S08[W]",
+		"Logic": "D03Z03S07[NW] || D03Z03S07[NE] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D03Z02S09[Cherubs~-]",
-		"newDoors": "D03Z02S09[N~S],D03Z02S09[W~E],D03Z02S09[S~N]",
-		"direction": 6
+		"Id": "D03Z03S07[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S05[SE]"
 	},
 	{
-		"id": "D03Z02S10[N~SW]",
-		"newDoors": "D03Z02S10[W~E],D03Z02S10[S~N],D03Z02S10[E~W],D03Z02S10[-~Cherubs]",
-		"direction": 0
+		"Id": "D03Z03S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S11[W]"
 	},
 	{
-		"id": "D03Z02S10[W~E]",
-		"newDoors": "D03Z02S10[N~SW],D03Z02S10[S~N],D03Z02S10[E~W],D03Z02S10[-~Cherubs]",
-		"direction": 1
+		"Id": "D03Z03S07[S]",
+		"Direction": 3,
+		"OriginalDoor": "D03Z03S09[N]"
 	},
 	{
-		"id": "D03Z02S10[S~N]",
-		"newDoors": "D03Z02S10[N~SW],D03Z02S10[W~E],D03Z02S10[E~W],D03Z02S10[-~Cherubs]",
-		"direction": 3
+		"Id": "D03Z03S08[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S07[NE]"
 	},
 	{
-		"id": "D03Z02S10[E~W]",
-		"newDoors": "D03Z02S10[N~SW],D03Z02S10[W~E],D03Z02S10[S~N],D03Z02S10[-~Cherubs]",
-		"direction": 2
+		"Id": "D03Z03S08[-CherubsL]",
+		"Direction": 6,
+		"OriginalDoor": "D03Z03S11[CherubsL]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D03Z02S10[SpecL~-]",
-		"newDoors": "D03Z02S10[N~SW],D03Z02S10[W~E],D03Z02S10[S~N],D03Z02S10[E~W],D03Z02S10[-~Cherubs]",
-		"direction": 6
+		"Id": "D03Z03S08[-CherubsR]",
+		"Direction": 6,
+		"OriginalDoor": "D03Z03S11[CherubsR]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D03Z02S10[-~Cherubs]",
-		"direction": 5
+		"Id": "D03Z03S09[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S10[E]"
 	},
 	{
-		"id": "D03Z02S11[W~E]",
-		"newDoors": "D03Z02S11[E~W]",
-		"direction": 1
+		"Id": "D03Z03S09[N]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z03S07[S]"
 	},
 	{
-		"id": "D03Z02S11[E~W]",
-		"newDoors": "D03Z02S11[W~E]",
-		"direction": 2
+		"Id": "D03Z03S10[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S09[SW]"
 	},
 	{
-		"id": "D03Z02S12[E~W]",
-		"direction": 2
+		"Id": "D03Z03S10[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D03Z02S12[Cherubs~-]",
-		"newDoors": "D03Z02S12[E~W]",
-		"direction": 6
+		"Id": "D03Z03S11[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S07[E]"
 	},
 	{
-		"id": "D03Z02S13[E~W]",
-		"newDoors": "D03Z02S13[-~Cherubs]",
-		"direction": 2
+		"Id": "D03Z03S11[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S15[W]"
 	},
 	{
-		"id": "D03Z02S13[-~Cherubs]",
-		"direction": 5
+		"Id": "D03Z03S11[CherubsL]",
+		"Direction": 5
 	},
 	{
-		"id": "D03Z02S14[E~W]",
-		"direction": 2,
-		"type": 1
+		"Id": "D03Z03S11[CherubsR]",
+		"Direction": 5
 	},
 	{
-		"id": "D03Z02S15[W~E]",
-		"newDoors": "D03Z02S15[E~W]",
-		"direction": 1
+		"Id": "D03Z03S12[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S01[S]"
 	},
 	{
-		"id": "D03Z02S15[E~W]",
-		"newDoors": "D03Z02S15[W~E]",
-		"direction": 2
+		"Id": "D03Z03S12[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S02[W]"
 	},
 	{
-		"id": "D03Z03S01[W~E]",
-		"newDoors": "D03Z03S01[S~W],D03Z03S01[NL~SSL],D03Z03S01[NR~SSR]",
-		"direction": 1
+		"Id": "D03Z03S13[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S04[SE]"
 	},
 	{
-		"id": "D03Z03S01[S~W]",
-		"newDoors": "D03Z03S01[W~E],D03Z03S01[NL~SSL],D03Z03S01[NR~SSR]",
-		"direction": 2
+		"Id": "D03Z03S14[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S02[NE]"
 	},
 	{
-		"id": "D03Z03S01[NL~SSL]",
-		"newDoors": "D03Z03S01[W~E],D03Z03S01[S~W],D03Z03S01[NR~SSR]",
-		"direction": 0
+		"Id": "D03Z03S15[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S11[E]",
+		"Logic": "canBeatGrievanceBoss"
 	},
 	{
-		"id": "D03Z03S01[NR~SSR]",
-		"newDoors": "D03Z03S01[W~E],D03Z03S01[S~W],D03Z03S01[NL~SSL]",
-		"direction": 0
+		"Id": "D03Z03S15[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S16[W]",
+		"Logic": "canBeatGrievanceBoss"
 	},
 	{
-		"id": "D03Z03S01[NC~SSC]",
-		"newDoors": "D03Z03S01[W~E],D03Z03S01[S~W],D03Z03S01[NL~SSL],D03Z03S01[NR~SSR]",
-		"direction": 6,
-		"type": 2
+		"Id": "D03Z03S16[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S15[E]"
 	},
 	{
-		"id": "D03Z03S02[W~E]",
-		"newDoors": "D03Z03S02[E~W],D03Z03S02[NE~W]",
-		"direction": 1
+		"Id": "D03Z03S16[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S17[W]"
 	},
 	{
-		"id": "D03Z03S02[E~W]",
-		"newDoors": "D03Z03S02[W~E],D03Z03S02[NE~W]",
-		"direction": 2
+		"Id": "D03Z03S17[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z03S16[E]"
 	},
 	{
-		"id": "D03Z03S02[NE~W]",
-		"newDoors": "D03Z03S02[W~E],D03Z03S02[E~W]",
-		"direction": 2
+		"Id": "D03Z03S17[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S25[SW]",
+		"Type": 1
 	},
 	{
-		"id": "D03Z03S03[W~E]",
-		"newDoors": "D03Z03S03[NE~NW]",
-		"direction": 1
+		"Id": "D03Z03S18[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S01[W]"
 	},
 	{
-		"id": "D03Z03S03[NE~NW]",
-		"newDoors": "D03Z03S03[W~E]",
-		"direction": 2
+		"Id": "D03Z03S19[E]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z03S07[NW]"
 	},
+	
 	{
-		"id": "D03Z03S03[SE~SW]",
-		"direction": 2,
-		"type": 1
+		"Id": "D04Z01S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D08Z02S01[E]",
+		"Type": 1
 	},
 	{
-		"id": "D03Z03S04[NW~NE]",
-		"newDoors": "D03Z03S04[SW~SE],D03Z03S04[NE~NW],D03Z03S04[E~SW],D03Z03S04[SE~W],D03Z03S04[-~Cherubs]",
-		"direction": 1
+		"Id": "D04Z01S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z01S02[W]"
 	},
 	{
-		"id": "D03Z03S04[SW~SE]",
-		"newDoors": "D03Z03S04[NW~NE],D03Z03S04[NE~NW],D03Z03S04[E~SW],D03Z03S04[SE~W],D03Z03S04[-~Cherubs]",
-		"direction": 1
+		"Id": "D04Z01S01[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z01S02[NW]",
+		"Logic": "D04Z01S01[NE] || D04Z01S01[N] || canCrossGap3"
 	},
 	{
-		"id": "D03Z03S04[NE~NW]",
-		"newDoors": "D03Z03S04[NW~NE],D03Z03S04[SW~SE],D03Z03S04[E~SW],D03Z03S04[SE~W],D03Z03S04[-~Cherubs]",
-		"direction": 2
+		"Id": "D04Z01S01[N]",
+		"Direction": 0,
+		"OriginalDoor": "D04Z01S05[S]",
+		"Logic": "D04Z01S01[NE] || D04Z01S01[N] || canCrossGap3"
 	},
 	{
-		"id": "D03Z03S04[E~SW]",
-		"newDoors": "D03Z03S04[NW~NE],D03Z03S04[SW~SE],D03Z03S04[NE~NW],D03Z03S04[SE~W],D03Z03S04[-~Cherubs]",
-		"direction": 2
+		"Id": "D04Z01S01[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D03Z03S04[SE~W]",
-		"newDoors": "D03Z03S04[NW~NE],D03Z03S04[SW~SE],D03Z03S04[NE~NW],D03Z03S04[E~SW],D03Z03S04[-~Cherubs]",
-		"direction": 2
+		"Id": "D04Z01S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z01S01[E]"
 	},
 	{
-		"id": "D03Z03S04[-~Cherubs]",
-		"direction": 5
+		"Id": "D04Z01S02[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z01S01[NE]"
 	},
 	{
-		"id": "D03Z03S05[NW~NE]",
-		"newDoors": "D03Z03S05[NE~W]",
-		"direction": 1
+		"Id": "D04Z01S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z01S03[W]"
 	},
 	{
-		"id": "D03Z03S05[NE~W]",
-		"newDoors": "D03Z03S05[NW~NE]",
-		"direction": 2
+		"Id": "D04Z01S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z01S02[E]"
 	},
 	{
-		"id": "D03Z03S05[SW~E]",
-		"newDoors": "D03Z03S05[SE~SW]",
-		"direction": 1
+		"Id": "D04Z01S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z01S04[W]"
 	},
 	{
-		"id": "D03Z03S05[SE~SW]",
-		"newDoors": "D03Z03S05[SW~E]",
-		"direction": 2
+		"Id": "D04Z01S03[S]",
+		"Direction": 3,
+		"OriginalDoor": "D05Z01S20[N]",
+		"Type": 1,
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D03Z03S06[W~NE]",
-		"direction": 1,
-		"type": 1
+		"Id": "D04Z01S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z01S03[E]"
 	},
 	{
-		"id": "D03Z03S07[S~N]",
-		"newDoors": "D03Z03S07[NW~E],D03Z03S07[SW~SE],D03Z03S07[NE~W],D03Z03S07[E~W]",
-		"direction": 3
+		"Id": "D04Z01S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S01[W]",
+		"Type": 1
 	},
 	{
-		"id": "D03Z03S07[NW~E]",
-		"newDoors": "D03Z03S07[S~N],D03Z03S07[SW~SE],D03Z03S07[NE~W],D03Z03S07[E~W]",
-		"direction": 1
+		"Id": "D04Z01S04[Cherubs]",
+		"Direction": 5,
+		"Type": 1
 	},
 	{
-		"id": "D03Z03S07[SW~SE]",
-		"newDoors": "D03Z03S07[S~N],D03Z03S07[NW~E],D03Z03S07[NE~W],D03Z03S07[E~W]",
-		"direction": 1
+		"Id": "D04Z01S05[S]",
+		"Direction": 3,
+		"OriginalDoor": "D04Z01S01[N]"
 	},
 	{
-		"id": "D03Z03S07[NE~W]",
-		"newDoors": "D03Z03S07[S~N],D03Z03S07[NW~E],D03Z03S07[SW~SE],D03Z03S07[E~W]",
-		"direction": 2
+		"Id": "D04Z01S05[N]",
+		"Direction": 0,
+		"OriginalDoor": "D04Z01S06[S]",
+		"Logic": "D04Z01S05[N] || (blood && canClimbOnRoot) || doubleJump && (blood || canClimbOnRoot)"
 	},
 	{
-		"id": "D03Z03S07[E~W]",
-		"newDoors": "D03Z03S07[S~N],D03Z03S07[NW~E],D03Z03S07[SW~SE],D03Z03S07[NE~W]",
-		"direction": 2
+		"Id": "D04Z01S05[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D04Z01S01[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D03Z03S08[W~NE]",
-		"newDoors": "D03Z03S08[-~CherubsL],D03Z03S08[-~CherubsR]",
-		"direction": 1
+		"Id": "D04Z01S05[CherubsN]",
+		"Direction": 5
 	},
 	{
-		"id": "D03Z03S08[-~CherubsL]",
-		"direction": 5
+		"Id": "D04Z01S06[S]",
+		"Direction": 3,
+		"OriginalDoor": "D04Z01S05[N]"
 	},
 	{
-		"id": "D03Z03S08[-~CherubsR]",
-		"direction": 5
+		"Id": "D04Z01S06[E]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S09[SW]",
+		"Type": 1,
+		"VisibilityFlags": 9,
+		"Logic": "D04Z01S06[E] || doubleJump"
 	},
 	{
-		"id": "D03Z03S09[SW~E]",
-		"newDoors": "D03Z03S09[N~S]",
-		"direction": 1
+		"Id": "D04Z01S06[Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D04Z01S05[CherubsN]",
+		"Logic": "linen"
 	},
+
 	{
-		"id": "D03Z03S09[N~S]",
-		"newDoors": "D03Z03S09[SW~E]",
-		"direction": 0
+		"Id": "D04Z02S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z01S04[E]",
+		"Type": 1
 	},
 	{
-		"id": "D03Z03S10[E~SW]",
-		"direction": 2
+		"Id": "D04Z02S01[N]",
+		"Direction": 0,
+		"OriginalDoor": "D04Z02S02[S]",
+		"Logic": "D04Z02S01[N] || D04Z02S01[NE] && dash && (doubleJump || wallClimb)"
 	},
 	{
-		"id": "D03Z03S10[Cherubs~-]",
-		"newDoors": "D03Z03S10[E~SW]",
-		"direction": 6
+		"Id": "D04Z02S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z03S01[W]",
+		"Type": 1
 	},
 	{
-		"id": "D03Z03S11[E~W]",
-		"newDoors": "D03Z03S11[W~E]",
-		"direction": 2
+		"Id": "D04Z02S01[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S03[W]",
+		"Logic": "D04Z02S01[NE] || D04Z02S01[N] && dash && canCrossGap1"
 	},
 	{
-		"id": "D03Z03S11[W~E]",
-		"newDoors": "D03Z03S11[E~W]",
-		"direction": 1
+		"Id": "D04Z02S02[S]",
+		"Direction": 3,
+		"OriginalDoor": "D04Z02S01[N]"
 	},
 	{
-		"id": "D03Z03S11[CherubsL~-]",
-		"newDoors": "D03Z03S11[E~W],D03Z03S11[W~E]",
-		"direction": 6
+		"Id": "D04Z02S02[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S17[W]"
 	},
 	{
-		"id": "D03Z03S11[CherubsR~-]",
-		"newDoors": "D03Z03S11[E~W],D03Z03S11[W~E]",
-		"direction": 6
+		"Id": "D04Z02S02[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S15[W]",
+		"VisibilityFlags": 17,
+		"Logic": "D04Z02S02[NE] || doubleJump && upwarpSkipsAllowed"
 	},
 	{
-		"id": "D03Z03S12[E~W]",
-		"newDoors": "D03Z03S12[W~S]",
-		"direction": 2
+		"Id": "D04Z02S02[N]",
+		"Direction": 0,
+		"OriginalDoor": "D06Z01S02[S]",
+		"Type": 1,
+		"Logic": "D04Z02S02[N] || D04Z02S02[NE] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D03Z03S12[W~S]",
-		"newDoors": "D03Z03S12[E~W]",
-		"direction": 1
+		"Id": "D04Z02S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S01[NE]"
 	},
 	{
-		"id": "D03Z03S13[W~SE]",
-		"direction": 1,
-		"type": 1
+		"Id": "D04Z02S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S04[NW]"
 	},
 	{
-		"id": "D03Z03S14[W~NE]",
-		"direction": 1,
-		"type": 1
+		"Id": "D04Z02S04[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S14[E]"
 	},
 	{
-		"id": "D03Z03S15[E~W]",
-		"newDoors": "D03Z03S15[W~E]",
-		"direction": 2
+		"Id": "D04Z02S04[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S01[NW]",
+		"Type": 1
 	},
 	{
-		"id": "D03Z03S15[W~E]",
-		"newDoors": "D03Z03S15[E~W]",
-		"direction": 1
+		"Id": "D04Z02S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z03S01[E]",
+		"Type": 1
 	},
 	{
-		"id": "D03Z03S16[E~W]",
-		"newDoors": "D03Z03S16[W~E]",
-		"direction": 2
+		"Id": "D04Z02S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S05[W]"
 	},
 	{
-		"id": "D03Z03S16[W~E]",
-		"newDoors": "D03Z03S16[E~W]",
-		"direction": 1
+		"Id": "D04Z02S04[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S03[E]",
+		"Logic": "D04Z02S04[NW] || D04Z02S04[NE] || D04Z02S04[N] || D04Z02S04[Cherubs] || wallClimb && doubleJump"
 	},
 	{
-		"id": "D03Z03S17[E~SW]",
-		"newDoors": "D03Z03S17[W~E]",
-		"direction": 2
+		"Id": "D04Z02S04[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S19[W]",
+		"Logic": "D04Z02S04[NW] || D04Z02S04[NE] || D04Z02S04[N] || D04Z02S04[Cherubs] || wallClimb && doubleJump"
 	},
 	{
-		"id": "D03Z03S17[W~E]",
-		"newDoors": "D03Z03S17[E~SW]",
-		"direction": 1
+		"Id": "D04Z02S04[N]",
+		"Direction": 0,
+		"OriginalDoor": "D04Z02S06[S]",
+		"Logic": "(D04Z02S04[NW] || D04Z02S04[NE] || D04Z02S04[N] || D04Z02S04[Cherubs] || wallClimb && doubleJump) && openedMoMLadder"
 	},
 	{
-		"id": "D03Z03S18[E~W]",
-		"newDoors": "D01Z02S07[E~W]",
-		"direction": 2
+		"Id": "D04Z02S04[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D03Z03S19[E~NW]",
-		"direction": 2
+		"Id": "D04Z02S05[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S04[E]"
 	},
 	{
-		"id": "D04Z01S01[W~E]",
-		"newDoors": "D04Z01S01[E~W],D04Z01S01[NE~NW],D04Z01S01[N~S]",
-		"direction": 1
+		"Id": "D04Z02S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S07[SW]"
 	},
 	{
-		"id": "D04Z01S01[E~W]",
-		"newDoors": "D04Z01S01[W~E],D04Z01S01[NE~NW],D04Z01S01[N~S]",
-		"direction": 2
+		"Id": "D04Z02S06[S]",
+		"Direction": 3,
+		"OriginalDoor": "D04Z02S04[N]"
 	},
 	{
-		"id": "D04Z01S01[NE~NW]",
-		"newDoors": "D04Z01S01[W~E],D04Z01S01[E~W],D04Z01S01[N~S]",
-		"direction": 2
+		"Id": "D04Z02S06[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S11[E]",
+		"Logic": "D04Z02S06[NW] || D04Z02S06[N] || D04Z02S06[NE] || wallClimb"
 	},
 	{
-		"id": "D04Z01S01[N~S]",
-		"newDoors": "D04Z01S01[W~E],D04Z01S01[E~W],D04Z01S01[NE~NW]",
-		"direction": 0
+		"Id": "D04Z02S06[N]",
+		"Direction": 0,
+		"OriginalDoor": "D06Z01S23[S]",
+		"Type": 1,
+		"Logic": "(D04Z02S06[NW] || D04Z02S06[N] || D04Z02S06[NE] || wallClimb) && openedARLadder"
 	},
 	{
-		"id": "D04Z01S01[Cherubs~-]",
-		"newDoors": "D04Z01S01[W~E],D04Z01S01[E~W],D04Z01S01[NE~NW],D04Z01S01[N~S]",
-		"direction": 6
+		"Id": "D04Z02S06[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S09[W]",
+		"Logic": "D04Z02S06[NW] || D04Z02S06[N] || D04Z02S06[NE] || wallClimb"
 	},
 	{
-		"id": "D04Z01S02[W~E]",
-		"newDoors": "D04Z01S02[NW~NE],D04Z01S02[E~W]",
-		"direction": 1
+		"Id": "D04Z02S06[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S10[W]"
 	},
 	{
-		"id": "D04Z01S02[NW~NE]",
-		"newDoors": "D04Z01S02[W~E],D04Z01S02[E~W]",
-		"direction": 1
+		"Id": "D04Z02S06[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D04Z02S04[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D04Z01S02[E~W]",
-		"newDoors": "D04Z01S02[W~E],D04Z01S02[NW~NE]",
-		"direction": 2
+		"Id": "D04Z02S07[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S05[E]"
 	},
 	{
-		"id": "D04Z01S03[W~E]",
-		"newDoors": "D04Z01S03[E~W]",
-		"direction": 1
+		"Id": "D04Z02S07[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S19[E]"
 	},
 	{
-		"id": "D04Z01S03[E~W]",
-		"newDoors": "D04Z01S03[W~E]",
-		"direction": 2
+		"Id": "D04Z02S07[N]",
+		"Direction": 0,
+		"OriginalDoor": "D04Z02S08[S]"
 	},
 	{
-		"id": "D04Z01S03[S~N]",
-		"newDoors": "D04Z01S03[W~E],D04Z01S03[E~W]",
-		"direction": 3
+		"Id": "D04Z02S07[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S13[W]"
 	},
 	{
-		"id": "D04Z01S04[W~E]",
-		"newDoors": "D04Z01S04[E~W]",
-		"direction": 1
+		"Id": "D04Z02S07[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S23[W]"
 	},
 	{
-		"id": "D04Z01S04[E~W]",
-		"newDoors": "D04Z01S04[W~E]",
-		"direction": 2
+		"Id": "D04Z02S08[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S09[E]"
 	},
 	{
-		"id": "D04Z01S04[Cherubs~-]",
-		"newDoors": "D04Z01S04[W~E],D04Z01S04[E~W]",
-		"direction": 6
+		"Id": "D04Z02S08[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S20[W]"
 	},
 	{
-		"id": "D04Z01S05[S~N]",
-		"newDoors": "D04Z01S05[N~S],D04Z01S05[-~Cherubs]",
-		"direction": 3
+		"Id": "D04Z02S08[S]",
+		"Direction": 3,
+		"OriginalDoor": "D04Z02S07[N]"
 	},
 	{
-		"id": "D04Z01S05[N~S]",
-		"newDoors": "D04Z01S05[S~N],D04Z01S05[-~Cherubs]",
-		"direction": 0
+		"Id": "D04Z02S08[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D04Z01S05[-~Cherubs]",
-		"direction": 5
+		"Id": "D04Z02S09[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S06[NE]"
 	},
 	{
-		"id": "D04Z01S05[CherubsN~Cherubs]",
-		"newDoors": "D04Z01S05[S~N],D04Z01S05[N~S],D04Z01S05[-~Cherubs]",
-		"direction": 6
+		"Id": "D04Z02S09[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S08[W]"
 	},
 	{
-		"id": "D04Z01S06[S~N]",
-		"newDoors": "D04Z01S06[Cherubs~CherubsN]",
-		"direction": 3
+		"Id": "D04Z02S09[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S16[W]",
+		"Logic": "D04Z02S09[NE] || blood"
 	},
 	{
-		"id": "D04Z01S06[E~SW]",
-		"newDoors": "D04Z01S06[S~N],D04Z01S06[Cherubs~CherubsN]",
-		"direction": 2
+		"Id": "D04Z02S10[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S06[E]"
 	},
 	{
-		"id": "D04Z01S06[Cherubs~CherubsN]",
-		"direction": 5
+		"Id": "D04Z02S11[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S21[SE]"
 	},
 	{
-		"id": "D04Z02S01[W~E]",
-		"newDoors": "D04Z02S01[E~W]",
-		"direction": 1
+		"Id": "D04Z02S11[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S06[NW]"
 	},
 	{
-		"id": "D04Z02S01[E~W]",
-		"newDoors": "D04Z02S01[W~E]",
-		"direction": 2
+		"Id": "D04Z02S12[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S21[NE]"
 	},
 	{
-		"id": "D04Z02S01[N~S]",
-		"newDoors": "D04Z02S01[W~E],D04Z02S01[E~W],D04Z02S01[NE~W]",
-		"direction": 0
+		"Id": "D04Z02S13[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S07[NE]"
 	},
 	{
-		"id": "D04Z02S01[NE~W]",
-		"newDoors": "D04Z02S01[W~E],D04Z02S01[E~W],D04Z02S01[N~S]",
-		"direction": 2
+		"Id": "D04Z02S14[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S04[SW]"
 	},
 	{
-		"id": "D04Z02S02[S~N]",
-		"newDoors": "D04Z02S02[SE~W],D04Z02S02[N~S]",
-		"direction": 3
+		"Id": "D04Z02S15[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S02[NE]"
 	},
 	{
-		"id": "D04Z02S02[SE~W]",
-		"newDoors": "D04Z02S02[S~N],D04Z02S02[N~S]",
-		"direction": 2
+		"Id": "D04Z02S15[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S22[W]"
 	},
 	{
-		"id": "D04Z02S02[NE~W]",
-		"newDoors": "D04Z02S02[S~N],D04Z02S02[SE~W],D04Z02S02[N~S]",
-		"direction": 2
+		"Id": "D04Z02S16[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S09[NE]"
 	},
 	{
-		"id": "D04Z02S02[N~S]",
-		"newDoors": "D04Z02S02[S~N],D04Z02S02[SE~W]",
-		"direction": 0
+		"Id": "D04Z02S16[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D04Z02S08[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D04Z02S03[W~NE]",
-		"newDoors": "D04Z02S03[E~NW]",
-		"direction": 1
+		"Id": "D04Z02S17[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S02[SE]"
 	},
 	{
-		"id": "D04Z02S03[E~NW]",
-		"newDoors": "D04Z02S03[W~NE]",
-		"direction": 2
+		"Id": "D04Z02S19[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S04[NE]"
 	},
 	{
-		"id": "D04Z02S04[SW~E]",
-		"newDoors": "D04Z02S04[SE~NW],D04Z02S04[W~E],D04Z02S04[E~W]",
-		"direction": 1
+		"Id": "D04Z02S19[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S07[W]"
 	},
 	{
-		"id": "D04Z02S04[SE~NW]",
-		"newDoors": "D04Z02S04[SW~E],D04Z02S04[W~E],D04Z02S04[E~W]",
-		"direction": 2
+		"Id": "D04Z02S20[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S08[E]"
 	},
 	{
-		"id": "D04Z02S04[W~E]",
-		"newDoors": "D04Z02S04[SW~E],D04Z02S04[SE~NW],D04Z02S04[E~W]",
-		"direction": 1
+		"Id": "D04Z02S20[Redento]",
+		"Direction": 4,
+		"OriginalDoor": "D04BZ02S01[Redento]",
+		"Logic": "redentoRooms >= 5 && knots >= 1 && limestones >= 3"
 	},
 	{
-		"id": "D04Z02S04[E~W]",
-		"newDoors": "D04Z02S04[SW~E],D04Z02S04[SE~NW],D04Z02S04[W~E]",
-		"direction": 2
+		"Id": "D04Z02S21[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S22[E]",
+		"Logic": "D04Z02S21[NE] || D04Z02S21[W] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D04Z02S04[NW~E]",
-		"newDoors": "D04Z02S04[SW~E],D04Z02S04[SE~NW],D04Z02S04[W~E],D04Z02S04[E~W],D04Z02S04[NE~W]",
-		"direction": 1
+		"Id": "D04Z02S21[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S11[W]"
 	},
 	{
-		"id": "D04Z02S04[NE~W]",
-		"newDoors": "D04Z02S04[SW~E],D04Z02S04[SE~NW],D04Z02S04[W~E],D04Z02S04[E~W],D04Z02S04[NW~E]",
-		"direction": 2
+		"Id": "D04Z02S21[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S12[W]",
+		"Logic": "D04Z02S21[NE] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D04Z02S04[N~S]",
-		"newDoors": "D04Z02S04[SW~E],D04Z02S04[SE~NW],D04Z02S04[W~E],D04Z02S04[E~W],D04Z02S04[NW~E],D04Z02S04[NE~W]",
-		"direction": 0
+		"Id": "D04Z02S22[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S15[E]",
+		"Logic": "D04Z02S22[W] || canBeatMothersBoss"
 	},
 	{
-		"id": "D04Z02S04[Cherubs~-]",
-		"newDoors": "D04Z02S04[SW~E],D04Z02S04[SE~NW],D04Z02S04[W~E],D04Z02S04[E~W],D04Z02S04[NW~E],D04Z02S04[NE~W],D04Z02S04[N~S]",
-		"direction": 6
+		"Id": "D04Z02S22[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S21[W]",
+		"Logic": "D04Z02S22[E] || canBeatMothersBoss"
 	},
 	{
-		"id": "D04Z02S05[W~E]",
-		"newDoors": "D04Z02S05[E~SW]",
-		"direction": 1
+		"Id": "D04Z02S23[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S07[SE]"
 	},
 	{
-		"id": "D04Z02S05[E~SW]",
-		"newDoors": "D04Z02S05[W~E]",
-		"direction": 2
+		"Id": "D04Z02S23[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S24[NW]"
 	},
 	{
-		"id": "D04Z02S06[S~N]",
-		"newDoors": "D04Z02S06[E~W],D04Z02S06[NE~W],D04Z02S06[NW~E],D04Z02S06[-~Cherubs]",
-		"direction": 3
+		"Id": "D04Z02S23[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z04S01[W]",
+		"Type": 1
 	},
 	{
-		"id": "D04Z02S06[E~W]",
-		"newDoors": "D04Z02S06[S~N],D04Z02S06[NE~W],D04Z02S06[NW~E],D04Z02S06[-~Cherubs]",
-		"direction": 2
+		"Id": "D04Z02S24[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S23[SE]"
 	},
 	{
-		"id": "D04Z02S06[NE~W]",
-		"newDoors": "D04Z02S06[S~N],D04Z02S06[E~W],D04Z02S06[NW~E],D04Z02S06[-~Cherubs]",
-		"direction": 2
+		"Id": "D04Z02S24[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S01[E]",
+		"Type": 1
 	},
 	{
-		"id": "D04Z02S06[NW~E]",
-		"newDoors": "D04Z02S06[S~N],D04Z02S06[E~W],D04Z02S06[NE~W],D04Z02S06[-~Cherubs]",
-		"direction": 1
+		"Id": "D04Z02S24[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S25[W]"
 	},
 	{
-		"id": "D04Z02S06[N~S]",
-		"newDoors": "D04Z02S06[S~N],D04Z02S06[E~W],D04Z02S06[NE~W],D04Z02S06[NW~E],D04Z02S06[-~Cherubs]",
-		"direction": 0
+		"Id": "D04Z02S25[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S24[SE]"
 	},
 	{
-		"id": "D04Z02S06[-~Cherubs]",
-		"direction": 5
+		"Id": "D04BZ02S01[Redento]",
+		"Direction": 7,
+		"OriginalDoor": "D04Z02S20[Redento]"
 	},
+	
 	{
-		"id": "D04Z02S07[SW~E]",
-		"newDoors": "D04Z02S07[W~E],D04Z02S07[SE~W],D04Z02S07[NE~W],D04Z02S07[N~S]",
-		"direction": 1
+		"Id": "D04Z03S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S01[E]",
+		"Type": 1
 	},
 	{
-		"id": "D04Z02S07[W~E]",
-		"newDoors": "D04Z02S07[SW~E],D04Z02S07[SE~W],D04Z02S07[NE~W],D04Z02S07[N~S]",
-		"direction": 1
+		"Id": "D04Z03S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S04[W]",
+		"Type": 1
 	},
 	{
-		"id": "D04Z02S07[SE~W]",
-		"newDoors": "D04Z02S07[SW~E],D04Z02S07[W~E],D04Z02S07[NE~W],D04Z02S07[N~S]",
-		"direction": 2
+		"Id": "D04Z03S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S22[E]",
+		"Type": 1
 	},
+	
 	{
-		"id": "D04Z02S07[NE~W]",
-		"newDoors": "D04Z02S07[SW~E],D04Z02S07[W~E],D04Z02S07[SE~W],D04Z02S07[N~S]",
-		"direction": 2
+		"Id": "D04Z04S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S23[NE]",
+		"Type": 1
 	},
 	{
-		"id": "D04Z02S07[N~S]",
-		"newDoors": "D04Z02S07[SW~E],D04Z02S07[W~E],D04Z02S07[SE~W],D04Z02S07[NE~W]",
-		"direction": 0
+		"Id": "D04Z04S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z04S02[W]",
+		"Type": 9
 	},
 	{
-		"id": "D04Z02S08[W~E]",
-		"newDoors": "D04Z02S08[E~W],D04Z02S08[S~N]",
-		"direction": 1
+		"Id": "D04Z04S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z04S01[E]",
+		"Type": 9
 	},
+	
 	{
-		"id": "D04Z02S08[E~W]",
-		"newDoors": "D04Z02S08[W~E],D04Z02S08[S~N]",
-		"direction": 2
+		"Id": "D05Z01S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S02[E]"
 	},
 	{
-		"id": "D04Z02S08[S~N]",
-		"newDoors": "D04Z02S08[W~E],D04Z02S08[E~W]",
-		"direction": 3
+		"Id": "D05Z01S01[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z02S04[SE]",
+		"Type": 1
 	},
 	{
-		"id": "D04Z02S08[Cherubs~-]",
-		"newDoors": "D04Z02S08[W~E],D04Z02S08[E~W],D04Z02S08[S~N]",
-		"direction": 6
+		"Id": "D05Z01S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S16[W]"
 	},
 	{
-		"id": "D04Z02S09[W~NE]",
-		"newDoors": "D04Z02S09[E~W],D04Z02S09[NE~W]",
-		"direction": 1
+		"Id": "D05Z01S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S15[E]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D04Z02S09[E~W]",
-		"newDoors": "D04Z02S09[W~NE],D04Z02S09[NE~W]",
-		"direction": 2
+		"Id": "D05Z01S02[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S03[E]"
 	},
 	{
-		"id": "D04Z02S09[NE~W]",
-		"newDoors": "D04Z02S09[W~NE],D04Z02S09[E~W]",
-		"direction": 2
+		"Id": "D05Z01S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S01[W]"
 	},
 	{
-		"id": "D04Z02S10[W~E]",
-		"direction": 1
+		"Id": "D05Z01S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S04[E]"
 	},
 	{
-		"id": "D04Z02S11[W~SE]",
-		"newDoors": "D04Z02S11[E~NW]",
-		"direction": 1
+		"Id": "D05Z01S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S02[NW]"
 	},
 	{
-		"id": "D04Z02S11[E~NW]",
-		"newDoors": "D04Z02S11[W~SE]",
-		"direction": 2
+		"Id": "D05Z01S03[Frontal]",
+		"Direction": 4,
+		"OriginalDoor": "D05BZ01S01[FrontalS]",
+		"Logic": "woodKey && D05Z01S23[E] && (D05Z01S11[NW] || D05Z01S11[NE])"
 	},
 	{
-		"id": "D04Z02S12[W~NE]",
-		"direction": 1
+		"Id": "D05Z01S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S05[E]"
 	},
 	{
-		"id": "D04Z02S13[W~NE]",
-		"direction": 1
+		"Id": "D05Z01S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S03[W]"
 	},
 	{
-		"id": "D04Z02S14[E~SW]",
-		"direction": 2
+		"Id": "D05Z01S05[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S07[E]"
 	},
 	{
-		"id": "D04Z02S15[W~NE]",
-		"newDoors": "D04Z02S15[E~W]",
-		"direction": 1
+		"Id": "D05Z01S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S04[W]"
 	},
 	{
-		"id": "D04Z02S15[E~W]",
-		"newDoors": "D04Z02S15[W~NE]",
-		"direction": 2
+		"Id": "D05Z01S05[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S17[W]",
+		"Logic": "D05Z01S05[NE] || blood"
 	},
 	{
-		"id": "D04Z02S16[W~NE]",
-		"newDoors": "D04Z02S16[-~Cherubs]",
-		"direction": 1
+		"Id": "D05Z01S06[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S24[E]",
+		"Logic": "D05Z01S06[W] || canSurvivePoison3"
 	},
 	{
-		"id": "D04Z02S16[-~Cherubs]",
-		"direction": 5
+		"Id": "D05Z01S06[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S20[W]",
+		"Logic": "D05Z01S06[E] || canSurvivePoison3"
 	},
 	{
-		"id": "D04Z02S17[W~SE]",
-		"direction": 1
+		"Id": "D05Z01S07[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S08[NE]"
 	},
 	{
-		"id": "D04Z02S19[W~NE]",
-		"newDoors": "D04Z02S19[E~W]",
-		"direction": 1
+		"Id": "D05Z01S07[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S20[E]",
+		"Logic": "D05Z01S07[NW] || blood && (canClimbOnRoot || doubleJump) || (canClimbOnRoot && canCrossGap3) || canCrossGap7"
 	},
 	{
-		"id": "D04Z02S19[E~W]",
-		"newDoors": "D04Z02S19[W~NE]",
-		"direction": 2
+		"Id": "D05Z01S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S05[SW]"
 	},
 	{
-		"id": "D04Z02S20[Redento~Redento]",
-		"newDoors": "D04Z02S20[W~E]",
-		"direction": 4
+		"Id": "D05Z01S08[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S10[E]"
 	},
 	{
-		"id": "D04Z02S20[W~E]",
-		"newDoors": "D04Z02S20[Redento~Redento]",
-		"direction": 1
+		"Id": "D05Z01S08[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S12[E]"
 	},
 	{
-		"id": "D04Z02S21[W~E]",
-		"newDoors": "D04Z02S21[SE~W],D04Z02S21[NE~W]",
-		"direction": 1
+		"Id": "D05Z01S08[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S09[W]"
 	},
 	{
-		"id": "D04Z02S21[SE~W]",
-		"newDoors": "D04Z02S21[W~E],D04Z02S21[NE~W]",
-		"direction": 2
+		"Id": "D05Z01S08[Health]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S14[W]"
 	},
 	{
-		"id": "D04Z02S21[NE~W]",
-		"newDoors": "D04Z02S21[W~E],D04Z02S21[SE~W]",
-		"direction": 2
+		"Id": "D05Z01S08[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S07[SW]"
 	},
 	{
-		"id": "D04Z02S22[W~E]",
-		"newDoors": "D04Z02S22[E~W]",
-		"direction": 1
+		"Id": "D05Z01S09[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S08[E]"
 	},
 	{
-		"id": "D04Z02S22[E~W]",
-		"newDoors": "D04Z02S22[W~E]",
-		"direction": 2
+		"Id": "D05Z01S09[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S18[W]"
 	},
 	{
-		"id": "D04Z02S23[W~SE]",
-		"newDoors": "D04Z02S23[SE~NW],D04Z02S23[NE~W]",
-		"direction": 1
+		"Id": "D05Z01S10[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S11[E]"
 	},
 	{
-		"id": "D04Z02S23[SE~NW]",
-		"newDoors": "D04Z02S23[W~SE],D04Z02S23[NE~W]",
-		"direction": 2
+		"Id": "D05Z01S10[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S11[NE]"
 	},
 	{
-		"id": "D04Z02S23[NE~W]",
-		"newDoors": "D04Z02S23[W~SE],D04Z02S23[SE~NW]",
-		"direction": 2
+		"Id": "D05Z01S10[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S08[W]"
 	},
 	{
-		"id": "D04Z02S24[NW~SE]",
-		"newDoors": "D04Z02S24[SW~E],D04Z02S24[SE~W]",
-		"direction": 1
+		"Id": "D05Z01S11[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S19[E]",
+		"VisibilityFlags": 5,
+		"Logic": "canBreakTirana"
 	},
 	{
-		"id": "D04Z02S24[SW~E]",
-		"newDoors": "D04Z02S24[NW~SE],D04Z02S24[SE~W]",
-		"direction": 1
+		"Id": "D05Z01S11[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S23[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D05Z01S11[NE]" ]
 	},
 	{
-		"id": "D04Z02S24[SE~W]",
-		"newDoors": "D04Z02S24[NW~SE],D04Z02S24[SW~E]",
-		"direction": 2
+		"Id": "D05Z01S11[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S10[NW]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D05Z01S11[NW]" ]
 	},
 	{
-		"id": "D04Z02S25[W~SE]",
-		"newDoors": "D01Z02S07[E~W]",
-		"direction": 1
+		"Id": "D05Z01S11[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S01[W]",
+		"Type": 1
 	},
 	{
-		"id": "D04BZ02S01[Redento~Redento]",
-		"direction": 4
+		"Id": "D05Z01S11[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S10[W]"
 	},
 	{
-		"id": "D04Z03S01[W~E]",
-		"newDoors": "D04Z03S01[E~W]",
-		"direction": 1
+		"Id": "D05Z01S12[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S08[NW]"
 	},
 	{
-		"id": "D04Z03S01[E~W]",
-		"newDoors": "D04Z03S01[W~E]",
-		"direction": 2
+		"Id": "D05Z01S13[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S21[NW]"
 	},
 	{
-		"id": "D04Z03S02[W~E]",
-		"direction": 1
+		"Id": "D05Z01S14[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S08[Health]"
 	},
 	{
-		"id": "D04Z04S01[W~NE]",
-		"newDoors": "D04Z04S01[E~W]",
-		"direction": 1
+		"Id": "D05Z01S15[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S21[NE]"
 	},
 	{
-		"id": "D04Z04S01[E~W]",
-		"newDoors": "D04Z04S01[W~NE]",
-		"direction": 2
+		"Id": "D05Z01S15[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S02[W]"
 	},
 	{
-		"id": "D04Z04S02[W~E]",
-		"direction": 1
+		"Id": "D05Z01S16[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S01[E]"
 	},
 	{
-		"id": "D05Z01S01[NW~SE]",
-		"newDoors": "D05Z01S01[E~W],D05Z01S01[W~E]",
-		"direction": 1
+		"Id": "D05Z01S17[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S05[NE]"
 	},
 	{
-		"id": "D05Z01S01[E~W]",
-		"newDoors": "D05Z01S01[NW~SE],D05Z01S01[W~E]",
-		"direction": 2
+		"Id": "D05Z01S18[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S09[E]"
 	},
 	{
-		"id": "D05Z01S01[W~E]",
-		"newDoors": "D05Z01S01[NW~SE],D05Z01S01[E~W]",
-		"direction": 1
+		"Id": "D05Z01S19[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S15[E]",
+		"Type": 1
 	},
 	{
-		"id": "D05Z01S02[E~W]",
-		"newDoors": "D05Z01S02[NW~E]",
-		"direction": 2
+		"Id": "D05Z01S19[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S11[SW]"
 	},
 	{
-		"id": "D05Z01S02[W~E]",
-		"newDoors": "D05Z01S02[E~W],D05Z01S02[NW~E]",
-		"direction": 1
+		"Id": "D05Z01S20[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S06[E]"
 	},
 	{
-		"id": "D05Z01S02[NW~E]",
-		"newDoors": "D05Z01S02[E~W]",
-		"direction": 1
+		"Id": "D05Z01S20[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S07[NW]"
 	},
 	{
-		"id": "D05Z01S03[E~NW]",
-		"newDoors": "D05Z01S03[W~E],D05Z01S03[Frontal~FrontalS]",
-		"direction": 2
+		"Id": "D05Z01S20[N]",
+		"Direction": 0,
+		"OriginalDoor": "D04Z01S03[S]",
+		"Type": 1
 	},
 	{
-		"id": "D05Z01S03[W~E]",
-		"newDoors": "D05Z01S03[E~NW],D05Z01S03[Frontal~FrontalS]",
-		"direction": 1
+		"Id": "D05Z01S21[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S14[E]",
+		"Type": 1
 	},
 	{
-		"id": "D05Z01S03[Frontal~FrontalS]",
-		"newDoors": "D05Z01S03[E~NW],D05Z01S03[W~E]",
-		"direction": 4
+		"Id": "D05Z01S21[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S13[E]"
 	},
 	{
-		"id": "D05Z01S04[E~W]",
-		"newDoors": "D05Z01S04[W~E]",
-		"direction": 2
+		"Id": "D05Z01S21[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S15[W]"
 	},
 	{
-		"id": "D05Z01S04[W~E]",
-		"newDoors": "D05Z01S04[E~W]",
-		"direction": 1
+		"Id": "D05Z01S21[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D05Z02S11[Cherubs]",
+		"Type": 1,
+		"Logic": "linen"
 	},
 	{
-		"id": "D05Z01S05[E~W]",
-		"newDoors": "D05Z01S05[NE~W],D05Z01S05[SW~E]",
-		"direction": 2
+		"Id": "D05Z01S22[FrontalN]",
+		"Direction": 4,
+		"OriginalDoor": "D05BZ01S01[FrontalN]"
 	},
 	{
-		"id": "D05Z01S05[NE~W]",
-		"newDoors": "D05Z01S05[E~W],D05Z01S05[SW~E]",
-		"direction": 2
+		"Id": "D05Z01S22[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z03S02[W]",
+		"Type": 1
 	},
 	{
-		"id": "D05Z01S05[SW~E]",
-		"newDoors": "D05Z01S05[E~W],D05Z01S05[NE~W]",
-		"direction": 1
+		"Id": "D05Z01S23[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S11[NW]"
 	},
 	{
-		"id": "D05Z01S06[E~W]",
-		"newDoors": "D05Z01S06[W~E]",
-		"direction": 2
+		"Id": "D05Z01S24[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S06[W]"
 	},
 	{
-		"id": "D05Z01S06[W~E]",
-		"newDoors": "D05Z01S06[E~W]",
-		"direction": 1
+		"Id": "D05BZ01S01[FrontalS]",
+		"Direction": 7,
+		"OriginalDoor": "D05Z01S03[Frontal]"
 	},
 	{
-		"id": "D05Z01S07[E~SW]",
-		"newDoors": "D05Z01S07[SW~NE],D05Z01S07[NW~E]",
-		"direction": 2
+		"Id": "D05BZ01S01[FrontalN]",
+		"Direction": 7,
+		"OriginalDoor": "D05Z01S22[FrontalN]"
 	},
+
 	{
-		"id": "D05Z01S07[SW~NE]",
-		"newDoors": "D05Z01S07[E~SW],D05Z01S07[NW~E]",
-		"direction": 1
+		"Id": "D05Z02S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z01S11[SE]",
+		"Type": 1
 	},
 	{
-		"id": "D05Z01S07[NW~E]",
-		"newDoors": "D05Z01S07[E~SW],D05Z01S07[SW~NE]",
-		"direction": 1
+		"Id": "D05Z02S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S02[NW]"
 	},
 	{
-		"id": "D05Z01S08[NE~SW]",
-		"newDoors": "D05Z01S08[Health~W],D05Z01S08[E~W],D05Z01S08[W~E],D05Z01S08[NW~E]",
-		"direction": 2
+		"Id": "D05Z02S02[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S03[E]"
 	},
 	{
-		"id": "D05Z01S08[Health~W]",
-		"newDoors": "D05Z01S08[NE~SW],D05Z01S08[E~W],D05Z01S08[W~E],D05Z01S08[NW~E]",
-		"direction": 2
+		"Id": "D05Z02S02[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S01[E]"
 	},
 	{
-		"id": "D05Z01S08[E~W]",
-		"newDoors": "D05Z01S08[NE~SW],D05Z01S08[Health~W],D05Z01S08[W~E],D05Z01S08[NW~E]",
-		"direction": 2
+		"Id": "D05Z02S02[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S09[W]"
 	},
 	{
-		"id": "D05Z01S08[W~E]",
-		"newDoors": "D05Z01S08[NE~SW],D05Z01S08[Health~W],D05Z01S08[E~W],D05Z01S08[NW~E]",
-		"direction": 1
+		"Id": "D05Z02S02[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S05[W]"
 	},
 	{
-		"id": "D05Z01S08[NW~E]",
-		"newDoors": "D05Z01S08[NE~SW],D05Z01S08[Health~W],D05Z01S08[E~W],D05Z01S08[W~E]",
-		"direction": 1
+		"Id": "D05Z02S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S04[E]"
 	},
 	{
-		"id": "D05Z01S09[W~E]",
-		"newDoors": "D05Z01S09[E~W]",
-		"direction": 1
+		"Id": "D05Z02S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S02[SW]"
 	},
 	{
-		"id": "D05Z01S09[E~W]",
-		"newDoors": "D05Z01S09[W~E]",
-		"direction": 2
+		"Id": "D05Z02S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S12[E]"
 	},
 	{
-		"id": "D05Z01S10[E~W]",
-		"newDoors": "D05Z01S10[W~E],D05Z01S10[NW~NE]",
-		"direction": 2
+		"Id": "D05Z02S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S03[W]"
 	},
 	{
-		"id": "D05Z01S10[W~E]",
-		"newDoors": "D05Z01S10[E~W],D05Z01S10[NW~NE]",
-		"direction": 1
+		"Id": "D05Z02S04[C]",
+		"Direction": 4,
+		"OriginalDoor": "D05BZ02S01[C]"
 	},
 	{
-		"id": "D05Z01S10[NW~NE]",
-		"newDoors": "D05Z01S10[E~W],D05Z01S10[W~E]",
-		"direction": 1
+		"Id": "D05Z02S05[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S02[NE]"
 	},
 	{
-		"id": "D05Z01S11[SW~E]",
-		"newDoors": "D05Z01S11[SE~W],D05Z01S11[E~W],D05Z01S11[NE~NW],D05Z01S11[NW~E]",
-		"direction": 1
+		"Id": "D05Z02S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S06[SW]"
 	},
 	{
-		"id": "D05Z01S11[SE~W]",
-		"newDoors": "D05Z01S11[E~W],D05Z01S11[NE~NW],D05Z01S11[NW~E]",
-		"direction": 2
+		"Id": "D05Z02S06[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S05[E]"
 	},
 	{
-		"id": "D05Z01S11[E~W]",
-		"newDoors": "D05Z01S11[SE~W],D05Z01S11[NE~NW],D05Z01S11[NW~E]",
-		"direction": 2
+		"Id": "D05Z02S06[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S07[E]"
 	},
 	{
-		"id": "D05Z01S11[NE~NW]",
-		"newDoors": "D05Z01S11[SE~W],D05Z01S11[E~W],D05Z01S11[NW~E]",
-		"direction": 2
+		"Id": "D05Z02S06[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S11[W]",
+		"Logic": "openedTSCGate"
 	},
 	{
-		"id": "D05Z01S11[NW~E]",
-		"newDoors": "D05Z01S11[SE~W],D05Z01S11[E~W],D05Z01S11[NE~NW]",
-		"direction": 1
+		"Id": "D05Z02S06[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S14[W]"
 	},
 	{
-		"id": "D05Z01S12[E~NW]",
-		"direction": 2
+		"Id": "D05Z02S07[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S10[E]"
 	},
 	{
-		"id": "D05Z01S13[E~NW]",
-		"direction": 2
+		"Id": "D05Z02S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S06[NW]"
 	},
 	{
-		"id": "D05Z01S14[W~Health]",
-		"direction": 1
+		"Id": "D05Z02S08[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S09[E]"
 	},
 	{
-		"id": "D05Z01S15[E~W]",
-		"newDoors": "D05Z01S15[W~NE]",
-		"direction": 2
+		"Id": "D05Z02S09[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S02[SE]"
 	},
 	{
-		"id": "D05Z01S15[W~NE]",
-		"newDoors": "D05Z01S15[E~W]",
-		"direction": 1
+		"Id": "D05Z02S09[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S08[W]",
+		"Logic": "redWax >= 3 && blueWax >= 3"
 	},
 	{
-		"id": "D05Z01S16[W~E]",
-		"newDoors": "D01Z02S07[E~W]",
-		"direction": 1
+		"Id": "D05Z02S10[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S13[E]",
+		"Logic": "dash"
 	},
 	{
-		"id": "D05Z01S17[W~NE]",
-		"direction": 1
+		"Id": "D05Z02S10[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S07[W]"
 	},
 	{
-		"id": "D05Z01S18[W~E]",
-		"direction": 1
+		"Id": "D05Z02S11[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S06[SE]"
 	},
 	{
-		"id": "D05Z01S19[W~E]",
-		"newDoors": "D05Z01S19[E~SW]",
-		"direction": 1
+		"Id": "D05Z02S11[Cherubs]",
+		"Direction": 5,
+		"Type": 1
 	},
 	{
-		"id": "D05Z01S19[E~SW]",
-		"newDoors": "D05Z01S19[W~E]",
-		"direction": 2
+		"Id": "D05Z02S12[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z04S16[E]",
+		"Type": 1
 	},
 	{
-		"id": "D05Z01S20[W~E]",
-		"newDoors": "D05Z01S20[E~NW],D05Z01S20[N~S]",
-		"direction": 1
+		"Id": "D05Z02S12[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S04[W]"
 	},
 	{
-		"id": "D05Z01S20[E~NW]",
-		"newDoors": "D05Z01S20[W~E],D05Z01S20[N~S]",
-		"direction": 2
+		"Id": "D05Z02S12[N]",
+		"Direction": 0,
+		"OriginalDoor": "D05Z02S15[S]"
 	},
 	{
-		"id": "D05Z01S20[N~S]",
-		"newDoors": "D05Z01S20[W~E],D05Z01S20[E~NW]",
-		"direction": 0
+		"Id": "D05Z02S13[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z02S10[W]",
+		"Logic": "dash"
 	},
 	{
-		"id": "D05Z01S21[SW~E]",
-		"newDoors": "D05Z01S21[NW~E],D05Z01S21[NE~W],D05Z01S21[-~Cherubs]",
-		"direction": 1
+		"Id": "D05Z02S14[W]",
+		"Direction": 1,
+		"OriginalDoor": "D05Z02S06[NE]",
+		"Logic": "D05Z02S14[W] || canBeatCanvasesBoss"
 	},
 	{
-		"id": "D05Z01S21[NW~E]",
-		"newDoors": "D05Z01S21[SW~E],D05Z01S21[NE~W],D05Z01S21[-~Cherubs]",
-		"direction": 1
+		"Id": "D05Z02S14[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S21[SW]",
+		"Type": 1,
+		"Logic": "D05Z02S14[E] || canBeatCanvasesBoss"
 	},
 	{
-		"id": "D05Z01S21[NE~W]",
-		"newDoors": "D05Z01S21[SW~E],D05Z01S21[NW~E],D05Z01S21[-~Cherubs]",
-		"direction": 2
+		"Id": "D05Z02S15[S]",
+		"Direction": 3,
+		"OriginalDoor": "D05Z02S12[N]"
 	},
 	{
-		"id": "D05Z01S21[-~Cherubs]",
-		"direction": 5
+		"Id": "D05Z02S15[E]",
+		"Direction": 2,
+		"OriginalDoor": "D05Z01S19[W]",
+		"Type": 1
 	},
 	{
-		"id": "D05Z01S22[FrontalN~FrontalN]",
-		"newDoors": "D05Z01S22[E~W]",
-		"direction": 4
+		"Id": "D05BZ02S01[C]",
+		"Direction": 7,
+		"OriginalDoor": "D05Z02S04[C]"
 	},
+
 	{
-		"id": "D05Z01S22[E~W]",
-		"newDoors": "D05Z01S22[FrontalN~FrontalN]",
-		"direction": 2
+		"Id": "D06Z01S01[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S14[E]",
+		"Logic": "(D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N]) || linen && (D06Z01S01[NW] || D06Z01S01[NE])"
 	},
 	{
-		"id": "D05Z01S23[E~NW]",
-		"direction": 2
+		"Id": "D06Z01S01[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S03[W]",
+		"Logic": "(D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N]) || linen && (D06Z01S01[NW] || D06Z01S01[NE])"
 	},
 	{
-		"id": "D05Z01S24[E~W]",
-		"direction": 2
+		"Id": "D06Z01S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S07[E]",
+		"Logic": "(D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N]) || masks >= 1 && (D06Z01S01[SW] || D06Z01S01[SE]) || linen && (D06Z01S01[NW] || D06Z01S01[NE] && (canWalkOnRoot || canCrossGap1))"
 	},
 	{
-		"id": "D05BZ01S01[FrontalN~FrontalN]",
-		"newDoors": "D05BZ01S01[FrontalS~Frontal]",
-		"direction": 4
+		"Id": "D06Z01S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S06[WW]",
+		"Logic": "(D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N]) || masks >= 1 && (D06Z01S01[SW] || D06Z01S01[SE]) || linen && (D06Z01S01[NE] || D06Z01S01[NW] && (canWalkOnRoot || canCrossGap1))"
 	},
 	{
-		"id": "D05BZ01S01[FrontalS~Frontal]",
-		"newDoors": "D05BZ01S01[FrontalN~FrontalN]",
-		"direction": 4
+		"Id": "D06Z01S01[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S16[E]",
+		"Logic": "D06Z01S01[NW] || D06Z01S01[NE] && (canWalkOnRoot || canCrossGap8) || linen && (D06Z01S01[NNW] || D06Z01S01[NNE] && (canWalkOnRoot || canCrossGap3))"
 	},
 	{
-		"id": "D05Z02S01[W~SE]",
-		"newDoors": "D05Z02S01[E~NW]",
-		"direction": 1
+		"Id": "D06Z01S01[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S17[W]",
+		"Logic": "D06Z01S01[NE] || D06Z01S01[NW] && (canWalkOnRoot || canCrossGap8) || linen && (D06Z01S01[NNE] || D06Z01S01[NNW] && (canWalkOnRoot || canCrossGap3))"
 	},
 	{
-		"id": "D05Z02S01[E~NW]",
-		"newDoors": "D05Z02S01[W~SE]",
-		"direction": 2
+		"Id": "D06Z01S01[NNW]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S09[E]",
+		"Logic": "(D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N]) || masks >= 2 && (D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || linen && (D06Z01S01[NW] || D06Z01S01[NE]))"
 	},
 	{
-		"id": "D05Z02S02[NW~E]",
-		"newDoors": "D05Z02S02[NE~W],D05Z02S02[SW~E],D05Z02S02[SE~W]",
-		"direction": 1
+		"Id": "D06Z01S01[NNE]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S10[W]",
+		"Logic": "(D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N]) || masks >= 2 && (D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || linen && (D06Z01S01[NW] || D06Z01S01[NE]))"
 	},
 	{
-		"id": "D05Z02S02[NE~W]",
-		"newDoors": "D05Z02S02[NW~E],D05Z02S02[SW~E],D05Z02S02[SE~W]",
-		"direction": 2
+		"Id": "D06Z01S01[N]",
+		"Direction": 0,
+		"OriginalDoor": "D06Z01S19[S]",
+		"Logic": "masks >= 3 && (D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NNW] || D06Z01S01[NNE] || D06Z01S01[N] || linen && (D06Z01S01[NW] || D06Z01S01[NE]))",
+		"Type": 9
 	},
 	{
-		"id": "D05Z02S02[SW~E]",
-		"newDoors": "D05Z02S02[NW~E],D05Z02S02[NE~W],D05Z02S02[SE~W]",
-		"direction": 1
+		"Id": "D06Z01S01[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D06Z01S23[Cherubs]",
+		"Logic": "linen && (D06Z01S01[SW] || D06Z01S01[SE] || D06Z01S01[W] || D06Z01S01[E] || D06Z01S01[NW] || D06Z01S01[NE] || D06Z01S01[NNW] || D06Z01S01[NNE])"
 	},
 	{
-		"id": "D05Z02S02[SE~W]",
-		"newDoors": "D05Z02S02[NW~E],D05Z02S02[NE~W],D05Z02S02[SW~E]",
-		"direction": 2
+		"Id": "D06Z01S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S18[E]"
 	},
 	{
-		"id": "D05Z02S03[W~E]",
-		"newDoors": "D05Z02S03[E~SW]",
-		"direction": 1
+		"Id": "D06Z01S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S08[W]"
 	},
 	{
-		"id": "D05Z02S03[E~SW]",
-		"newDoors": "D05Z02S03[W~E]",
-		"direction": 2
+		"Id": "D06Z01S02[S]",
+		"Direction": 3,
+		"OriginalDoor": "D04Z02S02[N]",
+		"Type": 1
 	},
 	{
-		"id": "D05Z02S04[W~E]",
-		"newDoors": "D05Z02S04[E~W],D05Z02S04[C~C]",
-		"direction": 1
+		"Id": "D06Z01S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S01[SE]",
+		"Logic": "D06Z01S03[W] || canBeatLegionary"
 	},
 	{
-		"id": "D05Z02S04[E~W]",
-		"newDoors": "D05Z02S04[W~E],D05Z02S04[C~C]",
-		"direction": 2
+		"Id": "D06Z01S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S04[W]",
+		"Logic": "D06Z01S03[E] || canBeatLegionary"
 	},
 	{
-		"id": "D05Z02S04[C~C]",
-		"newDoors": "D05Z02S04[W~E],D05Z02S04[E~W]",
-		"direction": 4
+		"Id": "D06Z01S04[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S20[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S04[W]", "D06Z01S04[Health]" ]
 	},
 	{
-		"id": "D05Z02S05[W~NE]",
-		"newDoors": "D05Z02S05[E~SW]",
-		"direction": 1
+		"Id": "D06Z01S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S03[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S04[SW]", "D06Z01S04[Health]" ]
 	},
 	{
-		"id": "D05Z02S05[E~SW]",
-		"newDoors": "D05Z02S05[W~NE]",
-		"direction": 2
+		"Id": "D06Z01S04[Health]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S24[W]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S04[SW]", "D06Z01S04[W]" ],
+		"Logic": "D06Z01S04[Health] || (wallClimb && canSurvivePoison2 && (doubleJump || blood && canClimbOnRoot))"
 	},
 	{
-		"id": "D05Z02S06[SW~E]",
-		"newDoors": "D05Z02S06[NW~E],D05Z02S06[NE~W]",
-		"direction": 1
+		"Id": "D06Z01S04[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S06[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S04[NE]", "D06Z01S04[Cherubs]" ],
+		"Logic": "D06Z01S04[NW] || D06Z01S04[Cherubs] || (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health]) && wallClimb && canSurvivePoison2 && (dash || doubleJump && (canDawnJump || canClimbOnRoot))"
 	},
 	{
-		"id": "D05Z02S06[SE~W]",
-		"newDoors": "D05Z02S06[SW~E],D05Z02S06[NW~E],D05Z02S06[NE~W]",
-		"direction": 2
+		"Id": "D06Z01S04[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S06[W]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S04[NW]", "D06Z01S04[Cherubs]" ],
+		"Logic": "D06Z01S04[NE] || (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health]) && wallClimb && canSurvivePoison2 && (dash || doubleJump && (canDawnJump || canClimbOnRoot))"
 	},
 	{
-		"id": "D05Z02S06[NW~E]",
-		"newDoors": "D05Z02S06[SW~E],D05Z02S06[NE~W]",
-		"direction": 1
+		"Id": "D06Z01S04[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D05Z02S06[NE~W]",
-		"newDoors": "D05Z02S06[SW~E],D05Z02S06[NW~E]",
-		"direction": 2
+		"Id": "D06Z01S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S12[NW]"
 	},
 	{
-		"id": "D05Z02S07[W~E]",
-		"newDoors": "D05Z02S07[E~NW]",
-		"direction": 1
+		"Id": "D06Z01S06[WW]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S01[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S06[E]" ],
+		"Logic": "D06Z01S06[WW] || canBeatLegionary"
 	},
 	{
-		"id": "D05Z02S07[E~NW]",
-		"newDoors": "D05Z02S07[W~E]",
-		"direction": 2
+		"Id": "D06Z01S06[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S04[NW]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S06[WW]" ],
+		"Logic": "D06Z01S06[E] || canBeatLegionary"
 	},
 	{
-		"id": "D05Z02S08[W~E]",
-		"direction": 1
+		"Id": "D06Z01S06[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S04[NE]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S06[EE]" ]
 	},
 	{
-		"id": "D05Z02S09[W~SE]",
-		"newDoors": "D05Z02S09[E~W]",
-		"direction": 1
+		"Id": "D06Z01S06[EE]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S15[SW]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S06[W]" ]
 	},
 	{
-		"id": "D05Z02S09[E~W]",
-		"newDoors": "D05Z02S09[W~SE]",
-		"direction": 2
+		"Id": "D06Z01S07[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S12[E]"
 	},
 	{
-		"id": "D05Z02S10[W~E]",
-		"newDoors": "D05Z02S10[E~W]",
-		"direction": 1
+		"Id": "D06Z01S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S01[W]"
 	},
 	{
-		"id": "D05Z02S10[E~W]",
-		"newDoors": "D05Z02S10[W~E]",
-		"direction": 2
+		"Id": "D06Z01S07[CherubsL]",
+		"Direction": 5
 	},
 	{
-		"id": "D05Z02S11[W~SE]",
-		"direction": 1
+		"Id": "D06Z01S07[CherubsR]",
+		"Direction": 5
 	},
 	{
-		"id": "D05Z02S11[Cherubs~-]",
-		"newDoors": "D05Z02S11[W~SE]",
-		"direction": 6
+		"Id": "D06Z01S08[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S02[E]"
 	},
 	{
-		"id": "D05Z02S12[W~E]",
-		"newDoors": "D05Z02S12[E~W],D05Z02S12[N~S]",
-		"direction": 1
+		"Id": "D06Z01S08[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S14[W]",
+		"Logic": "D06Z01S08[N] || D06Z01S08[E] || wallClimb"
 	},
 	{
-		"id": "D05Z02S12[E~W]",
-		"newDoors": "D05Z02S12[W~E],D05Z02S12[N~S]",
-		"direction": 2
+		"Id": "D06Z01S08[N]",
+		"Direction": 0,
+		"OriginalDoor": "D06Z01S13[S]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D05Z02S12[N~S]",
-		"newDoors": "D05Z02S12[W~E],D05Z02S12[E~W]",
-		"direction": 0
+		"Id": "D06Z01S09[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S12[NE]"
 	},
 	{
-		"id": "D05Z02S13[E~W]",
-		"direction": 2
+		"Id": "D06Z01S09[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S01[NNW]"
 	},
 	{
-		"id": "D05Z02S14[W~NE]",
-		"newDoors": "D05Z02S14[E~SW]",
-		"direction": 1
+		"Id": "D06Z01S09[-CherubsL]",
+		"Direction": 6,
+		"OriginalDoor": "D06Z01S16[CherubsL]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D05Z02S14[E~SW]",
-		"newDoors": "D05Z02S14[W~NE]",
-		"direction": 2
+		"Id": "D06Z01S09[-CherubsR]",
+		"Direction": 6,
+		"OriginalDoor": "D06Z01S16[CherubsR]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D05Z02S15[E~W]",
-		"newDoors": "D05Z02S15[S~N]",
-		"direction": 2
+		"Id": "D06Z01S10[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S01[NNE]"
 	},
 	{
-		"id": "D05Z02S15[S~N]",
-		"newDoors": "D05Z02S15[E~W]",
-		"direction": 3
+		"Id": "D06Z01S10[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S21[W]"
 	},
 	{
-		"id": "D05BZ02S01[C~C]",
-		"direction": 4
+		"Id": "D06Z01S10[-CherubsL]",
+		"Direction": 6,
+		"OriginalDoor": "D06Z01S17[CherubsL]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D06Z01S01[SW~E]",
-		"newDoors": "D06Z01S01[SE~W],D06Z01S01[W~E],D06Z01S01[E~WW],D06Z01S01[NNW~E],D06Z01S01[NNE~W],D06Z01S01[N~S],D06Z01S01[-~Cherubs]",
-		"direction": 1
+		"Id": "D06Z01S10[-CherubsR]",
+		"Direction": 6,
+		"OriginalDoor": "D06Z01S17[CherubsR]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D06Z01S01[SE~W]",
-		"newDoors": "D06Z01S01[SW~E],D06Z01S01[W~E],D06Z01S01[E~WW],D06Z01S01[NNW~E],D06Z01S01[NNE~W],D06Z01S01[N~S],D06Z01S01[-~Cherubs]",
-		"direction": 2
+		"Id": "D06Z01S11[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S15[NE]"
 	},
 	{
-		"id": "D06Z01S01[W~E]",
-		"newDoors": "D06Z01S01[SW~E],D06Z01S01[SE~W],D06Z01S01[E~WW],D06Z01S01[NNW~E],D06Z01S01[NNE~W],D06Z01S01[N~S],D06Z01S01[-~Cherubs]",
-		"direction": 1
+		"Id": "D06Z01S12[S]",
+		"Direction": 3,
+		"OriginalDoor": "D06Z01S14[N]"
 	},
 	{
-		"id": "D06Z01S01[E~WW]",
-		"newDoors": "D06Z01S01[SW~E],D06Z01S01[SE~W],D06Z01S01[W~E],D06Z01S01[NNW~E],D06Z01S01[NNE~W],D06Z01S01[N~S],D06Z01S01[-~Cherubs]",
-		"direction": 2
+		"Id": "D06Z01S12[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S13[E]",
+		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || D06Z01S12[W] || D06Z01S12[E] || wallClimb && doubleJump"
 	},
 	{
-		"id": "D06Z01S01[NW~E]",
-		"newDoors": "D06Z01S01[SW~E],D06Z01S01[SE~W],D06Z01S01[W~E],D06Z01S01[E~WW],D06Z01S01[NE~W],D06Z01S01[NNW~E],D06Z01S01[NNE~W],D06Z01S01[N~S],D06Z01S01[-~Cherubs]",
-		"direction": 1
+		"Id": "D06Z01S12[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S07[W]",
+		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || D06Z01S12[W] || D06Z01S12[E] || wallClimb && doubleJump"
 	},
 	{
-		"id": "D06Z01S01[NE~W]",
-		"newDoors": "D06Z01S01[SW~E],D06Z01S01[SE~W],D06Z01S01[W~E],D06Z01S01[E~WW],D06Z01S01[NW~E],D06Z01S01[NNW~E],D06Z01S01[NNE~W],D06Z01S01[N~S],D06Z01S01[-~Cherubs]",
-		"direction": 2
+		"Id": "D06Z01S12[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S05[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S12[NE]", "D06Z01S12[NE2]" ],
+		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D06Z01S01[NNW~E]",
-		"newDoors": "D06Z01S01[SW~E],D06Z01S01[SE~W],D06Z01S01[W~E],D06Z01S01[E~WW],D06Z01S01[NNE~W],D06Z01S01[N~S],D06Z01S01[-~Cherubs]",
-		"direction": 1
+		"Id": "D06Z01S12[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S09[W]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S12[NW]", "D06Z01S12[NE2]" ],
+		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || wallClimb || doubleJump"
 	},
 	{
-		"id": "D06Z01S01[NNE~W]",
-		"newDoors": "D06Z01S01[SW~E],D06Z01S01[SE~W],D06Z01S01[W~E],D06Z01S01[E~WW],D06Z01S01[NNW~E],D06Z01S01[N~S],D06Z01S01[-~Cherubs]",
-		"direction": 2
+		"Id": "D06Z01S12[NE2]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S16[W]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D06Z01S01[N~S]",
-		"newDoors": "D06Z01S01[SW~E],D06Z01S01[SE~W],D06Z01S01[W~E],D06Z01S01[E~WW],D06Z01S01[NNW~E],D06Z01S01[NNE~W],D06Z01S01[-~Cherubs]",
-		"direction": 0
+		"Id": "D06Z01S13[W]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S01[E]",
+		"Type": 1
 	},
 	{
-		"id": "D06Z01S01[-~Cherubs]",
-		"direction": 5
+		"Id": "D06Z01S13[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S12[W]"
 	},
 	{
-		"id": "D06Z01S02[W~E]",
-		"newDoors": "D06Z01S02[E~W],D06Z01S02[S~N]",
-		"direction": 1
+		"Id": "D06Z01S13[S]",
+		"Direction": 3,
+		"OriginalDoor": "D06Z01S08[N]"
 	},
 	{
-		"id": "D06Z01S02[E~W]",
-		"newDoors": "D06Z01S02[W~E],D06Z01S02[S~N]",
-		"direction": 2
+		"Id": "D06Z01S14[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S08[E]"
 	},
 	{
-		"id": "D06Z01S02[S~N]",
-		"newDoors": "D06Z01S02[W~E],D06Z01S02[E~W]",
-		"direction": 3
+		"Id": "D06Z01S14[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S01[SW]"
 	},
 	{
-		"id": "D06Z01S03[W~SE]",
-		"newDoors": "D06Z01S03[E~W]",
-		"direction": 1
+		"Id": "D06Z01S14[N]",
+		"Direction": 0,
+		"OriginalDoor": "D06Z01S12[S]"
 	},
 	{
-		"id": "D06Z01S03[E~W]",
-		"newDoors": "D06Z01S03[W~SE]",
-		"direction": 2
+		"Id": "D06Z01S15[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S06[EE]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D06Z01S04[SW~E]",
-		"newDoors": "D06Z01S04[W~E],D06Z01S04[Health~W]",
-		"direction": 1
+		"Id": "D06Z01S15[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S21[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S15[NE]" ],
+		"Logic": "D06Z01S15[NW] || D06Z01S15[SW] && wallClimb"
 	},
 	{
-		"id": "D06Z01S04[W~E]",
-		"newDoors": "D06Z01S04[SW~E],D06Z01S04[Health~W]",
-		"direction": 1
+		"Id": "D06Z01S15[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S11[W]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D06Z01S15[NW]" ],
+		"Logic": "D06Z01S15[NE] || D06Z01S15[SW] && wallClimb"
 	},
 	{
-		"id": "D06Z01S04[NW~E]",
-		"newDoors": "D06Z01S04[NE~W]",
-		"direction": 1
+		"Id": "D06Z01S16[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S12[NE2]",
+		"Logic": "D06Z01S16[W] || (D06Z01S16[CherubsL] && (doubleJump || wallClimb && (canWalkOnRoot || canAirStall))) || (D06Z01S16[CherubsR] && (doubleJump || canAirStall && (canWalkOnRoot || wheel) && (wallClimb || canDawnJump))) || (D06Z01S16[E] && (canWalkOnRoot || canCrossGap7) && (wallClimb || canCrossGap5))"
 	},
 	{
-		"id": "D06Z01S04[NE~W]",
-		"newDoors": "D06Z01S04[NW~E]",
-		"direction": 2
+		"Id": "D06Z01S16[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S01[NW]",
+		"Logic": "D06Z01S16[E] || ((D06Z01S16[W] || D06Z01S16[CherubsL]) && (canWalkOnRoot || canCrossGap5)) || (D06Z01S16[CherubsR] && (doubleJump || canAirStall && (canWalkOnRoot || wheel)))"
 	},
 	{
-		"id": "D06Z01S04[Health~W]",
-		"newDoors": "D06Z01S04[W~E],D06Z01S04[SW~E]",
-		"direction": 2
+		"Id": "D06Z01S16[-CherubsL]",
+		"Direction": 6,
+		"OriginalDoor": "D06Z01S07[CherubsL]",
+		"Logic": "linen && (D06Z01S16[W] || D06Z01S16[CherubsL] || (D06Z01S16[CherubsR] && (doubleJump || canAirStall && (canWalkOnRoot || wheel))) || (D06Z01S16[E] && (canWalkOnRoot || canCrossGap7)))"
 	},
 	{
-		"id": "D06Z01S04[Cherubs~-]",
-		"newDoors": "D06Z01S04[NW~E],D06Z01S04[NE~W]",
-		"direction": 6
+		"Id": "D06Z01S16[-CherubsR]",
+		"Direction": 6,
+		"OriginalDoor": "D06Z01S07[CherubsR]",
+		"Logic": "linen && (D06Z01S16[E] || D06Z01S16[CherubsR] || (D06Z01S16[CherubsL] && (canAirStall || canWalkOnRoot || doubleJump)) || (D06Z01S16[W] && (canWalkOnRoot || canCrossGap1)))"
 	},
 	{
-		"id": "D06Z01S05[E~NW]",
-		"newDoors": "D01Z02S07[E~W]",
-		"direction": 2
+		"Id": "D06Z01S16[CherubsL]",
+		"Direction": 5
 	},
 	{
-		"id": "D06Z01S06[WW~E]",
-		"newDoors": "D06Z01S06[E~NW]",
-		"direction": 1
+		"Id": "D06Z01S16[CherubsR]",
+		"Direction": 5
 	},
 	{
-		"id": "D06Z01S06[E~NW]",
-		"newDoors": "D06Z01S06[WW~E]",
-		"direction": 2
+		"Id": "D06Z01S17[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S01[NE]",
+		"Logic": "D06Z01S17[W] || (D06Z01S17[E] || D06Z01S17[CherubsR]) && blood || D06Z01S17[CherubsL] && doubleJump"
 	},
 	{
-		"id": "D06Z01S06[W~NE]",
-		"newDoors": "D06Z01S06[EE~SW]",
-		"direction": 1
+		"Id": "D06Z01S17[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S26[W]",
+		"Logic": "D06Z01S17[E] || D06Z01S17[CherubsR] || blood && (D06Z01S17[W] || D06Z01S17[CherubsL] && doubleJump)"
 	},
 	{
-		"id": "D06Z01S06[EE~SW]",
-		"newDoors": "D06Z01S06[W~NE]",
-		"direction": 2
+		"Id": "D06Z01S17[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D06Z01S04[Cherubs]",
+		"Logic": "linen"
 	},
 	{
-		"id": "D06Z01S07[W~E]",
-		"newDoors": "D06Z01S07[E~W]",
-		"direction": 1
+		"Id": "D06Z01S17[CherubsL]",
+		"Direction": 5
 	},
 	{
-		"id": "D06Z01S07[E~W]",
-		"newDoors": "D06Z01S07[W~E]",
-		"direction": 2
+		"Id": "D06Z01S17[CherubsR]",
+		"Direction": 5
 	},
 	{
-		"id": "D06Z01S07[CherubsL~-]",
-		"newDoors": "D06Z01S07[E~W],D06Z01S07[W~E]",
-		"direction": 6
+		"Id": "D06Z01S18[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S02[W]"
 	},
 	{
-		"id": "D06Z01S07[CherubsR~-]",
-		"newDoors": "D06Z01S07[E~W],D06Z01S07[W~E]",
-		"direction": 6
+		"Id": "D06Z01S18[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D04Z01S04[Cherubs]",
+		"Type": 1,
+		"Logic": "linen"
 	},
 	{
-		"id": "D06Z01S08[W~E]",
-		"newDoors": "D06Z01S08[E~W]",
-		"direction": 1
+		"Id": "D06Z01S19[S]",
+		"Direction": 3,
+		"OriginalDoor": "D06Z01S01[N]",
+		"Type": 9
 	},
 	{
-		"id": "D06Z01S08[E~W]",
-		"newDoors": "D06Z01S08[W~E]",
-		"direction": 2
+		"Id": "D06Z01S19[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S25[W]",
+		"Type": 9
 	},
 	{
-		"id": "D06Z01S08[N~S]",
-		"newDoors": "D06Z01S08[W~E],D06Z01S08[E~W]",
-		"direction": 0
+		"Id": "D06Z01S20[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S23[E]"
 	},
 	{
-		"id": "D06Z01S09[W~NE]",
-		"newDoors": "D06Z01S09[E~NNW],D06Z01S09[-~CherubsL],D06Z01S09[-~CherubsR]",
-		"direction": 1
+		"Id": "D06Z01S20[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S04[SW]"
 	},
 	{
-		"id": "D06Z01S09[E~NNW]",
-		"newDoors": "D06Z01S09[W~NE],D06Z01S09[-~CherubsL],D06Z01S09[-~CherubsR]",
-		"direction": 2
+		"Id": "D06Z01S21[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S10[E]",
+		"Logic": "D06Z01S21[W] || canBeatLegionary"
 	},
 	{
-		"id": "D06Z01S09[-~CherubsL]",
-		"direction": 5
+		"Id": "D06Z01S21[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S15[NW]",
+		"Logic": "D06Z01S21[E] || canBeatLegionary"
 	},
 	{
-		"id": "D06Z01S09[-~CherubsR]",
-		"direction": 5
+		"Id": "D06Z01S22[Sword]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S23[Sword]"
 	},
 	{
-		"id": "D06Z01S10[W~NNE]",
-		"newDoors": "D06Z01S10[E~W],D06Z01S10[-~CherubsL],D06Z01S10[-~CherubsR]",
-		"direction": 1
+		"Id": "D06Z01S23[Sword]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S22[Sword]"
 	},
 	{
-		"id": "D06Z01S10[E~W]",
-		"newDoors": "D06Z01S10[W~NNE],D06Z01S10[-~CherubsL],D06Z01S10[-~CherubsR]",
-		"direction": 2
+		"Id": "D06Z01S23[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S20[W]"
 	},
 	{
-		"id": "D06Z01S10[-~CherubsL]",
-		"direction": 5
+		"Id": "D06Z01S23[S]",
+		"Direction": 3,
+		"OriginalDoor": "D04Z02S06[N]",
+		"Type": 1
 	},
 	{
-		"id": "D06Z01S10[-~CherubsR]",
-		"direction": 5
+		"Id": "D06Z01S23[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D06Z01S11[W~NE]",
-		"direction": 1
+		"Id": "D06Z01S24[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S04[Health]"
 	},
 	{
-		"id": "D06Z01S12[S~N]",
-		"direction": 3
+		"Id": "D06Z01S25[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S19[E]",
+		"Logic": "D06Z01S25[W] || canBeatRooftopsBoss",
+		"Type": 9
 	},
 	{
-		"id": "D06Z01S12[W~E]",
-		"newDoors": "D06Z01S12[S~N],D06Z01S12[E~W]",
-		"direction": 1
+		"Id": "D06Z01S25[E]",
+		"Direction": 2,
+		"OriginalDoor": "D07Z01S01[W]",
+		"Logic": "D06Z01S25[E] || canBeatRooftopsBoss",
+		"Type": 9
 	},
 	{
-		"id": "D06Z01S12[E~W]",
-		"newDoors": "D06Z01S12[S~N],D06Z01S12[W~E]",
-		"direction": 2
+		"Id": "D06Z01S26[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S17[E]"
 	},
+
 	{
-		"id": "D06Z01S12[NW~E]",
-		"newDoors": "D06Z01S12[S~N],D06Z01S12[W~E],D06Z01S12[E~W],D06Z01S12[NE~W]",
-		"direction": 1
+		"Id": "D07Z01S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D06Z01S25[E]",
+		"Type": 9
 	},
 	{
-		"id": "D06Z01S12[NE~W]",
-		"newDoors": "D06Z01S12[S~N],D06Z01S12[W~E],D06Z01S12[E~W],D06Z01S12[NW~E]",
-		"direction": 2
+		"Id": "D07Z01S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D07Z01S02[W]",
+		"Type": 9
 	},
 	{
-		"id": "D06Z01S12[NE2~W]",
-		"newDoors": "D06Z01S12[S~N],D06Z01S12[W~E],D06Z01S12[E~W],D06Z01S12[NW~E],D06Z01S12[NE~W]",
-		"direction": 2
+		"Id": "D07Z01S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D07Z01S01[E]",
+		"Type": 9
 	},
 	{
-		"id": "D06Z01S13[W~E]",
-		"newDoors": "D06Z01S13[E~W],D06Z01S13[S~N]",
-		"direction": 1
+		"Id": "D07Z01S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D07Z01S03[W]",
+		"Type": 9
 	},
 	{
-		"id": "D06Z01S13[E~W]",
-		"newDoors": "D06Z01S13[W~E],D06Z01S13[S~N]",
-		"direction": 2
+		"Id": "D07Z01S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D07Z01S02[E]",
+		"Type": 9
 	},
+
 	{
-		"id": "D06Z01S13[S~N]",
-		"newDoors": "D06Z01S13[W~E],D06Z01S13[E~W]",
-		"direction": 3
+		"Id": "D08Z01S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z03S06[E]",
+		"Type": 1,
+		"Logic": "D08Z01S01[W] || canBeatBridgeBoss"
 	},
 	{
-		"id": "D06Z01S14[W~E]",
-		"newDoors": "D06Z01S14[E~SW],D06Z01S14[N~S]",
-		"direction": 1
+		"Id": "D08Z01S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D08Z02S01[W]",
+		"Type": 1,
+		"Logic": "holyWounds >= 3 && (D08Z01S01[E] || D08Z01S01[Cherubs] || canBeatBridgeBoss)"
 	},
 	{
-		"id": "D06Z01S14[E~SW]",
-		"newDoors": "D06Z01S14[W~E],D06Z01S14[N~S]",
-		"direction": 2
+		"Id": "D08Z01S01[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D06Z01S14[N~S]",
-		"newDoors": "D06Z01S14[W~E],D06Z01S14[E~SW]",
-		"direction": 0
+		"Id": "D08Z01S02[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D08Z03S03[W]",
+		"Type": 1,
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D06Z01S15[SW~EE]",
-		"direction": 1
+		"Id": "D08Z01S02[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D08Z02S03[W]",
+		"Type": 1
 	},
 	{
-		"id": "D06Z01S15[NW~E]",
-		"newDoors": "D06Z01S15[NE~W]",
-		"direction": 1
+		"Id": "D08Z01S02[-Cherubs]",
+		"Direction": 6,
+		"OriginalDoor": "D08Z01S01[Cherubs]",
+		"Logic": "linen"
 	},
+	
 	{
-		"id": "D06Z01S15[NE~W]",
-		"newDoors": "D06Z01S15[NW~E]",
-		"direction": 2
+		"Id": "D08Z02S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D08Z01S01[E]",
+		"Type": 1
 	},
 	{
-		"id": "D06Z01S16[W~NE2]",
-		"newDoors": "D06Z01S16[E~NW],D06Z01S16[-~CherubsL],D06Z01S16[-~CherubsR]",
-		"direction": 1
+		"Id": "D08Z02S01[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D08Z02S02[W]"
 	},
 	{
-		"id": "D06Z01S16[E~NW]",
-		"newDoors": "D06Z01S16[W~NE2],D06Z01S16[-~CherubsL],D06Z01S16[-~CherubsR]",
-		"direction": 2
+		"Id": "D08Z02S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z01S01[W]",
+		"Type": 1
 	},
 	{
-		"id": "D06Z01S16[-~CherubsL]",
-		"direction": 5
+		"Id": "D08Z02S01[N]",
+		"Direction": 0,
+		"OriginalDoor": "D08Z02S03[S]"
 	},
 	{
-		"id": "D06Z01S16[-~CherubsR]",
-		"direction": 5
+		"Id": "D08Z02S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D08Z02S01[SE]"
 	},
 	{
-		"id": "D06Z01S16[CherubsL~-]",
-		"newDoors": "D06Z01S16[W~NE2],D06Z01S16[E~NW],D06Z01S16[-~CherubsL],D06Z01S16[-~CherubsR]",
-		"direction": 6
+		"Id": "D08Z02S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D08Z01S02[SE]",
+		"Type": 1,
+		"Logic": "openedBotTCStatue"
 	},
 	{
-		"id": "D06Z01S16[CherubsR~-]",
-		"newDoors": "D06Z01S16[W~NE2],D06Z01S16[E~NW],D06Z01S16[-~CherubsL],D06Z01S16[-~CherubsR]",
-		"direction": 6
+		"Id": "D08Z02S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D08Z03S01[W]",
+		"Type": 1
 	},
 	{
-		"id": "D06Z01S17[W~NE]",
-		"newDoors": "D06Z01S17[E~W],D06Z01S17[-~Cherubs]",
-		"direction": 1
+		"Id": "D08Z02S03[S]",
+		"Direction": 3,
+		"OriginalDoor": "D08Z02S01[N]"
 	},
+	
 	{
-		"id": "D06Z01S17[E~W]",
-		"newDoors": "D06Z01S17[W~NE],D06Z01S17[-~Cherubs]",
-		"direction": 2
+		"Id": "D08Z03S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D08Z02S03[E]",
+		"Type": 1
 	},
 	{
-		"id": "D06Z01S17[-~Cherubs]",
-		"direction": 5
+		"Id": "D08Z03S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D08Z03S02[SW]",
+		"Logic": "verses >= 4"
 	},
 	{
-		"id": "D06Z01S17[CherubsL~-]",
-		"newDoors": "D06Z01S17[W~NE],D06Z01S17[E~W],D06Z01S17[-~Cherubs]",
-		"direction": 6
+		"Id": "D08Z03S02[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D08Z03S01[E]"
 	},
 	{
-		"id": "D06Z01S17[CherubsR~-]",
-		"newDoors": "D06Z01S17[W~NE],D06Z01S17[E~W],D06Z01S17[-~Cherubs]",
-		"direction": 6
+		"Id": "D08Z03S02[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D08Z03S03[E]",
+		"Logic": "D08Z03S02[NW] || wallClimb"
 	},
 	{
-		"id": "D06Z01S18[E~W]",
-		"newDoors": "D06Z01S18[-~Cherubs]",
-		"direction": 2
+		"Id": "D08Z03S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D08Z01S02[NE]",
+		"Type": 1,
+		"Logic": "D08Z03S03[W] || canBeatHallBoss"
 	},
 	{
-		"id": "D06Z01S18[-~Cherubs]",
-		"direction": 5
+		"Id": "D08Z03S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D08Z03S02[NW]",
+		"Logic": "D08Z03S03[E] || canBeatHallBoss"
 	},
+	
 	{
-		"id": "D06Z01S19[E~W]",
-		"newDoors": "D06Z01S19[S~N]",
-		"direction": 2
+		"Id": "D09Z01S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S11[E]"
 	},
 	{
-		"id": "D06Z01S19[S~N]",
-		"newDoors": "D06Z01S19[E~W]",
-		"direction": 3
+		"Id": "D09Z01S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D06Z01S13[W]",
+		"Type": 1
 	},
 	{
-		"id": "D06Z01S20[W~E]",
-		"newDoors": "D06Z01S20[E~SW]",
-		"direction": 1
+		"Id": "D09Z01S02[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S07[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S02[Cell2]" ]
 	},
 	{
-		"id": "D06Z01S20[E~SW]",
-		"newDoors": "D06Z01S20[W~E]",
-		"direction": 2
+		"Id": "D09Z01S02[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S07[NE]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S02[NW]", "D09Z01S02[N]", "D09Z01S02[Cell1]", "D09Z01S02[Cell6]", "D09Z01S02[Cell4]", "D09Z01S02[Cell3]", "D09Z01S02[Cell22]", "D09Z01S02[Cell23]" ]
 	},
 	{
-		"id": "D06Z01S21[W~E]",
-		"newDoors": "D06Z01S21[E~NW]",
-		"direction": 1
+		"Id": "D09Z01S02[N]",
+		"Direction": 0,
+		"OriginalDoor": "D09Z01S11[S]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S02[NW]", "D09Z01S02[N]", "D09Z01S02[Cell1]", "D09Z01S02[Cell6]", "D09Z01S02[Cell4]", "D09Z01S02[Cell3]", "D09Z01S02[Cell22]", "D09Z01S02[Cell23]" ]
 	},
 	{
-		"id": "D06Z01S21[E~NW]",
-		"newDoors": "D06Z01S21[W~E]",
-		"direction": 2
+		"Id": "D09Z01S02[Cell1]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell1]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S02[NW]", "D09Z01S02[N]", "D09Z01S02[Cell1]", "D09Z01S02[Cell6]", "D09Z01S02[Cell4]", "D09Z01S02[Cell3]", "D09Z01S02[Cell22]", "D09Z01S02[Cell23]" ],
+		"Logic": "bronzeKey"
 	},
 	{
-		"id": "D06Z01S22[Sword~Sword]",
-		"direction": 2
+		"Id": "D09Z01S02[Cell6]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell6]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S02[NW]", "D09Z01S02[N]", "D09Z01S02[Cell1]", "D09Z01S02[Cell6]", "D09Z01S02[Cell4]", "D09Z01S02[Cell3]", "D09Z01S02[Cell22]", "D09Z01S02[Cell23]" ],
+		"Logic": "silverKey"
 	},
 	{
-		"id": "D06Z01S23[Sword~Sword]",
-		"newDoors": "D06Z01S23[E~W],D06Z01S23[S~N]",
-		"direction": 1
+		"Id": "D09Z01S02[Cell5]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell5]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D06Z01S23[E~W]",
-		"newDoors": "D06Z01S23[Sword~Sword],D06Z01S23[S~N]",
-		"direction": 2
+		"Id": "D09Z01S02[Cell4]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell4]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S02[NW]", "D09Z01S02[N]", "D09Z01S02[Cell1]", "D09Z01S02[Cell6]", "D09Z01S02[Cell4]", "D09Z01S02[Cell3]", "D09Z01S02[Cell22]", "D09Z01S02[Cell23]" ],
+		"Logic": "goldKey"
 	},
 	{
-		"id": "D06Z01S23[S~N]",
-		"newDoors": "D06Z01S23[Sword~Sword],D06Z01S23[E~W]",
-		"direction": 3
+		"Id": "D09Z01S02[Cell2]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell2]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S02[SW]" ]
 	},
 	{
-		"id": "D06Z01S23[Cherubs~-]",
-		"newDoors": "D06Z01S23[Sword~Sword],D06Z01S23[E~W],D06Z01S23[S~N]",
-		"direction": 6
+		"Id": "D09Z01S02[Cell3]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell3]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S02[NW]", "D09Z01S02[N]", "D09Z01S02[Cell1]", "D09Z01S02[Cell6]", "D09Z01S02[Cell4]", "D09Z01S02[Cell3]", "D09Z01S02[Cell22]", "D09Z01S02[Cell23]" ],
+		"Logic": "bronzeKey"
 	},
 	{
-		"id": "D06Z01S24[W~Health]",
-		"direction": 1
+		"Id": "D09Z01S02[Cell22]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell22]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S02[NW]", "D09Z01S02[N]", "D09Z01S02[Cell1]", "D09Z01S02[Cell6]", "D09Z01S02[Cell4]", "D09Z01S02[Cell3]", "D09Z01S02[Cell22]", "D09Z01S02[Cell23]" ]
 	},
 	{
-		"id": "D06Z01S25[W~E]",
-		"newDoors": "D06Z01S25[E~W]",
-		"direction": 1
+		"Id": "D09Z01S02[Cell23]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell23]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S02[NW]", "D09Z01S02[N]", "D09Z01S02[Cell1]", "D09Z01S02[Cell6]", "D09Z01S02[Cell4]", "D09Z01S02[Cell3]", "D09Z01S02[Cell22]", "D09Z01S02[Cell23]" ],
+		"Logic": "bronzeKey"
 	},
 	{
-		"id": "D06Z01S25[E~W]",
-		"newDoors": "D06Z01S25[W~E]",
-		"direction": 2
+		"Id": "D09Z01S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S05[SE]",
+		"Logic": "D09Z01S03[N] && canBeatPrisonBoss"
 	},
 	{
-		"id": "D06Z01S26[W~E]",
-		"direction": 1
+		"Id": "D09Z01S03[N]",
+		"Direction": 5
 	},
 	{
-		"id": "D07Z01S01[W~E]",
-		"newDoors": "D07Z01S01[E~W]",
-		"direction": 1
+		"Id": "D09Z01S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S06[E]"
 	},
 	{
-		"id": "D07Z01S01[E~W]",
-		"newDoors": "D07Z01S01[W~E]",
-		"direction": 2
+		"Id": "D09Z01S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S11[W]"
 	},
 	{
-		"id": "D07Z01S02[W~E]",
-		"newDoors": "D07Z01S02[E~W]",
-		"direction": 1
+		"Id": "D09Z01S04[S]",
+		"Direction": 3,
+		"OriginalDoor": "D09Z01S07[N]"
 	},
 	{
-		"id": "D07Z01S02[E~W]",
-		"newDoors": "D07Z01S02[W~E]",
-		"direction": 2
+		"Id": "D09Z01S05[W]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S13[E]"
 	},
 	{
-		"id": "D07Z01S03[W~E]",
-		"direction": 1
+		"Id": "D09Z01S05[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S03[W]"
 	},
 	{
-		"id": "D08Z01S01[W~E]",
-		"newDoors": "D08Z01S01[E~W]",
-		"direction": 1
+		"Id": "D09Z01S05[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S08[W]"
 	},
 	{
-		"id": "D08Z01S01[E~W]",
-		"newDoors": "D08Z01S01[W~E]",
-		"direction": 2
+		"Id": "D09Z01S06[-E]",
+		"Direction": 1,
+		"OriginalDoor": "D02Z03S10[-W]",
+		"Type": 1,
+		"Logic": "peaksKey"
 	},
 	{
-		"id": "D08Z01S01[Cherubs~-]",
-		"newDoors": "D08Z01S01[W~E],D08Z01S01[E~W]",
-		"direction": 6,
-		"type": 2
+		"Id": "D09Z01S06[E]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S04[W]"
 	},
 	{
-		"id": "D08Z01S02[NE~W]",
-		"newDoors": "D08Z01S02[SE~W],D08Z01S02[-~Cherubs]",
-		"direction": 2
+		"Id": "D09Z01S07[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S09[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S07[SW]", "D09Z01S07[SE]", "D09Z01S07[W]", "D09Z01S07[E]" ]
 	},
 	{
-		"id": "D08Z01S02[SE~W]",
-		"newDoors": "D08Z01S02[-~Cherubs]",
-		"direction": 2,
-		"type": 3
+		"Id": "D09Z01S07[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S10[W]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S07[SW]", "D09Z01S07[SE]", "D09Z01S07[W]", "D09Z01S07[E]" ]
 	},
 	{
-		"id": "D08Z01S02[-~Cherubs]",
-		"direction": 5,
-		"type": 2
+		"Id": "D09Z01S07[W]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S08[SE]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S07[SW]", "D09Z01S07[SE]", "D09Z01S07[W]", "D09Z01S07[E]" ]
 	},
 	{
-		"id": "D08Z02S01[W~E]",
-		"newDoors": "D08Z02S01[SE~W],D08Z02S01[E~W],D08Z02S01[N~S]",
-		"direction": 1
+		"Id": "D09Z01S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S02[SW]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S07[SW]", "D09Z01S07[SE]", "D09Z01S07[W]", "D09Z01S07[E]" ]
 	},
 	{
-		"id": "D08Z02S01[SE~W]",
-		"newDoors": "D08Z02S01[W~E],D08Z02S01[E~W],D08Z02S01[N~S]",
-		"direction": 2
+		"Id": "D09Z01S07[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S08[NE]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S07[N]" ]
 	},
 	{
-		"id": "D08Z02S01[E~W]",
-		"newDoors": "D08Z02S01[W~E],D08Z02S01[SE~W],D08Z02S01[N~S]",
-		"direction": 2
+		"Id": "D09Z01S07[N]",
+		"Direction": 0,
+		"OriginalDoor": "D09Z01S04[S]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S07[NW]" ]
 	},
 	{
-		"id": "D08Z02S01[N~S]",
-		"newDoors": "D08Z02S01[W~E],D08Z02S01[SE~W],D08Z02S01[E~W]",
-		"direction": 0
+		"Id": "D09Z01S07[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S02[NW]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S07[SW]", "D09Z01S07[SE]", "D09Z01S07[W]", "D09Z01S07[E]" ],
+		"Logic": "D09Z01S07[NE] || blood"
 	},
 	{
-		"id": "D08Z02S02[W~SE]",
-		"newDoors": "D01Z02S07[E~W]",
-		"direction": 1,
-		"type": 1
+		"Id": "D09Z01S08[W]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S05[NE]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S08[Cell14]" ],
+		"Logic": "openedWotHPGate"
 	},
 	{
-		"id": "D08Z02S03[W~SE]",
-		"newDoors": "D08Z02S03[E~W],D08Z02S03[S~N]",
-		"direction": 1,
-		"type": 3
+		"Id": "D09Z01S08[S]",
+		"Direction": 6,
+		"OriginalDoor": "D09Z01S03[N]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S08[W]", "D09Z01S08[Cell14]" ]
 	},
 	{
-		"id": "D08Z02S03[E~W]",
-		"newDoors": "D08Z02S03[S~N]",
-		"direction": 2
+		"Id": "D09Z01S08[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S07[W]",
+		"Logic": "D09Z01S08[SE] || D09Z01S08[Cell15] || D09Z01S08[Cell16] || D09Z01S08[Cell18] || D09Z01S08[Cell17] && dash"
 	},
 	{
-		"id": "D08Z02S03[S~N]",
-		"newDoors": "D08Z02S03[E~W]",
-		"direction": 3
+		"Id": "D09Z01S08[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S07[NW]",
+		"Logic": "D09Z01S08[NE] || D09Z01S08[Cell7] || D09Z01S08[Cell17] && dash"
 	},
 	{
-		"id": "D08Z03S01[W~E]",
-		"newDoors": "D08Z03S01[E~SW]",
-		"direction": 1
+		"Id": "D09Z01S08[Cell14]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell14]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S08[W]" ]
 	},
 	{
-		"id": "D08Z03S01[E~SW]",
-		"newDoors": "D08Z03S01[W~E]",
-		"direction": 2,
-		"type": 3
+		"Id": "D09Z01S08[Cell15]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell15]",
+		"Logic": "silverKey && (D09Z01S08[SE] || D09Z01S08[Cell15] || D09Z01S08[Cell16] || D09Z01S08[Cell18] || D09Z01S08[Cell17] && dash)"
 	},
 	{
-		"id": "D08Z03S02[NW~E]",
-		"newDoors": "D08Z03S02[SW~E]",
-		"direction": 1
+		"Id": "D09Z01S08[Cell7]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell7]",
+		"Logic": "goldKey && (D09Z01S08[NE] || D09Z01S08[Cell7] || D09Z01S08[Cell17] && dash)"
 	},
 	{
-		"id": "D08Z03S02[SW~E]",
-		"newDoors": "D08Z03S02[NW~E]",
-		"direction": 1
+		"Id": "D09Z01S08[Cell16]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell16]",
+		"Logic": "goldKey && (D09Z01S08[SE] || D09Z01S08[Cell15] || D09Z01S08[Cell16] || D09Z01S08[Cell18] || D09Z01S08[Cell17] && dash)"
 	},
 	{
-		"id": "D08Z03S03[E~NW]",
-		"newDoors": "D08Z03S03[W~NE]",
-		"direction": 2
+		"Id": "D09Z01S08[Cell18]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell18]",
+		"Logic": "silverKey && (D09Z01S08[SE] || D09Z01S08[Cell15] || D09Z01S08[Cell16] || D09Z01S08[Cell18] || D09Z01S08[Cell17] && dash)"
 	},
 	{
-		"id": "D08Z03S03[W~NE]",
-		"newDoors": "D08Z03S03[E~NW]",
-		"direction": 1
+		"Id": "D09Z01S08[Cell17]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell17]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D09Z01S01[W~E]",
-		"newDoors": "D09Z01S01[E~W]",
-		"direction": 1
+		"Id": "D09Z01S09[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D04Z01S06[E]",
+		"Type": 1,
+		"Logic": "D09Z01S09[Cell21] || D09Z01S09[Cell20] || D09Z01S09[SW] || D09Z01S09[E] || dash"
 	},
 	{
-		"id": "D09Z01S01[E~W]",
-		"newDoors": "D09Z01S01[W~E]",
-		"direction": 2
+		"Id": "D09Z01S09[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S12[E]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S09[Cell19]", "D09Z01S09[Cell24]" ],
+		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || dash"
 	},
 	{
-		"id": "D09Z01S02[N~S]",
-		"newDoors": "D09Z01S02[NW~NE],D09Z01S02[Cell1~Cell1],D09Z01S02[Cell3~Cell3],D09Z01S02[Cell4~Cell4],D09Z01S02[Cell6~Cell6],D09Z01S02[Cell22~Cell22],D09Z01S02[Cell23~Cell23]",
-		"direction": 0
+		"Id": "D09Z01S09[E]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S07[SW]",
+		"Logic": "D09Z01S09[Cell21] || D09Z01S09[Cell20] || D09Z01S09[SW] || D09Z01S09[E] || dash"
 	},
 	{
-		"id": "D09Z01S02[NW~NE]",
-		"newDoors": "D09Z01S02[N~S],D09Z01S02[Cell1~Cell1],D09Z01S02[Cell3~Cell3],D09Z01S02[Cell4~Cell4],D09Z01S02[Cell6~Cell6],D09Z01S02[Cell22~Cell22],D09Z01S02[Cell23~Cell23]",
-		"direction": 1
+		"Id": "D09Z01S09[Cell24]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell24]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S09[NW]", "D09Z01S09[Cell19]" ],
+		"Logic": "D09Z01S09[Cell24] || dash"
 	},
 	{
-		"id": "D09Z01S02[SW~E]",
-		"newDoors": "D09Z01S02[Cell2~Cell2]",
-		"direction": 1
+		"Id": "D09Z01S09[Cell19]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell19]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S09[NW]", "D09Z01S09[Cell24]" ],
+		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || dash"
 	},
 	{
-		"id": "D09Z01S02[Cell1~Cell1]",
-		"newDoors": "D09Z01S02[N~S],D09Z01S02[NW~NE],D09Z01S02[Cell3~Cell3],D09Z01S02[Cell4~Cell4],D09Z01S02[Cell6~Cell6],D09Z01S02[Cell22~Cell22],D09Z01S02[Cell23~Cell23]",
-		"direction": 4
+		"Id": "D09Z01S09[Cell20]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell20]",
+		"Logic": "silverKey && (D09Z01S09[Cell21] || D09Z01S09[Cell20] || D09Z01S09[SW] || D09Z01S09[E] || dash)"
 	},
 	{
-		"id": "D09Z01S02[Cell2~Cell2]",
-		"newDoors": "D09Z01S02[SW~E]",
-		"direction": 4
+		"Id": "D09Z01S09[Cell21]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell21]",
+		"Logic": "goldKey && (D09Z01S09[Cell21] || D09Z01S09[Cell20] || D09Z01S09[SW] || D09Z01S09[E] || dash)"
 	},
 	{
-		"id": "D09Z01S02[Cell3~Cell3]",
-		"newDoors": "D09Z01S02[N~S],D09Z01S02[NW~NE],D09Z01S02[Cell1~Cell1],D09Z01S02[Cell4~Cell4],D09Z01S02[Cell6~Cell6],D09Z01S02[Cell22~Cell22],D09Z01S02[Cell23~Cell23]",
-		"direction": 4
+		"Id": "D09Z01S10[W]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S07[SE]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S10[Cell12]", "D09Z01S10[Cell10]", "D09Z01S10[Cell11]" ]
 	},
 	{
-		"id": "D09Z01S02[Cell4~Cell4]",
-		"newDoors": "D09Z01S02[N~S],D09Z01S02[NW~NE],D09Z01S02[Cell1~Cell1],D09Z01S02[Cell3~Cell3],D09Z01S02[Cell6~Cell6],D09Z01S02[Cell22~Cell22],D09Z01S02[Cell23~Cell23]",
-		"direction": 4
+		"Id": "D09Z01S10[Cell13]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell13]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D09Z01S02[Cell5~Cell5]",
-		"direction": 4
+		"Id": "D09Z01S10[Cell12]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell12]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S10[W]", "D09Z01S10[Cell10]", "D09Z01S10[Cell11]" ],
+		"Logic": "bronzeKey"
 	},
 	{
-		"id": "D09Z01S02[Cell6~Cell6]",
-		"newDoors": "D09Z01S02[N~S],D09Z01S02[NW~NE],D09Z01S02[Cell1~Cell1],D09Z01S02[Cell3~Cell3],D09Z01S02[Cell4~Cell4],D09Z01S02[Cell22~Cell22],D09Z01S02[Cell23~Cell23]",
-		"direction": 4
+		"Id": "D09Z01S10[Cell10]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell10]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S10[W]", "D09Z01S10[Cell12]", "D09Z01S10[Cell11]" ],
+		"Logic": "silverKey"
 	},
 	{
-		"id": "D09Z01S02[Cell22~Cell22]",
-		"newDoors": "D09Z01S02[N~S],D09Z01S02[NW~NE],D09Z01S02[Cell1~Cell1],D09Z01S02[Cell3~Cell3],D09Z01S02[Cell4~Cell4],D09Z01S02[Cell6~Cell6],D09Z01S02[Cell23~Cell23]",
-		"direction": 4
+		"Id": "D09Z01S10[Cell11]",
+		"Direction": 4,
+		"OriginalDoor": "D09BZ01S01[Cell11]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09Z01S10[W]", "D09Z01S10[Cell12]", "D09Z01S10[Cell10]" ],
+		"Logic": "silverKey"
 	},
 	{
-		"id": "D09Z01S02[Cell23~Cell23]",
-		"newDoors": "D09Z01S02[N~S],D09Z01S02[NW~NE],D09Z01S02[Cell1~Cell1],D09Z01S02[Cell3~Cell3],D09Z01S02[Cell4~Cell4],D09Z01S02[Cell6~Cell6],D09Z01S02[Cell22~Cell22]",
-		"direction": 4
+		"Id": "D09Z01S11[W]",
+		"Direction": 1,
+		"OriginalDoor": "D09Z01S04[E]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D09Z01S03[W~SE]",
-		"direction": 1
+		"Id": "D09Z01S11[E]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S01[W]"
 	},
 	{
-		"id": "D09Z01S03[N~S]",
-		"newDoors": "D09Z01S03[W~SE]",
-		"direction": 6
+		"Id": "D09Z01S11[S]",
+		"Direction": 3,
+		"OriginalDoor": "D09Z01S02[N]"
 	},
 	{
-		"id": "D09Z01S04[W~E]",
-		"newDoors": "D09Z01S04[E~W],D09Z01S04[S~N]",
-		"direction": 1
+		"Id": "D09Z01S12[E]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S09[NW]"
 	},
 	{
-		"id": "D09Z01S04[E~W]",
-		"newDoors": "D09Z01S04[W~E],D09Z01S04[S~N]",
-		"direction": 2
+		"Id": "D09Z01S13[E]",
+		"Direction": 2,
+		"OriginalDoor": "D09Z01S05[W]"
 	},
 	{
-		"id": "D09Z01S04[S~N]",
-		"newDoors": "D09Z01S04[W~E],D09Z01S04[E~W]",
-		"direction": 3
+		"Id": "D09BZ01S01[Cell1]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S02[Cell1]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D09Z01S05[W~E]",
-		"newDoors": "D09Z01S05[NE~W],D09Z01S05[SE~W]",
-		"direction": 1
+		"Id": "D09BZ01S01[Cell2]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S02[Cell2]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09BZ01S01[Cell3]" ]
 	},
 	{
-		"id": "D09Z01S05[SE~W]",
-		"newDoors": "D09Z01S05[W~E],D09Z01S05[NE~W]",
-		"direction": 2
+		"Id": "D09BZ01S01[Cell3]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S02[Cell3]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09BZ01S01[Cell2]" ]
 	},
 	{
-		"id": "D09Z01S05[NE~W]",
-		"newDoors": "D09Z01S05[W~E],D09Z01S05[SE~W]",
-		"direction": 2
+		"Id": "D09BZ01S01[Cell4]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S02[Cell4]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09BZ01S01[Cell5]" ]
 	},
 	{
-		"id": "D09Z01S06[E~W]",
-		"newDoors": "D09Z01S06[-~E]",
-		"direction": 2
+		"Id": "D09BZ01S01[Cell5]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S02[Cell5]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09BZ01S01[Cell4]" ]
 	},
 	{
-		"id": "D09Z01S06[-~E]",
-		"newDoors": "D09Z01S06[E~W]",
-		"direction": 1
+		"Id": "D09BZ01S01[Cell6]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S02[Cell6]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D09Z01S07[SW~E]",
-		"newDoors": "D09Z01S07[NE~NW],D09Z01S07[SE~W],D09Z01S07[W~SE],D09Z01S07[E~SW]",
-		"direction": 1
+		"Id": "D09BZ01S01[Cell7]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S08[Cell7]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D09Z01S07[SE~W]",
-		"newDoors": "D09Z01S07[NE~NW],D09Z01S07[SW~E],D09Z01S07[W~SE],D09Z01S07[E~SW]",
-		"direction": 2
+		"Id": "D09BZ01S01[Cell10]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S10[Cell10]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D09Z01S07[W~SE]",
-		"newDoors": "D09Z01S07[NE~NW],D09Z01S07[SW~E],D09Z01S07[SE~W],D09Z01S07[E~SW]",
-		"direction": 1
+		"Id": "D09BZ01S01[Cell11]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S10[Cell11]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D09Z01S07[E~SW]",
-		"newDoors": "D09Z01S07[NE~NW],D09Z01S07[SW~E],D09Z01S07[SE~W],D09Z01S07[W~SE]",
-		"direction": 2
+		"Id": "D09BZ01S01[Cell12]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S10[Cell12]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09BZ01S01[Cell13]" ]
 	},
 	{
-		"id": "D09Z01S07[NE~NW]",
-		"direction": 2
+		"Id": "D09BZ01S01[Cell13]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S10[Cell13]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09BZ01S01[Cell12]" ]
 	},
 	{
-		"id": "D09Z01S07[NW~NE]",
-		"newDoors": "D09Z01S07[N~S]",
-		"direction": 1
+		"Id": "D09BZ01S01[Cell14]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S08[Cell14]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09BZ01S01[Cell15]" ]
 	},
 	{
-		"id": "D09Z01S07[N~S]",
-		"newDoors": "D09Z01S07[NW~NE]",
-		"direction": 0
+		"Id": "D09BZ01S01[Cell15]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S08[Cell15]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09BZ01S01[Cell14]" ]
 	},
 	{
-		"id": "D09Z01S08[SE~W]",
-		"newDoors": "D09Z01S08[Cell14~Cell14],D09Z01S08[Cell16~Cell16],D09Z01S08[Cell17~Cell17]",
-		"direction": 2
+		"Id": "D09BZ01S01[Cell16]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S08[Cell16]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D09Z01S08[NE~NW]",
-		"newDoors": "D09Z01S08[Cell7~Cell7]",
-		"direction": 2
+		"Id": "D09BZ01S01[Cell17]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S08[Cell17]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09BZ01S01[Cell18]" ]
 	},
 	{
-		"id": "D09Z01S08[W~NE]",
-		"newDoors": "D09Z01S08[S~N],D09Z01S08[Cell18~Cell18]",
-		"direction": 1
+		"Id": "D09BZ01S01[Cell18]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S08[Cell18]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D09Z01S08[S~N]",
-		"direction": 5
+		"Id": "D09BZ01S01[Cell19]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S09[Cell19]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09BZ01S01[Cell20]" ]
 	},
 	{
-		"id": "D09Z01S08[Cell7~Cell7]",
-		"newDoors": "D09Z01S08[NE~NW]",
-		"direction": 4
+		"Id": "D09BZ01S01[Cell20]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S09[Cell20]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09BZ01S01[Cell19]" ]
 	},
 	{
-		"id": "D09Z01S08[Cell14~Cell14]",
-		"newDoors": "D09Z01S08[SE~W],D09Z01S08[Cell16~Cell16],D09Z01S08[Cell17~Cell17]",
-		"direction": 4
+		"Id": "D09BZ01S01[Cell21]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S09[Cell21]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D09Z01S08[Cell15~Cell15]",
-		"newDoors": "D09Z01S08[SE~W],D09Z01S08[Cell14~Cell14],D09Z01S08[Cell16~Cell16],D09Z01S08[Cell17~Cell17],D09Z01S08[Cell7~Cell7],D09Z01S08[NE~NW]",
-		"direction": 4
+		"Id": "D09BZ01S01[Cell22]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S02[Cell22]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D09Z01S08[Cell16~Cell16]",
-		"newDoors": "D09Z01S08[SE~W],D09Z01S08[Cell14~Cell14],D09Z01S08[Cell17~Cell17]",
-		"direction": 4
+		"Id": "D09BZ01S01[Cell23]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S02[Cell23]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D09BZ01S01[Cell22]" ],
+		"Logic": "bronzeKey"
 	},
 	{
-		"id": "D09Z01S08[Cell17~Cell17]",
-		"newDoors": "D09Z01S08[SE~W],D09Z01S08[Cell14~Cell14],D09Z01S08[Cell16~Cell16]",
-		"direction": 4
+		"Id": "D09BZ01S01[Cell24]",
+		"Direction": 7,
+		"OriginalDoor": "D09Z01S09[Cell24]",
+		"VisibilityFlags": 1
 	},
+	
 	{
-		"id": "D09Z01S08[Cell18~Cell18]",
-		"newDoors": "D09Z01S08[S~N],D09Z01S08[W~NE]",
-		"direction": 4
+		"Id": "D17Z01S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D17Z01S02[W]"
 	},
 	{
-		"id": "D09Z01S09[E~SW]",
-		"newDoors": "D09Z01S09[SW~E],D09Z01S09[Cell19~Cell19],D09Z01S09[Cell21~Cell21]",
-		"direction": 2
+		"Id": "D17Z01S01[Cherubs1]",
+		"Direction": 5
 	},
 	{
-		"id": "D09Z01S09[SW~E]",
-		"newDoors": "D09Z01S09[E~SW],D09Z01S09[Cell19~Cell19],D09Z01S09[Cell21~Cell21]",
-		"direction": 1
+		"Id": "D17Z01S01[Cherubs2]",
+		"Direction": 5
 	},
 	{
-		"id": "D09Z01S09[NW~E]",
-		"newDoors": "D09Z01S09[Cell20~Cell20],D09Z01S09[Cell24~Cell24],D09Z01S09[E~SW],D09Z01S09[SW~E],D09Z01S09[Cell19~Cell19],D09Z01S09[Cell21~Cell21]",
-		"direction": 1
+		"Id": "D17Z01S01[Cherubs3]",
+		"Direction": 5
 	},
 	{
-		"id": "D09Z01S09[Cell19~Cell19]",
-		"newDoors": "D09Z01S09[E~SW],D09Z01S09[SW~E],D09Z01S09[Cell21~Cell21]",
-		"direction": 4
+		"Id": "D17Z01S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S01[E]",
+		"Logic": "D17Z01S02[W] || dash"
 	},
 	{
-		"id": "D09Z01S09[Cell20~Cell20]",
-		"newDoors": "D09Z01S09[NW~E],D09Z01S09[Cell24~Cell24],D09Z01S09[E~SW],D09Z01S09[SW~E],D09Z01S09[Cell19~Cell19],D09Z01S09[Cell21~Cell21]",
-		"direction": 4
+		"Id": "D17Z01S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D17Z01S05[W]",
+		"Logic": "D17Z01S02[N] || D17Z01S02[E] || dash"
 	},
 	{
-		"id": "D09Z01S09[Cell21~Cell21]",
-		"newDoors": "D09Z01S09[E~SW],D09Z01S09[SW~E],D09Z01S09[Cell19~Cell19]",
-		"direction": 4
+		"Id": "D17Z01S02[N]",
+		"Direction": 0,
+		"OriginalDoor": "D17Z01S10[S]",
+		"Logic": "D17Z01S02[N] || blood && (D17Z01S02[E] || D17Z01S02[W] && dash)"
 	},
 	{
-		"id": "D09Z01S09[Cell24~Cell24]",
-		"newDoors": "D09Z01S09[NW~E],D09Z01S09[Cell20~Cell20],D09Z01S09[E~SW],D09Z01S09[SW~E],D09Z01S09[Cell19~Cell19],D09Z01S09[Cell21~Cell21]",
-		"direction": 4
+		"Id": "D17Z01S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S11[E]"
 	},
 	{
-		"id": "D09Z01S10[W~SE]",
-		"newDoors": "D09Z01S10[Cell10~Cell10],D09Z01S10[Cell11~Cell11],D09Z01S10[Cell12~Cell12]",
-		"direction": 1
+		"Id": "D17Z01S03[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z01S07[W]",
+		"Type": 1
 	},
 	{
-		"id": "D09Z01S10[Cell10~Cell10]",
-		"newDoors": "D09Z01S10[W~SE],D09Z01S10[Cell11~Cell11],D09Z01S10[Cell12~Cell12]",
-		"direction": 4
+		"Id": "D17Z01S03[relic]",
+		"Direction": 4,
+		"OriginalDoor": "D17BZ01S01[relic]",
+		"Logic": "elderKey"
 	},
 	{
-		"id": "D09Z01S10[Cell11~Cell11]",
-		"newDoors": "D09Z01S10[W~SE],D09Z01S10[Cell10~Cell10],D09Z01S10[Cell12~Cell12]",
-		"direction": 4
+		"Id": "D17Z01S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S12[E]"
 	},
 	{
-		"id": "D09Z01S10[Cell12~Cell12]",
-		"newDoors": "D09Z01S10[W~SE],D09Z01S10[Cell10~Cell10],D09Z01S10[Cell11~Cell11]",
-		"direction": 4
+		"Id": "D17Z01S04[S]",
+		"Direction": 3,
+		"OriginalDoor": "D17Z01S07[N]"
 	},
 	{
-		"id": "D09Z01S10[Cell13~Cell13]",
-		"direction": 4
+		"Id": "D17Z01S04[FrontL]",
+		"Direction": 4,
+		"OriginalDoor": "D17BZ02S01[FrontL]"
 	},
 	{
-		"id": "D09Z01S11[W~E]",
-		"newDoors": "D09Z01S11[E~W],D09Z01S11[S~N]",
-		"direction": 1
+		"Id": "D17Z01S04[N]",
+		"Direction": 0,
+		"OriginalDoor": "D17Z01S05[S]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D17Z01S04[FrontR]" ]
 	},
 	{
-		"id": "D09Z01S11[E~W]",
-		"newDoors": "D09Z01S11[S~N]",
-		"direction": 2
+		"Id": "D17Z01S04[FrontR]",
+		"Direction": 4,
+		"OriginalDoor": "D17BZ02S01[FrontR]",
+		"VisibilityFlags": 3,
+		"RequiredDoors": [ "D17Z01S04[N]" ]
 	},
 	{
-		"id": "D09Z01S11[S~N]",
-		"newDoors": "D09Z01S11[E~W]",
-		"direction": 3
+		"Id": "D17Z01S05[W]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S02[E]"
 	},
 	{
-		"id": "D09Z01S12[E~NW]",
-		"direction": 2
+		"Id": "D17Z01S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D17Z01S11[W]"
 	},
 	{
-		"id": "D09Z01S13[E~W]",
-		"direction": 2
+		"Id": "D17Z01S05[S]",
+		"Direction": 3,
+		"OriginalDoor": "D17Z01S04[N]",
+		"Logic": "openedBotSSLadder"
 	},
 	{
-		"id": "D09BZ01S01[Cell1~Cell1]",
-		"direction": 4
+		"Id": "D17Z01S06[E]",
+		"Direction": 2,
+		"OriginalDoor": "D17Z01S07[W]"
 	},
 	{
-		"id": "D09BZ01S01[Cell2~Cell2]",
-		"newDoors": "D09BZ01S01[Cell3~Cell3]",
-		"direction": 4
+		"Id": "D17Z01S07[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S08[E]"
 	},
 	{
-		"id": "D09BZ01S01[Cell3~Cell3]",
-		"newDoors": "D09BZ01S01[Cell2~Cell2]",
-		"direction": 4
+		"Id": "D17Z01S07[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D03Z01S05[W]",
+		"Type": 1
 	},
 	{
-		"id": "D09BZ01S01[Cell4~Cell4]",
-		"newDoors": "D09BZ01S01[Cell5~Cell5]",
-		"direction": 4
+		"Id": "D17Z01S07[W]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S06[E]"
 	},
 	{
-		"id": "D09BZ01S01[Cell5~Cell5]",
-		"newDoors": "D09BZ01S01[Cell4~Cell4]",
-		"direction": 4
+		"Id": "D17Z01S07[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S09[E]"
 	},
 	{
-		"id": "D09BZ01S01[Cell6~Cell6]",
-		"direction": 4
+		"Id": "D17Z01S07[N]",
+		"Direction": 0,
+		"OriginalDoor": "D17Z01S04[S]"
 	},
 	{
-		"id": "D09BZ01S01[Cell7~Cell7]",
-		"direction": 4
+		"Id": "D17Z01S08[E]",
+		"Direction": 2,
+		"OriginalDoor": "D17Z01S07[SW]"
 	},
 	{
-		"id": "D09BZ01S01[Cell10~Cell10]",
-		"direction": 4
+		"Id": "D17Z01S09[E]",
+		"Direction": 2,
+		"OriginalDoor": "D17Z01S07[NW]"
 	},
 	{
-		"id": "D09BZ01S01[Cell11~Cell11]",
-		"direction": 4
+		"Id": "D17Z01S10[W]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S13[E]",
+		"Logic": "D17Z01S10[W] || blood || doubleJump"
 	},
 	{
-		"id": "D09BZ01S01[Cell12~Cell12]",
-		"newDoors": "D09BZ01S01[Cell13~Cell13]",
-		"direction": 4
+		"Id": "D17Z01S10[S]",
+		"Direction": 3,
+		"OriginalDoor": "D17Z01S02[N]"
 	},
 	{
-		"id": "D09BZ01S01[Cell13~Cell13]",
-		"newDoors": "D09BZ01S01[Cell12~Cell12]",
-		"direction": 4
+		"Id": "D17Z01S11[W]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S05[E]",
+		"Logic": "D17Z01S11[W] || canBeatBrotherhoodBoss"
 	},
 	{
-		"id": "D09BZ01S01[Cell14~Cell14]",
-		"newDoors": "D09BZ01S01[Cell15~Cell15]",
-		"direction": 4
+		"Id": "D17Z01S11[E]",
+		"Direction": 2,
+		"OriginalDoor": "D17Z01S03[W]",
+		"Logic": "D17Z01S11[E] || canBeatBrotherhoodBoss"
 	},
 	{
-		"id": "D09BZ01S01[Cell15~Cell15]",
-		"direction": 4
+		"Id": "D17Z01S12[E]",
+		"Direction": 2,
+		"OriginalDoor": "D17Z01S04[W]"
 	},
 	{
-		"id": "D09BZ01S01[Cell16~Cell16]",
-		"direction": 4
+		"Id": "D17Z01S13[W]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S14[E]"
 	},
 	{
-		"id": "D09BZ01S01[Cell17~Cell17]",
-		"newDoors": "D09BZ01S01[Cell18~Cell18]",
-		"direction": 4
+		"Id": "D17Z01S13[E]",
+		"Direction": 2,
+		"OriginalDoor": "D17Z01S10[W]"
 	},
 	{
-		"id": "D09BZ01S01[Cell18~Cell18]",
-		"newDoors": "D09BZ01S01[Cell17~Cell17]",
-		"direction": 4
+		"Id": "D17Z01S14[W]",
+		"Direction": 1,
+		"OriginalDoor": "D17Z01S15[E]",
+		"Logic": "scapular && (D17Z01S14[W] || blood)"
 	},
 	{
-		"id": "D09BZ01S01[Cell19~Cell19]",
-		"newDoors": "D09BZ01S01[Cell20~Cell20]",
-		"direction": 4
+		"Id": "D17Z01S14[E]",
+		"Direction": 2,
+		"OriginalDoor": "D17Z01S13[W]",
+		"Logic": "D17Z01S14[E] || blood"
 	},
 	{
-		"id": "D09BZ01S01[Cell20~Cell20]",
-		"newDoors": "D09BZ01S01[Cell19~Cell19]",
-		"direction": 4
+		"Id": "D17Z01S14[-Cherubs1]",
+		"Direction": 6,
+		"OriginalDoor": "D17Z01S01[Cherubs1]",
+		"Logic": "linen && (D17Z01S14[W] || blood || canCrossGap11)"
 	},
 	{
-		"id": "D09BZ01S01[Cell21~Cell21]",
-		"direction": 4
+		"Id": "D17Z01S14[-Cherubs2]",
+		"Direction": 6,
+		"OriginalDoor": "D17Z01S01[Cherubs2]",
+		"Logic": "linen && (D17Z01S14[E] && canCrossGap8 || D17Z01S14[W] && canCrossGap10 || blood)"
 	},
 	{
-		"id": "D09BZ01S01[Cell22~Cell22]",
-		"newDoors": "D09BZ01S01[Cell23~Cell23]",
-		"direction": 4
+		"Id": "D17Z01S14[-Cherubs3]",
+		"Direction": 6,
+		"OriginalDoor": "D17Z01S01[Cherubs3]",
+		"Logic": "linen && (D17Z01S14[E] || blood)"
 	},
 	{
-		"id": "D09BZ01S01[Cell23~Cell23]",
-		"direction": 4
+		"Id": "D17Z01S15[E]",
+		"Direction": 2,
+		"OriginalDoor": "D17Z01S14[W]"
 	},
 	{
-		"id": "D09BZ01S01[Cell24~Cell24]",
-		"direction": 4
+		"Id": "D17BZ01S01[relic]",
+		"Direction": 7,
+		"OriginalDoor": "D17Z01S03[relic]"
 	},
 	{
-		"id": "D20Z01S01[W~E]",
-		"newDoors": "D20Z01S01[E~W],D20Z01S01[S~N]",
-		"direction": 1
+		"Id": "D17BZ02S01[FrontL]",
+		"Direction": 7,
+		"OriginalDoor": "D17Z01S04[FrontL]",
+		"VisibilityFlags": 1
 	},
 	{
-		"id": "D20Z01S01[E~W]",
-		"newDoors": "D20Z01S01[W~E],D20Z01S01[S~N]",
-		"direction": 2
+		"Id": "D17BZ02S01[FrontR]",
+		"Direction": 7,
+		"OriginalDoor": "D17Z01S04[FrontR]",
+		"Logic": "D17BZ02S01[FrontR] || dash && wallClimb"
 	},
+	
 	{
-		"id": "D20Z01S01[S~N]",
-		"newDoors": "D20Z01S01[E~W],D20Z01S01[W~E]",
-		"direction": 3
+		"Id": "D20Z01S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D03Z02S15[E]",
+		"Type": 1
 	},
 	{
-		"id": "D20Z01S01[Cherubs~-]",
-		"newDoors": "D20Z01S01[E~W],D20Z01S01[W~E],D20Z01S01[S~N]",
-		"direction": 6
+		"Id": "D20Z01S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z01S02[W]"
 	},
 	{
-		"id": "D20Z01S02[W~E]",
-		"newDoors": "D20Z01S02[E~W]",
-		"direction": 1
+		"Id": "D20Z01S01[S]",
+		"Direction": 3,
+		"OriginalDoor": "D20Z01S04[N]"
 	},
 	{
-		"id": "D20Z01S02[E~W]",
-		"newDoors": "D20Z01S02[W~E]",
-		"direction": 2
+		"Id": "D20Z01S01[Cherubs]",
+		"Direction": 5
 	},
 	{
-		"id": "D20Z01S03[W~E]",
-		"newDoors": "D20Z01S03[N~S]",
-		"direction": 1
+		"Id": "D20Z01S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S01[E]"
 	},
 	{
-		"id": "D20Z01S03[N~S]",
-		"newDoors": "D20Z01S03[W~E]",
-		"direction": 0
+		"Id": "D20Z01S02[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z01S03[W]"
 	},
 	{
-		"id": "D20Z01S04[N~S]",
-		"newDoors": "D20Z01S04[W~E]",
-		"direction": 0
+		"Id": "D20Z01S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S02[E]"
 	},
 	{
-		"id": "D20Z01S04[W~E]",
-		"newDoors": "D20Z01S04[N~S]",
-		"direction": 1
+		"Id": "D20Z01S03[N]",
+		"Direction": 0,
+		"OriginalDoor": "D03Z01S01[S]",
+		"Type": 1
 	},
 	{
-		"id": "D20Z01S04[E~W]",
-		"newDoors": "D20Z01S04[N~S],D20Z01S04[W~E]",
-		"direction": 2
+		"Id": "D20Z01S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S05[E]"
 	},
 	{
-		"id": "D20Z01S05[E~W]",
-		"newDoors": "D20Z01S05[W~NE]",
-		"direction": 2
+		"Id": "D20Z01S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S24[W]",
+		"Type": 1,
+		"Logic": "openedDCGateW"
 	},
 	{
-		"id": "D20Z01S05[W~NE]",
-		"newDoors": "D20Z01S05[E~W]",
-		"direction": 1
+		"Id": "D20Z01S04[N]",
+		"Direction": 0,
+		"OriginalDoor": "D20Z01S01[S]"
 	},
 	{
-		"id": "D20Z01S06[NE~W]",
-		"newDoors": "D20Z01S06[SE~NW]",
-		"direction": 2
+		"Id": "D20Z01S05[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S06[NE]"
 	},
 	{
-		"id": "D20Z01S06[SE~NW]",
-		"newDoors": "D20Z01S06[NE~W]",
-		"direction": 2
+		"Id": "D20Z01S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z01S04[W]"
 	},
 	{
-		"id": "D20Z01S07[NE~W]",
-		"newDoors": "D20Z01S07[NW~SE],D20Z01S07[SE~W]",
-		"direction": 2
+		"Id": "D20Z01S06[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z01S05[W]"
 	},
 	{
-		"id": "D20Z01S07[NW~SE]",
-		"newDoors": "D20Z01S07[NE~W],D20Z01S07[SE~W]",
-		"direction": 1
+		"Id": "D20Z01S06[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z01S07[NW]"
 	},
 	{
-		"id": "D20Z01S07[SE~W]",
-		"newDoors": "D20Z01S07[NE~W],D20Z01S07[NW~SE]",
-		"direction": 2
+		"Id": "D20Z01S07[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S06[SE]"
 	},
 	{
-		"id": "D20Z01S08[W~NE]",
-		"direction": 1
+		"Id": "D20Z01S07[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z01S08[W]"
 	},
 	{
-		"id": "D20Z01S09[E~EchoesW]",
-		"newDoors": "D20Z01S09[W~SE]",
-		"direction": 2
+		"Id": "D20Z01S07[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z01S09[W]"
 	},
 	{
-		"id": "D20Z01S09[W~SE]",
-		"newDoors": "D20Z01S09[E~EchoesW]",
-		"direction": 1
+		"Id": "D20Z01S08[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S07[NE]"
 	},
 	{
-		"id": "D20Z01S10[E~W]",
-		"newDoors": "D20Z01S10[W~EchoesE]",
-		"direction": 2
+		"Id": "D20Z01S09[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S07[SE]",
+		"Logic": "D20Z01S09[W] || dash"
 	},
 	{
-		"id": "D20Z01S10[W~EchoesE]",
-		"newDoors": "D20Z01S10[E~W]",
-		"direction": 1
+		"Id": "D20Z01S09[E]",
+		"Direction": 2,
+		"OriginalDoor": "D01Z05S25[EchoesW]",
+		"Type": 1,
+		"Logic": "D20Z01S09[E] || blood && dash"
 	},
 	{
-		"id": "D20Z01S11[W~E]",
-		"newDoors": "D20Z01S11[NW~E],D20Z01S11[SE~W],D20Z01S11[NE~W]",
-		"direction": 1
+		"Id": "D20Z01S10[W]",
+		"Direction": 1,
+		"OriginalDoor": "D01Z05S25[EchoesE]",
+		"Type": 1,
+		"Logic": "D20Z01S10[W] || blood && dash"
 	},
 	{
-		"id": "D20Z01S11[NW~E]",
-		"newDoors": "D20Z01S11[W~E],D20Z01S11[SE~W],D20Z01S11[NE~W]",
-		"direction": 1
+		"Id": "D20Z01S10[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z01S11[W]",
+		"Logic": "D20Z01S10[E] || blood && dash"
 	},
 	{
-		"id": "D20Z01S11[SE~W]",
-		"newDoors": "D20Z01S11[W~E],D20Z01S11[NW~E],D20Z01S11[NE~W]",
-		"direction": 2
+		"Id": "D20Z01S11[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S10[E]"
 	},
 	{
-		"id": "D20Z01S11[NE~W]",
-		"newDoors": "D20Z01S11[W~E],D20Z01S11[NW~E],D20Z01S11[SE~W]",
-		"direction": 2
+		"Id": "D20Z01S11[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S12[E]"
 	},
 	{
-		"id": "D20Z01S12[E~NW]",
-		"newDoors": "D01Z02S07[E~W]",
-		"direction": 2
+		"Id": "D20Z01S11[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z01S13[W]"
 	},
 	{
-		"id": "D20Z01S13[W~NE]",
-		"newDoors": "D20Z01S13[E~NW],D20Z01S13[N~S]",
-		"direction": 1
+		"Id": "D20Z01S11[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S12[W]",
+		"Type": 1
 	},
 	{
-		"id": "D20Z01S13[E~NW]",
-		"newDoors": "D20Z01S13[W~NE],D20Z01S13[N~S]",
-		"direction": 2
+		"Id": "D20Z01S12[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z01S11[NW]"
 	},
 	{
-		"id": "D20Z01S13[N~S]",
-		"newDoors": "D20Z01S13[W~NE],D20Z01S13[E~NW]",
-		"direction": 0
+		"Id": "D20Z01S13[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S11[NE]"
 	},
 	{
-		"id": "D20Z01S14[S~N]",
-		"newDoors": "D20Z01S14[E~W]",
-		"direction": 3
+		"Id": "D20Z01S13[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S11[NW]",
+		"Type": 1
 	},
 	{
-		"id": "D20Z01S14[E~W]",
-		"newDoors": "D20Z01S14[S~N]",
-		"direction": 2
+		"Id": "D20Z01S13[N]",
+		"Direction": 0,
+		"OriginalDoor": "D20Z01S14[S]"
 	},
 	{
-		"id": "D20Z02S01[E~SW]",
-		"newDoors": "D20Z02S01[W~SE]",
-		"direction": 2
+		"Id": "D20Z01S14[S]",
+		"Direction": 3,
+		"OriginalDoor": "D20Z01S13[N]"
 	},
 	{
-		"id": "D20Z02S01[W~SE]",
-		"newDoors": "D20Z02S01[E~SW]",
-		"direction": 1
+		"Id": "D20Z01S14[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z03S01[W]",
+		"Type": 1
 	},
+	
 	{
-		"id": "D20Z02S02[W~NE]",
-		"direction": 1
+		"Id": "D20Z02S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S03[SE]"
 	},
 	{
-		"id": "D20Z02S03[SE~W]",
-		"newDoors": "D20Z02S03[NE~W],D20Z02S03[W~E]",
-		"direction": 2
+		"Id": "D20Z02S01[E]",
+		"Direction": 2,
+		"OriginalDoor": "D04Z02S24[SW]",
+		"Type": 1
 	},
 	{
-		"id": "D20Z02S03[NE~W]",
-		"newDoors": "D20Z02S03[SE~W],D20Z02S03[W~E]",
-		"direction": 2
+		"Id": "D20Z02S02[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S03[NE]"
 	},
 	{
-		"id": "D20Z02S03[W~E]",
-		"newDoors": "D20Z02S03[SE~W],D20Z02S03[NE~W]",
-		"direction": 1
+		"Id": "D20Z02S03[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S04[E]"
 	},
 	{
-		"id": "D20Z02S04[E~W]",
-		"newDoors": "D20Z02S04[W~E]",
-		"direction": 2
+		"Id": "D20Z02S03[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S02[W]",
+		"Logic": "D20Z02S03[NE] || canWalkOnRoot || canCrossGap5"
 	},
 	{
-		"id": "D20Z02S04[W~E]",
-		"newDoors": "D20Z02S04[E~W]",
-		"direction": 1
+		"Id": "D20Z02S03[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S01[W]"
 	},
 	{
-		"id": "D20Z02S05[E~W]",
-		"newDoors": "D20Z02S05[SW~SE],D20Z02S05[NW~NE]",
-		"direction": 2
+		"Id": "D20Z02S04[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S05[E]"
 	},
 	{
-		"id": "D20Z02S05[SW~SE]",
-		"newDoors": "D20Z02S05[E~W],D20Z02S05[NW~NE]",
-		"direction": 1
+		"Id": "D20Z02S04[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S03[W]"
 	},
 	{
-		"id": "D20Z02S05[NW~NE]",
-		"newDoors": "D20Z02S05[E~W],D20Z02S05[SW~SE]",
-		"direction": 1
+		"Id": "D20Z02S05[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S06[SE]"
 	},
 	{
-		"id": "D20Z02S06[SE~SW]",
-		"newDoors": "D20Z02S06[NE~NW],D20Z02S06[SW~E],D20Z02S06[NW~E]",
-		"direction": 2
+		"Id": "D20Z02S05[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S06[NE]",
+		"Logic": "D20Z02S05[NW] || nail || canCrossGap3"
 	},
 	{
-		"id": "D20Z02S06[NE~NW]",
-		"newDoors": "D20Z02S06[SE~SW],D20Z02S06[SW~E],D20Z02S06[NW~E]",
-		"direction": 2
+		"Id": "D20Z02S05[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S04[W]"
 	},
 	{
-		"id": "D20Z02S06[SW~E]",
-		"newDoors": "D20Z02S06[SE~SW],D20Z02S06[NE~NW],D20Z02S06[NW~E]",
-		"direction": 1
+		"Id": "D20Z02S06[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S09[E]"
 	},
 	{
-		"id": "D20Z02S06[NW~E]",
-		"newDoors": "D20Z02S06[SE~SW],D20Z02S06[NE~NW],D20Z02S06[SW~E]",
-		"direction": 1
+		"Id": "D20Z02S06[SE]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S05[SW]"
 	},
 	{
-		"id": "D20Z02S07[E~NW]",
-		"newDoors": "D20Z02S07[W~E]",
-		"direction": 2
+		"Id": "D20Z02S06[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S07[E]",
+		"Logic": "D20Z02S06[NW] || D20Z02S06[NE] || doubleJump || canClimbOnRoot || canDiveLaser"
 	},
 	{
-		"id": "D20Z02S07[W~E]",
-		"newDoors": "D20Z02S07[E~NW]",
-		"direction": 1
+		"Id": "D20Z02S06[NE]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S05[NW]",
+		"Logic": "D20Z02S06[NW] || D20Z02S06[NE] || doubleJump || canClimbOnRoot || canDiveLaser"
 	},
 	{
-		"id": "D20Z02S08[E~W]",
-		"direction": 2
+		"Id": "D20Z02S07[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S08[E]"
 	},
 	{
-		"id": "D20Z02S09[E~SW]",
-		"newDoors": "D20Z02S09[W~E]",
-		"direction": 2
+		"Id": "D20Z02S07[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S06[NW]"
 	},
 	{
-		"id": "D20Z02S09[W~E]",
-		"newDoors": "D20Z02S09[E~SW]",
-		"direction": 1
+		"Id": "D20Z02S08[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S07[W]"
 	},
 	{
-		"id": "D20Z02S10[E~W]",
-		"newDoors": "D20Z02S10[W~E]",
-		"direction": 2
+		"Id": "D20Z02S09[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S10[E]"
 	},
 	{
-		"id": "D20Z02S10[W~E]",
-		"newDoors": "D20Z02S10[E~W]",
-		"direction": 1
+		"Id": "D20Z02S09[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S06[SW]"
 	},
 	{
-		"id": "D20Z02S11[E~W]",
-		"newDoors": "D20Z02S11[SW~E],D20Z02S11[NW~E]",
-		"direction": 2
+		"Id": "D20Z02S10[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S11[E]"
 	},
 	{
-		"id": "D20Z02S11[SW~E]",
-		"newDoors": "D20Z02S11[E~W],D20Z02S11[NW~E]",
-		"direction": 1
+		"Id": "D20Z02S10[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S09[W]"
 	},
 	{
-		"id": "D20Z02S11[NW~E]",
-		"newDoors": "D20Z02S11[E~W],D20Z02S11[SW~E]",
-		"direction": 1
+		"Id": "D20Z02S11[SW]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z02S12[E]"
 	},
 	{
-		"id": "D20Z02S12[E~SW]",
-		"newDoors": "D20Z02S12[W~SE]",
-		"direction": 2
+		"Id": "D20Z02S11[NW]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S13[E]",
+		"Type": 1,
+		"VisibilityFlags": 15,
+		"RequiredDoors": [ "D20Z02S11[E]" ],
+		"Logic": "D20Z02S11[NW] || D20Z02S11[E] || doubleJump || canBreakTirana"
 	},
 	{
-		"id": "D20Z02S12[W~SE]",
-		"newDoors": "D20Z02S12[E~SW]",
-		"direction": 1
+		"Id": "D20Z02S11[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S10[W]",
+		"VisibilityFlags": 13,
+		"Logic": "D20Z02S11[E] || doubleJump || canBreakTirana || mourningSkipAllowed && D20Z02S11[NW] && canCrossGap5"
 	},
 	{
-		"id": "D20Z03S01[W~E]",
-		"direction": 1
-	}
+		"Id": "D20Z02S12[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S11[SE]",
+		"Type": 1
+	},
+	{
+		"Id": "D20Z02S12[E]",
+		"Direction": 2,
+		"OriginalDoor": "D20Z02S11[SW]"
+	},
+	
+	{
+		"Id": "D20Z03S01[W]",
+		"Direction": 1,
+		"OriginalDoor": "D20Z01S14[E]",
+		"Type": 1
+	},
 ]

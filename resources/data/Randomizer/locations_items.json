@@ -1,0 +1,2189 @@
+[
+	{
+		"Id": "PR14",
+		"Name": "Mud ledge lower",
+		"Hint": "* resides in the Holy Line",
+		"Room": "D01Z01S02"
+	},
+	{
+		"Id": "RB07",
+		"Name": "Mud ledge upper",
+		"Hint": "* resides in the Holy Line",
+		"Room": "D01Z01S02",
+		"Logic": "blood || doubleJump"
+	},
+	{
+		"Id": "CO04",
+		"Name": "Cave ledge",
+		"Hint": "* resides in the Holy Line",
+		"Room": "D01Z01S03"
+	},
+	{
+		"Id": "QI55",
+		"Name": "Cave chest",
+		"Hint": "* resides in the Holy Line",
+		"Room": "D01Z01S03",
+		"Logic": "blood && dash && canWaterJump"
+	},
+	{
+		"Id": "RESCUED_CHERUB_07",
+		"Name": "Mud cherub",
+		"Hint": "* resides in the Holy Line",
+		"Room": "D01Z01S03"
+	},
+	{
+		"Id": "QI31",
+		"Name": "Deosgracias gift",
+		"Hint": "Deosgracias holds *",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"Room": "D01Z01S07"
+	},
+	
+	{
+		"Id": "RE02",
+		"Name": "Bless hand",
+		"Hint": "* requires a blessing",
+		"Room": "D01Z02S01",
+		"Logic": "hand"
+	},
+	{
+		"Id": "RE04",
+		"Name": "Bless cloth",
+		"Hint": "* requires a blessing",
+		"Room": "D01Z02S01",
+		"Logic": "cloth"
+	},
+	{
+		"Id": "RE10",
+		"Name": "Bless egg",
+		"Hint": "* requires a blessing",
+		"Room": "D01Z02S01",
+		"Logic": "hatchedEgg"
+	},
+	{
+		"Id": "RB01",
+		"Name": "Sick house",
+		"Hint": "* resides in Albero",
+		"Room": "D01Z02S02"
+	},
+	{
+		"Id": "QI66",
+		"Name": "Tirso reward 1",
+		"Hint": "Tirso holds *",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 1"
+	},
+	{
+		"Id": "Tirso[500]",
+		"Name": "Tirso reward 2",
+		"Hint": "Tirso holds *",
+		"OriginalItem": "Tears[500]",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 2"
+	},
+	{
+		"Id": "Tirso[1000]",
+		"Name": "Tirso reward 3",
+		"Hint": "Tirso holds *",
+		"OriginalItem": "Tears[1000]",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 3"
+	},
+	{
+		"Id": "Tirso[2000]",
+		"Name": "Tirso reward 4",
+		"Hint": "Tirso holds *",
+		"OriginalItem": "Tears[2000]",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 4"
+	},
+	{
+		"Id": "Tirso[5000]",
+		"Name": "Tirso reward 5",
+		"Hint": "Tirso holds *",
+		"OriginalItem": "Tears[5000]",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 5"
+	},
+	{
+		"Id": "Tirso[10000]",
+		"Name": "Tirso reward 6",
+		"Hint": "Tirso holds *",
+		"OriginalItem": "Tears[10000]",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 6"
+	},
+	{
+		"Id": "QI56",
+		"Name": "Tirso final reward",
+		"Hint": "Tirso holds *",
+		"Room": "D01Z02S02",
+		"Logic": "herbs >= 6 && canBeatMercyBoss && canBeatConventBoss && canBeatGrievanceBoss && canBeatMothersBoss && canBeatCanvasesBoss && canBeatPrisonBoss"
+	},
+	{
+		"Id": "RESCUED_CHERUB_08",
+		"Name": "Elevator cherub",
+		"Hint": "* resides in Albero",
+		"Room": "D01Z02S03",
+		"Logic": "canRideAlberoElevator || pillar || cante || D01Z02S03[NW] && (canCrossGap2 || lorquiana || aubade || cantina || canAirStall)"
+	},
+	{
+		"Id": "Lvdovico[500]",
+		"Name": "Tentudia reward 1",
+		"Hint": "Lvdovico holds *",
+		"OriginalItem": "Tears[500]",
+		"Room": "D01Z02S03",
+		"Logic": "tentudiaRemains >= 1"
+	},
+	{
+		"Id": "Lvdovico[1000]",
+		"Name": "Tentudia reward 2",
+		"Hint": "Lvdovico holds *",
+		"OriginalItem": "Tears[1000]",
+		"Room": "D01Z02S03",
+		"Logic": "tentudiaRemains >= 2"
+	},
+	{
+		"Id": "PR03",
+		"Name": "Tentudia reward 3",
+		"Hint": "Lvdovico holds *",
+		"Room": "D01Z02S03",
+		"Logic": "tentudiaRemains >= 3"
+	},
+	{
+		"Id": "QI01",
+		"Name": "Cleofas initial gift",
+		"Hint": "Lvdovico holds *",
+		"Room": "D01Z02S03",
+		"Logic": "D04Z02S10[W]"
+	},
+	{
+		"Id": "CO43",
+		"Name": "Outside ossuary",
+		"Hint": "* resides in Albero",
+		"Room": "D01Z02S04"
+	},
+	{
+		"Id": "CO16",
+		"Name": "Graveyard",
+		"Hint": "* resides in Albero",
+		"Room": "D01Z02S05"
+	},
+	{
+		"Id": "Sword[D01Z02S06]",
+		"Name": "Mea Culpa shrine",
+		"Hint": "A Mea Culpa Shrine holds *",
+		"Room": "D01Z02S06"
+	},
+	{
+		"Id": "QI65",
+		"Name": "Warp room",
+		"Hint": "* resides in Albero",
+		"Room": "D01Z02S07"
+	},
+	{
+		"Id": "RB104",
+		"Name": "Church donation (5000)",
+		"Hint": "* requires a donation",
+		"LocationFlag": "LOCATION_RB104~D01Z02",
+		"Room": "D01BZ04S01"
+	},
+	{
+		"Id": "RB105",
+		"Name": "Church donation (50000)",
+		"Hint": "* requires a donation",
+		"Type": 8,
+		"LocationFlag": "LOCATION_RB105~D01Z02",
+		"Room": "D01BZ04S01"
+	},
+	{
+		"Id": "PR11",
+		"Name": "Cleofas final gift",
+		"Hint": "Cleofas holds *",
+		"LocationFlag": "LOCATION_PR11~D01Z02",
+		"Room": "D01BZ04S01",
+		"Logic": "marksOfRefuge >= 3 && cord && D04Z02S10[W] && D06Z01S18[E]"
+	},
+	{
+		"Id": "Undertaker[250]",
+		"Name": "Ossuary reward 1",
+		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[250]~D01Z02",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 4"
+	},
+	{
+		"Id": "Undertaker[500]",
+		"Name": "Ossuary reward 2",
+		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[500]~D01Z02",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 8"
+	},
+	{
+		"Id": "Undertaker[750]",
+		"Name": "Ossuary reward 3",
+		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[750]~D01Z02",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 12"
+	},
+	{
+		"Id": "Undertaker[1000]",
+		"Name": "Ossuary reward 4",
+		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[1000]~D01Z02",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 16"
+	},
+	{
+		"Id": "Undertaker[1250]",
+		"Name": "Ossuary reward 5",
+		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[1250]~D01Z02",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 20"
+	},
+	{
+		"Id": "Undertaker[1500]",
+		"Name": "Ossuary reward 6",
+		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[1500]~D01Z02",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 24"
+	},
+	{
+		"Id": "Undertaker[1750]",
+		"Name": "Ossuary reward 7",
+		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[1750]~D01Z02",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 28"
+	},
+	{
+		"Id": "Undertaker[2000]",
+		"Name": "Ossuary reward 8",
+		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[2000]~D01Z02",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 32"
+	},
+	{
+		"Id": "Undertaker[2500]",
+		"Name": "Ossuary reward 9",
+		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[2500]~D01Z02",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 36"
+	},
+	{
+		"Id": "Undertaker[3000]",
+		"Name": "Ossuary reward 10",
+		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[3000]~D01Z02",
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 40"
+	},
+	{
+		"Id": "Undertaker[5000]",
+		"Name": "Ossuary reward 11",
+		"Hint": "The Undertaker holds *",
+		"LocationFlag": "LOCATION_Undertaker[5000]~D01Z02",
+		"Type": 8,
+		"Room": "D01BZ06S01",
+		"Logic": "bones >= 44"
+	},
+	{
+		"Id": "QI201",
+		"Name": "Isidora reward",
+		"Hint": "* is guarded by Isidora",
+		"LocationFlag": "LOCATION_QI201~D01Z02",
+		"Room": "D01BZ08S01",
+		"Logic": "canBeatOssuaryBoss"
+	},
+	
+	{
+		"Id": "RB04",
+		"Name": "Lower tree path",
+		"Hint": "* resides in the Wastelands",
+		"Room": "D01Z03S01",
+		"Logic": "D01Z03S01[SE]"
+	},
+	{
+		"Id": "CO14",
+		"Name": "Building slide",
+		"Hint": "* resides in the Wastelands",
+		"Room": "D01Z03S02",
+		"Logic": "dash"
+	},
+	{
+		"Id": "CO36",
+		"Name": "Exterior ledge",
+		"Hint": "* resides in the Wastelands",
+		"Room": "D01Z03S03"
+	},
+	{
+		"Id": "RESCUED_CHERUB_10",
+		"Name": "Exterior cherub",
+		"Hint": "* resides in the Wastelands",
+		"Room": "D01Z03S03"
+	},
+	{
+		"Id": "QI06",
+		"Name": "Underneath MD bridge",
+		"Hint": "* resides in the Wastelands",
+		"Room": "D01Z03S05",
+		"Logic": "blood || boots || canCrossGap3"
+	},
+	{
+		"Id": "RB20",
+		"Name": "Redento meeting 3",
+		"Hint": "Redento holds *",
+		"Room": "D01Z03S06",
+		"Logic": "redentoRooms >= 3"
+	},
+	{
+		"Id": "HE02",
+		"Name": "Cliffside ledge",
+		"Hint": "* resides in the Wastelands",
+		"Room": "D01Z03S07"
+	},
+	{
+		"Id": "RESCUED_CHERUB_38",
+		"Name": "Cliffside cherub",
+		"Hint": "* resides in the Wastelands",
+		"Room": "D01Z03S07",
+		"Logic": "canCrossGap1 || lorquiana || cante || aubade || cantina || ruby"
+	},
+	
+	{
+		"Id": "CO30",
+		"Name": "First section hidden wall",
+		"Hint": "* resides in Mercy",
+		"Room": "D01Z04S05"
+	},
+	{
+		"Id": "CO03",
+		"Name": "Second section ledge",
+		"Hint": "* resides in Mercy",
+		"Room": "D01Z04S06"
+	},
+	{
+		"Id": "RESCUED_CHERUB_09",
+		"Name": "Second section cherub",
+		"Hint": "* resides in Mercy",
+		"Room": "D01Z04S06"
+	},
+	{
+		"Id": "PR01",
+		"Name": "Second section ghost ambush",
+		"Hint": "* resides in Mercy",
+		"Room": "D01Z04S07"
+	},
+	{
+		"Id": "RB17",
+		"Name": "Red candle",
+		"Hint": "A candle holds *",
+		"Room": "D01Z04S08"
+	},
+	{
+		"Id": "QI48",
+		"Name": "Hidden battle arena",
+		"Hint": "* resides in Mercy",
+		"Room": "D01Z04S11"
+	},
+	{
+		"Id": "CO21",
+		"Name": "TSC entrance ledge",
+		"Hint": "* resides in Mercy",
+		"Room": "D01Z04S13",
+		"Logic": "D01Z04S13[SE] || canDiveLaser && (canAirStall || wheel || doubleJump || enemySkipsAllowed)"
+	},
+	{
+		"Id": "CO38",
+		"Name": "Lower slide room",
+		"Hint": "* resides in Mercy",
+		"Room": "D01Z04S14",
+		"Logic": "dash"
+	},
+	{
+		"Id": "RESCUED_CHERUB_33",
+		"Name": "TSC entrance cherub",
+		"Hint": "* resides in Mercy",
+		"Room": "D01Z04S16",
+		"Logic": "doubleJump || pillar || cante || tirana"
+	},
+	{
+		"Id": "BS01",
+		"Name": "Defeat Ten Piedad",
+		"Hint": "* is guarded by Ten Piedad",
+		"Room": "D01Z04S18",
+		"Logic": "canBeatMercyBoss"
+	},
+	{
+		"Id": "QI38",
+		"Name": "Holy Visage gift",
+		"Hint": "A Holy Visage holds *",
+		"Room": "D01Z04S19"
+	},
+	{
+		"Id": "QI58",
+		"Name": "Shop left",
+		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_QI58~D01Z04",
+		"Room": "D01BZ02S01"
+	},
+	{
+		"Id": "RB05",
+		"Name": "Shop middle",
+		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_RB05~D01Z04",
+		"Room": "D01BZ02S01"
+	},
+	{
+		"Id": "RB09",
+		"Name": "Shop right",
+		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_RB09~D01Z04",
+		"Room": "D01BZ02S01"
+	},
+	
+	{
+		"Id": "CO09",
+		"Name": "WotBC upper entrance",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S05"
+	},
+	{
+		"Id": "QI67",
+		"Name": "Hidden hand room",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S05",
+		"Logic": "dash && canWaterJump"
+	},
+	{
+		"Id": "PR16",
+		"Name": "Eastern upper tunnel chest",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S06",
+		"Logic": "D01Z05S06[Cherubs] || canWaterJump"
+	},
+	{
+		"Id": "RESCUED_CHERUB_13",
+		"Name": "Eastern upper tunnel cherub",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S06",
+		"Logic": "D01Z05S06[Cherubs] || canWaterJump || pillar || cante || aubade || tirana || canAirStall"
+	},
+	{
+		"Id": "Oil[D01Z05S07]",
+		"Name": "Oil room",
+		"Hint": "An oil fountain holds *",
+		"Room": "D01Z05S07"
+	},
+	{
+		"Id": "QI12",
+		"Name": "Veil room ledge",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S08"
+	},
+	{
+		"Id": "RESCUED_CHERUB_14",
+		"Name": "Veil room cherub",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S08"
+	},
+	{
+		"Id": "QI45",
+		"Name": "Eastern lower tunnel chest",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S11"
+	},
+	{
+		"Id": "RESCUED_CHERUB_12",
+		"Name": "Lung tunnel cherub",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S13",
+		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && canSurvivePoison3 && canWaterJump"
+	},
+	{
+		"Id": "RESCUED_CHERUB_11",
+		"Name": "Southern water room cherub",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S14"
+	},
+	{
+		"Id": "CO41",
+		"Name": "MD lower entrance",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S15"
+	},
+	{
+		"Id": "CO32",
+		"Name": "Water ledge near elevator",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S17",
+		"Logic": "D01Z05S17[E] || canWaterJump || canCrossGap5"
+	},
+	{
+		"Id": "RESCUED_CHERUB_15",
+		"Name": "Elevator exit room cherub",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S20"
+	},
+	{
+		"Id": "Lady[D01Z05S22]",
+		"Name": "MD Lady of Sorrows",
+		"Hint": "The Lady of Sorrows holds *",
+		"Room": "D01Z05S22"
+	},
+	{
+		"Id": "QI75",
+		"Name": "Chalice room",
+		"Hint": "* resides in the Cistern",
+		"Type": 9,
+		"OriginalItem": "QI75",
+		"Room": "D01Z05S23"
+	},
+	{
+		"Id": "Sword[D01Z05S24]",
+		"Name": "Mea Culpa shrine",
+		"Hint": "* requires a golden chalice",
+		"Room": "D01Z05S24"
+	},
+	{
+		"Id": "CO44",
+		"Name": "Elevator shaft ledge",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S25",
+		"Logic": "linen"
+	},
+	{
+		"Id": "RESCUED_CHERUB_22",
+		"Name": "Elevator shaft cherub",
+		"Hint": "* resides in the Cistern",
+		"Room": "D01Z05S25",
+		"Logic": "linen || (pillar && (D01Z05S25[E] || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3)))"
+	},
+	{
+		"Id": "Lady[D01Z05S26]",
+		"Name": "GA Lady of Sorrows",
+		"Hint": "The Lady of Sorrows holds *",
+		"Room": "D01Z05S26"
+	},
+	{
+		"Id": "RB03",
+		"Name": "Shroud puzzle",
+		"Hint": "* resides in the Cistern",
+		"LocationFlag": "LOCATION_RB03~D01Z05",
+		"Room": "D01BZ05S01"
+	},
+	
+	{
+		"Id": "QI101",
+		"Name": "Entrance room",
+		"Hint": "* resides in Petrous",
+		"Room": "D01Z06S01"
+	},
+	
+	{
+		"Id": "CO11",
+		"Name": "WotBC entrance",
+		"Hint": "* resides with the Olive Trees",
+		"Room": "D02Z01S01",
+		"Logic": "D02Z01S01[W] || D02Z01S01[CherubsL] || D02Z01S01[SW] || D02Z01S01[CherubsR] || doubleJump || wallClimb"
+	},
+	{
+		"Id": "QI59",
+		"Name": "Gemino intial gift",
+		"Hint": "Gemino holds *",
+		"Room": "D02Z01S01",
+		"Logic": "D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump)"
+	},
+	{
+		"Id": "RB10",
+		"Name": "Gemino final gift",
+		"Hint": "Gemino holds *",
+		"Room": "D02Z01S01",
+		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump))"
+	},
+	{
+		"Id": "RESCUED_CHERUB_23",
+		"Name": "Eastern root cherub",
+		"Hint": "* resides with the Olive Trees",
+		"Room": "D02Z01S02",
+		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (canWalkOnRoot || canCrossGap4 || pillar)"
+	},
+	{
+		"Id": "QI20",
+		"Name": "Healing cave",
+		"Hint": "* resides with the Olive Trees",
+		"Room": "D02Z01S04"
+	},
+	{
+		"Id": "QI68",
+		"Name": "White lady flower",
+		"Hint": "Gemino holds *",
+		"Room": "D02Z01S04",
+		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump))"
+	},
+	{
+		"Id": "QI07",
+		"Name": "Western ghost room",
+		"Hint": "* resides with the Olive Trees",
+		"Room": "D02Z01S05"
+	},
+	{
+		"Id": "CO19",
+		"Name": "Large cave ledge",
+		"Hint": "* resides with the Olive Trees",
+		"Room": "D02Z01S06",
+		"Logic": "wallClimb && blood && (dash || D02Z01S06[Cherubs]) || doubleJump && (D02Z01S06[Cherubs] || D02Z01S06[E] || wallClimb || dash)"
+	},
+	{
+		"Id": "RESCUED_CHERUB_27",
+		"Name": "Large cave cherub",
+		"Hint": "* resides with the Olive Trees",
+		"Room": "D02Z01S06",
+		"Logic": "(D02Z01S06[W] || dash || doubleJump && wallClimb) && (pillar || cante) || (D02Z01S06[W] || doubleJump || dash) && wallClimb && (lorquiana || aubade || cantina || canAirStall)"
+	},
+	{
+		"Id": "PR04",
+		"Name": "White lady tomb",
+		"Hint": "A lady's tomb holds *",
+		"Room": "D02Z01S08",
+		"Logic": "driedFlowers"
+	},
+	{
+		"Id": "HE05",
+		"Name": "Eastern root ledge",
+		"Hint": "* resides with the Olive Trees",
+		"Room": "D02Z01S09",
+		"Logic": "canWalkOnRoot || canCrossGap11"
+	},
+	
+	{
+		"Id": "RESCUED_CHERUB_24",
+		"Name": "Center shaft cherub",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S02",
+		"Logic": "D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || ((D02Z02S02[NW] || D02Z02S02[NE] || wallClimb) && (doubleJump || pillar || cante || tirana || canDiveLaser))"
+	},
+	{
+		"Id": "QI46",
+		"Name": "Eastern shaft lower",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S03",
+		"Logic": "D02Z02S03[NW] || D02Z02S03[NE] || wallClimb || canCrossGap2"
+	},
+	{
+		"Id": "CO29",
+		"Name": "Eastern shaft middle",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S03",
+		"Logic": "D02Z02S03[NW] || D02Z02S03[NE] || wallClimb || doubleJump"
+	},
+	{
+		"Id": "QI08",
+		"Name": "Eastern shaft upper",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S03",
+		"Logic": "(canClimbOnRoot && doubleJump) || (blood && (doubleJump || canClimbOnRoot))"
+	},
+	{
+		"Id": "RB32",
+		"Name": "Western shaft lower",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S04",
+		"Logic": "D02Z02S04[E]"
+	},
+	{
+		"Id": "CO01",
+		"Name": "Western shaft upper",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S04",
+		"Logic": "D02Z02S04[NE] || ((D02Z02S04[W] || D02Z02S04[E] && dash) && (doubleJump || wallClimb)) || (wallClimb && D02Z02S04[SE])"
+	},
+	{
+		"Id": "RESCUED_CHERUB_25",
+		"Name": "Western shaft cherub",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S04",
+		"Logic": "(D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE] && wallClimb) && (blood && dash || lorquiana || cante || verdiales || aubade || cantina) || (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE]) && pillar"
+	},
+	{
+		"Id": "RB15",
+		"Name": "Center shaft ledge",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S05",
+		"Logic": "D02Z02S05[NW] || wallClimb"
+	},
+	{
+		"Id": "RB38",
+		"Name": "Guilt room",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S06"
+	},
+	{
+		"Id": "CO42",
+		"Name": "Shop cave hole",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S08",
+		"Logic": "D02Z02S08[CherubsR] || blood || canBreakHoles || canCrossGap8"
+	},
+	{
+		"Id": "RESCUED_CHERUB_31",
+		"Name": "Shop cave cherub",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S08",
+		"Logic": "D02Z02S08[CherubsR] || blood || pillar || canCrossGap8"
+	},
+	{
+		"Id": "Oil[D02Z02S10]",
+		"Name": "Oil room",
+		"Hint": "An oil fountain holds *",
+		"Room": "D02Z02S10"
+	},
+	{
+		"Id": "QI53",
+		"Name": "Elevator shaft ledge",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S11"
+	},
+	{
+		"Id": "RESCUED_CHERUB_26",
+		"Name": "Elevator shaft cherub",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S11"
+	},
+	{
+		"Id": "Lady[D02Z02S12]",
+		"Name": "Lady of Sorrows",
+		"Hint": "The Lady of Sorrows holds *",
+		"Room": "D02Z02S12"
+	},
+	{
+		"Id": "HE11",
+		"Name": "Bleed room",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S13"
+	},
+	{
+		"Id": "RB106",
+		"Name": "Amanecida ledge",
+		"Hint": "* resides in the Graveyard",
+		"Room": "D02Z02S14"
+	},
+	{
+		"Id": "Amanecida[D02Z02S14]",
+		"Name": "Defeat Amanecida of the Bejeweled Arrow",
+		"Hint": "* is guarded by the Bejeweled Arrow",
+		"Room": "D02Z02S14",
+		"Logic": "canBeatGraveyardBoss"
+	},
+	{
+		"Id": "QI11",
+		"Name": "Shop left",
+		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_QI11~D02Z02",
+		"Room": "D02BZ02S01"
+	},
+	{
+		"Id": "RB37",
+		"Name": "Shop middle",
+		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_RB37~D02Z02",
+		"Room": "D02BZ02S01"
+	},
+	{
+		"Id": "RB02",
+		"Name": "Shop right",
+		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_RB02~D02Z02",
+		"Room": "D02BZ02S01"
+	},
+	
+	{
+		"Id": "CO05",
+		"Name": "Blood platform ledge",
+		"Hint": "* resides in the Convent",
+		"Room": "D02Z03S03",
+		"Logic": "D02Z03S03[NW] || blood || canCrossGap3"
+	},
+	{
+		"Id": "RB08",
+		"Name": "Central lung room",
+		"Hint": "* resides in the Convent",
+		"Room": "D02Z03S05",
+		"Logic": "dash && (D02Z03S05[S] || D02Z03S05[NE] || wallClimb || doubleJump)"
+	},
+	{
+		"Id": "CO15",
+		"Name": "Ghost death room",
+		"Hint": "* resides in the Convent",
+		"Room": "D02Z03S07"
+	},
+	{
+		"Id": "HE03",
+		"Name": "Southwest lung room",
+		"Hint": "* resides in the Convent",
+		"Room": "D02Z03S12",
+		"Logic": "canSurvivePoison1 && dash"
+	},
+	{
+		"Id": "Sword[D02Z03S13]",
+		"Name": "Mea Culpa shrine",
+		"Hint": "A Mea Culpa Shrine holds *",
+		"Room": "D02Z03S13"
+	},
+	{
+		"Id": "Lady[D02Z03S15]",
+		"Name": "Lady of Sorrows",
+		"Hint": "The Lady of Sorrows holds *",
+		"Room": "D02Z03S15"
+	},
+	{
+		"Id": "RB24",
+		"Name": "Blue candle",
+		"Hint": "A candle holds *",
+		"Room": "D02Z03S17"
+	},
+	{
+		"Id": "QI61",
+		"Name": "Mask room",
+		"Hint": "Dolphos holds *",
+		"Room": "D02Z03S19"
+	},
+	{
+		"Id": "BS03",
+		"Name": "Defeat Our Lady of the Charred Visage",
+		"Hint": "* is guarded by Our Lady of the Charred Visage",
+		"Room": "D02Z03S20",
+		"Logic": "canBeatConventBoss"
+	},
+	{
+		"Id": "QI40",
+		"Name": "Holy Visage gift",
+		"Hint": "A Holy Visage holds *",
+		"Room": "D02Z03S21"
+	},
+	{
+		"Id": "QI57",
+		"Name": "Burning oil fountain",
+		"Hint": "The fountain of burning oil holds *",
+		"Type": 9,
+		"OriginalItem": "QI57",
+		"Room": "D02Z03S21",
+		"Logic": "emptyThimble"
+	},
+	{
+		"Id": "RB107",
+		"Name": "Outside area",
+		"Hint": "* resides in the Convent",
+		"Room": "D02Z03S23"
+	},
+	
+	{
+		"Id": "CO13",
+		"Name": "DC entrance",
+		"Hint": "* resides in the Mountains",
+		"Room": "D03Z01S01"
+	},
+	{
+		"Id": "QI47",
+		"Name": "Bell gap ledge",
+		"Hint": "* resides in the Mountains",
+		"Room": "D03Z01S03",
+		"Logic": "(blood || doubleJump) && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9)"
+	},
+	{
+		"Id": "RB22",
+		"Name": "Redento meeting 1",
+		"Hint": "Redento holds *",
+		"Room": "D03Z01S03",
+		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9"
+	},
+	{
+		"Id": "RESCUED_CHERUB_16",
+		"Name": "Bell gap cherub",
+		"Hint": "* resides in the Mountains",
+		"Room": "D03Z01S03",
+		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9"
+	},
+	{
+		"Id": "Amanecida[D03Z01S03]",
+		"Name": "Defeat Amanecida of the Golden Blades",
+		"Hint": "* is guarded by the Golden Blades",
+		"Room": "D03Z01S03",
+		"Logic": "canBeatJondoBoss && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9)"
+	},
+	{
+		"Id": "QI63",
+		"Name": "Blood platform",
+		"Hint": "* resides in the Mountains",
+		"Room": "D03Z01S04",
+		"Logic": "blood || doubleJump || upwarpSkipsAllowed"
+	},
+	{
+		"Id": "RB13",
+		"Name": "Perpetua gift",
+		"Hint": "* is guarded by Perpetva",
+		"Room": "D03Z01S06",
+		"Logic": "canBeatPerpetua"
+	},
+	{
+		"Id": "QI14",
+		"Name": "Egg hatching",
+		"Hint": "A hatching tree holds *",
+		"Type": 9,
+		"OriginalItem": "QI14",
+		"Room": "D03Z01S06",
+		"Logic": "canBeatPerpetua && egg"
+	},
+	
+	{
+		"Id": "CO08",
+		"Name": "Eastern entrance ledge",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S01"
+	},
+	{
+		"Id": "PR10",
+		"Name": "Eastern entrance chest",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S01",
+		"Logic": "D03Z02S01[Cherubs] || (D03Z02S01[W] && canCrossGap8) || canClimbOnRoot || canCrossGap9"
+	},
+	{
+		"Id": "CO33",
+		"Name": "Eastern shaft bell chargers",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S04",
+		"Logic": "D03Z02S04[NE] || D03Z02S04[S] || wallClimb"
+	},
+	{
+		"Id": "RESCUED_CHERUB_18",
+		"Name": "Eastern shaft cherub",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S05",
+		"Logic": "D03Z02S05[E] || D03Z02S05[S] || canCrossGap5"
+	},
+	{
+		"Id": "QI19",
+		"Name": "Eastern shaft bell trap",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S06"
+	},
+	{
+		"Id": "CO07",
+		"Name": "Western shaft lower slide",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S07",
+		"Logic": "dash"
+	},
+	{
+		"Id": "QI41",
+		"Name": "Western shaft bell trap",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S08",
+		"Logic": "D03Z02S08[N] || D03Z02S08[W] || wallClimb || doubleJump"
+	},
+	{
+		"Id": "RESCUED_CHERUB_17",
+		"Name": "Western shaft cherub",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S10"
+	},
+	{
+		"Id": "HE06",
+		"Name": "Spike tunnel ledge",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S11",
+		"Logic": "dash && (wallClimb || doubleJump)"
+	},
+	{
+		"Id": "RESCUED_CHERUB_37",
+		"Name": "Spike tunnel cherub",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S11",
+		"Logic": "dash && (wallClimb || doubleJump || D03Z02S11[W] && canCrossGap3)"
+	},
+	{
+		"Id": "QI52",
+		"Name": "Western shaft bell puzzle",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S12"
+	},
+	{
+		"Id": "RB28",
+		"Name": "Western shaft root puzzle",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S13",
+		"Logic": "canWalkOnRoot || canCrossGap3"
+	},
+	{
+		"Id": "QI103",
+		"Name": "EoS entrance",
+		"Hint": "* resides in the Bell",
+		"Room": "D03Z02S15"
+	},
+
+	{
+		"Id": "QI44",
+		"Name": "Western lung ledge",
+		"Hint": "* resides in the Grievance",
+		"Room": "D03Z03S02",
+		"Logic": "canSurvivePoison1"
+	},
+	{
+		"Id": "CO12",
+		"Name": "Lung room lower",
+		"Hint": "* resides in the Grievance",
+		"Room": "D03Z03S06",
+		"Logic": "canSurvivePoison1"
+	},
+	{
+		"Id": "RE07",
+		"Name": "Lung room upper",
+		"Hint": "* resides in the Grievance",
+		"Room": "D03Z03S06",
+		"Logic": "wallClimb"
+	},
+	{
+		"Id": "RESCUED_CHERUB_19",
+		"Name": "Lung room cherub",
+		"Hint": "* resides in the Grievance",
+		"Room": "D03Z03S06",
+		"Logic": "wallClimb"
+	},
+	{
+		"Id": "QI10",
+		"Name": "Blood tunnel ledge",
+		"Hint": "* resides in the Grievance",
+		"Room": "D03Z03S08",
+		"Logic": "blood || canCrossGap11"
+	},
+	{
+		"Id": "RESCUED_CHERUB_21",
+		"Name": "Blood tunnel cherub",
+		"Hint": "* resides in the Grievance",
+		"Room": "D03Z03S08",
+		"Logic": "(blood || canCrossGap11) && (doubleJump || pillar || cante || verdiales || tirana || aubade && canAirStall)"
+	},
+	{
+		"Id": "RESCUED_CHERUB_20",
+		"Name": "Altasgracias cherub",
+		"Hint": "* resides in the Grievance",
+		"Room": "D03Z03S09",
+		"Logic": "canClimbOnRoot || doubleJump || pillar || lorquiana || zarabanda || cante || aubade || tirana"
+	},
+	{
+		"Id": "QI13",
+		"Name": "Altasgracias gift",
+		"Hint": "Altasgracias holds *",
+		"Room": "D03Z03S10",
+		"Logic": "ceremonyItems >= 3"
+	},
+	{
+		"Id": "RB06",
+		"Name": "Altasgracias cacoon",
+		"Hint": "Altasgracias holds *",
+		"Room": "D03Z03S10",
+		"Logic": "ceremonyItems >= 3 && hatchedEgg && (D01Z02S01[W] || D01Z02S01[E])"
+	},
+	{
+		"Id": "Oil[D03Z03S13]",
+		"Name": "Oil room",
+		"Hint": "An oil fountain holds *",
+		"Room": "D03Z03S13"
+	},
+	{
+		"Id": "BS04",
+		"Name": "Defeat Tres Angustias",
+		"Hint": "* is guarded by Tres Angustias",
+		"Room": "D03Z03S15",
+		"Logic": "canBeatGrievanceBoss"
+	},
+	{
+		"Id": "QI39",
+		"Name": "Holy Visage gift",
+		"Hint": "A Holy Visage holds *",
+		"Room": "D03Z03S16"
+	},
+	
+	{
+		"Id": "CO23",
+		"Name": "Garden 1 ledge",
+		"Hint": "* resides in the Patio",
+		"Room": "D04Z01S01",
+		"Logic": "D04Z01S01[NE] || D04Z01S01[N] || canCrossGap3"
+	},
+	{
+		"Id": "RESCUED_CHERUB_35",
+		"Name": "Garden 1 cherub",
+		"Hint": "* resides in the Patio",
+		"Room": "D04Z01S01"
+	},
+	{
+		"Id": "RB14",
+		"Name": "Garden 2 ledge",
+		"Hint": "* resides in the Patio",
+		"Room": "D04Z01S02",
+		"Logic": "canClimbOnRoot || canCrossGap3"
+	},
+	{
+		"Id": "QI37",
+		"Name": "Garden 3 lower ledge",
+		"Hint": "* resides in the Patio",
+		"Room": "D04Z01S03"
+	},
+	{
+		"Id": "CO39",
+		"Name": "Garden 3 upper ledge",
+		"Hint": "* resides in the Patio",
+		"Room": "D04Z01S03",
+		"Logic": "canWalkOnRoot || canCrossGap3"
+	},
+	{
+		"Id": "RESCUED_CHERUB_28",
+		"Name": "Garden 3 cherub",
+		"Hint": "* resides in the Patio",
+		"Room": "D04Z01S03"
+	},
+	{
+		"Id": "RB21",
+		"Name": "Redento meeting 4",
+		"Hint": "Redento holds *",
+		"Room": "D04Z01S04",
+		"Logic": "redentoRooms >= 4"
+	},
+	{
+		"Id": "Amanecida[D04Z01S04]",
+		"Name": "Defeat Amanecida of the Chiselled Steel",
+		"Hint": "* is guarded by the Chiselled Steel",
+		"Room": "D04Z01S04",
+		"Logic": "canBeatPatioBoss"
+	},
+	{
+		"Id": "QI102",
+		"Name": "Northern shaft",
+		"Hint": "* resides in the Patio",
+		"Room": "D04Z01S06"
+	},
+
+	{
+		"Id": "RE402",
+		"Name": "Western room ledge",
+		"Hint": "* resides in the Mother",
+		"Room": "D04Z02S01",
+		"Logic": "D04Z02S01[N] || D04Z02S01[NE] && dash && (doubleJump || wallClimb)"
+	},
+	{
+		"Id": "RESCUED_CHERUB_30",
+		"Name": "Western room cherub",
+		"Hint": "* resides in the Mother",
+		"Room": "D04Z02S01",
+		"Logic": "D04Z02S01[N] || pillar || D04Z02S01[NE] && dash && (wallClimb || canCrossGap1)"
+	},
+	{
+		"Id": "CO17",
+		"Name": "Outside guilt room",
+		"Hint": "* resides in the Mother",
+		"Room": "D04Z02S02"
+	},
+	{
+		"Id": "CO34",
+		"Name": "Outside Cleofas room",
+		"Hint": "* resides in the Mother",
+		"Room": "D04Z02S06",
+		"Logic": "D04Z02S06[NW] || D04Z02S06[N] || D04Z02S06[NE] || wallClimb || doubleJump"
+	},
+	{
+		"Id": "CO35",
+		"Name": "Eastern room lower",
+		"Hint": "* resides in the Mother",
+		"Room": "D04Z02S07",
+		"Logic": "blood || canCrossGap3"
+	},
+	{
+		"Id": "RB33",
+		"Name": "Eastern room upper",
+		"Hint": "* resides in the Mother",
+		"Room": "D04Z02S07"
+	},
+	{
+		"Id": "CO20",
+		"Name": "Center room ledge",
+		"Hint": "* resides in the Mother",
+		"Room": "D04Z02S11"
+	},
+	{
+		"Id": "RESCUED_CHERUB_29",
+		"Name": "Center room cherub",
+		"Hint": "* resides in the Mother",
+		"Room": "D04Z02S11"
+	},
+	{
+		"Id": "Sword[D04Z02S12]",
+		"Name": "Mea Culpa shrine",
+		"Hint": "A Mea Culpa Shrine holds *",
+		"Room": "D04Z02S12"
+	},
+	{
+		"Id": "Oil[D04Z02S14]",
+		"Name": "Oil room",
+		"Hint": "An oil fountain holds *",
+		"Room": "D04Z02S14"
+	},
+	{
+		"Id": "QI60",
+		"Name": "Mask room",
+		"Hint": "Orestes holds *",
+		"Room": "D04Z02S15"
+	},
+	{
+		"Id": "HE01",
+		"Name": "Blood incense shaft",
+		"Hint": "* resides in the Mother",
+		"Room": "D04Z02S16",
+		"Logic": "wallClimb && (blood || doubleJump)"
+	},
+	{
+		"Id": "BS05",
+		"Name": "Defeat Melquiades",
+		"Hint": "* is guarded by Melquiades",
+		"Room": "D04Z02S22",
+		"Logic": "canBeatMothersBoss"
+	},
+	{
+		"Id": "RE03",
+		"Name": "Redento prayer room",
+		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_RE03~D04Z02",
+		"Room": "D04BZ02S01"
+	},
+	{
+		"Id": "QI54",
+		"Name": "Redento corpse",
+		"Hint": "Redento holds *",
+		"LocationFlag": "LOCATION_QI54~D04Z02",
+		"Room": "D04BZ02S01",
+		"Logic": "redentoRooms >= 5"
+	},
+	
+	{
+		"Id": "HE201",
+		"Name": "Fourth Visage gift",
+		"Hint": "The Fourth Visage holds *",
+		"Room": "D04Z03S02",
+		"Logic": "traitorEyes >= 2"
+	},
+	
+	{
+		"Id": "PR201",
+		"Name": "Miriam gift",
+		"Hint": "Miriam holds *",
+		"Type": 8,
+		"Room": "D04Z04S01",
+		"Logic": "miriamRooms >= 5 && dash && wallClimb"
+	},
+	
+	{
+		"Id": "CO18",
+		"Name": "Platform room ledge",
+		"Hint": "* resides in the Library",
+		"Room": "D05Z01S04"
+	},
+	{
+		"Id": "RESCUED_CHERUB_01",
+		"Name": "Platform room cherub",
+		"Hint": "* resides in the Library",
+		"Room": "D05Z01S04"
+	},
+	{
+		"Id": "QI50",
+		"Name": "Hidden floor",
+		"Hint": "* resides in the Library",
+		"Room": "D05Z01S05",
+		"Logic": "canBreakHoles"
+	},
+	{
+		"Id": "CO22",
+		"Name": "Upper cathedral ledge",
+		"Hint": "* resides in the Library",
+		"Room": "D05Z01S05",
+		"Logic": "(canClimbOnRoot || doubleJump) && (D05Z01S05[NE] || blood)"
+	},
+	{
+		"Id": "RB31",
+		"Name": "Lung ambush chest",
+		"Hint": "* resides in the Library",
+		"Room": "D05Z01S06",
+		"Logic": "D05Z01S06[W] || canSurvivePoison3"
+	},
+	{
+		"Id": "PR07",
+		"Name": "Platform puzzle chest",
+		"Hint": "* resides in the Library",
+		"Room": "D05Z01S10",
+		"Logic": "blood || doubleJump"
+	},
+	{
+		"Id": "RB203",
+		"Name": "Diosdado gift",
+		"Hint": "Diosdado holds *",
+		"Room": "D05Z01S11",
+		"Logic": "(D05Z01S11[NW] || D05Z01S11[NE]) && D05Z01S23[E]"
+	},
+	{
+		"Id": "CO28",
+		"Name": "Diosdado ledge",
+		"Hint": "* resides in the Library",
+		"Room": "D05Z01S11",
+		"Logic": "D05Z01S11[NW] || D05Z01S11[NE]"
+	},
+	{
+		"Id": "RB30",
+		"Name": "Final shaft ledge",
+		"Hint": "* resides in the Library",
+		"Room": "D05Z01S11"
+	},
+	{
+		"Id": "RESCUED_CHERUB_02",
+		"Name": "Final shaft cherub",
+		"Hint": "* resides in the Library",
+		"Room": "D05Z01S11"
+	},
+	{
+		"Id": "Sword[D05Z01S13]",
+		"Name": "Mea Culpa shrine",
+		"Hint": "A Mea Culpa Shrine holds *",
+		"Room": "D05Z01S13"
+	},
+	{
+		"Id": "Lady[D05Z01S14]",
+		"Name": "Lady of Sorrows",
+		"Hint": "The Lady of Sorrows holds *",
+		"Room": "D05Z01S14"
+	},
+	{
+		"Id": "QI62",
+		"Name": "Mask room",
+		"Hint": "Cresente holds *",
+		"Room": "D05Z01S15"
+	},
+	{
+		"Id": "PR15",
+		"Name": "Bone puzzle",
+		"Hint": "* resides in the Library",
+		"Room": "D05Z01S18"
+	},
+	{
+		"Id": "Oil[D05Z01S19]",
+		"Name": "Oil room",
+		"Hint": "An oil fountain holds *",
+		"Room": "D05Z01S19"
+	},
+	{
+		"Id": "RESCUED_CHERUB_32",
+		"Name": "Elevator cherub",
+		"Hint": "* resides in the Library",
+		"Room": "D05Z01S21",
+		"Logic": "blood && (canWalkOnRoot || doubleJump || canCrossGap5 && pillar)"
+	},
+	{
+		"Id": "RB301",
+		"Name": "Fourth Visage hidden wall",
+		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_RB301~D05Z01",
+		"Room": "D05BZ01S01"
+	},
+	
+	{
+		"Id": "QI64",
+		"Name": "Herb shaft",
+		"Hint": "* resides in the Canvases",
+		"Room": "D05Z02S02"
+	},
+	{
+		"Id": "HE07",
+		"Name": "Wax bleed puzzle",
+		"Hint": "* requires large beads of wax",
+		"Room": "D05Z02S08"
+	},
+	{
+		"Id": "RE05",
+		"Name": "Jocinero first gift",
+		"Hint": "Jocinero holds *",
+		"Room": "D05Z02S10",
+		"Logic": "cherubs >= 20"
+	},
+	{
+		"Id": "PR05",
+		"Name": "Jocinero second gift",
+		"Hint": "Jocinero holds *",
+		"Type": 8,
+		"Room": "D05Z02S10",
+		"Logic": "cherubs >= 38"
+	},
+	{
+		"Id": "CO31",
+		"Name": "Linen drop room",
+		"Hint": "* resides in the Canvases",
+		"Room": "D05Z02S11"
+	},
+	{
+		"Id": "BS06",
+		"Name": "Defeat Expositio",
+		"Hint": "* is guarded by Exposito",
+		"Room": "D05Z02S14",
+		"Logic": "canBeatCanvasesBoss"
+	},
+	{
+		"Id": "QI104",
+		"Name": "Low tunnel blade trap",
+		"Hint": "* resides in the Canvases",
+		"Room": "D05Z02S15",
+		"Logic": "dash"
+	},
+	{
+		"Id": "RB12",
+		"Name": "Shop left",
+		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_RB12~D05Z02",
+		"Room": "D05BZ02S01"
+	},
+	{
+		"Id": "QI49",
+		"Name": "Shop middle",
+		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_QI49~D05Z02",
+		"Room": "D05BZ02S01"
+	},
+	{
+		"Id": "QI71",
+		"Name": "Shop right",
+		"Hint": "* can be purchased",
+		"LocationFlag": "LOCATION_QI71~D05Z02",
+		"Room": "D05BZ02S01"
+	},
+	
+	{
+		"Id": "QI02",
+		"Name": "Bridge fight 1",
+		"Hint": "* is guarded by a Legionary",
+		"Room": "D06Z01S03",
+		"Logic": "canBeatLegionary"
+	},
+	{
+		"Id": "QI03",
+		"Name": "Bridge fight 2",
+		"Hint": "* is guarded by a Legionary",
+		"Room": "D06Z01S06",
+		"Logic": "canBeatLegionary && (D06Z01S06[WW] || D06Z01S06[E])"
+	},
+	{
+		"Id": "QI04",
+		"Name": "Bridge fight 3",
+		"Hint": "* is guarded by a Legionary",
+		"Room": "D06Z01S21",
+		"Logic": "canBeatLegionary"
+	},
+	{
+		"Id": "Sword[D06Z01S11]",
+		"Name": "Mea Culpa shrine",
+		"Hint": "A Mea Culpa Shrine holds *",
+		"Room": "D06Z01S11"
+	},
+	{
+		"Id": "CO06",
+		"Name": "Western shaft ledge",
+		"Hint": "* resides in the Rooftops",
+		"Room": "D06Z01S12",
+		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || D06Z01S12[W] || D06Z01S12[E] || wallClimb"
+	},
+	{
+		"Id": "PR12",
+		"Name": "Western shaft chest",
+		"Hint": "* resides in the Rooftops",
+		"Room": "D06Z01S12",
+		"Logic": "D06Z01S12[NE2] || (D06Z01S12[NW] || D06Z01S12[NE]) && doubleJump"
+	},
+	{
+		"Id": "RESCUED_CHERUB_36",
+		"Name": "Western shaft cherub",
+		"Hint": "* resides in the Rooftops",
+		"Room": "D06Z01S12",
+		"Logic": "D06Z01S12[W] || D06Z01S12[E] || D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || wallClimb && (doubleJump || taranto)"
+	},
+	{
+		"Id": "CO40",
+		"Name": "Upper eastern shaft ledge",
+		"Hint": "* resides in the Rooftops",
+		"Room": "D06Z01S15",
+		"Logic": "D06Z01S15[SW] && wallClimb && (canCrossGap10 || canClimbOnRoot && (blood || doubleJump && canAirStall))"
+	},
+	{
+		"Id": "HE04",
+		"Name": "MoM eastern entrance",
+		"Hint": "* resides in the Rooftops",
+		"Room": "D06Z01S22"
+	},
+	{
+		"Id": "Lady[D06Z01S24]",
+		"Name": "Lady of Sorrows",
+		"Hint": "The Lady of Sorrows holds *",
+		"Room": "D06Z01S24"
+	},
+	{
+		"Id": "BS16",
+		"Name": "Defeat Crisanta",
+		"Hint": "* is guarded by Crisanta",
+		"Room": "D06Z01S25",
+		"Logic": "canBeatRooftopsBoss"
+	},
+	
+	{
+		"Id": "PR08",
+		"Name": "Viridiana gift",
+		"Hint": "Viridiana holds *",
+		"Room": "D07Z01S01"
+	},
+
+	{
+		"Id": "BS12",
+		"Name": "Defeat Esdras",
+		"Hint": "* is guarded by Esdras",
+		"Room": "D08Z01S01",
+		"Logic": "holyWounds >= 3 && canBeatBridgeBoss"
+	},
+	{
+		"Id": "PR09",
+		"Name": "Esdras bridge gift",
+		"Hint": "* is guarded by Esdras",
+		"Room": "D08Z01S01",
+		"Logic": "holyWounds >= 3 && canBeatBridgeBoss"
+	},
+	{
+		"Id": "HE101",
+		"Name": "Inside Amanecida statue",
+		"Hint": "* resides on the Bridge",
+		"Room": "D08Z01S02"
+	},
+	
+	{
+		"Id": "QI105",
+		"Name": "Mirror room",
+		"Hint": "* resides in the Hall",
+		"Room": "D08Z03S01"
+	},
+	{
+		"Id": "LaudesBossTrigger[30000]",
+		"Name": "Defeat Laudes",
+		"Hint": "* is guarded by Laudes",
+		"Room": "D08Z03S03",
+		"Logic": "canBeatHallBoss"
+	},
+	
+	{
+		"Id": "Amanecida[D09Z01S01]",
+		"Name": "Defeat Amanecida of the Molten Thorn",
+		"Hint": "* is guarded by the Molten Thorn",
+		"Room": "D09Z01S01",
+		"Logic": "canBeatWallBoss"
+	},
+	{
+		"Id": "QI51",
+		"Name": "Q1 middle gold door",
+		"Hint": "* is locked away in a room",
+		"Room": "D09Z01S02",
+		"Logic": "D09Z01S02[Cell5]"
+	},
+	{
+		"Id": "RB11",
+		"Name": "Q1 lift puzzle",
+		"Hint": "* resides in the Wall",
+		"Room": "D09Z01S02",
+		"Logic": "D09Z01S02[NW] || D09Z01S02[N] || D09Z01S02[Cell1] || D09Z01S02[Cell6] || D09Z01S02[Cell4] || D09Z01S02[Cell3] || D09Z01S02[Cell22] || D09Z01S02[Cell23]"
+	},
+	{
+		"Id": "BS14",
+		"Name": "Defeat Quirce",
+		"Hint": "* is guarded by Quirce",
+		"Room": "D09Z01S03",
+		"Logic": "canBeatPrisonBoss"
+	},
+	{
+		"Id": "RESCUED_CHERUB_05",
+		"Name": "Elevator cherub",
+		"Hint": "* resides in the Wall",
+		"Room": "D09Z01S06"
+	},
+	{
+		"Id": "QI72",
+		"Name": "Quirce room",
+		"Hint": "* resides in the Wall",
+		"Room": "D09Z01S08",
+		"Logic": "(D09Z01S08[W] || D09Z01S08[Cell18]) && openedWotHPGate"
+	},
+	{
+		"Id": "RB16",
+		"Name": "Q3 upper ledge",
+		"Hint": "* resides in the Wall",
+		"Room": "D09Z01S09",
+		"Logic": "D09Z01S09[Cell24] || dash && (D09Z01S09[NW] || D09Z01S09[Cell19])"
+	},
+	{
+		"Id": "QI70",
+		"Name": "Q4 upper bronze door",
+		"Hint": "* is locked away in a room",
+		"Room": "D09Z01S10",
+		"Logic": "D09Z01S10[Cell13]"
+	},
+	{
+		"Id": "CO27",
+		"Name": "Q4 hidden ledge",
+		"Hint": "* resides in the Wall",
+		"Room": "D09Z01S10",
+		"Logic": "D09Z01S10[W] || D09Z01S10[Cell12] || D09Z01S10[Cell10] || D09Z01S10[Cell11]"
+	},
+	{
+		"Id": "Oil[D09Z01S12]",
+		"Name": "Oil room",
+		"Hint": "An oil fountain holds *",
+		"Room": "D09Z01S12"
+	},
+	{
+		"Id": "CO10",
+		"Name": "Q1 drop room upper",
+		"Hint": "* resides in the Wall",
+		"LocationFlag": "LOCATION_CO10~D09Z01",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell22]"
+	},
+	{
+		"Id": "QI69",
+		"Name": "Q1 drop room lower",
+		"Hint": "* resides in the Wall",
+		"LocationFlag": "LOCATION_QI69~D09Z01",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell22] || D09BZ01S01[Cell23]"
+	},
+	{
+		"Id": "RESCUED_CHERUB_03",
+		"Name": "Q1 upper bronze door",
+		"Hint": "* resides in the Wall",
+		"LocationFlag": "LOCATION_RESCUED_CHERUB_03~D09Z01",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell1]"
+	},
+	{
+		"Id": "CO24",
+		"Name": "Q1 upper silver door",
+		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_CO24~D09Z01",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell6]"
+	},
+	{
+		"Id": "RESCUED_CHERUB_34",
+		"Name": "Q3 upper silver door",
+		"Hint": "* resides in the Wall",
+		"LocationFlag": "LOCATION_RESCUED_CHERUB_34~D09Z01",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell14] || D09BZ01S01[Cell15]"
+	},
+	{
+		"Id": "CO26",
+		"Name": "Q2 middle gold door",
+		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_CO26~D09Z01",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell16]"
+	},
+	{
+		"Id": "CO02",
+		"Name": "Q3 lower gold door",
+		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_CO02~D09Z01",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell21] && blood && canClimbOnRoot && canSurvivePoison2 && dash"
+	},
+	{
+		"Id": "CO37",
+		"Name": "Q4 upper silver door",
+		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_CO37~D09Z01",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell10]"
+	},
+	{
+		"Id": "RESCUED_CHERUB_04",
+		"Name": "Q4 lower silver door",
+		"Hint": "* resides in the Wall",
+		"LocationFlag": "LOCATION_RESCUED_CHERUB_04~D09Z01",
+		"Room": "D09BZ01S01",
+		"Logic": "D09BZ01S01[Cell11] && (canSurvivePoison1 && dash || debla || taranto || cante || verdiales || aubade || cantina)"
+	},
+	
+	{
+		"Id": "RB204",
+		"Name": "Initial room ledge",
+		"Hint": "* resides in the Brotherhood",
+		"Room": "D17Z01S01",
+		"Logic": "D17Z01S01[Cherubs3]"
+	},
+	{
+		"Id": "RESCUED_CHERUB_06",
+		"Name": "Initial room cherub",
+		"Hint": "* resides in the Brotherhood",
+		"Room": "D17Z01S01",
+		"logic": "D17Z01S01[Cherubs1] || taranto || (canClimbOnRoot || canCrossGap10) && (blood || doubleJump || debla || verdiales || tirana || ruby)"
+	},
+	{
+		"Id": "RE401",
+		"Name": "Redento meeting 2",
+		"Hint": "Redento holds *",
+		"Room": "D17Z01S04",
+		"Logic": "redentoRooms >= 2"
+	},
+	{
+		"Id": "Sword[D17Z01S08]",
+		"Name": "Mea Culpa shrine",
+		"Hint": "A Mea Culpa Shrine holds *",
+		"Room": "D17Z01S08"
+	},
+	{
+		"Id": "BS13",
+		"Name": "Defeat Warden of the Silent Sorrow",
+		"Hint": "* is guarded by the Warden",
+		"Room": "D17Z01S11",
+		"Logic": "canBeatBrotherhoodBoss"
+	},
+	{
+		"Id": "PR203",
+		"Name": "Church entrance",
+		"Hint": "* resides in the Brotherhood",
+		"Room": "D17Z01S14",
+		"Logic": "D17Z01S14[W] || blood"
+	},
+	{
+		"Id": "QI204",
+		"Name": "Esdras church gift",
+		"Hint": "Esdras holds *",
+		"Room": "D17Z01S15",
+		"Logic": "canBeatBridgeBoss && holyWounds >= 3"
+	},
+	{
+		"Id": "QI301",
+		"Name": "Crisanta church gift",
+		"Hint": "Crisanta holds *",
+		"Type": 9,
+		"OriginalItem": "QI301",
+		"Room": "D17Z01S15",
+		"Logic": "canBeatRooftopsBoss && trueHeart"
+	},
+	{
+		"Id": "RE01",
+		"Name": "Chamber of the Eldest Brother",
+		"Hint": "* is locked away in a room",
+		"LocationFlag": "LOCATION_RE01~D17Z01",
+		"Room": "D17BZ01S01"
+	},
+	{
+		"Id": "CO25",
+		"Name": "Spike gaunlet exit",
+		"Hint": "* resides in the Brotherhood",
+		"LocationFlag": "LOCATION_CO25~D17Z01",
+		"Room": "D17BZ02S01",
+		"Logic": "D17BZ02S01[FrontR] || dash && wallClimb"
+	},
+	
+	{
+		"Id": "RB108",
+		"Name": "MotED entrance",
+		"Hint": "* resides in the salts",
+		"Room": "D20Z01S03"
+	},
+	{
+		"Id": "RB202",
+		"Name": "Near elevator shaft",
+		"Hint": "* resides in the salts",
+		"Room": "D20Z01S09",
+		"Logic": "D20Z01S09[W] || dash"
+	},
+	
+	{
+		"Id": "RB201",
+		"Name": "Eastern chest",
+		"Hint": "* resides in Mourning",
+		"Room": "D20Z02S02"
+	},
+	{
+		"Id": "BossTrigger[5000]",
+		"Name": "Defeat Sierpes",
+		"Hint": "* is guarded by Sierpes",
+		"Room": "D20Z02S08",
+		"Logic": "canBeatMourningBoss"
+	},
+	{
+		"Id": "QI202",
+		"Name": "Sierpes reward",
+		"Hint": "* is guarded by Sierpes",
+		"Room": "D20Z02S08",
+		"Logic": "canBeatMourningBoss"
+	},
+	{
+		"Id": "PR202",
+		"Name": "Western chest",
+		"Hint": "* resides in Mourning",
+		"Room": "D20Z02S11"
+	},
+	
+	{
+		"Id": "QI203",
+		"Name": "Perpetua shrine",
+		"Hint": "Perpetva holds *",
+		"Room": "D20Z03S01"
+	},
+	
+	{
+		"Id": "QI106",
+		"Name": "Starting item",
+		"Hint": "* is already owned",
+		"Room": "Initial"
+	},
+	{
+		"Id": "RB18",
+		"Name": "Red candle 1",
+		"Hint": "A candle holds *",
+		"LocationFlag": "CANDLE_RED_1_USED~D02Z03",
+		"Room": "Initial",
+		"Logic": "redWax > 0 && (D02Z03S06[W] || D02Z03S06[S] || D05Z01S02[W])"
+	},
+	{
+		"Id": "RB19",
+		"Name": "Red candle 2",
+		"Hint": "A candle holds *",
+		"LocationFlag": "CANDLE_RED_2_USED~D05Z01",
+		"Room": "Initial",
+		"Logic": "redWax > 0 && D05Z01S02[W] && (D02Z03S06[W] || D02Z03S06[S])"
+	},
+	{
+		"Id": "RB25",
+		"Name": "Blue candle 1",
+		"Hint": "A candle holds *",
+		"LocationFlag": "CANDLE_BLUE_1_USED~D17Z01",
+		"Room": "Initial",
+		"Logic": "blueWax > 0 && (D17Z01S04[N] || D17Z01S04[FrontR] || D01Z04S16[W] || D01Z04S16[E])"
+	},
+	{
+		"Id": "RB26",
+		"Name": "Blue candle 2",
+		"Hint": "A candle holds *",
+		"LocationFlag": "CANDLE_BLUE_2_USED~D05Z02",
+		"Room": "Initial",
+		"Logic": "blueWax > 0 && (D17Z01S04[N] || D17Z01S04[FrontR]) && (D01Z04S16[W] || D01Z04S16[E])"
+	},
+	{
+		"Id": "QI107",
+		"Name": "Defeat 1 Amanecida",
+		"Hint": "* is guarded by an Amanecida",
+		"LocationFlag": "SANTOS_AMANECIDA_BOW_DEFEATED~D02Z02",
+		"Room": "Initial",
+		"Logic": "amanecidaRooms >= 1"
+	},
+	{
+		"Id": "QI108",
+		"Name": "Defeat 2 Amanecidas",
+		"Hint": "* is guarded by an Amanecida",
+		"LocationFlag": "SANTOS_AMANECIDA_AXE_DEFEATED~D03Z01",
+		"Room": "Initial",
+		"Logic": "amanecidaRooms >= 2"
+	},
+	{
+		"Id": "QI109",
+		"Name": "Defeat 3 Amanecidas",
+		"Hint": "* is guarded by an Amanecida",
+		"LocationFlag": "SANTOS_AMANECIDA_FALCATA_DEFEATED~D04Z01",
+		"Room": "Initial",
+		"Logic": "amanecidaRooms >= 3"
+	},
+	{
+		"Id": "QI110",
+		"Name": "Defeat 4 Amanecidas",
+		"Hint": "* is guarded by an Amanecida",
+		"LocationFlag": "SANTOS_AMANECIDA_LANCE_DEFEATED~D09Z01",
+		"Room": "Initial",
+		"Logic": "amanecidaRooms >= 4"
+	},
+	{
+		"Id": "PR101",
+		"Name": "Defeat all Amanecidas",
+		"Hint": "* is guarded by an Amanecida",
+		"Room": "Initial",
+		"Logic": "amanecidaRooms >= 4"
+	},
+	{
+		"Id": "QI32",
+		"Name": "Guilt arena 1 main",
+		"Hint": "A guilt statue holds *",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_1_ARENACOMPLETED~D01Z04",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 1"
+	},
+	{
+		"Id": "QI33",
+		"Name": "Guilt arena 2 main",
+		"Hint": "A guilt statue holds *",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_2_ARENACOMPLETED~D02Z02",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 2"
+	},
+	{
+		"Id": "QI34",
+		"Name": "Guilt arena 3 main",
+		"Hint": "A guilt statue holds *",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_3_ARENACOMPLETED~D03Z03",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 3"
+	},
+	{
+		"Id": "QI35",
+		"Name": "Guilt arena 4 main",
+		"Hint": "A guilt statue holds *",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_4_ARENACOMPLETED~D17Z01",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 4"
+	},
+	{
+		"Id": "QI79",
+		"Name": "Guilt arena 5 main",
+		"Hint": "A guilt statue holds *",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_5_ARENACOMPLETED~D04Z02",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 5"
+	},
+	{
+		"Id": "QI80",
+		"Name": "Guilt arena 6 main",
+		"Hint": "A guilt statue holds *",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_6_ARENACOMPLETED~D05Z01",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 6"
+	},
+	{
+		"Id": "QI81",
+		"Name": "Guilt arena 7 main",
+		"Hint": "A guilt statue holds *",
+		"Type": 2,
+		"OriginalItem": "TH",
+		"LocationFlag": "CONFESSOR_7_ARENACOMPLETED~D09Z01",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 7"
+	},
+	{
+		"Id": "Arena_NailManager[1000]",
+		"Name": "Guilt arena 1 extra",
+		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_1_ARENACOMPLETED~D01Z04",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 1"
+	},
+	{
+		"Id": "HE10",
+		"Name": "Guilt arena 2 extra",
+		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_2_ARENACOMPLETED~D02Z02",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 2"
+	},
+	{
+		"Id": "Arena_NailManager[3000]",
+		"Name": "Guilt arena 3 extra",
+		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_3_ARENACOMPLETED~D03Z03",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 3"
+	},
+	{
+		"Id": "RB34",
+		"Name": "Guilt arena 4 extra",
+		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_4_ARENACOMPLETED~D17Z01",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 4"
+	},
+	{
+		"Id": "Arena_NailManager[5000]",
+		"Name": "Guilt arena 5 extra",
+		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_5_ARENACOMPLETED~D04Z02",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 5"
+	},
+	{
+		"Id": "RB35",
+		"Name": "Guilt arena 6 extra",
+		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_6_ARENACOMPLETED~D05Z01",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 6"
+	},
+	{
+		"Id": "RB36",
+		"Name": "Guilt arena 7 extra",
+		"Hint": "A guilt statue holds *",
+		"LocationFlag": "CONFESSOR_7_ARENACOMPLETED~D09Z01",
+		"Room": "Initial",
+		"Logic": "guiltBead && guiltRooms >= 7"
+	},
+	{
+		"Id": "COMBO_1",
+		"Name": "First skill tier 1",
+		"Hint": "A tier 1 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "COMBO",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 1 && tears >= 0"
+	},
+	{
+		"Id": "COMBO_2",
+		"Name": "First skill tier 2",
+		"Hint": "A tier 3 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "COMBO",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 3 && tears >= 0"
+	},
+	{
+		"Id": "COMBO_3",
+		"Name": "First skill tier 3",
+		"Hint": "A tier 6 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "COMBO",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 6 && tears >= 0"
+	},
+	{
+		"Id": "CHARGED_1",
+		"Name": "Second skill tier 1",
+		"Hint": "A tier 1 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "CHARGED",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 1 && tears >= 0"
+	},
+	{
+		"Id": "CHARGED_2",
+		"Name": "Second skill tier 2",
+		"Hint": "A tier 2 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "CHARGED",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 2 && tears >= 0"
+	},
+	{
+		"Id": "CHARGED_3",
+		"Name": "Second skill tier 3",
+		"Hint": "A tier 4 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "CHARGED",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 4 && tears >= 0"
+	},
+	{
+		"Id": "RANGED_1",
+		"Name": "Third skill tier 1",
+		"Hint": "A tier 2 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "RANGED",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 2 && tears >= 0"
+	},
+	{
+		"Id": "RANGED_2",
+		"Name": "Third skill tier 2",
+		"Hint": "A tier 5 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "RANGED",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 5 && tears >= 0"
+	},
+	{
+		"Id": "RANGED_3",
+		"Name": "Third skill tier 3",
+		"Hint": "A tier 7 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "RANGED",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 7 && tears >= 0"
+	},
+	{
+		"Id": "LUNGE_1",
+		"Name": "Fourth skill tier 1",
+		"Hint": "A tier 1 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "LUNGE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 1 && tears >= 0"
+	},
+	{
+		"Id": "LUNGE_2",
+		"Name": "Fourth skill tier 2",
+		"Hint": "A tier 2 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "LUNGE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 2 && tears >= 0"
+	},
+	{
+		"Id": "LUNGE_3",
+		"Name": "Fourth skill tier 3",
+		"Hint": "A tier 4 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "LUNGE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 4 && tears >= 0"
+	},
+	{
+		"Id": "VERTICAL_1",
+		"Name": "Fifth skill tier 1",
+		"Hint": "A tier 1 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "DIVE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 1 && tears >= 0"
+	},
+	{
+		"Id": "VERTICAL_2",
+		"Name": "Fifth skill tier 2",
+		"Hint": "A tier 3 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "DIVE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 3 && tears >= 0"
+	},
+	{
+		"Id": "VERTICAL_3",
+		"Name": "Fifth skill tier 3",
+		"Hint": "A tier 6 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "DIVE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 6 && tears >= 0"
+	},
+]
