@@ -38,7 +38,7 @@ namespace BlasphemousRandomizer.Settings
         private bool m_Enabled;
         public override bool Enabled
         {
-            get { return m_Enabled; }
+            get => m_Enabled;
             set
             {
                 m_Enabled = value;
@@ -56,7 +56,7 @@ namespace BlasphemousRandomizer.Settings
         private bool m_Selected;
         public bool Selected
         {
-            get { return m_Selected && m_Enabled; }
+            get => m_Selected && m_Enabled;
             set
             {
                 m_Selected = value;
@@ -98,7 +98,7 @@ namespace BlasphemousRandomizer.Settings
         private bool m_Enabled;
         public override bool Enabled
         {
-            get { return m_Enabled; }
+            get => m_Enabled;
             set
             {
                 m_Enabled = value;
@@ -112,7 +112,7 @@ namespace BlasphemousRandomizer.Settings
         private int m_CurrentOption;
         public int CurrentOption
         {
-            get { return m_CurrentOption; }
+            get => m_CurrentOption;
             set
             {
                 m_CurrentOption = value;
@@ -150,14 +150,14 @@ namespace BlasphemousRandomizer.Settings
 
         public override bool Enabled
         {
-            get { return true; }
+            get => true;
             set { }
         }
 
         private bool m_Selected;
         public bool Selected
         {
-            get { return m_Selected; }
+            get => m_Selected;
             set
             {
                 m_Selected = value;
@@ -168,8 +168,8 @@ namespace BlasphemousRandomizer.Settings
 
         public string TextContent
         {
-            get { return text.text; }
-            set { text.text = value; }
+            get => text.text;
+            set => text.text = value;
         }
 
         protected override void Click() { }

@@ -32,7 +32,6 @@ namespace BlasphemousRandomizer
         public ItemShuffle itemShuffler;
         public EnemyShuffle enemyShuffler;
         public BossShuffle bossShuffler;
-        public DoorShuffle doorShuffler;
         public HintShuffle hintShuffler;
         private IShuffle[] shufflers;
 
@@ -66,9 +65,8 @@ namespace BlasphemousRandomizer
             itemShuffler = new ItemShuffle();
             enemyShuffler = new EnemyShuffle();
             bossShuffler = new BossShuffle();
-            doorShuffler = new DoorShuffle();
             hintShuffler = new HintShuffle();
-            shufflers = new IShuffle[] { itemShuffler, enemyShuffler, bossShuffler, doorShuffler, hintShuffler };
+            shufflers = new IShuffle[] { itemShuffler, enemyShuffler, bossShuffler, hintShuffler };
             for (int i = 0; i < shufflers.Length; i++)
             {
                 shufflers[i].Init();
