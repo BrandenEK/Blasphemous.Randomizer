@@ -94,8 +94,7 @@ Normal
 
 Hard
 - Mourning and Havoc skip may be required
-- Slash Upwarp skips are considered in logic
-- Dive Laser skips are considered in logic
+- Slash Upwarp skips, Dive Laser skips, and using Tirana to break switches are considered in logic
 - Some items in poison clouds are considered in logic without Tiento or Silvered Lung
 - Bosses require 10% less strength to be in logic
 
@@ -120,7 +119,7 @@ Hard
 
 ### Door Rando changes
 
-Because of the nature of door rando, there are a few changes to had to be made in order for everything to still work properly.
+Because of the nature of door rando, there are a few changes that had to be made in order for everything to still work properly.
 <br>
 
 - A command has been added to respawn the player from the chosen starting location
