@@ -128,19 +128,19 @@ trname: Lágrimas de enmienda
 trdesc: Una cantidad de * lágrimas.
 trnot: Lágrimas conseguidas
 sknot: Habilidad desbloqueada
-dshnam: ???
-dshdes: ???
-wclnam: ???
-wcldes: ???
-ablnot: ???
+dshnam: Habilidad de esquive
+dshdes: La habilidad perdida de esquivar y deslizarte bajo los obstáculos
+wclnam: Habilidad de escalada
+wcldes: La habilidad perdida de trepar muros con la espada
+ablnot: Habilidad desbloqueada
 itmerr: Error: no se ha iniciado la lista de recompensas
 daterr: No se han podido cargar los datos del randomizador, reinstala el programa.
-saverr: ???
+saverr: Se ha cargado una partida no compatible. La ubicación de los objetos no es válida.
 currsd: Semilla actual
 shrine: Nivel de altar
 sword: Mea Culpa
 items: Objetos obtenidos
-varous: ???
+varous: varios
 vandis: Vanilla
 randis: Randomizado
 outdis: Desactualizado
@@ -151,27 +151,27 @@ begin: Comenzar
 cancel: Cancelar
 menusd: Semilla
 distyp: Estándar
-simtyp: ???
-fultyp: ???
+simtyp: Simple
+fultyp: Total
 soon: Próximamente
 
-lgname: ???
-lgtyp1: ???
-lgtyp2: ???
-lgtyp3: ???
-lgdes1: ???
-lgdes2: ???
-lgdes3: ???
-loname: ???
-lodesc: ???
-lotyp1: ???
-lotyp2: ???
-lotyp3: ???
-lotyp4: ???
-lotyp5: ???
-lotyp6: ???
-lotyp7: ???
-lotyp8: ???
+lgname: Dificultad de la lógica
+lgtyp1: Fácil
+lgtyp2: Normal
+lgtyp3: Difícil
+lgdes1: Lo mejor para principiantes, no harán falta muchas técnicas especiales\nni triquiñuelas
+lgdes2: Lo mejor para jugadores promedio. Tal vez haga falta alguna triquiñuela normal,\npero nunca la de Luto y Estrago 
+lgdes3: Lo mejor para jugadores con experiencia. Tal vez hagan falta muchas\ntriquiñuelas raras y complicadas
+loname: Lugar de inicio
+lodesc: El lugar en el que empiezas en el juego
+lotyp1: La Hermandad
+lotyp2: Albero
+lotyp3: El Convento
+lotyp4: El Quejido 
+lotyp5: La Catedral
+lotyp6: Los Altos
+lotyp7: Luto y Estrago
+lotyp8: Aleatorio
 tpname: Teletransporte
 tpdesc: Los prie-dieus se mejoran al máximo automáticamente
 htname: Permitir pistas
@@ -180,17 +180,17 @@ pename: Permitir penitencia
 pedesc: Puedes elegir una penitencia en la Hermandad
 
 drname: Puertas aleatorias
-drdes1: ???
-drdes2: ???
-drdes3: ???
-bsname: ???
-bsdes1: ???
-bsdes2: ???
-bsdes3: ???
+drdes1: Las “puertas” de los niveles siempre dan a los niveles originales
+drdes2: Solo se intercambian las “puertas” de transición entre distintas regiones
+drdes3: Se intercambian todas las “puertas”
+bsname: Jefes aleatorios
+bsdes1: Los jefes permanecerán en su lugar original
+bsdes2: Los jefes se intercambiarán y solo aparecerán una vez por partida
+bsdes3: Los jefes se intercambiarán y cada uno aparecerá el número de veces que sea.
 enname: Enemigos aleatorios
-endes1: ???
-endes2: ???
-endes3: ???
+endes1: Los enemigos permanecerán en su lugar original
+endes2: Los enemigos se sitúan de forma aleatoria y cada enemigo\naparece las mismas veces que en el juego original
+endes3: Los enemigos se sitúan de forma aleatoria y cada enemigo\naparece un número cualquiera de veces
 clname: Mantener clase
 cldesc: El tipo de enemigos se limita a su tipo original (Normales, Voladores y Grandes)
 scname: Acorde a la zona
@@ -198,21 +198,21 @@ scdesc: La salud y el daño de los enemigos se ajusta a su ubicación en el mapa
 
 rqname: Añadir relicarios
 rqdesc: Los tres relicarios se añadirán al inventario
-dsname: ???
-dsdesc: ???
-wcname: ???
-wcdesc: ???
-sbname: ???
-sbdesc: ???
-djname: ???
-djdesc: ???
+dsname: Añadir esquive
+dsdesc: Se añadirá la habilidad de esquive al inventario
+wcname: Añadir escalada
+wcdesc: Se añadirá la habilidad de escalada al inventario
+sbname: Añadir Botas\nde la Súplica
+sbdesc: Se añadirán las Botas de la Súplica al inventario\n(Solo si se ha instalado el mod)
+djname: Añadir salto doble
+djdesc: Se añadirá la Mano Purificada de la Monja al inventario\n(Solo si se ha instalado el mod)
 
-ssname: ???
-ssdesc: ???
-thname: ???
-thdesc: ???
-jiname: ???
-jidesc: ???
+ssname: Añadir habilidades\nde espada
+ssdesc: Se añadirán las habilidades de Mea Culpa al inventario
+thname: Añadir espinas
+thdesc: Se añadirán las ocho espinas al inventario
+jiname: Objetos sin valor\nen sitios inconvenientes
+jidesc: Fuerza la ubicación de objetos de valor irrelevante\nen lugares inconvenientes como los desafíos de Miriam
 whname: Empezar con la Rueda
 whdesc: Tu obsequio inicial será la Rueda del Joven Masón
 
