@@ -15,7 +15,7 @@
   - [Lesser know logic](https://github.com/BrandenEK/Blasphemous-Randomizer#lesser-known-logic)
   - [Questline changes](https://github.com/BrandenEK/Blasphemous-Randomizer#questline-changes)
   - [Corpse hints](https://github.com/BrandenEK/Blasphemous-Randomizer#corpse-hints)
-- [Translations](https://github.com/BrandenEK/Blasphemous-Randomizer#translations)
+- [Credits](https://github.com/BrandenEK/Blasphemous-Randomizer#credits)
 
 ---
 
@@ -126,9 +126,10 @@ These are:
 
 ---
 
-## Translations
+## Credits
 
-This mod is available in these other languages in addition to English:
-- Spanish (Thanks to Rodol J. "ConanCimmerio" Pérez (Ro))
-- Chinese (Thanks to NewbieElton)
-- French (Thanks to Rocher)
+- Spanish translations - Rodol J. "ConanCimmerio" Pérez (Ro)
+- Chinese translations - NewbieElton
+- French translations - Rocher
+- UI images - Raider
+- Custom image icons - Ro
