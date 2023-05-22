@@ -123,7 +123,8 @@ Because of the nature of door rando, there are a few changes that had to be made
 <br>
 
 - A command has been added to respawn the player from the chosen starting location
-- Some doors will always remain the same as they are in the original game
+- All doors from the rooftops elevator and above will remain the same so that the main goal is still to find all 3 masks
+- Some other doors will always remain the same as they are in the original game
 - The spawn points of a few doors have been modified
 - Platforms have been added to the main bell room in Jondo
 - The sword heart doesn't have to be unequipped for the Library bone puzzle
