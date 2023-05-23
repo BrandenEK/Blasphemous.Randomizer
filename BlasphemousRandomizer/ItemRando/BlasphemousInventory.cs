@@ -76,6 +76,7 @@ namespace BlasphemousRandomizer.ItemRando
         private int ranged = 0;
         private int dive = 0;
         private int lunge = 0;
+        private bool chargeBeam => charged >= 3;
 
         // Main quest
         private int holyWounds = 0;
@@ -407,6 +408,8 @@ namespace BlasphemousRandomizer.ItemRando
 
                 case "bell": return new BoolVariable(bell);
                 case "verses": return new IntVariable(verses);
+
+                case "chargeBeam": return new BoolVariable(chargeBeam);
 
                 case "canBreakHoles": return new BoolVariable(canBreakHoles);
                 case "canDawnJump": return new BoolVariable(canDawnJump);
