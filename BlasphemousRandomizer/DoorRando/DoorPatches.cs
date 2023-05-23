@@ -3,6 +3,7 @@ using Framework.Managers;
 using Framework.FrameworkCore;
 using Tools.Level.Interactables;
 using Gameplay.GameControllers.Bosses.BossFight;
+using Gameplay.GameControllers.Penitent.Abilities;
 using UnityEngine;
 
 namespace BlasphemousRandomizer.DoorRando
@@ -95,6 +96,25 @@ namespace BlasphemousRandomizer.DoorRando
             string currentScene = Core.LevelManager.currentLevel.LevelName;
             if (currentScene == "D17Z01S11" || currentScene == "D01Z04S18" || currentScene == "D02Z03S20")
                 Main.Randomizer.BossBoundaryStatus = false;
+        }
+    }
+
+    // Make fervour penance free
+    [HarmonyPatch(typeof(FervourPenance), "GetPurgeCost")]
+    public class FervourPenanceCost_Patch
+    {
+        public static bool Prefix(ref float __result)
+        {
+            __result = -1;
+            return false;
+        }
+    }
+    [HarmonyPatch(typeof(FervourPenance), "DrainResources")]
+    public class FervourPenanceDrain_Patch
+    {
+        public static void Postfix(FervourPenance __instance)
+        {
+            __instance.EntityOwner.Stats.Purge.Current -= 1;
         }
     }
 }
