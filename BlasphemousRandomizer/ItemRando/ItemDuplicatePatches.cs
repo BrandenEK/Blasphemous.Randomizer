@@ -208,11 +208,6 @@ namespace BlasphemousRandomizer.ItemRando
 			{
 				flag = Core.Events.GetFlag("LOCATION_PR08");
 			}
-			// Rooftops - If both cleofas & Jibrael present prioritize Jibrael
-			if (scene == "D06Z01S18" && text == "CLEOFAS_BURYING")
-			{
-				flag = flag && (!Core.Events.GetFlag("SANTOS_FIRSTCONVERSATION_DONE") || Core.Events.GetFlag("SANTOS_AMANECIDA_LOCATION3_ACTIVATED") || Core.Events.GetFlag("SANTOS_AMANECIDA_FACCATA_DEFEATED"));
-			}
 			// Redento corpse
 			if (scene == "D04BZ02S01" && text == "REDENTO_QI54_USED")
 			{
@@ -306,6 +301,17 @@ namespace BlasphemousRandomizer.ItemRando
 					flag = !completePuzzle;
 			}
 
+			// Rooftops - If both cleofas & Jibrael present prioritize Jibrael
+			if (scene == "D06Z01S18" && text == "CLEOFAS_BURYING")
+			{
+				flag = flag && (!Core.Events.GetFlag("SANTOS_FIRSTCONVERSATION_DONE") || Core.Events.GetFlag("SANTOS_AMANECIDA_LOCATION3_ACTIVATED") || Core.Events.GetFlag("SANTOS_AMANECIDA_FACCATA_DEFEATED"));
+			}
+			// Patio - If both amanecida & Redento clear path for redento
+			if (scene == "D04Z01S04" && text == "REDENTO_PATH4_UNLOCKED")
+            {
+				flag = flag || Core.Events.GetFlag("SANTOS_AMANECIDA_LOCATION3_ACTIVATED") || Core.Events.GetFlag("SANTOS_AMANECIDA_FACCATA_DEFEATED");
+            }
+
 			// Allows open albero warp room
 			if (scene == "D01Z02S06" && text == "D01Z02S07_TELEPORT_ALBERO")
 			{
@@ -325,6 +331,7 @@ namespace BlasphemousRandomizer.ItemRando
 				flag = true;
 			}
 
+			// In door shuffle, change one way passageways to use custom flag
             if (Main.Randomizer.GameSettings.DoorShuffleType > 0 && (scene == "D05Z01S02" && text == "D05Z01S02_PASSAGEUNVEILED" || scene == "D03Z01S01" && text == "D03Z01S01_PASSAGEUNVEILED"))
             {
                 flag = Core.Events.GetFlag("HIDDEN_WALL_" + scene);
