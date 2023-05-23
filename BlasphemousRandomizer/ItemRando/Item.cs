@@ -26,6 +26,8 @@ namespace BlasphemousRandomizer.ItemRando
 			}
 		}
 
+		public bool UseDefaultImageScaling => type >= 0 && type <= 5 || type == 10 || type == 11;
+
 		public Item(string id, string name, string hint, int type, bool progression, int count)
 		{
 			this.id = id;

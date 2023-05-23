@@ -292,10 +292,13 @@ namespace BlasphemousRandomizer
                     if (data.ShopInteractables.ContainsKey(interactable.GetPersistenID()))
                     {
                         SpriteRenderer render = interactable.transform.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
-                        if (render != null)
+                        Item item = Main.Randomizer.itemShuffler.getItemAtLocation(data.ShopInteractables[interactable.GetPersistenID()]);
+
+                        if (render != null && item != null)
                         {
-                            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(data.ShopInteractables[interactable.GetPersistenID()]);
-                            render.sprite = item?.getRewardInfo(true).sprite;
+                            if (!item.UseDefaultImageScaling)
+                                render.transform.localScale = new Vector3(0.9375f, 0.9375f, 0.9375f);
+                            render.sprite = item.getRewardInfo(true).sprite;
                         }
                     }
                 }

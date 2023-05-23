@@ -27,8 +27,9 @@ namespace BlasphemousRandomizer.Notifications
     [HarmonyPatch(typeof(PopupAchievementWidget), "ShowPopupCorrutine")]
     public class PopupAchievementWidgetShow_Patch
     {
-        public static void Prefix(RectTransform ___PopUp, ref float ___startDelay, ref float ___popupShowTime, ref float ___endTime, Achievement achievement)
+        public static void Prefix(RectTransform ___PopUp, Image ___SpriteImage, ref float ___startDelay, ref float ___popupShowTime, ref float ___endTime, Achievement achievement)
         {
+            ___SpriteImage.rectTransform.sizeDelta = new Vector2(30, 30);
             ___startDelay = 0.1f;
             ___popupShowTime = 2f;
             ___endTime = 0.1f;
