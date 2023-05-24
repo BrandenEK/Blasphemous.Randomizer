@@ -33,11 +33,12 @@ namespace BlasphemousRandomizer.DoorRando
             }
 
             string doorId = $"{currentScene}[{currentId}]";
+            DoorLocation targetDoor = Main.Randomizer.itemShuffler.GetTargetDoor(doorId);
             Main.Randomizer.Log("Entering door: " + doorId);
-            if (Main.Randomizer.GameSettings.DoorShuffleType > 0 && Main.Randomizer.itemShuffler.getNewDoor(doorId, out string newScene, out string newId))
+            if (targetDoor != null)
             {
-                __instance.targetScene = newScene;
-                __instance.targetDoor = newId;
+                __instance.targetScene = targetDoor.Room;
+                __instance.targetDoor = targetDoor.IdentityName;
             }
 
             if (__instance.targetScene == "D03Z03S15" && !Core.Events.GetFlag("D03Z04S01_BOSSDEAD"))

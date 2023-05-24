@@ -29,19 +29,14 @@ namespace BlasphemousRandomizer.ItemRando
         public void LoadMappedDoors(Dictionary<string, string> mappedDoors) => newDoors = mappedDoors;
         public void ClearMappedDoors() => newDoors = null;
 
-        // Returns the target door given a door id
-        public bool getNewDoor(string doorId, out string targetScene, out string targetId)
+        // Returns the target door given a door id - Also sets this as the last door entered
+        public DoorLocation GetTargetDoor(string doorId)
         {
-            if (newDoors != null && newDoors.ContainsKey(doorId))
-            {
-                LastDoor = Main.Randomizer.data.doorLocations[newDoors[doorId]];
-                targetScene = LastDoor.Room;
-                targetId = LastDoor.IdentityName;
-                return true;
-            }
-            targetScene = string.Empty;
-            targetId = string.Empty;
-            return false;
+            if (newDoors == null || !newDoors.ContainsKey(doorId))
+                return null;
+
+            LastDoor = Main.Randomizer.data.doorLocations[newDoors[doorId]];
+            return LastDoor;
         }
 
         // Gets the item held at the specified location
