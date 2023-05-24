@@ -526,9 +526,9 @@ namespace BlasphemousRandomizer
                     return startingLocations[chosenStartingLocation];
                 }
 
-                // Chose a random starting location
+                // Chose a random starting location ! These must be in descending order !
                 List<StartingLocation> possibleLocations = new List<StartingLocation>(startingLocations);
-                if (GameSettings.LogicDifficulty < 2) possibleLocations.RemoveAt(SHIPYARD_LOCATION);
+                if (GameSettings.LogicDifficulty < 2 || GameSettings.ShuffleDash) possibleLocations.RemoveAt(SHIPYARD_LOCATION);
                 if (GameSettings.ShuffleWallClimb) possibleLocations.RemoveAt(DEPTHS_LOCATION);
                 if (GameSettings.ShuffleDash) possibleLocations.RemoveAt(BROTHERHOOD_LOCATION);
 

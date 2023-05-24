@@ -4935,12 +4935,14 @@
 	{
 		"Id": "D20Z02S04[W]",
 		"Direction": 1,
-		"OriginalDoor": "D20Z02S05[E]"
+		"OriginalDoor": "D20Z02S05[E]",
+		"Logic": "D20Z02S04[W] || dash"
 	},
 	{
 		"Id": "D20Z02S04[E]",
 		"Direction": 2,
-		"OriginalDoor": "D20Z02S03[W]"
+		"OriginalDoor": "D20Z02S03[W]",
+		"Logic": "D20Z02S04[E] || dash"
 	},
 	{
 		"Id": "D20Z02S05[SW]",

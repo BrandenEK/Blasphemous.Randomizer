@@ -285,7 +285,7 @@ namespace BlasphemousRandomizer.Settings
             PurifiedHand.Enabled = Main.Randomizer.InstalledDoubleJumpMod;
             MaintainClass.Enabled = EnemiesLeft.CurrentOption > 0;
             AreaScaling.Enabled = EnemiesLeft.CurrentOption > 0;
-            Dash.Enabled = DoorsLeft.CurrentOption > 1 || StartingLocationLeft.CurrentOption != Randomizer.BROTHERHOOD_LOCATION;
+            Dash.Enabled = DoorsLeft.CurrentOption > 1 || StartingLocationLeft.CurrentOption != Randomizer.BROTHERHOOD_LOCATION && StartingLocationLeft.CurrentOption != Randomizer.SHIPYARD_LOCATION;
             WallClimb.Enabled = DoorsLeft.CurrentOption > 1 || StartingLocationLeft.CurrentOption != Randomizer.DEPTHS_LOCATION;
 
             // Get final seed based on seed & options
