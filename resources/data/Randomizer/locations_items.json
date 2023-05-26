@@ -398,7 +398,7 @@
 		"Name": "TSC entrance ledge",
 		"Hint": "* resides in Mercy",
 		"Room": "D01Z04S13",
-		"Logic": "D01Z04S13[SE] || canDiveLaser && (canAirStall || wheel || doubleJump || enemySkipsAllowed)"
+		"Logic": "D01Z04S13[SE] || canDiveLaser && (canAirStall || wheel || doubleJump || canEnemyBounce)"
 	},
 	{
 		"Id": "CO38",
@@ -1327,7 +1327,7 @@
 		"Name": "Platform puzzle chest",
 		"Hint": "* resides in the Library",
 		"Room": "D05Z01S10",
-		"Logic": "blood || doubleJump || enemySkipsAllowed && canCrossGap2"
+		"Logic": "blood || doubleJump || canEnemyBounce && canCrossGap2"
 	},
 	{
 		"Id": "RB203",

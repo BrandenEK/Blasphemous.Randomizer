@@ -32,6 +32,7 @@ namespace BlasphemousRandomizer.ItemRando
         // Special items
         private bool dash = false;
         private bool wallClimb = false;
+        private bool airImpulse = true;
         private bool boots = false;
         private bool doubleJump = false;
 
@@ -133,6 +134,9 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canDiveLaser => dive >= 3 && logicDifficulty >= 2;
 
         private bool canBreakTirana => tirana && logicDifficulty >= 2;
+
+        private bool canEnemyBounce => airImpulse && enemySkipsAllowed;
+        private bool canEnemyUpslash => combo >= 2 && enemySkipsAllowed;
 
         private bool canBreakJondoBell => (HasDoor("D03Z02S05[W]") && canCrossGap5 || HasDoor("D03Z02S05[S]") || HasDoor("D03Z02S05[E]")) && (HasDoor("D03Z02S09[S]") || HasDoor("D03Z02S09[W]") && dash || HasDoor("D03Z02S09[N]") || HasDoor("D03Z02S09[Cherubs]"));
         private bool canRideAlberoElevator => HasDoor("D02Z02S11[NW]") || HasDoor("D02Z02S11[NE]") || HasDoor("D02Z02S11[W]") || HasDoor("D02Z02S11[E]") || HasDoor("D02Z02S11[SE]");
@@ -417,6 +421,9 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canAirStall": return new BoolVariable(canAirStall);
                 case "canDiveLaser": return new BoolVariable(canDiveLaser);
                 case "canBreakTirana": return new BoolVariable(canBreakTirana);
+
+                case "canEnemyBounce": return new BoolVariable(canEnemyBounce);
+                case "canEnemyUpslash": return new BoolVariable(canEnemyUpslash);
 
                 case "canBreakJondoBell": return new BoolVariable(canBreakJondoBell); // access to both jondo bell rooms
                 case "canRideAlberoElevator": return new BoolVariable(canRideAlberoElevator); // access to graveyard elevator room

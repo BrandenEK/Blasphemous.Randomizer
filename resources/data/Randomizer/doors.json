@@ -455,7 +455,7 @@
 		"Direction": 2,
 		"OriginalDoor": "D01Z04S16[W]",
 		"VisibilityFlags": 5,
-		"Logic": "D01Z04S13[SE] || canDiveLaser && (canAirStall || wheel || doubleJump || enemySkipsAllowed)"
+		"Logic": "D01Z04S13[SE] || canDiveLaser && (canAirStall || wheel || doubleJump || canEnemyBounce)"
 	},
 	{
 		"Id": "D01Z04S14[E]",
@@ -2482,7 +2482,7 @@
 		"Direction": 2,
 		"OriginalDoor": "D04Z02S15[W]",
 		"VisibilityFlags": 17,
-		"Logic": "D04Z02S02[NE] || doubleJump && upwarpSkipsAllowed"
+		"Logic": "D04Z02S02[NE] || upwarpSkipsAllowed && (doubleJump || canEnemyUpslash)"
 	},
 	{
 		"Id": "D04Z02S02[N]",

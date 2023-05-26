@@ -90,8 +90,8 @@ namespace BlasphemousRandomizer.DoorRando
             }
             if (!visible && (VisibilityFlags & 16) > 0)
             {
-                // If fifth bit, make door visible if double jump is possible to obtain AND hard logic
-                visible = config.ShufflePurifiedHand && config.LogicDifficulty >= 2;
+                // If fifth bit, make door visible if double jump OR no enemy shuffle AND hard logic (Only MoM skip)
+                visible = (config.ShufflePurifiedHand || config.EnemyShuffleType < 1) && config.LogicDifficulty >= 2;
             }
 
             return visible;
