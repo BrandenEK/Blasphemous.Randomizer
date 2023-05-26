@@ -314,6 +314,20 @@ namespace BlasphemousRandomizer
             }
             else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad1))
             {
+                //int succeed = 0, total = 100;
+                //System.Random rng = new System.Random();
+                //Dictionary<string, string> doors = new Dictionary<string, string>();
+                //Dictionary<string, string> items = new Dictionary<string, string>();
+
+                //for (int i = 0; i < total; i++)
+                //{
+                //    int testSeed = rng.Next(1, MAX_SEED);
+                //    bool success = new ItemFiller().Fill(testSeed, doors, items);
+                //    LogWarning($"Trying seed {testSeed}: {success}");
+                //    if (success)
+                //        succeed++;
+                //}
+                //LogError($"Success rate: {succeed}/{total}");
             }
             else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad2))
             {

@@ -126,12 +126,14 @@ namespace BlasphemousRandomizer.ItemRando
 
             // Fill the list of progression items with only progression items
             List<Item> progressionItems = new List<Item>();
+            string[] itemsToMove = new string[] { "QI38", "QI39", "QI40" };
+
             for (int i = 0; i < items.Count; i++)
             {
                 Item item = items[i];
                 if (item.progression)
                 {
-                    if (item.id != "QI38" && item.id != "QI39" && item.id != "QI40")
+                    if (!itemsToMove.Contains(item.id))
                         progressionItems.Add(item);
                     items.RemoveAt(i);
                     i--;
@@ -139,10 +141,13 @@ namespace BlasphemousRandomizer.ItemRando
             }
             shuffleList(progressionItems);
 
-            // Move certain items to the end of the list to place them first
-            progressionItems.Add(allItems["QI38"]);
-            progressionItems.Add(allItems["QI39"]);
-            progressionItems.Add(allItems["QI40"]);
+            // Move certain items to the second half of the list to place them sooner
+            foreach (string itemId in itemsToMove)
+            {
+                int halfwayIdx = progressionItems.Count / 2;
+                int insertIdx = halfwayIdx + rand(halfwayIdx + 1);
+                progressionItems.Insert(insertIdx, allItems[itemId]);
+            }
 
             // Create and fill initially visible doors/items lists
             List<DoorLocation> visibleDoors = new List<DoorLocation>();
