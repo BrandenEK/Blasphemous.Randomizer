@@ -2064,7 +2064,7 @@
 		"Direction": 0,
 		"OriginalDoor": "D03Z02S03[SSL]",
 		"Type": 1,
-		"Logic": "D03Z03S01[NL] || D03Z03S01[NR] || wallClimb || doubleJump"
+		"Logic": "D03Z03S01[NL] || D03Z03S01[NR] || D03Z03S01[NC] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "D03Z03S01[NC]",
@@ -2076,7 +2076,7 @@
 		"Direction": 0,
 		"OriginalDoor": "D03Z02S03[SSR]",
 		"Type": 1,
-		"Logic": "D03Z03S01[NL] || D03Z03S01[NR] || wallClimb || doubleJump"
+		"Logic": "D03Z03S01[NL] || D03Z03S01[NR] || D03Z03S01[NC] || wallClimb || doubleJump"
 	},
 	{
 		"Id": "D03Z03S02[W]",

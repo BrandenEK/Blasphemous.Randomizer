@@ -21,6 +21,7 @@ namespace BlasphemousRandomizer.HintRando
         public void Fill(int seed, Dictionary<string, string> output)
         {
             initialize(seed);
+            Config config = Main.Randomizer.GameSettings;
 
             // Get list of dialog ids & possible hint locations
             List<int> dialogIds = new List<int>();
@@ -29,12 +30,12 @@ namespace BlasphemousRandomizer.HintRando
                 dialogIds.Add(i);
             }
             List<string> possibleLocations = new List<string>();
-            foreach (string location in Main.Randomizer.data.itemLocations.Keys)
+            foreach (ItemLocation location in Main.Randomizer.data.itemLocations.Values)
             {
-                Item item = Main.Randomizer.itemShuffler.getItemAtLocation(location);
-                if (item != null && item.progression && (item.type == 0 || item.type == 1 || item.type == 2 || item.type == 3 || item.type == 5 || item.type == 7 || item.type == 8 || item.type == 9 || item.type == 11))
+                Item item = Main.Randomizer.itemShuffler.getItemAtLocation(location.Id);
+                if (!location.IsVanilla(config) && item != null && item.progression && (item.type == 0 || item.type == 1 || item.type == 2 || item.type == 3 || item.type == 5 || item.type == 7 || item.type == 8 || item.type == 9 || item.type == 11))
                 {
-                    possibleLocations.Add(location);
+                    possibleLocations.Add(location.Id);
                 }
             }
             possibleLocations.Remove("QI106");

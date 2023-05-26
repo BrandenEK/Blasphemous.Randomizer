@@ -1327,7 +1327,7 @@
 		"Name": "Platform puzzle chest",
 		"Hint": "* resides in the Library",
 		"Room": "D05Z01S10",
-		"Logic": "blood || doubleJump"
+		"Logic": "blood || doubleJump || enemySkipsAllowed && canCrossGap2"
 	},
 	{
 		"Id": "RB203",
@@ -1390,7 +1390,7 @@
 		"Name": "Elevator cherub",
 		"Hint": "* resides in the Library",
 		"Room": "D05Z01S21",
-		"Logic": "blood && (canWalkOnRoot || doubleJump || canCrossGap5 && pillar)"
+		"Logic": "zarabanda || blood && (canWalkOnRoot || doubleJump || canCrossGap5 && pillar)"
 	},
 	{
 		"Id": "RB301",
@@ -1688,7 +1688,7 @@
 	},
 	{
 		"Id": "RESCUED_CHERUB_34",
-		"Name": "Q3 upper silver door",
+		"Name": "Q2 upper silver door",
 		"Hint": "* resides in the Wall",
 		"LocationFlag": "LOCATION_RESCUED_CHERUB_34~D09Z01",
 		"Room": "D09BZ01S01",
@@ -1804,7 +1804,7 @@
 		"Id": "RB108",
 		"Name": "MotED entrance",
 		"Hint": "* resides in the salts",
-		"Room": "D20Z01S03"
+		"Room": "D20Z01S02"
 	},
 	{
 		"Id": "RB202",
@@ -1882,7 +1882,7 @@
 		"Id": "RB26",
 		"Name": "Blue candle 2",
 		"Hint": "A candle holds *",
-		"LocationFlag": "CANDLE_BLUE_2_USED~D05Z02",
+		"LocationFlag": "CANDLE_BLUE_2_USED~D01Z04",
 		"Room": "Initial",
 		"Logic": "blueWax > 0 && (D17Z01S04[N] || D17Z01S04[FrontR]) && (D01Z04S16[W] || D01Z04S16[E])"
 	},
