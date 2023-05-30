@@ -14,7 +14,7 @@
 		"Direction": 2,
 		"OriginalDoor": "D01Z06S01[N]",
 		"Type": 1,
-		"Logic": "D01Z01S01[S] || canBreakHoles"
+		"Logic": "D01Z01S01[S] || canBreakHoles || doubleJump"
 	},
 	{
 		"Id": "D01Z01S02[W]",

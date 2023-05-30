@@ -2063,20 +2063,20 @@
 	{
 		"Id": "COMBO_2",
 		"Name": "First skill tier 2",
-		"Hint": "A tier 3 shrine holds *",
+		"Hint": "A tier 2 shrine holds *",
 		"Type": 1,
 		"OriginalItem": "COMBO",
 		"Room": "Initial",
-		"Logic": "swordRooms >= 3 && tears >= 0"
+		"Logic": "swordRooms >= 2 && tears >= 0"
 	},
 	{
 		"Id": "COMBO_3",
 		"Name": "First skill tier 3",
-		"Hint": "A tier 6 shrine holds *",
+		"Hint": "A tier 4 shrine holds *",
 		"Type": 1,
 		"OriginalItem": "COMBO",
 		"Room": "Initial",
-		"Logic": "swordRooms >= 6 && tears >= 0"
+		"Logic": "swordRooms >= 4 && tears >= 0"
 	},
 	{
 		"Id": "CHARGED_1",
@@ -2090,20 +2090,20 @@
 	{
 		"Id": "CHARGED_2",
 		"Name": "Second skill tier 2",
-		"Hint": "A tier 2 shrine holds *",
+		"Hint": "A tier 3 shrine holds *",
 		"Type": 1,
 		"OriginalItem": "CHARGED",
 		"Room": "Initial",
-		"Logic": "swordRooms >= 2 && tears >= 0"
+		"Logic": "swordRooms >= 3 && tears >= 0"
 	},
 	{
 		"Id": "CHARGED_3",
 		"Name": "Second skill tier 3",
-		"Hint": "A tier 4 shrine holds *",
+		"Hint": "A tier 6 shrine holds *",
 		"Type": 1,
 		"OriginalItem": "CHARGED",
 		"Room": "Initial",
-		"Logic": "swordRooms >= 4 && tears >= 0"
+		"Logic": "swordRooms >= 6 && tears >= 0"
 	},
 	{
 		"Id": "RANGED_1",
@@ -2133,33 +2133,6 @@
 		"Logic": "swordRooms >= 7 && tears >= 0"
 	},
 	{
-		"Id": "LUNGE_1",
-		"Name": "Fourth skill tier 1",
-		"Hint": "A tier 1 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "LUNGE",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 1 && tears >= 0"
-	},
-	{
-		"Id": "LUNGE_2",
-		"Name": "Fourth skill tier 2",
-		"Hint": "A tier 2 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "LUNGE",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 2 && tears >= 0"
-	},
-	{
-		"Id": "LUNGE_3",
-		"Name": "Fourth skill tier 3",
-		"Hint": "A tier 4 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "LUNGE",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 4 && tears >= 0"
-	},
-	{
 		"Id": "VERTICAL_1",
 		"Name": "Fifth skill tier 1",
 		"Hint": "A tier 1 shrine holds *",
@@ -2185,5 +2158,32 @@
 		"OriginalItem": "DIVE",
 		"Room": "Initial",
 		"Logic": "swordRooms >= 6 && tears >= 0"
+	},
+	{
+		"Id": "LUNGE_1",
+		"Name": "Fourth skill tier 1",
+		"Hint": "A tier 1 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "LUNGE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 1 && tears >= 0"
+	},
+	{
+		"Id": "LUNGE_2",
+		"Name": "Fourth skill tier 2",
+		"Hint": "A tier 2 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "LUNGE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 2 && tears >= 0"
+	},
+	{
+		"Id": "LUNGE_3",
+		"Name": "Fourth skill tier 3",
+		"Hint": "A tier 4 shrine holds *",
+		"Type": 1,
+		"OriginalItem": "LUNGE",
+		"Room": "Initial",
+		"Logic": "swordRooms >= 4 && tears >= 0"
 	},
 ]
