@@ -71,6 +71,8 @@ namespace BlasphemousRandomizer.ItemRando
         // Stats
         private int healthLevel = 0, fervourLevel = 0, swordLevel = 0;
 
+        private int TotalFervour => 60 + (20 * fervourLevel) + (10 * blueWax);
+
         // Skills
         private int combo = 0;
         private int charged = 0;
@@ -121,26 +123,28 @@ namespace BlasphemousRandomizer.ItemRando
         private bool bell = false;
         private int verses = 0;
 
-        private int TotalFervour => 60 + (20 * fervourLevel) + (10 * blueWax);
-
-        private bool canBreakHoles => charged > 0 || dive > 0 || lunge >= 3 || anyPrayer;
-
+        // Movement tech
+        private bool canAirStall => ranged > 0 && logicDifficulty >= 1;
         private bool canDawnJump => dawnHeart && dash && logicDifficulty >= 1;
-
         private bool canWaterJump => nail || doubleJump;
 
-        private bool canAirStall => ranged > 0 && logicDifficulty >= 1;
-
+        // Breakable tech
+        private bool canBreakHoles => charged > 0 || dive > 0 || lunge >= 3 || anyPrayer;
+        private bool canBreakTirana => tirana && logicDifficulty >= 2;
         private bool canDiveLaser => dive >= 3 && logicDifficulty >= 2;
 
-        private bool canBreakTirana => tirana && logicDifficulty >= 2;
+        // Root tech
+        private bool canWalkOnRoot => root;
+        private bool canClimbOnRoot => root && wallClimb;
 
+        // Lung tech
+        private bool canSurvivePoison1 => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2;
+        private bool canSurvivePoison2 => lung || (logicDifficulty >= 1 && tiento);
+        private bool canSurvivePoison3 => lung || (logicDifficulty >= 2 && tiento && TotalFervour >= 120);
+
+        // Enemy tech
         private bool canEnemyBounce => airImpulse && enemySkipsAllowed;
         private bool canEnemyUpslash => combo >= 2 && enemySkipsAllowed;
-
-        private bool canBreakJondoBell => (HasDoor("D03Z02S05[W]") && canCrossGap5 || HasDoor("D03Z02S05[S]") || HasDoor("D03Z02S05[E]")) && (HasDoor("D03Z02S09[S]") || HasDoor("D03Z02S09[W]") && dash || HasDoor("D03Z02S09[N]") || HasDoor("D03Z02S09[Cherubs]"));
-        private bool canRideAlberoElevator => HasDoor("D02Z02S11[NW]") || HasDoor("D02Z02S11[NE]") || HasDoor("D02Z02S11[W]") || HasDoor("D02Z02S11[E]") || HasDoor("D02Z02S11[SE]");
-        private bool canFillChalice => chalice && (HasDoor("D03Z01S01[W]") || HasDoor("D03Z01S01[NE]") || HasDoor("D03Z01S01[S]")) && (HasDoor("D05Z02S01[W]") || HasDoor("D05Z02S01[E]")) && (HasDoor("D09Z01S07[SW]") || HasDoor("D09Z01S07[SE]") || HasDoor("D09Z01S07[W]") || HasDoor("D09Z01S07[E]"));
 
         // Crossing gaps
         private bool canCrossGap1 => doubleJump || canDawnJump || wheel || canAirStall;
@@ -155,27 +159,21 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canCrossGap10 => doubleJump && canDawnJump;
         private bool canCrossGap11 => doubleJump && canDawnJump && canAirStall;
 
-        // One way doors
+        // Events that trigger in different scenes
         private bool openedDCGateW => HasDoor("D01Z05S24[W]") || HasDoor("D01Z05S24[E]");
         private bool openedDCGateE => HasDoor("D01Z05S12[W]") || HasDoor("D01Z05S12[E]");
         private bool openedDCLadder => HasDoor("D01Z05S20[W]") || HasDoor("D01Z05S20[N]");
         private bool openedWOTWCave => HasDoor("D02Z01S06[E]") || wallClimb && (HasDoor("D02Z01S06[W]") || HasDoor("D02Z01S06[Cherubs]"));
+        private bool rodeGotPElevator => HasDoor("D02Z02S11[NW]") || HasDoor("D02Z02S11[NE]") || HasDoor("D02Z02S11[W]") || HasDoor("D02Z02S11[E]") || HasDoor("D02Z02S11[SE]");
         private bool openedConventLadder => HasDoor("D02Z03S11[S]") || HasDoor("D02Z03S11[W]") || HasDoor("D02Z03S11[NW]") || HasDoor("D02Z03S11[E]") || HasDoor("D02Z03S11[NE]");
+        private bool brokeJondoBellW => HasDoor("D03Z02S09[S]") || HasDoor("D03Z02S09[W]") && dash || HasDoor("D03Z02S09[N]") || HasDoor("D03Z02S09[Cherubs]");
+        private bool brokeJondoBellE => HasDoor("D03Z02S05[S]") || HasDoor("D03Z02S05[E]") || HasDoor("D03Z02S05[W]") && (canCrossGap5 || canEnemyBounce && canCrossGap3);
         private bool openedMoMLadder => HasDoor("D04Z02S06[NW]") || HasDoor("D04Z02S06[NE]") || HasDoor("D04Z02S06[N]") || HasDoor("D04Z02S06[S]") || HasDoor("D04Z02S06[SE]");
         private bool openedTSCGate => HasDoor("D05Z02S11[W]") || HasDoor("D05Z02S11[Cherubs]");
         private bool openedARLadder => HasDoor("D06Z01S23[Sword]") || HasDoor("D06Z01S23[E]") || HasDoor("D06Z01S23[S]") || HasDoor("D06Z01S23[Cherubs]");
-        private bool openedBotTCStatue => HasDoor("D08Z01S02[NE]") || HasDoor("D08Z01S02[SE]");
+        private bool brokeBotTCStatue => HasDoor("D08Z01S02[NE]") || HasDoor("D08Z01S02[SE]");
         private bool openedWotHPGate => HasDoor("D09Z01S05[W]") || HasDoor("D09Z01S05[SE]") || HasDoor("D09Z01S05[NE]");
         private bool openedBotSSLadder => HasDoor("D17Z01S04[N]") || HasDoor("D17Z01S04[FrontR]");
-
-        // Lung techniques
-        private bool canSurvivePoison1 => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2;
-        private bool canSurvivePoison2 => lung || (logicDifficulty >= 1 && tiento);
-        private bool canSurvivePoison3 => lung || (logicDifficulty >= 2 && tiento && TotalFervour >= 120);
-
-        // Root techniques
-        private bool canWalkOnRoot => root;
-        private bool canClimbOnRoot => root && wallClimb;
 
         // Special skips
         public bool upwarpSkipsAllowed => logicDifficulty >= 2;
@@ -318,6 +316,18 @@ namespace BlasphemousRandomizer.ItemRando
             }
         }
 
+        private int chaliceRooms
+        {
+            get
+            {
+                int rooms = 0;
+                if (HasDoor("D03Z01S01[W]") || HasDoor("D03Z01S01[NE]") || HasDoor("D03Z01S01[S]")) rooms++;
+                if (HasDoor("D05Z02S01[W]") || HasDoor("D05Z02S01[E]")) rooms++;
+                if (HasDoor("D09Z01S07[SW]") || HasDoor("D09Z01S07[SE]") || HasDoor("D09Z01S07[W]") || HasDoor("D09Z01S07[E]")) rooms++;
+                return rooms;
+            }
+        }
+
         // Doors
         private Dictionary<string, bool> doors = new Dictionary<string, bool>();
 
@@ -415,25 +425,36 @@ namespace BlasphemousRandomizer.ItemRando
 
                 case "chargeBeam": return new BoolVariable(chargeBeam);
 
-                case "canBreakHoles": return new BoolVariable(canBreakHoles);
+                // Movement tech
+                case "canAirStall": return new BoolVariable(canAirStall);
                 case "canDawnJump": return new BoolVariable(canDawnJump);
                 case "canWaterJump": return new BoolVariable(canWaterJump);
-                case "canAirStall": return new BoolVariable(canAirStall);
-                case "canDiveLaser": return new BoolVariable(canDiveLaser);
-                case "canBreakTirana": return new BoolVariable(canBreakTirana);
 
+                // Breakable tech
+                case "canBreakHoles": return new BoolVariable(canBreakHoles);
+                case "canBreakTirana": return new BoolVariable(canBreakTirana);
+                case "canDiveLaser": return new BoolVariable(canDiveLaser);
+
+                // Root tech
+                case "canWalkOnRoot": return new BoolVariable(canWalkOnRoot);
+                case "canClimbOnRoot": return new BoolVariable(canClimbOnRoot);
+
+                // Lung tech
+                case "canSurvivePoison1": return new BoolVariable(canSurvivePoison1);
+                case "canSurvivePoison2": return new BoolVariable(canSurvivePoison2);
+                case "canSurvivePoison3": return new BoolVariable(canSurvivePoison3);
+
+                // Enemy tech
                 case "canEnemyBounce": return new BoolVariable(canEnemyBounce);
                 case "canEnemyUpslash": return new BoolVariable(canEnemyUpslash);
 
-                case "canBreakJondoBell": return new BoolVariable(canBreakJondoBell); // access to both jondo bell rooms
-                case "canRideAlberoElevator": return new BoolVariable(canRideAlberoElevator); // access to graveyard elevator room
-                case "canFillChalice": return new BoolVariable(canFillChalice); // chalice && access to the 3 enemy rooms
-
+                // Reaching rooms
                 case "guiltRooms": return new IntVariable(guiltRooms);
                 case "swordRooms": return new IntVariable(swordRooms);
                 case "redentoRooms": return new IntVariable(redentoRooms);
                 case "miriamRooms": return new IntVariable(miriamRooms);
                 case "amanecidaRooms": return new IntVariable(amanecidaRooms);
+                case "chaliceRooms": return new IntVariable(chaliceRooms);
 
                 // Crossing gaps
                 case "canCrossGap1": return new BoolVariable(canCrossGap1);
@@ -448,27 +469,21 @@ namespace BlasphemousRandomizer.ItemRando
                 case "canCrossGap10": return new BoolVariable(canCrossGap10);
                 case "canCrossGap11": return new BoolVariable(canCrossGap11);
 
-                // One way doors
+                // Events in different scenes
                 case "openedDCGateW": return new BoolVariable(openedDCGateW);
                 case "openedDCGateE": return new BoolVariable(openedDCGateE);
                 case "openedDCLadder": return new BoolVariable(openedDCLadder);
                 case "openedWOTWCave": return new BoolVariable(openedWOTWCave);
+                case "rodeGotPElevator": return new BoolVariable(rodeGotPElevator);
                 case "openedConventLadder": return new BoolVariable(openedConventLadder);
+                case "brokeJondoBellW": return new BoolVariable(brokeJondoBellW);
+                case "brokeJondoBellE": return new BoolVariable(brokeJondoBellE);
                 case "openedMoMLadder": return new BoolVariable(openedMoMLadder);
                 case "openedTSCGate": return new BoolVariable(openedTSCGate);
                 case "openedARLadder": return new BoolVariable(openedARLadder);
-                case "openedBotTCStatue": return new BoolVariable(openedBotTCStatue);
+                case "brokeBotTCStatue": return new BoolVariable(brokeBotTCStatue);
                 case "openedWotHPGate": return new BoolVariable(openedWotHPGate);
                 case "openedBotSSLadder": return new BoolVariable(openedBotSSLadder);
-
-                // Lung techniques
-                case "canSurvivePoison1": return new BoolVariable(canSurvivePoison1);
-                case "canSurvivePoison2": return new BoolVariable(canSurvivePoison2);
-                case "canSurvivePoison3": return new BoolVariable(canSurvivePoison3);
-
-                // Root techniques
-                case "canWalkOnRoot": return new BoolVariable(canWalkOnRoot);
-                case "canClimbOnRoot": return new BoolVariable(canClimbOnRoot);
 
                 // Special skips
                 case "upwarpSkipsAllowed": return new BoolVariable(upwarpSkipsAllowed);

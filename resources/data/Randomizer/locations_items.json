@@ -126,7 +126,7 @@
 		"Name": "Elevator cherub",
 		"Hint": "* resides in Albero",
 		"Room": "D01Z02S03",
-		"Logic": "canRideAlberoElevator || pillar || cante || D01Z02S03[NW] && (canCrossGap2 || lorquiana || aubade || cantina || canAirStall || chargeBeam)"
+		"Logic": "rodeGotPElevator || pillar || cante || D01Z02S03[NW] && (canCrossGap2 || lorquiana || aubade || cantina || canAirStall || chargeBeam)"
 	},
 	{
 		"Id": "Lvdovico[500]",
@@ -967,7 +967,7 @@
 		"Name": "Eastern shaft cherub",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S05",
-		"Logic": "D03Z02S05[E] || D03Z02S05[S] || canCrossGap5"
+		"Logic": "D03Z02S05[E] || D03Z02S05[S] || canCrossGap5 || (canEnemyBounce && canCrossGap3)"
 	},
 	{
 		"Id": "QI19",
