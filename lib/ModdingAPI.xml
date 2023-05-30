@@ -124,6 +124,19 @@
             <param name="output">The data images, or null if the file deosn't exist</param>
             <returns>Whether the data was loaded successfully or not</returns>
         </member>
+        <member name="M:ModdingAPI.FileUtil.loadDataImages(System.String,UnityEngine.Vector2Int,UnityEngine.Vector2,System.Int32,System.Int32,System.Boolean,UnityEngine.Sprite[]@)">
+            <summary>
+            Loads an array of images from an image file in the data folder
+            </summary>
+            <param name="fileName">The name of the data file</param>
+            <param name="size">The (width, height) of each sprite in pixels</param>
+            <param name="pivot">The (x, y) point where the origin of each sprite should be</param>
+            <param name="pixelsPerUnit">The pixels per unit of each sprite in the image</param>
+            <param name="border">The border size of each sprite in the image</param>
+            <param name="pointFilter">Whether a point filter should be applied to the image</param>
+            <param name="output">The data images, or null if the file deosn't exist</param>
+            <returns>Whether the data was loaded successfully or not</returns>
+        </member>
         <member name="M:ModdingAPI.FileUtil.saveTextFile(System.String,System.String)">
             <summary>
             Writes text to a file in the root directory
@@ -206,6 +219,27 @@
             <param name="axis">The axis code the check for</param>
             <param name="useRawInput">Whether to use the raw axis data</param>
             <returns>The axis status</returns>
+        </member>
+        <member name="M:ModdingAPI.InputHandler.GetKey(System.String)">
+            <summary>
+            Checks whether a key is currently being held down
+            </summary>
+            <param name="action">The name of the action key to check for</param>
+            <returns>The key status</returns>
+        </member>
+        <member name="M:ModdingAPI.InputHandler.GetKeyDown(System.String)">
+            <summary>
+            Checks whether a key was pressed during this frame
+            </summary>
+            <param name="action">The name of the action key to check for</param>
+            <returns>The key status</returns>
+        </member>
+        <member name="M:ModdingAPI.InputHandler.GetKeyUp(System.String)">
+            <summary>
+            Checks whether a key was released during this frame
+            </summary>
+            <param name="action">The name of the action key to check for</param>
+            <returns>The key status</returns>
         </member>
         <member name="T:ModdingAPI.ItemModder">
             <summary>

@@ -308,11 +308,11 @@ namespace BlasphemousRandomizer
         // Keyboard input
         protected override void Update()
         {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad6) && inGame)
+            if (Input.GetKeyDown("Seed") && inGame)
             {
                 LogDisplay($"{Localize("currsd")}: {GameSeed} [{ComputeFinalSeed(GameSeed, GameSettings)}]");
             }
-            else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad1))
+            else if (Input.GetKeyDown("Debug"))
             {
                 //int succeed = 0, total = 100;
                 //System.Random rng = new System.Random();
@@ -328,12 +328,6 @@ namespace BlasphemousRandomizer
                 //        succeed++;
                 //}
                 //LogError($"Success rate: {succeed}/{total}");
-            }
-            else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad2))
-            {
-            }
-            else if (UnityEngine.Input.GetKeyDown(KeyCode.Keypad3))
-            {
             }
 
             // Update ui menus

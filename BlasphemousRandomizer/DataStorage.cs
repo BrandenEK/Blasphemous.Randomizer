@@ -94,10 +94,20 @@ namespace BlasphemousRandomizer
 			else { Main.Randomizer.LogError("Error: Failed to load doors!"); valid = false; }
 
 			// Load image data
-			if (fileUtil.loadDataImages("rando-items.png", 30, 30, 30, 0, true, out randomizerImages)) Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
-			else { Main.Randomizer.LogError("Error: Failed to load randomizer images!"); valid = false; }
-			if (fileUtil.loadDataImages("ui.png", 36, 36, 36, 0, false, out uiImages)) Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
-			else { Main.Randomizer.LogError("Error: Failed to load ui images!"); valid = false; }
+			if (fileUtil.loadDataImages("rando-items.png", new Vector2Int(30, 30), new Vector2(0.5f, 0.5f), 30, 0, true, out randomizerImages))
+				Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
+            else
+            {
+				Main.Randomizer.LogError("Error: Failed to load randomizer images!");
+				valid = false;
+			}
+			if (fileUtil.loadDataImages("ui.png", new Vector2Int(36, 36), new Vector2(0.5f, 0.5f), 36, 0, false, out uiImages))
+				Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
+            else
+            {
+				Main.Randomizer.LogError("Error: Failed to load ui images!");
+				valid = false;
+			}
 
 			CreateInternalData();
 			isValid = valid;
