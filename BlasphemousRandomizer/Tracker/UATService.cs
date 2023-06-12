@@ -10,7 +10,7 @@ namespace BlasphemousRandomizer.Tracker
             if (ConnectionState == WebSocketState.Open)
             {
                 Main.Randomizer.Log("Poptracker has connected");
-                string jsonString = Main.Randomizer.FileUtil.jsonString(new Info(0, "Blasphemous", Main.MOD_VERSION));
+                string jsonString = Main.Randomizer.FileUtil.jsonString(new Info(0, "Blasphemous", Main.Randomizer.ModVersion));
                 Send("[" + jsonString + "]");
             }
 

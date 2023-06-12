@@ -274,7 +274,7 @@ namespace BlasphemousRandomizer
                 }
             }
             // Set randomized flags
-            string majorVersion = Main.MOD_VERSION;
+            string majorVersion = ModVersion;
             majorVersion = majorVersion.Substring(0, majorVersion.LastIndexOf('.'));
             Core.Events.SetFlag("RANDOMIZED", true, false);
             Core.Events.SetFlag(majorVersion, true, false);
@@ -358,7 +358,7 @@ namespace BlasphemousRandomizer
         // Did this even work ??
         private bool isConfigVersionValid(string configVersion)
         {
-            string version = Main.MOD_VERSION;
+            string version = ModVersion;
             return version.Substring(0, version.LastIndexOf('.')) == configVersion.Substring(0, configVersion.LastIndexOf('.'));
         }
 
