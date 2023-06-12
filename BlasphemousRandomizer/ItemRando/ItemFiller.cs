@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using BlasphemousRandomizer.DoorRando;
+﻿using BlasphemousRandomizer.DoorRando;
 using LogicParser;
+using System.Collections.Generic;
 
 namespace BlasphemousRandomizer.ItemRando
 {

@@ -2004,7 +2004,7 @@
 		"Id": "D03Z02S11[W]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z02S05[E]",
-		"Logic": "D03Z02S11[W] || dash && (doubleJump || wallClimb)"
+		"Logic": "D03Z02S11[W] || dash && (doubleJump || wallClimb || canCrossGap2)"
 	},
 	{
 		"Id": "D03Z02S11[E]",
@@ -2725,7 +2725,7 @@
 		"Id": "D04Z02S20[Redento]",
 		"Direction": 4,
 		"OriginalDoor": "D04BZ02S01[Redento]",
-		"Logic": "redentoRooms >= 5 && knots >= 1 && limestones >= 3"
+		"Logic": "redentoRooms >= 5"
 	},
 	{
 		"Id": "D04Z02S21[W]",

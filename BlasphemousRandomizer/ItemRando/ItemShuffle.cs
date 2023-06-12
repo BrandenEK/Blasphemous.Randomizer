@@ -1,9 +1,9 @@
-﻿using BlasphemousRandomizer.Notifications;
-using BlasphemousRandomizer.DoorRando;
-using System.Collections.Generic;
-using System.Text;
+﻿using BlasphemousRandomizer.DoorRando;
+using BlasphemousRandomizer.Notifications;
 using Framework.Managers;
 using Gameplay.UI;
+using System.Collections.Generic;
+using System.Text;
 
 namespace BlasphemousRandomizer.ItemRando
 {

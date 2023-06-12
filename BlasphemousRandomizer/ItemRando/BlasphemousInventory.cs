@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using LogicParser;
+﻿using LogicParser;
+using System.Collections.Generic;
 
 namespace BlasphemousRandomizer.ItemRando
 {
@@ -41,8 +41,10 @@ namespace BlasphemousRandomizer.ItemRando
         private bool dawnHeart = false;
 
         // Health boosts
-        private int flasks = 0;
-        private int quicksilver = 0;
+        private int ownedFlasks = 0;
+        private int flasks => (HasDoor("D01Z05S18[E]") || HasDoor("D02Z02S09[E]") || HasDoor("D03Z02S14[E]") || HasDoor("D03Z03S03[SE]") || HasDoor("D04Z02S13[W]") || HasDoor("D05Z01S12[E]") || HasDoor("D20Z01S08[W]")) ? ownedFlasks : 0;
+        private int ownedQuicksilver = 0;
+        private int quicksilver => HasDoor("D01Z05S27[E]") ? ownedQuicksilver : 0;
 
         // Puzzles
         private int redWax = 0;
@@ -108,7 +110,8 @@ namespace BlasphemousRandomizer.ItemRando
 
         // Redento quest
         private int limestones = 0;
-        private int knots = 0;
+        private int ownedKnots = 0;
+        private int knots => HasDoor("D17Z01S09[E]") ? ownedKnots : 0;
 
         // Cleofas quest
         private int marksOfRefuge = 0;
@@ -129,7 +132,7 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canWaterJump => nail || doubleJump;
 
         // Breakable tech
-        private bool canBreakHoles => charged > 0 || dive > 0 || lunge >= 3 || anyPrayer;
+        private bool canBreakHoles => charged > 0 || dive > 0 || lunge >= 3 && dash || anyPrayer;
         private bool canBreakTirana => tirana && logicDifficulty >= 2;
         private bool canDiveLaser => dive >= 3 && logicDifficulty >= 2;
 
@@ -273,7 +276,7 @@ namespace BlasphemousRandomizer.ItemRando
                         {
                             if (HasDoor("D04Z01S04[W]") || HasDoor("D04Z01S04[E]") || HasDoor("D04Z01S04[Cherubs]"))
                             {
-                                if (HasDoor("D04Z02S20[W]") || HasDoor("D04Z02S20[Redento]"))
+                                if (knots >= 1 && limestones >= 3 && (HasDoor("D04Z02S20[W]") || HasDoor("D04Z02S20[Redento]")))
                                 {
                                     return 5;
                                 }
@@ -601,9 +604,9 @@ namespace BlasphemousRandomizer.ItemRando
                         else if (item.id == "QI201" || item.id == "QI202") traitorEyes++;
                         else if (item.id == "QI203") scapular = true;
                         else if (item.id == "QI204") woodKey = true;
-                        else if (item.id == "BV") flasks++;
-                        else if (item.id == "RK") knots++;
-                        else if (item.id == "QS") quicksilver++;
+                        else if (item.id == "BV") ownedFlasks++;
+                        else if (item.id == "RK") ownedKnots++;
+                        else if (item.id == "QS") ownedQuicksilver++;
                         else if (item.id == "GV") verses++;
                         break;
                     }

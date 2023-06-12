@@ -1000,14 +1000,14 @@
 		"Name": "Spike tunnel ledge",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S11",
-		"Logic": "dash && (wallClimb || doubleJump)"
+		"Logic": "dash && (wallClimb || doubleJump || D03Z02S11[E] && canCrossGap2)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_37",
 		"Name": "Spike tunnel cherub",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S11",
-		"Logic": "dash && (wallClimb || doubleJump || D03Z02S11[W] && canCrossGap3)"
+		"Logic": "dash && (wallClimb || doubleJump || D03Z02S11[W] && (canCrossGap2 && canEnemyBounce || canCrossGap3) || D03Z02S11[E] && (canCrossGap1 || canEnemyBounce))"
 	},
 	{
 		"Id": "QI52",

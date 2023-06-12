@@ -1,11 +1,11 @@
-﻿using HarmonyLib;
-using BlasphemousRandomizer.Notifications;
-using System.Collections.Generic;
-using Gameplay.UI.Others.MenuLogic;
+﻿using BlasphemousRandomizer.Notifications;
 using Framework.Managers;
 using Framework.FrameworkCore;
-using UnityEngine.UI;
+using Gameplay.UI.Others.MenuLogic;
+using HarmonyLib;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 
 namespace BlasphemousRandomizer.ItemRando
 {

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using BlasphemousRandomizer.ItemRando;
+﻿using BlasphemousRandomizer.ItemRando;
+using System.Collections.Generic;
 
 namespace BlasphemousRandomizer.HintRando
 {

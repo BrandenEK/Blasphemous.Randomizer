@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using Framework.Managers;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Others;
-using Framework.Managers;
 using ModdingAPI;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace BlasphemousRandomizer.Settings
 {

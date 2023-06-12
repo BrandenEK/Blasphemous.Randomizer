@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Gameplay.UI.Others.MenuLogic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using BlasphemousRandomizer.ItemRando;
 using Framework.Managers;
 using Framework.Map;
-using BlasphemousRandomizer.ItemRando;
+using Gameplay.UI.Others.MenuLogic;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace BlasphemousRandomizer.Map
 {
