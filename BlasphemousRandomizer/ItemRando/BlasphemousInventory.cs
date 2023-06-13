@@ -72,7 +72,6 @@ namespace BlasphemousRandomizer.ItemRando
 
         // Stats
         private int healthLevel = 0, fervourLevel = 0, swordLevel = 0;
-
         private int TotalFervour => 60 + (20 * fervourLevel) + (10 * blueWax);
 
         // Skills
@@ -208,27 +207,25 @@ namespace BlasphemousRandomizer.ItemRando
         private bool HasBossStrength(string boss)
         {
             float playerStrength = healthLevel * 0.25f / 6 + swordLevel * 0.25f / 7 + fervourLevel * 0.20f / 6 + flasks * 0.15f / 8 + quicksilver * 0.15f / 5;
-            float bossStrength;
-            switch (boss)
+            float bossStrength = boss switch
             {
-                case "warden": bossStrength = -0.10f; break;
-                case "ten-piedad": bossStrength = 0.05f; break;
-                case "charred-visage": bossStrength = 0.20f; break;
-                case "tres-angustias": bossStrength = 0.15f; break;
-                case "esdras": bossStrength = 0.25f; break;
-                case "melquiades": bossStrength = 0.25f; break;
-                case "exposito": bossStrength = 0.30f; break;
-                case "quirce": bossStrength = 0.35f; break;
-                case "crisanta": bossStrength = 0.50f; break;
-                case "isidora": bossStrength = 0.70f; break;
-                case "sierpes": bossStrength = 0.70f; break;
-                case "amanecida": bossStrength = 0.60f; break;
-                case "laudes": bossStrength = 0.60f; break;
-                case "perpetua": bossStrength = -0.05f; break;
-                case "legionary": bossStrength = 0.20f; break;
-
-                default: throw new System.Exception($"Boss {boss} does not exist!");
-            }
+                "warden" => -0.10f,
+                "ten-piedad" => 0.05f,
+                "charred-visage" => 0.20f,
+                "tres-angustias" => 0.15f,
+                "esdras" => 0.25f,
+                "melquiades" => 0.25f,
+                "exposito" => 0.30f,
+                "quirce" => 0.35f,
+                "crisanta" => 0.50f,
+                "isidora" => 0.70f,
+                "sierpes" => 0.70f,
+                "amanecida" => 0.60f,
+                "laudes" => 0.60f,
+                "perpetua" => -0.05f,
+                "legionary" => 0.20f,
+                _ => throw new System.Exception($"Boss {boss} does not exist!"),
+            };
             return playerStrength >= (logicDifficulty >= 2 ? bossStrength - 0.10f : (logicDifficulty >= 1 ? bossStrength : bossStrength + 0.10f));
         }
 
@@ -352,170 +349,208 @@ namespace BlasphemousRandomizer.ItemRando
                 return new BoolVariable(HasDoor(variable));
             }
 
-            switch (variable)
+            return variable switch
             {
-                case "blood": return new BoolVariable(blood);
-                case "linen": return new BoolVariable(linen);
-                case "nail": return new BoolVariable(nail);
-                case "shroud": return new BoolVariable(shroud);
+                // Relics
+                "blood" => new BoolVariable(blood),
+                "root" => throw new System.Exception("Don't check for root directly - Use canWalkOnRoot or canClimbOnRoot instead!"),
+                "linen" => new BoolVariable(linen),
+                "nail" => new BoolVariable(nail),
+                "shroud" => new BoolVariable(shroud),
+                "lung" => throw new System.Exception("Don't check for lung directly - Use canSurvivePoisonX instead!"),
 
-                case "bronzeKey": return new BoolVariable(bronzeKey);
-                case "silverKey": return new BoolVariable(silverKey);
-                case "goldKey": return new BoolVariable(goldKey);
-                case "peaksKey": return new BoolVariable(peaksKey);
-                case "elderKey": return new BoolVariable(elderKey);
-                case "woodKey": return new BoolVariable(woodKey);
+                // Keys
+                "bronzeKey" => new BoolVariable(bronzeKey),
+                "silverKey" => new BoolVariable(silverKey),
+                "goldKey" => new BoolVariable(goldKey),
+                "peaksKey" => new BoolVariable(peaksKey),
+                "elderKey" => new BoolVariable(elderKey),
+                "woodKey" => new BoolVariable(woodKey),
 
-                case "dash": return new BoolVariable(dash);
-                case "wallClimb": return new BoolVariable(wallClimb);
-                case "boots": return new BoolVariable(boots);
-                case "doubleJump": return new BoolVariable(doubleJump);
+                // Collections
+                "cherubs" => new IntVariable(cherubs),
+                "bones" => new IntVariable(bones),
+                "tears" => new IntVariable(tears),
 
-                case "cherubs": return new IntVariable(cherubs);
-                case "bones": return new IntVariable(bones);
-                case "tears": return new IntVariable(tears);
+                // Special items
+                "dash" => new BoolVariable(dash),
+                "wallClimb" => new BoolVariable(wallClimb),
+                "airImpulse" => throw new System.Exception("Air impulse is not randomized yet!"),
+                "boots" => new BoolVariable(boots),
+                "doubleJump" => new BoolVariable(doubleJump),
 
-                case "debla": return new BoolVariable(debla);
-                case "lorquiana": return new BoolVariable(lorquiana);
-                case "zarabanda": return new BoolVariable(zarabanda);
-                case "taranto": return new BoolVariable(taranto);
-                case "cante": return new BoolVariable(cante);
-                case "verdiales": return new BoolVariable(verdiales);
-                case "cantina": return new BoolVariable(cantina);
-                case "tiento": return new BoolVariable(tiento);
-                case "ruby": return new BoolVariable(ruby);
-                case "aubade": return new BoolVariable(aubade);
-                case "tirana": return new BoolVariable(tirana);
-                case "pillar": return new BoolVariable(pillar);
+                // Speed boosts
+                "wheel" => new BoolVariable(wheel),
+                "dawnHeart" => throw new System.Exception("Don't check for dawnHeart directly - Use canDawnJump instead!"),
 
-                case "wheel": return new BoolVariable(wheel);
+                // Health boosts
+                "flasks" => throw new System.Exception("Don't check for flasks directly - This is only used in power calculation!"),
+                "quicksilver" => throw new System.Exception("Don't check for flasks directly - This is only used in power calculation!"),
 
-                case "redWax": return new IntVariable(redWax);
-                case "blueWax": return new IntVariable(blueWax);
-                case "chalice": return new BoolVariable(chalice);
+                // Puzzles
+                "redWax" => new IntVariable(redWax),
+                "blueWax" => new IntVariable(blueWax),
+                "chalice" => new BoolVariable(chalice),
 
-                case "holyWounds": return new IntVariable(holyWounds);
-                case "masks": return new IntVariable(masks);
-                case "guiltBead": return new BoolVariable(guiltBead);
+                // Cherubs
+                "debla" => new BoolVariable(debla),
+                "lorquiana" => new BoolVariable(lorquiana),
+                "zarabanda" => new BoolVariable(zarabanda),
+                "taranto" => new BoolVariable(taranto),
+                "verdiales" => new BoolVariable(verdiales),
+                "cante" => new BoolVariable(cante),
+                "cantina" => new BoolVariable(cantina),
 
-                case "cloth": return new BoolVariable(cloth);
-                case "hand": return new BoolVariable(hand);
-                case "hatchedEgg": return new BoolVariable(hatchedEgg);
+                "aubade" => new BoolVariable(aubade),
+                "tirana" => new BoolVariable(tirana),
 
-                case "herbs": return new IntVariable(herbs);
+                "ruby" => new BoolVariable(ruby),
+                "tiento" => new BoolVariable(tiento),
+                "anyPrayer" => throw new System.Exception("Don't check for anyPrayer directly - This is only used for canBreakHoles!"),
+                "pillar" => new BoolVariable(pillar),
 
-                case "tentudiaRemains": return new IntVariable(tentudiaRemains);
+                // Stats
+                "healthLevel" => throw new System.Exception("Don't check for healthLevel directly - This is only used in power calculation!"),
+                "fervourLevel" => throw new System.Exception("Don't check for fervourLevel directly - This is only used in power calculation!"),
+                "swordLevel" => throw new System.Exception("Don't check for swordLevel directly - This is only used in power calculation!"),
 
-                case "emptyThimble": return new BoolVariable(emptyThimble);
-                case "fullThimble": return new BoolVariable(fullThimble);
-                case "driedFlowers": return new BoolVariable(driedFlowers);
+                // Skills
+                "combo" => throw new System.Exception("Don't check for combo directly - These are stored as ints!"),
+                "charged" => throw new System.Exception("Don't check for charged directly - These are stored as ints!"),
+                "ranged" => throw new System.Exception("Don't check for ranged directly - These are stored as ints!"),
+                "dive" => throw new System.Exception("Don't check for dive directly - These are stored as ints!"),
+                "lunge" => throw new System.Exception("Don't check for lunge directly - These are stored as ints!"),
+                "chargeBeam" => new BoolVariable(chargeBeam),
 
-                case "ceremonyItems": return new IntVariable(ceremonyItems);
-                case "egg": return new BoolVariable(egg);
+                // Main quest
+                "holyWounds" => new IntVariable(holyWounds),
+                "masks" => new IntVariable(masks),
+                "guiltBead" => new BoolVariable(guiltBead),
 
-                case "limestones": return new IntVariable(limestones);
-                case "knots": return new IntVariable(knots);
+                // LOTL quest
+                "cloth" => new BoolVariable(cloth),
+                "hand" => new BoolVariable(hand),
+                "hatchedEgg" => new BoolVariable(hatchedEgg),
 
-                case "marksOfRefuge": return new IntVariable(marksOfRefuge);
-                case "cord": return new BoolVariable(cord);
+                // Tirso quest
+                "herbs" => new IntVariable(herbs),
 
-                case "scapular": return new BoolVariable(scapular);
-                case "trueHeart": return new BoolVariable(trueHeart);
-                case "traitorEyes": return new IntVariable(traitorEyes);
+                // Tentudia quest
+                "tentudiaRemains" => new IntVariable(tentudiaRemains),
 
-                case "bell": return new BoolVariable(bell);
-                case "verses": return new IntVariable(verses);
+                // Gemino quest
+                "emptyThimble" => new BoolVariable(emptyThimble),
+                "fullThimble" => new BoolVariable(fullThimble),
+                "driedFlowers" => new BoolVariable(driedFlowers),
 
-                case "chargeBeam": return new BoolVariable(chargeBeam);
+                // Altasgracias quest
+                "ceremonyItems" => new IntVariable(ceremonyItems),
+                "egg" => new BoolVariable(egg),
+
+                // Redento quest
+                "limestones" => new IntVariable(limestones),
+                "knots" => new IntVariable(knots),
+
+                // Cleofas quest
+                "marksOfRefuge" => new IntVariable(marksOfRefuge),
+                "cord" => new BoolVariable(cord),
+
+                // Crisanta quest
+                "scapular" => new BoolVariable(scapular),
+                "trueHeart" => new BoolVariable(trueHeart),
+                "traitorEyes" => new IntVariable(traitorEyes),
+
+                // Jibrael quest
+                "bell" => new BoolVariable(bell),
+                "verses" => new IntVariable(verses),
 
                 // Movement tech
-                case "canAirStall": return new BoolVariable(canAirStall);
-                case "canDawnJump": return new BoolVariable(canDawnJump);
-                case "canWaterJump": return new BoolVariable(canWaterJump);
+                "canAirStall" => new BoolVariable(canAirStall),
+                "canDawnJump" => new BoolVariable(canDawnJump),
+                "canWaterJump" => new BoolVariable(canWaterJump),
 
                 // Breakable tech
-                case "canBreakHoles": return new BoolVariable(canBreakHoles);
-                case "canBreakTirana": return new BoolVariable(canBreakTirana);
-                case "canDiveLaser": return new BoolVariable(canDiveLaser);
+                "canBreakHoles" => new BoolVariable(canBreakHoles),
+                "canBreakTirana" => new BoolVariable(canBreakTirana),
+                "canDiveLaser" => new BoolVariable(canDiveLaser),
 
                 // Root tech
-                case "canWalkOnRoot": return new BoolVariable(canWalkOnRoot);
-                case "canClimbOnRoot": return new BoolVariable(canClimbOnRoot);
+                "canWalkOnRoot" => new BoolVariable(canWalkOnRoot),
+                "canClimbOnRoot" => new BoolVariable(canClimbOnRoot),
 
                 // Lung tech
-                case "canSurvivePoison1": return new BoolVariable(canSurvivePoison1);
-                case "canSurvivePoison2": return new BoolVariable(canSurvivePoison2);
-                case "canSurvivePoison3": return new BoolVariable(canSurvivePoison3);
+                "canSurvivePoison1" => new BoolVariable(canSurvivePoison1),
+                "canSurvivePoison2" => new BoolVariable(canSurvivePoison2),
+                "canSurvivePoison3" => new BoolVariable(canSurvivePoison3),
 
                 // Enemy tech
-                case "canEnemyBounce": return new BoolVariable(canEnemyBounce);
-                case "canEnemyUpslash": return new BoolVariable(canEnemyUpslash);
+                "canEnemyBounce" => new BoolVariable(canEnemyBounce),
+                "canEnemyUpslash" => new BoolVariable(canEnemyUpslash),
 
                 // Reaching rooms
-                case "guiltRooms": return new IntVariable(guiltRooms);
-                case "swordRooms": return new IntVariable(swordRooms);
-                case "redentoRooms": return new IntVariable(redentoRooms);
-                case "miriamRooms": return new IntVariable(miriamRooms);
-                case "amanecidaRooms": return new IntVariable(amanecidaRooms);
-                case "chaliceRooms": return new IntVariable(chaliceRooms);
+                "guiltRooms" => new IntVariable(guiltRooms),
+                "swordRooms" => new IntVariable(swordRooms),
+                "redentoRooms" => new IntVariable(redentoRooms),
+                "miriamRooms" => new IntVariable(miriamRooms),
+                "amanecidaRooms" => new IntVariable(amanecidaRooms),
+                "chaliceRooms" => new IntVariable(chaliceRooms),
 
                 // Crossing gaps
-                case "canCrossGap1": return new BoolVariable(canCrossGap1);
-                case "canCrossGap2": return new BoolVariable(canCrossGap2);
-                case "canCrossGap3": return new BoolVariable(canCrossGap3);
-                case "canCrossGap4": return new BoolVariable(canCrossGap4);
-                case "canCrossGap5": return new BoolVariable(canCrossGap5);
-                case "canCrossGap6": return new BoolVariable(canCrossGap6);
-                case "canCrossGap7": return new BoolVariable(canCrossGap7);
-                case "canCrossGap8": return new BoolVariable(canCrossGap8);
-                case "canCrossGap9": return new BoolVariable(canCrossGap9);
-                case "canCrossGap10": return new BoolVariable(canCrossGap10);
-                case "canCrossGap11": return new BoolVariable(canCrossGap11);
+                "canCrossGap1" => new BoolVariable(canCrossGap1),
+                "canCrossGap2" => new BoolVariable(canCrossGap2),
+                "canCrossGap3" => new BoolVariable(canCrossGap3),
+                "canCrossGap4" => new BoolVariable(canCrossGap4),
+                "canCrossGap5" => new BoolVariable(canCrossGap5),
+                "canCrossGap6" => new BoolVariable(canCrossGap6),
+                "canCrossGap7" => new BoolVariable(canCrossGap7),
+                "canCrossGap8" => new BoolVariable(canCrossGap8),
+                "canCrossGap9" => new BoolVariable(canCrossGap9),
+                "canCrossGap10" => new BoolVariable(canCrossGap10),
+                "canCrossGap11" => new BoolVariable(canCrossGap11),
 
                 // Events in different scenes
-                case "openedDCGateW": return new BoolVariable(openedDCGateW);
-                case "openedDCGateE": return new BoolVariable(openedDCGateE);
-                case "openedDCLadder": return new BoolVariable(openedDCLadder);
-                case "openedWOTWCave": return new BoolVariable(openedWOTWCave);
-                case "rodeGotPElevator": return new BoolVariable(rodeGotPElevator);
-                case "openedConventLadder": return new BoolVariable(openedConventLadder);
-                case "brokeJondoBellW": return new BoolVariable(brokeJondoBellW);
-                case "brokeJondoBellE": return new BoolVariable(brokeJondoBellE);
-                case "openedMoMLadder": return new BoolVariable(openedMoMLadder);
-                case "openedTSCGate": return new BoolVariable(openedTSCGate);
-                case "openedARLadder": return new BoolVariable(openedARLadder);
-                case "brokeBotTCStatue": return new BoolVariable(brokeBotTCStatue);
-                case "openedWotHPGate": return new BoolVariable(openedWotHPGate);
-                case "openedBotSSLadder": return new BoolVariable(openedBotSSLadder);
+                "openedDCGateW" => new BoolVariable(openedDCGateW),
+                "openedDCGateE" => new BoolVariable(openedDCGateE),
+                "openedDCLadder" => new BoolVariable(openedDCLadder),
+                "openedWOTWCave" => new BoolVariable(openedWOTWCave),
+                "rodeGotPElevator" => new BoolVariable(rodeGotPElevator),
+                "openedConventLadder" => new BoolVariable(openedConventLadder),
+                "brokeJondoBellW" => new BoolVariable(brokeJondoBellW),
+                "brokeJondoBellE" => new BoolVariable(brokeJondoBellE),
+                "openedMoMLadder" => new BoolVariable(openedMoMLadder),
+                "openedTSCGate" => new BoolVariable(openedTSCGate),
+                "openedARLadder" => new BoolVariable(openedARLadder),
+                "brokeBotTCStatue" => new BoolVariable(brokeBotTCStatue),
+                "openedWotHPGate" => new BoolVariable(openedWotHPGate),
+                "openedBotSSLadder" => new BoolVariable(openedBotSSLadder),
 
                 // Special skips
-                case "upwarpSkipsAllowed": return new BoolVariable(upwarpSkipsAllowed);
-                case "mourningSkipAllowed": return new BoolVariable(mourningSkipAllowed);
-                case "enemySkipsAllowed": return new BoolVariable(enemySkipsAllowed);
+                "upwarpSkipsAllowed" => new BoolVariable(upwarpSkipsAllowed),
+                "mourningSkipAllowed" => new BoolVariable(mourningSkipAllowed),
+                "enemySkipsAllowed" => new BoolVariable(enemySkipsAllowed),
 
                 // Bosses
-                case "canBeatBrotherhoodBoss": return new BoolVariable(canBeatBrotherhoodBoss);
-                case "canBeatMercyBoss": return new BoolVariable(canBeatMercyBoss);
-                case "canBeatConventBoss": return new BoolVariable(canBeatConventBoss);
-                case "canBeatGrievanceBoss": return new BoolVariable(canBeatGrievanceBoss);
-                case "canBeatBridgeBoss": return new BoolVariable(canBeatBridgeBoss);
-                case "canBeatMothersBoss": return new BoolVariable(canBeatMothersBoss);
-                case "canBeatCanvasesBoss": return new BoolVariable(canBeatCanvasesBoss);
-                case "canBeatPrisonBoss": return new BoolVariable(canBeatPrisonBoss);
-                case "canBeatRooftopsBoss": return new BoolVariable(canBeatRooftopsBoss);
-                case "canBeatOssuaryBoss": return new BoolVariable(canBeatOssuaryBoss);
-                case "canBeatMourningBoss": return new BoolVariable(canBeatMourningBoss);
-                case "canBeatGraveyardBoss": return new BoolVariable(canBeatGraveyardBoss);
-                case "canBeatJondoBoss": return new BoolVariable(canBeatJondoBoss);
-                case "canBeatPatioBoss": return new BoolVariable(canBeatPatioBoss);
-                case "canBeatWallBoss": return new BoolVariable(canBeatWallBoss);
-                case "canBeatHallBoss": return new BoolVariable(canBeatHallBoss);
-                case "canBeatPerpetua": return new BoolVariable(canBeatPerpetua);
-                case "canBeatLegionary": return new BoolVariable(canBeatLegionary);
+                "canBeatBrotherhoodBoss" => new BoolVariable(canBeatBrotherhoodBoss),
+                "canBeatMercyBoss" => new BoolVariable(canBeatMercyBoss),
+                "canBeatConventBoss" => new BoolVariable(canBeatConventBoss),
+                "canBeatGrievanceBoss" => new BoolVariable(canBeatGrievanceBoss),
+                "canBeatBridgeBoss" => new BoolVariable(canBeatBridgeBoss),
+                "canBeatMothersBoss" => new BoolVariable(canBeatMothersBoss),
+                "canBeatCanvasesBoss" => new BoolVariable(canBeatCanvasesBoss),
+                "canBeatPrisonBoss" => new BoolVariable(canBeatPrisonBoss),
+                "canBeatRooftopsBoss" => new BoolVariable(canBeatRooftopsBoss),
+                "canBeatOssuaryBoss" => new BoolVariable(canBeatOssuaryBoss),
+                "canBeatMourningBoss" => new BoolVariable(canBeatMourningBoss),
+                "canBeatGraveyardBoss" => new BoolVariable(canBeatGraveyardBoss),
+                "canBeatJondoBoss" => new BoolVariable(canBeatJondoBoss),
+                "canBeatPatioBoss" => new BoolVariable(canBeatPatioBoss),
+                "canBeatWallBoss" => new BoolVariable(canBeatWallBoss),
+                "canBeatHallBoss" => new BoolVariable(canBeatHallBoss),
+                "canBeatPerpetua" => new BoolVariable(canBeatPerpetua),
+                "canBeatLegionary" => new BoolVariable(canBeatLegionary),
 
-                default:
-                    throw new System.Exception($"Error: Variable {variable} doesn't exist!");
-            }
+                _ => throw new System.Exception($"Error: Variable {variable} doesn't exist!"),
+            };
         }
 
         public void AddItem(string itemId)
