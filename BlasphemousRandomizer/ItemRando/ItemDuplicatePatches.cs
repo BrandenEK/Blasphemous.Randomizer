@@ -1,5 +1,5 @@
-﻿using HarmonyLib;
-using Framework.Managers;
+﻿using Framework.Managers;
+using HarmonyLib;
 using Tools.Playmaker2.Action;
 using Tools.Playmaker2.Condition;
 
@@ -161,7 +161,7 @@ namespace BlasphemousRandomizer.ItemRando
 	{
 		public static bool Prefix(FlagExists __instance)
 		{
-			// Get Data about this flag check
+			// Get data about this flag check
 			string flagName = __instance.flagName.Value.ToUpper().Replace(' ', '_');
 			string objectName = __instance.Owner.name;
 			string sceneName = Core.LevelManager.currentLevel.LevelName;
@@ -169,9 +169,191 @@ namespace BlasphemousRandomizer.ItemRando
 			bool flag = Core.Events.GetFlag(flagName);
 			Main.Randomizer.Log($"Checking for flag: {flagName} ({objectName})");
 
-			// Bridge - Make Esdras appear once you have 3 holy wounds
+			// Albero
+
+			if (sceneName == "D01Z02S02" && flagName == "D09Z01S03_BOSSDEAD" && (!Core.Events.GetFlag("TIRSO_QI19_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI20_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI37_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI63_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI64_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI65_DELIVERED")))
+			{
+				// Sick house - Only give final reward once all herbs are delivered
+				flag = false;
+			}
+			if (sceneName == "D01Z02S06" && flagName == "D01Z02S07_TELEPORT_ALBERO")
+			{
+				// Allows open albero warp room
+				flag = true;
+			}
+
+			// Mercy
+
+			if (sceneName == "D01BZ02S01" && flagName == "QI58_USED")
+			{
+				// Shop item
+				flag = Core.Events.GetFlag("LOCATION_QI58");
+			}
+
+			// Cistern
+
+			if (sceneName == "D01Z05S19" && flagName == "D01Z06S01_BOSSDEAD")
+            {
+				// Always open piedad visage door
+				flag = true;
+            }
+			if (sceneName == "D01Z05S25" && flagName == "D03Z04S01_BOSSDEAD")
+			{
+				// Always open angustias visage door
+				flag = true;
+			}
+			if (sceneName == "D01Z05S21")
+			{
+				// Shroud puzzle
+				bool completePuzzle = Core.InventoryManager.IsRelicEquipped("RE04");
+				if (flagName == "D01Z05S21_LEFTSHOW4" || flagName == "D01Z05S21_RIGHTSHOW2")
+                {
+					flag = completePuzzle;
+                }
+				else if (flagName == "D01Z05S21_LEFTSHOWNONE" || flagName == "D01Z05S21_LEFTSHOW1" || flagName == "D01Z05S21_LEFTSHOW2" ||
+						 flagName == "D01Z05S21_LEFTSHOW3" || flagName == "D01Z05S21_RIGHTSHOWNONE" || flagName == "D01Z05S21_RIGHTSHOW1")
+                {
+					flag = !completePuzzle;
+                }
+			}
+
+			// Olive Trees
+
+			if (sceneName == "D02Z01S01")
+            {
+				if (flagName == "D02Z05S01_BOSSDEAD")
+                {
+					// Gemino - Dont require convent boss to be defeated if already have filled thimble
+					flag = Core.InventoryManager.IsQuestItemOwned("QI57");
+				}
+				else if (flagName == "D01Z06S01_BOSSDEAD" || flagName == "D03Z04S01_BOSSDEAD" || flagName == "D08Z01S01_BOSSDEAD")
+                {
+					// Gemino - Don't freeze him even when bosses are dead
+					flag = false;
+				}
+				else if (flagName == "GEMINO_RB10_REWARD")
+                {
+					// Spawn Frozen Olive in tree scene, not cave scene
+					flag = Core.Events.GetFlag("LOCATION_RB10");
+				}
+				else if (flagName == "GEMINO_OFFERING_DONE")
+                {
+					// Spawn Dried Flowers in cave scene, not tree scene
+					flag = true;
+				}
+			}
+			if (sceneName == "D02Z01S04")
+            {
+				if (flagName == "GEMINO_RB10_REWARD")
+                {
+					// Spawn Frozen Olive in tree scene, not cave scene
+					flag = true;
+				}
+				else if (flagName == "GEMINO_OFFERING_DONE")
+                {
+					// Spawn Dried Flowers in cave scene, not tree scene
+					flag = Core.Events.GetFlag("LOCATION_QI68");
+				}
+			}
+
+			// Graveyard
+
+			if (sceneName == "D02BZ02S01" && flagName == "QI11_USED")
+			{
+				// Shop item
+				flag = Core.Events.GetFlag("LOCATION_QI11");
+			}
+
+			// Mountains
+
+			if (sceneName == "D03Z01S06" && flagName == "BROTHERS_EVENTPERPETVA_COMPLETED")
+			{
+				// Perpetua is always there until you actually defeat her
+				flag = Core.Events.GetFlag("BROTHERS_PERPETUA_DEFEATED");
+			}
+
+			// Grievance
+
+			if (sceneName == "D03Z03S10" && flagName == "ALTASGRACIAS_LAST_REWARD")
+			{
+				// Make Altasgracias cacoon check location flag instead
+				flag = Core.Events.GetFlag("LOCATION_RB06");
+			}
+			if (sceneName == "D03Z03S11" && (flagName == "D03Z04S01_BOSSDEAD" || flagName == "CONTRITION_ALTAR_DONE"))
+            {
+				// Always try to load into finished boss room
+				flag = true;
+            }
+			if (sceneName == "D03Z03S15" && flagName == "CONTRITION_ALTAR_DONE")
+            {
+				// Always try to load into finished boss room
+				flag = true;
+			}
+
+			// Patio
+
+			if (sceneName == "D04Z01S04" && flagName == "REDENTO_PATH4_UNLOCKED")
+			{
+				// If the Amanecida has been activated here auto clear path for Redento
+				flag = flag || Core.Events.GetFlag("SANTOS_AMANECIDA_LOCATION3_ACTIVATED") || Core.Events.GetFlag("SANTOS_AMANECIDA_FACCATA_DEFEATED");
+			}
+
+			// Mothers
+
+			if (sceneName == "D04BZ02S01" && flagName == "REDENTO_QI54_USED")
+			{
+				// Redento corpse will be removed once you obtain the item
+				flag = Core.Events.GetFlag("LOCATION_QI54");
+			}
+			if (sceneName == "D04Z02S15" && flagName == "D04Z02S17_ARCHDEACON1ITEMTAKEN")
+			{
+				// Remove mask item after the location is picked up (Not necessary because of next if statement)
+				flag = Core.Events.GetFlag("LOCATION_QI60");
+			}
+			if (sceneName == "D04Z02S22" && flagName == "D04Z04S01_DREAMVISITED")
+            {
+				// Never enter the dream in mask room
+				flag = true;
+            }
+			if (sceneName == "D04Z03S02" && flagName == "D06Z01S25_BOSSDEAD")
+			{
+				// Fourth Visage will always give item, even after Crisanta is defeated
+				flag = false;
+			}
+
+			// Canvases
+
+			if (sceneName == "D05BZ02S01")
+			{
+				// Shop items
+				if (flagName == "QI49_USED")
+                {
+					flag = Core.Events.GetFlag("LOCATION_QI49");
+				}
+				else if (flagName == "QI71_USED")
+                {
+					flag = Core.Events.GetFlag("LOCATION_QI71");
+				}
+			}
+
+			// Rooftops
+
+			if (sceneName == "D06Z01S01" && (flagName == "D04Z02S17_ARCHDEACON1ITEMTAKEN" || flagName == "D05Z01S15_ARCHDEACON2ITEMTAKEN" || flagName == "D02Z03S19_ARCHDEACON3ITEMTAKEN"))
+			{
+				// Elevator - Only unlock new floors when a mask is placed
+				flag = false;
+			}
+			if (sceneName == "D06Z01S18" && flagName == "CLEOFAS_BURYING")
+			{
+				// If both cleofas & Jibrael are present prioritize Jibrael
+				flag = flag && (!Core.Events.GetFlag("SANTOS_FIRSTCONVERSATION_DONE") || Core.Events.GetFlag("SANTOS_AMANECIDA_LOCATION3_ACTIVATED") || Core.Events.GetFlag("SANTOS_AMANECIDA_FACCATA_DEFEATED"));
+			}
+
+			// Bridge
+
 			if (sceneName == "D08Z01S01")
 			{
+				// Make Esdras only appear after the 3 wounds are obtained
 				if (flagName == "D01Z06S01_BOSSDEAD")
 				{
 					flag = Core.InventoryManager.IsQuestItemOwned("QI38");
@@ -185,175 +367,61 @@ namespace BlasphemousRandomizer.ItemRando
 					flag = Core.InventoryManager.IsQuestItemOwned("QI40");
 				}
 			}
-			// Rooftops elevator - Only unlock new floors when a mask is placed
-			if (sceneName == "D06Z01S01" && (flagName == "D04Z02S17_ARCHDEACON1ITEMTAKEN" || flagName == "D05Z01S15_ARCHDEACON2ITEMTAKEN" || flagName == "D02Z03S19_ARCHDEACON3ITEMTAKEN"))
-			{
-				flag = false;
-			}
-			// Albero sick house - Only give final reward once all herbs are delivered
-			if (sceneName == "D01Z02S02" && flagName == "D09Z01S03_BOSSDEAD" && (!Core.Events.GetFlag("TIRSO_QI19_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI20_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI37_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI63_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI64_DELIVERED") || !Core.Events.GetFlag("TIRSO_QI65_DELIVERED")))
-			{
-				flag = false;
-			}
-			// Gemino - Dont progress quest ever (Move to FlagModification)
-			if (sceneName == "D02Z01S01" && (flagName == "D01Z06S01_BOSSDEAD" || flagName == "D03Z04S01_BOSSDEAD" || flagName == "D08Z01S01_BOSSDEAD"))
-			{
-				flag = false;
-			}
-			// Gemino - Dont require convent boss to be defeated if already have filled thimble
-			if (sceneName == "D02Z01S01" && flagName == "D02Z05S01_BOSSDEAD")
-			{
-				flag = Core.InventoryManager.IsQuestItemOwned("QI57");
-			}
-			// Viridiana reward
-			if (flagName == "VIRIDIANA_REWARD_COMPLETED" && (sceneName == "D01Z04S18" || sceneName == "D02Z03S20" || sceneName == "D03Z03S15" || sceneName == "D04Z02S22" || sceneName == "D05Z02S14"))
-			{
-				flag = Core.Events.GetFlag("LOCATION_PR08");
-			}
-			// Redento corpse
-			if (sceneName == "D04BZ02S01" && flagName == "REDENTO_QI54_USED")
-			{
-				flag = Core.Events.GetFlag("LOCATION_QI54");
-			}
-			// Altasgracias cacoon
-			if (sceneName == "D03Z03S10" && flagName == "ALTASGRACIAS_LAST_REWARD")
-			{
-				flag = Core.Events.GetFlag("LOCATION_RB06");
-			}
-			// Gemino bead
-			if (flagName == "GEMINO_RB10_REWARD")
-			{
-				if (sceneName == "D02Z01S01")
-					flag = Core.Events.GetFlag("LOCATION_RB10");
-				else if (sceneName == "D02Z01S04")
-					flag = true;
-			}
-			// Gemino flowers
-			if (flagName == "GEMINO_OFFERING_DONE")
-			{
-				if (sceneName == "D02Z01S01")
-					flag = true;
-				else if (sceneName == "D02Z01S04")
-					flag = Core.Events.GetFlag("LOCATION_QI68");
-			}
-			// Perpetva scapular
-			if (sceneName == "D20Z03S01" && flagName == "D08Z01S01_BOSSDEAD")
-			{
-				flag = false;
-			}
-			// Brotherhood church
+
+			// Brotherhood
+
 			if (sceneName == "D17Z01S14" && (flagName == "ESDRAS_CHAPEL" || flagName == "D06Z01S25_BOSSDEAD"))
 			{
+				// Open church once the scapular is obtained
 				flag = Core.InventoryManager.IsQuestItemOwned("QI203");
 			}
-			// Inside Brotherhood church
 			if (sceneName == "D17Z01S15")
 			{
 				if (flagName == "ESDRAS_CHAPEL")
-                {
+				{
 					// Always spawn Esdras if he has been defeated
 					flag = Core.Events.GetFlag("D08Z01S01_BOSSDEAD");
 				}
 				else if (flagName == "D06Z01S25_BOSSDEAD")
-                {
+				{
 					// Make Esdras give item even if Crisanta is defeated already
 					if (objectName == "EsdrasNPC")
 						flag = Core.Events.GetFlag("LOCATION_QI204");
-                }
+				}
 				else if (flagName == "CRISANTA_LIBERATED")
-                {
+				{
 					// Make Crisanta give item as long as you have the true heart
 					flag = Core.Events.GetFlag("D06Z01S25_BOSSDEAD") && Core.InventoryManager.IsSwordOwned("HE201");
 				}
 			}
-			// Fourth visage
-			if (sceneName == "D04Z03S02" && flagName == "D06Z01S25_BOSSDEAD")
+
+			// Resting Place
+
+			if (sceneName == "D20Z03S01" && flagName == "D08Z01S01_BOSSDEAD")
 			{
+				// Allow Perpetua to give item even if Esdras is already defeated
 				flag = false;
 			}
-			// Perpetva defeat
-			if (sceneName == "D03Z01S06" && flagName == "BROTHERS_EVENTPERPETVA_COMPLETED")
+
+			// Various
+
+			if (flagName == "VIRIDIANA_REWARD_COMPLETED" && (sceneName == "D01Z04S18" || sceneName == "D02Z03S20" || sceneName == "D03Z03S15" || sceneName == "D04Z02S22" || sceneName == "D05Z02S14"))
 			{
-				flag = Core.Events.GetFlag("BROTHERS_PERPETUA_DEFEATED");
+				// Make Viridiana reward use location flag instead (Not necessary with disable NPC death always on now)
+				flag = Core.Events.GetFlag("LOCATION_PR08");
 			}
-			// Final amanecida
-			if ((sceneName == "D02Z02S14" || sceneName == "D03Z01S03" || sceneName == "D04Z01S04" || sceneName == "D09Z01S01") && flagName == "SANTOS_LAUDES_ACTIVATED")
+
+			if (flagName == "SANTOS_LAUDES_ACTIVATED" && (sceneName == "D02Z02S14" || sceneName == "D03Z01S03" || sceneName == "D04Z01S04" || sceneName == "D09Z01S01"))
 			{
+				// Give final Amanecida item if all 4 have been defeated
 				flag = Core.Events.GetFlag("LOCATION_QI110");
 			}
-			// Mercy shop
-			if (sceneName == "D01BZ02S01" && flagName == "QI58_USED")
-			{
-				flag = Core.Events.GetFlag("LOCATION_QI58");
-			}
-			// Graveyard shop
-			if (sceneName == "D02BZ02S01" && flagName == "QI11_USED")
-			{
-				flag = Core.Events.GetFlag("LOCATION_QI11");
-			}
-			// Canvases shop
-			if (sceneName == "D05BZ02S01" && flagName == "QI49_USED")
-			{
-				flag = Core.Events.GetFlag("LOCATION_QI49");
-			}
-			// Canvases shop
-			if (sceneName == "D05BZ02S01" && flagName == "QI71_USED")
-			{
-				flag = Core.Events.GetFlag("LOCATION_QI71");
-			}
 
-			// Cistern shroud puzzle
-			if (sceneName == "D01Z05S21")
-			{
-				bool completePuzzle = Core.InventoryManager.IsRelicEquipped("RE04");
-				if (flagName == "D01Z05S21_LEFTSHOW4" || flagName == "D01Z05S21_RIGHTSHOW2")
-					flag = completePuzzle;
-				else if (flagName == "D01Z05S21_LEFTSHOWNONE" || flagName == "D01Z05S21_LEFTSHOW1" || flagName == "D01Z05S21_LEFTSHOW2" || flagName == "D01Z05S21_LEFTSHOW3" ||
-					flagName == "D01Z05S21_RIGHTSHOWNONE" || flagName == "D01Z05S21_RIGHTSHOW1")
-					flag = !completePuzzle;
-			}
-
-			// Rooftops - If both cleofas & Jibrael present prioritize Jibrael
-			if (sceneName == "D06Z01S18" && flagName == "CLEOFAS_BURYING")
-			{
-				flag = flag && (!Core.Events.GetFlag("SANTOS_FIRSTCONVERSATION_DONE") || Core.Events.GetFlag("SANTOS_AMANECIDA_LOCATION3_ACTIVATED") || Core.Events.GetFlag("SANTOS_AMANECIDA_FACCATA_DEFEATED"));
-			}
-			// Patio - If both amanecida & Redento clear path for redento
-			if (sceneName == "D04Z01S04" && flagName == "REDENTO_PATH4_UNLOCKED")
-            {
-				flag = flag || Core.Events.GetFlag("SANTOS_AMANECIDA_LOCATION3_ACTIVATED") || Core.Events.GetFlag("SANTOS_AMANECIDA_FACCATA_DEFEATED");
-            }
-
-			// Allows open albero warp room
-			if (sceneName == "D01Z02S06" && flagName == "D01Z02S07_TELEPORT_ALBERO")
-			{
-				flag = true;
-			}
-
-			// Mothers mask room
-			if (sceneName == "D04Z02S15" && flagName == "D04Z02S17_ARCHDEACON1ITEMTAKEN")
-			{
-				flag = Core.Events.GetFlag("LOCATION_QI60");
-			}
-
-			// Make sure that certain gates are always open regardless of holy wound or boss status
-			if (sceneName == "D01Z05S19" && flagName == "D01Z06S01_BOSSDEAD" || sceneName == "D01Z05S25" && flagName == "D03Z04S01_BOSSDEAD" || sceneName == "D04Z02S22" && flagName == "D04Z04S01_DREAMVISITED" ||
-				sceneName == "D03Z03S11" && (flagName == "D03Z04S01_BOSSDEAD" || flagName == "CONTRITION_ALTAR_DONE") || sceneName == "D03Z03S15" && flagName == "CONTRITION_ALTAR_DONE")
-			{
-				flag = true;
-			}
-
-			// In door shuffle, change one way passageways to use custom flag
             if (Main.Randomizer.GameSettings.DoorShuffleType > 0 && (sceneName == "D05Z01S02" && flagName == "D05Z01S02_PASSAGEUNVEILED" || sceneName == "D03Z01S01" && flagName == "D03Z01S01_PASSAGEUNVEILED"))
             {
-                flag = Core.Events.GetFlag("HIDDEN_WALL_" + sceneName);
+				// In door shuffle, change one way passageways to use custom flag
+				flag = Core.Events.GetFlag("HIDDEN_WALL_" + sceneName);
             }
-
-            // Boss shuffle disabling
-            //if (scene == "D17Z01S11" && text == "D17Z01_BOSSDEAD")
-            //{
-            //	flag = true;
-            //}
 
             // Finish action
             if (__instance.outValue != null)
@@ -373,153 +441,188 @@ namespace BlasphemousRandomizer.ItemRando
     {
 		public static bool Prefix(string objectIdStting, ref bool __result)
 		{
-			// Get item name & scene name
-			string item = objectIdStting;
-			string scene = Core.LevelManager.currentLevel.LevelName;
-			Main.Randomizer.Log("Checking for item owned: " + item);
+			// Get data about this item check
+			string itemName = objectIdStting;
+			string sceneName = Core.LevelManager.currentLevel.LevelName;
+			Main.Randomizer.Log("Checking for item owned: " + itemName);
 
 			// If any standard scene-item pair
 			for (int i = 0; i < ItemFlags.duplicateScenes.Length; i++)
 			{
-				if (scene == ItemFlags.duplicateScenes[i] && item == ItemFlags.duplicateItems[i])
+				if (sceneName == ItemFlags.duplicateScenes[i] && itemName == ItemFlags.duplicateItems[i])
 				{
-					__result = Core.Events.GetFlag("LOCATION_" + item);
+					__result = Core.Events.GetFlag("LOCATION_" + itemName);
 					return false;
 				}
 			}
-			// Thorn upgrades
-			if (scene.Contains("D19") || ItemFlags.thornScenes.Contains(scene))
-            {
-				if (item == "QI31")
-                {
-					__result = !Core.Events.GetFlag("LOCATION_QI32");
-					return false;
-				}
-				if (item == "QI32")
-                {
-					__result = Core.Events.GetFlag("LOCATION_QI32") && !Core.Events.GetFlag("LOCATION_QI33");
-					return false;
-				}
-				if (item == "QI33")
-                {
-					__result = Core.Events.GetFlag("LOCATION_QI33") && !Core.Events.GetFlag("LOCATION_QI34");
-					return false;
-				}
-				if (item == "QI34")
-                {
-					__result = Core.Events.GetFlag("LOCATION_QI34") && !Core.Events.GetFlag("LOCATION_QI35");
-					return false;
-				}
-				if (item == "QI35")
-                {
-					__result = Core.Events.GetFlag("LOCATION_QI35") && !Core.Events.GetFlag("LOCATION_QI79");
-					return false;
-				}
-				if (item == "QI79")
-                {
-					__result = Core.Events.GetFlag("LOCATION_QI79") && !Core.Events.GetFlag("LOCATION_QI80");
-					return false;
-				}
-				if (item == "QI80")
-                {
-					__result = Core.Events.GetFlag("LOCATION_QI80") && !Core.Events.GetFlag("LOCATION_QI81");
-					return false;
-				}
-				if (item == "QI81")
-                {
-					__result = Core.Events.GetFlag("LOCATION_QI81");
-					return false;
-				}
-			}
-			// Tirso cloth
-			if (item == "QI66")
-            {
-				if (scene == "D01Z02S05")
-                {
-					__result = true;
-					return false;
-				}
-				if (scene == "D01Z02S02")
-                {
-					__result = false;
-					return false;
-				}
-			}
-			// Gemino thimbles
-			if (scene == "D02Z01S01" && item == "QI57")
+
+			// Holy Line
+
+			if (sceneName == "D01Z01S07" && (itemName == "QI38" || itemName == "QI39" || itemName == "QI40"))
 			{
-				__result = Core.Events.GetFlag("LOCATION_QI59");
-				return false;
-			}
-			// Holy Line Deosgracias
-			if (scene == "D01Z01S07" && (item == "QI38" || item == "QI39" || item == "QI40"))
-			{
+				// Remove Deosgracias once his location is collected
 				__result = Core.Events.GetFlag("LOCATION_QI31");
 				return false;
 			}
-			// Esdras Scapular
-			if (scene == "D08Z01S01" && item == "QI203")
+
+			// Albero
+
+			if (itemName == "QI66")
+			{
+				// Only allow collecting Tirso's first reward from sick house, not graveyard
+				if (sceneName == "D01Z02S02")
+				{
+					__result = false;
+					return false;
+				}
+				else if (sceneName == "D01Z02S05")
+				{
+					__result = true;
+					return false;
+				}
+			}
+
+			// Mercy
+
+			if (sceneName == "D01Z04S18" && itemName == "QI38")
             {
+				// Disable the piedad invisible wall
+				__result = true;
+				return false;
+			}
+
+			// Olive Trees
+
+			if (sceneName == "D02Z01S01" && itemName == "QI57")
+			{
+				// Gemino - Only allow collecting second reward after the first one
+				__result = Core.Events.GetFlag("LOCATION_QI59");
+				return false;
+			}
+
+			// Convent
+
+			if (sceneName == "D02Z03S20" && itemName == "QI40")
+            {
+				// Disable the charred lady invisible wall
+				__result = true;
+				return false;
+			}
+
+			// Deambulatory
+
+			if (sceneName == "D07Z01S04" && itemName == "RB101" || itemName == "RB102" || itemName == "RB103")
+			{
+				// Never give the penitence bead rewards
+				__result = true;
+				return false;
+			}
+
+			// Bridge
+
+			if (sceneName == "D08Z01S01" && itemName == "QI203")
+			{
+				// Don't allow the scapular to skip the Esdras fight
 				__result = false;
 				return false;
-            }
-			// Amanecida verses
-			if ((scene == "D02Z02S14" || scene == "D03Z01S03" || scene == "D04Z01S04" || scene == "D09Z01S01" || scene.Contains("D21"))
-				&& (item == "PR101" || item == "QI107" || item == "QI108" || item == "QI109" || item == "QI110"))
-            {
-				__result = Core.Events.GetFlag("LOCATION_" + item);
-				return false;
-            }
-			// Red candle
-			if (scene == "D01Z04S08" && "RB17RB18RB19".Contains(item))
+			}
+
+			// Various
+
+			if (sceneName == "D01Z04S08" && "RB17RB18RB19".Contains(itemName))
 			{
+				// First red candle
 				__result = Core.Events.GetFlag("LOCATION_RB17");
 				return false;
 			}
-			if (scene == "D02Z03S06" || scene == "D05Z01S02")
+			if (sceneName == "D02Z03S06" || sceneName == "D05Z01S02")
 			{
-				if (item == "RB17")
+				// Red candle upgrades
+				if (itemName == "RB17")
 				{
 					__result = !Core.Events.GetFlag("LOCATION_RB18") && Core.Events.GetFlag("ITEM_RB17");
 					return false;
 				}
-				if (item == "RB18")
+				if (itemName == "RB18")
 				{
 					__result = Core.Events.GetFlag("LOCATION_RB18");
 					return false;
 				}
 			}
-			// Blue candle
-			if (scene == "D02Z03S17" && "RB24RB25RB26".Contains(item))
+
+			if (sceneName == "D02Z03S17" && "RB24RB25RB26".Contains(itemName))
 			{
+				// First blue candle
 				__result = Core.Events.GetFlag("LOCATION_RB24");
 				return false;
 			}
-			if (scene == "D17Z01S04" || scene == "D01Z04S16")
+			if (sceneName == "D17Z01S04" || sceneName == "D01Z04S16")
 			{
-				if (item == "RB24")
+				// Blue candle upgrades
+				if (itemName == "RB24")
 				{
 					__result = !Core.Events.GetFlag("LOCATION_RB25") && Core.Events.GetFlag("ITEM_RB24");
 					return false;
 				}
-				if (item == "RB25")
+				if (itemName == "RB25")
 				{
 					__result = Core.Events.GetFlag("LOCATION_RB25");
 					return false;
 				}
 			}
-			// Penitence bead rewards
-			if (scene == "D07Z01S04" && item == "RB101" || item == "RB102" || item == "RB103")
+
+			if ((sceneName == "D02Z02S14" || sceneName == "D03Z01S03" || sceneName == "D04Z01S04" || sceneName == "D09Z01S01" || sceneName.Contains("D21"))
+				&& (itemName == "PR101" || itemName == "QI107" || itemName == "QI108" || itemName == "QI109" || itemName == "QI110"))
             {
-				__result = true;
+				// Amanecidas check location flag instead of owning verses
+				__result = Core.Events.GetFlag("LOCATION_" + itemName);
 				return false;
             }
-			// Disable the boundaries in holy wound boss rooms
-			if (scene == "D01Z04S18" && item == "QI38" || scene == "D02Z03S20" && item == "QI40")
-            {
-				__result = true;
-				return false;
-            }
+
+			if (sceneName.Contains("D19") || ItemFlags.thornScenes.Contains(sceneName))
+			{
+				// Guilt arenas check location flag instead of owning thorns
+				if (itemName == "QI31")
+				{
+					__result = !Core.Events.GetFlag("LOCATION_QI32");
+					return false;
+				}
+				if (itemName == "QI32")
+				{
+					__result = Core.Events.GetFlag("LOCATION_QI32") && !Core.Events.GetFlag("LOCATION_QI33");
+					return false;
+				}
+				if (itemName == "QI33")
+				{
+					__result = Core.Events.GetFlag("LOCATION_QI33") && !Core.Events.GetFlag("LOCATION_QI34");
+					return false;
+				}
+				if (itemName == "QI34")
+				{
+					__result = Core.Events.GetFlag("LOCATION_QI34") && !Core.Events.GetFlag("LOCATION_QI35");
+					return false;
+				}
+				if (itemName == "QI35")
+				{
+					__result = Core.Events.GetFlag("LOCATION_QI35") && !Core.Events.GetFlag("LOCATION_QI79");
+					return false;
+				}
+				if (itemName == "QI79")
+				{
+					__result = Core.Events.GetFlag("LOCATION_QI79") && !Core.Events.GetFlag("LOCATION_QI80");
+					return false;
+				}
+				if (itemName == "QI80")
+				{
+					__result = Core.Events.GetFlag("LOCATION_QI80") && !Core.Events.GetFlag("LOCATION_QI81");
+					return false;
+				}
+				if (itemName == "QI81")
+				{
+					__result = Core.Events.GetFlag("LOCATION_QI81");
+					return false;
+				}
+			}
 
 			// If none of these special conditions
 			return true;
