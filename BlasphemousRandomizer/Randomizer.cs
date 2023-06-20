@@ -51,7 +51,7 @@ namespace BlasphemousRandomizer
 
         public override string PersistentID => "ID_RANDOMIZER";
 
-        public bool InstalledBootsMod => IsModLoaded("com.author.blasphemous.boots-of-pleading");
+        public bool InstalledBootsMod => IsModLoaded("com.damocles.blasphemous.boots-of-pleading");
         public bool InstalledDoubleJumpMod => IsModLoaded("com.damocles.blasphemous.double-jump");
         public bool CanDash => !GameSettings.ShuffleDash || Core.Events.GetFlag("ITEM_Slide");
         public bool CanWallClimb => !GameSettings.ShuffleWallClimb || Core.Events.GetFlag("ITEM_WallClimb");
