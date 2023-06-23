@@ -1184,7 +1184,7 @@
 		"Name": "Western room cherub",
 		"Hint": "* resides in the Mother",
 		"Room": "D04Z02S01",
-		"Logic": "D04Z02S01[N] || pillar || D04Z02S01[NE] && dash && (wallClimb || canCrossGap1)"
+		"Logic": "D04Z02S01[N] || pillar || doubleJump || D04Z02S01[NE] && dash && (wallClimb || canCrossGap1)"
 	},
 	{
 		"Id": "CO17",
@@ -1435,7 +1435,7 @@
 	},
 	{
 		"Id": "BS06",
-		"Name": "Defeat Expositio",
+		"Name": "Defeat Exposito",
 		"Hint": "* is guarded by Exposito",
 		"Room": "D05Z02S14",
 		"Logic": "canBeatCanvasesBoss"
@@ -1739,7 +1739,7 @@
 		"Name": "Initial room cherub",
 		"Hint": "* resides in the Brotherhood",
 		"Room": "D17Z01S01",
-		"logic": "D17Z01S01[Cherubs1] || taranto || (canClimbOnRoot || canCrossGap10) && (blood || doubleJump || debla || verdiales || tirana || ruby)"
+		"logic": "D17Z01S01[Cherubs1] || taranto || (canClimbOnRoot || canCrossGap9) && (blood || doubleJump || debla || verdiales || tirana || ruby)"
 	},
 	{
 		"Id": "RE401",
