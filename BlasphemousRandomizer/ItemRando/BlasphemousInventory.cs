@@ -196,7 +196,7 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canBeatRooftopsBoss => HasBossStrength("crisanta") && (HasDoor("D06Z01S25[W]") || HasDoor("D06Z01S25[E]"));
         private bool canBeatOssuaryBoss => HasBossStrength("isidora") && HasDoor("D01BZ08S01[W]");
         private bool canBeatMourningBoss => HasBossStrength("sierpes") && HasDoor("D20Z02S08[E]");
-        private bool canBeatGraveyardBoss => HasBossStrength("amanecida") && HasDoor("D01BZ07S01[Santos]") && HasDoor("D02Z03S23[E]") && HasDoor("D02Z02S14[W]");
+        private bool canBeatGraveyardBoss => HasBossStrength("amanecida") && wallClimb && HasDoor("D01BZ07S01[Santos]") && HasDoor("D02Z03S23[E]") && HasDoor("D02Z02S14[W]");
         private bool canBeatJondoBoss => HasBossStrength("amanecida") && HasDoor("D01BZ07S01[Santos]") && (HasDoor("D20Z01S05[W]") || HasDoor("D20Z01S05[E]")) && (HasDoor("D03Z01S03[W]") || HasDoor("D03Z01S03[SW]"));
         private bool canBeatPatioBoss => HasBossStrength("amanecida") && HasDoor("D01BZ07S01[Santos]") && HasDoor("D06Z01S18[E]") && (HasDoor("D04Z01S04[W]") || HasDoor("D04Z01S04[E]") || HasDoor("D04Z01S04[Cherubs]"));
         private bool canBeatWallBoss => HasBossStrength("amanecida") && HasDoor("D01BZ07S01[Santos]") && HasDoor("D09BZ01S01[Cell24]") && (HasDoor("D09Z01S01[W]") || HasDoor("D09Z01S01[E]"));
