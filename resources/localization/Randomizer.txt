@@ -202,16 +202,16 @@ dsname: Añadir esquive
 dsdesc: La habilidad de esquive se incluye en el abanico de objetos obtenibles
 wcname: Añadir escalada
 wcdesc: La habilidad de escalada se incluye en el abanico de objetos obtenibles
-sbname: Añadir Botas de la Súplica
+sbname: Añadir Botas de\nla Súplica
 sbdesc: Las Botas de la Súplica se incluyen en el abanico de objetos obtenibles\n(Solo si se ha instalado el mod)
 djname: Añadir salto doble
 djdesc: La Mano Purificada de la Monja se incluye en el abanico de objetos obtenibles\n(Solo si se ha instalado el mod)
 
-ssname: Añadir habilidades de espada
+ssname: Añadir habilidades\nde espada
 ssdesc: Las habilidades de Mea Culpa se incluyen en el abanico de objetos obtenibles
 thname: Añadir espinas
 thdesc: Las ocho espinas se incluyen en el abanico de objetos obtenibles
-jiname: Objetos sin valor\nen sitios inconvenientes
+jiname: Objetos sin valor en\nsitios inconvenientes
 jidesc: Fuerza la ubicación de objetos de valor irrelevante\nen lugares inconvenientes como los desafíos de Miriam
 whname: Empezar con la Rueda
 whdesc: Tu obsequio inicial será la Rueda del Joven Masón
@@ -433,3 +433,112 @@ jiname: Neutraliser les sopts difficiles
 jidesc: Force un objet négligeable dans les spots d'objets complexes (ex: Miriam)
 whname: Roue du maçon
 whdesc: L'objet de départ sera la roue du jeune maçon (augmentation de la vitesse de déplacement)
+
+lang: an
+bead: ¡Nueba cuenta de roçario ôttenía!
+prayer: ¡Nueba plegaria ôttenía!
+relic: ¡Nueba reliquia ôttenía!
+heart: ¡Nuebo coraçón de Mea Curpa ôttenío!
+bone: ¡Nuebo colêççionable ôttenío!
+quest: ¡Nuebo ôhheto clabe ôttenío!
+chname: Niño de la Lûh Lunâh
+chdesc: Un bebé boladôh ar que âh rêccatao de una haula.
+chnot: ¡Niño de la Lûh Lunâh rêccatao!
+luname: Aumento de Bida
+ludesc: Un aumento de tu çalûh máççima.
+funame: Aumento de ferbôh
+fudesc: Un aumento de tu ferbôh máççimo.
+suname: Mehora de Mea Curpa
+sudesc: Una mehora der podêh de tu êppá.
+stnot: ¡Atributo mehorao!
+trname: Lágrimâ de Êmmienda
+trdesc: Una cantidá de * lágrimâ.
+trnot: ¡Lágrimâ conçegidâ!
+sknot: ¡Abilidá dêbbloqueá!
+dshnam: Abilidá de Êqquibe
+dshdes: La abilidá perdida pa êqquibâh y dêl-liçarte baho lô ôttáculô.
+wclnam: Abilidá de Êccalá
+wcldes: La abilidá perdida pa êccalâh paredê con la êppá.
+ablnot: ¡Abilidá dêbbloqueá!
+itmerr: Errôh: ¡Lîtta de recompençâ no iniçialiçâh!
+daterr: No çe an podío cargâh lô datô del randomiçadôh. Reîttala er programa.
+saverr: Çe a cargao una partida no compatible. La ubicaçión de lô ôhhetô çon imbálidâ.
+currsd: Çemiya âttuâh
+shrine: Nibêh de Artâh
+sword: Mea Curpa
+items: Ôhhetô ôtteníô
+varous: Bariô
+vandis: Baniya
+randis: Randomiçao
+outdis: Deçâttualiçao
+sorrow: No çe puede hugâh ar modo Çagráô Peçarê en el randomiçêh.
+
+chset: ÇELÊÇÇIONA LÔ AHÛTTÊ
+begin: Començâh
+cancel: Cançelâh
+menusd: Çemiya
+distyp: Deçâttibao
+simtyp: Çimple
+fultyp: Totâh
+soon: ¡Próççimamente!
+
+lgname: Dificurtá de la Lóhica
+lgtyp1: Fáçî
+lgtyp2: Normâh
+lgtyp3: Difíçî
+lgdes1: Lo mehôh pa prinçipiantê, no arán farta muxô trucô\nni ténnicâ êppeçialê
+lgdes2: Lo mehôh pa hugadorê promedio. Tar bêh aga farta argún truco\npero nunca er de Luto y Êttrago
+lgdes3: Lo mehôh pa lô hugadorê êppertô. Tar bêh agan farta muxô\ntrucô rarô y difíçilê
+loname: Lugâh de iniçio
+lodesc: Er lugâh donde empieçâ en er huego
+lotyp1: La Ermandá
+lotyp2: Arbero
+lotyp3: Er Combento
+lotyp4: Er Quehío
+lotyp5: La Catedrâh
+lotyp6: Lô Artô
+lotyp7: Luto y Êttrago
+lotyp8: Aleatorio
+tpname: Teletrâpporte
+tpdesc: Los Prie Dieus se mejoran automáticamente al máximo
+htname: Permitîh pîttâ
+htdesc: Lô cadáberê te darán pîttâ çobre ôhhetô balioçô cuando çe able con eyô
+pename: Permitîh Penitençia
+pedesc: Podrâh elehîh una penitençia en la Ermandá
+
+drname: Puertâ Aleatoriâ
+drdes1: Lâ trançiçionê de lô nibelê te yebarán a çu dêttino orihinâh
+drdes2: Çolo çe intercambian lâ trançiçionê entre dîttintâ rehionê
+drdes3: Çe intercambian toâ lâ trançiçionê entre eyâ
+bsname: Hefê Aleatoriô
+bsdes1: Lô Hefê permaneçerán en çu lugâh orihinâh
+bsdes2: Lô Hefê çe intercambiarán y cá Hefe apareçerá una bêh
+bsdes3: Lô Hefê çe intercambiarán y cá Hefe apareçerá lâ beçê que çea
+enname: Enemigô Aleatoriô
+endes1: Lô enemigô permaneçerán en çu lugâh orihinâh
+endes2: Lô enemigô çe çituarán aleatoriamente y cá enemigo\napareçerá er mîmmo número de beçê que en er huego orihinâh
+endes3: Los enemigos se sitúan de forma aleatoria y cada enemigo\napareçerá un número cuarquiera de beçê
+clname: Mantenêh Claçe
+cldesc: Lô enemigô çe limitan a çu tipo orînnâh (Normâh, Boladôh y Grande)
+scname: Balançe por Área
+scdesc: La çalûh y er daño de lô enemigô çe ahûttan a çu localiçaçión
+
+rqname: Aleatoriçâh Relicariô
+rqdesc: Añade lô trêh relicariô a la lîtta de ôhhetô
+dsname: Aleatoriçâh Êqquibe
+dsdesc: Añade la abilidá pa êqquibâh a la lîtta de ôhhetô
+wcname: Aleatoriçâh Êccalá
+wcdesc: Añade la abilidá pa êccalâh paredê a la lîtta de ôhhetô
+sbname: Aleatoriçâh Botâ de\nla Çúplica
+sbdesc: Añade lâ Botâ de la Çúplica a la lîtta de ôhhetô\n(Çolamente çi er môh êttá îttalao)
+djname: Aleatoriçâh Çarto Doble
+djdesc: Añade La Mano Purificá de la Monha a la lîtta de ôhhetô\n(Çolamente çi er môh êttá îttalao)
+
+ssname: Aleatoriçâh Abilidadê\nde Mea Curpa
+ssdesc: Aleatoriça lâ abilidadê de Mea Curpa a la lîtta de ôhhetô
+thname: Aleatoriçâh Êppina
+thdesc: Aleatoriça lâ oxo êppinâ a la lîtta de ôhhetô
+jiname: Ôhhetô irrelebantê en\nlugarê incombeniente
+jidesc: Fuerça que lô ôhhetô irrelebantê\nêttén en lugarê incombeniente como Miriam
+whname: Empeçâh con la Rueda
+whdesc: Tu ôhheto iniçiâh çerá la Rueda der Hoben Maçón
