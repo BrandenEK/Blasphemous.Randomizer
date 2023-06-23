@@ -1787,13 +1787,13 @@
 		"Id": "D03Z02S02[W]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z02S10[E]",
-		"Logic": "D03Z02S02[W] || D03Z02S02[CherubsL] || doubleJump && (D03Z02S02[E] || D03Z02S02[CherubsR] || wallClimb)"
+		"Logic": "D03Z02S02[W] || D03Z02S02[CherubsL] || doubleJump && (D03Z02S02[E] || D03Z02S02[CherubsR] || wallClimb || canEnemyBounce)"
 	},
 	{
 		"Id": "D03Z02S02[E]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z02S01[W]",
-		"Logic": "D03Z02S02[E] || wallClimb"
+		"Logic": "D03Z02S02[E] || wallClimb || doubleJump && canEnemyBounce"
 	},
 	{
 		"Id": "D03Z02S02[S]",
