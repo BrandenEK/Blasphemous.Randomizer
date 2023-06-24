@@ -61,15 +61,13 @@ namespace BlasphemousRandomizer.DoorRando
             if (VisibilityFlags == 0) return true;
 
             bool visible = false;
-            if (!visible && (VisibilityFlags & 1) > 0)
+            if (!visible && (VisibilityFlags & 0x01) > 0) // Only the door itself
             {
-                // If first bit, make door visible if the door itself is accessible
                 visible = inventory.HasDoor(Id);
             }
-            if (!visible && (VisibilityFlags & 2) > 0)
+            if (!visible && (VisibilityFlags & 0x02) > 0)
             {
-                // If second bit, make door visible if any required door is accessible
-                foreach (string door in RequiredDoors)
+                foreach (string door in RequiredDoors) // Any required door
                 {
                     if (inventory.HasDoor(door))
                     {
@@ -78,20 +76,25 @@ namespace BlasphemousRandomizer.DoorRando
                     }
                 }
             }
-            if (!visible && (VisibilityFlags & 4) > 0)
+            if (!visible && (VisibilityFlags & 0x04) > 0) // Hard logic is enabled
             {
-                // If third bit, make door visible if hard logic
                 visible = config.LogicDifficulty >= 2;
             }
-            if (!visible && (VisibilityFlags & 8) > 0)
+            if (!visible && (VisibilityFlags & 0x08) > 0) // Shuffle double jump is enabled
             {
-                // If fourth bit, make door visible if double jump is possible to obtain
                 visible = config.ShufflePurifiedHand;
             }
-            if (!visible && (VisibilityFlags & 16) > 0)
+            if (!visible && (VisibilityFlags & 0x10) > 0) // Enemy skips allowed 
             {
-                // If fifth bit, make door visible if double jump OR no enemy shuffle AND hard logic (Only MoM skip)
-                visible = (config.ShufflePurifiedHand || config.EnemyShuffleType < 1) && config.LogicDifficulty >= 2;
+                visible = config.EnemyShuffleType < 1 && config.LogicDifficulty >= 2;
+            }
+            if (!visible && (VisibilityFlags & 0x20) > 0) // Hard logic & double jump
+            {
+                visible = config.ShufflePurifiedHand && config.LogicDifficulty >= 2;
+            }
+            if (!visible && (VisibilityFlags & 0x40) > 0) // Double jump & enemy skips allowed
+            {
+                visible = config.ShufflePurifiedHand && config.EnemyShuffleType < 1 && config.LogicDifficulty >= 2;
             }
 
             return visible;
