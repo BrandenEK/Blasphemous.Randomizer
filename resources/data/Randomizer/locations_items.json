@@ -660,7 +660,7 @@
 		"Name": "Eastern root ledge",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S09",
-		"Logic": "canWalkOnRoot || canCrossGap11"
+		"Logic": "canWalkOnRoot || canCrossGap11 || doubleJump && canEnemyBounce"
 	},
 	
 	{
@@ -703,14 +703,14 @@
 		"Name": "Western shaft upper",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S04",
-		"Logic": "D02Z02S04[NE] || ((D02Z02S04[W] || D02Z02S04[E] && dash) && (doubleJump || wallClimb)) || (wallClimb && D02Z02S04[SE])"
+		"Logic": "D02Z02S04[NE] || ((D02Z02S04[W] || D02Z02S04[E] && dash) && (doubleJump || wallClimb)) || (D02Z02S04[SE] && (wallClimb || doubleJump && canEnemyUpslash))"
 	},
 	{
 		"Id": "RESCUED_CHERUB_25",
 		"Name": "Western shaft cherub",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S04",
-		"Logic": "(D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE] && wallClimb) && (blood && dash || lorquiana || cante || verdiales || aubade || cantina) || (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE]) && pillar"
+		"Logic": "(D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE] && (wallClimb || doubleJump && canEnemyUpslash)) && (blood && dash || doubleJump && canEnemyBounce || lorquiana || cante || verdiales || aubade || cantina) || (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE]) && pillar"
 	},
 	{
 		"Id": "RB15",
@@ -953,7 +953,7 @@
 		"Name": "Eastern entrance chest",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S01",
-		"Logic": "D03Z02S01[Cherubs] || (D03Z02S01[W] && canCrossGap8) || canClimbOnRoot || canCrossGap9"
+		"Logic": "D03Z02S01[Cherubs] || canClimbOnRoot || canCrossGap8 || doubleJump && canEnemyBounce"
 	},
 	{
 		"Id": "CO33",
