@@ -14,7 +14,17 @@ namespace BlasphemousRandomizer.BossRando
         private BossRoom _currentBossFight;
 
         public bool InBossFight => _currentBossFight != null;
-        public string EnterBossRoom => _currentBossFight.FakeRoom;
+
+        public string EnterBossRoom
+        {
+            get
+            {
+                if (/*Main.Randomizer.GameSettings.BossShuffleType <= 0 ||*/ mappedBosses == null || !mappedBosses.ContainsKey(_currentBossFight.RealRoom))
+                    return _currentBossFight.FakeRoom;
+                else
+                    return mappedBosses[_currentBossFight.RealRoom];
+            }
+        }
         public string LeaveBossRoom => _currentBossFight.RealRoom;
 
         // Manage mapped bosses
@@ -22,27 +32,27 @@ namespace BlasphemousRandomizer.BossRando
         public void LoadMappedBosses(Dictionary<string, string> mappedBosses) => this.mappedBosses = mappedBosses;
         public void ClearMappedBosses() => mappedBosses = null;
 
-        public string GetRandomBossRoom(string bossRoom)
-        {
-            // Make sure boss rando is on and this is a boss room
-            if (/*Main.Randomizer.GameSettings.BossShuffleType <= 0 ||*/ mappedBosses == null || !mappedBosses.ContainsKey(bossRoom))
-                return null;
+        //public string GetRandomBossRoom(string bossRoom)
+        //{
+        //    // Make sure boss rando is on and this is a boss room
+        //    if (/*Main.Randomizer.GameSettings.BossShuffleType <= 0 ||*/ mappedBosses == null || !mappedBosses.ContainsKey(bossRoom))
+        //        return null;
 
-            BossRoom roomData = bossRooms["WS"];
+        //    BossRoom roomData = bossRooms["WS"];
 
-            // Make sure this boss hasn't already been defeated
-            if (Core.Events.GetFlag(roomData.DefeatFlag))
-                return null;
+        //    // Make sure this boss hasn't already been defeated
+        //    if (Core.Events.GetFlag(roomData.DefeatFlag))
+        //        return null;
 
-            return mappedBosses[bossRoom];
-        }
+        //    return mappedBosses[bossRoom];
+        //}
 
         public void ReturnToGameWorld() => Main.Instance.StartCoroutine(ReturnToGameWorldCoroutine());
 
         private IEnumerator ReturnToGameWorldCoroutine()
         {
             Main.Randomizer.LogWarning("Returning to real world");
-            Core.Events.SetFlag(bossRooms[0].DefeatFlag, true);
+            Core.Events.SetFlag(bossRooms["WS"].DefeatFlag, true);
             Main.Randomizer.itemShuffler.giveItem("BS13", true);
             yield return FadeToWhite();
 
@@ -58,7 +68,9 @@ namespace BlasphemousRandomizer.BossRando
 
         public void EnterBossFight(string bossId)
         {
-            _currentBossFight = bossRooms[bossId];
+            BossRoom room = bossRooms[bossId];
+            if (!Core.Events.GetFlag(room.DefeatFlag))
+                _currentBossFight = room;
         }
 
         public void Init()
