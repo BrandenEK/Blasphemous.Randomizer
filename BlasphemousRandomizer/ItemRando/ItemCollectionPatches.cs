@@ -182,8 +182,8 @@ namespace BlasphemousRandomizer.ItemRando
                 // If killing and elder bro in the wall, return regular
                 if (enemy.Id == "BS13" && Core.LevelManager.currentLevel.LevelName == "D09Z01S01") return true;
 
-                Main.Randomizer.Log("GetPurge(" + enemy.Id + ")");
-                Main.Randomizer.itemShuffler.giveItem(enemy.Id, true);
+                //Main.Randomizer.Log("GetPurge(" + enemy.Id + ")");
+                //Main.Randomizer.itemShuffler.giveItem(enemy.Id, true);
                 return false;
             }
             return true;

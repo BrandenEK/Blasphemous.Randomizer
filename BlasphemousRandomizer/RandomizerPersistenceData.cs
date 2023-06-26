@@ -17,6 +17,7 @@ namespace BlasphemousRandomizer
         public Dictionary<string, string> mappedDoors;
         public Dictionary<string, string> mappedHints;
         public Dictionary<string, string> mappedEnemies;
+        public Dictionary<string, string> mappedBosses;
 
         public Dictionary<string, ZoneCollection> collectionStatus;
     }

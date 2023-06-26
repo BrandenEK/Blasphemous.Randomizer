@@ -97,6 +97,7 @@ namespace BlasphemousRandomizer
                 mappedDoors = itemShuffler.SaveMappedDoors(),
                 mappedHints = hintShuffler.SaveMappedHints(),
                 mappedEnemies = enemyShuffler.SaveMappedEnemies(),
+                mappedBosses = bossShuffler.SaveMappedBosses(),
                 collectionStatus = MapCollection.CollectionStatus
             };
         }
@@ -111,6 +112,7 @@ namespace BlasphemousRandomizer
             itemShuffler.LoadMappedDoors(randomizerPersistenceData.mappedDoors);
             hintShuffler.LoadMappedHints(randomizerPersistenceData.mappedHints);
             enemyShuffler.LoadMappedEnemies(randomizerPersistenceData.mappedEnemies);
+            bossShuffler.LoadMappedBosses(randomizerPersistenceData.mappedBosses);
             MapCollection.CollectionStatus = randomizerPersistenceData.collectionStatus;
 
             Log("Loaded seed: " + GameSeed);
@@ -137,6 +139,7 @@ namespace BlasphemousRandomizer
             itemShuffler.ClearMappedDoors();
             hintShuffler.ClearMappedHints();
             enemyShuffler.ClearMappedEnemies();
+            bossShuffler.ClearMappedBosses();
             MapCollection.ResetCollectionStatus(GameSettings);
         }
 
@@ -223,7 +226,7 @@ namespace BlasphemousRandomizer
             FixDoorsOnLoad(newLevel); // Perform door fixes such as closing gates & revealing secrets
             FixRooftopsElevator(newLevel); // Keep rooftops elevator at top
             updateShops(); // Update shop menus
-            bossShuffler.levelLoaded(newLevel); // Spawn boss stuff
+            //bossShuffler.levelLoaded(newLevel); // Spawn boss stuff
             tracker.LevelLoaded(newLevel);
             EnemyLoader.loadEnemies(); // Load enemies
 
