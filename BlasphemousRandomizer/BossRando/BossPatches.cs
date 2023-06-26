@@ -5,6 +5,7 @@ using Framework.Managers;
 using Framework.FrameworkCore;
 using Tools.DataContainer;
 using Tools.Level.Interactables;
+using Tools.Level.Layout;
 
 namespace BlasphemousRandomizer.BossRando
 {
@@ -109,6 +110,16 @@ namespace BlasphemousRandomizer.BossRando
         {
             Main.Randomizer.bossShuffler.loadPreviousRoom();
             return false;
+        }
+    }
+
+    // Prevent init functions when loading temp level
+    [HarmonyPatch(typeof(LevelInitializer), "Awake")]
+    internal class LevelInit_Patch
+    {
+        public static bool Prefix()
+        {
+            return !BossShuffle.InLoadProcess;
         }
     }
 }
