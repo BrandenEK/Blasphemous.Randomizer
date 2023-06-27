@@ -15,9 +15,11 @@ namespace BlasphemousRandomizer.BossRando
             string bossId;
             switch (__instance.targetScene)
             {
-                case "D17Z01S11": bossId = "WS"; break;
-                case "D01Z04S18": bossId = "TP"; break;
-                case "D02Z03S20": bossId = "CL"; break;
+                case "D17Z01S11": bossId = "BS01"; break;
+                case "D01Z04S18": bossId = "BS02"; break;
+                case "D02Z03S20": bossId = "BS03"; break;
+                case "D03Z03S15":
+                case "D03BZ01S01": bossId = "BS04"; break;
                 default: return;
             }
 

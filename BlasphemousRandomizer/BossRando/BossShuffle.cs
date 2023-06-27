@@ -22,7 +22,7 @@ namespace BlasphemousRandomizer.BossRando
                 if (!InBossFight)
                     throw new System.Exception("Check if in boss fight before getting fight data!");
 
-                if (/*Main.Randomizer.GameSettings.BossShuffleType <= 0 ||*/ mappedBosses == null || !mappedBosses.ContainsKey(_currentBossFight.id))
+                if (Main.Randomizer.GameSettings.BossShuffleType <= 0 || mappedBosses == null || !mappedBosses.ContainsKey(_currentBossFight.id))
                     return _currentBossFight;
                 else
                     return Main.Randomizer.data.bosses[mappedBosses[_currentBossFight.id]];

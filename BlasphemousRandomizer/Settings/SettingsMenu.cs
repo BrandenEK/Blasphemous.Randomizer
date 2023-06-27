@@ -543,11 +543,10 @@ namespace BlasphemousRandomizer.Settings
             bossTitle.anchoredPosition = new Vector2(0, top - 50);
 
             RectTransform bossOption = getNewCyclebox("Boss Option", enemiesSection, font, 15, 16,
-                new string[] { Main.Randomizer.Localize("distyp"), /*Main.Randomizer.Localize("simtyp"), Main.Randomizer.Localize("fultyp")*/ },
-                new string[] { Main.Randomizer.Localize("soon")
-                               /*Main.Randomizer.Localize("distyp") + " - " + Main.Randomizer.Localize("bsdes1"),
+                new string[] { Main.Randomizer.Localize("distyp"), Main.Randomizer.Localize("simtyp"), Main.Randomizer.Localize("fultyp") },
+                new string[] { Main.Randomizer.Localize("distyp") + " - " + Main.Randomizer.Localize("bsdes1"),
                                Main.Randomizer.Localize("simtyp") + " - " + Main.Randomizer.Localize("bsdes2"),
-                               Main.Randomizer.Localize("fultyp") + " - " + Main.Randomizer.Localize("bsdes3"),*/ }, 36);
+                               Main.Randomizer.Localize("fultyp") + " - " + Main.Randomizer.Localize("bsdes3"), }, 36);
             bossOption.anchoredPosition = new Vector2(0, top - 70);
             BossesLeft = bossOption.GetChild(0).GetComponent<SettingsCyclebox>();
             BossesRight = bossOption.GetChild(1).GetComponent<SettingsCyclebox>();
@@ -577,9 +576,6 @@ namespace BlasphemousRandomizer.Settings
             RectTransform itemsSection = getNewRect("Items Section", mainSection);
             itemsSection.sizeDelta = new Vector2(width / 4, height);
             itemsSection.anchoredPosition = new Vector2(0.125f * width, 0);
-
-            //RectTransform itemsTitle = getNewText("Items Title", itemsSection, Main.Randomizer.Localize("itmpol") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
-            //itemsTitle.anchoredPosition = new Vector2(0.125f * width, top);
 
             RectTransform reliqOption = getNewCheckbox("Reliquaries", itemsSection, Main.Randomizer.Localize("rqname"), Main.Randomizer.Localize("rqdesc"), font, 15, 16);
             reliqOption.anchoredPosition = new Vector2(left, top);

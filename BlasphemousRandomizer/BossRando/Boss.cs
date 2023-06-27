@@ -1,13 +1,16 @@
-﻿
+﻿using Newtonsoft.Json;
+using System;
+
 namespace BlasphemousRandomizer.BossRando
 {
+    [Serializable]
     public class Boss
     {
-        public readonly string id;
+        [JsonProperty] public readonly string id;
 
-        public readonly string defeatFlag;
+        [JsonProperty] public readonly string defeatFlag;
 
-        public readonly float bossStrength;
+        [JsonProperty] public readonly float bossStrength;
 
         public string BossRoomSceneId => "D22Z01S" + id.Substring(2);
 
