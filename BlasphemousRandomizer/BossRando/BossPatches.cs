@@ -21,7 +21,7 @@ namespace BlasphemousRandomizer.BossRando
                 default: return;
             }
 
-            Main.Randomizer.bossShuffler.EnterBossFight(bossId, __instance.targetDoor);
+            Main.Randomizer.bossShuffler.EnterBossFight(bossId, __instance.targetScene, __instance.targetDoor);
         }
     }
 
@@ -48,7 +48,7 @@ namespace BlasphemousRandomizer.BossRando
             if (!Main.Randomizer.bossShuffler.InBossFight)
                 return;
 
-            string newBossRoom = Main.Randomizer.bossShuffler.CurrentBossFight.FakeRoom;
+            string newBossRoom = Main.Randomizer.bossShuffler.CurrentBossFight.BossRoomSceneId;
 
             Main.Randomizer.LogWarning($"Loading boss room for {levelName}: {newBossRoom}");
             Core.SpawnManager.PrepareForBossRush();
@@ -65,7 +65,7 @@ namespace BlasphemousRandomizer.BossRando
         public static bool Prefix(ref SpawnManager.PosibleSpawnPoints ___pendingSpawn, ref string ___spawnId)
         {
             ___pendingSpawn = SpawnManager.PosibleSpawnPoints.Teleport;
-            ___spawnId = Main.Randomizer.bossShuffler.CurrentBossFight.FakeTeleport;
+            ___spawnId = Main.Randomizer.bossShuffler.CurrentBossFight.BossRoomTeleportId;
             return false;
         }
     }

@@ -1,9 +1,10 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using BlasphemousRandomizer.BossRando;
 using BlasphemousRandomizer.DoorRando;
 using BlasphemousRandomizer.EnemyRando;
 using BlasphemousRandomizer.ItemRando;
 using ModdingAPI;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace BlasphemousRandomizer
 {
@@ -17,6 +18,7 @@ namespace BlasphemousRandomizer
 		public Dictionary<string, EnemyData> enemies;
 		public Dictionary<string, EnemyLocation> enemyLocations;
 		public Dictionary<string, DoorLocation> doorLocations;
+		public Dictionary<string, Boss> bosses;
 
 		// Image data
 		private Sprite[] randomizerImages;
@@ -92,6 +94,23 @@ namespace BlasphemousRandomizer
 				Main.Randomizer.Log($"Loaded {doorLocations.Count} doors!");
 			}
 			else { Main.Randomizer.LogError("Error: Failed to load doors!"); valid = false; }
+
+			// Bosses
+			bosses = new();
+			if (fileUtil.loadDataText("bosses.json", out string jsonBosses))
+            {
+				List<Boss> tempBosses = fileUtil.jsonObject<List<Boss>>(jsonBosses);
+				for (int i = 0; i < tempBosses.Count; i++)
+                {
+					bosses.Add(tempBosses[i].id, tempBosses[i]);
+                }
+				Main.Randomizer.Log($"Loaded {bosses.Count} bosses!");
+            }
+            else
+            {
+				Main.Randomizer.LogError("Error: Failed to load bosses!");
+				valid = false;
+            }
 
 			// Load image data
 			if (fileUtil.loadDataImages("rando-items.png", new Vector2Int(30, 30), new Vector2(0.5f, 0.5f), 30, 0, true, out randomizerImages))

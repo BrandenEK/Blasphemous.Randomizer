@@ -1,0 +1,22 @@
+[
+	{
+		"id": "BS01",
+		"defeatFlag": "D17Z01_BOSSDEAD",
+		"bossStrength": 0
+	},
+	{
+		"id": "BS02",
+		"defeatFlag": "D01Z06S01_BOSSDEAD",
+		"bossStrength": 0
+	},
+	{
+		"id": "BS03",
+		"defeatFlag": "D02Z05S01_BOSSDEAD",
+		"bossStrength": 0
+	},
+	{
+		"id": "BS04",
+		"defeatFlag": "D03Z04S01_BOSSDEAD",
+		"bossStrength": 0
+	},
+]

@@ -10,12 +10,12 @@ namespace BlasphemousRandomizer.BossRando
     {
         private Dictionary<string, string> mappedBosses;
 
-        private BossRoom _currentBossFight;
-        private string _exitDoor;
+        private Boss _currentBossFight;
+        private string _exitScene, _exitDoor;
 
         public bool InBossFight => _currentBossFight != null;
 
-        public BossRoom CurrentBossFight
+        public Boss CurrentBossFight
         {
             get
             {
@@ -25,7 +25,7 @@ namespace BlasphemousRandomizer.BossRando
                 if (/*Main.Randomizer.GameSettings.BossShuffleType <= 0 ||*/ mappedBosses == null || !mappedBosses.ContainsKey(_currentBossFight.id))
                     return _currentBossFight;
                 else
-                    return bossRooms[mappedBosses[_currentBossFight.id]];
+                    return Main.Randomizer.data.bosses[mappedBosses[_currentBossFight.id]];
             }
         }
 
@@ -35,12 +35,13 @@ namespace BlasphemousRandomizer.BossRando
         public void ClearMappedBosses() => mappedBosses = null;
 
 
-        public void EnterBossFight(string bossId, string exitDoor)
+        public void EnterBossFight(string bossId, string exitScene, string exitDoor)
         {
-            BossRoom room = bossRooms[bossId];
-            if (!Core.Events.GetFlag(room.DefeatFlag))
+            Boss boss = Main.Randomizer.data.bosses[bossId];
+            if (!Core.Events.GetFlag(boss.defeatFlag))
             {
-                _currentBossFight = room;
+                _currentBossFight = boss;
+                _exitScene = exitScene;
                 _exitDoor = exitDoor;
             }
         }
@@ -48,8 +49,8 @@ namespace BlasphemousRandomizer.BossRando
         public void LeaveBossFight()
         {
             Main.Randomizer.LogWarning("Returning to real world");
-            Core.Events.SetFlag(_currentBossFight.DefeatFlag, true);
-            Main.Randomizer.itemShuffler.giveItem(_currentBossFight.locationId, true);
+            Core.Events.SetFlag(_currentBossFight.defeatFlag, true);
+            Main.Randomizer.itemShuffler.giveItem(_currentBossFight.id, true);
 
             Main.Instance.StartCoroutine(LoadRealRoomAfterFade());
         }
@@ -60,8 +61,9 @@ namespace BlasphemousRandomizer.BossRando
             yield return new WaitForSecondsRealtime(0.2f);
             yield return FadeWidget.instance.FadeCoroutine(new Color(0, 0, 0, 0), Color.white, 2, true, null);
 
-            string targetScene = _currentBossFight.RealRoom, targetDoor = _exitDoor;
+            string targetScene = _exitScene, targetDoor = _exitDoor;
             _currentBossFight = null;
+            _exitScene = null;
             _exitDoor = null; // Also null these if dead
             Core.SpawnManager.SpawnFromDoor(targetScene, targetDoor, true);
         }
@@ -75,64 +77,11 @@ namespace BlasphemousRandomizer.BossRando
         {
             mappedBosses = new()
             {
-                { "WS", "TP" },
-                { "TP", "WS" },
-                { "CL", "WS" },
+                { "BS01", "BS02" },
+                { "BS02", "BS01" },
+                { "BS03", "BS01" },
+                { "BS04", "BS03" },
             };
         }
-
-        private readonly Dictionary<string, BossRoom> bossRooms = new()
-        {
-            { "WS",
-            new BossRoom("WS")
-            {
-                RealRoom = "D17Z01S11",
-                fakeRoomId = 1,
-                locationId = "BS13",
-                DefeatFlag = "D17Z01_BOSSDEAD"
-            }
-            },
-            { "TP",
-            new BossRoom("TP")
-            {
-                RealRoom = "D01Z04S18",
-                fakeRoomId = 2,
-                locationId = "BS01",
-                DefeatFlag = "D01Z06S01_BOSSDEAD"
-            }
-            },
-            {
-                "CL",
-                new BossRoom("CL")
-                {
-                    RealRoom = "D02Z03S20",
-                    fakeRoomId = 3,
-                    locationId = "BS03",
-                    DefeatFlag = "D02Z05S01_BOSSDEAD"
-                }
-            }
-        };
-    }
-
-    public class BossRoom
-    {
-        public readonly string id;
-
-        // Change to readonly fields
-        public string RealRoom { get; set; }
-        //public string FakeRoom { get; set; }
-        //public string fakeTeleport;
-
-        public int fakeRoomId;
-
-        public string DefeatFlag { get; set; }
-
-        public string locationId; // temp
-
-        public BossRoom(string id) => this.id = id;
-
-        public string FakeRoom => "D22Z01S" + fakeRoomId.ToString("00");
-
-        public string FakeTeleport => "BOSSRUSH" + fakeRoomId.ToString("00");
     }
 }
