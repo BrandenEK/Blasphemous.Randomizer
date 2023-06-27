@@ -11,55 +11,22 @@ using System.Collections.Generic;
 
 namespace BlasphemousRandomizer.BossRando
 {
-    // Return to real room after boss
-    [HarmonyPatch(typeof(BossRushManager), "LoadHub")]
-    public class BossRushManager_LeaveBoss_Patch
-    {
-        public static bool Prefix()
-        {
-            Main.Randomizer.bossShuffler.ReturnToGameWorld();
-            return false;
-        }
-    }
-
-    //[HarmonyPatch(typeof(SpawnManager), "Start")]
-    //public class temp
-    //{
-    //    public static void Postfix(Dictionary<string, TeleportDestination> ___TeleportDict)
-    //    {
-    //        foreach (TeleportDestination tp in ___TeleportDict.Values)
-    //        {
-    //            Main.Randomizer.LogWarning($"{tp.id}: {tp.teleportName} ({tp.sceneName})");
-    //        }
-    //    }
-    //}
-
-    
-
-    [HarmonyPatch(typeof(SpawnManager), "PrepareForBossRush")]
-    public class SpawnManager_EnterBoss_Patch
-    {
-        public static bool Prefix(ref SpawnManager.PosibleSpawnPoints ___pendingSpawn, ref string ___spawnId)
-        {
-            ___pendingSpawn = SpawnManager.PosibleSpawnPoints.Teleport;
-            ___spawnId = "BOSSRUSH02";
-            return false;
-        }
-    }
-
-    
-
     // First, the player enters a boss door and potentially starts the fight
     [HarmonyPatch(typeof(Door), "EnterDoor")]
     public class Door_EnterBoss_Patch
     {
         public static void Prefix(Door __instance)
         {
+            string bossId;
             switch (__instance.targetScene)
             {
-                case "D17Z01S11": Main.Randomizer.bossShuffler.EnterBossFight("WS"); break;
-                case "D01Z04S18": Main.Randomizer.bossShuffler.EnterBossFight("TP"); break;
+                case "D17Z01S11": bossId = "WS"; break;
+                case "D01Z04S18": bossId = "TP"; break;
+                case "D02Z03S20": bossId = "CL"; break;
+                default: return;
             }
+
+            Main.Randomizer.bossShuffler.EnterBossFight(bossId, __instance.targetDoor);
         }
     }
 
@@ -85,24 +52,37 @@ namespace BlasphemousRandomizer.BossRando
         {
             if (!Main.Randomizer.bossShuffler.InBossFight)
                 return;
-            //if (levelName == "MainMenu")
-            //    return;
-            //if (Core.LevelManager.currentLevel.LevelName.StartsWith("D22"))
-            //{
-            //    background = Color.white;
-            //    return;
-            //}
 
-            //string newBossRoom = Main.Randomizer.bossShuffler.GetRandomBossRoom(levelName);
-            //if (newBossRoom == null)
-            //    return;
-            string newBossRoom = Main.Randomizer.bossShuffler.EnterBossRoom;
+            string newBossRoom = Main.Randomizer.bossShuffler.CurrentBossFight.FakeRoom;
 
             Main.Randomizer.LogWarning($"Loading boss room for {levelName}: {newBossRoom}");
             Core.SpawnManager.PrepareForBossRush();
             levelName = newBossRoom;
             useFade = true;
             background = Color.white;
+        }
+    }
+
+    // Also set the spawn type and id for the new boss room
+    [HarmonyPatch(typeof(SpawnManager), "PrepareForBossRush")]
+    public class SpawnManager_EnterBoss_Patch
+    {
+        public static bool Prefix(ref SpawnManager.PosibleSpawnPoints ___pendingSpawn, ref string ___spawnId)
+        {
+            ___pendingSpawn = SpawnManager.PosibleSpawnPoints.Teleport;
+            ___spawnId = Main.Randomizer.bossShuffler.CurrentBossFight.FakeTeleport;
+            return false;
+        }
+    }
+
+    // After defeating the boss, return to real game
+    [HarmonyPatch(typeof(BossRushManager), "LoadHub")]
+    public class BossRushManager_LeaveBoss_Patch
+    {
+        public static bool Prefix()
+        {
+            Main.Randomizer.bossShuffler.LeaveBossFight();
+            return false;
         }
     }
 

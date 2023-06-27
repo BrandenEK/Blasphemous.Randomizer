@@ -10,67 +10,60 @@ namespace BlasphemousRandomizer.BossRando
     {
         private Dictionary<string, string> mappedBosses;
 
-        //public BossRoom CurrentBossFight { get; set; }
         private BossRoom _currentBossFight;
+        private string _exitDoor;
 
         public bool InBossFight => _currentBossFight != null;
 
-        public string EnterBossRoom
+        public BossRoom CurrentBossFight
         {
             get
             {
-                if (/*Main.Randomizer.GameSettings.BossShuffleType <= 0 ||*/ mappedBosses == null || !mappedBosses.ContainsKey(_currentBossFight.RealRoom))
-                    return _currentBossFight.FakeRoom;
+                if (!InBossFight)
+                    throw new System.Exception("Check if in boss fight before getting fight data!");
+
+                if (/*Main.Randomizer.GameSettings.BossShuffleType <= 0 ||*/ mappedBosses == null || !mappedBosses.ContainsKey(_currentBossFight.id))
+                    return _currentBossFight;
                 else
-                    return mappedBosses[_currentBossFight.RealRoom];
+                    return bossRooms[mappedBosses[_currentBossFight.id]];
             }
         }
-        public string LeaveBossRoom => _currentBossFight.RealRoom;
 
         // Manage mapped bosses
         public Dictionary<string, string> SaveMappedBosses() => mappedBosses;
         public void LoadMappedBosses(Dictionary<string, string> mappedBosses) => this.mappedBosses = mappedBosses;
         public void ClearMappedBosses() => mappedBosses = null;
 
-        //public string GetRandomBossRoom(string bossRoom)
-        //{
-        //    // Make sure boss rando is on and this is a boss room
-        //    if (/*Main.Randomizer.GameSettings.BossShuffleType <= 0 ||*/ mappedBosses == null || !mappedBosses.ContainsKey(bossRoom))
-        //        return null;
 
-        //    BossRoom roomData = bossRooms["WS"];
-
-        //    // Make sure this boss hasn't already been defeated
-        //    if (Core.Events.GetFlag(roomData.DefeatFlag))
-        //        return null;
-
-        //    return mappedBosses[bossRoom];
-        //}
-
-        public void ReturnToGameWorld() => Main.Instance.StartCoroutine(ReturnToGameWorldCoroutine());
-
-        private IEnumerator ReturnToGameWorldCoroutine()
+        public void EnterBossFight(string bossId, string exitDoor)
         {
-            Main.Randomizer.LogWarning("Returning to real world");
-            Core.Events.SetFlag(bossRooms["WS"].DefeatFlag, true);
-            Main.Randomizer.itemShuffler.giveItem("BS13", true);
-            yield return FadeToWhite();
-
-            Core.SpawnManager.SpawnFromDoor("D17Z01S11", "W", true);
+            BossRoom room = bossRooms[bossId];
+            if (!Core.Events.GetFlag(room.DefeatFlag))
+            {
+                _currentBossFight = room;
+                _exitDoor = exitDoor;
+            }
         }
 
-        private IEnumerator FadeToWhite()
+        public void LeaveBossFight()
+        {
+            Main.Randomizer.LogWarning("Returning to real world");
+            Core.Events.SetFlag(_currentBossFight.DefeatFlag, true);
+            Main.Randomizer.itemShuffler.giveItem(_currentBossFight.locationId, true);
+
+            Main.Instance.StartCoroutine(LoadRealRoomAfterFade());
+        }
+
+        private IEnumerator LoadRealRoomAfterFade()
         {
             Main.Randomizer.playSoundEffect(3);
             yield return new WaitForSecondsRealtime(0.2f);
             yield return FadeWidget.instance.FadeCoroutine(new Color(0, 0, 0, 0), Color.white, 2, true, null);
-        }
 
-        public void EnterBossFight(string bossId)
-        {
-            BossRoom room = bossRooms[bossId];
-            if (!Core.Events.GetFlag(room.DefeatFlag))
-                _currentBossFight = room;
+            string targetScene = _currentBossFight.RealRoom, targetDoor = _exitDoor;
+            _currentBossFight = null;
+            _exitDoor = null; // Also null these if dead
+            Core.SpawnManager.SpawnFromDoor(targetScene, targetDoor, true);
         }
 
         public void Init()
@@ -82,37 +75,64 @@ namespace BlasphemousRandomizer.BossRando
         {
             mappedBosses = new()
             {
-                { "D17Z01S11", "D22Z01S02" },
-                { "D01Z04S18", "D22Z01S01" },
+                { "WS", "TP" },
+                { "TP", "WS" },
+                { "CL", "WS" },
             };
         }
 
-        private readonly Dictionary<string, BossRoom> bossRooms = new Dictionary<string, BossRoom>()
+        private readonly Dictionary<string, BossRoom> bossRooms = new()
         {
             { "WS",
-            new BossRoom()
+            new BossRoom("WS")
             {
                 RealRoom = "D17Z01S11",
-                FakeRoom = "D22Z01S01",
+                fakeRoomId = 1,
+                locationId = "BS13",
                 DefeatFlag = "D17Z01_BOSSDEAD"
             }
             },
             { "TP",
-            new BossRoom()
+            new BossRoom("TP")
             {
                 RealRoom = "D01Z04S18",
-                FakeRoom = "D22Z01S02",
+                fakeRoomId = 2,
+                locationId = "BS01",
                 DefeatFlag = "D01Z06S01_BOSSDEAD"
             }
             },
+            {
+                "CL",
+                new BossRoom("CL")
+                {
+                    RealRoom = "D02Z03S20",
+                    fakeRoomId = 3,
+                    locationId = "BS03",
+                    DefeatFlag = "D02Z05S01_BOSSDEAD"
+                }
+            }
         };
     }
 
     public class BossRoom
     {
+        public readonly string id;
+
+        // Change to readonly fields
         public string RealRoom { get; set; }
-        public string FakeRoom { get; set; }
+        //public string FakeRoom { get; set; }
+        //public string fakeTeleport;
+
+        public int fakeRoomId;
 
         public string DefeatFlag { get; set; }
+
+        public string locationId; // temp
+
+        public BossRoom(string id) => this.id = id;
+
+        public string FakeRoom => "D22Z01S" + fakeRoomId.ToString("00");
+
+        public string FakeTeleport => "BOSSRUSH" + fakeRoomId.ToString("00");
     }
 }
