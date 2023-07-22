@@ -902,7 +902,7 @@
 		"Type": 1,
 		"VisibilityFlags": 11,
 		"RequiredDoors": [ "D01Z05S25[EchoesE]" ],
-		"Logic": "D01Z05S25[EchoesW] || (D01Z05S25[EchoesE] && (blood || canCrossGap8)) || (linen && doubleJump)"
+		"Logic": "D01Z05S25[EchoesW] || D01Z05S25[EchoesE] && (blood || canCrossGap8) || linen && (canCrossGap5 || canAirStall && blood)"
 	},
 	{
 		"Id": "D01Z05S25[EchoesE]",
@@ -911,7 +911,7 @@
 		"Type": 1,
 		"VisibilityFlags": 11,
 		"RequiredDoors": [ "D01Z05S25[EchoesW]" ],
-		"Logic": "D01Z05S25[EchoesE] || (D01Z05S25[EchoesW] && (blood || canCrossGap8)) || (linen && doubleJump)"
+		"Logic": "D01Z05S25[EchoesE] || D01Z05S25[EchoesW] && (blood || canCrossGap8) || linen && (canCrossGap5 || canAirStall && blood)"
 	},
 	{
 		"Id": "D01Z05S26[W]",
@@ -2005,13 +2005,13 @@
 		"Id": "D03Z02S11[W]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z02S05[E]",
-		"Logic": "D03Z02S11[W] || dash && (doubleJump || wallClimb || canCrossGap2)"
+		"Logic": "D03Z02S11[W] || dash && (canCrossGap1 || wallClimb)"
 	},
 	{
 		"Id": "D03Z02S11[E]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z02S15[W]",
-		"Logic": "D03Z02S11[E] || dash && (wallClimb || doubleJump)"
+		"Logic": "D03Z02S11[E] || dash && (wallClimb || doubleJump || canCrossGap2 && canEnemyBounce)"
 	},
 	{
 		"Id": "D03Z02S12[E]",
@@ -2126,7 +2126,7 @@
 		"Id": "D03Z03S04[NE]",
 		"Direction": 2,
 		"OriginalDoor": "D03Z03S05[NW]",
-		"Logic": "D03Z03S04[NE] || wallClimb && (D03Z03S04[NW] || D03Z03S04[E] || D03Z03S04[SW] || blood || canCrossGap10)"
+		"Logic": "D03Z03S04[NE] || (wallClimb || doubleJump && canEnemyBounce) && (D03Z03S04[NW] || D03Z03S04[E] || D03Z03S04[SW] || blood || canCrossGap10)"
 	},
 	{
 		"Id": "D03Z03S04[E]",
