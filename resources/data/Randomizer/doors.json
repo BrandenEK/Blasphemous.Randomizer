@@ -4247,9 +4247,9 @@
 		"Id": "D09Z01S09[NW]",
 		"Direction": 1,
 		"OriginalDoor": "D09Z01S12[E]",
-		"VisibilityFlags": 3,
+		"VisibilityFlags": 35,
 		"RequiredDoors": [ "D09Z01S09[Cell19]", "D09Z01S09[Cell24]" ],
-		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || dash"
+		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || dash && (D09Z01S09[Cell24] || doubleJump && (canAirStall || canDawnJump))"
 	},
 	{
 		"Id": "D09Z01S09[E]",
@@ -4261,17 +4261,17 @@
 		"Id": "D09Z01S09[Cell24]",
 		"Direction": 4,
 		"OriginalDoor": "D09BZ01S01[Cell24]",
-		"VisibilityFlags": 3,
+		"VisibilityFlags": 35,
 		"RequiredDoors": [ "D09Z01S09[NW]", "D09Z01S09[Cell19]" ],
-		"Logic": "D09Z01S09[Cell24] || dash"
+		"Logic": "D09Z01S09[Cell24] || dash && (D09Z01S09[NW] || D09Z01S09[Cell19] || doubleJump && (canAirStall || canDawnJump))"
 	},
 	{
 		"Id": "D09Z01S09[Cell19]",
 		"Direction": 4,
 		"OriginalDoor": "D09BZ01S01[Cell19]",
-		"VisibilityFlags": 3,
+		"VisibilityFlags": 35,
 		"RequiredDoors": [ "D09Z01S09[NW]", "D09Z01S09[Cell24]" ],
-		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || dash"
+		"Logic": "D09Z01S09[NW] || D09Z01S09[Cell19] || dash && (D09Z01S09[Cell24] || doubleJump && (canAirStall || canDawnJump))"
 	},
 	{
 		"Id": "D09Z01S09[Cell20]",

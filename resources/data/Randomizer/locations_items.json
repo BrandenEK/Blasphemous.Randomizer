@@ -354,7 +354,7 @@
 		"Name": "Cliffside cherub",
 		"Hint": "* resides in the Wastelands",
 		"Room": "D01Z03S07",
-		"Logic": "canCrossGap1 || lorquiana || cante || aubade || cantina || ruby || chargeBeam"
+		"Logic": "canCrossGap1 || lorquiana || cante || aubade || cantina || ruby || chargeBeam || preciseSkipsAllowed"
 	},
 	
 	{
@@ -639,7 +639,7 @@
 		"Name": "Large cave ledge",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S06",
-		"Logic": "wallClimb && blood && (dash || D02Z01S06[Cherubs]) || doubleJump && (D02Z01S06[Cherubs] || D02Z01S06[E] || wallClimb || dash)"
+		"Logic": "wallClimb && (doubleJump || blood && (dash || D02Z01S06[Cherubs])"
 	},
 	{
 		"Id": "RESCUED_CHERUB_27",
@@ -1390,7 +1390,7 @@
 		"Name": "Elevator cherub",
 		"Hint": "* resides in the Library",
 		"Room": "D05Z01S21",
-		"Logic": "zarabanda || blood && (canWalkOnRoot || doubleJump || canCrossGap5 && pillar)"
+		"Logic": "blood && (canWalkOnRoot || doubleJump || canCrossGap5 && pillar) || obscureSkipsAllowed && (zarabanda || aubade || cantina)"
 	},
 	{
 		"Id": "RB301",
@@ -1632,7 +1632,7 @@
 		"Name": "Q3 upper ledge",
 		"Hint": "* resides in the Wall",
 		"Room": "D09Z01S09",
-		"Logic": "D09Z01S09[Cell24] || dash && (D09Z01S09[NW] || D09Z01S09[Cell19])"
+		"Logic": "D09Z01S09[Cell24] || dash && (D09Z01S09[NW] || D09Z01S09[Cell19] || doubleJump && (canAirStall || canDawnJump))"
 	},
 	{
 		"Id": "QI70",
