@@ -557,7 +557,7 @@
 		"Name": "Elevator shaft ledge",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S25",
-		"Logic": "linen || D01Z05S25[SW] && doubleJump"
+		"Logic": "linen || doubleJump && (D01Z05S25[SW] || D01Z05S25[SE] || D01Z05S25[NE])"
 	},
 	{
 		"Id": "RESCUED_CHERUB_22",
