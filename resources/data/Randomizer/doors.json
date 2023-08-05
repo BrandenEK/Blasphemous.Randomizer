@@ -2005,7 +2005,7 @@
 		"Id": "D03Z02S11[W]",
 		"Direction": 1,
 		"OriginalDoor": "D03Z02S05[E]",
-		"Logic": "D03Z02S11[W] || dash && (canCrossGap1 || wallClimb)"
+		"Logic": "D03Z02S11[W] || dash && (wallClimb || canCrossGap2 || preciseSkipsAllowed && canCrossGap1)"
 	},
 	{
 		"Id": "D03Z02S11[E]",
