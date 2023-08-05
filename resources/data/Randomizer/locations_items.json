@@ -1054,7 +1054,7 @@
 		"Name": "Lung room cherub",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S06",
-		"Logic": "wallClimb || canCrossGap11 && tirana"
+		"Logic": "wallClimb || canCrossGap11 && taranto && obscureSkipsAllowed"
 	},
 	{
 		"Id": "QI10",
