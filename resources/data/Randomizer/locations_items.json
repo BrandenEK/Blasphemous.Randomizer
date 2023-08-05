@@ -639,7 +639,7 @@
 		"Name": "Large cave ledge",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S06",
-		"Logic": "wallClimb && (doubleJump || blood && (dash || D02Z01S06[Cherubs])"
+		"Logic": "wallClimb && (doubleJump || blood && (dash || D02Z01S06[Cherubs]))"
 	},
 	{
 		"Id": "RESCUED_CHERUB_27",
@@ -1204,7 +1204,7 @@
 		"Name": "Eastern room lower",
 		"Hint": "* resides in the Mother",
 		"Room": "D04Z02S07",
-		"Logic": "blood || canCrossGap3"
+		"Logic": "dash && (blood || canCrossGap3)"
 	},
 	{
 		"Id": "RB33",

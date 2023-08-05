@@ -103,5 +103,19 @@ namespace BlasphemousRandomizer.DoorRando
 
             return visible;
         }
+
+        [System.Flags]
+        public enum Visibility
+        {
+            ThisDoor = 0x01,
+            RequiredDoors = 0x02,
+            DoubleJump = 0x04,
+            NormalLogic = 0x08,
+            NormalLogicAndDoubleJump = 0x10,
+            HardLogic = 0x20,
+            HardLogicAndDoubleJump = 0x40,
+            EnemySkips = 0x80,
+            EnemySkipsAndDoubleJump = 0x100,
+        }
     }
 }
