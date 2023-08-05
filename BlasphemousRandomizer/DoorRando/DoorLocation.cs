@@ -1,4 +1,6 @@
 ﻿using BlasphemousRandomizer.ItemRando;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace BlasphemousRandomizer.DoorRando
 {
@@ -10,8 +12,10 @@ namespace BlasphemousRandomizer.DoorRando
         public int Direction { get; set; }
         public string OriginalDoor { get; set; }
 
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Visibility VisibilityFlags { get; set; }
         public int Type { get; set; }
-        public int VisibilityFlags { get; set; }
+
         public string[] RequiredDoors { get; set; }
 
         public string Logic { get; set; }
@@ -61,13 +65,13 @@ namespace BlasphemousRandomizer.DoorRando
             if (VisibilityFlags == 0) return true;
 
             bool visible = false;
-            if (!visible && (VisibilityFlags & 0x01) > 0) // Only the door itself
+            if (!visible && (VisibilityFlags & Visibility.ThisDoor) > 0) // Only the door itself
             {
                 visible = inventory.HasDoor(Id);
             }
-            if (!visible && (VisibilityFlags & 0x02) > 0)
+            if (!visible && (VisibilityFlags & Visibility.RequiredDoors) > 0) // Any required door
             {
-                foreach (string door in RequiredDoors) // Any required door
+                foreach (string door in RequiredDoors)
                 {
                     if (inventory.HasDoor(door))
                     {
@@ -76,37 +80,46 @@ namespace BlasphemousRandomizer.DoorRando
                     }
                 }
             }
-            if (!visible && (VisibilityFlags & 0x04) > 0) // Hard logic is enabled
-            {
-                visible = config.LogicDifficulty >= 2;
-            }
-            if (!visible && (VisibilityFlags & 0x08) > 0) // Shuffle double jump is enabled
+
+            if (!visible && (VisibilityFlags & Visibility.DoubleJump) > 0) // Shuffle double jump is enabled
             {
                 visible = config.ShufflePurifiedHand;
             }
-            if (!visible && (VisibilityFlags & 0x10) > 0) // Enemy skips allowed 
-            {
-                visible = config.EnemyShuffleType < 1 && config.LogicDifficulty >= 2;
-            }
-            if (!visible && (VisibilityFlags & 0x20) > 0) // Hard logic & double jump
-            {
-                visible = config.ShufflePurifiedHand && config.LogicDifficulty >= 2;
-            }
-            if (!visible && (VisibilityFlags & 0x40) > 0) // Double jump & enemy skips allowed
-            {
-                visible = config.ShufflePurifiedHand && config.EnemyShuffleType < 1 && config.LogicDifficulty >= 2;
-            }
-            if (!visible && (VisibilityFlags & 0x80) > 0) // Normal logic is enabled
+
+            if (!visible && (VisibilityFlags & Visibility.NormalLogic) > 0) // Normal logic is enabled
             {
                 visible = config.LogicDifficulty >= 1;
             }
+            if (!visible && (VisibilityFlags & Visibility.NormalLogicAndDoubleJump) > 0) // Normal logic & double jump
+            {
+                visible = config.ShufflePurifiedHand && config.LogicDifficulty >= 1;
+            }
 
+            if (!visible && (VisibilityFlags & Visibility.HardLogic) > 0) // Hard logic is enabled
+            {
+                visible = config.LogicDifficulty >= 2;
+            }
+            if (!visible && (VisibilityFlags & Visibility.HardLogicAndDoubleJump) > 0) // Hard logic & double jump
+            {
+                visible = config.ShufflePurifiedHand && config.LogicDifficulty >= 2;
+            }
+
+            if (!visible && (VisibilityFlags & Visibility.EnemySkips) > 0) // Enemy skips allowed 
+            {
+                visible = config.EnemyShuffleType < 1 && config.LogicDifficulty >= 2;
+            }
+            if (!visible && (VisibilityFlags & Visibility.EnemySkipsAndDoubleJump) > 0) // Double jump & enemy skips allowed
+            {
+                visible = config.ShufflePurifiedHand && config.EnemyShuffleType < 1 && config.LogicDifficulty >= 2;
+            }
+            
             return visible;
         }
 
         [System.Flags]
         public enum Visibility
         {
+            None = 0x00,
             ThisDoor = 0x01,
             RequiredDoors = 0x02,
             DoubleJump = 0x04,
