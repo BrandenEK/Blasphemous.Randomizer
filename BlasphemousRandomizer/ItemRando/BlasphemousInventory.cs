@@ -181,8 +181,8 @@ namespace BlasphemousRandomizer.ItemRando
         public bool upwarpSkipsAllowed => logicDifficulty >= 2;
         public bool mourningSkipAllowed => logicDifficulty >= 2;
         public bool enemySkipsAllowed => logicDifficulty >= 2 && !enemyShuffle;
-        public bool unknownSkipsAllowed => false;
-        public bool preciseSkipsAllowed => false;
+        public bool obscureSkipsAllowed => logicDifficulty >= 2;
+        public bool preciseSkipsAllowed => logicDifficulty >= 2;
 
         // Bosses
         private bool canBeatBrotherhoodBoss => HasBossStrength("warden") && (HasDoor("D17Z01S11[W]") || HasDoor("D17Z01S11[E]")); // These need to be changed for boss shuffle
@@ -528,6 +528,8 @@ namespace BlasphemousRandomizer.ItemRando
                 "upwarpSkipsAllowed" => new BoolVariable(upwarpSkipsAllowed),
                 "mourningSkipAllowed" => new BoolVariable(mourningSkipAllowed),
                 "enemySkipsAllowed" => new BoolVariable(enemySkipsAllowed),
+                "obscureSkipsAllowed" => new BoolVariable(obscureSkipsAllowed),
+                "preciseSkipsAllowed" => new BoolVariable(preciseSkipsAllowed),
 
                 // Bosses
                 "canBeatBrotherhoodBoss" => new BoolVariable(canBeatBrotherhoodBoss),

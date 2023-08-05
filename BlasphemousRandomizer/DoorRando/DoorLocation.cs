@@ -96,6 +96,10 @@ namespace BlasphemousRandomizer.DoorRando
             {
                 visible = config.ShufflePurifiedHand && config.EnemyShuffleType < 1 && config.LogicDifficulty >= 2;
             }
+            if (!visible && (VisibilityFlags & 0x80) > 0) // Normal logic is enabled
+            {
+                visible = config.LogicDifficulty >= 1;
+            }
 
             return visible;
         }
