@@ -646,7 +646,7 @@
 		"Name": "Large cave cherub",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S06",
-		"Logic": "(D02Z01S06[W] && (pillar || cante || canDiveLaser) || (D02Z01S06[W] || doubleJump || dash) && wallClimb && (lorquiana || aubade || cantina || canAirStall)"
+		"Logic": "(D02Z01S06[W] || dash || doubleJump && wallClimb) && (pillar || cante || canDiveLaser) || (wallClimb && (D02Z01S06[W] || doubleJump || dash)) && (lorquiana || aubade || cantina || canAirStall)"
 	},
 	{
 		"Id": "PR04",
@@ -1006,7 +1006,7 @@
 		"Name": "Spike tunnel cherub",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S11",
-		"Logic": "D03Z02S11[W] && (doubleJump || dash && (wallClimb || canCrossGap2 && canEnemyBounce || canCrossGap3)) || D03Z02S11[E] && dash && (canCrossGap1 || wallClimb || canEnemyBounce))"
+		"Logic": "D03Z02S11[W] && (doubleJump || dash && (wallClimb || canCrossGap2 && canEnemyBounce || canCrossGap3)) || D03Z02S11[E] && dash && (canCrossGap1 || wallClimb || canEnemyBounce)"
 	},
 	{
 		"Id": "QI52",
