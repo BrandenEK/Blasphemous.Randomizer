@@ -564,7 +564,7 @@
 		"Name": "Elevator shaft cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S25",
-		"Logic": "linen || D01Z05S25[SW] && (aubade || cantina) || (pillar && (D01Z05S25[E] || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3)))"
+		"Logic": "linen || (obscureSkipsAllowed && (D01Z05S25[SW] || D01Z05S25[SE] || D01Z05S25[NE]) && (aubade || cantina)) || (pillar && (D01Z05S25[E] || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3)))"
 	},
 	{
 		"Id": "Lady[D01Z05S26]",
