@@ -999,7 +999,7 @@
 		"Name": "Spike tunnel ledge",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S11",
-		"Logic": "D03Z02S11[W] && doubleJump || D03Z02S11[E] && dash && (canCrossGap1 || wallClimb)"
+		"Logic": "D03Z02S11[W] && doubleJump || D03Z02S11[E] && dash && (wallClimb || canCrossGap2 || preciseSkipsAllowed && canCrossGap1)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_37",
