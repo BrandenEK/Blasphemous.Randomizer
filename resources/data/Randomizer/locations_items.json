@@ -126,7 +126,7 @@
 		"Name": "Elevator cherub",
 		"Hint": "* resides in Albero",
 		"Room": "D01Z02S03",
-		"Logic": "rodeGotPElevator || pillar || cante || D01Z02S03[NW] && (canCrossGap2 || lorquiana || aubade || cantina || canAirStall || chargeBeam)"
+		"Logic": "rodeGotPElevator || pillar || cante || doubleJump || D01Z02S03[NW] && (canCrossGap1 || lorquiana || aubade || cantina || chargeBeam)"
 	},
 	{
 		"Id": "Lvdovico[500]",
@@ -557,14 +557,14 @@
 		"Name": "Elevator shaft ledge",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S25",
-		"Logic": "linen"
+		"Logic": "linen || doubleJump && (D01Z05S25[SW] || D01Z05S25[SE] || D01Z05S25[NE])"
 	},
 	{
 		"Id": "RESCUED_CHERUB_22",
 		"Name": "Elevator shaft cherub",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S25",
-		"Logic": "linen || (pillar && (D01Z05S25[E] || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3)))"
+		"Logic": "linen || (obscureSkipsAllowed && (D01Z05S25[SW] || D01Z05S25[SE] || D01Z05S25[NE]) && (aubade || cantina)) || (pillar && (D01Z05S25[E] || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3)))"
 	},
 	{
 		"Id": "Lady[D01Z05S26]",
@@ -646,7 +646,7 @@
 		"Name": "Large cave cherub",
 		"Hint": "* resides with the Olive Trees",
 		"Room": "D02Z01S06",
-		"Logic": "(D02Z01S06[W] || dash || doubleJump && wallClimb) && (pillar || cante) || (D02Z01S06[W] || doubleJump || dash) && wallClimb && (lorquiana || aubade || cantina || canAirStall)"
+		"Logic": "(D02Z01S06[W] && (pillar || cante || canDiveLaser) || (D02Z01S06[W] || doubleJump || dash) && wallClimb && (lorquiana || aubade || cantina || canAirStall)"
 	},
 	{
 		"Id": "PR04",
@@ -689,7 +689,7 @@
 		"Name": "Eastern shaft upper",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S03",
-		"Logic": "(canClimbOnRoot && doubleJump) || (blood && (doubleJump || canClimbOnRoot))"
+		"Logic": "canClimbOnRoot && (D02Z02S03[NE] || doubleJump || blood) || blood && doubleJump"
 	},
 	{
 		"Id": "RB32",
@@ -737,7 +737,7 @@
 		"Name": "Shop cave cherub",
 		"Hint": "* resides in the Graveyard",
 		"Room": "D02Z02S08",
-		"Logic": "D02Z02S08[CherubsR] || blood || pillar || canCrossGap8"
+		"Logic": "D02Z02S08[CherubsR] || canDiveLaser || blood || pillar || canCrossGap8"
 	},
 	{
 		"Id": "Oil[D02Z02S10]",
@@ -979,8 +979,7 @@
 		"Id": "CO07",
 		"Name": "Western shaft lower slide",
 		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S07",
-		"Logic": "dash"
+		"Room": "D03Z02S07"
 	},
 	{
 		"Id": "QI41",
@@ -1000,14 +999,14 @@
 		"Name": "Spike tunnel ledge",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S11",
-		"Logic": "dash && (wallClimb || doubleJump || D03Z02S11[E] && canCrossGap2)"
+		"Logic": "D03Z02S11[W] && doubleJump || D03Z02S11[E] && dash && (wallClimb || canCrossGap2 || preciseSkipsAllowed && canCrossGap1)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_37",
 		"Name": "Spike tunnel cherub",
 		"Hint": "* resides in the Bell",
 		"Room": "D03Z02S11",
-		"Logic": "dash && (wallClimb || doubleJump || D03Z02S11[W] && (canCrossGap2 && canEnemyBounce || canCrossGap3) || D03Z02S11[E] && (canCrossGap1 || canEnemyBounce))"
+		"Logic": "D03Z02S11[W] && (doubleJump || dash && (wallClimb || canCrossGap2 && canEnemyBounce || canCrossGap3)) || D03Z02S11[E] && dash && (canCrossGap1 || wallClimb || canEnemyBounce))"
 	},
 	{
 		"Id": "QI52",
@@ -1055,7 +1054,7 @@
 		"Name": "Lung room cherub",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S06",
-		"Logic": "wallClimb"
+		"Logic": "wallClimb || canCrossGap11 && taranto && obscureSkipsAllowed"
 	},
 	{
 		"Id": "QI10",
