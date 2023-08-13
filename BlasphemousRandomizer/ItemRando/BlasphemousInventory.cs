@@ -132,7 +132,6 @@ namespace BlasphemousRandomizer.ItemRando
 
         // Breakable tech
         private bool canBreakHoles => charged > 0 || dive > 0 || lunge >= 3 && dash || anyPrayer;
-        private bool canBreakTirana => tirana && logicDifficulty >= 2;
         private bool canDiveLaser => dive >= 3 && logicDifficulty >= 2;
 
         // Root tech
@@ -471,7 +470,6 @@ namespace BlasphemousRandomizer.ItemRando
 
                 // Breakable tech
                 "canBreakHoles" => new BoolVariable(canBreakHoles),
-                "canBreakTirana" => new BoolVariable(canBreakTirana),
                 "canDiveLaser" => new BoolVariable(canDiveLaser),
 
                 // Root tech
