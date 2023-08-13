@@ -879,8 +879,8 @@
 		"Id": "D01Z05S25[E]",
 		"Direction": 2,
 		"OriginalDoor": "D01Z05S21[W]",
-		"VisibiliyFlags": 5,
-		"Logic": "D01Z05S25[E] || canBreakTirana && (linen || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3))"
+		"VisibilityFlags": "ThisDoor, HardLogic",
+		"Logic": "D01Z05S25[E] || tirana && obscureSkipsAllowed && (linen || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3))"
 	},
 	{
 		"Id": "D01Z05S25[SW]",
@@ -2995,7 +2995,7 @@
 		"Direction": 1,
 		"OriginalDoor": "D05Z01S19[E]",
 		"VisibilityFlags": "ThisDoor, HardLogic",
-		"Logic": "D05Z01S11[SW] || canBreakTirana"
+		"Logic": "D05Z01S11[SW] || tirana && obscureSkipsAllowed"
 	},
 	{
 		"Id": "D05Z01S11[NW]",
@@ -5030,15 +5030,15 @@
 		"Direction": 1,
 		"OriginalDoor": "D20Z01S13[E]",
 		"Type": 1,
-		"VisibilityFlags": "HardLogic",
-		"Logic": "D20Z02S11[NW] || mourningSkipAllowed && (doubleJump || canBreakTirana || D20Z02S11[E])"
+		"VisibilityFlags": "ThisDoor, HardLogic",
+		"Logic": "D20Z02S11[NW] || mourningSkipAllowed && (D20Z02S11[E] || doubleJump || tirana && obscureSkipsAllowed)"
 	},
 	{
 		"Id": "D20Z02S11[E]",
 		"Direction": 2,
 		"OriginalDoor": "D20Z02S10[W]",
-		"VisibilityFlags": "HardLogic",
-		"Logic": "D20Z02S11[E] || mourningSkipAllowed && (doubleJump || canBreakTirana || D20Z02S11[NW] && canCrossGap5)"
+		"VisibilityFlags": "ThisDoor, HardLogic",
+		"Logic": "D20Z02S11[E] || mourningSkipAllowed && (D20Z02S11[NW] && canCrossGap5 || doubleJump || tirana && obscureSkipsAllowed)"
 	},
 	{
 		"Id": "D20Z02S12[W]",
