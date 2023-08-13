@@ -67,8 +67,9 @@ namespace BlasphemousRandomizer.ItemRando
 
         private bool ruby = false;
         private bool tiento = false;
-        private bool anyPrayer = false;
+        private bool anySmallPrayer = false;
         private bool pillar => debla || taranto || ruby;
+        private bool canUseAnyPrayer => anySmallPrayer || tirana || aubade;
 
         // Stats
         private int healthLevel = 0, fervourLevel = 0, swordLevel = 0;
@@ -131,7 +132,7 @@ namespace BlasphemousRandomizer.ItemRando
         private bool canWaterJump => nail || doubleJump;
 
         // Breakable tech
-        private bool canBreakHoles => charged > 0 || dive > 0 || lunge >= 3 && dash || anyPrayer;
+        private bool canBreakHoles => charged > 0 || dive > 0 || lunge >= 3 && dash || canUseAnyPrayer;
         private bool canDiveLaser => dive >= 3 && logicDifficulty >= 2;
 
         // Root tech
@@ -577,7 +578,9 @@ namespace BlasphemousRandomizer.ItemRando
                     }
                 case 1:
                     {
-                        anyPrayer = true;
+                        if (item.id != "PR101" && item.id != "PR203")
+                            anySmallPrayer = true;
+
                         if (item.id == "PR03") debla = true;
                         else if (item.id == "PR07") lorquiana = true;
                         else if (item.id == "PR08") zarabanda = true;
