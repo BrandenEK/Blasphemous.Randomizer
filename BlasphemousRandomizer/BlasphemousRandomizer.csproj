@@ -9,10 +9,6 @@
     <Version>2.0.8</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
-    <RestoreAdditionalProjectSources>
-      https://api.nuget.org/v3/index.json;
-      https://nuget.bepinex.dev/v3/index.json
-    </RestoreAdditionalProjectSources>
     <RootNamespace>BlasphemousRandomizer</RootNamespace>
   </PropertyGroup>
 
@@ -20,6 +16,8 @@
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Core" Version="5.*" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="Blasphemous.ModdingReferences" Version="4.0.67" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="UnityEngine.Modules" Version="2017.4.40" IncludeAssets="compile" />
   </ItemGroup>
   
@@ -28,47 +26,11 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\lib\0Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\lib\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\lib\Assembly-CSharp-firstpass.dll</HintPath>
-    </Reference>
-    <Reference Include="BepInEx">
-      <HintPath>..\lib\BepInEx.dll</HintPath>
-    </Reference>
     <Reference Include="LogicParser">
       <HintPath>..\lib\LogicParser.dll</HintPath>
     </Reference>
     <Reference Include="ModdingAPI">
       <HintPath>..\lib\ModdingAPI.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="PlayMaker">
-      <HintPath>..\lib\PlayMaker.dll</HintPath>
-    </Reference>
-    <Reference Include="Rewired_Core">
-      <HintPath>..\lib\Rewired_Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Serialization">
-      <HintPath>..\lib\Sirenix.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="TextMeshPro-2017.3-Runtime">
-      <HintPath>..\lib\TextMeshPro-2017.3-Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>..\lib\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\lib\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\lib\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
       <HintPath>..\lib\websocket-sharp.dll</HintPath>
@@ -92,7 +54,7 @@
 
     <!-- Copy plugin & resources to development folder -->
     <PropertyGroup>
-      <DevFolder>C:\Users\Damocles\Documents\Speedrunning\Blasphemous\Modding Dev\Modding\</DevFolder>
+      <DevFolder>C:\Program Files (x86)\Steam\steamapps\common\Blasphemous\Modding\</DevFolder>
     </PropertyGroup>
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(DevFolder)plugins" />
     <Copy SourceFiles="@(Config)" DestinationFolder="$(DevFolder)config" />
