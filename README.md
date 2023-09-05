@@ -165,3 +165,4 @@ These are:
 - French translations - Rocher
 - UI images - Raider
 - Custom image icons - Ro
+- Logo - Jimmy Diamonds
