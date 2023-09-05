@@ -1,7 +1,17 @@
-# Blasphemous Randomizer
-![Release version](https://img.shields.io/github/v/release/BrandenEK/Blasphemous-Randomizer)
-![Last commit](https://img.shields.io/github/last-commit/BrandenEK/Blasphemous-Randomizer?color=important)
-![Downloads](https://img.shields.io/github/downloads/BrandenEK/Blasphemous-Randomizer/total?color=success)
+<p align="center">
+  <!-- Logo created by Jimmy Diamonds -->
+  <img src="logo.png">
+</p>
+
+---
+
+<p align="center">
+  <img src="https://img.shields.io/github/v/release/BrandenEK/Blasphemous-Randomizer">
+  <img src="https://img.shields.io/github/last-commit/BrandenEK/Blasphemous-Randomizer?color=important">
+  <img src="https://img.shields.io/github/downloads/BrandenEK/Blasphemous-Randomizer/total?color=success">
+</p>
+
+---
 
 ## Table of Contents
 
