@@ -1,6 +1,7 @@
 # Changelog
 
 ### v2.0.0 (Door Rando)
+- Removed autotracker
 - Configurable keyboard input
 - Better save system
 - Added Door Shuffle

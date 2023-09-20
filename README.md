@@ -15,7 +15,6 @@
 
 ## Table of Contents
 
-- [Links](https://github.com/BrandenEK/Blasphemous-Randomizer#links)
 - [Installation](https://github.com/BrandenEK/Blasphemous-Randomizer#installation)
 - [Seeds](https://github.com/BrandenEK/Blasphemous-Randomizer#seeds)
 - [Autotracking](https://github.com/BrandenEK/Blasphemous-Randomizer#autotracking)
@@ -27,15 +26,6 @@
   - [Door Rando changes](https://github.com/BrandenEK/Blasphemous-Randomizer#door-rando-changes)
   - [Corpse hints](https://github.com/BrandenEK/Blasphemous-Randomizer#corpse-hints)
 - [Credits](https://github.com/BrandenEK/Blasphemous-Randomizer#credits)
-
----
-
-## Links
-
-- Progress board: [Trello](https://trello.com/b/FJ42w6X1/blasphemous-randomizer)
-- Discord: [Blasphemous General Server](https://discord.gg/Blasphemous)
-- Map Tracker: [Tracker by Sassyvania](https://github.com/sassyvania/Blasphemous-Randomizer-Maptracker)
-- Multiworld: [Archipelago by TRPG0](https://github.com/BrandenEK/Blasphemous-Multiworld)
 
 ---
 
@@ -64,7 +54,7 @@ In order to make it easier for multiple people to play with the same item genera
 
 ## Autotracking
 
-Autotracking for the Blasphemous poptracker pack is integrated into the randomizer.  In order to activate autotracking, open the console and run the command:<br>```randomizer autotracker on```
+Beginning in Randomizer 2.0.9, autotracking for the poptracker pack has been disabled
 
 ---
 
@@ -75,7 +65,6 @@ Autotracking for the Blasphemous poptracker pack is integrated into the randomiz
 | Command | Parameters | Description |
 | ------- | ----------- | ------- |
 | `randomizer help` | none | List all available commands |
-| `randomizer autotracker` | on/off | Enables or disables the autotracker |
 | `randomizer respawn` | none | Respawns the player from the chosen starting location |
 
 ---
