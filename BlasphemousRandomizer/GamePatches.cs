@@ -67,17 +67,6 @@ namespace BlasphemousRandomizer
             // Special autotracker & map collection functionality when setting an item/location flag
             if (!b || __instance.GetFlag(id)) return;
 
-            // Send locations, items, and special flags to tracker
-            if (formatted.StartsWith("ITEM_"))
-                Main.Randomizer.tracker.NewItem(id.Substring(5));
-            else if (formatted.StartsWith("LOCATION_"))
-                Main.Randomizer.tracker.NewLocation(id.Substring(9));
-            else if (Main.Randomizer.tracker.SpecialLocations.Contains(formatted))
-            {
-                Main.Randomizer.tracker.NewItem(formatted);
-                Main.Randomizer.tracker.NewLocation(formatted);
-            }
-
             // Increase zone counter when location flag or special flag is set (Cant use formatted because location ids have lowercase)
             foreach (ItemRando.ItemLocation location in Main.Randomizer.data.itemLocations.Values)
             {

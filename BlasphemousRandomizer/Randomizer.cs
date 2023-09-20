@@ -5,7 +5,6 @@ using BlasphemousRandomizer.HintRando;
 using BlasphemousRandomizer.ItemRando;
 using BlasphemousRandomizer.Map;
 using BlasphemousRandomizer.Settings;
-using BlasphemousRandomizer.Tracker;
 using Framework.Managers;
 using Framework.Audio;
 using Gameplay.UI;
@@ -45,7 +44,6 @@ namespace BlasphemousRandomizer
         public bool ShrineEditMode { get; set; }
 
         public DataStorage data { get; private set; }
-        public AutoTracker tracker { get; private set; }
         public MapCollectionStatus MapCollection { get; private set; }
         public SettingsMenu SettingsMenu { get; private set; }
 
@@ -82,7 +80,6 @@ namespace BlasphemousRandomizer
             GameSettings = new Config();
             SettingsMenu = new SettingsMenu();
             MapCollection = new MapCollectionStatus();
-            tracker = new AutoTracker();
 
             RegisterCommand(new RandomizerCommand());
         }
@@ -224,7 +221,6 @@ namespace BlasphemousRandomizer
             FixRooftopsElevator(newLevel); // Keep rooftops elevator at top
             updateShops(); // Update shop menus
             bossShuffler.levelLoaded(newLevel); // Spawn boss stuff
-            tracker.LevelLoaded(newLevel);
             EnemyLoader.loadEnemies(); // Load enemies
 
             // Reload enemy audio catalogs

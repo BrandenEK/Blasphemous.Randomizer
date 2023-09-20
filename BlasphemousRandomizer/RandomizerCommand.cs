@@ -16,7 +16,6 @@ namespace BlasphemousRandomizer
             return new Dictionary<string, Action<string[]>>()
             {
                 { "help", Help },
-                { "autotracker", AutoTracker },
                 { "respawn", Respawn },
             };
         }
@@ -26,28 +25,7 @@ namespace BlasphemousRandomizer
             if (!ValidateParameterList(parameters, 0)) return;
 
             Write("Available RANDOMIZER commands:");
-            Write("randomizer autotracker ON/OFF: Turn autotracking on or off");
             Write("randomizer respawn: Respawn from your chosen starting location");
-        }
-
-        private void AutoTracker(string[] parameters)
-        {
-            if (!ValidateParameterList(parameters, 1)) return;
-
-            if (parameters[0] == "on")
-            {
-                bool result = Main.Randomizer.tracker.Connect();
-                Write(result ? "Autotracker has been enabled" : "Autotracker failed to start");
-            }
-            else if (parameters[0] == "off")
-            {
-                Main.Randomizer.tracker.Disconnect();
-                Write("Autotracker has been disabled");
-            }
-            else
-            {
-                Write("Please type 'on' or 'off'");
-            }
         }
 
         private void Respawn(string[] parameters)
