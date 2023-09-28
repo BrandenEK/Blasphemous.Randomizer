@@ -183,7 +183,7 @@ namespace BlasphemousRandomizer.ItemRando
                     DoorLocation enterDoor = newlyFoundDoors.Pop();
                     if (mappedDoors.ContainsKey(enterDoor.Id)) continue;
 
-                    if (Parser.EvaluateExpression(enterDoor.Logic, inventory))
+                    if (inventory.Evaluate(enterDoor.Logic))
                     {
                         // Connect the door to vanilla/random door and add to output
                         DoorLocation exitDoor = null;
@@ -303,7 +303,7 @@ namespace BlasphemousRandomizer.ItemRando
                 for (int i = 0; i < visibleItems.Count; i++)
                 {
                     ItemLocation itemLocation = visibleItems[i];
-                    if (Parser.EvaluateExpression(itemLocation.Logic, inventory))
+                    if (inventory.Evaluate(itemLocation.Logic))
                     {
                         // If long quest item and forcing junk, make it never reachable
                         if (config.JunkLongQuests && itemLocation.Type == 8)

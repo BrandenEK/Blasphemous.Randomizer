@@ -17,6 +17,7 @@
     <PackageReference Include="BepInEx.Core" Version="5.*" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
     <PackageReference Include="Blasphemous.ModdingReferences" Version="4.0.67" />
+    <PackageReference Include="LogicParser" Version="1.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="UnityEngine.Modules" Version="2017.4.40" IncludeAssets="compile" />
   </ItemGroup>
@@ -26,9 +27,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Reference Include="LogicParser">
-      <HintPath>..\lib\LogicParser.dll</HintPath>
-    </Reference>
     <Reference Include="ModdingAPI">
       <HintPath>..\lib\ModdingAPI.dll</HintPath>
     </Reference>
