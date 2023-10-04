@@ -1,15 +1,41 @@
-<p align="center">
-  <!-- Logo created by Jimmy Diamonds -->
+<div align="center">
   <img src="logo.png">
-</p>
+</div>
 
 ---
 
-<p align="center">
-  <img src="https://img.shields.io/github/v/release/BrandenEK/Blasphemous-Randomizer">
-  <img src="https://img.shields.io/github/last-commit/BrandenEK/Blasphemous-Randomizer?color=important">
-  <img src="https://img.shields.io/github/downloads/BrandenEK/Blasphemous-Randomizer/total?color=success">
-</p>
+<div align="center">
+  <img src="https://img.shields.io/github/v/release/BrandenEK/Blasphemous-Randomizer?style=for-the-badge">
+  <img src="https://img.shields.io/github/last-commit/BrandenEK/Blasphemous-Randomizer?color=important&style=for-the-badge">
+  <img src="https://img.shields.io/github/downloads/BrandenEK/Blasphemous-Randomizer/total?color=success&style=for-the-badge">
+</div>
+
+---
+
+<div align="center">
+  <h2>Contributors</h2>
+  
+  <table>
+    <tr>
+      <td align="center" colspan="3"> <p><b> A very special thank you to everyone who has helped with the randomizer </b></p> </td>
+    </tr>
+    <tr>
+      <td align="center"> <b><a href="https://github.com/BrandenEK">@BrandenEK</a></b> - programming </td>
+      <td align="center"> <b><a href="https://github.com/JimmyDiamonds">@JimmyDiamonds</a></b> - logo design </td>
+    </tr>
+    <tr>
+      <td align="center"> <b><a href="https://github.com/ConanCimmerio">@ConanCimmerio</a></b> - spanish translations, image icons </td>
+      <td align="center"> <b><a href="https://github.com/EltonZhang777">@EltonZhang777</a></b> - chinese translations </td>
+    </tr>
+    <tr>
+      <td align="center"> <b><a href="https://github.com/RocherBrockas">@RocherBrockas</a></b> - french translations </td>
+      <td align="center"> <b><a href="https://github.com/rcvrdt">@rcvrdt</a></b> - UI images </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2"> <b><a href="https://github.com/Exempt-Medic">@Exempt-Medic</a></b> - logic improvements </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
@@ -25,7 +51,6 @@
   - [Questline changes](https://github.com/BrandenEK/Blasphemous-Randomizer#questline-changes)
   - [Door Rando changes](https://github.com/BrandenEK/Blasphemous-Randomizer#door-rando-changes)
   - [Corpse hints](https://github.com/BrandenEK/Blasphemous-Randomizer#corpse-hints)
-- [Credits](https://github.com/BrandenEK/Blasphemous-Randomizer#credits)
 
 ---
 
@@ -144,14 +169,3 @@ These are:
 - Corpse outside Jocinero's room --> Jocinero's final reward
 - Corpse at entrance of WhOTW --> White Lady tomb reward
 - Corpse outside Albero church --> 50,000 tear donation reward
-
----
-
-## Credits
-
-- Spanish translations - Rodol J. "ConanCimmerio" Pérez (Ro)
-- Chinese translations - NewbieElton
-- French translations - Rocher
-- UI images - Raider
-- Custom image icons - Ro
-- Logo - Jimmy Diamonds
