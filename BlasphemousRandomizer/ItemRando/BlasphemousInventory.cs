@@ -342,45 +342,45 @@ namespace BlasphemousRandomizer.ItemRando
             return doors.ContainsKey(doorId);// && doors[doorId];
         }
 
-        protected override Variable GetVariable(string variable)
+        protected override object GetVariable(string variable)
         {
             if (variable[0] == 'D')
             {
-                return new BoolVariable(HasDoor(variable));
+                return HasDoor(variable);
             }
 
             return variable switch
             {
                 // Relics
-                "blood" => new BoolVariable(blood),
+                "blood" => blood,
                 "root" => throw new System.Exception("Don't check for root directly - Use canWalkOnRoot or canClimbOnRoot instead!"),
-                "linen" => new BoolVariable(linen),
-                "nail" => new BoolVariable(nail),
-                "shroud" => new BoolVariable(shroud),
+                "linen" => linen,
+                "nail" => nail,
+                "shroud" => shroud,
                 "lung" => throw new System.Exception("Don't check for lung directly - Use canSurvivePoisonX instead!"),
 
                 // Keys
-                "bronzeKey" => new BoolVariable(bronzeKey),
-                "silverKey" => new BoolVariable(silverKey),
-                "goldKey" => new BoolVariable(goldKey),
-                "peaksKey" => new BoolVariable(peaksKey),
-                "elderKey" => new BoolVariable(elderKey),
-                "woodKey" => new BoolVariable(woodKey),
+                "bronzeKey" => bronzeKey,
+                "silverKey" => silverKey,
+                "goldKey" => goldKey,
+                "peaksKey" => peaksKey,
+                "elderKey" => elderKey,
+                "woodKey" => woodKey,
 
                 // Collections
-                "cherubs" => new IntVariable(cherubs),
-                "bones" => new IntVariable(bones),
-                "tears" => new IntVariable(tears),
+                "cherubs" => cherubs,
+                "bones" => bones,
+                "tears" => tears,
 
                 // Special items
-                "dash" => new BoolVariable(dash),
-                "wallClimb" => new BoolVariable(wallClimb),
+                "dash" => dash,
+                "wallClimb" => wallClimb,
                 "airImpulse" => throw new System.Exception("Air impulse is not randomized yet!"),
-                "boots" => new BoolVariable(boots),
-                "doubleJump" => new BoolVariable(doubleJump),
+                "boots" => boots,
+                "doubleJump" => doubleJump,
 
                 // Speed boosts
-                "wheel" => new BoolVariable(wheel),
+                "wheel" => wheel,
                 "dawnHeart" => throw new System.Exception("Don't check for dawnHeart directly - Use canDawnJump instead!"),
 
                 // Health boosts
@@ -388,26 +388,26 @@ namespace BlasphemousRandomizer.ItemRando
                 "quicksilver" => throw new System.Exception("Don't check for flasks directly - This is only used in power calculation!"),
 
                 // Puzzles
-                "redWax" => new IntVariable(redWax),
-                "blueWax" => new IntVariable(blueWax),
-                "chalice" => new BoolVariable(chalice),
+                "redWax" => redWax,
+                "blueWax" => blueWax,
+                "chalice" => chalice,
 
                 // Cherubs
-                "debla" => new BoolVariable(debla),
-                "lorquiana" => new BoolVariable(lorquiana),
-                "zarabanda" => new BoolVariable(zarabanda),
-                "taranto" => new BoolVariable(taranto),
-                "verdiales" => new BoolVariable(verdiales),
-                "cante" => new BoolVariable(cante),
-                "cantina" => new BoolVariable(cantina),
+                "debla" => debla,
+                "lorquiana" => lorquiana,
+                "zarabanda" => zarabanda,
+                "taranto" => taranto,
+                "verdiales" => verdiales,
+                "cante" => cante,
+                "cantina" => cantina,
 
-                "aubade" => new BoolVariable(aubade),
-                "tirana" => new BoolVariable(tirana),
+                "aubade" => aubade,
+                "tirana" => tirana,
 
-                "ruby" => new BoolVariable(ruby),
-                "tiento" => new BoolVariable(tiento),
+                "ruby" => ruby,
+                "tiento" => tiento,
                 "anyPrayer" => throw new System.Exception("Don't check for anyPrayer directly - This is only used for canBreakHoles!"),
-                "pillar" => new BoolVariable(pillar),
+                "pillar" => pillar,
 
                 // Stats
                 "healthLevel" => throw new System.Exception("Don't check for healthLevel directly - This is only used in power calculation!"),
@@ -420,135 +420,136 @@ namespace BlasphemousRandomizer.ItemRando
                 "ranged" => throw new System.Exception("Don't check for ranged directly - These are stored as ints!"),
                 "dive" => throw new System.Exception("Don't check for dive directly - These are stored as ints!"),
                 "lunge" => throw new System.Exception("Don't check for lunge directly - These are stored as ints!"),
-                "chargeBeam" => new BoolVariable(chargeBeam),
+                "chargeBeam" => chargeBeam,
+                "rangedAttack" => ranged > 0,
 
                 // Main quest
-                "holyWounds" => new IntVariable(holyWounds),
-                "masks" => new IntVariable(masks),
-                "guiltBead" => new BoolVariable(guiltBead),
+                "holyWounds" => holyWounds,
+                "masks" => masks,
+                "guiltBead" => guiltBead,
 
                 // LOTL quest
-                "cloth" => new BoolVariable(cloth),
-                "hand" => new BoolVariable(hand),
-                "hatchedEgg" => new BoolVariable(hatchedEgg),
+                "cloth" => cloth,
+                "hand" => hand,
+                "hatchedEgg" => hatchedEgg,
 
                 // Tirso quest
-                "herbs" => new IntVariable(herbs),
+                "herbs" => herbs,
 
                 // Tentudia quest
-                "tentudiaRemains" => new IntVariable(tentudiaRemains),
+                "tentudiaRemains" => tentudiaRemains,
 
                 // Gemino quest
-                "emptyThimble" => new BoolVariable(emptyThimble),
-                "fullThimble" => new BoolVariable(fullThimble),
-                "driedFlowers" => new BoolVariable(driedFlowers),
+                "emptyThimble" => emptyThimble,
+                "fullThimble" => fullThimble,
+                "driedFlowers" => driedFlowers,
 
                 // Altasgracias quest
-                "ceremonyItems" => new IntVariable(ceremonyItems),
-                "egg" => new BoolVariable(egg),
+                "ceremonyItems" => ceremonyItems,
+                "egg" => egg,
 
                 // Redento quest
-                "limestones" => new IntVariable(limestones),
-                "knots" => new IntVariable(knots),
+                "limestones" => limestones,
+                "knots" => knots,
 
                 // Cleofas quest
-                "marksOfRefuge" => new IntVariable(marksOfRefuge),
-                "cord" => new BoolVariable(cord),
+                "marksOfRefuge" => marksOfRefuge,
+                "cord" => cord,
 
                 // Crisanta quest
-                "scapular" => new BoolVariable(scapular),
-                "trueHeart" => new BoolVariable(trueHeart),
-                "traitorEyes" => new IntVariable(traitorEyes),
+                "scapular" => scapular,
+                "trueHeart" => trueHeart,
+                "traitorEyes" => traitorEyes,
 
                 // Jibrael quest
-                "bell" => new BoolVariable(bell),
-                "verses" => new IntVariable(verses),
+                "bell" => bell,
+                "verses" => verses,
 
                 // Movement tech
-                "canAirStall" => new BoolVariable(canAirStall),
-                "canDawnJump" => new BoolVariable(canDawnJump),
-                "canWaterJump" => new BoolVariable(canWaterJump),
+                "canAirStall" => canAirStall,
+                "canDawnJump" => canDawnJump,
+                "canWaterJump" => canWaterJump,
 
                 // Breakable tech
-                "canBreakHoles" => new BoolVariable(canBreakHoles),
-                "canDiveLaser" => new BoolVariable(canDiveLaser),
+                "canBreakHoles" => canBreakHoles,
+                "canDiveLaser" => canDiveLaser,
 
                 // Root tech
-                "canWalkOnRoot" => new BoolVariable(canWalkOnRoot),
-                "canClimbOnRoot" => new BoolVariable(canClimbOnRoot),
+                "canWalkOnRoot" => canWalkOnRoot,
+                "canClimbOnRoot" => canClimbOnRoot,
 
                 // Lung tech
-                "canSurvivePoison1" => new BoolVariable(canSurvivePoison1),
-                "canSurvivePoison2" => new BoolVariable(canSurvivePoison2),
-                "canSurvivePoison3" => new BoolVariable(canSurvivePoison3),
+                "canSurvivePoison1" => canSurvivePoison1,
+                "canSurvivePoison2" => canSurvivePoison2,
+                "canSurvivePoison3" => canSurvivePoison3,
 
                 // Enemy tech
-                "canEnemyBounce" => new BoolVariable(canEnemyBounce),
-                "canEnemyUpslash" => new BoolVariable(canEnemyUpslash),
+                "canEnemyBounce" => canEnemyBounce,
+                "canEnemyUpslash" => canEnemyUpslash,
 
                 // Reaching rooms
-                "guiltRooms" => new IntVariable(guiltRooms),
-                "swordRooms" => new IntVariable(swordRooms),
-                "redentoRooms" => new IntVariable(redentoRooms),
-                "miriamRooms" => new IntVariable(miriamRooms),
-                "amanecidaRooms" => new IntVariable(amanecidaRooms),
-                "chaliceRooms" => new IntVariable(chaliceRooms),
+                "guiltRooms" => guiltRooms,
+                "swordRooms" => swordRooms,
+                "redentoRooms" => redentoRooms,
+                "miriamRooms" => miriamRooms,
+                "amanecidaRooms" => amanecidaRooms,
+                "chaliceRooms" => chaliceRooms,
 
                 // Crossing gaps
-                "canCrossGap1" => new BoolVariable(canCrossGap1),
-                "canCrossGap2" => new BoolVariable(canCrossGap2),
-                "canCrossGap3" => new BoolVariable(canCrossGap3),
-                "canCrossGap4" => new BoolVariable(canCrossGap4),
-                "canCrossGap5" => new BoolVariable(canCrossGap5),
-                "canCrossGap6" => new BoolVariable(canCrossGap6),
-                "canCrossGap7" => new BoolVariable(canCrossGap7),
-                "canCrossGap8" => new BoolVariable(canCrossGap8),
-                "canCrossGap9" => new BoolVariable(canCrossGap9),
-                "canCrossGap10" => new BoolVariable(canCrossGap10),
-                "canCrossGap11" => new BoolVariable(canCrossGap11),
+                "canCrossGap1" => canCrossGap1,
+                "canCrossGap2" => canCrossGap2,
+                "canCrossGap3" => canCrossGap3,
+                "canCrossGap4" => canCrossGap4,
+                "canCrossGap5" => canCrossGap5,
+                "canCrossGap6" => canCrossGap6,
+                "canCrossGap7" => canCrossGap7,
+                "canCrossGap8" => canCrossGap8,
+                "canCrossGap9" => canCrossGap9,
+                "canCrossGap10" => canCrossGap10,
+                "canCrossGap11" => canCrossGap11,
 
                 // Events in different scenes
-                "openedDCGateW" => new BoolVariable(openedDCGateW),
-                "openedDCGateE" => new BoolVariable(openedDCGateE),
-                "openedDCLadder" => new BoolVariable(openedDCLadder),
-                "openedWOTWCave" => new BoolVariable(openedWOTWCave),
-                "rodeGotPElevator" => new BoolVariable(rodeGotPElevator),
-                "openedConventLadder" => new BoolVariable(openedConventLadder),
-                "brokeJondoBellW" => new BoolVariable(brokeJondoBellW),
-                "brokeJondoBellE" => new BoolVariable(brokeJondoBellE),
-                "openedMoMLadder" => new BoolVariable(openedMoMLadder),
-                "openedTSCGate" => new BoolVariable(openedTSCGate),
-                "openedARLadder" => new BoolVariable(openedARLadder),
-                "brokeBotTCStatue" => new BoolVariable(brokeBotTCStatue),
-                "openedWotHPGate" => new BoolVariable(openedWotHPGate),
-                "openedBotSSLadder" => new BoolVariable(openedBotSSLadder),
+                "openedDCGateW" => openedDCGateW,
+                "openedDCGateE" => openedDCGateE,
+                "openedDCLadder" => openedDCLadder,
+                "openedWOTWCave" => openedWOTWCave,
+                "rodeGotPElevator" => rodeGotPElevator,
+                "openedConventLadder" => openedConventLadder,
+                "brokeJondoBellW" => brokeJondoBellW,
+                "brokeJondoBellE" => brokeJondoBellE,
+                "openedMoMLadder" => openedMoMLadder,
+                "openedTSCGate" => openedTSCGate,
+                "openedARLadder" => openedARLadder,
+                "brokeBotTCStatue" => brokeBotTCStatue,
+                "openedWotHPGate" => openedWotHPGate,
+                "openedBotSSLadder" => openedBotSSLadder,
 
                 // Special skips
-                "upwarpSkipsAllowed" => new BoolVariable(upwarpSkipsAllowed),
-                "mourningSkipAllowed" => new BoolVariable(mourningSkipAllowed),
-                "enemySkipsAllowed" => new BoolVariable(enemySkipsAllowed),
-                "obscureSkipsAllowed" => new BoolVariable(obscureSkipsAllowed),
-                "preciseSkipsAllowed" => new BoolVariable(preciseSkipsAllowed),
+                "upwarpSkipsAllowed" => upwarpSkipsAllowed,
+                "mourningSkipAllowed" => mourningSkipAllowed,
+                "enemySkipsAllowed" => enemySkipsAllowed,
+                "obscureSkipsAllowed" => obscureSkipsAllowed,
+                "preciseSkipsAllowed" => preciseSkipsAllowed,
 
                 // Bosses
-                "canBeatBrotherhoodBoss" => new BoolVariable(canBeatBrotherhoodBoss),
-                "canBeatMercyBoss" => new BoolVariable(canBeatMercyBoss),
-                "canBeatConventBoss" => new BoolVariable(canBeatConventBoss),
-                "canBeatGrievanceBoss" => new BoolVariable(canBeatGrievanceBoss),
-                "canBeatBridgeBoss" => new BoolVariable(canBeatBridgeBoss),
-                "canBeatMothersBoss" => new BoolVariable(canBeatMothersBoss),
-                "canBeatCanvasesBoss" => new BoolVariable(canBeatCanvasesBoss),
-                "canBeatPrisonBoss" => new BoolVariable(canBeatPrisonBoss),
-                "canBeatRooftopsBoss" => new BoolVariable(canBeatRooftopsBoss),
-                "canBeatOssuaryBoss" => new BoolVariable(canBeatOssuaryBoss),
-                "canBeatMourningBoss" => new BoolVariable(canBeatMourningBoss),
-                "canBeatGraveyardBoss" => new BoolVariable(canBeatGraveyardBoss),
-                "canBeatJondoBoss" => new BoolVariable(canBeatJondoBoss),
-                "canBeatPatioBoss" => new BoolVariable(canBeatPatioBoss),
-                "canBeatWallBoss" => new BoolVariable(canBeatWallBoss),
-                "canBeatHallBoss" => new BoolVariable(canBeatHallBoss),
-                "canBeatPerpetua" => new BoolVariable(canBeatPerpetua),
-                "canBeatLegionary" => new BoolVariable(canBeatLegionary),
+                "canBeatBrotherhoodBoss" => canBeatBrotherhoodBoss,
+                "canBeatMercyBoss" => canBeatMercyBoss,
+                "canBeatConventBoss" => canBeatConventBoss,
+                "canBeatGrievanceBoss" => canBeatGrievanceBoss,
+                "canBeatBridgeBoss" => canBeatBridgeBoss,
+                "canBeatMothersBoss" => canBeatMothersBoss,
+                "canBeatCanvasesBoss" => canBeatCanvasesBoss,
+                "canBeatPrisonBoss" => canBeatPrisonBoss,
+                "canBeatRooftopsBoss" => canBeatRooftopsBoss,
+                "canBeatOssuaryBoss" => canBeatOssuaryBoss,
+                "canBeatMourningBoss" => canBeatMourningBoss,
+                "canBeatGraveyardBoss" => canBeatGraveyardBoss,
+                "canBeatJondoBoss" => canBeatJondoBoss,
+                "canBeatPatioBoss" => canBeatPatioBoss,
+                "canBeatWallBoss" => canBeatWallBoss,
+                "canBeatHallBoss" => canBeatHallBoss,
+                "canBeatPerpetua" => canBeatPerpetua,
+                "canBeatLegionary" => canBeatLegionary,
 
                 _ => throw new System.Exception($"Error: Variable {variable} doesn't exist!"),
             };

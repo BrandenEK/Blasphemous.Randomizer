@@ -126,7 +126,7 @@
 		"Name": "Elevator cherub",
 		"Hint": "* resides in Albero",
 		"Room": "D01Z02S03",
-		"Logic": "rodeGotPElevator || pillar || cante || doubleJump || D01Z02S03[NW] && (canCrossGap1 || lorquiana || aubade || cantina || chargeBeam)"
+		"Logic": "rodeGotPElevator || pillar || cante || doubleJump || D01Z02S03[NW] && (canCrossGap2 || lorquiana || aubade || cantina || chargeBeam || rangedAttack)"
 	},
 	{
 		"Id": "Lvdovico[500]",
@@ -354,7 +354,7 @@
 		"Name": "Cliffside cherub",
 		"Hint": "* resides in the Wastelands",
 		"Room": "D01Z03S07",
-		"Logic": "canCrossGap1 || lorquiana || cante || aubade || cantina || ruby || chargeBeam || preciseSkipsAllowed"
+		"Logic": "canCrossGap2 || lorquiana || cante || aubade || cantina || ruby || chargeBeam || rangedAttack || preciseSkipsAllowed"
 	},
 	
 	{
