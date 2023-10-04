@@ -421,6 +421,7 @@ namespace BlasphemousRandomizer.ItemRando
                 "dive" => throw new System.Exception("Don't check for dive directly - These are stored as ints!"),
                 "lunge" => throw new System.Exception("Don't check for lunge directly - These are stored as ints!"),
                 "chargeBeam" => chargeBeam,
+                "rangedAttack" => ranged > 0,
 
                 // Main quest
                 "holyWounds" => holyWounds,
