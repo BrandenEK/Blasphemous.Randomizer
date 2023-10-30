@@ -12,30 +12,16 @@
 
 ---
 
-<div align="center">
-  <h2>Contributors</h2>
-  
-  <table>
-    <tr>
-      <td align="center" colspan="3"> <p><b> A very special thank you to everyone who has helped with the randomizer </b></p> </td>
-    </tr>
-    <tr>
-      <td align="center"> <b><a href="https://github.com/BrandenEK">@BrandenEK</a></b> - programming </td>
-      <td align="center"> <b><a href="https://github.com/JimmyDiamonds">@JimmyDiamonds</a></b> - logo design </td>
-    </tr>
-    <tr>
-      <td align="center"> <b><a href="https://github.com/ConanCimmerio">@ConanCimmerio</a></b> - spanish translations, image icons </td>
-      <td align="center"> <b><a href="https://github.com/EltonZhang777">@EltonZhang777</a></b> - chinese translations </td>
-    </tr>
-    <tr>
-      <td align="center"> <b><a href="https://github.com/RocherBrockas">@RocherBrockas</a></b> - french translations </td>
-      <td align="center"> <b><a href="https://github.com/rcvrdt">@rcvrdt</a></b> - UI images </td>
-    </tr>
-    <tr>
-      <td align="center" colspan="2"> <b><a href="https://github.com/Exempt-Medic">@Exempt-Medic</a></b> - logic improvements </td>
-    </tr>
-  </table>
-</div>
+## Contributors
+
+A very special thank you to everyone who has helped with the randomizer
+- [@BrandenEK](https://github.com/BrandenEK) - ***Programming and design***
+- [@ConanCimmerio](https://github.com/ConanCimmerio) - ***Spanish translations and image icons***
+- [@EltonZhang777](https://github.com/EltonZhang777) - ***Chinese translations***
+- [@RocherBrockas](https://github.com/RocherBrockas) - ***French translations***
+- [@rcvrdt](https://github.com/rcvrdt) - ***UI design and creation***
+- [@Exempt-Medic](https://github.com/Exempt-Medic) - ***Logic testing and improvements***
+- [@JimmyDiamonds](https://github.com/JimmyDiamonds) - ***Logo design and creation***
 
 ---
 
