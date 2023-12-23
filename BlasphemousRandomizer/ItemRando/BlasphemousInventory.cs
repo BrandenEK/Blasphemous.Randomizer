@@ -224,7 +224,7 @@ namespace BlasphemousRandomizer.ItemRando
                 "laudes" => 0.60f,
                 "perpetua" => -0.05f,
                 "legionary" => 0.20f,
-                _ => throw new System.Exception($"Boss {boss} does not exist!"),
+                _ => throw new LogicParserException($"Boss {boss} does not exist!"),
             };
             return playerStrength >= (logicDifficulty >= 2 ? bossStrength - 0.10f : (logicDifficulty >= 1 ? bossStrength : bossStrength + 0.10f));
         }
@@ -353,11 +353,11 @@ namespace BlasphemousRandomizer.ItemRando
             {
                 // Relics
                 "blood" => blood,
-                "root" => throw new System.Exception("Don't check for root directly - Use canWalkOnRoot or canClimbOnRoot instead!"),
+                "root" => throw new LogicParserException("Don't check for root directly - Use canWalkOnRoot or canClimbOnRoot instead!"),
                 "linen" => linen,
                 "nail" => nail,
                 "shroud" => shroud,
-                "lung" => throw new System.Exception("Don't check for lung directly - Use canSurvivePoisonX instead!"),
+                "lung" => throw new LogicParserException("Don't check for lung directly - Use canSurvivePoisonX instead!"),
 
                 // Keys
                 "bronzeKey" => bronzeKey,
@@ -375,17 +375,17 @@ namespace BlasphemousRandomizer.ItemRando
                 // Special items
                 "dash" => dash,
                 "wallClimb" => wallClimb,
-                "airImpulse" => throw new System.Exception("Air impulse is not randomized yet!"),
+                "airImpulse" => throw new LogicParserException("Air impulse is not randomized yet!"),
                 "boots" => boots,
                 "doubleJump" => doubleJump,
 
                 // Speed boosts
                 "wheel" => wheel,
-                "dawnHeart" => throw new System.Exception("Don't check for dawnHeart directly - Use canDawnJump instead!"),
+                "dawnHeart" => throw new LogicParserException("Don't check for dawnHeart directly - Use canDawnJump instead!"),
 
                 // Health boosts
-                "flasks" => throw new System.Exception("Don't check for flasks directly - This is only used in power calculation!"),
-                "quicksilver" => throw new System.Exception("Don't check for flasks directly - This is only used in power calculation!"),
+                "flasks" => throw new LogicParserException("Don't check for flasks directly - This is only used in power calculation!"),
+                "quicksilver" => throw new LogicParserException("Don't check for flasks directly - This is only used in power calculation!"),
 
                 // Puzzles
                 "redWax" => redWax,
@@ -406,20 +406,20 @@ namespace BlasphemousRandomizer.ItemRando
 
                 "ruby" => ruby,
                 "tiento" => tiento,
-                "anyPrayer" => throw new System.Exception("Don't check for anyPrayer directly - This is only used for canBreakHoles!"),
+                "anyPrayer" => throw new LogicParserException("Don't check for anyPrayer directly - This is only used for canBreakHoles!"),
                 "pillar" => pillar,
 
                 // Stats
-                "healthLevel" => throw new System.Exception("Don't check for healthLevel directly - This is only used in power calculation!"),
-                "fervourLevel" => throw new System.Exception("Don't check for fervourLevel directly - This is only used in power calculation!"),
-                "swordLevel" => throw new System.Exception("Don't check for swordLevel directly - This is only used in power calculation!"),
+                "healthLevel" => throw new LogicParserException("Don't check for healthLevel directly - This is only used in power calculation!"),
+                "fervourLevel" => throw new LogicParserException("Don't check for fervourLevel directly - This is only used in power calculation!"),
+                "swordLevel" => throw new LogicParserException("Don't check for swordLevel directly - This is only used in power calculation!"),
 
                 // Skills
-                "combo" => throw new System.Exception("Don't check for combo directly - These are stored as ints!"),
-                "charged" => throw new System.Exception("Don't check for charged directly - These are stored as ints!"),
-                "ranged" => throw new System.Exception("Don't check for ranged directly - These are stored as ints!"),
-                "dive" => throw new System.Exception("Don't check for dive directly - These are stored as ints!"),
-                "lunge" => throw new System.Exception("Don't check for lunge directly - These are stored as ints!"),
+                "combo" => throw new LogicParserException("Don't check for combo directly - These are stored as ints!"),
+                "charged" => throw new LogicParserException("Don't check for charged directly - These are stored as ints!"),
+                "ranged" => throw new LogicParserException("Don't check for ranged directly - These are stored as ints!"),
+                "dive" => throw new LogicParserException("Don't check for dive directly - These are stored as ints!"),
+                "lunge" => throw new LogicParserException("Don't check for lunge directly - These are stored as ints!"),
                 "chargeBeam" => chargeBeam,
                 "rangedAttack" => ranged > 0,
 
@@ -551,7 +551,7 @@ namespace BlasphemousRandomizer.ItemRando
                 "canBeatPerpetua" => canBeatPerpetua,
                 "canBeatLegionary" => canBeatLegionary,
 
-                _ => throw new System.Exception($"Error: Variable {variable} doesn't exist!"),
+                _ => throw new LogicParserException($"Error: Variable {variable} doesn't exist!"),
             };
         }
 

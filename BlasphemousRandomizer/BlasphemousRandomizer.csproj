@@ -6,7 +6,7 @@
     <BepInExPluginGuid>com.damocles.blasphemous.randomizer</BepInExPluginGuid>
     <BepInExPluginName>Randomizer</BepInExPluginName>
     <Description>An item, enemy, and door randomizer for the game Blasphemous</Description>
-    <Version>2.0.10</Version>
+    <Version>2.0.11</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RootNamespace>BlasphemousRandomizer</RootNamespace>
