@@ -8,7 +8,6 @@ namespace BlasphemousRandomizer
         public int LogicDifficulty { get; set; }
         public int StartingLocation { get; set; }
         public int CustomSeed { get; set; }
-        public string VersionCreated { get; set; }
 
         // General Settings
         public bool UnlockTeleportation { get; set; }
@@ -44,7 +43,6 @@ namespace BlasphemousRandomizer
             LogicDifficulty = 1;
             StartingLocation = 0;
             CustomSeed = 0;
-            VersionCreated = Main.Randomizer.ModVersion;
 
             UnlockTeleportation = true;
             AllowHints = true;

@@ -261,7 +261,6 @@ namespace BlasphemousRandomizer.Settings
 
             // Load config from seed
             config.CustomSeed = currentSeed != string.Empty ? int.Parse(currentSeed) : generatedSeed;
-            config.VersionCreated = Main.Randomizer.ModVersion;
             return config;
         }
 
