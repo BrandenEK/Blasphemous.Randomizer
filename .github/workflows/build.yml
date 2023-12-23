@@ -1,0 +1,36 @@
+
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  MOD_NAME: "Randomizer"
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+
+    - name: Build Project
+      run: |
+        dotnet restore
+        dotnet build --configuration Release --no-restore
+
+    - name: Upload
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{env.MOD_NAME}}
+        path: export/${{env.MOD_NAME}}/
+        retention-days: 30
+        if-no-files-found: error
