@@ -1,5 +1,6 @@
 <div align="center">
-  <img src="logo.png">
+  <!-- Logo by JimmyDiamonds -->
+  <img src="resources/logo.png">
 </div>
 
 ---
