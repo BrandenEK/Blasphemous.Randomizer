@@ -1142,7 +1142,7 @@
 		"Name": "Garden 3 upper ledge",
 		"Hint": "* resides in the Patio",
 		"Room": "D04Z01S03",
-		"Logic": "canWalkOnRoot || canCrossGap3"
+		"Logic": "canClimbOnRoot || canCrossGap3"
 	},
 	{
 		"Id": "RESCUED_CHERUB_28",
