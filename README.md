@@ -15,13 +15,18 @@
 ## Contributors
 
 A very special thank you to everyone who has helped with the randomizer
-- [@BrandenEK](https://github.com/BrandenEK) - ***Programming and design***
-- [@ConanCimmerio](https://github.com/ConanCimmerio) - ***Spanish translations and image icons***
-- [@EltonZhang777](https://github.com/EltonZhang777) - ***Chinese translations***
-- [@RocherBrockas](https://github.com/RocherBrockas) - ***French translations***
-- [@rcvrdt](https://github.com/rcvrdt) - ***UI design and creation***
-- [@Exempt-Medic](https://github.com/Exempt-Medic) - ***Logic testing and improvements***
-- [@JimmyDiamonds](https://github.com/JimmyDiamonds) - ***Logo design and creation***
+
+***- Programming and design -*** <br>
+[@BrandenEK](https://github.com/BrandenEK)
+
+***- Translations -*** <br>
+[@ConanCimmerio](https://github.com/ConanCimmerio), [@EltonZhang777](https://github.com/EltonZhang777), [@RocherBrockas](https://github.com/RocherBrockas)
+
+***- Images and UI -*** <br>
+[@JimmyDiamonds](https://github.com/JimmyDiamonds), [@rcvrdt](https://github.com/rcvrdt), [@ConanCimmerio](https://github.com/ConanCimmerio)
+
+***- Logic testing and improvements -*** <br>
+[@Exempt-Medic](https://github.com/Exempt-Medic), [@LumineonRL](https://github.com/LumineonRL)
 
 ---
 
