@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Framework.Managers;
 using ModdingAPI.Commands;
 
-namespace BlasphemousRandomizer
+namespace Blasphemous.Randomizer
 {
     public class RandomizerCommand : ModCommand
     {

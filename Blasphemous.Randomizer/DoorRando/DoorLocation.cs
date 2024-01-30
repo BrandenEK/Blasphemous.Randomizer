@@ -1,8 +1,8 @@
-﻿using BlasphemousRandomizer.ItemRando;
+﻿using Blasphemous.Randomizer.ItemRando;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace BlasphemousRandomizer.DoorRando
+namespace Blasphemous.Randomizer.DoorRando
 {
     [System.Serializable]
     public class DoorLocation

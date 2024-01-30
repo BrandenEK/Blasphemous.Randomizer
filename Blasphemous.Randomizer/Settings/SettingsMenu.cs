@@ -5,7 +5,7 @@ using ModdingAPI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BlasphemousRandomizer.Settings
+namespace Blasphemous.Randomizer.Settings
 {
     public class SettingsMenu
     {

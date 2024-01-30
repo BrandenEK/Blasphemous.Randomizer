@@ -1,5 +1,5 @@
 ﻿
-namespace BlasphemousRandomizer.ItemRando
+namespace Blasphemous.Randomizer.ItemRando
 {
     [System.Serializable]
     public class ItemLocation

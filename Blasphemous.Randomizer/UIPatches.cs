@@ -6,7 +6,7 @@ using Gameplay.UI.Others.MenuLogic;
 using Framework.Managers;
 using Framework.Map;
 
-namespace BlasphemousRandomizer
+namespace Blasphemous.Randomizer
 {
     // Skip showing certain messages to the player
     [HarmonyPatch(typeof(ShowMessage), "OnEnter")]

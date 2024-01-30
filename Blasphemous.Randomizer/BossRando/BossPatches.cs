@@ -6,7 +6,7 @@ using Framework.FrameworkCore;
 using Tools.DataContainer;
 using Tools.Level.Interactables;
 
-namespace BlasphemousRandomizer.BossRando
+namespace Blasphemous.Randomizer.BossRando
 {
     // Set objects needed for boss shuffle
     [HarmonyPatch(typeof(GuiltManager), "OnLevelLoaded")]

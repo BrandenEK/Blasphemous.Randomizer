@@ -1,14 +1,15 @@
-﻿using BlasphemousRandomizer.BossRando;
-using BlasphemousRandomizer.DoorRando;
-using BlasphemousRandomizer.EnemyRando;
-using BlasphemousRandomizer.HintRando;
-using BlasphemousRandomizer.ItemRando;
-using BlasphemousRandomizer.Map;
-using BlasphemousRandomizer.Settings;
+﻿using Blasphemous.ModdingAPI;
+using Blasphemous.ModdingAPI.Persistence;
+using Blasphemous.Randomizer.BossRando;
+using Blasphemous.Randomizer.DoorRando;
+using Blasphemous.Randomizer.EnemyRando;
+using Blasphemous.Randomizer.HintRando;
+using Blasphemous.Randomizer.ItemRando;
+using Blasphemous.Randomizer.Map;
+using Blasphemous.Randomizer.Settings;
 using Framework.Managers;
 using Framework.Audio;
 using Gameplay.UI;
-using ModdingAPI;
 using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,11 +17,14 @@ using Tools.Level;
 using Tools.Level.Interactables;
 using Tools.Level.Actionables;
 using UnityEngine;
+using Blasphemous.ModdingAPI.Console;
 
-namespace BlasphemousRandomizer
+namespace Blasphemous.Randomizer
 {
-    public class Randomizer : PersistentMod
+    public class Randomizer : BlasMod, IPersistentMod
     {
+        public Randomizer() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
+
         public const int MAX_SEED = 99_999_999;
         private const bool SKIP_CUTSCENES = true;
         public const int BROTHERHOOD_LOCATION = 0;
@@ -49,15 +53,13 @@ namespace BlasphemousRandomizer
 
         public override string PersistentID => "ID_RANDOMIZER";
 
-        public bool InstalledBootsMod => IsModLoaded("com.damocles.blasphemous.boots-of-pleading");
-        public bool InstalledDoubleJumpMod => IsModLoaded("com.damocles.blasphemous.double-jump");
+        public bool InstalledBootsMod => IsModLoaded("Blasphemous.BootsOfPleading", out var _);
+        public bool InstalledDoubleJumpMod => IsModLoaded("Blasphemous.DoubleJump", out var _);
         public bool CanDash => !GameSettings.ShuffleDash || Core.Events.GetFlag("ITEM_Slide");
         public bool CanWallClimb => !GameSettings.ShuffleWallClimb || Core.Events.GetFlag("ITEM_WallClimb");
         public bool DashChecker { get; set; }
 
-        public Randomizer(string modId, string modName, string modVersion) : base(modId, modName, modVersion) { }
-
-        protected override void Initialize()
+        protected override void OnInitialize()
         {
             // Create main shufflers
             itemShuffler = new ItemShuffle();
@@ -74,14 +76,17 @@ namespace BlasphemousRandomizer
             Log("Randomizer has been initialized!");
             data = new DataStorage();
             if (!data.loadData(FileUtil))
-                errorOnLoad = Localize("daterr");
+                errorOnLoad = LocalizationHandler.Localize("daterr");
 
             // Set up data
             GameSettings = new Config();
             SettingsMenu = new SettingsMenu();
             MapCollection = new MapCollectionStatus();
+        }
 
-            RegisterCommand(new RandomizerCommand());
+        protected override void OnRegisterServices(ModServiceProvider provider)
+        {
+            provider.RegisterCommand(new RandomizerCommand());
         }
 
         public override ModPersistentData SaveGame()
@@ -160,20 +165,20 @@ namespace BlasphemousRandomizer
             {
                 // Generate spoiler on new game
                 string spoiler = itemShuffler.GetSpoiler();
-                FileUtil.saveTextFile($"spoiler{PersistentManager.GetAutomaticSlot() + 1}.txt", spoiler);
+                FileHandler.WriteToFile($"spoiler{PersistentManager.GetAutomaticSlot() + 1}.txt", spoiler);
             }
             watch.Stop();
             Log("Time to fill seed: " + watch.ElapsedMilliseconds + " ms");
         }
 
         // Before spawning player, might have to change the spawn point of a few doors
-        protected override void LevelPreloaded(string oldLevel, string newLevel)
+        protected override void OnLevelPreloaded(string oldLevel, string newLevel)
         {
             FixDoorsOnPreload(newLevel);
         }
 
         // Specific actions need to be taken when a certain scene is loaded
-        protected override void LevelLoaded(string oldLevel, string newLevel)
+        protected override void OnLevelLoaded(string oldLevel, string newLevel)
         {
             if (newLevel == "MainMenu")
             {
@@ -203,7 +208,7 @@ namespace BlasphemousRandomizer
                 {
                     // Loaded an outdated rando or vanilla game
                     LogError("Loaded invalid game!");
-                    errorOnLoad = Localize("saverr");
+                    errorOnLoad = LocalizationHandler.Localize("saverr");
                     ResetGame();
                 }
             }
@@ -270,7 +275,7 @@ namespace BlasphemousRandomizer
                 }
             }
             // Set randomized flags
-            string majorVersion = ModVersion;
+            string majorVersion = ModInfo.MOD_VERSION;
             majorVersion = majorVersion.Substring(0, majorVersion.LastIndexOf('.'));
             Core.Events.SetFlag("RANDOMIZED", true, false);
             Core.Events.SetFlag(majorVersion, true, false);
@@ -302,11 +307,11 @@ namespace BlasphemousRandomizer
         }
 
         // Keyboard input
-        protected override void Update()
+        protected override void OnUpdate()
         {
             if (Input.GetKeyDown("Seed") && inGame)
             {
-                LogDisplay($"{Localize("currsd")}: {GameSeed} [{ComputeFinalSeed(GameSeed, GameSettings)}]");
+                LogDisplay($"{LocalizationHandler.Localize("currsd")}: {GameSeed} [{ComputeFinalSeed(GameSeed, GameSettings)}]");
             }
             else if (Input.GetKeyDown("Debug"))
             {
@@ -354,7 +359,7 @@ namespace BlasphemousRandomizer
         // Did this even work ??
         private bool isConfigVersionValid(string configVersion)
         {
-            string version = ModVersion;
+            string version = ModInfo.MOD_VERSION;
             return version.Substring(0, version.LastIndexOf('.')) == configVersion.Substring(0, configVersion.LastIndexOf('.'));
         }
 

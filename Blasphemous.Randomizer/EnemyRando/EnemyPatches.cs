@@ -24,7 +24,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Framework.Audio;
 
-namespace BlasphemousRandomizer.EnemyRando
+namespace Blasphemous.Randomizer.EnemyRando
 {
     [HarmonyPatch(typeof(AudioLoader), "Awake")]
     public class AudioLoader_Patch

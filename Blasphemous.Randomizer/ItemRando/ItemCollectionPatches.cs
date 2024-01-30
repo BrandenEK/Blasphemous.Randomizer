@@ -7,7 +7,7 @@ using Gameplay.GameControllers.Penitent;
 using Gameplay.GameControllers.Entities;
 using ModdingAPI;
 
-namespace BlasphemousRandomizer.ItemRando
+namespace Blasphemous.Randomizer.ItemRando
 {
     // Most item pickups in the game use this function
     [HarmonyPatch(typeof(InteractableInvAdd), "OnUsePost")]

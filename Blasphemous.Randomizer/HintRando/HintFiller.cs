@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using BlasphemousRandomizer.ItemRando;
+using Blasphemous.Randomizer.ItemRando;
 
-namespace BlasphemousRandomizer.HintRando
+namespace Blasphemous.Randomizer.HintRando
 {
     public class HintFiller : Filler
     {

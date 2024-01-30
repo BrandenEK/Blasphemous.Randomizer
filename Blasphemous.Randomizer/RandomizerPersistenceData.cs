@@ -1,9 +1,9 @@
 ﻿using System;
 using ModdingAPI;
 using System.Collections.Generic;
-using BlasphemousRandomizer.Map;
+using Blasphemous.Randomizer.Map;
 
-namespace BlasphemousRandomizer
+namespace Blasphemous.Randomizer
 {
     [Serializable]
     public class RandomizerPersistenceData : ModPersistentData

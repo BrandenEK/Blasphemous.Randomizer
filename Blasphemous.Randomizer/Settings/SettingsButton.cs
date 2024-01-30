@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace BlasphemousRandomizer.Settings
+namespace Blasphemous.Randomizer.Settings
 {
     // Any settings button can be clicked, or enabled/disabled
     public abstract class SettingsElement : MonoBehaviour

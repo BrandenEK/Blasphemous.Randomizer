@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Framework.Achievements;
 
-namespace BlasphemousRandomizer.Notifications
+namespace Blasphemous.Randomizer.Notifications
 {
     // Allow all achievement messages to go through
     [HarmonyPatch(typeof(UIController), "ShowPopupAchievement")]

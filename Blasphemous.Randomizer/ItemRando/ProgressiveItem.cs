@@ -1,7 +1,7 @@
 ﻿using Framework.Managers;
-using BlasphemousRandomizer.Notifications;
+using Blasphemous.Randomizer.Notifications;
 
-namespace BlasphemousRandomizer.ItemRando
+namespace Blasphemous.Randomizer.ItemRando
 {
     [System.Serializable]
     public class ProgressiveItem : Item

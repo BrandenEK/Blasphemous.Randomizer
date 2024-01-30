@@ -1,7 +1,7 @@
 ﻿using Framework.Achievements;
 using UnityEngine;
 
-namespace BlasphemousRandomizer.Notifications
+namespace Blasphemous.Randomizer.Notifications
 {
     public class RewardAchievement : Achievement
     {

@@ -6,7 +6,7 @@ using Gameplay.GameControllers.Bosses.BossFight;
 using Gameplay.GameControllers.Penitent.Abilities;
 using UnityEngine;
 
-namespace BlasphemousRandomizer.DoorRando
+namespace Blasphemous.Randomizer.DoorRando
 {
     // Change target door for door shuffle
     [HarmonyPatch(typeof(Door), "OnDoorActivated")]

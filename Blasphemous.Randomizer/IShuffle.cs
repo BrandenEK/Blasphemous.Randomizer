@@ -1,4 +1,4 @@
-﻿namespace BlasphemousRandomizer
+﻿namespace Blasphemous.Randomizer
 {
     public interface IShuffle
     {

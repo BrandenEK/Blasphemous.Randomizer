@@ -1,5 +1,5 @@
 ﻿
-namespace BlasphemousRandomizer
+namespace Blasphemous.Randomizer
 {
     [System.Serializable]
     public class Config

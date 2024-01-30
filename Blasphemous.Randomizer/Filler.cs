@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BlasphemousRandomizer
+namespace Blasphemous.Randomizer
 {
     public abstract class Filler
     {

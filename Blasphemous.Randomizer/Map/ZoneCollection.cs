@@ -1,5 +1,5 @@
 ﻿
-namespace BlasphemousRandomizer.Map
+namespace Blasphemous.Randomizer.Map
 {
     [System.Serializable]
     public class ZoneCollection

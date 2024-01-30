@@ -3,7 +3,7 @@ using HarmonyLib;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Widgets;
 
-namespace BlasphemousRandomizer.Settings
+namespace Blasphemous.Randomizer.Settings
 {
     // Allow visible cursor for settings menu
     [HarmonyPatch(typeof(DebugInformation), "Update")]

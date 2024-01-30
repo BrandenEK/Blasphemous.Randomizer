@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using BlasphemousRandomizer.DoorRando;
-using BlasphemousRandomizer.EnemyRando;
-using BlasphemousRandomizer.ItemRando;
+using Blasphemous.Randomizer.DoorRando;
+using Blasphemous.Randomizer.EnemyRando;
+using Blasphemous.Randomizer.ItemRando;
 using ModdingAPI;
 
-namespace BlasphemousRandomizer
+namespace Blasphemous.Randomizer
 {
 	public class DataStorage
 	{

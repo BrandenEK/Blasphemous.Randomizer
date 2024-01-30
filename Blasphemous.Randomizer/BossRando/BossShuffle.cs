@@ -7,7 +7,7 @@ using Framework.FrameworkCore;
 using Gameplay.UI;
 using Tools.Level.Interactables;
 
-namespace BlasphemousRandomizer.BossRando
+namespace Blasphemous.Randomizer.BossRando
 {
     public class BossShuffle : IShuffle
     {

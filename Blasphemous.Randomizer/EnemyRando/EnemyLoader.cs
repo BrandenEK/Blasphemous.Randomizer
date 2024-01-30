@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Gameplay.GameControllers.Entities;
 
-namespace BlasphemousRandomizer.EnemyRando
+namespace Blasphemous.Randomizer.EnemyRando
 {
     public static class EnemyLoader
     {

@@ -1,5 +1,5 @@
-using BlasphemousRandomizer.DoorRando;
-using BlasphemousRandomizer.ItemRando;
+using Blasphemous.Randomizer.DoorRando;
+using Blasphemous.Randomizer.ItemRando;
 using LogicParser;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace BlasphemousRandomizer.Tests
+namespace Blasphemous.Randomizer.Tests
 {
     [TestClass]
     public class LogicTests

@@ -2,9 +2,9 @@
 using Framework.FrameworkCore;
 using Framework.Inventory;
 using Gameplay.GameControllers.Entities;
-using BlasphemousRandomizer.Notifications;
+using Blasphemous.Randomizer.Notifications;
 
-namespace BlasphemousRandomizer.ItemRando
+namespace Blasphemous.Randomizer.ItemRando
 {
 	[System.Serializable]
     public class Item

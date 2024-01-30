@@ -5,7 +5,7 @@ using Framework.Managers;
 using Framework.Dialog;
 using System.Collections.Generic;
 
-namespace BlasphemousRandomizer.HintRando
+namespace Blasphemous.Randomizer.HintRando
 {
     // Always allow hint corpses to be active
     [HarmonyPatch(typeof(ItemIsEquiped), "executeAction")]

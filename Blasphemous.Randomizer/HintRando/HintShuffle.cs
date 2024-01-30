@@ -1,7 +1,7 @@
-﻿using BlasphemousRandomizer.ItemRando;
+﻿using Blasphemous.Randomizer.ItemRando;
 using System.Collections.Generic;
 
-namespace BlasphemousRandomizer.HintRando
+namespace Blasphemous.Randomizer.HintRando
 {
     public class HintShuffle : IShuffle
     {

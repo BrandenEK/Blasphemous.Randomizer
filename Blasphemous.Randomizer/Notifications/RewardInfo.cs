@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace BlasphemousRandomizer.Notifications
+namespace Blasphemous.Randomizer.Notifications
 {
     public class RewardInfo
     {

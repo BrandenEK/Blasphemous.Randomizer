@@ -2,7 +2,7 @@
 using Framework.Audio;
 using UnityEngine;
 
-namespace BlasphemousRandomizer.EnemyRando
+namespace Blasphemous.Randomizer.EnemyRando
 {
     public class EnemyShuffle : IShuffle
     {

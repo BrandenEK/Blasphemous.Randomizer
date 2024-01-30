@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace BlasphemousRandomizer.DoorRando
+namespace Blasphemous.Randomizer.DoorRando
 {
     public class StartingLocation
     {

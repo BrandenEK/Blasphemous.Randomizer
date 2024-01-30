@@ -3,7 +3,7 @@ using HarmonyLib;
 using Tools.Playmaker2.Action;
 using Tools.Playmaker2.Condition;
 
-namespace BlasphemousRandomizer.ItemRando
+namespace Blasphemous.Randomizer.ItemRando
 {
 	public static class ItemFlags
 	{

@@ -1,7 +1,7 @@
-﻿using BlasphemousRandomizer.DoorRando;
+﻿using Blasphemous.Randomizer.DoorRando;
 using System.Collections.Generic;
 
-namespace BlasphemousRandomizer.ItemRando
+namespace Blasphemous.Randomizer.ItemRando
 {
     public class ItemFiller : Filler
     {

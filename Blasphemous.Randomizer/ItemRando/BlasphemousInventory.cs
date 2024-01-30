@@ -1,7 +1,7 @@
 ﻿using LogicParser;
 using System.Collections.Generic;
 
-namespace BlasphemousRandomizer.ItemRando
+namespace Blasphemous.Randomizer.ItemRando
 {
     public class BlasphemousInventory : InventoryData
     {

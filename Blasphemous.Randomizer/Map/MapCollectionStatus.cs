@@ -1,4 +1,4 @@
-﻿using BlasphemousRandomizer.ItemRando;
+﻿using Blasphemous.Randomizer.ItemRando;
 using Framework.Managers;
 using Framework.Map;
 using Gameplay.UI.Others.MenuLogic;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BlasphemousRandomizer.Map
+namespace Blasphemous.Randomizer.Map
 {
     public class MapCollectionStatus
     {

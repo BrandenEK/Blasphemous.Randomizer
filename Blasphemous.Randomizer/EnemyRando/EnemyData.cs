@@ -1,5 +1,5 @@
 ﻿
-namespace BlasphemousRandomizer.EnemyRando
+namespace Blasphemous.Randomizer.EnemyRando
 {
     [System.Serializable]
     public class EnemyData

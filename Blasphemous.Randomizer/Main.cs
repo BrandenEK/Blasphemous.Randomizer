@@ -1,17 +1,16 @@
 ﻿using BepInEx;
 
-namespace BlasphemousRandomizer
+namespace Blasphemous.Randomizer
 {
-    [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-    [BepInDependency("com.damocles.blasphemous.modding-api", "1.4.0")]
-    [BepInProcess("Blasphemous.exe")]
+    [BepInPlugin(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_VERSION)]
+    [BepInDependency("Blasphemous.ModdingAPI", "2.0.1")]
     public class Main : BaseUnityPlugin
     {
-        public static Randomizer Randomizer;
+        public static Randomizer Randomizer { get; private set; }
 
         private void Start()
         {
-            Randomizer = new Randomizer(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION);
+            Randomizer = new Randomizer();
         }
     }
 

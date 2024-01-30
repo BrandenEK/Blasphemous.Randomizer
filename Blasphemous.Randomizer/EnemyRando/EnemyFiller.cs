@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BlasphemousRandomizer.EnemyRando
+namespace Blasphemous.Randomizer.EnemyRando
 {
     public class EnemyFiller : Filler
     {

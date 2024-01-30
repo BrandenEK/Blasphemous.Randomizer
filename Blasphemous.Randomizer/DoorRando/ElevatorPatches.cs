@@ -5,7 +5,7 @@ using Gameplay.GameControllers.Environment.MovingPlatforms;
 using Tools.Level.Actionables;
 using HarmonyLib;
 
-namespace BlasphemousRandomizer.DoorRando
+namespace Blasphemous.Randomizer.DoorRando
 {
 	// Always set elevators to default positions with gates open
 	[HarmonyPatch(typeof(EventManager), "GetCurrentPersistentState")]

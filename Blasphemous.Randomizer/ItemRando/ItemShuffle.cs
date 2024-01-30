@@ -1,11 +1,11 @@
-﻿using BlasphemousRandomizer.DoorRando;
-using BlasphemousRandomizer.Notifications;
+﻿using Blasphemous.Randomizer.DoorRando;
+using Blasphemous.Randomizer.Notifications;
 using Framework.Managers;
 using Gameplay.UI;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BlasphemousRandomizer.ItemRando
+namespace Blasphemous.Randomizer.ItemRando
 {
     public class ItemShuffle : IShuffle
     {
