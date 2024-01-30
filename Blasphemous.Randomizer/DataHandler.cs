@@ -120,7 +120,7 @@ public class DataHandler
                 {
                     item.Items = new string[item.Count];
                     for (int j = 0; j < item.Count; j++)
-                        item.items[j] = item.Id + (j + 1).ToString("00");
+                        item.Items[j] = item.Id + (j + 1).ToString("00");
                 }
                 items.Add(item.Id, item);
             }
