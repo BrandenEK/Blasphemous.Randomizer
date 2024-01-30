@@ -1,7 +1,8 @@
 ﻿using Blasphemous.ModdingAPI;
+using Blasphemous.Randomizer.Bosses;
+using Blasphemous.Randomizer.Doors;
 using Blasphemous.Randomizer.Zones;
 using Framework.Managers;
-using System.Drawing.Printing;
 
 namespace Blasphemous.Randomizer;
 
@@ -9,7 +10,9 @@ public class Randomizer : BlasMod
 {
     public Randomizer() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
+    public BossHandler BossHandler { get; } = new();
     public DataHandler DataHandler { get; } = new();
+    public DoorHandler DoorHandler { get; } = new();
     public ZoneHandler ZoneHandler { get; } = new();
 
     public RandomizerSettings CurrentSettings { get; private set; }
@@ -22,8 +25,21 @@ public class Randomizer : BlasMod
 
     protected override void OnInitialize()
     {
-        LogError($"{ModInfo.MOD_NAME} has been initialized");
-
         DataHandler.Initialize();
+        // Init all shufflers ?
+
+        CurrentSettings = RandomizerSettings.Default;
+        Log("Randomizer has been initialized!");
+    }
+
+    protected override void OnLevelPreloaded(string oldLevel, string newLevel)
+    {
+        DoorHandler.LevelPreloaded(newLevel);
+    }
+
+    protected override void OnLevelLoaded(string oldLevel, string newLevel)
+    {
+        DoorHandler.LevelLoaded(newLevel);
+        DoorHandler.FixRooftopsElevator(newLevel);
     }
 }

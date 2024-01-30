@@ -1,4 +1,5 @@
-﻿using Framework.FrameworkCore;
+﻿using Blasphemous.Randomizer.Doors;
+using Framework.FrameworkCore;
 using Framework.Managers;
 using Gameplay.GameControllers.Bosses.BossFight;
 using Gameplay.GameControllers.Penitent.Abilities;
@@ -33,7 +34,7 @@ public class Door_Patch
         }
 
         string doorId = $"{currentScene}[{currentId}]";
-        Doors.Door targetDoor = Main.Randomizer.itemShuffler.GetTargetDoor(doorId);
+        DoorData targetDoor = Main.Randomizer.itemShuffler.GetTargetDoor(doorId);
         Main.Randomizer.Log("Entering door: " + doorId);
         if (targetDoor != null)
         {
@@ -57,7 +58,7 @@ public class SpawnManagerStart_Patch
     public static void Postfix(ref SpawnManager.PosibleSpawnPoints ___pendingSpawn, ref string ___customLevel, ref Vector3 ___customPosition, ref EntityOrientation ___customOrientation)
     {
         ___pendingSpawn = SpawnManager.PosibleSpawnPoints.CustomPosition;
-        Doors.StartingLocation start = Main.Randomizer.StartingDoor;
+        StartingLocation start = Main.Randomizer.StartingDoor;
         ___customLevel = start.Room;
         ___customPosition = start.Position;
         ___customOrientation = start.FacingRight ? EntityOrientation.Right : EntityOrientation.Left;
@@ -84,7 +85,7 @@ public class BossFightStart_Patch
     {
         string currentScene = Core.LevelManager.currentLevel.LevelName;
         if (currentScene == "D17Z01S11" || currentScene == "D05Z02S14")
-            Main.Randomizer.BossBoundaryStatus = true;
+            Main.Randomizer.BossHandler.BossBoundaryStatus = true;
     }
 }
 
@@ -96,7 +97,7 @@ public class BossFightEnd_Patch
     {
         string currentScene = Core.LevelManager.currentLevel.LevelName;
         if (currentScene == "D17Z01S11" || currentScene == "D01Z04S18" || currentScene == "D02Z03S20")
-            Main.Randomizer.BossBoundaryStatus = false;
+            Main.Randomizer.BossHandler.BossBoundaryStatus = false;
     }
 }
 

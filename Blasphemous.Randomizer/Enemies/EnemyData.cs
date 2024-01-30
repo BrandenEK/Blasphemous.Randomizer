@@ -1,7 +1,7 @@
 ﻿
 namespace Blasphemous.Randomizer.Enemies;
 
-public class Enemy
+public class EnemyData
 {
     public string Id { get; set; }
     public string Name { get; set; }

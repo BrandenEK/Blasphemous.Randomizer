@@ -14,9 +14,9 @@ public class DataHandler
     // Json data
     public Dictionary<string, Item> Items { get; private set; }
     public Dictionary<string, ItemLocation> ItemLocations { get; private set; }
-    public Dictionary<string, Enemy> Enemies { get; private set; }
+    public Dictionary<string, EnemyData> Enemies { get; private set; }
     public Dictionary<string, EnemyLocation> EnemyLocations { get; private set; }
-    public Dictionary<string, Door> Doors { get; private set; }
+    public Dictionary<string, DoorData> Doors { get; private set; }
 
     // Image data
     private Sprite[] _images;
@@ -62,9 +62,9 @@ public class DataHandler
         Main.Randomizer.Log($"Loaded {ItemLocations.Count} item locations!");
 
         // Enemies
-        Enemies = Main.Randomizer.FileHandler.LoadDataAsJson("enemies.json", out Enemy[] tempEnemies)
+        Enemies = Main.Randomizer.FileHandler.LoadDataAsJson("enemies.json", out EnemyData[] tempEnemies)
             ? tempEnemies.ToDictionary(x => x.Id, x => x)
-            : new Dictionary<string, Enemy>();
+            : new Dictionary<string, EnemyData>();
         Main.Randomizer.Log($"Loaded {Enemies.Count} enemies!");
 
         // Enemy locations
@@ -74,9 +74,9 @@ public class DataHandler
         Main.Randomizer.Log($"Loaded {EnemyLocations.Count} enemy locations!");
 
         // Doors
-        Doors = Main.Randomizer.FileHandler.LoadDataAsJson("doors.json", out Door[] tempDoors)
+        Doors = Main.Randomizer.FileHandler.LoadDataAsJson("doors.json", out DoorData[] tempDoors)
             ? tempDoors.ToDictionary(x => x.Id, x => x)
-            : new Dictionary<string, Door>();
+            : new Dictionary<string, DoorData>();
         Main.Randomizer.Log($"Loaded {Doors.Count} doors!");
 
         // Images

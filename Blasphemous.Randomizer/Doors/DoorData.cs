@@ -3,7 +3,7 @@ using Newtonsoft.Json.Converters;
 
 namespace Blasphemous.Randomizer.Doors;
 
-public class Door
+public class DoorData
 {
     public string Id { get; set; }
 
