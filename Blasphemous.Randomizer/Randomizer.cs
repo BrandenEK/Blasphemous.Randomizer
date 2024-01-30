@@ -61,6 +61,12 @@ namespace Blasphemous.Randomizer
 
         protected override void OnInitialize()
         {
+            LocalizationHandler.RegisterDefaultLanguage("en");
+            InputHandler.RegisterDefaultKeybindings(new Dictionary<string, KeyCode>()
+            {
+                {  "Seed", KeyCode.F8 }
+            });
+
             // Create main shufflers
             itemShuffler = new ItemShuffle();
             enemyShuffler = new EnemyShuffle();
@@ -89,7 +95,7 @@ namespace Blasphemous.Randomizer
             provider.RegisterCommand(new RandomizerCommand());
         }
 
-        SaveData IPersistentMod.SaveGame()
+        public SaveData SaveGame()
         {
             return new RandomizerPersistenceData
             {
@@ -309,11 +315,11 @@ namespace Blasphemous.Randomizer
         // Keyboard input
         protected override void OnUpdate()
         {
-            if (Input.GetKeyDown("Seed") && inGame)
+            if (InputHandler.GetKeyDown("Seed") && inGame)
             {
                 LogDisplay($"{LocalizationHandler.Localize("currsd")}: {GameSeed} [{ComputeFinalSeed(GameSeed, GameSettings)}]");
             }
-            else if (Input.GetKeyDown("Debug"))
+            else if (InputHandler.GetKeyDown("Debug"))
             {
                 //int succeed = 0, total = 100;
                 //System.Random rng = new System.Random();
