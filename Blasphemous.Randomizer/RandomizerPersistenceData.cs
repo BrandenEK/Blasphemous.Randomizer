@@ -1,12 +1,12 @@
-﻿using System;
-using ModdingAPI;
-using System.Collections.Generic;
+﻿using Blasphemous.ModdingAPI.Persistence;
 using Blasphemous.Randomizer.Map;
+using System;
+using System.Collections.Generic;
 
 namespace Blasphemous.Randomizer
 {
     [Serializable]
-    public class RandomizerPersistenceData : ModPersistentData
+    public class RandomizerPersistenceData : SaveData
     {
         public RandomizerPersistenceData() : base("ID_RANDOMIZER") { }
 

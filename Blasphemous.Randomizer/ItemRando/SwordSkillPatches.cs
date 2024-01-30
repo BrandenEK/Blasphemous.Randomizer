@@ -178,7 +178,7 @@ namespace Blasphemous.Randomizer.ItemRando
 
             Text captionText = __instance.transform.GetChild(3).GetComponent<Text>();
             if (captionText != null)
-                captionText.text = Main.Randomizer.Localize(editMode ? "shrine" : "sword");
+                captionText.text = Main.Randomizer.LocalizationHandler.Localize(editMode ? "shrine" : "sword");
         }
     }
     [HarmonyPatch(typeof(NewInventory_LayoutSkill), "CancelEditMode")]

@@ -1,11 +1,11 @@
-﻿using HarmonyLib;
+﻿using Blasphemous.ModdingAPI.Items;
+using HarmonyLib;
 using Framework.Managers;
 using Framework.Inventory;
 using Tools.Playmaker2.Action;
 using HutongGames.PlayMaker;
 using Gameplay.GameControllers.Penitent;
 using Gameplay.GameControllers.Entities;
-using ModdingAPI;
 
 namespace Blasphemous.Randomizer.ItemRando
 {
@@ -191,7 +191,7 @@ namespace Blasphemous.Randomizer.ItemRando
     }
 
     // Used when custom items are added from the modding api
-    [HarmonyPatch(typeof(ItemModder), "AddAndDisplayItem")]
+    [HarmonyPatch(typeof(ItemModder), nameof(ItemModder.AddAndDisplayItem))]
     public class ItemModder_Patch
     {
         public static bool Prefix(string itemId)

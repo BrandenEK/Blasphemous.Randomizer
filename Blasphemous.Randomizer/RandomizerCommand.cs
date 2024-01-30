@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Blasphemous.ModdingAPI.Console;
 using Framework.Managers;
-using ModdingAPI.Commands;
+using System;
+using System.Collections.Generic;
 
 namespace Blasphemous.Randomizer
 {

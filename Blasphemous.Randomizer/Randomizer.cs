@@ -51,7 +51,7 @@ namespace Blasphemous.Randomizer
         public MapCollectionStatus MapCollection { get; private set; }
         public SettingsMenu SettingsMenu { get; private set; }
 
-        public override string PersistentID => "ID_RANDOMIZER";
+        public string PersistentID => "ID_RANDOMIZER";
 
         public bool InstalledBootsMod => IsModLoaded("Blasphemous.BootsOfPleading", out var _);
         public bool InstalledDoubleJumpMod => IsModLoaded("Blasphemous.DoubleJump", out var _);
@@ -75,7 +75,7 @@ namespace Blasphemous.Randomizer
             // Load external data
             Log("Randomizer has been initialized!");
             data = new DataStorage();
-            if (!data.loadData(FileUtil))
+            if (!data.loadData())
                 errorOnLoad = LocalizationHandler.Localize("daterr");
 
             // Set up data
@@ -89,7 +89,7 @@ namespace Blasphemous.Randomizer
             provider.RegisterCommand(new RandomizerCommand());
         }
 
-        public override ModPersistentData SaveGame()
+        SaveData IPersistentMod.SaveGame()
         {
             return new RandomizerPersistenceData
             {
@@ -103,7 +103,7 @@ namespace Blasphemous.Randomizer
             };
         }
 
-        public override void LoadGame(ModPersistentData data)
+        public void LoadGame(SaveData data)
         {
             RandomizerPersistenceData randomizerPersistenceData = data as RandomizerPersistenceData;
 
@@ -118,7 +118,7 @@ namespace Blasphemous.Randomizer
             Log("Loaded seed: " + GameSeed);
         }
 
-        public override void NewGame(bool NGPlus)
+        protected override void OnNewGame()
         {
             LoadConfigFromMenu();
             GameSeed = GameSettings.CustomSeed;
@@ -131,7 +131,7 @@ namespace Blasphemous.Randomizer
             Core.Events.SetFlag("CHERUB_RESPAWN", true);
         }
 
-        public override void ResetGame()
+        public void ResetGame()
         {
             GameSeed = -1;
             GameSettings = new Config();

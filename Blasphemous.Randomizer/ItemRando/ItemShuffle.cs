@@ -44,7 +44,7 @@ namespace Blasphemous.Randomizer.ItemRando
         {
             if (newItems == null)
             {
-                UIController.instance.ShowPopUp(Main.Randomizer.Localize("itmerr"), "", 0f, false);
+                UIController.instance.ShowPopUp(Main.Randomizer.LocalizationHandler.Localize("itmerr"), "", 0f, false);
                 return null;
             }
             if (!newItems.ContainsKey(locationId))

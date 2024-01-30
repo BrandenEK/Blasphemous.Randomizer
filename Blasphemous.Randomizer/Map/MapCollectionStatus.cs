@@ -29,7 +29,7 @@ namespace Blasphemous.Randomizer.Map
                 currentAll += zone.CurrentItems;
                 totalAll += zone.TotalItems;
             }
-            TotalItemsText.text = $"{Main.Randomizer.Localize("items")}: {currentAll}/{totalAll}";
+            TotalItemsText.text = $"{Main.Randomizer.LocalizationHandler.Localize("items")}: {currentAll}/{totalAll}";
             
             // Get and display zone items
             string currentZoneName;
@@ -37,7 +37,7 @@ namespace Blasphemous.Randomizer.Map
             if (currentCell == null)
             {
                 currentZoneCollection = CollectionStatus["Initia"];
-                currentZoneName = Main.Randomizer.Localize("varous");
+                currentZoneName = Main.Randomizer.LocalizationHandler.Localize("varous");
             }
             else
             {

@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using Blasphemous.ModdingAPI.Input;
+using HarmonyLib;
 using Framework.Managers;
 using Framework.EditorScripts.EnemiesBalance;
 using Framework.EditorScripts.BossesBalance;
@@ -91,14 +92,14 @@ namespace Blasphemous.Randomizer
                     continue;
 
                 // Check if this save file was played in supported version
-                string majorVersion = Main.Randomizer.ModVersion;
+                string majorVersion = ModInfo.MOD_VERSION;
                 majorVersion = majorVersion.Substring(0, majorVersion.LastIndexOf('.'));
 
-                string type = $"({Main.Randomizer.Localize("vandis")})";
+                string type = $"({Main.Randomizer.LocalizationHandler.Localize("vandis")})";
                 if (slotData.flags.flags.ContainsKey(majorVersion))
-                    type = $"({Main.Randomizer.Localize("randis")})";
+                    type = $"({Main.Randomizer.LocalizationHandler.Localize("randis")})";
                 else if (slotData.flags.flags.ContainsKey("RANDOMIZED"))
-                    type = $"({Main.Randomizer.Localize("outdis")})";
+                    type = $"({Main.Randomizer.LocalizationHandler.Localize("outdis")})";
 
                 // Send extra info to the slot
                 ___slots[i].SetData("ignore", type, 0, false, false, false, 0, SelectSaveSlots.SlotsModes.Normal);
@@ -126,7 +127,7 @@ namespace Blasphemous.Randomizer
     {
         public static bool Prefix()
         {
-            Main.Randomizer.LogDisplay(Main.Randomizer.Localize("sorrow"));
+            Main.Randomizer.LogDisplay(Main.Randomizer.LocalizationHandler.Localize("sorrow"));
             return false;
         }
     }
@@ -204,7 +205,7 @@ namespace Blasphemous.Randomizer
         public static bool Prefix(ref bool __result)
         {
             Main.Randomizer.DashChecker = true;
-            __result = Main.Randomizer.Input.GetButton(ModdingAPI.InputHandler.ButtonCode.Dash);
+            __result = Main.Randomizer.InputHandler.GetButton(ButtonCode.Dash);
             Main.Randomizer.DashChecker = false;
             return false;
         }
