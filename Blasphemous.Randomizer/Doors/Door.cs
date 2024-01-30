@@ -18,6 +18,102 @@ public class Door
 
     public string Logic { get; set; }
 
+    public string Room => Id.Substring(0, Id.IndexOf('['));
+
+    public string IdentityName
+    {
+        get
+        {
+            int start = Id.IndexOf('[') + 1;
+            int end = Id.IndexOf(']');
+            return Id.Substring(start, end - start);
+        }
+    }
+
+    public int OppositeDirection
+    {
+        get
+        {
+            if (Direction == 0) return 3;
+            if (Direction == 3) return 0;
+            if (Direction == 1) return 2;
+            if (Direction == 2) return 1;
+            if (Direction == 4) return 7;
+            if (Direction == 5) return 6;
+            if (Direction == 6) return 5;
+            if (Direction == 7) return 4;
+            return -1;
+        }
+    }
+
+    public bool ShouldBeVanillaDoor(RandomizerSettings settings)
+    {
+        if (Type == 9 || settings.DoorShuffleType <= 0)
+            return true;
+
+        if (Type != 1 && settings.DoorShuffleType == 1)
+            return true;
+
+        return false;
+    }
+
+    public bool ShouldBeMadeVisible(RandomizerSettings settings, BlasphemousInventory inventory)
+    {
+        if (Direction == 5) return false;
+        if (VisibilityFlags == 0) return true;
+
+        bool visible = false;
+        if (!visible && (VisibilityFlags & Visibility.ThisDoor) > 0) // Only the door itself
+        {
+            visible = inventory.HasDoor(Id);
+        }
+        if (!visible && (VisibilityFlags & Visibility.RequiredDoors) > 0) // Any required door
+        {
+            foreach (string door in RequiredDoors)
+            {
+                if (inventory.HasDoor(door))
+                {
+                    visible = true;
+                    break;
+                }
+            }
+        }
+
+        if (!visible && (VisibilityFlags & Visibility.DoubleJump) > 0) // Shuffle double jump is enabled
+        {
+            visible = settings.ShufflePurifiedHand;
+        }
+
+        if (!visible && (VisibilityFlags & Visibility.NormalLogic) > 0) // Normal logic is enabled
+        {
+            visible = settings.LogicDifficulty >= 1;
+        }
+        if (!visible && (VisibilityFlags & Visibility.NormalLogicAndDoubleJump) > 0) // Normal logic & double jump
+        {
+            visible = settings.ShufflePurifiedHand && settings.LogicDifficulty >= 1;
+        }
+
+        if (!visible && (VisibilityFlags & Visibility.HardLogic) > 0) // Hard logic is enabled
+        {
+            visible = settings.LogicDifficulty >= 2;
+        }
+        if (!visible && (VisibilityFlags & Visibility.HardLogicAndDoubleJump) > 0) // Hard logic & double jump
+        {
+            visible = settings.ShufflePurifiedHand && settings.LogicDifficulty >= 2;
+        }
+
+        if (!visible && (VisibilityFlags & Visibility.EnemySkips) > 0) // Enemy skips allowed 
+        {
+            visible = settings.EnemyShuffleType < 1 && settings.LogicDifficulty >= 2;
+        }
+        if (!visible && (VisibilityFlags & Visibility.EnemySkipsAndDoubleJump) > 0) // Double jump & enemy skips allowed
+        {
+            visible = settings.ShufflePurifiedHand && settings.EnemyShuffleType < 1 && settings.LogicDifficulty >= 2;
+        }
+
+        return visible;
+    }
+
     [System.Flags]
     public enum Visibility
     {
