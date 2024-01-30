@@ -1,10 +1,12 @@
 {
-	"DisabledObjects":
-	{
-		"Logic":
-		[
-			"LOGIC/INTERACTABLES/ACT_SHOCK_RECEIVER",
-			"LOGIC/INTERACTABLES/Gate"
-		]
-	}
+    "deletions": [
+        {
+            "scene": "logic",
+            "path": "LOGIC/INTERACTABLES/ACT_SHOCK_RECEIVER"
+        },
+        {
+            "scene": "logic",
+            "path": "LOGIC/INTERACTABLES/Gate"
+        }
+    ]
 }

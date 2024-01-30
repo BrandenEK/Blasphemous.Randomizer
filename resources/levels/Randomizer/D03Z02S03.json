@@ -1,25 +1,30 @@
 {
-	"DisabledObjects":
-	{
-		"Logic":
-		[
-			"LOGIC/INTERACTABLES/GEO_FaithBlock (64x32)",
-			"LOGIC/INTERACTABLES/GEO_FaithBlock (64x32) (1)"
-		]
-	},
-	"AddedObjects":
-	[
-		{
-			"Type": "PlatformWood",
-			"XPos": -722,
-			"YPos": -91.5,
-			"Condition": "flag:BELL_ACTIVATED"
-		},
-		{
-			"Type": "PlatformWood",
-			"XPos": -718,
-			"YPos": -91.5,
-			"Condition": "flag:BELL_ACTIVATED"
-		}
-	]
+    "deletions": [
+        {
+            "scene": "logic",
+            "path": "LOGIC/INTERACTABLES/GEO_FaithBlock (64x32)"
+        },
+        {
+            "scene": "logic",
+            "path": "LOGIC/INTERACTABLES/GEO_FaithBlock (64x32) (1)"
+        }
+    ],
+    "additions": [
+        {
+            "type": "platform-wood",
+            "position": {
+                "x": -722,
+                "y": -91.5
+            },
+            "condition": "flag:BELL_ACTIVATED"
+        },
+        {
+            "type": "platform-wood",
+            "position": {
+                "x": -718,
+                "y": -91.5
+            },
+            "condition": "flag:BELL_ACTIVATED"
+        }
+    ]
 }

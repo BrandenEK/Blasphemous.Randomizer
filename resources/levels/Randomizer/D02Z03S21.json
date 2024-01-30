@@ -1,18 +1,18 @@
 {
-	"DisabledObjects":
-	{
-		"Logic":
-		[
-			"LOGIC/INTERACTABLES/ACT_PenitenceAltar"
-		]
-	},
-	"AddedObjects":
-	[
-		{
-			"Type": "CollectibleItem",
-			"Id": "QI40",
-			"XPos": -490,
-			"YPos": 250
-		}
-	]
+    "deletions": [
+        {
+            "scene": "logic",
+            "path": "LOGIC/INTERACTABLES/ACT_PenitenceAltar"
+        }
+    ],
+    "additions": [
+        {
+            "type": "item-ground",
+            "id": "QI40",
+            "position": {
+                "x": -490,
+                "y": 250
+            }
+        }
+    ]
 }
