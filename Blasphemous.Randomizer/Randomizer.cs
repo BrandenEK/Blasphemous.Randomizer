@@ -1,6 +1,7 @@
 ﻿using Blasphemous.ModdingAPI;
 using Blasphemous.Randomizer.Bosses;
 using Blasphemous.Randomizer.Doors;
+using Blasphemous.Randomizer.Items;
 using Blasphemous.Randomizer.Zones;
 using Framework.Managers;
 
@@ -13,6 +14,7 @@ public class Randomizer : BlasMod
     public BossHandler BossHandler { get; } = new();
     public DataHandler DataHandler { get; } = new();
     public DoorHandler DoorHandler { get; } = new();
+    public ItemHandler ItemHandler { get; } = new();
     public ZoneHandler ZoneHandler { get; } = new();
 
     public RandomizerSettings CurrentSettings { get; private set; }

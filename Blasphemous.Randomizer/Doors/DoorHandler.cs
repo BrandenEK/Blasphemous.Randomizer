@@ -11,7 +11,7 @@ public class DoorHandler
     public void LevelPreloaded(string level)
     {
         // If entering from a certain door, change the spawn point
-        DoorData doorToEnter = itemShuffler.LastDoor;
+        DoorData doorToEnter = Main.Randomizer.ItemHandler.LastDoor;
         if (doorToEnter == null || level != doorToEnter.Room || !Main.Randomizer.DataHandler.FixedDoorPositions.TryGetValue(doorToEnter.Id, out Vector3 newPosition))
             return;
 
@@ -48,7 +48,7 @@ public class DoorHandler
         }
 
         // If entering from a certain door, remove the wall
-        DoorData doorToEnter = itemShuffler.LastDoor;
+        DoorData doorToEnter = Main.Randomizer.ItemHandler.LastDoor;
         if (doorToEnter == null || level != doorToEnter.Room || !Main.Randomizer.DataHandler.FixedDoorWalls.TryGetValue(doorToEnter.Id, out string wallToRemove))
             return;
 

@@ -34,7 +34,7 @@ public class Door_Patch
         }
 
         string doorId = $"{currentScene}[{currentId}]";
-        DoorData targetDoor = Main.Randomizer.itemShuffler.GetTargetDoor(doorId);
+        DoorData targetDoor = Main.Randomizer.ItemHandler.GetTargetDoor(doorId);
         Main.Randomizer.Log("Entering door: " + doorId);
         if (targetDoor != null)
         {

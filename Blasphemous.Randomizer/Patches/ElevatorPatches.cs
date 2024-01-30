@@ -24,7 +24,7 @@ public class EventManagerSave_Patch
         }
 
         // If entering from behind amanecida face, break it instantly
-        DoorData doorToEnter = Main.Randomizer.itemShuffler.LastDoor;
+        DoorData doorToEnter = Main.Randomizer.ItemHandler.LastDoor;
         if (doorToEnter != null && doorToEnter.Id == "D08Z01S02[SE]")
             Core.Events.SetFlag("D08Z01S02_FACE_BROKEN", true);
     }
