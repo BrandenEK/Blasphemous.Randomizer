@@ -22,15 +22,18 @@ using System.IO;
 
 namespace Blasphemous.Randomizer
 {
+    /// <summary>
+    /// Handles randomizing everything
+    /// </summary>
     public class Randomizer : BlasMod, IPersistentMod
     {
-        public Randomizer() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
+        internal Randomizer() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
-        public const int MAX_SEED = 99_999_999;
+        internal const int MAX_SEED = 99_999_999;
         private const bool SKIP_CUTSCENES = true;
-        public const int BROTHERHOOD_LOCATION = 0;
-        public const int DEPTHS_LOCATION = 3;
-        public const int SHIPYARD_LOCATION = 6;
+        internal const int BROTHERHOOD_LOCATION = 0;
+        internal const int DEPTHS_LOCATION = 3;
+        internal const int SHIPYARD_LOCATION = 6;
 
         // Shufflers
         public ItemShuffle itemShuffler;
@@ -46,7 +49,7 @@ namespace Blasphemous.Randomizer
         // Global info
         private bool inGame;
         private string errorOnLoad;
-        public bool ShrineEditMode { get; set; }
+        internal bool ShrineEditMode { get; set; }
 
         public DataStorage data { get; private set; }
         public MapCollectionStatus MapCollection { get; private set; }

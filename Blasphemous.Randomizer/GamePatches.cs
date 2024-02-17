@@ -17,7 +17,7 @@ namespace Blasphemous.Randomizer
 {
     // Always allow teleportation if enabled in config
     [HarmonyPatch(typeof(AlmsManager), "GetPrieDieuLevel")]
-    public class AlmsManager_Patch
+    class AlmsManager_Patch
     {
         public static bool Prefix(ref int __result)
         {
@@ -32,7 +32,7 @@ namespace Blasphemous.Randomizer
 
     // Make enemies stay as ng
     [HarmonyPatch(typeof(GameModeManager), "GetCurrentEnemiesBalanceChart")]
-    public class GameModeEnemies_Patch
+    class GameModeEnemies_Patch
     {
         public static bool Prefix(ref EnemiesBalanceChart __result, EnemiesBalanceChart ___newGameEnemiesBalanceChart)
         {
@@ -43,7 +43,7 @@ namespace Blasphemous.Randomizer
 
     // Make bosses stay as ng
     [HarmonyPatch(typeof(GameModeManager), "GetCurrentBossesBalanceChart")]
-    public class GameModeBosses_Patch
+    class GameModeBosses_Patch
     {
         public static bool Prefix(ref BossesBalanceChart __result, BossesBalanceChart ___newGameBossesBalanceChart)
         {
@@ -54,7 +54,7 @@ namespace Blasphemous.Randomizer
 
     // Log what flags are being set & track certain ones
     [HarmonyPatch(typeof(EventManager), "SetFlag")]
-    public class EventManagerSet_Patch
+    class EventManagerSet_Patch
     {
         public static void Prefix(EventManager __instance, string id, bool b)
         {
@@ -81,7 +81,7 @@ namespace Blasphemous.Randomizer
 
     // Show validity of save slot on select screen
     [HarmonyPatch(typeof(SelectSaveSlots), "SetAllData")]
-    public class SelectSaveSlotsData_Patch
+    class SelectSaveSlotsData_Patch
     {
         public static void Postfix(List<SaveSlot> ___slots)
         {
@@ -107,7 +107,7 @@ namespace Blasphemous.Randomizer
         }
     }
     [HarmonyPatch(typeof(SaveSlot), "SetData")]
-    public class SaveSlotData_Patch
+    class SaveSlotData_Patch
     {
         public static bool Prefix(string zoneName, string info, ref Text ___ZoneText, ref bool canConvert)
         {
@@ -123,7 +123,7 @@ namespace Blasphemous.Randomizer
 
     // Don't allow playing in sacred sorrows mode
     [HarmonyPatch(typeof(BossRushWidget), "OptionPressed")]
-    public class BossRushWidget_Patch
+    class BossRushWidget_Patch
     {
         public static bool Prefix()
         {
@@ -134,7 +134,7 @@ namespace Blasphemous.Randomizer
 
     // Load custom starting location
     [HarmonyPatch(typeof(NewMainMenu), "InternalPlay")]
-    public class MainMenuNewGame_Patch
+    class MainMenuNewGame_Patch
     {
         public static void Prefix(bool ___isContinue, ref string ___sceneName)
         {
@@ -148,7 +148,7 @@ namespace Blasphemous.Randomizer
 
     // Always think that no sword hearts are equipped
     [HarmonyPatch(typeof(InventoryManager), "IsAnySwordHeartEquiped")]
-    public class InventorySwordHeart_Patch
+    class InventorySwordHeart_Patch
     {
         public static bool Prefix(ref bool __result)
         {
@@ -159,7 +159,7 @@ namespace Blasphemous.Randomizer
 
     // Insta open WotHP gate
     [HarmonyPatch(typeof(Lever), "InteractionEnd")]
-    public class Lever_Patch
+    class Lever_Patch
     {
         public static void Postfix()
         {
@@ -184,7 +184,7 @@ namespace Blasphemous.Randomizer
 
     // Prevent dash unless the item is owned
     [HarmonyPatch(typeof(Rewired.Player), "GetButton", typeof(int))]
-    public class RewiredButton_Patch
+    class RewiredButton_Patch
     {
         public static bool Prefix(int actionId)
         {
@@ -192,7 +192,7 @@ namespace Blasphemous.Randomizer
         }
     }
     [HarmonyPatch(typeof(Rewired.Player), "GetButtonDown", typeof(int))]
-    public class RewiredButtonDown_Patch
+    class RewiredButtonDown_Patch
     {
         public static bool Prefix(int actionId)
         {
@@ -200,7 +200,7 @@ namespace Blasphemous.Randomizer
         }
     }
     [HarmonyPatch(typeof(PlatformCharacterInput), "IsDashButtonHold", MethodType.Getter)]
-    public class PlatformInputDash_Patch
+    class PlatformInputDash_Patch
     {
         public static bool Prefix(ref bool __result)
         {
@@ -213,7 +213,7 @@ namespace Blasphemous.Randomizer
 
     // Prevent wall climb unless the item is owned
     [HarmonyPatch(typeof(WallJump), "EndStickCoolDown", MethodType.Getter)]
-    public class WallJump_Patch
+    class WallJump_Patch
     {
         public static bool Prefix(ref bool __result)
         {
