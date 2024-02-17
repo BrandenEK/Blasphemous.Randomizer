@@ -1,4 +1,4 @@
-﻿using Blasphemous.ModdingAPI.Items;
+﻿using Blasphemous.ModdingAPI;
 using HarmonyLib;
 using Framework.Managers;
 using Framework.Inventory;

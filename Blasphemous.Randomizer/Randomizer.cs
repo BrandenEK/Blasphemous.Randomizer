@@ -1,4 +1,5 @@
-﻿using Blasphemous.ModdingAPI;
+﻿using Blasphemous.CheatConsole;
+using Blasphemous.ModdingAPI;
 using Blasphemous.ModdingAPI.Persistence;
 using Blasphemous.Randomizer.BossRando;
 using Blasphemous.Randomizer.DoorRando;
@@ -17,7 +18,7 @@ using Tools.Level;
 using Tools.Level.Interactables;
 using Tools.Level.Actionables;
 using UnityEngine;
-using Blasphemous.ModdingAPI.Console;
+using System.IO;
 
 namespace Blasphemous.Randomizer
 {
@@ -53,8 +54,8 @@ namespace Blasphemous.Randomizer
 
         public string PersistentID => "ID_RANDOMIZER";
 
-        public bool InstalledBootsMod => IsModLoaded("Blasphemous.BootsOfPleading", out var _);
-        public bool InstalledDoubleJumpMod => IsModLoaded("Blasphemous.DoubleJump", out var _);
+        public bool InstalledBootsMod => IsModLoadedId("Blasphemous.BootsOfPleading", out var _);
+        public bool InstalledDoubleJumpMod => IsModLoadedId("Blasphemous.DoubleJump", out var _);
         public bool CanDash => !GameSettings.ShuffleDash || Core.Events.GetFlag("ITEM_Slide");
         public bool CanWallClimb => !GameSettings.ShuffleWallClimb || Core.Events.GetFlag("ITEM_WallClimb");
         public bool DashChecker { get; set; }
@@ -170,8 +171,9 @@ namespace Blasphemous.Randomizer
             if (itemShuffler.ValidSeed)
             {
                 // Generate spoiler on new game
+                string path = $"{FileHandler.OutputFolder}spoiler{PersistentManager.GetAutomaticSlot() + 1}.txt";
                 string spoiler = itemShuffler.GetSpoiler();
-                FileHandler.WriteToFile($"spoiler{PersistentManager.GetAutomaticSlot() + 1}.txt", spoiler);
+                File.WriteAllText(path, spoiler);
             }
             watch.Stop();
             Log("Time to fill seed: " + watch.ElapsedMilliseconds + " ms");

@@ -1,5 +1,5 @@
-﻿using Blasphemous.ModdingAPI.Input;
-using Blasphemous.ModdingAPI.Items;
+﻿using Blasphemous.ModdingAPI;
+using Blasphemous.ModdingAPI.Input;
 using Framework.Managers;
 using Gameplay.UI.Others.MenuLogic;
 using Gameplay.UI.Others;

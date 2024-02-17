@@ -1,4 +1,4 @@
-﻿using Blasphemous.ModdingAPI.Console;
+﻿using Blasphemous.CheatConsole;
 using Framework.Managers;
 using System;
 using System.Collections.Generic;

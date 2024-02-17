@@ -8,17 +8,20 @@
     <Product>Randomizer</Product>
     <Authors>Damocles</Authors>
     <Company>Damocles</Company>
-    <Description>An item, enemy, and door randomizer for the game Blasphemous</Description>
+    <Description>An item, enemy, and door randomizer</Description>
     <Version>2.0.11</Version>
 
     <TargetName>BlasphemousRandomizer</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <RepositoryUrl>https://github.com/BrandenEK/Blasphemous-Randomizer</RepositoryUrl>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>bin\Release\$(TargetName).xml</DocumentationFile>
+    <RepositoryUrl>https://github.com/BrandenEK/Blasphemous.Randomizer</RepositoryUrl>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blasphemous.ModdingAPI" Version="2.0.1" />
+    <PackageReference Include="Blasphemous.CheatConsole" Version="1.0.0" />
+    <PackageReference Include="Blasphemous.ModdingAPI" Version="2.1.0" />
     <PackageReference Include="Blasphemous.ModdingReferences" Version="4.0.67" />
     <PackageReference Include="LogicParser" Version="1.1.0" />
   </ItemGroup>
