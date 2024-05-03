@@ -1521,7 +1521,7 @@
 		"Name": "Upper eastern shaft ledge",
 		"Hint": "* resides in the Rooftops",
 		"Room": "D06Z01S15",
-		"Logic": "D06Z01S15[SW] && wallClimb && (canCrossGap10 || canClimbOnRoot && (blood || doubleJump && canAirStall))"
+		"Logic": "D06Z01S15[SW] && wallClimb && (canCrossGap10 || canClimbOnRoot && (blood || (preciseSkipsAllowed || doubleJump) && canAirStall))"
 	},
 	{
 		"Id": "HE04",
