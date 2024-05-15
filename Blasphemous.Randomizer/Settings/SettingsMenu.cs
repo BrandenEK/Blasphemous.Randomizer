@@ -390,34 +390,7 @@ namespace Blasphemous.Randomizer.Settings
         private void createSettingsMenu()
         {
             /*
-            // Create unique seed images
-            RectTransform uniqueHolder = getNewRect("Img Holder", rect);
-            uniqueHolder.sizeDelta = new Vector2(100, 32);
-            uniqueHolder.pivot = Vector2.one;
-            uniqueHolder.anchoredPosition = new Vector2(320, 180);
-
-            uniqueImages = new Image[UNIQUE_ID_SIZE];
-            for (int i = 0; i < uniqueImages.Length; i++)
-            {
-                RectTransform image = getNewImage("Img" + i, uniqueHolder, 32);
-                image.pivot = new Vector2(1, 0.5f);
-                image.anchorMin = new Vector2(1, 0.5f);
-                image.anchorMax = new Vector2(1, 0.5f);
-                image.anchoredPosition = new Vector2(-5 + i * -30, 0);
-                uniqueImages[i] = image.GetComponent<Image>();
-            }
-
-            // Create main section
-            int width = 630, height = 260;
-            RectTransform mainSection = getNewRect("Main Section", settingsMenu.transform);
-            mainSection.pivot = new Vector2(0.5f, 0);
-            mainSection.anchorMin = new Vector2(0.5f, 0);
-            mainSection.anchorMax = new Vector2(0.5f, 0);
-            mainSection.sizeDelta = new Vector2(width, height);
-            mainSection.anchoredPosition = new Vector2(0, 185);
-
             // Set up section buttons
-            buttons = new SettingsElement[NUMBER_OF_OPTIONS];
             int top = height / 2 - 5;
             int left = -60;
 

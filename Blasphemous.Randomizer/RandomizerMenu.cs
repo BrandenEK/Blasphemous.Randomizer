@@ -113,6 +113,15 @@ public class RandomizerMenu : ModMenu
     {
         // Create unique seed images
         CreateUniqueSeed(ui);
+
+        // Create option creators
+        TextCreator textCreator = new(this)
+        {
+            TextSize = 50,
+            LineSize = 200
+        };
+
+        _seedText = textCreator.CreateOption("seed", ui, new Vector2(-20, 300), "Seed:", true, false, 8);
     }
 
     private void CreateUniqueSeed(Transform parent)
