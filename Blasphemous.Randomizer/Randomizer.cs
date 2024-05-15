@@ -1,4 +1,5 @@
 ﻿using Blasphemous.CheatConsole;
+using Blasphemous.Framework.Menus;
 using Blasphemous.ModdingAPI;
 using Blasphemous.ModdingAPI.Persistence;
 using Blasphemous.Randomizer.BossRando;
@@ -18,7 +19,6 @@ using Tools.Level.Interactables;
 using Tools.Level.Actionables;
 using UnityEngine;
 using System.IO;
-using Blasphemous.Framework.Menus;
 
 namespace Blasphemous.Randomizer
 {
