@@ -7,7 +7,6 @@ using Blasphemous.Randomizer.EnemyRando;
 using Blasphemous.Randomizer.HintRando;
 using Blasphemous.Randomizer.ItemRando;
 using Blasphemous.Randomizer.Map;
-using Blasphemous.Randomizer.Settings;
 using Framework.Managers;
 using Framework.Audio;
 using Gameplay.UI;
