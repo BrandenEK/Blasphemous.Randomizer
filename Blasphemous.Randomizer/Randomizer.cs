@@ -53,6 +53,7 @@ namespace Blasphemous.Randomizer
 
         public DataStorage data { get; private set; }
         public MapCollectionStatus MapCollection { get; private set; }
+        public RandomizerMenu ModMenu { get; private set; }
 
         public string PersistentID => "ID_RANDOMIZER";
 
@@ -90,12 +91,13 @@ namespace Blasphemous.Randomizer
             // Set up data
             GameSettings = new Config();
             MapCollection = new MapCollectionStatus();
+            ModMenu = new RandomizerMenu();
         }
 
         protected override void OnRegisterServices(ModServiceProvider provider)
         {
             provider.RegisterCommand(new RandomizerCommand());
-            provider.RegisterNewGameMenu(new RandomizerMenu());
+            provider.RegisterNewGameMenu(ModMenu);
         }
 
         public SaveData SaveGame()
