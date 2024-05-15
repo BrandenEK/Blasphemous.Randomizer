@@ -19,6 +19,7 @@ using Tools.Level.Interactables;
 using Tools.Level.Actionables;
 using UnityEngine;
 using System.IO;
+using Blasphemous.Framework.Menus;
 
 namespace Blasphemous.Randomizer
 {
@@ -97,6 +98,7 @@ namespace Blasphemous.Randomizer
         protected override void OnRegisterServices(ModServiceProvider provider)
         {
             provider.RegisterCommand(new RandomizerCommand());
+            provider.RegisterNewGameMenu(new RandomizerMenu());
         }
 
         public SaveData SaveGame()

@@ -26,6 +26,12 @@
     <PackageReference Include="LogicParser" Version="1.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="MenuFramework">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Blasphemous\Modding\plugins\MenuFramework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
   <Target Name="Development" AfterTargets="PostBuildEvent">
 
     <!-- Get resource files -->
