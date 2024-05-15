@@ -108,8 +108,9 @@ namespace Blasphemous.Randomizer.ItemRando
         public void showItemPopUp(Item item)
         {
             RewardInfo info = item.getRewardInfo(false);
-            RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
-            UIController.instance.ShowPopupAchievement(achievement);
+            UIController.instance.ShowObjectPopUp(UIController.PopupItemAction.GetObejct, info.name, info.sprite, InventoryManager.ItemType.Quest);
+            //RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
+            //UIController.instance.ShowPopupAchievement(achievement);
         }
 
         // Shuffle the items - called when loading a game
