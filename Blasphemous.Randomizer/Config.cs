@@ -40,9 +40,79 @@ namespace Blasphemous.Randomizer
         public int DoorShuffleType { get; set; } = 0;
 
         /// <summary>
-        /// Gets a random seed within the valid range
+        /// A unique int64 based on seed and all important options
         /// </summary>
-        public static int RandomSeed => new System.Random().Next(1, MAX_SEED + 1);
-        private const int MAX_SEED = 99_999_999;
+        public long UniqueSeed
+        {
+            get
+            {
+                long uniqueSeed = 0;
+
+                if ((Seed & (1 << 0)) == 0) SetBit(8);
+                if ((Seed & (1 << 1)) == 0) SetBit(19);
+                if ((Seed & (1 << 2)) > 0) SetBit(11);
+                if ((Seed & (1 << 3)) > 0) SetBit(23);
+                if ((Seed & (1 << 4)) == 0) SetBit(41);
+                if ((Seed & (1 << 5)) > 0) SetBit(38);
+                if ((Seed & (1 << 6)) > 0) SetBit(16);
+                if ((Seed & (1 << 7)) > 0) SetBit(29);
+                if ((Seed & (1 << 8)) > 0) SetBit(32);
+                if ((Seed & (1 << 9)) > 0) SetBit(36);
+                if ((Seed & (1 << 10)) > 0) SetBit(18);
+                if ((Seed & (1 << 11)) > 0) SetBit(12);
+                if ((Seed & (1 << 12)) == 0) SetBit(3);
+                if ((Seed & (1 << 13)) == 0) SetBit(45);
+                if ((Seed & (1 << 14)) == 0) SetBit(42);
+                if ((Seed & (1 << 15)) == 0) SetBit(28);
+                if ((Seed & (1 << 16)) > 0) SetBit(13);
+                if ((Seed & (1 << 17)) > 0) SetBit(35);
+                if ((Seed & (1 << 18)) == 0) SetBit(20);
+                if ((Seed & (1 << 19)) == 0) SetBit(31);
+                if ((Seed & (1 << 20)) > 0) SetBit(10);
+                if ((Seed & (1 << 21)) == 0) SetBit(6);
+                if ((Seed & (1 << 22)) > 0) SetBit(24);
+                if ((Seed & (1 << 23)) > 0) SetBit(0);
+                if ((Seed & (1 << 24)) == 0) SetBit(5);
+                if ((Seed & (1 << 25)) > 0) SetBit(1);
+                if ((Seed & (1 << 26)) > 0) SetBit(22);
+
+                if ((LogicDifficulty & 1) == 0) SetBit(4);
+                if ((LogicDifficulty & 2) > 0) SetBit(30);
+                if ((StartingLocation & 1) > 0) SetBit(9);
+                if ((StartingLocation & 2) > 0) SetBit(39);
+                if ((StartingLocation & 4) == 0) SetBit(33);
+                if ((StartingLocation & 8) == 0) SetBit(25);
+
+                if (ShuffleReliquaries) SetBit(7);
+                if (ShuffleDash) SetBit(37);
+                if (!ShuffleWallClimb) SetBit(27);
+                if (ShuffleBootsOfPleading) SetBit(15);
+                if (!ShufflePurifiedHand) SetBit(44);
+
+                if (!ShuffleSwordSkills) SetBit(2);
+                if (!ShuffleThorns) SetBit(21);
+                if (JunkLongQuests) SetBit(14);
+                if (!StartWithWheel) SetBit(40);
+
+
+                if ((BossShuffleType & 1) == 0) SetBit(17);
+                if ((BossShuffleType & 2) > 0) SetBit(43);
+                if ((DoorShuffleType & 1) > 0) SetBit(26);
+                if ((DoorShuffleType & 2) == 0) SetBit(34);
+
+                return uniqueSeed;
+
+                void SetBit(byte digit)
+                {
+                    uniqueSeed |= ((long)1) << digit;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets a random Seed within the valid range
+        /// </summary>
+        public static int RandomSeed => new System.Random().Next(1, MAX_Seed + 1);
+        private const int MAX_Seed = 99_999_999;
     }
 }

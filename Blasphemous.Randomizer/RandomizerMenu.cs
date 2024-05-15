@@ -153,8 +153,7 @@ public class RandomizerMenu : ModMenu
     private void RefreshUniqueSeed()
     {
         // Get final seed based on seed & options
-        Config config = MenuSettings;
-        long finalSeed = Main.Randomizer.ComputeFinalSeed(config.Seed, config);
+        long finalSeed = MenuSettings.UniqueSeed;
 
         // Fill images based on unique seed
         try
