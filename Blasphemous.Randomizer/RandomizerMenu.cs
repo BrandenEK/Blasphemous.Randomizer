@@ -18,34 +18,109 @@ public class RandomizerMenu : ModMenu
     private ToggleOption _teleportation;
     private ToggleOption _hints;
     private ToggleOption _penitence;
-
+    private ArrowOption _doorShuffle;
+    private ArrowOption _enemyShuffle;
+    private ToggleOption _maintainClass;
+    private ToggleOption _areaScaling;
     private ToggleOption _reliquaries;
     private ToggleOption _dash;
     private ToggleOption _wallClimb;
     private ToggleOption _boots;
     private ToggleOption _purifiedHand;
-
     private ToggleOption _swordSkills;
     private ToggleOption _thorns;
     private ToggleOption _junkQuests;
     private ToggleOption _wheel;
-
-    private ArrowOption _doorShuffle;
-    private ArrowOption _enemyShuffle;
-    private ToggleOption _maintainClass;
-    private ToggleOption _areaScaling;
-
     private TextOption _seedText;
 
     private Image[] _uniqueImages;
 
-    public override void OnShow()
+    private int _generatedSeed;
+
+    /// <summary>
+    /// Gets or sets the current status of the menu options
+    /// </summary>
+    public Config MenuSettings
     {
-        RefreshUniqueSeed();
+        get
+        {
+            return new Config()
+            {
+                LogicDifficulty = _logicDifficulty.CurrentOption,
+                StartingLocation = _startingLocation.CurrentOption,
+                UnlockTeleportation = _teleportation.Toggled,
+                AllowHints = _hints.Toggled,
+                AllowPenitence = _penitence.Toggled,
+
+                DoorShuffleType = _doorShuffle.CurrentOption,
+                BossShuffleType = 0,
+                EnemyShuffleType = _enemyShuffle.CurrentOption,
+                MaintainClass = _maintainClass.Toggled,
+                AreaScaling = _areaScaling.Toggled,
+
+                ShuffleReliquaries = _reliquaries.Toggled,
+                ShuffleDash = _dash.Toggled,
+                ShuffleWallClimb = _wallClimb.Toggled,
+                ShuffleBootsOfPleading = _boots.Toggled,
+                ShufflePurifiedHand = _purifiedHand.Toggled,
+
+                ShuffleSwordSkills = _swordSkills.Toggled,
+                ShuffleThorns = _thorns.Toggled,
+                JunkLongQuests = _junkQuests.Toggled,
+                StartWithWheel = _wheel.Toggled,
+                
+                CustomSeed = _seedText.CurrentValue != string.Empty ? _seedText.CurrentNumericValue : _generatedSeed
+            };
+        }
+        set
+        {
+            _logicDifficulty.CurrentOption = value.LogicDifficulty;
+            _startingLocation.CurrentOption = value.StartingLocation;
+            _teleportation.Toggled = value.UnlockTeleportation;
+            _hints.Toggled = value.AllowHints;
+            _penitence.Toggled = value.AllowPenitence;
+
+            _doorShuffle.CurrentOption = value.DoorShuffleType;
+            _enemyShuffle.CurrentOption = value.EnemyShuffleType;
+            _maintainClass.Toggled = value.MaintainClass;
+            _areaScaling.Toggled = value.AreaScaling;
+
+            _reliquaries.Toggled = value.ShuffleReliquaries;
+            _dash.Toggled = value.ShuffleDash;
+            _wallClimb.Toggled = value.ShuffleWallClimb;
+            _boots.Toggled = value.ShuffleBootsOfPleading;
+            _purifiedHand.Toggled = value.ShufflePurifiedHand;
+
+            _swordSkills.Toggled = value.ShuffleSwordSkills;
+            _thorns.Toggled = value.ShuffleThorns;
+            _junkQuests.Toggled = value.JunkLongQuests;
+            _wheel.Toggled = value.StartWithWheel;
+
+            _seedText.CurrentValue = value.CustomSeed > 0 ? value.CustomSeed.ToString() : string.Empty;
+            OnOptionsChanged();
+        }
+    }
+
+    public override void OnStart()
+    {
+        _generatedSeed = new System.Random().Next(1, Randomizer.MAX_SEED);
+        Main.Randomizer.Log($"Generating default seed: {_generatedSeed}");
+
+        MenuSettings = new Config();
     }
 
     public override void OnOptionsChanged()
     {
+        int doorType = _doorShuffle.CurrentOption;
+        int startLocation = _startingLocation.CurrentOption;
+
+        _boots.Enabled = Main.Randomizer.InstalledBootsMod;
+        _purifiedHand.Enabled = Main.Randomizer.InstalledDoubleJumpMod;
+        _maintainClass.Enabled = _enemyShuffle.CurrentOption > 0;
+        _areaScaling.Enabled = _enemyShuffle.CurrentOption > 0;
+        _dash.Enabled = doorType > 1 || startLocation != Randomizer.BROTHERHOOD_LOCATION && startLocation != Randomizer.SHIPYARD_LOCATION;
+        _wallClimb.Enabled = doorType > 1 || startLocation != Randomizer.DEPTHS_LOCATION;
+
         RefreshUniqueSeed();
     }
 
@@ -53,7 +128,8 @@ public class RandomizerMenu : ModMenu
     {
         // Get final seed based on seed & options
         //long finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != string.Empty ? int.Parse(currentSeed) : generatedSeed, getConfigSettings());
-        long finalSeed = Main.Randomizer.ComputeFinalSeed(555, new Config());
+        Config config = MenuSettings;
+        long finalSeed = Main.Randomizer.ComputeFinalSeed(config.CustomSeed, config);
 
         // Fill images based on unique seed
         try

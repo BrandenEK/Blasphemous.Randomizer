@@ -71,320 +71,320 @@ namespace Blasphemous.Randomizer.Settings
 
         private SettingsTextbox SeedText { get { return buttons[24] as SettingsTextbox; } set { buttons[24] = value; } }
 
-        public void onLoad(string scene)
-        {
-            // Close menu if its open
-            if (settingsMenu != null && settingsMenu.activeSelf)
-                settingsMenu.SetActive(false);
-        }
+        //public void onLoad(string scene)
+        //{
+        //    // Close menu if its open
+        //    if (settingsMenu != null && settingsMenu.activeSelf)
+        //        settingsMenu.SetActive(false);
+        //}
 
-        public void update()
-        {
-            if (waiting)
-            {
-                waiting = false;
-                return;
-            }
-            if (settingsMenu == null || !menuActive)
-                return;
+        //public void update()
+        //{
+        //    if (waiting)
+        //    {
+        //        waiting = false;
+        //        return;
+        //    }
+        //    if (settingsMenu == null || !menuActive)
+        //        return;
 
-            // Find what box the mouse is currently over
-            SettingsElement currBox = null;
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                if (pointInsideRect(buttons[i].transform as RectTransform, Input.mousePosition)) // Only check if the mouse has moved
-                {
-                    currBox = buttons[i];
-                    break;
-                }
-            }
+        //    // Find what box the mouse is currently over
+        //    SettingsElement currBox = null;
+        //    for (int i = 0; i < buttons.Length; i++)
+        //    {
+        //        if (pointInsideRect(buttons[i].transform as RectTransform, Input.mousePosition)) // Only check if the mouse has moved
+        //        {
+        //            currBox = buttons[i];
+        //            break;
+        //        }
+        //    }
 
-            // Change description text
-            if (currBox != null)
-            {
-                descriptionText.text = currBox.Description;
-            }
-            else
-            {
-                descriptionText.text = string.Empty;
-            }
+        //    // Change description text
+        //    if (currBox != null)
+        //    {
+        //        descriptionText.text = currBox.Description;
+        //    }
+        //    else
+        //    {
+        //        descriptionText.text = string.Empty;
+        //    }
 
-            // Check if a button was clicked
-            if (Input.GetMouseButtonDown(0))
-            {
-                SeedText.Selected = currBox == SeedText;
-                if (SeedText.Selected || currentSeed != string.Empty)
-                    SeedText.TextContent = currentSeed;
-                else
-                    SeedText.TextContent = generatedSeed.ToString();
+        //    // Check if a button was clicked
+        //    if (Input.GetMouseButtonDown(0))
+        //    {
+        //        SeedText.Selected = currBox == SeedText;
+        //        if (SeedText.Selected || currentSeed != string.Empty)
+        //            SeedText.TextContent = currentSeed;
+        //        else
+        //            SeedText.TextContent = generatedSeed.ToString();
 
-                if (currBox != null)
-                {
-                    currBox.onClick();
-                    UpdateUniqueId();
-                }
-            }
+        //        if (currBox != null)
+        //        {
+        //            currBox.onClick();
+        //            UpdateUniqueId();
+        //        }
+        //    }
 
-            // Debug testing ui positions
-            if (debugRect != null)
-            {
-                Vector2 movement = new Vector2();
-                if (Input.GetKeyDown(KeyCode.LeftArrow)) movement.x -= 1;
-                if (Input.GetKeyDown(KeyCode.RightArrow)) movement.x += 1;
-                if (Input.GetKeyDown(KeyCode.DownArrow)) movement.y -= 1;
-                if (Input.GetKeyDown(KeyCode.UpArrow)) movement.y += 1;
+        //    // Debug testing ui positions
+        //    if (debugRect != null)
+        //    {
+        //        Vector2 movement = new Vector2();
+        //        if (Input.GetKeyDown(KeyCode.LeftArrow)) movement.x -= 1;
+        //        if (Input.GetKeyDown(KeyCode.RightArrow)) movement.x += 1;
+        //        if (Input.GetKeyDown(KeyCode.DownArrow)) movement.y -= 1;
+        //        if (Input.GetKeyDown(KeyCode.UpArrow)) movement.y += 1;
                 
-                if (movement != Vector2.zero)
-                {
-                    if (Input.GetKey(KeyCode.LeftControl))
-                        movement *= 5;
-                    debugRect.anchoredPosition += movement;
-                    Main.Randomizer.LogWarning("Moving rect to " + debugRect.anchoredPosition);
-                }
-            }
+        //        if (movement != Vector2.zero)
+        //        {
+        //            if (Input.GetKey(KeyCode.LeftControl))
+        //                movement *= 5;
+        //            debugRect.anchoredPosition += movement;
+        //            Main.Randomizer.LogWarning("Moving rect to " + debugRect.anchoredPosition);
+        //        }
+        //    }
 
-            // Keyboard input
-            if (SeedText.Selected)
-            {
-                if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) processKeyInput(1);
-                else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) processKeyInput(2);
-                else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) processKeyInput(3);
-                else if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4)) processKeyInput(4);
-                else if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5)) processKeyInput(5);
-                else if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6)) processKeyInput(6);
-                else if (Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Keypad7)) processKeyInput(7);
-                else if (Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Keypad8)) processKeyInput(8);
-                else if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Keypad9)) processKeyInput(9);
-                else if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0)) processKeyInput(0);
-                else if (Input.GetKeyDown(KeyCode.Backspace)) processKeyInput(-1);
-            }
+        //    // Keyboard input
+        //    if (SeedText.Selected)
+        //    {
+        //        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) processKeyInput(1);
+        //        else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) processKeyInput(2);
+        //        else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) processKeyInput(3);
+        //        else if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4)) processKeyInput(4);
+        //        else if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5)) processKeyInput(5);
+        //        else if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6)) processKeyInput(6);
+        //        else if (Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Keypad7)) processKeyInput(7);
+        //        else if (Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Keypad8)) processKeyInput(8);
+        //        else if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Keypad9)) processKeyInput(9);
+        //        else if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0)) processKeyInput(0);
+        //        else if (Input.GetKeyDown(KeyCode.Backspace)) processKeyInput(-1);
+        //    }
 
-            // Game input
-            if (Main.Randomizer.InputHandler.GetButtonDown(ButtonCode.UISubmit))
-                beginGame();
-            else if (Main.Randomizer.InputHandler.GetButtonDown(ButtonCode.UICancel))
-                closeMenu();
-        }
+        //    // Game input
+        //    if (Main.Randomizer.InputHandler.GetButtonDown(ButtonCode.UISubmit))
+        //        beginGame();
+        //    else if (Main.Randomizer.InputHandler.GetButtonDown(ButtonCode.UICancel))
+        //        closeMenu();
+        //}
 
-        private void processKeyInput(int num)
-        {
-            // Pressed backspace - delete last character
-            if (num < 0)
-            {
-                if (currentSeed.Length > 0)
-                    currentSeed = currentSeed.Substring(0, currentSeed.Length - 1);
-            }
-            // Pressed number 1-10 - add new character
-            else if (int.TryParse(currentSeed + num.ToString(), out int newSeed) && newSeed <= Randomizer.MAX_SEED && (currentSeed.Length > 0 || num != 0))
-            {
-                currentSeed += num.ToString();
-            }
+        //private void processKeyInput(int num)
+        //{
+        //    // Pressed backspace - delete last character
+        //    if (num < 0)
+        //    {
+        //        if (currentSeed.Length > 0)
+        //            currentSeed = currentSeed.Substring(0, currentSeed.Length - 1);
+        //    }
+        //    // Pressed number 1-10 - add new character
+        //    else if (int.TryParse(currentSeed + num.ToString(), out int newSeed) && newSeed <= Randomizer.MAX_SEED && (currentSeed.Length > 0 || num != 0))
+        //    {
+        //        currentSeed += num.ToString();
+        //    }
 
-            // Update text
-            SeedText.TextContent = currentSeed;
-            Main.Randomizer.playSoundEffect(2);
+        //    // Update text
+        //    SeedText.TextContent = currentSeed;
+        //    Main.Randomizer.playSoundEffect(2);
 
-            UpdateUniqueId();
-        }
+        //    UpdateUniqueId();
+        //}
 
-        public void setConfigSettings(Config config)
-        {
-            if (settingsMenu == null)
-                return;
+        //public void setConfigSettings(Config config)
+        //{
+        //    if (settingsMenu == null)
+        //        return;
 
-            // Load config into buttons
-            LogicDifficultyLeft.CurrentOption = config.LogicDifficulty;
-            LogicDifficultyRight.CurrentOption = config.LogicDifficulty;
-            StartingLocationLeft.CurrentOption = config.StartingLocation;
-            StartingLocationRight.CurrentOption = config.StartingLocation;
-            Teleportation.Selected = config.UnlockTeleportation;
-            Hints.Selected = config.AllowHints;
-            Penitence.Selected = config.AllowPenitence;
+        //    // Load config into buttons
+        //    LogicDifficultyLeft.CurrentOption = config.LogicDifficulty;
+        //    LogicDifficultyRight.CurrentOption = config.LogicDifficulty;
+        //    StartingLocationLeft.CurrentOption = config.StartingLocation;
+        //    StartingLocationRight.CurrentOption = config.StartingLocation;
+        //    Teleportation.Selected = config.UnlockTeleportation;
+        //    Hints.Selected = config.AllowHints;
+        //    Penitence.Selected = config.AllowPenitence;
 
-            Reliquaries.Selected = config.ShuffleReliquaries;
-            Dash.Selected = config.ShuffleDash;
-            WallClimb.Selected = config.ShuffleWallClimb;
-            Boots.Selected = config.ShuffleBootsOfPleading;
-            PurifiedHand.Selected = config.ShufflePurifiedHand;
+        //    Reliquaries.Selected = config.ShuffleReliquaries;
+        //    Dash.Selected = config.ShuffleDash;
+        //    WallClimb.Selected = config.ShuffleWallClimb;
+        //    Boots.Selected = config.ShuffleBootsOfPleading;
+        //    PurifiedHand.Selected = config.ShufflePurifiedHand;
 
-            SwordSkills.Selected = config.ShuffleSwordSkills;
-            Thorns.Selected = config.ShuffleThorns;
-            JunkQuests.Selected = config.JunkLongQuests;
-            Wheel.Selected = config.StartWithWheel;
+        //    SwordSkills.Selected = config.ShuffleSwordSkills;
+        //    Thorns.Selected = config.ShuffleThorns;
+        //    JunkQuests.Selected = config.JunkLongQuests;
+        //    Wheel.Selected = config.StartWithWheel;
 
-            MaintainClass.Selected = config.MaintainClass;
-            AreaScaling.Selected = config.AreaScaling;
-            EnemiesLeft.CurrentOption = config.EnemyShuffleType;
-            EnemiesRight.CurrentOption = config.EnemyShuffleType;
+        //    MaintainClass.Selected = config.MaintainClass;
+        //    AreaScaling.Selected = config.AreaScaling;
+        //    EnemiesLeft.CurrentOption = config.EnemyShuffleType;
+        //    EnemiesRight.CurrentOption = config.EnemyShuffleType;
 
-            BossesLeft.CurrentOption = config.BossShuffleType;
-            BossesRight.CurrentOption = config.BossShuffleType;
+        //    BossesLeft.CurrentOption = config.BossShuffleType;
+        //    BossesRight.CurrentOption = config.BossShuffleType;
 
-            DoorsLeft.CurrentOption = config.DoorShuffleType;
-            DoorsRight.CurrentOption = config.DoorShuffleType;
+        //    DoorsLeft.CurrentOption = config.DoorShuffleType;
+        //    DoorsRight.CurrentOption = config.DoorShuffleType;
 
-            // Load config into seed
-            currentSeed = config.CustomSeed > 0 ? config.CustomSeed.ToString() : string.Empty;
-            SeedText.TextContent = currentSeed != string.Empty ? currentSeed : generatedSeed.ToString();
-            descriptionText.text = string.Empty;
+        //    // Load config into seed
+        //    currentSeed = config.CustomSeed > 0 ? config.CustomSeed.ToString() : string.Empty;
+        //    SeedText.TextContent = currentSeed != string.Empty ? currentSeed : generatedSeed.ToString();
+        //    descriptionText.text = string.Empty;
 
-            UpdateUniqueId();
-        }
+        //    UpdateUniqueId();
+        //}
 
-        public Config getConfigSettings()
-        {
-            Config config = new Config();
-            if (settingsMenu == null)
-                return config;
+        //public Config getConfigSettings()
+        //{
+        //    Config config = new Config();
+        //    if (settingsMenu == null)
+        //        return config;
 
-            // Load config from buttons
-            config.LogicDifficulty = LogicDifficultyLeft.CurrentOption;
-            config.StartingLocation = StartingLocationLeft.CurrentOption;
-            config.UnlockTeleportation = Teleportation.Selected;
-            config.AllowHints = Hints.Selected;
-            config.AllowPenitence = Penitence.Selected;
+        //    // Load config from buttons
+        //    config.LogicDifficulty = LogicDifficultyLeft.CurrentOption;
+        //    config.StartingLocation = StartingLocationLeft.CurrentOption;
+        //    config.UnlockTeleportation = Teleportation.Selected;
+        //    config.AllowHints = Hints.Selected;
+        //    config.AllowPenitence = Penitence.Selected;
 
-            config.ShuffleReliquaries = Reliquaries.Selected;
-            config.ShuffleDash = Dash.Selected;
-            config.ShuffleWallClimb = WallClimb.Selected;
-            config.ShuffleBootsOfPleading = Boots.Selected;
-            config.ShufflePurifiedHand = PurifiedHand.Selected;
+        //    config.ShuffleReliquaries = Reliquaries.Selected;
+        //    config.ShuffleDash = Dash.Selected;
+        //    config.ShuffleWallClimb = WallClimb.Selected;
+        //    config.ShuffleBootsOfPleading = Boots.Selected;
+        //    config.ShufflePurifiedHand = PurifiedHand.Selected;
 
-            config.ShuffleSwordSkills = SwordSkills.Selected;
-            config.ShuffleThorns = Thorns.Selected;
-            config.JunkLongQuests = JunkQuests.Selected;
-            config.StartWithWheel = Wheel.Selected;
+        //    config.ShuffleSwordSkills = SwordSkills.Selected;
+        //    config.ShuffleThorns = Thorns.Selected;
+        //    config.JunkLongQuests = JunkQuests.Selected;
+        //    config.StartWithWheel = Wheel.Selected;
 
-            config.EnemyShuffleType = EnemiesLeft.CurrentOption;
-            config.MaintainClass = MaintainClass.Selected;
-            config.AreaScaling = AreaScaling.Selected;
+        //    config.EnemyShuffleType = EnemiesLeft.CurrentOption;
+        //    config.MaintainClass = MaintainClass.Selected;
+        //    config.AreaScaling = AreaScaling.Selected;
 
-            config.BossShuffleType = BossesLeft.CurrentOption;
-            config.DoorShuffleType = DoorsLeft.CurrentOption;
+        //    config.BossShuffleType = BossesLeft.CurrentOption;
+        //    config.DoorShuffleType = DoorsLeft.CurrentOption;
 
-            // Load config from seed
-            config.CustomSeed = currentSeed != string.Empty ? int.Parse(currentSeed) : generatedSeed;
-            return config;
-        }
+        //    // Load config from seed
+        //    config.CustomSeed = currentSeed != string.Empty ? int.Parse(currentSeed) : generatedSeed;
+        //    return config;
+        //}
 
-        private void showSettingsMenu(bool value, bool changeMenuVisibility)
-        {
-            if (settingsMenu == null)
-                createSettingsMenu();
+        //private void showSettingsMenu(bool value, bool changeMenuVisibility)
+        //{
+        //    if (settingsMenu == null)
+        //        createSettingsMenu();
             
-            Main.Randomizer.Log("Showing settings menu: " + value);
-            if (changeMenuVisibility) 
-                settingsMenu.SetActive(value);
-            slotsMenu.SetActive(!value);
-            Cursor.visible = value;
-            menuActive = value;
-        }
+        //    Main.Randomizer.Log("Showing settings menu: " + value);
+        //    if (changeMenuVisibility) 
+        //        settingsMenu.SetActive(value);
+        //    slotsMenu.SetActive(!value);
+        //    Cursor.visible = value;
+        //    menuActive = value;
+        //}
 
         private void UpdateUniqueId()
         {
             // Set enabled status of various checkboxes whenever ui is updated
-            Boots.Enabled = Main.Randomizer.InstalledBootsMod;
-            PurifiedHand.Enabled = Main.Randomizer.InstalledDoubleJumpMod;
-            MaintainClass.Enabled = EnemiesLeft.CurrentOption > 0;
-            AreaScaling.Enabled = EnemiesLeft.CurrentOption > 0;
-            Dash.Enabled = DoorsLeft.CurrentOption > 1 || StartingLocationLeft.CurrentOption != Randomizer.BROTHERHOOD_LOCATION && StartingLocationLeft.CurrentOption != Randomizer.SHIPYARD_LOCATION;
-            WallClimb.Enabled = DoorsLeft.CurrentOption > 1 || StartingLocationLeft.CurrentOption != Randomizer.DEPTHS_LOCATION;
+            //Boots.Enabled = Main.Randomizer.InstalledBootsMod;
+            //PurifiedHand.Enabled = Main.Randomizer.InstalledDoubleJumpMod;
+            //MaintainClass.Enabled = EnemiesLeft.CurrentOption > 0;
+            //AreaScaling.Enabled = EnemiesLeft.CurrentOption > 0;
+            //Dash.Enabled = DoorsLeft.CurrentOption > 1 || StartingLocationLeft.CurrentOption != Randomizer.BROTHERHOOD_LOCATION && StartingLocationLeft.CurrentOption != Randomizer.SHIPYARD_LOCATION;
+            //WallClimb.Enabled = DoorsLeft.CurrentOption > 1 || StartingLocationLeft.CurrentOption != Randomizer.DEPTHS_LOCATION;
 
-            // Get final seed based on seed & options
-            long finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != string.Empty ? int.Parse(currentSeed) : generatedSeed, getConfigSettings());
+            //// Get final seed based on seed & options
+            //long finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != string.Empty ? int.Parse(currentSeed) : generatedSeed, getConfigSettings());
 
-            // Fill images based on unique seed
-            try
-            {
-                FillImages(finalSeed);
-            }
-            catch (System.Exception)
-            {
-                Main.Randomizer.LogError("Failed to generate image layout for unique seed " + finalSeed);
-                for (int i = 0; i < uniqueImages.Length; i++)
-                    uniqueImages[i].sprite = GetIcon(0);
-            }
+            //// Fill images based on unique seed
+            //try
+            //{
+            //    FillImages(finalSeed);
+            //}
+            //catch (System.Exception)
+            //{
+            //    Main.Randomizer.LogError("Failed to generate image layout for unique seed " + finalSeed);
+            //    for (int i = 0; i < uniqueImages.Length; i++)
+            //        uniqueImages[i].sprite = GetIcon(0);
+            //}
 
-            void FillImages(long seed)
-            {
-                int numDigits = uniqueSeedIcons.Length, currDigit = 0;
-                do
-                {
-                    int imgIdx = (int)(seed % numDigits);
-                    seed /= numDigits;
+            //void FillImages(long seed)
+            //{
+            //    int numDigits = uniqueSeedIcons.Length, currDigit = 0;
+            //    do
+            //    {
+            //        int imgIdx = (int)(seed % numDigits);
+            //        seed /= numDigits;
 
-                    SetDigitImage(currDigit, GetIcon(imgIdx));
-                    currDigit++;
-                }
-                while (seed > 0);
-                for ( ; currDigit < uniqueImages.Length; currDigit++)
-                    SetDigitImage(currDigit, GetIcon(0));
-            }
+            //        SetDigitImage(currDigit, GetIcon(imgIdx));
+            //        currDigit++;
+            //    }
+            //    while (seed > 0);
+            //    for ( ; currDigit < uniqueImages.Length; currDigit++)
+            //        SetDigitImage(currDigit, GetIcon(0));
+            //}
 
-            Sprite GetIcon(int index)
-            {
-                string itemId = uniqueSeedIcons[index];
-                InventoryManager.ItemType itemType = ItemModder.GetItemTypeFromId(itemId);
-                return Core.InventoryManager.GetBaseObject(itemId, itemType).picture;
-            }
+            //Sprite GetIcon(int index)
+            //{
+            //    string itemId = uniqueSeedIcons[index];
+            //    InventoryManager.ItemType itemType = ItemModder.GetItemTypeFromId(itemId);
+            //    return Core.InventoryManager.GetBaseObject(itemId, itemType).picture;
+            //}
 
-            void SetDigitImage(int digit, Sprite image) // Need to update this when adding more images
-            {
-                int realIdx = -1;
-                if (digit == 0) realIdx = 1;
-                else if (digit == 1) realIdx = 5;
-                else if (digit == 2) realIdx = 0;
-                else if (digit == 3) realIdx = 3;
-                else if (digit == 4) realIdx = 6;
-                else if (digit == 5) realIdx = 4;
-                else if (digit == 6) realIdx = 2;
+            //void SetDigitImage(int digit, Sprite image) // Need to update this when adding more images
+            //{
+            //    int realIdx = -1;
+            //    if (digit == 0) realIdx = 1;
+            //    else if (digit == 1) realIdx = 5;
+            //    else if (digit == 2) realIdx = 0;
+            //    else if (digit == 3) realIdx = 3;
+            //    else if (digit == 4) realIdx = 6;
+            //    else if (digit == 5) realIdx = 4;
+            //    else if (digit == 6) realIdx = 2;
 
-                if (realIdx < 0)
-                {
-                    Main.Randomizer.LogError("Error: Too many digits in unique seed!");
-                    return;
-                }
-                uniqueImages[realIdx].sprite = image;
-            }
+            //    if (realIdx < 0)
+            //    {
+            //        Main.Randomizer.LogError("Error: Too many digits in unique seed!");
+            //        return;
+            //    }
+            //    uniqueImages[realIdx].sprite = image;
+            //}
         }
 
-        public void beginGame()
-        {
-            if (!menuActive || waiting) return;
+        //public void beginGame()
+        //{
+        //    if (!menuActive || waiting) return;
 
-            Main.Randomizer.playSoundEffect(0);
-            showSettingsMenu(false, false);
-            waiting = true;
-            Object.FindObjectOfType<SelectSaveSlots>().OnAcceptSlots(999 + currentSlot);
-        }
+        //    Main.Randomizer.playSoundEffect(0);
+        //    showSettingsMenu(false, false);
+        //    waiting = true;
+        //    Object.FindObjectOfType<SelectSaveSlots>().OnAcceptSlots(999 + currentSlot);
+        //}
 
-        public void openMenu(int slot)
-        {
-            if (menuActive || waiting) return;
+        //public void openMenu(int slot)
+        //{
+        //    if (menuActive || waiting) return;
 
-            currentSlot = slot;
-            waiting = true;
-            generatedSeed = new System.Random().Next(1, Randomizer.MAX_SEED);
-            Main.Randomizer.Log("Generating default seed: " + generatedSeed);
-            showSettingsMenu(true, true);
-            setConfigSettings(new Config());
-        }
+        //    currentSlot = slot;
+        //    waiting = true;
+        //    generatedSeed = new System.Random().Next(1, Randomizer.MAX_SEED);
+        //    Main.Randomizer.Log("Generating default seed: " + generatedSeed);
+        //    showSettingsMenu(true, true);
+        //    setConfigSettings(new Config());
+        //}
 
-        public void closeMenu()
-        {
-            if (!menuActive || waiting) return;
+        //public void closeMenu()
+        //{
+        //    if (!menuActive || waiting) return;
 
-            Main.Randomizer.playSoundEffect(1);
-            showSettingsMenu(false, true);
-        }
+        //    Main.Randomizer.playSoundEffect(1);
+        //    showSettingsMenu(false, true);
+        //}
 
-        private bool pointInsideRect(RectTransform rect, Vector2 point)
-        {
-            Vector2 position = camera.WorldToScreenPoint(rect.position);
-            position = new Vector2(position.x * scaling.x, position.y * scaling.y + scaling.z);
-            Vector2 size = new Vector2(rect.rect.width * scaling.x / 2, rect.rect.height * scaling.y / 2);
+        //private bool pointInsideRect(RectTransform rect, Vector2 point)
+        //{
+        //    Vector2 position = camera.WorldToScreenPoint(rect.position);
+        //    position = new Vector2(position.x * scaling.x, position.y * scaling.y + scaling.z);
+        //    Vector2 size = new Vector2(rect.rect.width * scaling.x / 2, rect.rect.height * scaling.y / 2);
 
-            return point.x >= position.x - size.x && point.x <= position.x + size.x && point.y >= position.y - size.y && point.y <= position.y + size.y;
-        }
+        //    return point.x >= position.x - size.x && point.x <= position.x + size.x && point.y >= position.y - size.y && point.y <= position.y + size.y;
+        //}
     }
 }
