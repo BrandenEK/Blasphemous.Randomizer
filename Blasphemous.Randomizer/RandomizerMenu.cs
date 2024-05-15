@@ -138,18 +138,71 @@ public class RandomizerMenu : ModMenu
 
         // Create options
         _seedText = text.CreateOption("seed", ui, new Vector2(-20, 300), "Localize", true, false, 8);
+        string[] standardOptions = new string[] { "distyp", "simtyp", "fultyp" }.Select(Main.Randomizer.LocalizationHandler.Localize).ToArray();
+
+        // Section 1
 
         string logicName = Main.Randomizer.LocalizationHandler.Localize("lgname") + ":";
         string[] logicOptions = Enumerable.Range(1, 3).Select(x => Main.Randomizer.LocalizationHandler.Localize($"lgtyp{x}")).ToArray();
-        _logicDifficulty = arrow.CreateOption("Logic difficulty", section1, Vector2.zero, logicName, logicOptions);
+        _logicDifficulty = arrow.CreateOption("Logic difficulty", section1, new Vector2(0, 200), logicName, logicOptions);
 
         string startName = Main.Randomizer.LocalizationHandler.Localize("loname") + ":";
         string[] startOptions = Enumerable.Range(1, 8).Select(x => Main.Randomizer.LocalizationHandler.Localize($"lotyp{x}")).ToArray();
-        _startingLocation = arrow.CreateOption("Starting location", section1, new Vector2(0, -100), startName, startOptions);
+        _startingLocation = arrow.CreateOption("Starting location", section1, new Vector2(0, 100), startName, startOptions);
 
-        _teleportation = toggle.CreateOption("Teleportation", section1, new Vector2(0, -200), Main.Randomizer.LocalizationHandler.Localize("tpname"));
-        _hints = toggle.CreateOption("Hints", section1, new Vector2(0, -300), Main.Randomizer.LocalizationHandler.Localize("htname"));
-        _penitence= toggle.CreateOption("Penitence", section1, new Vector2(0, -400), Main.Randomizer.LocalizationHandler.Localize("pename"));
+        string teleportName = Main.Randomizer.LocalizationHandler.Localize("tpname");
+        _teleportation = toggle.CreateOption("Teleportation", section1, new Vector2(0, 0), teleportName);
+
+        string hintName = Main.Randomizer.LocalizationHandler.Localize("htname");
+        _hints = toggle.CreateOption("Hints", section1, new Vector2(0, -100), hintName);
+
+        string penitenceName = Main.Randomizer.LocalizationHandler.Localize("pename");
+        _penitence = toggle.CreateOption("Penitence", section1, new Vector2(0, -200), penitenceName);
+
+        // Section 2
+
+        string doorName = Main.Randomizer.LocalizationHandler.Localize("drname") + ":";
+        _doorShuffle = arrow.CreateOption("Door shuffle", section2, new Vector2(0, 200), doorName, standardOptions);
+
+        string enemyName = Main.Randomizer.LocalizationHandler.Localize("enname") + ":";
+        _enemyShuffle = arrow.CreateOption("Enemy shuffle", section2, new Vector2(0, 100), enemyName, standardOptions);
+
+        string className = Main.Randomizer.LocalizationHandler.Localize("clname");
+        _maintainClass = toggle.CreateOption("Maintain class", section2, new Vector2(0, 0), className);
+
+        string scalingName = Main.Randomizer.LocalizationHandler.Localize("scname");
+        _areaScaling = toggle.CreateOption("Area scaling", section2, new Vector2(0, -100), scalingName);
+
+        // Section 3
+
+        string reliqName = Main.Randomizer.LocalizationHandler.Localize("rqname");
+        _reliquaries = toggle.CreateOption("Reliquaries", section3, new Vector2(0, 200), reliqName);
+
+        string dashName = Main.Randomizer.LocalizationHandler.Localize("dsname");
+        _dash = toggle.CreateOption("Dash", section3, new Vector2(0, 100), dashName);
+
+        string wallClimbName = Main.Randomizer.LocalizationHandler.Localize("wcname");
+        _wallClimb = toggle.CreateOption("Wall climb", section3, new Vector2(0, 0), wallClimbName);
+
+        string bootsName = Main.Randomizer.LocalizationHandler.Localize("sbname");
+        _boots = toggle.CreateOption("Boots", section3, new Vector2(0, -100), bootsName);
+
+        string doubleJumpName = Main.Randomizer.LocalizationHandler.Localize("djname");
+        _purifiedHand = toggle.CreateOption("Double jump", section3, new Vector2(0, -200), doubleJumpName);
+
+        // Section 4
+
+        string swordSkillsName = Main.Randomizer.LocalizationHandler.Localize("ssname");
+        _swordSkills = toggle.CreateOption("Sword skills", section4, new Vector2(0, 200), swordSkillsName);
+
+        string thornsName = Main.Randomizer.LocalizationHandler.Localize("thname");
+        _thorns = toggle.CreateOption("Thorns", section4, new Vector2(0, 100), thornsName);
+
+        string junkName = Main.Randomizer.LocalizationHandler.Localize("jiname");
+        _junkQuests = toggle.CreateOption("Junk inconvenitent", section4, new Vector2(0, 0), junkName);
+
+        string wheelName = Main.Randomizer.LocalizationHandler.Localize("whname");
+        _wheel = toggle.CreateOption("Wheel", section4, new Vector2(0, -100), wheelName);
     }
 
     private RectTransform CreateSection(Transform parent, int idx)
