@@ -9,8 +9,14 @@ using UnityEngine.UI;
 
 namespace Blasphemous.Randomizer;
 
+/// <summary>
+/// Handles choosing settings for the randomizer
+/// </summary>
 public class RandomizerMenu : ModMenu
 {
+    /// <summary>
+    /// Creates a new randomizer menu
+    /// </summary>
     public RandomizerMenu() : base("Randomizer Settings (Localize)", 10) { }
 
     private ArrowOption _logicDifficulty;
@@ -101,6 +107,9 @@ public class RandomizerMenu : ModMenu
         }
     }
 
+    /// <summary>
+    /// When first opening the menus, generate a random seed and fill in the options
+    /// </summary>
     public override void OnStart()
     {
         _generatedSeed = new System.Random().Next(1, Randomizer.MAX_SEED);
@@ -109,6 +118,9 @@ public class RandomizerMenu : ModMenu
         MenuSettings = new Config();
     }
 
+    /// <summary>
+    /// Whenever an option is changed, update enabled status and the unique seed
+    /// </summary>
     public override void OnOptionsChanged()
     {
         int doorType = _doorShuffle.CurrentOption;
@@ -124,10 +136,12 @@ public class RandomizerMenu : ModMenu
         RefreshUniqueSeed();
     }
 
+    /// <summary>
+    /// Set each digit in the unique seed to its corresponding image
+    /// </summary>
     private void RefreshUniqueSeed()
     {
         // Get final seed based on seed & options
-        //long finalSeed = Main.Randomizer.ComputeFinalSeed(currentSeed != string.Empty ? int.Parse(currentSeed) : generatedSeed, getConfigSettings());
         Config config = MenuSettings;
         long finalSeed = Main.Randomizer.ComputeFinalSeed(config.CustomSeed, config);
 
@@ -136,7 +150,7 @@ public class RandomizerMenu : ModMenu
         {
             FillImages(finalSeed);
         }
-        catch (System.Exception)
+        catch
         {
             Main.Randomizer.LogError("Failed to generate image layout for unique seed " + finalSeed);
             for (int i = 0; i < _uniqueImages.Length; i++)
@@ -166,26 +180,28 @@ public class RandomizerMenu : ModMenu
             return Core.InventoryManager.GetBaseObject(itemId, itemType).picture;
         }
 
-        void SetDigitImage(int digit, Sprite image) // Need to update this when adding more images
+        void SetDigitImage(int digit, Sprite image)
         {
-            int realIdx = -1;
-            if (digit == 0) realIdx = 1;
-            else if (digit == 1) realIdx = 5;
-            else if (digit == 2) realIdx = 0;
-            else if (digit == 3) realIdx = 3;
-            else if (digit == 4) realIdx = 6;
-            else if (digit == 5) realIdx = 4;
-            else if (digit == 6) realIdx = 2;
-
-            if (realIdx < 0)
+            // Need to update this when adding more images
+            int realIdx = digit switch
             {
-                Main.Randomizer.LogError("Error: Too many digits in unique seed!");
-                return;
-            }
+                0 => 1,
+                1 => 5,
+                2 => 0,
+                3 => 3,
+                4 => 6,
+                5 => 4,
+                6 => 2,
+                _ => throw new System.Exception("Too many digits in unique seed!")
+            };
+
             _uniqueImages[realIdx].sprite = image;
         }
     }
 
+    /// <summary>
+    /// Create all options for the menu
+    /// </summary>
     protected override void CreateUI(Transform ui)
     {
         // Create unique seed images

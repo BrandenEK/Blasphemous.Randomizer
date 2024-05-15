@@ -378,21 +378,6 @@ namespace Blasphemous.Randomizer
             return SKIP_CUTSCENES && data.CutsceneNames.Contains(id);
         }
 
-        public void playSoundEffect(int id)
-        {
-            if (id == 0) Core.Audio.PlayOneShot("event:/SFX/UI/EquipItem");
-            else if (id == 1) Core.Audio.PlayOneShot("event:/SFX/UI/UnequipItem");
-            else if (id == 2) Core.Audio.PlayOneShot("event:/SFX/UI/ChangeSelection");
-            else if (id == 3) Core.Audio.PlayOneShot("event:/SFX/UI/FadeToWhite");
-        }
-
-        // Did this even work ??
-        private bool isConfigVersionValid(string configVersion)
-        {
-            string version = ModInfo.MOD_VERSION;
-            return version.Substring(0, version.LastIndexOf('.')) == configVersion.Substring(0, configVersion.LastIndexOf('.'));
-        }
-
         public void LoadConfigFromMenu()
         {
             throw new System.Exception("Must load settings from menu");
