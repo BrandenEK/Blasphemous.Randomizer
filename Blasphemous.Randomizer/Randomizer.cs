@@ -337,7 +337,35 @@ namespace Blasphemous.Randomizer
                 //}
                 //LogError($"Success rate: {succeed}/{total}");
             }
+
+            UpdateDebugRect();
         }
+
+        #region Testing
+
+        public RectTransform DebugRect { get; set; }
+
+        private void UpdateDebugRect()
+        {
+            if (DebugRect == null)
+                return;
+
+            Vector2 movement = new Vector2();
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) movement.x -= 1;
+            if (Input.GetKeyDown(KeyCode.RightArrow)) movement.x += 1;
+            if (Input.GetKeyDown(KeyCode.DownArrow)) movement.y -= 1;
+            if (Input.GetKeyDown(KeyCode.UpArrow)) movement.y += 1;
+
+            if (movement == Vector2.zero)
+                return;
+
+            if (Input.GetKey(KeyCode.LeftControl))
+                movement *= 10;
+            DebugRect.anchoredPosition += movement;
+            Main.Randomizer.LogWarning("Moving rect to " + DebugRect.anchoredPosition);
+        }
+
+        #endregion
 
         private IEnumerator showErrorMessage(float waitTime)
         {

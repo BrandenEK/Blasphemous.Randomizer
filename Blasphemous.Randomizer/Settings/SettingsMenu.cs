@@ -389,43 +389,7 @@ namespace Blasphemous.Randomizer.Settings
 
         private void createSettingsMenu()
         {
-            // Find objects
-            float xScale = (float)Screen.width / 640;
-            scaling = new Vector3(xScale, xScale, (Screen.height - 360 * xScale) * 0.5f);
-            foreach (Camera cam in Object.FindObjectsOfType<Camera>())
-                if (cam.name == "UICamera")
-                    camera = cam;
-            
-            // Get menus
-            Transform menu = Object.FindObjectOfType<NewMainMenu>().transform;
-            slotsMenu = menu.GetChild(2).gameObject;
-
-            // Get input buttons
-            RectTransform begin = Object.Instantiate(slotsMenu.transform.GetChild(3).GetChild(0).GetChild(0).gameObject).GetComponent<RectTransform>();
-            Object.Destroy(begin.GetComponent<HorizontalLayoutGroup>());
-            Object.Destroy(begin.GetChild(1).GetComponent<I2.Loc.Localize>());
-            RectTransform cancel = Object.Instantiate(slotsMenu.transform.GetChild(3).GetChild(1).gameObject).GetComponent<RectTransform>();
-            Object.Destroy(cancel.GetComponent<HorizontalLayoutGroup>());
-            Object.Destroy(cancel.GetChild(1).GetComponent<I2.Loc.Localize>());
-
-            // Duplicate slot menu
-            settingsMenu = Object.Instantiate(slotsMenu, menu);
-            settingsMenu.name = "Settings Menu";
-            Object.Destroy(settingsMenu.GetComponent<SelectSaveSlots>());
-            Object.Destroy(settingsMenu.GetComponent<KeepFocus>());
-            Object.Destroy(settingsMenu.GetComponent<CanvasGroup>());
-            int childrenCount = settingsMenu.transform.childCount;
-            for (int i = 2; i < childrenCount; i++)
-                Object.Destroy(settingsMenu.transform.GetChild(i).gameObject);
-            
-            // Set rect of settings menu
-            RectTransform rect = settingsMenu.GetComponent<RectTransform>(); // Is this necessary ??
-            rect.SetParent(menu, false);
-            rect.anchorMin = Vector2.zero;
-            rect.anchorMax = Vector2.one;
-            rect.pivot = new Vector2(0.5f, 0.5f);
-            rect.anchoredPosition = Vector2.zero;
-
+            /*
             // Create unique seed images
             RectTransform uniqueHolder = getNewRect("Img Holder", rect);
             uniqueHolder.sizeDelta = new Vector2(100, 32);
@@ -442,11 +406,6 @@ namespace Blasphemous.Randomizer.Settings
                 image.anchoredPosition = new Vector2(-5 + i * -30, 0);
                 uniqueImages[i] = image.GetComponent<Image>();
             }
-
-            // Set header text
-            Text headerText = settingsMenu.transform.GetChild(0).GetChild(0).GetComponent<Text>();
-            headerText.text = Main.Randomizer.LocalizationHandler.Localize("chset");
-            Font font = headerText.font;
 
             // Create main section
             int width = 630, height = 260;
@@ -545,11 +504,11 @@ namespace Blasphemous.Randomizer.Settings
             bossTitle.anchoredPosition = new Vector2(0, top - 50);
 
             RectTransform bossOption = getNewCyclebox("Boss Option", enemiesSection, font, 15, 16,
-                new string[] { Main.Randomizer.LocalizationHandler.Localize("distyp"), /*Main.Randomizer.LocalizationHandler.Localize("simtyp"), Main.Randomizer.LocalizationHandler.Localize("fultyp")*/ },
+                new string[] { Main.Randomizer.LocalizationHandler.Localize("distyp"), Main.Randomizer.LocalizationHandler.Localize("simtyp"), Main.Randomizer.LocalizationHandler.Localize("fultyp") },
                 new string[] { Main.Randomizer.LocalizationHandler.Localize("soon")
-                               /*Main.Randomizer.LocalizationHandler.Localize("distyp") + " - " + Main.Randomizer.LocalizationHandler.Localize("bsdes1"),
+                               Main.Randomizer.LocalizationHandler.Localize("distyp") + " - " + Main.Randomizer.LocalizationHandler.Localize("bsdes1"),
                                Main.Randomizer.LocalizationHandler.Localize("simtyp") + " - " + Main.Randomizer.LocalizationHandler.Localize("bsdes2"),
-                               Main.Randomizer.LocalizationHandler.Localize("fultyp") + " - " + Main.Randomizer.LocalizationHandler.Localize("bsdes3"),*/ }, 36);
+                               Main.Randomizer.LocalizationHandler.Localize("fultyp") + " - " + Main.Randomizer.LocalizationHandler.Localize("bsdes3"), }, 36);
             bossOption.anchoredPosition = new Vector2(0, top - 70);
             BossesLeft = bossOption.GetChild(0).GetComponent<SettingsCyclebox>();
             BossesRight = bossOption.GetChild(1).GetComponent<SettingsCyclebox>();
@@ -645,7 +604,7 @@ namespace Blasphemous.Randomizer.Settings
             // Hide menu
             Main.Randomizer.Log("Settings menu has been created");
             settingsMenu.SetActive(false);
-
+            */
             RectTransform getNewRect(string name, Transform parent)
             {
                 GameObject obj = new GameObject(name, typeof(RectTransform));
