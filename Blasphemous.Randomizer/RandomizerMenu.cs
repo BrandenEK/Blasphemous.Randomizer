@@ -112,7 +112,7 @@ public class RandomizerMenu : ModMenu
     /// </summary>
     public override void OnStart()
     {
-        _generatedSeed = new System.Random().Next(1, Randomizer.MAX_SEED);
+        _generatedSeed = Config.RandomSeed;
         Main.Randomizer.Log($"Generating default seed: {_generatedSeed}");
 
         MenuSettings = new Config();

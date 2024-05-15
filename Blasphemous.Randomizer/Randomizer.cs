@@ -29,7 +29,6 @@ namespace Blasphemous.Randomizer
     {
         internal Randomizer() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
-        internal const int MAX_SEED = 99_999_999;
         private const bool SKIP_CUTSCENES = true;
         internal const int BROTHERHOOD_LOCATION = 0;
         internal const int DEPTHS_LOCATION = 3;
