@@ -114,6 +114,12 @@ public class RandomizerMenu : ModMenu
         // Create unique seed images
         CreateUniqueSeed(ui);
 
+        // Create sections
+        RectTransform section1 = CreateSection(ui, 0); section1.AddImage(new ImageCreationOptions() { Color = Color.red });
+        RectTransform section2 = CreateSection(ui, 1); section2.AddImage(new ImageCreationOptions() { Color = Color.green });
+        RectTransform section3 = CreateSection(ui, 2); section3.AddImage(new ImageCreationOptions() { Color = Color.blue });
+        RectTransform section4 = CreateSection(ui, 3); section4.AddImage(new ImageCreationOptions() { Color = Color.white });
+
         // Create option creators
         TextCreator textCreator = new(this)
         {
@@ -121,7 +127,23 @@ public class RandomizerMenu : ModMenu
             LineSize = 200
         };
 
+        // Create options
         _seedText = textCreator.CreateOption("seed", ui, new Vector2(-20, 300), "Seed:", true, false, 8);
+
+
+    }
+
+    private RectTransform CreateSection(Transform parent, int idx)
+    {
+        return UIModder.Create(new RectCreationOptions()
+        {
+            Name = $"Section {idx + 1}",
+            Parent = parent,
+            Pivot = new Vector2(0.5f, 1),
+            XRange = new Vector2(idx * 0.25f, (idx + 1) * 0.25f),
+            YRange = new Vector2(0, 0.85f),
+            Size = Vector2.zero
+        });
     }
 
     private void CreateUniqueSeed(Transform parent)

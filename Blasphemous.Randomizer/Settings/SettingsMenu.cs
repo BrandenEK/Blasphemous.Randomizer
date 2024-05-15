@@ -394,20 +394,6 @@ namespace Blasphemous.Randomizer.Settings
             int top = height / 2 - 5;
             int left = -60;
 
-            // Create seed textbox
-            Texture2D tex = new Texture2D(1, 1, TextureFormat.RGBA32, false);
-            tex.SetPixel(0, 0, Color.white);
-            Sprite lineSprite = Sprite.Create(tex, new Rect(0, 0, 1, 1), Vector2.zero);
-
-            RectTransform seedTitle = getNewText("SeedTitle", rect, Main.Randomizer.LocalizationHandler.Localize("menusd") + ": ", font, 16, Color.white, TextAnchor.MiddleLeft);
-            seedTitle.pivot = new Vector2(0.5f, 0.5f);
-            seedTitle.anchoredPosition = new Vector2(-250, 165);
-
-            RectTransform seedBox = getNewTextbox("SeedBox", rect, font, lineSprite, 53);
-            seedBox.pivot = new Vector2(0.5f, 0.5f);
-            seedBox.anchoredPosition = new Vector2(-225, 165);
-            SeedText = seedBox.GetComponent<SettingsTextbox>();
-
             // General section
 
             RectTransform generalSection = getNewRect("General Section", mainSection);
