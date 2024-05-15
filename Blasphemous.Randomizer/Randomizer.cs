@@ -44,7 +44,7 @@ namespace Blasphemous.Randomizer
 
         // Save file info
         public int GameSeed { get; private set; }
-        public Config GameSettings { get; private set; }
+        public Config GameSettings { get; set; }
 
         // Global info
         private bool inGame;
@@ -129,7 +129,6 @@ namespace Blasphemous.Randomizer
 
         protected override void OnNewGame()
         {
-            LoadConfigFromMenu();
             GameSeed = GameSettings.CustomSeed;
             Log("Generating new seed: " + GameSeed);
             Randomize();
@@ -376,12 +375,6 @@ namespace Blasphemous.Randomizer
         public bool shouldSkipCutscene(string id)
         {
             return SKIP_CUTSCENES && data.CutsceneNames.Contains(id);
-        }
-
-        public void LoadConfigFromMenu()
-        {
-            throw new System.Exception("Must load settings from menu");
-            //GameSettings = SettingsMenu.getConfigSettings();
         }
 
         public long ComputeFinalSeed(int seed, Config config)

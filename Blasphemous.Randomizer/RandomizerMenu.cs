@@ -119,6 +119,17 @@ public class RandomizerMenu : ModMenu
     }
 
     /// <summary>
+    /// When closing the menus, store the game settings
+    /// </summary>
+    public override void OnFinish()
+    {
+        Config settings = MenuSettings;
+
+        Main.Randomizer.Log($"Storing menu settings: {settings.CustomSeed}");
+        Main.Randomizer.GameSettings = settings;
+    }
+
+    /// <summary>
     /// Whenever an option is changed, update enabled status and the unique seed
     /// </summary>
     public override void OnOptionsChanged()
