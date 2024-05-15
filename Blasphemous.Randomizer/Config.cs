@@ -7,9 +7,9 @@ namespace Blasphemous.Randomizer
     public class Config
     {
         // Main Settings
+        public int Seed { get; set; } = 0;
         public int LogicDifficulty { get; set; } = 1;
         public int StartingLocation { get; set; } = 0;
-        public int CustomSeed { get; set; } = 0;
 
         // General Settings
         public bool UnlockTeleportation { get; set; } = true;

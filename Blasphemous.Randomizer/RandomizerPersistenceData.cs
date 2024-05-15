@@ -10,7 +10,6 @@ namespace Blasphemous.Randomizer
     {
         public RandomizerPersistenceData() : base("ID_RANDOMIZER") { }
 
-        public int seed;
         public Config config;
 
         public Dictionary<string, string> mappedItems;

@@ -42,7 +42,6 @@ namespace Blasphemous.Randomizer
         private IShuffle[] shufflers;
 
         // Save file info
-        public int GameSeed { get; private set; }
         public Config GameSettings { get; set; }
 
         // Global info
@@ -103,7 +102,6 @@ namespace Blasphemous.Randomizer
         {
             return new RandomizerPersistenceData
             {
-                seed = GameSeed,
                 config = GameSettings,
                 mappedItems = itemShuffler.SaveMappedItems(),
                 mappedDoors = itemShuffler.SaveMappedDoors(),
@@ -117,7 +115,6 @@ namespace Blasphemous.Randomizer
         {
             RandomizerPersistenceData randomizerPersistenceData = data as RandomizerPersistenceData;
 
-            GameSeed = randomizerPersistenceData.seed;
             GameSettings = randomizerPersistenceData.config;
             itemShuffler.LoadMappedItems(randomizerPersistenceData.mappedItems);
             itemShuffler.LoadMappedDoors(randomizerPersistenceData.mappedDoors);
@@ -125,13 +122,12 @@ namespace Blasphemous.Randomizer
             enemyShuffler.LoadMappedEnemies(randomizerPersistenceData.mappedEnemies);
             MapCollection.CollectionStatus = randomizerPersistenceData.collectionStatus;
 
-            Log("Loaded seed: " + GameSeed);
+            Log("Loaded seed: " + GameSettings.Seed);
         }
 
         protected override void OnNewGame()
         {
-            GameSeed = GameSettings.CustomSeed;
-            Log("Generating new seed: " + GameSeed);
+            Log("Generating new seed: " + GameSettings.Seed);
             Randomize();
             MapCollection.ResetCollectionStatus(GameSettings);
 
@@ -142,7 +138,6 @@ namespace Blasphemous.Randomizer
 
         public void ResetGame()
         {
-            GameSeed = -1;
             GameSettings = new Config();
             itemShuffler.ClearMappedItems();
             itemShuffler.ClearMappedDoors();
@@ -160,11 +155,11 @@ namespace Blasphemous.Randomizer
             {
                 try
                 {
-                    shufflers[i].Shuffle(GameSeed);
+                    shufflers[i].Shuffle(GameSettings.Seed);
                 }
                 catch (System.Exception e)
                 {
-                    LogError($"Error with the {shufflers[i].GetType().Name} when shuffling seed {GameSeed}");
+                    LogError($"Error with the {shufflers[i].GetType().Name} when shuffling seed {GameSettings.Seed}");
                     LogError("Error message: " + e.Message);
                     ResetGame();
                 }
@@ -317,7 +312,7 @@ namespace Blasphemous.Randomizer
         {
             if (InputHandler.GetKeyDown("Seed") && inGame)
             {
-                LogDisplay($"{LocalizationHandler.Localize("currsd")}: {GameSeed} [{ComputeFinalSeed(GameSeed, GameSettings)}]");
+                LogDisplay($"{LocalizationHandler.Localize("currsd")}: {GameSettings.Seed} [{ComputeFinalSeed(GameSettings.Seed, GameSettings)}]");
             }
             else if (InputHandler.GetKeyDown("Debug"))
             {
@@ -552,7 +547,7 @@ namespace Blasphemous.Randomizer
                 if (GameSettings.ShuffleDash) possibleLocations.RemoveAt(BROTHERHOOD_LOCATION);
 
                 Main.Randomizer.Log($"Choosing random starting location from {possibleLocations.Count} options");
-                int randLocation = new System.Random(GameSettings.CustomSeed).Next(0, possibleLocations.Count);
+                int randLocation = new System.Random(GameSettings.Seed).Next(0, possibleLocations.Count);
                 return possibleLocations[randLocation];
             }
         }

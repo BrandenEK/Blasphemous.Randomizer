@@ -75,7 +75,7 @@ public class RandomizerMenu : ModMenu
                 JunkLongQuests = _junkQuests.Toggled,
                 StartWithWheel = _wheel.Toggled,
                 
-                CustomSeed = _seedText.CurrentValue != string.Empty ? _seedText.CurrentNumericValue : _generatedSeed
+                Seed = _seedText.CurrentValue != string.Empty ? _seedText.CurrentNumericValue : _generatedSeed
             };
         }
         set
@@ -102,7 +102,7 @@ public class RandomizerMenu : ModMenu
             _junkQuests.Toggled = value.JunkLongQuests;
             _wheel.Toggled = value.StartWithWheel;
 
-            _seedText.CurrentValue = value.CustomSeed > 0 ? value.CustomSeed.ToString() : string.Empty;
+            _seedText.CurrentValue = value.Seed > 0 ? value.Seed.ToString() : string.Empty;
             OnOptionsChanged();
         }
     }
@@ -125,7 +125,7 @@ public class RandomizerMenu : ModMenu
     {
         Config settings = MenuSettings;
 
-        Main.Randomizer.Log($"Storing menu settings: {settings.CustomSeed}");
+        Main.Randomizer.Log($"Storing menu settings: {settings.Seed}");
         Main.Randomizer.GameSettings = settings;
     }
 
@@ -154,7 +154,7 @@ public class RandomizerMenu : ModMenu
     {
         // Get final seed based on seed & options
         Config config = MenuSettings;
-        long finalSeed = Main.Randomizer.ComputeFinalSeed(config.CustomSeed, config);
+        long finalSeed = Main.Randomizer.ComputeFinalSeed(config.Seed, config);
 
         // Fill images based on unique seed
         try
