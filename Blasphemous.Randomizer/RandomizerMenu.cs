@@ -3,6 +3,7 @@ using Blasphemous.Framework.Menus.Options;
 using Blasphemous.Framework.UI;
 using Blasphemous.ModdingAPI;
 using Framework.Managers;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -121,16 +122,34 @@ public class RandomizerMenu : ModMenu
         RectTransform section4 = CreateSection(ui, 3); section4.AddImage(new ImageCreationOptions() { Color = Color.white });
 
         // Create option creators
-        TextCreator textCreator = new(this)
+        ToggleCreator toggle = new(this)
+        {
+
+        };
+        ArrowCreator arrow = new(this)
+        {
+            
+        };
+        TextCreator text = new(this)
         {
             TextSize = 50,
             LineSize = 200
         };
 
         // Create options
-        _seedText = textCreator.CreateOption("seed", ui, new Vector2(-20, 300), "Seed:", true, false, 8);
+        _seedText = text.CreateOption("seed", ui, new Vector2(-20, 300), "Localize", true, false, 8);
 
+        string logicName = Main.Randomizer.LocalizationHandler.Localize("lgname") + ":";
+        string[] logicOptions = Enumerable.Range(1, 3).Select(x => Main.Randomizer.LocalizationHandler.Localize($"lgtyp{x}")).ToArray();
+        _logicDifficulty = arrow.CreateOption("Logic difficulty", section1, Vector2.zero, logicName, logicOptions);
 
+        string startName = Main.Randomizer.LocalizationHandler.Localize("loname") + ":";
+        string[] startOptions = Enumerable.Range(1, 8).Select(x => Main.Randomizer.LocalizationHandler.Localize($"lotyp{x}")).ToArray();
+        _startingLocation = arrow.CreateOption("Starting location", section1, new Vector2(0, -100), startName, startOptions);
+
+        _teleportation = toggle.CreateOption("Teleportation", section1, new Vector2(0, -200), Main.Randomizer.LocalizationHandler.Localize("tpname"));
+        _hints = toggle.CreateOption("Hints", section1, new Vector2(0, -300), Main.Randomizer.LocalizationHandler.Localize("htname"));
+        _penitence= toggle.CreateOption("Penitence", section1, new Vector2(0, -400), Main.Randomizer.LocalizationHandler.Localize("pename"));
     }
 
     private RectTransform CreateSection(Transform parent, int idx)

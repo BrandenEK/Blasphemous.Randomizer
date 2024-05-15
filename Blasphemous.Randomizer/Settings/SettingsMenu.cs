@@ -389,57 +389,8 @@ namespace Blasphemous.Randomizer.Settings
 
         private void createSettingsMenu()
         {
+            
             /*
-            // Set up section buttons
-            int top = height / 2 - 5;
-            int left = -60;
-
-            // General section
-
-            RectTransform generalSection = getNewRect("General Section", mainSection);
-            generalSection.sizeDelta = new Vector2(width / 4, height);
-            generalSection.anchoredPosition = new Vector2(-0.375f * width, 0);
-
-            RectTransform logicText = getNewText("Logic Text", generalSection, Main.Randomizer.LocalizationHandler.Localize("lgname") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
-            logicText.anchoredPosition = new Vector2(0, top);
-
-            RectTransform logicOption = getNewCyclebox("Logic Option", generalSection, font, 15, 16,
-                new string[] { Main.Randomizer.LocalizationHandler.Localize("lgtyp1"), Main.Randomizer.LocalizationHandler.Localize("lgtyp2"), Main.Randomizer.LocalizationHandler.Localize("lgtyp3") },
-                new string[] { Main.Randomizer.LocalizationHandler.Localize("lgtyp1") + " - " + Main.Randomizer.LocalizationHandler.Localize("lgdes1"),
-                               Main.Randomizer.LocalizationHandler.Localize("lgtyp2") + " - " + Main.Randomizer.LocalizationHandler.Localize("lgdes2"),
-                               Main.Randomizer.LocalizationHandler.Localize("lgtyp3") + " - " + Main.Randomizer.LocalizationHandler.Localize("lgdes3") }, 30);
-            logicOption.anchoredPosition = new Vector2(0, top - 20);
-            LogicDifficultyLeft = logicOption.GetChild(0).GetComponent<SettingsCyclebox>();
-            LogicDifficultyRight = logicOption.GetChild(1).GetComponent<SettingsCyclebox>();
-
-            RectTransform startLocationText = getNewText("Start Loc Text", generalSection, Main.Randomizer.LocalizationHandler.Localize("loname") + ":", font, 16, Color.white, TextAnchor.MiddleCenter);
-            startLocationText.anchoredPosition = new Vector2(0, top - 50);
-
-            string locationDesc = Main.Randomizer.LocalizationHandler.Localize("lodesc");
-            string[] locationNames = new string[8];
-            string[] locationDescriptions = new string[8];
-            for (int i = 0; i < 8; i++)
-            {
-                locationNames[i] = Main.Randomizer.LocalizationHandler.Localize("lotyp" + (i + 1));
-                locationDescriptions[i] = locationDesc;
-            }
-
-            RectTransform startLocationOption = getNewCyclebox("Start Loc Option", generalSection, font, 15, 16, locationNames, locationDescriptions, 50);
-            startLocationOption.anchoredPosition = new Vector2(0, top - 70);
-            StartingLocationLeft = startLocationOption.GetChild(0).GetComponent<SettingsCyclebox>();
-            StartingLocationRight = startLocationOption.GetChild(1).GetComponent<SettingsCyclebox>();
-
-            RectTransform teleportOption = getNewCheckbox("Teleport", generalSection, Main.Randomizer.LocalizationHandler.Localize("tpname"), Main.Randomizer.LocalizationHandler.Localize("tpdesc"), font, 15, 16);
-            teleportOption.anchoredPosition = new Vector2(left + 10, top - 100);
-            Teleportation = teleportOption.GetComponent<SettingsCheckbox>();
-
-            RectTransform hintsOption = getNewCheckbox("Hints", generalSection, Main.Randomizer.LocalizationHandler.Localize("htname"), Main.Randomizer.LocalizationHandler.Localize("htdesc"), font, 15, 16);
-            hintsOption.anchoredPosition = new Vector2(left + 10, top - 135);
-            Hints = hintsOption.GetComponent<SettingsCheckbox>();
-
-            RectTransform penitenceOption = getNewCheckbox("Penitence", generalSection, Main.Randomizer.LocalizationHandler.Localize("pename"), Main.Randomizer.LocalizationHandler.Localize("pedesc"), font, 15, 16);
-            penitenceOption.anchoredPosition = new Vector2(left + 10, top - 170);
-            Penitence = penitenceOption.GetComponent<SettingsCheckbox>();
 
             // Enemy/Boss/Door section
 
