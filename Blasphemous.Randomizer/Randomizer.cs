@@ -54,7 +54,6 @@ namespace Blasphemous.Randomizer
 
         public DataStorage data { get; private set; }
         public MapCollectionStatus MapCollection { get; private set; }
-        public SettingsMenu SettingsMenu { get; private set; }
 
         public string PersistentID => "ID_RANDOMIZER";
 
@@ -91,7 +90,6 @@ namespace Blasphemous.Randomizer
 
             // Set up data
             GameSettings = new Config();
-            SettingsMenu = new SettingsMenu();
             MapCollection = new MapCollectionStatus();
         }
 
@@ -226,10 +224,6 @@ namespace Blasphemous.Randomizer
                 }
             }
 
-            // Update ui menus
-            if (SettingsMenu != null)
-                SettingsMenu.onLoad(newLevel);
-
             // Display delayed error message
             if (errorOnLoad != null && errorOnLoad != "")
                 UIController.instance.StartCoroutine(showErrorMessage(2.1f));
@@ -343,10 +337,6 @@ namespace Blasphemous.Randomizer
                 //}
                 //LogError($"Success rate: {succeed}/{total}");
             }
-
-            // Update ui menus
-            if (SettingsMenu != null)
-                SettingsMenu.update();
         }
 
         private IEnumerator showErrorMessage(float waitTime)
@@ -378,7 +368,8 @@ namespace Blasphemous.Randomizer
 
         public void LoadConfigFromMenu()
         {
-            GameSettings = SettingsMenu.getConfigSettings();
+            throw new System.Exception("Must load settings from menu");
+            //GameSettings = SettingsMenu.getConfigSettings();
         }
 
         public long ComputeFinalSeed(int seed, Config config)
