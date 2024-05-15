@@ -94,9 +94,9 @@ namespace Blasphemous.Randomizer
                 if (JunkLongQuests) SetBit(14);
                 if (!StartWithWheel) SetBit(40);
 
-
-                if ((BossShuffleType & 1) == 0) SetBit(17);
-                if ((BossShuffleType & 2) > 0) SetBit(43);
+                if (EnemyShuffleType > 0) SetBit(17);
+                //if ((BossShuffleType & 1) == 0) SetBit(17);
+                //if ((BossShuffleType & 2) > 0) SetBit(43);
                 if ((DoorShuffleType & 1) > 0) SetBit(26);
                 if ((DoorShuffleType & 2) == 0) SetBit(34);
 
