@@ -140,7 +140,8 @@ namespace Blasphemous.Randomizer
         {
             if (!___isContinue)
             {
-                Main.Randomizer.LoadConfigFromMenu(); // Have to also load config now, because this is called before NewGame()
+                // Must load config settings from menu here before OnNewGame is called
+                Main.Randomizer.GameSettings = Main.Randomizer.ModMenu.MenuSettings;
                 ___sceneName = Main.Randomizer.StartingDoor.Room;
             }
         }

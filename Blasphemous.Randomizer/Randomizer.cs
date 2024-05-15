@@ -1,4 +1,5 @@
 ﻿using Blasphemous.CheatConsole;
+using Blasphemous.Framework.Menus;
 using Blasphemous.ModdingAPI;
 using Blasphemous.ModdingAPI.Persistence;
 using Blasphemous.Randomizer.BossRando;
@@ -7,7 +8,6 @@ using Blasphemous.Randomizer.EnemyRando;
 using Blasphemous.Randomizer.HintRando;
 using Blasphemous.Randomizer.ItemRando;
 using Blasphemous.Randomizer.Map;
-using Blasphemous.Randomizer.Settings;
 using Framework.Managers;
 using Framework.Audio;
 using Gameplay.UI;
@@ -44,7 +44,7 @@ namespace Blasphemous.Randomizer
 
         // Save file info
         public int GameSeed { get; private set; }
-        public Config GameSettings { get; private set; }
+        public Config GameSettings { get; set; }
 
         // Global info
         private bool inGame;
@@ -53,7 +53,7 @@ namespace Blasphemous.Randomizer
 
         public DataStorage data { get; private set; }
         public MapCollectionStatus MapCollection { get; private set; }
-        public SettingsMenu SettingsMenu { get; private set; }
+        public RandomizerMenu ModMenu { get; private set; }
 
         public string PersistentID => "ID_RANDOMIZER";
 
@@ -90,13 +90,14 @@ namespace Blasphemous.Randomizer
 
             // Set up data
             GameSettings = new Config();
-            SettingsMenu = new SettingsMenu();
             MapCollection = new MapCollectionStatus();
+            ModMenu = new RandomizerMenu();
         }
 
         protected override void OnRegisterServices(ModServiceProvider provider)
         {
             provider.RegisterCommand(new RandomizerCommand());
+            provider.RegisterNewGameMenu(ModMenu);
         }
 
         public SaveData SaveGame()
@@ -130,7 +131,6 @@ namespace Blasphemous.Randomizer
 
         protected override void OnNewGame()
         {
-            LoadConfigFromMenu();
             GameSeed = GameSettings.CustomSeed;
             Log("Generating new seed: " + GameSeed);
             Randomize();
@@ -223,10 +223,6 @@ namespace Blasphemous.Randomizer
                     ResetGame();
                 }
             }
-
-            // Update ui menus
-            if (SettingsMenu != null)
-                SettingsMenu.onLoad(newLevel);
 
             // Display delayed error message
             if (errorOnLoad != null && errorOnLoad != "")
@@ -342,10 +338,34 @@ namespace Blasphemous.Randomizer
                 //LogError($"Success rate: {succeed}/{total}");
             }
 
-            // Update ui menus
-            if (SettingsMenu != null)
-                SettingsMenu.update();
+            UpdateDebugRect();
         }
+
+        #region Testing
+
+        public RectTransform DebugRect { get; set; }
+
+        private void UpdateDebugRect()
+        {
+            if (DebugRect == null)
+                return;
+
+            Vector2 movement = new Vector2();
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) movement.x -= 1;
+            if (Input.GetKeyDown(KeyCode.RightArrow)) movement.x += 1;
+            if (Input.GetKeyDown(KeyCode.DownArrow)) movement.y -= 1;
+            if (Input.GetKeyDown(KeyCode.UpArrow)) movement.y += 1;
+
+            if (movement == Vector2.zero)
+                return;
+
+            if (Input.GetKey(KeyCode.LeftControl))
+                movement *= 10;
+            DebugRect.anchoredPosition += movement;
+            Main.Randomizer.LogWarning("Moving rect to " + DebugRect.anchoredPosition);
+        }
+
+        #endregion
 
         private IEnumerator showErrorMessage(float waitTime)
         {
@@ -357,26 +377,6 @@ namespace Blasphemous.Randomizer
         public bool shouldSkipCutscene(string id)
         {
             return SKIP_CUTSCENES && data.CutsceneNames.Contains(id);
-        }
-
-        public void playSoundEffect(int id)
-        {
-            if (id == 0) Core.Audio.PlayOneShot("event:/SFX/UI/EquipItem");
-            else if (id == 1) Core.Audio.PlayOneShot("event:/SFX/UI/UnequipItem");
-            else if (id == 2) Core.Audio.PlayOneShot("event:/SFX/UI/ChangeSelection");
-            else if (id == 3) Core.Audio.PlayOneShot("event:/SFX/UI/FadeToWhite");
-        }
-
-        // Did this even work ??
-        private bool isConfigVersionValid(string configVersion)
-        {
-            string version = ModInfo.MOD_VERSION;
-            return version.Substring(0, version.LastIndexOf('.')) == configVersion.Substring(0, configVersion.LastIndexOf('.'));
-        }
-
-        public void LoadConfigFromMenu()
-        {
-            GameSettings = SettingsMenu.getConfigSettings();
         }
 
         public long ComputeFinalSeed(int seed, Config config)

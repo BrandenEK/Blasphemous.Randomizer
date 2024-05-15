@@ -62,7 +62,7 @@ namespace Blasphemous.Randomizer.BossRando
 
         private IEnumerator fadeToWhite()
         {
-            Main.Randomizer.playSoundEffect(3);
+            //Main.Randomizer.playSoundEffect(3);
             yield return new WaitForSecondsRealtime(0.2f);
             yield return FadeWidget.instance.FadeCoroutine(new Color(0, 0, 0, 0), Color.white, 2, true, null);
         }
