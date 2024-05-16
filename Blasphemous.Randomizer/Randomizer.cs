@@ -30,9 +30,6 @@ namespace Blasphemous.Randomizer
         internal Randomizer() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
         private const bool SKIP_CUTSCENES = true;
-        internal const int BROTHERHOOD_LOCATION = 0;
-        internal const int DEPTHS_LOCATION = 3;
-        internal const int SHIPYARD_LOCATION = 6;
 
         // Shufflers
         public ItemShuffle itemShuffler;
@@ -191,7 +188,7 @@ namespace Blasphemous.Randomizer
                 inGame = false;
                 itemShuffler.LastDoor = null;
             }
-            else if (newLevel == StartingDoor.Room)
+            else if (newLevel == GameSettings.RealStartingLocation.Room)
             {
                 // Give first item when starting a new game
                 itemShuffler.giveItem("QI106", true);
@@ -456,47 +453,5 @@ namespace Blasphemous.Randomizer
                 }
             }
         }
-
-        public StartingLocation StartingDoor
-        {
-            get
-            {
-                int chosenStartingLocation = GameSettings.StartingLocation;
-                int numberOfStartingLocations = startingLocations.Length;
-                if (chosenStartingLocation < 0 || chosenStartingLocation > numberOfStartingLocations)
-                {
-                    // Invalid starting position, should never happen
-                    LogError(chosenStartingLocation + " is not a valid starting location!");
-                    return startingLocations[0];
-                }
-                if (chosenStartingLocation != numberOfStartingLocations)
-                {
-                    // Chose a predefined starting location
-                    return startingLocations[chosenStartingLocation];
-                }
-
-                // Chose a random starting location ! These must be in descending order !
-                List<StartingLocation> possibleLocations = new List<StartingLocation>(startingLocations);
-                if (GameSettings.LogicDifficulty < 2 || GameSettings.ShuffleDash) possibleLocations.RemoveAt(SHIPYARD_LOCATION);
-                if (GameSettings.ShuffleWallClimb) possibleLocations.RemoveAt(DEPTHS_LOCATION);
-                if (GameSettings.ShuffleDash) possibleLocations.RemoveAt(BROTHERHOOD_LOCATION);
-
-                Main.Randomizer.Log($"Choosing random starting location from {possibleLocations.Count} options");
-                int randLocation = new System.Random(GameSettings.Seed).Next(0, possibleLocations.Count);
-                return possibleLocations[randLocation];
-            }
-        }
-        private StartingLocation[] startingLocations = new StartingLocation[]
-        {
-            //new StartingLocation("D01Z04S01", "D01Z04S01[W]", new Vector3(-121, -27, 0), true),
-            //new StartingLocation("D05Z01S03", "D05Z01S03[W]", new Vector3(318, -4, 0), false),
-            new StartingLocation("D17Z01S01", "D17Z01S01[E]", new Vector3(-988, 20, 0), true),
-            new StartingLocation("D01Z02S01", "D01Z02S01[E]", new Vector3(-512, 11, 0), false),
-            new StartingLocation("D02Z03S09", "D02Z03S09[E]", new Vector3(-577, 250, 0), true),
-            new StartingLocation("D03Z03S11", "D03Z03S11[E]", new Vector3(-551, -236, 0), true),
-            new StartingLocation("D04Z03S01", "D04Z03S01[W]", new Vector3(353, 19, 0), false),
-            new StartingLocation("D06Z01S09", "D06Z01S09[W]", new Vector3(374, 175, 0), false),
-            new StartingLocation("D20Z02S09", "D20Z02S09[W]", new Vector3(130, -136, 0), true),
-        };
     }
 }

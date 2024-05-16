@@ -33,7 +33,7 @@ namespace Blasphemous.Randomizer
             if (!ValidateParameterList(parameters, 0)) return;
 
             string currentLevel = Core.LevelManager.currentLevel.LevelName;
-            if (currentLevel != "MainMenu" && currentLevel != Main.Randomizer.StartingDoor.Room)
+            if (currentLevel != "MainMenu" && currentLevel != Main.Randomizer.GameSettings.RealStartingLocation.Room)
             {
                 Write("Respawning from starting location!");
                 Core.Events.SetFlag("CHERUB_RESPAWN", true);

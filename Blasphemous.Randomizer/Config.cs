@@ -1,4 +1,7 @@
-﻿
+﻿using Blasphemous.Randomizer.DoorRando;
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace Blasphemous.Randomizer
 {
     /// <summary>
@@ -6,6 +9,11 @@ namespace Blasphemous.Randomizer
     /// </summary>
     public class Config
     {
+        /// <summary>
+        /// Gets a random Seed within the valid range
+        /// </summary>
+        public static int RandomSeed => new System.Random().Next(1, MAX_SEED + 1);
+
         // Main Settings
         public int Seed { get; set; } = 0;
         public int LogicDifficulty { get; set; } = 1;
@@ -38,6 +46,29 @@ namespace Blasphemous.Randomizer
 
         // Door Rando
         public int DoorShuffleType { get; set; } = 0;
+
+        public StartingLocation RealStartingLocation
+        {
+            get
+            {
+                // Return the chosen starting location
+                if (StartingLocation < STARTING_LOCATIONS.Length - 1)
+                    return STARTING_LOCATIONS[StartingLocation];
+
+                // Return a random starting location ! These must be in descending order !
+                List<StartingLocation> possibleLocations = new List<StartingLocation>(STARTING_LOCATIONS);
+                if (LogicDifficulty < 2 || ShuffleDash)
+                    possibleLocations.RemoveAt(SHIPYARD_LOCATION);
+                if (ShuffleWallClimb)
+                    possibleLocations.RemoveAt(DEPTHS_LOCATION);
+                if (ShuffleDash)
+                    possibleLocations.RemoveAt(BROTHERHOOD_LOCATION);
+
+                Main.Randomizer.Log($"Choosing random starting location from {possibleLocations.Count} options");
+                int randLocation = new System.Random(Seed).Next(0, possibleLocations.Count);
+                return possibleLocations[randLocation];
+            }
+        }
 
         /// <summary>
         /// A unique int64 based on seed and all important options
@@ -109,10 +140,22 @@ namespace Blasphemous.Randomizer
             }
         }
 
-        /// <summary>
-        /// Gets a random Seed within the valid range
-        /// </summary>
-        public static int RandomSeed => new System.Random().Next(1, MAX_Seed + 1);
-        private const int MAX_Seed = 99_999_999;
+        internal const int MAX_SEED = 99_999_999;
+        internal const int BROTHERHOOD_LOCATION = 0;
+        internal const int DEPTHS_LOCATION = 3;
+        internal const int SHIPYARD_LOCATION = 6;
+
+        private static readonly StartingLocation[] STARTING_LOCATIONS = new StartingLocation[]
+        {
+            //new StartingLocation("D01Z04S01", "D01Z04S01[W]", new Vector3(-121, -27, 0), true),
+            //new StartingLocation("D05Z01S03", "D05Z01S03[W]", new Vector3(318, -4, 0), false),
+            new StartingLocation("D17Z01S01", "D17Z01S01[E]", new Vector3(-988, 20, 0), true),
+            new StartingLocation("D01Z02S01", "D01Z02S01[E]", new Vector3(-512, 11, 0), false),
+            new StartingLocation("D02Z03S09", "D02Z03S09[E]", new Vector3(-577, 250, 0), true),
+            new StartingLocation("D03Z03S11", "D03Z03S11[E]", new Vector3(-551, -236, 0), true),
+            new StartingLocation("D04Z03S01", "D04Z03S01[W]", new Vector3(353, 19, 0), false),
+            new StartingLocation("D06Z01S09", "D06Z01S09[W]", new Vector3(374, 175, 0), false),
+            new StartingLocation("D20Z02S09", "D20Z02S09[W]", new Vector3(130, -136, 0), true),
+        };
     }
 }
