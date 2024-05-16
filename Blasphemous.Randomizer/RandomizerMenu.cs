@@ -75,7 +75,7 @@ public class RandomizerMenu : ModMenu
                 JunkLongQuests = _junkQuests.Toggled,
                 StartWithWheel = _wheel.Toggled,
                 
-                CustomSeed = _seedText.CurrentValue != string.Empty ? _seedText.CurrentNumericValue : _generatedSeed
+                Seed = _seedText.CurrentValue != string.Empty ? _seedText.CurrentNumericValue : _generatedSeed
             };
         }
         set
@@ -102,7 +102,7 @@ public class RandomizerMenu : ModMenu
             _junkQuests.Toggled = value.JunkLongQuests;
             _wheel.Toggled = value.StartWithWheel;
 
-            _seedText.CurrentValue = value.CustomSeed > 0 ? value.CustomSeed.ToString() : string.Empty;
+            _seedText.CurrentValue = value.Seed > 0 ? value.Seed.ToString() : string.Empty;
             OnOptionsChanged();
         }
     }
@@ -112,7 +112,7 @@ public class RandomizerMenu : ModMenu
     /// </summary>
     public override void OnStart()
     {
-        _generatedSeed = new System.Random().Next(1, Randomizer.MAX_SEED);
+        _generatedSeed = Config.RandomSeed;
         Main.Randomizer.Log($"Generating default seed: {_generatedSeed}");
 
         MenuSettings = new Config();
@@ -125,7 +125,7 @@ public class RandomizerMenu : ModMenu
     {
         Config settings = MenuSettings;
 
-        Main.Randomizer.Log($"Storing menu settings: {settings.CustomSeed}");
+        Main.Randomizer.Log($"Storing menu settings: {settings.Seed}");
         Main.Randomizer.GameSettings = settings;
     }
 
@@ -141,8 +141,8 @@ public class RandomizerMenu : ModMenu
         _purifiedHand.Enabled = Main.Randomizer.InstalledDoubleJumpMod;
         _maintainClass.Enabled = _enemyShuffle.CurrentOption > 0;
         _areaScaling.Enabled = _enemyShuffle.CurrentOption > 0;
-        _dash.Enabled = doorType > 1 || startLocation != Randomizer.BROTHERHOOD_LOCATION && startLocation != Randomizer.SHIPYARD_LOCATION;
-        _wallClimb.Enabled = doorType > 1 || startLocation != Randomizer.DEPTHS_LOCATION;
+        _dash.Enabled = doorType > 1 || startLocation != Config.BROTHERHOOD_LOCATION && startLocation != Config.SHIPYARD_LOCATION;
+        _wallClimb.Enabled = doorType > 1 || startLocation != Config.DEPTHS_LOCATION;
 
         RefreshUniqueSeed();
     }
@@ -153,8 +153,7 @@ public class RandomizerMenu : ModMenu
     private void RefreshUniqueSeed()
     {
         // Get final seed based on seed & options
-        Config config = MenuSettings;
-        long finalSeed = Main.Randomizer.ComputeFinalSeed(config.CustomSeed, config);
+        long finalSeed = MenuSettings.UniqueSeed;
 
         // Fill images based on unique seed
         try

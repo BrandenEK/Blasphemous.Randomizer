@@ -6,10 +6,7 @@ using Framework.EditorScripts.BossesBalance;
 using Gameplay.GameControllers.Penitent.Abilities;
 using Gameplay.GameControllers.Penitent.InputSystem;
 using Gameplay.UI.Others.MenuLogic;
-using Gameplay.UI.Widgets;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Tools.Level.Interactables;
 using Tools.Level.Actionables;
 
@@ -79,48 +76,6 @@ namespace Blasphemous.Randomizer
         }
     }
 
-    // Show validity of save slot on select screen
-    [HarmonyPatch(typeof(SelectSaveSlots), "SetAllData")]
-    class SelectSaveSlotsData_Patch
-    {
-        public static void Postfix(List<SaveSlot> ___slots)
-        {
-            for (int i = 0; i < ___slots.Count; i++)
-            {
-                PersistentManager.PublicSlotData slotData = Core.Persistence.GetSlotData(i);
-                if (slotData == null)
-                    continue;
-
-                // Check if this save file was played in supported version
-                string majorVersion = ModInfo.MOD_VERSION;
-                majorVersion = majorVersion.Substring(0, majorVersion.LastIndexOf('.'));
-
-                string type = $"({Main.Randomizer.LocalizationHandler.Localize("vandis")})";
-                if (slotData.flags.flags.ContainsKey(majorVersion))
-                    type = $"({Main.Randomizer.LocalizationHandler.Localize("randis")})";
-                else if (slotData.flags.flags.ContainsKey("RANDOMIZED"))
-                    type = $"({Main.Randomizer.LocalizationHandler.Localize("outdis")})";
-
-                // Send extra info to the slot
-                ___slots[i].SetData("ignore", type, 0, false, false, false, 0, SelectSaveSlots.SlotsModes.Normal);
-            }
-        }
-    }
-    [HarmonyPatch(typeof(SaveSlot), "SetData")]
-    class SaveSlotData_Patch
-    {
-        public static bool Prefix(string zoneName, string info, ref Text ___ZoneText, ref bool canConvert)
-        {
-            canConvert = false;
-            if (zoneName == "ignore")
-            {
-                ___ZoneText.text += "   " + info;
-                return false;
-            }
-            return true;
-        }
-    }
-
     // Don't allow playing in sacred sorrows mode
     [HarmonyPatch(typeof(BossRushWidget), "OptionPressed")]
     class BossRushWidget_Patch
@@ -141,8 +96,9 @@ namespace Blasphemous.Randomizer
             if (!___isContinue)
             {
                 // Must load config settings from menu here before OnNewGame is called
+                // Also used in DoorPatches
                 Main.Randomizer.GameSettings = Main.Randomizer.ModMenu.MenuSettings;
-                ___sceneName = Main.Randomizer.StartingDoor.Room;
+                ___sceneName = Main.Randomizer.GameSettings.RealStartingLocation.Room;
             }
         }
     }
