@@ -1,4 +1,5 @@
-﻿using Framework.Managers;
+﻿using Blasphemous.Randomizer.ItemRando;
+using Framework.Managers;
 using Framework.FrameworkCore;
 using Gameplay.UI.Others.MenuLogic;
 using HarmonyLib;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 
-namespace Blasphemous.Randomizer.ItemRando
+namespace Blasphemous.Randomizer.Patches
 {
     // Show name, description, and image of new item
     [HarmonyPatch(typeof(NewInventory_Description), "SetKill")]

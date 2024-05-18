@@ -7,7 +7,7 @@ using HutongGames.PlayMaker;
 using Gameplay.GameControllers.Penitent;
 using Gameplay.GameControllers.Entities;
 
-namespace Blasphemous.Randomizer.ItemRando
+namespace Blasphemous.Randomizer.Patches
 {
     // Most item pickups in the game use this function
     [HarmonyPatch(typeof(InteractableInvAdd), "OnUsePost")]
@@ -147,7 +147,7 @@ namespace Blasphemous.Randomizer.ItemRando
             {
                 //Tears are being added as a reward
                 bool showMessage = __instance.ShowMessage != null && __instance.ShowMessage.Value;
-                if (tears == 30000 || tears == 18000 || (tears == 5000 && __instance.Owner.name == "BossTrigger"))
+                if (tears == 30000 || tears == 18000 || tears == 5000 && __instance.Owner.name == "BossTrigger")
                     showMessage = true;
 
                 Main.Randomizer.Log("PurgeAdd(" + tears + ")");
