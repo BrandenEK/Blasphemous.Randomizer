@@ -5,8 +5,9 @@ using Framework.Managers;
 using Framework.FrameworkCore;
 using Tools.DataContainer;
 using Tools.Level.Interactables;
+using Blasphemous.Randomizer.BossRando;
 
-namespace Blasphemous.Randomizer.BossRando
+namespace Blasphemous.Randomizer.Patches
 {
     // Set objects needed for boss shuffle
     [HarmonyPatch(typeof(GuiltManager), "OnLevelLoaded")]
@@ -52,7 +53,7 @@ namespace Blasphemous.Randomizer.BossRando
             InteractableGuiltDrop drop = __instance.gameObject.GetComponent<InteractableGuiltDrop>();
             if (drop == null || drop.timeToWait != 99) return true;
             if (Main.Randomizer.bossShuffler.usedStart) return false; Main.Randomizer.bossShuffler.usedStart = true;
-            
+
             if (Main.Randomizer.bossShuffler.bossStatus == BossShuffle.BossFightStatus.Returning)
             {
                 // When returning, make guilt drop disappear
@@ -75,7 +76,7 @@ namespace Blasphemous.Randomizer.BossRando
             InteractableGuiltDrop drop = __instance.gameObject.GetComponent<InteractableGuiltDrop>();
             if (drop == null || drop.timeToWait != 99) return true;
             if (Main.Randomizer.bossShuffler.usedEnd) return false; Main.Randomizer.bossShuffler.usedEnd = true;
-            
+
             if (Main.Randomizer.bossShuffler.bossStatus == BossShuffle.BossFightStatus.Returning)
             {
                 // When returning, make guilt drop disappear

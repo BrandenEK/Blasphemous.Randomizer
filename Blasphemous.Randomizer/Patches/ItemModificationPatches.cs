@@ -2,8 +2,9 @@
 using Framework.Managers;
 using UnityEngine;
 using Tools.Items;
+using Blasphemous.Randomizer.ItemRando;
 
-namespace Blasphemous.Randomizer.ItemRando
+namespace Blasphemous.Randomizer.Patches
 {
     // Set flag for what miriam portal has been activated
     [HarmonyPatch(typeof(EventManager), "EndMiriamPortalAndReturn")]

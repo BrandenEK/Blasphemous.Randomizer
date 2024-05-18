@@ -10,7 +10,7 @@ using UnityEngine;
 using Tools.Level.Interactables;
 using Tools.Level.Actionables;
 
-namespace Blasphemous.Randomizer
+namespace Blasphemous.Randomizer.Patches
 {
     // Always allow teleportation if enabled in config
     [HarmonyPatch(typeof(AlmsManager), "GetPrieDieuLevel")]
