@@ -143,7 +143,7 @@ namespace Blasphemous.Randomizer.ItemRando
         public string GetSpoiler()
         {
             StringBuilder spoiler = new StringBuilder();
-            spoiler.AppendLine($"Seed: {Main.Randomizer.GameSeed}");
+            spoiler.AppendLine($"Seed: {Main.Randomizer.GameSettings.Seed}");
 
             string currentArea = string.Empty;
             foreach (ItemLocation location in Main.Randomizer.data.itemLocations.Values)

@@ -57,7 +57,7 @@ namespace Blasphemous.Randomizer.DoorRando
         public static void Postfix(ref SpawnManager.PosibleSpawnPoints ___pendingSpawn, ref string ___customLevel, ref Vector3 ___customPosition, ref EntityOrientation ___customOrientation)
         {
             ___pendingSpawn = SpawnManager.PosibleSpawnPoints.CustomPosition;
-            StartingLocation start = Main.Randomizer.StartingDoor;
+            StartingLocation start = Main.Randomizer.GameSettings.RealStartingLocation;
             ___customLevel = start.Room;
             ___customPosition = start.Position;
             ___customOrientation = start.FacingRight ? EntityOrientation.Right : EntityOrientation.Left;

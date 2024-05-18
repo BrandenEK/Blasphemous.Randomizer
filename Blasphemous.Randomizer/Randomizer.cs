@@ -1,4 +1,5 @@
 ﻿using Blasphemous.CheatConsole;
+using Blasphemous.Framework.Menus;
 using Blasphemous.ModdingAPI;
 using Blasphemous.ModdingAPI.Persistence;
 using Blasphemous.Randomizer.BossRando;
@@ -7,7 +8,6 @@ using Blasphemous.Randomizer.EnemyRando;
 using Blasphemous.Randomizer.HintRando;
 using Blasphemous.Randomizer.ItemRando;
 using Blasphemous.Randomizer.Map;
-using Blasphemous.Randomizer.Settings;
 using Framework.Managers;
 using Framework.Audio;
 using Gameplay.UI;
@@ -29,11 +29,7 @@ namespace Blasphemous.Randomizer
     {
         internal Randomizer() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
-        internal const int MAX_SEED = 99_999_999;
         private const bool SKIP_CUTSCENES = true;
-        internal const int BROTHERHOOD_LOCATION = 0;
-        internal const int DEPTHS_LOCATION = 3;
-        internal const int SHIPYARD_LOCATION = 6;
 
         // Shufflers
         public ItemShuffle itemShuffler;
@@ -43,8 +39,7 @@ namespace Blasphemous.Randomizer
         private IShuffle[] shufflers;
 
         // Save file info
-        public int GameSeed { get; private set; }
-        public Config GameSettings { get; private set; }
+        public Config GameSettings { get; set; }
 
         // Global info
         private bool inGame;
@@ -53,7 +48,7 @@ namespace Blasphemous.Randomizer
 
         public DataStorage data { get; private set; }
         public MapCollectionStatus MapCollection { get; private set; }
-        public SettingsMenu SettingsMenu { get; private set; }
+        public RandomizerMenu ModMenu { get; private set; }
 
         public string PersistentID => "ID_RANDOMIZER";
 
@@ -90,20 +85,20 @@ namespace Blasphemous.Randomizer
 
             // Set up data
             GameSettings = new Config();
-            SettingsMenu = new SettingsMenu();
             MapCollection = new MapCollectionStatus();
+            ModMenu = new RandomizerMenu();
         }
 
         protected override void OnRegisterServices(ModServiceProvider provider)
         {
             provider.RegisterCommand(new RandomizerCommand());
+            provider.RegisterNewGameMenu(ModMenu);
         }
 
         public SaveData SaveGame()
         {
             return new RandomizerPersistenceData
             {
-                seed = GameSeed,
                 config = GameSettings,
                 mappedItems = itemShuffler.SaveMappedItems(),
                 mappedDoors = itemShuffler.SaveMappedDoors(),
@@ -117,7 +112,6 @@ namespace Blasphemous.Randomizer
         {
             RandomizerPersistenceData randomizerPersistenceData = data as RandomizerPersistenceData;
 
-            GameSeed = randomizerPersistenceData.seed;
             GameSettings = randomizerPersistenceData.config;
             itemShuffler.LoadMappedItems(randomizerPersistenceData.mappedItems);
             itemShuffler.LoadMappedDoors(randomizerPersistenceData.mappedDoors);
@@ -125,14 +119,12 @@ namespace Blasphemous.Randomizer
             enemyShuffler.LoadMappedEnemies(randomizerPersistenceData.mappedEnemies);
             MapCollection.CollectionStatus = randomizerPersistenceData.collectionStatus;
 
-            Log("Loaded seed: " + GameSeed);
+            Log("Loaded seed: " + GameSettings.Seed);
         }
 
         protected override void OnNewGame()
         {
-            LoadConfigFromMenu();
-            GameSeed = GameSettings.CustomSeed;
-            Log("Generating new seed: " + GameSeed);
+            Log("Generating new seed: " + GameSettings.Seed);
             Randomize();
             MapCollection.ResetCollectionStatus(GameSettings);
 
@@ -143,7 +135,6 @@ namespace Blasphemous.Randomizer
 
         public void ResetGame()
         {
-            GameSeed = -1;
             GameSettings = new Config();
             itemShuffler.ClearMappedItems();
             itemShuffler.ClearMappedDoors();
@@ -161,11 +152,11 @@ namespace Blasphemous.Randomizer
             {
                 try
                 {
-                    shufflers[i].Shuffle(GameSeed);
+                    shufflers[i].Shuffle(GameSettings.Seed);
                 }
                 catch (System.Exception e)
                 {
-                    LogError($"Error with the {shufflers[i].GetType().Name} when shuffling seed {GameSeed}");
+                    LogError($"Error with the {shufflers[i].GetType().Name} when shuffling seed {GameSettings.Seed}");
                     LogError("Error message: " + e.Message);
                     ResetGame();
                 }
@@ -197,7 +188,7 @@ namespace Blasphemous.Randomizer
                 inGame = false;
                 itemShuffler.LastDoor = null;
             }
-            else if (newLevel == StartingDoor.Room)
+            else if (newLevel == GameSettings.RealStartingLocation.Room)
             {
                 // Give first item when starting a new game
                 itemShuffler.giveItem("QI106", true);
@@ -223,10 +214,6 @@ namespace Blasphemous.Randomizer
                     ResetGame();
                 }
             }
-
-            // Update ui menus
-            if (SettingsMenu != null)
-                SettingsMenu.onLoad(newLevel);
 
             // Display delayed error message
             if (errorOnLoad != null && errorOnLoad != "")
@@ -322,7 +309,7 @@ namespace Blasphemous.Randomizer
         {
             if (InputHandler.GetKeyDown("Seed") && inGame)
             {
-                LogDisplay($"{LocalizationHandler.Localize("currsd")}: {GameSeed} [{ComputeFinalSeed(GameSeed, GameSettings)}]");
+                LogDisplay($"{LocalizationHandler.Localize("currsd")}: {GameSettings.Seed} [{GameSettings.UniqueSeed}]");
             }
             else if (InputHandler.GetKeyDown("Debug"))
             {
@@ -342,10 +329,34 @@ namespace Blasphemous.Randomizer
                 //LogError($"Success rate: {succeed}/{total}");
             }
 
-            // Update ui menus
-            if (SettingsMenu != null)
-                SettingsMenu.update();
+            UpdateDebugRect();
         }
+
+        #region Testing
+
+        public RectTransform DebugRect { get; set; }
+
+        private void UpdateDebugRect()
+        {
+            if (DebugRect == null)
+                return;
+
+            Vector2 movement = new Vector2();
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) movement.x -= 1;
+            if (Input.GetKeyDown(KeyCode.RightArrow)) movement.x += 1;
+            if (Input.GetKeyDown(KeyCode.DownArrow)) movement.y -= 1;
+            if (Input.GetKeyDown(KeyCode.UpArrow)) movement.y += 1;
+
+            if (movement == Vector2.zero)
+                return;
+
+            if (Input.GetKey(KeyCode.LeftControl))
+                movement *= 10;
+            DebugRect.anchoredPosition += movement;
+            Main.Randomizer.LogWarning("Moving rect to " + DebugRect.anchoredPosition);
+        }
+
+        #endregion
 
         private IEnumerator showErrorMessage(float waitTime)
         {
@@ -357,91 +368,6 @@ namespace Blasphemous.Randomizer
         public bool shouldSkipCutscene(string id)
         {
             return SKIP_CUTSCENES && data.CutsceneNames.Contains(id);
-        }
-
-        public void playSoundEffect(int id)
-        {
-            if (id == 0) Core.Audio.PlayOneShot("event:/SFX/UI/EquipItem");
-            else if (id == 1) Core.Audio.PlayOneShot("event:/SFX/UI/UnequipItem");
-            else if (id == 2) Core.Audio.PlayOneShot("event:/SFX/UI/ChangeSelection");
-            else if (id == 3) Core.Audio.PlayOneShot("event:/SFX/UI/FadeToWhite");
-        }
-
-        // Did this even work ??
-        private bool isConfigVersionValid(string configVersion)
-        {
-            string version = ModInfo.MOD_VERSION;
-            return version.Substring(0, version.LastIndexOf('.')) == configVersion.Substring(0, configVersion.LastIndexOf('.'));
-        }
-
-        public void LoadConfigFromMenu()
-        {
-            GameSettings = SettingsMenu.getConfigSettings();
-        }
-
-        public long ComputeFinalSeed(int seed, Config config)
-        {
-            // Generate unique int64 based on seed and important options
-            long uniqueSeed = 0;
-
-            if ((seed & (1 << 0)) == 0) SetBit(8);
-            if ((seed & (1 << 1)) == 0) SetBit(19);
-            if ((seed & (1 << 2)) > 0) SetBit(11);
-            if ((seed & (1 << 3)) > 0) SetBit(23);
-            if ((seed & (1 << 4)) == 0) SetBit(41);
-            if ((seed & (1 << 5)) > 0) SetBit(38);
-            if ((seed & (1 << 6)) > 0) SetBit(16);
-            if ((seed & (1 << 7)) > 0) SetBit(29);
-            if ((seed & (1 << 8)) > 0) SetBit(32);
-            if ((seed & (1 << 9)) > 0) SetBit(36);
-            if ((seed & (1 << 10)) > 0) SetBit(18);
-            if ((seed & (1 << 11)) > 0) SetBit(12);
-            if ((seed & (1 << 12)) == 0) SetBit(3);
-            if ((seed & (1 << 13)) == 0) SetBit(45);
-            if ((seed & (1 << 14)) == 0) SetBit(42);
-            if ((seed & (1 << 15)) == 0) SetBit(28);
-            if ((seed & (1 << 16)) > 0) SetBit(13);
-            if ((seed & (1 << 17)) > 0) SetBit(35);
-            if ((seed & (1 << 18)) == 0) SetBit(20);
-            if ((seed & (1 << 19)) == 0) SetBit(31);
-            if ((seed & (1 << 20)) > 0) SetBit(10);
-            if ((seed & (1 << 21)) == 0) SetBit(6);
-            if ((seed & (1 << 22)) > 0) SetBit(24);
-            if ((seed & (1 << 23)) > 0) SetBit(0);
-            if ((seed & (1 << 24)) == 0) SetBit(5);
-            if ((seed & (1 << 25)) > 0) SetBit(1);
-            if ((seed & (1 << 26)) > 0) SetBit(22);
-
-            if ((config.LogicDifficulty & 1) == 0) SetBit(4);
-            if ((config.LogicDifficulty & 2) > 0) SetBit(30);
-            if ((config.StartingLocation & 1) > 0) SetBit(9);
-            if ((config.StartingLocation & 2) > 0) SetBit(39);
-            if ((config.StartingLocation & 4) == 0) SetBit(33);
-            if ((config.StartingLocation & 8) == 0) SetBit(25);
-
-            if (config.ShuffleReliquaries) SetBit(7);
-            if (config.ShuffleDash) SetBit(37);
-            if (!config.ShuffleWallClimb) SetBit(27);
-            if (config.ShuffleBootsOfPleading) SetBit(15);
-            if (!config.ShufflePurifiedHand) SetBit(44);
-
-            if (!config.ShuffleSwordSkills) SetBit(2);
-            if (!config.ShuffleThorns) SetBit(21);
-            if (config.JunkLongQuests) SetBit(14);
-            if (!config.StartWithWheel) SetBit(40);
-
-
-            if ((config.BossShuffleType & 1) == 0) SetBit(17);
-            if ((config.BossShuffleType & 2) > 0) SetBit(43);
-            if ((config.DoorShuffleType & 1) > 0) SetBit(26);
-            if ((config.DoorShuffleType & 2) == 0) SetBit(34);
-
-            return uniqueSeed;
-
-            void SetBit(byte digit)
-            {
-                uniqueSeed |= ((long)1) << digit;
-            }
         }
 
         private void FixDoorsOnPreload(string scene)
@@ -527,47 +453,5 @@ namespace Blasphemous.Randomizer
                 }
             }
         }
-
-        public StartingLocation StartingDoor
-        {
-            get
-            {
-                int chosenStartingLocation = GameSettings.StartingLocation;
-                int numberOfStartingLocations = startingLocations.Length;
-                if (chosenStartingLocation < 0 || chosenStartingLocation > numberOfStartingLocations)
-                {
-                    // Invalid starting position, should never happen
-                    LogError(chosenStartingLocation + " is not a valid starting location!");
-                    return startingLocations[0];
-                }
-                if (chosenStartingLocation != numberOfStartingLocations)
-                {
-                    // Chose a predefined starting location
-                    return startingLocations[chosenStartingLocation];
-                }
-
-                // Chose a random starting location ! These must be in descending order !
-                List<StartingLocation> possibleLocations = new List<StartingLocation>(startingLocations);
-                if (GameSettings.LogicDifficulty < 2 || GameSettings.ShuffleDash) possibleLocations.RemoveAt(SHIPYARD_LOCATION);
-                if (GameSettings.ShuffleWallClimb) possibleLocations.RemoveAt(DEPTHS_LOCATION);
-                if (GameSettings.ShuffleDash) possibleLocations.RemoveAt(BROTHERHOOD_LOCATION);
-
-                Main.Randomizer.Log($"Choosing random starting location from {possibleLocations.Count} options");
-                int randLocation = new System.Random(GameSettings.CustomSeed).Next(0, possibleLocations.Count);
-                return possibleLocations[randLocation];
-            }
-        }
-        private StartingLocation[] startingLocations = new StartingLocation[]
-        {
-            //new StartingLocation("D01Z04S01", "D01Z04S01[W]", new Vector3(-121, -27, 0), true),
-            //new StartingLocation("D05Z01S03", "D05Z01S03[W]", new Vector3(318, -4, 0), false),
-            new StartingLocation("D17Z01S01", "D17Z01S01[E]", new Vector3(-988, 20, 0), true),
-            new StartingLocation("D01Z02S01", "D01Z02S01[E]", new Vector3(-512, 11, 0), false),
-            new StartingLocation("D02Z03S09", "D02Z03S09[E]", new Vector3(-577, 250, 0), true),
-            new StartingLocation("D03Z03S11", "D03Z03S11[E]", new Vector3(-551, -236, 0), true),
-            new StartingLocation("D04Z03S01", "D04Z03S01[W]", new Vector3(353, 19, 0), false),
-            new StartingLocation("D06Z01S09", "D06Z01S09[W]", new Vector3(374, 175, 0), false),
-            new StartingLocation("D20Z02S09", "D20Z02S09[W]", new Vector3(130, -136, 0), true),
-        };
     }
 }

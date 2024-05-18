@@ -151,7 +151,7 @@ namespace Blasphemous.Randomizer.ItemRando
             // Create and fill initially visible doors/items lists
             List<DoorLocation> visibleDoors = new List<DoorLocation>();
             List<ItemLocation> visibleItems = new List<ItemLocation>();
-            DoorLocation startingDoor = allDoorLocations[Main.Randomizer.StartingDoor.Door];
+            DoorLocation startingDoor = allDoorLocations[config.RealStartingLocation.Door];
 
             roomObjects["Initial"].AddRange(roomObjects[startingDoor.Room]); // Starting room is visible
             roomObjects["D02Z02S11"].AddRange(roomObjects["D01Z02S03"]); // Albero elevator room is also visible after graveyard elevator
