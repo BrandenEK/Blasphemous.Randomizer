@@ -1,5 +1,5 @@
 ﻿using Framework.Managers;
-using Blasphemous.Randomizer.Notifications;
+using UnityEngine;
 
 namespace Blasphemous.Randomizer.ItemRando
 {
@@ -27,9 +27,19 @@ namespace Blasphemous.Randomizer.ItemRando
                 removeItem();
         }
 
-        public override RewardInfo getRewardInfo(bool upgraded)
+        public override string GetName(bool upgraded)
         {
-            return getItemLevel(upgraded).getRewardInfo(false);
+            return getItemLevel(upgraded).GetName(false);
+        }
+
+        public override string GetDescription(bool upgraded)
+        {
+            return getItemLevel(upgraded).GetDescription(false);
+        }
+
+        public override Sprite GetImage(bool upgraded)
+        {
+            return getItemLevel(upgraded).GetImage(false);
         }
 
         public Item getItemLevel(bool upgraded)
