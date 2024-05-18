@@ -157,9 +157,8 @@ namespace Blasphemous.Randomizer.ItemRando
             roomObjects["D02Z02S11"].AddRange(roomObjects["D01Z02S03"]); // Albero elevator room is also visible after graveyard elevator
             foreach (string obj in roomObjects["Initial"])
             {
-                if (obj[0] == 'D')
+                if (allDoorLocations.TryGetValue(obj, out DoorLocation door))
                 {
-                    DoorLocation door = allDoorLocations[obj];
                     if (door.Direction != 5)
                         visibleDoors.Add(door); // Maybe instead check visibility flags
                 }
@@ -213,10 +212,11 @@ namespace Blasphemous.Randomizer.ItemRando
                                     inventory.AddItem(currentDoor.Id);
                                     foreach (string obj in roomObjects[currentDoor.Room])
                                     {
-                                        if (obj[0] != 'D' || mappedDoors.ContainsKey(obj) || currentDoor.Id == obj) continue;
-
-                                        DoorLocation door = allDoorLocations[obj];
-                                        if (newlyFoundDoors.Contains(door) || visibleDoors.Contains(door))
+                                        if (!allDoorLocations.TryGetValue(obj, out DoorLocation door)
+                                            || mappedDoors.ContainsKey(obj)
+                                            || currentDoor.Id == obj
+                                            || newlyFoundDoors.Contains(door)
+                                            || visibleDoors.Contains(door))
                                             continue;
 
                                         if (door.ShouldBeMadeVisible(config, inventory))
@@ -269,10 +269,9 @@ namespace Blasphemous.Randomizer.ItemRando
                         // Add everything in the new room
                         foreach (string obj in roomObjects[exitDoor.Room])
                         {
-                            if (obj[0] == 'D')
+                            if (allDoorLocations.TryGetValue(obj, out DoorLocation newDoor))
                             {
                                 // If this door hasn't already been processed, make it visible
-                                DoorLocation newDoor = allDoorLocations[obj];
                                 if (!mappedDoors.ContainsKey(newDoor.Id) && newDoor.ShouldBeMadeVisible(config, inventory))
                                 {
                                     newlyFoundDoors.Push(newDoor);

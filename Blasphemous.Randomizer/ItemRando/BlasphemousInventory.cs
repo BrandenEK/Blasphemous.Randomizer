@@ -344,7 +344,7 @@ namespace Blasphemous.Randomizer.ItemRando
 
         protected override object GetVariable(string variable)
         {
-            if (variable[0] == 'D')
+            if (Main.Randomizer.data.doorLocations.ContainsKey(variable))
             {
                 return HasDoor(variable);
             }
@@ -557,14 +557,18 @@ namespace Blasphemous.Randomizer.ItemRando
 
         public void AddItem(string itemId)
         {
-            if (itemId[0] == 'D')
+            if (Main.Randomizer.data.doorLocations.TryGetValue(itemId, out _))
             {
                 if (!doors.ContainsKey(itemId))
                     doors.Add(itemId, true);
                 return;
             }
 
-            Item item = Main.Randomizer.data.items[itemId];
+            if (!Main.Randomizer.data.items.TryGetValue(itemId, out Item item))
+            {
+                throw new System.Exception($"Attempting to add unknown door/item: {itemId}");
+            }
+
             switch (item.type)
             {
                 case 0:
@@ -694,7 +698,7 @@ namespace Blasphemous.Randomizer.ItemRando
 
         public void RemoveItem(string itemId)
         {
-            if (itemId[0] == 'D')
+            if (Main.Randomizer.data.doorLocations.ContainsKey(itemId))
             {
                 if (doors.ContainsKey(itemId))
                     doors.Remove(itemId);
