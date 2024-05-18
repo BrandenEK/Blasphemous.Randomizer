@@ -1,11 +1,12 @@
-﻿using Framework.Managers;
+﻿using Blasphemous.Randomizer.Extensions;
+using Framework.Managers;
 using HarmonyLib;
 using Tools.Playmaker2.Action;
 using Tools.Playmaker2.Condition;
 
 namespace Blasphemous.Randomizer.ItemRando
 {
-	public static class ItemFlags
+    public static class ItemFlags
 	{
 		public static string[] bannedFlags = new string[]
 		{

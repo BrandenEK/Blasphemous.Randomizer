@@ -1,4 +1,5 @@
 ﻿using Blasphemous.Randomizer.DoorRando;
+using Blasphemous.Randomizer.Extensions;
 using System.Collections.Generic;
 
 namespace Blasphemous.Randomizer.ItemRando
