@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Gameplay.GameControllers.Entities;
+using Blasphemous.Randomizer.Extensions;
 
 namespace Blasphemous.Randomizer.EnemyRando
 {
