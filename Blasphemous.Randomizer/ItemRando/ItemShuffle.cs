@@ -1,5 +1,4 @@
 ﻿using Blasphemous.Randomizer.DoorRando;
-using Blasphemous.Randomizer.Notifications;
 using Framework.Managers;
 using Gameplay.UI;
 using System.Collections.Generic;
@@ -107,10 +106,7 @@ namespace Blasphemous.Randomizer.ItemRando
         // Actually trigger the pop up
         public void showItemPopUp(Item item)
         {
-            RewardInfo info = item.getRewardInfo(false);
-            UIController.instance.ShowObjectPopUp(UIController.PopupItemAction.GetObejct, info.name, info.sprite, InventoryManager.ItemType.Quest);
-            //RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
-            //UIController.instance.ShowPopupAchievement(achievement);
+            UIController.instance.ShowObjectPopUp(UIController.PopupItemAction.GetObejct, item.GetName(false), item.GetImage(false), InventoryManager.ItemType.Quest);
         }
 
         // Shuffle the items - called when loading a game
