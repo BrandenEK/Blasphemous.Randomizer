@@ -1,29 +1,18 @@
 lang: en
-bead: New rosary bead obtained!
-prayer: New prayer obtained!
-relic: New relic obtained!
-heart: New sword heart obtained!
-bone: New collectible obtained!
-quest: New quest item obtained!
 chname: Cherub
 chdesc: A little floating baby that you rescued from a cage.
-chnot: Cherub rescued!
 luname: Life Upgrade
 ludesc: An increase to your maximum health.
 funame: Fervour Upgrade
 fudesc: An increase to your maximum fervour.
 suname: Mea Culpa Upgrade
 sudesc: An increase to the strength of your sword.
-stnot: Stat increased!
 trname: Tears of Atonement
 trdesc: A bundle of * tears.
-trnot: Tears acquired!
-sknot: Skill unlocked!
 dshnam: Dash Ability
 dshdes: The lost ability to dash and slide under obstacles.
 wclnam: Wall Climb Ability
 wcldes: The lost ability to climb walls with your sword.
-ablnot: Ability unlocked!
 itmerr: Error: Rewards list not initialized!
 daterr: Randomizer data could not be loaded, reinstall the program.
 saverr: Loaded invalid save file.  Item locations are invalid.
@@ -32,14 +21,8 @@ shrine: Shrine Tier
 sword: Mea Culpa
 items: Items collected
 varous: Various
-vandis: Vanilla
-randis: Randomized
-outdis: Outdated
 sorrow: Sacred Sorrows mode can not be played in randomizer!
 
-chset: CHOOSE SETTINGS
-begin: Begin
-cancel: Cancel
 menusd: Seed
 distyp: Disabled
 simtyp: Simple
@@ -50,11 +33,7 @@ lgname: Logic Difficulty
 lgtyp1: Easy
 lgtyp2: Normal
 lgtyp3: Hard
-lgdes1: Best for beginner players, not many skips or special\ntechniques will be required
-lgdes2: Best for the average player, common skips may be required,\nbut never the Mourning and Havoc skip
-lgdes3: Best for expert players, many uncommon and difficult skips\nmay be required
 loname: Starting Location
-lodesc: Where to spawn when beginning the game
 lotyp1: Brotherhood
 lotyp2: Albero
 lotyp3: The Convent
@@ -64,75 +43,41 @@ lotyp6: Rooftops
 lotyp7: Shipyard
 lotyp8: Random
 tpname: Teleportation
-tpdesc: Prie Dieus are automatically upgraded to the maximum level
 htname: Allow Hints
-htdesc: Corpses will give a hint about valuable items when interacted with
 pename: Allow Penitence
-pedesc: You are able to choose a penitence in the Brotherhood
 
 drname: Door Shuffle
-drdes1: Room transitions will always lead to their original destinations
-drdes2: Only room transitions that lead to a different region\nwill be shuffled with each other
-drdes3: All room transtitions will be shuffled with each other
 bsname: Boss Shuffle
-bsdes1: Bosses will remain in their original places
-bsdes2: Bosses will be shuffled around, with each boss only appearing once
-bsdes3: Bosses will be shuffled around, with each boss appearing any number of times
 enname: Enemy Shuffle
-endes1: Enemies will remain in their original places
-endes2: Enemies will be placed randomly, with each enemy appearing\nthe same number of times as in the original game
-endes3: Enemies will be placed randomly, with each enemy appearing\nany number of times
 clname: Maintain Class
-cldesc: Enemies are constrained to their original group (Normal, Flying, Large)
 scname: Area Scaling
-scdesc: Enemy health and damage is scaled up/down based on their location
 
 rqname: Shuffle Reliquaries
-rqdesc: The three reliquaries will be added to the item pool
 dsname: Shuffle Dash
-dsdesc: Shuffles the dash ability into the item pool
 wcname: Shuffle Wall Climb
-wcdesc: Shuffles the wall climb ability into the item pool
 sbname: Shuffle Spike Boots
-sbdesc: Shuffles the Boots of Pleading into the item pool\n(Only if the mod is installed)
 djname: Shuffle Double Jump
-djdesc: Shuffles the Purified Hand of the Nun into the item pool\n(Only if the mod is installed)
 
 ssname: Shuffle Sword Skills
-ssdesc: Shuffles the sword skills into the item pool
 thname: Shuffle Thorns
-thdesc: Shuffles the 8 thorns into the item pool
 jiname: Junk inconvenient\nlocations
-jidesc: Forces a junk item at inconvenient locations such as Miriam
 whname: Start with Wheel
-whdesc: The starting gift will be the Young Mason's Wheel
 
 lang: es
-bead: Nueva cuenta de rosario obtenida
-prayer: Nuevo rezo obtenido
-relic: Nueva reliquia obtenida
-heart: Nuevo corazón de Mea Culpa obtenido
-bone: Nuevo coleccionable obtenido
-quest: Nuevo objeto clave obtenido
 chname: Niño de la Luz Lunar
 chdesc: Un bebé volador al que has rescatado de una jaula.
-chnot: Niño de la Luz Lunar rescatado
 luname: Aumento de vida
 ludesc: Un aumento de tu salud máxima.
 funame: Aumento de fervor
 fudesc: Un aumento de tu fervor máximo.
 suname: Mejora de Mea Culpa
 sudesc: Una mejora del poder de tu espada.
-stnot: Atributo mejorado
 trname: Lágrimas de enmienda
 trdesc: Una cantidad de * lágrimas.
-trnot: Lágrimas conseguidas
-sknot: Habilidad desbloqueada
 dshnam: Habilidad de esquive
 dshdes: La habilidad perdida de esquivar y deslizarte bajo los obstáculos
 wclnam: Habilidad de escalada
 wcldes: La habilidad perdida de trepar muros con la espada
-ablnot: Habilidad desbloqueada
 itmerr: Error: no se ha iniciado la lista de recompensas
 daterr: No se han podido cargar los datos del randomizador, reinstala el programa.
 saverr: Se ha cargado una partida no compatible. La ubicación de los objetos no es válida.
@@ -141,14 +86,8 @@ shrine: Nivel de altar
 sword: Mea Culpa
 items: Objetos obtenidos
 varous: varios
-vandis: Vanilla
-randis: Randomizado
-outdis: Desactualizado
 sorrow: No se puede jugar al modo Sagrados Pesares en el randomizador.
 
-chset: SELECCIONA LOS AJUSTES
-begin: Comenzar
-cancel: Cancelar
 menusd: Semilla
 distyp: Estándar
 simtyp: Simple
@@ -159,11 +98,7 @@ lgname: Dificultad de la lógica
 lgtyp1: Fácil
 lgtyp2: Normal
 lgtyp3: Difícil
-lgdes1: Lo mejor para principiantes, no harán falta muchas técnicas especiales\nni triquiñuelas
-lgdes2: Lo mejor para jugadores promedio. Tal vez haga falta alguna triquiñuela normal,\npero nunca la de Luto y Estrago 
-lgdes3: Lo mejor para jugadores con experiencia. Tal vez hagan falta muchas\ntriquiñuelas raras y complicadas
 loname: Lugar de inicio
-lodesc: El lugar en el que empiezas en el juego
 lotyp1: La Hermandad
 lotyp2: Albero
 lotyp3: El Convento
@@ -173,75 +108,41 @@ lotyp6: Los Altos
 lotyp7: Luto y Estrago
 lotyp8: Aleatorio
 tpname: Teletransporte
-tpdesc: Los prie-dieus se mejoran al máximo automáticamente
 htname: Permitir pistas
-htdesc: Los cadáveres darán pistas sobre objetos valiosos cuando se hable con ellos
 pename: Permitir penitencia
-pedesc: Puedes elegir una penitencia en la Hermandad
 
 drname: Puertas aleatorias
-drdes1: Las “puertas” de los niveles siempre dan a los niveles originales
-drdes2: Solo se intercambian las “puertas” de transición entre distintas regiones
-drdes3: Se intercambian todas las “puertas”
 bsname: Jefes aleatorios
-bsdes1: Los jefes permanecerán en su lugar original
-bsdes2: Los jefes se intercambiarán y solo aparecerán una vez por partida
-bsdes3: Los jefes se intercambiarán y cada uno aparecerá el número de veces que sea.
 enname: Enemigos aleatorios
-endes1: Los enemigos permanecerán en su lugar original
-endes2: Los enemigos se sitúan de forma aleatoria y cada enemigo\naparece las mismas veces que en el juego original
-endes3: Los enemigos se sitúan de forma aleatoria y cada enemigo\naparece un número cualquiera de veces
 clname: Mantener clase
-cldesc: El tipo de enemigos se limita a su tipo original (Normales, Voladores y Grandes)
 scname: Acorde a la zona
-scdesc: La salud y el daño de los enemigos se ajusta a su ubicación en el mapa
 
 rqname: Añadir relicarios
-rqdesc: Los tres relicarios se incluyen en el abanico de objetos obtenibles
 dsname: Añadir esquive
-dsdesc: La habilidad de esquive se incluye en el abanico de objetos obtenibles
 wcname: Añadir escalada
-wcdesc: La habilidad de escalada se incluye en el abanico de objetos obtenibles
 sbname: Añadir Botas de\nla Súplica
-sbdesc: Las Botas de la Súplica se incluyen en el abanico de objetos obtenibles\n(Solo si se ha instalado el mod)
 djname: Añadir salto doble
-djdesc: La Mano Purificada de la Monja se incluye en el abanico de objetos obtenibles\n(Solo si se ha instalado el mod)
 
 ssname: Añadir habilidades\nde espada
-ssdesc: Las habilidades de Mea Culpa se incluyen en el abanico de objetos obtenibles
 thname: Añadir espinas
-thdesc: Las ocho espinas se incluyen en el abanico de objetos obtenibles
 jiname: Objetos sin valor en\nsitios inconvenientes
-jidesc: Fuerza la ubicación de objetos de valor irrelevante\nen lugares inconvenientes como los desafíos de Miriam
 whname: Empezar con la Rueda
-whdesc: Tu obsequio inicial será la Rueda del Joven Masón
 
 lang: zh
-bead: 获得新念珠
-prayer: 获得新祷文
-relic: 获得新圣物
-heart: 获得新孽刃之心
-bone: 获得新骨头
-quest: 获得新任务物品
 chname: 月光之子
 chdesc: 被你从浮空牢笼中救出的小天使
-chnot: 解救了月光之子
 luname: 血量上限升级
 ludesc: 提升最大生命值
 funame: 蓝量上限升级
 fudesc: 提升最大热诚值
 suname: 孽刃升级
 sudesc: 提升孽刃的攻击力并解锁新的剑技
-stnot: 能力值提升
 trname: 赎罪之泪
 trdesc: 装有 * 赎罪之泪的小瓶子
-trnot: 获得赎罪之泪
-sknot: 解锁新技能
 dshnam: 冲刺能力
 dshdes: 你失而复得的冲刺滑铲的能力
 wclnam: 爬墙能力
 wcldes: 你失而复得的用孽刃爬墙的能力
-ablnot: 解锁新技能！
 itmerr: 错误：物品列表未初始化
 daterr: 随机mod数据未加载，请重新下载并安装随机mod
 saverr: ???
@@ -250,14 +151,8 @@ shrine: 祭坛等级
 sword: 孽刃
 items: 物品
 varous: 多样化
-vandis: 原版
-randis: 随机mod
-outdis: 老版本
 sorrow: 在随机mod中无法游玩圣恸模式
 
-chset: 自定义随机mod设置项
-begin: 开始
-cancel: 取消
 menusd: 种子
 distyp: 禁用
 simtyp: 简单
@@ -268,11 +163,7 @@ lgname: skip难度
 lgtyp1: 简单
 lgtyp2: 普通
 lgtyp3: 困难
-lgdes1: 适合新玩家，不需要过多的skip和技巧
-lgdes2: 适合大部分玩家，需掌握常见skip，\n但不包括哀伤浩劫skip
-lgdes3: 适合精通玩家，需掌握许多不常用的邪道
 loname: 开局出生点
-lodesc: 开始游戏时的所在位置
 lotyp1: 默哀通道会
 lotyp2: 阿尔贝罗
 lotyp3: 焦容圣母修道院
@@ -282,75 +173,41 @@ lotyp6: 大教堂屋顶
 lotyp7: 哀伤与浩劫
 lotyp8: 随机出生点
 tpname: 开局祭坛传送
-tpdesc: 开局自动将存档点祭坛升至满级（有传送功能，回满蓝）
 htname: 尸体提示
-htdesc: 尸体遗言会提示该区域的一项重要物品位置
 pename: 可选忏悔
-pedesc: 你可以在默哀守望者门口选择忏悔
 
 drname: 房门随机设置
-drdes1: 房门和原版《渎神》一样连接
-drdes2: 仅随机大区域边界的房门（例:洪多--怨念之崖）
-drdes3: 乱序随机所有房门连接
 bsname: BOSS随机
-bsdes1: BOSS的位置和原版《渎神》一样
-bsdes2: BOSS被乱序随机，每个BOSS出现一次
-bsdes3: BOSS被全独立随机，每个BOSS可能出现多次或不出现
 enname: 敌人随机设置
-endes1: 敌人的位置和原版《渎神》一样
-endes2: 敌人被乱序随机，每个敌人出现一次
-endes3: 敌人被全独立随机，每个敌人可能出现多次或不出现
 clname: 对应类型
-cldesc: 随机敌人将会对应其原有的类型（普通怪/飞行怪/精英怪）
 scname: 场地调整
-scdesc: 下调前期场地的敌人数值，上调后期场地的敌人数值
 
 rqname: 随机圣物匣
-rqdesc: 将圣物匣加入随机池中（关闭此项将无法获得圣物匣）
 dsname: 随机冲刺能力
-dsdesc: 将冲刺能力加入随机池中
 wcname: 随机爬墙能力
-wcdesc: 将爬墙能力加入随机池中
 sbname: 随机恳求之鞋
-sbdesc: 将恳求之鞋加入随机池中\n（仅在安装“恳求之鞋”mod时生效）
 djname: 随机二段跳
-djdesc: 将修女的圣净之手加入随机池中\n（仅在安装“二段跳圣物”mod时生效）
 
 ssname: 剑技随机
-ssdesc: 将剑技加入随机池中
 thname: 荆棘随机
-thdesc: 将8个荆棘等级加入随机池中
 jiname: 极难地点奖励无用
-jidesc: 极高难度地点（比如完成所有血污跑酷）的物品总是无用的
 whname: 开局车轮
-whdesc: 开局奖励将改为念珠“年轻石工的车轮”
 
 lang: fr
-bead: Nouvelle perle de rosaire obtenue
-prayer: Nouvelle prière acquise
-relic: Nouvelle relique acquise
-heart: Nouveau cœur d'épée obtenu
-bone: Os récupéré
-quest: Nouvel objet de quête obtenu
 chname: Chérubin
 chdesc: Un frêle chérubin que vous avez délivré de sa cage
-chnot: Chérubin délivré
 luname: Amélioration de santé
 ludesc: Une amélioration de votre santé maximum
 funame: Amélioration de ferveur
 fudesc: Une amélioration de votre ferveur maximum
 suname: Renforcement de Mea Culpa
 sudesc: Une augmentation de la force de votre épée
-stnot: Statistique augmentée
 trname: Larmes d'expiation
 trdesc: Un amas de * larmes
-trnot: Larmes récupérées
-sknot: Compétence débloquée
 dshnam: Esquive glissée
 dshdes: La capacité perdue qui vous permet d'esquivant en glissant. Permet de passer sous les obstacles
 wclnam: Grimper sur les murs
 wcldes: La capacité perdue vous permettant de vous maintenir dans les murs avec votre épée
-ablnot: Capacité obtenue !
 itmerr: Erreur: La Liste de récompenses n'a pas été initialisée
 daterr: Les données du Randomizer n'ont pas pu être chargées, veuillez réinstaller le programme
 saverr: ???
@@ -359,14 +216,8 @@ shrine: Rang de Sanctuaire
 sword: Mea Culpa
 items: Objets récupérés
 varous: Multiples
-vandis: Vanilla
-randis: Randomisés
-outdis: Obsolète
 sorrow: Le mode Chagrins Sacrés n'est pas accessible en randomizer
 
-chset: CHOISISSEZ VOS PARAMÈTRES
-begin: Commencer
-cancel: Annuler
 menusd: Seed
 distyp: Désactivé
 simtyp: Simple
@@ -377,11 +228,7 @@ lgname: Complexité de la logique
 lgtyp1: Facile
 lgtyp2: Normal
 lgtyp3: Difficile
-lgdes1: Pour les joueur.euse.s débutant.e.s, peu voire pas de skips\nseront nécessaires
-lgdes2: Pour tout type de joueur.euse.s, quelques skips peuvent être nécessaire,\n mais pas le MaH skip
-lgdes3: Pour les joueur.euse.s expert.e.s, tout skip connu peut être requis.
 loname: Point de départ
-lodesc: Où vous apparaitrez au début du jeu
 lotyp1: Confrérie
 lotyp2: Albéro
 lotyp3: Le couvent
@@ -391,75 +238,41 @@ lotyp6: Les toits
 lotyp7: L'épave
 lotyp8: Aléatoire
 tpname: Téléportation
-tpdesc: Les Prie-Dieus seront améliorés au niveau maximum dès le début
 htname: Indices macabres
-htdesc: Les cadavres aux âmes torturées donnent des indices sur la positions des objets importants
 pename: Pénitences disponibles
-pedesc: Vous pourrez choisir une pénitence à la confrérie du Chagrin Silencieux (NG+)
 
 drname: Mélange des portes
-drdes1: Les transitions entre les salles sont inchangées
-drdes2: Seule les transitions entre les zones seront mélangées entre elles.
-drdes3: Toute transition de salle peut être intervertie avec une autre.
 bsname: Mélange des boss
-bsdes1: Les boss restent à leur positions d'origine
-bsdes2: Les boss seront assignés à des arènes aléatoires,\nchaque boss n'apparait qu'une fois
-bsdes3: Chaque arène de boss se voit assigner un boss de manière aléatoire,\ndoublons de boss possibles.
 enname: Randomisation d'ennemis
-endes1: Les ennemis restent à leur positions d'origine
-endes2: Les ennemis d'une salle sont assignés aléatoirement,\nle nombre d'ennemis total du jeu etant le même que dans le jeu de base.
-endes3: Chaque ennemi de chaque salle est assigné de manière aléatoire, doublon possible
 clname: Maintien des classes
-cldesc: Les ennemis seront restreints à leur group initial (Normal, Volant, Géant)
 scname: Mise à niveau des zones
-scdesc: La vie et les dégâts s'adapteront en fonction de la zone dans laquelle ils sont
 
 rqname: Ajouter les reliquaires
-rqdesc: Les trois reliquaires seront ajoutées à la pool d'objets
 dsname: Ajouter l'esquive
-dsdesc: Retire l'esquive des compétences de base et l'ajoute à la pool d'objets
 wcname: Ajouter l'escalade
-wcdesc: Retire la possibilité de grimper sur les murs des compétences de base et l'ajoute à la pool d'objets
 sbname: Ajouter les bottes d'imploration
-sbdesc: Ajoute la relique moddée Bottes bottes d'imploration à la pool d'objets\n(le mod doit être installé)
 djname: Ajouter le double saut
-djdesc: Ajoute la relique moddée Main purifiée de la nonne à la pool d'objets\n(le mod doit être installé)
 
 ssname: Mélanger les compétences d'épée
-ssdesc: Mélange les compétence d'épée à la pool d'objets
 thname: Mélanger les épines
-thdesc: Mélanges les 8 épines dans la pool d'objets
 jiname: Neutraliser les sopts difficiles
-jidesc: Force un objet négligeable dans les spots d'objets complexes (ex: Miriam)
 whname: Roue du maçon
-whdesc: L'objet de départ sera la roue du jeune maçon (augmentation de la vitesse de déplacement)
 
 lang: an
-bead: ¡Nueba cuenta de roçario ôttenía!
-prayer: ¡Nueba plegaria ôttenía!
-relic: ¡Nueba reliquia ôttenía!
-heart: ¡Nuebo coraçón de Mea Curpa ôttenío!
-bone: ¡Nuebo colêççionable ôttenío!
-quest: ¡Nuebo ôhheto clabe ôttenío!
 chname: Niño de la Lûh Lunâh
 chdesc: Un bebé boladôh ar que âh rêccatao de una haula.
-chnot: ¡Niño de la Lûh Lunâh rêccatao!
 luname: Aumento de Bida
 ludesc: Un aumento de tu çalûh máççima.
 funame: Aumento de ferbôh
 fudesc: Un aumento de tu ferbôh máççimo.
 suname: Mehora de Mea Curpa
 sudesc: Una mehora der podêh de tu êppá.
-stnot: ¡Atributo mehorao!
 trname: Lágrimâ de Êmmienda
 trdesc: Una cantidá de * lágrimâ.
-trnot: ¡Lágrimâ conçegidâ!
-sknot: ¡Abilidá dêbbloqueá!
 dshnam: Abilidá de Êqquibe
 dshdes: La abilidá perdida pa êqquibâh y dêl-liçarte baho lô ôttáculô.
 wclnam: Abilidá de Êccalá
 wcldes: La abilidá perdida pa êccalâh paredê con la êppá.
-ablnot: ¡Abilidá dêbbloqueá!
 itmerr: Errôh: ¡Lîtta de recompençâ no iniçialiçâh!
 daterr: No çe an podío cargâh lô datô del randomiçadôh. Reîttala er programa.
 saverr: Çe a cargao una partida no compatible. La ubicaçión de lô ôhhetô çon imbálidâ.
@@ -468,14 +281,8 @@ shrine: Nibêh de Artâh
 sword: Mea Curpa
 items: Ôhhetô ôtteníô
 varous: Bariô
-vandis: Baniya
-randis: Randomiçao
-outdis: Deçâttualiçao
 sorrow: No çe puede hugâh ar modo Çagráô Peçarê en el randomiçêh.
 
-chset: ÇELÊÇÇIONA LÔ AHÛTTÊ
-begin: Començâh
-cancel: Cançelâh
 menusd: Çemiya
 distyp: Deçâttibao
 simtyp: Çimple
@@ -486,11 +293,7 @@ lgname: Dificurtá de la Lóhica
 lgtyp1: Fáçî
 lgtyp2: Normâh
 lgtyp3: Difíçî
-lgdes1: Lo mehôh pa prinçipiantê, no arán farta muxô trucô\nni ténnicâ êppeçialê
-lgdes2: Lo mehôh pa hugadorê promedio. Tar bêh aga farta argún truco\npero nunca er de Luto y Êttrago
-lgdes3: Lo mehôh pa lô hugadorê êppertô. Tar bêh agan farta muxô\ntrucô rarô y difíçilê
 loname: Lugâh de iniçio
-lodesc: Er lugâh donde empieçâ en er huego
 lotyp1: La Ermandá
 lotyp2: Arbero
 lotyp3: Er Combento
@@ -500,45 +303,22 @@ lotyp6: Lô Artô
 lotyp7: Luto y Êttrago
 lotyp8: Aleatorio
 tpname: Teletrâpporte
-tpdesc: Los Prie Dieus se mejoran automáticamente al máximo
 htname: Permitîh pîttâ
-htdesc: Lô cadáberê te darán pîttâ çobre ôhhetô balioçô cuando çe able con eyô
 pename: Permitîh Penitençia
-pedesc: Podrâh elehîh una penitençia en la Ermandá
 
 drname: Puertâ Aleatoriâ
-drdes1: Lâ trançiçionê de lô nibelê te yebarán a çu dêttino orihinâh
-drdes2: Çolo çe intercambian lâ trançiçionê entre dîttintâ rehionê
-drdes3: Çe intercambian toâ lâ trançiçionê entre eyâ
 bsname: Hefê Aleatoriô
-bsdes1: Lô Hefê permaneçerán en çu lugâh orihinâh
-bsdes2: Lô Hefê çe intercambiarán y cá Hefe apareçerá una bêh
-bsdes3: Lô Hefê çe intercambiarán y cá Hefe apareçerá lâ beçê que çea
 enname: Enemigô Aleatoriô
-endes1: Lô enemigô permaneçerán en çu lugâh orihinâh
-endes2: Lô enemigô çe çituarán aleatoriamente y cá enemigo\napareçerá er mîmmo número de beçê que en er huego orihinâh
-endes3: Los enemigos se sitúan de forma aleatoria y cada enemigo\napareçerá un número cuarquiera de beçê
 clname: Mantenêh Claçe
-cldesc: Lô enemigô çe limitan a çu tipo orînnâh (Normâh, Boladôh y Grande)
 scname: Balançe por Área
-scdesc: La çalûh y er daño de lô enemigô çe ahûttan a çu localiçaçión
 
 rqname: Aleatoriçâh Relicariô
-rqdesc: Añade lô trêh relicariô a la lîtta de ôhhetô
 dsname: Aleatoriçâh Êqquibe
-dsdesc: Añade la abilidá pa êqquibâh a la lîtta de ôhhetô
 wcname: Aleatoriçâh Êccalá
-wcdesc: Añade la abilidá pa êccalâh paredê a la lîtta de ôhhetô
 sbname: Aleatoriçâh Botâ de\nla Çúplica
-sbdesc: Añade lâ Botâ de la Çúplica a la lîtta de ôhhetô\n(Çolamente çi er môh êttá îttalao)
 djname: Aleatoriçâh Çarto Doble
-djdesc: Añade La Mano Purificá de la Monha a la lîtta de ôhhetô\n(Çolamente çi er môh êttá îttalao)
 
 ssname: Aleatoriçâh Abilidadê\nde Mea Curpa
-ssdesc: Aleatoriça lâ abilidadê de Mea Curpa a la lîtta de ôhhetô
 thname: Aleatoriçâh Êppina
-thdesc: Aleatoriça lâ oxo êppinâ a la lîtta de ôhhetô
 jiname: Ôhhetô irrelebantê en\nlugarê incombeniente
-jidesc: Fuerça que lô ôhhetô irrelebantê\nêttén en lugarê incombeniente como Miriam
 whname: Empeçâh con la Rueda
-whdesc: Tu ôhheto iniçiâh çerá la Rueda der Hoben Maçón
