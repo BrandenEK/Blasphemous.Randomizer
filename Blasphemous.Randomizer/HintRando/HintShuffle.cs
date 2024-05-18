@@ -1,12 +1,19 @@
-﻿using Blasphemous.Randomizer.ItemRando;
+﻿using Blasphemous.Randomizer.Filling;
+using Blasphemous.Randomizer.ItemRando;
 using System.Collections.Generic;
 
 namespace Blasphemous.Randomizer.HintRando
 {
     public class HintShuffle : IShuffle
     {
+        private readonly HintFiller _filler;
+
         private Dictionary<string, string> newHints;
-        private HintFiller filler;
+
+        public HintShuffle(HintFiller filler)
+        {
+            _filler = filler;
+        }
 
         // Manage mapped hints
         public Dictionary<string, string> SaveMappedHints() => newHints;
@@ -34,19 +41,15 @@ namespace Blasphemous.Randomizer.HintRando
             return char.ToUpper(output[0]).ToString() + output.Substring(1) + "...";
         }
 
-        public void Init()
+        public bool Shuffle(int seed, Config config)
         {
-            filler = new HintFiller();
-        }
-
-        public void Shuffle(int seed)
-        {
-            if (!Main.Randomizer.GameSettings.AllowHints || !Main.Randomizer.data.isValid || !Main.Randomizer.itemShuffler.ValidSeed)
-                return;
+            if (!config.AllowHints)
+                return true;
 
             newHints = new Dictionary<string, string>();
-            filler.Fill(seed, newHints);
+            _filler.Fill(seed, config, newHints);
             Main.Randomizer.Log(newHints.Count + " hints have been shuffled!");
+            return true;
         }
     }
 }

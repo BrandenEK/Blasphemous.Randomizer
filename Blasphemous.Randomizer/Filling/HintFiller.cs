@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Blasphemous.Randomizer.ItemRando;
 
-namespace Blasphemous.Randomizer.HintRando
+namespace Blasphemous.Randomizer.Filling
 {
     public class HintFiller : Filler
     {
@@ -18,10 +18,9 @@ namespace Blasphemous.Randomizer.HintRando
             { 8, "RB105" }
         };
 
-        public void Fill(int seed, Dictionary<string, string> output)
+        public void Fill(int seed, Config config, Dictionary<string, string> output)
         {
             initialize(seed);
-            Config config = Main.Randomizer.GameSettings;
 
             // Get list of dialog ids & possible hint locations
             List<int> dialogIds = new List<int>();

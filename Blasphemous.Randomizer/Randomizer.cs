@@ -2,10 +2,10 @@
 using Blasphemous.Framework.Menus;
 using Blasphemous.ModdingAPI;
 using Blasphemous.ModdingAPI.Persistence;
-using Blasphemous.Randomizer.BossRando;
 using Blasphemous.Randomizer.DoorRando;
 using Blasphemous.Randomizer.EnemyRando;
 using Blasphemous.Randomizer.Extensions;
+using Blasphemous.Randomizer.Filling;
 using Blasphemous.Randomizer.HintRando;
 using Blasphemous.Randomizer.ItemRando;
 using Blasphemous.Randomizer.Map;
@@ -35,7 +35,6 @@ namespace Blasphemous.Randomizer
         // Shufflers
         public ItemShuffle itemShuffler;
         public EnemyShuffle enemyShuffler;
-        public BossShuffle bossShuffler;
         public HintShuffle hintShuffler;
         private IShuffle[] shufflers;
 
@@ -70,9 +69,8 @@ namespace Blasphemous.Randomizer
             // Create main shufflers
             itemShuffler = new ItemShuffle();
             enemyShuffler = new EnemyShuffle();
-            bossShuffler = new BossShuffle();
-            hintShuffler = new HintShuffle();
-            shufflers = new IShuffle[] { itemShuffler, enemyShuffler, bossShuffler, hintShuffler };
+            hintShuffler = new HintShuffle(new HintFiller());
+            shufflers = new IShuffle[] { itemShuffler, enemyShuffler, hintShuffler };
             for (int i = 0; i < shufflers.Length; i++)
             {
                 shufflers[i].Init();
@@ -149,18 +147,18 @@ namespace Blasphemous.Randomizer
             Stopwatch watch = Stopwatch.StartNew();
 
             // Shuffle everything
-            for (int i = 0; i < shufflers.Length; i++)
+            try
             {
-                try
+                foreach (IShuffle shuffler in shufflers)
                 {
-                    shufflers[i].Shuffle(GameSettings.Seed);
+                    if (!shuffler.Shuffle(GameSettings.Seed, GameSettings))
+                        throw new System.Exception($"Failed to perform the {shuffler.GetType().Name}");
                 }
-                catch (System.Exception e)
-                {
-                    LogError($"Error with the {shufflers[i].GetType().Name} when shuffling seed {GameSettings.Seed}");
-                    LogError("Error message: " + e.Message);
-                    ResetGame();
-                }
+            }
+            catch (System.Exception e)
+            {
+                LogError($"Error with seed {GameSettings.Seed}: {e}");
+                ResetGame();
             }
 
             if (itemShuffler.ValidSeed)
