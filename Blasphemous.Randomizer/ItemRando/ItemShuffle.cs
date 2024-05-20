@@ -1,4 +1,5 @@
 ﻿using Blasphemous.Randomizer.DoorRando;
+using Blasphemous.Randomizer.Filling;
 using Framework.Managers;
 using Gameplay.UI;
 using System.Collections.Generic;
@@ -8,9 +9,10 @@ namespace Blasphemous.Randomizer.ItemRando
 {
     public class ItemShuffle : IShuffle
     {
+        private readonly ItemDoorFiller _filler;
+
         private Dictionary<string, string> newItems;
         private Dictionary<string, string> newDoors;
-        private ItemFiller filler;
 
         private Item lastItem;
 
@@ -132,11 +134,6 @@ namespace Blasphemous.Randomizer.ItemRando
             }
 
             Main.Randomizer.Log(newItems.Count + " items have been shuffled!");
-        }
-
-        public void Init()
-        {
-            filler = new ItemFiller();
         }
 
         // The locations_items.json file must be in order sorted by area for this to work!

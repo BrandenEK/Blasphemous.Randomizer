@@ -3,7 +3,7 @@ using Blasphemous.Randomizer.ItemRando;
 
 namespace Blasphemous.Randomizer.Filling
 {
-    public class HintFiller : Filler
+    public class HintFiller : Filler<SingleResult>
     {
         // Must go in decreasing order
         private Dictionary<int, string> grtdHints = new Dictionary<int, string>() // move to data file ?
@@ -18,8 +18,9 @@ namespace Blasphemous.Randomizer.Filling
             { 8, "RB105" }
         };
 
-        public void Fill(int seed, Config config, Dictionary<string, string> output)
+        public override SingleResult Fill(int seed, Config config)
         {
+            Dictionary<string, string> mapping = new();
             initialize(seed);
 
             // Get list of dialog ids & possible hint locations
@@ -42,7 +43,7 @@ namespace Blasphemous.Randomizer.Filling
             // Fill guaranteed hints
             foreach (int dialogId in grtdHints.Keys)
             {
-                addHint(dialogId, grtdHints[dialogId], output);
+                addHint(dialogId, grtdHints[dialogId], mapping);
                 dialogIds.RemoveAt(dialogId - 1);
                 possibleLocations.Remove(grtdHints[dialogId]);
             }
@@ -52,7 +53,7 @@ namespace Blasphemous.Randomizer.Filling
             while (dialogIds.Count > 0 && possibleLocations.Count > 0)
             {
                 int randIdx = rand(dialogIds.Count);
-                addHint(dialogIds[randIdx], possibleLocations[possibleLocations.Count - 1], output);
+                addHint(dialogIds[randIdx], possibleLocations[possibleLocations.Count - 1], mapping);
                 possibleLocations.RemoveAt(possibleLocations.Count - 1);
                 dialogIds.RemoveAt(randIdx);
             }
@@ -62,6 +63,12 @@ namespace Blasphemous.Randomizer.Filling
             {
                 Main.Randomizer.LogWarning("Error: Hint dictionary wasn't fully filled!");
             }
+
+            return new SingleResult()
+            {
+                Mapping = mapping,
+                Success = true
+            };
         }
 
         // Adds a hint to the output dictionary

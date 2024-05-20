@@ -46,8 +46,9 @@ namespace Blasphemous.Randomizer.HintRando
             if (!config.AllowHints)
                 return true;
 
-            newHints = new Dictionary<string, string>();
-            _filler.Fill(seed, config, newHints);
+            var result = _filler.Fill(seed, config);
+            newHints = result.Mapping;
+
             Main.Randomizer.Log(newHints.Count + " hints have been shuffled!");
             return true;
         }

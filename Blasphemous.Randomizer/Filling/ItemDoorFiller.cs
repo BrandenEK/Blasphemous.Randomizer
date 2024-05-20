@@ -1,16 +1,16 @@
 ﻿using Blasphemous.Randomizer.DoorRando;
 using Blasphemous.Randomizer.Extensions;
+using Blasphemous.Randomizer.ItemRando;
 using System.Collections.Generic;
 
-namespace Blasphemous.Randomizer.ItemRando
+namespace Blasphemous.Randomizer.Filling
 {
-    public class ItemFiller : Filler
+    public class ItemDoorFiller : Filler
     {
-        public bool Fill(int seed, Dictionary<string, string> mappedDoors, Dictionary<string, string> mappedItems)
+        public bool Fill(int seed, Config config, Dictionary<string, string> mappedDoors, Dictionary<string, string> mappedItems)
         {
             // Initialize seed with empty lists
             initialize(seed);
-            Config config = Main.Randomizer.GameSettings;
             BlasphemousInventory inventory = new BlasphemousInventory();
             inventory.SetConfigSettings(config);
             mappedDoors.Clear();
@@ -385,5 +385,5 @@ namespace Blasphemous.Randomizer.ItemRando
             // Seed is filled & validated
             return true;
         }
-	}
+    }
 }

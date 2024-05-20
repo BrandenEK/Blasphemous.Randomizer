@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Blasphemous.Randomizer
+namespace Blasphemous.Randomizer.Filling
 {
-    public abstract class Filler
+    public abstract class Filler<R> where R : FillResult
     {
         private Random rng;
 
@@ -29,5 +29,7 @@ namespace Blasphemous.Randomizer
                 list[upperIdx] = value;
             }
         }
+
+        public abstract R Fill(int seed, Config config);
     }
 }
