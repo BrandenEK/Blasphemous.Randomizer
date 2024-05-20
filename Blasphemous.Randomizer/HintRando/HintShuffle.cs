@@ -6,11 +6,11 @@ namespace Blasphemous.Randomizer.HintRando
 {
     public class HintShuffle : IShuffle
     {
-        private readonly HintFiller _filler;
+        private readonly Filler<SingleResult> _filler;
 
         private Dictionary<string, string> newHints;
 
-        public HintShuffle(HintFiller filler)
+        public HintShuffle(Filler<SingleResult> filler)
         {
             _filler = filler;
         }
