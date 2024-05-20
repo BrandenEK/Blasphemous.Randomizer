@@ -1,4 +1,5 @@
 using Blasphemous.Randomizer.DoorRando;
+using Blasphemous.Randomizer.Filling;
 using Blasphemous.Randomizer.ItemRando;
 using LogicParser;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

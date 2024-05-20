@@ -1,7 +1,8 @@
-﻿using LogicParser;
+﻿using Blasphemous.Randomizer.ItemRando;
+using LogicParser;
 using System.Collections.Generic;
 
-namespace Blasphemous.Randomizer.ItemRando
+namespace Blasphemous.Randomizer.Filling
 {
     public class BlasphemousInventory : InventoryData
     {
@@ -42,7 +43,7 @@ namespace Blasphemous.Randomizer.ItemRando
 
         // Health boosts
         private int ownedFlasks = 0;
-        private int flasks => (HasDoor("D01Z05S18[E]") || HasDoor("D02Z02S09[E]") || HasDoor("D03Z02S14[E]") || HasDoor("D03Z03S03[SE]") || HasDoor("D04Z02S13[W]") || HasDoor("D05Z01S12[E]") || HasDoor("D20Z01S08[W]")) ? ownedFlasks : 0;
+        private int flasks => HasDoor("D01Z05S18[E]") || HasDoor("D02Z02S09[E]") || HasDoor("D03Z02S14[E]") || HasDoor("D03Z03S03[SE]") || HasDoor("D04Z02S13[W]") || HasDoor("D05Z01S12[E]") || HasDoor("D20Z01S08[W]") ? ownedFlasks : 0;
         private int ownedQuicksilver = 0;
         private int quicksilver => HasDoor("D01Z05S27[E]") ? ownedQuicksilver : 0;
 
@@ -73,7 +74,7 @@ namespace Blasphemous.Randomizer.ItemRando
 
         // Stats
         private int healthLevel = 0, fervourLevel = 0, swordLevel = 0;
-        private int TotalFervour => 60 + (20 * fervourLevel) + (10 * blueWax);
+        private int TotalFervour => 60 + 20 * fervourLevel + 10 * blueWax;
 
         // Skills
         private int combo = 0;
@@ -140,9 +141,9 @@ namespace Blasphemous.Randomizer.ItemRando
         private bool canClimbOnRoot => root && wallClimb;
 
         // Lung tech
-        private bool canSurvivePoison1 => lung || (logicDifficulty >= 1 && tiento) || logicDifficulty >= 2;
-        private bool canSurvivePoison2 => lung || (logicDifficulty >= 1 && tiento);
-        private bool canSurvivePoison3 => lung || (logicDifficulty >= 2 && tiento && TotalFervour >= 120);
+        private bool canSurvivePoison1 => lung || logicDifficulty >= 1 && tiento || logicDifficulty >= 2;
+        private bool canSurvivePoison2 => lung || logicDifficulty >= 1 && tiento;
+        private bool canSurvivePoison3 => lung || logicDifficulty >= 2 && tiento && TotalFervour >= 120;
 
         // Enemy tech
         private bool canEnemyBounce => airImpulse && enemySkipsAllowed;
@@ -226,7 +227,7 @@ namespace Blasphemous.Randomizer.ItemRando
                 "legionary" => 0.20f,
                 _ => throw new LogicParserException($"Boss {boss} does not exist!"),
             };
-            return playerStrength >= (logicDifficulty >= 2 ? bossStrength - 0.10f : (logicDifficulty >= 1 ? bossStrength : bossStrength + 0.10f));
+            return playerStrength >= (logicDifficulty >= 2 ? bossStrength - 0.10f : logicDifficulty >= 1 ? bossStrength : bossStrength + 0.10f);
         }
 
         private int guiltRooms

@@ -67,15 +67,10 @@ namespace Blasphemous.Randomizer
             });
 
             // Create main shufflers
-            itemShuffler = new ItemShuffle();
+            itemShuffler = new ItemShuffle(new ItemDoorFiller());
             enemyShuffler = new EnemyShuffle(new EnemyFiller());
             hintShuffler = new HintShuffle(new HintFiller());
             shufflers = new IShuffle[] { itemShuffler, enemyShuffler, hintShuffler };
-
-            for (int i = 0; i < shufflers.Length; i++)
-            {
-                shufflers[i].Init();
-            }
 
             // Load external data
             Log("Randomizer has been initialized!");

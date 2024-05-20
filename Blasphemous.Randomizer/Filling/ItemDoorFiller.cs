@@ -5,16 +5,17 @@ using System.Collections.Generic;
 
 namespace Blasphemous.Randomizer.Filling
 {
-    public class ItemDoorFiller : Filler
+    public class ItemDoorFiller : Filler<DoubleResult>
     {
-        public bool Fill(int seed, Config config, Dictionary<string, string> mappedDoors, Dictionary<string, string> mappedItems)
+        public override DoubleResult Fill(int seed, Config config)
         {
+            Dictionary<string, string> mappedDoors = new();
+            Dictionary<string, string> mappedItems = new();
+
             // Initialize seed with empty lists
             initialize(seed);
             BlasphemousInventory inventory = new BlasphemousInventory();
             inventory.SetConfigSettings(config);
-            mappedDoors.Clear();
-            mappedItems.Clear();
 
             Dictionary<string, ItemLocation> allItemLocations = Main.Randomizer.data.itemLocations;
             Dictionary<string, DoorLocation> allDoorLocations = Main.Randomizer.data.doorLocations;
@@ -327,7 +328,7 @@ namespace Blasphemous.Randomizer.Filling
                 }
                 if (reachableLocations.Count == 0)
                 {
-                    return false;
+                    return new DoubleResult() { Success = false };
                 }
                 if (progressionItems.Count == 0)
                 {
@@ -335,7 +336,7 @@ namespace Blasphemous.Randomizer.Filling
                     if (placedAllItems && unconnectedDoors.Count > 0)
                     {
                         // All items have been placed, but somehow not all doors are reachable even after another go through
-                        return false;
+                        return new DoubleResult() { Success = false };
                     }
                     placedAllItems = true;
                     continue;
@@ -355,7 +356,7 @@ namespace Blasphemous.Randomizer.Filling
             if (mappedDoors.Count != allDoorLocations.Count)
             {
                 // Not all doors were mapped, most likely because the rooftops elevator was never reachable, meaning the vanilla doors & locations up there were never made accessible
-                return false;
+                return new DoubleResult() { Success = false };
             }
 
             // Once all progression items have been placed and the doors are filled, place all filler items
@@ -383,7 +384,12 @@ namespace Blasphemous.Randomizer.Filling
                 throw new System.Exception("Invalid number of filler items after main shuffle!");
 
             // Seed is filled & validated
-            return true;
+            return new DoubleResult()
+            {
+                Mapping1 = mappedItems,
+                Mapping2 = mappedDoors,
+                Success = true
+            };
         }
     }
 }

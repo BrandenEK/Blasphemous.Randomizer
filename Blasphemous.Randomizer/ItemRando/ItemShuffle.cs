@@ -9,7 +9,7 @@ namespace Blasphemous.Randomizer.ItemRando
 {
     public class ItemShuffle : IShuffle
     {
-        private readonly ItemDoorFiller _filler;
+        private readonly Filler<DoubleResult> _filler;
 
         private Dictionary<string, string> newItems;
         private Dictionary<string, string> newDoors;
@@ -19,6 +19,11 @@ namespace Blasphemous.Randomizer.ItemRando
         public bool ValidSeed => newItems != null && newItems.Count > 0;
 
         public DoorLocation LastDoor { get; set; }
+
+        public ItemShuffle(Filler<DoubleResult> filler)
+        {
+            _filler = filler;
+        }
 
         // Manage mapped items
         public Dictionary<string, string> SaveMappedItems() => newItems;
@@ -112,28 +117,35 @@ namespace Blasphemous.Randomizer.ItemRando
         }
 
         // Shuffle the items - called when loading a game
-        public void Shuffle(int seed)
+        public bool Shuffle(int seed, Config config)
         {
-            if (!Main.Randomizer.data.isValid)
-                return;
-
-            newItems = new Dictionary<string, string>();
-            newDoors = new Dictionary<string, string>();
             int attempt = 0, maxAttempts = 30;
-            while (!filler.Fill(seed + attempt, newDoors, newItems) && attempt < maxAttempts)
+            while (attempt < maxAttempts)
             {
+                var result = _filler.Fill(seed + attempt, config);
+
+                // If shuffle was a success, set mappings and break
+                if (result.Success)
+                {
+                    newItems = result.Mapping1;
+                    newDoors = result.Mapping2;
+                    break;
+                }
+
+                // Otherwise increase attempt and try again
                 Main.Randomizer.LogError($"Seed {seed + attempt} was invalid! Trying next...");
                 attempt++;
             }
+
+            // Shuffle still failed after max attempts
             if (attempt >= maxAttempts)
             {
                 Main.Randomizer.LogError($"Error: Failed to fill items in {maxAttempts} tries!");
-                newItems.Clear();
-                newDoors.Clear();
-                return;
+                return false;
             }
 
             Main.Randomizer.Log(newItems.Count + " items have been shuffled!");
+            return true;
         }
 
         // The locations_items.json file must be in order sorted by area for this to work!
