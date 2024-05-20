@@ -1,14 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using Blasphemous.Randomizer.Filling;
 using Framework.Audio;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Blasphemous.Randomizer.EnemyRando
 {
     public class EnemyShuffle : IShuffle
     {
+        private readonly Filler<SingleResult> _filler;
+
         private Dictionary<string, string> newEnemies;
-        private Dictionary<string, int> difficultyRatings;
-        private EnemyFiller filler;
+
+        public EnemyShuffle(Filler<SingleResult> filler)
+        {
+            _filler = filler;
+        }
 
         // Enemizer fixes
         public FMODAudioCatalog[] audioCatalogs;
@@ -54,7 +60,7 @@ namespace Blasphemous.Randomizer.EnemyRando
         // Gets the difficulty rating of a specific location
         public int getLocationRating(string id)
         {
-            if (difficultyRatings.ContainsKey(id)) return difficultyRatings[id]; // Move this into the json file perhaps ?
+            if (_difficultyRatings.ContainsKey(id)) return _difficultyRatings[id]; // Move this into the json file perhaps ?
             if (id == "D19Z01S01") return 2;
             if (id == "D19Z01S02") return 3;
             if (id == "D19Z01S03") return 4;
@@ -66,46 +72,42 @@ namespace Blasphemous.Randomizer.EnemyRando
             return 0;
         }
 
-        public void Init()
+        public bool Shuffle(int seed, Config config)
         {
-            filler = new EnemyFiller();
+            if (Main.Randomizer.GameSettings.EnemyShuffleType < 1)
+                return true;
 
-            // Load from json
-            difficultyRatings = new Dictionary<string, int>()
-            {
-				{ "D01Z01", 1 },
-				{ "D01Z03", 2 },
-				{ "D01Z04", 2 },
-                { "D01Z05", 3 },
-                { "D03Z01", 3 },
-                { "D02Z01", 3 },
-                { "D02Z02", 4 },
-                { "D03Z02", 4 },
-                { "D20Z01", 5 },
-                { "D03Z03", 6 },
-                { "D02Z03", 6 },
-                { "D04Z01", 7 },
-                { "D04Z02", 7 },
-                { "D05Z01", 8 },
-                { "D05Z02", 8 },
-                { "D06Z01", 9 },
-                { "D09Z01", 10 },
-                { "D09BZ0", 10 },
-                { "D20Z02", 11 }
-			};
-        }
+            var result = _filler.Fill(seed, config);
+            newEnemies = result.Mapping;
 
-        public void Shuffle(int seed)
-        {
-            if (Main.Randomizer.GameSettings.EnemyShuffleType < 1 || !Main.Randomizer.data.isValid)
-                return;
-
-            newEnemies = new Dictionary<string, string>();
-            filler.Fill(seed, newEnemies);
             Main.Randomizer.Log(newEnemies.Count + " enemies have been shuffled!");
+            return true;
         }
 
         // temp
         public static string enemyData = "";
+
+        private readonly Dictionary<string, int> _difficultyRatings = new()
+        {
+            { "D01Z01", 1 },
+            { "D01Z03", 2 },
+            { "D01Z04", 2 },
+            { "D01Z05", 3 },
+            { "D03Z01", 3 },
+            { "D02Z01", 3 },
+            { "D02Z02", 4 },
+            { "D03Z02", 4 },
+            { "D20Z01", 5 },
+            { "D03Z03", 6 },
+            { "D02Z03", 6 },
+            { "D04Z01", 7 },
+            { "D04Z02", 7 },
+            { "D05Z01", 8 },
+            { "D05Z02", 8 },
+            { "D06Z01", 9 },
+            { "D09Z01", 10 },
+            { "D09BZ0", 10 },
+            { "D20Z02", 11 }
+        };
     }
 }

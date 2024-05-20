@@ -68,7 +68,7 @@ namespace Blasphemous.Randomizer
 
             // Create main shufflers
             itemShuffler = new ItemShuffle();
-            enemyShuffler = new EnemyShuffle();
+            enemyShuffler = new EnemyShuffle(new EnemyFiller());
             hintShuffler = new HintShuffle(new HintFiller());
             shufflers = new IShuffle[] { itemShuffler, enemyShuffler, hintShuffler };
 
