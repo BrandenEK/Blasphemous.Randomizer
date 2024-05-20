@@ -148,9 +148,10 @@ namespace Blasphemous.Randomizer.BossRando
             // Set dictionary of bosses to null
         }
 
-        public void Shuffle(int seed)
+        public bool Shuffle(int seed, Config config)
         {
             // Shuffle bosses
+            return true;
         }
     }
 }

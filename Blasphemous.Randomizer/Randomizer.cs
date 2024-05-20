@@ -2,6 +2,7 @@
 using Blasphemous.Framework.Menus;
 using Blasphemous.ModdingAPI;
 using Blasphemous.ModdingAPI.Persistence;
+using Blasphemous.Randomizer.BossRando;
 using Blasphemous.Randomizer.DoorRando;
 using Blasphemous.Randomizer.EnemyRando;
 using Blasphemous.Randomizer.Extensions;
@@ -33,6 +34,7 @@ namespace Blasphemous.Randomizer
         private const bool SKIP_CUTSCENES = true;
 
         // Shufflers
+        public BossShuffle bossShuffler;
         public ItemShuffle itemShuffler;
         public EnemyShuffle enemyShuffler;
         public HintShuffle hintShuffler;
@@ -67,6 +69,7 @@ namespace Blasphemous.Randomizer
             });
 
             // Create main shufflers
+            bossShuffler = new BossShuffle();
             itemShuffler = new ItemShuffle(new ItemDoorFiller());
             enemyShuffler = new EnemyShuffle(new EnemyFiller());
             hintShuffler = new HintShuffle(new HintFiller());
@@ -218,7 +221,7 @@ namespace Blasphemous.Randomizer
             FixDoorsOnLoad(newLevel); // Perform door fixes such as closing gates & revealing secrets
             FixRooftopsElevator(newLevel); // Keep rooftops elevator at top
             updateShops(); // Update shop menus
-            bossShuffler.levelLoaded(newLevel); // Spawn boss stuff
+            //bossShuffler.levelLoaded(newLevel); // Spawn boss stuff
             EnemyLoader.loadEnemies(); // Load enemies
 
             // Reload enemy audio catalogs
