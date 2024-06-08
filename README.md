@@ -24,7 +24,7 @@ A very special thank you to everyone who has helped with the randomizer
 [@ConanCimmerio](https://github.com/ConanCimmerio), [@EltonZhang777](https://github.com/EltonZhang777), [@RocherBrockas](https://github.com/RocherBrockas)
 
 ***- Images and UI -*** <br>
-[@JimmyDiamonds](https://github.com/JimmyDiamonds), [@rcvrdt](https://github.com/rcvrdt), [@ConanCimmerio](https://github.com/ConanCimmerio)
+[@JimmyDiamonds](https://github.com/JimmyDiamonds), [@rcvrdt](https://github.com/rcvrdt), [@ConanCimmerio](https://github.com/ConanCimmerio), [@LuceScarlet](https://github.com/LuceScarlet)
 
 ***- Logic testing and improvements -*** <br>
 [@Exempt-Medic](https://github.com/Exempt-Medic), [@LumineonRL](https://github.com/LumineonRL)
