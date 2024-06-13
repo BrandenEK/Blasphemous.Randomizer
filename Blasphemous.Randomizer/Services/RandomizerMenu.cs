@@ -7,7 +7,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Blasphemous.Randomizer;
+namespace Blasphemous.Randomizer.Services;
 
 /// <summary>
 /// Handles choosing settings for the randomizer
@@ -74,7 +74,7 @@ public class RandomizerMenu : ModMenu
                 ShuffleThorns = _thorns.Toggled,
                 JunkLongQuests = _junkQuests.Toggled,
                 StartWithWheel = _wheel.Toggled,
-                
+
                 Seed = _seedText.CurrentValue != string.Empty ? _seedText.CurrentNumericValue : _generatedSeed
             };
         }
@@ -230,7 +230,7 @@ public class RandomizerMenu : ModMenu
         };
         ArrowCreator arrow = new(this)
         {
-            
+
         };
         TextCreator text = new(this)
         {
