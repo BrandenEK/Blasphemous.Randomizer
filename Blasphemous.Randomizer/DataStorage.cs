@@ -38,6 +38,8 @@ namespace Blasphemous.Randomizer
 		public string[] CutsceneNames { get; private set; }
 		public string[] CutsceneFlags { get; private set; }
 
+		public Sprite Logo { get; private set; }
+
 		public bool loadData()
 		{
 			bool valid = true;
@@ -86,6 +88,9 @@ namespace Blasphemous.Randomizer
                 UsePointFilter = false
             });
             Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
+
+			Main.Randomizer.FileHandler.LoadDataAsSprite("logo.png", out Sprite logo);
+			Logo = logo;
 
             CreateInternalData();
 			isValid = valid;

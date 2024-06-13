@@ -14,7 +14,8 @@ public class RandomizerCredits : ModCredits
     /// </summary>
     protected override void OnDisplay(ICreditsEditor editor)
     {
-        // Add logo
+        editor.AddImage(Main.Randomizer.data.Logo);
+        editor.AddBlank();
 
         AddSingleSection(editor, "Programming and design", PROGRAMMING);
         AddDoubleSection(editor, "Translations", TRANSLATIONS);
