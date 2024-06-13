@@ -1,4 +1,5 @@
 ﻿using Blasphemous.CheatConsole;
+using Blasphemous.Framework.Credits;
 using Blasphemous.Framework.Menus;
 using Blasphemous.ModdingAPI;
 using Blasphemous.ModdingAPI.Persistence;
@@ -93,6 +94,7 @@ namespace Blasphemous.Randomizer
         protected override void OnRegisterServices(ModServiceProvider provider)
         {
             provider.RegisterCommand(new RandomizerCommand());
+            provider.RegisterCredits(new RandomizerCredits());
             provider.RegisterNewGameMenu(ModMenu);
         }
 
