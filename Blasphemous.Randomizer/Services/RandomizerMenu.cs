@@ -232,11 +232,14 @@ public class RandomizerMenu : ModMenu
             LineSize = 200
         };
 
-        int xOffset = -100;
-
         // Create options
-        _seedText = text.CreateOption("seed", ui, new Vector2(-20, 300), "Localize", true, false, 8);
+        int xOffset = -100;
         string[] standardOptions = new string[] { "distyp", "simtyp", "fultyp" }.Select(Main.Randomizer.LocalizationHandler.Localize).ToArray();
+
+        // Section 0
+
+        string seedName = Main.Randomizer.LocalizationHandler.Localize("menusd") + ":";
+        _seedText = text.CreateOption("seed", ui, new Vector2(-20, 300), seedName, true, false, 8);
 
         // Section 1
 
