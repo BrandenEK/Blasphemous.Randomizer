@@ -15,9 +15,9 @@ namespace Blasphemous.Randomizer.Services;
 public class RandomizerMenu : ModMenu
 {
     /// <summary>
-    /// Creates a new randomizer menu
+    /// This menu should open near the very end
     /// </summary>
-    public RandomizerMenu() : base("Randomizer Settings (Localize)", 10) { }
+    protected override int Priority { get; } = 1_000_000;
 
     private ArrowOption _logicDifficulty;
     private ArrowOption _startingLocation;
