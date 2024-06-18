@@ -1,5 +1,4 @@
-﻿using Blasphemous.Randomizer.Notifications;
-using Framework.Managers;
+﻿using Framework.Managers;
 using Framework.FrameworkCore;
 using Gameplay.UI.Others.MenuLogic;
 using HarmonyLib;
@@ -26,15 +25,13 @@ namespace Blasphemous.Randomizer.ItemRando
             {
                 if (Core.SkillManager.IsSkillUnlocked(skillId))
                 {
-                    RewardInfo info = item.getRewardInfo(false);
-                    ___caption.text = info.name;
-                    ___description.text = info.description;
+                    ___caption.text = item.GetName(false);
+                    ___description.text = item.GetDescription(false);
                 }
                 else if (Core.SkillManager.CanUnlockSkillNoCheckPoints(skillId))
                 {
-                    RewardInfo info = item.getRewardInfo(true);
-                    ___caption.text = info.name;
-                    ___description.text = info.description;
+                    ___caption.text = item.GetName(true);
+                    ___description.text = item.GetDescription(true);
                 }
                 else
                 {
@@ -61,8 +58,7 @@ namespace Blasphemous.Randomizer.ItemRando
             Item item = Main.Randomizer.itemShuffler.getItemAtLocation(___skill);
             if (item != null)
             {
-                RewardInfo info = item.getRewardInfo(!Core.SkillManager.IsSkillUnlocked(___skill));
-                ___skillImage.sprite = info.sprite;
+                ___skillImage.sprite = item.GetImage(!Core.SkillManager.IsSkillUnlocked(___skill));
             }
         }
     }

@@ -2,7 +2,6 @@
 using Framework.Managers;
 using UnityEngine;
 using Tools.Items;
-using Blasphemous.Randomizer.Notifications;
 
 namespace Blasphemous.Randomizer.ItemRando
 {
@@ -58,10 +57,9 @@ namespace Blasphemous.Randomizer.ItemRando
             Item item = Main.Randomizer.itemShuffler.getItemAtLocation(image.name.ToUpper());
             if (item != null)
             {
-                RewardInfo info = item.getRewardInfo(true);
-                caption = info.name;
-                description = info.description;
-                image = info.sprite;
+                caption = item.GetName(true);
+                description = item.GetDescription(true);
+                image = item.GetImage(true);
             }
         }
     }

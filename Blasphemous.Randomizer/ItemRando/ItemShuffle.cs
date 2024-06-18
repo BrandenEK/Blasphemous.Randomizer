@@ -107,8 +107,7 @@ namespace Blasphemous.Randomizer.ItemRando
         // Actually trigger the pop up
         public void showItemPopUp(Item item)
         {
-            RewardInfo info = item.getRewardInfo(false);
-            RewardAchievement achievement = new RewardAchievement(info.name, info.notification, info.sprite);
+            RewardAchievement achievement = new(item.GetName(false), item.GetNotification(false), item.GetImage(false));
             UIController.instance.ShowPopupAchievement(achievement);
         }
 
