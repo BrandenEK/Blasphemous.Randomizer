@@ -26,9 +26,21 @@ namespace Blasphemous.Randomizer.HintRando
         // Returns the actual hint that describes the item and location
         private string getHintText(string location)
         {
-            Item item = Main.Randomizer.itemShuffler.getItemAtLocation(location);
-            string locationHint = Main.Randomizer.data.itemLocations[location].Hint;
-            string itemHint = item == null ? "???" : item.hint;
+            string locationHint, itemHint;
+
+            if (location == "SIERPES")
+            {
+                Item item1 = Main.Randomizer.itemShuffler.getItemAtLocation("BossTrigger[5000]");
+                Item item2 = Main.Randomizer.itemShuffler.getItemAtLocation("QI202");
+                locationHint = Main.Randomizer.data.itemLocations["QI202"].Hint;
+                itemHint = $"{item1?.hint ?? "???"} and {item2?.hint ?? "???"}";
+            }
+            else
+            {
+                Item item = Main.Randomizer.itemShuffler.getItemAtLocation(location);
+                locationHint = Main.Randomizer.data.itemLocations[location].Hint;
+                itemHint = item?.hint ?? "???";
+            }
 
             string output = locationHint.Replace("*", itemHint);
             return char.ToUpper(output[0]).ToString() + output.Substring(1) + "...";

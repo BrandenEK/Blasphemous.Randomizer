@@ -9,7 +9,7 @@ namespace Blasphemous.Randomizer.HintRando
         private Dictionary<int, string> grtdHints = new Dictionary<int, string>() // move to data file ?
         {
             { 34, "QI201" },
-            { 32, "QI202" },
+            { 32, "SIERPES" },
             { 28, "PR201" },
             { 27, "Sword[D01Z05S24]" },
             { 18, "HE07" },
@@ -45,7 +45,16 @@ namespace Blasphemous.Randomizer.HintRando
             {
                 addHint(dialogId, grtdHints[dialogId], output);
                 dialogIds.RemoveAt(dialogId - 1);
-                possibleLocations.Remove(grtdHints[dialogId]);
+
+                if (grtdHints[dialogId] == "SIERPES")
+                {
+                    possibleLocations.Remove("QI202");
+                    possibleLocations.Remove("BossTrigger[5000]");
+                }
+                else
+                {
+                    possibleLocations.Remove(grtdHints[dialogId]);
+                }
             }
 
             // Fill random hints
