@@ -59,7 +59,7 @@ namespace Blasphemous.Randomizer.DoorRando
             return false;
         }
 
-        public bool ShouldBeMadeVisible(Config config, BlasphemousInventory inventory)
+        public bool ShouldBeMadeVisible(Config config, BlasInventoryInfo inventory)
         {
             if (Direction == 5) return false;
             if (VisibilityFlags == 0) return true;

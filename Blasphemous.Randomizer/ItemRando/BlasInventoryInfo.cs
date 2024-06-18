@@ -1,9 +1,9 @@
-﻿using LogicParser;
+﻿using Basalt.LogicParser;
 using System.Collections.Generic;
 
 namespace Blasphemous.Randomizer.ItemRando
 {
-    public class BlasphemousInventory : InventoryData
+    public class BlasInventoryInfo
     {
         private int logicDifficulty;
         private bool enemyShuffle;
