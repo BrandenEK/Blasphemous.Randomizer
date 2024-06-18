@@ -1,5 +1,4 @@
-﻿
-namespace Blasphemous.Randomizer;
+﻿namespace Blasphemous.Randomizer.Extensions;
 
 internal static class RandomizerExtensions
 {
@@ -24,5 +23,4 @@ internal static class RandomizerExtensions
             output += char.ToUpper(word[0]) + word.Substring(1) + ' ';
         return output.Trim();
     }
-
 }

@@ -28,7 +28,6 @@ namespace Blasphemous.Randomizer
 		public Sprite ImageSword => randomizerImages[3];
 		public Sprite ImageDash => randomizerImages[4];
 		public Sprite ImageWallClimb => randomizerImages[5];
-		public Sprite[] uiImages;
 
 		// New & improved
 		public Dictionary<string, string> LocationNames { get; private set; }
@@ -81,14 +80,7 @@ namespace Blasphemous.Randomizer
             });
             Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
 
-            // UI
-            Main.Randomizer.FileHandler.LoadDataAsFixedSpritesheet("ui.png", new Vector2(36, 36), out uiImages, new SpriteImportOptions()
-            {
-                PixelsPerUnit = 36,
-                UsePointFilter = false
-            });
-            Main.Randomizer.Log($"Loaded {uiImages.Length} ui images!");
-
+			// Logo
 			Main.Randomizer.FileHandler.LoadDataAsSprite("logo.png", out Sprite logo);
 			Logo = logo;
 

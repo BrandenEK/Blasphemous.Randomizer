@@ -6,6 +6,7 @@ using Blasphemous.ModdingAPI.Persistence;
 using Blasphemous.Randomizer.BossRando;
 using Blasphemous.Randomizer.DoorRando;
 using Blasphemous.Randomizer.EnemyRando;
+using Blasphemous.Randomizer.Extensions;
 using Blasphemous.Randomizer.HintRando;
 using Blasphemous.Randomizer.ItemRando;
 using Blasphemous.Randomizer.Map;
@@ -300,7 +301,7 @@ namespace Blasphemous.Randomizer
                         {
                             if (!item.UseDefaultImageScaling)
                                 render.transform.localScale = new Vector3(0.9375f, 0.9375f, 0.9375f);
-                            render.sprite = item.getRewardInfo(true).sprite;
+                            render.sprite = item.GetImage(true);
                         }
                     }
                 }
