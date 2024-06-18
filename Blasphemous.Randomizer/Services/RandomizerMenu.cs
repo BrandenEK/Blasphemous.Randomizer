@@ -331,7 +331,6 @@ public class RandomizerMenu : ModMenu
             Position = new Vector2(190, 205),
             Size = new Vector2(100, 96)
         });
-        Main.Randomizer.DebugRect = holder;
 
         _uniqueImages = new Image[UNIQUE_ID_SIZE];
         for (int i = 0; i < UNIQUE_ID_SIZE; i++)
