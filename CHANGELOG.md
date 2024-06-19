@@ -1,5 +1,11 @@
 # Changelog
 
+### v3.0.0 (Better menu)
+- Implement menu framework
+- Implement credits framework
+- Rearrange internal namespaces
+- Various logic and bug fixes
+
 ### v2.0.0 (Door Rando)
 - Removed autotracker
 - Configurable keyboard input
