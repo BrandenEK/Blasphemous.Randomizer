@@ -1,4 +1,5 @@
-﻿using Blasphemous.Randomizer.DoorRando;
+﻿using Basalt.LogicParser;
+using Blasphemous.Randomizer.DoorRando;
 using Blasphemous.Randomizer.Extensions;
 using System.Collections.Generic;
 
@@ -11,8 +12,7 @@ namespace Blasphemous.Randomizer.ItemRando
             // Initialize seed with empty lists
             initialize(seed);
             Config config = Main.Randomizer.GameSettings;
-            BlasphemousInventory inventory = new BlasphemousInventory();
-            inventory.SetConfigSettings(config);
+            GameInventory inventory = BlasInventoryInfo.CreateNew(config);
             mappedDoors.Clear();
             mappedItems.Clear();
 

@@ -5,8 +5,28 @@ namespace Blasphemous.Randomizer.ItemRando
 {
     public class BlasInventoryInfo
     {
-        private int logicDifficulty;
-        private bool enemyShuffle;
+        /// <summary>
+        /// Creates a new empty inventory
+        /// </summary>
+        public static GameInventory CreateNew(Config cfg)
+        {
+            BlasInventoryInfo info = new(cfg);
+            return new GameInventory(
+                new Basalt.LogicParser.Calculators.PostfixCalculator(),
+                new Basalt.LogicParser.Collectors.ReflectionCollector(info),
+                new Basalt.LogicParser.Formatters.ParenthesisPaddingFormatter(),
+                new Basalt.LogicParser.Parsers.PostfixParser(),
+                new Basalt.LogicParser.Resolvers.ReflectionResolver(info));
+        }
+
+        private BlasInventoryInfo(Config cfg)
+        {
+            logicDifficulty = cfg.LogicDifficulty;
+            enemyShuffle = cfg.EnemyShuffleType > 0;
+        }
+
+        private readonly int logicDifficulty;
+        private readonly bool enemyShuffle;
 
         // Relics
         private bool blood = false;
@@ -330,12 +350,6 @@ namespace Blasphemous.Randomizer.ItemRando
 
         // Doors
         private Dictionary<string, bool> doors = new Dictionary<string, bool>();
-
-        public void SetConfigSettings(Config config)
-        {
-            logicDifficulty = config.LogicDifficulty;
-            enemyShuffle = config.EnemyShuffleType > 0;
-        }
 
         public bool HasDoor(string doorId)
         {
