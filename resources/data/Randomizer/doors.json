@@ -3439,7 +3439,7 @@
 		"OriginalDoor": "D06Z01S24[W]",
 		"VisibilityFlags": "RequiredDoors",
 		"RequiredDoors": [ "D06Z01S04[SW]", "D06Z01S04[W]", "D06Z01S04[Health]" ],
-		"Logic": "D06Z01S04[Health] || (wallClimb && canSurvivePoison2 && (doubleJump || blood && canClimbOnRoot))"
+		"Logic": "D06Z01S04[Health] || (wallClimb && canSurvivePoison2 && (doubleJump || (blood || dash && preciseSkipsAllowed) && canClimbOnRoot))"
 	},
 	{
 		"Id": "D06Z01S04[NW]",
@@ -3447,7 +3447,7 @@
 		"OriginalDoor": "D06Z01S06[E]",
 		"VisibilityFlags": "RequiredDoors",
 		"RequiredDoors": [ "D06Z01S04[NW]", "D06Z01S04[NE]", "D06Z01S04[Cherubs]" ],
-		"Logic": "D06Z01S04[NW] || D06Z01S04[Cherubs] || (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health]) && wallClimb && canSurvivePoison2 && (dash || doubleJump && (canDawnJump || canClimbOnRoot))"
+		"Logic": "D06Z01S04[NW] || D06Z01S04[Cherubs] || (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health]) && wallClimb && canSurvivePoison2 && (dash || doubleJump && (canDawnJump || canClimbOnRoot)) || D06Z01S04[Health] && canSurvivePoison2 && (canCrossGap9 || doubleJump && canEnemyBounce)"
 	},
 	{
 		"Id": "D06Z01S04[NE]",
@@ -3455,7 +3455,7 @@
 		"OriginalDoor": "D06Z01S06[W]",
 		"VisibilityFlags": "RequiredDoors",
 		"RequiredDoors": [ "D06Z01S04[NW]", "D06Z01S04[NE]", "D06Z01S04[Cherubs]" ],
-		"Logic": "D06Z01S04[NE] || (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health]) && wallClimb && canSurvivePoison2 && (dash || doubleJump && (canDawnJump || canClimbOnRoot))"
+		"Logic": "D06Z01S04[NE] || (D06Z01S04[SW] || D06Z01S04[W] || D06Z01S04[Health]) && wallClimb && canSurvivePoison2 && (dash || doubleJump && (canDawnJump || canClimbOnRoot)) || D06Z01S04[Health] && canSurvivePoison2 && (canCrossGap9 || doubleJump && canEnemyBounce)"
 	},
 	{
 		"Id": "D06Z01S04[Cherubs]",
