@@ -75,6 +75,30 @@ Door rando
 
 ---
 
+## Randomizer Settings
+
+
+---
+
+## Logic difficulty
+
+Easy
+- No skips or glitches will be necessary
+- Only the expected method of reaching items will be considered in logic
+- Bosses require an extra 10% strength to be in logic
+
+Normal
+- Using dawn heart skips & mid-air stalls may be necessary
+- Tiento may be required to access items in poison clouds without Silvered Lung
+
+Hard
+- Mourning and Havoc skip may be required
+- Slash Upwarp skips, Dive Laser skips, and using Tirana to break switches are considered in logic
+- Some items in poison clouds are considered in logic without Tiento or Silvered Lung
+- Bosses require 10% less strength to be in logic
+
+---
+
 ## Seeds
 
 In order to choose a specific seed that you want to play on, click on the seed text box and type the desired number on the settings menu shown before starting a new game.  Seeds can be in the range of 1 to 99,999,999.
@@ -97,25 +121,6 @@ Beginning in Randomizer 2.0.9, autotracking for the poptracker pack has been dis
 | ------- | ----------- | ------- |
 | `randomizer help` | none | List all available commands |
 | `randomizer respawn` | none | Respawns the player from the chosen starting location |
-
----
-
-## Logic difficulty
-
-Easy
-- No skips or glitches will be necessary
-- Only the expected method of reaching items will be considered in logic
-- Bosses require an extra 10% strength to be in logic
-
-Normal
-- Using dawn heart skips & mid-air stalls may be necessary
-- Tiento may be required to access items in poison clouds without Silvered Lung
-
-Hard
-- Mourning and Havoc skip may be required
-- Slash Upwarp skips, Dive Laser skips, and using Tirana to break switches are considered in logic
-- Some items in poison clouds are considered in logic without Tiento or Silvered Lung
-- Bosses require 10% less strength to be in logic
 
 ---
 
