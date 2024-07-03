@@ -197,20 +197,38 @@ Door rando
 
 ## Logic difficulty
 
-Easy
-- No skips or glitches will be necessary
-- Only the expected method of reaching items will be considered in logic
-- Bosses require an extra 10% strength to be in logic
-
-Normal
-- Using dawn heart skips & mid-air stalls may be necessary
-- Tiento may be required to access items in poison clouds without Silvered Lung
-
-Hard
-- Mourning and Havoc skip may be required
-- Slash Upwarp skips, Dive Laser skips, and using Tirana to break switches are considered in logic
-- Some items in poison clouds are considered in logic without Tiento or Silvered Lung
-- Bosses require 10% less strength to be in logic
+<table>
+    <tr>
+      <td align="center"> Easy </td>
+      <td>
+        <ul>
+          <li>No skips or glitches will be necessary</li>
+          <li>Only the expected method of reaching items will be considered in logic</li>
+          <li>Bosses require an extra 10% strength to be in logic</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"> Normal </td>
+      <td>
+        <ul>
+          <li>Using dawn heart skips & mid-air stalls may be necessary</li>
+          <li>Tiento may be required to access items in poison clouds without Silvered Lung</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"> Hard </td>
+      <td>
+        <ul>
+          <li>Mourning and Havoc skip may be required</li>
+          <li>Slash Upwarp skips, Dive Laser skips, and using Tirana to break switches are considered in logic</li>
+          <li>Some items in poison clouds are considered in logic without Tiento or Silvered Lung</li>
+          <li>Bosses require 10% less strength to be in logic</li>
+        </ul>
+      </td>
+    </tr>
+</table>
 
 ---
 
