@@ -3439,7 +3439,7 @@
 		"OriginalDoor": "D06Z01S24[W]",
 		"VisibilityFlags": "RequiredDoors",
 		"RequiredDoors": [ "D06Z01S04[SW]", "D06Z01S04[W]", "D06Z01S04[Health]" ],
-		"Logic": "D06Z01S04[Health] || (wallClimb && canSurvivePoison2 && (doubleJump || (blood || dash && preciseSkipsAllowed) && canClimbOnRoot)) || doubleJump && canEnemyBounce && canSurvivePoison1"
+		"Logic": "D06Z01S04[Health] || (wallClimb && canSurvivePoison2 && (doubleJump || (blood || dash && preciseSkipsAllowed) && canClimbOnRoot)) || doubleJump && canEnemyBounce && canSurvivePoison1 && preciseSkipsAllowed"
 	},
 	{
 		"Id": "D06Z01S04[NW]",
@@ -3529,8 +3529,8 @@
 		"Id": "D06Z01S08[N]",
 		"Direction": 0,
 		"OriginalDoor": "D06Z01S13[S]",
-		"VisibilityFlags": "ThisDoor",
-		"Logic": "D06Z01S08[N] || wallClimb && doubleJump && canEnemyBounce"
+		"VisibilityFlags": "ThisDoor, EnemySkipsAndDoubleJump",
+		"Logic": "D06Z01S08[N] || wallClimb && doubleJump && canEnemyBounce && preciseSkipsAllowed"
 	},
 	{
 		"Id": "D06Z01S09[W]",
