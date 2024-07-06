@@ -3530,11 +3530,7 @@
 		"Direction": 0,
 		"OriginalDoor": "D06Z01S13[S]",
 		"VisibilityFlags": "ThisDoor, EnemySkipsAndDoubleJump",
-<<<<<<< HEAD
 		"Logic": "D06Z01S08[N] || wallClimb && doubleJump && canEnemyBounce && preciseSkipsAllowed"
-=======
-		"Logic": "D06Z01S08[N] || wallClimb && doubleJump && canEnemyBounce"
->>>>>>> a1c5e51fc6a26d1da747c1a355447eec3e8c661f
 	},
 	{
 		"Id": "D06Z01S09[W]",
