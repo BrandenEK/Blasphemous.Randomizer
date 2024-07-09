@@ -1061,14 +1061,14 @@
 		"Name": "Blood tunnel ledge",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S08",
-		"Logic": "blood || canCrossGap11"
+		"Logic": "blood || canCrossGap11 || canEnemyBounce && canCrossGap7"
 	},
 	{
 		"Id": "RESCUED_CHERUB_21",
 		"Name": "Blood tunnel cherub",
 		"Hint": "* resides in the Grievance",
 		"Room": "D03Z03S08",
-		"Logic": "(blood || canCrossGap11) && (doubleJump || pillar || cante || verdiales || tirana || aubade && canAirStall)"
+		"Logic": "(blood || canCrossGap11 || canEnemyBounce && canCrossGap7) && (doubleJump || pillar || cante || verdiales || tirana || aubade && canAirStall)"
 	},
 	{
 		"Id": "RESCUED_CHERUB_20",
@@ -1521,7 +1521,7 @@
 		"Name": "Upper eastern shaft ledge",
 		"Hint": "* resides in the Rooftops",
 		"Room": "D06Z01S15",
-		"Logic": "D06Z01S15[SW] && wallClimb && (canCrossGap10 || canClimbOnRoot && (blood || preciseSkipsAllowed && (doubleJump || canAirStall) || doubleJump && canAirStall))"
+		"Logic": "D06Z01S15[SW] && (wallClimb && (canCrossGap10 || canClimbOnRoot && (blood || preciseSkipsAllowed && (doubleJump || canAirStall) || doubleJump && canAirStall)) || doubleJump && canEnemyBounce)"
 	},
 	{
 		"Id": "HE04",
