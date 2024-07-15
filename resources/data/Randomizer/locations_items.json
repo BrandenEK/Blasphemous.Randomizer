@@ -528,13 +528,13 @@
 	},
 	{
 		"Id": "RESCUED_CHERUB_15",
-		"Name": "Top of elevator Child of Moonlight",
+		"Name": "Elevator top Child of Moonlight",
 		"Hint": "* resides in the Cistern",
 		"Room": "D01Z05S20"
 	},
 	{
 		"Id": "Lady[D01Z05S22]",
-		"Name": "Lady of the Six Sorrows, from MD",
+		"Name": "Lady of Sorrows, from MD",
 		"Hint": "The Lady of Sorrows holds *",
 		"Room": "D01Z05S22"
 	},
@@ -568,7 +568,7 @@
 	},
 	{
 		"Id": "Lady[D01Z05S26]",
-		"Name": "Lady of the Six Sorrows, elevator shaft",
+		"Name": "Lady of Sorrows, elevator shaft",
 		"Hint": "The Lady of Sorrows holds *",
 		"Room": "D01Z05S26"
 	},
@@ -1511,7 +1511,7 @@
 	},
 	{
 		"Id": "RESCUED_CHERUB_36",
-		"Name": "Upper west shaft Child of Moonlight",
+		"Name": "Upper west Child of Moonlight",
 		"Hint": "* resides in the Rooftops",
 		"Room": "D06Z01S12",
 		"Logic": "D06Z01S12[W] || D06Z01S12[E] || D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || wallClimb && (doubleJump || taranto)"
@@ -1735,7 +1735,7 @@
 	},
 	{
 		"Id": "RESCUED_CHERUB_06",
-		"Name": "Starting room Child of Moonlight",
+		"Name": "Start room Child of Moonlight",
 		"Hint": "* resides in the Brotherhood",
 		"Room": "D17Z01S01",
 		"logic": "D17Z01S01[Cherubs1] || taranto || (canClimbOnRoot || canCrossGap9) && (blood || doubleJump || debla || verdiales || tirana || ruby)"
