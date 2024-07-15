@@ -44,7 +44,8 @@ public class RandomizerCredits : ModCredits
 
     private readonly string[] PROGRAMMING =
     {
-        "Damocles"
+        "Damocles",
+        "TRPG0"
     };
 
     private readonly Dictionary<string, string> TRANSLATIONS = new()
