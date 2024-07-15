@@ -18,7 +18,7 @@
 A very special thank you to everyone who has helped with the randomizer
 
 ***- Programming and design -*** <br>
-[@BrandenEK](https://github.com/BrandenEK)
+[@BrandenEK](https://github.com/BrandenEK), [TRPG0](https://github.com/TRPG0)
 
 ***- Translations -*** <br>
 [@ConanCimmerio](https://github.com/ConanCimmerio), [@EltonZhang777](https://github.com/EltonZhang777), [@RocherBrockas](https://github.com/RocherBrockas)
@@ -34,7 +34,7 @@ A very special thank you to everyone who has helped with the randomizer
 ## Useful Info
 
 - Only works on the most current game version (4.0.67)
-- Press 'Numpad 6' to display the current seed (If you are stuck in dialogue use this to break out of it)
+- Press F8 to display the current seed (If you are stuck in dialogue use this to break out of it)
 - Save & Quit can be used to instantly return to your last Prie Dieu, which can fix softlocks and makes the 'Return to Port' prayer useless
 - Consult the spoiler generated in the game directory if you are stuck or believe the seed is unbeatable
 - Do not load a vanilla game in the randomizer or vice versa
