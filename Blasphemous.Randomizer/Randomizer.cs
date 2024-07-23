@@ -169,7 +169,7 @@ namespace Blasphemous.Randomizer
             if (itemShuffler.ValidSeed)
             {
                 // Generate spoiler on new game
-                string path = $"{FileHandler.OutputFolder}spoiler{PersistentManager.GetAutomaticSlot() + 1}.txt";
+                string path = $"{FileHandler.ContentFolder}spoiler{PersistentManager.GetAutomaticSlot() + 1}.txt";
                 string spoiler = itemShuffler.GetSpoiler();
                 File.WriteAllText(path, spoiler);
             }
