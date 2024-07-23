@@ -2,6 +2,7 @@
 using Blasphemous.Framework.Menus.Options;
 using Blasphemous.Framework.UI;
 using Blasphemous.ModdingAPI;
+using Blasphemous.Randomizer.Extensions;
 using Framework.Managers;
 using System.Linq;
 using UnityEngine;
@@ -239,7 +240,7 @@ public class RandomizerMenu : ModMenu
         // Section 0
 
         string seedName = Main.Randomizer.LocalizationHandler.Localize("menusd") + ":";
-        _seedText = text.CreateOption("seed", ui, new Vector2(-20, 300), seedName, true, false, 8);
+        _seedText = text.CreateOption("seed", ui, new Vector2(-20, 300), seedName, true, false, Config.MAX_SEED.GetDigits());
 
         // Section 1
 

@@ -102,7 +102,7 @@ ssname: Shuffle Sword Skills
 ssdesc: Shuffles the sword skills into the item pool
 thname: Shuffle Thorns
 thdesc: Shuffles the 8 thorns into the item pool
-jiname: Junk inconvenient\nlocations
+jiname: Junk Inconvenient\nLocations
 jidesc: Forces a junk item at inconvenient locations such as Miriam
 whname: Start with Wheel
 whdesc: The starting gift will be the Young Mason's Wheel
