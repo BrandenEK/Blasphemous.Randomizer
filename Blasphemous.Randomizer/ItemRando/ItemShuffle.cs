@@ -13,11 +13,10 @@ namespace Blasphemous.Randomizer.ItemRando
         private Dictionary<string, string> newDoors;
         private ItemFiller filler;
 
-        private Item lastItem;
-
         public bool ValidSeed => newItems != null && newItems.Count > 0;
 
         public DoorLocation LastDoor { get; set; }
+        private RewardAchievement _previousItemInfo;
 
         // Manage mapped items
         public Dictionary<string, string> SaveMappedItems() => newItems;
@@ -79,36 +78,45 @@ namespace Blasphemous.Randomizer.ItemRando
             if (item == null)
                 return;
 
+            // Queue item display info for when the item popup appears
+            _previousItemInfo = new(item.GetName(true), item.GetNotification(true), item.GetImage(true));
+
             // Add the item to inventory
             Main.Randomizer.Log($"Giving item ({item.id})");
             item.addToInventory();
             Core.Events.SetFlag("LOCATION_" + locationId, true, false);
             Main.Randomizer.updateShops();
-            lastItem = item;
 
             // Possibly display the item
             if (display)
-                showItemPopUp(item);
+                DisplayPreviousItem();
+                //showItemPopUp(item);
         }
 
         // Display the item in a pop up
-        public void displayItem(string locationId)
+        //public void displayItem(string locationId)
+        //{
+        //    DisplayPreviousItem();
+        //    // Get item
+        //    string specialItems = "QI78RB17RB18RB19RB24RB25RB26";
+        //    Item item = specialItems.Contains(locationId) ? lastItem : getItemAtLocation(locationId);
+        //    if (item == null)
+        //        return;
+
+        //    // Call pop up method
+        //    showItemPopUp(item);
+        //}
+
+        /// <summary>
+        /// Displays the last item picked up, used when the item popup should happen after the item is given
+        /// </summary>
+        public void DisplayPreviousItem()
         {
-            // Get item
-            string specialItems = "QI78RB17RB18RB19RB24RB25RB26";
-            Item item = specialItems.Contains(locationId) ? lastItem : getItemAtLocation(locationId);
-            if (item == null)
+            if (_previousItemInfo == null)
                 return;
 
-            // Call pop up method
-            showItemPopUp(item);
-        }
-
-        // Actually trigger the pop up
-        public void showItemPopUp(Item item)
-        {
-            RewardAchievement achievement = new(item.GetName(false), item.GetNotification(false), item.GetImage(false));
-            UIController.instance.ShowPopupAchievement(achievement);
+            Main.Randomizer.LogError("Displaying previous acquired item: " + _previousItemInfo.Name);
+            UIController.instance.ShowPopupAchievement(_previousItemInfo);
         }
 
         // Shuffle the items - called when loading a game
