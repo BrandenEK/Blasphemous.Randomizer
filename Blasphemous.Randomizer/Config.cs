@@ -140,7 +140,10 @@ namespace Blasphemous.Randomizer
             }
         }
 
-        internal const int MAX_SEED = 99_999_999;
+        /// <summary>
+        /// The maximum seed allowed by the randomizer
+        /// </summary>
+        public const int MAX_SEED = 99_999_999;
         internal const int BROTHERHOOD_LOCATION = 0;
         internal const int DEPTHS_LOCATION = 3;
         internal const int SHIPYARD_LOCATION = 6;
