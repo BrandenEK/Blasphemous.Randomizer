@@ -90,7 +90,6 @@ namespace Blasphemous.Randomizer.ItemRando
             // Possibly display the item
             if (display)
                 DisplayPreviousItem();
-                //showItemPopUp(item);
         }
 
         // Display the item in a pop up
@@ -115,7 +114,7 @@ namespace Blasphemous.Randomizer.ItemRando
             if (_previousItemInfo == null)
                 return;
 
-            Main.Randomizer.LogError("Displaying previous acquired item: " + _previousItemInfo.Name);
+            Main.Randomizer.Log("Displaying previous acquired item: " + _previousItemInfo.Id);
             UIController.instance.ShowPopupAchievement(_previousItemInfo);
         }
 
