@@ -1,2188 +1,2188 @@
 [
 	{
-		"Id": "PR14",
-		"Name": "Hanging skeleton",
-		"Hint": "* resides in the Holy Line",
-		"Room": "D01Z01S02"
+		"id": "PR14",
+		"name": "Hanging skeleton",
+		"hint": "* resides in the Holy Line",
+		"room": "D01Z01S02"
 	},
 	{
-		"Id": "RB07",
-		"Name": "Across blood platforms",
-		"Hint": "* resides in the Holy Line",
-		"Room": "D01Z01S02",
-		"Logic": "blood || doubleJump"
+		"id": "RB07",
+		"name": "Across blood platforms",
+		"hint": "* resides in the Holy Line",
+		"room": "D01Z01S02",
+		"logic": "blood || doubleJump"
 	},
 	{
-		"Id": "CO04",
-		"Name": "Underground ledge",
-		"Hint": "* resides in the Holy Line",
-		"Room": "D01Z01S03"
+		"id": "CO04",
+		"name": "Underground ledge",
+		"hint": "* resides in the Holy Line",
+		"room": "D01Z01S03"
 	},
 	{
-		"Id": "QI55",
-		"Name": "Underground chest",
-		"Hint": "* resides in the Holy Line",
-		"Room": "D01Z01S03",
-		"Logic": "blood && dash && canWaterJump"
+		"id": "QI55",
+		"name": "Underground chest",
+		"hint": "* resides in the Holy Line",
+		"room": "D01Z01S03",
+		"logic": "blood && dash && canWaterJump"
 	},
 	{
-		"Id": "RESCUED_CHERUB_07",
-		"Name": "Child of Moonlight",
-		"Hint": "* resides in the Holy Line",
-		"Room": "D01Z01S03"
+		"id": "RESCUED_CHERUB_07",
+		"name": "Child of Moonlight",
+		"hint": "* resides in the Holy Line",
+		"room": "D01Z01S03"
 	},
 	{
-		"Id": "QI31",
-		"Name": "Deogracias' gift",
-		"Hint": "Deogracias holds *",
-		"Type": 2,
-		"OriginalItem": "TH",
-		"Room": "D01Z01S07"
-	},
-	
-	{
-		"Id": "RE02",
-		"Name": "Bless Severed Hand",
-		"Hint": "* requires a blessing",
-		"Room": "D01Z02S01",
-		"Logic": "hand"
-	},
-	{
-		"Id": "RE04",
-		"Name": "Bless Linen Cloth",
-		"Hint": "* requires a blessing",
-		"Room": "D01Z02S01",
-		"Logic": "cloth"
-	},
-	{
-		"Id": "RE10",
-		"Name": "Bless Hatched Egg",
-		"Hint": "* requires a blessing",
-		"Room": "D01Z02S01",
-		"Logic": "hatchedEgg"
-	},
-	{
-		"Id": "RB01",
-		"Name": "Tirso's house, top floor",
-		"Hint": "* resides in Albero",
-		"Room": "D01Z02S02"
-	},
-	{
-		"Id": "QI66",
-		"Name": "Tirso's 1st reward",
-		"Hint": "Tirso holds *",
-		"Room": "D01Z02S02",
-		"Logic": "herbs >= 1"
-	},
-	{
-		"Id": "Tirso[500]",
-		"Name": "Tirso's 2nd reward",
-		"Hint": "Tirso holds *",
-		"OriginalItem": "Tears[500]",
-		"Room": "D01Z02S02",
-		"Logic": "herbs >= 2"
-	},
-	{
-		"Id": "Tirso[1000]",
-		"Name": "Tirso's 3rd reward",
-		"Hint": "Tirso holds *",
-		"OriginalItem": "Tears[1000]",
-		"Room": "D01Z02S02",
-		"Logic": "herbs >= 3"
-	},
-	{
-		"Id": "Tirso[2000]",
-		"Name": "Tirso's 4th reward",
-		"Hint": "Tirso holds *",
-		"OriginalItem": "Tears[2000]",
-		"Room": "D01Z02S02",
-		"Logic": "herbs >= 4"
-	},
-	{
-		"Id": "Tirso[5000]",
-		"Name": "Tirso's 5th reward",
-		"Hint": "Tirso holds *",
-		"OriginalItem": "Tears[5000]",
-		"Room": "D01Z02S02",
-		"Logic": "herbs >= 5"
-	},
-	{
-		"Id": "Tirso[10000]",
-		"Name": "Tirso's 6th reward",
-		"Hint": "Tirso holds *",
-		"OriginalItem": "Tears[10000]",
-		"Room": "D01Z02S02",
-		"Logic": "herbs >= 6"
-	},
-	{
-		"Id": "QI56",
-		"Name": "Tirso's final reward",
-		"Hint": "Tirso holds *",
-		"Room": "D01Z02S02",
-		"Logic": "herbs >= 6 && canBeatMercyBoss && canBeatConventBoss && canBeatGrievanceBoss && canBeatMothersBoss && canBeatCanvasesBoss && canBeatPrisonBoss"
-	},
-	{
-		"Id": "RESCUED_CHERUB_08",
-		"Name": "Child of Moonlight",
-		"Hint": "* resides in Albero",
-		"Room": "D01Z02S03",
-		"Logic": "rodeGotPElevator || pillar || cante || doubleJump || D01Z02S03[NW] && (canCrossGap2 || lorquiana || aubade || cantina || chargeBeam || rangedAttack)"
-	},
-	{
-		"Id": "Lvdovico[500]",
-		"Name": "Lvdovico's 1st reward",
-		"Hint": "Lvdovico holds *",
-		"OriginalItem": "Tears[500]",
-		"Room": "D01Z02S03",
-		"Logic": "tentudiaRemains >= 1"
-	},
-	{
-		"Id": "Lvdovico[1000]",
-		"Name": "Lvdovico's 2nd reward",
-		"Hint": "Lvdovico holds *",
-		"OriginalItem": "Tears[1000]",
-		"Room": "D01Z02S03",
-		"Logic": "tentudiaRemains >= 2"
-	},
-	{
-		"Id": "PR03",
-		"Name": "Lvdovico's 3rd reward",
-		"Hint": "Lvdovico holds *",
-		"Room": "D01Z02S03",
-		"Logic": "tentudiaRemains >= 3"
-	},
-	{
-		"Id": "QI01",
-		"Name": "First gift for Cleofas",
-		"Hint": "Lvdovico holds *",
-		"Room": "D01Z02S03",
-		"Logic": "D04Z02S10[W]"
-	},
-	{
-		"Id": "CO43",
-		"Name": "Outside Ossuary",
-		"Hint": "* resides in Albero",
-		"Room": "D01Z02S04"
-	},
-	{
-		"Id": "CO16",
-		"Name": "Graveyard",
-		"Hint": "* resides in Albero",
-		"Room": "D01Z02S05"
-	},
-	{
-		"Id": "Sword[D01Z02S06]",
-		"Name": "Mea Culpa altar",
-		"Hint": "A Mea Culpa altar holds *",
-		"Room": "D01Z02S06"
-	},
-	{
-		"Id": "QI65",
-		"Name": "Gate of Travel room",
-		"Hint": "* resides in Albero",
-		"Room": "D01Z02S07"
-	},
-	{
-		"Id": "RB104",
-		"Name": "Donate 5000 Tears",
-		"Hint": "* requires a donation",
-		"LocationFlag": "LOCATION_RB104~D01Z02",
-		"Room": "D01BZ04S01"
-	},
-	{
-		"Id": "RB105",
-		"Name": "Donate 50000 Tears",
-		"Hint": "* requires a donation",
-		"Type": 8,
-		"LocationFlag": "LOCATION_RB105~D01Z02",
-		"Room": "D01BZ04S01"
-	},
-	{
-		"Id": "PR11",
-		"Name": "Final gift for Cleofas",
-		"Hint": "Cleofas holds *",
-		"LocationFlag": "LOCATION_PR11~D01Z02",
-		"Room": "D01BZ04S01",
-		"Logic": "marksOfRefuge >= 3 && cord && D04Z02S10[W] && D06Z01S18[E]"
-	},
-	{
-		"Id": "Undertaker[250]",
-		"Name": "Ossuary reward 1",
-		"Hint": "The Undertaker holds *",
-		"LocationFlag": "LOCATION_Undertaker[250]~D01Z02",
-		"Room": "D01BZ06S01",
-		"Logic": "bones >= 4"
-	},
-	{
-		"Id": "Undertaker[500]",
-		"Name": "Ossuary reward 2",
-		"Hint": "The Undertaker holds *",
-		"LocationFlag": "LOCATION_Undertaker[500]~D01Z02",
-		"Room": "D01BZ06S01",
-		"Logic": "bones >= 8"
-	},
-	{
-		"Id": "Undertaker[750]",
-		"Name": "Ossuary reward 3",
-		"Hint": "The Undertaker holds *",
-		"LocationFlag": "LOCATION_Undertaker[750]~D01Z02",
-		"Room": "D01BZ06S01",
-		"Logic": "bones >= 12"
-	},
-	{
-		"Id": "Undertaker[1000]",
-		"Name": "Ossuary reward 4",
-		"Hint": "The Undertaker holds *",
-		"LocationFlag": "LOCATION_Undertaker[1000]~D01Z02",
-		"Room": "D01BZ06S01",
-		"Logic": "bones >= 16"
-	},
-	{
-		"Id": "Undertaker[1250]",
-		"Name": "Ossuary reward 5",
-		"Hint": "The Undertaker holds *",
-		"LocationFlag": "LOCATION_Undertaker[1250]~D01Z02",
-		"Room": "D01BZ06S01",
-		"Logic": "bones >= 20"
-	},
-	{
-		"Id": "Undertaker[1500]",
-		"Name": "Ossuary reward 6",
-		"Hint": "The Undertaker holds *",
-		"LocationFlag": "LOCATION_Undertaker[1500]~D01Z02",
-		"Room": "D01BZ06S01",
-		"Logic": "bones >= 24"
-	},
-	{
-		"Id": "Undertaker[1750]",
-		"Name": "Ossuary reward 7",
-		"Hint": "The Undertaker holds *",
-		"LocationFlag": "LOCATION_Undertaker[1750]~D01Z02",
-		"Room": "D01BZ06S01",
-		"Logic": "bones >= 28"
-	},
-	{
-		"Id": "Undertaker[2000]",
-		"Name": "Ossuary reward 8",
-		"Hint": "The Undertaker holds *",
-		"LocationFlag": "LOCATION_Undertaker[2000]~D01Z02",
-		"Room": "D01BZ06S01",
-		"Logic": "bones >= 32"
-	},
-	{
-		"Id": "Undertaker[2500]",
-		"Name": "Ossuary reward 9",
-		"Hint": "The Undertaker holds *",
-		"LocationFlag": "LOCATION_Undertaker[2500]~D01Z02",
-		"Room": "D01BZ06S01",
-		"Logic": "bones >= 36"
-	},
-	{
-		"Id": "Undertaker[3000]",
-		"Name": "Ossuary reward 10",
-		"Hint": "The Undertaker holds *",
-		"LocationFlag": "LOCATION_Undertaker[3000]~D01Z02",
-		"Room": "D01BZ06S01",
-		"Logic": "bones >= 40"
-	},
-	{
-		"Id": "Undertaker[5000]",
-		"Name": "Ossuary reward 11",
-		"Hint": "The Undertaker holds *",
-		"LocationFlag": "LOCATION_Undertaker[5000]~D01Z02",
-		"Type": 8,
-		"Room": "D01BZ06S01",
-		"Logic": "bones >= 44"
-	},
-	{
-		"Id": "QI201",
-		"Name": "Isidora, Voice of the Dead",
-		"Hint": "* is guarded by Isidora",
-		"LocationFlag": "LOCATION_QI201~D01Z02",
-		"Room": "D01BZ08S01",
-		"Logic": "canBeatOssuaryBoss"
+		"id": "QI31",
+		"name": "Deogracias' gift",
+		"hint": "Deogracias holds *",
+		"type": 2,
+		"originalItem": "TH",
+		"room": "D01Z01S07"
 	},
 	
 	{
-		"Id": "RB04",
-		"Name": "Lower log path",
-		"Hint": "* resides in the Wastelands",
-		"Room": "D01Z03S01",
-		"Logic": "D01Z03S01[SE]"
+		"id": "RE02",
+		"name": "Bless Severed Hand",
+		"hint": "* requires a blessing",
+		"room": "D01Z02S01",
+		"logic": "hand"
 	},
 	{
-		"Id": "CO14",
-		"Name": "Hidden alcove",
-		"Hint": "* resides in the Wastelands",
-		"Room": "D01Z03S02",
-		"Logic": "dash"
+		"id": "RE04",
+		"name": "Bless Linen Cloth",
+		"hint": "* requires a blessing",
+		"room": "D01Z02S01",
+		"logic": "cloth"
 	},
 	{
-		"Id": "CO36",
-		"Name": "Outside ledge",
-		"Hint": "* resides in the Wastelands",
-		"Room": "D01Z03S03"
+		"id": "RE10",
+		"name": "Bless Hatched Egg",
+		"hint": "* requires a blessing",
+		"room": "D01Z02S01",
+		"logic": "hatchedEgg"
 	},
 	{
-		"Id": "RESCUED_CHERUB_10",
-		"Name": "Outside Child of Moonlight",
-		"Hint": "* resides in the Wastelands",
-		"Room": "D01Z03S03"
+		"id": "RB01",
+		"name": "Tirso's house, top floor",
+		"hint": "* resides in Albero",
+		"room": "D01Z02S02"
 	},
 	{
-		"Id": "QI06",
-		"Name": "Under broken bridge",
-		"Hint": "* resides in the Wastelands",
-		"Room": "D01Z03S05",
-		"Logic": "blood || boots || canCrossGap3"
+		"id": "QI66",
+		"name": "Tirso's 1st reward",
+		"hint": "Tirso holds *",
+		"room": "D01Z02S02",
+		"logic": "herbs >= 1"
 	},
 	{
-		"Id": "RB20",
-		"Name": "3rd meeting with Redento",
-		"Hint": "Redento holds *",
-		"Room": "D01Z03S06",
-		"Logic": "redentoRooms >= 3"
+		"id": "Tirso[500]",
+		"name": "Tirso's 2nd reward",
+		"hint": "Tirso holds *",
+		"originalItem": "Tears[500]",
+		"room": "D01Z02S02",
+		"logic": "herbs >= 2"
 	},
 	{
-		"Id": "HE02",
-		"Name": "Cliffside statue",
-		"Hint": "* resides in the Wastelands",
-		"Room": "D01Z03S07"
+		"id": "Tirso[1000]",
+		"name": "Tirso's 3rd reward",
+		"hint": "Tirso holds *",
+		"originalItem": "Tears[1000]",
+		"room": "D01Z02S02",
+		"logic": "herbs >= 3"
 	},
 	{
-		"Id": "RESCUED_CHERUB_38",
-		"Name": "Cliffside Child of Moonlight",
-		"Hint": "* resides in the Wastelands",
-		"Room": "D01Z03S07",
-		"Logic": "canCrossGap2 || lorquiana || cante || aubade || cantina || ruby || chargeBeam || rangedAttack || preciseSkipsAllowed"
-	},
-	
-	{
-		"Id": "CO30",
-		"Name": "First area hidden wall",
-		"Hint": "* resides in Mercy",
-		"Room": "D01Z04S05"
+		"id": "Tirso[2000]",
+		"name": "Tirso's 4th reward",
+		"hint": "Tirso holds *",
+		"originalItem": "Tears[2000]",
+		"room": "D01Z02S02",
+		"logic": "herbs >= 4"
 	},
 	{
-		"Id": "CO03",
-		"Name": "Second area ledge",
-		"Hint": "* resides in Mercy",
-		"Room": "D01Z04S06"
+		"id": "Tirso[5000]",
+		"name": "Tirso's 5th reward",
+		"hint": "Tirso holds *",
+		"originalItem": "Tears[5000]",
+		"room": "D01Z02S02",
+		"logic": "herbs >= 5"
 	},
 	{
-		"Id": "RESCUED_CHERUB_09",
-		"Name": "Second area Child of Moonlight",
-		"Hint": "* resides in Mercy",
-		"Room": "D01Z04S06"
+		"id": "Tirso[10000]",
+		"name": "Tirso's 6th reward",
+		"hint": "Tirso holds *",
+		"originalItem": "Tears[10000]",
+		"room": "D01Z02S02",
+		"logic": "herbs >= 6"
 	},
 	{
-		"Id": "PR01",
-		"Name": "Second area trapped chest",
-		"Hint": "* resides in Mercy",
-		"Room": "D01Z04S07"
+		"id": "QI56",
+		"name": "Tirso's final reward",
+		"hint": "Tirso holds *",
+		"room": "D01Z02S02",
+		"logic": "herbs >= 6 && canBeatMercyBoss && canBeatConventBoss && canBeatGrievanceBoss && canBeatMothersBoss && canBeatCanvasesBoss && canBeatPrisonBoss"
 	},
 	{
-		"Id": "RB17",
-		"Name": "First red candle",
-		"Hint": "A candle holds *",
-		"Room": "D01Z04S08"
+		"id": "RESCUED_CHERUB_08",
+		"name": "Child of Moonlight",
+		"hint": "* resides in Albero",
+		"room": "D01Z02S03",
+		"logic": "rodeGotPElevator || pillar || cante || doubleJump || D01Z02S03[NW] && (canCrossGap2 || lorquiana || aubade || cantina || chargeBeam || rangedAttack)"
 	},
 	{
-		"Id": "QI48",
-		"Name": "Third area hidden room",
-		"Hint": "* resides in Mercy",
-		"Room": "D01Z04S11"
+		"id": "Lvdovico[500]",
+		"name": "Lvdovico's 1st reward",
+		"hint": "Lvdovico holds *",
+		"originalItem": "Tears[500]",
+		"room": "D01Z02S03",
+		"logic": "tentudiaRemains >= 1"
 	},
 	{
-		"Id": "CO21",
-		"Name": "Behind gate to TSC",
-		"Hint": "* resides in Mercy",
-		"Room": "D01Z04S13",
-		"Logic": "D01Z04S13[SE] || canDiveLaser && (canAirStall || wheel || doubleJump || canEnemyBounce)"
+		"id": "Lvdovico[1000]",
+		"name": "Lvdovico's 2nd reward",
+		"hint": "Lvdovico holds *",
+		"originalItem": "Tears[1000]",
+		"room": "D01Z02S03",
+		"logic": "tentudiaRemains >= 2"
 	},
 	{
-		"Id": "CO38",
-		"Name": "Sliding challenge",
-		"Hint": "* resides in Mercy",
-		"Room": "D01Z04S14",
-		"Logic": "dash"
+		"id": "PR03",
+		"name": "Lvdovico's 3rd reward",
+		"hint": "Lvdovico holds *",
+		"room": "D01Z02S03",
+		"logic": "tentudiaRemains >= 3"
 	},
 	{
-		"Id": "RESCUED_CHERUB_33",
-		"Name": "Cave Child of Moonlight",
-		"Hint": "* resides in Mercy",
-		"Room": "D01Z04S16",
-		"Logic": "doubleJump || pillar || cante || tirana"
+		"id": "QI01",
+		"name": "First gift for Cleofas",
+		"hint": "Lvdovico holds *",
+		"room": "D01Z02S03",
+		"logic": "D04Z02S10[W]"
 	},
 	{
-		"Id": "BS01",
-		"Name": "Ten Piedad",
-		"Hint": "* is guarded by Ten Piedad",
-		"Room": "D01Z04S18",
-		"Logic": "canBeatMercyBoss"
+		"id": "CO43",
+		"name": "Outside Ossuary",
+		"hint": "* resides in Albero",
+		"room": "D01Z02S04"
 	},
 	{
-		"Id": "QI38",
-		"Name": "Visage of Attrition",
-		"Hint": "A Holy Visage holds *",
-		"Room": "D01Z04S19"
+		"id": "CO16",
+		"name": "Graveyard",
+		"hint": "* resides in Albero",
+		"room": "D01Z02S05"
 	},
 	{
-		"Id": "QI58",
-		"Name": "Shop item 1",
-		"Hint": "* can be purchased",
-		"LocationFlag": "LOCATION_QI58~D01Z04",
-		"Room": "D01BZ02S01"
+		"id": "Sword[D01Z02S06]",
+		"name": "Mea Culpa altar",
+		"hint": "A Mea Culpa altar holds *",
+		"room": "D01Z02S06"
 	},
 	{
-		"Id": "RB05",
-		"Name": "Shop item 2",
-		"Hint": "* can be purchased",
-		"LocationFlag": "LOCATION_RB05~D01Z04",
-		"Room": "D01BZ02S01"
+		"id": "QI65",
+		"name": "Gate of Travel room",
+		"hint": "* resides in Albero",
+		"room": "D01Z02S07"
 	},
 	{
-		"Id": "RB09",
-		"Name": "Shop item 3",
-		"Hint": "* can be purchased",
-		"LocationFlag": "LOCATION_RB09~D01Z04",
-		"Room": "D01BZ02S01"
-	},
-	
-	{
-		"Id": "CO09",
-		"Name": "Shortcut to WotBC",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S05"
+		"id": "RB104",
+		"name": "Donate 5000 Tears",
+		"hint": "* requires a donation",
+		"locationFlag": "LOCATION_RB104~D01Z02",
+		"room": "D01BZ04S01"
 	},
 	{
-		"Id": "QI67",
-		"Name": "Hidden alcove near fountain",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S05",
-		"Logic": "dash && canWaterJump"
+		"id": "RB105",
+		"name": "Donate 50000 Tears",
+		"hint": "* requires a donation",
+		"type": 8,
+		"locationFlag": "LOCATION_RB105~D01Z02",
+		"room": "D01BZ04S01"
 	},
 	{
-		"Id": "PR16",
-		"Name": "Upper east tunnel chest",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S06",
-		"Logic": "D01Z05S06[Cherubs] || canWaterJump"
+		"id": "PR11",
+		"name": "Final gift for Cleofas",
+		"hint": "Cleofas holds *",
+		"locationFlag": "LOCATION_PR11~D01Z02",
+		"room": "D01BZ04S01",
+		"logic": "marksOfRefuge >= 3 && cord && D04Z02S10[W] && D06Z01S18[E]"
 	},
 	{
-		"Id": "RESCUED_CHERUB_13",
-		"Name": "Upper east Child of Moonlight",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S06",
-		"Logic": "D01Z05S06[Cherubs] || canWaterJump || pillar || cante || aubade || tirana || canAirStall"
+		"id": "Undertaker[250]",
+		"name": "Ossuary reward 1",
+		"hint": "The Undertaker holds *",
+		"locationFlag": "LOCATION_Undertaker[250]~D01Z02",
+		"room": "D01BZ06S01",
+		"logic": "bones >= 4"
 	},
 	{
-		"Id": "Oil[D01Z05S07]",
-		"Name": "Oil of the Pilgrims",
-		"Hint": "An oil fountain holds *",
-		"Room": "D01Z05S07"
+		"id": "Undertaker[500]",
+		"name": "Ossuary reward 2",
+		"hint": "The Undertaker holds *",
+		"locationFlag": "LOCATION_Undertaker[500]~D01Z02",
+		"room": "D01BZ06S01",
+		"logic": "bones >= 8"
 	},
 	{
-		"Id": "QI12",
-		"Name": "Behind gate in miasma room",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S08"
+		"id": "Undertaker[750]",
+		"name": "Ossuary reward 3",
+		"hint": "The Undertaker holds *",
+		"locationFlag": "LOCATION_Undertaker[750]~D01Z02",
+		"room": "D01BZ06S01",
+		"logic": "bones >= 12"
 	},
 	{
-		"Id": "RESCUED_CHERUB_14",
-		"Name": "Child of Moonlight, miasma room",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S08"
+		"id": "Undertaker[1000]",
+		"name": "Ossuary reward 4",
+		"hint": "The Undertaker holds *",
+		"locationFlag": "LOCATION_Undertaker[1000]~D01Z02",
+		"room": "D01BZ06S01",
+		"logic": "bones >= 16"
 	},
 	{
-		"Id": "QI45",
-		"Name": "Lower east tunnel chest",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S11"
+		"id": "Undertaker[1250]",
+		"name": "Ossuary reward 5",
+		"hint": "The Undertaker holds *",
+		"locationFlag": "LOCATION_Undertaker[1250]~D01Z02",
+		"room": "D01BZ06S01",
+		"logic": "bones >= 20"
 	},
 	{
-		"Id": "RESCUED_CHERUB_12",
-		"Name": "Child of Moonlight, behind pillar",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S13",
-		"Logic": "D01Z05S13[SW] || D01Z05S13[E] && canSurvivePoison3 && canWaterJump"
+		"id": "Undertaker[1500]",
+		"name": "Ossuary reward 6",
+		"hint": "The Undertaker holds *",
+		"locationFlag": "LOCATION_Undertaker[1500]~D01Z02",
+		"room": "D01BZ06S01",
+		"logic": "bones >= 24"
 	},
 	{
-		"Id": "RESCUED_CHERUB_11",
-		"Name": "Child of Moonlight, above water",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S14"
+		"id": "Undertaker[1750]",
+		"name": "Ossuary reward 7",
+		"hint": "The Undertaker holds *",
+		"locationFlag": "LOCATION_Undertaker[1750]~D01Z02",
+		"room": "D01BZ06S01",
+		"logic": "bones >= 28"
 	},
 	{
-		"Id": "CO41",
-		"Name": "Behind sewage drips",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S15"
+		"id": "Undertaker[2000]",
+		"name": "Ossuary reward 8",
+		"hint": "The Undertaker holds *",
+		"locationFlag": "LOCATION_Undertaker[2000]~D01Z02",
+		"room": "D01BZ06S01",
+		"logic": "bones >= 32"
 	},
 	{
-		"Id": "CO32",
-		"Name": "High ledge near elevator shaft",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S17",
-		"Logic": "D01Z05S17[E] || canWaterJump || canCrossGap5"
+		"id": "Undertaker[2500]",
+		"name": "Ossuary reward 9",
+		"hint": "The Undertaker holds *",
+		"locationFlag": "LOCATION_Undertaker[2500]~D01Z02",
+		"room": "D01BZ06S01",
+		"logic": "bones >= 36"
 	},
 	{
-		"Id": "RESCUED_CHERUB_15",
-		"Name": "Elevator top Child of Moonlight",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S20"
+		"id": "Undertaker[3000]",
+		"name": "Ossuary reward 10",
+		"hint": "The Undertaker holds *",
+		"locationFlag": "LOCATION_Undertaker[3000]~D01Z02",
+		"room": "D01BZ06S01",
+		"logic": "bones >= 40"
 	},
 	{
-		"Id": "Lady[D01Z05S22]",
-		"Name": "Lady of Sorrows, from MD",
-		"Hint": "The Lady of Sorrows holds *",
-		"Room": "D01Z05S22"
+		"id": "Undertaker[5000]",
+		"name": "Ossuary reward 11",
+		"hint": "The Undertaker holds *",
+		"locationFlag": "LOCATION_Undertaker[5000]~D01Z02",
+		"type": 8,
+		"room": "D01BZ06S01",
+		"logic": "bones >= 44"
 	},
 	{
-		"Id": "QI75",
-		"Name": "Chalice room",
-		"Hint": "* resides in the Cistern",
-		"Type": 9,
-		"OriginalItem": "QI75",
-		"Room": "D01Z05S23"
-	},
-	{
-		"Id": "Sword[D01Z05S24]",
-		"Name": "Mea Culpa altar",
-		"Hint": "* requires a golden chalice",
-		"Room": "D01Z05S24"
-	},
-	{
-		"Id": "CO44",
-		"Name": "Elevator shaft ledge",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S25",
-		"Logic": "linen || doubleJump && (D01Z05S25[SW] || D01Z05S25[SE] || D01Z05S25[NE])"
-	},
-	{
-		"Id": "RESCUED_CHERUB_22",
-		"Name": "Elevator shaft Child of Moonlight",
-		"Hint": "* resides in the Cistern",
-		"Room": "D01Z05S25",
-		"Logic": "linen || (obscureSkipsAllowed && (D01Z05S25[SW] || D01Z05S25[SE] || D01Z05S25[NE]) && (aubade || cantina)) || (pillar && (D01Z05S25[E] || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3)))"
-	},
-	{
-		"Id": "Lady[D01Z05S26]",
-		"Name": "Lady of Sorrows, elevator shaft",
-		"Hint": "The Lady of Sorrows holds *",
-		"Room": "D01Z05S26"
-	},
-	{
-		"Id": "RB03",
-		"Name": "Shroud puzzle",
-		"Hint": "* resides in the Cistern",
-		"LocationFlag": "LOCATION_RB03~D01Z05",
-		"Room": "D01BZ05S01"
+		"id": "QI201",
+		"name": "Isidora, Voice of the Dead",
+		"hint": "* is guarded by Isidora",
+		"locationFlag": "LOCATION_QI201~D01Z02",
+		"room": "D01BZ08S01",
+		"logic": "canBeatOssuaryBoss"
 	},
 	
 	{
-		"Id": "QI101",
-		"Name": "Temple entrance",
-		"Hint": "* resides in Petrous",
-		"Room": "D01Z06S01"
+		"id": "RB04",
+		"name": "Lower log path",
+		"hint": "* resides in the Wastelands",
+		"room": "D01Z03S01",
+		"logic": "D01Z03S01[SE]"
+	},
+	{
+		"id": "CO14",
+		"name": "Hidden alcove",
+		"hint": "* resides in the Wastelands",
+		"room": "D01Z03S02",
+		"logic": "dash"
+	},
+	{
+		"id": "CO36",
+		"name": "Outside ledge",
+		"hint": "* resides in the Wastelands",
+		"room": "D01Z03S03"
+	},
+	{
+		"id": "RESCUED_CHERUB_10",
+		"name": "Outside Child of Moonlight",
+		"hint": "* resides in the Wastelands",
+		"room": "D01Z03S03"
+	},
+	{
+		"id": "QI06",
+		"name": "Under broken bridge",
+		"hint": "* resides in the Wastelands",
+		"room": "D01Z03S05",
+		"logic": "blood || boots || canCrossGap3"
+	},
+	{
+		"id": "RB20",
+		"name": "3rd meeting with Redento",
+		"hint": "Redento holds *",
+		"room": "D01Z03S06",
+		"logic": "redentoRooms >= 3"
+	},
+	{
+		"id": "HE02",
+		"name": "Cliffside statue",
+		"hint": "* resides in the Wastelands",
+		"room": "D01Z03S07"
+	},
+	{
+		"id": "RESCUED_CHERUB_38",
+		"name": "Cliffside Child of Moonlight",
+		"hint": "* resides in the Wastelands",
+		"room": "D01Z03S07",
+		"logic": "canCrossGap2 || lorquiana || cante || aubade || cantina || ruby || chargeBeam || rangedAttack || preciseSkipsAllowed"
 	},
 	
 	{
-		"Id": "CO11",
-		"Name": "Below Prie Dieu",
-		"Hint": "* resides with the Olive Trees",
-		"Room": "D02Z01S01",
-		"Logic": "D02Z01S01[W] || D02Z01S01[CherubsL] || D02Z01S01[SW] || D02Z01S01[CherubsR] || doubleJump || wallClimb"
+		"id": "CO30",
+		"name": "First area hidden wall",
+		"hint": "* resides in Mercy",
+		"room": "D01Z04S05"
 	},
 	{
-		"Id": "QI59",
-		"Name": "Gemino's gift",
-		"Hint": "Gemino holds *",
-		"Room": "D02Z01S01",
-		"Logic": "D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump)"
+		"id": "CO03",
+		"name": "Second area ledge",
+		"hint": "* resides in Mercy",
+		"room": "D01Z04S06"
 	},
 	{
-		"Id": "RB10",
-		"Name": "Gemino's reward",
-		"Hint": "Gemino holds *",
-		"Room": "D02Z01S01",
-		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump))"
+		"id": "RESCUED_CHERUB_09",
+		"name": "Second area Child of Moonlight",
+		"hint": "* resides in Mercy",
+		"room": "D01Z04S06"
 	},
 	{
-		"Id": "RESCUED_CHERUB_23",
-		"Name": "Upper east Child of Moonlight",
-		"Hint": "* resides with the Olive Trees",
-		"Room": "D02Z01S02",
-		"Logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (canWalkOnRoot || canCrossGap4 || pillar)"
+		"id": "PR01",
+		"name": "Second area trapped chest",
+		"hint": "* resides in Mercy",
+		"room": "D01Z04S07"
 	},
 	{
-		"Id": "QI20",
-		"Name": "Entrance to tomb",
-		"Hint": "* resides with the Olive Trees",
-		"Room": "D02Z01S04"
+		"id": "RB17",
+		"name": "First red candle",
+		"hint": "A candle holds *",
+		"room": "D01Z04S08"
 	},
 	{
-		"Id": "QI68",
-		"Name": "Gift for the tomb",
-		"Hint": "Gemino holds *",
-		"Room": "D02Z01S04",
-		"Logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump))"
+		"id": "QI48",
+		"name": "Third area hidden room",
+		"hint": "* resides in Mercy",
+		"room": "D01Z04S11"
 	},
 	{
-		"Id": "QI07",
-		"Name": "Death run",
-		"Hint": "* resides with the Olive Trees",
-		"Room": "D02Z01S05"
+		"id": "CO21",
+		"name": "Behind gate to TSC",
+		"hint": "* resides in Mercy",
+		"room": "D01Z04S13",
+		"logic": "D01Z04S13[SE] || canDiveLaser && (canAirStall || wheel || doubleJump || canEnemyBounce)"
 	},
 	{
-		"Id": "CO19",
-		"Name": "Underground ledge",
-		"Hint": "* resides with the Olive Trees",
-		"Room": "D02Z01S06",
-		"Logic": "wallClimb && (doubleJump || blood && (dash || D02Z01S06[Cherubs]))"
+		"id": "CO38",
+		"name": "Sliding challenge",
+		"hint": "* resides in Mercy",
+		"room": "D01Z04S14",
+		"logic": "dash"
 	},
 	{
-		"Id": "RESCUED_CHERUB_27",
-		"Name": "Underground Child of Moonlight",
-		"Hint": "* resides with the Olive Trees",
-		"Room": "D02Z01S06",
-		"Logic": "(D02Z01S06[W] || dash || doubleJump && wallClimb) && (pillar || cante || canDiveLaser) || (wallClimb && (D02Z01S06[W] || doubleJump || dash)) && (lorquiana || aubade || cantina || canAirStall)"
+		"id": "RESCUED_CHERUB_33",
+		"name": "Cave Child of Moonlight",
+		"hint": "* resides in Mercy",
+		"room": "D01Z04S16",
+		"logic": "doubleJump || pillar || cante || tirana"
 	},
 	{
-		"Id": "PR04",
-		"Name": "Underground tomb",
-		"Hint": "A lady's tomb holds *",
-		"Room": "D02Z01S08",
-		"Logic": "driedFlowers"
+		"id": "BS01",
+		"name": "Ten Piedad",
+		"hint": "* is guarded by Ten Piedad",
+		"room": "D01Z04S18",
+		"logic": "canBeatMercyBoss"
 	},
 	{
-		"Id": "HE05",
-		"Name": "Upper east statue",
-		"Hint": "* resides with the Olive Trees",
-		"Room": "D02Z01S09",
-		"Logic": "canWalkOnRoot || canCrossGap11 || doubleJump && canEnemyBounce"
-	},
-	
-	{
-		"Id": "RESCUED_CHERUB_24",
-		"Name": "Center shaft Child of Moonlight",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S02",
-		"Logic": "D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || ((D02Z02S02[NW] || D02Z02S02[NE] || wallClimb) && (doubleJump || pillar || cante || tirana || canDiveLaser))"
+		"id": "QI38",
+		"name": "Visage of Attrition",
+		"hint": "A Holy Visage holds *",
+		"room": "D01Z04S19"
 	},
 	{
-		"Id": "QI46",
-		"Name": "Lower east shaft",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S03",
-		"Logic": "D02Z02S03[NW] || D02Z02S03[NE] || wallClimb || canCrossGap2"
+		"id": "QI58",
+		"name": "Shop item 1",
+		"hint": "* can be purchased",
+		"locationFlag": "LOCATION_QI58~D01Z04",
+		"room": "D01BZ02S01"
 	},
 	{
-		"Id": "CO29",
-		"Name": "Center east shaft",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S03",
-		"Logic": "D02Z02S03[NW] || D02Z02S03[NE] || wallClimb || doubleJump"
+		"id": "RB05",
+		"name": "Shop item 2",
+		"hint": "* can be purchased",
+		"locationFlag": "LOCATION_RB05~D01Z04",
+		"room": "D01BZ02S01"
 	},
 	{
-		"Id": "QI08",
-		"Name": "Upper east shaft",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S03",
-		"Logic": "canClimbOnRoot && (D02Z02S03[NE] || doubleJump || blood) || blood && doubleJump"
-	},
-	{
-		"Id": "RB32",
-		"Name": "Lower west shaft",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S04",
-		"Logic": "D02Z02S04[E]"
-	},
-	{
-		"Id": "CO01",
-		"Name": "Upper west shaft",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S04",
-		"Logic": "D02Z02S04[NE] || ((D02Z02S04[W] || D02Z02S04[E] && dash) && (doubleJump || wallClimb)) || (D02Z02S04[SE] && (wallClimb || doubleJump && canEnemyUpslash))"
-	},
-	{
-		"Id": "RESCUED_CHERUB_25",
-		"Name": "West shaft Child of Moonlight",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S04",
-		"Logic": "(D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE] && (wallClimb || doubleJump && canEnemyUpslash)) && (blood && dash || doubleJump && canEnemyBounce || lorquiana || cante || verdiales || aubade || cantina) || (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE]) && pillar"
-	},
-	{
-		"Id": "RB15",
-		"Name": "Center shaft ledge",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S05",
-		"Logic": "D02Z02S05[NW] || wallClimb"
-	},
-	{
-		"Id": "RB38",
-		"Name": "Confessor Dungeon room",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S06"
-	},
-	{
-		"Id": "CO42",
-		"Name": "Shop cave hidden hole",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S08",
-		"Logic": "D02Z02S08[CherubsR] || blood || canBreakHoles || canCrossGap8"
-	},
-	{
-		"Id": "RESCUED_CHERUB_31",
-		"Name": "Shop cave Child of Moonlight",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S08",
-		"Logic": "D02Z02S08[CherubsR] || canDiveLaser || blood || pillar || canCrossGap8"
-	},
-	{
-		"Id": "Oil[D02Z02S10]",
-		"Name": "Oil of the Pilgrims",
-		"Hint": "An oil fountain holds *",
-		"Room": "D02Z02S10"
-	},
-	{
-		"Id": "QI53",
-		"Name": "Elevator shaft ledge",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S11"
-	},
-	{
-		"Id": "RESCUED_CHERUB_26",
-		"Name": "Elevator shaft Child of Moonlight",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S11"
-	},
-	{
-		"Id": "Lady[D02Z02S12]",
-		"Name": "Lady of the Six Sorrows",
-		"Hint": "The Lady of Sorrows holds *",
-		"Room": "D02Z02S12"
-	},
-	{
-		"Id": "HE11",
-		"Name": "Self sacrifice statue",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S13"
-	},
-	{
-		"Id": "RB106",
-		"Name": "East cliffside",
-		"Hint": "* resides in the Graveyard",
-		"Room": "D02Z02S14"
-	},
-	{
-		"Id": "Amanecida[D02Z02S14]",
-		"Name": "Amanecida of the Bejeweled Arrow",
-		"Hint": "* is guarded by the Bejeweled Arrow",
-		"Room": "D02Z02S14",
-		"Logic": "canBeatGraveyardBoss"
-	},
-	{
-		"Id": "QI11",
-		"Name": "Shop item 1",
-		"Hint": "* can be purchased",
-		"LocationFlag": "LOCATION_QI11~D02Z02",
-		"Room": "D02BZ02S01"
-	},
-	{
-		"Id": "RB37",
-		"Name": "Shop item 2",
-		"Hint": "* can be purchased",
-		"LocationFlag": "LOCATION_RB37~D02Z02",
-		"Room": "D02BZ02S01"
-	},
-	{
-		"Id": "RB02",
-		"Name": "Shop item 3",
-		"Hint": "* can be purchased",
-		"LocationFlag": "LOCATION_RB02~D02Z02",
-		"Room": "D02BZ02S01"
+		"id": "RB09",
+		"name": "Shop item 3",
+		"hint": "* can be purchased",
+		"locationFlag": "LOCATION_RB09~D01Z04",
+		"room": "D01BZ02S01"
 	},
 	
 	{
-		"Id": "CO05",
-		"Name": "Snowy window ledge",
-		"Hint": "* resides in the Convent",
-		"Room": "D02Z03S03",
-		"Logic": "D02Z03S03[NW] || blood || canCrossGap3"
+		"id": "CO09",
+		"name": "Shortcut to WotBC",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S05"
 	},
 	{
-		"Id": "RB08",
-		"Name": "Center miasma room",
-		"Hint": "* resides in the Convent",
-		"Room": "D02Z03S05",
-		"Logic": "dash && (D02Z03S05[S] || D02Z03S05[NE] || wallClimb || doubleJump)"
+		"id": "QI67",
+		"name": "Hidden alcove near fountain",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S05",
+		"logic": "dash && canWaterJump"
 	},
 	{
-		"Id": "CO15",
-		"Name": "Center enemy lineup",
-		"Hint": "* resides in the Convent",
-		"Room": "D02Z03S07"
+		"id": "PR16",
+		"name": "Upper east tunnel chest",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S06",
+		"logic": "D01Z05S06[Cherubs] || canWaterJump"
 	},
 	{
-		"Id": "HE03",
-		"Name": "Lower west statue",
-		"Hint": "* resides in the Convent",
-		"Room": "D02Z03S12",
-		"Logic": "canSurvivePoison1 && dash"
+		"id": "RESCUED_CHERUB_13",
+		"name": "Upper east Child of Moonlight",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S06",
+		"logic": "D01Z05S06[Cherubs] || canWaterJump || pillar || cante || aubade || tirana || canAirStall"
 	},
 	{
-		"Id": "Sword[D02Z03S13]",
-		"Name": "Mea Culpa altar",
-		"Hint": "A Mea Culpa altar holds *",
-		"Room": "D02Z03S13"
+		"id": "Oil[D01Z05S07]",
+		"name": "Oil of the Pilgrims",
+		"hint": "An oil fountain holds *",
+		"room": "D01Z05S07"
 	},
 	{
-		"Id": "Lady[D02Z03S15]",
-		"Name": "Lady of the Six Sorrows",
-		"Hint": "The Lady of Sorrows holds *",
-		"Room": "D02Z03S15"
+		"id": "QI12",
+		"name": "Behind gate in miasma room",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S08"
 	},
 	{
-		"Id": "RB24",
-		"Name": "First blue candle",
-		"Hint": "A candle holds *",
-		"Room": "D02Z03S17"
+		"id": "RESCUED_CHERUB_14",
+		"name": "Child of Moonlight, miasma room",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S08"
 	},
 	{
-		"Id": "QI61",
-		"Name": "Mask room",
-		"Hint": "Dolphos holds *",
-		"Room": "D02Z03S19"
+		"id": "QI45",
+		"name": "Lower east tunnel chest",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S11"
 	},
 	{
-		"Id": "BS03",
-		"Name": "Our Lady of the Charred Visage",
-		"Hint": "* is guarded by Our Lady of the Charred Visage",
-		"Room": "D02Z03S20",
-		"Logic": "canBeatConventBoss"
+		"id": "RESCUED_CHERUB_12",
+		"name": "Child of Moonlight, behind pillar",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S13",
+		"logic": "D01Z05S13[SW] || D01Z05S13[E] && canSurvivePoison3 && canWaterJump"
 	},
 	{
-		"Id": "QI40",
-		"Name": "Visage of Compunction",
-		"Hint": "A Holy Visage holds *",
-		"Room": "D02Z03S21"
+		"id": "RESCUED_CHERUB_11",
+		"name": "Child of Moonlight, above water",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S14"
 	},
 	{
-		"Id": "QI57",
-		"Name": "Fountain of burning oil",
-		"Hint": "The fountain of burning oil holds *",
-		"Type": 9,
-		"OriginalItem": "QI57",
-		"Room": "D02Z03S21",
-		"Logic": "emptyThimble"
+		"id": "CO41",
+		"name": "Behind sewage drips",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S15"
 	},
 	{
-		"Id": "RB107",
-		"Name": "Outside pathway",
-		"Hint": "* resides in the Convent",
-		"Room": "D02Z03S23"
-	},
-	
-	{
-		"Id": "CO13",
-		"Name": "Under entrance to DC",
-		"Hint": "* resides in the Mountains",
-		"Room": "D03Z01S01"
+		"id": "CO32",
+		"name": "High ledge near elevator shaft",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S17",
+		"logic": "D01Z05S17[E] || canWaterJump || canCrossGap5"
 	},
 	{
-		"Id": "QI47",
-		"Name": "Platform above chasm",
-		"Hint": "* resides in the Mountains",
-		"Room": "D03Z01S03",
-		"Logic": "(blood || doubleJump) && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9)"
+		"id": "RESCUED_CHERUB_15",
+		"name": "Elevator top Child of Moonlight",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S20"
 	},
 	{
-		"Id": "RB22",
-		"Name": "1st meeting with Redento",
-		"Hint": "Redento holds *",
-		"Room": "D03Z01S03",
-		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9"
+		"id": "Lady[D01Z05S22]",
+		"name": "Lady of Sorrows, from MD",
+		"hint": "The Lady of Sorrows holds *",
+		"room": "D01Z05S22"
 	},
 	{
-		"Id": "RESCUED_CHERUB_16",
-		"Name": "Child of Moonlight, above chasm",
-		"Hint": "* resides in the Mountains",
-		"Room": "D03Z01S03",
-		"Logic": "D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9"
+		"id": "QI75",
+		"name": "Chalice room",
+		"hint": "* resides in the Cistern",
+		"type": 9,
+		"originalItem": "QI75",
+		"room": "D01Z05S23"
 	},
 	{
-		"Id": "Amanecida[D03Z01S03]",
-		"Name": "Amanecida of the Golden Blades",
-		"Hint": "* is guarded by the Golden Blades",
-		"Room": "D03Z01S03",
-		"Logic": "canBeatJondoBoss && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9)"
+		"id": "Sword[D01Z05S24]",
+		"name": "Mea Culpa altar",
+		"hint": "* requires a golden chalice",
+		"room": "D01Z05S24"
 	},
 	{
-		"Id": "QI63",
-		"Name": "Blood platform alcove",
-		"Hint": "* resides in the Mountains",
-		"Room": "D03Z01S04",
-		"Logic": "blood || doubleJump || upwarpSkipsAllowed"
+		"id": "CO44",
+		"name": "Elevator shaft ledge",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S25",
+		"logic": "linen || doubleJump && (D01Z05S25[SW] || D01Z05S25[SE] || D01Z05S25[NE])"
 	},
 	{
-		"Id": "RB13",
-		"Name": "Perpetva",
-		"Hint": "* is guarded by Perpetva",
-		"Room": "D03Z01S06",
-		"Logic": "canBeatPerpetua"
+		"id": "RESCUED_CHERUB_22",
+		"name": "Elevator shaft Child of Moonlight",
+		"hint": "* resides in the Cistern",
+		"room": "D01Z05S25",
+		"logic": "linen || (obscureSkipsAllowed && (D01Z05S25[SW] || D01Z05S25[SE] || D01Z05S25[NE]) && (aubade || cantina)) || (pillar && (D01Z05S25[E] || D01Z05S25[W] && (canWalkOnRoot || canCrossGap3)))"
 	},
 	{
-		"Id": "QI14",
-		"Name": "Egg hatching",
-		"Hint": "A hatching tree holds *",
-		"Type": 9,
-		"OriginalItem": "QI14",
-		"Room": "D03Z01S06",
-		"Logic": "canBeatPerpetua && egg"
+		"id": "Lady[D01Z05S26]",
+		"name": "Lady of Sorrows, elevator shaft",
+		"hint": "The Lady of Sorrows holds *",
+		"room": "D01Z05S26"
+	},
+	{
+		"id": "RB03",
+		"name": "Shroud puzzle",
+		"hint": "* resides in the Cistern",
+		"locationFlag": "LOCATION_RB03~D01Z05",
+		"room": "D01BZ05S01"
 	},
 	
 	{
-		"Id": "CO08",
-		"Name": "Upper east ledge",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S01"
+		"id": "QI101",
+		"name": "Temple entrance",
+		"hint": "* resides in Petrous",
+		"room": "D01Z06S01"
+	},
+	
+	{
+		"id": "CO11",
+		"name": "Below Prie Dieu",
+		"hint": "* resides with the Olive Trees",
+		"room": "D02Z01S01",
+		"logic": "D02Z01S01[W] || D02Z01S01[CherubsL] || D02Z01S01[SW] || D02Z01S01[CherubsR] || doubleJump || wallClimb"
 	},
 	{
-		"Id": "PR10",
-		"Name": "Upper east chest",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S01",
-		"Logic": "D03Z02S01[Cherubs] || canClimbOnRoot || canCrossGap8 || doubleJump && canEnemyBounce"
+		"id": "QI59",
+		"name": "Gemino's gift",
+		"hint": "Gemino holds *",
+		"room": "D02Z01S01",
+		"logic": "D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump)"
 	},
 	{
-		"Id": "CO33",
-		"Name": "Lower east under chargers",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S04",
-		"Logic": "D03Z02S04[NE] || D03Z02S04[S] || wallClimb"
+		"id": "RB10",
+		"name": "Gemino's reward",
+		"hint": "Gemino holds *",
+		"room": "D02Z01S01",
+		"logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump))"
 	},
 	{
-		"Id": "RESCUED_CHERUB_18",
-		"Name": "Upper east Child of Moonlight",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S05",
-		"Logic": "D03Z02S05[E] || D03Z02S05[S] || canCrossGap5 || (canEnemyBounce && canCrossGap3)"
+		"id": "RESCUED_CHERUB_23",
+		"name": "Upper east Child of Moonlight",
+		"hint": "* resides with the Olive Trees",
+		"room": "D02Z01S02",
+		"logic": "D02Z01S02[NE] || (D02Z01S02[NW] || wallClimb || doubleJump) && (canWalkOnRoot || canCrossGap4 || pillar)"
 	},
 	{
-		"Id": "QI19",
-		"Name": "Lower east bell trap",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S06"
+		"id": "QI20",
+		"name": "Entrance to tomb",
+		"hint": "* resides with the Olive Trees",
+		"room": "D02Z01S04"
 	},
 	{
-		"Id": "CO07",
-		"Name": "Lower west lift alcove",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S07"
+		"id": "QI68",
+		"name": "Gift for the tomb",
+		"hint": "Gemino holds *",
+		"room": "D02Z01S04",
+		"logic": "fullThimble && (D02Z01S01[W] || D02Z01S01[CherubsL] || wallClimb || doubleJump || ((D02Z01S01[SW] || D02Z01S01[CherubsR]) && canDawnJump))"
 	},
 	{
-		"Id": "QI41",
-		"Name": "Lower west bell alcove",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S08",
-		"Logic": "D03Z02S08[N] || D03Z02S08[W] || wallClimb || doubleJump"
+		"id": "QI07",
+		"name": "Death run",
+		"hint": "* resides with the Olive Trees",
+		"room": "D02Z01S05"
 	},
 	{
-		"Id": "RESCUED_CHERUB_17",
-		"Name": "Upper west Child of Moonlight",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S10"
+		"id": "CO19",
+		"name": "Underground ledge",
+		"hint": "* resides with the Olive Trees",
+		"room": "D02Z01S06",
+		"logic": "wallClimb && (doubleJump || blood && (dash || D02Z01S06[Cherubs]))"
 	},
 	{
-		"Id": "HE06",
-		"Name": "Spike tunnel statue",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S11",
-		"Logic": "D03Z02S11[W] && doubleJump || D03Z02S11[E] && dash && (wallClimb || canCrossGap2 || preciseSkipsAllowed && canCrossGap1)"
+		"id": "RESCUED_CHERUB_27",
+		"name": "Underground Child of Moonlight",
+		"hint": "* resides with the Olive Trees",
+		"room": "D02Z01S06",
+		"logic": "(D02Z01S06[W] || dash || doubleJump && wallClimb) && (pillar || cante || canDiveLaser) || (wallClimb && (D02Z01S06[W] || doubleJump || dash)) && (lorquiana || aubade || cantina || canAirStall)"
 	},
 	{
-		"Id": "RESCUED_CHERUB_37",
-		"Name": "Spike tunnel Child of Moonlight",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S11",
-		"Logic": "D03Z02S11[W] && (doubleJump || dash && (wallClimb || canCrossGap2 && canEnemyBounce || canCrossGap3)) || D03Z02S11[E] && dash && (canCrossGap1 || wallClimb || canEnemyBounce)"
+		"id": "PR04",
+		"name": "Underground tomb",
+		"hint": "A lady's tomb holds *",
+		"room": "D02Z01S08",
+		"logic": "driedFlowers"
 	},
 	{
-		"Id": "QI52",
-		"Name": "Upper west bell puzzle",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S12"
+		"id": "HE05",
+		"name": "Upper east statue",
+		"hint": "* resides with the Olive Trees",
+		"room": "D02Z01S09",
+		"logic": "canWalkOnRoot || canCrossGap11 || doubleJump && canEnemyBounce"
+	},
+	
+	{
+		"id": "RESCUED_CHERUB_24",
+		"name": "Center shaft Child of Moonlight",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S02",
+		"logic": "D02Z02S02[CherubsL] || D02Z02S02[CherubsR] || ((D02Z02S02[NW] || D02Z02S02[NE] || wallClimb) && (doubleJump || pillar || cante || tirana || canDiveLaser))"
 	},
 	{
-		"Id": "RB28",
-		"Name": "Upper west tree root",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S13",
-		"Logic": "canWalkOnRoot || canCrossGap3"
+		"id": "QI46",
+		"name": "Lower east shaft",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S03",
+		"logic": "D02Z02S03[NW] || D02Z02S03[NE] || wallClimb || canCrossGap2"
 	},
 	{
-		"Id": "QI103",
-		"Name": "Spike tunnel cave",
-		"Hint": "* resides in the Bell",
-		"Room": "D03Z02S15"
+		"id": "CO29",
+		"name": "Center east shaft",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S03",
+		"logic": "D02Z02S03[NW] || D02Z02S03[NE] || wallClimb || doubleJump"
+	},
+	{
+		"id": "QI08",
+		"name": "Upper east shaft",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S03",
+		"logic": "canClimbOnRoot && (D02Z02S03[NE] || doubleJump || blood) || blood && doubleJump"
+	},
+	{
+		"id": "RB32",
+		"name": "Lower west shaft",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S04",
+		"logic": "D02Z02S04[E]"
+	},
+	{
+		"id": "CO01",
+		"name": "Upper west shaft",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S04",
+		"logic": "D02Z02S04[NE] || ((D02Z02S04[W] || D02Z02S04[E] && dash) && (doubleJump || wallClimb)) || (D02Z02S04[SE] && (wallClimb || doubleJump && canEnemyUpslash))"
+	},
+	{
+		"id": "RESCUED_CHERUB_25",
+		"name": "West shaft Child of Moonlight",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S04",
+		"logic": "(D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE] && (wallClimb || doubleJump && canEnemyUpslash)) && (blood && dash || doubleJump && canEnemyBounce || lorquiana || cante || verdiales || aubade || cantina) || (D02Z02S04[NE] || D02Z02S04[W] || D02Z02S04[E] && dash || D02Z02S04[SE]) && pillar"
+	},
+	{
+		"id": "RB15",
+		"name": "Center shaft ledge",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S05",
+		"logic": "D02Z02S05[NW] || wallClimb"
+	},
+	{
+		"id": "RB38",
+		"name": "Confessor Dungeon room",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S06"
+	},
+	{
+		"id": "CO42",
+		"name": "Shop cave hidden hole",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S08",
+		"logic": "D02Z02S08[CherubsR] || blood || canBreakHoles || canCrossGap8"
+	},
+	{
+		"id": "RESCUED_CHERUB_31",
+		"name": "Shop cave Child of Moonlight",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S08",
+		"logic": "D02Z02S08[CherubsR] || canDiveLaser || blood || pillar || canCrossGap8"
+	},
+	{
+		"id": "Oil[D02Z02S10]",
+		"name": "Oil of the Pilgrims",
+		"hint": "An oil fountain holds *",
+		"room": "D02Z02S10"
+	},
+	{
+		"id": "QI53",
+		"name": "Elevator shaft ledge",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S11"
+	},
+	{
+		"id": "RESCUED_CHERUB_26",
+		"name": "Elevator shaft Child of Moonlight",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S11"
+	},
+	{
+		"id": "Lady[D02Z02S12]",
+		"name": "Lady of the Six Sorrows",
+		"hint": "The Lady of Sorrows holds *",
+		"room": "D02Z02S12"
+	},
+	{
+		"id": "HE11",
+		"name": "Self sacrifice statue",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S13"
+	},
+	{
+		"id": "RB106",
+		"name": "East cliffside",
+		"hint": "* resides in the Graveyard",
+		"room": "D02Z02S14"
+	},
+	{
+		"id": "Amanecida[D02Z02S14]",
+		"name": "Amanecida of the Bejeweled Arrow",
+		"hint": "* is guarded by the Bejeweled Arrow",
+		"room": "D02Z02S14",
+		"logic": "canBeatGraveyardBoss"
+	},
+	{
+		"id": "QI11",
+		"name": "Shop item 1",
+		"hint": "* can be purchased",
+		"locationFlag": "LOCATION_QI11~D02Z02",
+		"room": "D02BZ02S01"
+	},
+	{
+		"id": "RB37",
+		"name": "Shop item 2",
+		"hint": "* can be purchased",
+		"locationFlag": "LOCATION_RB37~D02Z02",
+		"room": "D02BZ02S01"
+	},
+	{
+		"id": "RB02",
+		"name": "Shop item 3",
+		"hint": "* can be purchased",
+		"locationFlag": "LOCATION_RB02~D02Z02",
+		"room": "D02BZ02S01"
+	},
+	
+	{
+		"id": "CO05",
+		"name": "Snowy window ledge",
+		"hint": "* resides in the Convent",
+		"room": "D02Z03S03",
+		"logic": "D02Z03S03[NW] || blood || canCrossGap3"
+	},
+	{
+		"id": "RB08",
+		"name": "Center miasma room",
+		"hint": "* resides in the Convent",
+		"room": "D02Z03S05",
+		"logic": "dash && (D02Z03S05[S] || D02Z03S05[NE] || wallClimb || doubleJump)"
+	},
+	{
+		"id": "CO15",
+		"name": "Center enemy lineup",
+		"hint": "* resides in the Convent",
+		"room": "D02Z03S07"
+	},
+	{
+		"id": "HE03",
+		"name": "Lower west statue",
+		"hint": "* resides in the Convent",
+		"room": "D02Z03S12",
+		"logic": "canSurvivePoison1 && dash"
+	},
+	{
+		"id": "Sword[D02Z03S13]",
+		"name": "Mea Culpa altar",
+		"hint": "A Mea Culpa altar holds *",
+		"room": "D02Z03S13"
+	},
+	{
+		"id": "Lady[D02Z03S15]",
+		"name": "Lady of the Six Sorrows",
+		"hint": "The Lady of Sorrows holds *",
+		"room": "D02Z03S15"
+	},
+	{
+		"id": "RB24",
+		"name": "First blue candle",
+		"hint": "A candle holds *",
+		"room": "D02Z03S17"
+	},
+	{
+		"id": "QI61",
+		"name": "Mask room",
+		"hint": "Dolphos holds *",
+		"room": "D02Z03S19"
+	},
+	{
+		"id": "BS03",
+		"name": "Our Lady of the Charred Visage",
+		"hint": "* is guarded by Our Lady of the Charred Visage",
+		"room": "D02Z03S20",
+		"logic": "canBeatConventBoss"
+	},
+	{
+		"id": "QI40",
+		"name": "Visage of Compunction",
+		"hint": "A Holy Visage holds *",
+		"room": "D02Z03S21"
+	},
+	{
+		"id": "QI57",
+		"name": "Fountain of burning oil",
+		"hint": "The fountain of burning oil holds *",
+		"type": 9,
+		"originalItem": "QI57",
+		"room": "D02Z03S21",
+		"logic": "emptyThimble"
+	},
+	{
+		"id": "RB107",
+		"name": "Outside pathway",
+		"hint": "* resides in the Convent",
+		"room": "D02Z03S23"
+	},
+	
+	{
+		"id": "CO13",
+		"name": "Under entrance to DC",
+		"hint": "* resides in the Mountains",
+		"room": "D03Z01S01"
+	},
+	{
+		"id": "QI47",
+		"name": "Platform above chasm",
+		"hint": "* resides in the Mountains",
+		"room": "D03Z01S03",
+		"logic": "(blood || doubleJump) && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9)"
+	},
+	{
+		"id": "RB22",
+		"name": "1st meeting with Redento",
+		"hint": "Redento holds *",
+		"room": "D03Z01S03",
+		"logic": "D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9"
+	},
+	{
+		"id": "RESCUED_CHERUB_16",
+		"name": "Child of Moonlight, above chasm",
+		"hint": "* resides in the Mountains",
+		"room": "D03Z01S03",
+		"logic": "D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9"
+	},
+	{
+		"id": "Amanecida[D03Z01S03]",
+		"name": "Amanecida of the Golden Blades",
+		"hint": "* is guarded by the Golden Blades",
+		"room": "D03Z01S03",
+		"logic": "canBeatJondoBoss && (D03Z01S03[W] || D03Z01S03[SW] || canCrossGap9)"
+	},
+	{
+		"id": "QI63",
+		"name": "Blood platform alcove",
+		"hint": "* resides in the Mountains",
+		"room": "D03Z01S04",
+		"logic": "blood || doubleJump || upwarpSkipsAllowed"
+	},
+	{
+		"id": "RB13",
+		"name": "Perpetva",
+		"hint": "* is guarded by Perpetva",
+		"room": "D03Z01S06",
+		"logic": "canBeatPerpetua"
+	},
+	{
+		"id": "QI14",
+		"name": "Egg hatching",
+		"hint": "A hatching tree holds *",
+		"type": 9,
+		"originalItem": "QI14",
+		"room": "D03Z01S06",
+		"logic": "canBeatPerpetua && egg"
+	},
+	
+	{
+		"id": "CO08",
+		"name": "Upper east ledge",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S01"
+	},
+	{
+		"id": "PR10",
+		"name": "Upper east chest",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S01",
+		"logic": "D03Z02S01[Cherubs] || canClimbOnRoot || canCrossGap8 || doubleJump && canEnemyBounce"
+	},
+	{
+		"id": "CO33",
+		"name": "Lower east under chargers",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S04",
+		"logic": "D03Z02S04[NE] || D03Z02S04[S] || wallClimb"
+	},
+	{
+		"id": "RESCUED_CHERUB_18",
+		"name": "Upper east Child of Moonlight",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S05",
+		"logic": "D03Z02S05[E] || D03Z02S05[S] || canCrossGap5 || (canEnemyBounce && canCrossGap3)"
+	},
+	{
+		"id": "QI19",
+		"name": "Lower east bell trap",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S06"
+	},
+	{
+		"id": "CO07",
+		"name": "Lower west lift alcove",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S07"
+	},
+	{
+		"id": "QI41",
+		"name": "Lower west bell alcove",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S08",
+		"logic": "D03Z02S08[N] || D03Z02S08[W] || wallClimb || doubleJump"
+	},
+	{
+		"id": "RESCUED_CHERUB_17",
+		"name": "Upper west Child of Moonlight",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S10"
+	},
+	{
+		"id": "HE06",
+		"name": "Spike tunnel statue",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S11",
+		"logic": "D03Z02S11[W] && doubleJump || D03Z02S11[E] && dash && (wallClimb || canCrossGap2 || preciseSkipsAllowed && canCrossGap1)"
+	},
+	{
+		"id": "RESCUED_CHERUB_37",
+		"name": "Spike tunnel Child of Moonlight",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S11",
+		"logic": "D03Z02S11[W] && (doubleJump || dash && (wallClimb || canCrossGap2 && canEnemyBounce || canCrossGap3)) || D03Z02S11[E] && dash && (canCrossGap1 || wallClimb || canEnemyBounce)"
+	},
+	{
+		"id": "QI52",
+		"name": "Upper west bell puzzle",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S12"
+	},
+	{
+		"id": "RB28",
+		"name": "Upper west tree root",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S13",
+		"logic": "canWalkOnRoot || canCrossGap3"
+	},
+	{
+		"id": "QI103",
+		"name": "Spike tunnel cave",
+		"hint": "* resides in the Bell",
+		"room": "D03Z02S15"
 	},
 
 	{
-		"Id": "QI44",
-		"Name": "Lower west ledge",
-		"Hint": "* resides in the Grievance",
-		"Room": "D03Z03S02",
-		"Logic": "canSurvivePoison1"
+		"id": "QI44",
+		"name": "Lower west ledge",
+		"hint": "* resides in the Grievance",
+		"room": "D03Z03S02",
+		"logic": "canSurvivePoison1"
 	},
 	{
-		"Id": "CO12",
-		"Name": "Miasma room floor",
-		"Hint": "* resides in the Grievance",
-		"Room": "D03Z03S06",
-		"Logic": "canSurvivePoison1"
+		"id": "CO12",
+		"name": "Miasma room floor",
+		"hint": "* resides in the Grievance",
+		"room": "D03Z03S06",
+		"logic": "canSurvivePoison1"
 	},
 	{
-		"Id": "RE07",
-		"Name": "Miasma room treasure",
-		"Hint": "* resides in the Grievance",
-		"Room": "D03Z03S06",
-		"Logic": "wallClimb"
+		"id": "RE07",
+		"name": "Miasma room treasure",
+		"hint": "* resides in the Grievance",
+		"room": "D03Z03S06",
+		"logic": "wallClimb"
 	},
 	{
-		"Id": "RESCUED_CHERUB_19",
-		"Name": "Miasma room Child of Moonlight",
-		"Hint": "* resides in the Grievance",
-		"Room": "D03Z03S06",
-		"Logic": "wallClimb || canCrossGap11 && taranto && obscureSkipsAllowed"
+		"id": "RESCUED_CHERUB_19",
+		"name": "Miasma room Child of Moonlight",
+		"hint": "* resides in the Grievance",
+		"room": "D03Z03S06",
+		"logic": "wallClimb || canCrossGap11 && taranto && obscureSkipsAllowed"
 	},
 	{
-		"Id": "QI10",
-		"Name": "End of blood bridge",
-		"Hint": "* resides in the Grievance",
-		"Room": "D03Z03S08",
-		"Logic": "blood || canCrossGap11 || canEnemyBounce && canCrossGap7"
+		"id": "QI10",
+		"name": "End of blood bridge",
+		"hint": "* resides in the Grievance",
+		"room": "D03Z03S08",
+		"logic": "blood || canCrossGap11 || canEnemyBounce && canCrossGap7"
 	},
 	{
-		"Id": "RESCUED_CHERUB_21",
-		"Name": "Blood bridge Child of Moonlight",
-		"Hint": "* resides in the Grievance",
-		"Room": "D03Z03S08",
-		"Logic": "(blood || canCrossGap11 || canEnemyBounce && canCrossGap7) && (doubleJump || pillar || cante || verdiales || tirana || aubade && canAirStall)"
+		"id": "RESCUED_CHERUB_21",
+		"name": "Blood bridge Child of Moonlight",
+		"hint": "* resides in the Grievance",
+		"room": "D03Z03S08",
+		"logic": "(blood || canCrossGap11 || canEnemyBounce && canCrossGap7) && (doubleJump || pillar || cante || verdiales || tirana || aubade && canAirStall)"
 	},
 	{
-		"Id": "RESCUED_CHERUB_20",
-		"Name": "Lower east Child of Moonlight",
-		"Hint": "* resides in the Grievance",
-		"Room": "D03Z03S09",
-		"Logic": "canClimbOnRoot || doubleJump || pillar || lorquiana || zarabanda || cante || aubade || tirana"
+		"id": "RESCUED_CHERUB_20",
+		"name": "Lower east Child of Moonlight",
+		"hint": "* resides in the Grievance",
+		"room": "D03Z03S09",
+		"logic": "canClimbOnRoot || doubleJump || pillar || lorquiana || zarabanda || cante || aubade || tirana"
 	},
 	{
-		"Id": "QI13",
-		"Name": "Altasgracias' gift",
-		"Hint": "Altasgracias holds *",
-		"Room": "D03Z03S10",
-		"Logic": "ceremonyItems >= 3"
+		"id": "QI13",
+		"name": "Altasgracias' gift",
+		"hint": "Altasgracias holds *",
+		"room": "D03Z03S10",
+		"logic": "ceremonyItems >= 3"
 	},
 	{
-		"Id": "RB06",
-		"Name": "Empty giant egg",
-		"Hint": "Altasgracias holds *",
-		"Room": "D03Z03S10",
-		"Logic": "ceremonyItems >= 3 && hatchedEgg && (D01Z02S01[W] || D01Z02S01[E])"
+		"id": "RB06",
+		"name": "Empty giant egg",
+		"hint": "Altasgracias holds *",
+		"room": "D03Z03S10",
+		"logic": "ceremonyItems >= 3 && hatchedEgg && (D01Z02S01[W] || D01Z02S01[E])"
 	},
 	{
-		"Id": "Oil[D03Z03S13]",
-		"Name": "Oil of the Pilgrims",
-		"Hint": "An oil fountain holds *",
-		"Room": "D03Z03S13"
+		"id": "Oil[D03Z03S13]",
+		"name": "Oil of the Pilgrims",
+		"hint": "An oil fountain holds *",
+		"room": "D03Z03S13"
 	},
 	{
-		"Id": "BS04",
-		"Name": "Tres Angustias",
-		"Hint": "* is guarded by Tres Angustias",
-		"Room": "D03Z03S15",
-		"Logic": "canBeatGrievanceBoss"
+		"id": "BS04",
+		"name": "Tres Angustias",
+		"hint": "* is guarded by Tres Angustias",
+		"room": "D03Z03S15",
+		"logic": "canBeatGrievanceBoss"
 	},
 	{
-		"Id": "QI39",
-		"Name": "Visage of Contrition",
-		"Hint": "A Holy Visage holds *",
-		"Room": "D03Z03S16"
+		"id": "QI39",
+		"name": "Visage of Contrition",
+		"hint": "A Holy Visage holds *",
+		"room": "D03Z03S16"
 	},
 	
 	{
-		"Id": "CO23",
-		"Name": "First area ledge",
-		"Hint": "* resides in the Patio",
-		"Room": "D04Z01S01",
-		"Logic": "D04Z01S01[NE] || D04Z01S01[N] || canCrossGap3"
+		"id": "CO23",
+		"name": "First area ledge",
+		"hint": "* resides in the Patio",
+		"room": "D04Z01S01",
+		"logic": "D04Z01S01[NE] || D04Z01S01[N] || canCrossGap3"
 	},
 	{
-		"Id": "RESCUED_CHERUB_35",
-		"Name": "First area Child of Moonlight",
-		"Hint": "* resides in the Patio",
-		"Room": "D04Z01S01"
+		"id": "RESCUED_CHERUB_35",
+		"name": "First area Child of Moonlight",
+		"hint": "* resides in the Patio",
+		"room": "D04Z01S01"
 	},
 	{
-		"Id": "RB14",
-		"Name": "Second area ledge",
-		"Hint": "* resides in the Patio",
-		"Room": "D04Z01S02",
-		"Logic": "canClimbOnRoot || canCrossGap3"
+		"id": "RB14",
+		"name": "Second area ledge",
+		"hint": "* resides in the Patio",
+		"room": "D04Z01S02",
+		"logic": "canClimbOnRoot || canCrossGap3"
 	},
 	{
-		"Id": "QI37",
-		"Name": "Third area lower ledge",
-		"Hint": "* resides in the Patio",
-		"Room": "D04Z01S03"
+		"id": "QI37",
+		"name": "Third area lower ledge",
+		"hint": "* resides in the Patio",
+		"room": "D04Z01S03"
 	},
 	{
-		"Id": "CO39",
-		"Name": "Third area upper ledge",
-		"Hint": "* resides in the Patio",
-		"Room": "D04Z01S03",
-		"Logic": "canClimbOnRoot || canCrossGap3"
+		"id": "CO39",
+		"name": "Third area upper ledge",
+		"hint": "* resides in the Patio",
+		"room": "D04Z01S03",
+		"logic": "canClimbOnRoot || canCrossGap3"
 	},
 	{
-		"Id": "RESCUED_CHERUB_28",
-		"Name": "Third area Child of Moonlight",
-		"Hint": "* resides in the Patio",
-		"Room": "D04Z01S03"
+		"id": "RESCUED_CHERUB_28",
+		"name": "Third area Child of Moonlight",
+		"hint": "* resides in the Patio",
+		"room": "D04Z01S03"
 	},
 	{
-		"Id": "RB21",
-		"Name": "4th meeting with Redento",
-		"Hint": "Redento holds *",
-		"Room": "D04Z01S04",
-		"Logic": "redentoRooms >= 4"
+		"id": "RB21",
+		"name": "4th meeting with Redento",
+		"hint": "Redento holds *",
+		"room": "D04Z01S04",
+		"logic": "redentoRooms >= 4"
 	},
 	{
-		"Id": "Amanecida[D04Z01S04]",
-		"Name": "Amanecida of the Chiselled Steel",
-		"Hint": "* is guarded by the Chiselled Steel",
-		"Room": "D04Z01S04",
-		"Logic": "canBeatPatioBoss"
+		"id": "Amanecida[D04Z01S04]",
+		"name": "Amanecida of the Chiselled Steel",
+		"hint": "* is guarded by the Chiselled Steel",
+		"room": "D04Z01S04",
+		"logic": "canBeatPatioBoss"
 	},
 	{
-		"Id": "QI102",
-		"Name": "Climb to WotHP",
-		"Hint": "* resides in the Patio",
-		"Room": "D04Z01S06"
+		"id": "QI102",
+		"name": "Climb to WotHP",
+		"hint": "* resides in the Patio",
+		"room": "D04Z01S06"
 	},
 
 	{
-		"Id": "RE402",
-		"Name": "Western room ledge",
-		"Hint": "* resides in the Mother",
-		"Room": "D04Z02S01",
-		"Logic": "D04Z02S01[N] || D04Z02S01[NE] && dash && (doubleJump || wallClimb)"
+		"id": "RE402",
+		"name": "Western room ledge",
+		"hint": "* resides in the Mother",
+		"room": "D04Z02S01",
+		"logic": "D04Z02S01[N] || D04Z02S01[NE] && dash && (doubleJump || wallClimb)"
 	},
 	{
-		"Id": "RESCUED_CHERUB_30",
-		"Name": "Lower west Child of Moonlight",
-		"Hint": "* resides in the Mother",
-		"Room": "D04Z02S01",
-		"Logic": "D04Z02S01[N] || pillar || doubleJump || D04Z02S01[NE] && dash && (wallClimb || canCrossGap1)"
+		"id": "RESCUED_CHERUB_30",
+		"name": "Lower west Child of Moonlight",
+		"hint": "* resides in the Mother",
+		"room": "D04Z02S01",
+		"logic": "D04Z02S01[N] || pillar || doubleJump || D04Z02S01[NE] && dash && (wallClimb || canCrossGap1)"
 	},
 	{
-		"Id": "CO17",
-		"Name": "Upper west floor",
-		"Hint": "* resides in the Mother",
-		"Room": "D04Z02S02"
+		"id": "CO17",
+		"name": "Upper west floor",
+		"hint": "* resides in the Mother",
+		"room": "D04Z02S02"
 	},
 	{
-		"Id": "CO34",
-		"Name": "Outside Cleofas' room",
-		"Hint": "* resides in the Mother",
-		"Room": "D04Z02S06",
-		"Logic": "D04Z02S06[NW] || D04Z02S06[N] || D04Z02S06[NE] || wallClimb || doubleJump"
+		"id": "CO34",
+		"name": "Outside Cleofas' room",
+		"hint": "* resides in the Mother",
+		"room": "D04Z02S06",
+		"logic": "D04Z02S06[NW] || D04Z02S06[N] || D04Z02S06[NE] || wallClimb || doubleJump"
 	},
 	{
-		"Id": "CO35",
-		"Name": "East Chandelier platform",
-		"Hint": "* resides in the Mother",
-		"Room": "D04Z02S07",
-		"Logic": "dash && (blood || canCrossGap3)"
+		"id": "CO35",
+		"name": "East Chandelier platform",
+		"hint": "* resides in the Mother",
+		"room": "D04Z02S07",
+		"logic": "dash && (blood || canCrossGap3)"
 	},
 	{
-		"Id": "RB33",
-		"Name": "Upper east ledge",
-		"Hint": "* resides in the Mother",
-		"Room": "D04Z02S07"
+		"id": "RB33",
+		"name": "Upper east ledge",
+		"hint": "* resides in the Mother",
+		"room": "D04Z02S07"
 	},
 	{
-		"Id": "CO20",
-		"Name": "Upper center floor",
-		"Hint": "* resides in the Mother",
-		"Room": "D04Z02S11"
+		"id": "CO20",
+		"name": "Upper center floor",
+		"hint": "* resides in the Mother",
+		"room": "D04Z02S11"
 	},
 	{
-		"Id": "RESCUED_CHERUB_29",
-		"Name": "Upper center Child of Moonlight",
-		"Hint": "* resides in the Mother",
-		"Room": "D04Z02S11"
+		"id": "RESCUED_CHERUB_29",
+		"name": "Upper center Child of Moonlight",
+		"hint": "* resides in the Mother",
+		"room": "D04Z02S11"
 	},
 	{
-		"Id": "Sword[D04Z02S12]",
-		"Name": "Mea Culpa altar",
-		"Hint": "A Mea Culpa altar holds *",
-		"Room": "D04Z02S12"
+		"id": "Sword[D04Z02S12]",
+		"name": "Mea Culpa altar",
+		"hint": "A Mea Culpa altar holds *",
+		"room": "D04Z02S12"
 	},
 	{
-		"Id": "Oil[D04Z02S14]",
-		"Name": "Oil of the Pilgrims",
-		"Hint": "An oil fountain holds *",
-		"Room": "D04Z02S14"
+		"id": "Oil[D04Z02S14]",
+		"name": "Oil of the Pilgrims",
+		"hint": "An oil fountain holds *",
+		"room": "D04Z02S14"
 	},
 	{
-		"Id": "QI60",
-		"Name": "Mask room",
-		"Hint": "Orestes holds *",
-		"Room": "D04Z02S15"
+		"id": "QI60",
+		"name": "Mask room",
+		"hint": "Orestes holds *",
+		"room": "D04Z02S15"
 	},
 	{
-		"Id": "HE01",
-		"Name": "Giant chandelier statue",
-		"Hint": "* resides in the Mother",
-		"Room": "D04Z02S16",
-		"Logic": "wallClimb && (blood || doubleJump)"
+		"id": "HE01",
+		"name": "Giant chandelier statue",
+		"hint": "* resides in the Mother",
+		"room": "D04Z02S16",
+		"logic": "wallClimb && (blood || doubleJump)"
 	},
 	{
-		"Id": "BS05",
-		"Name": "Melquiades, The Exhumed Archbishop",
-		"Hint": "* is guarded by Melquiades",
-		"Room": "D04Z02S22",
-		"Logic": "canBeatMothersBoss"
+		"id": "BS05",
+		"name": "Melquiades, The Exhumed Archbishop",
+		"hint": "* is guarded by Melquiades",
+		"room": "D04Z02S22",
+		"logic": "canBeatMothersBoss"
 	},
 	{
-		"Id": "RE03",
-		"Name": "Redento's treasure",
-		"Hint": "* is locked away in a room",
-		"LocationFlag": "LOCATION_RE03~D04Z02",
-		"Room": "D04BZ02S01"
+		"id": "RE03",
+		"name": "Redento's treasure",
+		"hint": "* is locked away in a room",
+		"locationFlag": "LOCATION_RE03~D04Z02",
+		"room": "D04BZ02S01"
 	},
 	{
-		"Id": "QI54",
-		"Name": "Final meeting with Redento",
-		"Hint": "Redento holds *",
-		"LocationFlag": "LOCATION_QI54~D04Z02",
-		"Room": "D04BZ02S01",
-		"Logic": "redentoRooms >= 5"
-	},
-	
-	{
-		"Id": "HE201",
-		"Name": "Gift from the Traitor",
-		"Hint": "The Fourth Visage holds *",
-		"Room": "D04Z03S02",
-		"Logic": "traitorEyes >= 2"
+		"id": "QI54",
+		"name": "Final meeting with Redento",
+		"hint": "Redento holds *",
+		"locationFlag": "LOCATION_QI54~D04Z02",
+		"room": "D04BZ02S01",
+		"logic": "redentoRooms >= 5"
 	},
 	
 	{
-		"Id": "PR201",
-		"Name": "Miriam's gift",
-		"Hint": "Miriam holds *",
-		"Type": 8,
-		"Room": "D04Z04S01",
-		"Logic": "miriamRooms >= 5 && dash && wallClimb"
+		"id": "HE201",
+		"name": "Gift from the Traitor",
+		"hint": "The Fourth Visage holds *",
+		"room": "D04Z03S02",
+		"logic": "traitorEyes >= 2"
 	},
 	
 	{
-		"Id": "CO18",
-		"Name": "Platform room ledge",
-		"Hint": "* resides in the Library",
-		"Room": "D05Z01S04"
-	},
-	{
-		"Id": "RESCUED_CHERUB_01",
-		"Name": "Platform room Child of Moonlight",
-		"Hint": "* resides in the Library",
-		"Room": "D05Z01S04"
-	},
-	{
-		"Id": "QI50",
-		"Name": "Hidden floor",
-		"Hint": "* resides in the Library",
-		"Room": "D05Z01S05",
-		"Logic": "canBreakHoles"
-	},
-	{
-		"Id": "CO22",
-		"Name": "Root ceiling platform",
-		"Hint": "* resides in the Library",
-		"Room": "D05Z01S05",
-		"Logic": "(canClimbOnRoot || doubleJump) && (D05Z01S05[NE] || blood)"
-	},
-	{
-		"Id": "RB31",
-		"Name": "Miasma hallway chest",
-		"Hint": "* resides in the Library",
-		"Room": "D05Z01S06",
-		"Logic": "D05Z01S06[W] || canSurvivePoison3"
-	},
-	{
-		"Id": "PR07",
-		"Name": "Platform puzzle chest",
-		"Hint": "* resides in the Library",
-		"Room": "D05Z01S10",
-		"Logic": "blood || doubleJump || canEnemyBounce && canCrossGap2"
-	},
-	{
-		"Id": "RB203",
-		"Name": "Silence for Diosdado",
-		"Hint": "Diosdado holds *",
-		"Room": "D05Z01S11",
-		"Logic": "(D05Z01S11[NW] || D05Z01S11[NE]) && D05Z01S23[E]"
-	},
-	{
-		"Id": "CO28",
-		"Name": "Lowest west upper ledge",
-		"Hint": "* resides in the Library",
-		"Room": "D05Z01S11",
-		"Logic": "D05Z01S11[NW] || D05Z01S11[NE]"
-	},
-	{
-		"Id": "RB30",
-		"Name": "Lowest west center ledge",
-		"Hint": "* resides in the Library",
-		"Room": "D05Z01S11"
-	},
-	{
-		"Id": "RESCUED_CHERUB_02",
-		"Name": "Lowest west Child of Moonlight",
-		"Hint": "* resides in the Library",
-		"Room": "D05Z01S11"
-	},
-	{
-		"Id": "Sword[D05Z01S13]",
-		"Name": "Mea Culpa altar",
-		"Hint": "A Mea Culpa altar holds *",
-		"Room": "D05Z01S13"
-	},
-	{
-		"Id": "Lady[D05Z01S14]",
-		"Name": "Lady of the Six Sorrows",
-		"Hint": "The Lady of Sorrows holds *",
-		"Room": "D05Z01S14"
-	},
-	{
-		"Id": "QI62",
-		"Name": "Mask room",
-		"Hint": "Cresente holds *",
-		"Room": "D05Z01S15"
-	},
-	{
-		"Id": "PR15",
-		"Name": "Bone puzzle",
-		"Hint": "* resides in the Library",
-		"Room": "D05Z01S18"
-	},
-	{
-		"Id": "Oil[D05Z01S19]",
-		"Name": "Oil of the Pilgrims",
-		"Hint": "An oil fountain holds *",
-		"Room": "D05Z01S19"
-	},
-	{
-		"Id": "RESCUED_CHERUB_32",
-		"Name": "Elevator Child of Moonlight",
-		"Hint": "* resides in the Library",
-		"Room": "D05Z01S21",
-		"Logic": "blood && (canWalkOnRoot || doubleJump || canCrossGap5 && pillar) || obscureSkipsAllowed && (zarabanda || aubade || cantina)"
-	},
-	{
-		"Id": "RB301",
-		"Name": "Twisted wood hidden wall",
-		"Hint": "* is locked away in a room",
-		"LocationFlag": "LOCATION_RB301~D05Z01",
-		"Room": "D05BZ01S01"
+		"id": "PR201",
+		"name": "Miriam's gift",
+		"hint": "Miriam holds *",
+		"type": 8,
+		"room": "D04Z04S01",
+		"logic": "miriamRooms >= 5 && dash && wallClimb"
 	},
 	
 	{
-		"Id": "QI64",
-		"Name": "Painting ladder ledge",
-		"Hint": "* resides in the Canvases",
-		"Room": "D05Z02S02"
+		"id": "CO18",
+		"name": "Platform room ledge",
+		"hint": "* resides in the Library",
+		"room": "D05Z01S04"
 	},
 	{
-		"Id": "HE07",
-		"Name": "Candle wax puzzle",
-		"Hint": "* requires large beads of wax",
-		"Room": "D05Z02S08"
+		"id": "RESCUED_CHERUB_01",
+		"name": "Platform room Child of Moonlight",
+		"hint": "* resides in the Library",
+		"room": "D05Z01S04"
 	},
 	{
-		"Id": "RE05",
-		"Name": "Jocinero's 1st reward",
-		"Hint": "Jocinero holds *",
-		"Room": "D05Z02S10",
-		"Logic": "cherubs >= 20"
+		"id": "QI50",
+		"name": "Hidden floor",
+		"hint": "* resides in the Library",
+		"room": "D05Z01S05",
+		"logic": "canBreakHoles"
 	},
 	{
-		"Id": "PR05",
-		"Name": "Jocinero's final reward",
-		"Hint": "Jocinero holds *",
-		"Type": 8,
-		"Room": "D05Z02S10",
-		"Logic": "cherubs >= 38"
+		"id": "CO22",
+		"name": "Root ceiling platform",
+		"hint": "* resides in the Library",
+		"room": "D05Z01S05",
+		"logic": "(canClimbOnRoot || doubleJump) && (D05Z01S05[NE] || blood)"
 	},
 	{
-		"Id": "CO31",
-		"Name": "Under elevator shaft",
-		"Hint": "* resides in the Canvases",
-		"Room": "D05Z02S11"
+		"id": "RB31",
+		"name": "Miasma hallway chest",
+		"hint": "* resides in the Library",
+		"room": "D05Z01S06",
+		"logic": "D05Z01S06[W] || canSurvivePoison3"
 	},
 	{
-		"Id": "BS06",
-		"Name": "Exposito, Scion of Abjuration",
-		"Hint": "* is guarded by Exposito",
-		"Room": "D05Z02S14",
-		"Logic": "canBeatCanvasesBoss"
+		"id": "PR07",
+		"name": "Platform puzzle chest",
+		"hint": "* resides in the Library",
+		"room": "D05Z01S10",
+		"logic": "blood || doubleJump || canEnemyBounce && canCrossGap2"
 	},
 	{
-		"Id": "QI104",
-		"Name": "Swinging blade tunnel",
-		"Hint": "* resides in the Canvases",
-		"Room": "D05Z02S15",
-		"Logic": "dash"
+		"id": "RB203",
+		"name": "Silence for Diosdado",
+		"hint": "Diosdado holds *",
+		"room": "D05Z01S11",
+		"logic": "(D05Z01S11[NW] || D05Z01S11[NE]) && D05Z01S23[E]"
 	},
 	{
-		"Id": "RB12",
-		"Name": "Shop item 1",
-		"Hint": "* can be purchased",
-		"LocationFlag": "LOCATION_RB12~D05Z02",
-		"Room": "D05BZ02S01"
+		"id": "CO28",
+		"name": "Lowest west upper ledge",
+		"hint": "* resides in the Library",
+		"room": "D05Z01S11",
+		"logic": "D05Z01S11[NW] || D05Z01S11[NE]"
 	},
 	{
-		"Id": "QI49",
-		"Name": "Shop item 2",
-		"Hint": "* can be purchased",
-		"LocationFlag": "LOCATION_QI49~D05Z02",
-		"Room": "D05BZ02S01"
+		"id": "RB30",
+		"name": "Lowest west center ledge",
+		"hint": "* resides in the Library",
+		"room": "D05Z01S11"
 	},
 	{
-		"Id": "QI71",
-		"Name": "Shop item 3",
-		"Hint": "* can be purchased",
-		"LocationFlag": "LOCATION_QI71~D05Z02",
-		"Room": "D05BZ02S01"
-	},
-	
-	{
-		"Id": "QI02",
-		"Name": "First soldier fight",
-		"Hint": "* is guarded by a Legionary",
-		"Room": "D06Z01S03",
-		"Logic": "canBeatLegionary"
+		"id": "RESCUED_CHERUB_02",
+		"name": "Lowest west Child of Moonlight",
+		"hint": "* resides in the Library",
+		"room": "D05Z01S11"
 	},
 	{
-		"Id": "QI03",
-		"Name": "Second soldier fight",
-		"Hint": "* is guarded by a Legionary",
-		"Room": "D06Z01S06",
-		"Logic": "canBeatLegionary && (D06Z01S06[WW] || D06Z01S06[E])"
+		"id": "Sword[D05Z01S13]",
+		"name": "Mea Culpa altar",
+		"hint": "A Mea Culpa altar holds *",
+		"room": "D05Z01S13"
 	},
 	{
-		"Id": "QI04",
-		"Name": "Third soldier fight",
-		"Hint": "* is guarded by a Legionary",
-		"Room": "D06Z01S21",
-		"Logic": "canBeatLegionary"
+		"id": "Lady[D05Z01S14]",
+		"name": "Lady of the Six Sorrows",
+		"hint": "The Lady of Sorrows holds *",
+		"room": "D05Z01S14"
 	},
 	{
-		"Id": "Sword[D06Z01S11]",
-		"Name": "Mea Culpa altar",
-		"Hint": "A Mea Culpa altar holds *",
-		"Room": "D06Z01S11"
+		"id": "QI62",
+		"name": "Mask room",
+		"hint": "Cresente holds *",
+		"room": "D05Z01S15"
 	},
 	{
-		"Id": "CO06",
-		"Name": "Upper west shaft ledge",
-		"Hint": "* resides in the Rooftops",
-		"Room": "D06Z01S12",
-		"Logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || D06Z01S12[W] || D06Z01S12[E] || wallClimb"
+		"id": "PR15",
+		"name": "Bone puzzle",
+		"hint": "* resides in the Library",
+		"room": "D05Z01S18"
 	},
 	{
-		"Id": "PR12",
-		"Name": "Upper west shaft chest",
-		"Hint": "* resides in the Rooftops",
-		"Room": "D06Z01S12",
-		"Logic": "D06Z01S12[NE2] || (D06Z01S12[NW] || D06Z01S12[NE]) && doubleJump"
+		"id": "Oil[D05Z01S19]",
+		"name": "Oil of the Pilgrims",
+		"hint": "An oil fountain holds *",
+		"room": "D05Z01S19"
 	},
 	{
-		"Id": "RESCUED_CHERUB_36",
-		"Name": "Upper west Child of Moonlight",
-		"Hint": "* resides in the Rooftops",
-		"Room": "D06Z01S12",
-		"Logic": "D06Z01S12[W] || D06Z01S12[E] || D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || wallClimb && (doubleJump || taranto)"
+		"id": "RESCUED_CHERUB_32",
+		"name": "Elevator Child of Moonlight",
+		"hint": "* resides in the Library",
+		"room": "D05Z01S21",
+		"logic": "blood && (canWalkOnRoot || doubleJump || canCrossGap5 && pillar) || obscureSkipsAllowed && (zarabanda || aubade || cantina)"
 	},
 	{
-		"Id": "CO40",
-		"Name": "Upper east shaft ledge",
-		"Hint": "* resides in the Rooftops",
-		"Room": "D06Z01S15",
-		"Logic": "D06Z01S15[SW] && (wallClimb && (canCrossGap10 || canClimbOnRoot && (blood || preciseSkipsAllowed && (doubleJump || canAirStall) || doubleJump && canAirStall)) || doubleJump && canEnemyBounce)"
-	},
-	{
-		"Id": "HE04",
-		"Name": "Statue near MoM",
-		"Hint": "* resides in the Rooftops",
-		"Room": "D06Z01S22"
-	},
-	{
-		"Id": "Lady[D06Z01S24]",
-		"Name": "Lady of the Six Sorrows",
-		"Hint": "The Lady of Sorrows holds *",
-		"Room": "D06Z01S24"
-	},
-	{
-		"Id": "BS16",
-		"Name": "Crisanta of the Wrapped Agony",
-		"Hint": "* is guarded by Crisanta",
-		"Room": "D06Z01S25",
-		"Logic": "canBeatRooftopsBoss"
+		"id": "RB301",
+		"name": "Twisted wood hidden wall",
+		"hint": "* is locked away in a room",
+		"locationFlag": "LOCATION_RB301~D05Z01",
+		"room": "D05BZ01S01"
 	},
 	
 	{
-		"Id": "PR08",
-		"Name": "Viridiana's gift",
-		"Hint": "Viridiana holds *",
-		"Room": "D07Z01S01"
+		"id": "QI64",
+		"name": "Painting ladder ledge",
+		"hint": "* resides in the Canvases",
+		"room": "D05Z02S02"
+	},
+	{
+		"id": "HE07",
+		"name": "Candle wax puzzle",
+		"hint": "* requires large beads of wax",
+		"room": "D05Z02S08"
+	},
+	{
+		"id": "RE05",
+		"name": "Jocinero's 1st reward",
+		"hint": "Jocinero holds *",
+		"room": "D05Z02S10",
+		"logic": "cherubs >= 20"
+	},
+	{
+		"id": "PR05",
+		"name": "Jocinero's final reward",
+		"hint": "Jocinero holds *",
+		"type": 8,
+		"room": "D05Z02S10",
+		"logic": "cherubs >= 38"
+	},
+	{
+		"id": "CO31",
+		"name": "Under elevator shaft",
+		"hint": "* resides in the Canvases",
+		"room": "D05Z02S11"
+	},
+	{
+		"id": "BS06",
+		"name": "Exposito, Scion of Abjuration",
+		"hint": "* is guarded by Exposito",
+		"room": "D05Z02S14",
+		"logic": "canBeatCanvasesBoss"
+	},
+	{
+		"id": "QI104",
+		"name": "Swinging blade tunnel",
+		"hint": "* resides in the Canvases",
+		"room": "D05Z02S15",
+		"logic": "dash"
+	},
+	{
+		"id": "RB12",
+		"name": "Shop item 1",
+		"hint": "* can be purchased",
+		"locationFlag": "LOCATION_RB12~D05Z02",
+		"room": "D05BZ02S01"
+	},
+	{
+		"id": "QI49",
+		"name": "Shop item 2",
+		"hint": "* can be purchased",
+		"locationFlag": "LOCATION_QI49~D05Z02",
+		"room": "D05BZ02S01"
+	},
+	{
+		"id": "QI71",
+		"name": "Shop item 3",
+		"hint": "* can be purchased",
+		"locationFlag": "LOCATION_QI71~D05Z02",
+		"room": "D05BZ02S01"
+	},
+	
+	{
+		"id": "QI02",
+		"name": "First soldier fight",
+		"hint": "* is guarded by a Legionary",
+		"room": "D06Z01S03",
+		"logic": "canBeatLegionary"
+	},
+	{
+		"id": "QI03",
+		"name": "Second soldier fight",
+		"hint": "* is guarded by a Legionary",
+		"room": "D06Z01S06",
+		"logic": "canBeatLegionary && (D06Z01S06[WW] || D06Z01S06[E])"
+	},
+	{
+		"id": "QI04",
+		"name": "Third soldier fight",
+		"hint": "* is guarded by a Legionary",
+		"room": "D06Z01S21",
+		"logic": "canBeatLegionary"
+	},
+	{
+		"id": "Sword[D06Z01S11]",
+		"name": "Mea Culpa altar",
+		"hint": "A Mea Culpa altar holds *",
+		"room": "D06Z01S11"
+	},
+	{
+		"id": "CO06",
+		"name": "Upper west shaft ledge",
+		"hint": "* resides in the Rooftops",
+		"room": "D06Z01S12",
+		"logic": "D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || D06Z01S12[W] || D06Z01S12[E] || wallClimb"
+	},
+	{
+		"id": "PR12",
+		"name": "Upper west shaft chest",
+		"hint": "* resides in the Rooftops",
+		"room": "D06Z01S12",
+		"logic": "D06Z01S12[NE2] || (D06Z01S12[NW] || D06Z01S12[NE]) && doubleJump"
+	},
+	{
+		"id": "RESCUED_CHERUB_36",
+		"name": "Upper west Child of Moonlight",
+		"hint": "* resides in the Rooftops",
+		"room": "D06Z01S12",
+		"logic": "D06Z01S12[W] || D06Z01S12[E] || D06Z01S12[NW] || D06Z01S12[NE] || D06Z01S12[NE2] || wallClimb && (doubleJump || taranto)"
+	},
+	{
+		"id": "CO40",
+		"name": "Upper east shaft ledge",
+		"hint": "* resides in the Rooftops",
+		"room": "D06Z01S15",
+		"logic": "D06Z01S15[SW] && (wallClimb && (canCrossGap10 || canClimbOnRoot && (blood || preciseSkipsAllowed && (doubleJump || canAirStall) || doubleJump && canAirStall)) || doubleJump && canEnemyBounce)"
+	},
+	{
+		"id": "HE04",
+		"name": "Statue near MoM",
+		"hint": "* resides in the Rooftops",
+		"room": "D06Z01S22"
+	},
+	{
+		"id": "Lady[D06Z01S24]",
+		"name": "Lady of the Six Sorrows",
+		"hint": "The Lady of Sorrows holds *",
+		"room": "D06Z01S24"
+	},
+	{
+		"id": "BS16",
+		"name": "Crisanta of the Wrapped Agony",
+		"hint": "* is guarded by Crisanta",
+		"room": "D06Z01S25",
+		"logic": "canBeatRooftopsBoss"
+	},
+	
+	{
+		"id": "PR08",
+		"name": "Viridiana's gift",
+		"hint": "Viridiana holds *",
+		"room": "D07Z01S01"
 	},
 
 	{
-		"Id": "BS12",
-		"Name": "Esdras, of the Anointed Legion",
-		"Hint": "* is guarded by Esdras",
-		"Room": "D08Z01S01",
-		"Logic": "holyWounds >= 3 && canBeatBridgeBoss"
+		"id": "BS12",
+		"name": "Esdras, of the Anointed Legion",
+		"hint": "* is guarded by Esdras",
+		"room": "D08Z01S01",
+		"logic": "holyWounds >= 3 && canBeatBridgeBoss"
 	},
 	{
-		"Id": "PR09",
-		"Name": "Esdras' gift",
-		"Hint": "* is guarded by Esdras",
-		"Room": "D08Z01S01",
-		"Logic": "holyWounds >= 3 && canBeatBridgeBoss"
+		"id": "PR09",
+		"name": "Esdras' gift",
+		"hint": "* is guarded by Esdras",
+		"room": "D08Z01S01",
+		"logic": "holyWounds >= 3 && canBeatBridgeBoss"
 	},
 	{
-		"Id": "HE101",
-		"Name": "Inside giant statue",
-		"Hint": "* resides on the Bridge",
-		"Room": "D08Z01S02"
-	},
-	
-	{
-		"Id": "QI105",
-		"Name": "Mirror room",
-		"Hint": "* resides in the Hall",
-		"Room": "D08Z03S01"
-	},
-	{
-		"Id": "LaudesBossTrigger[30000]",
-		"Name": "Laudes, the First of the Amanecidas",
-		"Hint": "* is guarded by Laudes",
-		"Room": "D08Z03S03",
-		"Logic": "canBeatHallBoss"
+		"id": "HE101",
+		"name": "Inside giant statue",
+		"hint": "* resides on the Bridge",
+		"room": "D08Z01S02"
 	},
 	
 	{
-		"Id": "Amanecida[D09Z01S01]",
-		"Name": "Amanecida of the Molten Thorn",
-		"Hint": "* is guarded by the Molten Thorn",
-		"Room": "D09Z01S01",
-		"Logic": "canBeatWallBoss"
+		"id": "QI105",
+		"name": "Mirror room",
+		"hint": "* resides in the Hall",
+		"room": "D08Z03S01"
 	},
 	{
-		"Id": "QI51",
-		"Name": "Upper east room, center gold cell",
-		"Hint": "* is locked away in a room",
-		"Room": "D09Z01S02",
-		"Logic": "D09Z01S02[Cell5]"
-	},
-	{
-		"Id": "RB11",
-		"Name": "Upper east room, lift puzzle",
-		"Hint": "* resides in the Wall",
-		"Room": "D09Z01S02",
-		"Logic": "D09Z01S02[NW] || D09Z01S02[N] || D09Z01S02[Cell1] || D09Z01S02[Cell6] || D09Z01S02[Cell4] || D09Z01S02[Cell3] || D09Z01S02[Cell22] || D09Z01S02[Cell23]"
-	},
-	{
-		"Id": "BS14",
-		"Name": "Quirce, Returned By The Flames",
-		"Hint": "* is guarded by Quirce",
-		"Room": "D09Z01S03",
-		"Logic": "canBeatPrisonBoss"
-	},
-	{
-		"Id": "RESCUED_CHERUB_05",
-		"Name": "Outside Child of Moonlight",
-		"Hint": "* resides in the Wall",
-		"Room": "D09Z01S06"
-	},
-	{
-		"Id": "QI72",
-		"Name": "Collapsing floor ledge",
-		"Hint": "* resides in the Wall",
-		"Room": "D09Z01S08",
-		"Logic": "(D09Z01S08[W] || D09Z01S08[Cell18]) && openedWotHPGate"
-	},
-	{
-		"Id": "RB16",
-		"Name": "Lower west room, top ledge",
-		"Hint": "* resides in the Wall",
-		"Room": "D09Z01S09",
-		"Logic": "D09Z01S09[Cell24] || dash && (D09Z01S09[NW] || D09Z01S09[Cell19] || doubleJump && (canAirStall || canDawnJump))"
-	},
-	{
-		"Id": "QI70",
-		"Name": "Lower east room, top bronze cell",
-		"Hint": "* is locked away in a room",
-		"Room": "D09Z01S10",
-		"Logic": "D09Z01S10[Cell13]"
-	},
-	{
-		"Id": "CO27",
-		"Name": "Lower east room, hidden ledge",
-		"Hint": "* resides in the Wall",
-		"Room": "D09Z01S10",
-		"Logic": "D09Z01S10[W] || D09Z01S10[Cell12] || D09Z01S10[Cell10] || D09Z01S10[Cell11]"
-	},
-	{
-		"Id": "Oil[D09Z01S12]",
-		"Name": "Oil of the Pilgrims",
-		"Hint": "An oil fountain holds *",
-		"Room": "D09Z01S12"
-	},
-	{
-		"Id": "CO10",
-		"Name": "Upper east room, center cell ledge",
-		"Hint": "* resides in the Wall",
-		"LocationFlag": "LOCATION_CO10~D09Z01",
-		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell22]"
-	},
-	{
-		"Id": "QI69",
-		"Name": "Upper east room, center cell floor",
-		"Hint": "* resides in the Wall",
-		"LocationFlag": "LOCATION_QI69~D09Z01",
-		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell22] || D09BZ01S01[Cell23]"
-	},
-	{
-		"Id": "RESCUED_CHERUB_03",
-		"Name": "Upper east room, top bronze cell",
-		"Hint": "* resides in the Wall",
-		"LocationFlag": "LOCATION_RESCUED_CHERUB_03~D09Z01",
-		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell1]"
-	},
-	{
-		"Id": "CO24",
-		"Name": "Upper east room, top silver cell",
-		"Hint": "* is locked away in a room",
-		"LocationFlag": "LOCATION_CO24~D09Z01",
-		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell6]"
-	},
-	{
-		"Id": "RESCUED_CHERUB_34",
-		"Name": "Upper west room, top silver cell",
-		"Hint": "* resides in the Wall",
-		"LocationFlag": "LOCATION_RESCUED_CHERUB_34~D09Z01",
-		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell14] || D09BZ01S01[Cell15]"
-	},
-	{
-		"Id": "CO26",
-		"Name": "Upper west room, center gold cell",
-		"Hint": "* is locked away in a room",
-		"LocationFlag": "LOCATION_CO26~D09Z01",
-		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell16]"
-	},
-	{
-		"Id": "CO02",
-		"Name": "Lower west room, bottom gold cell",
-		"Hint": "* is locked away in a room",
-		"LocationFlag": "LOCATION_CO02~D09Z01",
-		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell21] && blood && canClimbOnRoot && canSurvivePoison2 && dash"
-	},
-	{
-		"Id": "CO37",
-		"Name": "Lower east room, top silver cell",
-		"Hint": "* is locked away in a room",
-		"LocationFlag": "LOCATION_CO37~D09Z01",
-		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell10]"
-	},
-	{
-		"Id": "RESCUED_CHERUB_04",
-		"Name": "Lower east room, bottom silver cell",
-		"Hint": "* resides in the Wall",
-		"LocationFlag": "LOCATION_RESCUED_CHERUB_04~D09Z01",
-		"Room": "D09BZ01S01",
-		"Logic": "D09BZ01S01[Cell11] && (canSurvivePoison1 && dash || debla || taranto || cante || verdiales || aubade || cantina)"
+		"id": "LaudesBossTrigger[30000]",
+		"name": "Laudes, the First of the Amanecidas",
+		"hint": "* is guarded by Laudes",
+		"room": "D08Z03S03",
+		"logic": "canBeatHallBoss"
 	},
 	
 	{
-		"Id": "RB204",
-		"Name": "Starting room ledge",
-		"Hint": "* resides in the Brotherhood",
-		"Room": "D17Z01S01",
-		"Logic": "D17Z01S01[Cherubs3]"
+		"id": "Amanecida[D09Z01S01]",
+		"name": "Amanecida of the Molten Thorn",
+		"hint": "* is guarded by the Molten Thorn",
+		"room": "D09Z01S01",
+		"logic": "canBeatWallBoss"
 	},
 	{
-		"Id": "RESCUED_CHERUB_06",
-		"Name": "Start room Child of Moonlight",
-		"Hint": "* resides in the Brotherhood",
-		"Room": "D17Z01S01",
+		"id": "QI51",
+		"name": "Upper east room, center gold cell",
+		"hint": "* is locked away in a room",
+		"room": "D09Z01S02",
+		"logic": "D09Z01S02[Cell5]"
+	},
+	{
+		"id": "RB11",
+		"name": "Upper east room, lift puzzle",
+		"hint": "* resides in the Wall",
+		"room": "D09Z01S02",
+		"logic": "D09Z01S02[NW] || D09Z01S02[N] || D09Z01S02[Cell1] || D09Z01S02[Cell6] || D09Z01S02[Cell4] || D09Z01S02[Cell3] || D09Z01S02[Cell22] || D09Z01S02[Cell23]"
+	},
+	{
+		"id": "BS14",
+		"name": "Quirce, Returned By The Flames",
+		"hint": "* is guarded by Quirce",
+		"room": "D09Z01S03",
+		"logic": "canBeatPrisonBoss"
+	},
+	{
+		"id": "RESCUED_CHERUB_05",
+		"name": "Outside Child of Moonlight",
+		"hint": "* resides in the Wall",
+		"room": "D09Z01S06"
+	},
+	{
+		"id": "QI72",
+		"name": "Collapsing floor ledge",
+		"hint": "* resides in the Wall",
+		"room": "D09Z01S08",
+		"logic": "(D09Z01S08[W] || D09Z01S08[Cell18]) && openedWotHPGate"
+	},
+	{
+		"id": "RB16",
+		"name": "Lower west room, top ledge",
+		"hint": "* resides in the Wall",
+		"room": "D09Z01S09",
+		"logic": "D09Z01S09[Cell24] || dash && (D09Z01S09[NW] || D09Z01S09[Cell19] || doubleJump && (canAirStall || canDawnJump))"
+	},
+	{
+		"id": "QI70",
+		"name": "Lower east room, top bronze cell",
+		"hint": "* is locked away in a room",
+		"room": "D09Z01S10",
+		"logic": "D09Z01S10[Cell13]"
+	},
+	{
+		"id": "CO27",
+		"name": "Lower east room, hidden ledge",
+		"hint": "* resides in the Wall",
+		"room": "D09Z01S10",
+		"logic": "D09Z01S10[W] || D09Z01S10[Cell12] || D09Z01S10[Cell10] || D09Z01S10[Cell11]"
+	},
+	{
+		"id": "Oil[D09Z01S12]",
+		"name": "Oil of the Pilgrims",
+		"hint": "An oil fountain holds *",
+		"room": "D09Z01S12"
+	},
+	{
+		"id": "CO10",
+		"name": "Upper east room, center cell ledge",
+		"hint": "* resides in the Wall",
+		"locationFlag": "LOCATION_CO10~D09Z01",
+		"room": "D09BZ01S01",
+		"logic": "D09BZ01S01[Cell22]"
+	},
+	{
+		"id": "QI69",
+		"name": "Upper east room, center cell floor",
+		"hint": "* resides in the Wall",
+		"locationFlag": "LOCATION_QI69~D09Z01",
+		"room": "D09BZ01S01",
+		"logic": "D09BZ01S01[Cell22] || D09BZ01S01[Cell23]"
+	},
+	{
+		"id": "RESCUED_CHERUB_03",
+		"name": "Upper east room, top bronze cell",
+		"hint": "* resides in the Wall",
+		"locationFlag": "LOCATION_RESCUED_CHERUB_03~D09Z01",
+		"room": "D09BZ01S01",
+		"logic": "D09BZ01S01[Cell1]"
+	},
+	{
+		"id": "CO24",
+		"name": "Upper east room, top silver cell",
+		"hint": "* is locked away in a room",
+		"locationFlag": "LOCATION_CO24~D09Z01",
+		"room": "D09BZ01S01",
+		"logic": "D09BZ01S01[Cell6]"
+	},
+	{
+		"id": "RESCUED_CHERUB_34",
+		"name": "Upper west room, top silver cell",
+		"hint": "* resides in the Wall",
+		"locationFlag": "LOCATION_RESCUED_CHERUB_34~D09Z01",
+		"room": "D09BZ01S01",
+		"logic": "D09BZ01S01[Cell14] || D09BZ01S01[Cell15]"
+	},
+	{
+		"id": "CO26",
+		"name": "Upper west room, center gold cell",
+		"hint": "* is locked away in a room",
+		"locationFlag": "LOCATION_CO26~D09Z01",
+		"room": "D09BZ01S01",
+		"logic": "D09BZ01S01[Cell16]"
+	},
+	{
+		"id": "CO02",
+		"name": "Lower west room, bottom gold cell",
+		"hint": "* is locked away in a room",
+		"locationFlag": "LOCATION_CO02~D09Z01",
+		"room": "D09BZ01S01",
+		"logic": "D09BZ01S01[Cell21] && blood && canClimbOnRoot && canSurvivePoison2 && dash"
+	},
+	{
+		"id": "CO37",
+		"name": "Lower east room, top silver cell",
+		"hint": "* is locked away in a room",
+		"locationFlag": "LOCATION_CO37~D09Z01",
+		"room": "D09BZ01S01",
+		"logic": "D09BZ01S01[Cell10]"
+	},
+	{
+		"id": "RESCUED_CHERUB_04",
+		"name": "Lower east room, bottom silver cell",
+		"hint": "* resides in the Wall",
+		"locationFlag": "LOCATION_RESCUED_CHERUB_04~D09Z01",
+		"room": "D09BZ01S01",
+		"logic": "D09BZ01S01[Cell11] && (canSurvivePoison1 && dash || debla || taranto || cante || verdiales || aubade || cantina)"
+	},
+	
+	{
+		"id": "RB204",
+		"name": "Starting room ledge",
+		"hint": "* resides in the Brotherhood",
+		"room": "D17Z01S01",
+		"logic": "D17Z01S01[Cherubs3]"
+	},
+	{
+		"id": "RESCUED_CHERUB_06",
+		"name": "Start room Child of Moonlight",
+		"hint": "* resides in the Brotherhood",
+		"room": "D17Z01S01",
 		"logic": "D17Z01S01[Cherubs1] || taranto || (canClimbOnRoot || canCrossGap9) && (blood || doubleJump || debla || verdiales || tirana || ruby)"
 	},
 	{
-		"Id": "RE401",
-		"Name": "2nd meeting with Redento",
-		"Hint": "Redento holds *",
-		"Room": "D17Z01S04",
-		"Logic": "redentoRooms >= 2"
+		"id": "RE401",
+		"name": "2nd meeting with Redento",
+		"hint": "Redento holds *",
+		"room": "D17Z01S04",
+		"logic": "redentoRooms >= 2"
 	},
 	{
-		"Id": "Sword[D17Z01S08]",
-		"Name": "Mea Culpa altar",
-		"Hint": "A Mea Culpa altar holds *",
-		"Room": "D17Z01S08"
+		"id": "Sword[D17Z01S08]",
+		"name": "Mea Culpa altar",
+		"hint": "A Mea Culpa altar holds *",
+		"room": "D17Z01S08"
 	},
 	{
-		"Id": "BS13",
-		"Name": "Warden of the Silent Sorrow",
-		"Hint": "* is guarded by the Warden",
-		"Room": "D17Z01S11",
-		"Logic": "canBeatBrotherhoodBoss"
+		"id": "BS13",
+		"name": "Warden of the Silent Sorrow",
+		"hint": "* is guarded by the Warden",
+		"room": "D17Z01S11",
+		"logic": "canBeatBrotherhoodBoss"
 	},
 	{
-		"Id": "PR203",
-		"Name": "Outside church",
-		"Hint": "* resides in the Brotherhood",
-		"Room": "D17Z01S14",
-		"Logic": "D17Z01S14[W] || blood"
+		"id": "PR203",
+		"name": "Outside church",
+		"hint": "* resides in the Brotherhood",
+		"room": "D17Z01S14",
+		"logic": "D17Z01S14[W] || blood"
 	},
 	{
-		"Id": "QI204",
-		"Name": "Esdras' final gift",
-		"Hint": "Esdras holds *",
-		"Room": "D17Z01S15",
-		"Logic": "canBeatBridgeBoss && holyWounds >= 3"
+		"id": "QI204",
+		"name": "Esdras' final gift",
+		"hint": "Esdras holds *",
+		"room": "D17Z01S15",
+		"logic": "canBeatBridgeBoss && holyWounds >= 3"
 	},
 	{
-		"Id": "QI301",
-		"Name": "Crisanta's gift",
-		"Hint": "Crisanta holds *",
-		"Type": 9,
-		"OriginalItem": "QI301",
-		"Room": "D17Z01S15",
-		"Logic": "canBeatRooftopsBoss && trueHeart"
+		"id": "QI301",
+		"name": "Crisanta's gift",
+		"hint": "Crisanta holds *",
+		"type": 9,
+		"originalItem": "QI301",
+		"room": "D17Z01S15",
+		"logic": "canBeatRooftopsBoss && trueHeart"
 	},
 	{
-		"Id": "RE01",
-		"Name": "Chamber of the Eldest Brother",
-		"Hint": "* is locked away in a room",
-		"LocationFlag": "LOCATION_RE01~D17Z01",
-		"Room": "D17BZ01S01"
+		"id": "RE01",
+		"name": "Chamber of the Eldest Brother",
+		"hint": "* is locked away in a room",
+		"locationFlag": "LOCATION_RE01~D17Z01",
+		"room": "D17BZ01S01"
 	},
 	{
-		"Id": "CO25",
-		"Name": "Platforming gauntlet",
-		"Hint": "* resides in the Brotherhood",
-		"LocationFlag": "LOCATION_CO25~D17Z01",
-		"Room": "D17BZ02S01",
-		"Logic": "D17BZ02S01[FrontR] || dash && wallClimb"
-	},
-	
-	{
-		"Id": "RB108",
-		"Name": "Lantern jump near MotED",
-		"Hint": "* resides in the salts",
-		"Room": "D20Z01S02"
-	},
-	{
-		"Id": "RB202",
-		"Name": "Lantern jump near elevator",
-		"Hint": "* resides in the salts",
-		"Room": "D20Z01S09",
-		"Logic": "D20Z01S09[W] || dash"
+		"id": "CO25",
+		"name": "Platforming gauntlet",
+		"hint": "* resides in the Brotherhood",
+		"locationFlag": "LOCATION_CO25~D17Z01",
+		"room": "D17BZ02S01",
+		"logic": "D17BZ02S01[FrontR] || dash && wallClimb"
 	},
 	
 	{
-		"Id": "RB201",
-		"Name": "Upper east chest",
-		"Hint": "* resides in Mourning",
-		"Room": "D20Z02S02"
+		"id": "RB108",
+		"name": "Lantern jump near MotED",
+		"hint": "* resides in the salts",
+		"room": "D20Z01S02"
 	},
 	{
-		"Id": "BossTrigger[5000]",
-		"Name": "Sierpes",
-		"Hint": "* is guarded by Sierpes",
-		"Room": "D20Z02S08",
-		"Logic": "canBeatMourningBoss"
-	},
-	{
-		"Id": "QI202",
-		"Name": "Sierpes' eye",
-		"Hint": "* is guarded by Sierpes",
-		"Room": "D20Z02S08",
-		"Logic": "canBeatMourningBoss"
-	},
-	{
-		"Id": "PR202",
-		"Name": "West chest",
-		"Hint": "* resides in Mourning",
-		"Room": "D20Z02S11"
+		"id": "RB202",
+		"name": "Lantern jump near elevator",
+		"hint": "* resides in the salts",
+		"room": "D20Z01S09",
+		"logic": "D20Z01S09[W] || dash"
 	},
 	
 	{
-		"Id": "QI203",
-		"Name": "Perpetva's shrine",
-		"Hint": "Perpetva holds *",
-		"Room": "D20Z03S01"
+		"id": "RB201",
+		"name": "Upper east chest",
+		"hint": "* resides in Mourning",
+		"room": "D20Z02S02"
+	},
+	{
+		"id": "BossTrigger[5000]",
+		"name": "Sierpes",
+		"hint": "* is guarded by Sierpes",
+		"room": "D20Z02S08",
+		"logic": "canBeatMourningBoss"
+	},
+	{
+		"id": "QI202",
+		"name": "Sierpes' eye",
+		"hint": "* is guarded by Sierpes",
+		"room": "D20Z02S08",
+		"logic": "canBeatMourningBoss"
+	},
+	{
+		"id": "PR202",
+		"name": "West chest",
+		"hint": "* resides in Mourning",
+		"room": "D20Z02S11"
 	},
 	
 	{
-		"Id": "QI106",
-		"Name": "Beginning gift",
-		"Hint": "* is already owned",
-		"Room": "Initial"
+		"id": "QI203",
+		"name": "Perpetva's shrine",
+		"hint": "Perpetva holds *",
+		"room": "D20Z03S01"
+	},
+	
+	{
+		"id": "QI106",
+		"name": "Beginning gift",
+		"hint": "* is already owned",
+		"room": "Initial"
 	},
 	{
-		"Id": "RB18",
-		"Name": "Second red candle",
-		"Hint": "A candle holds *",
-		"LocationFlag": "CANDLE_RED_1_USED~D02Z03",
-		"Room": "Initial",
-		"Logic": "redWax > 0 && (D02Z03S06[W] || D02Z03S06[S] || D05Z01S02[W])"
+		"id": "RB18",
+		"name": "Second red candle",
+		"hint": "A candle holds *",
+		"locationFlag": "CANDLE_RED_1_USED~D02Z03",
+		"room": "Initial",
+		"logic": "redWax > 0 && (D02Z03S06[W] || D02Z03S06[S] || D05Z01S02[W])"
 	},
 	{
-		"Id": "RB19",
-		"Name": "Third red candle",
-		"Hint": "A candle holds *",
-		"LocationFlag": "CANDLE_RED_2_USED~D05Z01",
-		"Room": "Initial",
-		"Logic": "redWax > 0 && D05Z01S02[W] && (D02Z03S06[W] || D02Z03S06[S])"
+		"id": "RB19",
+		"name": "Third red candle",
+		"hint": "A candle holds *",
+		"locationFlag": "CANDLE_RED_2_USED~D05Z01",
+		"room": "Initial",
+		"logic": "redWax > 0 && D05Z01S02[W] && (D02Z03S06[W] || D02Z03S06[S])"
 	},
 	{
-		"Id": "RB25",
-		"Name": "Second blue candle",
-		"Hint": "A candle holds *",
-		"LocationFlag": "CANDLE_BLUE_1_USED~D17Z01",
-		"Room": "Initial",
-		"Logic": "blueWax > 0 && (D17Z01S04[N] || D17Z01S04[FrontR] || D01Z04S16[W] || D01Z04S16[E])"
+		"id": "RB25",
+		"name": "Second blue candle",
+		"hint": "A candle holds *",
+		"locationFlag": "CANDLE_BLUE_1_USED~D17Z01",
+		"room": "Initial",
+		"logic": "blueWax > 0 && (D17Z01S04[N] || D17Z01S04[FrontR] || D01Z04S16[W] || D01Z04S16[E])"
 	},
 	{
-		"Id": "RB26",
-		"Name": "Third blue candle",
-		"Hint": "A candle holds *",
-		"LocationFlag": "CANDLE_BLUE_2_USED~D01Z04",
-		"Room": "Initial",
-		"Logic": "blueWax > 0 && (D17Z01S04[N] || D17Z01S04[FrontR]) && (D01Z04S16[W] || D01Z04S16[E])"
+		"id": "RB26",
+		"name": "Third blue candle",
+		"hint": "A candle holds *",
+		"locationFlag": "CANDLE_BLUE_2_USED~D01Z04",
+		"room": "Initial",
+		"logic": "blueWax > 0 && (D17Z01S04[N] || D17Z01S04[FrontR]) && (D01Z04S16[W] || D01Z04S16[E])"
 	},
 	{
-		"Id": "QI107",
-		"Name": "Defeat 1 Amanecida",
-		"Hint": "* is guarded by an Amanecida",
-		"LocationFlag": "SANTOS_AMANECIDA_BOW_DEFEATED~D02Z02",
-		"Room": "Initial",
-		"Logic": "amanecidaRooms >= 1"
+		"id": "QI107",
+		"name": "Defeat 1 Amanecida",
+		"hint": "* is guarded by an Amanecida",
+		"locationFlag": "SANTOS_AMANECIDA_BOW_DEFEATED~D02Z02",
+		"room": "Initial",
+		"logic": "amanecidaRooms >= 1"
 	},
 	{
-		"Id": "QI108",
-		"Name": "Defeat 2 Amanecidas",
-		"Hint": "* is guarded by an Amanecida",
-		"LocationFlag": "SANTOS_AMANECIDA_AXE_DEFEATED~D03Z01",
-		"Room": "Initial",
-		"Logic": "amanecidaRooms >= 2"
+		"id": "QI108",
+		"name": "Defeat 2 Amanecidas",
+		"hint": "* is guarded by an Amanecida",
+		"locationFlag": "SANTOS_AMANECIDA_AXE_DEFEATED~D03Z01",
+		"room": "Initial",
+		"logic": "amanecidaRooms >= 2"
 	},
 	{
-		"Id": "QI109",
-		"Name": "Defeat 3 Amanecidas",
-		"Hint": "* is guarded by an Amanecida",
-		"LocationFlag": "SANTOS_AMANECIDA_FALCATA_DEFEATED~D04Z01",
-		"Room": "Initial",
-		"Logic": "amanecidaRooms >= 3"
+		"id": "QI109",
+		"name": "Defeat 3 Amanecidas",
+		"hint": "* is guarded by an Amanecida",
+		"locationFlag": "SANTOS_AMANECIDA_FALCATA_DEFEATED~D04Z01",
+		"room": "Initial",
+		"logic": "amanecidaRooms >= 3"
 	},
 	{
-		"Id": "QI110",
-		"Name": "Defeat 4 Amanecidas",
-		"Hint": "* is guarded by an Amanecida",
-		"LocationFlag": "SANTOS_AMANECIDA_LANCE_DEFEATED~D09Z01",
-		"Room": "Initial",
-		"Logic": "amanecidaRooms >= 4"
+		"id": "QI110",
+		"name": "Defeat 4 Amanecidas",
+		"hint": "* is guarded by an Amanecida",
+		"locationFlag": "SANTOS_AMANECIDA_LANCE_DEFEATED~D09Z01",
+		"room": "Initial",
+		"logic": "amanecidaRooms >= 4"
 	},
 	{
-		"Id": "PR101",
-		"Name": "Defeat all Amanecidas",
-		"Hint": "* is guarded by an Amanecida",
-		"Room": "Initial",
-		"Logic": "amanecidaRooms >= 4"
+		"id": "PR101",
+		"name": "Defeat all Amanecidas",
+		"hint": "* is guarded by an Amanecida",
+		"room": "Initial",
+		"logic": "amanecidaRooms >= 4"
 	},
 	{
-		"Id": "QI32",
-		"Name": "Confessor Dungeon 1 main",
-		"Hint": "A guilt statue holds *",
-		"Type": 2,
-		"OriginalItem": "TH",
-		"LocationFlag": "CONFESSOR_1_ARENACOMPLETED~D01Z04",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 1"
+		"id": "QI32",
+		"name": "Confessor Dungeon 1 main",
+		"hint": "A guilt statue holds *",
+		"type": 2,
+		"originalItem": "TH",
+		"locationFlag": "CONFESSOR_1_ARENACOMPLETED~D01Z04",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 1"
 	},
 	{
-		"Id": "QI33",
-		"Name": "Confessor Dungeon 2 main",
-		"Hint": "A guilt statue holds *",
-		"Type": 2,
-		"OriginalItem": "TH",
-		"LocationFlag": "CONFESSOR_2_ARENACOMPLETED~D02Z02",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 2"
+		"id": "QI33",
+		"name": "Confessor Dungeon 2 main",
+		"hint": "A guilt statue holds *",
+		"type": 2,
+		"originalItem": "TH",
+		"locationFlag": "CONFESSOR_2_ARENACOMPLETED~D02Z02",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 2"
 	},
 	{
-		"Id": "QI34",
-		"Name": "Confessor Dungeon 3 main",
-		"Hint": "A guilt statue holds *",
-		"Type": 2,
-		"OriginalItem": "TH",
-		"LocationFlag": "CONFESSOR_3_ARENACOMPLETED~D03Z03",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 3"
+		"id": "QI34",
+		"name": "Confessor Dungeon 3 main",
+		"hint": "A guilt statue holds *",
+		"type": 2,
+		"originalItem": "TH",
+		"locationFlag": "CONFESSOR_3_ARENACOMPLETED~D03Z03",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 3"
 	},
 	{
-		"Id": "QI35",
-		"Name": "Confessor Dungeon 4 main",
-		"Hint": "A guilt statue holds *",
-		"Type": 2,
-		"OriginalItem": "TH",
-		"LocationFlag": "CONFESSOR_4_ARENACOMPLETED~D17Z01",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 4"
+		"id": "QI35",
+		"name": "Confessor Dungeon 4 main",
+		"hint": "A guilt statue holds *",
+		"type": 2,
+		"originalItem": "TH",
+		"locationFlag": "CONFESSOR_4_ARENACOMPLETED~D17Z01",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 4"
 	},
 	{
-		"Id": "QI79",
-		"Name": "Confessor Dungeon 5 main",
-		"Hint": "A guilt statue holds *",
-		"Type": 2,
-		"OriginalItem": "TH",
-		"LocationFlag": "CONFESSOR_5_ARENACOMPLETED~D04Z02",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 5"
+		"id": "QI79",
+		"name": "Confessor Dungeon 5 main",
+		"hint": "A guilt statue holds *",
+		"type": 2,
+		"originalItem": "TH",
+		"locationFlag": "CONFESSOR_5_ARENACOMPLETED~D04Z02",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 5"
 	},
 	{
-		"Id": "QI80",
-		"Name": "Confessor Dungeon 6 main",
-		"Hint": "A guilt statue holds *",
-		"Type": 2,
-		"OriginalItem": "TH",
-		"LocationFlag": "CONFESSOR_6_ARENACOMPLETED~D05Z01",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 6"
+		"id": "QI80",
+		"name": "Confessor Dungeon 6 main",
+		"hint": "A guilt statue holds *",
+		"type": 2,
+		"originalItem": "TH",
+		"locationFlag": "CONFESSOR_6_ARENACOMPLETED~D05Z01",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 6"
 	},
 	{
-		"Id": "QI81",
-		"Name": "Confessor Dungeon 7 main",
-		"Hint": "A guilt statue holds *",
-		"Type": 2,
-		"OriginalItem": "TH",
-		"LocationFlag": "CONFESSOR_7_ARENACOMPLETED~D09Z01",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 7"
+		"id": "QI81",
+		"name": "Confessor Dungeon 7 main",
+		"hint": "A guilt statue holds *",
+		"type": 2,
+		"originalItem": "TH",
+		"locationFlag": "CONFESSOR_7_ARENACOMPLETED~D09Z01",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 7"
 	},
 	{
-		"Id": "Arena_NailManager[1000]",
-		"Name": "Confessor Dungeon 1 extra",
-		"Hint": "A guilt statue holds *",
-		"LocationFlag": "CONFESSOR_1_ARENACOMPLETED~D01Z04",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 1"
+		"id": "Arena_NailManager[1000]",
+		"name": "Confessor Dungeon 1 extra",
+		"hint": "A guilt statue holds *",
+		"locationFlag": "CONFESSOR_1_ARENACOMPLETED~D01Z04",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 1"
 	},
 	{
-		"Id": "HE10",
-		"Name": "Confessor Dungeon 2 extra",
-		"Hint": "A guilt statue holds *",
-		"LocationFlag": "CONFESSOR_2_ARENACOMPLETED~D02Z02",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 2"
+		"id": "HE10",
+		"name": "Confessor Dungeon 2 extra",
+		"hint": "A guilt statue holds *",
+		"locationFlag": "CONFESSOR_2_ARENACOMPLETED~D02Z02",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 2"
 	},
 	{
-		"Id": "Arena_NailManager[3000]",
-		"Name": "Confessor Dungeon 3 extra",
-		"Hint": "A guilt statue holds *",
-		"LocationFlag": "CONFESSOR_3_ARENACOMPLETED~D03Z03",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 3"
+		"id": "Arena_NailManager[3000]",
+		"name": "Confessor Dungeon 3 extra",
+		"hint": "A guilt statue holds *",
+		"locationFlag": "CONFESSOR_3_ARENACOMPLETED~D03Z03",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 3"
 	},
 	{
-		"Id": "RB34",
-		"Name": "Confessor Dungeon 4 extra",
-		"Hint": "A guilt statue holds *",
-		"LocationFlag": "CONFESSOR_4_ARENACOMPLETED~D17Z01",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 4"
+		"id": "RB34",
+		"name": "Confessor Dungeon 4 extra",
+		"hint": "A guilt statue holds *",
+		"locationFlag": "CONFESSOR_4_ARENACOMPLETED~D17Z01",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 4"
 	},
 	{
-		"Id": "Arena_NailManager[5000]",
-		"Name": "Confessor Dungeon 5 extra",
-		"Hint": "A guilt statue holds *",
-		"LocationFlag": "CONFESSOR_5_ARENACOMPLETED~D04Z02",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 5"
+		"id": "Arena_NailManager[5000]",
+		"name": "Confessor Dungeon 5 extra",
+		"hint": "A guilt statue holds *",
+		"locationFlag": "CONFESSOR_5_ARENACOMPLETED~D04Z02",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 5"
 	},
 	{
-		"Id": "RB35",
-		"Name": "Confessor Dungeon 6 extra",
-		"Hint": "A guilt statue holds *",
-		"LocationFlag": "CONFESSOR_6_ARENACOMPLETED~D05Z01",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 6"
+		"id": "RB35",
+		"name": "Confessor Dungeon 6 extra",
+		"hint": "A guilt statue holds *",
+		"locationFlag": "CONFESSOR_6_ARENACOMPLETED~D05Z01",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 6"
 	},
 	{
-		"Id": "RB36",
-		"Name": "Confessor Dungeon 7 extra",
-		"Hint": "A guilt statue holds *",
-		"LocationFlag": "CONFESSOR_7_ARENACOMPLETED~D09Z01",
-		"Room": "Initial",
-		"Logic": "guiltBead && guiltRooms >= 7"
+		"id": "RB36",
+		"name": "Confessor Dungeon 7 extra",
+		"hint": "A guilt statue holds *",
+		"locationFlag": "CONFESSOR_7_ARENACOMPLETED~D09Z01",
+		"room": "Initial",
+		"logic": "guiltBead && guiltRooms >= 7"
 	},
 	{
-		"Id": "COMBO_1",
-		"Name": "Skill 1, Tier 1",
-		"Hint": "A tier 1 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "COMBO",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 1 && tears >= 0"
+		"id": "COMBO_1",
+		"name": "Skill 1, Tier 1",
+		"hint": "A tier 1 shrine holds *",
+		"type": 1,
+		"originalItem": "COMBO",
+		"room": "Initial",
+		"logic": "swordRooms >= 1 && tears >= 0"
 	},
 	{
-		"Id": "COMBO_2",
-		"Name": "Skill 1, Tier 2",
-		"Hint": "A tier 2 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "COMBO",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 2 && tears >= 0"
+		"id": "COMBO_2",
+		"name": "Skill 1, Tier 2",
+		"hint": "A tier 2 shrine holds *",
+		"type": 1,
+		"originalItem": "COMBO",
+		"room": "Initial",
+		"logic": "swordRooms >= 2 && tears >= 0"
 	},
 	{
-		"Id": "COMBO_3",
-		"Name": "Skill 1, Tier 3",
-		"Hint": "A tier 4 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "COMBO",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 4 && tears >= 0"
+		"id": "COMBO_3",
+		"name": "Skill 1, Tier 3",
+		"hint": "A tier 4 shrine holds *",
+		"type": 1,
+		"originalItem": "COMBO",
+		"room": "Initial",
+		"logic": "swordRooms >= 4 && tears >= 0"
 	},
 	{
-		"Id": "CHARGED_1",
-		"Name": "Skill 2, Tier 1",
-		"Hint": "A tier 1 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "CHARGED",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 1 && tears >= 0"
+		"id": "CHARGED_1",
+		"name": "Skill 2, Tier 1",
+		"hint": "A tier 1 shrine holds *",
+		"type": 1,
+		"originalItem": "CHARGED",
+		"room": "Initial",
+		"logic": "swordRooms >= 1 && tears >= 0"
 	},
 	{
-		"Id": "CHARGED_2",
-		"Name": "Skill 2, Tier 2",
-		"Hint": "A tier 3 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "CHARGED",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 3 && tears >= 0"
+		"id": "CHARGED_2",
+		"name": "Skill 2, Tier 2",
+		"hint": "A tier 3 shrine holds *",
+		"type": 1,
+		"originalItem": "CHARGED",
+		"room": "Initial",
+		"logic": "swordRooms >= 3 && tears >= 0"
 	},
 	{
-		"Id": "CHARGED_3",
-		"Name": "Skill 2, Tier 3",
-		"Hint": "A tier 6 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "CHARGED",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 6 && tears >= 0"
+		"id": "CHARGED_3",
+		"name": "Skill 2, Tier 3",
+		"hint": "A tier 6 shrine holds *",
+		"type": 1,
+		"originalItem": "CHARGED",
+		"room": "Initial",
+		"logic": "swordRooms >= 6 && tears >= 0"
 	},
 	{
-		"Id": "RANGED_1",
-		"Name": "Skill 3, Tier 1",
-		"Hint": "A tier 2 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "RANGED",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 2 && tears >= 0"
+		"id": "RANGED_1",
+		"name": "Skill 3, Tier 1",
+		"hint": "A tier 2 shrine holds *",
+		"type": 1,
+		"originalItem": "RANGED",
+		"room": "Initial",
+		"logic": "swordRooms >= 2 && tears >= 0"
 	},
 	{
-		"Id": "RANGED_2",
-		"Name": "Skill 3, Tier 2",
-		"Hint": "A tier 5 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "RANGED",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 5 && tears >= 0"
+		"id": "RANGED_2",
+		"name": "Skill 3, Tier 2",
+		"hint": "A tier 5 shrine holds *",
+		"type": 1,
+		"originalItem": "RANGED",
+		"room": "Initial",
+		"logic": "swordRooms >= 5 && tears >= 0"
 	},
 	{
-		"Id": "RANGED_3",
-		"Name": "Skill 3, Tier 3",
-		"Hint": "A tier 7 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "RANGED",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 7 && tears >= 0"
+		"id": "RANGED_3",
+		"name": "Skill 3, Tier 3",
+		"hint": "A tier 7 shrine holds *",
+		"type": 1,
+		"originalItem": "RANGED",
+		"room": "Initial",
+		"logic": "swordRooms >= 7 && tears >= 0"
 	},
 	{
-		"Id": "VERTICAL_1",
-		"Name": "Skill 4, Tier 1",
-		"Hint": "A tier 1 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "DIVE",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 1 && tears >= 0"
+		"id": "VERTICAL_1",
+		"name": "Skill 4, Tier 1",
+		"hint": "A tier 1 shrine holds *",
+		"type": 1,
+		"originalItem": "DIVE",
+		"room": "Initial",
+		"logic": "swordRooms >= 1 && tears >= 0"
 	},
 	{
-		"Id": "VERTICAL_2",
-		"Name": "Skill 4, Tier 2",
-		"Hint": "A tier 3 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "DIVE",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 3 && tears >= 0"
+		"id": "VERTICAL_2",
+		"name": "Skill 4, Tier 2",
+		"hint": "A tier 3 shrine holds *",
+		"type": 1,
+		"originalItem": "DIVE",
+		"room": "Initial",
+		"logic": "swordRooms >= 3 && tears >= 0"
 	},
 	{
-		"Id": "VERTICAL_3",
-		"Name": "Skill 4, Tier 3",
-		"Hint": "A tier 6 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "DIVE",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 6 && tears >= 0"
+		"id": "VERTICAL_3",
+		"name": "Skill 4, Tier 3",
+		"hint": "A tier 6 shrine holds *",
+		"type": 1,
+		"originalItem": "DIVE",
+		"room": "Initial",
+		"logic": "swordRooms >= 6 && tears >= 0"
 	},
 	{
-		"Id": "LUNGE_1",
-		"Name": "Skill 5, Tier 1",
-		"Hint": "A tier 1 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "LUNGE",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 1 && tears >= 0"
+		"id": "LUNGE_1",
+		"name": "Skill 5, Tier 1",
+		"hint": "A tier 1 shrine holds *",
+		"type": 1,
+		"originalItem": "LUNGE",
+		"room": "Initial",
+		"logic": "swordRooms >= 1 && tears >= 0"
 	},
 	{
-		"Id": "LUNGE_2",
-		"Name": "Skill 5, Tier 2",
-		"Hint": "A tier 2 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "LUNGE",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 2 && tears >= 0"
+		"id": "LUNGE_2",
+		"name": "Skill 5, Tier 2",
+		"hint": "A tier 2 shrine holds *",
+		"type": 1,
+		"originalItem": "LUNGE",
+		"room": "Initial",
+		"logic": "swordRooms >= 2 && tears >= 0"
 	},
 	{
-		"Id": "LUNGE_3",
-		"Name": "Skill 5, Tier 3",
-		"Hint": "A tier 4 shrine holds *",
-		"Type": 1,
-		"OriginalItem": "LUNGE",
-		"Room": "Initial",
-		"Logic": "swordRooms >= 4 && tears >= 0"
+		"id": "LUNGE_3",
+		"name": "Skill 5, Tier 3",
+		"hint": "A tier 4 shrine holds *",
+		"type": 1,
+		"originalItem": "LUNGE",
+		"room": "Initial",
+		"logic": "swordRooms >= 4 && tears >= 0"
 	}
 ]
