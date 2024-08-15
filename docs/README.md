@@ -270,3 +270,9 @@ These are:
 - Corpse outside Jocinero's room --> Jocinero's final reward
 - Corpse at entrance of WhOTW --> White Lady tomb reward
 - Corpse outside Albero church --> 50,000 tear donation reward
+
+---
+
+## Installation
+This mod is available for download through the [Blasphemous Mod Installer](https://github.com/BrandenEK/Blasphemous.Modding.Installer)
+- Required dependencies: Modding API, Credits Framework, Level Framework, Menu Framework, UI Framework, Cheat Console
