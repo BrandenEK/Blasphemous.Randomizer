@@ -80,17 +80,26 @@ namespace Blasphemous.Randomizer.ItemRando
                 return;
 
             // Queue item display info for when the item popup appears
-            _previousItemInfo = new(item.GetName(true), item.GetNotification(true), item.GetImage(true));
+            _previousItemInfo = new RewardAchievement(item.GetName(true), item.GetNotification(true), item.GetImage(true));
 
             // Add the item to inventory
             ModLog.Info($"Giving item ({item.id})");
-            item.addToInventory();
             Core.Events.SetFlag("LOCATION_" + locationId, true, false);
-            Main.Randomizer.updateShops();
+
+            try
+            {
+                item.addToInventory();
+            }
+            catch (System.Exception e)
+            {
+                ModLog.Error($"Failed to add item to inventory ({item.id}): {e}");
+                _previousItemInfo = new RewardAchievement("Unknown Item", "An error has occured!", null);
+            }
 
             // Possibly display the item
             if (display)
                 DisplayPreviousItem();
+            Main.Randomizer.updateShops();
         }
 
         // Display the item in a pop up
