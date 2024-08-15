@@ -1,4 +1,5 @@
-﻿using Blasphemous.Randomizer.Extensions;
+﻿using Blasphemous.ModdingAPI;
+using Blasphemous.Randomizer.Extensions;
 using Framework.Managers;
 using HarmonyLib;
 using Tools.Playmaker2.Action;
@@ -168,7 +169,7 @@ namespace Blasphemous.Randomizer.Patches
             string sceneName = Core.LevelManager.currentLevel.LevelName;
 
             bool flag = Core.Events.GetFlag(flagName);
-            Main.Randomizer.Log($"Checking for flag: {flagName} ({objectName})");
+            ModLog.Info($"Checking for flag: {flagName} ({objectName})");
 
             // Albero
 
@@ -445,7 +446,7 @@ namespace Blasphemous.Randomizer.Patches
             // Get data about this item check
             string itemName = objectIdStting;
             string sceneName = Core.LevelManager.currentLevel.LevelName;
-            Main.Randomizer.Log("Checking for item owned: " + itemName);
+            ModLog.Info("Checking for item owned: " + itemName);
 
             // If any standard scene-item pair
             for (int i = 0; i < ItemFlags.duplicateScenes.Length; i++)

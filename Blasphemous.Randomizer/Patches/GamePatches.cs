@@ -1,4 +1,5 @@
-﻿using Blasphemous.ModdingAPI.Input;
+﻿using Blasphemous.ModdingAPI;
+using Blasphemous.ModdingAPI.Input;
 using HarmonyLib;
 using Framework.Managers;
 using Framework.EditorScripts.EnemiesBalance;
@@ -60,7 +61,7 @@ namespace Blasphemous.Randomizer.Patches
                 return;
 
             string text = b ? "Setting" : "Clearing";
-            Main.Randomizer.Log(text + " flag: " + formatted);
+            ModLog.Info(text + " flag: " + formatted);
 
             // Special autotracker & map collection functionality when setting an item/location flag
             if (!b || __instance.GetFlag(id)) return;
@@ -82,7 +83,7 @@ namespace Blasphemous.Randomizer.Patches
     {
         public static bool Prefix()
         {
-            Main.Randomizer.LogDisplay(Main.Randomizer.LocalizationHandler.Localize("sorrow"));
+            ModLog.Display(Main.Randomizer.LocalizationHandler.Localize("sorrow"));
             return false;
         }
     }

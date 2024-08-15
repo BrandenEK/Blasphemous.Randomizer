@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Blasphemous.ModdingAPI;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gameplay.UI.Widgets;
@@ -78,7 +79,7 @@ namespace Blasphemous.Randomizer.BossRando
             if (scene == "D17Z01S11")// && !Core.Events.GetFlag("D17Z01_BOSSDEAD"))
             {
                 currentActivator = spawnBossActivator(new Vector3(-810, 10, 0));
-                Main.Randomizer.Log("load: " + bossStatus.ToString());
+                ModLog.Info("load: " + bossStatus.ToString());
                 // When returning, make activator disappear & player stand up
                 if (bossStatus == BossFightStatus.Returning && currentActivator != null)
                 {

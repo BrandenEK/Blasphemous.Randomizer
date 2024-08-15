@@ -1,11 +1,12 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using Blasphemous.ModdingAPI;
+using Blasphemous.ModdingAPI.Files;
 using Blasphemous.Randomizer.DoorRando;
 using Blasphemous.Randomizer.EnemyRando;
 using Blasphemous.Randomizer.ItemRando;
-using System.Linq;
 using Newtonsoft.Json;
-using Blasphemous.ModdingAPI.Files;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Blasphemous.Randomizer
 {
@@ -47,38 +48,38 @@ namespace Blasphemous.Randomizer
             items = Main.Randomizer.FileHandler.LoadDataAsText("items.json", out string jsonItems)
 				? processItems(jsonItems)
 				: new Dictionary<string, Item>();
-            Main.Randomizer.Log($"Loaded {items.Count} items!");
+            ModLog.Info($"Loaded {items.Count} items!");
 
             // Item locations
             itemLocations = Main.Randomizer.FileHandler.LoadDataAsJson("locations_items.json", out ItemLocation[] tempItemLocations)
                 ? tempItemLocations.ToDictionary(x => x.Id, x => x)
                 : new Dictionary<string, ItemLocation>();
-            Main.Randomizer.Log($"Loaded {itemLocations.Count} item locations!");
+            ModLog.Info($"Loaded {itemLocations.Count} item locations!");
 
             // Enemies
             enemies = Main.Randomizer.FileHandler.LoadDataAsJson("enemies.json", out EnemyData[] tempEnemies)
                 ? tempEnemies.ToDictionary(x => x.id, x => x)
                 : new Dictionary<string, EnemyData>();
-            Main.Randomizer.Log($"Loaded {enemies.Count} enemies!");
+            ModLog.Info($"Loaded {enemies.Count} enemies!");
 
             // Enemy locations
             enemyLocations = Main.Randomizer.FileHandler.LoadDataAsJson("locations_enemies.json", out EnemyLocation[] tempEnemyLocations)
                 ? tempEnemyLocations.ToDictionary(x => x.locationId, x => x)
                 : new Dictionary<string, EnemyLocation>();
-            Main.Randomizer.Log($"Loaded {enemyLocations.Count} enemy locations!");
+            ModLog.Info($"Loaded {enemyLocations.Count} enemy locations!");
 
             // Doors
             doorLocations = Main.Randomizer.FileHandler.LoadDataAsJson("doors.json", out DoorLocation[] tempDoors)
                 ? tempDoors.ToDictionary(x => x.Id, x => x)
                 : new Dictionary<string, DoorLocation>();
-            Main.Randomizer.Log($"Loaded {doorLocations.Count} doors!");
+            ModLog.Info($"Loaded {doorLocations.Count} doors!");
 
             // Images
             Main.Randomizer.FileHandler.LoadDataAsFixedSpritesheet("rando-items.png", new Vector2(30, 30), out randomizerImages, new SpriteImportOptions()
             {
                 PixelsPerUnit = 30
             });
-            Main.Randomizer.Log($"Loaded {randomizerImages.Length} randomizer images!");
+            ModLog.Info($"Loaded {randomizerImages.Length} randomizer images!");
 
 			// Logo
 			Main.Randomizer.FileHandler.LoadDataAsSprite("logo.png", out Sprite logo);

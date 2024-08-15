@@ -1,6 +1,6 @@
 <div align="center">
   <!-- Logo by JimmyDiamonds -->
-  <img src="resources/data/Randomizer/logo.png">
+  <img src="../resources/data/Randomizer/logo.png">
 </div>
 
 ---

@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using Gameplay.GameControllers.Entities;
+﻿using Blasphemous.ModdingAPI;
 using Blasphemous.Randomizer.Extensions;
+using Gameplay.GameControllers.Entities;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Blasphemous.Randomizer.EnemyRando
 {
@@ -56,11 +57,11 @@ namespace Blasphemous.Randomizer.EnemyRando
 						fullId += "_E";
                     }
                 }
-				//Main.Randomizer.Log($"Processing enemy {baseId}({fullId}): {array[i].name}");
+				//ModLog.Info($"Processing enemy {baseId}({fullId}): {array[i].name}");
 
 				if (baseId != "" && array[i].gameObject.scene.name == null && !allEnemies.ContainsKey(fullId) && enemyIds.Contains(baseId))
 				{
-					//Main.Randomizer.Log($"Loading enemy {baseId}({fullId}): {array[i].name}");
+					//ModLog.Info($"Loading enemy {baseId}({fullId}): {array[i].name}");
 					changeHitbox(array[i].transform, baseId);
 
 					// Chained Angels are nested
@@ -74,12 +75,12 @@ namespace Blasphemous.Randomizer.EnemyRando
 			int totalEnemies = enemyIds.Length + 2;
 			if (allEnemies.Count != totalEnemies)
             {
-				Main.Randomizer.Log($"Not all enemies processed yet! ({allEnemies.Count}/{totalEnemies})");
+				ModLog.Info($"Not all enemies processed yet! ({allEnemies.Count}/{totalEnemies})");
             }
 			else
 			{
 				loaded = true;
-				Main.Randomizer.Log($"All {totalEnemies} enemies processed!");
+				ModLog.Info($"All {totalEnemies} enemies processed!");
 			}
 		}
 
@@ -96,7 +97,7 @@ namespace Blasphemous.Randomizer.EnemyRando
 					component.size = new Vector2(component.size.x, 3f);
 					return;
 				}
-				Main.Randomizer.LogError("Enemy " + id + " had no hitbox to change!");
+				ModLog.Error("Enemy " + id + " had no hitbox to change!");
 			}
 			else if (id == "EN15" || id == "EV19" || id == "EV26")
             {
@@ -108,7 +109,7 @@ namespace Blasphemous.Randomizer.EnemyRando
 					component2.size = new Vector2(component2.size.x, 3.75f);
 					return;
 				}
-				Main.Randomizer.LogError("Enemy " + id + " had no hitbox to change!");
+				ModLog.Error("Enemy " + id + " had no hitbox to change!");
 			}
 		}
 	}

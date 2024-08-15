@@ -1,4 +1,5 @@
-﻿using Blasphemous.Randomizer.ItemRando;
+﻿using Blasphemous.ModdingAPI;
+using Blasphemous.Randomizer.ItemRando;
 using System.Collections.Generic;
 
 namespace Blasphemous.Randomizer.HintRando
@@ -17,7 +18,7 @@ namespace Blasphemous.Randomizer.HintRando
         {
             if (newHints != null && newHints.ContainsKey(id))
             {
-                Main.Randomizer.Log("Retrieving hint: " + id);
+                ModLog.Info("Retrieving hint: " + id);
                 return getHintText(newHints[id]);
             }
             return "???";
@@ -58,7 +59,7 @@ namespace Blasphemous.Randomizer.HintRando
 
             newHints = new Dictionary<string, string>();
             filler.Fill(seed, newHints);
-            Main.Randomizer.Log(newHints.Count + " hints have been shuffled!");
+            ModLog.Info(newHints.Count + " hints have been shuffled!");
         }
     }
 }

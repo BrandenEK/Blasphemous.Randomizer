@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Blasphemous.ModdingAPI;
 using Framework.Audio;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Blasphemous.Randomizer.EnemyRando
@@ -62,7 +63,7 @@ namespace Blasphemous.Randomizer.EnemyRando
             if (id == "D19Z01S05") return 7;
             if (id == "D19Z01S06") return 8;
             if (id == "D19Z01S07") return 10;
-            Main.Randomizer.LogError("Area rating " + id + " does not exist!");
+            ModLog.Error("Area rating " + id + " does not exist!");
             return 0;
         }
 
@@ -102,7 +103,7 @@ namespace Blasphemous.Randomizer.EnemyRando
 
             newEnemies = new Dictionary<string, string>();
             filler.Fill(seed, newEnemies);
-            Main.Randomizer.Log(newEnemies.Count + " enemies have been shuffled!");
+            ModLog.Info(newEnemies.Count + " enemies have been shuffled!");
         }
 
         // temp

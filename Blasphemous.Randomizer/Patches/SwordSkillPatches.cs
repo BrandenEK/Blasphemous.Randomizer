@@ -1,4 +1,5 @@
-﻿using Blasphemous.Randomizer.ItemRando;
+﻿using Blasphemous.ModdingAPI;
+using Blasphemous.Randomizer.ItemRando;
 using Framework.Managers;
 using Framework.FrameworkCore;
 using Gameplay.UI.Others.MenuLogic;
@@ -80,7 +81,7 @@ namespace Blasphemous.Randomizer.Patches
                 // Buying item at mea culpa shrine
                 if (__instance.CanUnlockSkill(skill, false))
                 {
-                    Main.Randomizer.Log("UnlockSkill(" + skill + ")");
+                    ModLog.Info("UnlockSkill(" + skill + ")");
                     Main.Randomizer.itemShuffler.giveItem(skill, true);
                     Core.Logic.Penitent.Stats.Purge.Current -= ___allSkills[skill].cost;
                 }

@@ -81,7 +81,7 @@ namespace Blasphemous.Randomizer
             }
 
             // Load external data
-            Log("Randomizer has been initialized!");
+            ModLog.Info("Randomizer has been initialized!");
             data = new DataStorage();
             if (!data.loadData())
                 errorOnLoad = LocalizationHandler.Localize("daterr");
@@ -123,12 +123,12 @@ namespace Blasphemous.Randomizer
             enemyShuffler.LoadMappedEnemies(randomizerPersistenceData.mappedEnemies);
             MapCollection.CollectionStatus = randomizerPersistenceData.collectionStatus;
 
-            Log("Loaded seed: " + GameSettings.Seed);
+            ModLog.Info("Loaded seed: " + GameSettings.Seed);
         }
 
         protected override void OnNewGame()
         {
-            Log("Generating new seed: " + GameSettings.Seed);
+            ModLog.Info("Generating new seed: " + GameSettings.Seed);
             Randomize();
             MapCollection.ResetCollectionStatus(GameSettings);
 
@@ -160,8 +160,8 @@ namespace Blasphemous.Randomizer
                 }
                 catch (System.Exception e)
                 {
-                    LogError($"Error with the {shufflers[i].GetType().Name} when shuffling seed {GameSettings.Seed}");
-                    LogError("Error message: " + e.Message);
+                    ModLog.Error($"Error with the {shufflers[i].GetType().Name} when shuffling seed {GameSettings.Seed}");
+                    ModLog.Error("Error message: " + e.Message);
                     ResetGame();
                 }
             }
@@ -174,7 +174,7 @@ namespace Blasphemous.Randomizer
                 File.WriteAllText(path, spoiler);
             }
             watch.Stop();
-            Log("Time to fill seed: " + watch.ElapsedMilliseconds + " ms");
+            ModLog.Info("Time to fill seed: " + watch.ElapsedMilliseconds + " ms");
         }
 
         // Before spawning player, might have to change the spawn point of a few doors
@@ -213,7 +213,7 @@ namespace Blasphemous.Randomizer
                 if (!itemShuffler.ValidSeed)
                 {
                     // Loaded an outdated rando or vanilla game
-                    LogError("Loaded invalid game!");
+                    ModLog.Error("Loaded invalid game!");
                     errorOnLoad = LocalizationHandler.Localize("saverr");
                     ResetGame();
                 }
@@ -326,11 +326,11 @@ namespace Blasphemous.Randomizer
                 //{
                 //    int testSeed = rng.Next(1, MAX_SEED);
                 //    bool success = new ItemFiller().Fill(testSeed, doors, items);
-                //    LogWarning($"Trying seed {testSeed}: {success}");
+                //    ModLog.Warn($"Trying seed {testSeed}: {success}");
                 //    if (success)
                 //        succeed++;
                 //}
-                //LogError($"Success rate: {succeed}/{total}");
+                //ModLog.Error($"Success rate: {succeed}/{total}");
             }
         }
 
@@ -359,7 +359,7 @@ namespace Blasphemous.Randomizer
             {
                 if (door.identificativeName == doorId)
                 {
-                    LogWarning($"Modifiying spawn point of {doorId} door");
+                    ModLog.Warn($"Modifiying spawn point of {doorId} door");
                     door.spawnPoint.position = newPosition;
                     break;
                 }
@@ -393,7 +393,7 @@ namespace Blasphemous.Randomizer
             GameObject parent = GameObject.Find("INTERACTABLES");
             if (parent == null) return;
 
-            LogWarning("Disabling hidden wall for " + doorToEnter.Id);
+            ModLog.Warn("Disabling hidden wall for " + doorToEnter.Id);
             parent.transform.Find(wallToRemove).gameObject.SetActive(false);
             Core.Events.SetFlag("HIDDEN_WALL_" + doorToEnter.Room, true);
         }
@@ -421,11 +421,11 @@ namespace Blasphemous.Randomizer
                     else if (currentScene == "D05Z02S14")
                         GameObject.Find("LOGIC").transform.Find("SCRIPTS/CombatBoundaries").gameObject.SetActive(value);
 
-                    LogWarning($"Setting boss boundary status to {value}");
+                    ModLog.Warn($"Setting boss boundary status to {value}");
                 }
                 catch (System.NullReferenceException)
                 {
-                    LogError("Boss boundary path could not be found!");
+                    ModLog.Error("Boss boundary path could not be found!");
                 }
             }
         }

@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Blasphemous.ModdingAPI;
 using Blasphemous.Randomizer.ItemRando;
+using System.Collections.Generic;
 
 namespace Blasphemous.Randomizer.HintRando
 {
@@ -70,7 +71,7 @@ namespace Blasphemous.Randomizer.HintRando
             // Show error if hint dictionary wasnt filled
             if (dialogIds.Count > 0)
             {
-                Main.Randomizer.LogWarning("Error: Hint dictionary wasn't fully filled!");
+                ModLog.Warn("Error: Hint dictionary wasn't fully filled!");
             }
         }
 
