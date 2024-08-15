@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using Blasphemous.ModdingAPI;
+using HarmonyLib;
 using Tools.Items;
 using Tools.Playmaker2.Action;
 using Gameplay.UI;
@@ -41,12 +42,12 @@ namespace Blasphemous.Randomizer.Patches
         {
             if (__instance.cutscene != null && Main.Randomizer.shouldSkipCutscene(__instance.cutscene.name))
             {
-                Main.Randomizer.Log("Skipping cutscene: " + __instance.cutscene.name);
+                ModLog.Info("Skipping cutscene: " + __instance.cutscene.name);
                 __instance.Fsm.Event(__instance.onSuccess);
                 __instance.Finish();
                 return false;
             }
-            Main.Randomizer.Log("Playing cutscene: " + __instance.cutscene.name);
+            ModLog.Info("Playing cutscene: " + __instance.cutscene.name);
             return true;
         }
 
@@ -56,12 +57,12 @@ namespace Blasphemous.Randomizer.Patches
 
         //    if (Main.Randomizer.shouldSkipCutscene(__instance.cutscene.name))
         //    {
-        //        Main.Randomizer.Log("Skipping cutscene: " + __instance.cutscene.name);
+        //        ModLog.Info("Skipping cutscene: " + __instance.cutscene.name);
         //        Core.Cinematics.EndCutscene(true);
         //    }
         //    else
         //    {
-        //        Main.Randomizer.Log("Playing cutscene: " + __instance.cutscene.name);
+        //        ModLog.Info("Playing cutscene: " + __instance.cutscene.name);
         //    }
         //}
     }

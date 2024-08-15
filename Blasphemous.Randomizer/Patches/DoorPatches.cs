@@ -1,11 +1,12 @@
-﻿using HarmonyLib;
-using Framework.Managers;
+﻿using Blasphemous.ModdingAPI;
+using Blasphemous.Randomizer.DoorRando;
 using Framework.FrameworkCore;
-using Tools.Level.Interactables;
+using Framework.Managers;
 using Gameplay.GameControllers.Bosses.BossFight;
 using Gameplay.GameControllers.Penitent.Abilities;
+using HarmonyLib;
+using Tools.Level.Interactables;
 using UnityEngine;
-using Blasphemous.Randomizer.DoorRando;
 
 namespace Blasphemous.Randomizer.Patches
 {
@@ -35,7 +36,7 @@ namespace Blasphemous.Randomizer.Patches
 
             string doorId = $"{currentScene}[{currentId}]";
             DoorLocation targetDoor = Main.Randomizer.itemShuffler.GetTargetDoor(doorId);
-            Main.Randomizer.Log("Entering door: " + doorId);
+            ModLog.Info("Entering door: " + doorId);
             if (targetDoor != null)
             {
                 __instance.targetScene = targetDoor.Room;
@@ -62,7 +63,7 @@ namespace Blasphemous.Randomizer.Patches
             ___customLevel = start.Room;
             ___customPosition = start.Position;
             ___customOrientation = start.FacingRight ? EntityOrientation.Right : EntityOrientation.Left;
-            Main.Randomizer.Log("Setting start location to " + start.Room);
+            ModLog.Info("Setting start location to " + start.Room);
         }
     }
 

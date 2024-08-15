@@ -1,4 +1,5 @@
-﻿using Framework.Managers;
+﻿using Blasphemous.ModdingAPI;
+using Framework.Managers;
 using UnityEngine;
 
 namespace Blasphemous.Randomizer.ItemRando
@@ -52,7 +53,7 @@ namespace Blasphemous.Randomizer.ItemRando
             int level = getCurrentLevel() + (upgraded ? 1 : 0);
             if (level < 0 || level >= items.Length)
             {
-                Main.Randomizer.LogError("Invalid tier of progressive item!");
+                ModLog.Error("Invalid tier of progressive item!");
                 if (level < 0) level = 0;
                 else if (level >= items.Length) level = items.Length - 1;
             }
@@ -66,11 +67,11 @@ namespace Blasphemous.Randomizer.ItemRando
             {
                 if (!Core.Events.GetFlag("ITEM_" + items[i]))
                 {
-                    Main.Randomizer.Log("Current progressive tier: " + (i - 1));
+                    ModLog.Info("Current progressive tier: " + (i - 1));
                     return i - 1;
                 }
             }
-            Main.Randomizer.Log("Current progressive tier: " + (items.Length - 1));
+            ModLog.Info("Current progressive tier: " + (items.Length - 1));
             return items.Length - 1;
         }
 
@@ -79,13 +80,13 @@ namespace Blasphemous.Randomizer.ItemRando
             int level = getCurrentLevel() - 1;
             if (level >= 0 && level < items.Length)
             {
-                Main.Randomizer.Log("Removing item: " + items[level]);
+                ModLog.Info("Removing item: " + items[level]);
                 if (type == 5)
                     Core.InventoryManager.RemoveQuestItem(items[level]);
                 else if (type == 0)
                     Core.InventoryManager.RemoveRosaryBead(items[level]);
                 else
-                    Main.Randomizer.LogDisplay($"Item type {type} can not be removed!");
+                    ModLog.Display($"Item type {type} can not be removed!");
             }
         }
     }

@@ -114,7 +114,7 @@ public class RandomizerMenu : ModMenu
     public override void OnStart()
     {
         _generatedSeed = Config.RandomSeed;
-        Main.Randomizer.Log($"Generating default seed: {_generatedSeed}");
+        ModLog.Info($"Generating default seed: {_generatedSeed}");
 
         MenuSettings = new Config();
     }
@@ -126,7 +126,7 @@ public class RandomizerMenu : ModMenu
     {
         Config settings = MenuSettings;
 
-        Main.Randomizer.Log($"Storing menu settings: {settings.Seed}");
+        ModLog.Info($"Storing menu settings: {settings.Seed}");
         Main.Randomizer.GameSettings = settings;
     }
 
@@ -163,7 +163,7 @@ public class RandomizerMenu : ModMenu
         }
         catch
         {
-            Main.Randomizer.LogError("Failed to generate image layout for unique seed " + finalSeed);
+            ModLog.Error("Failed to generate image layout for unique seed " + finalSeed);
             for (int i = 0; i < _uniqueImages.Length; i++)
                 _uniqueImages[i].sprite = GetIcon(0);
         }

@@ -1,4 +1,5 @@
-﻿using Blasphemous.Randomizer.DoorRando;
+﻿using Blasphemous.ModdingAPI;
+using Blasphemous.Randomizer.DoorRando;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -64,7 +65,7 @@ namespace Blasphemous.Randomizer
                 if (ShuffleDash)
                     possibleLocations.RemoveAt(BROTHERHOOD_LOCATION);
 
-                Main.Randomizer.Log($"Choosing random starting location from {possibleLocations.Count} options");
+                ModLog.Info($"Choosing random starting location from {possibleLocations.Count} options");
                 int randLocation = new System.Random(Seed).Next(0, possibleLocations.Count);
                 return possibleLocations[randLocation];
             }

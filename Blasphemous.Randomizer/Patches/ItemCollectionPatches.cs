@@ -15,11 +15,11 @@ namespace Blasphemous.Randomizer.Patches
     {
         public static bool Prefix(string ___item)
         {
-            Main.Randomizer.Log("InteractableInvAdd(" + ___item + ")");
+            ModLog.Info("InteractableInvAdd(" + ___item + ")");
 
             if (Main.Randomizer.itemShuffler.getItemAtLocation(___item) == null)
             {
-                Main.Randomizer.LogWarning($"Location '{___item}' doesn't exist!");
+                ModLog.Warn($"Location '{___item}' doesn't exist!");
                 return true;
             }
 
@@ -34,7 +34,7 @@ namespace Blasphemous.Randomizer.Patches
     {
         public static bool Prefix(string ___item)
         {
-            Main.Randomizer.Log("InteractableInventoryAdd(" + ___item + ")");
+            ModLog.Info("InteractableInventoryAdd(" + ___item + ")");
             Main.Randomizer.itemShuffler.giveItem(___item, true);
             return false;
         }
@@ -46,7 +46,7 @@ namespace Blasphemous.Randomizer.Patches
     {
         public static bool Prefix(string objectIdStting, FsmBool ___showMessage, ref bool __result)
         {
-            Main.Randomizer.Log("ItemAddition(" + objectIdStting + ")");
+            ModLog.Info("ItemAddition(" + objectIdStting + ")");
             Main.Randomizer.itemShuffler.giveItem(objectIdStting, ___showMessage != null && ___showMessage.Value);
             __result = true;
             return false;
@@ -61,11 +61,11 @@ namespace Blasphemous.Randomizer.Patches
         {
             if (objectIdStting == "QI110")
             {
-                Main.Randomizer.Log("SpecialVerseAddition(" + objectIdStting + ")");
+                ModLog.Info("SpecialVerseAddition(" + objectIdStting + ")");
                 Main.Randomizer.itemShuffler.giveItem(objectIdStting, false);
             }
 
-            Main.Randomizer.Log("ItemAdditionMessage(" + objectIdStting + ")");
+            ModLog.Info("ItemAdditionMessage(" + objectIdStting + ")");
             Main.Randomizer.itemShuffler.DisplayPreviousItem();
             __result = true;
             return false;
@@ -78,7 +78,7 @@ namespace Blasphemous.Randomizer.Patches
     {
         public static bool Prefix(ref CherubCaptorPersistentObject __instance)
         {
-            Main.Randomizer.Log("OnCherubKilled(" + __instance.cherubId + ")");
+            ModLog.Info("OnCherubKilled(" + __instance.cherubId + ")");
             __instance.destroyed = true;
             __instance.spawner.DisableCherubSpawn();
             Main.Randomizer.itemShuffler.giveItem(__instance.cherubId, true);
@@ -92,7 +92,7 @@ namespace Blasphemous.Randomizer.Patches
     {
         public static bool Prefix(LifeUpgrade __instance)
         {
-            Main.Randomizer.Log("LifeUpgrade()");
+            ModLog.Info("LifeUpgrade()");
             Main.Randomizer.itemShuffler.giveItem($"Lady[{Core.LevelManager.currentLevel.LevelName}]", true);
             __instance.Finish();
             return false;
@@ -105,7 +105,7 @@ namespace Blasphemous.Randomizer.Patches
     {
         public static bool Prefix(FervourUpgrade __instance)
         {
-            Main.Randomizer.Log("FervourUpgrade()");
+            ModLog.Info("FervourUpgrade()");
             Main.Randomizer.itemShuffler.giveItem($"Oil[{Core.LevelManager.currentLevel.LevelName}]", true);
             __instance.Finish();
             return false;
@@ -118,7 +118,7 @@ namespace Blasphemous.Randomizer.Patches
     {
         public static bool Prefix(StrengthUpgrade __instance)
         {
-            Main.Randomizer.Log("StrengthUpgrade()");
+            ModLog.Info("StrengthUpgrade()");
             Main.Randomizer.itemShuffler.giveItem($"Sword[{Core.LevelManager.currentLevel.LevelName}]", true);
             __instance.Finish();
             return false;
@@ -150,7 +150,7 @@ namespace Blasphemous.Randomizer.Patches
                 if (tears == 30000 || tears == 18000 || tears == 5000 && __instance.Owner.name == "BossTrigger")
                     showMessage = true;
 
-                Main.Randomizer.Log("PurgeAdd(" + tears + ")");
+                ModLog.Info("PurgeAdd(" + tears + ")");
                 if (tears == 18000)
                 {
                     Main.Randomizer.itemShuffler.giveItem($"Amanecida[{Core.LevelManager.lastLevel.LevelName}]", showMessage);
@@ -182,7 +182,7 @@ namespace Blasphemous.Randomizer.Patches
                 // If killing and elder bro in the wall, return regular
                 if (enemy.Id == "BS13" && Core.LevelManager.currentLevel.LevelName == "D09Z01S01") return true;
 
-                Main.Randomizer.Log("GetPurge(" + enemy.Id + ")");
+                ModLog.Info("GetPurge(" + enemy.Id + ")");
                 Main.Randomizer.itemShuffler.giveItem(enemy.Id, true);
                 return false;
             }
@@ -196,11 +196,11 @@ namespace Blasphemous.Randomizer.Patches
     {
         public static bool Prefix(string itemId)
         {
-            Main.Randomizer.Log("ItemModderAdd(" + itemId + ")");
+            ModLog.Info("ItemModderAdd(" + itemId + ")");
 
             if (Main.Randomizer.itemShuffler.getItemAtLocation(itemId) == null)
             {
-                Main.Randomizer.LogWarning($"Location '{itemId}' doesn't exist!");
+                ModLog.Warn($"Location '{itemId}' doesn't exist!");
                 return true;
             }
 

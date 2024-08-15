@@ -1,4 +1,5 @@
-﻿using Blasphemous.Randomizer.ItemRando;
+﻿using Blasphemous.ModdingAPI;
+using Blasphemous.Randomizer.ItemRando;
 using Framework.Managers;
 using Framework.Map;
 using Gameplay.UI.Others.MenuLogic;
@@ -18,7 +19,7 @@ namespace Blasphemous.Randomizer.Map
             mapWidget = widget;
             if (CollectionStatus == null)
             {
-                Main.Randomizer.LogError("Collection status dictionary was null - Not updating map");
+                ModLog.Error("Collection status dictionary was null - Not updating map");
                 return;
             }
 

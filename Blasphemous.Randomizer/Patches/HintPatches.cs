@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using Blasphemous.ModdingAPI;
+using HarmonyLib;
 using Tools.Level;
 using Tools.Playmaker2.Condition;
 using Framework.Managers;
@@ -41,7 +42,7 @@ namespace Blasphemous.Randomizer.Patches
     {
         public static void Prefix(string conversiationId, Dictionary<string, DialogObject> ___allDialogs)
         {
-            Main.Randomizer.Log("Starting dialog: " + conversiationId);
+            ModLog.Info("Starting dialog: " + conversiationId);
 
             if (conversiationId == "DLG_QT_0904")
             {

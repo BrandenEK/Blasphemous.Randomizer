@@ -1,4 +1,5 @@
-﻿using Blasphemous.Randomizer.DoorRando;
+﻿using Blasphemous.ModdingAPI;
+using Blasphemous.Randomizer.DoorRando;
 using Blasphemous.Randomizer.Notifications;
 using Framework.Managers;
 using Gameplay.UI;
@@ -48,7 +49,7 @@ namespace Blasphemous.Randomizer.ItemRando
             }
             if (!newItems.ContainsKey(locationId))
             {
-                Main.Randomizer.LogError("Location " + locationId + " was not loaded!");
+                ModLog.Error("Location " + locationId + " was not loaded!");
                 return null;
             }
             return Main.Randomizer.data.items[newItems[locationId]];
@@ -60,7 +61,7 @@ namespace Blasphemous.Randomizer.ItemRando
             // Make sure this location hasn't already been collected
             if (Core.Events.GetFlag("LOCATION_" + locationId))
             {
-                Main.Randomizer.Log($"Location {locationId} has already been collected!");
+                ModLog.Info($"Location {locationId} has already been collected!");
                 return;
             }
 
@@ -82,7 +83,7 @@ namespace Blasphemous.Randomizer.ItemRando
             _previousItemInfo = new(item.GetName(true), item.GetNotification(true), item.GetImage(true));
 
             // Add the item to inventory
-            Main.Randomizer.Log($"Giving item ({item.id})");
+            ModLog.Info($"Giving item ({item.id})");
             item.addToInventory();
             Core.Events.SetFlag("LOCATION_" + locationId, true, false);
             Main.Randomizer.updateShops();
@@ -114,7 +115,7 @@ namespace Blasphemous.Randomizer.ItemRando
             if (_previousItemInfo == null)
                 return;
 
-            Main.Randomizer.Log("Displaying previous acquired item: " + _previousItemInfo.Id);
+            ModLog.Info("Displaying previous acquired item: " + _previousItemInfo.Id);
             UIController.instance.ShowPopupAchievement(_previousItemInfo);
         }
 
@@ -129,18 +130,18 @@ namespace Blasphemous.Randomizer.ItemRando
             int attempt = 0, maxAttempts = 30;
             while (!filler.Fill(seed + attempt, newDoors, newItems) && attempt < maxAttempts)
             {
-                Main.Randomizer.LogError($"Seed {seed + attempt} was invalid! Trying next...");
+                ModLog.Error($"Seed {seed + attempt} was invalid! Trying next...");
                 attempt++;
             }
             if (attempt >= maxAttempts)
             {
-                Main.Randomizer.LogError($"Error: Failed to fill items in {maxAttempts} tries!");
+                ModLog.Error($"Error: Failed to fill items in {maxAttempts} tries!");
                 newItems.Clear();
                 newDoors.Clear();
                 return;
             }
 
-            Main.Randomizer.Log(newItems.Count + " items have been shuffled!");
+            ModLog.Info(newItems.Count + " items have been shuffled!");
         }
 
         public void Init()
