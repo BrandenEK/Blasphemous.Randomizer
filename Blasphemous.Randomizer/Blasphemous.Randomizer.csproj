@@ -14,19 +14,19 @@
     <TargetName>BlasphemousRandomizer</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>bin\Release\$(TargetName).xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetName).xml</DocumentationFile>
     <RepositoryUrl>https://github.com/BrandenEK/Blasphemous.Randomizer</RepositoryUrl>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Basalt.LogicParser" Version="1.2.0" />
     <PackageReference Include="Blasphemous.CheatConsole" Version="1.0.1" />
     <PackageReference Include="Blasphemous.Framework.Credits" Version="0.1.1" />
     <PackageReference Include="Blasphemous.Framework.Menus" Version="0.3.4" />
     <PackageReference Include="Blasphemous.Framework.UI" Version="0.1.2" />
-    <PackageReference Include="Blasphemous.ModdingAPI" Version="2.4.1" />
     <PackageReference Include="Blasphemous.GameLibs" Version="4.0.67" />
-    <PackageReference Include="LogicParser" Version="1.1.0" />
+    <PackageReference Include="Blasphemous.ModdingAPI" Version="2.4.1" />
   </ItemGroup>
 
   <Target Name="Development" AfterTargets="PostBuildEvent">

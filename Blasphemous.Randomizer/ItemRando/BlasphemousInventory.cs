@@ -1,4 +1,4 @@
-﻿using LogicParser;
+﻿using Basalt.LogicParser;
 using System.Collections.Generic;
 
 namespace Blasphemous.Randomizer.ItemRando
