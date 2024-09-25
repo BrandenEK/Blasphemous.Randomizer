@@ -66,7 +66,7 @@ namespace Blasphemous.Randomizer.Patches
             }
 
             ModLog.Info("ItemAdditionMessage(" + objectIdStting + ")");
-            Main.Randomizer.itemShuffler.DisplayPreviousItem();
+            Main.Randomizer.itemShuffler.displayItem(objectIdStting);
             __result = true;
             return false;
         }
