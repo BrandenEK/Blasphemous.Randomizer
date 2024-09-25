@@ -9,7 +9,7 @@
     <Authors>Damocles</Authors>
     <Company>Damocles</Company>
     <Description>An item, enemy, and door randomizer</Description>
-    <Version>3.0.2</Version>
+    <Version>3.0.3</Version>
 
     <TargetName>BlasphemousRandomizer</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>

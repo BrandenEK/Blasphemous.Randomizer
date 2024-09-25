@@ -2,6 +2,7 @@
 using Blasphemous.Framework.Credits;
 using Blasphemous.Framework.Menus;
 using Blasphemous.ModdingAPI;
+using Blasphemous.ModdingAPI.Helpers;
 using Blasphemous.ModdingAPI.Persistence;
 using Blasphemous.Randomizer.BossRando;
 using Blasphemous.Randomizer.DoorRando;
@@ -11,17 +12,17 @@ using Blasphemous.Randomizer.HintRando;
 using Blasphemous.Randomizer.ItemRando;
 using Blasphemous.Randomizer.Map;
 using Blasphemous.Randomizer.Services;
-using Framework.Managers;
 using Framework.Audio;
+using Framework.Managers;
 using Gameplay.UI;
-using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
-using Tools.Level;
-using Tools.Level.Interactables;
-using Tools.Level.Actionables;
-using UnityEngine;
+using System.Diagnostics;
 using System.IO;
+using Tools.Level;
+using Tools.Level.Actionables;
+using Tools.Level.Interactables;
+using UnityEngine;
 
 namespace Blasphemous.Randomizer
 {
@@ -55,8 +56,8 @@ namespace Blasphemous.Randomizer
 
         public string PersistentID => "ID_RANDOMIZER";
 
-        public bool InstalledBootsMod => IsModLoadedId("Blasphemous.BootsOfPleading", out var _);
-        public bool InstalledDoubleJumpMod => IsModLoadedId("Blasphemous.DoubleJump", out var _);
+        public bool InstalledBootsMod => ModHelper.IsModLoadedByName("Boots of Pleading");
+        public bool InstalledDoubleJumpMod => ModHelper.IsModLoadedByName("Double Jump");
         public bool CanDash => !GameSettings.ShuffleDash || Core.Events.GetFlag("ITEM_Slide");
         public bool CanWallClimb => !GameSettings.ShuffleWallClimb || Core.Events.GetFlag("ITEM_WallClimb");
         public bool DashChecker { get; set; }
@@ -313,7 +314,7 @@ namespace Blasphemous.Randomizer
         {
             if (InputHandler.GetKeyDown("Seed") && inGame)
             {
-                LogDisplay($"{LocalizationHandler.Localize("currsd")}: {GameSettings.Seed} [{GameSettings.UniqueSeed}]");
+                ModLog.Display($"{LocalizationHandler.Localize("currsd")}: {GameSettings.Seed} [{GameSettings.UniqueSeed}]");
             }
             else if (InputHandler.GetKeyDown("Debug"))
             {
@@ -337,7 +338,7 @@ namespace Blasphemous.Randomizer
         private IEnumerator showErrorMessage(float waitTime)
         {
             yield return new WaitForSecondsRealtime(waitTime);
-            LogDisplay(errorOnLoad);
+            ModLog.Display(errorOnLoad);
             errorOnLoad = string.Empty;
         }
 
