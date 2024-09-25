@@ -153,13 +153,13 @@ namespace Blasphemous.Randomizer
         {
             //new StartingLocation("D01Z04S01", "D01Z04S01[W]", new Vector3(-121, -27, 0), true),
             //new StartingLocation("D05Z01S03", "D05Z01S03[W]", new Vector3(318, -4, 0), false),
-            new StartingLocation("D17Z01S01", "D17Z01S01[E]", new Vector3(-988, 20, 0), true),
-            new StartingLocation("D01Z02S01", "D01Z02S01[E]", new Vector3(-512, 11, 0), false),
-            new StartingLocation("D02Z03S09", "D02Z03S09[E]", new Vector3(-577, 250, 0), true),
-            new StartingLocation("D03Z03S11", "D03Z03S11[E]", new Vector3(-551, -236, 0), true),
-            new StartingLocation("D04Z03S01", "D04Z03S01[W]", new Vector3(353, 19, 0), false),
-            new StartingLocation("D06Z01S09", "D06Z01S09[W]", new Vector3(374, 175, 0), false),
-            new StartingLocation("D20Z02S09", "D20Z02S09[W]", new Vector3(130, -136, 0), true),
+            new StartingLocation("D17Z01S01", "D17Z01S01[E]", new Vector3(-988, 20, 0), true, StartFlags.RequiresDash),
+            new StartingLocation("D01Z02S01", "D01Z02S01[E]", new Vector3(-512, 11, 0), false, StartFlags.None),
+            new StartingLocation("D02Z03S09", "D02Z03S09[E]", new Vector3(-577, 250, 0), true, StartFlags.None),
+            new StartingLocation("D03Z03S11", "D03Z03S11[E]", new Vector3(-551, -236, 0), true, StartFlags.RequiresWallClimb),
+            new StartingLocation("D04Z03S01", "D04Z03S01[W]", new Vector3(353, 19, 0), false, StartFlags.IsRightSide),
+            new StartingLocation("D06Z01S09", "D06Z01S09[W]", new Vector3(374, 175, 0), false, StartFlags.IsRightSide),
+            new StartingLocation("D20Z02S09", "D20Z02S09[W]", new Vector3(130, -136, 0), true, StartFlags.IsRightSide & StartFlags.RequiresDash),
         };
     }
 }
