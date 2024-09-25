@@ -1,6 +1,6 @@
 ﻿using Blasphemous.ModdingAPI;
 using Blasphemous.Randomizer.DoorRando;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Blasphemous.Randomizer
@@ -56,18 +56,15 @@ namespace Blasphemous.Randomizer
                 if (StartingLocation <= STARTING_LOCATIONS.Length - 1)
                     return STARTING_LOCATIONS[StartingLocation];
 
-                // Return a random starting location ! These must be in descending order !
-                List<StartingLocation> possibleLocations = new List<StartingLocation>(STARTING_LOCATIONS);
-                if (LogicDifficulty < 2 || ShuffleDash)
-                    possibleLocations.RemoveAt(SHIPYARD_LOCATION);
-                if (ShuffleWallClimb)
-                    possibleLocations.RemoveAt(DEPTHS_LOCATION);
-                if (ShuffleDash)
-                    possibleLocations.RemoveAt(BROTHERHOOD_LOCATION);
+                // Return a random starting location
+                var possibleLocations = STARTING_LOCATIONS
+                    .Where(x => !ShuffleDash || DoorShuffleType > 1 || (x.StartFlags & StartFlags.RequiresDash) == 0)
+                    .Where(x => !ShuffleWallClimb || DoorShuffleType > 1 || (x.StartFlags & StartFlags.RequiresWallClimb) == 0)
+                    .Where(x => LogicDifficulty >= 2 || (x.StartFlags & StartFlags.RequiresHardMode) == 0);
 
-                ModLog.Info($"Choosing random starting location from {possibleLocations.Count} options");
-                int randLocation = new System.Random(Seed).Next(0, possibleLocations.Count);
-                return possibleLocations[randLocation];
+                ModLog.Info($"Choosing random starting location from {possibleLocations.Count()} options");
+                int randLocation = new System.Random(Seed).Next(0, possibleLocations.Count());
+                return possibleLocations.ElementAt(randLocation);
             }
         }
 
@@ -145,9 +142,6 @@ namespace Blasphemous.Randomizer
         /// The maximum seed allowed by the randomizer
         /// </summary>
         public const int MAX_SEED = 99_999_999;
-        internal const int BROTHERHOOD_LOCATION = 0;
-        internal const int DEPTHS_LOCATION = 3;
-        internal const int SHIPYARD_LOCATION = 6;
 
         /// <summary>
         /// Does this starting location allow shuffleDash to be true
@@ -181,9 +175,9 @@ namespace Blasphemous.Randomizer
             new StartingLocation("D01Z02S01", "D01Z02S01[E]", new Vector3(-512, 11, 0), false, StartFlags.None),
             new StartingLocation("D02Z03S09", "D02Z03S09[E]", new Vector3(-577, 250, 0), true, StartFlags.None),
             new StartingLocation("D03Z03S11", "D03Z03S11[E]", new Vector3(-551, -236, 0), true, StartFlags.RequiresWallClimb),
-            new StartingLocation("D04Z03S01", "D04Z03S01[W]", new Vector3(353, 19, 0), false, StartFlags.IsRightSide),
-            new StartingLocation("D06Z01S09", "D06Z01S09[W]", new Vector3(374, 175, 0), false, StartFlags.IsRightSide),
-            new StartingLocation("D20Z02S09", "D20Z02S09[W]", new Vector3(130, -136, 0), true, StartFlags.IsRightSide | StartFlags.RequiresDash),
+            new StartingLocation("D04Z03S01", "D04Z03S01[W]", new Vector3(353, 19, 0), false, StartFlags.RequiresHardMode),
+            new StartingLocation("D06Z01S09", "D06Z01S09[W]", new Vector3(374, 175, 0), false, StartFlags.RequiresHardMode),
+            new StartingLocation("D20Z02S09", "D20Z02S09[W]", new Vector3(130, -136, 0), true, StartFlags.RequiresDash | StartFlags.RequiresHardMode),
         };
     }
 }

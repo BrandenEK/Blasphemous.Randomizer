@@ -20,7 +20,11 @@ public enum StartFlags
     /// </summary>
     RequiresWallClimb = 0x02,
     /// <summary>
-    /// Is this location on the right side of the map
+    /// Does this location require normal or hard difficulty
     /// </summary>
-    IsRightSide = 0x04
+    RequiresNormalMode = 0x04,
+    /// <summary>
+    /// Does this location require hard difficulty
+    /// </summary>
+    RequiresHardMode = 0x08
 }
