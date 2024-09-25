@@ -6,9 +6,9 @@
 ---
 
 <div align="center">
-  <img src="https://img.shields.io/github/v/release/BrandenEK/Blasphemous-Randomizer?style=for-the-badge">
-  <img src="https://img.shields.io/github/last-commit/BrandenEK/Blasphemous-Randomizer?color=important&style=for-the-badge">
-  <img src="https://img.shields.io/github/downloads/BrandenEK/Blasphemous-Randomizer/total?color=success&style=for-the-badge">
+  <img src="https://img.shields.io/github/v/release/BrandenEK/Blasphemous.Randomizer?style=for-the-badge&color=2857AB">
+  <img src="https://img.shields.io/github/last-commit/BrandenEK/Blasphemous.Randomizer?style=for-the-badge&color=AB2857">
+  <img src="https://img.shields.io/github/downloads/BrandenEK/Blasphemous.Randomizer/total?style=for-the-badge&color=57AB28">
 </div>
 
 ---
@@ -20,11 +20,11 @@ A very special thank you to everyone who has helped with the randomizer
 ***- Programming and design -*** <br>
 [@BrandenEK](https://github.com/BrandenEK), [TRPG0](https://github.com/TRPG0)
 
+***- Artwork -*** <br>
+[@JimmyDiamonds](https://github.com/JimmyDiamonds), [@rcvrdt](https://github.com/rcvrdt), [@ConanCimmerio](https://github.com/ConanCimmerio), [@LuceScarlet](https://github.com/LuceScarlet)
+
 ***- Translations -*** <br>
 [@ConanCimmerio](https://github.com/ConanCimmerio), [@EltonZhang777](https://github.com/EltonZhang777), [@RocherBrockas](https://github.com/RocherBrockas)
-
-***- Images and UI -*** <br>
-[@JimmyDiamonds](https://github.com/JimmyDiamonds), [@rcvrdt](https://github.com/rcvrdt), [@ConanCimmerio](https://github.com/ConanCimmerio), [@LuceScarlet](https://github.com/LuceScarlet)
 
 ***- Logic testing and improvements -*** <br>
 [@Exempt-Medic](https://github.com/Exempt-Medic), [@LumineonRL](https://github.com/LumineonRL)
