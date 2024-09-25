@@ -24,8 +24,7 @@
     </tr>
     <tr>
       <td align="center"> Allow Hints </td>
-      <td align="center" colspan="3"> Should the corpses give vague information about the location of progression items <br>
-        (See below for specific corpse hints) </td>
+      <td align="center" colspan="3"> Should the corpses give vague information about the location of progression items </td>
       <td align="center"> True </td>
     </tr>
     <tr>
