@@ -16,7 +16,7 @@
 ## Contributors
 
 ***- Programming and design -*** <br>
-[@BrandenEK](https://github.com/BrandenEK), [TRPG0](https://github.com/TRPG0)
+[@BrandenEK](https://github.com/BrandenEK), [@TRPG0](https://github.com/TRPG0)
 
 ***- Artwork -*** <br>
 [@JimmyDiamonds](https://github.com/JimmyDiamonds), [@rcvrdt](https://github.com/rcvrdt), [@ConanCimmerio](https://github.com/ConanCimmerio), [@LuceScarlet](https://github.com/LuceScarlet)
