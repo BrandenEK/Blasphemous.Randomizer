@@ -2,6 +2,7 @@
 using Blasphemous.Framework.Menus.Options;
 using Blasphemous.Framework.UI;
 using Blasphemous.ModdingAPI;
+using Blasphemous.ModdingAPI.Helpers;
 using Blasphemous.Randomizer.Extensions;
 using Framework.Managers;
 using System.Linq;
@@ -187,7 +188,7 @@ public class RandomizerMenu : ModMenu
         Sprite GetIcon(int index)
         {
             string itemId = UNIQUE_ICONS[index];
-            InventoryManager.ItemType itemType = ItemModder.GetItemTypeFromId(itemId);
+            InventoryManager.ItemType itemType = ItemHelper.GetItemTypeFromId(itemId);
             return Core.InventoryManager.GetBaseObject(itemId, itemType).picture;
         }
 
