@@ -1,10 +1,18 @@
 ﻿using Basalt.LogicParser;
+using Blasphemous.Randomizer.ItemRando.LogicResolvers;
 using System.Collections.Generic;
 
 namespace Blasphemous.Randomizer.ItemRando
 {
     public class BlasphemousInventory : InventoryData
     {
+        protected ILogicResolver _logicResolver;
+
+        public BlasphemousInventory()
+        {
+            _logicResolver = new RuntimeLogicResolver();
+        }
+
         private int logicDifficulty;
         private bool enemyShuffle;
 
