@@ -53,7 +53,7 @@ namespace Blasphemous.Randomizer
             get
             {
                 // Return the chosen starting location
-                if (StartingLocation < STARTING_LOCATIONS.Length - 1)
+                if (StartingLocation <= STARTING_LOCATIONS.Length - 1)
                     return STARTING_LOCATIONS[StartingLocation];
 
                 // Return a random starting location ! These must be in descending order !
@@ -149,6 +149,30 @@ namespace Blasphemous.Randomizer
         internal const int DEPTHS_LOCATION = 3;
         internal const int SHIPYARD_LOCATION = 6;
 
+        /// <summary>
+        /// Does this starting location allow shuffleDash to be true
+        /// </summary>
+        public static bool DoesLocationAllowDash(int startingLocation, int doorShuffle)
+        {
+            if (startingLocation >= STARTING_LOCATIONS.Length)
+                return true;
+
+            StartFlags flags = STARTING_LOCATIONS[startingLocation].StartFlags;
+            return doorShuffle > 1 || (flags & StartFlags.RequiresDash) == 0;
+        }
+
+        /// <summary>
+        /// Does this starting location allow shuffleWallClimb to be true
+        /// </summary>
+        public static bool DoesLocationAllowWallClimb(int startingLocation, int doorShuffle)
+        {
+            if (startingLocation >= STARTING_LOCATIONS.Length)
+                return true;
+            
+            StartFlags flags = STARTING_LOCATIONS[startingLocation].StartFlags;
+            return doorShuffle > 1 || (flags & StartFlags.RequiresWallClimb) == 0;
+        }
+
         private static readonly StartingLocation[] STARTING_LOCATIONS = new StartingLocation[]
         {
             //new StartingLocation("D01Z04S01", "D01Z04S01[W]", new Vector3(-121, -27, 0), true),
@@ -159,7 +183,7 @@ namespace Blasphemous.Randomizer
             new StartingLocation("D03Z03S11", "D03Z03S11[E]", new Vector3(-551, -236, 0), true, StartFlags.RequiresWallClimb),
             new StartingLocation("D04Z03S01", "D04Z03S01[W]", new Vector3(353, 19, 0), false, StartFlags.IsRightSide),
             new StartingLocation("D06Z01S09", "D06Z01S09[W]", new Vector3(374, 175, 0), false, StartFlags.IsRightSide),
-            new StartingLocation("D20Z02S09", "D20Z02S09[W]", new Vector3(130, -136, 0), true, StartFlags.IsRightSide & StartFlags.RequiresDash),
+            new StartingLocation("D20Z02S09", "D20Z02S09[W]", new Vector3(130, -136, 0), true, StartFlags.IsRightSide | StartFlags.RequiresDash),
         };
     }
 }

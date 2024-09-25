@@ -143,8 +143,8 @@ public class RandomizerMenu : ModMenu
         _purifiedHand.Enabled = Main.Randomizer.InstalledDoubleJumpMod;
         _maintainClass.Enabled = _enemyShuffle.CurrentOption > 0;
         _areaScaling.Enabled = _enemyShuffle.CurrentOption > 0;
-        _dash.Enabled = doorType > 1 || startLocation != Config.BROTHERHOOD_LOCATION && startLocation != Config.SHIPYARD_LOCATION;
-        _wallClimb.Enabled = doorType > 1 || startLocation != Config.DEPTHS_LOCATION;
+        _dash.Enabled = Config.DoesLocationAllowDash(startLocation, doorType);
+        _wallClimb.Enabled = Config.DoesLocationAllowWallClimb(startLocation, doorType);
 
         RefreshUniqueSeed();
     }
