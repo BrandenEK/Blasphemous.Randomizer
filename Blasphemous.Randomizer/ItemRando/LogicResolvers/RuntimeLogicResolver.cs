@@ -9,6 +9,11 @@ internal class RuntimeLogicResolver : ILogicResolver
         return Main.Randomizer.data.doorLocations[id];
     }
 
+    public Item GetItem(string id)
+    {
+        return Main.Randomizer.data.items[id];
+    }
+
     public ItemLocation GetItemLocation(string id)
     {
         return Main.Randomizer.data.itemLocations[id];
@@ -17,6 +22,11 @@ internal class RuntimeLogicResolver : ILogicResolver
     public bool IsDoor(string id)
     {
         return Main.Randomizer.data.doorLocations.ContainsKey(id);
+    }
+
+    public bool IsItem(string id)
+    {
+        return Main.Randomizer.data.items.ContainsKey(id);
     }
 
     public bool IsItemLocation(string id)

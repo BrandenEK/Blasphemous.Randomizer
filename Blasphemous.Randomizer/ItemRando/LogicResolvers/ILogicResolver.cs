@@ -18,6 +18,16 @@ public interface ILogicResolver
     public DoorLocation GetDoor(string id);
 
     /// <summary>
+    /// Checks whether the token is an item
+    /// </summary>
+    public bool IsItem(string id);
+
+    /// <summary>
+    /// Returns the item based on the id
+    /// </summary>
+    public Item GetItem(string id);
+
+    /// <summary>
     /// Checks whether the token is an item locations
     /// </summary>
     public bool IsItemLocation(string id);

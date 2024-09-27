@@ -40,7 +40,7 @@ namespace Blasphemous.Randomizer.Tests
         [TestInitialize]
         public void CreateInventory()
         {
-            inventory = new TestInventory(_allItemLocations, _allDoors);
+            inventory = new TestInventory(_allItemLocations, _allItems, _allDoors);
             inventory.SetConfigSettings(new Config());
         }
 
