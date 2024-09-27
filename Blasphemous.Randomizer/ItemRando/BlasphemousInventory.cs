@@ -1,10 +1,18 @@
 ﻿using Basalt.LogicParser;
+using Blasphemous.Randomizer.ItemRando.LogicResolvers;
 using System.Collections.Generic;
 
 namespace Blasphemous.Randomizer.ItemRando
 {
     public class BlasphemousInventory : InventoryData
     {
+        protected ILogicResolver _logicResolver;
+
+        public BlasphemousInventory()
+        {
+            _logicResolver = new RuntimeLogicResolver();
+        }
+
         private int logicDifficulty;
         private bool enemyShuffle;
 
@@ -344,7 +352,7 @@ namespace Blasphemous.Randomizer.ItemRando
 
         protected override object GetVariable(string variable)
         {
-            if (Main.Randomizer.data.doorLocations.ContainsKey(variable))
+            if (_logicResolver.IsDoor(variable))
             {
                 return HasDoor(variable);
             }
@@ -557,18 +565,17 @@ namespace Blasphemous.Randomizer.ItemRando
 
         public void AddItem(string itemId)
         {
-            if (Main.Randomizer.data.doorLocations.TryGetValue(itemId, out _))
+            if (_logicResolver.IsDoor(itemId))
             {
                 if (!doors.ContainsKey(itemId))
                     doors.Add(itemId, true);
                 return;
             }
 
-            if (!Main.Randomizer.data.items.TryGetValue(itemId, out Item item))
-            {
+            if (!_logicResolver.IsItem(itemId))
                 throw new System.Exception($"Attempting to add unknown door/item: {itemId}");
-            }
 
+            Item item = _logicResolver.GetItem(itemId);
             switch (item.type)
             {
                 case 0:
@@ -698,7 +705,7 @@ namespace Blasphemous.Randomizer.ItemRando
 
         public void RemoveItem(string itemId)
         {
-            if (Main.Randomizer.data.doorLocations.ContainsKey(itemId))
+            if (_logicResolver.IsDoor(itemId))
             {
                 if (doors.ContainsKey(itemId))
                     doors.Remove(itemId);
