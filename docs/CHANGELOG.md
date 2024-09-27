@@ -5,6 +5,7 @@
 - Implement credits framework
 - Rearrange internal namespaces
 - Various logic and bug fixes
+- Hard logic required to randomly spawn on right side
 
 ### v2.0.0 (Door Rando)
 - Removed autotracker
