@@ -24,13 +24,12 @@
 ***- Translations -*** <br>
 [@ConanCimmerio](https://github.com/ConanCimmerio), [@EltonZhang777](https://github.com/EltonZhang777), [@RocherBrockas](https://github.com/RocherBrockas)
 
-***- Logic testing and improvements -*** <br>
+***- Logic development and testing -*** <br>
 [@Exempt-Medic](https://github.com/Exempt-Medic), [@LumineonRL](https://github.com/LumineonRL)
 
 ---
 
-## Useful Info
-
+### Useful Info
 - Only works on the most current game version (4.0.67)
 - Press F8 to display the current seed (If you are stuck in dialogue use this to break out of it)
 - Save & Quit can be used to instantly return to your last Prie Dieu, which can fix softlocks and makes the 'Return to Port' prayer useless
@@ -39,13 +38,12 @@
 
 ---
 
-## Randomizer Settings
-
+### Randomizer Settings
 A full breakdown of all the available settings can be found [here](SETTINGS.md)
 
 ---
 
-## Gameplay Differences
+### Gameplay Differences
 
 Tirso's questline
 - Tirso's helpers will never die, so herbs can be given to him at any time
@@ -79,21 +77,19 @@ Door rando
 
 ---
 
-## Seeds
-
+### Seeds
 In order to choose a specific seed that you want to play on, click on the seed text box and type the desired number on the settings menu shown before starting a new game.  Seeds can be in the range of 1 to 99,999,999.
 <br><br>
 In order to make it easier for multiple people to play with the same item generation (Such as for races or multiplayer), a sequence of 7 images is shown in the top right corner of the settings menu.  This is a unique identifier of the seed that also takes into account the other configuration settings and ensures that items will be placed exactly the same for all players.
 
 ---
 
-## Autotracking
-
+### Autotracking
 Beginning with Randomizer 2.0.9, autotracking for the poptracker pack has been disabled
 
 ---
 
-## Available commands
+### Available commands
 - Press the 'backslash' key to open the debug console
 - Type the desired command followed by the parameters all separated by a single space
 
@@ -104,8 +100,7 @@ Beginning with Randomizer 2.0.9, autotracking for the poptracker pack has been d
 
 ---
 
-## Corpse hints
-
+### Corpse hints
 Each of the 34 corpses in the game can give a hint about the location of a random valuable item.  These include beads, prayers, sword hearts, relics, quest items, stat upgrades, and skills.  However, there are a few specific corpses that will always hint at the same location, so that some of the more inconvenient locations can possibly be avoided.
 <br>
 These are:
@@ -120,6 +115,6 @@ These are:
 
 ---
 
-## Installation
+### Installation
 This mod is available for download through the [Blasphemous Mod Installer](https://github.com/BrandenEK/Blasphemous.Modding.Installer)
 - Required dependencies: Modding API, Credits Framework, Level Framework, Menu Framework, UI Framework, Cheat Console
