@@ -116,5 +116,11 @@ These are:
 ---
 
 ### Installation
-This mod is available for download through the [Blasphemous Mod Installer](https://github.com/BrandenEK/Blasphemous.Modding.Installer)
-- Required dependencies: Modding API, Credits Framework, Level Framework, Menu Framework, UI Framework, Cheat Console
+This mod is available for download through the [Blasphemous Mod Installer](https://github.com/BrandenEK/Blasphemous.Modding.Installer) <br>
+Required dependencies:
+- [Modding API](https://github.com/BrandenEK/Blasphemous.ModdingAPI)
+- [Credits Framework](https://github.com/BrandenEK/Blasphemous.Framework.Credits)
+- [Level Framework](https://github.com/BrandenEK/Blasphemous.Framework.Levels)
+- [Menu Framework](https://github.com/BrandenEK/Blasphemous.Framework.Menus)
+- [UI Framework](https://github.com/BrandenEK/Blasphemous.Framework.UI)
+- [Cheat Console](https://github.com/BrandenEK/Blasphemous.CheatConsole)
