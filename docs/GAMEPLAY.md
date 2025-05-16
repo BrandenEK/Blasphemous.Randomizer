@@ -45,8 +45,22 @@
 
 ---
 
-### Door rando
+### Corpses
+- If the option 'Allow Hints' is enabled, then each of the 34 corpses in the game can give a hint about the location of a random valuable item
+- These include beads, prayers, sword hearts, relics, quest items, stat upgrades, and skills
+- However, there are a few specific corpses that will always hint at the same location, so that some of the more inconvenient locations can possibly be avoided:
+  - Corpse in ossuary --> Isidora reward
+  - Corpse outside Sierpes --> Sierpes reward
+  - Corpse in Ferrous Tree --> Miriam reward
+  - Corpse in Echoes of Salt --> Chalice quest sword shrine
+  - Corpse outside wax puzzle room --> Wax puzzle chest
+  - Corpse outside Jocinero's room --> Jocinero's final reward
+  - Corpse at entrance of WhOTW --> White Lady tomb reward
+  - Corpse outside Albero church --> 50,000 tear donation reward
 
+---
+
+### Door rando
 - The spawn points of a few doors have been modified
 - All doors from the rooftops elevator and above will remain the same so that the main goal is still to find all 3 masks
 - Some other doors will always remain the same as they are in the original game
