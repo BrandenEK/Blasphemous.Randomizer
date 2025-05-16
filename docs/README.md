@@ -38,6 +38,14 @@
 
 ---
 
+### Recommended Mods
+- [Rando Map](https://github.com/BrandenEK/Blasphemous.Randomizer.MapTracker) - Adds location info to the map screen
+- [Better Saves](https://github.com/BrandenEK/Blasphemous.BetterSaves) - Improves save file management
+- [Double Jump](https://github.com/BrandenEK/Blasphemous.DoubleJump) - Adds a new item, location, and logic
+- [Boots of Pleading](https://github.com/BrandenEK/Blasphemous.BootsOfPleading) - Adds a new item, location, and logic
+
+---
+
 ### Randomizer Settings
 A full breakdown of all the available settings can be found [here](SETTINGS.md)
 
