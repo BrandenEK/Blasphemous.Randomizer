@@ -85,11 +85,6 @@ Door rando
 
 ---
 
-### Autotracking
-Beginning with Randomizer 2.0.9, autotracking for the poptracker pack has been disabled
-
----
-
 ### Available commands
 - Press the 'backslash' key to open the debug console
 - Type the desired command followed by the parameters all separated by a single space
