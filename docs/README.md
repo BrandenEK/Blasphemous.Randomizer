@@ -47,7 +47,7 @@
 ---
 
 ### Randomizer Settings
-A full breakdown of all the available settings can be found [here](SETTINGS.md)
+Seeds can be in the range of 1 to 99,999,999.  A full breakdown of all the available settings can be found [here](SETTINGS.md)
 
 ---
 
@@ -82,13 +82,6 @@ Door rando
 - The chalice will never unfill
 - The Cistern shroud puzzle will be automatically completed if the shroud is equipped
 - The Albero warp room can not be teleported to until activated, and the gate has been removed
-
----
-
-### Seeds
-In order to choose a specific seed that you want to play on, click on the seed text box and type the desired number on the settings menu shown before starting a new game.  Seeds can be in the range of 1 to 99,999,999.
-<br><br>
-In order to make it easier for multiple people to play with the same item generation (Such as for races or multiplayer), a sequence of 7 images is shown in the top right corner of the settings menu.  This is a unique identifier of the seed that also takes into account the other configuration settings and ensures that items will be placed exactly the same for all players.
 
 ---
 
