@@ -52,36 +52,7 @@ Seeds can be in the range of 1 to 99,999,999.  A full breakdown of all the avail
 ---
 
 ### Gameplay Differences
-
-Tirso's questline
-- Tirso's helpers will never die, so herbs can be given to him at any time
-
-Gemino's questline
-- Gemino will never freeze, so the thimble can be given to him at any time
-
-Viridiana's questline
-- Viridiana will never die, so she can be used for all 5 boss fights and will always give her item at the rooftops
-
-Cleofas' questline
-- There is no longer an option to choose to slay Socorro
-- He will not jump off of the rooftops, even after talking to him without the cord
-
-Crisanta's questline
-- The scapular will not skip the Esdras fight; instead, it is required to open the door to the chapel
-- Perpetva's item can be retrieved even after defeating Esdras
-- Crisanta will always hold the 'Holy Wound of Abnegation'
-- Crisanta does not have to beaten with the True Heart equipped in order to obtain the holy wound, it just has to be in your inventory when talking to her
-
-Door rando
-- A command has been added to respawn the player from the chosen starting location
-- All doors from the rooftops elevator and above will remain the same so that the main goal is still to find all 3 masks
-- Some other doors will always remain the same as they are in the original game
-- The spawn points of a few doors have been modified
-- Platforms have been added to the main bell room in Jondo
-- The sword heart doesn't have to be unequipped for the Library bone puzzle
-- The chalice will never unfill
-- The Cistern shroud puzzle will be automatically completed if the shroud is equipped
-- The Albero warp room can not be teleported to until activated, and the gate has been removed
+In order to prevent missable items and to make the game more fun, there are many differences between a vanilla playthrough and a randomized playthrough.  A full list of the gameplay/questline modifications can be found [here](GAMEPLAY.md).
 
 ---
 
@@ -93,21 +64,6 @@ Door rando
 | ------- | ----------- | ------- |
 | `randomizer help` | none | List all available commands |
 | `randomizer respawn` | none | Respawns the player from the chosen starting location |
-
----
-
-### Corpse hints
-Each of the 34 corpses in the game can give a hint about the location of a random valuable item.  These include beads, prayers, sword hearts, relics, quest items, stat upgrades, and skills.  However, there are a few specific corpses that will always hint at the same location, so that some of the more inconvenient locations can possibly be avoided.
-<br>
-These are:
-- Corpse in ossuary --> Isidora reward
-- Corpse outside Sierpes --> Sierpes reward
-- Corpse in Ferrous Tree --> Miriam reward
-- Corpse in Echoes of Salt --> Chalice quest sword shrine
-- Corpse outside wax puzzle room --> Wax puzzle chest
-- Corpse outside Jocinero's room --> Jocinero's final reward
-- Corpse at entrance of WhOTW --> White Lady tomb reward
-- Corpse outside Albero church --> 50,000 tear donation reward
 
 ---
 
