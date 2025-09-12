@@ -67,7 +67,8 @@ namespace Blasphemous.Randomizer.Patches
             "D01BZ04S01",
             "D03Z01S06",
             "D01BZ04S01",
-            "D20Z03S01"
+            "D20Z03S01",
+            "D18Z01S01"
         };
 
         public static string[] duplicateItems = new string[]
@@ -101,7 +102,8 @@ namespace Blasphemous.Randomizer.Patches
             "RB105",
             "RB13",
             "PR11",
-            "QI203"
+            "QI203",
+            "RE05"
         };
 
         public static string[] itemsToNotRemove = new string[]
@@ -126,6 +128,37 @@ namespace Blasphemous.Randomizer.Patches
             "QI110",
         };
     }
+
+    // Properly handle cherub rewards
+    //[HarmonyPatch(typeof(CheckRescuedCherubs), "CountRescuedCherubs")]
+    //class CheckRescuedCherubs_CountRescuedCherubs_Patch
+    //{
+    //    public static void Postfix(ref int __result, int max)
+    //    {
+    //        ModLog.Error($"Checking for cherubs ({max}): {__result}");
+
+    //        bool hasFirstReward = Core.Events.GetFlag("LOCATION_PR05");
+
+    //        if (!hasFirstReward)
+    //            __result = System.Math.Min(__result, 20);
+    //        ModLog.Error($"Checking for cherubs ({max}): {__result}");
+    //    }
+    //}
+
+    //[HarmonyPatch(typeof(CherubCaptorPersistentObject), nameof(CherubCaptorPersistentObject.CountRescuedCherubs))]
+    //class CherubCaptorPersistentObject_CountRescuedCherubs_Patch
+    //{
+    //    public static void Postfix(ref int __result)
+    //    {
+    //        ModLog.Error($"Checking for cherubs: {__result}");
+
+    //        bool hasFirstReward = Core.Events.GetFlag("LOCATION_PR05");
+
+    //        if (!hasFirstReward)
+    //            __result = System.Math.Min(__result, 20);
+    //        ModLog.Error($"Checking for cherubs: {__result}");
+    //    }
+    //}
 
     // Only have laudes activated in boss room with verse
     [HarmonyPatch(typeof(EventManager), "GetFlag")]
