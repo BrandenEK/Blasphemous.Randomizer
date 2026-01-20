@@ -19,12 +19,8 @@ namespace Blasphemous.Randomizer.Patches
     {
         public static bool Prefix(ref int __result)
         {
-            if (Main.Randomizer.GameSettings.UnlockTeleportation)
-            {
-                __result = 3;
-                return false;
-            }
-            return true;
+            __result = 3;
+            return false;
         }
     }
 

@@ -21,7 +21,6 @@ namespace Blasphemous.Randomizer
         public int StartingLocation { get; set; } = 0;
 
         // General Settings
-        public bool UnlockTeleportation { get; set; } = true;
         public bool AllowHints { get; set; } = true;
         public bool AllowPenitence { get; set; } = false;
 

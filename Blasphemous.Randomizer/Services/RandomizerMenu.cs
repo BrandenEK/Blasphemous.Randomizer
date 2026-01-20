@@ -23,7 +23,6 @@ public class RandomizerMenu : ModMenu
 
     private ArrowOption _logicDifficulty;
     private ArrowOption _startingLocation;
-    private ToggleOption _teleportation;
     private ToggleOption _hints;
     private ToggleOption _penitence;
     private ArrowOption _doorShuffle;
@@ -56,7 +55,6 @@ public class RandomizerMenu : ModMenu
             {
                 LogicDifficulty = _logicDifficulty.CurrentOption,
                 StartingLocation = _startingLocation.CurrentOption,
-                UnlockTeleportation = _teleportation.Toggled,
                 AllowHints = _hints.Toggled,
                 AllowPenitence = _penitence.Toggled,
 
@@ -84,7 +82,6 @@ public class RandomizerMenu : ModMenu
         {
             _logicDifficulty.CurrentOption = value.LogicDifficulty;
             _startingLocation.CurrentOption = value.StartingLocation;
-            _teleportation.Toggled = value.UnlockTeleportation;
             _hints.Toggled = value.AllowHints;
             _penitence.Toggled = value.AllowPenitence;
 
@@ -248,9 +245,6 @@ public class RandomizerMenu : ModMenu
         string startName = Main.Randomizer.LocalizationHandler.Localize("loname") + ":";
         string[] startOptions = Enumerable.Range(1, 8).Select(x => Main.Randomizer.LocalizationHandler.Localize($"lotyp{x}")).ToArray();
         _startingLocation = arrow.CreateOption("Starting location", currSection, new Vector2(0, yOffset -= 100), startName, startOptions);
-
-        string teleportName = Main.Randomizer.LocalizationHandler.Localize("tpname");
-        _teleportation = toggle.CreateOption("Teleportation", currSection, new Vector2(xOffset, yOffset -= 100), teleportName);
 
         string hintName = Main.Randomizer.LocalizationHandler.Localize("htname");
         _hints = toggle.CreateOption("Hints", currSection, new Vector2(xOffset, yOffset -= 100), hintName);
