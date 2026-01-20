@@ -40,6 +40,8 @@ public class RandomizerMenu : ModMenu
     private ToggleOption _wheel;
     private TextOption _seedText;
 
+    private Text _idText;
+
     private Image[] _uniqueImages;
 
     private int _generatedSeed;
@@ -315,6 +317,25 @@ public class RandomizerMenu : ModMenu
         _doorShuffle = arrow.CreateOption("Door shuffle", currSection, new Vector2(0, yOffset -= 100), doorName, standardOptions);
 
         // Exclude linen drop doors
+
+        // Lower section
+
+        _idText = UIModder.Create(new RectCreationOptions()
+        {
+            Name = "UniqueID",
+            Parent = ui,
+            Position = new Vector2(0, -165),
+            Pivot = Vector2.zero,
+            XRange = Vector2.zero,
+            YRange = Vector2.zero,
+        }).AddText(new TextCreationOptions()
+        {
+            Contents = "Unique ID: ---",
+            Color = new Color32(192, 192, 192, 255),
+            Alignment = TextAnchor.MiddleLeft,
+            FontSize = 42,
+        });
+        _idText.supportRichText = true;
     }
 
     private RectTransform CreateSection(Transform parent, int idx)
