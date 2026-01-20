@@ -1,5 +1,6 @@
 ﻿using Blasphemous.ModdingAPI;
 using Blasphemous.Randomizer.DoorRando;
+using Newtonsoft.Json;
 using System.Linq;
 using UnityEngine;
 
@@ -47,6 +48,7 @@ namespace Blasphemous.Randomizer
         // Door Rando
         public int DoorShuffleType { get; set; } = 0;
 
+        [JsonIgnore]
         public StartingLocation RealStartingLocation
         {
             get
