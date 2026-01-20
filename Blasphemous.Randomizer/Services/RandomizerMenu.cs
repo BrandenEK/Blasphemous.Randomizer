@@ -316,16 +316,22 @@ public class RandomizerMenu : ModMenu
 
     private RectTransform CreateSection(Transform parent, int idx)
     {
+        float size = (FAR_RIGHT - FAR_LEFT) / NUM_SECTIONS;
+
         return UIModder.Create(new RectCreationOptions()
         {
             Name = $"Section {idx + 1}",
             Parent = parent,
             Pivot = new Vector2(0.5f, 1),
-            XRange = new Vector2(idx * 0.25f, (idx + 1) * 0.25f),
+            XRange = new Vector2(FAR_LEFT + idx * size, FAR_LEFT + (idx + 1) * size),
             YRange = new Vector2(0, 0.85f),
             Size = Vector2.zero
         });
     }
+
+    private const float FAR_LEFT = -0.15f;
+    private const float FAR_RIGHT = 1.15f;
+    private const float NUM_SECTIONS = 5;
 
     private Image CreateDivider(Transform section)
     {
