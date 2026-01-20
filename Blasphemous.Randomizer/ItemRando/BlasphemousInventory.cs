@@ -69,7 +69,7 @@ namespace Blasphemous.Randomizer.ItemRando
         private bool cantina = false;
 
         private bool ownAubade = false;
-        private bool aubade => ownAubade && TotalFervour >= 90;
+        private bool aubade => ownAubade && TotalFervour >= 100;
         private bool ownTirana = false;
         private bool tirana => ownTirana && TotalFervour >= 90;
 
