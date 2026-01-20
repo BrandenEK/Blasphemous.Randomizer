@@ -43,7 +43,8 @@ namespace Blasphemous.Randomizer
         private IShuffle[] shufflers;
 
         // Save file info
-        public Config GameSettings { get; set; }
+        public Config GameSettings { get; set; } = new Config();
+        public Config TempSettingsBeforeLoad { get; set; } = new Config();
 
         // Global info
         private bool inGame;

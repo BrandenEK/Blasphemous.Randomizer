@@ -59,7 +59,7 @@ namespace Blasphemous.Randomizer.Patches
         public static void Postfix(ref SpawnManager.PosibleSpawnPoints ___pendingSpawn, ref string ___customLevel, ref Vector3 ___customPosition, ref EntityOrientation ___customOrientation)
         {
             ___pendingSpawn = SpawnManager.PosibleSpawnPoints.CustomPosition;
-            StartingLocation start = Main.Randomizer.GameSettings.RealStartingLocation;
+            StartingLocation start = Main.Randomizer.TempSettingsBeforeLoad.RealStartingLocation;
             ___customLevel = start.Room;
             ___customPosition = start.Position;
             ___customOrientation = start.FacingRight ? EntityOrientation.Right : EntityOrientation.Left;

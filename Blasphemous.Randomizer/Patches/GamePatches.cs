@@ -92,10 +92,10 @@ namespace Blasphemous.Randomizer.Patches
         {
             if (!___isContinue)
             {
-                // Must load config settings from menu here before OnNewGame is called
+                // Must load temp config settings from menu here before OnNewGame is called
                 // Also used in DoorPatches
-                Main.Randomizer.GameSettings = Main.Randomizer.ModMenu.MenuSettings;
-                ___sceneName = Main.Randomizer.GameSettings.RealStartingLocation.Room;
+                Main.Randomizer.TempSettingsBeforeLoad = Main.Randomizer.ModMenu.MenuSettings;
+                ___sceneName = Main.Randomizer.TempSettingsBeforeLoad.RealStartingLocation.Room;
             }
         }
     }
