@@ -219,12 +219,6 @@ public class RandomizerMenu : ModMenu
         // Create unique seed images
         CreateUniqueSeed(ui);
 
-        // Create sections
-        RectTransform section1 = CreateSection(ui, 0);
-        RectTransform section2 = CreateSection(ui, 1);
-        RectTransform section3 = CreateSection(ui, 2);
-        RectTransform section4 = CreateSection(ui, 3);
-
         // Create option creators
         ToggleCreator toggle = new(this);
         ArrowCreator arrow = new(this);
@@ -236,88 +230,130 @@ public class RandomizerMenu : ModMenu
 
         // Create options
         int xOffset = -100;
+        int yOffset = 300;
+        Transform currSection = CreateSection(ui, 0);
         string[] standardOptions = new string[] { "distyp", "simtyp", "fultyp" }.Select(Main.Randomizer.LocalizationHandler.Localize).ToArray();
 
-        // Section 0
+        // Seed
 
         string seedName = Main.Randomizer.LocalizationHandler.Localize("menusd") + ":";
         _seedText = text.CreateOption("seed", ui, new Vector2(-20, 300), seedName, true, false, Config.MAX_SEED.GetDigits());
 
-        // Section 1
+        // General section
 
         string logicName = Main.Randomizer.LocalizationHandler.Localize("lgname") + ":";
         string[] logicOptions = Enumerable.Range(1, 3).Select(x => Main.Randomizer.LocalizationHandler.Localize($"lgtyp{x}")).ToArray();
-        _logicDifficulty = arrow.CreateOption("Logic difficulty", section1, new Vector2(0, 200), logicName, logicOptions);
+        _logicDifficulty = arrow.CreateOption("Logic difficulty", currSection, new Vector2(0, yOffset -= 100), logicName, logicOptions);
 
         string startName = Main.Randomizer.LocalizationHandler.Localize("loname") + ":";
         string[] startOptions = Enumerable.Range(1, 8).Select(x => Main.Randomizer.LocalizationHandler.Localize($"lotyp{x}")).ToArray();
-        _startingLocation = arrow.CreateOption("Starting location", section1, new Vector2(0, 100), startName, startOptions);
+        _startingLocation = arrow.CreateOption("Starting location", currSection, new Vector2(0, yOffset -= 100), startName, startOptions);
 
         string teleportName = Main.Randomizer.LocalizationHandler.Localize("tpname");
-        _teleportation = toggle.CreateOption("Teleportation", section1, new Vector2(xOffset, 0), teleportName);
+        _teleportation = toggle.CreateOption("Teleportation", currSection, new Vector2(xOffset, yOffset -= 100), teleportName);
 
         string hintName = Main.Randomizer.LocalizationHandler.Localize("htname");
-        _hints = toggle.CreateOption("Hints", section1, new Vector2(xOffset, -100), hintName);
+        _hints = toggle.CreateOption("Hints", currSection, new Vector2(xOffset, yOffset -= 100), hintName);
 
         string penitenceName = Main.Randomizer.LocalizationHandler.Localize("pename");
-        _penitence = toggle.CreateOption("Penitence", section1, new Vector2(xOffset, -200), penitenceName);
+        _penitence = toggle.CreateOption("Penitence", currSection, new Vector2(xOffset, yOffset -= 100), penitenceName);
 
-        // Section 2
+        CreateDivider(currSection);
+        currSection = CreateSection(ui, 1);
+        yOffset = 300;
 
-        string doorName = Main.Randomizer.LocalizationHandler.Localize("drname") + ":";
-        _doorShuffle = arrow.CreateOption("Door shuffle", section2, new Vector2(0, 200), doorName, standardOptions);
-
-        string enemyName = Main.Randomizer.LocalizationHandler.Localize("enname") + ":";
-        _enemyShuffle = arrow.CreateOption("Enemy shuffle", section2, new Vector2(0, 100), enemyName, standardOptions);
-
-        string className = Main.Randomizer.LocalizationHandler.Localize("clname");
-        _maintainClass = toggle.CreateOption("Maintain class", section2, new Vector2(xOffset, 0), className);
-
-        string scalingName = Main.Randomizer.LocalizationHandler.Localize("scname");
-        _areaScaling = toggle.CreateOption("Area scaling", section2, new Vector2(xOffset, -100), scalingName);
-
-        // Section 3
+        // Item first section
 
         string reliqName = Main.Randomizer.LocalizationHandler.Localize("rqname");
-        _reliquaries = toggle.CreateOption("Reliquaries", section3, new Vector2(xOffset, 200), reliqName);
+        _reliquaries = toggle.CreateOption("Reliquaries", currSection, new Vector2(xOffset, yOffset -= 100), reliqName);
 
         string dashName = Main.Randomizer.LocalizationHandler.Localize("dsname");
-        _dash = toggle.CreateOption("Dash", section3, new Vector2(xOffset, 100), dashName);
+        _dash = toggle.CreateOption("Dash", currSection, new Vector2(xOffset, yOffset -= 100), dashName);
 
         string wallClimbName = Main.Randomizer.LocalizationHandler.Localize("wcname");
-        _wallClimb = toggle.CreateOption("Wall climb", section3, new Vector2(xOffset, 0), wallClimbName);
+        _wallClimb = toggle.CreateOption("Wall climb", currSection, new Vector2(xOffset, yOffset -= 100), wallClimbName);
 
         string bootsName = Main.Randomizer.LocalizationHandler.Localize("sbname");
-        _boots = toggle.CreateOption("Boots", section3, new Vector2(xOffset, -100), bootsName);
+        _boots = toggle.CreateOption("Boots", currSection, new Vector2(xOffset, yOffset -= 100), bootsName);
 
         string doubleJumpName = Main.Randomizer.LocalizationHandler.Localize("djname");
-        _purifiedHand = toggle.CreateOption("Double jump", section3, new Vector2(xOffset, -200), doubleJumpName);
+        _purifiedHand = toggle.CreateOption("Double jump", currSection, new Vector2(xOffset, yOffset -= 100), doubleJumpName);
 
-        // Section 4
+        currSection = CreateSection(ui, 2);
+        yOffset = 300;
+
+        // Item second section
 
         string swordSkillsName = Main.Randomizer.LocalizationHandler.Localize("ssname");
-        _swordSkills = toggle.CreateOption("Sword skills", section4, new Vector2(xOffset, 200), swordSkillsName);
+        _swordSkills = toggle.CreateOption("Sword skills", currSection, new Vector2(xOffset, yOffset -= 100), swordSkillsName);
 
         string thornsName = Main.Randomizer.LocalizationHandler.Localize("thname");
-        _thorns = toggle.CreateOption("Thorns", section4, new Vector2(xOffset, 100), thornsName);
+        _thorns = toggle.CreateOption("Thorns", currSection, new Vector2(xOffset, yOffset -= 100), thornsName);
 
         string junkName = Main.Randomizer.LocalizationHandler.Localize("jiname");
-        _junkQuests = toggle.CreateOption("Junk inconvenitent", section4, new Vector2(xOffset, 0), junkName);
+        _junkQuests = toggle.CreateOption("Junk inconvenitent", currSection, new Vector2(xOffset, yOffset -= 100), junkName);
 
         string wheelName = Main.Randomizer.LocalizationHandler.Localize("whname");
-        _wheel = toggle.CreateOption("Wheel", section4, new Vector2(xOffset, -100), wheelName);
+        _wheel = toggle.CreateOption("Wheel", currSection, new Vector2(xOffset, yOffset -= 100), wheelName);
+
+        CreateDivider(currSection);
+        currSection = CreateSection(ui, 3);
+        yOffset = 300;
+
+        // Enemy section
+
+        string enemyName = Main.Randomizer.LocalizationHandler.Localize("enname") + ":";
+        _enemyShuffle = arrow.CreateOption("Enemy shuffle", currSection, new Vector2(0, yOffset -= 100), enemyName, standardOptions);
+
+        string className = Main.Randomizer.LocalizationHandler.Localize("clname");
+        _maintainClass = toggle.CreateOption("Maintain class", currSection, new Vector2(xOffset, yOffset -= 100), className);
+
+        string scalingName = Main.Randomizer.LocalizationHandler.Localize("scname");
+        _areaScaling = toggle.CreateOption("Area scaling", currSection, new Vector2(xOffset, yOffset -= 100), scalingName);
+
+        CreateDivider(currSection);
+        currSection = CreateSection(ui, 4);
+        yOffset = 300;
+
+        // Door section
+
+        string doorName = Main.Randomizer.LocalizationHandler.Localize("drname") + ":";
+        _doorShuffle = arrow.CreateOption("Door shuffle", currSection, new Vector2(0, yOffset -= 100), doorName, standardOptions);
+
+        // Exclude linen drop doors
     }
 
     private RectTransform CreateSection(Transform parent, int idx)
     {
+        float size = (FAR_RIGHT - FAR_LEFT) / NUM_SECTIONS;
+
         return UIModder.Create(new RectCreationOptions()
         {
             Name = $"Section {idx + 1}",
             Parent = parent,
             Pivot = new Vector2(0.5f, 1),
-            XRange = new Vector2(idx * 0.25f, (idx + 1) * 0.25f),
+            XRange = new Vector2(FAR_LEFT + idx * size, FAR_LEFT + (idx + 1) * size),
             YRange = new Vector2(0, 0.85f),
             Size = Vector2.zero
+        });
+    }
+
+    private const float FAR_LEFT = -0.15f;
+    private const float FAR_RIGHT = 1.15f;
+    private const float NUM_SECTIONS = 5;
+
+    private Image CreateDivider(Transform section)
+    {
+        return UIModder.Create(new RectCreationOptions()
+        {
+            Name = "Divider",
+            Parent = section,
+            XRange = Vector2.one,
+            YRange = new Vector2(0.15f, 0.85f),
+            Size = new Vector2(2, 100),
+        }).AddImage(new ImageCreationOptions()
+        {
+            Color = new Color32(99, 68, 57, 255)
         });
     }
 
