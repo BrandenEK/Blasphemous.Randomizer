@@ -6,6 +6,7 @@ using Tools.Playmaker2.Action;
 using HutongGames.PlayMaker;
 using Gameplay.GameControllers.Penitent;
 using Gameplay.GameControllers.Entities;
+using Blasphemous.ModdingAPI.Helpers;
 
 namespace Blasphemous.Randomizer.Patches
 {
@@ -191,7 +192,7 @@ namespace Blasphemous.Randomizer.Patches
     }
 
     // Used when custom items are added from the modding api
-    [HarmonyPatch(typeof(ItemModder), nameof(ItemModder.AddAndDisplayItem))]
+    [HarmonyPatch(typeof(ItemHelper), nameof(ItemHelper.AddAndDisplayItem))]
     public class ItemModder_Patch
     {
         public static bool Prefix(string itemId)
