@@ -2,9 +2,7 @@
 using Blasphemous.Framework.Menus.Options;
 using Blasphemous.Framework.UI;
 using Blasphemous.ModdingAPI;
-using Blasphemous.ModdingAPI.Helpers;
 using Blasphemous.Randomizer.Extensions;
-using Framework.Managers;
 using System.Linq;
 using System.Text;
 using UnityEngine;
@@ -42,8 +40,6 @@ public class RandomizerMenu : ModMenu
     private TextOption _seedText;
 
     private Text _idText;
-
-    private Image[] _uniqueImages;
 
     private int _generatedSeed;
 
@@ -146,70 +142,7 @@ public class RandomizerMenu : ModMenu
         _dash.Enabled = Config.DoesLocationAllowDash(startLocation, doorType);
         _wallClimb.Enabled = Config.DoesLocationAllowWallClimb(startLocation, doorType);
 
-        RefreshUniqueSeed();
         UpdateUniqueIdText(MenuSettings.CalculateUID());
-    }
-
-    /// <summary>
-    /// Set each digit in the unique seed to its corresponding image
-    /// </summary>
-    private void RefreshUniqueSeed()
-    {
-        // Get final seed based on seed & options
-        long finalSeed = MenuSettings.UniqueSeed;
-
-        // Fill images based on unique seed
-        try
-        {
-            FillImages(finalSeed);
-        }
-        catch
-        {
-            ModLog.Error("Failed to generate image layout for unique seed " + finalSeed);
-            for (int i = 0; i < _uniqueImages.Length; i++)
-                _uniqueImages[i].sprite = GetIcon(0);
-        }
-
-        void FillImages(long seed)
-        {
-            int numDigits = UNIQUE_ICONS.Length, currDigit = 0;
-            do
-            {
-                int imgIdx = (int)(seed % numDigits);
-                seed /= numDigits;
-
-                SetDigitImage(currDigit, GetIcon(imgIdx));
-                currDigit++;
-            }
-            while (seed > 0);
-            for (; currDigit < _uniqueImages.Length; currDigit++)
-                SetDigitImage(currDigit, GetIcon(0));
-        }
-
-        Sprite GetIcon(int index)
-        {
-            string itemId = UNIQUE_ICONS[index];
-            InventoryManager.ItemType itemType = ItemHelper.GetItemTypeFromId(itemId);
-            return Core.InventoryManager.GetBaseObject(itemId, itemType).picture;
-        }
-
-        void SetDigitImage(int digit, Sprite image)
-        {
-            // Need to update this when adding more images
-            int realIdx = digit switch
-            {
-                0 => 1,
-                1 => 5,
-                2 => 0,
-                3 => 3,
-                4 => 6,
-                5 => 4,
-                6 => 2,
-                _ => throw new System.Exception("Too many digits in unique seed!")
-            };
-
-            _uniqueImages[realIdx].sprite = image;
-        }
     }
 
     /// <summary>
@@ -247,10 +180,8 @@ public class RandomizerMenu : ModMenu
     /// </summary>
     protected override void CreateUI(Transform ui)
     {
-        // Create unique seed images
-        CreateUniqueSeed(ui);
+        // Setup
 
-        // Create option creators
         ToggleCreator toggle = new(this);
         ArrowCreator arrow = new(this);
         TextCreator text = new(this)
@@ -259,7 +190,6 @@ public class RandomizerMenu : ModMenu
             LineSize = 200
         };
 
-        // Create options
         int xOffset = -100;
         int yOffset = 300;
         Transform currSection = CreateSection(ui, 0);
@@ -400,49 +330,9 @@ public class RandomizerMenu : ModMenu
         });
     }
 
-    private void CreateUniqueSeed(Transform parent)
-    {
-        RectTransform holder = UIModder.Create(new RectCreationOptions()
-        {
-            Name = "Unique holder",
-            Parent = parent,
-            XRange = Vector2.one,
-            YRange = Vector2.one,
-            Pivot = new Vector2(1, 0.5f),
-            Position = new Vector2(190, 205),
-            Size = new Vector2(100, 96)
-        });
-
-        _uniqueImages = new Image[UNIQUE_ID_SIZE];
-        for (int i = 0; i < UNIQUE_ID_SIZE; i++)
-        {
-            _uniqueImages[i] = UIModder.Create(new RectCreationOptions()
-            {
-                Name = $"Img{i}",
-                Parent = holder,
-                XRange = new Vector2(1, 1),
-                YRange = new Vector2(0.5f, 0.5f),
-                Pivot = new Vector2(1, 0.5f),
-                Position = new Vector2(i * -60, 0),
-                Size = new Vector2(64, 64)
-            }).AddImage();
-        }
-    }
-
     private const float FAR_LEFT = -0.15f;
     private const float FAR_RIGHT = 1.15f;
     private const float NUM_SECTIONS = 5;
     private const int ID_DIGITS = 12;
     private const string ID_CHARS = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
-
-    private const int UNIQUE_ID_SIZE = 7;
-    private const int NUMBER_OF_OPTIONS = 25;
-    readonly string[] UNIQUE_ICONS = new string[] // 96 diff images (5 images = 32 bits, 6 images = 39 bits, 7 images = 46 bits)
-    {
-        "RE01", "RE02", "RE03", "RE04", "RE05", "RE07", "RE10",
-        "RB01", "RB03", "RB04", "RB05", "RB06", "RB07", "RB08", "RB09", "RB10", "RB11", "RB12", "RB13", "RB14", "RB15", "RB16", "RB21", "RB30", "RB31", "RB32", "RB33", "RB35", "RB36", "RB37", "RB101", "RB102", "RB103", "RB105", "RB106", "RB107", "RB108", "RB201", "RB202", "RB203", "RB301",
-        "HE01", "HE02", "HE03", "HE04", "HE05", "HE06", "HE07", "HE10", "HE11", "HE101", "HE201",
-        "PR03", "PR04", "PR05", "PR07", "PR08", "PR09", "PR10", "PR11", "PR12", "PR14", "PR15", "PR16", "PR101", "PR201", "PR202", "PR203",
-        "QI01", "QI06", "QI07", "QI08", "QI10", "QI11", "QI12", "QI19", "QI20", "QI37", "QI41", "QI44", "QI57", "QI58", "QI61", "QI68", "QI69", "QI70", "QI71", "QI75", "QI78", "QI81", "QI101", "QI110", "QI202", "QI203", "QI204", "QI301",
-    };
 }
