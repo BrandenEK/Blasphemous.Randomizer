@@ -314,7 +314,7 @@ namespace Blasphemous.Randomizer
         {
             if (InputHandler.GetKeyDown("Seed") && inGame)
             {
-                ModLog.Display($"{LocalizationHandler.Localize("currsd")}: {GameSettings.Seed} [{GameSettings.UniqueSeed}]");
+                ModLog.Display($"{LocalizationHandler.Localize("currsd")}: {GameSettings.Seed} [{GameSettings.CalculateUID()}]");
             }
             else if (InputHandler.GetKeyDown("Debug"))
             {
