@@ -262,6 +262,8 @@ public class RandomizerMenu : ModMenu
         string penitenceName = Main.Randomizer.LocalizationHandler.Localize("pename");
         _penitence = toggle.CreateOption("Penitence", section1, new Vector2(xOffset, -200), penitenceName);
 
+        CreateDivider(section1);
+
         // Section 2
 
         string doorName = Main.Randomizer.LocalizationHandler.Localize("drname") + ":";
@@ -275,6 +277,8 @@ public class RandomizerMenu : ModMenu
 
         string scalingName = Main.Randomizer.LocalizationHandler.Localize("scname");
         _areaScaling = toggle.CreateOption("Area scaling", section2, new Vector2(xOffset, -100), scalingName);
+
+        CreateDivider(section2);
 
         // Section 3
 
@@ -292,6 +296,8 @@ public class RandomizerMenu : ModMenu
 
         string doubleJumpName = Main.Randomizer.LocalizationHandler.Localize("djname");
         _purifiedHand = toggle.CreateOption("Double jump", section3, new Vector2(xOffset, -200), doubleJumpName);
+
+        CreateDivider(section3);
 
         // Section 4
 
@@ -318,6 +324,21 @@ public class RandomizerMenu : ModMenu
             XRange = new Vector2(idx * 0.25f, (idx + 1) * 0.25f),
             YRange = new Vector2(0, 0.85f),
             Size = Vector2.zero
+        });
+    }
+
+    private Image CreateDivider(Transform section)
+    {
+        return UIModder.Create(new RectCreationOptions()
+        {
+            Name = "Divider",
+            Parent = section,
+            XRange = Vector2.one,
+            YRange = new Vector2(0.15f, 0.85f),
+            Size = new Vector2(2, 100),
+        }).AddImage(new ImageCreationOptions()
+        {
+            Color = new Color32(99, 68, 57, 255)
         });
     }
 
