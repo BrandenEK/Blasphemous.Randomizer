@@ -6,6 +6,7 @@ using Blasphemous.ModdingAPI.Helpers;
 using Blasphemous.Randomizer.Extensions;
 using Framework.Managers;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -146,6 +147,7 @@ public class RandomizerMenu : ModMenu
         _wallClimb.Enabled = Config.DoesLocationAllowWallClimb(startLocation, doorType);
 
         RefreshUniqueSeed();
+        UpdateUniqueIdText(MenuSettings.CalculateUID());
     }
 
     /// <summary>
@@ -208,6 +210,27 @@ public class RandomizerMenu : ModMenu
 
             _uniqueImages[realIdx].sprite = image;
         }
+    }
+
+    /// <summary>
+    /// Updates the UID text with the specified id
+    /// </summary>
+    private void UpdateUniqueIdText(ulong id)
+    {
+        var sb = new StringBuilder();
+        ulong targetBase = (ulong)ID_CHARS.Length;
+
+        do
+        {
+            sb.Append($" {ID_CHARS[(int)(id % targetBase)]}");
+            id /= targetBase;
+        }
+        while (id > 0);
+
+        while (sb.Length < ID_DIGITS * 2)
+            sb.Append(" 0");
+
+        _idText.text = $"Unique ID:<color=#B3E5B3>{sb}</color>";
     }
 
     /// <summary>
@@ -353,10 +376,6 @@ public class RandomizerMenu : ModMenu
         });
     }
 
-    private const float FAR_LEFT = -0.15f;
-    private const float FAR_RIGHT = 1.15f;
-    private const float NUM_SECTIONS = 5;
-
     private Image CreateDivider(Transform section)
     {
         return UIModder.Create(new RectCreationOptions()
@@ -400,6 +419,12 @@ public class RandomizerMenu : ModMenu
             }).AddImage();
         }
     }
+
+    private const float FAR_LEFT = -0.15f;
+    private const float FAR_RIGHT = 1.15f;
+    private const float NUM_SECTIONS = 5;
+    private const int ID_DIGITS = 12;
+    private const string ID_CHARS = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
 
     private const int UNIQUE_ID_SIZE = 7;
     private const int NUMBER_OF_OPTIONS = 25;
