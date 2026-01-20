@@ -1,15 +1,11 @@
 ﻿using Blasphemous.ModdingAPI.Persistence;
 using Blasphemous.Randomizer.Map;
-using System;
 using System.Collections.Generic;
 
 namespace Blasphemous.Randomizer
 {
-    [Serializable]
-    public class RandomizerPersistenceData : SaveData
+    public class RandoSlotData : SlotSaveData
     {
-        public RandomizerPersistenceData() : base("ID_RANDOMIZER") { }
-
         public Config config;
 
         public Dictionary<string, string> mappedItems;

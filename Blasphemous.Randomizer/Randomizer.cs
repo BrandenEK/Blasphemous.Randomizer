@@ -29,7 +29,7 @@ namespace Blasphemous.Randomizer
     /// <summary>
     /// Handles randomizing everything
     /// </summary>
-    public class Randomizer : BlasMod, IPersistentMod
+    public class Randomizer : BlasMod, ISlotPersistentMod<RandoSlotData>
     {
         internal Randomizer() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
@@ -43,7 +43,8 @@ namespace Blasphemous.Randomizer
         private IShuffle[] shufflers;
 
         // Save file info
-        public Config GameSettings { get; set; }
+        public Config GameSettings { get; set; } = new Config();
+        public Config TempSettingsBeforeLoad { get; set; } = new Config();
 
         // Global info
         private bool inGame;
@@ -53,8 +54,6 @@ namespace Blasphemous.Randomizer
         public DataStorage data { get; private set; }
         public MapCollectionStatus MapCollection { get; private set; }
         public RandomizerMenu ModMenu { get; private set; }
-
-        public string PersistentID => "ID_RANDOMIZER";
 
         public bool InstalledBootsMod => ModHelper.IsModLoadedByName("Boots of Pleading");
         public bool InstalledDoubleJumpMod => ModHelper.IsModLoadedByName("Double Jump");
@@ -100,9 +99,9 @@ namespace Blasphemous.Randomizer
             provider.RegisterNewGameMenu(ModMenu);
         }
 
-        public SaveData SaveGame()
+        public RandoSlotData SaveSlot()
         {
-            return new RandomizerPersistenceData
+            return new RandoSlotData
             {
                 config = GameSettings,
                 mappedItems = itemShuffler.SaveMappedItems(),
@@ -113,18 +112,26 @@ namespace Blasphemous.Randomizer
             };
         }
 
-        public void LoadGame(SaveData data)
+        public void LoadSlot(RandoSlotData data)
         {
-            RandomizerPersistenceData randomizerPersistenceData = data as RandomizerPersistenceData;
-
-            GameSettings = randomizerPersistenceData.config;
-            itemShuffler.LoadMappedItems(randomizerPersistenceData.mappedItems);
-            itemShuffler.LoadMappedDoors(randomizerPersistenceData.mappedDoors);
-            hintShuffler.LoadMappedHints(randomizerPersistenceData.mappedHints);
-            enemyShuffler.LoadMappedEnemies(randomizerPersistenceData.mappedEnemies);
-            MapCollection.CollectionStatus = randomizerPersistenceData.collectionStatus;
+            GameSettings = data.config;
+            itemShuffler.LoadMappedItems(data.mappedItems);
+            itemShuffler.LoadMappedDoors(data.mappedDoors);
+            hintShuffler.LoadMappedHints(data.mappedHints);
+            enemyShuffler.LoadMappedEnemies(data.mappedEnemies);
+            MapCollection.CollectionStatus = data.collectionStatus;
 
             ModLog.Info("Loaded seed: " + GameSettings.Seed);
+        }
+
+        public void ResetSlot()
+        {
+            GameSettings = new Config();
+            itemShuffler.ClearMappedItems();
+            itemShuffler.ClearMappedDoors();
+            hintShuffler.ClearMappedHints();
+            enemyShuffler.ClearMappedEnemies();
+            MapCollection.ResetCollectionStatus(GameSettings);
         }
 
         protected override void OnNewGame()
@@ -136,16 +143,6 @@ namespace Blasphemous.Randomizer
             setUpExtras();
             Core.GameModeManager.ChangeMode(GameModeManager.GAME_MODES.NEW_GAME_PLUS);
             Core.Events.SetFlag("CHERUB_RESPAWN", true);
-        }
-
-        public void ResetGame()
-        {
-            GameSettings = new Config();
-            itemShuffler.ClearMappedItems();
-            itemShuffler.ClearMappedDoors();
-            hintShuffler.ClearMappedHints();
-            enemyShuffler.ClearMappedEnemies();
-            MapCollection.ResetCollectionStatus(GameSettings);
         }
 
         private void Randomize()
@@ -163,7 +160,7 @@ namespace Blasphemous.Randomizer
                 {
                     ModLog.Error($"Error with the {shufflers[i].GetType().Name} when shuffling seed {GameSettings.Seed}");
                     ModLog.Error("Error message: " + e.Message);
-                    ResetGame();
+                    ResetSlot();
                 }
             }
 
@@ -216,7 +213,7 @@ namespace Blasphemous.Randomizer
                     // Loaded an outdated rando or vanilla game
                     ModLog.Error("Loaded invalid game!");
                     errorOnLoad = LocalizationHandler.Localize("saverr");
-                    ResetGame();
+                    ResetSlot();
                 }
             }
 
