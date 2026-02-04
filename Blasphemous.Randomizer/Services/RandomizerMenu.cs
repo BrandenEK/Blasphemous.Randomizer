@@ -101,7 +101,7 @@ public class RandomizerMenu : ModMenu
             _wheel.Toggled = value.StartWithWheel;
 
             _seedText.CurrentValue = value.Seed > 0 ? value.Seed.ToString() : string.Empty;
-            OnOptionsChanged();
+            OnOptionsChanged(string.Empty);
         }
     }
 
@@ -114,6 +114,14 @@ public class RandomizerMenu : ModMenu
         ModLog.Info($"Generating default seed: {_generatedSeed}");
 
         MenuSettings = new Config();
+    }
+
+    /// <summary>
+    /// When opening the menu, prevent selecting seed option
+    /// </summary>
+    public override void OnShow()
+    {
+        
     }
 
     /// <summary>
@@ -130,7 +138,7 @@ public class RandomizerMenu : ModMenu
     /// <summary>
     /// Whenever an option is changed, update enabled status and the unique seed
     /// </summary>
-    public override void OnOptionsChanged()
+    public override void OnOptionsChanged(string option)
     {
         int doorType = _doorShuffle.CurrentOption;
         int startLocation = _startingLocation.CurrentOption;
@@ -296,8 +304,8 @@ public class RandomizerMenu : ModMenu
             Color = new Color32(192, 192, 192, 255),
             Alignment = TextAnchor.MiddleLeft,
             FontSize = 42,
+            UseRichText = true,
         });
-        _idText.supportRichText = true;
     }
 
     private RectTransform CreateSection(Transform parent, int idx)
