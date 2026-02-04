@@ -43,6 +43,9 @@
       <PublishFolder>$(SolutionDir)\publish\$(TargetName)</PublishFolder>
     </PropertyGroup>
 
+    <!-- Update dependencies -->
+    <Copy SourceFiles="$(OutDir)Basalt.LogicParser.dll" DestinationFolder="$(SolutionDir)\resources\data" SkipUnchangedFiles="true" />
+
     <!-- Export to dev folder -->
     <Copy SourceFiles="@(Resources)" DestinationFolder="$(DevFolder)\%(RecursiveDir)" SkipUnchangedFiles="true" />
     <Copy SourceFiles="@(PluginDll)" DestinationFolder="$(DevFolder)\plugins" SkipUnchangedFiles="true" />
