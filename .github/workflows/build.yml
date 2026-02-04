@@ -1,5 +1,5 @@
 
-# Blasphemous randomizer publisher v1.0.1
+# Blasphemous randomizer publisher v1.0.2
 name: Build
 
 on:
@@ -26,7 +26,7 @@ jobs:
       run: |
         dotnet restore
         dotnet build --configuration Release --no-restore
-        dotnet test --no-build
+        dotnet test --configuration Release --no-build
 
     - name: Export Settings
       run: |
