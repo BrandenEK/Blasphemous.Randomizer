@@ -11,6 +11,12 @@
   <img src="https://img.shields.io/github/downloads/BrandenEK/Blasphemous.Randomizer/total?style=for-the-badge&color=57AB28">
 </div>
 
+<div align="center"><br>
+
+  [Blasphemous 1 Randomizer Wiki](https://brandenek.github.io/Blasphemous.Randomizer.Wiki)
+
+</div>
+
 ---
 
 ## Contributors
